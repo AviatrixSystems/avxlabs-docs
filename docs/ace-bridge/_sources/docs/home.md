@@ -5,7 +5,7 @@ The objective behind this section is to collaborate together on a pre-built scen
 ## 1 - Initial Scenario
 The lab topology can be found below:
 
-![Lab Overview](images/Topology-single.png)
+![Lab Overview](images/Topology.png)
 _Figure 1: Initial Topology_
 
 ### 1.1. - Notes
@@ -29,7 +29,7 @@ A few notes on the scenario are here:
 * One volunteer of the team should share the screen and navigate through the Controller and CoPilot.
 * Use solely the CoPilot and the Controller. 
 * The Wordpress application that is very critical to your business is <ins>broken</ins>! You are going to collaborate together to identify all the issues that are causing it to break.
-* Once the **90** minutes are done, the instructor will close the breakout rooms and each team will discuss their findings & learnings for **~ 10 minutes**.
+* Once the 90 minutes are done, the instructor will close the breakout rooms and each team will discuss their findings & learnings for ~ 10 minutes.
 * Once this is done, the instructor will highlight some of the key values that the Aviatrix Platform brings into troubleshooting and operating the setup.
 
 ### 1.3. - Wordpress is OK
