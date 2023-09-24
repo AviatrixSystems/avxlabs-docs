@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lab 1 Build the MSP Backbone &#8212; ACE Multicloud Network for Managed Service Providers</title>
+    <title>Lab 1 - Build the MSP Backbone &#8212; ACE Multicloud Network for Managed Service Providers</title>
   
   
   
@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 1 Build the MSP Backbone</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 1 - Build the MSP Backbone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 Customer Isolation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 FireNet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 Site2Cloud</a></li>
@@ -301,7 +301,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 1 Build the MSP Backbone</h1>
+    <h1>Lab 1 - Build the MSP Backbone</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -311,11 +311,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-lab">1.0 - What’s in the lab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-in-the-lab">1.0 - What is in the lab?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-topology">1.1 - Initial Topology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-msp-backbone">1.2 - Build the MSP Backbone</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-aws-shared-svcs-to-aws-hub">1.2.1 - Connect AWS Shared Svcs to AWS Hub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-azure-shared-svcs-to-azure-hub">1.2.2 - Connect Azure Shared Svcs to Azure Hub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-aws-shared-svcs-to-aws-hub">1.2.1 - Connect AWS Shared SVCs to AWS Hub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-azure-shared-svcs-to-azure-hub">1.2.2 - Connect Azure Shared SVCs to Azure Hub</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-transit-peering-between-aws-azure">1.2.3 - Configure Transit Peering between AWS &amp; Azure</a></li>
@@ -334,60 +334,147 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-1-build-the-msp-backbone">
-<h1>Lab 1 Build the MSP Backbone<a class="headerlink" href="#lab-1-build-the-msp-backbone" title="Permalink to this heading">#</a></h1>
-<section id="what-s-in-the-lab">
-<h2>1.0 - What’s in the lab?<a class="headerlink" href="#what-s-in-the-lab" title="Permalink to this heading">#</a></h2>
-<p>Lab time: ~45 minutes</p>
-<p>This is an advanced scenario for Managed Service Providers (msps) that goes through onboarding Tenants, connecting to their respective locations, overlapping addresses and much more.</p>
+<h1>Lab 1 - Build the MSP Backbone<a class="headerlink" href="#lab-1-build-the-msp-backbone" title="Permalink to this heading">#</a></h1>
+<section id="what-is-in-the-lab">
+<h2>1.0 - What is in the lab?<a class="headerlink" href="#what-is-in-the-lab" title="Permalink to this heading">#</a></h2>
+<p>This is an advanced scenario for <strong>Managed Service Providers</strong> (MSPs) that goes through onboarding Tenants, connecting to their respective locations, overlapping addresses and much more.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>The initial lab topology can be found below and consists of:</p>
 <ul class="simple">
-<li><p>Shared Services spread across AWS &amp; Azure with their respective Spoke Gateways</p></li>
-<li><p>Backbone layer spread across AWS &amp; Azure. The PAN FWs have already been pre-built in AWS. In a subsequent lab, you will be building the same within Azure.</p></li>
-<li><p>3 Separate Tenants (customers-a, b and c). Customers in tandem with the MSPs can host their applications and services within their dedicated &amp; isolated space. Though we represent each customer with a single VPC, in reality the same design can scale to cater multiple VPCs, Regions, and Accounts.</p></li>
-<li><p>Customer Locations: These represent locations outside the Public Cloud(s) that need connectivity to the applications and services within the Public Cloud(s)</p></li>
-<li><p>There are workloads spread across the topology running an NGINX server &amp; proxy which will be used to test end to end connectivity.</p></li>
+<li><p><ins>Shared Services</ins> spread across AWS &amp; Azure with their respective Spoke Gateways.</p></li>
+<li><p><ins>Backbone layer</ins> spread across AWS &amp; Azure. The PAN FWs have already been pre-built in AWS. In a subsequent lab, you will be building the same within Azure.</p></li>
+<li><p><strong>3</strong> Separate Tenants (customers-a, b and c). Customers in tandem with the MSPs can host their applications and services within their dedicated &amp; isolated space. Though we represent each customer with a single VPC, in reality the same design can scale to cater multiple VPCs, Regions, and Accounts.</p></li>
+<li><p><strong>Customer Locations</strong>: These represent locations outside the Public Cloud(s) that need connectivity to the applications and services within the Public Cloud(s).</p></li>
+<li><p>There are <strong>workloads</strong> spread across the topology running an NGINX server &amp; proxy which will be used to test end to end connectivity.</p></li>
 </ul>
-<p><img alt="Lab Overview" src="../_images/ace_for_msps_lab_diagrams__initial_layer.png" />
+</div>
+<p><img alt="Lab Overview" src="../_images/lab1-topology.png" />
 <em>Figure 1: Lab Overview</em></p>
 </section>
 <section id="initial-topology">
 <h2>1.1 - Initial Topology<a class="headerlink" href="#initial-topology" title="Permalink to this heading">#</a></h2>
-<p>Let’s visit our topology page within Copilot by leveraging the Search bar as shown below.</p>
-<p><img alt="Search Bar" src="../_images/copilot_topology_search.png" />
-<em>Figure 2: Using the Search Bar</em></p>
-<p><img alt="Initial Topology" src="../_images/copilot_initial_topology.png" /><em>Figure 3: Initial Topology</em></p>
+<p>Go to <strong>CoPilot &gt; Settings &gt; Resources &gt; Task Server</strong></p>
+<ul class="simple">
+<li><p>Ensure that both <strong>Fetch GW Routes</strong> and <strong>Fetch VPC Routes</strong> intervals are set to <ins>“1 second”</ins> each and then click on <strong>SAVE</strong>.</p></li>
+</ul>
+<p><img alt="Task Server" src="../_images/lab1-task.png" />
+<em>Figure 2: Task Server</em></p>
+<p><img alt="GW routes" src="../_images/lab1-task2.png" />
+<em>Figure 3: Fetch GW Routes</em></p>
+<p><img alt="VPC routes" src="../_images/lab1-task3.png" />
+<em>Figure 4: Fetch VPC Routes</em></p>
+<p>Afterwards, click on <strong>Commit</strong>.</p>
+<p><img alt="Commit" src="../_images/lab1-task4.png" />
+<em>Figure 5: Commit</em></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!</p>
+</div>
+<ul class="simple">
+<li><p>Let’s visit our <strong>Topology</strong> page within CoPilot by leveraging the <em>Search Bar</em> as shown below.</p></li>
+</ul>
+<p><img alt="Search Bar" src="../_images/lab1-topocopilot.png" />
+<em>Figure 6: Using the Search Bar</em></p>
+<ul class="simple">
+<li><p>Click on the <strong>Legend</strong> button in order to get a drop-down window with all the icon simbols.</p></li>
+</ul>
+<p><img alt="Legend" src="../_images/lab1-topocopilot2.png" /><em>Figure 7: Topology Legend</em></p>
 </section>
 <section id="build-the-msp-backbone">
 <h2>1.2 - Build the MSP Backbone<a class="headerlink" href="#build-the-msp-backbone" title="Permalink to this heading">#</a></h2>
-<p>Having looked at the initial overall topology we will focusing on the Backbone area for this lab. The initial status of the backbone area is as shown here.</p>
-<p><img alt="Backbone Area" src="../_images/backbone_area.png" /><em>Figure 4: Backbone Area Initial Status</em></p>
+<p>Having looked at the initial overall topology we will focusing on the <strong>Transit Core Backbone</strong> area for this lab. The initial status of the backbone area is as shown here.</p>
+<ul class="simple">
+<li><p>Pairs of gateways of the same flavor (i.e. either Transit or Spoke gateways) have the inter-link <ins>auto generated by the Controller</ins> (this attachment has a metric of <strong>200</strong>).</p></li>
+<li><p>The peerings between the pair of Transit GWs and the attachments between the Spoke GWs and their corresponding Transit GWs <ins>need to be deployed</ins>.</p></li>
+</ul>
+<p><img alt="Backbone Area" src="../_images/lab1-initialbackbone.png" /><em>Figure 8: Initial Backbone</em></p>
 <section id="connect-aws-shared-svcs-to-aws-hub">
-<h3>1.2.1 - Connect AWS Shared Svcs to AWS Hub<a class="headerlink" href="#connect-aws-shared-svcs-to-aws-hub" title="Permalink to this heading">#</a></h3>
-<p>Navigate to the Gateways menu within Copilot by leveraging the search bar as shown below.</p>
-<p><img alt="Search Bar" src="../_images/search_bar_gateways.png" /><em>Figure 5: Search Bar to Reach Gateways</em></p>
-<p><img alt="Select aws-shared-svcs" src="../_images/aws_shared_svcs_edit_spoke.png" /><em>Figure 6: Select aws-shared-svcs Gateways</em></p>
-<p><img alt="Connect AWS Shared Svcs to Backbone" src="../_images/attach_aws_shared_svcs_to_aws_hub.png" /><em>Figure 7: Attach aws-shared-svcs to aws-hub transit gateway</em></p>
+<h3>1.2.1 - Connect AWS Shared SVCs to AWS Hub<a class="headerlink" href="#connect-aws-shared-svcs-to-aws-hub" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Establish the <strong>attachments</strong> between the  Spoke Gateways and the Transit Gateways in <strong>AWS</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <em>aws-shared-svcs</em> GWs cluster and then click on the <strong>pencil icon</strong> for editing that specific cluster.</p>
+</div>
+<p><img alt="Edit Spoke in AWS" src="../_images/lab1-edit.png" /><em>Figure 9: Edit the Spoke GW in AWS</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Click on the <em>“Attach to Transit Gateway”</em> drop-down window and select the <em>aws-hub GW</em> and then click on <strong>Save</strong>.</p>
+</div>
+<p><img alt="Select aws-hub" src="../_images/lab1-edit2.png" /><em>Figure 10: Select aws-hub for establishing the peering</em></p>
 </section>
 <section id="connect-azure-shared-svcs-to-azure-hub">
-<h3>1.2.2 - Connect Azure Shared Svcs to Azure Hub<a class="headerlink" href="#connect-azure-shared-svcs-to-azure-hub" title="Permalink to this heading">#</a></h3>
-<p><img alt="Select azure-shared-svcs" src="../_images/azure_shared_svcs_edit_spoke.png" /><em>Figure 8: Select aws-shared-svcs Gateways</em></p>
-<p><img alt="Connect Azure Shared Svcs to Backbone" src="../_images/attach_azure_shared_svcs_to_aws_hub.png" /><em>Figure 9: Attach azure-shared-svcs to azure-hub transit gateway</em></p>
+<h3>1.2.2 - Connect Azure Shared SVCs to Azure Hub<a class="headerlink" href="#connect-azure-shared-svcs-to-azure-hub" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Establish the <strong>attachments</strong> between the  Spoke Gateways and the Transit Gateways in <strong>Azure</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select this time the <em>azure-shared-svcs</em> GWs cluster and then click on the <strong>pencil icon</strong> for editing that specific cluster.</p>
+</div>
+<p><img alt="Edit Spoke in Azure" src="../_images/lab1-azureedit.png" /><em>Figure 11: Edit the Spoke GW in Azure</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Click on the <em>“Attach to Transit Gateway”</em> drop-down window and select the <em>azure-hub GW</em> and then click on <strong>Save</strong>.</p>
+</div>
+<p><img alt="Select azure-hub" src="../_images/attach_azure_shared_svcs_to_aws_hub.png" /><em>Figure 12: Select azure-hub for establishing the peering</em></p>
 </section>
 </section>
 <section id="configure-transit-peering-between-aws-azure">
 <h2>1.2.3 - Configure Transit Peering between AWS &amp; Azure<a class="headerlink" href="#configure-transit-peering-between-aws-azure" title="Permalink to this heading">#</a></h2>
-<p><img alt="Select AWS Transit Hub" src="../_images/choosing_aws_hub_transit.png" /><em>Figure 10: Select AWS Hub Transit</em></p>
-<p><img alt="Configure Peering with Azure Hub" src="../_images/peering_aws_hub_with_azure_hub_transits.png" /><em>Figure 11: Configure Peering with Azure Hub Transit</em></p>
+<ul class="simple">
+<li><p>Establish the <strong>peerings</strong> between the  Transit Gateways in <strong>AWS</strong> and the Transit Gateways in <strong>Azure</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and select the <em>aws-hub</em> GWs cluster and then click on the <strong>pencil icon</strong> for editing that specific cluster.</p>
+</div>
+<p><img alt="Select aws-hub" src="../_images/lab1-edititransit.png" /><em>Figure 13: Edit AWS Hub Transits</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Click on the <em>“Peer to Transit Gateway”</em> drop-down window and select the <em>azure-hub GW</em> and then click on <strong>Save</strong>.</p>
+</div>
+<p><img alt="Configure Peering with Azure Hub" src="../_images/lab1-edittransit2.png" /><em>Figure 14: Select azure-hub for establishing the peering</em></p>
 </section>
 <section id="verification-of-attachments-peerings">
 <h2>1.3 - Verification of Attachments &amp; Peerings<a class="headerlink" href="#verification-of-attachments-peerings" title="Permalink to this heading">#</a></h2>
-<p><img alt="Spoke to Transit Attachment Verification" src="../_images/proof_of_attaching_aws_azure_shared_svcs_to_hub.png" /><em>Figure 12: Spoke to Transit Attachment Verification</em></p>
-<p><img alt="AWS &amp; Azure Hub Peering Verification" src="../_images/proof_aws_and_azure_hub_peering_transits.png" /><em>Figure 13: AWS &amp; Azure Hub Peering Verification</em></p>
-<p><img alt="Topology Verification" src="../_images/topology_proof_aws_and_azure_hub_peering_transits.png" /><em>Figure 14: Topology Verification</em></p>
-<p><img alt="Current Topology" src="../_images/backbone_area_configured.png" /><em>Figure 15: Current State of the Topology</em></p>
+<ul class="simple">
+<li><p>Verify the <em>aws-shared-svcs</em> Spoke Cluster.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong>, select the <em>aws-shared-svcs</em> Spoke GWs cluster and then select the <strong>Connections TAB</strong>.</p>
+</div>
+<ul class="simple">
+<li><p>Check the <strong>Backup peering</strong> (default tab). You will notice one single peering between the <em>aws-shared-svcs GW</em> and the <em>aws-shared-svcs-hagw GW</em>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This peering is auto generated by the Aviatrix Controller.</p>
+</div>
+<p><img alt="The backup peering" src="../_images/lab1-backuppeering.png" /><em>Figure 15: The Backup Peering</em></p>
+<ul class="simple">
+<li><p>Check the <strong>Transit-Spoke peering</strong> tab. You will notice <strong>four</strong> peerings between the <em>aws-hub GWs Cluster</em> and the <em>azure-hub GWs Cluster</em>.</p></li>
+</ul>
+<p><img alt="AThe tranist-Spoke peering or attachment" src="../_images/lab1-establishment.png" /><em>Figure 16: AWS &amp; Azure Hub Peering Verification</em></p>
+<ul class="simple">
+<li><p>Check the Topology.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Go to <strong>CoPilot &gt; Topology &gt; Overview (default TAB)</strong>.</p>
+</div>
+<p><img alt="Topology Verification" src="../_images/lab1-topologycopilot.png" /><em>Figure 17: Topology Verification</em></p>
+<p>At this point, this is how the overall topology would look like:</p>
+<p><img alt="Current Topology" src="../_images/lab1-topology2.png" /><em>Figure 18: Current State of the Topology</em></p>
 </section>
 <section id="data-plane-verification">
 <h2>1.4 Data Plane Verification<a class="headerlink" href="#data-plane-verification" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Retrieve the IP address.</p></li>
+</ul>
 <p><img alt="Instance IPs" src="../_images/find_ip_address_of_machine.png" /><em>Figure 16: Find Instance IP Address</em></p>
 <p><img alt="Ping Verification" src="../_images/ping_from_aws_log1_to_azure_log1.png" /><em>Figure 17: Ping Verification</em></p>
 <p><img alt="Browser Verification" src="../_images/web_browser_to_aws_log1.png" /><em>Figure 18: Access aws-log1 Application</em></p>
@@ -466,11 +553,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-lab">1.0 - What’s in the lab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-in-the-lab">1.0 - What is in the lab?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-topology">1.1 - Initial Topology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-msp-backbone">1.2 - Build the MSP Backbone</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-aws-shared-svcs-to-aws-hub">1.2.1 - Connect AWS Shared Svcs to AWS Hub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-azure-shared-svcs-to-azure-hub">1.2.2 - Connect Azure Shared Svcs to Azure Hub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-aws-shared-svcs-to-aws-hub">1.2.1 - Connect AWS Shared SVCs to AWS Hub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-azure-shared-svcs-to-azure-hub">1.2.2 - Connect Azure Shared SVCs to Azure Hub</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-transit-peering-between-aws-azure">1.2.3 - Configure Transit Peering between AWS &amp; Azure</a></li>

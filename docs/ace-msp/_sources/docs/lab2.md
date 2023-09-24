@@ -4,7 +4,7 @@
 
 Having recently established our MSP, we have been getting initial demand from customers to host their applications within Cloud.
 
-Customers A already has existing workloads that they are looking to migrate from On-prem to AWS, Customer B is a newly founded startup who decided to initiate their required applications within AWS, whereas Customer C has decided to take the Azure Route. It is also worth noting that the MSP started receiving requests for MultiCloud presence for different business requirements. 
+Customers **A** already has existing workloads that they are looking to migrate from On-prem to AWS, Customer **B** is a newly founded startup who decided to initiate their required applications within AWS, whereas Customer **C** has decided to take the Azure Route. It is also worth noting that the MSP started receiving requests for MultiCloud presence for different business requirements. 
 
 The landing zones with the respective workload & spokes have already been created. We will start by connecting those customer landing zones to their respective transits based on their CSP preference as cited above. Next, we have a requirement to ensure total isolation between Tenants.
 
