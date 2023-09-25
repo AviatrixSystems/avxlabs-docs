@@ -21,16 +21,16 @@ Go to **Controller > MULTI-CLOUD TRANSIT > Approval** and turn the knob **“Lea
 ![Lab Overview](images/lab6-approval.png)
 _Figure 71: BGP Route Approval Activation_
 
-Afterwards, inform the trainer that you have activated the feature with the tool **“Raise Hand”** on Zoom, as depicted below.
+Afterwards, inform the trainer that you have activated the feature with the tool <b><span style='color:#FFFF00'>**“Raise Hand”**</span> on Zoom, as depicted below.
 
 ![Lab Overview](images/lab6-raise.png)
 _Figure 72: Raise Hand tool on Zoom_
 
 <ins>Please wait for the trainer to inform you about the injection of the failure!</ins>
 
-<ins>Wait for one minute and then click on the r**efresh** button to see what kind of route will be blocked inside the <span style='color:#FFFF00'>**Pending Learned CIDRs**</span> state, as depicted below.</ins>
+<ins>Wait for one minute and then click on the <b><span style='color:orange'>**refresh**</span> button to see what kind of route will be blocked inside the <span style='color:#FFFF00'>**Pending Learned CIDRs**</span> state, as depicted below.</ins>
 
-![Lab Overview](images/lab6-refresh.png)
+![Lab Overview](images/lab6-approval2.png)
 _Figure 73: Refresh_
 
 You have successfully prevented that somebody from the DC could jeopardize the whole network inside the multicloud infrastructure! Of course do not approve a default route!
