@@ -67,7 +67,7 @@ _Figure 63: Ping is unsuccessful_
 Go to **CoPilot > Coud Fabric > Topology** then select the **Spoke1 GW in AWS**, click on **Tools** and click on **Gateway Diagnostics**.
 ```
 
-![Lab Overview](images/lab5-gatewaydiag.png)
+![Lab Overview](images/lab3-diagnostics.png)
 _Figure 64: Gateway Diagnostics_
 
 ![Lab Overview](images/lab5-gatewaydiag2.png)

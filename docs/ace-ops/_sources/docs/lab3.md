@@ -29,7 +29,7 @@ _Figure 29: Filtering out_
 
 From the outcome above, it is evident that Spoke1 in AWS has the destination route in his RTB.
 
-- Use **Diagnostics tools** by clicking on Spoke1 Gateway in AWS (identify the Aviatrix logo in the topology. Do not select a normal EC2 instance!) and try to ping/traceroute the instance behind the other spoke.
+- Use **Diagnostics tools** by clicking on *Spoke1 Gateway in AWS* (identify the Aviatrix logo in the topology. Do not select a normal EC2 instance!) and try to ping/traceroute the instance behind the other spoke.
 
 ```{tip}
 Go to **CoPilot > Coud Fabric > Topology** then select the relevant GW, click on **Tools** and then click on **Gateway Diagnostics**.

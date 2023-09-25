@@ -6,16 +6,19 @@ ACE’s environment has been split up in two Smart Groups: **BU1** and **BU2**. 
 
 Furthermore, a rule has been applied within each Smart Group.
 
-The BU1 Frontend has raised a complaint that is not able to SSH **within** BU1.
+The BU1 Frontend has raised a complaint that is not able to SSH <b><span style='color:orange'>**within**</span> BU1.
 
-The BU2 Mobile App has raised a complaint that is not able to SSH **towards** BU1.
+The BU2 Mobile App has raised a complaint that is not able to SSH <b><span style='color:lightgreen'>**towards**</span>
+ BU1.
 
 You have been engaged to create the following **two** additional rules:
 
-- **Intra-rule**: allow SSH **within** BU1
-- **Inter-rule**: allow SSH **from** BU2 **to** BU1
+- **Intra-rule**: allow SSH <b><span style='color:orange'>**within**</span> BU1
+- **Inter-rule**: allow SSH <b><span style='color:lightblue'>**from**</span> BU2 **to** BU1
 
-<ins>Please bear in mind that BU1 is not allowed to SSH to any instances in BU2.</ins>
+```{warning}
+Please bear in mind that BU1 is not allowed to SSH to any instances in BU2.
+```
 
 ![Lab Overview](images/lab8-topology.png)
 _Figure 85: Lab 8 Scenario Topology_

@@ -35,10 +35,10 @@ From the outcome above, it is evident that Spoke1 in AWS has the destination rou
  - Use Diagnostics tool by clicking on the Spoke1 Gateway in AWS and try to ping/traceroute the instance behind the other spoke.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Topology** and select the concerned Spoke Gateway and click on **Tools** and then on **Gateway Diagnostics**.
+Go to **CoPilot > Cloud Fabric > Topology** and select the *Spoke1 Gateway in AWS* and click on **Tools** and then on **Gateway Diagnostics**.
 ```
 
-![Lab Overview](images/lab4-diag.png)
+![Lab Overview](images/lab3-diagnostics.png)
 _Figure 48: Enterprise-Grade Tools_
 
 ![Lab Overview](images/lab4-pingfails.png)

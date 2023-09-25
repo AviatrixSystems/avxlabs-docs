@@ -47,7 +47,7 @@ _Figure 7: Public IP_
 ![Lab Overview](images/lab1-publicname.png)
 _Figure 8: DNS name_
 
-2. Using the **Apache Jumpbox** from the POD Portal, <ins>for example if you are within your corporate network and an inbound restriction is applied on port **22**</ins>.
+1. Using the <span style='color:#00FFFF'>**Apache Jumpbox**</span> from the POD Portal, <ins>for example if you are within your corporate network and an inbound restriction is applied on port **22**</ins>.
 
 ![Lab Overview](images/lab1-jumpbox.png)
 _Figure 9: Jumpbox_
@@ -104,7 +104,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ac
 ![Lab Overview](images/lab1-bu1vrf.png)
 _Figure 17: Network Domain (aka VRF)_
 
-* Use **FlowIQ** for inspecting the NetFlow Data.
+* Use <span style='color:#FF0000'>**FlowIQ**</span> from the POD Portal, <ins> for inspecting the NetFlow Data.
 
 ```{tip}
 Go to **CoPilot > Monitor > FlowIQ** and filter based, for instance, on the destination IP **172.16.211.100** (i.e. BU1 Analytics).
