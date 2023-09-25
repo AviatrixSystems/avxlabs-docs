@@ -34,7 +34,9 @@ A few notes on the scenario are here:
 
 ### 1.3. - Wordpress is OK
 
+```{important}
 If you succeed in fixing all the problems, this how the Wordpress app page would look like.
+```
 
 ![Lab Overview](images/final-wordpress.png)
 _Figure 2: Wordpress is OK_

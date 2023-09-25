@@ -7,5 +7,6 @@ After resolving the challenge#3, the Database VM administrator mentioned that th
 * Launch ping from the Web Spoke GW towards the Database VM.
 * Simultaneously, launch packet capture on the *Database Spoke GW*.
 
-> **HINT:**
->Use the **packet capture** feature on a specific egress interface (both Tunnel and LAN) of the *Database Spoke GW*.
+```{hint}
+Use the **packet capture** feature on a specific egress interface (both Tunnel and LAN) of the *Database Spoke GW*.
+```
