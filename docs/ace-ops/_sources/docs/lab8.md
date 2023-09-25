@@ -6,7 +6,6 @@ ACE’s environment has been split up in two Smart Groups: **BU1** and **BU2**. 
 
 Furthermore, a rule has been applied within each Smart Group.
 
-
 The BU1 Frontend has raised a complaint that is not able to SSH **within** BU1.
 
 The BU2 Mobile App has raised a complaint that is not able to SSH **towards** BU1.

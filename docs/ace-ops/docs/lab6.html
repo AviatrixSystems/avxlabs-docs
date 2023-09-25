@@ -336,7 +336,7 @@ document.write(`
 <section id="scenario-1">
 <h2>1. SCENARIO#1<a class="headerlink" href="#scenario-1" title="Permalink to this heading">#</a></h2>
 <p>ACE’s OnPrem Data Center has recently hired a new network engineer.</p>
-<p>You have been engaged for activating the <strong>Route Approval</strong> feature in order to protect the MCNA from unauthorized advertisements.</p>
+<p>You have been engaged for activating the <span style='color:#00FFFF'><strong>Route Approval</strong></span> feature in order to protect the MCNA from unauthorized advertisements.</p>
 <p><img alt="Lab Overview" src="../_images/lab6-topology.png" />
 <em>Figure 70: Lab 5 Scenario#1 Topology</em></p>
 </section>
@@ -355,7 +355,7 @@ document.write(`
 <p><img alt="Lab Overview" src="../_images/lab6-raise.png" />
 <em>Figure 72: Raise Hand tool on Zoom</em></p>
 <p><ins>Please wait for the trainer to inform you about the injection of the failure!</ins></p>
-<p><ins>Wait for one minute and then click on the r<strong>efresh</strong> button to see what kind of route will be blocked inside the <strong>Pending Learned CIDRs</strong> state, as depicted below.</ins></p>
+<p><ins>Wait for one minute and then click on the r<strong>efresh</strong> button to see what kind of route will be blocked inside the <span style='color:#FFFF00'><strong>Pending Learned CIDRs</strong></span> state, as depicted below.</ins></p>
 <p><img alt="Lab Overview" src="../_images/lab6-refresh.png" />
 <em>Figure 73: Refresh</em></p>
 <p>You have successfully prevented that somebody from the DC could jeopardize the whole network inside the multicloud infrastructure! Of course do not approve a default route!</p>
@@ -363,7 +363,8 @@ document.write(`
 <section id="scenario-2">
 <h2>3. SCENARIO#2<a class="headerlink" href="#scenario-2" title="Permalink to this heading">#</a></h2>
 <p>ACE’s OnPrem Partner needs to be connected to the MCNA in the GCP region, however, it has overlapping IP’s with BU1’s Analytics VPC.</p>
-<p>You have been engaged for creating a Site2Cloud connection between the GCP Spoke GW and the OnPrem Partner router and also for resolving the IP conflict through the <strong>Mapped NAT</strong> feature.</p>
+<p>You have been engaged for creating a <span style='color:#FF00FF'><strong>Site2Cloud</strong></span>
+connection between the GCP Spoke GW and the OnPrem Partner router and also for resolving the IP conflict through the <strong>Mapped NAT</strong> feature.</p>
 <p><img alt="Lab Overview" src="../_images/lab6-topology2.png" />
 <em>Figure 74: Lab 6 Scenario#2 Topology</em></p>
 </section>
@@ -380,36 +381,37 @@ document.write(`
 <em>Figure 75: Add New S2C</em></p>
 <p>Configure the new S2C connection based on the schema below.</p>
 <ul class="simple">
-<li><p><strong>VPC</strong>: ace-gcp-us-east1-spoke1.</p></li>
-<li><p><strong>Connection Type</strong>: Mapped</p></li>
-<li><p><strong>Connection name</strong>: S2C-PARTNER</p></li>
-<li><p><strong>IKEv2</strong>: Enable</p></li>
-<li><p><strong>Remote Gateway IP Address</strong>: <ins>follow the hint below</ins></p></li>
+<li><p><strong>VPC</strong>: <span style='color:#00FF00'>ace-gcp-us-east1-spoke1</span></p></li>
+<li><p><strong>Connection Type</strong>: <span style='color:#00FF00'>Mapped</span></p></li>
+<li><p><strong>Connection name</strong>: <span style='color:#00FF00'>S2C-PARTNER</span></p></li>
+<li><p><strong>IKEv2</strong>: <span style='color:#00FF00'>Enable</span></p></li>
+<li><p><strong>Remote Gateway IP Address</strong>: <span style='color:#00FF00'>follow the Note below</span></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Use the “<strong>dig partner-csr-public.pod#.aviatrixlab.com +short</strong>” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem Partner CSR router and retrieve the <ins>remote gateway public IP address</ins>, as depicted in the example below.</p>
 </div>
-<p><ins>Replace the <strong>#</strong> symbol with your POD number!</ins></p>
+<p><ins>Replace the <span style='color:#FF00FF'><strong>#</strong> </span>symbol with your POD number!</ins></p>
 <p>The example is referring to POD #32 (please issue the command based on your POD number!).</p>
 <p><img alt="Lab Overview" src="../_images/lab6-podnumber.png" />
 <em>Figure 76: Retrieving the Public IP</em></p>
 <ul class="simple">
-<li><p><strong>Pre-shared Key</strong>: Aviatrix123#</p></li>
-<li><p><strong>Local Tunnel IP</strong>: 169.254.0.1/30</p></li>
-<li><p><strong>Remote Tunnel IP</strong>: 169.254.0.2/30</p></li>
+<li><p><strong>Pre-shared Key</strong>: <span style='color:#00FF00'>Aviatrix123#</span></p></li>
+<li><p><strong>Local Tunnel IP</strong>: <span style='color:#00FF00'>169.254.0.1/30</span></p></li>
+<li><p><strong>Remote Tunnel IP</strong>: <span style='color:#00FF00'>169.254.0.2/30</span></p></li>
 <li><p>Configure the <strong>Mapped NAT</strong> with the following CIDRs:</p>
 <ul>
-<li><p><strong>Remote Subnet (Real)</strong> = 172.16.211.0/24</p></li>
-<li><p><strong>Remote Subnet (Virtua)</strong> = 192.168.2.0/24</p></li>
-<li><p><strong>Local Subnet (Real)</strong> = 172.16.211.0/24</p></li>
-<li><p><strong>Local Subnet (Virtual)</strong> = 192.168.1.0/24</p></li>
+<li><p><strong>Remote Subnet (Real)</strong> = <span style='color:#00FF00'>172.16.211.0/24</span></p></li>
+<li><p><strong>Remote Subnet (Virtua)</strong> = <span style='color:#00FF00'>192.168.2.0/24</span></p></li>
+<li><p><strong>Local Subnet (Real)</strong> = <span style='color:#00FF00'>172.16.211.0/24</span></p></li>
+<li><p><strong>Local Subnet (Virtual)</strong> = <span style='color:#00FF00'>192.168.1.0/24</span></p></li>
 </ul>
 </li>
 </ul>
 <p><img alt="Lab Overview" src="../_images/lab6-creation.png" />
 <em>Figure 77: Retrieving the Public IP</em></p>
-<p>Wait some minutes for the completion of the S2C. Click on the <strong>refresh</strong> button to see the status changing from red to green.</p>
+<p>Wait some minutes for the completion of the S2C. Click on the <b><span style='color:orange'><strong>refresh</strong></span>
+button to see the status changing from red to green.</p>
 <p><img alt="Lab Overview" src="../_images/lab6-refresh.png" />
 <em>Figure 78: S2C is up and running</em></p>
 <ul class="simple">
