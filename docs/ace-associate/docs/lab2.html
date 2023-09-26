@@ -391,7 +391,7 @@ document.write(`
 <h2>Build<a class="headerlink" href="#build" title="Permalink to this heading">#</a></h2>
 <p>Lab time: ~45 minutes</p>
 <p>Let’s go build out the connectivity for our app!</p>
-<p><img alt="Lab Overview" src="../_images/lab-before.png" />
+<p><img alt="Lab Overview" src="../_images/lab1-topology.png" />
 <em>Figure: Lab Overview</em></p>
 </section>
 <section id="lab-2-1-client-web-connectivity">
@@ -402,13 +402,18 @@ document.write(`
 </section>
 <section id="validate">
 <h3>Validate<a class="headerlink" href="#validate" title="Permalink to this heading">#</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Use the Search on the left panel as shown in Lab 1, and search for Topology within CoPilot, or go to <strong><em>CoPilot</em></strong> &gt; <strong><em>Topology</em></strong>, and then click the blue <strong>azure-web-node_VNET_icon</strong>.  The VNet should open up and you should see the Aviatrix Gateway.</p>
 <ul class="simple">
-<li><p>Use the Search on the left panel as shown in Lab 1, and search for Topology within CoPilot, or go to CoPilot -&gt; <strong><em>Topology</em></strong>, and then click the blue <strong>azure-web-node_VNET_icon</strong>.  The VNet should open up and you should see the Aviatrix Gateway.</p></li>
-<li><p>Click the Aviatrix Gateway icon, then on the right side, click <strong><em>Diagnostic Tools</em></strong>
-<img alt="Topology" src="../_images/azure-vnet.png" /><br />
-<em>Figure: Topology Diag</em></p>
+<li><p>Click the Aviatrix Gateway icon, then on the right side, click <strong><em>Tools</em></strong> and then click on <strong><em>GAteway Diagnostics</em></strong></p></li>
+</ul>
+</div>
+<p><img alt="Topology" src="../_images/azure-vnet.png" /><br />
+<em>Figure: Gateway Diagnostics</em></p>
+<ul class="simple">
+<li><p>This provides you with the Network Engineer’s toolkit (ICMP-based tools, TCP/UDP connectivity, packet captures) directly from an Aviatrix Gateway</p>
 <ul>
-<li><p>This provides you with the Network Engineer’s toolkit (ICMP-based tools, TCP/UDP connectivity, packet captures) directly from an Aviatrix Gateway</p></li>
 <li><p>Try to ping:</p>
 <ul>
 <li><p>client-int.pod<strong>X</strong>.aviatrixlab.com</p></li>
@@ -419,10 +424,10 @@ document.write(`
 </ul>
 </li>
 </ul>
-<blockquote>
-<div><p><strong>Note</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Replace X in the <strong>URLs</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
-</div></blockquote>
+</div>
 </section>
 <section id="expected-results">
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this heading">#</a></h3>
@@ -455,15 +460,15 @@ document.write(`
 </ul>
 </li>
 </ul>
-<blockquote>
-<div><p><strong>Info</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>To speed things up, feel free to open multiple browser tabs, and run a Spoke Attachment step in each tab</p>
-</div></blockquote>
-<blockquote>
-<div><p><strong>Info</strong></p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
 <p>You can verify if spokes were correctly attached by viewing notifications. On the top right corner, click on the <strong><em>task icon</em></strong>, you should see success notifications for the actions you performed above. See an example below:<br />
 <img alt="Attachment Notifications" src="../_images/task-icon.png" /></p>
-</div></blockquote>
+</div>
 </section>
 <section id="id3">
 <h3>Expected Results<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
@@ -485,10 +490,10 @@ document.write(`
 <li><p>Open Firefox from the Desktop on the Remote Access Server</p></li>
 <li><p>Navigate to <span class="xref myst">http://web.pod<strong>X</strong>.aviatrixlab.com</span></p></li>
 </ul>
-<blockquote>
-<div><p><strong>Note</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Replace <strong>X</strong> in the <strong>URL</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
-</div></blockquote>
+</div>
 </section>
 <section id="id6">
 <h3>Expected Results<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
@@ -507,7 +512,7 @@ document.write(`
 <h3>Validate<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>In <strong><em>CoPilot</em></strong> use the search button to navigate to <strong><em>Topology</em></strong>, click the <strong><em>azure-web-node_vnet</em></strong> icon</p></li>
-<li><p>Click on the Aviatrix Gateway icon and select <strong>Diagnostic Tools</strong> on the right side of the screen</p></li>
+<li><p>Click on the Aviatrix Gateway icon and select <strong>Tools &gt; Gateway Diagnostics</strong> on the right side of the screen</p></li>
 <li><p>Try to ping/traceroute:</p>
 <ul>
 <li><p>client-int.pod<strong>X</strong>.aviatrixlab.com</p></li>
@@ -517,24 +522,27 @@ document.write(`
 </li>
 <li><p>Check out the Active Sessions or try a Packet Capture</p></li>
 </ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p><strong><em>There is a huge benefit to owning the data path in the cloud!  You have complete visibility and have the tools needed to troubleshoot and operate your network!</em></strong></p>
+</div>
 </section>
 <section id="id9">
 <h3>Expected Results<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>You should see something similar to this:</p>
 <p><img alt="CoPilot" src="../_images/copilot-ping.png" /><br />
 <em>Figure: CoPilot Ping</em></p>
-<blockquote>
-<div><p><strong>Note</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Since there is no connectivity to AWS, the DB node should not be pingable Find network issues quicker with Topology!</p>
-</div></blockquote>
+</div>
 </section>
 </section>
 <section id="lab-2-5-flowiq">
 <h2>Lab 2.5 - FlowIQ<a class="headerlink" href="#lab-2-5-flowiq" title="Permalink to this heading">#</a></h2>
 <section id="id10">
 <h3>Description<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
-<p>Using CoPilot FlowIQ to debug flows</p>
+<p>Using CoPilot <strong>FlowIQ</strong> to debug flows</p>
 </section>
 <section id="id11">
 <h3>Validate<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
@@ -543,24 +551,31 @@ document.write(`
 </ol>
 <p><img alt="CoPilot" src="../_images/flowiq-screen.png" /><br />
 <em>Figure: CoPilot FlowIQ</em></p>
-<p>select the <strong><em>Records</em></strong> tab</p>
-<ol class="arabic simple" start="2">
-<li><p>Under <strong><em>Filters</em></strong>, click <strong><em>Add a Condition</em></strong>, select <strong><em>Destination Port</em></strong> is equal to <strong>8080</strong> (traffic from Web to App)</p></li>
-<li><p>Click <strong><em>Add Condition</em></strong> again, make sure to select <strong><em>OR</em></strong>, select <strong><em>Destination Port</em></strong> is equal to <strong>443</strong> (traffic from App to DB)
-<img alt="Add Filter" src="../_images/add-filter-updated.png" />
-<em>Figure: Add Filter</em></p></li>
+<p>Select the <strong><em>Records</em></strong> tab.</p>
+<ol class="arabic simple">
+<li><p>Under <strong><em>Filters</em></strong>, click on the <strong>+ symbol</strong> and create the first condition: select <strong><em>Destination Port</em></strong>, <strong><em>equals</em></strong> and then port <strong>8080</strong> (traffic from Web to App).</p></li>
+</ol>
+<p><img alt="Add Filter" src="../_images/lab2-condition.png" />
+<em>Figure: First Condition</em></p>
+<ol class="arabic simple">
+<li><p>Click <strong><em>Add Condition</em></strong> again, make sure to select <strong><em>OR</em></strong>, select <strong><em>Destination Port</em></strong> is equal to <strong>443</strong> (traffic from App to DB).</p></li>
+</ol>
+<p><img alt="Add Filter" src="../_images/lab2-addcondition.png" />
+<em>Figure: Add Filter</em></p>
+<ol class="arabic simple">
 <li><p>In the <strong><em>Time Period</em></strong> field, select <strong>Last 60 Minutes</strong>.</p></li>
 <li><p>Add the <strong><em>Destination Port</em></strong> parameter among the existing columns.</p></li>
 </ol>
 <p><img alt="CoPilot" src="../_images/destination-port.png" /><br />
 <em>Figure: Destination Port</em></p>
 <ol class="arabic simple" start="6">
-<li><p>Add also the <strong><em>tcp Flag Tags</em></strong> parameter among the existing columns.</p></li>
+<li><p>Add also the <strong><em>TCP Flag Tags</em></strong> parameter among the existing columns.</p></li>
 </ol>
 <p><img alt="CoPilot" src="../_images/tcp-flag.png" /><br />
 <em>Figure: TCP Flag Tags</em></p>
 <ol class="arabic simple" start="7">
-<li><p>In the Records tab, you can view the raw flow logs. You should see the <code class="docutils literal notranslate"><span class="pre">App</span></code> trying to connect to the <code class="docutils literal notranslate"><span class="pre">DB</span></code> tier, but we only get a <strong>SYN</strong>.</p></li>
+<li><p>Do not forget to click on <strong>Apply</strong>.</p></li>
+<li><p>In the Records tab, you can view the raw flow logs. You should see the <code class="docutils literal notranslate"><span class="pre">App</span></code> (i.e. 10.x.<code class="docutils literal notranslate"><span class="pre">32</span></code>.x) trying to connect to the <code class="docutils literal notranslate"><span class="pre">DB</span></code> (i.e. 10.x.<code class="docutils literal notranslate"><span class="pre">64</span></code>.x) tier, but we only get a <strong>SYN</strong>.</p></li>
 </ol>
 </section>
 <section id="id12">
@@ -568,10 +583,10 @@ document.write(`
 <p>You should see something similar to this showing successful flows from Web to App, but unsuccessful from App to DB:</p>
 <p><img alt="FlowIQ" src="../_images/syn.png" /><br />
 <em>Figure: FlowIQ</em></p>
-<blockquote>
-<div><p><strong>Note</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>No connectivity to the DB tier means that we only see SYNs. Use FlowIQ to get insights into all flows running over your secure cloud network.</p>
-</div></blockquote>
+</div>
 </section>
 </section>
 <section id="lab-2-6-copilot-topology">
@@ -592,11 +607,13 @@ document.write(`
 <p>You should see something similar to this:</p>
 <p><img alt="Toplogy" src="../_images/attach-topo.png" /><br />
 <em>Figure: Topology</em></p>
-<blockquote>
-<div><p><strong>Note</strong></p>
-<p>Azure Spokes are connected to the Azure Transit
-AWS Spoke is connected to the AWS Transit. We do not have connectivity between AWS and Azure. Not yet at least!</p>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Azure Spokes are connected to the Azure Transit</p></li>
+<li><p>AWS Spoke is connected to the AWS Transit. We do not have connectivity between AWS and Azure. Not yet at least!</p></li>
+</ul>
+</div>
 <p><strong><em>Visualizing a network can be so helpful!</em></strong></p>
 </section>
 </section>
@@ -615,7 +632,7 @@ AWS Spoke is connected to the AWS Transit. We do not have connectivity between A
 <p><img alt="Add Transit Peering" src="../_images/aws-transit-edit.png" />
 <em>Figure: Edit Transit Gateway</em></p>
 <ul class="simple">
-<li><p>Select the Transit Gateway <strong><em>azure-transit</em></strong> from the drop-down window from the “Peer To Transit Gateways” field, and then click on <strong><em>Save</em></strong>.</p></li>
+<li><p>Select the Transit Gateway <strong><em>azure-transit</em></strong> from the drop-down window from the <em>“Peer To Transit Gateways”</em> field, and then click on <strong><em>Save</em></strong>.</p></li>
 </ul>
 <p><img alt="Add Transit Peering" src="../_images/peering.png" />
 <em>Figure: Establish peering between Transit Gateways</em></p>
@@ -633,13 +650,18 @@ AWS Spoke is connected to the AWS Transit. We do not have connectivity between A
 </ul>
 <p><img alt="Transit Peering" src="../_images/peering-ok.png" /><br />
 <em>Figure: Transit Peering established</em></p>
-<blockquote>
-<div><p><strong>Info</strong>
-You may need to refresh or wait 60-120 seconds for the connection status to become green (UP).
-Check CoPilot Topology to verify the links</p>
-</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You may need to refresh or wait <strong><em>60-120 seconds</em></strong> for the connection status to become green (UP).</p>
+<ul class="simple">
+<li><p>Check CoPilot Topology to verify the state of the links</p></li>
+</ul>
+</div>
 <p><strong>Congratulations!!! You have now built a Multicloud Network! Secure cloud networking has never been so easy…</strong></p>
 <p><img alt="CoPilot" src="../_images/peering-ok2.png" /><br />
+<em>Figure: CoPilot Transit Peering</em></p>
+<p>After this lab, this is how the overall topology would look like:</p>
+<p><img alt="Final" src="../_images/lab2-final.png" /><br />
 <em>Figure: CoPilot Transit Peering</em></p>
 </section>
 </section>
@@ -652,13 +674,16 @@ Check CoPilot Topology to verify the links</p>
 <section id="id20">
 <h3>Validate<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Using the RDP session, open Firefox and navigate to: <span class="xref myst">http://web.pod<strong>X</strong>.aviatrixlab.com</span></p></li>
+<li><p>Using the RDP session, open Firefox and navigate to:</p></li>
+</ul>
+<p><span class="xref myst">http://web.pod<strong>X</strong>.aviatrixlab.com</span></p>
+<ul class="simple">
 <li><p>If the site is already open, click the Refresh button</p></li>
 </ul>
-<blockquote>
-<div><p><strong>Note</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Replace <strong>X</strong> in the <strong>URL</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
-</div></blockquote>
+</div>
 </section>
 <section id="id21">
 <h3>Expected Results<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
@@ -679,10 +704,10 @@ Check CoPilot Topology to verify the links</p>
 <li><p>After testing that the connection between Web and App works and seeing that the DB connection fails, login to the CoPilot</p></li>
 <li><p>Search within Copilot for <strong><em>Egress</em></strong></p></li>
 <li><p>Navigate to <strong><em>Egress -&gt; Monitor</em></strong></p></li>
-<li><p>Enable <strong><em>Live View</em></strong> and select the VPC <strong><em>aws-db-node</em></strong>
-<img alt="Web App" src="../_images/egress-monitor.png" /><br />
-<em>Figure: Egress</em></p></li>
+<li><p>Select the VPC <strong><em>aws-db-node</em></strong></p></li>
 </ul>
+<p><img alt="Web App" src="../_images/egress-monitor.png" /><br />
+<em>Figure: Egress</em></p>
 </section>
 <section id="id24">
 <h3>Expected Results<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h3>
@@ -711,7 +736,7 @@ Check CoPilot Topology to verify the links</p>
 <li><p>Click <strong>Add New</strong> and enter:</p>
 <ul class="simple">
 <li><p><strong>Domain Name:</strong> <code class="docutils literal notranslate"><span class="pre">dynamodb.us-west-2.amazonaws.com</span></code></p></li>
-<li><p><strong>Protocol:</strong> <code class="docutils literal notranslate"><span class="pre">https</span></code></p></li>
+<li><p><strong>Protocol:</strong> <code class="docutils literal notranslate"><span class="pre">tcp</span></code></p></li>
 <li><p><strong>Port:</strong> <code class="docutils literal notranslate"><span class="pre">443</span></code></p></li>
 <li><p><strong>Action:</strong> <code class="docutils literal notranslate"><span class="pre">Allow</span></code></p></li>
 <li><p>Click <strong>Save</strong> and then <strong>Update</strong>
@@ -738,10 +763,10 @@ Check CoPilot Topology to verify the links</p>
 <li><p>Log in to the Remote Access Server</p></li>
 <li><p>Open Firefox on the Desktop and navigate to: <span class="xref myst">http://web.pod<strong>X</strong>.aviatrixlab.com</span></p></li>
 </ul>
-<blockquote>
-<div><p><strong>Note</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Replace <strong>X</strong> in the <strong>URL</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
-</div></blockquote>
+</div>
 <ul class="simple">
 <li><p>Click <strong>Sign In</strong>, enter something in the <strong>Comments</strong> and click <strong>Submit</strong> to sign-in to the <strong>WALL OF FAME</strong></p></li>
 </ul>
@@ -750,8 +775,11 @@ Check CoPilot Topology to verify the links</p>
 <h3>Expected Results<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h3>
 <p><img alt="DB Tier Working" src="../_images/db-working.png" /><br />
 <em>Figure: DB Tier Working</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>You should see that all 3 App Tiers are now up and can talk to each other. You should also be able to register yourself in the form, and also be able to view the Wall of Fame!</p>
-<p>Nice work!</p>
+<p><strong>Nice work!</strong></p>
+</div>
 </section>
 </section>
 </section>
