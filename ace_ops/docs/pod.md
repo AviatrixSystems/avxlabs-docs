@@ -3,9 +3,6 @@
 You can view your personal pod portal by accessing the [ACE Operations Lab Portal](https://ops-portal.ace.aviatrixlab.com/)
 
 ## Details
-
-test-1
-
 | **POD** | **Access Code** |       **Full Name**      |
 |:-------:|:---------------:|:------------------------:|
 |    1    |       4C61      | Pritiranjan Nayak        |
@@ -28,11 +25,11 @@ test-1
 |    18   |       A3FF      | Rushikesh Patel          |
 |    19   |       BC9D      | Deepak Shelke            |
 |    20   |       E26E      | Yashwanth Somappa        |
-|    21   |       209       | Amol Thorat              |
+|    21   |       0209      | Amol Thorat              |
 |    22   |       9A1F      | Gary Wong                |
 |    23   |       41C0      | Dinesh Datt              |
 |    24   |       D9CE      | Pooja Sankar             |
-|    25   |       229       | Rohit Sharma             |
+|    25   |       0229      | Rohit Sharma             |
 |    26   |       A5C7      | harshaverdhan chadagonda |
 |    27   |       48D4      | Manoj Kumar              |
 |    28   |       E46E      | Devesh Tiwari            |
