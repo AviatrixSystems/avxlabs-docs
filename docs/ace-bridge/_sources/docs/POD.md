@@ -1,6 +1,6 @@
 # PODs Assignments
 
-You can view your personal pod portal by accessing the [ACE Troubleshoot Lab Portal](https://bridge-portal.ace.aviatrixlab.com/)
+You can view your personal pod portal by accessing the <a href="https://ops-portal.ace.aviatrixlab.com/" target="_blank">ACE Troubleshoot Lab Portal</a>
 
 ## Details
 
