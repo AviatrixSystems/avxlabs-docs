@@ -21,14 +21,14 @@ Go to **Controller > MULTI-CLOUD TRANSIT > Approval** and turn the knob **“Lea
 ![Lab Overview](images/lab6-approval.png)
 _Figure 71: BGP Route Approval Activation_
 
-Afterwards, inform the trainer that you have activated the feature with the tool <b><span style='color:#FFFF00'>**“Raise Hand”**</span> on Zoom, as depicted below.
+Afterwards, inform the trainer that you have activated the feature with the tool <span style='color:#FFFF00'>**“Raise Hand”**</span> on Zoom, as depicted below.
 
 ![Lab Overview](images/lab6-raise.png)
 _Figure 72: Raise Hand tool on Zoom_
 
 <ins>Please wait for the trainer to inform you about the injection of the failure!</ins>
 
-<ins>Wait for one minute and then click on the <b><span style='color:orange'>**refresh**</span> button to see what kind of route will be blocked inside the <span style='color:#FFFF00'>**Pending Learned CIDRs**</span> state, as depicted below.</ins>
+<ins>Wait for one minute and then click on the <span style='color:orange'>**refresh**</span> button to see what kind of route will be blocked inside the <span style='color:#FFFF00'>**Pending Learned CIDRs**</span> state, as depicted below.</ins>
 
 ![Lab Overview](images/lab6-approval2.png)
 _Figure 73: Refresh_
@@ -59,39 +59,38 @@ _Figure 75: Add New S2C_
 
 Configure the new S2C connection based on the schema below.
 
-- **VPC**: <span style='color:#00FF00'>ace-gcp-us-east1-spoke1</span>
+- **VPC**: <span style='color:#33ECFF'>ace-gcp-us-east1-spoke1</span>
 
-- **Connection Type**: <span style='color:#00FF00'>Mapped</span>
+- **Connection Type**: <span style='color:#33ECFF'>Mapped</span>
 
-- **Connection name**: <span style='color:#00FF00'>S2C-PARTNER</span>
+- **Connection name**: <span style='color:#33ECFF'>S2C-PARTNER</span>
 
-- **IKEv2**: <span style='color:#00FF00'>Enable</span>
+- **IKEv2**: <span style='color:#33ECFF'>Enable</span>
 
-- **Remote Gateway IP Address**: <span style='color:#00FF00'>follow the Note below</span>
+- **Remote Gateway IP Address**: <span style='color:#33ECFF'>follow the Note below</span>
 
 ```{note}
 Use the “**dig partner-csr-public.pod#.aviatrixlab.com +short**” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem Partner CSR router and retrieve the <ins>remote gateway public IP address</ins>, as depicted in the example below.
 ```
 
-
-<ins>Replace the <span style='color:#FF00FF'>**#** </span>symbol with your POD number!</ins>
+<ins>Replace the **#** symbol with your POD number!</ins>
 
 The example is referring to POD #32 (please issue the command based on your POD number!).
 
 ![Lab Overview](images/lab6-podnumber.png)
 _Figure 76: Retrieving the Public IP_
 
-- **Pre-shared Key**: <span style='color:#00FF00'>Aviatrix123#</span>
+- **Pre-shared Key**: <span style='color:#33ECFF'>Aviatrix123#</span>
 
-- **Local Tunnel IP**: <span style='color:#00FF00'>169.254.0.1/30</span>
+- **Local Tunnel IP**: <span style='color:#33ECFF'>169.254.0.1/30</span>
 
-- **Remote Tunnel IP**: <span style='color:#00FF00'>169.254.0.2/30</span>
+- **Remote Tunnel IP**: <span style='color:#33ECFF'>169.254.0.2/30</span>
 
 - Configure the **Mapped NAT** with the following CIDRs:
-  - **Remote Subnet (Real)** = <span style='color:#00FF00'>172.16.211.0/24</span>
-  - **Remote Subnet (Virtua)** = <span style='color:#00FF00'>192.168.2.0/24</span>
-  - **Local Subnet (Real)** = <span style='color:#00FF00'>172.16.211.0/24</span>
-  - **Local Subnet (Virtual)** = <span style='color:#00FF00'>192.168.1.0/24</span>
+  - **Remote Subnet (Real)** = <span style='color:#33ECFF'>172.16.211.0/24</span>
+  - **Remote Subnet (Virtua)** = <span style='color:#33ECFF'>192.168.2.0/24</span>
+  - **Local Subnet (Real)** = <span style='color:#33ECFF'>172.16.211.0/24</span>
+  - **Local Subnet (Virtual)** = <span style='color:#33ECFF'>192.168.1.0/24</span>
 
 ![Lab Overview](images/lab6-creation.png)
 _Figure 77: Retrieving the Public IP_

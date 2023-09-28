@@ -6,15 +6,14 @@ ACE’s environment has been split up in two Smart Groups: **BU1** and **BU2**. 
 
 Furthermore, a rule has been applied within each Smart Group.
 
-The BU1 Frontend has raised a complaint that is not able to SSH <b><span style='color:orange'>**within**</span> BU1.
+The BU1 Frontend has raised a complaint that is not able to SSH <span style='color:orange'>**within**</span> BU1.
 
-The BU2 Mobile App has raised a complaint that is not able to SSH <b><span style='color:lightgreen'>**towards**</span>
- BU1.
+The BU2 Mobile App has raised a complaint that is not able to SSH <span style='color:lightgreen'>**towards**</span> BU1.
 
 You have been engaged to create the following **two** additional rules:
 
-- **Intra-rule**: allow SSH <b><span style='color:orange'>**within**</span> BU1
-- **Inter-rule**: allow SSH <b><span style='color:lightblue'>**from**</span> BU2 **to** BU1
+- **Intra-rule**: allow SSH <span style='color:orange'>**within**</span> BU1
+- **Inter-rule**: allow SSH <span style='color:lightblue'>**from**</span> BU2 **to** BU1
 
 ```{warning}
 Please bear in mind that BU1 is not allowed to SSH to any instances in BU2.
