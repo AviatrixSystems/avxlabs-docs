@@ -335,7 +335,7 @@ document.write(`
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
 <p>BU1 and BU2 were able to communicate with each other as of Friday EOB (i.e end of LAB2).</p>
 <p>However, the network team received a complaint from BU1 Frontend Team that the connectivity with BU2 Mobile App was no longer working.</p>
-<p><img alt="Lab Overview" src="../_images/lab3-topology.png" />
+<p><img alt="topology 3" src="../_images/lab3-topology.png" />
 <em>Figure 27: Lab 3 Topology</em></p>
 </section>
 <section id="troubleshoot-request">
@@ -347,7 +347,7 @@ document.write(`
 </ul>
 </li>
 </ul>
-<p><img alt="Lab Overview" src="../_images/lab3-pingfails.png" />
+<p><img alt="ping fails" src="../_images/lab3-pingfails.png" />
 <em>Figure 28: Ping fails</em></p>
 <ul class="simple">
 <li><p>Check whether the concerned Spokes have the relevant routes or not.</p></li>
@@ -356,7 +356,7 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the relevant gateway <strong>&gt; Gateway Routes</strong> and search for the subnet <strong>10.1.212.0/24</strong>, where BU2 Mobile App resides.</p>
 </div>
-<p><img alt="Lab Overview" src="../_images/lab3-routecheck.png" />
+<p><img alt="filtering" src="../_images/lab3-routecheck.png" />
 <em>Figure 29: Filtering out</em></p>
 <p>From the outcome above, it is evident that Spoke1 in AWS has the destination route in his RTB.</p>
 <ul class="simple">
@@ -366,12 +366,12 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Coud Fabric &gt; Topology</strong> then select the relevant GW, click on <strong>Tools</strong> and then click on <strong>Gateway Diagnostics</strong>.</p>
 </div>
-<p><img alt="Lab Overview" src="../_images/lab3-diagnostics.png" />
+<p><img alt="diag" src="../_images/lab3-diagnostics.png" />
 <em>Figure 30: Diagnostics Tools</em></p>
-<p><img alt="Lab Overview" src="../_images/lab3-pingfails2.png" />
+<p><img alt="ping" src="../_images/lab3-pingfails2.png" />
 <em>Figure 31: Ping is unsuccessful</em></p>
 <p>Try to ping both workloads from the <strong>Transit</strong> GW in AWS.</p>
-<p><img alt="Lab Overview" src="../_images/lab3-pingok.png" />
+<p><img alt="from transit" src="../_images/lab3-pingok.png" />
 <em>Figure 32: Ping is ok from the Transit GW</em></p>
 <ul class="simple">
 <li><p>Check if the relevant Spoke VPCs are inspected by FireNet.</p></li>
@@ -380,7 +380,7 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>Controller &gt; FIREWALL NETWORK &gt; Policy</strong></p>
 </div>
-<p><img alt="Lab Overview" src="../_images/lab3-policy.png" />
+<p><img alt="Inspection" src="../_images/lab3-policy.png" />
 <em>Figure 33: Inspection Policy Verification</em></p>
 <ul class="simple">
 <li><p>Try to ping the <strong>LAN</strong> interface of the FW from the <strong>Transit FireNet Gateway</strong>.</p></li>
@@ -390,10 +390,10 @@ document.write(`
 <p>First you need to retrieve the LAN Interface IP address of the FW.
 Go to <strong>Controller &gt; FIREWALL NETWORK &gt; List &gt;</strong> select the Transit Firenet GW, under the <strong>Firenet TAB &gt;</strong> click on <strong>Details &gt; Diagnostics &gt;</strong> then click on <strong>Run</strong> and then on <strong>Show</strong>.</p>
 </div>
-<p><img alt="Lab Overview" src="../_images/lab3-details.png" />
+<p><img alt="details" src="../_images/lab3-details.png" />
 <em>Figure 34: Transit FireNet Gateway Details</em></p>
 <p>Scroll through the whole configuration till the ACE-FW section: the IP is beside the string <strong>“lan_private_ip”</strong>.</p>
-<p><img alt="Lab Overview" src="../_images/lab3-lanip.png" />
+<p><img alt="lan" src="../_images/lab3-lanip.png" />
 <em>Figure 35: Lan Private IP of the FW</em></p>
 <ul class="simple">
 <li><p><strong>[WORKAROUND]</strong> Try to find a way to exclude traffic from being sent to the FW.</p></li>
@@ -402,39 +402,39 @@ Go to <strong>Controller &gt; FIREWALL NETWORK &gt; List &gt;</strong> select th
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>Controller &gt; FIREWALL NETWORK &gt; List &gt; Firenet</strong> tab &gt; select the Transit FireNet GW and click on <strong>DETAILS</strong>.</p>
 </div>
-<p><img alt="Lab Overview" src="../_images/lab3-details.png" />
+<p><img alt="details2" src="../_images/lab3-details.png" />
 <em>Figure 36: Transit FireNet Gateway Details</em></p>
 <p>Scroll down till the <strong>Network List Excluded From East-West Inspection</strong> section and add the source subnet <strong>10.1.211.0/24</strong> (e.g. this is the subnet where the BU! Frontend resides), as depicted below.</p>
-<p><img alt="Lab Overview" src="../_images/lab3-excemption.png" />
+<p><img alt="excemption" src="../_images/lab3-excemption.png" />
 <em>Figure 37: Excemption</em></p>
 <p>Try to ping once again the BU2 Mobile App from the B1 Frontend. This time the ping will be successful thanks to the workaround!</p>
-<p><img alt="Lab Overview" src="../_images/lab3-successful.png" />
+<p><img alt="ping is successful" src="../_images/lab3-successful.png" />
 <em>Figure 38: Ping is successful</em></p>
 <ul class="simple">
 <li><p>Remove the workaround previously applied and have a look at the dashboard on the main page of the Controller.</p></li>
 </ul>
-<p><img alt="Lab Overview" src="../_images/lab3-alert.png" />
+<p><img alt="widget" src="../_images/lab3-alert.png" />
 <em>Figure 39: Dashboard: the Widget is showing an Alert!</em></p>
 <p>You will notice a clear yellow alarm on the Trasit FireNet widget! Click on the widget, then select the Transit Firenet GW and click on <strong>DETAILS</strong>.</p>
-<p><img alt="Lab Overview" src="../_images/lab3-down.png" />
+<p><img alt="unrechable" src="../_images/lab3-down.png" />
 <em>Figure 40: FW is unreachable</em></p>
 <p>This is a clear outcome that there is a problem on the FW. Ultimately, the firewall is not reachable.</p>
 <ul class="simple">
 <li><p>Log into the FW (refer to your POD portal for the credentials for logging in) and explore its configuration.</p></li>
 </ul>
-<p><img alt="Lab Overview" src="../_images/lab3-down.png" />
+<p><img alt="credentials" src="../_images/lab3-down.png" />
 <em>Figure 41: FW credentials</em></p>
-<p><img alt="Lab Overview" src="../_images/lab3-fw.png" />
+<p><img alt="access" src="../_images/lab3-fw.png" />
 <em>Figure 42: FW access</em></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>FW &gt; Network &gt; Interfaces</strong> and click the LAN interface (port2) and fix the issue!</p>
 </div>
 <p>The port was disabled to simulate the failure of the GW…</p>
-<p><img alt="Lab Overview" src="../_images/lab3-fwint.png" />
+<p><img alt="instance" src="../_images/lab3-fwint.png" />
 <em>Figure 43: FW interface</em></p>
 <p>Relaunch the ping from <strong>BU1 Frontend</strong> towards <strong>BU2 Mobile App</strong>, after having <ins>re-enabled</ins> the LAN interface of the firewall.</p>
-<p><img alt="Lab Overview" src="../_images/lab3-pingworks.png" />
+<p><img alt="ping ok" src="../_images/lab3-pingworks.png" />
 <em>Figure 44: Ping is ok!</em></p>
 </section>
 </section>

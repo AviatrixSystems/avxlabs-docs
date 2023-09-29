@@ -337,35 +337,46 @@ document.write(`
 <h2>1. SCENARIO#1<a class="headerlink" href="#scenario-1" title="Permalink to this heading">#</a></h2>
 <p>ACE’s OnPrem Data Center has recently hired a new network engineer.</p>
 <p>You have been engaged for activating the <span style='color:#00FFFF'><strong>Route Approval</strong></span> feature in order to protect the MCNA from unauthorized advertisements.</p>
-<p><img alt="Lab Overview" src="../_images/lab6-topology.png" />
+<p><img alt="topology 6" src="../_images/lab6-topology.png" />
 <em>Figure 70: Lab 5 Scenario#1 Topology</em></p>
 </section>
 <section id="change-request">
 <h2>2. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Activate the <strong>Route Approval</strong> feature for monitoring unauthorized advertisements that could be received from the DC.</p></li>
+<li><p>Activate the <strong>Route Approval</strong> feature for monitoring unauthorized advertisements that could be received by the DC.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>Controller &gt; MULTI-CLOUD TRANSIT &gt; Approval</strong> and turn the knob <strong>“Learned CIDRs Approval”</strong> for the <strong>ace-aws-eu-west-1-transit1 GW</strong>.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the <em>ace-aws-eu-west-1-transit1</em> GW <strong>&gt; Settings &gt; Border Gateway Protocl (BGP) &gt;</strong> and turn on the <strong><em>Gateway Learned CIDR Approval</em></strong> knob.</p>
+<blockquote>
+<div><p>Then click on <strong>Save</strong>.</p>
+</div></blockquote>
 </div>
-<p><img alt="Lab Overview" src="../_images/lab6-approval.png" />
-<em>Figure 71: BGP Route Approval Activation</em></p>
+<p><img alt="S2C" src="../_images/lab6-routeapproval.png" />
+<em>Figure 71: Route Approval</em></p>
 <p>Afterwards, inform the trainer that you have activated the feature with the tool <span style='color:#FFFF00'><strong>“Raise Hand”</strong></span> on Zoom, as depicted below.</p>
-<p><img alt="Lab Overview" src="../_images/lab6-raise.png" />
+<p><img alt="Zoom Raise Hand" src="../_images/lab6-raise.png" />
 <em>Figure 72: Raise Hand tool on Zoom</em></p>
 <p><ins>Please wait for the trainer to inform you about the injection of the failure!</ins></p>
-<p><ins>Wait for one minute and then click on the <span style='color:orange'><strong>refresh</strong></span> button to see what kind of route will be blocked inside the <span style='color:#FFFF00'><strong>Pending Learned CIDRs</strong></span> state, as depicted below.</ins></p>
-<p><img alt="Lab Overview" src="../_images/lab6-approval2.png" />
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the <em>ace-aws-eu-west-1-transit1</em> GW <strong>&gt; Approval</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wait for approximately <strong>one minute</strong> for BGP in order to send the Update. Then click on the <span style='color:orange'><strong>refresh button</strong></span> to see a default route being advertised from the DC.
+This route will remain in <ins>pending state</ins> and it will be not advertised within the MCNA untill it gets the final approval from the Aviatrix administrator.</p>
+</div>
+<p><img alt="Pending" src="../_images/lab6-pending.png" />
 <em>Figure 73: Refresh</em></p>
-<p>You have successfully prevented that somebody from the DC could jeopardize the whole network inside the multicloud infrastructure! Of course do not approve a default route!</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You have successfully prevented that somebody from the DC could jeopardize the whole network inside the multicloud infrastructure! Of course do not approve that default route!</p>
+</div>
 </section>
 <section id="scenario-2">
 <h2>3. SCENARIO#2<a class="headerlink" href="#scenario-2" title="Permalink to this heading">#</a></h2>
 <p>ACE’s OnPrem Partner needs to be connected to the MCNA in the GCP region, however, it has overlapping IP’s with BU1’s Analytics VPC.</p>
 <p>You have been engaged for creating a <span style='color:#FF00FF'><strong>Site2Cloud</strong></span>
 connection between the GCP Spoke GW and the OnPrem Partner router and also for resolving the IP conflict through the <strong>Mapped NAT</strong> feature.</p>
-<p><img alt="Lab Overview" src="../_images/lab6-topology2.png" />
+<p><img alt="topology6-2" src="../_images/lab6-topology2.png" />
 <em>Figure 74: Lab 6 Scenario#2 Topology</em></p>
 </section>
 <section id="id1">
@@ -375,53 +386,86 @@ connection between the GCP Spoke GW and the OnPrem Partner router and also for r
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>Controller &gt; SITE2CLOUD &gt; Setup</strong>, then click on <strong>+ADD NEW.</strong></p>
+<p>Go to <strong>CoPilot &gt; Networking &gt;  Connectivity &gt; External Connection (S2C) &gt;</strong> then click on the  <strong>+External Connection</strong> button.</p>
 </div>
-<p><img alt="Lab Overview" src="../_images/lab6-addnew.png" />
-<em>Figure 75: Add New S2C</em></p>
+<p><img alt="New S2C" src="../_images/lab6-s2c.png" />
+<em>Figure 75: New S2C</em></p>
 <p>Configure the new S2C connection based on the schema below.</p>
 <ul class="simple">
-<li><p><strong>VPC</strong>: <span style='color:#33ECFF'>ace-gcp-us-east1-spoke1</span></p></li>
-<li><p><strong>Connection Type</strong>: <span style='color:#33ECFF'>Mapped</span></p></li>
-<li><p><strong>Connection name</strong>: <span style='color:#33ECFF'>S2C-PARTNER</span></p></li>
-<li><p><strong>IKEv2</strong>: <span style='color:#33ECFF'>Enable</span></p></li>
-<li><p><strong>Remote Gateway IP Address</strong>: <span style='color:#33ECFF'>follow the Note below</span></p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Use the “<strong>dig partner-csr-public.pod#.aviatrixlab.com +short</strong>” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem Partner CSR router and retrieve the <ins>remote gateway public IP address</ins>, as depicted in the example below.</p>
-</div>
-<p><ins>Replace the <strong>#</strong> symbol with your POD number!</ins></p>
-<p>The example is referring to POD #32 (please issue the command based on your POD number!).</p>
-<p><img alt="Lab Overview" src="../_images/lab6-podnumber.png" />
-<em>Figure 76: Retrieving the Public IP</em></p>
-<ul class="simple">
-<li><p><strong>Pre-shared Key</strong>: <span style='color:#33ECFF'>Aviatrix123#</span></p></li>
-<li><p><strong>Local Tunnel IP</strong>: <span style='color:#33ECFF'>169.254.0.1/30</span></p></li>
-<li><p><strong>Remote Tunnel IP</strong>: <span style='color:#33ECFF'>169.254.0.2/30</span></p></li>
-<li><p>Configure the <strong>Mapped NAT</strong> with the following CIDRs:</p>
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>S2C-PARTNER</span></p></li>
+<li><p><strong>Connect Public Cloud to:</strong></p>
 <ul>
-<li><p><strong>Remote Subnet (Real)</strong> = <span style='color:#33ECFF'>172.16.211.0/24</span></p></li>
-<li><p><strong>Remote Subnet (Virtua)</strong> = <span style='color:#33ECFF'>192.168.2.0/24</span></p></li>
-<li><p><strong>Local Subnet (Real)</strong> = <span style='color:#33ECFF'>172.16.211.0/24</span></p></li>
-<li><p><strong>Local Subnet (Virtual)</strong> = <span style='color:#33ECFF'>192.168.1.0/24</span></p></li>
+<li><p><span style='color:#33ECFF'>External Device</span></p></li>
+<li><p><span style='color:#33ECFF'>Static Route-Based (Mapped)</span></p></li>
+</ul>
+</li>
+<li><p><strong>Local Gateway</strong>: <span style='color:#33ECFF'>ace-gcp-us-east1-spoke1</span></p></li>
+<li><p><strong>Real Local Subnet CIDR(s)</strong>: <span style='color:#33ECFF'>172.16.211.0/24</span></p></li>
+<li><p><strong>Virtual Local Subnet CIDR(s)</strong>: <span style='color:#33ECFF'>192.168.1.0/24</span></p></li>
+<li><p><strong>Remote Gateway Type</strong>: <span style='color:#33ECFF'>Generic</span></p></li>
+<li><p><strong>Real Remote Subnet CIDR(s)</strong>: <span style='color:#33ECFF'>172.16.211.0/24</span></p></li>
+<li><p><strong>Virtual Remote Subnet CIDR(s)</strong>: <span style='color:#33ECFF'>192.168.2.0/24</span></p></li>
+<li><p><strong>Advanced Settings:</strong></p>
+<ul>
+<li><p><strong>IkEv2</strong>: <span style='color:#33ECFF'>On</span></p></li>
+</ul>
+</li>
+<li><p><strong>Connection:</strong></p>
+<ul>
+<li><p><strong>Remote Gateway IP</strong>: <span style='color:tomato'>follow the Note below</span></p></li>
 </ul>
 </li>
 </ul>
-<p><img alt="Lab Overview" src="../_images/lab6-creation.png" />
-<em>Figure 77: Retrieving the Public IP</em></p>
-<p>Wait some minutes for the completion of the S2C. Click on the <b><span style='color:orange'><strong>refresh</strong></span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the “<strong>dig partner-csr-public.pod#.aviatrixlab.com +short</strong>” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem Partner CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.</p>
+</div>
+<p><ins>Replace the <strong>#</strong> symbol with your POD number!</ins></p>
+<p>The example is referring to POD #35 (please issue the command based on your POD number!).</p>
+<p><img alt="retrieving" src="../_images/lab6-podnumber.png" />
+<em>Figure 76: Retrieving the Public IP</em></p>
+<ul class="simple">
+<li><p><strong>Local Gateway Instance</strong>: <span style='color:#33ECFF'>ace-gcp-us-east1-spoke1</span></p></li>
+<li><p><strong>Local Tunnel IP</strong>: <span style='color:#33ECFF'>169.254.0.1/30</span></p></li>
+<li><p><strong>Remote Tunnel IP</strong>: <span style='color:#33ECFF'>169.254.0.2/30</span></p></li>
+<li><p><strong>Pre-Shared Key</strong>: <span style='color:#33ECFF'>Aviatrix123#</span></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+</div>
+<p><img alt="external" src="../_images/lab6-finals2c.png" />
+<em>Figure 77: External Connection Configuration</em></p>
+<p>Wait some seconds for the completion of the S2C. The new connection will show up with a red ball.</p>
+<p><img alt="established" src="../_images/lab6-notdone.png" />
+<em>Figure 78: S2C is establishing the connection</em></p>
+<p>Click on the <span style='color:orange'><strong>refresh</strong></span>
 button to see the status changing from red to green.</p>
-<p><img alt="Lab Overview" src="../_images/lab6-refresh.png" />
-<em>Figure 78: S2C is up and running</em></p>
+<p><img alt="establishing" src="../_images/lab6-s2cok.png" />
+<em>Figure 79: S2C is establishing the connection</em></p>
 <ul class="simple">
 <li><p>SSH to the OnPrem partner router and issue the following command:</p></li>
 </ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>show<span class="w"> </span>ip<span class="w"> </span>int<span class="w"> </span>brief
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the Cisco CSR is not acting as an actual branch router because it is being NAT’d by an AWS IGW. For that purpose, you need to specify that the <strong>Remote Identifier</strong> of the IKE tunnel is the private IP of the CSR, not the public IP.</p>
+<p>To find out the Private IP of the CSR, SSH as admin to the on-premises router (same as the Remote Peer IP above) and issue the IOS command show ip interface brief (can be abbreviated to <strong><em>sh ip int br</em></strong>).</p>
+</div>
+<p><strong>Copy</strong> the Private IP of the GigabitEthernet1 interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the output beneath.</p>
+<p><img alt="Lab Overview" src="../_images/lab6-remoteidentifier.png" />
+<em>Figure 80: Remote Identifier</em></p>
+<p>Then go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt;</strong> click on the <strong><em>S2C_PARTNER</em></strong> connection, then <strong>&gt; Settings &gt; General</strong>, paste the IP on the <strong>Remote Gateway Identifier</strong> field and then click on **<strong>Save</strong>, as depicted below.</p>
+<p><img alt="Replace" src="../_images/lab6-remotegwidentifier.png" />
+<em>Figure 81: Remote Gateway Identifier</em></p>
+<p>Then from the OnPrem Partner router issue the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span><span class="nb">source</span><span class="w"> </span>gigabitethernet1
 </pre></div>
 </div>
-<p><img alt="Lab Overview" src="../_images/lab6-pingok2.png" />
-<em>Figure 79: Ping is ok</em></p>
+<p><img alt="ping is ok" src="../_images/lab6-pingok2.png" />
+<em>Figure 82: Ping is ok</em></p>
 </section>
 </section>
 

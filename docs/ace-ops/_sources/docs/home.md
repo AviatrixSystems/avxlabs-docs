@@ -11,7 +11,7 @@ There is already one **Site2Cloud** connection:
 
 Here is a view of the initial topology:
 
-![Lab Overview](images/topology-initial.png)
+![Initial Topology](images/topology-initial.png)
 _Figure 1: Initial Topology_
 
 ## 2. TECHNICAL DETAILS
@@ -19,7 +19,6 @@ _Figure 1: Initial Topology_
 All applications in AWS and GCP have **Public** and **Private** IP’s, whereas instances in Azure <ins>only have Private IP’s</ins>.
 
 These are the CIDR blocks per each CSP:
-
 
 - AWS = 10.0.0.0/8
 - GCP = 172.16.0.0/16
@@ -29,8 +28,7 @@ These are the CIDR blocks per each CSP:
 
 - 3rd octet of all Spoke 1’s is 211
 - 3rd octet of all Spoke 2’s is 212
-     
-
+- 
 Management access from Internet for instances in AWS and GCP is enabled, however, none of the apps are currently exposed to the Internet.
 
 ![ACE](../../docs/_logos/ace_operations_banner.png)

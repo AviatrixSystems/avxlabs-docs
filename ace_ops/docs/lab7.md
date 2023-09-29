@@ -18,8 +18,8 @@ An Aviatrix Gateway has already been deployed and enabled for **Egress FQDN filt
 
 The BU2 DB owner has raised a complaint that the apt-get commands are not working, furthermore the other egress traffic is permitted...
 
-![Lab Overview](images/lab7-topology.png)
-_Figure 80: Lab 7 Scenario Topology_
+![topology 7](images/lab7-topology.png)
+_Figure 83: Lab 7 Scenario Topology_
 
 ## 2. TROUBLESHOOT REQUEST
 
@@ -35,8 +35,8 @@ curl https://www.wikipedia.com
 curl https://www.espn.com
 ```
 
-![Lab Overview](images/lab7-sudo.png)
-_Figure 81: Sudo commands_
+![sudo](images/lab7-sudo.png)
+_Figure 814: Sudo commands_
 
 - Check the FQDN Stats
 
@@ -44,8 +44,8 @@ _Figure 81: Sudo commands_
 Go to **Controller > Security > FQDN Stats > Gateway FQDN Stats** and set the Time range to **“Today”**.
 ```
 
-![Lab Overview](images/lab7-stats.png)
-_Figure 82: Stats_
+![stats](images/lab7-stats.png)
+_Figure 85: Stats_
 
 - Verify the configuration of the Egress FQDN Filtering Policy.
 
@@ -55,10 +55,10 @@ Go to **Controller > SECURITY > Egress Control > Egress FQDN Filter** and then c
 
 Is there something suspicious in the configuration of the policy? Try to fix the evident misconfiguration!
 
-![Lab Overview](images/lab7-policy.png)
-_Figure 83: Filter_
+![filter](images/lab7-policy.png)
+_Figure 86: Filter_
 
 - Relaunch the apt-get commands after applied the resolution.
 
-![Lab Overview](images/lab7-ok.png)
-_Figure 84: apt-get is successful_
+![apt-get](images/lab7-ok.png)
+_Figure 87: apt-get is successful_
