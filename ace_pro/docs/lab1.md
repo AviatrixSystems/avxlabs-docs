@@ -1,0 +1,160 @@
+# Lab 1 - VPCs/VNets Creation
+
+## 1. INTRODUCTION
+
+In this lab, you will create **3** VPCs/VNets, one in each cloud, i.e., Azure, AWS and GCP. The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).
+
+Refer to your Pod assignment for CoPilot login information, as depicted below. Click on the URL of the CoPilot and log in using the credentials assigned to your POD.
+
+![Portal](images/lab1-portal.png)
+_Figure 3: POD portal_
+
+## 2. AZURE VNET
+### 2.1. CREATE AZURE VNET
+
+Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
+
+Verify if the CIDR range `192.168.12.0/24` is overlapping, as shown below.
+
+![vnet-0](images/lab1-vnet1.png)
+_Figure 4: Searching for a subnet conflict_
+
+Let’s create an Application/Spoke VNet. Click on the button `“+ VPC/VNET”`.
+
+![vnet-1](images/lab1-vnet2.png)
+_Figure 5: VNet creation_
+
+Insert the following values:
+
+ - **Name**: <span style='color:#33ECFF'>azure-us-central-spoke1</span>
+ - **Cloud**: <span style='color:#33ECFF'>Azure Global</span>
+ - **Account**: <span style='color:#33ECFF'>azure-account [use the drop-down window]</span>
+ - **Region**: <span style='color:#33ECFF'>Central US [use the drop-down window]</span>
+ - **VPC CIDR**: <span style='color:#33ECFF'>192.168.12.0/24</span>
+ - **VPC Function**: <span style='color:#33ECFF'>Default [use the drop-down window]</span>
+
+Then click on **Save**.
+
+![vnet-2](images/lab1-vnet3.png)
+_Figure 6: VNet template_
+
+You will immediately notice a message on the top-right corner.
+
+![vnet-3](images/lab1-vnet4.png)
+_Figure 7: "In progress" message_
+
+From the CoPilot search bar, type `“task”` and then click the search result `“Notifications / Tasks”`. Observe the VNet creation Task and wait for it to complete.
+
+![vnet-3](images/lab1-vnet5.png)
+_Figure 8: Notification_
+
+### 2.2. VERIFY FROM AZURE PORTAL
+
+Log into the <a href="https://portal.azure.com/#home" target="_blank">Azure portal</a>. Refer to your pod info for login information.
+
+Once you are logged in, navigate to `Virtual Networks`.
+
+Be sure to filter your `Subscription` <ins>by your pod number</ins>, for example, for Pod 22, filter by `csp_azure_shared_ace_labs_22`.
+
+![vnet-4](images/lab1-vnet6.png)
+_Figure 9: Azure portal_
+
+Once in the VNet you just created, navigate to `Subnets`. Explore all the constructs that were created in Central US.
+
+![vnet-5](images/lab1-vnet7.png)
+_Figure 10: Azure subnets_
+
+From the Portal, navigate to **Home > Route tables**. Explore the route tables.
+
+![vnet-6](images/lab1-vnet8.png)
+_Figure 11: Route tables_
+
+## 3. AWS VPC
+
+### 3.1. CREATE AWS VPC
+
+Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and click on the button `“+ VPC/VNET”`.
+
+![vpc-1](images/lab1-vpc1.png)
+_Figure 12: VPC creation_
+
+Insert the following values:
+
+ - **Name**: <span style='color:#33ECFF'>aws-us-west2-spoke1</span>
+ - **Cloud**: <span style='color:#33ECFF'>AWS</span>
+ - **Account**: <span style='color:#33ECFF'>aws-account [use the drop-down window]</span>
+ - **Region**: <span style='color:#33ECFF'>us-west-2 (Oregon) [use the drop-down window]</span>
+ - **VPC CIDR**: <span style='color:#33ECFF'>10.0.22.0/24</span>
+ - **VPC Function**: <span style='color:#33ECFF'>Default [use the drop-down window]</span>
+
+Then click on **Save**.
+
+![vpc-2](images/lab1-vpc2.png)
+_Figure 13: VPC configuration_
+
+Monitor the progress of the VPC creation through the hourglass icon.
+
+![vpc-3](images/lab1-vpc3.png)
+_Figure 14: Hourglass icon_
+
+Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately.
+
+You can filter by CIDR `10.0.22.0/24`.
+
+![vpc-3](images/lab1-vpc4.png)
+_Figure 15: Verification_
+
+### 3.2. VERIFY FROM AWS CONSOLE
+
+Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for **Pod 100**):
+
+![vpc-4](images/lab1-vpc5.png)
+_Figure 16: AWS console_
+
+Change the region to `Oregon (us-west-2)` in the top-right corner and invoke the VPC service. You can see the `VPC` created with the CIDR block.
+
+From there, navigate to `Subnets`.
+
+As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet per Availability Zone. Since us-west-2 has 4 AZs, therefore eight subnets are created.
+
+From there, navigate to `Route Tables`.
+
+Here, also, you can see the eight route tables that the Controller created. They are mapped to each subnet. The Public Subnets have a 0/0 route pointing to the Internet Gateway, which the Controller also deployed.
+
+## 4. GCP VPC
+
+### 4.1. CREATE GCP VPC
+
+Go to **CoPilot > Cloud Resources > Cloud Assets >** Click on the button `“+ VPC/VNET”`.
+
+![gcp-1](images/lab1-gcp1.png)
+_Figure 17: VPC creation_
+
+Insert the following values:
+
+ - **Name**: <span style='color:#33ECFF'>gcp-us-west2-spoke1</span>
+ - **Cloud**: <span style='color:#33ECFF'>GCP</span>
+ - **Account**: <span style='color:#33ECFF'>gcp-account [use the drop-down window]</span>
+ - **Name**: <span style='color:#33ECFF'>gcp-us-west2-spoke1-sub1</span>
+ - **Region**: <span style='color:#33ECFF'>us-west2 [use the drop-down window]</span>
+ - **CIDRn**: <span style='color:#33ECFF'>172.16.22.0/24</span>
+
+Then click on **Save**.
+
+```{note}
+Make sure there are no white spaces at the beginning or end of the VPC name.
+```
+
+![gcp-2](images/lab1-gcp2.png)
+_Figure 18: VPC creation_
+
+Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately.
+
+You can filter by CIDR `172.16.22.0/24`.
+
+![gcp-3](images/lab1-gcp3.png)
+_Figure 19: Verification_
+
+```{note}
+The VPCs and VNet created in this lab will not be used in subsequent labs.
+```

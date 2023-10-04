@@ -1,3 +1,4 @@
+![ACE](../../docs/_logos/ace_operations_banner.png)
 # Welcome to ACE Operations Lab
 
 ## 1. LAB TOPOLOGY
@@ -31,4 +32,3 @@ These are the CIDR blocks per each CSP:
 - 
 Management access from Internet for instances in AWS and GCP is enabled, however, none of the apps are currently exposed to the Internet.
 
-![ACE](../../docs/_logos/ace_operations_banner.png)
