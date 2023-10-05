@@ -47,7 +47,7 @@ _Figure 72: Network Domain creation_
 
 Create two network domains (Green and Blue) and associate them to their respective Spokes as follows:
 
-- <span style='color:lightgreen'>Green</span> - azure-us-west-spoke1 (do not select azure-us-west-**spoke2**)
+-  <span style='color:lightgreen'>Green</span>- azure-us-west-spoke1 (do not select azure-us-west-**spoke2**)
 - <span style='color:lightgreen'>Green</span> - aws-us-east2-spoke1 (do not select aws-us-**east1**-spoke1)
 - <span style='color:lightblue'>Blue</span> - gcp-us-central1-spoke1
 
