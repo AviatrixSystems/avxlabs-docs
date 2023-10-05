@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; ACE Operations Lab</title>
+    <title>Lab 5 - HIGH PERFORMANCE ENCRYPTION WITH ACTIVE MESH &#8212; ACE Operations Lab</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="lab6.html" />
+    <link rel="next" title="Lab 5 - EGRESS" href="lab6.html" />
     <link rel="prev" title="Lab 4 - RBAC" href="lab4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -157,12 +157,14 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pod.html">PODs Assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 5 - HIGH PERFORMANCE ENCRYPTION WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 5 - EGRESS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS/OPTIONAL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS/ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="slides.html">Slides</a></li>
@@ -302,7 +304,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Lab 5 - HIGH PERFORMANCE ENCRYPTION WITH ACTIVE MESH</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -311,9 +313,42 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. OBJECTIVE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-encryption-and-activemesh-overview">1. HIGH PERFORMANCE ENCRYPTION AND ACTIVEMESH OVERVIEW</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">1. TOPOLOGY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-encryption-configuration">4. HIGH PERFORMANCE ENCRYPTION CONFIGURATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-view-before-beginning">4.1. COPILOT VIEW BEFORE BEGINNING</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transit-spoke-attachment">4.2. TRANSIT-SPOKE ATTACHMENT</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-view-after-transit-spoke-attachment">4.3. COPILOT VIEW AFTER TRANSIT-SPOKE ATTACHMENT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transit-peering-configuration">4.4. TRANSIT PEERING CONFIGURATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transit-peering-verification">4.4.1. TRANSIT PEERING VERIFICATION</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-encryption-verification">5. HIGH PERFORMANCE ENCRYPTION VERIFICATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification-of-the-vpc-peerings-transit-transit-and-spoke-transit">5.1. COPILOT VERIFICATION OF THE VPC PEERINGS (Transit-Transit and Spoke-Transit)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification-of-hpe">5.2. COPILOT VERIFICATION OF HPE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activemesh">6. ACTIVEMESH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification-of-activemesh">6.1. COPILOT VERIFICATION OF ACTIVEMESH</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-of-activemesh-pt-1">6.2. CONNECTIVITY TEST OF ACTIVEMESH (Pt.1)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-segmentation">6.2.1 ENABLE SEGMENTATION</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-aviatrix-spoke-to-network-domain">6.2.2. ASSOCIATE AVIATRIX SPOKE TO NETWORK DOMAIN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-of-activemesh-pt-2">6.3. CONNECTIVITY TEST OF ACTIVEMESH (Pt.2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">7. FLIGHTPATH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-questions">Bonus questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-keepalive-templates">Gateway Keepalive Templates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transitive-routing">Transitive Routing</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -324,7 +359,265 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-5-high-performance-encryption-with-active-mesh">
+<h1>Lab 5 - HIGH PERFORMANCE ENCRYPTION WITH ACTIVE MESH<a class="headerlink" href="#lab-5-high-performance-encryption-with-active-mesh" title="Permalink to this heading">#</a></h1>
+<section id="objective">
+<h2>1. OBJECTIVE<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<p>In this lab, we will demonstrate Active/Active communication between the resources utilizing high performance encryption (<strong>large number of A/A tunnels</strong>) between Aviatrix Gateways (Spoke-to-Transit &amp; Transit-to-Transit).</p>
+</section>
+<section id="high-performance-encryption-and-activemesh-overview">
+<h2>1. HIGH PERFORMANCE ENCRYPTION AND ACTIVEMESH OVERVIEW<a class="headerlink" href="#high-performance-encryption-and-activemesh-overview" title="Permalink to this heading">#</a></h2>
+<p>Encryption in Cloud could be a compliance, security or business requirement. Hybrid cloud connectivity and in the cloud communication is untrusted. Aviatrix HPE provides high performance end-end encryption from on-prem (private/public connections) to the cloud walled-gardens, between the regions and clouds. It can also help overcome native constructs routing scalability challenges.</p>
+<p>Aviatrix ActiveMesh technology provides network resiliency, better convergence and high performance. Both Aviatrix gateways in transit and spoke VPC/VNet/VCNs forward traffic simultaneously. It helps enterprises in traffic engineering and provides deterministic next hop based on path-selection algorithm.</p>
+</section>
+<section id="topology">
+<h2>1. TOPOLOGY<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
+<p>In this lab we will configure the pending attachment between the Spoke Gateways in aws-us-east1-spoke1 and the Transit Gateways in aws-us-east1-transit, and the peering between the Transit Gateways aws-us-east1-transit and the Transit Gateways in aws-us-east2-transit. The Gateways in AWS region us-east-1 are pre-configured with HPE (High Performance Encryption, also known as Insane Mode) and AWS us-east2 region was configured in Lab 3.</p>
+<p><img alt="lab5-topology" src="../_images/lab5-topology.png" />
+<em>Figure 111: Lab 5 Topology</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please keep in mind that the Spoke Gateway in <strong>azure-us-west-spoke2</strong> VPC will still remain unattached in this lab!</p>
+</div>
+</section>
+<section id="high-performance-encryption-configuration">
+<h2>4. HIGH PERFORMANCE ENCRYPTION CONFIGURATION<a class="headerlink" href="#high-performance-encryption-configuration" title="Permalink to this heading">#</a></h2>
+<section id="copilot-view-before-beginning">
+<h3>4.1. COPILOT VIEW BEFORE BEGINNING<a class="headerlink" href="#copilot-view-before-beginning" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview</strong></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Verify aws-us-east-1 has a Transit gateway and a Spoke gateway that are not yet connected.</p>
+</div>
+<p><img alt="lab5-topology2" src="../_images/lab5-topologycopilot.png" />
+<em>Figure 112: CoPilot view</em></p>
+</section>
+<section id="transit-spoke-attachment">
+<h3>4.2. TRANSIT-SPOKE ATTACHMENT<a class="headerlink" href="#transit-spoke-attachment" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and edit the Spoke Gateway <strong>aws-us-east1-spoke</strong> clicking on the pencil icon:</p>
+<p><img alt="lab5-topology3" src="../_images/lab5-editspoke.png" />
+<em>Figure 113: Edit Spoke US-East-1</em></p>
+<p>Select the Transit Gateway <strong>aws-us-east1-transit</strong> from the drop-down window from the “Attach To Transit Gateway” field, and then click on <strong>Save</strong>.</p>
+<p><img alt="lab5-topology4" src="../_images/lab5-editspoke2.png" />
+<em>Figure 114: Attachment</em></p>
+</section>
+</section>
+<section id="copilot-view-after-transit-spoke-attachment">
+<h2>4.3. COPILOT VIEW AFTER TRANSIT-SPOKE ATTACHMENT<a class="headerlink" href="#copilot-view-after-transit-spoke-attachment" title="Permalink to this heading">#</a></h2>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview</strong></p>
+<p>Verify aws-us-east-1 Transit gateway and Spoke gateway are now connected.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Wait a handful of minutes and then refresh the page, in order to see the changes applied on the topology!</p>
+</div>
+<p><img alt="lab5-topology5" src="../_images/lab5-copilotview.png" />
+<em>Figure 115: Attachment on the CoPilot</em></p>
+</section>
+<section id="transit-peering-configuration">
+<h2>4.4. TRANSIT PEERING CONFIGURATION<a class="headerlink" href="#transit-peering-configuration" title="Permalink to this heading">#</a></h2>
+<p>Here you will configure Transit Peering between aws-us-east1 and aws-us-east2.</p>
+<p>Go back to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong></p>
+<ul class="simple">
+<li><p><strong>aws-us-east1-transit</strong> to <strong>aws-us-east2-transit</strong></p></li>
+</ul>
+<p>Edit the Transit Gateway <strong>aws-us-east1-transit</strong>, clicking on the pencil icon:</p>
+<p><img alt="lab5-topology6" src="../_images/lab5-peering.png" />
+<em>Figure 115: Edit Transit in US-EAST-1</em></p>
+<p>Select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong> from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code> field, and then click on <strong>Save</strong>.</p>
+<p><img alt="lab5-topology7" src="../_images/lab5-peering2.png" />
+<em>Figure 115: Peering</em></p>
+<section id="transit-peering-verification">
+<h3>4.4.1. TRANSIT PEERING VERIFICATION<a class="headerlink" href="#transit-peering-verification" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gatewasy <strong><em>aws-us-east1-transit</em></strong>, select the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab and check the route <strong>10.0.1.0/24</strong> for instance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take a minute or two to reflect here.</p>
+</div>
+<p>You will find out that the route 10.0.1.0/24 is reachable through <strong>nine</strong> connections with the <strong><em>aws-us-east2-transit</em></strong>:</p>
+<p><img alt="lab5-hpe" src="../_images/lab5-hpe.png" />
+<em>Figure 115: HPE in action on the First Transit GW</em></p>
+<p>Likewise, the same route is also reachable via other <strong>nine</strong> connections but through the Second Transit Gateway <strong><em>aws-us-east2-transit-1</em></strong>:</p>
+<p><img alt="lab5-hpe2" src="../_images/lab5-hpe2.png" />
+<em>Figure 115: HPE in action on the Second Transit GW</em></p>
+<p>Note: the number of additional connections depend on the size of the Aviatrix Gateway.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The number of additional connections depend on the size of the Aviatrix Gateway.</p>
+</div>
+<p>At this point, this is how the overall topology would look like:</p>
+<p><img alt="lab5-topo1" src="../_images/lab5-topologyview.png" />
+<em>Figure 116: Logical Topology View</em></p>
+<p>This is the topology view from Copilot at this stage:</p>
+<p><img alt="lab5-topo2" src="../_images/lab5-peeringdrawing.png" />
+<em>Figure 117: CoPilot Topology View</em></p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The actual configuration of High Performance Encryption was done when the gateways were created before this lab.</p>
+</div>
+</section>
+</section>
+<section id="high-performance-encryption-verification">
+<h2>5. HIGH PERFORMANCE ENCRYPTION VERIFICATION<a class="headerlink" href="#high-performance-encryption-verification" title="Permalink to this heading">#</a></h2>
+<section id="copilot-verification-of-the-vpc-peerings-transit-transit-and-spoke-transit">
+<h3>5.1. COPILOT VERIFICATION OF THE VPC PEERINGS (Transit-Transit and Spoke-Transit)<a class="headerlink" href="#copilot-verification-of-the-vpc-peerings-transit-transit-and-spoke-transit" title="Permalink to this heading">#</a></h3>
+<p>HPE automatically creates an underlying VPC Peering attachment within AWS. Verify it on the CoPilot.</p>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; Native Peering</strong></p>
+<p><img alt="lab5-native1" src="../_images/lab5-native0.png" />
+<em>Figure 118: Native Peerings</em></p>
+<p>Click on any VPC peerings to expand its properties on the right side.</p>
+<p><img alt="lab5-native2" src="../_images/lab5-native.png" />
+<em>Figure 119: Native Peerings Properties</em></p>
+</section>
+</section>
+<section id="copilot-verification-of-hpe">
+<h2>5.2. COPILOT VERIFICATION OF HPE<a class="headerlink" href="#copilot-verification-of-hpe" title="Permalink to this heading">#</a></h2>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gatewasy <strong><em>aws-us-east1-transit</em></strong>, select the <code class="docutils literal notranslate"><span class="pre">&quot;Interfaces&quot;</span></code> tab and check the huge number of tunnel interfaces that HPE has instantiated. These tunnels are used with the Spoke Gateway aws-us-east1-spoke and the Transit Gateway aws-us-east2-transit, because HPE is also enable on these gateways:</p>
+<p><img alt="lab5-ipip" src="../_images/lab5-ipip.png" />
+<em>Figure 120: Interface Stats</em></p>
+</section>
+<section id="activemesh">
+<h2>6. ACTIVEMESH<a class="headerlink" href="#activemesh" title="Permalink to this heading">#</a></h2>
+<section id="copilot-verification-of-activemesh">
+<h3>6.1. COPILOT VERIFICATION OF ACTIVEMESH<a class="headerlink" href="#copilot-verification-of-activemesh" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; VPC/VNet Routes</strong></p>
+<p>Click the filter button, select <code class="docutils literal notranslate"><span class="pre">“Name”</span></code> and enter <strong><em>aws-us-east1-spoke1-rtb-public-a</em></strong> to filter by just that route table.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The RFC 1918 summary routes points to Aviatrix Spoke gateway for this routing table programmed by Aviatrix Controller:</p>
+</div>
+<p><img alt="lab5-filter" src="../_images/lab5-filter.png" />
+<em>Figure 121: Filter</em></p>
+<p><img alt="lab5-summary" src="../_images/lab5-summary.png" />
+<em>Figure 122: RFC1918 routes pointing towards the First Spoke GW</em></p>
+<p>Now select <strong><em>aws-us-east1-spoke1-rtb-public-b</em></strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This time the RFC 1918 summary routes points to the Aviatrix <strong>Second</strong> Spoke gateway for this routing table programmed by Aviatrix Controller:</p>
+</div>
+<p><img alt="lab5-filter2" src="../_images/lab5-filter2.png" />
+<em>Figure 123: Filter</em></p>
+<p><img alt="lab5-summary2" src="../_images/lab5-summary2.png" />
+<em>Figure 124: RFC1918 routes pointing towards the Second Spoke GW</em></p>
+<p>As you can see, Active/Active is achieved within a VPC as well. Each gateway is active on the Availability Zone where it resides.</p>
+</section>
+</section>
+<section id="connectivity-test-of-activemesh-pt-1">
+<h2>6.2. CONNECTIVITY TEST OF ACTIVEMESH (Pt.1)<a class="headerlink" href="#connectivity-test-of-activemesh-pt-1" title="Permalink to this heading">#</a></h2>
+<p>Test the EC2 instances in two subnets are pointing to two different routing tables. If one gateway goes down, the controller will switch the ENI of the available gateway in the routing table.</p>
+<p>SSH into both EC2 test instances in <strong><em>aws-us-east1-spoke1</em></strong> VPC (refer to your Pod assignment). These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.</p>
+<p>Ping the EC2 test instance (10.0.1.100) in aws-us-east2-spoke1. It will fail. <strong>WHY?</strong> Because we didn’t enable segmentation on <strong><em>aws-us-east1-transit</em></strong> and associate <strong><em>aws-us-east1-spoke1</em></strong> with the transit gateway in the appropriate network domain.</p>
+<section id="enable-segmentation">
+<h3>6.2.1 ENABLE SEGMENTATION<a class="headerlink" href="#enable-segmentation" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains &gt; Transit Gateways</strong></p>
+<p>Enable Segmentation on <strong><em>aws-us-east1-transit</em></strong>:</p>
+<p><img alt="lab5-enable" src="../_images/lab5-enable.png" />
+<em>Figure 125: Enable Segmentation</em></p>
+</section>
+<section id="associate-aviatrix-spoke-to-network-domain">
+<h3>6.2.2. ASSOCIATE AVIATRIX SPOKE TO NETWORK DOMAIN<a class="headerlink" href="#associate-aviatrix-spoke-to-network-domain" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong></p>
+<p>Associate <strong><em>aws-us-east1-spoke1</em></strong> with its transit in the <span style='color:lightgreen'>Green</span> network domain:</p>
+<p><img alt="lab5-green" src="../_images/lab5-green.png" />
+<em>Figure 125: Association</em></p>
+</section>
+</section>
+<section id="connectivity-test-of-activemesh-pt-2">
+<h2>6.3. CONNECTIVITY TEST OF ACTIVEMESH (Pt.2)<a class="headerlink" href="#connectivity-test-of-activemesh-pt-2" title="Permalink to this heading">#</a></h2>
+<p>Now SSH to the <strong><em>aws-us-east1-spoke1-test1</em></strong> in AWS US-East1 and launch ping towards <strong><em>aws-us-east2-spoke1-test1</em></strong> in AWS US-East2.</p>
+<p>SSH also to the <strong><em>aws-us-east1-spoke1-test2</em></strong> in AWS US-East1 and launch ping towards <strong><em>aws-us-east2-spoke1-test1</em></strong> in AWS US-East2.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Please keep both the ping sessions running recursively on your SSH client!</p>
+</div>
+<p><img alt="lab5-green" src="../_images/lab5-ping1.png" />
+<em>Figure 126: Ping from spoke1-test1</em></p>
+<p><img alt="lab5-green" src="../_images/lab5-ping2.png" />
+<em>Figure 127: Ping from spoke1-test2</em></p>
+<p>To demonstrate ActiveMesh capability, you will shut down temporarily one of the spoke gateways and notice traffic converging to the other gateway.</p>
+<p>Login to <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 100</ins>):</p>
+<p><img alt="lab5-aws" src="../_images/lab5-awsconsole.png" />
+<em>Figure 128: AWS console</em></p>
+<p>Change the region to <strong>N. Virginia</strong> and invoke EC2 service.</p>
+<p><img alt="lab5-region" src="../_images/lab5-region.png" />
+<em>Figure 129: Change the region</em></p>
+<p>Click on <strong>Instances (running)</strong>:</p>
+<p><img alt="lab5-running" src="../_images/lab5-running.png" />
+<em>Figure 130: Instances running</em></p>
+<p>Search for <strong><em>aviatrix-aws-us-east1-spoke1</em></strong> and then select <strong>Instance state &gt; Stop instance</strong></p>
+<p><img alt="lab5-stop" src="../_images/lab5-stop.png" />
+<em>Figure 131: Stop the Instance</em></p>
+<p>Confirm by clicking on <strong>Stop</strong> one more time.</p>
+<p><img alt="lab5-stop2" src="../_images/lab5-stop2.png" />
+<em>Figure 131: Confirm the stop</em></p>
+<p>You will notice ping drops solely from <strong><em>aws-us-east1-spoke1-test1</em></strong>. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.</p>
+<p>This shows how the Aviatrix Controller intelligently auto-heals the VPC routing.</p>
+<p><img alt="lab5-drop" src="../_images/lab5-drop.png" />
+<em>Figure 132: Temporary disruption</em></p>
+<p><strong>Bonus Step</strong>: <code class="docutils literal notranslate"><span class="pre">Restart</span></code> the Gateway from the AWS console and reverify the traffic flow.</p>
+<p><img alt="lab5-restart" src="../_images/lab5-restart.png" />
+<em>Figure 133: Restart</em></p>
+<p>After this lab, this is how the overall topology would look like:</p>
+<p><img alt="lab5-final" src="../_images/lab5-finaltopo.png" />
+<em>Figure 133: Final Topology for Lab 5</em></p>
+</section>
+<section id="flightpath">
+<h2>7. FLIGHTPATH<a class="headerlink" href="#flightpath" title="Permalink to this heading">#</a></h2>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; AppIQ &gt; FlightPath</strong></p>
+<p>Use the following inputs:</p>
+<ul class="simple">
+<li><p><strong>Source</strong>: <span style='color:#33ECFF'>aws-us-east1-spoke1-test1</span></p></li>
+<li><p><strong>Destination</strong>: <span style='color:#33ECFF'>aws-us-east2-spoke1-test1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#33ECFF'>443</span></p></li>
+<li><p><strong>Interface</strong>: <span style='color:#33ECFF'>Private</span></p></li>
+</ul>
+<p><img alt="lab5-flightpath" src="../_images/lab5-flightpath.png" />
+<em>Figure 134: FlightPath config</em></p>
+<p>This will provide an AppIQ report of how aws-us-east1-spoke1-test1 is connected with aws-us-east2-spoke1-test1 and display the path along with end-to-end latency.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might see some links still depicted in red, after having restarted the Spoke Gateway. Be patient and relaunch the report and you will get the same outcome as depicted below.</p>
+</div>
+<p><img alt="lab5-flight2" src="../_images/lab5-flight2.png" />
+<em>Figure 135: FlightPath Report</em></p>
+<p>Scroll down to get more details about:</p>
+<ul class="simple">
+<li><p>The latency between each pair of gateways</p></li>
+<li><p>Performance monitoring metrics of all gateways in the path</p></li>
+<li><p>FlowIQ between the two instances</p></li>
+<li><p>Security group checks</p></li>
+<li><p>NACL checks</p></li>
+<li><p>Routing tables</p></li>
+</ul>
+<p>You can also download the entire report in pdf format by clicking the <strong>PDF icon</strong> at the top right corner:</p>
+<p><img alt="lab5-flight3" src="../_images/lab5-download.png" />
+<em>Figure 136: FlightPath Report PDF</em></p>
+</section>
+<section id="bonus-questions">
+<h2>Bonus questions<a class="headerlink" href="#bonus-questions" title="Permalink to this heading">#</a></h2>
+<section id="gateway-keepalive-templates">
+<h3>Gateway Keepalive Templates<a class="headerlink" href="#gateway-keepalive-templates" title="Permalink to this heading">#</a></h3>
+<p>Experiment with <a href="https://read.docs.aviatrix.com/HowTos/gateway.html#gateway-keepalives" target="_blank">Gateway keepalive templates</a> and retest convergence times when bringing down a spoke gateway.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can modify the <ins>Gateway to Controller Communication timer</ins> directly from the CoPilot. Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Settings &gt; Gateway to Controller Communication</strong> and change the <code class="docutils literal notranslate"><span class="pre">Keep</span> <span class="pre">Alive</span> <span class="pre">Speed</span></code> from <strong><em>medium</em></strong> (default) to <strong><em>fast</em></strong>. Then repeat the experiment carried out earlier.</p>
+</div>
+<p><img alt="lab5-keepalive" src="../_images/lab5-keepalive.png" />
+<em>Figure 137: Keep Alive Speed</em></p>
+</section>
+<section id="transitive-routing">
+<h3>Transitive Routing<a class="headerlink" href="#transitive-routing" title="Permalink to this heading">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The test instances in aws-us-east1-spoke1 are not able to communicate with the test instances in GCP or in Azure.</p>
+</div>
+<p>You can verify this with the Gateway routing table on the <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; Gateway Routes &gt; aws-us-east1-transit</strong>. You will not see the GCP Spoke routes of <strong><em>172.16.1.0/24</em></strong>., for instance.</p>
+<p>Why is that?
+What would be needed to make those routes visible?</p>
+</section>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -370,7 +663,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Lab 5 - EGRESS</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -391,9 +684,42 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. OBJECTIVE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-encryption-and-activemesh-overview">1. HIGH PERFORMANCE ENCRYPTION AND ACTIVEMESH OVERVIEW</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">1. TOPOLOGY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-encryption-configuration">4. HIGH PERFORMANCE ENCRYPTION CONFIGURATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-view-before-beginning">4.1. COPILOT VIEW BEFORE BEGINNING</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transit-spoke-attachment">4.2. TRANSIT-SPOKE ATTACHMENT</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-view-after-transit-spoke-attachment">4.3. COPILOT VIEW AFTER TRANSIT-SPOKE ATTACHMENT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transit-peering-configuration">4.4. TRANSIT PEERING CONFIGURATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transit-peering-verification">4.4.1. TRANSIT PEERING VERIFICATION</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-encryption-verification">5. HIGH PERFORMANCE ENCRYPTION VERIFICATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification-of-the-vpc-peerings-transit-transit-and-spoke-transit">5.1. COPILOT VERIFICATION OF THE VPC PEERINGS (Transit-Transit and Spoke-Transit)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification-of-hpe">5.2. COPILOT VERIFICATION OF HPE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activemesh">6. ACTIVEMESH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification-of-activemesh">6.1. COPILOT VERIFICATION OF ACTIVEMESH</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-of-activemesh-pt-1">6.2. CONNECTIVITY TEST OF ACTIVEMESH (Pt.1)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-segmentation">6.2.1 ENABLE SEGMENTATION</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-aviatrix-spoke-to-network-domain">6.2.2. ASSOCIATE AVIATRIX SPOKE TO NETWORK DOMAIN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-of-activemesh-pt-2">6.3. CONNECTIVITY TEST OF ACTIVEMESH (Pt.2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">7. FLIGHTPATH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-questions">Bonus questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-keepalive-templates">Gateway Keepalive Templates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transitive-routing">Transitive Routing</a></li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>
