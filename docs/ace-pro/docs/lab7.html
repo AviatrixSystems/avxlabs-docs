@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; ACE Operations Lab</title>
+    <title>Lab 7 - FIRENET &#8212; ACE Operations Lab</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="lab8.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="lab6.html" />
+    <link rel="next" title="LAB 8 - SITE2CLOUD" href="lab8.html" />
+    <link rel="prev" title="Lab 6 - EGRESS" href="lab6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,15 +157,19 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pod.html">PODs Assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS/OPTIONAL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS/ICONS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slides.html">Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">LAB 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
 </ul>
 
     </div>
@@ -302,7 +306,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Lab 7 - FIRENET</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -311,9 +315,26 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-overview-firewall-nework">2. FireNet Overview (Firewall Nework)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-transit-to-spoke-peering">4.1. Azure Transit to Spoke Peering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pan-firewall-deployment">4.2. PAN Firewall Deployment</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-configuration">4.3. Firewall Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-vendor-integration">4.4. Firewall Vendor Integration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-routes-installed-on-firewall">4.5. Verify Routes Installed on Firewall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-policy">4.6. FireNet Policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#within-azure">5.1. Within Azure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#luanch-connectivity-test">5.1.1 Luanch connectivity test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-to-gcp">5.2. Azure to GCP</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -324,7 +345,228 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-7-firenet">
+<h1>Lab 7 - FIRENET<a class="headerlink" href="#lab-7-firenet" title="Permalink to this heading">#</a></h1>
+<section id="objective">
+<h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<p>The objective of this lab is to learn how to deploy Palo Alto Networks (aka PAN) VM-series firewalls in the Transit VNet and inspect traffic between the two Spoke VNets using firewall policies.</p>
+</section>
+<section id="firenet-overview-firewall-nework">
+<h2>2. FireNet Overview (Firewall Nework)<a class="headerlink" href="#firenet-overview-firewall-nework" title="Permalink to this heading">#</a></h2>
+<p>Aviatrix Firewall Network (aka <em><code class="docutils literal notranslate"><span class="pre">FireNet</span></code></em>) is a turnkey solution to deploy and manage firewall instances in the cloud, as shown in the topology below. Firewall Network significantly simplifies virtual firewall deployment and allows the firewall to inspect VPC/VNet/VCN to VPC/VNet/VCN (East West) traffic, VPC/VNet/VCN to Internet (Egress) traffic, and VPC/VNet/VCN to on-prem including partners and branches (North South) traffic.</p>
+<p>In addition, Firewall Network allows you to scale firewall deployment to multi AZ and multi instances/VMs in maximum throughput active/active state without the SNAT requirement.</p>
+</section>
+<section id="topology">
+<h2>3. Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
+<p>Up until now, in Azure you have only worked on <strong><em>azure-us-west-spoke1</em></strong>. This lab will introduce finally <strong><em>azure-us-west-spoke2</em></strong>, which is a gateway in the top-right corner of this topology that is already deployed (hence it is red); <ins>there is the attachment that has not been deployed yet</ins>!</p>
+<p><img alt="lab7-topology" src="../_images/lab7-topology.png" />
+<em>Figure 160: Lab 7 Initial Topology</em></p>
+</section>
+<section id="configuration">
+<h2>4. Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<section id="azure-transit-to-spoke-peering">
+<h3>4.1. Azure Transit to Spoke Peering<a class="headerlink" href="#azure-transit-to-spoke-peering" title="Permalink to this heading">#</a></h3>
+<p>First, you will need to configure the grey Aviatrix Spoke-Transit connection in the topology between azure-us-west-spoke2 and azure-us-west-transit.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and edit the Spoke Gateway <strong><em>azure-us-west-spoke2</em></strong>, clicking on the pencil icon:</p>
+<p><img alt="lab7-spoke" src="../_images/lab7-spoke.png" />
+<em>Figure 161: Edit Spoke GW</em></p>
+<p>Attach <strong><em>azure-us-west-spoke2</em></strong> (pre-configured VNet) to <strong><em>azure-us-west-transit</em></strong> as shown below.
+Do not forget to click on <strong>Save</strong>.</p>
+<p><img alt="lab7-attachment" src="../_images/lab7-attachment.png" />
+<em>Figure 162: Attachment</em></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong><em>azure-us-west-transit</em></strong> is already enabled for FireNet function.</p>
+</div>
+</section>
+<section id="pan-firewall-deployment">
+<h3>4.2. PAN Firewall Deployment<a class="headerlink" href="#pan-firewall-deployment" title="Permalink to this heading">#</a></h3>
+<p>In this step you will be deploying a PAN firewall from the Aviatrix CoPilot with a <code class="docutils literal notranslate"><span class="pre">Bootstrap</span> <span class="pre">package</span></code>.</p>
+<p>The bootstrap package will take care of the following pre-provisioning on the Firewall:</p>
+<ul class="simple">
+<li><p>Interfaces mapping</p></li>
+<li><p>Policies creation</p></li>
+<li><p>Logging</p></li>
+<li><p>RFC1918 Static Route creation</p></li>
+</ul>
+<p>Specifically, you will be deploying a firewall image called <strong>Palo Alto Networks VM-Series Next-Generation Firewall Bundle 1</strong>.</p>
+<p>Aviatrix has already taken care of the <em><code class="docutils literal notranslate"><span class="pre">subscription</span></code></em> from the Azure Marketplace.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; Firewall</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Firewall&quot;</span></code> button.</p>
+<p><img alt="lab7-firenetbutton" src="../_images/lab7-firenetbutton.png" />
+<em>Figure 163: FireNet</em></p>
+<p>Deploy a Firewall by entering these settings within the <code class="docutils literal notranslate"><span class="pre">Deply</span> <span class="pre">Firewall</span></code> window:</p>
+<ul class="simple">
+<li><p><strong>FireNet Instance</strong>: <span style='color:#33ECFF'>azure-us-west-transit</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>azure-us-west-pan</span></p></li>
+<li><p><strong>Firewall Image</strong>: <span style='color:#33ECFF'>Palo Alto Networks VM-Series Next-Generation Firewall Bundle 1</span></p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When you click on the <strong>Firewall Image</strong> drop-down window, you will see a <code class="docutils literal notranslate"><span class="pre">&quot;Loading&quot;</span></code> message. The message means that the Controller is in the middle of contacting the Marketplace through the API calls, therefore, be patient and wait for some seconds.</p>
+</div>
+<p><img alt="lab7-marketplace" src="../_images/lab7-marketplace.png" />
+<em>Figure 164: Marketplace contact under loading</em></p>
+<ul class="simple">
+<li><p><strong>Firewall Image Version</strong>: <span style='color:#33ECFF'>9.1.0</span></p></li>
+<li><p><strong>Firewall instance Size</strong>: <span style='color:#33ECFF'>azure-us-west-transit-Public-gateway-and-firewall-mgmt-1</span></p></li>
+<li><p><strong>Egress Interface Subnet</strong>: <span style='color:#33ECFF'>azure-us-west-transit-Public-FW-ingress-egress-1 [<strong>Note</strong>: Make sure you do not select the subnets that begin with <em>az-1, az-2, or az-3</em>]</span></p></li>
+<li><p><strong>Authentication</strong>: <span style='color:#33ECFF'>Password</span></p></li>
+<li><p><strong>Username</strong>: <span style='color:#33ECFF'>avxadmin [<strong>Note</strong>: username <em>admin</em> is not permitted in Azure]</span></p></li>
+<li><p><strong>Password</strong>: <span style='color:#33ECFF'>[choose a <strong>strong password</strong> and remember it]</span></p></li>
+<li><p><strong>Bootstrap Configuration</strong>: <span style='color:#33ECFF'>turn <strong>ON</strong> the knob</span></p></li>
+<li><p><strong>Storage</strong>: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info</ins></span></p></li>
+<li><p><strong>Storage Access Key</strong>: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info</ins></span></p></li>
+<li><p><strong>File-Shared Folder</strong>: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info</ins></span></p></li>
+</ul>
+<p>Then click on <strong>Deploy</strong>.</p>
+<p><img alt="lab7-cfg" src="../_images/lab7-firenetcfg.png" />
+<em>Figure 165: Firenet Deployment Template</em></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please be patient - firewall deployment can take a long time, <strong><em>up to 20 minutes</em></strong>, due to the slow responsiveness of Azure API calls to prepare the firewall. Even after the firewall is created and is assigned a Public IP address, it doesn’t mean it can be accessed immediately. If you try accessing it too early, your experience may vary.</p>
+</div>
+<p><img alt="lab7-inprogress" src="../_images/lab7-inprogress.png" />
+<em>Figure 166: Deployment in progress</em></p>
+<p>At this time, the interface mapping, security policy configuration, and RFC1918 static route creation are all being handled. The <strong><em>Aviatrix Controller</em></strong> does a lot of magic in orchestrating and manipulating route tables.</p>
+<p>You will know the Firewall is created when you see the corresponding entry like this (refresh the page after roughly 10-15 minutes):</p>
+<p><img alt="lab7-url" src="../_images/lab7-url.png" />
+<em>Figure 167: Deployment completed</em></p>
+<p>Even after that message, it doesn’t mean you can access the firewall (i.e. <strong>URL</strong>). Within <strong>5-10 minutes</strong> after you receive confirmation about the firewall being created, you should be able to access it.</p>
+<p>Now try to click on the <em>hyperlink</em> of the firewall. You should be able to see the page where entering the credentials (refer to you POD portal).</p>
+</section>
+</section>
+<section id="firewall-configuration">
+<h2>4.3. Firewall Configuration<a class="headerlink" href="#firewall-configuration" title="Permalink to this heading">#</a></h2>
+<p>Once you access the firewall in your web browser via <strong>HTTPS</strong>, you might get a warning about an invalid certification based on your browser settings. This is just because it has a self-signed certificate. Navigate past that to get to the login prompt. Sign in as <code class="docutils literal notranslate"><span class="pre">avxadmin</span></code> as the username and the password you entered earlier.</p>
+<p><img alt="lab7-palo" src="../_images/lab7-paloalto.png" />
+<em>Figure 168: PaloAlto Welcome page</em></p>
+<p>Dismiss the Welcome splash screen. This is an indication that the firewall is ready.</p>
+<p>Do not end the firewall’s HTTPS session yet. You will return to this web interface later.</p>
+</section>
+<section id="firewall-vendor-integration">
+<h2>4.4. Firewall Vendor Integration<a class="headerlink" href="#firewall-vendor-integration" title="Permalink to this heading">#</a></h2>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <code class="docutils literal notranslate"><span class="pre">three</span> <span class="pre">dots&quot;</span></code> symbol on the right-hand side of the <strong><em>azure-us-west-transit raw</em></strong>, and then click on <code class="docutils literal notranslate"><span class="pre">Vendor</span> <span class="pre">Integration</span></code>.</p>
+<p><img alt="lab7-vendor" src="../_images/lab7-vendor.png" />
+<em>Figure 169: Vendor Integration</em></p>
+<p>Insert the following paramenters in the <code class="docutils literal notranslate"><span class="pre">&quot;Vendor</span> <span class="pre">Integration&quot;</span></code> pop-up window.</p>
+<ul class="simple">
+<li><p><strong>Management IP</strong>: <span style='color:#33ECFF'><strong>Auto populated</strong></span></p></li>
+<li><p><strong>Vendor</strong>: <span style='color:#33ECFF'>Palo Alto Networks VM-Series</span></p></li>
+<li><p><strong>Username</strong>: <span style='color:#33ECFF'>avxadmin</span></p></li>
+<li><p><strong>Password</strong>: <span style='color:#33ECFF'>[the password you entered earlier]</span></p></li>
+</ul>
+<p>Then click on <strong>Save</strong>.</p>
+<p><img alt="lab7-vendor2" src="../_images/lab7-vendor2.png" />
+<em>Figure 170: Vendor Integration template</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wait for some seconds for the Vendor Integration to complete.</p>
+</div>
+<p><img alt="lab7-vendor3" src="../_images/lab7-vendor3.png" />
+<em>Figure 171: Vendor Integration accomplished</em></p>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; Firewall</strong> and click on the <strong><em>azure-us-west-pan</em></strong> firewall</p>
+<p><img alt="lab7-vendor4" src="../_images/lab7-vendor4.png" />
+<em>Figure 172: Click on the Firewall</em></p>
+<p>You will see the RFC 1918 routes that the Controller automatically programmed on the Firewall. Notice how each RFC1918 route has a prefix of <code class="docutils literal notranslate"><span class="pre">&quot;AVX-&quot;</span></code> to show that it is programmed by Aviatrix.</p>
+<p><img alt="lab7-vendor5" src="../_images/lab7-vendor5.png" />
+<em>Figure 173: Vendor Integration outcome</em></p>
+</section>
+<section id="verify-routes-installed-on-firewall">
+<h2>4.5. Verify Routes Installed on Firewall<a class="headerlink" href="#verify-routes-installed-on-firewall" title="Permalink to this heading">#</a></h2>
+<p>Verify the same RFC 1918 routes exist on the PAN Firewall.</p>
+<p>Back on the <strong>PAN Firewall</strong>, navigate to <strong>Network tab &gt; Virtual Routers &gt;</strong> click on <strong>default</strong>.</p>
+<p><img alt="lab7-palo1" src="../_images/lab7-palo1.png" />
+<em>Figure 174: PaloAlto dashboard</em></p>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Static</span> <span class="pre">Routes&quot;</span></code> tab. You should be able to see the same RFC 1918 routes with <code class="docutils literal notranslate"><span class="pre">&quot;AVX-&quot;</span></code> prefixes that were programmed by the Aviatrix Controller.</p>
+<p><img alt="lab7-palo1" src="../_images/lab7-palo2.png" />
+<em>Figure 175: PaloAlto dashboard</em></p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Do not end the firewall’s HTTPS session yet. You will return to this web interface later.</p>
+</div>
+</section>
+<section id="firenet-policy">
+<h2>4.6. FireNet Policy<a class="headerlink" href="#firenet-policy" title="Permalink to this heading">#</a></h2>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <strong><em>azure-us-west-transit</em></strong> Transit FireNet GW and then choose the <code class="docutils literal notranslate"><span class="pre">&quot;Policy&quot;</span></code> tab.</p>
+<p><img alt="lab7-inspection2" src="../_images/lab7-inspection2.png" />
+<em>Figure 176: Policy tab</em></p>
+<p>Then select ach Azure spoke gateway one by one, click on <code class="docutils literal notranslate"><span class="pre">&quot;Actions&quot;</span></code> and choose <code class="docutils literal notranslate"><span class="pre">&quot;Add&quot;</span></code> in order to add a specific VPC inside the <strong>Inspection Policy</strong>.</p>
+<p><img alt="lab7-inspection3" src="../_images/lab7-inspection3.png" />
+<em>Figure 177: Inspection Policy assignment</em></p>
+<p><img alt="lab7-inspection4" src="../_images/lab7-inspection4.png" />
+<em>Figure 178: Inspection Policy accomplished</em></p>
+</section>
+<section id="verification">
+<h2>5. Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h2>
+<p>Verify the traffic flows within Azure and Azure to GCP as shown below by following steps 5.1 - 5.2:</p>
+<p><img alt="lab7-topology-inspection" src="../_images/lab7-topology2.png" />
+<em>Figure 179: Lab 7 Topology with FW deplopyed</em></p>
+</section>
+<section id="within-azure">
+<h2>5.1. Within Azure<a class="headerlink" href="#within-azure" title="Permalink to this heading">#</a></h2>
+<p>Before we can verify connectivity, we need to associate <strong><em>azure-us-west-spoke2</em></strong> to the <span style='color:lightgreen'>Green</span> Network Domain.</p>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong></p>
+<p>Click the <em>pencil icon</em> to edit the Green network domain.</p>
+<p><img alt="lab7-editnd" src="../_images/lab7-editnd.png" />
+<em>Figure 180: Edit Green</em></p>
+<p>Select the gateway <strong><em>azure-us-west-spoke2</em></strong> from the drop-down window, selecting the <code class="docutils literal notranslate"><span class="pre">&quot;Associations&quot;</span></code> field.</p>
+<p>Then click <strong>Save</strong>:</p>
+<p><img alt="lab7-nd2" src="../_images/lab7-nd2.png" />
+<em>Figure 181: Association</em></p>
+<p>After this step, this is what Lab 7 topology looks like:</p>
+<p><img alt="lab7-final-topology" src="../_images/lab7-finaltopology.png" />
+<em>Figure 182: Lab 7 Final Topology</em></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>On Lab 6 (Egress), the DCF functionality was enabled. The current active rule is the <code class="docutils literal notranslate"><span class="pre">&quot;allow-two-domains&quot;</span></code>, that is only allowing traffic towards two domains. Before launching any connectivity test, <ins>you need to enforce back the Greenfield-Rule</ins>!</p>
+</div>
+<p><img alt="lab7-dcfrule" src="../_images/lab7-dcfrule.png" />
+<em>Figure 183: DCF rules</em></p>
+<ul class="simple">
+<li><p>Reactivate the Greenfield-Rule</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default)</strong>, click on the the <code class="docutils literal notranslate"><span class="pre">&quot;Three</span> <span class="pre">dots&quot;</span></code> icon on the righ-hand side of the Greenfield-Rule and choose <code class="docutils literal notranslate"><span class="pre">&quot;Turn</span> <span class="pre">On</span> <span class="pre">Enforcement&quot;</span></code></p>
+</div>
+<p><img alt="lab7-dcfrule2" src="../_images/lab7-dcfrule2.png" />
+<em>Figure 184: Turn on Enforcement</em></p>
+<p>Do not forget to Commit your change!</p>
+<p><img alt="lab7-dcfrule3" src="../_images/lab7-dcfrule3.png" />
+<em>Figure 185: Commit</em></p>
+<section id="luanch-connectivity-test">
+<h3>5.1.1 Luanch connectivity test<a class="headerlink" href="#luanch-connectivity-test" title="Permalink to this heading">#</a></h3>
+<p><strong>SSH</strong> into <strong><em>azure-us-west-spoke1-test1</em></strong> and from there, ping <strong><em>azure-us-west-spoke2-test1</em></strong> on its private IP.</p>
+<p><img alt="lab7-ping" src="../_images/lab7-ping.png" />
+<em>Figure 186: Ping is successful</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pings are passing because the <strong><code class="docutils literal notranslate"><span class="pre">Allow-all</span></code></strong> rule on the Firewall is permitting traffic from any zone to any zone to pass.</p>
+</div>
+<p>Back on the PAN firewall, click on the <code class="docutils literal notranslate"><span class="pre">Monitor</span></code> tab. Then paste this string in the filter bar and hit <strong>Enter</strong>, which will apply the filter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>addr<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">192</span>.168.1.100<span class="o">)</span>
+</pre></div>
+</div>
+<p><img alt="lab7-monitor" src="../_images/lab7-monitor2.png" />
+<em>Figure 187: Monitor on the PaloAlto</em></p>
+<p>Traffic is passing through firewall because <strong><em>azure-us-west-spoke1</em></strong> and <strong><em>azure-us-west-spoke2</em></strong> both are in the <strong>Inspection Policy</strong>.</p>
+</section>
+</section>
+<section id="azure-to-gcp">
+<h2>5.2. Azure to GCP<a class="headerlink" href="#azure-to-gcp" title="Permalink to this heading">#</a></h2>
+<p>While on <strong><em>azure-us-west-spoke1-test1</em></strong>, ping <strong><em>gcp-us-central1-spoke1-test1</em></strong>.</p>
+<p><img alt="lab7-pinggcp" src="../_images/lab7-pinggcp.png" />
+<em>Figure 188: Ping GCP</em></p>
+<p>This still matches the <strong><code class="docutils literal notranslate"><span class="pre">Allow-all</span></code></strong> firewall rule. Moreover, it works because of the Connection Policy we had configured in the <strong>Network Segmentation</strong> Lab.</p>
+<p>Back on the PAN firewall, click the <strong>refresh</strong> button in the top-right corner to see the log entries for pinging the GCP spoke test VM.</p>
+<p><img alt="lab7-finalmonitor" src="../_images/lab7-finalmonitor.png" />
+<em>Figure 189: Monitoring traffic towards GCP</em></p>
+<p>After completing this Lab, the overall topology would look like this:</p>
+<p><img alt="lab7-finaltopology2" src="../_images/lab7-finaltopology2.png" />
+<em>Figure 190: Final Topology for Lab 7</em></p>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -362,7 +604,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Lab 6 - EGRESS</p>
       </div>
     </a>
     <a class="right-next"
@@ -370,7 +612,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">LAB 8 - SITE2CLOUD</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -391,9 +633,26 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-overview-firewall-nework">2. FireNet Overview (Firewall Nework)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-transit-to-spoke-peering">4.1. Azure Transit to Spoke Peering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pan-firewall-deployment">4.2. PAN Firewall Deployment</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-configuration">4.3. Firewall Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-vendor-integration">4.4. Firewall Vendor Integration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-routes-installed-on-firewall">4.5. Verify Routes Installed on Firewall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-policy">4.6. FireNet Policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#within-azure">5.1. Within Azure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#luanch-connectivity-test">5.1.1 Luanch connectivity test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-to-gcp">5.2. Azure to GCP</a></li>
+</ul>
   </nav></div>
 
 </div></div>

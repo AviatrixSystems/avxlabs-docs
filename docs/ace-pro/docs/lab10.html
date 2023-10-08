@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; ACE Operations Lab</title>
+    <title>Lab 10 - DISTRIBUTED CLOUD FIREWALL &#8212; ACE Operations Lab</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lab 11 - BONUS/OPTIONAL" href="lab11.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="lab9.html" />
+    <link rel="next" title="Lab 11 - BONUS" href="lab11.html" />
+    <link rel="prev" title="Lab 9 - THREATIQ &amp; THREATGUARD" href="lab9.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,15 +157,21 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs Assignments</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs ASSIGNMENTS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS/OPTIONAL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS/ICONS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slides.html">Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
 </ul>
 
     </div>
@@ -302,7 +308,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Lab 10 - DISTRIBUTED CLOUD FIREWALL</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -311,9 +317,10 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-overview">2. Distributed Cloud Firewall Overview</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -324,7 +331,35 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-10-distributed-cloud-firewall">
+<h1>Lab 10 - DISTRIBUTED CLOUD FIREWALL<a class="headerlink" href="#lab-10-distributed-cloud-firewall" title="Permalink to this heading">#</a></h1>
+<section id="objective">
+<h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<p>This lab will demonstrate how the <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> work.</p>
+</section>
+<section id="distributed-cloud-firewall-overview">
+<h2>2. Distributed Cloud Firewall Overview<a class="headerlink" href="#distributed-cloud-firewall-overview" title="Permalink to this heading">#</a></h2>
+<p>The Distributed Cloud Firewall feature allows to create logical containers, called <code class="docutils literal notranslate"><span class="pre">Smart</span> <span class="pre">Groups</span></code>, that encompass instances that present similarities inside a VPC/VNet/VCN, and then it also allows to enforce rules (aka <strong><em>Distributed Firewalling</em></strong>) within a Smart Group (i.e. the <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code>) or among Smart Groups (i.e. the <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At this point in the lab, there is a unique routing domain (i.e. a <strong><em>Flat Routing Domain</em></strong>), due to the connection policy applied in Lab 3, between the Green domain and the Blue domain.</p>
+</div>
+<p>All the Test instances have been deployed with the typical <ins>CSP tags</ins>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The CSP tagging is the recommended method for defining the SmartGroups.</p>
+</div>
+<p>In this lab you are asked to achieve the following requirements among the instances deployed across the three CSPs:</p>
+<ul class="simple">
+<li><p>Create a Smart Group with the name <code class="docutils literal notranslate"><span class="pre">&quot;bu1&quot;</span></code> leveraging the tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code></p></li>
+<li><p>Create a Smart Group with the name <code class="docutils literal notranslate"><span class="pre">&quot;bu2&quot;</span></code> leveraging the tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code></p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that allows ICMP traffic within bu1</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that allows ICMP traffic within bu2</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> that allows ICMP traffic only from bu1 towards bu2</p></li>
+</ul>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -362,7 +397,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Lab 9 - THREATIQ &amp; THREATGUARD</p>
       </div>
     </a>
     <a class="right-next"
@@ -370,7 +405,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lab 11 - BONUS/OPTIONAL</p>
+        <p class="prev-next-title">Lab 11 - BONUS</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -391,9 +426,10 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-overview">2. Distributed Cloud Firewall Overview</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

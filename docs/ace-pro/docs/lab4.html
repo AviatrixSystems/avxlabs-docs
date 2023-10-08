@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lab 5 - HIGH PERFORMANCE ENCRYPTION WITH ACTIVE MESH" href="lab5.html" />
+    <link rel="next" title="Lab 5 - HPE WITH ACTIVE MESH" href="lab5.html" />
     <link rel="prev" title="Lab 3 - NETWORK SEGMENTATION" href="lab3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -163,8 +163,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 4 - RBAC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HIGH PERFORMANCE ENCRYPTION WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 5 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">LAB 6 - FIRENET</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS/OPTIONAL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS/ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="slides.html">Slides</a></li>
@@ -314,25 +315,25 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. OBJECTIVE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-controller">2. CONFIGURATION: RBAC FOR THE CONTROLLER</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-permission-group">2.1. CREATE A PERMISSION GROUP</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-user">2.2. Create a User</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-controller">2. Configuration: RBAC for the Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-permission-group">2.1. Create a Permission Group</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-user">2.2. Create a new User</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-controller">3. VERIFICATION: RBAC ON THE CONTROLLER</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rback-user-controller-op">3.1. LOG OUT AND LOG BACK IN AS NEW RBACK USER (controller-op)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-test">3.1.1. POSITIVE TEST</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-test">3.1.2. NEGATIVE TEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-controller">3. Verification: RBAC on the Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rback-user-controller-op">3.1. Log out and log back in as new RBACK User (controller-op)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-test">3.1.1. Positive Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-test">3.1.2. Negative Test</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-copilot">4. CONFIGURATION: RBAC FOR THE COPILOT</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1. CREATE A PERMISSION GROUP</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-user">4.2. CREATE A NEW USER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-copilot">4. Configuration: RBAC for the CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-permission-group">4.1. Create a new Permission Group</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2. Create a new User</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-copilot">5. VERIFICATION: RBAC ON THE COPILOT</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rbac-user">5.1. LOG OUT AND LOG BACK IN AS NEW RBAC USER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-copilot">5. Verification: RBAC on the CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rbac-user-copilot-op">5.1. Log out and log back in as new RBAC User (copilot-op)</a></li>
 </ul>
 </li>
 </ul>
@@ -349,7 +350,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="lab-4-rbac">
 <h1>Lab 4 - RBAC<a class="headerlink" href="#lab-4-rbac" title="Permalink to this heading">#</a></h1>
 <section id="objective">
-<h2>1. OBJECTIVE<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
 <p>Implement Role-Based Access Control using Local Authentication both on the <strong>Controller</strong> and on the <strong>CoPilot</strong>.</p>
 <p>You will perform tasks to address the following scenario:</p>
 <ul class="simple">
@@ -362,9 +363,9 @@ document.write(`
 </div>
 </section>
 <section id="configuration-rbac-for-the-controller">
-<h2>2. CONFIGURATION: RBAC FOR THE CONTROLLER<a class="headerlink" href="#configuration-rbac-for-the-controller" title="Permalink to this heading">#</a></h2>
+<h2>2. Configuration: RBAC for the Controller<a class="headerlink" href="#configuration-rbac-for-the-controller" title="Permalink to this heading">#</a></h2>
 <section id="create-a-permission-group">
-<h3>2.1. CREATE A PERMISSION GROUP<a class="headerlink" href="#create-a-permission-group" title="Permalink to this heading">#</a></h3>
+<h3>2.1. Create a Permission Group<a class="headerlink" href="#create-a-permission-group" title="Permalink to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Administration &gt; User Access &gt; Permission Group</strong></p>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">“+Permission</span> <span class="pre">Group”</span></code>.</p>
 <p><img alt="lab4-pgcopilot" src="../_images/lab4-pgcopilot.png" />
@@ -378,8 +379,8 @@ document.write(`
 <p><img alt="lab4-dropdown1" src="../_images/lab4-controlleroperators.png" />
 <em>Figure 91: “controller-operators” Permission group</em></p>
 </section>
-<section id="create-a-user">
-<h3>2.2. Create a User<a class="headerlink" href="#create-a-user" title="Permalink to this heading">#</a></h3>
+<section id="create-a-new-user">
+<h3>2.2. Create a new User<a class="headerlink" href="#create-a-new-user" title="Permalink to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Administration &gt; User Access &gt; Users</strong></p>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">“+User”</span></code>.</p>
 <p><img alt="lab4-user" src="../_images/lab4-user.png" />
@@ -404,9 +405,9 @@ document.write(`
 </section>
 </section>
 <section id="verification-rbac-on-the-controller">
-<h2>3. VERIFICATION: RBAC ON THE CONTROLLER<a class="headerlink" href="#verification-rbac-on-the-controller" title="Permalink to this heading">#</a></h2>
+<h2>3. Verification: RBAC on the Controller<a class="headerlink" href="#verification-rbac-on-the-controller" title="Permalink to this heading">#</a></h2>
 <section id="log-out-and-log-back-in-as-new-rback-user-controller-op">
-<h3>3.1. LOG OUT AND LOG BACK IN AS NEW RBACK USER (controller-op)<a class="headerlink" href="#log-out-and-log-back-in-as-new-rback-user-controller-op" title="Permalink to this heading">#</a></h3>
+<h3>3.1. Log out and log back in as new RBACK User (controller-op)<a class="headerlink" href="#log-out-and-log-back-in-as-new-rback-user-controller-op" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>Controller</strong> and then hover over the user icon in the top-right corner and click on <strong>Sign out</strong>.</p>
 <p><img alt="lab4-signbout" src="../_images/lab4-signout.png" />
 <em>Figure 96: Sign out</em></p>
@@ -418,7 +419,7 @@ document.write(`
 <em>Figure 98: RBAC sign-in</em></p>
 </section>
 <section id="positive-test">
-<h3>3.1.1. POSITIVE TEST<a class="headerlink" href="#positive-test" title="Permalink to this heading">#</a></h3>
+<h3>3.1.1. Positive Test<a class="headerlink" href="#positive-test" title="Permalink to this heading">#</a></h3>
 <p>Navigate to <strong>Controller &gt; USEFUL TOOLS &gt; Create a VPC</strong> and click <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Add</span> <span class="pre">New&quot;</span></code></p>
 <p>Create a new VPC as follows (make sure that <strong><em>Aviatrix Transit VPC</em></strong> is not selected).</p>
 <ul class="simple">
@@ -438,7 +439,7 @@ document.write(`
 <em>Figure 100: Successfully created</em></p>
 </section>
 <section id="negative-test">
-<h3>3.1.2. NEGATIVE TEST<a class="headerlink" href="#negative-test" title="Permalink to this heading">#</a></h3>
+<h3>3.1.2. Negative Test<a class="headerlink" href="#negative-test" title="Permalink to this heading">#</a></h3>
 <p>Navigate to <strong>Controller &gt; MULTI-CLOUD TRANSIT &gt; Segmentation</strong> and scroll down to <strong>Step 3, Add / Modify Connection Policy</strong></p>
 <p>Attempt to undo your work in the Network Segmentation Lab, by disconnecting the <span style='color:lightgreen'>Green</span> security domain from the <span style='color:lightblue'>Blue</span> one.</p>
 <p>Select the Green domain first and then click on the <strong>DEL</strong> button.</p>
@@ -454,9 +455,9 @@ document.write(`
 </section>
 </section>
 <section id="configuration-rbac-for-the-copilot">
-<h2>4. CONFIGURATION: RBAC FOR THE COPILOT<a class="headerlink" href="#configuration-rbac-for-the-copilot" title="Permalink to this heading">#</a></h2>
-<section id="id1">
-<h3>4.1. CREATE A PERMISSION GROUP<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h2>4. Configuration: RBAC for the CoPilot<a class="headerlink" href="#configuration-rbac-for-the-copilot" title="Permalink to this heading">#</a></h2>
+<section id="create-a-new-permission-group">
+<h3>4.1. Create a new Permission Group<a class="headerlink" href="#create-a-new-permission-group" title="Permalink to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Administration &gt; User Acces &gt; Permission Group</strong></p>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">Permission</span> <span class="pre">Group”</span></code>.</p>
 <p><img alt="Permission Group" src="../_images/lab4-permission2.png" />
@@ -481,8 +482,8 @@ document.write(`
 <p><img alt="successfully created" src="../_images/lab4-message.png" />
 <em>Figure 106: Successfully created</em></p>
 </section>
-<section id="create-a-new-user">
-<h3>4.2. CREATE A NEW USER<a class="headerlink" href="#create-a-new-user" title="Permalink to this heading">#</a></h3>
+<section id="id1">
+<h3>4.2. Create a new User<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Administration &gt; User Acces &gt; Users</strong></p>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">User”</span></code>.</p>
 <p><img alt="+User" src="../_images/lab4-newuser.png" />
@@ -502,9 +503,9 @@ document.write(`
 </section>
 </section>
 <section id="verification-rbac-on-the-copilot">
-<h2>5. VERIFICATION: RBAC ON THE COPILOT<a class="headerlink" href="#verification-rbac-on-the-copilot" title="Permalink to this heading">#</a></h2>
-<section id="log-out-and-log-back-in-as-new-rbac-user">
-<h3>5.1. LOG OUT AND LOG BACK IN AS NEW RBAC USER<a class="headerlink" href="#log-out-and-log-back-in-as-new-rbac-user" title="Permalink to this heading">#</a></h3>
+<h2>5. Verification: RBAC on the CoPilot<a class="headerlink" href="#verification-rbac-on-the-copilot" title="Permalink to this heading">#</a></h2>
+<section id="log-out-and-log-back-in-as-new-rbac-user-copilot-op">
+<h3>5.1. Log out and log back in as new RBAC User (copilot-op)<a class="headerlink" href="#log-out-and-log-back-in-as-new-rbac-user-copilot-op" title="Permalink to this heading">#</a></h3>
 <p>Hover over the user icon in the top-right corner and click <strong>Logout</strong>.</p>
 <p><img alt="logout" src="../_images/lab4-logout.png" />
 <em>Figure 109: Log out</em></p>
@@ -572,7 +573,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lab 5 - HIGH PERFORMANCE ENCRYPTION WITH ACTIVE MESH</p>
+        <p class="prev-next-title">Lab 5 - HPE WITH ACTIVE MESH</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -594,25 +595,25 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. OBJECTIVE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-controller">2. CONFIGURATION: RBAC FOR THE CONTROLLER</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-permission-group">2.1. CREATE A PERMISSION GROUP</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-user">2.2. Create a User</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-controller">2. Configuration: RBAC for the Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-permission-group">2.1. Create a Permission Group</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-user">2.2. Create a new User</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-controller">3. VERIFICATION: RBAC ON THE CONTROLLER</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rback-user-controller-op">3.1. LOG OUT AND LOG BACK IN AS NEW RBACK USER (controller-op)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-test">3.1.1. POSITIVE TEST</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-test">3.1.2. NEGATIVE TEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-controller">3. Verification: RBAC on the Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rback-user-controller-op">3.1. Log out and log back in as new RBACK User (controller-op)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-test">3.1.1. Positive Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-test">3.1.2. Negative Test</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-copilot">4. CONFIGURATION: RBAC FOR THE COPILOT</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1. CREATE A PERMISSION GROUP</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-user">4.2. CREATE A NEW USER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-copilot">4. Configuration: RBAC for the CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-permission-group">4.1. Create a new Permission Group</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2. Create a new User</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-copilot">5. VERIFICATION: RBAC ON THE COPILOT</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rbac-user">5.1. LOG OUT AND LOG BACK IN AS NEW RBAC USER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-copilot">5. Verification: RBAC on the CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rbac-user-copilot-op">5.1. Log out and log back in as new RBAC User (copilot-op)</a></li>
 </ul>
 </li>
 </ul>

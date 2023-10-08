@@ -1,6 +1,6 @@
 # Lab 1 - VPCs/VNets Creation
 
-## 1. INTRODUCTION
+## 1. Introduction
 
 In this lab, you will create **3** VPCs/VNets, one in each cloud, i.e., Azure, AWS and GCP. The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).
 
@@ -9,8 +9,8 @@ Refer to your Pod assignment for CoPilot login information, as depicted below. C
 ![Portal](images/lab1-portal.png)
 _Figure 3: POD portal_
 
-## 2. AZURE VNET
-### 2.1. CREATE AZURE VNET
+## 2. Azure VNet
+### 2.1. Create Azure VNet
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
@@ -48,13 +48,13 @@ From the CoPilot search bar, type `“task”` and then click the search result 
 ![vnet-3](images/lab1-vnet5.png)
 _Figure 8: Notification_
 
-### 2.2. VERIFY FROM AZURE PORTAL
+### 2.2. Verify from Azure Portal
 
 Log into the <a href="https://portal.azure.com/#home" target="_blank">Azure portal</a>. Refer to your pod info for login information.
 
 Once you are logged in, navigate to `Virtual Networks`.
 
-Be sure to filter your `Subscription` <ins>by your pod number</ins>, for example, for Pod 22, filter by `csp_azure_shared_ace_labs_22`.
+Be sure to filter your `Subscription` <ins>by your pod number</ins>, for example, for Pod 22 filter by `csp_azure_shared_ace_labs_22`.
 
 ![vnet-4](images/lab1-vnet6.png)
 _Figure 9: Azure portal_
@@ -71,7 +71,7 @@ _Figure 11: Route tables_
 
 ## 3. AWS VPC
 
-### 3.1. CREATE AWS VPC
+### 3.1. Create AWS VPC
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and click on the button `“+ VPC/VNET”`.
 
@@ -104,7 +104,7 @@ You can filter by CIDR `10.0.22.0/24`.
 ![vpc-3](images/lab1-vpc4.png)
 _Figure 15: Verification_
 
-### 3.2. VERIFY FROM AWS CONSOLE
+### 3.2. Verify from AWS Console
 
 Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for **Pod 100**):
 
@@ -123,7 +123,7 @@ Here, also, you can see the eight route tables that the Controller created. They
 
 ## 4. GCP VPC
 
-### 4.1. CREATE GCP VPC
+### 4.1. Create GCP VPC
 
 Go to **CoPilot > Cloud Resources > Cloud Assets >** Click on the button `“+ VPC/VNET”`.
 

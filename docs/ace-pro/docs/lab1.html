@@ -163,6 +163,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 5 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">LAB 6 - FIRENET</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS/OPTIONAL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS/ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="slides.html">Slides</a></li>
@@ -312,19 +315,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. INTRODUCTION</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-vnet">2. AZURE VNET</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-azure-vnet">2.1. CREATE AZURE VNET</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-azure-portal">2.2. VERIFY FROM AZURE PORTAL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-vnet">2. Azure VNet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-azure-vnet">2.1. Create Azure VNet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-azure-portal">2.2. Verify from Azure Portal</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-vpc">3. AWS VPC</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-aws-vpc">3.1. CREATE AWS VPC</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">3.2. VERIFY FROM AWS CONSOLE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-aws-vpc">3.1. Create AWS VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">3.2. Verify from AWS Console</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gcp-vpc">4. GCP VPC</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gcp-vpc">4.1. CREATE GCP VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gcp-vpc">4.1. Create GCP VPC</a></li>
 </ul>
 </li>
 </ul>
@@ -341,16 +344,16 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="lab-1-vpcs-vnets-creation">
 <h1>Lab 1 - VPCs/VNets Creation<a class="headerlink" href="#lab-1-vpcs-vnets-creation" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>1. INTRODUCTION<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>In this lab, you will create <strong>3</strong> VPCs/VNets, one in each cloud, i.e., Azure, AWS and GCP. The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).</p>
 <p>Refer to your Pod assignment for CoPilot login information, as depicted below. Click on the URL of the CoPilot and log in using the credentials assigned to your POD.</p>
 <p><img alt="Portal" src="../_images/lab1-portal.png" />
 <em>Figure 3: POD portal</em></p>
 </section>
 <section id="azure-vnet">
-<h2>2. AZURE VNET<a class="headerlink" href="#azure-vnet" title="Permalink to this heading">#</a></h2>
+<h2>2. Azure VNet<a class="headerlink" href="#azure-vnet" title="Permalink to this heading">#</a></h2>
 <section id="create-azure-vnet">
-<h3>2.1. CREATE AZURE VNET<a class="headerlink" href="#create-azure-vnet" title="Permalink to this heading">#</a></h3>
+<h3>2.1. Create Azure VNet<a class="headerlink" href="#create-azure-vnet" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong>.</p>
 <p>Verify if the CIDR range <code class="docutils literal notranslate"><span class="pre">192.168.12.0/24</span></code> is overlapping, as shown below.</p>
 <p><img alt="vnet-0" src="../_images/lab1-vnet1.png" />
@@ -378,10 +381,10 @@ document.write(`
 <em>Figure 8: Notification</em></p>
 </section>
 <section id="verify-from-azure-portal">
-<h3>2.2. VERIFY FROM AZURE PORTAL<a class="headerlink" href="#verify-from-azure-portal" title="Permalink to this heading">#</a></h3>
+<h3>2.2. Verify from Azure Portal<a class="headerlink" href="#verify-from-azure-portal" title="Permalink to this heading">#</a></h3>
 <p>Log into the <a href="https://portal.azure.com/#home" target="_blank">Azure portal</a>. Refer to your pod info for login information.</p>
 <p>Once you are logged in, navigate to <code class="docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Networks</span></code>.</p>
-<p>Be sure to filter your <code class="docutils literal notranslate"><span class="pre">Subscription</span></code> <ins>by your pod number</ins>, for example, for Pod 22, filter by <code class="docutils literal notranslate"><span class="pre">csp_azure_shared_ace_labs_22</span></code>.</p>
+<p>Be sure to filter your <code class="docutils literal notranslate"><span class="pre">Subscription</span></code> <ins>by your pod number</ins>, for example, for Pod 22 filter by <code class="docutils literal notranslate"><span class="pre">csp_azure_shared_ace_labs_22</span></code>.</p>
 <p><img alt="vnet-4" src="../_images/lab1-vnet6.png" />
 <em>Figure 9: Azure portal</em></p>
 <p>Once in the VNet you just created, navigate to <code class="docutils literal notranslate"><span class="pre">Subnets</span></code>. Explore all the constructs that were created in Central US.</p>
@@ -395,7 +398,7 @@ document.write(`
 <section id="aws-vpc">
 <h2>3. AWS VPC<a class="headerlink" href="#aws-vpc" title="Permalink to this heading">#</a></h2>
 <section id="create-aws-vpc">
-<h3>3.1. CREATE AWS VPC<a class="headerlink" href="#create-aws-vpc" title="Permalink to this heading">#</a></h3>
+<h3>3.1. Create AWS VPC<a class="headerlink" href="#create-aws-vpc" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong> and click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
 <p><img alt="vpc-1" src="../_images/lab1-vpc1.png" />
 <em>Figure 12: VPC creation</em></p>
@@ -420,7 +423,7 @@ document.write(`
 <em>Figure 15: Verification</em></p>
 </section>
 <section id="verify-from-aws-console">
-<h3>3.2. VERIFY FROM AWS CONSOLE<a class="headerlink" href="#verify-from-aws-console" title="Permalink to this heading">#</a></h3>
+<h3>3.2. Verify from AWS Console<a class="headerlink" href="#verify-from-aws-console" title="Permalink to this heading">#</a></h3>
 <p>Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for <strong>Pod 100</strong>):</p>
 <p><img alt="vpc-4" src="../_images/lab1-vpc5.png" />
 <em>Figure 16: AWS console</em></p>
@@ -434,7 +437,7 @@ document.write(`
 <section id="gcp-vpc">
 <h2>4. GCP VPC<a class="headerlink" href="#gcp-vpc" title="Permalink to this heading">#</a></h2>
 <section id="create-gcp-vpc">
-<h3>4.1. CREATE GCP VPC<a class="headerlink" href="#create-gcp-vpc" title="Permalink to this heading">#</a></h3>
+<h3>4.1. Create GCP VPC<a class="headerlink" href="#create-gcp-vpc" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt;</strong> Click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
 <p><img alt="gcp-1" src="../_images/lab1-gcp1.png" />
 <em>Figure 17: VPC creation</em></p>
@@ -533,19 +536,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. INTRODUCTION</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-vnet">2. AZURE VNET</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-azure-vnet">2.1. CREATE AZURE VNET</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-azure-portal">2.2. VERIFY FROM AZURE PORTAL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-vnet">2. Azure VNet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-azure-vnet">2.1. Create Azure VNet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-azure-portal">2.2. Verify from Azure Portal</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-vpc">3. AWS VPC</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-aws-vpc">3.1. CREATE AWS VPC</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">3.2. VERIFY FROM AWS CONSOLE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-aws-vpc">3.1. Create AWS VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">3.2. Verify from AWS Console</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gcp-vpc">4. GCP VPC</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gcp-vpc">4.1. CREATE GCP VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gcp-vpc">4.1. Create GCP VPC</a></li>
 </ul>
 </li>
 </ul>

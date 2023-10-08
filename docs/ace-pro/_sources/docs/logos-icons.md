@@ -1,4 +1,4 @@
-# LOGOS/ICONS
+# LOGOS-ICONS
 
 Use these logos and icons for your designs.
 

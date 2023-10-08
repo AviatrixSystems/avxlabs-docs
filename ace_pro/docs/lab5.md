@@ -1,16 +1,16 @@
-# Lab 5 - HIGH PERFORMANCE ENCRYPTION WITH ACTIVE MESH
+# Lab 5 - HPE WITH ACTIVE MESH
 
-## 1. OBJECTIVE
+## 1. Objective
 
-In this lab, we will demonstrate Active/Active communication between the resources utilizing high performance encryption (**large number of A/A tunnels**) between Aviatrix Gateways (Spoke-to-Transit & Transit-to-Transit).
+In this lab, we will demonstrate Active/Active communication between the resources utilizing high performance encryption (*aka `Insane Mode`* - **large number of A/A tunnels**) between Aviatrix Gateways (Spoke-to-Transit & Transit-to-Transit).
 
-## 1. HIGH PERFORMANCE ENCRYPTION AND ACTIVEMESH OVERVIEW
+## 2. High Performance Encryption and ActiveMesh
 
 Encryption in Cloud could be a compliance, security or business requirement. Hybrid cloud connectivity and in the cloud communication is untrusted. Aviatrix HPE provides high performance end-end encryption from on-prem (private/public connections) to the cloud walled-gardens, between the regions and clouds. It can also help overcome native constructs routing scalability challenges.
 
 Aviatrix ActiveMesh technology provides network resiliency, better convergence and high performance. Both Aviatrix gateways in transit and spoke VPC/VNet/VCNs forward traffic simultaneously. It helps enterprises in traffic engineering and provides deterministic next hop based on path-selection algorithm.
 
-## 1. TOPOLOGY
+## 3. Topology
 
 In this lab we will configure the pending attachment between the Spoke Gateways in aws-us-east1-spoke1 and the Transit Gateways in aws-us-east1-transit, and the peering between the Transit Gateways aws-us-east1-transit and the Transit Gateways in aws-us-east2-transit. The Gateways in AWS region us-east-1 are pre-configured with HPE (High Performance Encryption, also known as Insane Mode) and AWS us-east2 region was configured in Lab 3.
 
@@ -21,9 +21,9 @@ _Figure 111: Lab 5 Topology_
 Please keep in mind that the Spoke Gateway in **azure-us-west-spoke2** VPC will still remain unattached in this lab!
 ```
 
-## 4. HIGH PERFORMANCE ENCRYPTION CONFIGURATION
+## 4. High Performance Encryption Configuration
  
-### 4.1. COPILOT VIEW BEFORE BEGINNING
+### 4.1. CoPilot View before starting
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
@@ -34,7 +34,7 @@ Verify aws-us-east-1 has a Transit gateway and a Spoke gateway that are not yet 
 ![lab5-topology2](images/lab5-topologycopilot.png)
 _Figure 112: CoPilot view_
 
-### 4.2. TRANSIT-SPOKE ATTACHMENT
+### 4.2. Transti-Spoke Attachment
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **aws-us-east1-spoke** clicking on the pencil icon:
 
@@ -46,7 +46,7 @@ Select the Transit Gateway **aws-us-east1-transit** from the drop-down window fr
 ![lab5-topology4](images/lab5-editspoke2.png)
 _Figure 114: Attachment_
 
-## 4.3. COPILOT VIEW AFTER TRANSIT-SPOKE ATTACHMENT
+## 4.3. CoPilot View after Transit-Spoke Attachment
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
@@ -59,7 +59,7 @@ Wait a handful of minutes and then refresh the page, in order to see the changes
 ![lab5-topology5](images/lab5-copilotview.png)
 _Figure 115: Attachment on the CoPilot_
 
-## 4.4. TRANSIT PEERING CONFIGURATION
+## 4.4. Transit Peerings Configuration
 
 Here you will configure Transit Peering between aws-us-east1 and aws-us-east2.
 
@@ -77,7 +77,7 @@ Select the Transit Gateway **_aws-us-east2-transit_** from the drop-down window 
 ![lab5-topology7](images/lab5-peering2.png)
 _Figure 115: Peering_
 
-### 4.4.1. TRANSIT PEERING VERIFICATION
+### 4.4.1. Transit Peerings Verification
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gatewasy **_aws-us-east1-transit_**, select the `"Gateway Routes"` tab and check the route **10.0.1.0/24** for instance.
 
@@ -115,9 +115,9 @@ _Figure 117: CoPilot Topology View_
 The actual configuration of High Performance Encryption was done when the gateways were created before this lab.
 ```
 
-## 5. HIGH PERFORMANCE ENCRYPTION VERIFICATION
+## 5. High Performance Encryption Verification
 
-### 5.1. COPILOT VERIFICATION OF THE VPC PEERINGS (Transit-Transit and Spoke-Transit)
+### 5.1. CoPilot Verification of the VPC Peerings(Transit-Transit and Spoke-Transit)
 
 HPE automatically creates an underlying VPC Peering attachment within AWS. Verify it on the CoPilot.
 
@@ -131,16 +131,16 @@ Click on any VPC peerings to expand its properties on the right side.
 ![lab5-native2](images/lab5-native.png)
 _Figure 119: Native Peerings Properties_
 
-## 5.2. COPILOT VERIFICATION OF HPE
+## 5.2. CoPilot Verification of HPE
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gatewasy **_aws-us-east1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. These tunnels are used with the Spoke Gateway aws-us-east1-spoke and the Transit Gateway aws-us-east2-transit, because HPE is also enable on these gateways:
 
 ![lab5-ipip](images/lab5-ipip.png)
 _Figure 120: Interface Stats_
 
-## 6. ACTIVEMESH
+## 6. ActiveMesh
 
-### 6.1. COPILOT VERIFICATION OF ACTIVEMESH
+### 6.1. CoPilot Verification of ActiveMesh
 
 Go to **CoPilot > Diagnostics > Cloud Routes > VPC/VNet Routes**
 
@@ -170,7 +170,7 @@ _Figure 124: RFC1918 routes pointing towards the Second Spoke GW_
 
 As you can see, Active/Active is achieved within a VPC as well. Each gateway is active on the Availability Zone where it resides.
  
-## 6.2. CONNECTIVITY TEST OF ACTIVEMESH (Pt.1)
+## 6.2. Connectivity test of ActiveMesh (Pt.1)
 
 Test the EC2 instances in two subnets are pointing to two different routing tables. If one gateway goes down, the controller will switch the ENI of the available gateway in the routing table.
 
@@ -178,7 +178,7 @@ SSH into both EC2 test instances in **_aws-us-east1-spoke1_** VPC (refer to your
 
 Ping the EC2 test instance (10.0.1.100) in aws-us-east2-spoke1. It will fail. **WHY?** Because we didn’t enable segmentation on **_aws-us-east1-transit_** and associate **_aws-us-east1-spoke1_** with the transit gateway in the appropriate network domain.
  
-### 6.2.1 ENABLE SEGMENTATION
+### 6.2.1 Enable Segmentation
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains > Transit Gateways**
 
@@ -187,7 +187,7 @@ Enable Segmentation on **_aws-us-east1-transit_**:
 ![lab5-enable](images/lab5-enable.png)
 _Figure 125: Enable Segmentation_
 
-### 6.2.2. ASSOCIATE AVIATRIX SPOKE TO NETWORK DOMAIN
+### 6.2.2. Associate Aviatrix Spoke to the Network Domain
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains**
 
@@ -196,7 +196,7 @@ Associate **_aws-us-east1-spoke1_** with its transit in the <span style='color:l
 ![lab5-green](images/lab5-green.png)
 _Figure 125: Association_
 
-## 6.3. CONNECTIVITY TEST OF ACTIVEMESH (Pt.2)
+## 6.3. Connectivity test of ActiveMesh (Pt.2)
 
 Now SSH to the **_aws-us-east1-spoke1-test1_** in AWS US-East1 and launch ping towards **_aws-us-east2-spoke1-test1_** in AWS US-East2.
 
@@ -256,7 +256,7 @@ After this lab, this is how the overall topology would look like:
 ![lab5-final](images/lab5-finaltopo.png)
 _Figure 133: Final Topology for Lab 5_
 
-## 7. FLIGHTPATH
+## 7. FlightPath
 
  Go to **CoPilot > Diagnostics > AppIQ > FlightPath**
 
@@ -314,6 +314,5 @@ The test instances in aws-us-east1-spoke1 are not able to communicate with the t
 
 You can verify this with the Gateway routing table on the **CoPilot > Diagnostics > Cloud Routes > Gateway Routes > aws-us-east1-transit**. You will not see the GCP Spoke routes of **_172.16.1.0/24_**., for instance.
 
-Why is that?
+- Why is that?
 What would be needed to make those routes visible?
-

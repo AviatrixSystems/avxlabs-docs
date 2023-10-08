@@ -163,6 +163,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 3 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 5 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">LAB 6 - FIRENET</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS/OPTIONAL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS/ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="slides.html">Slides</a></li>
@@ -312,20 +315,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. OBJECTIVE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-overview">2. NETWORK SEGMENTATION OVERVIEW</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. TOPOLOGY</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. CONFIGURATION</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-transit-gateways">4.1. AVIATRIX TRANSIT GATEWAYS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-overview">2. Network Segmentation Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-transit-gateways">4.1. Aviatrix Transit Gateways</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domains">4.2 NETWORK DOMAINS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-segment-attachments">5. VERIFICATION OF SEGMENT ATTACHMENTS</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification">5.1. COPILOT VERIFICATION</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domains">4.2 Network Domains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-segment-attachments">5. Verification of Segment Attachments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification">5.1. CoPilot Verification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-policy">6. CONNECTION POLICY</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-the-connection-policy">6.1. VERIFICATION OF THE CONNECTION POLICY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-policy">6. Connection Policy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-connection-policy">6.1. Verification of Connection Policy</a></li>
 </ul>
 </li>
 </ul>
@@ -342,7 +345,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="lab-3-network-segmentation">
 <h1>Lab 3 - NETWORK SEGMENTATION<a class="headerlink" href="#lab-3-network-segmentation" title="Permalink to this heading">#</a></h1>
 <section id="objective">
-<h2>1. OBJECTIVE<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
 <p>Implement network segmentation between workloads across multi-cloud and on-premises environments using network domains.</p>
 <p>Green VPC resources in AWS and Azure can communicate with each other, while access is restricted to Blue VPC resources in GCP. Later, we will ease this restriction with a connection policy; Blue and Green segments will be able to communicate with others as well.</p>
 <div class="admonition note">
@@ -351,20 +354,20 @@ document.write(`
 </div>
 </section>
 <section id="network-segmentation-overview">
-<h2>2. NETWORK SEGMENTATION OVERVIEW<a class="headerlink" href="#network-segmentation-overview" title="Permalink to this heading">#</a></h2>
+<h2>2. Network Segmentation Overview<a class="headerlink" href="#network-segmentation-overview" title="Permalink to this heading">#</a></h2>
 <p>Enterprises can define their network domains (aka segments) and group VNets/VPCs/VCNs with similar security policies without requiring firewall solutions.</p>
 <p>Aviatrix transit and spokes architecture help (aka <em>Hub &amp; Spoke</em> architecture) enterprises create customised segments and onboard branches, partners and customers in their respective segments so no partner can communicate with each other unless desired.</p>
 </section>
 <section id="topology">
-<h2>3. TOPOLOGY<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
+<h2>3. Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
 <p>In this lab, we will use Aviatrix CoPilot to enable Network Segmentation in Azure, AWS and GCP, in order to segregate VPC/VNet with similarities. At this point, there is a flat routing domain and the communication among the three CSPs occurs through the Transit Core Backbone layer.</p>
 <p><img alt="lab3-topology" src="../_images/lab3-topology.png" />
 <em>Figure 69: Topology for Lab 3</em></p>
 </section>
 <section id="configuration">
-<h2>4. CONFIGURATION<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<h2>4. Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
 <section id="aviatrix-transit-gateways">
-<h3>4.1. AVIATRIX TRANSIT GATEWAYS<a class="headerlink" href="#aviatrix-transit-gateways" title="Permalink to this heading">#</a></h3>
+<h3>4.1. Aviatrix Transit Gateways<a class="headerlink" href="#aviatrix-transit-gateways" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains &gt; Transit Gateways</strong>:</p>
 <p><img alt="lab3-transit" src="../_images/lab3-enabletransit.png" />
 <em>Figure 70: Enable the feature</em></p>
@@ -374,13 +377,13 @@ document.write(`
 </section>
 </section>
 <section id="network-domains">
-<h2>4.2 NETWORK DOMAINS<a class="headerlink" href="#network-domains" title="Permalink to this heading">#</a></h2>
+<h2>4.2 Network Domains<a class="headerlink" href="#network-domains" title="Permalink to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains &gt; + Network Domain</strong></p>
 <p><img alt="lab3-nd" src="../_images/lab3-networkdomain.png" />
 <em>Figure 72: Network Domain creation</em></p>
 <p>Create two network domains (Green and Blue) and associate them to their respective Spokes as follows:</p>
 <ul class="simple">
-<li><p><span style='color:lightgreen'>Green</span> - azure-us-west-spoke1 (do not select azure-us-west-<strong>spoke2</strong>)</p></li>
+<li><p><span style='color:lightgreen'>Green</span>- azure-us-west-spoke1 (do not select azure-us-west-<strong>spoke2</strong>)</p></li>
 <li><p><span style='color:lightgreen'>Green</span> - aws-us-east2-spoke1 (do not select aws-us-<strong>east1</strong>-spoke1)</p></li>
 <li><p><span style='color:lightblue'>Blue</span> - gcp-us-central1-spoke1</p></li>
 </ul>
@@ -391,12 +394,12 @@ document.write(`
 <em>Figure 74: Blue network domain</em></p>
 </section>
 <section id="verification-of-segment-attachments">
-<h2>5. VERIFICATION OF SEGMENT ATTACHMENTS<a class="headerlink" href="#verification-of-segment-attachments" title="Permalink to this heading">#</a></h2>
+<h2>5. Verification of Segment Attachments<a class="headerlink" href="#verification-of-segment-attachments" title="Permalink to this heading">#</a></h2>
 <p>This is what the lab topology looks like after enabling network segmentation:</p>
 <p><img alt="lab3-newtopology" src="../_images/lab3-topologywithnd.png" />
 <em>Figure 75: Topology with Network Domains</em></p>
 <section id="copilot-verification">
-<h3>5.1. COPILOT VERIFICATION<a class="headerlink" href="#copilot-verification" title="Permalink to this heading">#</a></h3>
+<h3>5.1. CoPilot Verification<a class="headerlink" href="#copilot-verification" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong></p>
 <p>Verify the segments and the associations as shown below:</p>
 <p><img alt="lab3-verification" src="../_images/lab3-verification.png" />
@@ -430,7 +433,7 @@ document.write(`
 </section>
 </section>
 <section id="connection-policy">
-<h2>6. CONNECTION POLICY<a class="headerlink" href="#connection-policy" title="Permalink to this heading">#</a></h2>
+<h2>6. Connection Policy<a class="headerlink" href="#connection-policy" title="Permalink to this heading">#</a></h2>
 <p>Go to CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</p>
 <p>Click the pencil icon to edit. You can either select the Green domain or the Blue domain.</p>
 <div class="admonition important">
@@ -442,8 +445,8 @@ document.write(`
 <p>Select the appropriate option from the <strong>Connect to Network Domain</strong> pull-down menu (Green shown here). Then click <strong>Save</strong>:</p>
 <p><img alt="lab3-apply" src="../_images/lab3-applycp.png" />
 <em>Figure 84: Apply the connection policy</em></p>
-<section id="verification-of-the-connection-policy">
-<h3>6.1. VERIFICATION OF THE CONNECTION POLICY<a class="headerlink" href="#verification-of-the-connection-policy" title="Permalink to this heading">#</a></h3>
+<section id="verification-of-connection-policy">
+<h3>6.1. Verification of Connection Policy<a class="headerlink" href="#verification-of-connection-policy" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Overview &gt; Logical View</strong></p>
 <p>Now you will see that the spoke gateways in all three clouds are connected. This is because the Blue and Green Network Domains are directly connected:</p>
 <p><img alt="lab3-cpnew" src="../_images/lab3-cpnew.png" />
@@ -535,20 +538,20 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. OBJECTIVE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-overview">2. NETWORK SEGMENTATION OVERVIEW</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. TOPOLOGY</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. CONFIGURATION</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-transit-gateways">4.1. AVIATRIX TRANSIT GATEWAYS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-overview">2. Network Segmentation Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-transit-gateways">4.1. Aviatrix Transit Gateways</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domains">4.2 NETWORK DOMAINS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-segment-attachments">5. VERIFICATION OF SEGMENT ATTACHMENTS</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification">5.1. COPILOT VERIFICATION</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domains">4.2 Network Domains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-segment-attachments">5. Verification of Segment Attachments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification">5.1. CoPilot Verification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-policy">6. CONNECTION POLICY</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-the-connection-policy">6.1. VERIFICATION OF THE CONNECTION POLICY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-policy">6. Connection Policy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-connection-policy">6.1. Verification of Connection Policy</a></li>
 </ul>
 </li>
 </ul>
