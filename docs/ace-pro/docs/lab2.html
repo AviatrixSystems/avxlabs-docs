@@ -158,17 +158,20 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs ASSIGNMENTS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 5 - EGRESS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab7.html">LAB 6 - FIRENET</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS/OPTIONAL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS/ICONS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slides.html">Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
 </ul>
 
     </div>
@@ -375,7 +378,7 @@ document.write(`
 </section>
 <section id="topology">
 <h2>3. Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
-<p>In this lab, as shown in the topology below, we will configure the grey Aviatrix gateways, the grey attachments between Transit-Spoke and the grey peerings betweenTransit-Transit, but only in the following regions:</p>
+<p>In this lab, as shown in the topology below, we will configure the grey Aviatrix gateways, the grey attachments between Transit-Spoke and the grey peerings between Transit-Transit, but only in the following regions:</p>
 <ul class="simple">
 <li><p><strong>AWS</strong>: us-east-2</p></li>
 <li><p><strong>GCP</strong>: us-central-1</p></li>
@@ -427,14 +430,14 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; Dashboard</strong> and click on the widget called <code class="docutils literal notranslate"><span class="pre">&quot;Aviatrix</span> <span class="pre">Gateways&quot;</span></code>. When you begin this lab, you should have <strong>nine</strong> gateways in your pod:</p>
 <p><img alt="dashboard gw" src="../_images/lab2-dashboardgw.png" />
 <em>Figure 28: Commit</em></p>
-<p>Nevertheless, if you go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Overview (default tab)</strong>, you will notice that the number of Transit Gateways is set to <strong>three</strong>, whereas the number of Spoke Gateways is set to <strong>two</strong>:</p>
+<p>Nevertheless, if you go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Overview (default tab)</strong>, you will notice that the number of Transit Gateways is set to <strong>three</strong>, whereas the number of Spoke Gateways is set to <strong>two</strong>.</p>
 <p><img alt="cluster" src="../_images/lab2-cluster.png" />
 <em>Figure 29: Cluster</em></p>
-<p>This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to to the number of clusters, per each type of gateway.</p>
+<p>This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to to the number of <strong><em>clusters</em></strong>, per each type of gateway.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and expand the three drop-down lists. You can find out that there are a total of <strong>six</strong> Transit Gateways (Public IPs may differ):</p>
 <p><img alt="cluster transit gws" src="../_images/lab2-clustertransit.png" />
 <em>Figure 30: Transit GWs Clusters</em></p>
-<p>Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended a “-hagw”; this is imposed by the “aviatrix_transit_gateway” Terraform resource.</p>
+<p>Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended a <code class="docutils literal notranslate"><span class="pre">&quot;-hagw&quot;</span></code>; this is imposed by the <strong><em>“aviatrix_transit_gateway”</em></strong> Terraform resource.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can deploy up to maximum <strong>two</strong> Transit Gateways per each Transit VPC/VNet/VCN.</p>
@@ -466,7 +469,7 @@ document.write(`
 </ul>
 <p><img alt="cluster spoke gws" src="../_images/lab2-transitbutton.png" />
 <em>Figure 32: +Transit Gateway</em></p>
-<p>Deploy Aviatrix Transit Gateways in AWS east-2 region. To save time, Aviatrix Transit Gateways in Azure, GCP and AWS east-1 region have already been pre-deployed in pairs for this lab.</p>
+<p>Deploy Aviatrix Transit Gateways in AWS <strong><em>East-2</em></strong> region. To save time, Aviatrix Transit Gateways in Azure, GCP and AWS east-1 region have already been pre-deployed in pairs for this lab.</p>
 </section>
 <section id="transit-gateway-in-aws-us-east-2">
 <h3>4.1.1.Transit Gateway in AWS US-EAST-2<a class="headerlink" href="#transit-gateway-in-aws-us-east-2" title="Permalink to this heading">#</a></h3>
@@ -596,7 +599,7 @@ document.write(`
 </div>
 <p><img alt="In progress" src="../_images/lab2-inprogress2.png" />
 <em>Figure 41: Deployment in progress</em></p>
-<p>Once all gateways have been created, confirm from <strong>CoPilot &gt; Dashboard</strong> that 14 gateways exist in your environment:</p>
+<p>Once all gateways have been created, confirm from <strong>CoPilot &gt; Dashboard</strong> that <strong>14</strong> gateways exist in your environment:</p>
 <p><img alt="14 gws" src="../_images/lab2-14gws.png" />
 <em>Figure 42: Dashboard</em></p>
 <p>After creating the Transit gateways pair in AWS and the Spoke gateways in each cloud, this is how a portion of the topology would look like.</p>
@@ -622,10 +625,10 @@ document.write(`
 <p>In this section you are going to attach the Aviatrix Spoke Gateways created above in each cloud, to their corresponding Aviatrix Transit Gateways.</p>
 <section id="spoke-to-transit-attachment-in-aws">
 <h3>4.4.1. Spoke to Transit Attachment in AWS<a class="headerlink" href="#spoke-to-transit-attachment-in-aws" title="Permalink to this heading">#</a></h3>
-<p>Go to CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways and edit the Spoke Gateway aws-us-east2-spoke1, clicking on the pencil icon:</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and edit the Spoke Gateway <strong><em>aws-us-east2-spoke1</em></strong>, clicking on the pencil icon:</p>
 <p><img alt="attachment for aws" src="../_images/lab2-spokeinawstotransit.png" />
 <em>Figure 46: Attachment for AWS</em></p>
-<p>Select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong> from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code> field, and then click on <strong>Save</strong>.</p>
+<p>Select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code>, and then click on <strong>Save</strong>.</p>
 <p><img alt="edit spoke in aws" src="../_images/lab2-editspokeinaws.png" />
 <em>Figure 47: Edit Spoke in AWS</em></p>
 <p>You will see immediately a message informing that the updating is in progress.</p>
@@ -640,7 +643,7 @@ document.write(`
 <p>Edit the Spoke Gateway <strong><em>azure-us-west-spoke1</em></strong> (not the <strong>spoke2</strong>), clicking on the pencil icon.</p>
 <p><img alt="edit spoke in azure" src="../_images/lab2-editspokeinazure.png" />
 <em>Figure 49: Edit spoke in Azure</em></p>
-<p>Select the Transit Gateway <strong><em>azure-us-west-transit</em></strong> from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code> field, and then click on <strong>Save</strong>.</p>
+<p>Select the Transit Gateway <strong><em>azure-us-west-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code>, and then click on <strong>Save</strong>.</p>
 <p><img alt="edit azure" src="../_images/lab2-editazure.png" />
 <em>Figure 50: Attachment in Azure</em></p>
 </section>
@@ -652,7 +655,7 @@ document.write(`
 <p>Edit the Spoke Gateway <strong><em>gcp-us-central-spoke1</em></strong>, clicking on the pencil icon:</p>
 <p><img alt="edit spoke in gcp" src="../_images/lab2-editspokeingcp.png" />
 <em>Figure 51: Edit spoke in GCP</em></p>
-<p>Select the Transit Gateway <strong><em>gcp-us-central1-transit</em></strong> from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code> field, and then click on <strong>Save</strong>.</p>
+<p>Select the Transit Gateway <strong><em>gcp-us-central1-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code>, and then click on <strong>Save</strong>.</p>
 <p><img alt="edit GCP" src="../_images/lab2-editgcp.png" />
 <em>Figure 52: Attachment in GCP</em></p>
 <p>Look for these three confirmations through the task icon, before proceeding.</p>
@@ -673,7 +676,7 @@ document.write(`
 <p>Now, verify the spoke-transit attachments. You can see the dotted lines connecting the 3 spoke gateways to their respective transits.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Be patient, it will take some minutes before seeing the changes reflected into the topology. Refresh the page to see the change reflected on the map!</p>
+<p>Be patient, it will take some minutes before seeing the changes reflected into the topology. Refresh the web page to see the change reflected on the map!</p>
 </div>
 <p><img alt="attachment" src="../_images/lab2-attachment.png" />
 <em>Figure 55: Attachments</em></p>
@@ -685,7 +688,7 @@ document.write(`
 <p>In this section you are going to establish the peerings among the Aviatrix Transit Gateways.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Transit peering is bi-directional. You do not need to configure peering in the opposite direction.</p>
+<p>Transit peering is bidirectional. You do not need to configure peering in the opposite direction.</p>
 </div>
 <p>Go back to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong></p>
 <section id="aws-and-azure">
@@ -696,7 +699,7 @@ document.write(`
 <p>Edit the Transit Gateway <strong><em>aws-us-east2-transit</em></strong>, clicking on the pencil icon:</p>
 <p><img alt="edit transit in aws" src="../_images/lab2-edittransitinaws.png" />
 <em>Figure 56: Edit Transit in AWS</em></p>
-<p>Select the Transit Gateway <strong><em>azure-us-west-transit</em></strong> from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code> field, and then click on <strong>Save</strong>.</p>
+<p>Select the Transit Gateway <strong><em>azure-us-west-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code>, and then click on <strong>Save</strong>.</p>
 <p><img alt="peering aws-azure" src="../_images/lab2-peeringawsazure.png" />
 <em>Figure 56: Peering AWS-Azure</em></p>
 </section>
@@ -708,7 +711,7 @@ document.write(`
 <p>Edit the Transit Gateway <strong><em>azure-us-west-transit</em></strong>, clicking on the pencil icon:</p>
 <p><img alt="edit azure" src="../_images/lab2-edittransitinazure.png" />
 <em>Figure 57: Edit Transit in Azure</em></p>
-<p>Select the Transit Gateway <strong><em>gcp-us-central1-transit</em></strong> from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code> field, and then click on <strong>Save</strong>.</p>
+<p>Select the Transit Gateway <strong><em>gcp-us-central1-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code>, and then click on <strong>Save</strong>.</p>
 <p><img alt="peering azure-gcp" src="../_images/lab2-peeringawsazure.png" />
 <em>Figure 58: Peering Azure-GCP</em></p>
 </section>
@@ -720,7 +723,7 @@ document.write(`
 <p>Edit the Transit Gateway <strong><em>gcp-us-central1-transit</em></strong>, clicking on the pencil icon:</p>
 <p><img alt="edit transit in gcp" src="../_images/lab2-editgcp2.png" />
 <em>Figure 59: Edit Transit in GCP</em></p>
-<p>Select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong> (<ins>not the east1 !</ins>) from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code> field, and then click on <strong>Save</strong>.</p>
+<p>Select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong> (<ins>not the east1 !</ins>) from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code>, and then click on <strong>Save</strong>.</p>
 <p><img alt="peering GCP-AWS" src="../_images/lab2-peeringgcpaws.png" />
 <em>Figure 60: Peering GCP-AWS</em></p>
 <p>At this point, this is what the overall topology would look like:</p>
@@ -741,7 +744,7 @@ document.write(`
 <h2>5. Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h2>
 <section id="verification-of-transit-peerings-on-copilot-cloud-fabric">
 <h3>5.1. Verification of Transit Peerings on CoPilot(Cloud Fabric)<a class="headerlink" href="#verification-of-transit-peerings-on-copilot-cloud-fabric" title="Permalink to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong>, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Connections&quot;</span></code> tab and finally select the <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Transit</span> <span class="pre">Peering&quot;</span></code> sub-tab:</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong>, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Connections&quot;</span></code> tab and finally select the <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Transit</span> <span class="pre">Peering&quot;</span></code> sub-tab: you will see <strong>four</strong> connections per each peering, that correspond to the <code class="docutils literal notranslate"><span class="pre">four</span> <span class="pre">IPSec</span> <span class="pre">tunnels</span></code>.</p>
 <p><img alt="verification" src="../_images/lab2-verification.png" />
 <em>Figure 61: Verification</em></p>
 </section>
@@ -760,11 +763,11 @@ document.write(`
 </section>
 <section id="route-info-db">
 <h3>5.3. Route Info DB<a class="headerlink" href="#route-info-db" title="Permalink to this heading">#</a></h3>
-<p>Route Info DB is similar to Routing Information Base (RIB). It will provide the overall routing information of a Transit Gateway known by the CoPilot</p>
+<p>Route Info DB is similar to <em>Routing Information Base (RIB)</em>. It will provide the overall routing information of a Transit Gateway known by the CoPilot</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong>:</p>
 <p><img alt="explore transit in aws" src="../_images/lab2-transitaws.png" />
 <em>Figure 64: Explore Transit in AWS</em></p>
-<p>Then select the “Route DB” tab.
+<p>Then select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab.
 Pay special attention to <code class="docutils literal notranslate"><span class="pre">“Best</span> <span class="pre">Routes”</span></code>, its prefixes, type and metric value:</p>
 <p><img alt="rib" src="../_images/lab2-rib.png" />
 <em>Figure 65: Route DB</em></p>
@@ -774,7 +777,8 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <h2>5.4. Connectivity<a class="headerlink" href="#connectivity" title="Permalink to this heading">#</a></h2>
 <p>Verify each test instance can ping each other.</p>
 <p>Open three terminal windows to SSH to the public IPs of the 3 spoke test instances/VMs in each cloud.</p>
-<p>Then ping the private IPs of each other to test the Multi-Cloud connectivity. <ins>Refer to your pod portal for the private IPs or retrieve the private IPs from the topology</ins>.</p>
+<p>Then ping the <strong>private</strong> IPs of each other to test the Multi-Cloud connectivity.</p>
+<p><ins>Refer to your pod portal for the private IPs or retrieve the private IPs from the topology</ins>.</p>
 <ul class="simple">
 <li><p>SSH into aws-us-<strong>east2</strong>-spoke1-test1 (ssh student&#64;public_ip)</p></li>
 <li><p>SSH into azure-us-west-spoke1-test1 (ssh student&#64;public_ip)</p></li>

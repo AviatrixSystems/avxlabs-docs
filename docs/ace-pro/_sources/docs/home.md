@@ -38,8 +38,13 @@ This information is provided separately before the start of the labs inside a de
 
 At the start of Day 1 of the class, each student will be given a POD with the following topology.
 
-![initial](images/home-topology.png)
-_Figure 1: Initial Topology_
+```{figure} images/home-topology.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
 
 By the end of **Day 3**, each student will be able to deploy and verify the following Multicloud Topology, including the following use cases:
 
@@ -57,8 +62,13 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 - Distributed Cloud Firewall
 - Multi-Tier Transit
 
-![initial](images/home-finaltopology.png)
-_Figure 2: Full-Blown MCNA_
+```{figure} images/home-finaltopology.png
+---
+height: 400px
+align: center
+---
+Full-Blown MCNA
+```
 
 ```{note}
 Throughout the labs, you will notice some additional pre-configured constructs, which will be utilised in the later labs. Please pay special attention to selecting the right region, gateway or VPC/VNet.

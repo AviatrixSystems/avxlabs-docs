@@ -16,7 +16,7 @@ Additionally, Aviatrix gives you a single, centralised location from which to tr
  
 ## 3. Topology
 
-In this lab, as shown in the topology below, we will configure the grey Aviatrix gateways, the grey attachments between Transit-Spoke and the grey peerings betweenTransit-Transit, but only in the following regions:
+In this lab, as shown in the topology below, we will configure the grey Aviatrix gateways, the grey attachments between Transit-Spoke and the grey peerings between Transit-Transit, but only in the following regions:
 
 - **AWS**: us-east-2
 - **GCP**: us-central-1
@@ -81,19 +81,19 @@ Go to **CoPilot > Dashboard** and click on the widget called `"Aviatrix Gateways
 ![dashboard gw](images/lab2-dashboardgw.png)
 _Figure 28: Commit_
 
-Nevertheless, if you go to **CoPilot > Cloud Fabric > Gateways > Overview (default tab)**, you will notice that the number of Transit Gateways is set to **three**, whereas the number of Spoke Gateways is set to **two**:
+Nevertheless, if you go to **CoPilot > Cloud Fabric > Gateways > Overview (default tab)**, you will notice that the number of Transit Gateways is set to **three**, whereas the number of Spoke Gateways is set to **two**.
 
 ![cluster](images/lab2-cluster.png)
 _Figure 29: Cluster_
 
-This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to to the number of clusters, per each type of gateway.
+This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to to the number of **_clusters_**, per each type of gateway.
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and expand the three drop-down lists. You can find out that there are a total of **six** Transit Gateways (Public IPs may differ):
 
 ![cluster transit gws](images/lab2-clustertransit.png)
 _Figure 30: Transit GWs Clusters_
 
-Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended a "-hagw"; this is imposed by the "aviatrix_transit_gateway" Terraform resource.
+Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended a `"-hagw"`; this is imposed by the **_"aviatrix_transit_gateway"_** Terraform resource.
 
 ```{note}
 You can deploy up to maximum **two** Transit Gateways per each Transit VPC/VNet/VCN.
@@ -129,7 +129,7 @@ Please pay close attention to each step, as a misconfiguration could result in *
 ![cluster spoke gws](images/lab2-transitbutton.png)
 _Figure 32: +Transit Gateway_
 
-Deploy Aviatrix Transit Gateways in AWS east-2 region. To save time, Aviatrix Transit Gateways in Azure, GCP and AWS east-1 region have already been pre-deployed in pairs for this lab.
+Deploy Aviatrix Transit Gateways in AWS **_East-2_** region. To save time, Aviatrix Transit Gateways in Azure, GCP and AWS east-1 region have already been pre-deployed in pairs for this lab.
 
 ### 4.1.1.Transit Gateway in AWS US-EAST-2
 
@@ -275,7 +275,7 @@ You can see the progress of gateway deployment at any time by expanding the task
 ![In progress](images/lab2-inprogress2.png)
 _Figure 41: Deployment in progress_
 
-Once all gateways have been created, confirm from **CoPilot > Dashboard** that 14 gateways exist in your environment:
+Once all gateways have been created, confirm from **CoPilot > Dashboard** that **14** gateways exist in your environment:
 
 ![14 gws](images/lab2-14gws.png)
 _Figure 42: Dashboard_
@@ -307,12 +307,12 @@ In this section you are going to attach the Aviatrix Spoke Gateways created abov
  
 ### 4.4.1. Spoke to Transit Attachment in AWS
 
-Go to CoPilot > Cloud Fabric > Gateways > Spoke Gateways and edit the Spoke Gateway aws-us-east2-spoke1, clicking on the pencil icon:
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_aws-us-east2-spoke1_**, clicking on the pencil icon:
 
 ![attachment for aws](images/lab2-spokeinawstotransit.png)
 _Figure 46: Attachment for AWS_
 
-Select the Transit Gateway **_aws-us-east2-transit_** from the drop-down window from the `"Attach To Transit Gateway"` field, and then click on **Save**.
+Select the Transit Gateway **_aws-us-east2-transit_** from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
 
 ![edit spoke in aws](images/lab2-editspokeinaws.png)
 _Figure 47: Edit Spoke in AWS_
@@ -331,7 +331,7 @@ Edit the Spoke Gateway **_azure-us-west-spoke1_** (not the **spoke2**), clicking
 ![edit spoke in azure](images/lab2-editspokeinazure.png)
 _Figure 49: Edit spoke in Azure_
 
-Select the Transit Gateway **_azure-us-west-transit_** from the drop-down window from the `"Attach To Transit Gateway"` field, and then click on **Save**.
+Select the Transit Gateway **_azure-us-west-transit_** from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
 
 ![edit azure](images/lab2-editazure.png)
 _Figure 50: Attachment in Azure_
@@ -345,7 +345,7 @@ Edit the Spoke Gateway **_gcp-us-central-spoke1_**, clicking on the pencil icon:
 ![edit spoke in gcp](images/lab2-editspokeingcp.png)
 _Figure 51: Edit spoke in GCP_
 
-Select the Transit Gateway **_gcp-us-central1-transit_** from the drop-down window from the `"Attach To Transit Gateway"` field, and then click on **Save**.
+Select the Transit Gateway **_gcp-us-central1-transit_** from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
 
 ![edit GCP](images/lab2-editgcp.png)
 _Figure 52: Attachment in GCP_
@@ -371,7 +371,7 @@ Go to **CoPilot > Cloud Fabric > Topology > Overview**
 Now, verify the spoke-transit attachments. You can see the dotted lines connecting the 3 spoke gateways to their respective transits.
 
 ```{tip}
-Be patient, it will take some minutes before seeing the changes reflected into the topology. Refresh the page to see the change reflected on the map!
+Be patient, it will take some minutes before seeing the changes reflected into the topology. Refresh the web page to see the change reflected on the map!
 ```
 
 ![attachment](images/lab2-attachment.png)
@@ -385,7 +385,7 @@ _Figure 55: Expanded Topology_
 In this section you are going to establish the peerings among the Aviatrix Transit Gateways.
 
 ```{tip}
-Transit peering is bi-directional. You do not need to configure peering in the opposite direction.
+Transit peering is bidirectional. You do not need to configure peering in the opposite direction.
 ```
 
 Go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
@@ -399,7 +399,7 @@ Edit the Transit Gateway **_aws-us-east2-transit_**, clicking on the pencil icon
 ![edit transit in aws](images/lab2-edittransitinaws.png)
 _Figure 56: Edit Transit in AWS_
 
-Select the Transit Gateway **_azure-us-west-transit_** from the drop-down window from the `"Peer To Transit Gateways"` field, and then click on **Save**.
+Select the Transit Gateway **_azure-us-west-transit_** from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
 
 ![peering aws-azure](images/lab2-peeringawsazure.png)
 _Figure 56: Peering AWS-Azure_
@@ -413,7 +413,7 @@ Edit the Transit Gateway **_azure-us-west-transit_**, clicking on the pencil ico
 ![edit azure](images/lab2-edittransitinazure.png)
 _Figure 57: Edit Transit in Azure_
 
-Select the Transit Gateway **_gcp-us-central1-transit_** from the drop-down window from the `"Peer To Transit Gateways"` field, and then click on **Save**.
+Select the Transit Gateway **_gcp-us-central1-transit_** from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
 
 ![peering azure-gcp](images/lab2-peeringawsazure.png)
 _Figure 58: Peering Azure-GCP_
@@ -427,7 +427,7 @@ Edit the Transit Gateway **_gcp-us-central1-transit_**, clicking on the pencil i
 ![edit transit in gcp](images/lab2-editgcp2.png)
 _Figure 59: Edit Transit in GCP_
 
-Select the Transit Gateway **_aws-us-east2-transit_** (<ins>not the east1 !</ins>) from the drop-down window from the `"Peer To Transit Gateways"` field, and then click on **Save**.
+Select the Transit Gateway **_aws-us-east2-transit_** (<ins>not the east1 !</ins>) from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
 
 ![peering GCP-AWS](images/lab2-peeringgcpaws.png)
 _Figure 60: Peering GCP-AWS_
@@ -449,7 +449,7 @@ Please pay close attention that the following pending elements will be completed
  
 ### 5.1. Verification of Transit Peerings on CoPilot(Cloud Fabric)
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east2-transit_**, then select the `"Connections"` tab and finally select the `"Transit-Transit Peering"` sub-tab:
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east2-transit_**, then select the `"Connections"` tab and finally select the `"Transit-Transit Peering"` sub-tab: you will see **four** connections per each peering, that correspond to the `four IPSec tunnels`.
 
 ![verification](images/lab2-verification.png)
 _Figure 61: Verification_
@@ -472,14 +472,14 @@ _Figure 63: Expanded Topology_
 
 ### 5.3. Route Info DB
 
-Route Info DB is similar to Routing Information Base (RIB). It will provide the overall routing information of a Transit Gateway known by the CoPilot
+Route Info DB is similar to *Routing Information Base (RIB)*. It will provide the overall routing information of a Transit Gateway known by the CoPilot
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east2-transit_**:
 
 ![explore transit in aws](images/lab2-transitaws.png)
 _Figure 64: Explore Transit in AWS_
 
-Then select the "Route DB" tab. 
+Then select the `"Route DB"` tab. 
 Pay special attention to `“Best Routes”`, its prefixes, type and metric value:
 
 ![rib](images/lab2-rib.png)
@@ -491,7 +491,9 @@ Verify each test instance can ping each other.
 
 Open three terminal windows to SSH to the public IPs of the 3 spoke test instances/VMs in each cloud.
 
-Then ping the private IPs of each other to test the Multi-Cloud connectivity. <ins>Refer to your pod portal for the private IPs or retrieve the private IPs from the topology</ins>.
+Then ping the **private** IPs of each other to test the Multi-Cloud connectivity. 
+
+<ins>Refer to your pod portal for the private IPs or retrieve the private IPs from the topology</ins>.
 
 - SSH into aws-us-**east2**-spoke1-test1 (ssh student@public_ip)
 - SSH into azure-us-west-spoke1-test1 (ssh student@public_ip)

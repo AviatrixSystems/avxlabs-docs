@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="LAB 6 - FIRENET" href="lab7.html" />
+    <link rel="next" title="Lab 7 - FIRENET" href="lab7.html" />
     <link rel="prev" title="Lab 5 - HPE WITH ACTIVE MESH" href="lab5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -158,15 +158,17 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs ASSIGNMENTS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 6 - EGRESS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab7.html">LAB 6 - FIRENET</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab8.html">LAB 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
@@ -405,7 +407,7 @@ document.write(`
 <section id="inspect-the-private-rtb">
 <h3>4.2 Inspect the Private RTB<a class="headerlink" href="#inspect-the-private-rtb" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>As soon as the Egress Control is enabled, a <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Route</span></code> is injected inside the Private RTBs. Verify its presence in any Private RTBs inside the <strong><em>aws-us-east2-spoke1</em></strong> VPC.</p></li>
+<li><p>As soon as the Egress Control is enabled, a <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Route</span></code> is injected inside solely the Private RTBs (Public RTBs are not impacted, whereby, they will continue to have the defaulte route pointing towards the Native CSP IGW). Verify its presence in any Private RTBs inside the <strong><em>aws-us-east2-spoke1</em></strong> VPC.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -421,16 +423,16 @@ document.write(`
 <section id="generate-traffic">
 <h3>4.3 Generate Traffic<a class="headerlink" href="#generate-traffic" title="Permalink to this heading">#</a></h3>
 <p>From the <strong><em>aws-us-east2-spoke1-test2</em></strong> instance, try to curl the following websites:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.aviatrix.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.wikipedia.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://ww.espn.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.facebook.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.facebook.com
 </pre></div>
 </div>
 <p><img alt="lab6-generatetraffic" src="../_images/lab6-generatetraffic.png" />
@@ -456,7 +458,7 @@ document.write(`
 <p><img alt="lab6-greenfield" src="../_images/lab6-greenfield.png" />
 <em>Figure 149: Greenfield-Rule</em></p>
 <ul class="simple">
-<li><p>Apply the <code class="docutils literal notranslate"><span class="pre">&quot;Any-Web&quot;</span></code> Web Group and <code class="docutils literal notranslate"><span class="pre">&quot;Logging&quot;</span></code> to the Greenfield-Rule, in order to activate the Observabiliy for the Egress traffic, likewise the <code class="docutils literal notranslate"><span class="pre">&quot;Monitor&quot;</span></code> feature section within the Distributed Cloud Firewall</p></li>
+<li><p>Apply the <code class="docutils literal notranslate"><span class="pre">&quot;Any-Web&quot;</span></code> <strong>Predefined</strong> Web Group and <code class="docutils literal notranslate"><span class="pre">&quot;Logging&quot;</span></code> to the Greenfield-Rule, in order to activate the Observabiliy for the Egress traffic, likewise the <code class="docutils literal notranslate"><span class="pre">&quot;Monitor&quot;</span></code> feature section within the Distributed Cloud Firewall</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -464,7 +466,7 @@ document.write(`
 </div>
 <p><img alt="lab6-pencil" src="../_images/lab6-pencil.png" />
 <em>Figure 150: Pencil icon</em></p>
-<p>Then go to the <code class="docutils literal notranslate"><span class="pre">&quot;WebGroups&quot;</span></code> field and select the <strong>Any-Web</strong>. Moreover, enable the <code class="docutils literal notranslate"><span class="pre">&quot;Logging&quot;</span></code> turning on the corresponding knob. Do not forget to click on <strong>Save in Drafts</strong>.</p>
+<p>Then go to the <code class="docutils literal notranslate"><span class="pre">&quot;WebGroups&quot;</span></code> field and select the <strong>Any-Web</strong> WebGroup. Moreover, enable the <code class="docutils literal notranslate"><span class="pre">&quot;Logging&quot;</span></code> turning on the corresponding knob. Do not forget to click on <strong>Save in Drafts</strong>.</p>
 <p><img alt="lab6-geditgreen" src="../_images/lab6-editgreen.png" />
 <em>Figure 151: Edit Greenfield-Rule</em></p>
 <p>The modified Greenfield-Rule will remain in <em>Draft state</em> until you do not push on the <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> button.</p>
@@ -473,17 +475,21 @@ document.write(`
 <ul class="simple">
 <li><p>Launch again the following curl commands from the instance <strong><em>aws-us-east2-spoke1-test2</em></strong>.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.aviatrix.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>htps://www.aviatrix.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.wikipedia.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.espn.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.facebook.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.facebook.com
 </pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Bear in mind that <strong>ICMP</strong> protocol will be not allowed with the current DCF rules configuration!</p>
 </div>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Overview (default)</strong></p>
 <p>Now you have finally the egress observability with a full list of domains hit by the EC2 instance inside the private subnet.</p>
@@ -505,17 +511,17 @@ document.write(`
 <em>Figure 155: + WebGroups</em></p>
 <p>Create a <strong><em>WebGroup</em></strong> with the following parameters:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#33ECFF'>allow-specific-domains</span></p></li>
-<li><p><strong>Type</strong>: <span style='color:#33ECFF'>Domains</span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>allow-specific-urls</span></p></li>
+<li><p><strong>Type</strong>: <span style='color:#33ECFF'>URLs</span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'><a class="reference external" href="https://www.aviatrix.com">https://www.aviatrix.com</a></span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'><a class="reference external" href="https://www.wikipedia.com">https://www.wikipedia.com</a></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <p><img alt="lab6-webgroup2" src="../_images/lab6-webgroup2.png" />
 <em>Figure 156: WebGroup creation</em></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The purpose of this <strong>WebGroup</strong> is to authorize traffic only towards both <em><a class="reference external" href="http://www.aviatix.com">www.aviatix.com</a></em> and <em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em>, therefore the curl commands issued towards <em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em> and <em><a class="reference external" href="http://www.facebook.com">www.facebook.com</a></em> will be blocked.</p>
+<p>The purpose of this <strong>WebGroup</strong> is to authorize traffic only towards both the URLs <em><a class="reference external" href="https://www.aviatix.com">https://www.aviatix.com</a></em> and <em><a class="reference external" href="https://www.wikipedia.com">https://www.wikipedia.com</a></em>, therefore the curl commands issued towards other URLs will be blocked.</p>
 </div>
 </section>
 <section id="create-a-new-dcf-rule">
@@ -523,12 +529,13 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; Security Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <p>Create a new <strong><em>DCF rule</em></strong> with the following parameters:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#33ECFF'>allow-two-domains</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>allow-two-urls</span></p></li>
 <li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p></li>
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>Public Internet</span></p></li>
-<li><p><strong>WebGroups</strong>: <span style='color:#33ECFF'>allow-specific-domains</span></p></li>
+<li><p><strong>WebGroups</strong>: <span style='color:#33ECFF'>allow-specific-urls</span></p></li>
 <li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#33ECFF'>Permit</span></p></li>
+<li><p><strong>TLS Decryption</strong>: <span style='color:#33ECFF'>On</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
 <div class="admonition warning">
@@ -540,7 +547,7 @@ document.write(`
 <p>Furthermore, click on the <strong>three dots</strong> symbol on the left-hand side of the <strong><em>Greenfield-Rule</em></strong> and turn off the <code class="docutils literal notranslate"><span class="pre">Enforcement</span></code>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Unenforcing the Greenfield-Rule will restore the Implicit Invisible Deny Rule</p>
+<p>Unenforcing the Greenfield-Rule will restore the <strong>Implicit Invisible Deny Rule</strong>.</p>
 </div>
 <p><img alt="lab6-enforcementoff" src="../_images/lab6-turnoff.png" />
 <em>Figure 157: Enforcement off</em></p>
@@ -553,16 +560,16 @@ document.write(`
 <ul class="simple">
 <li><p>Now launch again the following curl commands from the instance <strong><em>aws-us-east2-spoke1-test2</em></strong>.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.aviatrix.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.wikipedia.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.espn.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.facebook.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.facebook.com
 </pre></div>
 </div>
 <p>You will instanteously noticed that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.facebook.com">www.facebook.com</a></em></strong> will match the <code class="docutils literal notranslate"><span class="pre">&quot;Invisible</span> <span class="pre">Implicit</span> <span class="pre">Deny&quot;</span></code> therefore, it will be dropped.</p>
@@ -617,7 +624,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">LAB 6 - FIRENET</p>
+        <p class="prev-next-title">Lab 7 - FIRENET</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

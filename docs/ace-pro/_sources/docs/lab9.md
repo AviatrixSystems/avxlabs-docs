@@ -134,7 +134,3 @@ Navigate back to **CoPilot > Security > ThreatIQ > Overview**
 ```{note}
 Wait for some minutes, before proceeding with the next action. Furthermore, set the **Time Period** to `"Custom"` and then set the end time a bit farther than your current time:
 ```
-
-
-
-

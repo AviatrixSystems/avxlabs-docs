@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-Implement Role-Based Access Control using Local Authentication both on the **Controller** and on the **CoPilot**.
+Implement **Role-Based Access Control** using Local Authentication both on the **Controller** and on the **CoPilot**.
 
 You will perform tasks to address the following scenario:
 
@@ -33,7 +33,7 @@ Click on **Save**.
 ![lab4-dropdown1](images/lab4-dropdown1.png)
 _Figure 90: Permisionn Group configuration_
 
-In the list of permission groups you should see the new created controller-operators.
+In the list of permission groups you should see the new created **controller-operators**.
 
 ![lab4-dropdown1](images/lab4-controlleroperators.png)
 _Figure 91: "controller-operators" Permission group_
@@ -129,7 +129,7 @@ You should immediately receive an error in the Notifications tray such as this:
 _Figure 102: Error_
 
 ```{attention}
-Before moving to the subsequent section, be sure to sign out as a controller-op and sign back in as a student.
+Before moving to the subsequent section, be sure to sign out as a **controller-op** and sign back in as a **student**.
 ```
 
 ## 4. Configuration: RBAC for the CoPilot
@@ -143,7 +143,7 @@ Click on `“+ Permission Group”`.
 ![Permission Group](images/lab4-permission2.png)
 _Figure 103: New Permission Group_
 
-Ensure to insert the following values inside the pop-up window “Create Permission Group”:
+Ensure to insert the following values inside the pop-up window `“Create Permission Group”`:
 
 - **Name**: <span style='color:lightgreen'>copilot-operators</span>
 - **Users**: <span style='color:lightgreen'>[empty]</span>
@@ -205,7 +205,7 @@ Sign back in as a **copilot-op** with the same password you picked earlier.
 _Figure 110: Log in CoPilot_
 
 ```{attention}
-You will immediately notice that the RBAC feature on the CoPilot is capable to limit to each persona the visbility of the platform, showing only those sections that have been permitted.
+You will immediately notice that the RBAC feature on the CoPilot is capable to limit to each persona the visibility of the platform, showing only those sections that have been permitted.
 
 The user copilot-op can only interact with the Cloud Fabric section (but only with the sub-section Topology, whereby, this user is not authorized to deploy gateways), the Monitor section and the Troubleshoot section.
 

@@ -64,7 +64,7 @@ _Figure 144: Choose the correct VPC_
 
 ### 4.2 Inspect the Private RTB
 
-- As soon as the Egress Control is enabled, a `Default Route` is injected inside the Private RTBs. Verify its presence in any Private RTBs inside the **_aws-us-east2-spoke1_** VPC.
+- As soon as the Egress Control is enabled, a `Default Route` is injected inside solely the Private RTBs (Public RTBs are not impacted, whereby, they will continue to have the defaulte route pointing towards the Native CSP IGW). Verify its presence in any Private RTBs inside the **_aws-us-east2-spoke1_** VPC.
 
 ```{tip}
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs fron the Route table field.
@@ -82,16 +82,16 @@ Now, thanks to the default route, the instance **_aws-us-east2-spoke1-test2_** w
 From the **_aws-us-east2-spoke1-test2_** instance, try to curl the following websites:
 
 ```bash
-curl www.aviatrix.com
+curl https://www.aviatrix.com
 ```
 ```bash
-curl www.wikipedia.com
+curl https://www.wikipedia.com
 ```
 ```bash
-curl www.espn.com
+curl https://ww.espn.com
 ```
 ```bash
-curl www.facebook.com
+curl https://www.facebook.com
 ```
 
 ![lab6-generatetraffic](images/lab6-generatetraffic.png)
@@ -122,7 +122,7 @@ After having enabled the DCF, the `Greendfield-Rule` gets generated automaticall
 ![lab6-greenfield](images/lab6-greenfield.png)
 _Figure 149: Greenfield-Rule_
 
-- Apply the `"Any-Web"` Web Group and `"Logging"` to the Greenfield-Rule, in order to activate the Observabiliy for the Egress traffic, likewise the `"Monitor"` feature section within the Distributed Cloud Firewall
+- Apply the `"Any-Web"` **Predefined** Web Group and `"Logging"` to the Greenfield-Rule, in order to activate the Observabiliy for the Egress traffic, likewise the `"Monitor"` feature section within the Distributed Cloud Firewall
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the pencil icon for editing the **Greenfield-Rule**.
@@ -131,7 +131,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on t
 ![lab6-pencil](images/lab6-pencil.png)
 _Figure 150: Pencil icon_
 
-Then go to the `"WebGroups"` field and select the **Any-Web**. Moreover, enable the `"Logging"` turning on the corresponding knob. Do not forget to click on **Save in Drafts**.
+Then go to the `"WebGroups"` field and select the **Any-Web** WebGroup. Moreover, enable the `"Logging"` turning on the corresponding knob. Do not forget to click on **Save in Drafts**.
 
 ![lab6-geditgreen](images/lab6-editgreen.png)
 _Figure 151: Edit Greenfield-Rule_
@@ -144,16 +144,20 @@ _Figure 152: Commit_
 - Launch again the following curl commands from the instance **_aws-us-east2-spoke1-test2_**.
 
 ```bash
-curl www.aviatrix.com
+curl htps://www.aviatrix.com
 ```
 ```bash
-curl www.wikipedia.com
+curl https://www.wikipedia.com
 ```
 ```bash
-curl www.espn.com
+curl https://www.espn.com
 ```
 ```bash
-curl www.facebook.com
+curl https://www.facebook.com
+```
+
+```{warning}
+Bear in mind that **ICMP** protocol will be not allowed with the current DCF rules configuration!
 ```
 
 Go to **CoPilot > Security > Egress > Overview (default)**
@@ -182,10 +186,10 @@ _Figure 155: + WebGroups_
 
 Create a **_WebGroup_** with the following parameters:
 
-- **Name**: <span style='color:#33ECFF'>allow-specific-domains</span>
-- **Type**: <span style='color:#33ECFF'>Domains</span>
-- **Domains/URLs**: <span style='color:#33ECFF'>www.aviatrix.com</span>
-- **Domains/URLs**: <span style='color:#33ECFF'>www.wikipedia.com</span>
+- **Name**: <span style='color:#33ECFF'>allow-specific-urls</span>
+- **Type**: <span style='color:#33ECFF'>URLs</span>
+- **Domains/URLs**: <span style='color:#33ECFF'>https://www.aviatrix.com</span>
+- **Domains/URLs**: <span style='color:#33ECFF'>https://www.wikipedia.com</span>
 
 Do not forget to click on **Save**.
 
@@ -193,7 +197,7 @@ Do not forget to click on **Save**.
 _Figure 156: WebGroup creation_
 
 ```{important}
-The purpose of this **WebGroup** is to authorize traffic only towards both *www.aviatix.com* and *www.wikipedia.com*, therefore the curl commands issued towards *www.espn.com* and *www.facebook.com* will be blocked.
+The purpose of this **WebGroup** is to authorize traffic only towards both the URLs *https://www.aviatix.com* and *https://www.wikipedia.com*, therefore the curl commands issued towards other URLs will be blocked.
 ```
 
 ### 5.2 Create a New DCF Rule
@@ -202,12 +206,13 @@ Go to **CoPilot > Security Distributed Cloud Firewall > Rules** and click on the
 
 Create a new **_DCF rule_** with the following parameters:
 
-- **Name**: <span style='color:#33ECFF'>allow-two-domains</span>
+- **Name**: <span style='color:#33ECFF'>allow-two-urls</span>
 - **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#33ECFF'>Public Internet</span>
-- **WebGroups**: <span style='color:#33ECFF'>allow-specific-domains</span>
+- **WebGroups**: <span style='color:#33ECFF'>allow-specific-urls</span>
 - **Logging**: <span style='color:#33ECFF'>On</span>
 - **Action**: <span style='color:#33ECFF'>Permit</span>
+- **TLS Decryption**: <span style='color:#33ECFF'>On</span>
 
 Do not forget to click on **Save In Drafts**.
 
@@ -221,7 +226,7 @@ _Figure 157: New Rule_
 Furthermore, click on the **three dots** symbol on the left-hand side of the **_Greenfield-Rule_** and turn off the `Enforcement`.
 
 ```{important}
-Unenforcing the Greenfield-Rule will restore the Implicit Invisible Deny Rule
+Unenforcing the Greenfield-Rule will restore the **Implicit Invisible Deny Rule**.
 ```
 
 ![lab6-enforcementoff](images/lab6-turnoff.png)
@@ -237,16 +242,16 @@ Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** f
 - Now launch again the following curl commands from the instance **_aws-us-east2-spoke1-test2_**.
 
 ```bash
-curl www.aviatrix.com
+curl https://www.aviatrix.com
 ```
 ```bash
-curl www.wikipedia.com
+curl https://www.wikipedia.com
 ```
 ```bash
-curl www.espn.com
+curl https://www.espn.com
 ```
 ```bash
-curl www.facebook.com
+curl https://www.facebook.com
 ```
 
 You will instanteously noticed that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.facebook.com_** will match the `"Invisible Implicit Deny"` therefore, it will be dropped.

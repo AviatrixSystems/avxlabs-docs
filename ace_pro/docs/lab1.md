@@ -4,7 +4,7 @@
 
 In this lab, you will create **3** VPCs/VNets, one in each cloud, i.e., Azure, AWS and GCP. The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).
 
-Refer to your Pod assignment for CoPilot login information, as depicted below. Click on the URL of the CoPilot and log in using the credentials assigned to your POD.
+Refer to your POD assignment for CoPilot login information, as depicted below. Click on the `URL` of the CoPilot and log in using the credentials assigned to your POD.
 
 ![Portal](images/lab1-portal.png)
 _Figure 3: POD portal_
