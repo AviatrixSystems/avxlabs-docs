@@ -89,7 +89,7 @@ _Figure 79: Explore Blue_
 
 Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**
 
-Nodes represent spokes and site2cloud instances. Hover over a node to highlight reachability. Nodes are grouped by colored arcs representing network domains. At this time, only the spoke gateways in Azure and AWS (i.e. Green Network Domain) are connected:
+The nodes depicted in the Logical View represent spokes and site2cloud instances. Hover over a node to highlight reachability. Nodes are grouped by colored arcs representing network domains. At this time, only the spoke gateways in Azure and AWS (i.e. Green Network Domain) are connected:
 
 ![lab3-logicalview](images/lab3-logicalview.png)
 _Figure 80: Logical View_

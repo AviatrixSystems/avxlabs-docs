@@ -86,7 +86,7 @@ Nevertheless, if you go to **CoPilot > Cloud Fabric > Gateways > Overview (defau
 ![cluster](images/lab2-cluster.png)
 _Figure 29: Cluster_
 
-This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to to the number of **_clusters_**, per each type of gateway.
+This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to the number of **_clusters_**, per each type of gateway.
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and expand the three drop-down lists. You can find out that there are a total of **six** Transit Gateways (Public IPs may differ):
 
@@ -472,7 +472,7 @@ _Figure 63: Expanded Topology_
 
 ### 5.3. Route Info DB
 
-Route Info DB is similar to *Routing Information Base (RIB)*. It will provide the overall routing information of a Transit Gateway known by the CoPilot
+Route Info DB is similar to *Routing Information Base (RIB)*. It will provide the overall routing information of a Transit Gateway known by the CoPilot.
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east2-transit_**:
 

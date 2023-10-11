@@ -423,16 +423,16 @@ document.write(`
 <section id="generate-traffic">
 <h3>4.3 Generate Traffic<a class="headerlink" href="#generate-traffic" title="Permalink to this heading">#</a></h3>
 <p>From the <strong><em>aws-us-east2-spoke1-test2</em></strong> instance, try to curl the following websites:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.aviatrix.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.wikipedia.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://ww.espn.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.facebook.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.football.com
 </pre></div>
 </div>
 <p><img alt="lab6-generatetraffic" src="../_images/lab6-generatetraffic.png" />
@@ -475,27 +475,30 @@ document.write(`
 <ul class="simple">
 <li><p>Launch again the following curl commands from the instance <strong><em>aws-us-east2-spoke1-test2</em></strong>.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>htps://www.aviatrix.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.aviatrix.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.wikipedia.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.espn.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.facebook.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.football.com
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Bear in mind that <strong>ICMP</strong> protocol will be not allowed with the current DCF rules configuration!</p>
 </div>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and you will see a total of <strong>4 logs</strong>.</p>
+<p><img alt="lab6-overview" src="../_images/lab6-monitorpermit.png" />
+<em>Figure 153: Monitor: 4 logs</em></p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Overview (default)</strong></p>
 <p>Now you have finally the egress observability with a full list of domains hit by the EC2 instance inside the private subnet.</p>
 <p><img alt="lab6-overview" src="../_images/lab6-overview.png" />
 <em>Figure 153: Overview</em></p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window, select the <strong><em>aws-us-east2-spoke1 VPC</em></strong>.</p>
+<p>Furthermore, go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window, select the <strong><em>aws-us-east2-spoke1 VPC</em></strong>.</p>
 <p><img alt="lab6-monitor" src="../_images/lab6-monitor.png" />
 <em>Figure 154: Monitor</em></p>
 <p>You will get a granular Layer 7 visibility that allows you to get a good understanding of how the egress traffic has been consumed and also allows you to help make decisions on how to potentially optimize that.</p>
@@ -511,17 +514,17 @@ document.write(`
 <em>Figure 155: + WebGroups</em></p>
 <p>Create a <strong><em>WebGroup</em></strong> with the following parameters:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#33ECFF'>allow-specific-urls</span></p></li>
-<li><p><strong>Type</strong>: <span style='color:#33ECFF'>URLs</span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'><a class="reference external" href="https://www.aviatrix.com">https://www.aviatrix.com</a></span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'><a class="reference external" href="https://www.wikipedia.com">https://www.wikipedia.com</a></span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>two-domains</span></p></li>
+<li><p><strong>Type</strong>: <span style='color:#33ECFF'>Domains</span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <p><img alt="lab6-webgroup2" src="../_images/lab6-webgroup2.png" />
 <em>Figure 156: WebGroup creation</em></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The purpose of this <strong>WebGroup</strong> is to authorize traffic only towards both the URLs <em><a class="reference external" href="https://www.aviatix.com">https://www.aviatix.com</a></em> and <em><a class="reference external" href="https://www.wikipedia.com">https://www.wikipedia.com</a></em>, therefore the curl commands issued towards other URLs will be blocked.</p>
+<p>The purpose of this <strong>WebGroup</strong> is to authorize traffic only towards both the Domainss <em><a class="reference external" href="http://www.aviatix.com">www.aviatix.com</a></em> and <em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em>, therefore the curl commands issued towards other Domains will be blocked.</p>
 </div>
 </section>
 <section id="create-a-new-dcf-rule">
@@ -529,13 +532,12 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; Security Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <p>Create a new <strong><em>DCF rule</em></strong> with the following parameters:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#33ECFF'>allow-two-urls</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>allow-domains</span></p></li>
 <li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p></li>
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>Public Internet</span></p></li>
-<li><p><strong>WebGroups</strong>: <span style='color:#33ECFF'>allow-specific-urls</span></p></li>
+<li><p><strong>WebGroups</strong>: <span style='color:#33ECFF'>two-domains</span></p></li>
 <li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#33ECFF'>Permit</span></p></li>
-<li><p><strong>TLS Decryption</strong>: <span style='color:#33ECFF'>On</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
 <div class="admonition warning">
@@ -544,36 +546,56 @@ document.write(`
 </div>
 <p><img alt="lab6-newrule" src="../_images/lab6-newrule.png" />
 <em>Figure 157: New Rule</em></p>
-<p>Furthermore, click on the <strong>three dots</strong> symbol on the left-hand side of the <strong><em>Greenfield-Rule</em></strong> and turn off the <code class="docutils literal notranslate"><span class="pre">Enforcement</span></code>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Unenforcing the Greenfield-Rule will restore the <strong>Implicit Invisible Deny Rule</strong>.</p>
+<ul class="simple">
+<li><p><strong>Anywhere (0.0.0.0/0)</strong> = 3x RFC1918’s routes + Default Route</p></li>
+<li><p><strong>Publlic Internet</strong> = Default Route</p></li>
+</ul>
 </div>
-<p><img alt="lab6-enforcementoff" src="../_images/lab6-turnoff.png" />
-<em>Figure 157: Enforcement off</em></p>
+<p>Create an <code class="docutils literal notranslate"><span class="pre">Explicit</span> <span class="pre">Deny</span> <span class="pre">Rule</span></code> that will allow to see the logs for the <code class="docutils literal notranslate"><span class="pre">&quot;Denied&quot;</span></code> actions.</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>Explicit-Deny-Rule</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p></li>
+<li><p><strong>WebGroups</strong>: <span style='color:#33ECFF'>Any-Web</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Deny</strong></span></p></li>
+<li><p><strong>Place Rule</strong>: <span style='color:#33ECFF'>Below</span></p>
+<ul>
+<li><ul>
+<li><p><strong>Existing Rule</strong>: <span style='color:#33ECFF'>allow-domains</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<p><img alt="lab6-newrule" src="../_images/lab6-explicitdeny.png" />
+<em>Figure 157: New Rule</em></p>
 <ul class="simple">
 <li><p>Now you can proceed and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> button.</p></li>
 </ul>
-<p><img alt="lab6-finalcommit" src="../_images/lab6-finalcommit.png" />
+<p><img alt="lab6-finalcommit" src="../_images/lab6-newcommit.png" />
 <em>Figure 158: Commit</em></p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the <strong><em>Live View</em></strong> from the <code class="docutils literal notranslate"><span class="pre">&quot;Time</span> <span class="pre">Period&quot;</span></code> field, then select the <strong><em>aws-us-east2-spoke1</em></strong> VPC from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window.</p>
 <ul class="simple">
 <li><p>Now launch again the following curl commands from the instance <strong><em>aws-us-east2-spoke1-test2</em></strong>.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.aviatrix.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.wikipedia.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.espn.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.facebook.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.football.com
 </pre></div>
 </div>
-<p>You will instanteously noticed that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.facebook.com">www.facebook.com</a></em></strong> will match the <code class="docutils literal notranslate"><span class="pre">&quot;Invisible</span> <span class="pre">Implicit</span> <span class="pre">Deny&quot;</span></code> therefore, it will be dropped.</p>
-<p><img alt="lab6-allowed" src="../_images/lab6-okfinal.png" />
+<p>You will instanteously noticed that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong> will match the <code class="docutils literal notranslate"><span class="pre">&quot;Explicit</span>&#160; <span class="pre">Deny</span> <span class="pre">Rule&quot;</span></code> therefore, it will be dropped.</p>
+<p><img alt="lab6-allowed" src="../_images/lab6-liveview.png" />
 <em>Figure 159: Allowed</em></p>
 </section>
 </section>

@@ -82,16 +82,16 @@ Now, thanks to the default route, the instance **_aws-us-east2-spoke1-test2_** w
 From the **_aws-us-east2-spoke1-test2_** instance, try to curl the following websites:
 
 ```bash
-curl https://www.aviatrix.com
+curl www.aviatrix.com
 ```
 ```bash
-curl https://www.wikipedia.com
+curl www.wikipedia.com
 ```
 ```bash
-curl https://ww.espn.com
+curl www.espn.com
 ```
 ```bash
-curl https://www.facebook.com
+curl www.football.com
 ```
 
 ![lab6-generatetraffic](images/lab6-generatetraffic.png)
@@ -144,21 +144,26 @@ _Figure 152: Commit_
 - Launch again the following curl commands from the instance **_aws-us-east2-spoke1-test2_**.
 
 ```bash
-curl htps://www.aviatrix.com
+curl www.aviatrix.com
 ```
 ```bash
-curl https://www.wikipedia.com
+curl www.wikipedia.com
 ```
 ```bash
-curl https://www.espn.com
+curl www.espn.com
 ```
 ```bash
-curl https://www.facebook.com
+curl www.football.com
 ```
 
 ```{warning}
 Bear in mind that **ICMP** protocol will be not allowed with the current DCF rules configuration!
 ```
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and you will see a total of **4 logs**.
+
+![lab6-overview](images/lab6-monitorpermit.png)
+_Figure 153: Monitor: 4 logs_
 
 Go to **CoPilot > Security > Egress > Overview (default)**
 
@@ -167,7 +172,7 @@ Now you have finally the egress observability with a full list of domains hit by
 ![lab6-overview](images/lab6-overview.png)
 _Figure 153: Overview_
 
-Go to **CoPilot > Security > Egress > Monitor** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east2-spoke1 VPC_**.
+Furthermore, go to **CoPilot > Security > Egress > Monitor** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east2-spoke1 VPC_**.
 
 ![lab6-monitor](images/lab6-monitor.png)
 _Figure 154: Monitor_
@@ -186,10 +191,10 @@ _Figure 155: + WebGroups_
 
 Create a **_WebGroup_** with the following parameters:
 
-- **Name**: <span style='color:#33ECFF'>allow-specific-urls</span>
-- **Type**: <span style='color:#33ECFF'>URLs</span>
-- **Domains/URLs**: <span style='color:#33ECFF'>https://www.aviatrix.com</span>
-- **Domains/URLs**: <span style='color:#33ECFF'>https://www.wikipedia.com</span>
+- **Name**: <span style='color:#33ECFF'>two-domains</span>
+- **Type**: <span style='color:#33ECFF'>Domains</span>
+- **Domains/URLs**: <span style='color:#33ECFF'>www.aviatrix.com</span>
+- **Domains/URLs**: <span style='color:#33ECFF'>www.wikipedia.com</span>
 
 Do not forget to click on **Save**.
 
@@ -197,7 +202,7 @@ Do not forget to click on **Save**.
 _Figure 156: WebGroup creation_
 
 ```{important}
-The purpose of this **WebGroup** is to authorize traffic only towards both the URLs *https://www.aviatix.com* and *https://www.wikipedia.com*, therefore the curl commands issued towards other URLs will be blocked.
+The purpose of this **WebGroup** is to authorize traffic only towards both the Domainss *www.aviatix.com* and *www.wikipedia.com*, therefore the curl commands issued towards other Domains will be blocked.
 ```
 
 ### 5.2 Create a New DCF Rule
@@ -206,13 +211,12 @@ Go to **CoPilot > Security Distributed Cloud Firewall > Rules** and click on the
 
 Create a new **_DCF rule_** with the following parameters:
 
-- **Name**: <span style='color:#33ECFF'>allow-two-urls</span>
+- **Name**: <span style='color:#33ECFF'>allow-domains</span>
 - **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#33ECFF'>Public Internet</span>
-- **WebGroups**: <span style='color:#33ECFF'>allow-specific-urls</span>
+- **WebGroups**: <span style='color:#33ECFF'>two-domains</span>
 - **Logging**: <span style='color:#33ECFF'>On</span>
 - **Action**: <span style='color:#33ECFF'>Permit</span>
-- **TLS Decryption**: <span style='color:#33ECFF'>On</span>
 
 Do not forget to click on **Save In Drafts**.
 
@@ -223,18 +227,30 @@ Keep the other parameters with their default values!
 ![lab6-newrule](images/lab6-newrule.png)
 _Figure 157: New Rule_
 
-Furthermore, click on the **three dots** symbol on the left-hand side of the **_Greenfield-Rule_** and turn off the `Enforcement`.
-
 ```{important}
-Unenforcing the Greenfield-Rule will restore the **Implicit Invisible Deny Rule**.
+- **Anywhere (0.0.0.0/0)** = 3x RFC1918's routes + Default Route
+- **Publlic Internet** = Default Route
 ```
 
-![lab6-enforcementoff](images/lab6-turnoff.png)
-_Figure 157: Enforcement off_
+Create an `Explicit Deny Rule` that will allow to see the logs for the `"Denied"` actions.
+
+- **Name**: <span style='color:#33ECFF'>Explicit-Deny-Rule</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
+- **WebGroups**: <span style='color:#33ECFF'>Any-Web</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Deny**</span>
+- **Place Rule**: <span style='color:#33ECFF'>Below</span>
+  - - **Existing Rule**: <span style='color:#33ECFF'>allow-domains</span>
+
+Do not forget to click on **Save In Drafts**.
+
+![lab6-newrule](images/lab6-explicitdeny.png)
+_Figure 157: New Rule_
 
 - Now you can proceed and click on the `"Commit"` button.
 
-![lab6-finalcommit](images/lab6-finalcommit.png)
+![lab6-finalcommit](images/lab6-newcommit.png)
 _Figure 158: Commit_
 
 Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
@@ -242,19 +258,19 @@ Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** f
 - Now launch again the following curl commands from the instance **_aws-us-east2-spoke1-test2_**.
 
 ```bash
-curl https://www.aviatrix.com
+curl www.aviatrix.com
 ```
 ```bash
-curl https://www.wikipedia.com
+curl www.wikipedia.com
 ```
 ```bash
-curl https://www.espn.com
+curl www.espn.com
 ```
 ```bash
-curl https://www.facebook.com
+curl www.football.com
 ```
 
-You will instanteously noticed that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.facebook.com_** will match the `"Invisible Implicit Deny"` therefore, it will be dropped.
+You will instanteously noticed that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the `"Explicit  Deny Rule"` therefore, it will be dropped.
 
-![lab6-allowed](images/lab6-okfinal.png)
+![lab6-allowed](images/lab6-liveview.png)
 _Figure 159: Allowed_

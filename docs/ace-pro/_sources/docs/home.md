@@ -11,7 +11,7 @@ Unless otherwise mentioned, the lab PODs will be available until Friday afternoo
 ## 2. Prerequisites
 
 - You must have an `SSH client` installed on your PC and be comfortable using it.
-- If you cannot SSH from your corporate laptop/desktop, <ins>please use a personal laptop/desktop in the class instead</ins>.
+- If you cannot SSH from your corporate laptop/desktop, <ins>please use a personal laptop/desktop that does not have security outboud restrictions (e.g. port 22 permitted)</ins>.
 - You may be asked to share your desktop on the Zoom call, so please be prepared.
 
 ## 3. Getting Started with the labs

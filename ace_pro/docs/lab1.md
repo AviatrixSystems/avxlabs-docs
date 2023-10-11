@@ -73,7 +73,7 @@ _Figure 11: Route tables_
 
 ### 3.1. Create AWS VPC
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and click on the button `“+ VPC/VNET”`.
+Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and then click on the button `“+ VPC/VNET”`.
 
 ![vpc-1](images/lab1-vpc1.png)
 _Figure 12: VPC creation_
@@ -97,7 +97,7 @@ Monitor the progress of the VPC creation through the hourglass icon.
 ![vpc-3](images/lab1-vpc3.png)
 _Figure 14: Hourglass icon_
 
-Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately.
+Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).
 
 You can filter by CIDR `10.0.22.0/24`.
 
@@ -148,7 +148,7 @@ Make sure there are no white spaces at the beginning or end of the VPC name.
 ![gcp-2](images/lab1-gcp2.png)
 _Figure 18: VPC creation_
 
-Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately.
+Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately(alternatively, refresh the web page for triggering the change).
 
 You can filter by CIDR `172.16.22.0/24`.
 

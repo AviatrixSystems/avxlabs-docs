@@ -28,7 +28,7 @@ Please keep in mind that the Spoke Gateway in **azure-us-west-spoke2** VPC will 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
 ```{important}
-Verify that AWS US-EAST-1 region has a Transit gateway and a Spoke gateway that are not yet connected.
+Verify that AWS US-EAST-1 region has a Transit gateway and a Spoke gateway that are not connected yet.
 ```
 
 ![lab5-topology2](images/lab5-topologycopilot.png)
@@ -110,7 +110,7 @@ This is the topology view from CoPilot at this stage:
 _Figure 117: CoPilot Topology View_
 
 ```{caution}
-The actual configuration of **_High Performance Encryption__**  on both the **_aws-us-east1-transit_** and the **_aws-us-east1-spoke1_** was done when the gateways were created before this lab.
+The actual configuration of **_High Performance Encryption_**  on both the **_aws-us-east1-transit_** and the **_aws-us-east1-spoke1_** was done when the gateways were created before this lab.
 ```
 
 ## 5. High Performance Encryption Verification
@@ -131,7 +131,7 @@ _Figure 119: Native Peerings Properties_
 
 ## 5.2. CoPilot Verification of HPE
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gatewasy **_aws-us-east1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. These tunnels are used with the Spoke Gateway aws-us-east1-spoke1 and the Transit Gateway aws-us-east2-transit, because HPE is also enable on these gateways:
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gatewasy **_aws-us-east1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. These tunnels are used with the Spoke Gateway aws-us-east1-spoke1 and the Transit Gateway aws-us-east2-transit, because HPE is also enabled on these gateways:
 
 ![lab5-ipip](images/lab5-ipip.png)
 _Figure 120: Interface Stats_
