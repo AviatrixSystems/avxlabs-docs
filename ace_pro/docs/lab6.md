@@ -270,7 +270,7 @@ curl www.espn.com
 curl www.football.com
 ```
 
-You will instanteously noticed that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the `"Explicit  Deny Rule"` therefore, it will be dropped.
+You will instanteously noticed that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be dropped.
 
 ![lab6-allowed](images/lab6-liveview.png)
 _Figure 159: Allowed_
