@@ -2,56 +2,76 @@
 
 ## 1. Objective
 
-This lab will demonstrate how `ThreatIQ` and `ThreatGuard` work (both features of the **_Distributed Cloud Firewall_** functionality).
+This lab will demonstrate how `ThreatIQ` and `ThreatGuard` work.
  
 ## 2. ThreatIQ Overview
 
 Aviatrix gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. **FlowIQ** is one. **ThreatIQ** is another. ThreatIQ alerts you on Malicious IPs with bad reputations. These IPs are reported in the ThreatIQ database that CoPilot maintains.
 
+```{important}
+ThreatIQ and ThreatGuard work as soon as a **_Public Subnet Filtering_** gateway is deployed. This is because the PSF gateway intercepts Ingress traffic.
+```
+
 ## 3. Topology
 
-In this lab, we will be using the same topology that was used in Lab 6 with the Egress functionality.
+In this lab, we will deploy a `“PSF"` gateway in AWS US-EAST-1 region.
 
-![lab9-topology](images/lab9-topology.png)
+![lab9-topology](images/lab9-initialtopology.png)
 _Figure 205: Lab 9 Initial Topology_
 
-## 4. Configure ThreaIQ
+## 4. PSF
+### 4.1 Deploy the PSF
 
-### 4.1. SSH to the EC2 instance in AWS US-EAST-2
+Go to **CoPilot > Cloud Fabric > Gateways > Specialty Gateways**, then click on the `“+Gateway"` button and then choose the **Public Subnet Filtering Gateway**.
 
-- SSH to the **_aws-us-east2-spoke1-test2_** instance in AWS aws-us-east2-spoke1 VPC.
+![lab9-topology](images/lab9-psf.png)
+_Figure 205: PSF_
+
+Insert the following parameters:
+- **Name**: <span style='color:#33ECFF'>aws-us-east1-psf</span>
+- **Account**: <span style='color:#33ECFF'>aws-account</span>
+- **Region**: <span style='color:#33ECFF'>us-east-1 (N. Virginia)</span>
+- **VPC**: <span style='color:#33ECFF'>aws-us-east1-spoke1</span>
+- **Instance Size**: <span style='color:#33ECFF'>t2.medium</span>
+- **Attach to Unused Subnet**: <span style='color:#33ECFF'>us-east-1a</span>
+- **Instance Size**: <span style='color:#33ECFF'>aws-us-east1-spoke1-rtb-public-a</span>
+
+Do not forget to click on **Save**.
+
+![lab9-psfcreate](images/lab9-psfcreate.png)
+_Figure 205: PSF template_
+
+![lab9-psfinprogress](images/lab9-psfinprogress.png)
+_Figure 205: PSF template_
 
 ```{warning}
-Bear in mind that the **_aws-us-east2-spoke1-test2_** instance is in a private subnet, therefore, you have first to SSH to an EC2/VM that resides in a public subnet!
+Wait for about **8** minutes for the completion of the PSF depl0yment
 ```
 
-![lab9-ssh](images/lab9-ssh.png)
-_Figure 206: SSH to aws-us-east2-spoke1-test2_
+### 4.2 Verification
 
-- Try launching the following commands from the **_aws-us-east2-spoke1-test2_** instance. 
+- Click on the **PSF** gateway, select the **VPC/VNet Route Tables** and then inspect the **_aviatrix-Aviatrix-Filter-Gateway_** Route Table
 
-```bash
-curl www.aviatrix.com
-```
-```bash
-curl www.firefox.com
-```
-```bash
-curl www.wikipedia.com
-```
+![lab9-psfclick](images/lab9-psfclick.png)
+_Figure 205: PSF template_
 
-![lab9-curl](images/lab9-curl.png)
-_Figure 207: Curl commands_
+![lab9-routetablepsf](images/lab9-routetablepsf.png)
+_Figure 205: PSF template_
 
 ```{note}
-All egress traffic should be allowed, thanks to the `Greenfield-Rule` still in place.
+The subnet with the PSF gateway is a Public Subnet with 0/0 pointing to IGW. No workload instances should be deployed in this subnet.
 ```
 
-4.2. Enable ThreatIQ and ThreatGuard
+- Verify one more routing table that we selected while deploying the PSF Gateway: **_aws-us-east1-spoke1-Public-a_**. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).
+
+![lab9-routetablepsf](images/lab9-routetablepsf2.png)
+_Figure 205: PSF template_
+
+## 5. Enable ThreatIQ and ThreatGuard
 
 Navigate to **CoPilot > Security > ThreatIQ > Configuration**
 
-Click on Send Alert:
+Click on **Send Alert**:
 
 ![lab9-ssh](images/lab9-sendalert.png)
 _Figure 208: Enable ThreatIQ_
@@ -66,7 +86,7 @@ Now click on the `"+ Email Address"` button.
 ![lab9-email](images/lab9-email.png)
 _Figure 210: Email_
 
-Choose an **alias**, insert your **personal email **and then click on **Save**:
+Choose an **alias**, insert your **personal email** and then click on **Save**:
 
 ![lab9-email2](images/lab9-email2.png)
 _Figure 211: Alias and Personal Email_
@@ -88,7 +108,7 @@ Select your email address from the pulldown menu and then click on **Confirm**.
 ![lab9-addjoe](images/lab9-addjoe.png)
 _Figure 214: Add your email_
 
-From this point onwards, if you enter a valid email address, you will receive email notifications about ThreatIQ alerts.
+From this point onwards, if you enter a valid email address, you will receive email notifications about **ThreatIQ** alerts.
 
 Before enabling the blocking, on the far right side, ensure that the **ThreatGuard firewall rules order** is set to `Prepend`.
 
@@ -116,9 +136,11 @@ _Figure 218: Confirm_
 
 Wait for the instructor to provide a malicious IP. Let's call it `<malicious-IP>`. 
 
+```{important}
 <ins>Note down this IP address!</ins>
+```
 
-SSH back to the EC2 instance **_aws-us-east2-spoke1-test2_**
+SSH to the EC2 instance **_aws-us-east1-spoke1-test1_**
 
 - Now test `ThreatGuard` by first issuing this command (make sure to enter **HTTPS**):
 
@@ -126,11 +148,85 @@ SSH back to the EC2 instance **_aws-us-east2-spoke1-test2_**
 curl https://<malicious-IP>
 ```
 
-![lab9-malicious](images/lab9-malicious.png)
+![lab9-malicious](images/lab9-instancetest.png)
 _Figure 219: Curl towards the malicious IP_
 
 Navigate back to **CoPilot > Security > ThreatIQ > Overview**
 
 ```{note}
-Wait for some minutes, before proceeding with the next action. Furthermore, set the **Time Period** to `"Custom"` and then set the end time a bit farther than your current time:
+**Wait for some minutes**, before proceeding with the next action. Furthermore, set the **Time Period** to `"Custom"` and then set the end time a bit farther than your current time:
 ```
+
+![lab9-custom](images/lab9-custom.png)
+_Figure 219: Curl towards the malicious IP_
+
+You should see the IP in the table at the bottom. You can filter based on the destination IP address (insert the malicious IP address):
+
+![lab9-threat](images/lab9-threat.png)
+_Figure 219: Curl towards the malicious IP_
+
+![lab9-threat2](images/lab9-threat2.png)
+_Figure 219: Curl towards the malicious IP_
+
+Afterwards, click on VIEW under the column Details.
+
+```{note}
+The IP we selected might not be deemed a threat when you read this.
+```
+
+![lab9-view](images/lab9-view.png)
+_Figure 219: Curl towards the malicious IP_
+
+![lab9-view2](images/lab9-view2.png)
+_Figure 219: Curl towards the malicious IP_
+
+Then select **Threat Summary** and pinpoint the metadata "tag" to determine how ThreatIQ has classified this IP.
+
+![lab9-view2](images/lab9-tor.png)
+_Figure 219: Curl towards the malicious IP_
+
+### 5.1. Example of ThreatGuard in action
+
+Navigate to  **CoPilot > Security > ThreatIQ > Configuration**
+
+```{note}
+The CoPilot UI frequently changes, and what you see below may differ from your experience. 
+```
+
+- Click on **VIEW** under the column View Rules:
+
+![lab9-viewrules](images/lab9-viewrules.png)
+_Figure 219: Curl towards the malicious IP_
+
+Filter based on the malicious IP (both on **source** address and **destination** address): you will find out that ThreatGuard applied the enforcement `"force-drop"` in both directions.
+
+![lab9-forcesource](images/lab9-force.png)
+_Figure 219: Curl towards the malicious IP_
+
+![lab9-forcesource2](images/lab9-force2.png)
+_Figure 219: Curl towards the malicious IP_
+
+Now try issuing the same curl command once again.
+
+![lab9-failed](images/lab9-failed.png)
+_Figure 219: Curl towards the malicious IP_
+
+ThreatGuard has successfully blocked the malicious IP!
+
+```{warning}
+Before ending this lab, remove your email from the notification list!
+```
+
+Navigate to **CoPilot > Monitor > Notifications > Alerts Configuration**
+
+Click on the pencil icon for editing the configured alert named `"ThreatIQ Alert"`:
+
+![lab9-notification2](images/lab9-notification2.png)
+_Figure 219: Curl towards the malicious IP_
+
+- Remove the recipient that is identified based on the alias that you chose before, then click on **Save**.
+
+ThreatIQ will immediately stop sending the alerts to your personal email:
+
+![lab9-joe](images/lab9-joe.png)
+_Figure 219: Curl towards the malicious IP_
