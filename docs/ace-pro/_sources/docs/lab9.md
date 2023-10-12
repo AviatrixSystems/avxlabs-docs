@@ -230,3 +230,8 @@ ThreatIQ will immediately stop sending the alerts to your personal email:
 
 ![lab9-joe](images/lab9-joe.png)
 _Figure 219: Curl towards the malicious IP_
+
+After this lab, this is how the overall topology would look like:
+
+![lab9-finaltopology](images/lab9-final.png)
+_Figure 88:  Final topology for Lab 9_

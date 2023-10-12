@@ -224,7 +224,7 @@ _Figure 183: DCF rules_
 - Modify the Greenfield-Rule Priority
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the Greenfield-Rule and choose move the `"Greenfield-Rule"` at the very **Top**.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the Greenfield-Rule and choose *`"Move Rule"`* at the very **Top**.
 Then click on **Save in Draft**.
 ```
 

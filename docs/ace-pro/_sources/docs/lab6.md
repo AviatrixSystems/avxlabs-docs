@@ -238,7 +238,6 @@ Create an `Explicit Deny Rule` that will allow to see the logs for the `"Denied"
 - **Name**: <span style='color:#33ECFF'>Explicit-Deny-Rule</span>
 - **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
-- **WebGroups**: <span style='color:#33ECFF'>Any-Web</span>
 - **Logging**: <span style='color:#33ECFF'>On</span>
 - **Action**: <span style='color:#33ECFF'>**Deny**</span>
 - **Place Rule**: <span style='color:#33ECFF'>Below</span>
@@ -331,7 +330,6 @@ Insert the following parameters and do not forget to click on **Save In Drafts**
 
 - **Protocol**: <span style='color:#33ECFF'>UDP</span>
 - **Port**: <span style='color:#33ECFF'>53</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
 
 ![lab6-commit3](images/lab6-dns.png)
 _Figure 159: Modify the rule_
@@ -359,5 +357,3 @@ _Figure 159: Additional insights_
 ```{note}
 The indicator is showing clearly that we tried reaching out to Google DNS and then querying for a TOR domain!
 ```
-
-
