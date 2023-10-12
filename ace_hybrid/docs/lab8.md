@@ -1,237 +1,322 @@
-# Lab 9 - THREATIQ & THREATGUARD
+# Lab 8 - DISTRIBUTED CLOUD FIREWALL
 
 ## 1. Objective
 
-This lab will demonstrate how `ThreatIQ` and `ThreatGuard` work.
+This lab will demonstrate how the `Distributed Cloud Firewall` work.
+
  
-## 2. ThreatIQ Overview
+## 2. Distributed Cloud Firewall Overview
 
-Aviatrix gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. **FlowIQ** is one. **ThreatIQ** is another. ThreatIQ alerts you on Malicious IPs with bad reputations. These IPs are reported in the ThreatIQ database that CoPilot maintains.
-
-```{important}
-ThreatIQ and ThreatGuard work as soon as a **_Public Subnet Filtering_** gateway is deployed. This is because the PSF gateway intercepts Ingress traffic.
-```
-
-## 3. Topology
-
-In this lab, we will deploy a `“PSF"` gateway in AWS US-EAST-1 region.
-
-![lab9-topology](images/lab9-initialtopology.png)
-_Figure 205: Lab 9 Initial Topology_
-
-## 4. PSF
-### 4.1 Deploy the PSF
-
-Go to **CoPilot > Cloud Fabric > Gateways > Specialty Gateways**, then click on the `“+Gateway"` button and then choose the **Public Subnet Filtering Gateway**.
-
-![lab9-topology](images/lab9-psf.png)
-_Figure 205: PSF_
-
-Insert the following parameters:
-- **Name**: <span style='color:#33ECFF'>aws-us-east1-psf</span>
-- **Account**: <span style='color:#33ECFF'>aws-account</span>
-- **Region**: <span style='color:#33ECFF'>us-east-1 (N. Virginia)</span>
-- **VPC**: <span style='color:#33ECFF'>aws-us-east1-spoke1</span>
-- **Instance Size**: <span style='color:#33ECFF'>t2.medium</span>
-- **Attach to Unused Subnet**: <span style='color:#33ECFF'>us-east-1a</span>
-- **Instance Size**: <span style='color:#33ECFF'>aws-us-east1-spoke1-rtb-public-a</span>
-
-Do not forget to click on **Save**.
-
-![lab9-psfcreate](images/lab9-psfcreate.png)
-_Figure 205: PSF template_
-
-![lab9-psfinprogress](images/lab9-psfinprogress.png)
-_Figure 205: PSF template_
-
-```{warning}
-Wait for about **8** minutes for the completion of the PSF depl0yment
-```
-
-### 4.2 Verification
-
-- Click on the **PSF** gateway, select the **VPC/VNet Route Tables** and then inspect the **_aviatrix-Aviatrix-Filter-Gateway_** Route Table
-
-![lab9-psfclick](images/lab9-psfclick.png)
-_Figure 205: PSF template_
-
-![lab9-routetablepsf](images/lab9-routetablepsf.png)
-_Figure 205: PSF template_
+The Distributed Cloud Firewall feature allows to create logical containers, called `Smart Groups`, that encompass instances that present similarities inside a VPC/VNet/VCN, and then they also allow to enforce rules (aka **_Distributed Cloud Firewalling Rules_**) within a Smart Group (i.e. the `intra-rule`) or among Smart Groups (i.e. the `inter-rule`).
 
 ```{note}
-The subnet with the PSF gateway is a Public Subnet with 0/0 pointing to IGW. No workload instances should be deployed in this subnet.
+At this point in the lab, there is a unique routing domain (i.e. a **_Flat Routing Domain_**), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.
 ```
 
-- Verify one more routing table that we selected while deploying the PSF Gateway: **_aws-us-east1-spoke1-Public-a_**. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).
+All the Test instances have been deployed with the typical <ins>CSP tags</ins>. 
 
-![lab9-routetablepsf](images/lab9-routetablepsf2.png)
-_Figure 205: PSF template_
+```{important}
+The CSP tagging is the recommended method for defining the SmartGroups.
+```
 
-## 5. Enable ThreatIQ and ThreatGuard
+In this lab you are asked to achieve the following requirements among the instances deployed across the three CSPs:
 
-Navigate to **CoPilot > Security > ThreatIQ > Configuration**
+- Create a Smart Group with the name `"bu1"` leveraging the tag `"environment"`
+- Create a Smart Group with the name `"bu2"` leveraging the tag `"environment"`
+- Create an `intra-rule` that allows ICMP traffic within bu1
+- Create an `intra-rule` that allows ICMP traffic within bu2
+- Create an `inter-rule` that allows ICMP traffic only from bu1 towards bu2
 
-Click on **Send Alert**:
+![lab10-initial](images/lab10-initial.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
 
-![lab9-ssh](images/lab9-sendalert.png)
-_Figure 208: Enable ThreatIQ_
+## 3. Smart Group Creation
 
-Then click on **Notification Settings**.
+Create two Smart Groups and classify each Smart Group, leveraging the CSP tag `"environment"`:
 
-![lab9-notification](images/lab9-notification.png)
-_Figure 209: Notification Settings_
+- Assign the name `"bu1"` to the Smart Group **#1**.
+- Assign the name `"bu2"` to the Smart Group **#2**.
 
-Now click on the `"+ Email Address"` button.
+### 3.1. Smart Group “bu1”
 
-![lab9-email](images/lab9-email.png)
-_Figure 210: Email_
+Go to **CoPilot > SmartGroups** and click on `"+ SmartGroup"`.
 
-Choose an **alias**, insert your **personal email** and then click on **Save**:
+![lab10-smart2](images/lab10-smart2.png)
+_Figure 88: +SmartGroup_
 
-![lab9-email2](images/lab9-email2.png)
-_Figure 211: Alias and Personal Email_
+Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
 
-Navigate back to **CoPilot > Security > ThreatIQ > Configuration**
+- **Name**: <span style='color:#33ECFF'>bu1</span>
+- **CSP Tag Key**: <span style='color:#33ECFF'>environment</span>
+- **CSP Tag Value**: <span style='color:#33ECFF'>bu1</span>
 
-Click again on **Send Alert**:
+Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Resource Selection"`.
 
-![lab9-sendalert2](images/lab9-sendalert2.png)
-_Figure 212: Send Alert Settings_
+![lab10-smart3](images/lab10-smart3.png)
+_Figure 88: +SmartGroup_
 
-Click on **Add Recipients**.
+The CoPilot shows that there are two instances that perfectly match the condition:
 
-![lab9-addrecipient](images/lab9-addrecipient.png)
-_Figure 213: Add Recipient(s)_
+- **aws-us-east2-spoke1-test1** in AWS
+- **azure-us-west-spoke1-test1** in Azure
 
-Select your email address from the pulldown menu and then click on **Confirm**.
+![lab10-smart4](images/lab10-smart4.png)
+_Figure 88: +SmartGroup_
 
-![lab9-addjoe](images/lab9-addjoe.png)
-_Figure 214: Add your email_
+### 3.2. Smart Group “bu2”
 
-From this point onwards, if you enter a valid email address, you will receive email notifications about **ThreatIQ** alerts.
+Create another Smart Group clicking on the `"+ SmartGroup"` button.
 
-Before enabling the blocking, on the far right side, ensure that the **ThreatGuard firewall rules order** is set to `Prepend`.
+![lab10-smart5](images/lab10-smart5.png)
+_Figure 88: +SmartGroup_
 
-![lab9-advanced](images/lab9-advanced.png)
-_Figure 215: Prepend_
+Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
 
-Enable Block Threats (i.e. `ThreatGuard`):
+- **Name**: <span style='color:#33ECFF'>bu2</span>
+- **CSP Tag Key**: <span style='color:#33ECFF'>environment</span>
+- **CSP Tag Value**: <span style='color:#33ECFF'>bu2</span>
 
-![lab9-advanced](images/lab9-threatguard.png)
-_Figure 216: ThreatGuard_
+Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Resource Selection"`.
 
-By default, **all** VPCs are enabled for ThreatGuard. 
+![lab10-smart6](images/lab10-smart6.png)
+_Figure 88: +SmartGroup_
 
-Click **Save** to continue.
+The CoPilot shows that there are three instances that match the condition:
 
-![lab9-vpc](images/lab9-vpc.png)
-_Figure 217: Select VPC_
+- **aws-us-east2-spoke1-test2** in AWS
+- **azure-us-west-spoke2-test1** in Azure
+- **gcp-us-central1-spoke1-test1** in GCP
 
-Then, click **CONFIRM**.
+![lab10-smart7](images/lab10-smart7.png)
+_Figure 88: +SmartGroup_
 
-![lab9-confirm](images/lab9-confirm.png)
-_Figure 218: Confirm_
+At this point, you have only created logical containers that do not affect the existing routing domain.
+
+Let's verify that everything has been kept unchanged! Bear in mind that there is the `Greenfield-Rule` at the very top of your DCF rules list, whereby all kind of traffic will be permitted.
+
+### 3.3. Connectivity verification (ICMP)
+
+Open a terminal window and SSH to the public IP of the instance **aws-us-east2-spoke1-test1**, and from there ping the private IP of each other instances to verify that the connectivity within AWS, and from AWS to GCP and Azure has not been modified.
+
+```{note}
+Refer to your POD for the private IPs.
+```
+
+![lab10-ping](images/lab10-ping.png)
+_Figure 88: +SmartGroup_
+
+### 3.4.  Connectivity verification (SSH)
+
+Verify also from the instance **aws-us-east2-spoke1-test1** that you can SSH to the private instance in AWS, to the instance in GCP and likewise to the other two instances in Azure.
+
+```{note}
+Refer to your POD for the private IPs.
+```
+
+![lab10-sshtoaws](images/lab10-sshtoaws.png)
+_Figure 88: +SmartGroup_
+
+![lab10-sshtogcp](images/lab10-sshtogcp.png)
+_Figure 88: +SmartGroup_
+
+![lab10-sshtoazure1](images/lab10-sshtoazure1.png)
+_Figure 88: +SmartGroup_
+
+![lab10-sshtoazure1](images/lab10-sshtoazure2.png)
+_Figure 88: +SmartGroup_
+
+The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.
+
+## 4. Rules Creation
+### 4.1. Establish a ZTN approach
+
+First and foremost, let's move the `Explicit-Deny-Rule` at the very top of the list of your DCF rules.
+
+```{tip}
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the "two arrows" icon on the righ-hand side of the `Explicit-Deny-Rule` and choose *`"Move Rule"`* at the very Top. Then click on **Save in Draft**.
+```
+
+![lab10-explicit](images/lab10-explicit.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Then **commit** your change!
+
+![lab10-commit](images/lab10-commit.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+### 4.2. Create an intra-rule that allows ICMP inside bu1
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+
+![lab10-newrule](images/lab10-newrule.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Insert the following parameters:
+
+- **Name**: <span style='color:#33ECFF'>intra-icmp-bu1</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>bu1</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>bu1</span>
+- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+![lab10-rule1](images/lab10-rule1.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+At this point, there would be one uncommitted rule at the very top, as depicted below.
+
+![lab10-rule2](images/lab10-rule2.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+### 4.2. Create an intra-rule that allows ICMP inside bu2
+
+Create another rule clicking on the `"+ Rule"` button.
+
+![lab10-rule3](images/lab10-rule3.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+
+- **Name**: <span style='color:#33ECFF'>intra-icmp-bu2</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>bu2</span>
+- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Place Rule**: <span style='color:#33ECFF'>**Below**</span>
+  - **Existing Rule**: <span style='color:#33ECFF'>**intra-icmp-bu1**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+![lab10-rule4](images/lab10-rule4.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+At this point, you will have two new rules marked as `New`, therefore you can proceed and click on the **Commit** button.
+
+![lab10-rule5](images/lab10-rule5.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
 
 ## 5. Verification
 
-Wait for the instructor to provide a malicious IP. Let's call it `<malicious-IP>`. 
+Afte the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols should look like:
 
-```{important}
-<ins>Note down this IP address!</ins>
-```
+![lab10-topology2](images/lab10-topology2.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
 
-SSH to the EC2 instance **_aws-us-east1-spoke1-test1_**
+### 5.1. Verify SSH traffic from your laptop to bu1
 
-- Now test `ThreatGuard` by first issuing this command (make sure to enter **HTTPS**):
+SSH to the Public IP of the instance **aws-us-east2-spoke1-test1**.
 
-```bash
-curl https://<malicious-IP>
-```
+![lab10-sshpod](images/lab10-sshpod.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
 
-![lab9-malicious](images/lab9-instancetest.png)
-_Figure 219: Curl towards the malicious IP_
+### 5.2. Verify ICMP within bu1 and from bu1 towards bu2
 
-Navigate back to **CoPilot > Security > ThreatIQ > Overview**
+Ping the following instances from **aws-us-east2-spoke1-test1**:
 
-```{note}
-**Wait for some minutes**, before proceeding with the next action. Furthermore, set the **Time Period** to `"Custom"` and then set the end time a bit farther than your current time:
-```
+- **gcp-us-central1-spoke1-test1** in GCP
+- **azure-us-west-spoke1-test1** in Azure
+- **azure-us-west-spoke2-test1** in Azure
 
-![lab9-custom](images/lab9-custom.png)
-_Figure 219: Curl towards the malicious IP_
+According to the rules created before, only the ping towards the **azure-us-west-spoke1-test1** will work, because this instance belongs to the same Smart Group bu1 as the instance from where you will be launching ICMP packets.
 
-You should see the IP in the table at the bottom. You can filter based on the destination IP address (insert the malicious IP address):
+![lab10-pingcheck](images/lab10-pingcheck.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
 
-![lab9-threat](images/lab9-threat.png)
-_Figure 219: Curl towards the malicious IP_
+Let's investigate the logs:
 
-![lab9-threat2](images/lab9-threat2.png)
-_Figure 219: Curl towards the malicious IP_
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
-Afterwards, click on VIEW under the column Details.
+![lab10-pingcheck](images/lab10-monitor.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
 
-```{note}
-The IP we selected might not be deemed a threat when you read this.
-```
-
-![lab9-view](images/lab9-view.png)
-_Figure 219: Curl towards the malicious IP_
-
-![lab9-view2](images/lab9-view2.png)
-_Figure 219: Curl towards the malicious IP_
-
-Then select **Threat Summary** and pinpoint the metadata "tag" to determine how ThreatIQ has classified this IP.
-
-![lab9-view2](images/lab9-tor.png)
-_Figure 219: Curl towards the malicious IP_
-
-### 5.1. Example of ThreatGuard in action
-
-Navigate to  **CoPilot > Security > ThreatIQ > Configuration**
-
-```{note}
-The CoPilot UI frequently changes, and what you see below may differ from your experience. 
-```
-
-- Click on **VIEW** under the column View Rules:
-
-![lab9-viewrules](images/lab9-viewrules.png)
-_Figure 219: Curl towards the malicious IP_
-
-Filter based on the malicious IP (both on **source** address and **destination** address): you will find out that ThreatGuard applied the enforcement `"force-drop"` in both directions.
-
-![lab9-forcesource](images/lab9-force.png)
-_Figure 219: Curl towards the malicious IP_
-
-![lab9-forcesource2](images/lab9-force2.png)
-_Figure 219: Curl towards the malicious IP_
-
-Now try issuing the same curl command once again.
-
-![lab9-failed](images/lab9-failed.png)
-_Figure 219: Curl towards the malicious IP_
-
-ThreatGuard has successfully blocked the malicious IP!
+Now, let's try to ping the instance **aws-us-east2-spoke1-test2** from **aws-us-east2-spoke1-test1**. 
 
 ```{warning}
-Before ending this lab, remove your email from the notification list!
+The instance **aws-us-east2-spoke1-test1** is in the same VPC. Although these two instances have been deployed in two distinct and separate VPCs, the communication will occur until you don't enable the `"intra-vpc separation"`.
 ```
 
-Navigate to **CoPilot > Monitor > Notifications > Alerts Configuration**
+![lab10-pingtotest2](images/lab10-pingtotest2.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
 
-Click on the pencil icon for editing the configured alert named `"ThreatIQ Alert"`:
+Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button inside the `"Security Group (SG) Orchestration"` field.
 
-![lab9-notification2](images/lab9-notification2.png)
-_Figure 219: Curl towards the malicious IP_
+![lab10-orchestration](images/lab10-orchestration.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
 
-- Remove the recipient that is identified based on the alias that you chose before, then click on **Save**.
+Enable the SG orchestration on the **_aws-us-east2-spoke1_** VPC, then put a tick on the checkbox `"I understand the network impact"` and click on **Save**.
 
-ThreatIQ will immediately stop sending the alerts to your personal email:
+![lab10-orchestration](images/lab10-orchestration2.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
 
-![lab9-joe](images/lab9-joe.png)
-_Figure 219: Curl towards the malicious IP_
+Relaunch the ping the instance towards **aws-us-east2-spoke1-test2** from **aws-us-east2-spoke1-test1**. 
 
-After this lab, this is how the overall topology would look like:
+![lab10-orchestration](images/lab10-pingtotest2fail.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
 
-![lab9-finaltopology](images/lab9-final.png)
-_Figure 88:  Final topology for Lab 9_
+```{important}
+This time the ping fails. You have achieved a complete separation between SmartGroups deployed in the same VPC in AWS US-EAST-2
+```
+
+### 5.3. Verify SSH within bu1
+
+SSH to the Private IP of the instance **_azure-us-west-spoke1-test1_** in Azure. Despite the fact that the instance is within the same Smart Group "bu1", the SSH will fail due to the absence of a rule that would permit SSH traffic within the Smart Group.
+
+![lab10-sshfail](images/lab10-sshfail.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+### 5.4. Add a rule that allows SSH in bu1
+
+Create another rule clicking on the `"+ Rule"` button.
+
+![lab10-newrule2](images/lab10-newrule2.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+
+- **Name**: <span style='color:#33ECFF'>intra-ssh-bu1</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>bu1</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>bu1</span>
+- **Protocol**: <span style='color:#33ECFF'>TCP</span>
+- **Port**: <span style='color:#33ECFF'>22</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Place Rule**: <span style='color:#33ECFF'>**Below**</span>
+  - **Existing Rule**: <span style='color:#33ECFF'>**intra-icmp-bu2**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+![lab10-sshbu1](images/lab10-sshbu1.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Click on `"Commit"` to enforce the new rule in the **Data Plane**.
+
+![lab10-commitsshbu1](images/lab10-commitsshbu1.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+- Try once again to SSH to the Private IP of the instance **_azure-us-west-spoke1-test1_** in Azure in BU1.
+
+This time the connection will be established, thanks to the new intra-rule.
+
+![lab10-sshbu1ok](images/lab10-sshbu1ok.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Let's investigate the logs once again.
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+
+![lab10-logsshbu1](images/lab10-logsshbu1.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+From the log above is quite evident that the `"intra-ssh-bu1`" rule is permitting SSH traffic within the SmartGroup bu1, successfully.
+
+After the creation of the previous intra-rule, this is how the topology with the permitted protocols should look like:
+
+![lab10-topologynew](images/lab10-topologynew.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+5.4. SSH to VM in bu2
+
+SSH to the Public IP of the instance gcp-us-central1-spoke1-test1:

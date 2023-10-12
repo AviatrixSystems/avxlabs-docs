@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lab 9 - THREATIQ &amp; THREATGUARD &#8212; ACE Operations Lab</title>
+    <title>Lab 8 - DISTRIBUTED CLOUD FIREWALL &#8212; ACE Operations Lab</title>
   
   
   
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 11 - BONUS" href="lab9.html" />
-    <link rel="prev" title="Lab 8 - SITE2CLOUD" href="lab7.html" />
+    <link rel="prev" title="Lab 7 - SITE2CLOUD" href="lab7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,11 +162,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 6 - EGRESS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 7 - FIRENET</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 8 - SITE2CLOUD</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - SITE2CLOUD</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 8 - DISTRIBUTED CLOUD FIREWALL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 11 - BONUS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
@@ -306,7 +306,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 9 - THREATIQ & THREATGUARD</h1>
+    <h1>Lab 8 - DISTRIBUTED CLOUD FIREWALL</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -317,16 +317,25 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatiq-overview">2. ThreatIQ Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">4.2 Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-overview">2. Distributed Cloud Firewall Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-creation">3. Smart Group Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1. Smart Group “bu1”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu2">3.2. Smart Group “bu2”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp">3.3. Connectivity verification (ICMP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh">3.4.  Connectivity verification (SSH)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-threatiq-and-threatguard">5. Enable ThreatIQ and ThreatGuard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. Verification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-threatguard-in-action">5.1. Example of ThreatGuard in action</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-creation">4. Rules Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establish-a-ztn-approach">4.1. Establish a ZTN approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu1">4.2. Create an intra-rule that allows ICMP inside bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu2">4.2. Create an intra-rule that allows ICMP inside bu2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-traffic-from-your-laptop-to-bu1">5.1. Verify SSH traffic from your laptop to bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2">5.2. Verify ICMP within bu1 and from bu1 towards bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-within-bu1">5.3. Verify SSH within bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-rule-that-allows-ssh-in-bu1">5.4. Add a rule that allows SSH in bu1</a></li>
 </ul>
 </li>
 </ul>
@@ -340,191 +349,275 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-9-threatiq-threatguard">
-<h1>Lab 9 - THREATIQ &amp; THREATGUARD<a class="headerlink" href="#lab-9-threatiq-threatguard" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-8-distributed-cloud-firewall">
+<h1>Lab 8 - DISTRIBUTED CLOUD FIREWALL<a class="headerlink" href="#lab-8-distributed-cloud-firewall" title="Permalink to this heading">#</a></h1>
 <section id="objective">
 <h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
-<p>This lab will demonstrate how <code class="docutils literal notranslate"><span class="pre">ThreatIQ</span></code> and <code class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code> work.</p>
+<p>This lab will demonstrate how the <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> work.</p>
 </section>
-<section id="threatiq-overview">
-<h2>2. ThreatIQ Overview<a class="headerlink" href="#threatiq-overview" title="Permalink to this heading">#</a></h2>
-<p>Aviatrix gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. <strong>FlowIQ</strong> is one. <strong>ThreatIQ</strong> is another. ThreatIQ alerts you on Malicious IPs with bad reputations. These IPs are reported in the ThreatIQ database that CoPilot maintains.</p>
+<section id="distributed-cloud-firewall-overview">
+<h2>2. Distributed Cloud Firewall Overview<a class="headerlink" href="#distributed-cloud-firewall-overview" title="Permalink to this heading">#</a></h2>
+<p>The Distributed Cloud Firewall feature allows to create logical containers, called <code class="docutils literal notranslate"><span class="pre">Smart</span> <span class="pre">Groups</span></code>, that encompass instances that present similarities inside a VPC/VNet/VCN, and then they also allow to enforce rules (aka <strong><em>Distributed Cloud Firewalling Rules</em></strong>) within a Smart Group (i.e. the <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code>) or among Smart Groups (i.e. the <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At this point in the lab, there is a unique routing domain (i.e. a <strong><em>Flat Routing Domain</em></strong>), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.</p>
+</div>
+<p>All the Test instances have been deployed with the typical <ins>CSP tags</ins>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>ThreatIQ and ThreatGuard work as soon as a <strong><em>Public Subnet Filtering</em></strong> gateway is deployed. This is because the PSF gateway intercepts Ingress traffic.</p>
+<p>The CSP tagging is the recommended method for defining the SmartGroups.</p>
 </div>
+<p>In this lab you are asked to achieve the following requirements among the instances deployed across the three CSPs:</p>
+<ul class="simple">
+<li><p>Create a Smart Group with the name <code class="docutils literal notranslate"><span class="pre">&quot;bu1&quot;</span></code> leveraging the tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code></p></li>
+<li><p>Create a Smart Group with the name <code class="docutils literal notranslate"><span class="pre">&quot;bu2&quot;</span></code> leveraging the tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code></p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that allows ICMP traffic within bu1</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that allows ICMP traffic within bu2</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> that allows ICMP traffic only from bu1 towards bu2</p></li>
+</ul>
+<p><img alt="lab10-initial" src="../_images/lab10-initial.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
 </section>
-<section id="topology">
-<h2>3. Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
-<p>In this lab, we will deploy a <code class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in AWS US-EAST-1 region.</p>
-<p><img alt="lab9-topology" src="../_images/lab9-initialtopology.png" />
-<em>Figure 205: Lab 9 Initial Topology</em></p>
+<section id="smart-group-creation">
+<h2>3. Smart Group Creation<a class="headerlink" href="#smart-group-creation" title="Permalink to this heading">#</a></h2>
+<p>Create two Smart Groups and classify each Smart Group, leveraging the CSP tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code>:</p>
+<ul class="simple">
+<li><p>Assign the name <code class="docutils literal notranslate"><span class="pre">&quot;bu1&quot;</span></code> to the Smart Group <strong>#1</strong>.</p></li>
+<li><p>Assign the name <code class="docutils literal notranslate"><span class="pre">&quot;bu2&quot;</span></code> to the Smart Group <strong>#2</strong>.</p></li>
+</ul>
+<section id="smart-group-bu1">
+<h3>3.1. Smart Group “bu1”<a class="headerlink" href="#smart-group-bu1" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; SmartGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code>.</p>
+<p><img alt="lab10-smart2" src="../_images/lab10-smart2.png" />
+<em>Figure 88: +SmartGroup</em></p>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>CSP Tag Key</strong>: <span style='color:#33ECFF'>environment</span></p></li>
+<li><p><strong>CSP Tag Value</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+</ul>
+<p>Before clicking on <strong>SAVE</strong>, discover what instances match the condition, turning on the knob <code class="docutils literal notranslate"><span class="pre">&quot;Resource</span> <span class="pre">Selection&quot;</span></code>.</p>
+<p><img alt="lab10-smart3" src="../_images/lab10-smart3.png" />
+<em>Figure 88: +SmartGroup</em></p>
+<p>The CoPilot shows that there are two instances that perfectly match the condition:</p>
+<ul class="simple">
+<li><p><strong>aws-us-east2-spoke1-test1</strong> in AWS</p></li>
+<li><p><strong>azure-us-west-spoke1-test1</strong> in Azure</p></li>
+</ul>
+<p><img alt="lab10-smart4" src="../_images/lab10-smart4.png" />
+<em>Figure 88: +SmartGroup</em></p>
 </section>
-<section id="psf">
-<h2>4. PSF<a class="headerlink" href="#psf" title="Permalink to this heading">#</a></h2>
-<section id="deploy-the-psf">
-<h3>4.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf" title="Permalink to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">“+Gateway&quot;</span></code> button and then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
-<p><img alt="lab9-topology" src="../_images/lab9-psf.png" />
-<em>Figure 205: PSF</em></p>
+<section id="smart-group-bu2">
+<h3>3.2. Smart Group “bu2”<a class="headerlink" href="#smart-group-bu2" title="Permalink to this heading">#</a></h3>
+<p>Create another Smart Group clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
+<p><img alt="lab10-smart5" src="../_images/lab10-smart5.png" />
+<em>Figure 88: +SmartGroup</em></p>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+<li><p><strong>CSP Tag Key</strong>: <span style='color:#33ECFF'>environment</span></p></li>
+<li><p><strong>CSP Tag Value</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+</ul>
+<p>Before clicking on <strong>SAVE</strong>, discover what instances match the condition, turning on the knob <code class="docutils literal notranslate"><span class="pre">&quot;Resource</span> <span class="pre">Selection&quot;</span></code>.</p>
+<p><img alt="lab10-smart6" src="../_images/lab10-smart6.png" />
+<em>Figure 88: +SmartGroup</em></p>
+<p>The CoPilot shows that there are three instances that match the condition:</p>
+<ul class="simple">
+<li><p><strong>aws-us-east2-spoke1-test2</strong> in AWS</p></li>
+<li><p><strong>azure-us-west-spoke2-test1</strong> in Azure</p></li>
+<li><p><strong>gcp-us-central1-spoke1-test1</strong> in GCP</p></li>
+</ul>
+<p><img alt="lab10-smart7" src="../_images/lab10-smart7.png" />
+<em>Figure 88: +SmartGroup</em></p>
+<p>At this point, you have only created logical containers that do not affect the existing routing domain.</p>
+<p>Let’s verify that everything has been kept unchanged! Bear in mind that there is the <code class="docutils literal notranslate"><span class="pre">Greenfield-Rule</span></code> at the very top of your DCF rules list, whereby all kind of traffic will be permitted.</p>
+</section>
+<section id="connectivity-verification-icmp">
+<h3>3.3. Connectivity verification (ICMP)<a class="headerlink" href="#connectivity-verification-icmp" title="Permalink to this heading">#</a></h3>
+<p>Open a terminal window and SSH to the public IP of the instance <strong>aws-us-east2-spoke1-test1</strong>, and from there ping the private IP of each other instances to verify that the connectivity within AWS, and from AWS to GCP and Azure has not been modified.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to your POD for the private IPs.</p>
+</div>
+<p><img alt="lab10-ping" src="../_images/lab10-ping.png" />
+<em>Figure 88: +SmartGroup</em></p>
+</section>
+<section id="connectivity-verification-ssh">
+<h3>3.4.  Connectivity verification (SSH)<a class="headerlink" href="#connectivity-verification-ssh" title="Permalink to this heading">#</a></h3>
+<p>Verify also from the instance <strong>aws-us-east2-spoke1-test1</strong> that you can SSH to the private instance in AWS, to the instance in GCP and likewise to the other two instances in Azure.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to your POD for the private IPs.</p>
+</div>
+<p><img alt="lab10-sshtoaws" src="../_images/lab10-sshtoaws.png" />
+<em>Figure 88: +SmartGroup</em></p>
+<p><img alt="lab10-sshtogcp" src="../_images/lab10-sshtogcp.png" />
+<em>Figure 88: +SmartGroup</em></p>
+<p><img alt="lab10-sshtoazure1" src="../_images/lab10-sshtoazure1.png" />
+<em>Figure 88: +SmartGroup</em></p>
+<p><img alt="lab10-sshtoazure1" src="../_images/lab10-sshtoazure2.png" />
+<em>Figure 88: +SmartGroup</em></p>
+<p>The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.</p>
+</section>
+</section>
+<section id="rules-creation">
+<h2>4. Rules Creation<a class="headerlink" href="#rules-creation" title="Permalink to this heading">#</a></h2>
+<section id="establish-a-ztn-approach">
+<h3>4.1. Establish a ZTN approach<a class="headerlink" href="#establish-a-ztn-approach" title="Permalink to this heading">#</a></h3>
+<p>First and foremost, let’s move the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code> at the very top of the list of your DCF rules.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default)</strong>, click on the the “two arrows” icon on the righ-hand side of the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code> and choose <em><code class="docutils literal notranslate"><span class="pre">&quot;Move</span> <span class="pre">Rule&quot;</span></code></em> at the very Top. Then click on <strong>Save in Draft</strong>.</p>
+</div>
+<p><img alt="lab10-explicit" src="../_images/lab10-explicit.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>Then <strong>commit</strong> your change!</p>
+<p><img alt="lab10-commit" src="../_images/lab10-commit.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+</section>
+<section id="create-an-intra-rule-that-allows-icmp-inside-bu1">
+<h3>4.2. Create an intra-rule that allows ICMP inside bu1<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu1" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<p><img alt="lab10-newrule" src="../_images/lab10-newrule.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
 <p>Insert the following parameters:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#33ECFF'>aws-us-east1-psf</span></p></li>
-<li><p><strong>Account</strong>: <span style='color:#33ECFF'>aws-account</span></p></li>
-<li><p><strong>Region</strong>: <span style='color:#33ECFF'>us-east-1 (N. Virginia)</span></p></li>
-<li><p><strong>VPC</strong>: <span style='color:#33ECFF'>aws-us-east1-spoke1</span></p></li>
-<li><p><strong>Instance Size</strong>: <span style='color:#33ECFF'>t2.medium</span></p></li>
-<li><p><strong>Attach to Unused Subnet</strong>: <span style='color:#33ECFF'>us-east-1a</span></p></li>
-<li><p><strong>Instance Size</strong>: <span style='color:#33ECFF'>aws-us-east1-spoke1-rtb-public-a</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>intra-icmp-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>ICMP</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
 </ul>
-<p>Do not forget to click on <strong>Save</strong>.</p>
-<p><img alt="lab9-psfcreate" src="../_images/lab9-psfcreate.png" />
-<em>Figure 205: PSF template</em></p>
-<p><img alt="lab9-psfinprogress" src="../_images/lab9-psfinprogress.png" />
-<em>Figure 205: PSF template</em></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Wait for about <strong>8</strong> minutes for the completion of the PSF depl0yment</p>
-</div>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<p><img alt="lab10-rule1" src="../_images/lab10-rule1.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>At this point, there would be one uncommitted rule at the very top, as depicted below.</p>
+<p><img alt="lab10-rule2" src="../_images/lab10-rule2.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+</section>
+<section id="create-an-intra-rule-that-allows-icmp-inside-bu2">
+<h3>4.2. Create an intra-rule that allows ICMP inside bu2<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu2" title="Permalink to this heading">#</a></h3>
+<p>Create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<p><img alt="lab10-rule3" src="../_images/lab10-rule3.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>intra-icmp-bu2</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>ICMP</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+<li><p><strong>Place Rule</strong>: <span style='color:#33ECFF'><strong>Below</strong></span></p>
+<ul>
+<li><p><strong>Existing Rule</strong>: <span style='color:#33ECFF'><strong>intra-icmp-bu1</strong></span></p></li>
+</ul>
+</li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<p><img alt="lab10-rule4" src="../_images/lab10-rule4.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>At this point, you will have two new rules marked as <code class="docutils literal notranslate"><span class="pre">New</span></code>, therefore you can proceed and click on the <strong>Commit</strong> button.</p>
+<p><img alt="lab10-rule5" src="../_images/lab10-rule5.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+</section>
 </section>
 <section id="verification">
-<h3>4.2 Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Click on the <strong>PSF</strong> gateway, select the <strong>VPC/VNet Route Tables</strong> and then inspect the <strong><em>aviatrix-Aviatrix-Filter-Gateway</em></strong> Route Table</p></li>
-</ul>
-<p><img alt="lab9-psfclick" src="../_images/lab9-psfclick.png" />
-<em>Figure 205: PSF template</em></p>
-<p><img alt="lab9-routetablepsf" src="../_images/lab9-routetablepsf.png" />
-<em>Figure 205: PSF template</em></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The subnet with the PSF gateway is a Public Subnet with 0/0 pointing to IGW. No workload instances should be deployed in this subnet.</p>
-</div>
-<ul class="simple">
-<li><p>Verify one more routing table that we selected while deploying the PSF Gateway: <strong><em>aws-us-east1-spoke1-Public-a</em></strong>. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).</p></li>
-</ul>
-<p><img alt="lab9-routetablepsf" src="../_images/lab9-routetablepsf2.png" />
-<em>Figure 205: PSF template</em></p>
+<h2>5. Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h2>
+<p>Afte the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols should look like:</p>
+<p><img alt="lab10-topology2" src="../_images/lab10-topology2.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<section id="verify-ssh-traffic-from-your-laptop-to-bu1">
+<h3>5.1. Verify SSH traffic from your laptop to bu1<a class="headerlink" href="#verify-ssh-traffic-from-your-laptop-to-bu1" title="Permalink to this heading">#</a></h3>
+<p>SSH to the Public IP of the instance <strong>aws-us-east2-spoke1-test1</strong>.</p>
+<p><img alt="lab10-sshpod" src="../_images/lab10-sshpod.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
 </section>
-</section>
-<section id="enable-threatiq-and-threatguard">
-<h2>5. Enable ThreatIQ and ThreatGuard<a class="headerlink" href="#enable-threatiq-and-threatguard" title="Permalink to this heading">#</a></h2>
-<p>Navigate to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
-<p>Click on <strong>Send Alert</strong>:</p>
-<p><img alt="lab9-ssh" src="../_images/lab9-sendalert.png" />
-<em>Figure 208: Enable ThreatIQ</em></p>
-<p>Then click on <strong>Notification Settings</strong>.</p>
-<p><img alt="lab9-notification" src="../_images/lab9-notification.png" />
-<em>Figure 209: Notification Settings</em></p>
-<p>Now click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Email</span> <span class="pre">Address&quot;</span></code> button.</p>
-<p><img alt="lab9-email" src="../_images/lab9-email.png" />
-<em>Figure 210: Email</em></p>
-<p>Choose an <strong>alias</strong>, insert your <strong>personal email</strong> and then click on <strong>Save</strong>:</p>
-<p><img alt="lab9-email2" src="../_images/lab9-email2.png" />
-<em>Figure 211: Alias and Personal Email</em></p>
-<p>Navigate back to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
-<p>Click again on <strong>Send Alert</strong>:</p>
-<p><img alt="lab9-sendalert2" src="../_images/lab9-sendalert2.png" />
-<em>Figure 212: Send Alert Settings</em></p>
-<p>Click on <strong>Add Recipients</strong>.</p>
-<p><img alt="lab9-addrecipient" src="../_images/lab9-addrecipient.png" />
-<em>Figure 213: Add Recipient(s)</em></p>
-<p>Select your email address from the pulldown menu and then click on <strong>Confirm</strong>.</p>
-<p><img alt="lab9-addjoe" src="../_images/lab9-addjoe.png" />
-<em>Figure 214: Add your email</em></p>
-<p>From this point onwards, if you enter a valid email address, you will receive email notifications about <strong>ThreatIQ</strong> alerts.</p>
-<p>Before enabling the blocking, on the far right side, ensure that the <strong>ThreatGuard firewall rules order</strong> is set to <code class="docutils literal notranslate"><span class="pre">Prepend</span></code>.</p>
-<p><img alt="lab9-advanced" src="../_images/lab9-advanced.png" />
-<em>Figure 215: Prepend</em></p>
-<p>Enable Block Threats (i.e. <code class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code>):</p>
-<p><img alt="lab9-advanced" src="../_images/lab9-threatguard.png" />
-<em>Figure 216: ThreatGuard</em></p>
-<p>By default, <strong>all</strong> VPCs are enabled for ThreatGuard.</p>
-<p>Click <strong>Save</strong> to continue.</p>
-<p><img alt="lab9-vpc" src="../_images/lab9-vpc.png" />
-<em>Figure 217: Select VPC</em></p>
-<p>Then, click <strong>CONFIRM</strong>.</p>
-<p><img alt="lab9-confirm" src="../_images/lab9-confirm.png" />
-<em>Figure 218: Confirm</em></p>
-</section>
-<section id="id1">
-<h2>5. Verification<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Wait for the instructor to provide a malicious IP. Let’s call it <code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><ins>Note down this IP address!</ins></p>
-</div>
-<p>SSH to the EC2 instance <strong><em>aws-us-east1-spoke1-test1</em></strong></p>
+<section id="verify-icmp-within-bu1-and-from-bu1-towards-bu2">
+<h3>5.2. Verify ICMP within bu1 and from bu1 towards bu2<a class="headerlink" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2" title="Permalink to this heading">#</a></h3>
+<p>Ping the following instances from <strong>aws-us-east2-spoke1-test1</strong>:</p>
 <ul class="simple">
-<li><p>Now test <code class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code> by first issuing this command (make sure to enter <strong>HTTPS</strong>):</p></li>
+<li><p><strong>gcp-us-central1-spoke1-test1</strong> in GCP</p></li>
+<li><p><strong>azure-us-west-spoke1-test1</strong> in Azure</p></li>
+<li><p><strong>azure-us-west-spoke2-test1</strong> in Azure</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
-</pre></div>
-</div>
-<p><img alt="lab9-malicious" src="../_images/lab9-instancetest.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p>Navigate back to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Overview</strong></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Wait for some minutes</strong>, before proceeding with the next action. Furthermore, set the <strong>Time Period</strong> to <code class="docutils literal notranslate"><span class="pre">&quot;Custom&quot;</span></code> and then set the end time a bit farther than your current time:</p>
-</div>
-<p><img alt="lab9-custom" src="../_images/lab9-custom.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p>You should see the IP in the table at the bottom. You can filter based on the destination IP address (insert the malicious IP address):</p>
-<p><img alt="lab9-threat" src="../_images/lab9-threat.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p><img alt="lab9-threat2" src="../_images/lab9-threat2.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p>Afterwards, click on VIEW under the column Details.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The IP we selected might not be deemed a threat when you read this.</p>
-</div>
-<p><img alt="lab9-view" src="../_images/lab9-view.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p><img alt="lab9-view2" src="../_images/lab9-view2.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p>Then select <strong>Threat Summary</strong> and pinpoint the metadata “tag” to determine how ThreatIQ has classified this IP.</p>
-<p><img alt="lab9-view2" src="../_images/lab9-tor.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<section id="example-of-threatguard-in-action">
-<h3>5.1. Example of ThreatGuard in action<a class="headerlink" href="#example-of-threatguard-in-action" title="Permalink to this heading">#</a></h3>
-<p>Navigate to  <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The CoPilot UI frequently changes, and what you see below may differ from your experience.</p>
-</div>
-<ul class="simple">
-<li><p>Click on <strong>VIEW</strong> under the column View Rules:</p></li>
-</ul>
-<p><img alt="lab9-viewrules" src="../_images/lab9-viewrules.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p>Filter based on the malicious IP (both on <strong>source</strong> address and <strong>destination</strong> address): you will find out that ThreatGuard applied the enforcement <code class="docutils literal notranslate"><span class="pre">&quot;force-drop&quot;</span></code> in both directions.</p>
-<p><img alt="lab9-forcesource" src="../_images/lab9-force.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p><img alt="lab9-forcesource2" src="../_images/lab9-force2.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p>Now try issuing the same curl command once again.</p>
-<p><img alt="lab9-failed" src="../_images/lab9-failed.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p>ThreatGuard has successfully blocked the malicious IP!</p>
+<p>According to the rules created before, only the ping towards the <strong>azure-us-west-spoke1-test1</strong> will work, because this instance belongs to the same Smart Group bu1 as the instance from where you will be launching ICMP packets.</p>
+<p><img alt="lab10-pingcheck" src="../_images/lab10-pingcheck.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>Let’s investigate the logs:</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
+<p><img alt="lab10-pingcheck" src="../_images/lab10-monitor.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>Now, let’s try to ping the instance <strong>aws-us-east2-spoke1-test2</strong> from <strong>aws-us-east2-spoke1-test1</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Before ending this lab, remove your email from the notification list!</p>
+<p>The instance <strong>aws-us-east2-spoke1-test1</strong> is in the same VPC. Although these two instances have been deployed in two distinct and separate VPCs, the communication will occur until you don’t enable the <code class="docutils literal notranslate"><span class="pre">&quot;intra-vpc</span> <span class="pre">separation&quot;</span></code>.</p>
 </div>
-<p>Navigate to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Alerts Configuration</strong></p>
-<p>Click on the pencil icon for editing the configured alert named <code class="docutils literal notranslate"><span class="pre">&quot;ThreatIQ</span> <span class="pre">Alert&quot;</span></code>:</p>
-<p><img alt="lab9-notification2" src="../_images/lab9-notification2.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
+<p><img alt="lab10-pingtotest2" src="../_images/lab10-pingtotest2.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage&quot;</span></code> button inside the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group</span> <span class="pre">(SG)</span> <span class="pre">Orchestration&quot;</span></code> field.</p>
+<p><img alt="lab10-orchestration" src="../_images/lab10-orchestration.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>Enable the SG orchestration on the <strong><em>aws-us-east2-spoke1</em></strong> VPC, then put a tick on the checkbox <code class="docutils literal notranslate"><span class="pre">&quot;I</span> <span class="pre">understand</span> <span class="pre">the</span> <span class="pre">network</span> <span class="pre">impact&quot;</span></code> and click on <strong>Save</strong>.</p>
+<p><img alt="lab10-orchestration" src="../_images/lab10-orchestration2.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>Relaunch the ping the instance towards <strong>aws-us-east2-spoke1-test2</strong> from <strong>aws-us-east2-spoke1-test1</strong>.</p>
+<p><img alt="lab10-orchestration" src="../_images/lab10-pingtotest2fail.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This time the ping fails. You have achieved a complete separation between SmartGroups deployed in the same VPC in AWS US-EAST-2</p>
+</div>
+</section>
+<section id="verify-ssh-within-bu1">
+<h3>5.3. Verify SSH within bu1<a class="headerlink" href="#verify-ssh-within-bu1" title="Permalink to this heading">#</a></h3>
+<p>SSH to the Private IP of the instance <strong><em>azure-us-west-spoke1-test1</em></strong> in Azure. Despite the fact that the instance is within the same Smart Group “bu1”, the SSH will fail due to the absence of a rule that would permit SSH traffic within the Smart Group.</p>
+<p><img alt="lab10-sshfail" src="../_images/lab10-sshfail.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+</section>
+<section id="add-a-rule-that-allows-ssh-in-bu1">
+<h3>5.4. Add a rule that allows SSH in bu1<a class="headerlink" href="#add-a-rule-that-allows-ssh-in-bu1" title="Permalink to this heading">#</a></h3>
+<p>Create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<p><img alt="lab10-newrule2" src="../_images/lab10-newrule2.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
 <ul class="simple">
-<li><p>Remove the recipient that is identified based on the alias that you chose before, then click on <strong>Save</strong>.</p></li>
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>intra-ssh-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#33ECFF'>22</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+<li><p><strong>Place Rule</strong>: <span style='color:#33ECFF'><strong>Below</strong></span></p>
+<ul>
+<li><p><strong>Existing Rule</strong>: <span style='color:#33ECFF'><strong>intra-icmp-bu2</strong></span></p></li>
 </ul>
-<p>ThreatIQ will immediately stop sending the alerts to your personal email:</p>
-<p><img alt="lab9-joe" src="../_images/lab9-joe.png" />
-<em>Figure 219: Curl towards the malicious IP</em></p>
-<p>After this lab, this is how the overall topology would look like:</p>
-<p><img alt="lab9-finaltopology" src="../_images/lab9-final.png" />
-<em>Figure 88:  Final topology for Lab 9</em></p>
+</li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<p><img alt="lab10-sshbu1" src="../_images/lab10-sshbu1.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> to enforce the new rule in the <strong>Data Plane</strong>.</p>
+<p><img alt="lab10-commitsshbu1" src="../_images/lab10-commitsshbu1.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<ul class="simple">
+<li><p>Try once again to SSH to the Private IP of the instance <strong><em>azure-us-west-spoke1-test1</em></strong> in Azure in BU1.</p></li>
+</ul>
+<p>This time the connection will be established, thanks to the new intra-rule.</p>
+<p><img alt="lab10-sshbu1ok" src="../_images/lab10-sshbu1ok.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>Let’s investigate the logs once again.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
+<p><img alt="lab10-logsshbu1" src="../_images/lab10-logsshbu1.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>From the log above is quite evident that the <code class="docutils literal notranslate"><span class="pre">&quot;intra-ssh-bu1</span></code>” rule is permitting SSH traffic within the SmartGroup bu1, successfully.</p>
+<p>After the creation of the previous intra-rule, this is how the topology with the permitted protocols should look like:</p>
+<p><img alt="lab10-topologynew" src="../_images/lab10-topologynew.png" />
+<em>Figure 88: Edit the Explicit-Deny-Rule</em></p>
+<p>5.4. SSH to VM in bu2</p>
+<p>SSH to the Public IP of the instance gcp-us-central1-spoke1-test1:</p>
 </section>
 </section>
 </section>
@@ -566,7 +659,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lab 8 - SITE2CLOUD</p>
+        <p class="prev-next-title">Lab 7 - SITE2CLOUD</p>
       </div>
     </a>
     <a class="right-next"
@@ -597,16 +690,25 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatiq-overview">2. ThreatIQ Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">4.2 Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-overview">2. Distributed Cloud Firewall Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-creation">3. Smart Group Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1. Smart Group “bu1”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu2">3.2. Smart Group “bu2”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp">3.3. Connectivity verification (ICMP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh">3.4.  Connectivity verification (SSH)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-threatiq-and-threatguard">5. Enable ThreatIQ and ThreatGuard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. Verification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-threatguard-in-action">5.1. Example of ThreatGuard in action</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-creation">4. Rules Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establish-a-ztn-approach">4.1. Establish a ZTN approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu1">4.2. Create an intra-rule that allows ICMP inside bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu2">4.2. Create an intra-rule that allows ICMP inside bu2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-traffic-from-your-laptop-to-bu1">5.1. Verify SSH traffic from your laptop to bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2">5.2. Verify ICMP within bu1 and from bu1 towards bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-within-bu1">5.3. Verify SSH within bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-rule-that-allows-ssh-in-bu1">5.4. Add a rule that allows SSH in bu1</a></li>
 </ul>
 </li>
 </ul>

@@ -1,4 +1,4 @@
-# Lab 7 - FIRENET
+# Lab 6 - FIRENET
 
 ## 1. Objective
 

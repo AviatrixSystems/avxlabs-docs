@@ -1,4 +1,4 @@
-# Lab 6 - EGRESS
+# Lab 5 - EGRESS
 
 ## 1. Objective
 
