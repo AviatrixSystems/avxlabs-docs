@@ -368,7 +368,7 @@ document.write(`
 <h2>4. Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
 <section id="azure-transit-to-spoke-peering">
 <h3>4.1. Azure Transit to Spoke Peering<a class="headerlink" href="#azure-transit-to-spoke-peering" title="Permalink to this heading">#</a></h3>
-<p>First, you will need to configure the grey Aviatrix Spoke-Transit connection in the topology between azure-us-west-spoke2 and azure-us-west-transit.</p>
+<p>First, you will need to configure the grey Aviatrix Spoke-Transit connection in the topology between <strong><em>azure-us-west-spoke2</em></strong> and <strong><em>azure-us-west-transit</em></strong>.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and edit the Spoke Gateway <strong><em>azure-us-west-spoke2</em></strong>, clicking on the pencil icon:</p>
 <p><img alt="lab7-spoke" src="../_images/lab7-spoke.png" />
 <em>Figure 161: Edit Spoke GW</em></p>
@@ -389,14 +389,13 @@ Do not forget to click on <strong>Save</strong>.</p>
 <li><p>Interfaces mapping</p></li>
 <li><p>Policies creation</p></li>
 <li><p>Logging</p></li>
-<li><p>RFC1918 Static Route creation</p></li>
 </ul>
 <p>Specifically, you will be deploying a firewall image called <strong>Palo Alto Networks VM-Series Next-Generation Firewall Bundle 1</strong>.</p>
 <p>Aviatrix has already taken care of the <em><code class="docutils literal notranslate"><span class="pre">subscription</span></code></em> from the Azure Marketplace.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; Firewall</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Firewall&quot;</span></code> button.</p>
 <p><img alt="lab7-firenetbutton" src="../_images/lab7-firenetbutton.png" />
 <em>Figure 163: FireNet</em></p>
-<p>Deploy a Firewall by entering these settings within the <code class="docutils literal notranslate"><span class="pre">Deply</span> <span class="pre">Firewall</span></code> window:</p>
+<p>Deploy a Firewall by entering these settings within the <code class="docutils literal notranslate"><span class="pre">Deploy</span> <span class="pre">Firewall</span></code> window:</p>
 <ul class="simple">
 <li><p><strong>FireNet Instance</strong>: <span style='color:#33ECFF'>azure-us-west-transit</span></p></li>
 <li><p><strong>Name</strong>: <span style='color:#33ECFF'>azure-us-west-pan</span></p></li>
@@ -410,7 +409,8 @@ Do not forget to click on <strong>Save</strong>.</p>
 <em>Figure 164: Marketplace contact under loading</em></p>
 <ul class="simple">
 <li><p><strong>Firewall Image Version</strong>: <span style='color:#33ECFF'>9.1.0</span></p></li>
-<li><p><strong>Firewall instance Size</strong>: <span style='color:#33ECFF'>azure-us-west-transit-Public-gateway-and-firewall-mgmt-1</span></p></li>
+<li><p><strong>Firewall instance Size</strong>: <span style='color:#33ECFF'>Standard_D3_v2</span></p></li>
+<li><p><strong>Management Interface Subnet</strong>: <span style='color:#33ECFF'>azure-us-west-transit-Public-gateway-and-firewall-mgmt-1</span></p></li>
 <li><p><strong>Egress Interface Subnet</strong>: <span style='color:#33ECFF'>azure-us-west-transit-Public-FW-ingress-egress-1 [<strong>Note</strong>: Make sure you do not select the subnets that begin with <em>az-1, az-2, or az-3</em>]</span></p></li>
 <li><p><strong>Authentication</strong>: <span style='color:#33ECFF'>Password</span></p></li>
 <li><p><strong>Username</strong>: <span style='color:#33ECFF'>avxadmin [<strong>Note</strong>: username <em>admin</em> is not permitted in Azure]</span></p></li>
@@ -439,7 +439,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 </section>
 <section id="firewall-configuration">
 <h2>4.3. Firewall Configuration<a class="headerlink" href="#firewall-configuration" title="Permalink to this heading">#</a></h2>
-<p>Once you access the firewall in your web browser via <strong>HTTPS</strong>, you might get a warning about an invalid certification based on your browser settings. This is just because it has a self-signed certificate. Navigate past that to get to the login prompt. Sign in as <code class="docutils literal notranslate"><span class="pre">avxadmin</span></code> as the username and the password you entered earlier.</p>
+<p>Once you access the firewall in your web browser via <strong>HTTPS</strong>, you might get a warning about an invalid certification based on your browser settings. This is just because it has a <strong><em>self-signed certificate</em></strong>. Navigate past that to get to the login prompt. Sign in as <code class="docutils literal notranslate"><span class="pre">avxadmin</span></code> as the username and the password you entered earlier.</p>
 <p><img alt="lab7-palo" src="../_images/lab7-paloalto.png" />
 <em>Figure 168: PaloAlto Welcome page</em></p>
 <p>Dismiss the Welcome splash screen. This is an indication that the firewall is ready.</p>
@@ -447,12 +447,12 @@ Do not forget to click on <strong>Save</strong>.</p>
 </section>
 <section id="firewall-vendor-integration">
 <h2>4.4. Firewall Vendor Integration<a class="headerlink" href="#firewall-vendor-integration" title="Permalink to this heading">#</a></h2>
-<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <code class="docutils literal notranslate"><span class="pre">three</span> <span class="pre">dots&quot;</span></code> symbol on the right-hand side of the <strong><em>azure-us-west-transit raw</em></strong>, and then click on <code class="docutils literal notranslate"><span class="pre">Vendor</span> <span class="pre">Integration</span></code>.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;three</span> <span class="pre">dots&quot;</span></code> symbol on the right-hand side of the <strong><em>azure-us-west-transit</em></strong> raw, and then click on <code class="docutils literal notranslate"><span class="pre">Vendor</span> <span class="pre">Integration</span></code>.</p>
 <p><img alt="lab7-vendor" src="../_images/lab7-vendor.png" />
 <em>Figure 169: Vendor Integration</em></p>
 <p>Insert the following paramenters in the <code class="docutils literal notranslate"><span class="pre">&quot;Vendor</span> <span class="pre">Integration&quot;</span></code> pop-up window.</p>
 <ul class="simple">
-<li><p><strong>Management IP</strong>: <span style='color:#33ECFF'><strong>Auto populated</strong></span></p></li>
+<li><p><strong>Management IP Address</strong>: <span style='color:#33ECFF'><strong>Auto populated</strong></span></p></li>
 <li><p><strong>Vendor</strong>: <span style='color:#33ECFF'>Palo Alto Networks VM-Series</span></p></li>
 <li><p><strong>Username</strong>: <span style='color:#33ECFF'>avxadmin</span></p></li>
 <li><p><strong>Password</strong>: <span style='color:#33ECFF'>[the password you entered earlier]</span></p></li>
@@ -469,7 +469,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; Firewall</strong> and click on the <strong><em>azure-us-west-pan</em></strong> firewall</p>
 <p><img alt="lab7-vendor4" src="../_images/lab7-vendor4.png" />
 <em>Figure 172: Click on the Firewall</em></p>
-<p>You will see the RFC 1918 routes that the Controller automatically programmed on the Firewall. Notice how each RFC1918 route has a prefix of <code class="docutils literal notranslate"><span class="pre">&quot;AVX-&quot;</span></code> to show that it is programmed by Aviatrix.</p>
+<p>You will see the RFC 1918 routes that the Controller automatically programmed on the Firewall, through the <code class="docutils literal notranslate"><span class="pre">&quot;Vendor</span> <span class="pre">Integration&quot;</span></code>. Notice how each RFC1918 route has a prefix of <code class="docutils literal notranslate"><span class="pre">&quot;AVX-&quot;</span></code> to show that it is programmed by Aviatrix.</p>
 <p><img alt="lab7-vendor5" src="../_images/lab7-vendor5.png" />
 <em>Figure 173: Vendor Integration outcome</em></p>
 </section>
@@ -520,22 +520,28 @@ Do not forget to click on <strong>Save</strong>.</p>
 <em>Figure 182: Lab 7 Final Topology</em></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>On Lab 6 (Egress), the DCF functionality was enabled. The current active rule is the <code class="docutils literal notranslate"><span class="pre">&quot;allow-two-domains&quot;</span></code>, that is only allowing traffic towards two domains. Before launching any connectivity test, <ins>you need to enforce back the Greenfield-Rule</ins>!</p>
+<p>On Lab 6 (Egress), the DCF functionality was enabled. The current active rule is the <code class="docutils literal notranslate"><span class="pre">&quot;Inspect-DNS&quot;</span></code>, that is only allowing traffic towards UDP port 53. Before launching any connectivity test, <ins>you need to move on the top of the list of the DCF rules, the <strong><em>Greenfield-Rule</em></strong> and disassociate the <strong><em>Any-Web</em></strong> WebGroup</ins>!</p>
 </div>
 <p><img alt="lab7-dcfrule" src="../_images/lab7-dcfrule.png" />
 <em>Figure 183: DCF rules</em></p>
 <ul class="simple">
-<li><p>Reactivate the Greenfield-Rule</p></li>
+<li><p>Modify the Greenfield-Rule Priority</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default)</strong>, click on the the <code class="docutils literal notranslate"><span class="pre">&quot;Three</span> <span class="pre">dots&quot;</span></code> icon on the righ-hand side of the Greenfield-Rule and choose <code class="docutils literal notranslate"><span class="pre">&quot;Turn</span> <span class="pre">On</span> <span class="pre">Enforcement&quot;</span></code></p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default)</strong>, click on the the <code class="docutils literal notranslate"><span class="pre">&quot;two</span> <span class="pre">arrows&quot;</span></code> icon on the righ-hand side of the Greenfield-Rule and choose move the <code class="docutils literal notranslate"><span class="pre">&quot;Greenfield-Rule&quot;</span></code> at the very <strong>Top</strong>.
+Then click on <strong>Save in Draft</strong>.</p>
 </div>
-<p><img alt="lab7-dcfrule2" src="../_images/lab7-dcfrule2.png" />
-<em>Figure 184: Turn on Enforcement</em></p>
-<p>Do not forget to Commit your change!</p>
-<p><img alt="lab7-dcfrule3" src="../_images/lab7-dcfrule3.png" />
-<em>Figure 185: Commit</em></p>
+<p><img alt="lab7-dcfrule2" src="../_images/lab7-top.png" />
+<em>Figure 184: Move at the Top</em></p>
+<p>Now click on the <strong><em>pencil icon</em></strong> of the Greenfield-Rule and then disassociate the <strong><em>Any-Web</em></strong> WebGroup. Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<p><img alt="lab7-dcfrule3" src="../_images/lab7-edit.png" />
+<em>Figure 185: Edit Greenfield</em></p>
+<p><img alt="lab7-dcfrule3" src="../_images/lab7-edit2.png" />
+<em>Figure 185: Disassociate Any-Web</em></p>
+<p>You can proceed in committing your change.</p>
+<p><img alt="lab7-dcfrule3" src="../_images/lab7-finalcommit.png" />
+<em>Figure 185: Final Commit</em></p>
 <section id="luanch-connectivity-test">
 <h3>5.1.1 Luanch connectivity test<a class="headerlink" href="#luanch-connectivity-test" title="Permalink to this heading">#</a></h3>
 <p><strong>SSH</strong> into <strong><em>azure-us-west-spoke1-test1</em></strong> and from there, ping <strong><em>azure-us-west-spoke2-test1</em></strong> on its private IP.</p>

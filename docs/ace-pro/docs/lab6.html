@@ -330,7 +330,17 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-trust-policy">5. Zero Trust Policy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">5.1 Create a New WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-dcf-rule">5.2 Create a New DCF Rule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-dcf-rule">5.2 New DCF Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-rule">5.2.1 Create a new rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule">5.2.1 Test the new rule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">5.3 IDS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3.1 Create a New Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">5.3.2 Prepare the simulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">5.3.2 Test the New Rule and the IDS feature</a></li>
 </ul>
 </li>
 </ul>
@@ -524,11 +534,15 @@ document.write(`
 <em>Figure 156: WebGroup creation</em></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The purpose of this <strong>WebGroup</strong> is to authorize traffic only towards both the Domainss <em><a class="reference external" href="http://www.aviatix.com">www.aviatix.com</a></em> and <em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em>, therefore the curl commands issued towards other Domains will be blocked.</p>
+<p>The purpose of this <strong>WebGroup</strong> is to authorize traffic only towards both the Domains <em><a class="reference external" href="http://www.aviatix.com">www.aviatix.com</a></em> and <em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em>, therefore the curl commands issued towards other Domains will be blocked.</p>
 </div>
 </section>
-<section id="create-a-new-dcf-rule">
-<h3>5.2 Create a New DCF Rule<a class="headerlink" href="#create-a-new-dcf-rule" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="new-dcf-rule">
+<h2>5.2 New DCF Rule<a class="headerlink" href="#new-dcf-rule" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="create-a-new-rule">
+<h2>5.2.1 Create a new rule<a class="headerlink" href="#create-a-new-rule" title="Permalink to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Security Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <p>Create a new <strong><em>DCF rule</em></strong> with the following parameters:</p>
 <ul class="simple">
@@ -579,6 +593,8 @@ document.write(`
 <p><img alt="lab6-finalcommit" src="../_images/lab6-newcommit.png" />
 <em>Figure 158: Commit</em></p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the <strong><em>Live View</em></strong> from the <code class="docutils literal notranslate"><span class="pre">&quot;Time</span> <span class="pre">Period&quot;</span></code> field, then select the <strong><em>aws-us-east2-spoke1</em></strong> VPC from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window.</p>
+<section id="test-the-new-rule">
+<h3>5.2.1 Test the new rule<a class="headerlink" href="#test-the-new-rule" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Now launch again the following curl commands from the instance <strong><em>aws-us-east2-spoke1-test2</em></strong>.</p></li>
 </ul>
@@ -594,9 +610,80 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.football.com
 </pre></div>
 </div>
-<p>You will instanteously noticed that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong> will match the <code class="docutils literal notranslate"><span class="pre">&quot;Explicit</span>&#160; <span class="pre">Deny</span> <span class="pre">Rule&quot;</span></code> therefore, it will be dropped.</p>
+<p>You will instanteously noticed that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong> will match the new <code class="docutils literal notranslate"><span class="pre">&quot;Explicit</span> <span class="pre">Deny</span> <span class="pre">Rule&quot;</span></code>, therefore it will be dropped.</p>
 <p><img alt="lab6-allowed" src="../_images/lab6-liveview.png" />
-<em>Figure 159: Allowed</em></p>
+<em>Figure 159: Denied</em></p>
+</section>
+</section>
+<section id="ids">
+<h2>5.3 IDS<a class="headerlink" href="#ids" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>5.3.1 Create a New Rule<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Let’s now test the <strong><em>IDS</em></strong> feature (i.e. Intrusion Detection System). Create a new DCF Rule with the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>Inspect-DNS</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>Public Internet</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>Any</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+<li><p><strong>Intrustion Detection (IDS)</strong>: <span style='color:#33ECFF'>On</span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<p><img alt="lab6-ids" src="../_images/lab6-ids.png" />
+<em>Figure 159: Inspect-DNS</em></p>
+<p>Proceed clicking on the <strong>Commit</strong> button.</p>
+<p><img alt="lab6-idscommit" src="../_images/lab6-idscommit.png" />
+<em>Figure 159: Commit</em></p>
+</section>
+<section id="prepare-the-simulator">
+<h3>5.3.2 Prepare the simulator<a class="headerlink" href="#prepare-the-simulator" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>SSH to the <strong><em>aws-us-east2-spoke1-test2</em></strong> instance and launch the following commands.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>su<span class="w"> </span>-
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/0xtf/testmynids.org/master/tmNIDS<span class="w"> </span>-o<span class="w"> </span>/tmp/tmNIDS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/tmp/tmNIDS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>/tmp/tmNIDS
+</pre></div>
+</div>
+<p><img alt="lab6-sudo" src="../_images/lab6-sudo.png" />
+<em>Figure 159: Commands issued</em></p>
+<p>The last command will show up a <strong><em>simulator</em></strong> from whom you will be able to launch an attack for testing the <code class="docutils literal notranslate"><span class="pre">&quot;Suricata</span> <span class="pre">IDS&quot;</span></code></p>
+<p><img alt="lab6-simulator" src="../_images/lab6-suricata.png" />
+<em>Figure 159: Simulator</em></p>
+</section>
+<section id="test-the-new-rule-and-the-ids-feature">
+<h3>5.3.2 Test the New Rule and the IDS feature<a class="headerlink" href="#test-the-new-rule-and-the-ids-feature" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Before launching the attack, edit the new DCF rule, clicking on the pencil icon beside the <strong><em>Inspect-DNS</em></strong> rule.</p></li>
+</ul>
+<p><img alt="lab6-5" src="../_images/lab6-suricataedit.png" />
+<em>Figure 159: Edit existing rule</em></p>
+<p>Insert the following parameters and do not forget to click on <strong>Save In Drafts</strong>:</p>
+<ul class="simple">
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>UDP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#33ECFF'>53</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+</ul>
+<p><img alt="lab6-commit3" src="../_images/lab6-dns.png" />
+<em>Figure 159: Modify the rule</em></p>
+<p>Now click on the <strong>Commit</strong> button.</p>
+<p><img alt="lab6-commit3" src="../_images/lab6-commit3.png" />
+<em>Figure 159: Commit</em></p>
+<p>From the EC2 instance <strong><em>aws-us-east2-spoke1-test2</em></strong>, type <strong>5</strong> for launching a malicious attack, specifically the attack will carry out an attempted connection towards a TOR server.</p>
+<p><img alt="lab6-5" src="../_images/lab6-5.png" />
+<em>Figure 159: Malicious known attack</em></p>
+<p>Now go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Detected Intrusions</strong>, click on the <strong>refresh</strong> button and you will be able to find indicators that detected that attempt to contact a TOR server, through a DNS request</p>
+<p><img alt="lab6-5" src="../_images/lab6-refresh.png" />
+<em>Figure 159: Detected Intrusions</em></p>
+<p>Click on any <strong>Timestamp</strong> to get additional insight on that specific attack.</p>
+<p><img alt="lab6-final" src="../_images/lab6-final.png" />
+<em>Figure 159: Additional insights</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The indicator is showing clearly that we tried reaching out to Google DNS and then querying for a TOR domain!</p>
+</div>
 </section>
 </section>
 </section>
@@ -680,7 +767,17 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-trust-policy">5. Zero Trust Policy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">5.1 Create a New WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-dcf-rule">5.2 Create a New DCF Rule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-dcf-rule">5.2 New DCF Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-rule">5.2.1 Create a new rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule">5.2.1 Test the new rule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">5.3 IDS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3.1 Create a New Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">5.3.2 Prepare the simulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">5.3.2 Test the New Rule and the IDS feature</a></li>
 </ul>
 </li>
 </ul>

@@ -202,10 +202,11 @@ Do not forget to click on **Save**.
 _Figure 156: WebGroup creation_
 
 ```{important}
-The purpose of this **WebGroup** is to authorize traffic only towards both the Domainss *www.aviatix.com* and *www.wikipedia.com*, therefore the curl commands issued towards other Domains will be blocked.
+The purpose of this **WebGroup** is to authorize traffic only towards both the Domains *www.aviatix.com* and *www.wikipedia.com*, therefore the curl commands issued towards other Domains will be blocked.
 ```
 
-### 5.2 Create a New DCF Rule
+## 5.2 New DCF Rule 
+## 5.2.1 Create a new rule
 
 Go to **CoPilot > Security Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
@@ -255,6 +256,8 @@ _Figure 158: Commit_
 
 Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
 
+### 5.2.1 Test the new rule
+
 - Now launch again the following curl commands from the instance **_aws-us-east2-spoke1-test2_**.
 
 ```bash
@@ -273,4 +276,88 @@ curl www.football.com
 You will instanteously noticed that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be dropped.
 
 ![lab6-allowed](images/lab6-liveview.png)
-_Figure 159: Allowed_
+_Figure 159: Denied_
+
+## 5.3 IDS
+### 5.3.1 Create a New Rule
+
+Let's now test the **_IDS_** feature (i.e. Intrusion Detection System). Create a new DCF Rule with the following parameters:
+
+- **Name**: <span style='color:#33ECFF'>Inspect-DNS</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>Public Internet</span>
+- **Protocol**: <span style='color:#33ECFF'>Any</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Intrustion Detection (IDS)**: <span style='color:#33ECFF'>On</span>
+
+Do not forget to click on **Save In Drafts**.
+
+![lab6-ids](images/lab6-ids.png)
+_Figure 159: Inspect-DNS_
+
+Proceed clicking on the **Commit** button.
+
+![lab6-idscommit](images/lab6-idscommit.png)
+_Figure 159: Commit_
+
+### 5.3.2 Prepare the simulator
+
+- SSH to the **_aws-us-east2-spoke1-test2_** instance and launch the following commands.
+
+```bash
+sudo su -
+```
+```bash
+curl -sSL https://raw.githubusercontent.com/0xtf/testmynids.org/master/tmNIDS -o /tmp/tmNIDS && chmod +x /tmp/tmNIDS && /tmp/tmNIDS
+```
+
+![lab6-sudo](images/lab6-sudo.png)
+_Figure 159: Commands issued_
+
+The last command will show up a **_simulator_** from whom you will be able to launch an attack for testing the `"Suricata IDS"`
+
+![lab6-simulator](images/lab6-suricata.png)
+_Figure 159: Simulator_
+
+### 5.3.2 Test the New Rule and the IDS feature
+
+- Before launching the attack, edit the new DCF rule, clicking on the pencil icon beside the **_Inspect-DNS_** rule.
+
+![lab6-5](images/lab6-suricataedit.png)
+_Figure 159: Edit existing rule_
+
+Insert the following parameters and do not forget to click on **Save In Drafts**:
+
+- **Protocol**: <span style='color:#33ECFF'>UDP</span>
+- **Port**: <span style='color:#33ECFF'>53</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+
+![lab6-commit3](images/lab6-dns.png)
+_Figure 159: Modify the rule_
+
+Now click on the **Commit** button.
+
+![lab6-commit3](images/lab6-commit3.png)
+_Figure 159: Commit_
+
+From the EC2 instance **_aws-us-east2-spoke1-test2_**, type **5** for launching a malicious attack, specifically the attack will carry out an attempted connection towards a TOR server.
+
+![lab6-5](images/lab6-5.png)
+_Figure 159: Malicious known attack_
+
+Now go to **CoPilot > Security > Distributed Cloud Firewall > Detected Intrusions**, click on the **refresh** button and you will be able to find indicators that detected that attempt to contact a TOR server, through a DNS request
+
+![lab6-5](images/lab6-refresh.png)
+_Figure 159: Detected Intrusions_
+
+Click on any **Timestamp** to get additional insight on that specific attack.
+
+![lab6-final](images/lab6-final.png)
+_Figure 159: Additional insights_
+
+```{note}
+The indicator is showing clearly that we tried reaching out to Google DNS and then querying for a TOR domain!
+```
+
+

@@ -56,13 +56,13 @@ The configurationt template will grey out after clicking on Save. Be patient and
 
 Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.
 
-**192.168.100.0/24** will be used for the cloud to reach on-prem resources, and 1:1 NAT will be used.
+- **192.168.100.0/24** will be used for the cloud to reach on-prem resources, and 1:1 NAT will be used.
 
-1**92.168.200.0/24** will be used from on-prem to reach cloud resources. 
+- **192.168.200.0/24** will be used from on-prem to reach cloud resources. 
 
 For example, gcp-us-central1-test1 (172.16.1.100) will be reached at 192.168.200.100 due to 1:1 NAT.
 
-## 4.2. Site2Cloud Connection (On-prem to Cloud)
+### 4.2. Site2Cloud Connection (On-prem to Cloud)
 
 The CoPilot provides a **_template_** that can be used to configure the remote router/firewall.
 
@@ -104,14 +104,14 @@ Go to **CoPilot > Networking > Connectivity > External Connection (S2C)** and cl
 ![lab8-s2craw](images/lab8-s2craw.png)
 _Figure 195: S2C node_
 
-Then click on the `"Settings"` tab, expand the `"General"` section and paste the Provate IP on the `"Remote Gateway Identifier"` field, as depicted below. 
+Then click on the `"Settings"` tab, expand the `"General"` section and paste the Private IP on the `"Remote Gateway Identifier"` field, as depicted below. 
 
 Do not forget to click on **Save**.
 
 ![lab8-settings](images/lab8-settings.png)
 _Figure 196: Remote Gateway Identifier_
 
-## 4.2.1 Modify the txt.file 
+### 4.2.1 Modify the txt.file 
 
 Make the following four changes to the downloaded Site2Cloud text file:
 
@@ -140,21 +140,25 @@ Type `configure terminal` (can be abbreviated to **_conf t_**).
 ![lab8-txt2](images/lab8-ssh.png)
 _Figure 199: txt.file modification_
 
-Paste the configuration to the terminal.
+- **Paste** the configuration to the terminal.
 
 After doing so, type `end` to exit configuration mode, followed by `sh ip int br` to verify that the tunnel interface is up on the CSR.
 
 ![lab8-up](images/lab8-up.png)
 _Figure 200: Connection is up/up_
 
-5. Verification
+## 5. Verification
 
 Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**
+
+```{tip}
+Click on the **refresh** button to see the colored ball changing from red to green.
+```
 
 ![lab8-refresh](images/lab8-refresh.png)
 _Figure 201: Connection is up/up also on the CoPilot_
 
-Verify the newly created tunnel is up (might take a few seconds once configuration is applied on the CSR - alternatively you can just click on the `Refresh` button).
+- Verify the newly created tunnel is up (might take a few seconds once configuration is applied on the CSR (alternatively you can just click on the `Refresh` button).
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)**
 
@@ -174,7 +178,7 @@ ping 192.168.200.100 source gi1
 ![lab8-pingok](images/lab8-pingok.png)
 _Figure 202: Ping ok_
 
-Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_** and then click on `Tools` and then click on `Gateway Diagnostics`.
+Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, click on `Tools` and then click on `Gateway Diagnostics`.
 
 ![lab8-diag](images/lab8-diag.png)
 _Figure 203: Gateway Diagnostics_

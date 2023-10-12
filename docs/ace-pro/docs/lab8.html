@@ -323,10 +323,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-cloud-to-on-prem">4.1. Site2Cloud Connection (Cloud to On-Prem)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-on-prem-to-cloud">4.2. Site2Cloud Connection (On-prem to Cloud)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-the-txt-file">4.2.1 Modify the txt.file</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-on-prem-to-cloud">4.2. Site2Cloud Connection (On-prem to Cloud)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-the-txt-file">4.2.1 Modify the txt.file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a></li>
 </ul>
             </nav>
         </div>
@@ -387,13 +388,14 @@ document.write(`
 <p>The configurationt template will grey out after clicking on Save. Be patient and wait for the Aviatrix Controller to complete the deployment. <ins>This will create the first leg of the connection, on the GCP Spoke GW</ins>. This will stay <strong>Down</strong> until the other end is configured.</p>
 </div>
 <p>Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.</p>
-<p><strong>192.168.100.0/24</strong> will be used for the cloud to reach on-prem resources, and 1:1 NAT will be used.</p>
-<p>1<strong>92.168.200.0/24</strong> will be used from on-prem to reach cloud resources.</p>
+<ul class="simple">
+<li><p><strong>192.168.100.0/24</strong> will be used for the cloud to reach on-prem resources, and 1:1 NAT will be used.</p></li>
+<li><p><strong>192.168.200.0/24</strong> will be used from on-prem to reach cloud resources.</p></li>
+</ul>
 <p>For example, gcp-us-central1-test1 (172.16.1.100) will be reached at 192.168.200.100 due to 1:1 NAT.</p>
 </section>
-</section>
 <section id="site2cloud-connection-on-prem-to-cloud">
-<h2>4.2. Site2Cloud Connection (On-prem to Cloud)<a class="headerlink" href="#site2cloud-connection-on-prem-to-cloud" title="Permalink to this heading">#</a></h2>
+<h3>4.2. Site2Cloud Connection (On-prem to Cloud)<a class="headerlink" href="#site2cloud-connection-on-prem-to-cloud" title="Permalink to this heading">#</a></h3>
 <p>The CoPilot provides a <strong><em>template</em></strong> that can be used to configure the remote router/firewall.</p>
 <p>Select the Site-to-Cloud connection row you created and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Three</span> <span class="pre">dots&quot;</span></code> icon and choose <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">Configuration&quot;</span></code> to generate and download the configuration template.</p>
 <p><img alt="lab8-template" src="../_images/lab8-template.png" />
@@ -423,13 +425,13 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong> and click on the <code class="docutils literal notranslate"><span class="pre">GCP-to-OnPremPartner</span></code> connection.</p>
 <p><img alt="lab8-s2craw" src="../_images/lab8-s2craw.png" />
 <em>Figure 195: S2C node</em></p>
-<p>Then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab, expand the <code class="docutils literal notranslate"><span class="pre">&quot;General&quot;</span></code> section and paste the Provate IP on the <code class="docutils literal notranslate"><span class="pre">&quot;Remote</span> <span class="pre">Gateway</span> <span class="pre">Identifier&quot;</span></code> field, as depicted below.</p>
+<p>Then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab, expand the <code class="docutils literal notranslate"><span class="pre">&quot;General&quot;</span></code> section and paste the Private IP on the <code class="docutils literal notranslate"><span class="pre">&quot;Remote</span> <span class="pre">Gateway</span> <span class="pre">Identifier&quot;</span></code> field, as depicted below.</p>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <p><img alt="lab8-settings" src="../_images/lab8-settings.png" />
 <em>Figure 196: Remote Gateway Identifier</em></p>
 </section>
 <section id="modify-the-txt-file">
-<h2>4.2.1 Modify the txt.file<a class="headerlink" href="#modify-the-txt-file" title="Permalink to this heading">#</a></h2>
+<h3>4.2.1 Modify the txt.file<a class="headerlink" href="#modify-the-txt-file" title="Permalink to this heading">#</a></h3>
 <p>Make the following four changes to the downloaded Site2Cloud text file:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;crypto_policy_number&gt;</span></code> : <span style='color:#33ECFF'>1</span></p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;tunnel_number1&gt;</span></code>: <span style='color:#33ECFF'>1</span></p>
@@ -447,17 +449,26 @@ document.write(`
 <p>Type <code class="docutils literal notranslate"><span class="pre">configure</span> <span class="pre">terminal</span></code> (can be abbreviated to <strong><em>conf t</em></strong>).</p>
 <p><img alt="lab8-txt2" src="../_images/lab8-ssh.png" />
 <em>Figure 199: txt.file modification</em></p>
-<p>Paste the configuration to the terminal.</p>
+<ul class="simple">
+<li><p><strong>Paste</strong> the configuration to the terminal.</p></li>
+</ul>
 <p>After doing so, type <code class="docutils literal notranslate"><span class="pre">end</span></code> to exit configuration mode, followed by <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">ip</span> <span class="pre">int</span> <span class="pre">br</span></code> to verify that the tunnel interface is up on the CSR.</p>
 <p><img alt="lab8-up" src="../_images/lab8-up.png" />
 <em>Figure 200: Connection is up/up</em></p>
-<ol class="arabic simple" start="5">
-<li><p>Verification</p></li>
-</ol>
+</section>
+</section>
+<section id="verification">
+<h2>5. Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Click on the <strong>refresh</strong> button to see the colored ball changing from red to green.</p>
+</div>
 <p><img alt="lab8-refresh" src="../_images/lab8-refresh.png" />
 <em>Figure 201: Connection is up/up also on the CoPilot</em></p>
-<p>Verify the newly created tunnel is up (might take a few seconds once configuration is applied on the CSR - alternatively you can just click on the <code class="docutils literal notranslate"><span class="pre">Refresh</span></code> button).</p>
+<ul class="simple">
+<li><p>Verify the newly created tunnel is up (might take a few seconds once configuration is applied on the CSR (alternatively you can just click on the <code class="docutils literal notranslate"><span class="pre">Refresh</span></code> button).</p></li>
+</ul>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong></p>
 <p>Click to expand the <strong><em>gcp-us-central1-spoke1</em></strong> VPC to view the on-premises connection.</p>
 <p><img alt="lab8-onprem" src="../_images/lab8-onprem.png" />
@@ -469,7 +480,7 @@ document.write(`
 </div>
 <p><img alt="lab8-pingok" src="../_images/lab8-pingok.png" />
 <em>Figure 202: Ping ok</em></p>
-<p>Then go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong> and click on the icon of the Spoke Gateway <strong><em>gcp-us-central1-spoke1</em></strong> and then click on <code class="docutils literal notranslate"><span class="pre">Tools</span></code> and then click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Diagnostics</span></code>.</p>
+<p>Then go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong> and click on the icon of the Spoke Gateway <strong><em>gcp-us-central1-spoke1</em></strong>, click on <code class="docutils literal notranslate"><span class="pre">Tools</span></code> and then click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Diagnostics</span></code>.</p>
 <p><img alt="lab8-diag" src="../_images/lab8-diag.png" />
 <em>Figure 203: Gateway Diagnostics</em></p>
 <p>Choose the <code class="docutils literal notranslate"><span class="pre">“Active</span> <span class="pre">Sessions”</span></code> option and in the Search field write <code class="docutils literal notranslate"><span class="pre">“icmp”</span></code> and then click on <strong>Run</strong>. You will notice the subnets involved (i.e. real and virtual subnets) in the Mapped NAT.</p>
@@ -557,10 +568,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-cloud-to-on-prem">4.1. Site2Cloud Connection (Cloud to On-Prem)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-on-prem-to-cloud">4.2. Site2Cloud Connection (On-prem to Cloud)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-the-txt-file">4.2.1 Modify the txt.file</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-on-prem-to-cloud">4.2. Site2Cloud Connection (On-prem to Cloud)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-the-txt-file">4.2.1 Modify the txt.file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a></li>
 </ul>
   </nav></div>
 

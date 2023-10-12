@@ -20,7 +20,7 @@ _Figure 160: Lab 7 Initial Topology_
 ## 4. Configuration
 ### 4.1. Azure Transit to Spoke Peering
 
-First, you will need to configure the grey Aviatrix Spoke-Transit connection in the topology between azure-us-west-spoke2 and azure-us-west-transit.
+First, you will need to configure the grey Aviatrix Spoke-Transit connection in the topology between **_azure-us-west-spoke2_** and **_azure-us-west-transit_**.
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_azure-us-west-spoke2_**, clicking on the pencil icon:
 
@@ -46,7 +46,6 @@ The bootstrap package will take care of the following pre-provisioning on the Fi
 - Interfaces mapping
 - Policies creation
 - Logging
-- RFC1918 Static Route creation
 
 Specifically, you will be deploying a firewall image called **Palo Alto Networks VM-Series Next-Generation Firewall Bundle 1**.
 
@@ -57,7 +56,7 @@ Go to **CoPilot > Security > FireNet > Firewall**, then click on the `"+ Firewal
 ![lab7-firenetbutton](images/lab7-firenetbutton.png)
 _Figure 163: FireNet_
 
-Deploy a Firewall by entering these settings within the `Deply Firewall` window:
+Deploy a Firewall by entering these settings within the `Deploy Firewall` window:
 
 - **FireNet Instance**: <span style='color:#33ECFF'>azure-us-west-transit</span>
 - **Name**: <span style='color:#33ECFF'>azure-us-west-pan</span>
@@ -71,7 +70,8 @@ When you click on the **Firewall Image** drop-down window, you will see a `"Load
 _Figure 164: Marketplace contact under loading_
 
 - **Firewall Image Version**: <span style='color:#33ECFF'>9.1.0</span>
-- **Firewall instance Size**: <span style='color:#33ECFF'>azure-us-west-transit-Public-gateway-and-firewall-mgmt-1</span>
+- **Firewall instance Size**: <span style='color:#33ECFF'>Standard_D3_v2</span>
+- **Management Interface Subnet**: <span style='color:#33ECFF'>azure-us-west-transit-Public-gateway-and-firewall-mgmt-1</span>
 - **Egress Interface Subnet**: <span style='color:#33ECFF'>azure-us-west-transit-Public-FW-ingress-egress-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
 - **Authentication**: <span style='color:#33ECFF'>Password</span>
 - **Username**: <span style='color:#33ECFF'>avxadmin [**Note**: username *admin* is not permitted in Azure]</span>
@@ -106,7 +106,7 @@ Now try to click on the *hyperlink* of the firewall. You should be able to see t
 
 ## 4.3. Firewall Configuration
 
-Once you access the firewall in your web browser via **HTTPS**, you might get a warning about an invalid certification based on your browser settings. This is just because it has a self-signed certificate. Navigate past that to get to the login prompt. Sign in as `avxadmin` as the username and the password you entered earlier.
+Once you access the firewall in your web browser via **HTTPS**, you might get a warning about an invalid certification based on your browser settings. This is just because it has a **_self-signed certificate_**. Navigate past that to get to the login prompt. Sign in as `avxadmin` as the username and the password you entered earlier.
 
 ![lab7-palo](images/lab7-paloalto.png)
 _Figure 168: PaloAlto Welcome page_
@@ -117,14 +117,14 @@ Do not end the firewall's HTTPS session yet. You will return to this web interfa
 
 ## 4.4. Firewall Vendor Integration
 
-Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `three dots"` symbol on the right-hand side of the **_azure-us-west-transit raw_**, and then click on `Vendor Integration`.
+Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three dots"` symbol on the right-hand side of the **_azure-us-west-transit_** raw, and then click on `Vendor Integration`.
 
 ![lab7-vendor](images/lab7-vendor.png)
 _Figure 169: Vendor Integration_
 
 Insert the following paramenters in the `"Vendor Integration"` pop-up window.
 
-- **Management IP**: <span style='color:#33ECFF'>**Auto populated**</span>
+- **Management IP Address**: <span style='color:#33ECFF'>**Auto populated**</span>
 - **Vendor**: <span style='color:#33ECFF'>Palo Alto Networks VM-Series</span>
 - **Username**: <span style='color:#33ECFF'>avxadmin</span>
 - **Password**: <span style='color:#33ECFF'>[the password you entered earlier]</span>
@@ -146,7 +146,7 @@ Go to **CoPilot > Security > FireNet > Firewall** and click on the **_azure-us-w
 ![lab7-vendor4](images/lab7-vendor4.png)
 _Figure 172: Click on the Firewall_
 
-You will see the RFC 1918 routes that the Controller automatically programmed on the Firewall. Notice how each RFC1918 route has a prefix of `"AVX-"` to show that it is programmed by Aviatrix.
+You will see the RFC 1918 routes that the Controller automatically programmed on the Firewall, through the `"Vendor Integration"`. Notice how each RFC1918 route has a prefix of `"AVX-"` to show that it is programmed by Aviatrix.
 
 ![lab7-vendor5](images/lab7-vendor5.png)
 _Figure 173: Vendor Integration outcome_
@@ -215,26 +215,34 @@ After this step, this is what Lab 7 topology looks like:
 _Figure 182: Lab 7 Final Topology_
 
 ```{warning}
-On Lab 6 (Egress), the DCF functionality was enabled. The current active rule is the `"allow-two-domains"`, that is only allowing traffic towards two domains. Before launching any connectivity test, <ins>you need to enforce back the Greenfield-Rule</ins>!
+On Lab 6 (Egress), the DCF functionality was enabled. The current active rule is the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53. Before launching any connectivity test, <ins>you need to move on the top of the list of the DCF rules, the **_Greenfield-Rule_** and disassociate the **_Any-Web_** WebGroup</ins>!
 ```
 
 ![lab7-dcfrule](images/lab7-dcfrule.png)
 _Figure 183: DCF rules_
 
-- Reactivate the Greenfield-Rule
+- Modify the Greenfield-Rule Priority
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"Three dots"` icon on the righ-hand side of the Greenfield-Rule and choose `"Turn On Enforcement"`
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the Greenfield-Rule and choose move the `"Greenfield-Rule"` at the very **Top**.
+Then click on **Save in Draft**.
 ```
 
-![lab7-dcfrule2](images/lab7-dcfrule2.png)
-_Figure 184: Turn on Enforcement_
+![lab7-dcfrule2](images/lab7-top.png)
+_Figure 184: Move at the Top_
 
-Do not forget to Commit your change!
+Now click on the **_pencil icon_** of the Greenfield-Rule and then disassociate the **_Any-Web_** WebGroup. Do not forget to click on **Save In Drafts**.
 
-![lab7-dcfrule3](images/lab7-dcfrule3.png)
-_Figure 185: Commit_
+![lab7-dcfrule3](images/lab7-edit.png)
+_Figure 185: Edit Greenfield_
 
+![lab7-dcfrule3](images/lab7-edit2.png)
+_Figure 185: Disassociate Any-Web_
+
+You can proceed in committing your change.
+
+![lab7-dcfrule3](images/lab7-finalcommit.png)
+_Figure 185: Final Commit_
 
 ### 5.1.1 Luanch connectivity test
 

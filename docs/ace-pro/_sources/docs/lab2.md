@@ -226,7 +226,7 @@ Only one Spoke Gateway will be deployed in VNet azure-us-wes-spoke1.
 - **Account:** <span style='color:#33ECFF'>azure-account</span>
 - **Region:** <span style='color:#33ECFF'>West US</span>
 - **VNet:** <span style='color:#33ECFF'>azure-us-west-spoke1 (Make sure you don't select azure-us-west-**spoke2** VPC)</span>
-- **Instance Size:** <span style='color:#33ECFF'>Standard_B1ms</span>
+- **Instance Size:** <span style='color:#33ECFF'>Standard_B2ms</span>
 - **High Performance Encryption:** <span style='color:#33ECFF'>Off</span>
 - **Attach to Subnet:** <span style='color:#33ECFF'>azure-us-west-spoke1-Public-gateway-subnet-1</span>
 - **Public IP:** <span style='color:#33ECFF'>Allocate New Static Public IP</span>
