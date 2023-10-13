@@ -169,6 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
@@ -368,7 +369,7 @@ document.write(`
 <section id="objective">
 <h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
 <p>Build Transit Network in Azure, GCP and AWS using Aviatrix Multicloud Transit hub and spoke model.</p>
-<p>In this lab, we will use Aviatrix CoPilot to connect three major clouds, i.e. Azure, GCP and AWS. The workloads in VPCs/VNets in all three clouds must communicate without manual configuration on the native consoles.</p>
+<p>In this lab, we will use Aviatrix CoPilot to connect three major clouds, i.e. Azure, GCP and AWS. The workloads in VPCs/VNets, in all three clouds, must communicate without manual configuration on the native consoles.</p>
 </section>
 <section id="multicloud-connectivity-overview">
 <h2>2. Multicloud Connectivity Overview<a class="headerlink" href="#multicloud-connectivity-overview" title="Permalink to this heading">#</a></h2>
@@ -385,16 +386,24 @@ document.write(`
 <li><p><strong>AZURE</strong>: us-west (only spoke1)</p></li>
 </ul>
 <p>The rest of the topology has been pre-deployed to save time, including the test instances/VMs.</p>
-<p><img alt="lab2-topology" src="../_images/lab2-topology.png" />
-<em>Figure 20: Initial pre-provisioned topology</em></p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/lab2-topology.png"><img alt="../_images/lab2-topology.png" src="../_images/lab2-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Initial pre-provisioned topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The test VPCs/VNet you created in Lab 1 will not be used in other labs.</p>
 <p>In this lab, the Transits will be deployed in pairs, but the Spokes will not.</p>
 </div>
 <p>The CoPilot <em>dashboard</em> should look something like this:</p>
-<p><img alt="dashboard" src="../_images/lab2-dashboard.png" />
-<em>Figure 21: Dashboard</em></p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab2-dashboard.png" src="../_images/lab2-dashboard.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Dashboard</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Before starting building your multicloud infrastructure, adjust the fetch timers on the CoPilot.</p></li>
 </ul>
@@ -403,23 +412,43 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; Settings &gt; Resources &gt; Task Server</strong></p>
 </div>
 <p>Ensure that <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">Topology</span></code>, <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">Instances</span></code>, <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">GW</span> <span class="pre">Routes</span></code> and <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">VPC</span> <span class="pre">Routes</span></code> intervals are set to <strong>“1 Second”</strong> each and then click on <strong>SAVE</strong>.</p>
-<p><img alt="Task server" src="../_images/lab2-timer.png" />
-<em>Figure 22: Task Server</em></p>
-<p><img alt="Fetch topology" src="../_images/lab2-fetchtopology.png" />
-<em>Figure 23: Fetch Topology</em></p>
-<p><img alt="Fetch instances" src="../_images/lab2-fetchinstances.png" />
-<em>Figure 24: Fetch Instances</em></p>
-<p><img alt="Fetch gw" src="../_images/lab2-fetchgw.png" />
-<em>Figure 25: Fetch GW</em></p>
-<p><img alt="Fetch vpc" src="../_images/lab2-fetchvpc.png" />
-<em>Figure 26: Fetch VPC</em></p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab2-timer.png" src="../_images/lab2-timer.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Task Server</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/lab2-fetchtopology.png"><img alt="../_images/lab2-fetchtopology.png" src="../_images/lab2-fetchtopology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Fetch Topology</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/lab2-fetchinstances.png"><img alt="../_images/lab2-fetchinstances.png" src="../_images/lab2-fetchinstances.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Fetch Instances</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/lab2-fetchgw.png"><img alt="../_images/lab2-fetchgw.png" src="../_images/lab2-fetchgw.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Fetch GW</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/lab2-fetchvpc.png"><img alt="../_images/lab2-fetchvpc.png" src="../_images/lab2-fetchvpc.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Fetch VPC</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Afterwards, click on <strong>Commit</strong>.</p>
-<p><img alt="commit" src="../_images/lab2-commit.png" />
-<em>Figure 27: Commit</em></p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Ensure to <code class="docutils literal notranslate"><span class="pre">Refresh</span></code> the web page to see the changes applied, successfully.</p>
-</div>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab2-commit.png" src="../_images/lab2-commit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!</p>
@@ -427,24 +456,41 @@ document.write(`
 </section>
 <section id="initial-configuration">
 <h2>4. Initial configuration<a class="headerlink" href="#initial-configuration" title="Permalink to this heading">#</a></h2>
-<p>Go to <strong>CoPilot &gt; Dashboard</strong> and click on the widget called <code class="docutils literal notranslate"><span class="pre">&quot;Aviatrix</span> <span class="pre">Gateways&quot;</span></code>. When you begin this lab, you should have <strong>nine</strong> gateways in your pod:</p>
-<p><img alt="dashboard gw" src="../_images/lab2-dashboardgw.png" />
-<em>Figure 28: Commit</em></p>
+<p>Go to <strong>CoPilot &gt; Dashboard</strong> and click on the widget called <code class="docutils literal notranslate"><span class="pre">&quot;Aviatrix</span> <span class="pre">Gateways&quot;</span></code>.</p>
+<p>When you begin this lab, you should have <strong>nine</strong> gateways in your pod:</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab2-dashboardgw.png" src="../_images/lab2-dashboardgw.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Dashboard with existing GWs</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Nevertheless, if you go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Overview (default tab)</strong>, you will notice that the number of Transit Gateways is set to <strong>three</strong>, whereas the number of Spoke Gateways is set to <strong>two</strong>.</p>
-<p><img alt="cluster" src="../_images/lab2-cluster.png" />
-<em>Figure 29: Cluster</em></p>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab2-cluster.png" src="../_images/lab2-cluster.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">These are Clusters of GWs</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to the number of <strong><em>clusters</em></strong>, per each type of gateway.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and expand the three drop-down lists. You can find out that there are a total of <strong>six</strong> Transit Gateways (Public IPs may differ):</p>
-<p><img alt="cluster transit gws" src="../_images/lab2-clustertransit.png" />
-<em>Figure 30: Transit GWs Clusters</em></p>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab2-clustertransit.png" src="../_images/lab2-clustertransit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Transit GWs Clusters</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended a <code class="docutils literal notranslate"><span class="pre">&quot;-hagw&quot;</span></code>; this is imposed by the <strong><em>“aviatrix_transit_gateway”</em></strong> Terraform resource.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can deploy up to maximum <strong>two</strong> Transit Gateways per each Transit VPC/VNet/VCN.</p>
 </div>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and expand the unique drop-down list. You can find out that there are a total of <strong>three</strong> Spoke Gateways (once again, the Public IPs may differ):</p>
-<p><img alt="cluster spoke gws" src="../_images/lab2-clusterspoke.png" />
-<em>Figure 31: Transit GWs Clusters</em></p>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab2-clusterspoke.png" src="../_images/lab2-clusterspoke.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Spoke GWs Clusters</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>You can notice that the cluster in AWS comprises two Spoke Gateways, whereas in Azure there is just a single Spoke Gateway. This is a valid deployment. The number of Spoke Gateways that you should deploy per each Spoke VPC/VNet/VCN is dictated by your architecture design.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -467,8 +513,12 @@ document.write(`
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt; + Transit Gateway</strong></p></li>
 </ul>
-<p><img alt="cluster spoke gws" src="../_images/lab2-transitbutton.png" />
-<em>Figure 32: +Transit Gateway</em></p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab2-transitbutton.png" src="../_images/lab2-transitbutton.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">+Transit Gateway</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Deploy Aviatrix Transit Gateways in AWS <strong><em>East-2</em></strong> region. To save time, Aviatrix Transit Gateways in Azure, GCP and AWS east-1 region have already been pre-deployed in pairs for this lab.</p>
 </section>
 <section id="transit-gateway-in-aws-us-east-2">
@@ -481,7 +531,7 @@ document.write(`
 <li><p><strong>Region:</strong> <span style='color:#33ECFF'>us-east-2 (Ohio)</span></p></li>
 <li><p><strong>VPC ID:</strong> <span style='color:#33ECFF'>aws-us-east2-transit (Make sure you don’t select aws-us-east2-<strong>spoke</strong> VPC)</span></p></li>
 <li><p><strong>Instance Size:</strong> <span style='color:#33ECFF'>c5n.large</span></p></li>
-<li><p><strong>High Performance Encryption:</strong> <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>High Performance Encryption:</strong> <span style='color:#33ECFF'><strong>On</strong></span></p></li>
 </ul>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Instance</span></code> (Make sure you deploy also the Second Transit Gateway, in a different subnet).</p>
 <ul class="simple">
@@ -491,17 +541,29 @@ document.write(`
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As soon as you select High Performance Encryption, /26 subnets will appear in the drop-down window.</p>
+<p>As soon as you select High Performance Encryption, <strong>/26</strong> subnets will appear in the drop-down window.</p>
 </div>
 <p>Click <strong>SAVE</strong>.</p>
-<p><img alt="create transit gw" src="../_images/lab2-transitcreation.png" />
-<em>Figure 33: Create Transit Gateway</em></p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab2-transitcreation.png" src="../_images/lab2-transitcreation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Create Transit Gateway</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>You will immediately get a message as follows.</p>
-<p><img alt="gw message creation" src="../_images/lab2-gwmessage.png" />
-<em>Figure 34: Gateway deployment in progress</em></p>
-<p>You may check the status of the gateway creation in the top right corner by expanding the task icon.</p>
-<p><img alt="gw message creation" src="../_images/lab2-taskicon.png" />
-<em>Figure 35: Task icon</em></p>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="../_images/lab2-gwmessage.png"><img alt="../_images/lab2-gwmessage.png" src="../_images/lab2-gwmessage.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Gateway deployment in progress</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You may check the status of the gateway creation in the top right corner by expanding the <strong>task icon</strong>.</p>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../_images/lab2-taskicon.png"><img alt="../_images/lab2-taskicon.png" src="../_images/lab2-taskicon.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Task icon</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>This action will instantiate two Transit Gateways with the following names:</p>
 <ol class="arabic simple">
 <li><p><strong>aws-us-east2-transit</strong></p></li>
@@ -517,8 +579,12 @@ document.write(`
 <h3>4.2. Aviatrix Spoke Gateways<a class="headerlink" href="#aviatrix-spoke-gateways" title="Permalink to this heading">#</a></h3>
 <p>Navigate to the tab immediately to the right, which is <code class="docutils literal notranslate"><span class="pre">Spoke</span> <span class="pre">Gateways</span></code>.</p>
 <p>This is <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt; + Spoke Gateway</strong>.</p>
-<p><img alt="Spoke GW button" src="../_images/lab2-spokecreate.png" />
-<em>Figure 36: +Spoke Gateway</em></p>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab2-spokecreate.png" src="../_images/lab2-spokecreate.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">+Spoke Gateway</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="spoke-gateway-in-aws">
 <h3>4.2.1. Spoke Gateway in AWS<a class="headerlink" href="#spoke-gateway-in-aws" title="Permalink to this heading">#</a></h3>
@@ -534,13 +600,17 @@ document.write(`
 <li><p><strong>Region:</strong> <span style='color:#33ECFF'>us-east-2 (Ohio)</span></p></li>
 <li><p><strong>VPC ID:</strong> <span style='color:#33ECFF'>aws-us-east2-spoke1 (Make sure you don’t select aws-us-east2-<strong>transit</strong> VPC)</span></p></li>
 <li><p><strong>Instance Size:</strong> <span style='color:#33ECFF'>t2.medium</span></p></li>
-<li><p><strong>High Performance Encryption:</strong> <span style='color:#33ECFF'>Off</span></p></li>
+<li><p><strong>High Performance Encryption:</strong> <span style='color:#33ECFF'><strong>Off</strong></span></p></li>
 <li><p><strong>Attach to Subnet:</strong> <span style='color:#33ECFF'>us-east-2a</span></p></li>
 <li><p><strong>Public IP:</strong> <span style='color:#33ECFF'>Allocate New Static Public IP</span></p></li>
 </ul>
 <p>Click <strong>SAVE</strong>.</p>
-<p><img alt="Spoke GW button" src="../_images/lab2-spokeinaws.png" />
-<em>Figure 37: Create Spoke Gateway in AWS</em></p>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab2-spokeinaws.png" src="../_images/lab2-spokeinaws.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Create Spoke Gateway in AWS</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>While the gateway is being created, you may proceed to the next section.</p>
 </section>
 <section id="spoke-gateway-in-azure">
@@ -557,7 +627,7 @@ document.write(`
 <li><p><strong>Region:</strong> <span style='color:#33ECFF'>West US</span></p></li>
 <li><p><strong>VNet:</strong> <span style='color:#33ECFF'>azure-us-west-spoke1 (Make sure you don’t select azure-us-west-<strong>spoke2</strong> VPC)</span></p></li>
 <li><p><strong>Instance Size:</strong> <span style='color:#33ECFF'>Standard_B2ms</span></p></li>
-<li><p><strong>High Performance Encryption:</strong> <span style='color:#33ECFF'>Off</span></p></li>
+<li><p><strong>High Performance Encryption:</strong> <span style='color:#33ECFF'><strong>Off</strong></span></p></li>
 <li><p><strong>Attach to Subnet:</strong> <span style='color:#33ECFF'>azure-us-west-spoke1-Public-gateway-subnet-1</span></p></li>
 <li><p><strong>Public IP:</strong> <span style='color:#33ECFF'>Allocate New Static Public IP</span></p></li>
 </ul>
@@ -565,11 +635,19 @@ document.write(`
 <p class="admonition-title">Warning</p>
 <p>Make sure you <ins>do not select the subnets that begins with az-1, az-2, or az-3</ins>. It is Aviatrix’s recommended practice to deploy gateways in subnets with ‘gateway’ in their name, whereas workloads in subnets that do not have ‘gateway’ in their name).</p>
 </div>
-<p><img alt="Subnet selection" src="../_images/lab2-rightsubnet.png" />
-<em>Figure 38: Subnet selection</em></p>
+<figure class="align-center" id="id19">
+<a class="reference internal image-reference" href="../_images/lab2-rightsubnet.png"><img alt="../_images/lab2-rightsubnet.png" src="../_images/lab2-rightsubnet.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Subnet selection</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Do not forget to click on <strong>SAVE</strong>.</p>
-<p><img alt="Spoke in Azure" src="../_images/lab2-spokeinazure.png" />
-<em>Figure 39: Spoke GW in Azure</em></p>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab2-spokeinazure.png" src="../_images/lab2-spokeinazure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Spoke GW in Azure</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>While the gateway is being created, you may proceed to the next section.</p>
 </section>
 <section id="spoke-gateway-in-gcp">
@@ -577,7 +655,7 @@ document.write(`
 <p>Repeat the previous steps for GCP. Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Spoke</span> <span class="pre">Gateway&quot;</span></code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Only one Spoke Gateway will be deployed in VPC gcp-us-central1-spoke1.</p>
+<p>Only one Spoke Gateway will be deployed in VPC <strong>gcp-us-central1-spoke1</strong>.</p>
 </div>
 <ul class="simple">
 <li><p><strong>Name:</strong> <span style='color:#33ECFF'>gcp-us-central1-spoke1</span></p></li>
@@ -585,38 +663,63 @@ document.write(`
 <li><p><strong>Account:</strong> <span style='color:#33ECFF'>gcp-account</span></p></li>
 <li><p><strong>VPC:</strong> <span style='color:#33ECFF'>gcp-us-central1-spoke1</span></p></li>
 <li><p><strong>Instance Size:</strong> <span style='color:#33ECFF'>n1-standard-1</span></p></li>
-<li><p><strong>High Performance Encryption:</strong> <span style='color:#33ECFF'>Off</span></p></li>
+<li><p><strong>High Performance Encryption:</strong> <span style='color:#33ECFF'><strong>Off</strong></span></p></li>
 <li><p><strong>Attach to Subnet:</strong> <span style='color:#33ECFF'>gcp-us-central1-spoke1-sub1</span></p></li>
 <li><p><strong>Zone:</strong> <span style='color:#33ECFF'>us-central1-a</span></p></li>
 <li><p><strong>Public IP:</strong> <span style='color:#33ECFF'>Allocate New Static Public IP</span></p></li>
 </ul>
 <p>Click <strong>SAVE</strong>.</p>
-<p><img alt="Spoke in GCP" src="../_images/lab2-spokeingcp.png" />
-<em>Figure 40: Spoke GW in GCP</em></p>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab2-spokeingcp.png" src="../_images/lab2-spokeingcp.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Spoke GW in GCP</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>You can see the progress of gateway deployment at any time by expanding the task icon in the top right corner of the CoPilot.</p>
 </div>
-<p><img alt="In progress" src="../_images/lab2-inprogress2.png" />
-<em>Figure 41: Deployment in progress</em></p>
+<figure class="align-center" id="id22">
+<a class="reference internal image-reference" href="../_images/lab2-inprogress2.png"><img alt="../_images/lab2-inprogress2.png" src="../_images/lab2-inprogress2.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Deployment in progress</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Once all gateways have been created, confirm from <strong>CoPilot &gt; Dashboard</strong> that <strong>14</strong> gateways exist in your environment:</p>
-<p><img alt="14 gws" src="../_images/lab2-14gws.png" />
-<em>Figure 42: Dashboard</em></p>
-<p>After creating the Transit gateways pair in AWS and the Spoke gateways in each cloud, this is how a portion of the topology would look like.</p>
-<p><img alt="temp topology" src="../_images/lab2-temptopology.png" />
-<em>Figure 43: Overview of the new topology state</em></p>
+<figure class="align-center" id="id23">
+<img alt="../_images/lab2-14gws.png" src="../_images/lab2-14gws.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Dashboard</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After created the Transit gateways pair in AWS and the Spoke gateways in each cloud, this is how a portion of the topology would look like.</p>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="../_images/lab2-temptopology.png"><img alt="../_images/lab2-temptopology.png" src="../_images/lab2-temptopology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Overview of the new topology state</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="explore-the-cloud-fabric">
 <h2>4.3. Explore the Cloud Fabric<a class="headerlink" href="#explore-the-cloud-fabric" title="Permalink to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default tab)</strong>.</p>
-<p><img alt="legend" src="../_images/lab2-topologyoverview.png" />
-<em>Figure 44: VPC circles</em></p>
-<p><img alt="expand" src="../_images/lab2-expand.png" />
-<em>Figure 45: Expand all the VPCs</em></p>
+<figure class="align-center" id="id25">
+<img alt="../_images/lab2-topologyoverview.png" src="../_images/lab2-topologyoverview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">VPC circles</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id26">
+<img alt="../_images/lab2-expand.png" src="../_images/lab2-expand.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Expand all the VPCs</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The inner circle represents the Transit Gateway VPCs, and the outer one represents the Spoke Gateway VPCs. <ins>It is clearly shown at this stage that the spokes are not connected to the transits yet</ins>.</p>
+<p>The inner circle represents the Transit Gateway VPCs, and the outer one represents the Spoke Gateway VPCs.</p>
+<p><ins>It is clearly shown at this stage that the spokes are not connected to the transits yet</ins>.</p>
 </div>
 <p>In addition, you can explore the components of any of the gateways in terms of subnets and Virtual Machines that reside within the VPC/VNet.</p>
 </section>
@@ -626,14 +729,26 @@ document.write(`
 <section id="spoke-to-transit-attachment-in-aws">
 <h3>4.4.1. Spoke to Transit Attachment in AWS<a class="headerlink" href="#spoke-to-transit-attachment-in-aws" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and edit the Spoke Gateway <strong><em>aws-us-east2-spoke1</em></strong>, clicking on the pencil icon:</p>
-<p><img alt="attachment for aws" src="../_images/lab2-spokeinawstotransit.png" />
-<em>Figure 46: Attachment for AWS</em></p>
+<figure class="align-center" id="id27">
+<img alt="../_images/lab2-spokeinawstotransit.png" src="../_images/lab2-spokeinawstotransit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Attachment for AWS</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code>, and then click on <strong>Save</strong>.</p>
-<p><img alt="edit spoke in aws" src="../_images/lab2-editspokeinaws.png" />
-<em>Figure 47: Edit Spoke in AWS</em></p>
+<figure class="align-center" id="id28">
+<img alt="../_images/lab2-editspokeinaws.png" src="../_images/lab2-editspokeinaws.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Edit Spoke in AWS</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>You will see immediately a message informing that the updating is in progress.</p>
-<p><img alt="immediate message" src="../_images/lab2-immediatemessage.png" />
-<em>Figure 48: Update in progress</em></p>
+<figure class="align-center" id="id29">
+<img alt="../_images/lab2-immediatemessage.png" src="../_images/lab2-immediatemessage.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Update in progress</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="spoke-to-transit-attachment-in-azure">
 <h3>4.4.2 Spoke to Transit Attachment in Azure<a class="headerlink" href="#spoke-to-transit-attachment-in-azure" title="Permalink to this heading">#</a></h3>
@@ -641,11 +756,19 @@ document.write(`
 <li><p><strong>azure-us-west-spoke1</strong> to <strong>azure-us-west-transit</strong></p></li>
 </ul>
 <p>Edit the Spoke Gateway <strong><em>azure-us-west-spoke1</em></strong> (not the <strong>spoke2</strong>), clicking on the pencil icon.</p>
-<p><img alt="edit spoke in azure" src="../_images/lab2-editspokeinazure.png" />
-<em>Figure 49: Edit spoke in Azure</em></p>
+<figure class="align-center" id="id30">
+<img alt="../_images/lab2-editspokeinazure.png" src="../_images/lab2-editspokeinazure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Edit spoke in Azure</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Select the Transit Gateway <strong><em>azure-us-west-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code>, and then click on <strong>Save</strong>.</p>
-<p><img alt="edit azure" src="../_images/lab2-editazure.png" />
-<em>Figure 50: Attachment in Azure</em></p>
+<figure class="align-center" id="id31">
+<img alt="../_images/lab2-editazure.png" src="../_images/lab2-editazure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Attachment in Azure</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="spoke-to-transit-attachment-in-gcp">
 <h3>4.4.3. Spoke to Transit Attachment in GCP<a class="headerlink" href="#spoke-to-transit-attachment-in-gcp" title="Permalink to this heading">#</a></h3>
@@ -653,17 +776,33 @@ document.write(`
 <li><p><strong>gcp-us-central1-spoke1</strong> to <strong>gcp-us-central1-transit</strong></p></li>
 </ul>
 <p>Edit the Spoke Gateway <strong><em>gcp-us-central-spoke1</em></strong>, clicking on the pencil icon:</p>
-<p><img alt="edit spoke in gcp" src="../_images/lab2-editspokeingcp.png" />
-<em>Figure 51: Edit spoke in GCP</em></p>
+<figure class="align-center" id="id32">
+<img alt="../_images/lab2-editspokeingcp.png" src="../_images/lab2-editspokeingcp.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Edit spoke in GCP</span><a class="headerlink" href="#id32" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Select the Transit Gateway <strong><em>gcp-us-central1-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code>, and then click on <strong>Save</strong>.</p>
-<p><img alt="edit GCP" src="../_images/lab2-editgcp.png" />
-<em>Figure 52: Attachment in GCP</em></p>
+<figure class="align-center" id="id33">
+<img alt="../_images/lab2-editgcp.png" src="../_images/lab2-editgcp.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Attachment in GCP</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Look for these three confirmations through the task icon, before proceeding.</p>
-<p><img alt="confirmations" src="../_images/lab2-confirmation.png" />
-<em>Figure 53: Confirmations</em></p>
+<figure class="align-center" id="id34">
+<a class="reference internal image-reference" href="../_images/lab2-confirmation.png"><img alt="../_images/lab2-confirmation.png" src="../_images/lab2-confirmation.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Confirmations</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>At this point, after <strong>attaching</strong> Spoke Gateways to their respective Transit Gateways, this is what the overall topology would look like.</p>
-<p><img alt="new state of topology" src="../_images/lab2-topologywithattachments.png" />
-<em>Figure 54: New state of the topology</em></p>
+<figure class="align-center" id="id35">
+<img alt="../_images/lab2-topologywithattachments.png" src="../_images/lab2-topologywithattachments.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">New state of the topology</span><a class="headerlink" href="#id35" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Spoke Gateway azure-us-west-<strong>spoke2</strong> will be attached to its Transit Gateways in a subsequent lab, likewise the Spoke Gateways in AWS <strong>us-east-1</strong> will be attached to the Transit Gateways in the same region only in a subsequent lab.</p>
@@ -678,10 +817,18 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Be patient, it will take some minutes before seeing the changes reflected into the topology. Refresh the web page to see the change reflected on the map!</p>
 </div>
-<p><img alt="attachment" src="../_images/lab2-attachment.png" />
-<em>Figure 55: Attachments</em></p>
-<p><img alt="expanded" src="../_images/lab2-expandedtopology1.png" />
-<em>Figure 55: Expanded Topology</em></p>
+<figure class="align-center" id="id36">
+<img alt="../_images/lab2-attachment.png" src="../_images/lab2-attachment.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Attachments</span><a class="headerlink" href="#id36" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id37">
+<img alt="../_images/lab2-expandedtopology1.png" src="../_images/lab2-expandedtopology1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Expanded Topology</span><a class="headerlink" href="#id37" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="multicloud-transit-peerings">
 <h2>4.6. Multicloud Transit Peerings<a class="headerlink" href="#multicloud-transit-peerings" title="Permalink to this heading">#</a></h2>
@@ -697,11 +844,19 @@ document.write(`
 <li><p><strong>aws-us-east2-transit</strong> to <strong>azure-us-west-transit</strong></p></li>
 </ul>
 <p>Edit the Transit Gateway <strong><em>aws-us-east2-transit</em></strong>, clicking on the pencil icon:</p>
-<p><img alt="edit transit in aws" src="../_images/lab2-edittransitinaws.png" />
-<em>Figure 56: Edit Transit in AWS</em></p>
+<figure class="align-center" id="id38">
+<img alt="../_images/lab2-edittransitinaws.png" src="../_images/lab2-edittransitinaws.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Edit Transit in AWS</span><a class="headerlink" href="#id38" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Select the Transit Gateway <strong><em>azure-us-west-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code>, and then click on <strong>Save</strong>.</p>
-<p><img alt="peering aws-azure" src="../_images/lab2-peeringawsazure.png" />
-<em>Figure 56: Peering AWS-Azure</em></p>
+<figure class="align-center" id="id39">
+<img alt="../_images/lab2-peeringawsazure.png" src="../_images/lab2-peeringawsazure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Peering AWS-Azure</span><a class="headerlink" href="#id39" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="azure-and-gcp">
 <h3>4.6.2 Azure AND GCP<a class="headerlink" href="#azure-and-gcp" title="Permalink to this heading">#</a></h3>
@@ -709,11 +864,19 @@ document.write(`
 <li><p><strong>azure-us-west-transit</strong> to <strong>gcp-us-central1-transit</strong></p></li>
 </ul>
 <p>Edit the Transit Gateway <strong><em>azure-us-west-transit</em></strong>, clicking on the pencil icon:</p>
-<p><img alt="edit azure" src="../_images/lab2-edittransitinazure.png" />
-<em>Figure 57: Edit Transit in Azure</em></p>
+<figure class="align-center" id="id40">
+<img alt="../_images/lab2-edittransitinazure.png" src="../_images/lab2-edittransitinazure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Edit Transit in Azure</span><a class="headerlink" href="#id40" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Select the Transit Gateway <strong><em>gcp-us-central1-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code>, and then click on <strong>Save</strong>.</p>
-<p><img alt="peering azure-gcp" src="../_images/lab2-peeringawsazure.png" />
-<em>Figure 58: Peering Azure-GCP</em></p>
+<figure class="align-center" id="id41">
+<img alt="../_images/lab2-peeringawsazure.png" src="../_images/lab2-peeringawsazure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Peering Azure-GCP</span><a class="headerlink" href="#id41" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="gcp-and-aws">
 <h3>4.6.3. GCP and AWS<a class="headerlink" href="#gcp-and-aws" title="Permalink to this heading">#</a></h3>
@@ -721,14 +884,26 @@ document.write(`
 <li><p><strong>gcp-us-central1-transit</strong> to <strong>aws-us-east2-transit</strong></p></li>
 </ul>
 <p>Edit the Transit Gateway <strong><em>gcp-us-central1-transit</em></strong>, clicking on the pencil icon:</p>
-<p><img alt="edit transit in gcp" src="../_images/lab2-editgcp2.png" />
-<em>Figure 59: Edit Transit in GCP</em></p>
+<figure class="align-center" id="id42">
+<img alt="../_images/lab2-editgcp2.png" src="../_images/lab2-editgcp2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Edit Transit in GCP</span><a class="headerlink" href="#id42" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong> (<ins>not the east1 !</ins>) from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code>, and then click on <strong>Save</strong>.</p>
-<p><img alt="peering GCP-AWS" src="../_images/lab2-peeringgcpaws.png" />
-<em>Figure 60: Peering GCP-AWS</em></p>
+<figure class="align-center" id="id43">
+<img alt="../_images/lab2-peeringgcpaws.png" src="../_images/lab2-peeringgcpaws.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Peering GCP-AWS</span><a class="headerlink" href="#id43" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>At this point, this is what the overall topology would look like:</p>
-<p><img alt="peering topology" src="../_images/lab2-peeringtopology.png" />
-<em>Figure 60: New Topopology state after Peerings deployment</em></p>
+<figure class="align-center" id="id44">
+<img alt="../_images/lab2-peeringtopology.png" src="../_images/lab2-peeringtopology.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">New Topopology state after Peerings deployment</span><a class="headerlink" href="#id44" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Please pay close attention that the following pending elements will be completed only in a subsequent lab:</p>
@@ -745,8 +920,12 @@ document.write(`
 <section id="verification-of-transit-peerings-on-copilot-cloud-fabric">
 <h3>5.1. Verification of Transit Peerings on CoPilot(Cloud Fabric)<a class="headerlink" href="#verification-of-transit-peerings-on-copilot-cloud-fabric" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong>, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Connections&quot;</span></code> tab and finally select the <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Transit</span> <span class="pre">Peering&quot;</span></code> sub-tab: you will see <strong>four</strong> connections per each peering, that correspond to the <code class="docutils literal notranslate"><span class="pre">four</span> <span class="pre">IPSec</span> <span class="pre">tunnels</span></code>.</p>
-<p><img alt="verification" src="../_images/lab2-verification.png" />
-<em>Figure 61: Verification</em></p>
+<figure class="align-center" id="id45">
+<img alt="../_images/lab2-verification.png" src="../_images/lab2-verification.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id45" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="verification-of-transit-peerings-on-copilot-topology">
 <h3>5.2. Verification of Transit Peerings on CoPilot (Topology)<a class="headerlink" href="#verification-of-transit-peerings-on-copilot-topology" title="Permalink to this heading">#</a></h3>
@@ -756,21 +935,37 @@ document.write(`
 <p>Refresh the web page!</p>
 </div>
 <p>Verify transit-transit peering. You can now see the dotted lines in the inner circle representing the configured full mesh peering between the three transits.</p>
-<p><img alt="peerings" src="../_images/lab2-peering.png" />
-<em>Figure 62: Peerings</em></p>
-<p><img alt="expanded2" src="../_images/lab2-expanded2.png" />
-<em>Figure 63: Expanded Topology</em></p>
+<figure class="align-center" id="id46">
+<img alt="../_images/lab2-peering.png" src="../_images/lab2-peering.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Peerings</span><a class="headerlink" href="#id46" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id47">
+<img alt="../_images/lab2-expanded2.png" src="../_images/lab2-expanded2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Expanded Topology</span><a class="headerlink" href="#id47" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="route-info-db">
 <h3>5.3. Route Info DB<a class="headerlink" href="#route-info-db" title="Permalink to this heading">#</a></h3>
 <p>Route Info DB is similar to <em>Routing Information Base (RIB)</em>. It will provide the overall routing information of a Transit Gateway known by the CoPilot.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong>:</p>
-<p><img alt="explore transit in aws" src="../_images/lab2-transitaws.png" />
-<em>Figure 64: Explore Transit in AWS</em></p>
+<figure class="align-center" id="id48">
+<img alt="../_images/lab2-transitaws.png" src="../_images/lab2-transitaws.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Explore Transit in AWS</span><a class="headerlink" href="#id48" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Then select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab.
 Pay special attention to <code class="docutils literal notranslate"><span class="pre">“Best</span> <span class="pre">Routes”</span></code>, its prefixes, type and metric value:</p>
-<p><img alt="rib" src="../_images/lab2-rib.png" />
-<em>Figure 65: Route DB</em></p>
+<figure class="align-center" id="id49">
+<img alt="../_images/lab2-rib.png" src="../_images/lab2-rib.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Route DB</span><a class="headerlink" href="#id49" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="connectivity">
@@ -785,14 +980,26 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <li><p>SSH into gcp-us-central1-spoke1-test1 (ssh student&#64;public_ip)</p></li>
 </ul>
 <p>Run ping from the AWS instance to verify connectivity to Azure and GCP:</p>
-<p><img alt="ping from aws" src="../_images/lab2-pingfromaws.png" />
-<em>Figure 66: Ping from AWS</em></p>
+<figure class="align-center" id="id50">
+<img alt="../_images/lab2-pingfromaws.png" src="../_images/lab2-pingfromaws.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Ping from AWS</span><a class="headerlink" href="#id50" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Run ping from Azure VM to verify connectivity to AWS and GCP:</p>
-<p><img alt="ping from azure" src="../_images/lab2-pingfromazure.png" />
-<em>Figure 67: Ping from Azure</em></p>
+<figure class="align-center" id="id51">
+<img alt="../_images/lab2-pingfromazure.png" src="../_images/lab2-pingfromazure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Ping from Azure</span><a class="headerlink" href="#id51" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Run ping from GCP VM to verify connectivity to Azure and AWS:</p>
-<p><img alt="ping from gcp" src="../_images/lab2-pingfromgcp.png" />
-<em>Figure 68: Ping from GCP</em></p>
+<figure class="align-center" id="id52">
+<img alt="../_images/lab2-pingfromgcp.png" src="../_images/lab2-pingfromgcp.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Ping from GCP</span><a class="headerlink" href="#id52" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="bonus-question">
 <h2>6. Bonus Question<a class="headerlink" href="#bonus-question" title="Permalink to this heading">#</a></h2>
