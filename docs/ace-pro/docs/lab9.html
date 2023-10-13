@@ -1,649 +1,538 @@
+
+
 <!DOCTYPE html>
 
 
-<html lang="en">
+<html lang="en" >
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-  <title>Lab 9 - THREATIQ &amp; THREATGUARD &#8212; ACE Operations Lab</title>
-
-
-
+    <title>Lab 9 - THREATIQ &amp; THREATGUARD &#8212; ACE Operations Lab</title>
+  
+  
+  
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-
+  
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-
+  
   <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-  <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-  <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285"
-    type="text/css" />
-  <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-  <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-  <link rel="stylesheet" type="text/css"
-    href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-  <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-  <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-  <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-  <script src="../_static/jquery.js"></script>
-  <script src="../_static/underscore.js"></script>
-  <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-  <script src="../_static/doctools.js"></script>
-  <script src="../_static/clipboard.min.js"></script>
-  <script src="../_static/copybutton.js"></script>
-  <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-  <script>let toggleHintShow = 'Click to show';</script>
-  <script>let toggleHintHide = 'Click to hide';</script>
-  <script>let toggleOpenOnPrint = 'true';</script>
-  <script src="../_static/togglebutton.js"></script>
-  <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-  <script src="../_static/design-tabs.js"></script>
-  <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-    const thebe_selector = ".thebe,.cell"
-    const thebe_selector_input = "pre"
-    const thebe_selector_output = ".output, .cell_output"
-  </script>
-  <script async="async" src="../_static/sphinx-thebe.js"></script>
-  <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab9';</script>
-  <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png" />
-  <link rel="index" title="Index" href="../genindex.html" />
-  <link rel="search" title="Search" href="../search.html" />
-  <link rel="next" title="Lab 10 - DISTRIBUTED CLOUD FIREWALL" href="lab10.html" />
-  <link rel="prev" title="Lab 8 - SITE2CLOUD" href="lab8.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en" />
-</head>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab9';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 10 - DISTRIBUTED CLOUD FIREWALL" href="lab10.html" />
+    <link rel="prev" title="Lab 8 - SITE2CLOUD" href="lab8.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-
-<body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%"
-  data-default-mode="">
-
-
-
+  
+  
   <a class="skip-link" href="#main-content">Skip to main content</a>
-
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary" />
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
   <label class="overlay overlay-primary" for="__primary"></label>
-
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary" />
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
   <label class="overlay overlay-secondary" for="__secondary"></label>
-
+  
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
-      <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..."
-          aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off"
-          spellcheck="false" />
-        <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-      </form>
-    </div>
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
   </div>
-
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-  </nav>
-
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-
+      
       <div class="bd-sidebar-primary bd-sidebar">
+        
 
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Professional Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs ASSIGNMENTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
 
-        <div class="sidebar-header-items sidebar-primary__section">
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
+</ul>
 
-
-
-
-        </div>
-
-        <div class="sidebar-primary-items__start sidebar-primary__section">
-          <div class="sidebar-primary-item">
-
-
-            <a class="navbar-brand logo" href="home.html">
-
-
-
-
-
-
-
-
-
-              <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Logo image" />
-              <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
-
-
-            </a>
-          </div>
-          <div class="sidebar-primary-item">
-            <nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-              <div class="bd-toc-item navbar-nav active">
-
-                <ul class="nav bd-sidenav bd-sidenav__home-link">
-                  <li class="toctree-l1">
-                    <a class="reference internal" href="home.html">
-                      Welcome to ACE Professional Lab
-                    </a>
-                  </li>
-                </ul>
-                <ul class="current nav bd-sidenav">
-                  <li class="toctree-l1"><a class="reference internal" href="pod.html">PODs ASSIGNMENTS</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - FIRENET</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
-                  <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 9 - THREATIQ
-                      &amp; THREATGUARD</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD
-                      FIREWALL</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
-                </ul>
-
-              </div>
-            </nav>
-          </div>
-        </div>
-
-
-        <div class="sidebar-primary-items__end sidebar-primary__section">
-        </div>
-
-        <div id="rtd-footer-container"></div>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
-
+      
       <main id="main-content" class="bd-main">
+        
+        
 
+<div class="sbt-scroll-pixel-helper"></div>
 
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
 
-        <div class="sbt-scroll-pixel-helper"></div>
-
-        <div class="bd-content">
-          <div class="bd-article-container">
-
-            <div class="bd-header-article">
-              <div class="header-article-items header-article__inner">
-
-                <div class="header-article-items__start">
-
-                  <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm"
-                      for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom"
-                      data-bs-toggle="tooltip">
-                      <span class="fa-solid fa-bars"></span>
-                    </label></div>
-
-                </div>
-
-
-                <div class="header-article-items__end">
-
-                  <div class="header-article-item">
-
-                    <div class="article-header-buttons">
+<div class="article-header-buttons">
 
 
 
 
 
-                      <div class="dropdown dropdown-download-buttons">
-                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                          aria-expanded="false" aria-label="Download this page">
-                          <i class="fas fa-download"></i>
-                        </button>
-                        <ul class="dropdown-menu">
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab9.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
 
 
 
-                          <li><a href="../_sources/docs/lab9.md" target="_blank"
-                              class="btn btn-sm btn-download-source-button dropdown-item" title="Download source file"
-                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
 
 
-                              <span class="btn__icon-container">
-                                <i class="fas fa-file"></i>
-                              </span>
-                              <span class="btn__text-container">.md</span>
-                            </a>
-                          </li>
-
-
-
-
-                          <li>
-                            <button onclick="window.print()" class="btn btn-sm btn-download-pdf-button dropdown-item"
-                              title="Print to PDF" data-bs-placement="left" data-bs-toggle="tooltip">
-
-
-                              <span class="btn__icon-container">
-                                <i class="fas fa-file-pdf"></i>
-                              </span>
-                              <span class="btn__text-container">.pdf</span>
-                            </button>
-                          </li>
-
-                        </ul>
-                      </div>
-
-
-
-
-                      <button onclick="toggleFullScreen()" class="btn btn-sm btn-fullscreen-button"
-                        title="Fullscreen mode" data-bs-placement="bottom" data-bs-toggle="tooltip">
-
-
-                        <span class="btn__icon-container">
-                          <i class="fas fa-expand"></i>
-                        </span>
-
-                      </button>
-
-
-                      <script>
-                        document.write(`
+<script>
+document.write(`
   <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
     <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
     <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
-                      </script>
+</script>
 
-                      <script>
-                        document.write(`
+<script>
+document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
-                      </script>
-                      <label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"
-                        title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-                        <span class="fa-solid fa-list"></span>
-                      </label>
-                    </div>
-                  </div>
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
 
-                </div>
-
-              </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 9 - THREATIQ & THREATGUARD</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatiq-overview">2. ThreatIQ Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">4.2 Verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-threatiq-and-threatguard">5. Enable ThreatIQ and ThreatGuard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. Verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-threatguard-in-action">5.1. Example of ThreatGuard in action</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
 
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-9-threatiq-threatguard">
+<h1>Lab 9 - THREATIQ &amp; THREATGUARD<a class="headerlink" href="#lab-9-threatiq-threatguard" title="Permalink to this heading">#</a></h1>
+<section id="objective">
+<h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<p>This lab will demonstrate how <code class="docutils literal notranslate"><span class="pre">ThreatIQ</span></code> and <code class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code> work.</p>
+</section>
+<section id="threatiq-overview">
+<h2>2. ThreatIQ Overview<a class="headerlink" href="#threatiq-overview" title="Permalink to this heading">#</a></h2>
+<p>Aviatrix gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. <strong>FlowIQ</strong> is one. <strong>ThreatIQ</strong> is another. ThreatIQ alerts you on Malicious IPs with bad reputations. These IPs are reported in the ThreatIQ database that CoPilot maintains.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>ThreatIQ and ThreatGuard work as soon as a <strong><em>Public Subnet Filtering</em></strong> gateway is deployed. This is because the PSF gateway intercepts Ingress traffic.</p>
+</div>
+</section>
+<section id="topology">
+<h2>3. Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
+<p>In this lab, we will deploy a <code class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in AWS US-EAST-1 region.</p>
+<p><img alt="lab9-topology" src="../_images/lab9-initialtopology.png" />
+<em>Figure 205: Lab 9 Initial Topology</em></p>
+</section>
+<section id="psf">
+<h2>4. PSF<a class="headerlink" href="#psf" title="Permalink to this heading">#</a></h2>
+<section id="deploy-the-psf">
+<h3>4.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">“+Gateway&quot;</span></code> button and then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
+<p><img alt="lab9-topology" src="../_images/lab9-psf.png" />
+<em>Figure 205: PSF</em></p>
+<p>Insert the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>aws-us-east1-psf</span></p></li>
+<li><p><strong>Account</strong>: <span style='color:#33ECFF'>aws-account</span></p></li>
+<li><p><strong>Region</strong>: <span style='color:#33ECFF'>us-east-1 (N. Virginia)</span></p></li>
+<li><p><strong>VPC</strong>: <span style='color:#33ECFF'>aws-us-east1-spoke1</span></p></li>
+<li><p><strong>Instance Size</strong>: <span style='color:#33ECFF'>t2.medium</span></p></li>
+<li><p><strong>Attach to Unused Subnet</strong>: <span style='color:#33ECFF'>us-east-1a</span></p></li>
+<li><p><strong>Instance Size</strong>: <span style='color:#33ECFF'>aws-us-east1-spoke1-rtb-public-a</span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<p><img alt="lab9-psfcreate" src="../_images/lab9-psfcreate.png" />
+<em>Figure 205: PSF template</em></p>
+<p><img alt="lab9-psfinprogress" src="../_images/lab9-psfinprogress.png" />
+<em>Figure 205: PSF template</em></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Wait for about <strong>8</strong> minutes for the completion of the PSF depl0yment</p>
+</div>
+</section>
+<section id="verification">
+<h3>4.2 Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Click on the <strong>PSF</strong> gateway, select the <strong>VPC/VNet Route Tables</strong> and then inspect the <strong><em>aviatrix-Aviatrix-Filter-Gateway</em></strong> Route Table</p></li>
+</ul>
+<p><img alt="lab9-psfclick" src="../_images/lab9-psfclick.png" />
+<em>Figure 205: PSF template</em></p>
+<p><img alt="lab9-routetablepsf" src="../_images/lab9-routetablepsf.png" />
+<em>Figure 205: PSF template</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The subnet with the PSF gateway is a Public Subnet with 0/0 pointing to IGW. No workload instances should be deployed in this subnet.</p>
+</div>
+<ul class="simple">
+<li><p>Verify one more routing table that we selected while deploying the PSF Gateway: <strong><em>aws-us-east1-spoke1-Public-a</em></strong>. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).</p></li>
+</ul>
+<p><img alt="lab9-routetablepsf" src="../_images/lab9-routetablepsf2.png" />
+<em>Figure 205: PSF template</em></p>
+</section>
+</section>
+<section id="enable-threatiq-and-threatguard">
+<h2>5. Enable ThreatIQ and ThreatGuard<a class="headerlink" href="#enable-threatiq-and-threatguard" title="Permalink to this heading">#</a></h2>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
+<p>Click on <strong>Send Alert</strong>:</p>
+<p><img alt="lab9-ssh" src="../_images/lab9-sendalert.png" />
+<em>Figure 208: Enable ThreatIQ</em></p>
+<p>Then click on <strong>Notification Settings</strong>.</p>
+<p><img alt="lab9-notification" src="../_images/lab9-notification.png" />
+<em>Figure 209: Notification Settings</em></p>
+<p>Now click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Email</span> <span class="pre">Address&quot;</span></code> button.</p>
+<p><img alt="lab9-email" src="../_images/lab9-email.png" />
+<em>Figure 210: Email</em></p>
+<p>Choose an <strong>alias</strong>, insert your <strong>personal email</strong> and then click on <strong>Save</strong>:</p>
+<p><img alt="lab9-email2" src="../_images/lab9-email2.png" />
+<em>Figure 211: Alias and Personal Email</em></p>
+<p>Navigate back to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
+<p>Click again on <strong>Send Alert</strong>:</p>
+<p><img alt="lab9-sendalert2" src="../_images/lab9-sendalert2.png" />
+<em>Figure 212: Send Alert Settings</em></p>
+<p>Click on <strong>Add Recipients</strong>.</p>
+<p><img alt="lab9-addrecipient" src="../_images/lab9-addrecipient.png" />
+<em>Figure 213: Add Recipient(s)</em></p>
+<p>Select your email address from the pulldown menu and then click on <strong>Confirm</strong>.</p>
+<p><img alt="lab9-addjoe" src="../_images/lab9-addjoe.png" />
+<em>Figure 214: Add your email</em></p>
+<p>From this point onwards, if you enter a valid email address, you will receive email notifications about <strong>ThreatIQ</strong> alerts.</p>
+<p>Before enabling the blocking, on the far right side, ensure that the <strong>ThreatGuard firewall rules order</strong> is set to <code class="docutils literal notranslate"><span class="pre">Prepend</span></code>.</p>
+<p><img alt="lab9-advanced" src="../_images/lab9-advanced.png" />
+<em>Figure 215: Prepend</em></p>
+<p>Enable Block Threats (i.e. <code class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code>):</p>
+<p><img alt="lab9-advanced" src="../_images/lab9-threatguard.png" />
+<em>Figure 216: ThreatGuard</em></p>
+<p>By default, <strong>all</strong> VPCs are enabled for ThreatGuard.</p>
+<p>Click <strong>Save</strong> to continue.</p>
+<p><img alt="lab9-vpc" src="../_images/lab9-vpc.png" />
+<em>Figure 217: Select VPC</em></p>
+<p>Then, click <strong>CONFIRM</strong>.</p>
+<p><img alt="lab9-confirm" src="../_images/lab9-confirm.png" />
+<em>Figure 218: Confirm</em></p>
+</section>
+<section id="id1">
+<h2>5. Verification<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Wait for the instructor to provide a malicious IP. Let’s call it <code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><ins>Note down this IP address!</ins></p>
+</div>
+<p>SSH to the EC2 instance <strong><em>aws-us-east1-spoke1-test1</em></strong></p>
+<ul class="simple">
+<li><p>Now test <code class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code> by first issuing this command (make sure to enter <strong>HTTPS</strong>):</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
+</pre></div>
+</div>
+<p><img alt="lab9-malicious" src="../_images/lab9-instancetest.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p>Navigate back to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Overview</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Wait for some minutes</strong>, before proceeding with the next action. Furthermore, set the <strong>Time Period</strong> to <code class="docutils literal notranslate"><span class="pre">&quot;Custom&quot;</span></code> and then set the end time a bit farther than your current time:</p>
+</div>
+<p><img alt="lab9-custom" src="../_images/lab9-custom.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p>You should see the IP in the table at the bottom. You can filter based on the destination IP address (insert the malicious IP address):</p>
+<p><img alt="lab9-threat" src="../_images/lab9-threat.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p><img alt="lab9-threat2" src="../_images/lab9-threat2.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p>Afterwards, click on VIEW under the column Details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The IP we selected might not be deemed a threat when you read this.</p>
+</div>
+<p><img alt="lab9-view" src="../_images/lab9-view.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p><img alt="lab9-view2" src="../_images/lab9-view2.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p>Then select <strong>Threat Summary</strong> and pinpoint the metadata “tag” to determine how ThreatIQ has classified this IP.</p>
+<p><img alt="lab9-view2" src="../_images/lab9-tor.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<section id="example-of-threatguard-in-action">
+<h3>5.1. Example of ThreatGuard in action<a class="headerlink" href="#example-of-threatguard-in-action" title="Permalink to this heading">#</a></h3>
+<p>Navigate to  <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The CoPilot UI frequently changes, and what you see below may differ from your experience.</p>
+</div>
+<ul class="simple">
+<li><p>Click on <strong>VIEW</strong> under the column View Rules:</p></li>
+</ul>
+<p><img alt="lab9-viewrules" src="../_images/lab9-viewrules.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p>Filter based on the malicious IP (both on <strong>source</strong> address and <strong>destination</strong> address): you will find out that ThreatGuard applied the enforcement <code class="docutils literal notranslate"><span class="pre">&quot;force-drop&quot;</span></code> in both directions.</p>
+<p><img alt="lab9-forcesource" src="../_images/lab9-force.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p><img alt="lab9-forcesource2" src="../_images/lab9-force2.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p>Now try issuing the same curl command once again.</p>
+<p><img alt="lab9-failed" src="../_images/lab9-failed.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p>ThreatGuard has successfully blocked the malicious IP!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before ending this lab, remove your email from the notification list!</p>
+</div>
+<p>Navigate to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Alerts Configuration</strong></p>
+<p>Click on the pencil icon for editing the configured alert named <code class="docutils literal notranslate"><span class="pre">&quot;ThreatIQ</span> <span class="pre">Alert&quot;</span></code>:</p>
+<p><img alt="lab9-notification2" src="../_images/lab9-notification2.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<ul class="simple">
+<li><p>Remove the recipient that is identified based on the alias that you chose before, then click on <strong>Save</strong>.</p></li>
+</ul>
+<p>ThreatIQ will immediately stop sending the alerts to your personal email:</p>
+<p><img alt="lab9-joe" src="../_images/lab9-joe.png" />
+<em>Figure 219: Curl towards the malicious IP</em></p>
+<p>After this lab, this is how the overall topology would look like:</p>
+<p><img alt="lab9-finaltopology" src="../_images/lab9-final.png" />
+<em>Figure 88:  Final topology for Lab 9</em></p>
+</section>
+</section>
+</section>
 
-
-            <div id="jb-print-docs-body" class="onlyprint">
-              <h1>Lab 9 - THREATIQ & THREATGUARD</h1>
-              <!-- Table of contents -->
-              <div id="print-main-content">
-                <div id="jb-print-toc">
-
-                  <div>
-                    <h2> Contents </h2>
-                  </div>
-                  <nav aria-label="Page">
-                    <ul class="visible nav section-nav flex-column">
-                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1.
-                          Objective</a></li>
-                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
-                          href="#threatiq-overview">2. ThreatIQ Overview</a></li>
-                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3.
-                          Topology</a></li>
-                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4.
-                          PSF</a>
-                        <ul class="nav section-nav flex-column">
-                          <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
-                              href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
-                          <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
-                              href="#verification">4.2 Verification</a></li>
-                        </ul>
-                      </li>
-                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
-                          href="#enable-threatiq-and-threatguard">5. Enable ThreatIQ and ThreatGuard</a></li>
-                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.
-                          Verification</a>
-                        <ul class="nav section-nav flex-column">
-                          <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
-                              href="#example-of-threatguard-in-action">5.1. Example of ThreatGuard in action</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div id="searchbox"></div>
-            <article class="bd-article" role="main">
-
-              <section class="tex2jax_ignore mathjax_ignore" id="lab-9-threatiq-threatguard">
-                <h1>Lab 9 - THREATIQ &amp; THREATGUARD<a class="headerlink" href="#lab-9-threatiq-threatguard"
-                    title="Permalink to this heading">#</a></h1>
-                <section id="objective">
-                  <h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
-                  <p>This lab will demonstrate how <code
-                      class="docutils literal notranslate"><span class="pre">ThreatIQ</span></code> and <code
-                      class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code> work.</p>
-                </section>
-                <section id="threatiq-overview">
-                  <h2>2. ThreatIQ Overview<a class="headerlink" href="#threatiq-overview"
-                      title="Permalink to this heading">#</a></h2>
-                  <p>Aviatrix gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways.
-                    <strong>FlowIQ</strong> is one. <strong>ThreatIQ</strong> is another. ThreatIQ alerts you on
-                    Malicious IPs with bad reputations. These IPs are reported in the ThreatIQ database that CoPilot
-                    maintains.</p>
-                  <div class="admonition important">
-                    <p class="admonition-title">Important</p>
-                    <p>ThreatIQ and ThreatGuard work as soon as a <strong><em>Public Subnet Filtering</em></strong>
-                      gateway is deployed. This is because the PSF gateway intercepts Ingress traffic.</p>
-                  </div>
-                </section>
-                <section id="topology">
-                  <h2>3. Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
-                  <p>In this lab, we will deploy a <code
-                      class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in AWS
-                    US-EAST-1 region.</p>
-                  <p><img alt="lab9-topology" src="../_images/lab9-initialtopology.png" />
-                    <em>Figure 205: Lab 9 Initial Topology</em>
-                  </p>
-                </section>
-                <section id="psf">
-                  <h2>4. PSF<a class="headerlink" href="#psf" title="Permalink to this heading">#</a></h2>
-                  <section id="deploy-the-psf">
-                    <h3>4.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf"
-                        title="Permalink to this heading">#</a></h3>
-                    <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then
-                      click on the <code
-                        class="docutils literal notranslate"><span class="pre">“+Gateway&quot;</span></code> button and
-                      then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
-                    <p><img alt="lab9-topology" src="../_images/lab9-psf.png" />
-                      <em>Figure 205: PSF</em>
-                    </p>
-                    <p>Insert the following parameters:</p>
-                    <ul class="simple">
-                      <li>
-                        <p><strong>Name</strong>: <span style='color:#33ECFF'>aws-us-east1-psf</span></p>
-                      </li>
-                      <li>
-                        <p><strong>Account</strong>: <span style='color:#33ECFF'>aws-account</span></p>
-                      </li>
-                      <li>
-                        <p><strong>Region</strong>: <span style='color:#33ECFF'>us-east-1 (N. Virginia)</span></p>
-                      </li>
-                      <li>
-                        <p><strong>VPC</strong>: <span style='color:#33ECFF'>aws-us-east1-spoke1</span></p>
-                      </li>
-                      <li>
-                        <p><strong>Instance Size</strong>: <span style='color:#33ECFF'>t2.medium</span></p>
-                      </li>
-                      <li>
-                        <p><strong>Attach to Unused Subnet</strong>: <span style='color:#33ECFF'>us-east-1a</span></p>
-                      </li>
-                      <li>
-                        <p><strong>Instance Size</strong>: <span
-                            style='color:#33ECFF'>aws-us-east1-spoke1-rtb-public-a</span></p>
-                      </li>
-                    </ul>
-                    <p>Do not forget to click on <strong>Save</strong>.</p>
-                    <p><img alt="lab9-psfcreate" src="../_images/lab9-psfcreate.png" />
-                      <em>Figure 205: PSF template</em>
-                    </p>
-                    <p><img alt="lab9-psfinprogress" src="../_images/lab9-psfinprogress.png" />
-                      <em>Figure 205: PSF template</em>
-                    </p>
-                    <div class="admonition warning">
-                      <p class="admonition-title">Warning</p>
-                      <p>Wait for about <strong>8</strong> minutes for the completion of the PSF depl0yment</p>
-                    </div>
-                  </section>
-                  <section id="verification">
-                    <h3>4.2 Verification<a class="headerlink" href="#verification"
-                        title="Permalink to this heading">#</a></h3>
-                    <ul class="simple">
-                      <li>
-                        <p>Click on the <strong>PSF</strong> gateway, select the <strong>VPC/VNet Route Tables</strong>
-                          and then inspect the <strong><em>aviatrix-Aviatrix-Filter-Gateway</em></strong> Route Table
-                        </p>
-                      </li>
-                    </ul>
-                    <p><img alt="lab9-psfclick" src="../_images/lab9-psfclick.png" />
-                      <em>Figure 205: PSF template</em>
-                    </p>
-                    <p><img alt="lab9-routetablepsf" src="../_images/lab9-routetablepsf.png" />
-                      <em>Figure 205: PSF template</em>
-                    </p>
-                    <div class="admonition note">
-                      <p class="admonition-title">Note</p>
-                      <p>The subnet with the PSF gateway is a Public Subnet with 0/0 pointing to IGW. No workload
-                        instances should be deployed in this subnet.</p>
-                    </div>
-                    <ul class="simple">
-                      <li>
-                        <p>Verify one more routing table that we selected while deploying the PSF Gateway:
-                          <strong><em>aws-us-east1-spoke1-Public-a</em></strong>. You can notice that the default route
-                          is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s
-                          subnet points to this rtb).</p>
-                      </li>
-                    </ul>
-                    <p><img alt="lab9-routetablepsf" src="../_images/lab9-routetablepsf2.png" />
-                      <em>Figure 205: PSF template</em>
-                    </p>
-                  </section>
-                </section>
-                <section id="enable-threatiq-and-threatguard">
-                  <h2>5. Enable ThreatIQ and ThreatGuard<a class="headerlink" href="#enable-threatiq-and-threatguard"
-                      title="Permalink to this heading">#</a></h2>
-                  <p>Navigate to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
-                  <p>Click on <strong>Send Alert</strong>:</p>
-                  <p><img alt="lab9-ssh" src="../_images/lab9-sendalert.png" />
-                    <em>Figure 208: Enable ThreatIQ</em>
-                  </p>
-                  <p>Then click on <strong>Notification Settings</strong>.</p>
-                  <p><img alt="lab9-notification" src="../_images/lab9-notification.png" />
-                    <em>Figure 209: Notification Settings</em>
-                  </p>
-                  <p>Now click on the <code
-                      class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Email</span> <span class="pre">Address&quot;</span></code>
-                    button.</p>
-                  <p><img alt="lab9-email" src="../_images/lab9-email.png" />
-                    <em>Figure 210: Email</em>
-                  </p>
-                  <p>Choose an <strong>alias</strong>, insert your <strong>personal email</strong> and then click on
-                    <strong>Save</strong>:</p>
-                  <p><img alt="lab9-email2" src="../_images/lab9-email2.png" />
-                    <em>Figure 211: Alias and Personal Email</em>
-                  </p>
-                  <p>Navigate back to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
-                  <p>Click again on <strong>Send Alert</strong>:</p>
-                  <p><img alt="lab9-sendalert2" src="../_images/lab9-sendalert2.png" />
-                    <em>Figure 212: Send Alert Settings</em>
-                  </p>
-                  <p>Click on <strong>Add Recipients</strong>.</p>
-                  <p><img alt="lab9-addrecipient" src="../_images/lab9-addrecipient.png" />
-                    <em>Figure 213: Add Recipient(s)</em>
-                  </p>
-                  <p>Select your email address from the pulldown menu and then click on <strong>Confirm</strong>.</p>
-                  <p><img alt="lab9-addjoe" src="../_images/lab9-addjoe.png" />
-                    <em>Figure 214: Add your email</em>
-                  </p>
-                  <p>From this point onwards, if you enter a valid email address, you will receive email notifications
-                    about <strong>ThreatIQ</strong> alerts.</p>
-                  <p>Before enabling the blocking, on the far right side, ensure that the <strong>ThreatGuard firewall
-                      rules order</strong> is set to <code
-                      class="docutils literal notranslate"><span class="pre">Prepend</span></code>.</p>
-                  <p><img alt="lab9-advanced" src="../_images/lab9-advanced.png" />
-                    <em>Figure 215: Prepend</em>
-                  </p>
-                  <p>Enable Block Threats (i.e. <code
-                      class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code>):</p>
-                  <p><img alt="lab9-advanced" src="../_images/lab9-threatguard.png" />
-                    <em>Figure 216: ThreatGuard</em>
-                  </p>
-                  <p>By default, <strong>all</strong> VPCs are enabled for ThreatGuard.</p>
-                  <p>Click <strong>Save</strong> to continue.</p>
-                  <p><img alt="lab9-vpc" src="../_images/lab9-vpc.png" />
-                    <em>Figure 217: Select VPC</em>
-                  </p>
-                  <p>Then, click <strong>CONFIRM</strong>.</p>
-                  <p><img alt="lab9-confirm" src="../_images/lab9-confirm.png" />
-                    <em>Figure 218: Confirm</em>
-                  </p>
-                </section>
-                <section id="id1">
-                  <h2>5. Verification<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-                  <p>Wait for the instructor to provide a malicious IP. Let’s call it <code
-                      class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>.</p>
-                  <div class="admonition important">
-                    <p class="admonition-title">Important</p>
-                    <p><ins>Note down this IP address!</ins></p>
-                  </div>
-                  <p>SSH to the EC2 instance <strong><em>aws-us-east1-spoke1-test1</em></strong></p>
-                  <ul class="simple">
-                    <li>
-                      <p>Now test <code class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code>
-                        by first issuing this command (make sure to enter <strong>HTTPS</strong>):</p>
-                    </li>
-                  </ul>
-                  <div class="highlight-bash notranslate">
-                    <div class="highlight">
-                      <pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
-</pre>
-                    </div>
-                  </div>
-                  <p><img alt="lab9-malicious" src="../_images/lab9-instancetest.png" />
-                    <em>Figure 219: Curl towards the malicious IP</em>
-                  </p>
-                  <p>Navigate back to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Overview</strong></p>
-                  <div class="admonition note">
-                    <p class="admonition-title">Note</p>
-                    <p><strong>Wait for some minutes</strong>, before proceeding with the next action. Furthermore, set
-                      the <strong>Time Period</strong> to <code
-                        class="docutils literal notranslate"><span class="pre">&quot;Custom&quot;</span></code> and then
-                      set the end time a bit farther than your current time:</p>
-                  </div>
-                  <p><img alt="lab9-custom" src="../_images/lab9-custom.png" />
-                    <em>Figure 219: Curl towards the malicious IP</em>
-                  </p>
-                  <p>You should see the IP in the table at the bottom. You can filter based on the destination IP
-                    address (insert the malicious IP address):</p>
-                  <p><img alt="lab9-threat" src="../_images/lab9-threat.png" />
-                    <em>Figure 219: Curl towards the malicious IP</em>
-                  </p>
-                  <p><img alt="lab9-threat2" src="../_images/lab9-threat2.png" />
-                    <em>Figure 219: Curl towards the malicious IP</em>
-                  </p>
-                  <p>Afterwards, click on VIEW under the column Details.</p>
-                  <div class="admonition note">
-                    <p class="admonition-title">Note</p>
-                    <p>The IP we selected might not be deemed a threat when you read this.</p>
-                  </div>
-                  <p><img alt="lab9-view" src="../_images/lab9-view.png" />
-                    <em>Figure 219: Curl towards the malicious IP</em>
-                  </p>
-                  <p><img alt="lab9-view2" src="../_images/lab9-view2.png" />
-                    <em>Figure 219: Curl towards the malicious IP</em>
-                  </p>
-                  <p>Then select <strong>Threat Summary</strong> and pinpoint the metadata “tag” to determine how
-                    ThreatIQ has classified this IP.</p>
-                  <p><img alt="lab9-view2" src="../_images/lab9-tor.png" />
-                    <em>Figure 219: Curl towards the malicious IP</em>
-                  </p>
-                  <section id="example-of-threatguard-in-action">
-                    <h3>5.1. Example of ThreatGuard in action<a class="headerlink"
-                        href="#example-of-threatguard-in-action" title="Permalink to this heading">#</a></h3>
-                    <p>Navigate to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
-                    <div class="admonition note">
-                      <p class="admonition-title">Note</p>
-                      <p>The CoPilot UI frequently changes, and what you see below may differ from your experience.</p>
-                    </div>
-                    <ul class="simple">
-                      <li>
-                        <p>Click on <strong>VIEW</strong> under the column View Rules:</p>
-                      </li>
-                    </ul>
-                    <p><img alt="lab9-viewrules" src="../_images/lab9-viewrules.png" />
-                      <em>Figure 219: Curl towards the malicious IP</em>
-                    </p>
-                    <p>Filter based on the malicious IP (both on <strong>source</strong> address and
-                      <strong>destination</strong> address): you will find out that ThreatGuard applied the enforcement
-                      <code class="docutils literal notranslate"><span class="pre">&quot;force-drop&quot;</span></code>
-                      in both directions.</p>
-                    <p><img alt="lab9-forcesource" src="../_images/lab9-force.png" />
-                      <em>Figure 219: Curl towards the malicious IP</em>
-                    </p>
-                    <p><img alt="lab9-forcesource2" src="../_images/lab9-force2.png" />
-                      <em>Figure 219: Curl towards the malicious IP</em>
-                    </p>
-                    <p>Now try issuing the same curl command once again.</p>
-                    <p><img alt="lab9-failed" src="../_images/lab9-failed.png" />
-                      <em>Figure 219: Curl towards the malicious IP</em>
-                    </p>
-                    <p>ThreatGuard has successfully blocked the malicious IP!</p>
-                    <div class="admonition warning">
-                      <p class="admonition-title">Warning</p>
-                      <p>Before ending this lab, remove your email from the notification list!</p>
-                    </div>
-                    <p>Navigate to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Alerts Configuration</strong>
-                    </p>
-                    <p>Click on the pencil icon for editing the configured alert named <code
-                        class="docutils literal notranslate"><span class="pre">&quot;ThreatIQ</span> <span class="pre">Alert&quot;</span></code>:
-                    </p>
-                    <p><img alt="lab9-notification2" src="../_images/lab9-notification2.png" />
-                      <em>Figure 219: Curl towards the malicious IP</em>
-                    </p>
-                    <ul class="simple">
-                      <li>
-                        <p>Remove the recipient that is identified based on the alias that you chose before, then click
-                          on <strong>Save</strong>.</p>
-                      </li>
-                    </ul>
-                    <p>ThreatIQ will immediately stop sending the alerts to your personal email:</p>
-                    <p><img alt="lab9-joe" src="../_images/lab9-joe.png" />
-                      <em>Figure 219: Curl towards the malicious IP</em>
-                    </p>
-                    <p>After this lab, this is how the overall topology would look like:</p>
-                    <p><img alt="lab9-finaltopology" src="../_images/lab9-final.png" />
-                      <em>Figure 88: Final topology for Lab 9</em>
-                    </p>
-                  </section>
-                </section>
-              </section>
-
-              <script type="text/x-thebe-config">
+    <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -661,130 +550,119 @@
         predefinedOutput: true
     }
     </script>
-              <script>kernelName = 'python3'</script>
+    <script>kernelName = 'python3'</script>
 
-            </article>
+                </article>
+              
 
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab8.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 8 - SITE2CLOUD</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab10.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 10 - DISTRIBUTED CLOUD FIREWALL</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatiq-overview">2. ThreatIQ Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">4.2 Verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-threatiq-and-threatguard">5. Enable ThreatIQ and ThreatGuard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. Verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-threatguard-in-action">5.1. Example of ThreatGuard in action</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
-            <footer class="bd-footer-article">
-
-              <div class="footer-article-items footer-article__inner">
-
-                <div class="footer-article-item"><!-- Previous / next buttons -->
-                  <div class="prev-next-area">
-                    <a class="left-prev" href="lab8.html" title="previous page">
-                      <i class="fa-solid fa-angle-left"></i>
-                      <div class="prev-next-info">
-                        <p class="prev-next-subtitle">previous</p>
-                        <p class="prev-next-title">Lab 8 - SITE2CLOUD</p>
-                      </div>
-                    </a>
-                    <a class="right-next" href="lab10.html" title="next page">
-                      <div class="prev-next-info">
-                        <p class="prev-next-subtitle">next</p>
-                        <p class="prev-next-title">Lab 10 - DISTRIBUTED CLOUD FIREWALL</p>
-                      </div>
-                      <i class="fa-solid fa-angle-right"></i>
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-
-            </footer>
-
+</div></div>
+              
+            
           </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
 
-
-          <div class="bd-sidebar-secondary bd-toc">
-            <div class="sidebar-secondary-items sidebar-secondary__inner">
-
-              <div class="sidebar-secondary-item">
-                <div class="page-toc tocsection onthispage">
-                  <i class="fa-solid fa-list"></i> Contents
-                </div>
-                <nav class="bd-toc-nav page-toc">
-                  <ul class="visible nav section-nav flex-column">
-                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1.
-                        Objective</a></li>
-                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
-                        href="#threatiq-overview">2. ThreatIQ Overview</a></li>
-                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3.
-                        Topology</a></li>
-                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a>
-                      <ul class="nav section-nav flex-column">
-                        <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
-                            href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
-                        <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
-                            href="#verification">4.2 Verification</a></li>
-                      </ul>
-                    </li>
-                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
-                        href="#enable-threatiq-and-threatguard">5. Enable ThreatIQ and ThreatGuard</a></li>
-                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.
-                        Verification</a>
-                      <ul class="nav section-nav flex-column">
-                        <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
-                            href="#example-of-threatguard-in-action">5.1. Example of ThreatGuard in action</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-
-            </div>
-          </div>
-
-
-        </div>
-        <footer class="bd-footer-content">
-
-          <div class="bd-footer-content__inner container">
-
-            <div class="footer-item">
-
-              <p class="component-author">
-                By Aviatrix ACE
-              </p>
-
-            </div>
-
-            <div class="footer-item">
-
-              <p class="copyright">
-
-                © Copyright 2023.
-                <br />
-
-              </p>
-
-            </div>
-
-            <div class="footer-item">
-
-            </div>
-
-            <div class="footer-item">
-
-            </div>
-
-          </div>
-        </footer>
-
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
 
       </main>
     </div>
   </div>
-
+  
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
-</body>
-
+  </body>
 </html>
