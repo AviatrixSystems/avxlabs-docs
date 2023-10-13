@@ -7,7 +7,7 @@ This lab will demonstrate how the `Distributed Cloud Firewall` work.
  
 ## 2. Distributed Cloud Firewall Overview
 
-The Distributed Cloud Firewall feature allows to create logical containers, called `Smart Groups`, that encompass instances that present similarities inside a VPC/VNet/VCN, and then they also allow to enforce rules (aka **_Distributed Cloud Firewalling Rules_**) within a Smart Group (i.e. the `intra-rule`) or among Smart Groups (i.e. the `inter-rule`).
+The Distributed Cloud Firewall feature allows to create logical containers, called `Smart Groups`, that encompass instances that present similarities inside a VPC/VNet/VCN, and then it also allows to enforce rules (aka **_Distributed Cloud Firewalling Rules_**) within a Smart Group (i.e. the `intra-rule`) or among Smart Groups (i.e. the `inter-rule`).
 
 ```{note}
 At this point in the lab, there is a unique routing domain (i.e. a **_Flat Routing Domain_**), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.
@@ -21,11 +21,11 @@ The CSP tagging is the recommended method for defining the SmartGroups.
 
 In this lab you are asked to achieve the following requirements among the instances deployed across the three CSPs:
 
-- Create a Smart Group with the name `"bu1"` leveraging the tag `"environment"`
-- Create a Smart Group with the name `"bu2"` leveraging the tag `"environment"`
-- Create an `intra-rule` that allows ICMP traffic within bu1
-- Create an `intra-rule` that allows ICMP traffic within bu2
-- Create an `inter-rule` that allows ICMP traffic only from bu1 towards bu2
+- Create a Smart Group with the name `"bu1"` leveraging the tag `"environment"`.
+- Create a Smart Group with the name `"bu2"` leveraging the tag `"environment"`.
+- Create an `intra-rule` that allows ICMP traffic within bu1.
+- Create an `intra-rule` that allows ICMP traffic within bu2.
+- Create an `inter-rule` that allows ICMP traffic only from bu1 towards bu2.
 
 ![lab10-initial](images/lab10-initial.png)
 _Figure 88: Edit the Explicit-Deny-Rule_
@@ -185,9 +185,9 @@ Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 - **Protocol**: <span style='color:#33ECFF'>ICMP</span>
 - **Logging**: <span style='color:#33ECFF'>On</span>
 - **Action**: <span style='color:#33ECFF'>**Permit**</span>
-- **Place Rule**: <span style='color:#33ECFF'>**Below**</span>
-  - **Existing Rule**: <span style='color:#33ECFF'>**intra-icmp-bu1**</span>
-
+- **Place Rule**: <span style='color:#33ECFF'>Below</span>
+  - **Existing Rule**: <span style='color:#33ECFF'>intra-icmp-bu1</span>
+  
 Do not forget to click on **Save In Drafts**.
 
 ![lab10-rule4](images/lab10-rule4.png)
@@ -317,6 +317,262 @@ After the creation of the previous intra-rule, this is how the topology with the
 ![lab10-topologynew](images/lab10-topologynew.png)
 _Figure 88: Edit the Explicit-Deny-Rule_
 
-5.4. SSH to VM in bu2
+### 5.4. SSH to VM in bu2
 
-SSH to the Public IP of the instance gcp-us-central1-spoke1-test1:
+SSH to the Public IP of the instance **_gcp-us-central1-spoke1-test1_**:
+
+![lab10-sshtocentral](images/lab10-sshtocentral.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+### 5.5. Verify ICMP traffic within bu2
+
+Ping the following instances:
+
+- **aws-us-east2-spoke1-test1** in AWS
+- **aws-us-east2-spoke1-test2** in AWS
+- **azure-us-west-spoke1-test1** in Azure
+- **azure-us-west-spoke2-test1** in Azure
+
+According to the rules created before, only the ping towards the **azure-us-west-spoke2-test1** and **aws-us-east2-spoke1-test2** will work, because these two instance belongs to the same Smart Group bu2 as the instance from where you will be launching the ICMP packets.
+
+![lab10-pingtestgcp](images/lab10-pingtestgcp.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Let's investigate the logs once again.
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+
+![lab10-bu2monitor](images/lab10-bu2monitor.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+The logs above confirm that the ICMP protocol is permitted within the SmartGroup bu2.
+ 
+### 5.6. Inter-rule between bu1 and bu2
+
+Create a new rule that allows ICMP between bu1 and bu2.
+
+Go to **CoPilot > Security > Distributed Firewalling > Rules and click on the `"+ Rule"` button.
+
+![lab10-newrule4](images/lab10-newrule4.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+
+- **Name**: <span style='color:#33ECFF'>inter-icmp-bu1-bu2</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>bu1</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>bu2</span>
+- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Place Rule**: <span style='color:#33ECFF'>Below</span>
+  - **Existing Rule**: <span style='color:#33ECFF'>intra-ssh-bu1</span>
+  
+Do not forget to click on **Save In Drafts**.
+
+![lab10-interssh](images/lab10-interssh.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Enforce the this new rule in the data plane clicking on the `"Commit"` button.
+
+![lab10-newcommit2](images/lab10-newcommit2.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+SSH to the Public IP of the instance **_aws-us-east2-spoke1-test1_**.
+
+Ping the following instances:
+- **aws-us-east2-spoke1-test2** in AWS
+- **gcp-us-central1-spoke1-test1** in GCP
+- **azure-us-west-spoke1-test1** in Azure
+- **azure-us-west-spoke2-test1** in Azure
+
+Thit time all pings will be successful, thanks to the inter-rule applied between bu1 and bu2.
+
+![lab10-missingping](images/lab10-lastdrawing.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Let's investigate the logs once again.
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+
+![lab10-missingmonitor](images/lab10-lastdrawing.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu1 to bu2.
+
+After the creation of the previous inter-rule, this is how the topology with all the permitted protocols should look like.
+
+![lab10-newtopology2](images/lab10-newtopology2.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+```{note}
+The last inter-rule works smoothly only because the ICMP traffic is generated from the bu1, however, if you SSH to any instances in the Smart Group bu2, the ICMP traffic towards bu1 will fail due to the direction of the inter-rule that was created before: **FROM** bu1 **TO** bu2 (please note the direction of the arrow in the drawing).
+```
+
+![lab10-direction](images/lab10-direction.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu2 to reach the instance in bu1.
+ 
+## 6. East-1 and the Multi-Tier Transit
+
+### 6.1 Activation of the MTT
+
+Let’s now also involve the AWS region **US-EAST-1**.
+
+This time, you have to allow the ICMP traffic between the Smart Group **bu2** and the ec2 instance **_aws-us-east1-spoke1-test2_**, solely.
+
+![lab10-newtopology3](images/lab10-newtopology3.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+SSH to the Public IP of the instance **_azure-us-west-spoke2-test1_**.
+
+Ping the following instance:
+
+- **aws-us-east1-spoke1-test2** in AWS
+
+![lab10-newtopology3](images/lab10-pingfails10.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+The ping fails, therefore, let’s check the routing table of the Spoke Gateway **_azure-us-west-spoke2_**.
+
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the relevant gateway **_azure-us-west-spoke2_**
+
+![lab10-spoke2azure](images/lab10-spoke2azure.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Then click on the `"Gateway Routes"` tab and check whether the destination route is present in the routing table or not.
+
+![lab10-gatewayroutes](images/lab10-gatewayroutes.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+```{note}
+The destination route is not inside the routing table, due to the fact that the Transit Gateway in AWS us-east-1 region has only one peering with the Transit Gateway in us-east-2, therefore the Controller will install the routes that belong to us-east-1 only inside the routing tables of the Gateways in AWS us-east-2, excluding the rest of the Gateways of the MCNA. If you want to distribute the routes from AWS us-east-1 region in the whole MCNA, you have two choices:
+```
+
+- Enabling `"Full-Mesh"` on the Transit Gateways in **_aws-us-east1-transit_** VPC
+
+    **OR**
+
+- Enabling `"Multi-Tier Transit"`
+
+Let’s enable this time the MTT feature!
+
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east1-transit_**.
+
+![lab10-mtt](images/lab10-mtt.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Go to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
+
+![lab10-mtt2](images/lab10-mtt2.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Repeat the previous action for the remaning Transit Gateways:
+
+- **aws-us-east2-transit**: <span style='color:#33ECFF'>ASN **64513**</span>
+- **gcp-us-central1-transit**: <span style='color:#33ECFF'>ASN **64514**</span>
+- **azure-us-west-transit**: <span style='color:#33ECFF'>ASN **64515**</span>
+
+Go to C**oPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east2-transit_**.
+
+![lab10-mtt3](images/lab10-mtt3.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Go to `"Settings"` tab and expand the `"General"` section and activate the `"Multi-Tier Transit"`, turning on the corresponding knob. 
+
+Then click on **Save**.
+
+![lab10-mtt4](images/lab10-mtt4.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Let’s verify once again the routing table of the Spoke Gateway in **_azure-us-west-spoke2_**.
+
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the relevant gateway **_azure-us-west-spoke2_**
+
+![lab10-mtt5](images/lab10-mtt5.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+This time if you click on the `"Gateway Routes"` tab, you will be able to see the destination route in **aws-us-east1-spoke1** VPC.
+
+![lab10-mtt6](images/lab10-mtt6.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+- SSH to the Public IP of the instance **_azure-us-west-spoke2-test1_**.
+
+Ping the following instance:
+
+- **aws-us-east1-spoke1-test2** in AWS
+
+![lab10-mtt7](images/lab10-mtt7.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Although this time there is a valid route to the destination, thanks to the **MTT** feature, the pings fails. The reason is that the ec2-instance in **_aws-us-east1-spoke1_** VPC is not allocated to any Smart Groups yet.
+
+### 6.2 Smart Group “east1”
+
+Let’s create another Smart Group for the test instance in AWS us-east-1 region.
+
+Go to **Copilot > SmartGroups** and click on  `"+ SmartGroup"` button.
+
+![lab10-mtt8](images/lab10-mtt8.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
+
+- **Name**: <span style='color:#33ECFF'>east1</span>
+- **CSP Tag Key**: <span style='color:#33ECFF'>Name</span>
+- **CSP Tag Value**: <span style='color:#33ECFF'>aws-us-east1-spoke1-test2</span>
+
+![lab10-mtt9](images/lab10-mtt9.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+The CoPilot shows that there is just one single instance that matches the condition:
+
+- **aws-us-east1-spoke1-test2** in AWS
+
+Do not forget to click on **Save**.
+
+### 6.3 Create an inter-rule that allows ICMP from bu2 towards east1
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create another rule clicking on the `"+ Rule"` button.
+
+![lab10-mtt10](images/lab10-mtt10.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+
+- **Name**: <span style='color:#33ECFF'>inter-icmp-bu2-east1</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>east1</span>
+- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
+- **Port**: <span style='color:#33ECFF'>22</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+
+Then click on **Save In Drafts**.
+
+```{caution}
+Please note the direction of this new inter-rule: **FROM** bu2 **TO** east1
+```
+
+![lab10-lastrule](images/lab10-lastrule.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+Now you can carry on with the last **commit**!
+
+![lab10-lastcommit](images/lab10-lastcommit.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+### 6.4 Verify connectivity between bu2 and east1
+
+- SSH to the Public IP of the instance **_azure-us-west-spoke2-test1_** and ping the private IP of the ec2-instance **_aws-us-east1-spoke1-test2_**
+
+![lab10-lastping](images/lab10-lastping.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
+
+This time the ping will be successful.
+
+# Congratulations, you have deployed the full-blown Aviatrix solution!
+
+![lab10-lastdrawing](images/lab10-lastdrawing.png)
+_Figure 88: Edit the Explicit-Deny-Rule_
