@@ -169,6 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 8 - SITE2CLOUD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
@@ -354,16 +355,24 @@ document.write(`
 <h2>3. Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
 <p>In this lab, you will achieve Site2Cloud connectivity to a Cisco Cloud Services Router 1000v (CSR) emulating an on-premises branch router.</p>
 <p>In this lab, you will work with the overlapping IP addresses in this topology:</p>
-<p><img alt="lab8-topology" src="../_images/lab8-topology.png" />
-<em>Figure 191: Lab 8 Initial Topology</em></p>
+<figure class="align-center" id="id1">
+<img alt="../_images/lab8-topology.png" src="../_images/lab8-topology.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Lab 8 Initial Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="configuration">
 <h2>4. Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
 <section id="site2cloud-connection-cloud-to-on-prem">
 <h3>4.1. Site2Cloud Connection (Cloud to On-Prem)<a class="headerlink" href="#site2cloud-connection-cloud-to-on-prem" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">External</span> <span class="pre">Connection&quot;</span></code> button.</p>
-<p><img alt="lab8-s2c" src="../_images/lab8-s2c.png" />
-<em>Figure 192: S2C creation</em></p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab8-s2c.png" src="../_images/lab8-s2c.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 221 </span><span class="caption-text">S2C creation</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Create a connection from Cloud (GCP) to an on-prem Partner site.</p>
 <p>Use the following settings on the <code class="docutils literal notranslate"><span class="pre">&quot;Add</span> <span class="pre">External</span> <span class="pre">Connection&quot;</span></code> window:</p>
 <ul class="simple">
@@ -381,8 +390,12 @@ document.write(`
 <li><p><strong>Local Gateway Instance</strong>: <span style='color:#33ECFF'>gcp-us-central1-spoke1</span></p></li>
 </ul>
 <p>Then click on <strong>Save</strong>.</p>
-<p><img alt="lab8-s2ctemplate" src="../_images/lab8-s2ctemplate.png" />
-<em>Figure 193: S2C template</em></p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab8-s2ctemplate.png" src="../_images/lab8-s2ctemplate.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 222 </span><span class="caption-text">S2C template</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The configurationt template will grey out after clicking on Save. Be patient and wait for the Aviatrix Controller to complete the deployment. <ins>This will create the first leg of the connection, on the GCP Spoke GW</ins>. This will stay <strong>Down</strong> until the other end is configured.</p>
@@ -398,8 +411,12 @@ document.write(`
 <h3>4.2. Site2Cloud Connection (On-prem to Cloud)<a class="headerlink" href="#site2cloud-connection-on-prem-to-cloud" title="Permalink to this heading">#</a></h3>
 <p>The CoPilot provides a <strong><em>template</em></strong> that can be used to configure the remote router/firewall.</p>
 <p>Select the Site-to-Cloud connection row you created and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Three</span> <span class="pre">dots&quot;</span></code> icon and choose <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">Configuration&quot;</span></code> to generate and download the configuration template.</p>
-<p><img alt="lab8-template" src="../_images/lab8-template.png" />
-<em>Figure 193: CFG file</em></p>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab8-template.png" src="../_images/lab8-template.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 223 </span><span class="caption-text">CFG file</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Insert the following value inside the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">Configuration&quot;</span></code> window:</p>
 <ul class="simple">
 <li><p><strong>Vendor</strong>: <span style='color:#33ECFF'>Cisco</span></p></li>
@@ -407,8 +424,12 @@ document.write(`
 <li><p><strong>Software</strong>: <span style='color:#33ECFF'>IOS(XE)</span></p></li>
 </ul>
 <p>and then click on <strong>Download</strong>.</p>
-<p><img alt="lab8-template2" src="../_images/lab8-template2.png" />
-<em>Figure 194: Download CFG file</em></p>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab8-template2.png" src="../_images/lab8-template2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Download CFG file</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Cisco CSR is not acting as an actual branch router because it is being NAT’d by an AWS IGW. For that purpose, you need to specify that the <strong><code class="docutils literal notranslate"><span class="pre">Remote</span> <span class="pre">Identifier</span></code></strong> of the IKE tunnel is the private IP of the CSR, not the public IP.</p>
@@ -419,16 +440,28 @@ document.write(`
 <p>Refer to your <strong>POD</strong> portal for retrieving the Public IP of the CSR.</p>
 </div>
 <p>The Private IP that you need to copy is that one assigned to the <strong><em>GigabitEthernet1</em></strong> interface.</p>
-<p><img alt="lab8-template2" src="../_images/lab8-giga.png" />
-<em>Figure 195: GigabitEthernet1 IP address</em></p>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab8-giga.png" src="../_images/lab8-giga.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 225 </span><span class="caption-text">GigabitEthernet1 IP address</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Use the Private IP of the GigabitEthernet1 interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the above output.</p>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong> and click on the <code class="docutils literal notranslate"><span class="pre">GCP-to-OnPremPartner</span></code> connection.</p>
-<p><img alt="lab8-s2craw" src="../_images/lab8-s2craw.png" />
-<em>Figure 195: S2C node</em></p>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab8-s2craw.png" src="../_images/lab8-s2craw.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 226 </span><span class="caption-text">S2C node</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab, expand the <code class="docutils literal notranslate"><span class="pre">&quot;General&quot;</span></code> section and paste the Private IP on the <code class="docutils literal notranslate"><span class="pre">&quot;Remote</span> <span class="pre">Gateway</span> <span class="pre">Identifier&quot;</span></code> field, as depicted below.</p>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<p><img alt="lab8-settings" src="../_images/lab8-settings.png" />
-<em>Figure 196: Remote Gateway Identifier</em></p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab8-settings.png" src="../_images/lab8-settings.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 227 </span><span class="caption-text">Remote Gateway Identifier</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="modify-the-txt-file">
 <h3>4.2.1 Modify the txt.file<a class="headerlink" href="#modify-the-txt-file" title="Permalink to this heading">#</a></h3>
@@ -437,24 +470,40 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">&lt;tunnel_number1&gt;</span></code>: <span style='color:#33ECFF'>1</span></p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;ios_wan_interface1&gt;</span></code>: <span style='color:#33ECFF'>gi1</span></p>
 <p>ip route 192.168.200.0 255.255.255.0 Tunnel<code class="docutils literal notranslate"><span class="pre">&lt;tunnel_number&gt;</span></code>: <span style='color:#33ECFF'>1</span></p>
-<p><img alt="lab8-txt1" src="../_images/lab8-txt1.png" />
-<em>Figure 197: txt.file modification</em></p>
-<p><img alt="lab8-txt2" src="../_images/lab8-txt2.png" />
-<em>Figure 198: txt.file modification</em></p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab8-txt1.png" src="../_images/lab8-txt1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 228 </span><span class="caption-text">txt.file modification</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab8-txt2.png" src="../_images/lab8-txt2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 229 </span><span class="caption-text">txt.file modification 2</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Copy the entire configuration to the clipboard.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>If your SSH session to the Cisco CSR hasn’t timed out, SSH back in (please refer to your <strong>POD</strong> portal file for its public IP).</p>
 </div>
-<p>Type <code class="docutils literal notranslate"><span class="pre">configure</span> <span class="pre">terminal</span></code> (can be abbreviated to <strong><em>conf t</em></strong>).</p>
-<p><img alt="lab8-txt2" src="../_images/lab8-ssh.png" />
-<em>Figure 199: txt.file modification</em></p>
+<p>Type <code class="docutils literal notranslate"><span class="pre">configure</span> <span class="pre">terminal</span></code> (can be abbreviated to <strong><em><code class="docutils literal notranslate"><span class="pre">&quot;conf</span> <span class="pre">t&quot;</span></code></em></strong>).</p>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab8-ssh.png" src="../_images/lab8-ssh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 230 </span><span class="caption-text">SSH to the CSR</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p><strong>Paste</strong> the configuration to the terminal.</p></li>
 </ul>
 <p>After doing so, type <code class="docutils literal notranslate"><span class="pre">end</span></code> to exit configuration mode, followed by <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">ip</span> <span class="pre">int</span> <span class="pre">br</span></code> to verify that the tunnel interface is up on the CSR.</p>
-<p><img alt="lab8-up" src="../_images/lab8-up.png" />
-<em>Figure 200: Connection is up/up</em></p>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab8-up.png" src="../_images/lab8-up.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Connection is up/up</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="verification">
@@ -463,36 +512,61 @@ document.write(`
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Click on the <strong>refresh</strong> button to see the colored ball changing from red to green.</p>
+<p>The status will be reflected on the screen in about <strong>1 minute</strong>.</p>
 </div>
-<p><img alt="lab8-refresh" src="../_images/lab8-refresh.png" />
-<em>Figure 201: Connection is up/up also on the CoPilot</em></p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab8-refresh.png" src="../_images/lab8-refresh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 232 </span><span class="caption-text">Connection is up/up also on the CoPilot</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Verify the newly created tunnel is up (might take a few seconds once configuration is applied on the CSR (alternatively you can just click on the <code class="docutils literal notranslate"><span class="pre">Refresh</span></code> button).</p></li>
 </ul>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong></p>
 <p>Click to expand the <strong><em>gcp-us-central1-spoke1</em></strong> VPC to view the on-premises connection.</p>
-<p><img alt="lab8-onprem" src="../_images/lab8-onprem.png" />
-<em>Figure 202: OnPrem partner site</em></p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab8-onprem.png" src="../_images/lab8-onprem.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 233 </span><span class="caption-text">OnPrem partner site</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Go to <strong>OnPrem Router &gt; SSH Console</strong>.</p>
 <p>From the on-premises router’s console, enter a ping sourced from the <strong><em>GigabitEthernet1</em></strong> interface to the test instance in GCP (<strong><em>gcp-us-central1-spoke1-test1</em></strong>) as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">192</span>.168.200.100<span class="w"> </span><span class="nb">source</span><span class="w"> </span>gi1
 </pre></div>
 </div>
-<p><img alt="lab8-pingok" src="../_images/lab8-pingok.png" />
-<em>Figure 202: Ping ok</em></p>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab8-pingok.png" src="../_images/lab8-pingok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Then go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong> and click on the icon of the Spoke Gateway <strong><em>gcp-us-central1-spoke1</em></strong>, click on <code class="docutils literal notranslate"><span class="pre">Tools</span></code> and then click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Diagnostics</span></code>.</p>
-<p><img alt="lab8-diag" src="../_images/lab8-diag.png" />
-<em>Figure 203: Gateway Diagnostics</em></p>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab8-diag.png" src="../_images/lab8-diag.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Choose the <code class="docutils literal notranslate"><span class="pre">“Active</span> <span class="pre">Sessions”</span></code> option and in the Search field write <code class="docutils literal notranslate"><span class="pre">“icmp”</span></code> and then click on <strong>Run</strong>. You will notice the subnets involved (i.e. real and virtual subnets) in the Mapped NAT.</p>
-<p><img alt="lab8-active" src="../_images/lab8-active2.png" />
-<em>Figure 204: Active Sessions</em></p>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab8-active2.png" src="../_images/lab8-active2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Active Sessions</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>You will have to relaunch the ping command once again from the CSR router and click on <strong>Run</strong> on the CoPilot for capturing the Active Sessions!</p>
 </div>
 <p>After completing this lab, this is what the overall lab topology would look like:</p>
-<p><img alt="lab8-final" src="../_images/lab8-finaltopology.png" />
-<em>Figure 204: Lab 8 Final Topology</em></p>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/lab8-finaltopology.png"><img alt="../_images/lab8-finaltopology.png" src="../_images/lab8-finaltopology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Lab 8 Final Topology</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
