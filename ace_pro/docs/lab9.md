@@ -54,7 +54,7 @@ PSF template
 ```
 
 ```{warning}
-Wait for about **8** minutes for the completion of the PSF depl0yment
+Wait for about **8** minutes for the completion of the PSF deployment
 ```
 
 ```{figure} images/lab9-psfinprogress.png
