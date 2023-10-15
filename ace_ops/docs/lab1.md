@@ -6,8 +6,13 @@ Infrastructure <ins>was segmented</ins> recently into 2 network domains: **BU1**
 
 You are requested to ascertain the segregation between the two network domains.
 
-![Segmentation](images/lab1-segmentation.png)
-_Figure 2: Segmentation_
+```{figure} images/lab1-segmentation.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
 
 ## 2. VALIDATION REQUEST
 
