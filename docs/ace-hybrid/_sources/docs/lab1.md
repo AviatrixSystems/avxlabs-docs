@@ -8,23 +8,35 @@ The purpose of creating these VPCs/VNets is to familiarise yourself with the use
 
 Refer to your POD assignment for CoPilot login information, as depicted below. Click on the `URL` of the CoPilot and log in using the credentials assigned to your POD.
 
-![Portal](images/lab1-portal.png)
-_Figure 3: POD portal_
+```{figure} images/lab1-portal.png
+---
+align: center
+---
+POD portal
+```
 
 ## 2. Azure VNet
 ### 2.1. Create Azure VNet
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
-Verify if the CIDR range `192.168.12.0/24` is overlapping, as shown below.
+Verify whether the CIDR range `192.168.12.0/24` is overlapping or not, as shown below.
 
-![vnet-0](images/lab1-vnet1.png)
-_Figure 4: Searching for a subnet conflict_
+```{figure} images/lab1-vnet1.png
+---
+align: center
+---
+Searching for a subnet conflict
+```
 
 Let’s create an Application/Spoke VNet. Click on the button `“+ VPC/VNET”`.
 
-![vnet-1](images/lab1-vnet2.png)
-_Figure 5: VNet creation_
+```{figure} images/lab1-vnet2.png
+---
+align: center
+---
+VNet creation
+```
 
 Insert the following values:
 
@@ -37,18 +49,30 @@ Insert the following values:
 
 Then click on **Save**.
 
-![vnet-2](images/lab1-vnet3.png)
-_Figure 6: VNet template_
+```{figure} images/lab1-vnet3.png
+---
+align: center
+---
+VNet template
+```
 
 You will immediately notice a message on the top-right corner.
 
-![vnet-3](images/lab1-vnet4.png)
-_Figure 7: "In progress" message_
+```{figure} images/lab1-vnet4.png
+---
+align: center
+---
+"In progress" message
+```
 
 From the CoPilot search bar, type `“task”` and then click the search result `“Notifications / Tasks”`. Observe the VNet creation Task and wait for it to complete.
 
-![vnet-3](images/lab1-vnet5.png)
-_Figure 8: Notification_
+```{figure} images/lab1-vnet5.png
+---
+align: center
+---
+Notification
+```
 
 ### 2.2. Verify from Azure Portal
 
@@ -58,18 +82,30 @@ Once you are logged in, navigate to `Virtual Networks`.
 
 Be sure to filter your `Subscription` <ins>by your pod number</ins>, for example, for Pod 22 filter by `csp_azure_shared_ace_labs_22`.
 
-![vnet-4](images/lab1-vnet6.png)
-_Figure 9: Azure portal_
+```{figure} images/lab1-vnet6.png
+---
+align: center
+---
+Azure portal
+```
 
 Once in the VNet you just created, navigate to `Subnets`. Explore all the constructs that were created in Central US.
 
-![vnet-5](images/lab1-vnet7.png)
-_Figure 10: Azure subnets_
+```{figure} images/lab1-vnet7.png
+---
+align: center
+---
+Azure subnets
+```
 
 From the Portal, navigate to **Home > Route tables**. Explore the route tables.
 
-![vnet-6](images/lab1-vnet8.png)
-_Figure 11: Route tables_
+```{figure} images/lab1-vnet8.png
+---
+align: center
+---
+Route tables
+```
 
 ## 3. AWS VPC
 
@@ -77,8 +113,12 @@ _Figure 11: Route tables_
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and then click on the button `“+ VPC/VNET”`.
 
-![vpc-1](images/lab1-vpc1.png)
-_Figure 12: VPC creation_
+```{figure} images/lab1-vpc1.png
+---
+align: center
+---
+VPC creation
+```
 
 Insert the following values:
 
@@ -91,27 +131,43 @@ Insert the following values:
 
 Then click on **Save**.
 
-![vpc-2](images/lab1-vpc2.png)
-_Figure 13: VPC configuration_
+```{figure} images/lab1-vpc2.png
+---
+align: center
+---
+VPC configuration
+```
 
 Monitor the progress of the VPC creation through the hourglass icon.
 
-![vpc-3](images/lab1-vpc3.png)
-_Figure 14: Hourglass icon_
+```{figure} images/lab1-vpc3.png
+---
+align: center
+---
+Hourglass icon
+```
 
 Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).
 
 You can filter by CIDR `10.0.22.0/24`.
 
-![vpc-3](images/lab1-vpc4.png)
-_Figure 15: Verification_
+```{figure} images/lab1-vpc4.png
+---
+align: center
+---
+Verification
+```
 
 ### 3.2. Verify from AWS Console
 
 Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for **Pod 100**):
 
-![vpc-4](images/lab1-vpc5.png)
-_Figure 16: AWS console_
+```{figure} images/lab1-vpc5.png
+---
+align: center
+---
+AWS console
+```
 
 Change the region to `Oregon (us-west-2)` in the top-right corner and invoke the VPC service. You can see the `VPC` created with the CIDR block.
 
@@ -129,8 +185,12 @@ Here, also, you can see the eight route tables that the Controller created. They
 
 Go to **CoPilot > Cloud Resources > Cloud Assets >** Click on the button `“+ VPC/VNET”`.
 
-![gcp-1](images/lab1-gcp1.png)
-_Figure 17: VPC creation_
+```{figure} images/lab1-gcp1.png
+---
+align: center
+---
+VPC creation
+```
 
 Insert the following values:
 
@@ -139,7 +199,7 @@ Insert the following values:
  - **Account**: <span style='color:#33ECFF'>gcp-account [use the drop-down window]</span>
  - **Name**: <span style='color:#33ECFF'>gcp-us-west2-spoke1-sub1</span>
  - **Region**: <span style='color:#33ECFF'>us-west2 [use the drop-down window]</span>
- - **CIDRn**: <span style='color:#33ECFF'>172.16.22.0/24</span>
+ - **CIDR**: <span style='color:#33ECFF'>172.16.22.0/24</span>
 
 Then click on **Save**.
 
@@ -147,15 +207,23 @@ Then click on **Save**.
 Make sure there are no white spaces at the beginning or end of the VPC name.
 ```
 
-![gcp-2](images/lab1-gcp2.png)
-_Figure 18: VPC creation_
+```{figure} images/lab1-gcp2.png
+---
+align: center
+---
+VPC template
+```
 
 Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately(alternatively, refresh the web page for triggering the change).
 
 You can filter by CIDR `172.16.22.0/24`.
 
-![gcp-3](images/lab1-gcp3.png)
-_Figure 19: Verification_
+```{figure} images/lab1-gcp3.png
+---
+align: center
+---
+Verification
+```
 
 ```{note}
 The VPCs and VNet created in this lab will not be used in subsequent labs.

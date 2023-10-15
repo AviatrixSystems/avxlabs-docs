@@ -16,5 +16,10 @@ The cost ranges from `$0.09` an hour to `$1.65` an hour.
 
 ## 2. Topology
 
-![lab11-topology](images/lab11-topology.png)
-_Figure XX: SST Topology_
+```{figure} images/lab11-topology.png
+---
+height: 400px
+align: center
+---
+SST Topology
+```

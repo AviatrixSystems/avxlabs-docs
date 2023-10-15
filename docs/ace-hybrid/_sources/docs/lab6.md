@@ -14,8 +14,13 @@ In addition, Firewall Network allows you to scale firewall deployment to multi A
 
 Up until now, in Azure you have only worked on **_azure-us-west-spoke1_**. This lab will introduce finally **_azure-us-west-spoke2_**, which is a gateway in the top-right corner of this topology that is already deployed (hence it is red); <ins>there is the attachment that has not been deployed yet</ins>!
 
-![lab7-topology](images/lab7-topology.png)
-_Figure 160: Lab 7 Initial Topology_
+```{figure} images/lab7-topology.png
+---
+height: 400px
+align: center
+---
+Lab 7 Initial Topology
+```
 
 ## 4. Configuration
 ### 4.1. Azure Transit to Spoke Peering
@@ -24,14 +29,22 @@ First, you will need to configure the grey Aviatrix Spoke-Transit connection in 
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_azure-us-west-spoke2_**, clicking on the pencil icon:
 
-![lab7-spoke](images/lab7-spoke.png)
-_Figure 161: Edit Spoke GW_
+```{figure} images/lab7-spoke.png
+---
+align: center
+---
+Edit Spoke GW
+```
 
 Attach **_azure-us-west-spoke2_** (pre-configured VNet) to **_azure-us-west-transit_** as shown below.
 Do not forget to click on **Save**.
 
-![lab7-attachment](images/lab7-attachment.png)
-_Figure 162: Attachment_
+```{figure} images/lab7-attachment.png
+---
+align: center
+---
+Attachment
+```
 
 ```{important}
 The **_azure-us-west-transit_** is already enabled for FireNet function.
@@ -53,8 +66,12 @@ Aviatrix has already taken care of the *`subscription`* from the Azure Marketpla
 
 Go to **CoPilot > Security > FireNet > Firewall**, then click on the `"+ Firewall"` button.
 
-![lab7-firenetbutton](images/lab7-firenetbutton.png)
-_Figure 163: FireNet_
+```{figure} images/lab7-firenetbutton.png
+---
+align: center
+---
+FireNet
+```
 
 Deploy a Firewall by entering these settings within the `Deploy Firewall` window:
 
@@ -66,8 +83,12 @@ Deploy a Firewall by entering these settings within the `Deploy Firewall` window
 When you click on the **Firewall Image** drop-down window, you will see a `"Loading"` message. The message means that the Controller is in the middle of contacting the Marketplace through the API calls, therefore, be patient and wait for some seconds.
 ```
 
-![lab7-marketplace](images/lab7-marketplace.png)
-_Figure 164: Marketplace contact under loading_
+```{figure} images/lab7-marketplace.png
+---
+align: center
+---
+Marketplace contact under loading
+```
 
 - **Firewall Image Version**: <span style='color:#33ECFF'>9.1.0</span>
 - **Firewall instance Size**: <span style='color:#33ECFF'>Standard_D3_v2</span>
@@ -83,22 +104,34 @@ _Figure 164: Marketplace contact under loading_
 
 Then click on **Deploy**.
 
-![lab7-cfg](images/lab7-firenetcfg.png)
-_Figure 165: Firenet Deployment Template_
+```{figure} images/lab7-firenetcfg.png
+---
+align: center
+---
+Firenet Deployment Template
+```
 
 ```{warning}
 Please be patient - firewall deployment can take a long time, **_up to 20 minutes_**, due to the slow responsiveness of Azure API calls to prepare the firewall. Even after the firewall is created and is assigned a Public IP address, it doesn't mean it can be accessed immediately. If you try accessing it too early, your experience may vary.
 ```
 
-![lab7-inprogress](images/lab7-inprogress.png)
-_Figure 166: Deployment in progress_
+```{figure} images/lab7-inprogress.png
+---
+align: center
+---
+Deployment in progress
+```
 
 At this time, the interface mapping, security policy configuration, and RFC1918 static route creation are all being handled. The **_Aviatrix Controller_** does a lot of magic in orchestrating and manipulating route tables.
 
 You will know the Firewall is created when you see the corresponding entry like this (refresh the page after roughly 10-15 minutes):
 
-![lab7-url](images/lab7-url.png)
-_Figure 167: Deployment completed_
+```{figure} images/lab7-url.png
+---
+align: center
+---
+Deployment completed
+```
 
 Even after that message, it doesn't mean you can access the firewall (i.e. **URL**). Within **5-10 minutes** after you receive confirmation about the firewall being created, you should be able to access it.
 
@@ -108,8 +141,12 @@ Now try to click on the *hyperlink* of the firewall. You should be able to see t
 
 Once you access the firewall in your web browser via **HTTPS**, you might get a warning about an invalid certification based on your browser settings. This is just because it has a **_self-signed certificate_**. Navigate past that to get to the login prompt. Sign in as `avxadmin` as the username and the password you entered earlier.
 
-![lab7-palo](images/lab7-paloalto.png)
-_Figure 168: PaloAlto Welcome page_
+```{figure} images/lab7-paloalto.png
+---
+align: center
+---
+PaloAlto Welcome page
+```
 
 Dismiss the Welcome splash screen. This is an indication that the firewall is ready.
 
@@ -119,8 +156,12 @@ Do not end the firewall's HTTPS session yet. You will return to this web interfa
 
 Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three dots"` symbol on the right-hand side of the **_azure-us-west-transit_** raw, and then click on `Vendor Integration`.
 
-![lab7-vendor](images/lab7-vendor.png)
-_Figure 169: Vendor Integration_
+```{figure} images/lab7-vendor.png
+---
+align: center
+---
+Vendor Integration
+```
 
 Insert the following paramenters in the `"Vendor Integration"` pop-up window.
 
@@ -131,25 +172,41 @@ Insert the following paramenters in the `"Vendor Integration"` pop-up window.
 
 Then click on **Save**.
 
-![lab7-vendor2](images/lab7-vendor2.png)
-_Figure 170: Vendor Integration template_
+```{figure} images/lab7-vendor2.png
+---
+align: center
+---
+Vendor Integration template
+```
 
 ```{note}
 Wait for some seconds for the Vendor Integration to complete.
 ```
 
-![lab7-vendor3](images/lab7-vendor3.png)
-_Figure 171: Vendor Integration accomplished_
+```{figure} images/lab7-vendor3.png
+---
+align: center
+---
+Vendor Integration accomplished
+```
 
 Go to **CoPilot > Security > FireNet > Firewall** and click on the **_azure-us-west-pan_** firewall
 
-![lab7-vendor4](images/lab7-vendor4.png)
-_Figure 172: Click on the Firewall_
+```{figure} images/lab7-vendor4.png
+---
+align: center
+---
+Click on the Firewall
+```
 
 You will see the RFC 1918 routes that the Controller automatically programmed on the Firewall, through the `"Vendor Integration"`. Notice how each RFC1918 route has a prefix of `"AVX-"` to show that it is programmed by Aviatrix.
 
-![lab7-vendor5](images/lab7-vendor5.png)
-_Figure 173: Vendor Integration outcome_
+```{figure} images/lab7-vendor5.png
+---
+align: center
+---
+Vendor Integration outcome
+```
 
 ## 4.5. Verify Routes Installed on Firewall
 
@@ -157,13 +214,21 @@ Verify the same RFC 1918 routes exist on the PAN Firewall.
 
 Back on the **PAN Firewall**, navigate to **Network tab > Virtual Routers >** click on **default**.
 
-![lab7-palo1](images/lab7-palo1.png)
-_Figure 174: PaloAlto dashboard_
+```{figure} images/lab7-palo1.png
+---
+align: center
+---
+PaloAlto dashboard
+```
 
 Click on `"Static Routes"` tab. You should be able to see the same RFC 1918 routes with `"AVX-"` prefixes that were programmed by the Aviatrix Controller.
 
-![lab7-palo1](images/lab7-palo2.png)
-_Figure 175: PaloAlto dashboard_
+```{figure} images/lab7-palo2.png
+---
+align: center
+---
+Static Routes (RFC1918 routes)
+```
 
 ```{caution}
 Do not end the firewall's HTTPS session yet. You will return to this web interface later. 
@@ -173,23 +238,40 @@ Do not end the firewall's HTTPS session yet. You will return to this web interfa
 
 Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_azure-us-west-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
 
-![lab7-inspection2](images/lab7-inspection2.png)
-_Figure 176: Policy tab_
+```{figure} images/lab7-inspection2.png
+---
+align: center
+---
+Policy tab
+```
 
-Then select ach Azure spoke gateway one by one, click on `"Actions"` and choose `"Add"` in order to add a specific VPC inside the **Inspection Policy**.
+Then select each Azure spoke gateway one by one, click on `"Actions"` and choose `"Add"` in order to add a specific VPC inside the **Inspection Policy**.
 
-![lab7-inspection3](images/lab7-inspection3.png)
-_Figure 177: Inspection Policy assignment_
+```{figure} images/lab7-inspection3.png
+---
+align: center
+---
+Inspection Policy assignment
+```
 
-![lab7-inspection4](images/lab7-inspection4.png)
-_Figure 178: Inspection Policy accomplished_
+```{figure} images/lab7-inspection4.png
+---
+align: center
+---
+Inspection Policy accomplished
+```
 
 ## 5. Verification
 
 Verify the traffic flows within Azure and Azure to GCP as shown below by following steps 5.1 - 5.2:
 
-![lab7-topology-inspection](images/lab7-topology2.png)
-_Figure 179: Lab 7 Topology with FW deplopyed_
+```{figure} images/lab7-topology2.png
+---
+height: 400px
+align: center
+---
+Lab 7 Topology with FW deplopyed
+```
 
 ## 5.1. Within Azure
 
@@ -199,27 +281,44 @@ Go to **CoPilot > Networking > Network Segmentation > Network Domains**
 
 Click the *pencil icon* to edit the Green network domain.
 
-![lab7-editnd](images/lab7-editnd.png)
-_Figure 180: Edit Green_
+```{figure} images/lab7-editnd.png
+---
+align: center
+---
+Edit Green
+```
 
 Select the gateway **_azure-us-west-spoke2_** from the drop-down window, selecting the `"Associations"` field.
 
 Then click **Save**:
 
-![lab7-nd2](images/lab7-nd2.png)
-_Figure 181: Association_
+```{figure} images/lab7-nd2.png
+---
+align: center
+---
+Association
+```
 
 After this step, this is what Lab 7 topology looks like:
 
-![lab7-final-topology](images/lab7-finaltopology.png)
-_Figure 182: Lab 7 Final Topology_
+```{figure} images/lab7-finaltopology.png
+---
+height: 400px
+align: center
+---
+Lab 7 Final Topology
+```
 
 ```{warning}
 On Lab 6 (Egress), the DCF functionality was enabled. The current active rule is the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53. Before launching any connectivity test, <ins>you need to move on the top of the list of the DCF rules, the **_Greenfield-Rule_** and disassociate the **_Any-Web_** WebGroup</ins>!
 ```
 
-![lab7-dcfrule](images/lab7-dcfrule.png)
-_Figure 183: DCF rules_
+```{figure} images/lab7-dcfrule.png
+---
+align: center
+---
+DCF rules
+```
 
 - Modify the Greenfield-Rule Priority
 
@@ -228,28 +327,48 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, cli
 Then click on **Save in Draft**.
 ```
 
-![lab7-dcfrule2](images/lab7-top.png)
-_Figure 184: Move at the Top_
+```{figure} images/lab7-top.png
+---
+align: center
+---
+Move at the Top
+```
 
 Now click on the **_pencil icon_** of the Greenfield-Rule and then disassociate the **_Any-Web_** WebGroup. Do not forget to click on **Save In Drafts**.
 
-![lab7-dcfrule3](images/lab7-edit.png)
-_Figure 185: Edit Greenfield_
+```{figure} images/lab7-edit.png
+---
+align: center
+---
+Edit Greenfield
+```
 
-![lab7-dcfrule3](images/lab7-edit2.png)
-_Figure 185: Disassociate Any-Web_
+```{figure} images/lab7-edit2.png
+---
+align: center
+---
+Disassociate Any-Web
+```
 
 You can proceed in committing your change.
 
-![lab7-dcfrule3](images/lab7-finalcommit.png)
-_Figure 185: Final Commit_
+```{figure} images/lab7-finalcommit.png
+---
+align: center
+---
+Final Commit
+```
 
 ### 5.1.1 Luanch connectivity test
 
 **SSH** into **_azure-us-west-spoke1-test1_** and from there, ping **_azure-us-west-spoke2-test1_** on its private IP.
 
-![lab7-ping](images/lab7-ping.png)
-_Figure 186: Ping is successful_
+```{figure} images/lab7-ping.png
+---
+align: center
+---
+Ping is successful
+```
 
 ```{note}
 Pings are passing because the **`Allow-all`** rule on the Firewall is permitting traffic from any zone to any zone to pass.
@@ -261,26 +380,55 @@ Back on the PAN firewall, click on the `Monitor` tab. Then paste this string in 
 (addr in 192.168.1.100)
 ```
 
-![lab7-monitor](images/lab7-monitor2.png)
-_Figure 187: Monitor on the PaloAlto_
+```{figure} images/lab7-monitor2.png
+---
+align: center
+---
+Monitor on the PaloAlto
+```
 
 Traffic is passing through firewall because **_azure-us-west-spoke1_** and **_azure-us-west-spoke2_** both are in the **Inspection Policy**.
+
+```{tip}
+Click on the **refresh** button to see the logs almost in continuous stream.
+```
+
+```{figure} images/lab7-smallrefresh.png
+---
+align: center
+---
+Ping GCP
+```
+
 
 ## 5.2. Azure to GCP
 
 While on **_azure-us-west-spoke1-test1_**, ping **_gcp-us-central1-spoke1-test1_**.
 
-![lab7-pinggcp](images/lab7-pinggcp.png)
-_Figure 188: Ping GCP_
+```{figure} images/lab7-pinggcp.png
+---
+align: center
+---
+Ping GCP
+```
 
 This still matches the **`Allow-all`** firewall rule. Moreover, it works because of the Connection Policy we had configured in the **Network Segmentation** Lab.
 
 Back on the PAN firewall, click the **refresh** button in the top-right corner to see the log entries for pinging the GCP spoke test VM.
 
-![lab7-finalmonitor](images/lab7-finalmonitor.png)
-_Figure 189: Monitoring traffic towards GCP_
+```{figure} images/lab7-finalmonitor.png
+---
+align: center
+---
+Monitoring traffic towards GCP
+```
 
 After completing this Lab, the overall topology would look like this:
 
-![lab7-finaltopology2](images/lab7-finaltopology2.png)
-_Figure 190: Final Topology for Lab 7_
+```{figure} images/lab7-finaltopology2.png
+---
+height: 400px
+align: center
+---
+Final Topology for Lab 7
+```

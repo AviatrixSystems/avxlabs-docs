@@ -36,7 +36,6 @@ Go to **CoPilot > Networking > Network Segmentation > Network Domains > Transit 
 
 ```{figure} images/lab3-enabletransit.png
 ---
-height: 400px
 align: center
 ---
 Enable the feature
@@ -57,7 +56,6 @@ Go to **CoPilot > Networking > Network Segmentation > Network Domains > + Networ
 
 ```{figure} images/lab3-networkdomain.png
 ---
-height: 400px
 align: center
 ---
 Network Domain creation
@@ -204,10 +202,9 @@ Select the appropriate option from the **`"Connect to Network Domain"`** pull-do
 
 ```{figure} images/lab3-applycp.png
 ---
-height: 400px
 align: center
 ---
-Apply the connection polic
+Apply the connection policy
 ```
 
 ### 6.1. Verification of Connection Policy

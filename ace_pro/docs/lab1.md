@@ -51,7 +51,6 @@ Then click on **Save**.
 
 ```{figure} images/lab1-vnet3.png
 ---
-height: 400px
 align: center
 ---
 VNet template
@@ -116,7 +115,6 @@ Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and the
 
 ```{figure} images/lab1-vpc1.png
 ---
-height: 400px
 align: center
 ---
 VPC creation
@@ -135,7 +133,6 @@ Then click on **Save**.
 
 ```{figure} images/lab1-vpc2.png
 ---
-height: 400px
 align: center
 ---
 VPC configuration
@@ -212,7 +209,6 @@ Make sure there are no white spaces at the beginning or end of the VPC name.
 
 ```{figure} images/lab1-gcp2.png
 ---
-height: 400px
 align: center
 ---
 VPC template

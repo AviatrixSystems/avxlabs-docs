@@ -93,7 +93,6 @@ At this point, you should have received an email and a message in the **Notifica
 
 ```{figure} images/lab4-notification.png
 ---
-height: 400px
 align: center
 ---
 Notification message
@@ -107,7 +106,6 @@ Go to **Controller** and then hover over the user icon in the top-right corner a
 
 ```{figure} images/lab4-signout.png
 ---
-height: 400px
 align: center
 ---
 Sign out
@@ -117,7 +115,6 @@ Sign back in as a **controller-op** with the same password you picked earlier.
 
 ```{figure} images/lab4-signin.png
 ---
-height: 400px
 align: center
 ---
 Sign back with controller-op
@@ -127,7 +124,6 @@ You should see in the top-right corner that you are logged in as the **controlle
 
 ```{figure} images/lab4-rbac.png
 ---
-height: 400px
 align: center
 ---
 RBAC sign-in
@@ -183,7 +179,6 @@ You should immediately receive an error in the Notifications tray such as this:
 
 ```{figure} images/lab4-error.png
 ---
-height: 400px
 align: center
 ---
 Error
@@ -203,7 +198,6 @@ Click on `“+ Permission Group”`.
 
 ```{figure} images/lab4-permission2.png
 ---
-height: 400px
 align: center
 ---
 New Permission Group
@@ -284,7 +278,6 @@ Hover over the user icon in the top-right corner and click **Logout**.
 
 ```{figure} images/lab4-logout.png
 ---
-height: 400px
 align: center
 ---
 Log out
@@ -294,7 +287,6 @@ Sign back in as a **copilot-op** with the same password you picked earlier.
 
 ```{figure} images/lab4-logincopilot.png
 ---
-height: 400px
 align: center
 ---
 Log in CoPilot

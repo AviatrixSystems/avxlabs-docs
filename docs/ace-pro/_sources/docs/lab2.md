@@ -57,7 +57,6 @@ Ensure that `Fetch Topology`, `Fetch Instances`, `Fetch GW Routes` and `Fetch VP
 
 ```{figure} images/lab2-timer.png
 ---
-height: 400px
 align: center
 ---
 Task Server
@@ -65,7 +64,6 @@ Task Server
 
 ```{figure} images/lab2-fetchtopology.png
 ---
-height: 400px
 align: center
 ---
 Fetch Topology
@@ -73,7 +71,6 @@ Fetch Topology
 
 ```{figure} images/lab2-fetchinstances.png
 ---
-height: 400px
 align: center
 ---
 Fetch Instances
@@ -81,7 +78,6 @@ Fetch Instances
 
 ```{figure} images/lab2-fetchgw.png
 ---
-height: 400px
 align: center
 ---
 Fetch GW
@@ -89,7 +85,6 @@ Fetch GW
 
 ```{figure} images/lab2-fetchvpc.png
 ---
-height: 400px
 align: center
 ---
 Fetch VPC
@@ -222,7 +217,6 @@ You will immediately get a message as follows.
 
 ```{figure} images/lab2-gwmessage.png
 ---
-height: 400px
 align: center
 ---
 Gateway deployment in progress
@@ -232,7 +226,6 @@ You may check the status of the gateway creation in the top right corner by expa
 
 ```{figure} images/lab2-taskicon.png
 ---
-height: 400px
 align: center
 ---
 Task icon
@@ -315,7 +308,6 @@ Make sure you <ins>do not select the subnets that begins with az-1, az-2, or az-
 
 ```{figure} images/lab2-rightsubnet.png
 ---
-height: 400px
 align: center
 ---
 Subnet selection
@@ -365,7 +357,6 @@ You can see the progress of gateway deployment at any time by expanding the task
 
 ```{figure} images/lab2-inprogress2.png
 ---
-height: 400px
 align: center
 ---
 Deployment in progress
@@ -497,7 +488,6 @@ Look for these three confirmations through the task icon, before proceeding.
 
 ```{figure} images/lab2-confirmation.png
 ---
-height: 400px
 align: center
 ---
 Confirmations

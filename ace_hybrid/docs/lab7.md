@@ -1,4 +1,4 @@
-# Lab 7 - SITE2CLOUD
+# Lab 8 - SITE2CLOUD
 
 ## 1. Objective
 
@@ -16,8 +16,12 @@ In this lab, you will achieve Site2Cloud connectivity to a Cisco Cloud Services 
 
 In this lab, you will work with the overlapping IP addresses in this topology:
 
-![lab8-topology](images/lab8-topology.png)
-_Figure 191: Lab 8 Initial Topology_
+```{figure} images/lab8-topology.png
+---
+align: center
+---
+Lab 8 Initial Topology
+```
 
 ## 4. Configuration
 
@@ -25,8 +29,12 @@ _Figure 191: Lab 8 Initial Topology_
 
 Go to **CoPilot > Networking > Connectivity > External Connection (S2C)** and click on the `"+ External Connection"` button.
 
-![lab8-s2c](images/lab8-s2c.png)
-_Figure 192: S2C creation_
+```{figure} images/lab8-s2c.png
+---
+align: center
+---
+S2C creation
+```
 
 Create a connection from Cloud (GCP) to an on-prem Partner site.
 
@@ -47,8 +55,12 @@ Use the following settings on the `"Add External Connection"` window:
 
 Then click on **Save**.
 
-![lab8-s2ctemplate](images/lab8-s2ctemplate.png)
-_Figure 193: S2C template_
+```{figure} images/lab8-s2ctemplate.png
+---
+align: center
+---
+S2C template
+```
 
 ```{caution}
 The configurationt template will grey out after clicking on Save. Be patient and wait for the Aviatrix Controller to complete the deployment. <ins>This will create the first leg of the connection, on the GCP Spoke GW</ins>. This will stay **Down** until the other end is configured.
@@ -68,8 +80,12 @@ The CoPilot provides a **_template_** that can be used to configure the remote r
 
 Select the Site-to-Cloud connection row you created and click on the `"Three dots"` icon and choose `"Download Configuration"` to generate and download the configuration template.
 
-![lab8-template](images/lab8-template.png)
-_Figure 193: CFG file_
+```{figure} images/lab8-template.png
+---
+align: center
+---
+CFG file
+```
 
 Insert the following value inside the `"Download Configuration"` window:
 
@@ -79,8 +95,12 @@ Insert the following value inside the `"Download Configuration"` window:
 
 and then click on **Download**.
 
-![lab8-template2](images/lab8-template2.png)
-_Figure 194: Download CFG file_
+```{figure} images/lab8-template2.png
+---
+align: center
+---
+Download CFG file
+```
 
 ```{note}
 The Cisco CSR is not acting as an actual branch router because it is being NAT'd by an AWS IGW. For that purpose, you need to specify that the **`Remote Identifier`** of the IKE tunnel is the private IP of the CSR, not the public IP.
@@ -94,22 +114,34 @@ Refer to your **POD** portal for retrieving the Public IP of the CSR.
 
 The Private IP that you need to copy is that one assigned to the **_GigabitEthernet1_** interface.
 
-![lab8-template2](images/lab8-giga.png)
-_Figure 195: GigabitEthernet1 IP address_
+```{figure} images/lab8-giga.png
+---
+align: center
+---
+GigabitEthernet1 IP address
+```
 
 Use the Private IP of the GigabitEthernet1 interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the above output.
 
 Go to **CoPilot > Networking > Connectivity > External Connection (S2C)** and click on the `GCP-to-OnPremPartner` connection.
 
-![lab8-s2craw](images/lab8-s2craw.png)
-_Figure 195: S2C node_
+```{figure} images/lab8-s2craw.png
+---
+align: center
+---
+S2C node
+```
 
 Then click on the `"Settings"` tab, expand the `"General"` section and paste the Private IP on the `"Remote Gateway Identifier"` field, as depicted below. 
 
 Do not forget to click on **Save**.
 
-![lab8-settings](images/lab8-settings.png)
-_Figure 196: Remote Gateway Identifier_
+```{figure} images/lab8-settings.png
+---
+align: center
+---
+Remote Gateway Identifier
+```
 
 ### 4.2.1 Modify the txt.file 
 
@@ -123,11 +155,19 @@ Make the following four changes to the downloaded Site2Cloud text file:
 
 ip route 192.168.200.0 255.255.255.0 Tunnel`<tunnel_number>`: <span style='color:#33ECFF'>1</span>
 
-![lab8-txt1](images/lab8-txt1.png)
-_Figure 197: txt.file modification_
+```{figure} images/lab8-txt1.png
+---
+align: center
+---
+txt.file modification
+```
 
-![lab8-txt2](images/lab8-txt2.png)
-_Figure 198: txt.file modification_
+```{figure} images/lab8-txt2.png
+---
+align: center
+---
+ txt.file modification 2
+```
 
 Copy the entire configuration to the clipboard.
 
@@ -135,17 +175,25 @@ Copy the entire configuration to the clipboard.
 If your SSH session to the Cisco CSR hasn't timed out, SSH back in (please refer to your **POD** portal file for its public IP). 
 ```
 
-Type `configure terminal` (can be abbreviated to **_conf t_**).
+Type `configure terminal` (can be abbreviated to **_`"conf t"`_**).
 
-![lab8-txt2](images/lab8-ssh.png)
-_Figure 199: txt.file modification_
+```{figure} images/lab8-ssh.png
+---
+align: center
+---
+SSH to the CSR
+```
 
 - **Paste** the configuration to the terminal.
 
 After doing so, type `end` to exit configuration mode, followed by `sh ip int br` to verify that the tunnel interface is up on the CSR.
 
-![lab8-up](images/lab8-up.png)
-_Figure 200: Connection is up/up_
+```{figure} images/lab8-up.png
+---
+align: center
+---
+Connection is up/up
+```
 
 ## 5. Verification
 
@@ -153,10 +201,16 @@ Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**
 
 ```{tip}
 Click on the **refresh** button to see the colored ball changing from red to green.
+
+The status will be reflected on the screen in about **1 minute**. 
 ```
 
-![lab8-refresh](images/lab8-refresh.png)
-_Figure 201: Connection is up/up also on the CoPilot_
+```{figure} images/lab8-refresh.png
+---
+align: center
+---
+Connection is up/up also on the CoPilot
+```
 
 - Verify the newly created tunnel is up (might take a few seconds once configuration is applied on the CSR (alternatively you can just click on the `Refresh` button).
 
@@ -164,8 +218,12 @@ Go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)**
 
 Click to expand the **_gcp-us-central1-spoke1_** VPC to view the on-premises connection.
 
-![lab8-onprem](images/lab8-onprem.png)
-_Figure 202: OnPrem partner site_
+```{figure} images/lab8-onprem.png
+---
+align: center
+---
+OnPrem partner site
+```
 
 Go to **OnPrem Router > SSH Console**.
 
@@ -175,18 +233,30 @@ From the on-premises router’s console, enter a ping sourced from the **_Gigabi
 ping 192.168.200.100 source gi1
 ```
 
-![lab8-pingok](images/lab8-pingok.png)
-_Figure 202: Ping ok_
+```{figure} images/lab8-pingok.png
+---
+align: center
+---
+Ping ok
+```
 
 Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, click on `Tools` and then click on `Gateway Diagnostics`.
 
-![lab8-diag](images/lab8-diag.png)
-_Figure 203: Gateway Diagnostics_
+```{figure} images/lab8-diag.png
+---
+align: center
+---
+Gateway Diagnostics
+```
 
 Choose the `“Active Sessions”` option and in the Search field write `“icmp”` and then click on **Run**. You will notice the subnets involved (i.e. real and virtual subnets) in the Mapped NAT.
 
-![lab8-active](images/lab8-active2.png)
-_Figure 204: Active Sessions_
+```{figure} images/lab8-active2.png
+---
+align: center
+---
+Active Sessions
+```
 
 ```{important}
 You will have to relaunch the ping command once again from the CSR router and click on **Run** on the CoPilot for capturing the Active Sessions!
@@ -194,5 +264,10 @@ You will have to relaunch the ping command once again from the CSR router and cl
 
 After completing this lab, this is what the overall lab topology would look like:
 
-![lab8-final](images/lab8-finaltopology.png)
-_Figure 204: Lab 8 Final Topology_
+```{figure} images/lab8-finaltopology.png
+---
+height: 400px
+align: center
+---
+Lab 8 Final Topology
+```
