@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-In this lab, you will create **3** VPCs/VNets, one in each cloud, i.e., Azure, AWS and GCP. 
+In this lab, you will create **3** VPCs/VNets, one in each cloud, i.e., Azure, AWS and GCP.
 
 The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).
 
@@ -33,7 +33,6 @@ Let’s create an Application/Spoke VNet. Click on the button `“+ VPC/VNET”`
 
 ```{figure} images/lab1-vnet2.png
 ---
-height: 400px
 align: center
 ---
 VNet creation
@@ -62,7 +61,6 @@ You will immediately notice a message on the top-right corner.
 
 ```{figure} images/lab1-vnet4.png
 ---
-height: 400px
 align: center
 ---
 "In progress" message
@@ -204,7 +202,7 @@ Insert the following values:
  - **Account**: <span style='color:#33ECFF'>gcp-account [use the drop-down window]</span>
  - **Name**: <span style='color:#33ECFF'>gcp-us-west2-spoke1-sub1</span>
  - **Region**: <span style='color:#33ECFF'>us-west2 [use the drop-down window]</span>
- - **CIDRn**: <span style='color:#33ECFF'>172.16.22.0/24</span>
+ - **CIDR**: <span style='color:#33ECFF'>172.16.22.0/24</span>
 
 Then click on **Save**.
 

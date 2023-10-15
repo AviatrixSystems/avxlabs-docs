@@ -21,8 +21,12 @@ Navigate to **CoPilot > Administration > User Access > Permission Group**
 
 Click on `“+Permission Group”`.
 
-![lab4-pgcopilot](images/lab4-pgcopilot.png)
-_Figure 89: Permission Group creation on the CoPilot_
+```{figure} images/lab4-pgcopilot.png
+---
+align: center
+---
+Permission Group creation on the CoPilot
+```
 
 Name the group **controller-operators**, select all the **Access Accounts** available from the drop-down window and choose the **Controller Permissions**.
 
@@ -30,13 +34,21 @@ Then from the **API/Terraform Permissions** field, select **Dashboard**, **Usefu
 
 Click on **Save**.
 
-![lab4-dropdown1](images/lab4-dropdown1.png)
-_Figure 90: Permisionn Group configuration_
+```{figure} images/lab4-dropdown1.png
+---
+align: center
+---
+Permisionn Group configuration
+```
 
 In the list of permission groups you should see the new created **controller-operators**.
 
-![lab4-dropdown1](images/lab4-controlleroperators.png)
-_Figure 91: "controller-operators" Permission group_
+```{figure} images/lab4-controlleroperators.png
+---
+align: center
+---
+"controller-operators" Permission group
+```
 
 ### 2.2. Create a new User
 
@@ -44,8 +56,12 @@ Navigate to **CoPilot > Administration > User Access > Users**
 
 Click on `“+User”`.
 
-![lab4-user](images/lab4-user.png)
-_Figure 92: +User_
+```{figure} images/lab4-user.png
+---
+align: center
+---
++User
+```
 
 Ensure to enter the following values:
 
@@ -57,18 +73,31 @@ Ensure to enter the following values:
 
 Then click on **Save**.
 
-![lab4-adduser](images/lab4-usercreation.png)
-_Figure 93: Add User_
+```{figure} images/lab4-usercreation.png
+---
+align: center
+---
+Add User
+```
 
 In the list of users, you should see the new created **_controller-op_**.
 
-![lab4-adduser](images/lab4-controllerop.png)
-_Figure 94: controller-op_
+```{figure} images/lab4-controllerop.png
+---
+align: center
+---
+controller-op
+```
 
 At this point, you should have received an email and a message in the **Notifications** tray, similar to the message below:
 
-![lab4-notification](images/lab4-notification.png)
-_Figure 95: Notification message_
+```{figure} images/lab4-notification.png
+---
+height: 400px
+align: center
+---
+Notification message
+```
 
 ## 3. Verification: RBAC on the Controller
  
@@ -76,18 +105,33 @@ _Figure 95: Notification message_
 
 Go to **Controller** and then hover over the user icon in the top-right corner and click on **Sign out**.
 
-![lab4-signbout](images/lab4-signout.png)
-_Figure 96: Sign out_
+```{figure} images/lab4-signout.png
+---
+height: 400px
+align: center
+---
+Sign out
+```
 
 Sign back in as a **controller-op** with the same password you picked earlier.
 
-![lab4-signin](images/lab4-signin.png)
-_Figure 97: Sign back with controller-op_
+```{figure} images/lab4-signin.png
+---
+height: 400px
+align: center
+---
+Sign back with controller-op
+```
 
 You should see in the top-right corner that you are logged in as the **controller-op** RBAC User, a member of the **controller-operators** RBAC Group.
 
-![rbac](images/lab4-rbac.png)
-_Figure 98: RBAC sign-in_
+```{figure} images/lab4-rbac.png
+---
+height: 400px
+align: center
+---
+RBAC sign-in
+```
 
 ### 3.1.1. Positive Test
 
@@ -104,13 +148,21 @@ Create a new VPC as follows (make sure that **_Aviatrix Transit VPC_** is not se
 - **Aviatrix Transit VPC:** <span style='color:#33ECFF'>**unchecked**</span>
 - **Aviatrix FireNet VPC:** <span style='color:#33ECFF'>unchecked</span>
 
-![create vpc from controller](images/lab4-createvpc.png)
-_Figure 99: Creating a VPC from the Controller_
+```{figure} images/lab4-createvpc.png
+---
+align: center
+---
+Creating a VPC from the Controller
+```
 
 You will receive confirmation that your VPC was created successfully!
 
-![successfully created](images/lab4-success.png)
-_Figure 100: Successfully created_
+```{figure} images/lab4-success.png
+---
+align: center
+---
+Successfully created
+```
 
 ### 3.1.2. Negative Test
 
@@ -120,13 +172,22 @@ Attempt to undo your work in the Network Segmentation Lab, by disconnecting the 
 
 Select the Green domain first and then click on the **DEL** button.
 
-![change segmentation](images/lab4-changesegmentation.png)
-_Figure 101: Modify Segmentation_
+```{figure} images/lab4-changesegmentation.png
+---
+align: center
+---
+Modify Segmentation
+```
 
 You should immediately receive an error in the Notifications tray such as this:
 
-![error](images/lab4-error.png)
-_Figure 102: Error_
+```{figure} images/lab4-error.png
+---
+height: 400px
+align: center
+---
+Error
+```
 
 ```{attention}
 Before moving to the subsequent section, be sure to sign out as a **controller-op** and sign back in as a **student**.
@@ -140,8 +201,13 @@ Navigate to **CoPilot > Administration > User Acces > Permission Group**
 
 Click on `“+ Permission Group”`.
 
-![Permission Group](images/lab4-permission2.png)
-_Figure 103: New Permission Group_
+```{figure} images/lab4-permission2.png
+---
+height: 400px
+align: center
+---
+New Permission Group
+```
 
 Ensure to insert the following values inside the pop-up window `“Create Permission Group”`:
 
@@ -155,16 +221,28 @@ Click on **“Clear All Views”**, and then select the following sections (and 
 - **Monitor**
 - **Diagnostics**
 
-![Create permission group 2](images/lab4-pg2.png)
-_Figure 104: New Permission Group_
+```{figure} images/lab4-pg2.png
+---
+align: center
+---
+Create Permission Group
+```
 
-![Create permission group 3](images/lab4-pg3.png)
-_Figure 105: New Permission Group_
+```{figure} images/lab4-pg3.png
+---
+align: center
+---
+Create Permission Group (cont.ed)
+```
 
 You should notice a **Notification** message popping up.
 
-![successfully created](images/lab4-message.png)
-_Figure 106: Successfully created_
+```{figure} images/lab4-message.png
+---
+align: center
+---
+Successfully created
+```
 
 ### 4.2. Create a new User
 
@@ -172,8 +250,12 @@ Navigate to **CoPilot > Administration > User Acces > Users**
 
 Click on `“+ User”`.
 
-![+User](images/lab4-newuser.png)
-_Figure 107: +User_
+```{figure} images/lab4-newuser.png
+---
+align: center
+---
++User
+```
 
 Ensure to enter the following values:
 
@@ -187,8 +269,12 @@ Then click on **Save**.
 
 This is the list of all users that you should be able to see at this point.
 
-![list](images/lab4-list.png)
-_Figure 108: List of users_
+```{figure} images/lab4-list.png
+---
+align: center
+---
+List of users
+```
 
 ## 5. Verification: RBAC on the CoPilot
  
@@ -196,13 +282,23 @@ _Figure 108: List of users_
 
 Hover over the user icon in the top-right corner and click **Logout**.
 
-![logout](images/lab4-logout.png)
-_Figure 109: Log out_
+```{figure} images/lab4-logout.png
+---
+height: 400px
+align: center
+---
+Log out
+```
 
 Sign back in as a **copilot-op** with the same password you picked earlier.
 
-![login copilot](images/lab4-logincopilot.png)
-_Figure 110: Log in CoPilot_
+```{figure} images/lab4-logincopilot.png
+---
+height: 400px
+align: center
+---
+Log in CoPilot
+```
 
 ```{attention}
 You will immediately notice that the RBAC feature on the CoPilot is capable to limit to each persona the visibility of the platform, showing only those sections that have been permitted.
@@ -212,8 +308,12 @@ The user copilot-op can only interact with the Cloud Fabric section (but only wi
 The other sections are not more visible.
 ```
 
-![view](images/lab4-newview.png)
-_Figure 110: Restricted Dashboard view_
+```{figure} images/lab4-newview.png
+---
+align: center
+---
+Restricted Dashboard view
+```
 
 ```{note}
 Be sure to sign out as a **copilot-op** and sign back in as a **student**, in order to complete this lab!

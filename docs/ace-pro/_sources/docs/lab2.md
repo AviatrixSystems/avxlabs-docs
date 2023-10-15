@@ -57,6 +57,7 @@ Ensure that `Fetch Topology`, `Fetch Instances`, `Fetch GW Routes` and `Fetch VP
 
 ```{figure} images/lab2-timer.png
 ---
+height: 400px
 align: center
 ---
 Task Server
@@ -175,7 +176,7 @@ In this section, you will experience the power and simplicity of the Aviatrix pl
 Please pay close attention to each step, as a misconfiguration could result in **20+** minutes of lost time! 
 ```
 
-- Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways > + Transit Gateway**
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways > + Transit Gateway**
 
 ```{figure} images/lab2-transitbutton.png
 ---
@@ -379,7 +380,7 @@ align: center
 Dashboard
 ```
 
-After created the Transit gateways pair in AWS and the Spoke gateways in each cloud, this is how a portion of the topology would look like.
+After creating the Transit gateways pair in AWS and the Spoke gateways in each cloud, this is how a portion of the topology would look like.
 
 ```{figure} images/lab2-temptopology.png
 ---
@@ -619,6 +620,7 @@ At this point, this is what the overall topology would look like:
 
 ```{figure} images/lab2-peeringtopology.png
 ---
+height: 400px
 align: center
 ---
 New Topopology state after Peerings deployment

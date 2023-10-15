@@ -150,7 +150,7 @@ Open **three** terminal windows and SSH to the test instances/VMs in each cloud 
 
 Azure and AWS resources will ping each other, but neither will be able to access GCP VM, since GCP spoke is in a different segment (Blue).
 
-**AWS**:
+- **AWS**:
 
 SSH into **_aws-us-east2-spoke1-test1_** (ssh student@public_ip)
 
@@ -161,7 +161,7 @@ align: center
 Ping test from AWS
 ```
 
-**Azure**:
+- **Azure**:
 
 SSH into **_azure-us-west-spoke1-test1_** (ssh student@public_ip)
 
@@ -172,7 +172,7 @@ align: center
 Ping test from Azure
 ```
 
-**GCP**:
+- **GCP**:
 
 SSH into **_gcp-us-central1-spoke1-test1_** (ssh student@public_ip)
 
@@ -225,7 +225,7 @@ Logical View with the connection policy
 
 Retest the connectivity; now you will have end-to-end connectivity across the multicloud environment.
 
-**AWS**:
+- **AWS**:
 
 SSH into **_aws-us-east2-spoke1-test1_** (ssh student@public_ip)
 
@@ -236,7 +236,7 @@ align: center
 New Test from AWS
 ```
 
-**Azure**:
+- **Azure**:
 
 SSH into **_azure-us-west-spoke1-test1_** (ssh student@public_ip)
 
@@ -247,7 +247,7 @@ align: center
 New Test from Azure
 ```
 
-**GCP**: 
+- **GCP**: 
 
 SSH into **_gcp-us-central1-spoke1-test1_** (ssh student@public_ip)
 

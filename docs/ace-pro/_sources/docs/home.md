@@ -75,3 +75,8 @@ Throughout the labs, you will notice some additional pre-configured constructs, 
 
 In particular, resources in AWS us-east-1 will not be used until Lab 5. Likewise, resources in Azure US West Spoke 2 will not be used until Lab 7.
 ```
+
+## 6. How to get certified
+
+- **Completion of all the Labs!** 
+  - *Labs progress is assessed automatically by a script*.
