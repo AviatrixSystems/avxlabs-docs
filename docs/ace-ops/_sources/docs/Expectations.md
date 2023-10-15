@@ -18,6 +18,7 @@
 - There are **8** labs that you will have to challeng.
 - The instructor will present the scenario and will walk you through the solution explaining one of the possible the resolutive methodologies.
 
-## 4. Components of ACE Operations Certification
+## 4. <ins>Components of ACE Operations Certification</ins>
 
-- Participate in *“Let’s troubleshoot together”* session (<ins>on Day-2</ins>) and demonstrate a collaborative approach (<ins>it is NOT required to resolve all failures</ins>).
+1) **Completion of all the Labs!** [*Labs progress is assessed automatically by a script*]
+2) Participate in *“Let’s troubleshoot together”* session (<ins>on Day-2</ins>) and demonstrate a collaborative approach (<ins>it is NOT required to resolve all failures</ins>).

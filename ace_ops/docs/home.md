@@ -12,8 +12,13 @@ There is already one **Site2Cloud** connection:
 
 Here is a view of the initial topology:
 
-![Initial Topology](images/topology-initial.png)
-_Figure 1: Initial Topology_
+```{figure} images/topology-initial.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
 
 ## 2. TECHNICAL DETAILS
 

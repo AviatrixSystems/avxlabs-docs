@@ -1,3 +1,4 @@
+![ACE](../../docs/_logos/ace_operations_banner.png)
 # Welcome to ACE Operations Lab
 
 ## 1. LAB TOPOLOGY
@@ -11,8 +12,13 @@ There is already one **Site2Cloud** connection:
 
 Here is a view of the initial topology:
 
-![Initial Topology](images/topology-initial.png)
-_Figure 1: Initial Topology_
+```{figure} images/topology-initial.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
 
 ## 2. TECHNICAL DETAILS
 
@@ -31,4 +37,3 @@ These are the CIDR blocks per each CSP:
 - 
 Management access from Internet for instances in AWS and GCP is enabled, however, none of the apps are currently exposed to the Internet.
 
-![ACE](../../docs/_logos/ace_operations_banner.png)
