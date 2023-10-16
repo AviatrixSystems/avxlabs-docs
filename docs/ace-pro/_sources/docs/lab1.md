@@ -117,7 +117,6 @@ Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and the
 
 ```{figure} images/lab1-vpc1.png
 ---
-height: 400px
 align: center
 ---
 VPC creation
