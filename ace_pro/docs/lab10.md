@@ -832,7 +832,7 @@ Ping
 
 This time the ping will be successful!
 
-## `Congratulations, you have deployed the full-blown Aviatrix solution!`
+`Congratulations, you have deployed the full-blown Aviatrix solution!`
 
 ```{figure} images/lab10-lastdrawing.png
 ---
