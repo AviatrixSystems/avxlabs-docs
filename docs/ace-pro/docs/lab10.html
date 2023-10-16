@@ -340,7 +340,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-rule-that-allows-ssh-in-bu1">5.4. Add a rule that allows SSH in bu1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-vm-in-bu2">5.4. SSH to VM in bu2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2">5.5. Verify ICMP traffic within bu2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-between-bu1-and-bu2">5.6. Inter-rule between bu1 and bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-from-bu2-to-bu1">5.6. Inter-rule from bu2 to bu1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#east-1-and-the-multi-tier-transit">6. East-1 and the Multi-Tier Transit</a><ul class="nav section-nav flex-column">
@@ -385,7 +385,8 @@ document.write(`
 <li><p>Create a Smart Group with the name <code class="docutils literal notranslate"><span class="pre">&quot;bu2&quot;</span></code> leveraging the tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code>.</p></li>
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that allows ICMP traffic within bu1.</p></li>
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that allows ICMP traffic within bu2.</p></li>
-<li><p>Create an <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> that allows ICMP traffic only from bu1 towards bu2.</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that allows SSH traffic within bu1.</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> that allows ICMP traffic only <ins>from</ins> bu2 <ins>to</ins> bu1.</p></li>
 </ul>
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/lab10-initial.png"><img alt="../_images/lab10-initial.png" src="../_images/lab10-initial.png" style="height: 400px;" /></a>
@@ -809,9 +810,9 @@ document.write(`
 </figure>
 <p>The logs above confirm that the ICMP protocol is permitted within the Smart Group bu2.</p>
 </section>
-<section id="inter-rule-between-bu1-and-bu2">
-<h3>5.6. Inter-rule between bu1 and bu2<a class="headerlink" href="#inter-rule-between-bu1-and-bu2" title="Permalink to this heading">#</a></h3>
-<p>Create a new rule that allows ICMP between bu1 and bu2.</p>
+<section id="inter-rule-from-bu2-to-bu1">
+<h3>5.6. Inter-rule from bu2 to bu1<a class="headerlink" href="#inter-rule-from-bu2-to-bu1" title="Permalink to this heading">#</a></h3>
+<p>Create a new rule that allows ICMP FROM bu2 TO bu1.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Firewalling &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id39">
 <img alt="../_images/lab10-newrule4.png" src="../_images/lab10-newrule4.png" />
@@ -821,9 +822,9 @@ document.write(`
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#33ECFF'>inter-icmp-bu1-bu2</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>inter-icmp-bu2-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>ICMP</span></p></li>
 <li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
@@ -847,15 +848,15 @@ document.write(`
 <p><span class="caption-number">Fig. 310 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id41" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>SSH to the Public IP of the instance <strong><em>aws-us-east2-spoke1-test1</em></strong>.</p>
+<p>SSH to the Public IP of the instance <strong><em>azure-us-west-spoke2-test1</em></strong>.</p>
 <p>Ping the following instances:</p>
 <ul class="simple">
+<li><p><strong>aws-us-east2-spoke1-test1</strong> in AWS</p></li>
 <li><p><strong>aws-us-east2-spoke1-test2</strong> in AWS</p></li>
 <li><p><strong>gcp-us-central1-spoke1-test1</strong> in GCP</p></li>
 <li><p><strong>azure-us-west-spoke1-test1</strong> in Azure</p></li>
-<li><p><strong>azure-us-west-spoke2-test1</strong> in Azure</p></li>
 </ul>
-<p>Thit time all pings will be successful, thanks to the inter-rule applied between bu1 and bu2.</p>
+<p>Thit time all pings will be successful, thanks to the inter-rule applied between bu2 and bu1.</p>
 <figure class="align-center" id="id42">
 <img alt="../_images/lab10-pingallok.png" src="../_images/lab10-pingallok.png" />
 <figcaption>
@@ -870,7 +871,7 @@ document.write(`
 <p><span class="caption-number">Fig. 312 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id43" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu1 to bu2.</p>
+<p>The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu2 to bu1.</p>
 <p>After the creation of the previous inter-rule, this is how the topology with all the permitted protocols should look like.</p>
 <figure class="align-center" id="id44">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing2.png"><img alt="../_images/lab10-lastdrawing2.png" src="../_images/lab10-lastdrawing2.png" style="height: 400px;" /></a>
@@ -880,7 +881,7 @@ document.write(`
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The last inter-rule works smoothly only because the ICMP traffic is generated from the bu1, however, if you SSH to any instances in the Smart Group bu2, the ICMP traffic towards bu1 will fail due to the direction of the inter-rule that was created before: <strong>FROM</strong> bu1 <strong>TO</strong> bu2 (please note the direction of the arrow in the drawing).</p>
+<p>The last inter-rule works smoothly only because the ICMP traffic is generated from the bu2, however, if you SSH to any instances in the Smart Group bu1, the ICMP traffic towards bu2 will fail due to the direction of the inter-rule that was created before: <strong>FROM</strong> bu2 <strong>TO</strong> bu1 (please note the direction of the arrow in the drawing).</p>
 </div>
 <figure class="align-center" id="id45">
 <img alt="../_images/lab10-direction.png" src="../_images/lab10-direction.png" />
@@ -888,7 +889,7 @@ document.write(`
 <p><span class="caption-number">Fig. 314 </span><span class="caption-text">From To</span><a class="headerlink" href="#id45" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu2 to reach the instance in bu1.</p>
+<p>The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.</p>
 </section>
 </section>
 <section id="east-1-and-the-multi-tier-transit">
@@ -1011,12 +1012,12 @@ document.write(`
 </section>
 <section id="smart-group-east1">
 <h3>6.2 Smart Group “east1”<a class="headerlink" href="#smart-group-east1" title="Permalink to this heading">#</a></h3>
-<p>Let’s create another Smart Group for the test instance in AWS us-east-1 region.</p>
+<p>Let’s create another Smart Group for the test instance <strong><em>aws-us-east1-spoke1-test2</em></strong> in US-EAST-1 region in AWS.</p>
 <p>Go to <strong>Copilot &gt; SmartGroups</strong> and click on  <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
 <figure class="align-center" id="id57">
-<img alt="../_images/lab10-mtt8.png" src="../_images/lab10-mtt8.png" />
+<img alt="../_images/lab10-mttnew.png" src="../_images/lab10-mttnew.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 326 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id57" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 326 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id57" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -1041,7 +1042,7 @@ document.write(`
 <h3>6.3 Create an inter-rule that allows ICMP from bu2 towards east1<a class="headerlink" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id59">
-<img alt="../_images/lab10-mtt10.png" src="../_images/lab10-mtt10.png" />
+<img alt="../_images/lab10-mtt8.png" src="../_images/lab10-mtt8.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 328 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id59" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1186,7 +1187,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-rule-that-allows-ssh-in-bu1">5.4. Add a rule that allows SSH in bu1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-vm-in-bu2">5.4. SSH to VM in bu2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2">5.5. Verify ICMP traffic within bu2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-between-bu1-and-bu2">5.6. Inter-rule between bu1 and bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-from-bu2-to-bu1">5.6. Inter-rule from bu2 to bu1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#east-1-and-the-multi-tier-transit">6. East-1 and the Multi-Tier Transit</a><ul class="nav section-nav flex-column">

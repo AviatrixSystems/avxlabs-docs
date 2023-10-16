@@ -505,9 +505,9 @@ Monitor
 
 The logs above confirm that the ICMP protocol is permitted within the Smart Group bu2.
  
-### 5.6. Inter-rule between bu1 and bu2
+### 5.6. Inter-rule between bu2 and bu1
 
-Create a new rule that allows ICMP between bu1 and bu2.
+Create a new rule that allows ICMP FROM bu2 TO bu1.
 
 Go to **CoPilot > Security > Distributed Firewalling > Rules** and click on the `"+ Rule"` button.
 
@@ -520,9 +520,9 @@ New Rule
 
 Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>inter-icmp-bu1-bu2</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>bu1</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>bu2</span>
+- **Name**: <span style='color:#33ECFF'>inter-icmp-bu2-bu1</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>bu1</span>
 - **Protocol**: <span style='color:#33ECFF'>ICMP</span>
 - **Logging**: <span style='color:#33ECFF'>On</span>
 - **Action**: <span style='color:#33ECFF'>**Permit**</span>
@@ -547,15 +547,15 @@ align: center
 Commit
 ```
 
-SSH to the Public IP of the instance **_aws-us-east2-spoke1-test1_**.
+SSH to the Public IP of the instance **_azure-us-west-spoke2-test1_**.
 
 Ping the following instances:
+- **aws-us-east2-spoke1-test1** in AWS
 - **aws-us-east2-spoke1-test2** in AWS
 - **gcp-us-central1-spoke1-test1** in GCP
 - **azure-us-west-spoke1-test1** in Azure
-- **azure-us-west-spoke2-test1** in Azure
 
-Thit time all pings will be successful, thanks to the inter-rule applied between bu1 and bu2.
+Thit time all pings will be successful, thanks to the inter-rule applied between bu2 and bu1.
 
 ```{figure} images/lab10-pingallok.png
 ---
@@ -576,7 +576,7 @@ align: center
 Monitor
 ```
 
-The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu1 to bu2.
+The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu2 to bu1.
 
 After the creation of the previous inter-rule, this is how the topology with all the permitted protocols should look like.
 
@@ -589,7 +589,7 @@ New Topology with the DCF rules
 ```
 
 ```{note}
-The last inter-rule works smoothly only because the ICMP traffic is generated from the bu1, however, if you SSH to any instances in the Smart Group bu2, the ICMP traffic towards bu1 will fail due to the direction of the inter-rule that was created before: **FROM** bu1 **TO** bu2 (please note the direction of the arrow in the drawing).
+The last inter-rule works smoothly only because the ICMP traffic is generated from the bu2, however, if you SSH to any instances in the Smart Group bu1, the ICMP traffic towards bu2 will fail due to the direction of the inter-rule that was created before: **FROM** bu2 **TO** bu1 (please note the direction of the arrow in the drawing).
 ```
 
 ```{figure} images/lab10-direction.png
@@ -599,7 +599,7 @@ align: center
 From To
 ```
 
-The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu2 to reach the instance in bu1.
+The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.
  
 ## 6. East-1 and the Multi-Tier Transit
 
@@ -755,7 +755,7 @@ Go to **Copilot > SmartGroups** and click on  `"+ SmartGroup"` button.
 ---
 align: center
 ---
-New Rule
+New Smart Group
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
