@@ -52,7 +52,6 @@ Then click on **Save**.
 
 ```{figure} images/lab1-vnet3.png
 ---
-height: 400px
 align: center
 ---
 VNet template
