@@ -33,7 +33,6 @@ Let’s create an Application/Spoke VNet. Click on the button `“+ VPC/VNET”`
 
 ```{figure} images/lab1-vnet2.png
 ---
-height: 400px
 align: center
 ---
 VNet creation
@@ -52,7 +51,6 @@ Then click on **Save**.
 
 ```{figure} images/lab1-vnet3.png
 ---
-height: 400px
 align: center
 ---
 VNet template
@@ -62,7 +60,6 @@ You will immediately notice a message on the top-right corner.
 
 ```{figure} images/lab1-vnet4.png
 ---
-height: 400px
 align: center
 ---
 "In progress" message
@@ -118,7 +115,6 @@ Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and the
 
 ```{figure} images/lab1-vpc1.png
 ---
-height: 400px
 align: center
 ---
 VPC creation
@@ -137,7 +133,6 @@ Then click on **Save**.
 
 ```{figure} images/lab1-vpc2.png
 ---
-height: 400px
 align: center
 ---
 VPC configuration
@@ -204,7 +199,7 @@ Insert the following values:
  - **Account**: <span style='color:#33ECFF'>gcp-account [use the drop-down window]</span>
  - **Name**: <span style='color:#33ECFF'>gcp-us-west2-spoke1-sub1</span>
  - **Region**: <span style='color:#33ECFF'>us-west2 [use the drop-down window]</span>
- - **CIDRn**: <span style='color:#33ECFF'>172.16.22.0/24</span>
+ - **CIDR**: <span style='color:#33ECFF'>172.16.22.0/24</span>
 
 Then click on **Save**.
 
@@ -214,7 +209,6 @@ Make sure there are no white spaces at the beginning or end of the VPC name.
 
 ```{figure} images/lab1-gcp2.png
 ---
-height: 400px
 align: center
 ---
 VPC template

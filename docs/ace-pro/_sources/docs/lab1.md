@@ -135,7 +135,6 @@ Then click on **Save**.
 
 ```{figure} images/lab1-vpc2.png
 ---
-height: 400px
 align: center
 ---
 VPC configuration
@@ -202,7 +201,7 @@ Insert the following values:
  - **Account**: <span style='color:#33ECFF'>gcp-account [use the drop-down window]</span>
  - **Name**: <span style='color:#33ECFF'>gcp-us-west2-spoke1-sub1</span>
  - **Region**: <span style='color:#33ECFF'>us-west2 [use the drop-down window]</span>
- - **CIDRn**: <span style='color:#33ECFF'>172.16.22.0/24</span>
+ - **CIDR**: <span style='color:#33ECFF'>172.16.22.0/24</span>
 
 Then click on **Save**.
 
@@ -212,7 +211,6 @@ Make sure there are no white spaces at the beginning or end of the VPC name.
 
 ```{figure} images/lab1-gcp2.png
 ---
-height: 400px
 align: center
 ---
 VPC template
