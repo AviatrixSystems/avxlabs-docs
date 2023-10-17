@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-This lab will demonstrate how the `Distributed Cloud Firewall` work.
+This lab will demonstrate how the `Distributed Cloud Firewall` works.
 
 ## 2. Distributed Cloud Firewall Overview
 
