@@ -18,7 +18,7 @@ Let's go ahead and create the Transit VPC in AWS using the topology builder in C
 ### Validate
 
 * Log in to Aviatrix Copilot
-* Scroll down on the left-hand pain to **_Cloud Fabric -> Topology -> Builder_**
+* Scroll down on the left-hand pane to **_Cloud Fabric -> Topology -> Builder_**
 * Click **Select Cloud Region** and enter the following fields:
 
 |                    |                          |
