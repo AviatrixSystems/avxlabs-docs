@@ -194,7 +194,7 @@ align: center
 Edit Greenfield-Rule
 ```
 
-The modified Greenfield-Rule will remain in *Draft state* until you do not push on the `"Commit"` button.
+The modified Greenfield-Rule will remain in *Draft state* until you push on the `"Commit"` button.
 
 ```{figure} images/lab6-commit.png
 ---
@@ -399,7 +399,7 @@ Create a new DCF Rule with the following parameters:
 - **Protocol**: <span style='color:#33ECFF'>Any</span>
 - **Logging**: <span style='color:#33ECFF'>On</span>
 - **Action**: <span style='color:#33ECFF'>**Permit**</span>
-- **Intrustion Detection (IDS)**: <span style='color:#33ECFF'>On</span>
+- **Intrusion Detection (IDS)**: <span style='color:#33ECFF'>On</span>
 
 Do not forget to click on **Save In Drafts**.
 
