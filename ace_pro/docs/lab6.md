@@ -194,7 +194,7 @@ align: center
 Edit Greenfield-Rule
 ```
 
-The modified Greenfield-Rule will remain in *Draft state* until you do not push on the `"Commit"` button.
+The modified Greenfield-Rule will remain in *Draft state* until you push on the `"Commit"` button.
 
 ```{figure} images/lab6-commit.png
 ---
@@ -290,7 +290,7 @@ The purpose of this **WebGroup** is to authorize traffic only towards both the D
 ## 5.2 New DCF Rule 
 ## 5.2.1 Create a new rule
 
-Go to **CoPilot > Security Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
 Create a new **_DCF rule_** with the following parameters:
 
@@ -389,7 +389,7 @@ Denied
 
 Let's now test the **_IDS_** feature (i.e. Intrusion Detection System). 
 
-Go to **CoPilot > Security Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
 Create a new DCF Rule with the following parameters:
 
@@ -399,7 +399,7 @@ Create a new DCF Rule with the following parameters:
 - **Protocol**: <span style='color:#33ECFF'>Any</span>
 - **Logging**: <span style='color:#33ECFF'>On</span>
 - **Action**: <span style='color:#33ECFF'>**Permit**</span>
-- **Intrustion Detection (IDS)**: <span style='color:#33ECFF'>On</span>
+- **Intrusion Detection (IDS)**: <span style='color:#33ECFF'>On</span>
 
 Do not forget to click on **Save In Drafts**.
 
