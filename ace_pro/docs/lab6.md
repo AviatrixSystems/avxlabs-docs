@@ -194,7 +194,7 @@ align: center
 Edit Greenfield-Rule
 ```
 
-The modified Greenfield-Rule will remain in *Draft state* until you push on the `"Commit"` button.
+The modified Greenfield-Rule will remain in *Draft state* until you push the `"Commit"` button.
 
 ```{figure} images/lab6-commit.png
 ---
