@@ -389,7 +389,7 @@ Denied
 
 Let's now test the **_IDS_** feature (i.e. Intrusion Detection System). 
 
-Go to **CoPilot > Security Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
 Create a new DCF Rule with the following parameters:
 

@@ -43,7 +43,7 @@ align: center
 CoPilot view
 ```
 
-### 4.2. Transti-Spoke Attachment
+### 4.2. Transit-Spoke Attachment
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **aws-us-east1-spoke1** clicking on the pencil icon:
 
