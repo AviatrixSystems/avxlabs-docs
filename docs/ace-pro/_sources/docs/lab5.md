@@ -277,6 +277,16 @@ align: center
 Association
 ```
 
+At this point, this is how the overall topology would look like:
+
+```{figure} images/lab5-topologyview22.png
+---
+height: 400px
+align: center
+---
+New Logical Topology View
+```
+
 ## 6.3. Connectivity test of ActiveMesh (Pt.2)
 
 Now SSH to the **_aws-us-east1-spoke1-test1_** in AWS US-East1 and launch ping towards **_aws-us-east2-spoke1-test1_** in AWS US-**East2**.
