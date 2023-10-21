@@ -1,4 +1,4 @@
-name: PR File Check
+name: pr-file-check
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: verify-version
+      - name: Check changed files
         uses: actions-cool/verify-files-modify@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
