@@ -15,15 +15,15 @@ _Figure 1: Initial Topology_
 
 Q. which native cloud services providers resources are used to onboard on-premise resources?
 
-AWS -
-
-Azure -
-
-GCP -
-
-## 2 - Dynamic Topology
-
-Please login to Aviatrix Copilot and navigate to topology page by leveraging search bar as shown below.
+AWS - asdasda ssd
+asd as asd as
+Azure -as 
+dasd
+GCP  d-
+asd 
+## 2asd as - Dynamic Topology
+dasd as das
+Please logid asd asdn to Aviatrix Copilot and navigate to topology page by leveraging search bar as shown below.
 
 ![Search Bar](images/copilot_topology_search.png)
 <br>
