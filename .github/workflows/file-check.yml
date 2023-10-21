@@ -11,26 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check PR for modified files
-      id: pr_files
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: List modified files
-      run: echo ::set-output name=files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@v16
+        id: verify-changed-files
+        with:
+          fail-if-changed: |
+            docs/_logos
+            docs/CNAME
+            docs/home.md
+            docs/index.html
+            images
+            requirements.txt
 
-    - name: Check for requirements.txt file changes
-      id: check_requirements_txt
-      run: |
-        files="$((echo ${{ steps.pr_files.outputs.files }}))"
-        if [[ $files == *"requirements.txt"* ]]; then
-          echo "ERROR: The 'main.go' file was modified. Please remove or update it in a separate PR."
-          exit 1
-        fi
-
-    - name: Approve PR
-      if: success() && steps.check_main_go.outcome == 'success'
-      run: echo "PR is approved!"
-
-    - name: Disapprove PR
-      if: failure() || steps.check_main_go.outcome == 'failure'
-      run: echo "PR is not approved. Check the error message for details."
+      - name: Run step only when any of the above files change.
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: |
+          echo "Changed files: ${{ steps.verify-changed-files.outputs.changed_files }}"
