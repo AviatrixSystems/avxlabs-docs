@@ -11,7 +11,7 @@ MPLS is heavily used for any East-West traffic between these regions across mult
 ![Lab Overview](images/cbhc-origtopology.jpeg)
 _Figure 1: Initial Topology_
 
-### 1.1 - Quick Knowledge Quizsdfoisdmfopifmoim
+### 1.1 - Quick Knowledge Quizsdfoisdmfopifmoimrgwrggrg
 
 Q. which native cloud services providers resources are used to onboard on-premise resources?
 
