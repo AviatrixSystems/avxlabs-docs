@@ -11,15 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: File Changed Check
-        uses: danieljimeneznz/ensure-files-changed@v4.1.1
+      - name: Immutable Files
+        uses: asafHalely/immutable-file-action@v1
         with:
-          # A list of files (or glob patterns) that represent the files that should not be modified by a PR.
-          prevent-changes-to: |
-            ./docs/_logos
-            ./docs/index.html
-            ./docs/CNAME
-            ./docs/home.md
-            ./requirements.txt
-          # The GitHub token used to create an authenticated client.
-          token: ${{ secrets.GITHUB_TOKEN }}
+          files: images
+            requirements.txt
+            CNAME
+            docs/home.md
+            docs/index.html
+            docs/_images
