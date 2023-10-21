@@ -32,6 +32,12 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
       - name: Loop and Run Jupyter Book
         run: |
           PR_FILES=${{ steps.changed_folders.outputs.changed }}
@@ -39,6 +45,9 @@ jobs:
             if [[ "$FILE" == *"_"* ]]; then
               cd $FILE
               jupyter-book build .
+              git add .
+              git commit -m "new date commit"
+              git push origin ${{ github.ref_name }} 
               cd -
             fi
           done
