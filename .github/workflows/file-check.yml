@@ -11,19 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        # Checkout is required before did-files-change
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          # be sure to override the default value (1) for fetch-depth
-
-      - name: Check changes
-        id: check-changes
-        uses: rdietrick/did-files-change@v1.3.3
-        with:
-          pathspec: requirements.txt
-
-      - name: Debug
+      - name: Check for Changes
+        id: changes
         run: |
-          echo "Changes detected in test directory: ${{ steps.check-changes.outputs.changed }}"
+          # Use git diff to check for changes in specific files or directories
+          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+
+          # Define the files or directories you want to check for changes
+          files_to_check=("path/to/file1" "path/to/directory/")
+
+          # Iterate through the changed files and directories
+          for file in ${files_to_check[@]}; do
+            if echo "$changed_files" | grep -q "$file"; then
+              echo "Changes detected in $file"
+              exit 1
+            fi
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check Result
+        if: steps.changes.outcome == 'failure'
+        run: echo "Changes detected in files or directories."
