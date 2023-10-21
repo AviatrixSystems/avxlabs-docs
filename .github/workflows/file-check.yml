@@ -11,7 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Immutable Files
-        uses: asafHalely/immutable-file-action@v1.1
+      - name: verify-version
+        uses: actions-cool/verify-files-modify@v1
         with:
-          files: requirements.txt
+          token: ${{ secrets.GITHUB_TOKEN }}
+          forbid-files: "docs/index.html, docs/home.md, requirements.txt, CNAME, LICENSE"
+          forbid-paths: "docs/_logos/, dist/"
+          comment: |
+            Please don't modify this.
+          close: false
