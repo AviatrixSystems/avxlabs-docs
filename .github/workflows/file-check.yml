@@ -11,25 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check for Changes
-        id: changes
-        run: |
-          # Use git diff to check for changes in specific files or directories
-          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
-
-          # Define the files or directories you want to check for changes
-          files_to_check=("path/to/file1" "path/to/directory/")
-
-          # Iterate through the changed files and directories
-          for file in ${files_to_check[@]}; do
-            if echo "$changed_files" | grep -q "$file"; then
-              echo "Changes detected in $file"
-              exit 1
-            fi
-          done
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Check Result
-        if: steps.changes.outcome == 'failure'
-        run: echo "Changes detected in files or directories."
+      - name: Immutable Files
+        uses: asafHalely/immutable-file-action@v1
+        with:
+          files: requirements.txt
