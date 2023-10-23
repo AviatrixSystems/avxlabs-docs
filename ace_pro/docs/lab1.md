@@ -33,7 +33,6 @@ Let’s create an Application/Spoke VNet. Click on the button `“+ VPC/VNET”`
 
 ```{figure} images/lab1-vnet2.png
 ---
-height: 400px
 align: center
 ---
 VNet creation
@@ -61,7 +60,6 @@ You will immediately notice a message on the top-right corner.
 
 ```{figure} images/lab1-vnet4.png
 ---
-height: 400px
 align: center
 ---
 "In progress" message
