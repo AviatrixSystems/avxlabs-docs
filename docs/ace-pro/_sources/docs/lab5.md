@@ -43,7 +43,7 @@ align: center
 CoPilot view
 ```
 
-### 4.2. Transti-Spoke Attachment
+### 4.2. Transit-Spoke Attachment
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **aws-us-east1-spoke1** clicking on the pencil icon:
 
@@ -275,6 +275,16 @@ height: 400px
 align: center
 ---
 Association
+```
+
+At this point, this is how the overall topology would look like:
+
+```{figure} images/lab5-topologyview22.png
+---
+height: 400px
+align: center
+---
+New Logical Topology View
 ```
 
 ## 6.3. Connectivity test of ActiveMesh (Pt.2)
