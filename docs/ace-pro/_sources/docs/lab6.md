@@ -512,3 +512,13 @@ Additional insights
 ```{note}
 The indicator is showing clearly that we tried reaching out to Google DNS and then querying for a TOR domain!
 ```
+
+After this lab, this is how the overall topology would look like:
+
+```{figure} images/lab6-finaltopo.png
+---
+height: 400px
+align: center
+---
+Final Topology for Lab 6
+```
