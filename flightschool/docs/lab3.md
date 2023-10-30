@@ -4,7 +4,7 @@ Lab time: ~30 minutes
 
 **_Scenario_**:  The business has decided to go multi-cloud! Some apps simply run better in other clouds, and why put all eggs in one basket? During this exercise we will deploy in AWS an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer Azure and AWS and test out the connectivity.
 
-The Spoke VPCs and gateways have already been created to save you time. The process is very similar to deploying the transit gateway though.
+The Spoke VPCs and gateways have already been created to save you time. The process is very similar to deploying the transit gateway.
 
 ![Topology](images/lab-3.png)  
 _Fig. Current Topology_  

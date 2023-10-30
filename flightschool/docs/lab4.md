@@ -14,7 +14,7 @@ Because of the connection policy between the DMZ and prod, the Azure AppGW is cu
 
 We have prepared and installed a microsegmentation policy already. Lets review and modify it.
 
-* Browse to **_Security -> Distributed Firewallling -> Rules_**
+* Browse to **_Security -> Distributed Cloud Firewall -> Rules_**
 * Look at the policy to get an understanding of which rules are set up
 * Edit the last policy **_DefaultAllowAll_** and set enforcement to off and hit save
 
@@ -50,7 +50,7 @@ Traffic between the web and db server, remains within the prod VNET however, and
 
 This feature is enabled on a per VNET bases.
 
-* Browse to **_Security -> Distributed Firewallling -> Settings_**
+* Browse to **_Security -> Distributed Cloud Firewall -> Settings_**
 * Click on **_Manage_**
 * Enable the feature on the azure-prod vnet as shown below
 
@@ -121,7 +121,7 @@ Now that we have enabled internet access for aws-shared through NAT translation 
 
 ### Validate
 
-* Browse to **_Security -> Distributed Firewalling -> WebGroups_** and check out the pre-configured WebGroup called **_allowed-web-group_**.
+* Browse to **_Security -> Distributed Cloud Firewall -> WebGroups_** and check out the pre-configured WebGroup called **_allowed-web-group_**.
 
 ![WebGroup](images/lab4-webgroup.png)  
 _Fig. WebGroup_  
@@ -154,7 +154,7 @@ This scenario is a bit more advanced. We need to allow access to our github repo
 
 ### Validate
 
-* Browse to **_Security -> Distributed Firewalling -> WebGroups_** and check out the pre-configured WebGroup called **_allowed-web-group_**.
+* Browse to **_Security -> Distributed Cloud Firewall -> WebGroups_** and check out the pre-configured WebGroup called **_allowed-web-group_**.
 
 > What is the URL configured in this WebGroup?
 
@@ -180,7 +180,7 @@ _Fig. URL Filtering working_
 
 ### Description
 
-As you have been able to see in the previous labs, Aviatrix provides a ton of security features. We haven't even gone into some of the other security capabilities of the platform, like TLS decryption, IDS and anomaly behavior detection. However, in some scenario's you need an external solution. For example, if all your organisations security operations are standardized around a 3rd party NGFW solution, it may be required to implement such a solution in the cloud as well. It can be challenging to implement a virtual appliance like a NGFW in the cloud, as this was never designed from the ground up to be used like this. Aviatrix makes is easy to incorporate such an appliance in the network, and does so in a consistent way across multiple clouds. This feature is called Firenet.
+As you have been able to see in the previous labs, Aviatrix provides a ton of security features. We haven't even gone into some of the other security capabilities of the platform, like TLS decryption, IDS and anomaly behavior detection. However, in some scenarios you need an external solution. For example, if all your organisation's security operations are standardized around a 3rd party NGFW solution, it may be required to implement such a solution in the cloud as well. It can be challenging to implement a virtual appliance like a NGFW in the cloud, as this was never designed from the ground up to be used like this. Aviatrix makes is easy to incorporate such an appliance in the network, and does so in a consistent way across multiple clouds. This feature is called Firenet.
 
 We have already deployed a firewall instance in the lab. In order for Firenet to work properly, we need to tell the controller about it. In this lab you will accomplish this.
 
@@ -201,7 +201,7 @@ _Fig. Existing firewall configuration_
 
 ### Expected Results
 
-After a few minutes we should see the firewall in the firewall in the list with a green status indication:
+After a few minutes we should see the firewall in the list with a green status indication:
 
 ![Associate firewall result](images/lab4-associate-firewall-result.png)  
 _Fig. Associate firewall result_  
