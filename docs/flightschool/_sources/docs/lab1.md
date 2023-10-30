@@ -63,7 +63,7 @@ Take a look at the access accounts already set up. You can see them in Copilot u
 
 ### Expected Results
 
-Accounts in AWS and Azure have already been onboarded and you should see the these accounts in the list. The accounts should also have an audit status **_pass_**, meaning the permissions in the accounts are correctly configured.
+Accounts in AWS and Azure have already been onboarded and you should see these accounts in the list. The accounts should also have an audit status **_pass_**, meaning the permissions in the accounts are correctly configured.
 
 ## Lab 1.3 - Connectivity Check
 
