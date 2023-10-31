@@ -308,7 +308,6 @@ Make sure you <ins>do not select the subnets that begins with az-1, az-2, or az-
 
 ```{figure} images/lab2-rightsubnet.png
 ---
-height: 400px
 align: center
 ---
 Subnet selection
