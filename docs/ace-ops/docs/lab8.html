@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Slides" href="slides.html" />
+    <link rel="next" title="PDFs" href="pdfs.html" />
     <link rel="prev" title="Lab 7 - Egress FQDN" href="lab7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -158,7 +158,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="expectations.html">Expectations + How to get certified</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pod.html">PODs Assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Network Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Connection Policy</a></li>
@@ -168,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - Site2Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - Egress FQDN</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 8 - Distributed Cloud Firewall</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slides.html">Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
 </ul>
 
     </div>
@@ -333,20 +332,28 @@ document.write(`
 <section id="scenario">
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
 <p>ACE’s environment has been split up in two Smart Groups: <strong>BU1</strong> and <strong>BU2</strong>. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.</p>
-<p>Furthermore, a rule has been applied within each Smart Group.</p>
-<p>The BU1 Frontend has raised a complaint that is not able to SSH <span style='color:orange'><strong>within</strong></span> BU1.</p>
-<p>The BU2 Mobile App has raised a complaint that is not able to SSH <span style='color:lightgreen'><strong>towards</strong></span> BU1.</p>
+<p>Furthermore, four DCF rules have been applied so far.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/lab8-initialrule.png" src="../_images/lab8-initialrule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">Existing DCF rules</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The BU1 Frontend has raised a complaint that is not able to SSH <span style='color:orange'><strong>within</strong></span> BU1.</p></li>
+<li><p>The BU2 Mobile App has raised a complaint that is not able to SSH <span style='color:lightgreen'><strong>towards</strong></span> BU1.</p></li>
+</ul>
 <p>You have been engaged to create the following <strong>two</strong> additional rules:</p>
 <ul class="simple">
 <li><p><strong>Intra-rule</strong>: allow SSH <span style='color:orange'><strong>within</strong></span> BU1</p></li>
 <li><p><strong>Inter-rule</strong>: allow SSH <span style='color:lightblue'><strong>from</strong></span> BU2 <strong>to</strong> BU1</p></li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Please bear in mind that BU1 is not allowed to SSH to any instances in BU2.</p>
-</div>
-<p><img alt="topology 8" src="../_images/lab8-topology.png" />
-<em>Figure 88: Lab 8 Scenario Topology</em></p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/lab8-topology.png"><img alt="../_images/lab8-topology.png" src="../_images/lab8-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Lab 8 Scenario Topology</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="change-request">
 <h2>2. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Permalink to this heading">#</a></h2>
@@ -357,8 +364,12 @@ document.write(`
 </ul>
 </li>
 </ul>
-<p><img alt="ssh" src="../_images/lab8-topology.png" />
-<em>Figure 89: SSH fails within BU1</em></p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab8-topology.png" src="../_images/lab8-topology.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">SSH fails within BU1</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Create an intra-rule that allows SSH <strong>within</strong> bu1 and then verify that SSH is permitted among BU1’s instances. Do not forget to enable <strong>“Logging”</strong>.</p></li>
 </ul>
@@ -367,11 +378,19 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>+Rule</strong>.
 Please bear in mind that once the rule has been created is not immediately applied on the Data Plane (i.e. it is just kept in <em>SAVED DRAFTS</em> state). You have to click on <strong>COMMIT</strong>.</p>
 </div>
-<p><img alt="within" src="../_images/lab8-sshok.png" />
-<em>Figure 90: SSH is ok within BU1</em></p>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab8-sshok.png" src="../_images/lab8-sshok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">SSH is ok within BU1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Afterwards try also to check the <strong>Monitor</strong> section in order to explore the logs!</p>
-<p><img alt="monitor" src="../_images/lab8-monitor.png" />
-<em>Figure 91: Monitor</em></p>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab8-monitor.png" src="../_images/lab8-monitor.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>SSH on the <strong>BU2 Mobile App</strong> and try to SSH to <strong>BU1 Frontend</strong>.</p>
 <ul>
@@ -380,8 +399,12 @@ Please bear in mind that once the rule has been created is not immediately appli
 </ul>
 </li>
 </ul>
-<p><img alt="bu2 to bu1" src="../_images/lab8-bu2tobu1.png" />
-<em>Figure 92: BU2 to BU1 fails</em></p>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab8-bu2tobu1.png" src="../_images/lab8-bu2tobu1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text">BU2 to BU1 fails</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Create an inter-rule that allows SSH <strong>from</strong> BU2 <strong>to</strong> BU1 and then verify that SSH is permitted from Mobile App BU2 towards Frontend BU1. Do not forgert to enable the <strong>“Logging”</strong>.</p></li>
 </ul>
@@ -389,13 +412,21 @@ Please bear in mind that once the rule has been created is not immediately appli
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>+Rule</strong>.</p>
 </div>
-<p><img alt="bu2 to bu1 is ok" src="../_images/lab8-bu2tobu1ok.png" />
-<em>Figure 93: BU2 to BU1 is ok</em></p>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab8-bu2tobu1ok.png" src="../_images/lab8-bu2tobu1ok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 107 </span><span class="caption-text">BU2 to BU1 is ok</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Check again the <strong>Monitor</strong> section to find out the new logs for the inter-rule!</p></li>
 </ul>
-<p><img alt="monitor" src="../_images/lab8-monitor2.png" />
-<em>Figure 94: Monitor</em></p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab8-monitor2.png" src="../_images/lab8-monitor2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
@@ -440,11 +471,11 @@ Please bear in mind that once the rule has been created is not immediately appli
       </div>
     </a>
     <a class="right-next"
-       href="slides.html"
+       href="pdfs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Slides</p>
+        <p class="prev-next-title">PDFs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

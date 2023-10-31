@@ -34,6 +34,6 @@ These are the CIDR blocks per each CSP:
 
 - 3rd octet of all Spoke 1’s is 211
 - 3rd octet of all Spoke 2’s is 212
-- 
+  
 Management access from Internet for instances in AWS and GCP is enabled, however, none of the apps are currently exposed to the Internet.
 

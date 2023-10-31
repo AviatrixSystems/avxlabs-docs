@@ -158,7 +158,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="expectations.html">Expectations + How to get certified</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pod.html">PODs Assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Network Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Connection Policy</a></li>
@@ -168,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - Site2Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - Egress FQDN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - Distributed Cloud Firewall</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slides.html">Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
 </ul>
 
     </div>
@@ -334,8 +333,12 @@ document.write(`
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
 <p>BU1 is suddenly unable to communicate with both BU1 Analytics and BU1 DB.</p>
 <p>The network team discovered a disgruntled employee jeopardized the connectivity between the two workloads.</p>
-<p><img alt="topology 5" src="../_images/lab5-topology.png" />
-<em>Figure 57: Lab 5 Topology</em></p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/lab5-topology.png"><img alt="../_images/lab5-topology.png" src="../_images/lab5-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Lab 5 Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="troubleshoot-request">
 <h2>2. TROUBLESHOOT REQUEST<a class="headerlink" href="#troubleshoot-request" title="Permalink to this heading">#</a></h2>
@@ -346,8 +349,12 @@ document.write(`
 </ul>
 </li>
 </ul>
-<p><img alt="ping fails" src="../_images/lab5-pingfails.png" />
-<em>Figure 58: Ping fails</em></p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab5-pingfails.png" src="../_images/lab5-pingfails.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Check whether the AWS Spoke1 GW and the GCP Spoke1 GW have the relevant routes or not.</p></li>
 </ul>
@@ -355,8 +362,12 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong>Spoke1 Gateway in AWS &gt; Gateway Routes</strong> and filter out based on the remote route.</p>
 </div>
-<p><img alt="filter out" src="../_images/lab5-filter.png" />
-<em>Figure 59: Filter out</em></p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab5-filter.png" src="../_images/lab5-filter.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Filter out</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The Spoke1 in AWS does not have the destination route in GCP based on the outcome above…</p>
 <ul class="simple">
 <li><p>Check what route is received by the <strong>GCP Transit GW</strong> from the <strong>GCP Spoke1 GW</strong>.</p></li>
@@ -368,8 +379,12 @@ document.write(`
 <ul class="simple">
 <li><p>“<strong>Next Hop Gateway</strong> <em>contains</em> <strong>gcp</strong>”</p></li>
 </ul>
-<p><img alt="next hop" src="../_images/lab5-nexthop.png" />
-<em>Figure 60: Next Hop</em></p>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab5-nexthop.png" src="../_images/lab5-nexthop.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Next Hop</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>You will notice that the Spoke1 in GCP is advertising a bogus/malicious route (i.e. 40.40.40.0/24) and the legit route <strong>172.16.211.0/24</strong> has been withdrawn!</p>
 <ul class="simple">
 <li><p>Fix the issue checking the <strong>Route Manipulation</strong> section on the <strong>Spoke GW in GCP</strong>.</p></li>
@@ -378,13 +393,21 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong>Spoke GW in GCP &gt; Settings &gt; Routing</strong> and <ins>remove</ins> the CIDR 40.40.40.0/24 from the <strong>Customize Spoke Advertised VPC/VNet CIDRs</strong> section and then click on <strong>SAVE</strong>.</p>
 </div>
-<p><img alt="customize" src="../_images/lab5-customize.png" />
-<em>Figure 61: Customize Spoke Advertised VPC/VNet CIDRs</em></p>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab5-customize.png" src="../_images/lab5-customize.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Customize Spoke Advertised VPC/VNet CIDRs</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Relaunch the ping from <strong>BU1 Frontend</strong> towards <strong>BU1 Analytics</strong>.</p></li>
 </ul>
-<p><img alt="ping is ok" src="../_images/lab5-pingok.png" />
-<em>Figure 62: Ping is ok</em></p>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab5-pingok.png" src="../_images/lab5-pingok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU1 DB</strong> is actually broken.</p>
 <ul>
@@ -392,8 +415,12 @@ document.write(`
 </ul>
 </li>
 </ul>
-<p><img alt="ping is unsuccessful" src="../_images/lab5-pingfails2.png" />
-<em>Figure 63: Ping is unsuccessful</em></p>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab5-pingfails2.png" src="../_images/lab5-pingfails2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Ping is unsuccessful</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Use <strong>Diagnostics tools</strong> by clicking on the <strong>Spoke1 Gateway in AWS</strong> and try to <em>traceroute</em> the instance behind the other spoke.</p></li>
 </ul>
@@ -401,10 +428,18 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Coud Fabric &gt; Topology</strong> then select the <strong>Spoke1 GW in AWS</strong>, click on <strong>Tools</strong> and click on <strong>Gateway Diagnostics</strong>.</p>
 </div>
-<p><img alt="diag" src="../_images/lab3-diagnostics.png" />
-<em>Figure 64: Gateway Diagnostics</em></p>
-<p><img alt="diag 2" src="../_images/lab5-gatewaydiag2.png" />
-<em>Figure 65: Gateway Diagnostics 2</em></p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab3-diagnostics.png" src="../_images/lab3-diagnostics.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/lab5-gatewaydiag2.png"><img alt="../_images/lab5-gatewaydiag2.png" src="../_images/lab5-gatewaydiag2.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Gateway Diagnostics 2</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The outcome above shows <strong>5</strong> Hops. <ins>Try to figure out why the first and the third Hop have the same IP…</ins></p>
 <ul class="simple">
 <li><p>Launch a packet capture on the LAN interface (eth0) of <strong>Azure Spoke1 GW</strong> and filter out the outcome based on <strong>ICMP</strong>.</p></li>
@@ -413,10 +448,18 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p><ins>Open two tabs</ins>: on the first tab launch a packet capture on the <strong>Azure Spoke GW1</strong> on the LAN interface (etho), <ins>and after few seconds</ins>, launch a ping from the <strong>AWS Spoke GW1</strong> towards <strong>BU1 DB’s IP address</strong> (VM in Azure).</p>
 </div>
-<p><img alt="ping to bu1" src="../_images/lab5-pingtovm.png" />
-<em>Figure 66: Ping to BU1 DB</em></p>
-<p><img alt="packet capture" src="../_images/lab5-packetcapture.png" />
-<em>Figure 67: Packet Capture</em></p>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab5-pingtovm.png" src="../_images/lab5-pingtovm.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Ping to BU1 DB</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab5-packetcapture.png" src="../_images/lab5-packetcapture.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Packet Capture</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>You will only notice ICMP Echo Request packets going out from the LAN interface. Moreover the Source IP is completely different from the expected source IP, that should be part of the cidr 10.1.211.0/24.</p>
 <ul class="simple">
 <li><p>Fix the issue checking the <strong>Routes Manipulation</strong> section on the <strong>Spoke GW in GCP</strong>.</p></li>
@@ -425,13 +468,21 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong>Spoke1 GW in Azure &gt; Settings &gt; NAT</strong>, delete the NAT Rule and click on <strong>SAVE</strong>.</p>
 </div>
-<p><img alt="deletion" src="../_images/lab5-deleterule.png" />
-<em>Figure 68: Deletion of the NAT rule</em></p>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab5-deleterule.png" src="../_images/lab5-deleterule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Deletion of the NAT rule</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Relaunch the ping from <strong>BU1 Frontend</strong> towards <strong>BU1 DB</strong>.</p></li>
 </ul>
-<p><img alt="ping is ok" src="../_images/lab5-pingok2.png" />
-<em>Figure 69: Ping is ok</em></p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab5-pingok2.png" src="../_images/lab5-pingok2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 

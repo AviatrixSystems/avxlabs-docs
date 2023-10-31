@@ -6,26 +6,48 @@ Infrastructure <ins>was segmented</ins> recently into 2 network domains: **BU1**
 
 You are requested to ascertain the segregation between the two network domains.
 
-![Segmentation](images/lab1-segmentation.png)
-_Figure 2: Segmentation_
+```{figure} images/lab1-segmentation.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
 
 ## 2. VALIDATION REQUEST
 
 * Go to **CoPilot > Settings > Resources > Task Server**
   * Ensure that both **Fetch GW Routes** and **Fetch VPC Routes** intervals are set to <ins>“1 second”</ins> each and then click on **SAVE**.
 
-![Task](images/lab1-task.png)
-_Figure 3: Task Server_
+```{figure} images/lab1-task.png
+---
+align: center
+---
+Task Server
+```
 
-![Fetch gw](images/lab1-fetchgwroutes.png)
-_Figure 4: Fetch GW Routes_
+```{figure} images/lab1-fetchgwroutes.png
+---
+align: center
+---
+Fetch GW Routes
+```
 
-![fetch vpc](images/lab1-fetchvpcroutes.png)
-_Figure 5: Fetch VPC Routes_
+```{figure} images/lab1-fetchvpcroutes.png
+---
+align: center
+---
+Fetch VPC Routes
+```
 
 Afterwards, click on **Commit**.
-![Commit](images/lab1-commit.png)
-_Figure 6: Commit_
+
+```{figure} images/lab1-commit.png
+---
+align: center
+---
+Commit
+```
 
 ```{warning}
 These are very aggressive settings. In a Production environment, you should NOT set these intervals that frequently!
@@ -39,49 +61,85 @@ There are **two** methods for SSH to any instances inside the multicloud infrast
 
 1. Using an **SSH client** from your laptop (<ins>recommended method!</ins>).
 
-![Public IP](images/lab1-publicip.png)
-_Figure 7: Public IP_
+```{figure} images/lab1-publicip.png
+---
+align: center
+---
+Public IP
+```
 
-![DNS](images/lab1-publicname.png)
-_Figure 8: DNS name_
+```{figure} images/lab1-publicname.png
+---
+align: center
+---
+DNS name
+```
 
 1. Using the <span style='color:#00FFFF'>**Apache Jumpbox**</span> from the POD Portal, <ins>for example if you are within your corporate network and an inbound restriction is applied on port **22**</ins>.
 
-![Jumpbox](images/lab1-jumpbox.png)
-_Figure 9: Jumpbox_
+```{figure} images/lab1-jumpbox.png
+---
+align: center
+---
+Jumpbox
+```
 
-![Guacamole](images/lab1-guacamoleaccess.png)
-_Figure 10: Apache Guacamole Portal_
+```{figure} images/lab1-guacamoleaccess.png
+---
+align: center
+---
+Apache Guacamole Portal
+```
 
 ```{note}
 Please bear in mind that if you decide to use the Jumpbox, *Copy and Paste* does not work directly from the host machine, therefore activate the **Guacamole Menu**, that is a sidebar which is hidden until explicitly shown. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing **Ctrl+Alt+Shift** on Windows machine (**Control+Shift+Command** on Mac).
 ```
 
-![Menu](images/lab1-guacamoleterminal.png)
-_Figure 11: Guacamole Menu_
+```{figure} images/lab1-guacamoleterminal.png
+---
+align: center
+---
+Guacamole Menu
+```
 
 ```{tip}
 The IP addresses can be easily retrieved either from the **Properties** section of each Virtual Machine on the Topology, or alternatively, you can retrieve the **DNS symbolic name** from your personal POD portal.
 ```
 
-![Properties](images/lab1-ec2.png)
-_Figure 12: Instance Properties_
+```{figure} images/lab1-ec2.png
+---
+align: center
+---
+Instance Properties
+```
 
-![Public DNS](images/lab1-podred.png)
-_Figure 13: Public DNS Name_
+```{figure} images/lab1-podred.png
+---
+align: center
+---
+Public DNS Name
+```
 
 Ping and SSH will be successful **within** the same network domain!
 
-![Connectivity](images/lab1-pingok.png)
-_Figure 14: BU1 connectivity_
+```{figure} images/lab1-pingok.png
+---
+align: center
+---
+BU1 connectivity
+```
 
 * Verify the network segregation **between** the two BUs:
   * From BU1 Frontend try to ping BU2 Mobile App.
 
 Ping and SSH commands should not work this time, due to the separation between the two segments (i.e. <ins>these are two different Routing Domains</ins>).
 
-![BU1 and BU2](images/lab1-pingfails.png)
-_Figure 15: BU1 to BU2 fails_
+```{figure} images/lab1-pingfails.png
+---
+align: center
+---
+BU1 to BU2 fails
+```
 
 * Check Network Segmentation on the CoPilot by searching segmentation and look at the **Logical View**.
 
@@ -89,8 +147,12 @@ _Figure 15: BU1 to BU2 fails_
 Go to **CoPilot > Networking > Network Segmentation > Overview**
 ```
 
-![Logical View](images/lab1-logicalview.png)
-_Figure 16: Logical View_
+```{figure} images/lab1-logicalview.png
+---
+align: center
+---
+Logical View
+```
 
 * Check the different routing tables (VRFs) maintained by any of the Transit Gateways.
 
@@ -98,8 +160,12 @@ _Figure 16: Logical View_
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ace-aws-eu-west-1-transit** gateway **> Gateway Routes** and filter out based on the Network Domain (i.e. either BU1 or BU2).
 ```
 
-![vrf](images/lab1-bu1vrf.png)
-_Figure 17: Network Domain (aka VRF)_
+```{figure} images/lab1-bu1vrf.png
+---
+align: center
+---
+Network Domain (aka VRF)
+```
 
 * Use <span style='color:#FF0000'>**FlowIQ**</span> from the POD Portal, <ins> for inspecting the NetFlow Data.
 
@@ -109,11 +175,15 @@ Go to **CoPilot > Monitor > FlowIQ** and filter based, for instance, on the dest
 
 Then check the Flow Exporters widget, then from the drop-down menu and select the *Aviatrix Gateway* widget: you will see the list of the Aviatrix gateways involved along the path.
 
-![FlowIQ](images/lab1-flowiq.png)
-_Figure 18: FlowIQ_
+```{figure} images/lab1-flowiq.png
+---
+align: center
+---
+FlowIQ
+```
 
 ```{note}
-On the Aviatrix Gateway widget, the very first gateway from the list is the gateway with the highest traffic (in Bytes).
+On the Aviatrix Gateway widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
 * Use **Cloud Routes** for pinpointing the originator of the route **172.16.211.0/24**.
@@ -126,8 +196,12 @@ Go to **CoPilot > Diagnostics > Cloud Routes** and filter based on the subnet an
 The Originator has the egress interface that is equal to **eth0** (i.e. the LAN interface), which in turn means, direct connected.
 ```
 
-![Cloud Routes](images/lab1-cloudroutes.png)
-_Figure 19: Cloud Routes_
+```{figure} images/lab1-cloudroutes.png
+---
+align: center
+---
+Cloud Routes
+```
 
 * Use **Cloud Routes** for pinpointing the originator of the route **10.0.0.0/24**.
 
@@ -137,5 +211,9 @@ Go to **CoPilot > Diagnostics > Cloud Routes** and filter based on the subnet. <
 
 This time you need to proceed with a <ins>recursive lookup</ins>: from any Spoke GWs check the **NEXT HOP GATEWAY** column and try to find the originator of 10.0.0.0/24.
 
-![Recursive lookup](images/lab1-cloudroutes.png)
-_Figure 20: Cloud Routes - recursive lookup_
+```{figure} images/lab1-cloudroutes2.png
+---
+align: center
+---
+Cloud Routes - recursive lookup
+```
