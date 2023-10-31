@@ -6,8 +6,13 @@ BU1 and BU2 were able to communicate with each other as of Friday EOB (i.e end o
 
 However, the network team received a complaint from BU1 Frontend Team that the connectivity with BU2 Mobile App was no longer working.
 
-![topology 3](images/lab3-topology.png)
-_Figure 27: Lab 3 Topology_
+```{figure} images/lab3-topology.png
+---
+height: 400px
+align: center
+---
+Lab 3 Topology
+```
 
 ## 2. TROUBLESHOOT REQUEST
 
@@ -15,45 +20,90 @@ _Figure 27: Lab 3 Topology_
 
   - SSH to BU1 Frontend and launch ping/ssh towards BU2 Mobile App.
 
-![ping fails](images/lab3-pingfails.png)
-_Figure 28: Ping fails_
-
-- Check whether the concerned Spokes have the relevant routes or not.
-
-```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the relevant gateway **> Gateway Routes** and search for the subnet **10.1.212.0/24**, where BU2 Mobile App resides.
+```{figure} images/lab3-pingfails.png
+---
+align: center
+---
+Ping fails
 ```
 
-![filtering](images/lab3-routecheck.png)
-_Figure 29: Filtering out_
-
-From the outcome above, it is evident that Spoke1 in AWS has the destination route in his RTB.
-
-- Use **Diagnostics tools** by clicking on *Spoke1 Gateway in AWS* (identify the Aviatrix logo in the topology. Do not select a normal EC2 instance!) and try to ping/traceroute the instance behind the other spoke.
+- Check whether the relevant Spoke Gateways have the required routes installed on their routing tables or not.
 
 ```{tip}
-Go to **CoPilot > Coud Fabric > Topology** then select the relevant GW, click on **Tools** and then click on **Gateway Diagnostics**.
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the gateway **ace-aws-eu-west-1-spoke1**  **> Gateway Routes** and search for the subnet **10.1.212.0/24**, where BU2 Mobile App resides.
 ```
 
-![diag](images/lab3-diagnostics.png)
-_Figure 30: Diagnostics Tools_
+```{figure} images/lab3-routecheck.png
+---
+align: center
+---
+Filtering out
+```
 
-![ping](images/lab3-pingfails2.png)
-_Figure 31: Ping is unsuccessful_
+From the outcome above, it is evident that Spoke1 in AWS has the destination route in its RTB.
 
-Try to ping both workloads from the **Transit** GW in AWS.
-
-![from transit](images/lab3-pingok.png)
-_Figure 32: Ping is ok from the Transit GW_
-
-- Check if the relevant Spoke VPCs are inspected by FireNet.
+- Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and try to ping/traceroute the instance behind the other spoke (i.e. BU2 Mobile App).
 
 ```{tip}
-Go to **Controller > FIREWALL NETWORK > Policy**
+Retrieve the private IP address of the **BU2 Mobile App** from the Cloud Assets inventory!
+
+Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the EC2 instance.
 ```
 
-![Inspection](images/lab3-policy.png)
-_Figure 33: Inspection Policy Verification_
+```{figure} images/lab3-personalpod.png
+---
+align: center
+---
+Private IP of BU2 Mobile App
+```
+
+```{tip}
+Go to **CoPilot > Diagnostics > Diagnostics Tools** then select the GW **ace-aws-eu-west-1-spoke1** and ping the private IP of BU2 Mobile App
+```
+
+```{figure} images/lab3-pingfailss.png
+---
+align: center
+---
+Ping is unsuccessful
+```
+
+From the outcome above you can notice that from the Spoke1 GW in AWS, the BU2 Mobile App is not reachable.
+
+- Now try to ping both workloads (i.e. BU1 Frontend and BU2 Mobile App) from the **Transit** GW in AWS.
+
+```{figure} images/lab3-bu1ping.png
+---
+align: center
+---
+Ping is ok from the Transit GW towards BU1 Frontend
+```
+
+```{figure} images/lab3-bu2ping.png
+---
+align: center
+---
+Ping is ok from the Transit GW towards BU2 Mobile App
+```
+
+From the outcome above, you can notice that the Transit GW in AWS can ping both BU1 Frontend and BU2 Mobile App, successfully.
+
+- Check the FireNet section!
+
+```{tip}
+Go to **CoPilot > Security > FireNet**
+```
+
+```{figure} images/lab3-unreachable.png
+---
+align: center
+---
+The FW is down
+```
+
+You will notice that the Firewall turns out being down.
+
+Click on the **Firewall** tab!
 
 - Try to ping the **LAN** interface of the FW from the **Transit FireNet Gateway**.
 
@@ -62,13 +112,21 @@ First you need to retrieve the LAN Interface IP address of the FW.
 Go to **Controller > FIREWALL NETWORK > List >** select the Transit Firenet GW, under the **Firenet TAB >** click on **Details > Diagnostics >** then click on **Run** and then on **Show**.
 ```
 
-![details](images/lab3-details.png)
-_Figure 34: Transit FireNet Gateway Details_
+```{figure} images/lab3-details.png
+---
+align: center
+---
+Transit FireNet Gateway Details
+```
 
 Scroll through the whole configuration till the ACE-FW section: the IP is beside the string **“lan_private_ip”**.
 
-![lan](images/lab3-lanip.png)
-_Figure 35: Lan Private IP of the FW_
+```{figure} images/lab3-lanip.png
+---
+align: center
+---
+Lan Private IP of the FW
+```
 
 - **[WORKAROUND]** Try to find a way to exclude traffic from being sent to the FW.
 
@@ -76,38 +134,66 @@ _Figure 35: Lan Private IP of the FW_
 Go to **Controller > FIREWALL NETWORK > List > Firenet** tab > select the Transit FireNet GW and click on **DETAILS**.
 ```
 
-![details2](images/lab3-details.png)
-_Figure 36: Transit FireNet Gateway Details_
+```{figure} images/lab3-details.png
+---
+align: center
+---
+Transit FireNet Gateway Details
+```
 
 Scroll down till the **Network List Excluded From East-West Inspection** section and add the source subnet **10.1.211.0/24** (e.g. this is the subnet where the BU! Frontend resides), as depicted below.
 
-![excemption](images/lab3-excemption.png)
-_Figure 37: Excemption_
+```{figure} images/lab3-excemption.png
+---
+align: center
+---
+Exemption
+```
 
 Try to ping once again the BU2 Mobile App from the B1 Frontend. This time the ping will be successful thanks to the workaround!
 
-![ping is successful](images/lab3-successful.png)
-_Figure 38: Ping is successful_
+```{figure} images/lab3-successful.png
+---
+align: center
+---
+Ping is successful
+```
 
 - Remove the workaround previously applied and have a look at the dashboard on the main page of the Controller.
 
-![widget](images/lab3-alert.png)
-_Figure 39: Dashboard: the Widget is showing an Alert!_
+```{figure} images/lab3-alert.png
+---
+align: center
+---
+Dashboard: the Widget is showing an Alert!
+```
 
 You will notice a clear yellow alarm on the Trasit FireNet widget! Click on the widget, then select the Transit Firenet GW and click on **DETAILS**.
 
-![unrechable](images/lab3-down.png)
-_Figure 40: FW is unreachable_
+```{figure} images/lab3-down.png
+---
+align: center
+---
+FW is unreachable
+```
 
 This is a clear outcome that there is a problem on the FW. Ultimately, the firewall is not reachable.
 
 - Log into the FW (refer to your POD portal for the credentials for logging in) and explore its configuration.
 
-![credentials](images/lab3-down.png)
-_Figure 41: FW credentials_
+```{figure} images/lab3-down.png
+---
+align: center
+---
+FW credentials
+```
 
-![access](images/lab3-fw.png)
-_Figure 42: FW access_
+```{figure} images/lab3-fw.png
+---
+align: center
+---
+FW access
+```
 
 ```{tip}
 Go to **FW > Network > Interfaces** and click the LAN interface (port2) and fix the issue!
@@ -115,10 +201,18 @@ Go to **FW > Network > Interfaces** and click the LAN interface (port2) and fix 
 
 The port was disabled to simulate the failure of the GW...
 
-![instance](images/lab3-fwint.png)
-_Figure 43: FW interface_
+```{figure} images/lab3-fwint.png
+---
+align: center
+---
+FW interface
+```
 
 Relaunch the ping from **BU1 Frontend** towards **BU2 Mobile App**, after having <ins>re-enabled</ins> the LAN interface of the firewall.
 
-![ping ok](images/lab3-pingworks.png)
-_Figure 44: Ping is ok!_
+```{figure} images/lab3-pingworks.png
+---
+align: center
+---
+Ping is ok!
+```

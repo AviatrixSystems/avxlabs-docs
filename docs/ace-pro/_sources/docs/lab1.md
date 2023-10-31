@@ -80,27 +80,47 @@ Log into the <a href="https://portal.azure.com/#home" target="_blank">Azure port
 
 Once you are logged in, navigate to `Virtual Networks`.
 
-Be sure to filter your `Subscription` <ins>by your pod number</ins>, for example, for Pod 22 filter by `csp_azure_shared_ace_labs_22`.
-
-```{figure} images/lab1-vnet6.png
+```{figure} images/lab1-virtualnetwork.png
 ---
 align: center
 ---
-Azure portal
+Azure Console
 ```
 
-Once in the VNet you just created, navigate to `Subnets`. Explore all the constructs that were created in Central US.
+You will see all the VNets for all the available Subscriptions.
 
-```{figure} images/lab1-vnet7.png
+```{figure} images/lab1-virtualnetwork2.png
+---
+align: center
+---
+Azure Console
+```
+
+Be sure to filter your `Subscription` <ins>by your pod number</ins>, for example, for Pod 143 filter by `csp_azure_shared_ace_labs_143`.
+
+```{figure} images/lab1-virtualnetwork3.png
+---
+align: center
+---
+Azure Console
+```
+
+Once you get visibility of the Subscription associated to your POD number, you will be able to find the VNets you just created. 
+
+Explore for instance, the **_azure-us-central-spoke1_** VNet and from there navigate to `Subnets`. Explore also all the constructs that were created in Central US.
+
+```{figure} images/lab1-virtualnetwork4.png
 ---
 align: center
 ---
 Azure subnets
 ```
 
-From the Portal, navigate to **Home > Route tables**. Explore the route tables.
+From the Portal, navigate to **Home > Route tables**. Be sure once again to filter your `Subscription` <ins>by your pod number</ins>, for example, for Pod 143 filter by `csp_azure_shared_ace_labs_143`.
 
-```{figure} images/lab1-vnet8.png
+Explore the route tables.
+
+```{figure} images/lab1-virtualnetwork5.png
 ---
 align: center
 ---
@@ -124,7 +144,7 @@ Insert the following values:
 
  - **Name**: <span style='color:#33ECFF'>aws-us-west2-spoke1</span>
  - **Cloud**: <span style='color:#33ECFF'>AWS</span>
- - **Account**: <span style='color:#33ECFF'>aws-account [use the drop-down window]</span>
+ - **Account**: <span style='color:#33ECFF'>aws-account [use the drop-down window - DO NOT select the aws-admin]</span>
  - **Region**: <span style='color:#33ECFF'>us-west-2 (Oregon) [use the drop-down window]</span>
  - **VPC CIDR**: <span style='color:#33ECFF'>10.0.22.0/24</span>
  - **VPC Function**: <span style='color:#33ECFF'>Default [use the drop-down window]</span>
@@ -138,7 +158,7 @@ align: center
 VPC configuration
 ```
 
-Monitor the progress of the VPC creation through the hourglass icon.
+Monitor the progress of the VPC creation through the **hourglass** icon.
 
 ```{figure} images/lab1-vpc3.png
 ---
