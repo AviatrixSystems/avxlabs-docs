@@ -6,8 +6,13 @@ BU1 and BU2 were able to communicate as end of Lab3.
 
 Unfortunately, the network team received another complaint from BU1 Frontend Team that BU2 Mobile App was no longer reachable.
 
-![topology 3](images/lab4-topology.png)
-_Figure 45: Network Domains with the Connection Policy_
+```{figure} images/lab4-topology.png
+---
+height: 400px
+align: center
+---
+Lab 4 Topology
+```
 
 ## 2. TROUBLESHOOT REQUEST
 
@@ -15,71 +20,122 @@ _Figure 45: Network Domains with the Connection Policy_
 
   - SSH to BU1 Frontend and launch ping/ssh to BU2 Mobile App.
 
-![ping fails](images/lab4-pingunsucc.png)
-_Figure 46: Ping fails_
-
-- Check whether the concerned Spokes have the relevant routes or not.
-
-```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **ace-aws-eu-west-1-spoke1** gateway and filter out based on the remote route.
+```{figure} images/lab4-pingunsucc.png
+---
+align: center
+---
+Ping fails
 ```
 
-![filter out](images/lab4-filter.png)
-_Figure 47: Filter out_
-
-From the outcome above, it is evident that Spoke1 in AWS has the destination route in his RTB.
-
- - Use Diagnostics tool by clicking on the Spoke1 Gateway in AWS and try to ping/traceroute the instance behind the other spoke.
+- Check whether both AWS Spoke1 and AWS Spoke2 have the required routes installed in their RTBs or not.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Topology** and select the *Spoke1 Gateway in AWS* and click on **Tools** and then on **Gateway Diagnostics**.
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **ace-aws-eu-west-1-spoke1** gateway for instance, and filter out based on the remote route.
 ```
 
-![enterprise](images/lab3-diagnostics.png)
-_Figure 48: Enterprise-Grade Tools_
+```{figure} images/lab4-filter.png
+---
+align: center
+---
+Filter out
+```
 
-![ping fails2](images/lab4-pingfails.png)
-_Figure 49: Ping fails_
+From the outcome above, it is evident that Spoke1 in AWS has the destination route in its RTB. 
 
-- Try to ping both workloads from the Transit.
+Try to verify the inverse, checking the destination route from the AWS Spoke2 side.
 
-![ping is ok](images/lab4-pingok.png)
-_Figure 50: Ping ok_
-
-- Check if the concerned Spoke VPCs are inspected by FireNet.
+ - Use **Diagnostics** tool by clicking on the Spoke1 Gateway in AWS and try to ping/traceroute the instance behind the other spoke. Repeat this action from the Spoke2 too.
 
 ```{tip}
-Go to **Controller > FIREWALL NETWORK > Policy**
+Go to **CoPilot > Cloud Fabric > Topology** and select the **_ace-aws-eu-west-1-spoke1_** Gateway in AWS and click on **Tools** and then on **Gateway Diagnostics**.
 ```
 
-![verification](images/lab4-inspection.png)
-_Figure 51: Inspection Policy Verification_
+```{figure} images/lab3-diagnostics.png
+---
+align: center
+---
+Enterprise-Grade Tools
+```
 
-- Have a look at the dashboard on the main page of the Controller.
+```{figure} images/lab4-pingfails.png
+---
+align: center
+---
+Ping fails
+```
 
-![dashboard](images/lab4-dashboard.png)
-_Figure 52: Dashboard_
+- Try to ping both workloads from the Transit GW in AWS.
 
-- Verify the Vendor Integration on the FireNet section on the Controller!
+```{figure} images/lab4-pingok.png
+---
+align: center
+---
+Ping ok
+```
+
+From the outcome above, you can again notice that the Transit GW has full reachability towards the remote workloads.
+
+- Check if the relevant Spoke VPCs are inspected by FireNet. This time control the Inspection Policy from the **CoPilot** dashboard.
+
+```{tip}
+Go to **CoPilot > FireNet > FireNet Gateways**, then click on the **_ace-aws-eu-west-1-transit1_** Gateway **> Policy**
+```
+
+The AWS Spoke VPCs are both correctly inspected.
+
+```{figure} images/lab4-inspection.png
+---
+align: center
+---
+Inspection Policy Verification
+```
+
+- Have a look at the FireNet section on the Controller to figure out wheether there are any sort of alerts or not.
+
+```{figure} images/lab4-dashboard.png
+---
+align: center
+---
+Dashboard
+```
+
+- Verify the Vendor Integration on the FireNet section on the CoPilot!
 
 ```{tip}
 Go to **Controller > FIREWALL NETWORK > Vendor Integration**, select the **FW**, click on **EDIT** and then click on **SHOW**.
 ```
 
-![vendor](images/lab4-edit.png)
-_Figure 53: Vendor Integration_
+```{figure} images/lab4-edit.png
+---
+align: center
+---
+Vendor Integration
+```
 
-![missing](images/lab4-missing.png)
-_Figure 54: Missing route_
+```{figure} images/lab4-missing.png
+---
+align: center
+---
+Missing route
+```
 
 You will notice that the **10.0.0.0/8** is not present inside the routing table of the FW.
 
 - Fix the problem, clicking on the **SYNC** button, in order to inject again the 10.0.0.0/8 into the RTB.
 
-![sync](images/lab4-sync.png)
-_Figure 55: SYNC_
+```{figure} images/lab4-sync.png
+---
+align: center
+---
+SYNC
+```
 
 - Relaunch the ping from **BU1 Frontend** towards **BU2 Mobile App**.
 
-![ping is ok](images/lab4-pingworks.png)
-_Figure 56: Ping is ok_
+```{figure} images/lab4-pingworks.png
+---
+height: 400px
+align: center
+---
+Ping is ok
+```

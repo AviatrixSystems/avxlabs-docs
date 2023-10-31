@@ -158,7 +158,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="expectations.html">Expectations + How to get certified</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pod.html">PODs Assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Network Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Connection Policy</a></li>
@@ -168,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - Site2Cloud</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7 - Egress FQDN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - Distributed Cloud Firewall</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slides.html">Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
 </ul>
 
     </div>
@@ -316,7 +315,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a></li>
 </ul>
             </nav>
         </div>
@@ -332,7 +330,279 @@ document.write(`
 <h1>Lab 7 - Egress FQDN<a class="headerlink" href="#lab-7-egress-fqdn" title="Permalink to this heading">#</a></h1>
 <section id="scenario">
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
-<p>BU2 DB needs to get updates by running:</p>
+<p>BU2 DB needs to get updates, however the VM is inside a private subnet. The BU2 DB owner has raised a request that solely the <em>apt-get</em> commands should be allowed (<ins>other kind of egress traffic should be prohibited</ins>).</p>
+<p>Furthermore, all egress traffic must be tracked, whereby <strong><em>Logging</em></strong> must be enabled.</p>
+<p>You are requested to activate the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature on the <strong><em>ace-azure-east-us-spoke2</em></strong> VPC solely, and create the rules that would fulfil the aforementioned request.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/lab7-topology.png"><img alt="../_images/lab7-topology.png" src="../_images/lab7-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Lab 7 Scenario Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Enable the Egress on the VPC where the BU2 DB resides.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Egress &gt; Egress VPC/VNets</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code> button.</p>
+<p>Select the <strong><em>ace-azure-east-us-spoke2</em></strong> VPC.</p>
+<p>Do not forget to click on <strong>Add</strong>.</p>
+</div>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab7-vpc.png" src="../_images/lab7-vpc.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Enable the <strong>Distributed Cloud Firewall</strong> feature.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Distributed Cloud Firewall</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code> button, and then to the subsequent <code class="docutils literal notranslate"><span class="pre">&quot;Begin</span> <span class="pre">Using</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code> button.</p>
+</div>
+<p>You will immediately notice a pop-up message, informing you that the <code class="docutils literal notranslate"><span class="pre">Greenfield</span> <span class="pre">Rule</span></code> will be created for allowing all kind of traffic in a typical <strong><em>Deny-List</em></strong> model.</p>
+<p>Click on <strong>Begin</strong>.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab7-greenfield.png" src="../_images/lab7-greenfield.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Greenfield Rule</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">&quot;Logging&quot;</span></code> on the Greenfield-Rule.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Click on the pencil icon on the right-hand side of the entry <strong>Greenfield-Rule</strong>.</p>
+</div>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab7-editgreen.png" src="../_images/lab7-editgreen.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Edit the Greenfield-Ruyle</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab7-enablelog.png" src="../_images/lab7-enablelog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Enable Logging</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>Save In Drafts</strong> and then click on <strong>Commit</strong>, to push the change into the Data Plane.</p>
+<ul class="simple">
+<li><p>SSH to the BU2 DB (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB).</p></li>
+</ul>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab7-sshbu2db.png" src="../_images/lab7-sshbu2db.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">BU2 DB ip address</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Issue the following curl commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.google.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
+</pre></div>
+</div>
+<p>All commands will be successful, however, this is not what the request asked you to configure…</p>
+<ul class="simple">
+<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">Allow-List</span> <span class="pre">Model</span></code> (i.e. ZTNA approach), creating an <strong>Explicit Deny Rule</strong> first.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+Rule&quot;</span></code> button.</p>
+</div>
+<p>Create an <code class="docutils literal notranslate"><span class="pre">Explicit</span> <span class="pre">Deny</span> <span class="pre">Rule</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>Explicit-Deny-Rule</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Deny</strong></span></p></li>
+</ul>
+<p>Do not forget once again to click on <strong>Save In Drafts</strong> and then click on <strong>Commit</strong>.</p>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab6-egressrule.png" src="../_images/lab6-egressrule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As soon as the Explicit-Deny-Rule is deployed the SSH session with the BU2 DB will be terminated.</p>
+<p>You will have to reestablish the SSH session with BU2 DB!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The East-West traffic is blocked now!</p>
+</div>
+<ul class="simple">
+<li><p>Explore the <strong>SmartGroups</strong> section on the CoPilot</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; SmartGroups</strong></p>
+</div>
+<p>You will notice two SmartGroups, called BU1 and BU2, in addition to the pre-defined SmartGroups (i.e. <em>Anywhere</em> and <em>Public Internet</em>).</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab7-bus.png" src="../_images/lab7-bus.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">SmartGroups list</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Expand either SmartGroups to find out what VMs have been associated to each logical container.</p></li>
+</ul>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab7-bus2.png" src="../_images/lab7-bus2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">BU1’s members</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>It is evident that BU1 Frontend turns out belonging to the BU1 SmartGroup, whereas the BU2 DB is a member of the BU2 SmartGroup.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>These two SmartGroups had been preprovisioned for you at the launch of the PODs.</p>
+</div>
+<ul class="simple">
+<li><p>Create an <strong>inter-rule</strong> that allows SSH from BU1 to BU2.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>inter-ssh-bu1-bu2</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>BU1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>BU2</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#33ECFF'>22</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>commit</strong> this new rule!</p>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab7-bus3.png" src="../_images/lab7-bus3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Three rules</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>SSH to BU2 DB from the BU1 Frontend, then check the logs!</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
+</div>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab7-bus5.png" src="../_images/lab7-bus5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">SSH logs</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now create another SmartGroup that identifies the BU2 DB, solely.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; SmartGroups</strong></p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>BU2-DB</span></p></li>
+<li><p><strong>CSP Tag Key</strong>: <span style='color:#33ECFF'>name</span></p></li>
+<li><p><strong>CSP Tag Value</strong>: <span style='color:#33ECFF'>ace-azure-east-us-spoke2-bu2-db</span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab7-bu2db.png" src="../_images/lab7-bu2db.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Create a WebGroup that matches the <em>ubuntu</em> domain and sub-domains!</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; WebGroups</strong> and then click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code>.</p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">WebGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>ubuntu-update</span></p></li>
+<li><p><strong>Type</strong>: <span style='color:#33ECFF'>Domains</span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'>*.ubuntu.com</span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'> *.archive.ubuntu.com</span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'> *.canonical.com</span></p></li>
+</ul>
+<p>then click on <strong>Save</strong>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul class="simple">
+<li><p>The FQDNs <code class="docutils literal notranslate"><span class="pre">*.ubuntu.com</span></code> and <code class="docutils literal notranslate"><span class="pre">*.canonical.com</span></code> are both using a first-level wilcard. These wildcards will be placeholders for <em><a class="reference external" href="http://ntp.ubuntu.com">ntp.ubuntu.com</a></em>, <em><a class="reference external" href="http://ftp.ubuntu.com">ftp.ubuntu.com</a></em>, <em><a class="reference external" href="http://download.ubuntu.com">download.ubuntu.com</a></em>, <em><a class="reference external" href="http://contracts.canonical.com">contracts.canonical.com</a></em>…</p></li>
+<li><p>The FQDN <code class="docutils literal notranslate"><span class="pre">*.archive.ubuntu.com</span></code> is using a second-level wilcard, that allows to create a subdivision within <em><a class="reference external" href="http://archive.ubuntu.com">archive.ubuntu.com</a></em>.</p></li>
+</ul>
+</div>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab7-webgroup.png" src="../_images/lab7-webgroup.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now create an <strong>inter-rule</strong> that allows BU2 DB to generate traffic towards Internet but only for reaching out the <ins>ubuntu servers</ins> !</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>inter-ubuntu-bu2db-internet</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>BU2-DB</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>Public internet</span></p></li>
+<li><p><strong>WebGroups</strong>: <span style='color:#33ECFF'>ubuntu-update</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>Any</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and the <strong>commit</strong> your rule once again!</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab7-lastrule.png" src="../_images/lab7-lastrule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab7-lastcommit.png" src="../_images/lab7-lastcommit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now try issuing the following curl commands once again from the BU2 DB virtual machine:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.google.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
+</pre></div>
+</div>
+<p>You will notice three <strong>Deny</strong> entries within the Monitor section that have matched the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code>, successfully.</p>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab7-explicitdeny.png" src="../_images/lab7-explicitdeny.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now try to run the apt-get commands !</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span>
 </pre></div>
 </div>
@@ -340,52 +610,26 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
 </pre></div>
 </div>
-<p>No other Egress traffic should be allowed!</p>
-<p>An Aviatrix Gateway has already been deployed and enabled for <strong>Egress FQDN filtering</strong>.</p>
-<p>The BU2 DB owner has raised a complaint that the apt-get commands are not working, furthermore the other egress traffic is permitted…</p>
-<p><img alt="topology 7" src="../_images/lab7-topology.png" />
-<em>Figure 83: Lab 7 Scenario Topology</em></p>
-</section>
-<section id="troubleshoot-request">
-<h2>2. TROUBLESHOOT REQUEST<a class="headerlink" href="#troubleshoot-request" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>SSH to the BU2 DB (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB) and verify whether the apt-get commands are working or not.</p></li>
+<li><p>Now check the logs within the <strong>Egress</strong> section!</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>In addition to the apt-get commands, carry out the following commands:</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the <strong>ace-azure-east-us-spoke2</strong> VNet</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.google.com
-curl<span class="w"> </span>https://www.wikipedia.com
-curl<span class="w"> </span>https://www.espn.com
-</pre></div>
-</div>
-<p><img alt="sudo" src="../_images/lab7-sudo.png" />
-<em>Figure 814: Sudo commands</em></p>
-<ul class="simple">
-<li><p>Check the FQDN Stats</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Go to <strong>Controller &gt; Security &gt; FQDN Stats &gt; Gateway FQDN Stats</strong> and set the Time range to <strong>“Today”</strong>.</p>
-</div>
-<p><img alt="stats" src="../_images/lab7-stats.png" />
-<em>Figure 85: Stats</em></p>
-<ul class="simple">
-<li><p>Verify the configuration of the Egress FQDN Filtering Policy.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Go to <strong>Controller &gt; SECURITY &gt; Egress Control &gt; Egress FQDN Filter</strong> and then check the policy called <strong>“ACE-UBUNTU-PATCHES”</strong>.</p>
-</div>
-<p>Is there something suspicious in the configuration of the policy? Try to fix the evident misconfiguration!</p>
-<p><img alt="filter" src="../_images/lab7-policy.png" />
-<em>Figure 86: Filter</em></p>
-<ul class="simple">
-<li><p>Relaunch the apt-get commands after applied the resolution.</p></li>
-</ul>
-<p><img alt="apt-get" src="../_images/lab7-ok.png" />
-<em>Figure 87: apt-get is successful</em></p>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You have successfully applied the Secure Egress Control, leveraging both the Egress feature and the DCF rules!</p>
 </section>
 </section>
 
@@ -457,7 +701,6 @@ curl<span class="w"> </span>https://www.espn.com
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a></li>
 </ul>
   </nav></div>
 
