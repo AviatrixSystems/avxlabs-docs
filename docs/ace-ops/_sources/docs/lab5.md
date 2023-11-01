@@ -46,7 +46,7 @@ The **Spoke1** in AWS does not have the destination route to reach the destinati
 - Check what route is received by the **GCP Transit GW** from the **GCP Spoke1 GW**.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_ace-gcp-us-east1-transit1_** Gateway in GCP **> Gateway Routes** and filter based on the parameters depicted below.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_ace-gcp-us-east1-transit1_** Gateway in GCP **> Gateway Routes** and filter based on the parameter depicted below.
 ```
 
 - "**Next Hop Gateway** *contains* **gcp**"
@@ -118,7 +118,7 @@ Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
 
 Select the **_ace-azure-east-us-spoke1_** Spoke GW and launch the packet capture on its eth0 interface.
 
-This is the LAN interface within the VNet, in front of the **VNet router**!
+This is the LAN interface within the VNet, where also the **VNet router** resides!
 ```
 
 

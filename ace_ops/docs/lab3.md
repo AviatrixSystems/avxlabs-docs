@@ -150,7 +150,7 @@ align: center
 Exclude the CIDR
 ```
 
-- Issue the ping towards the **BU2 Mobile App** from the **BU1 Frontend**. This time the connectvity will work!
+- Issue the ping towards the **BU2 Mobile App** from the **BU1 Frontend**. This time the connectivity will work!
 
 ```{figure} images/lab3-pingok2.png
 ---
@@ -229,7 +229,7 @@ FW interface
 
 Scroll down until you see the `"Status"` button of the interface and finally reactivate it.
 
-Of course, then click on **Save**.
+Of course, then click on **OK**.
 
 ```{figure} images/lab3-enableint.png
 ---
@@ -238,7 +238,7 @@ align: center
 Reactivate the LAN port
 ```
 
-Relaunch the ping from **BU1 Frontend** towards **BU2 Mobile App**, after having <ins>reenabled</ins> the LAN interface of the firewall.
+Relaunch the ping from **BU1 Frontend** towards **BU2 Mobile App**, after having <ins>reactivated</ins> the LAN interface of the firewall.
 
 ```{figure} images/lab3-pingworks.png
 ---
@@ -257,5 +257,5 @@ Ping is ok!
 ```
 
 ```{important}
-This time the traceroute outcome shows twice the IP address of the Transit FireNet GW (i.e. **.143** as shown in the screenshot above) along the path, due to the fact that the traffic is now diverted towards the Firewall that, after the completion of the Deep Packet Inspection, sends the permitted traffic back to the Transit FireNet GW.
+This time the traceroute outcome shows twice the IP address of the Transit FireNet GW (i.e. **.134** as shown in the screenshot above) along the path, due to the fact that the traffic is now diverted towards the Firewall that, after the completion of the Deep Packet Inspection, sends the permitted traffic back to the Transit FireNet GW.
 ```
