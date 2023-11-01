@@ -65,7 +65,7 @@ BU1 to BU2 is ok
 - Check the different routing tables (VRFs) maintained by any of the Transit Gateways.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the relevant gateway **> Gateway Routes** and filter out based on any Network Domains.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Gateway Routes** and filter out based on any Network Domains.
 ```
 
 ```{figure} images/lab2-bu1andbu2.png
@@ -73,4 +73,8 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the rele
 align: center
 ---
 View on a specific RTB
+```
+
+```{important}
+The Spoke Gateways provide visibility only of the Global Routing Table (aka **GRT**).
 ```

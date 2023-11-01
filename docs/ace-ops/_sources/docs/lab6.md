@@ -19,7 +19,7 @@ Lab 6 Scenario#1: Topology
 - Activate the **Route Approval** feature for monitoring unauthorized advertisements that could be received by the DC.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW **> Settings > Border Gateway Protocl (BGP) >** and turn on the **_Gateway Learned CIDR Approval_** knob.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_ace-aws-eu-west-1-transit1_** GW **> Settings > Border Gateway Protocl (BGP) >** and turn on the **_Gateway Learned CIDR Approval_** knob.
 
 Then click on **Save**.
 ```
@@ -31,7 +31,7 @@ align: center
 Route Approval
 ```
 
-Afterwards, inform the trainer that you have activated the feature with the tool <span style='color:#FFFF00'>**“Raise Hand”**</span> on Zoom, as depicted below.
+Afterwards, inform the trainer that you have activated the feature with the tool <span style='color:#FFFF00'>**“Raise Hand”**</span> on Zoom, as depicted below, and type the number of your POD in the Zom chat!
 
 ```{figure} images/lab6-raise.png
 ---
@@ -57,7 +57,7 @@ Refresh
 ```
 
 ```{important}
-You have successfully prevented that somebody from the DC could jeopardize the whole network inside the multicloud infrastructure! Of course do not approve that default route!
+You have successfully prevented that somebody from the DC could jeopardize the whole network inside the multicloud infrastructure! <ins>Of course do not approve that default route</ins>!
 ```
 
 ## 3. SCENARIO#2
@@ -80,7 +80,7 @@ Lab 6 Scenario#2: Topology
 - Create a new **S2C** connection.
 
 ```{tip}
-Go to **CoPilot > Networking >  Connectivity > External Connection (S2C) >** then click on the  **+External Connection** button.
+Go to **CoPilot > Networking >  Connectivity > External Connection (S2C) >** then click on the  `"+External Connection"` button.
 ```
 
 ```{figure} images/lab6-s2c.png
@@ -147,7 +147,7 @@ align: center
 External Connection Configuration
 ```
 
-Wait some seconds for the completion of the S2C. The new connection will show up with a red ball.
+Wait some seconds for the completion of the S2C. The new connection will show up with a red ball symbol.
 
 ```{figure} images/lab6-notdone.png
 ---
@@ -166,7 +166,7 @@ align: center
 S2C is finally UP
 ```
 
-- SSH to the OnPrem partner router and issue the following command, to confirm that the Tunnel is up/up:
+- SSH to the **OnPrem partner** router and issue the following command, to confirm that the Tunnel is up/up:
 
 ```bash
 show ip int brief
@@ -190,4 +190,21 @@ ping 192.168.1.100 source gigabitethernet1
 align: center
 ---
 Ping is ok
+```
+
+- Launch the `Active Sessions`.
+
+```{tip}
+Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_ace-gcp-us-east1-spoke1_** GW and then select the **Active Sessions** tool.
+
+Click on **Run** and almost simultaneously issue once again the ping command from the CSR router.
+
+Filter based on the `"ICMP"` keyword.
+```
+
+```{figure} images/lab6-final.png
+---
+align: center
+---
+Mapped NAT in action !
 ```
