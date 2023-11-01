@@ -31,7 +31,7 @@ align: center
 Route Approval
 ```
 
-Afterwards, inform the trainer that you have activated the feature with the tool <span style='color:#FFFF00'>**“Raise Hand”**</span> on Zoom, as depicted below, and type the number of your POD in the Zom chat!
+Afterwards, inform the trainer that you have activated the feature with the tool <span style='color:#FFFF00'>**“Raise Hand”**</span> on Zoom, as depicted below, and type the number of your POD in the Zoom chat!
 
 ```{figure} images/lab6-raise.png
 ---

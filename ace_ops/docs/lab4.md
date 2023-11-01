@@ -105,7 +105,7 @@ This time the FW is responding properly to the **Health Check** mechanism, there
 The Firewall is reachable from the Transit FireNet GW!
 ```
 
-- Keep running the ping command from the **BU1 Frontend** towards the **BU2 Mobile App*, although it will fail!
+- Keep running the ping command from the **BU1 Frontend** towards the **BU2 Mobile App**, although it will fail!
 
 ```{figure} images/lab4-keepit.png
 ---
@@ -179,7 +179,7 @@ align: center
 You will discover immediately that one of the three **RFC1918 routes** had been removed (i.e. `10.0.0.0/8`).
 ```
 
-- Click on the `"Sync Routes to Firewall"` button, to carry out the **Vendor Integration* and reinject the missing route into the routing table of the Firewall!
+- Click on the `"Sync Routes to Firewall"` button, to carry out the **Vendor Integration** and the **Aviatrix Controller** will reinject the missing route into the routing table of the Firewall!
 
 ```{figure} images/lab4-vendor2.png
 ---

@@ -1,847 +1,649 @@
+
+
 <!DOCTYPE html>
 
 
-<html lang="en">
+<html lang="en" >
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-  <title>Lab 7 - Egress FQDN &#8212; ACE Operations Lab</title>
-
-
-
+    <title>Lab 7 - Secure Egress &#8212; ACE Operations Lab</title>
+  
+  
+  
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-
+  
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-
+  
   <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-  <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-  <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285"
-    type="text/css" />
-  <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-  <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-  <link rel="stylesheet" type="text/css"
-    href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-  <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-  <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-  <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-  <script src="../_static/jquery.js"></script>
-  <script src="../_static/underscore.js"></script>
-  <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-  <script src="../_static/doctools.js"></script>
-  <script src="../_static/clipboard.min.js"></script>
-  <script src="../_static/copybutton.js"></script>
-  <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-  <script>let toggleHintShow = 'Click to show';</script>
-  <script>let toggleHintHide = 'Click to hide';</script>
-  <script>let toggleOpenOnPrint = 'true';</script>
-  <script src="../_static/togglebutton.js"></script>
-  <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-  <script src="../_static/design-tabs.js"></script>
-  <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-    const thebe_selector = ".thebe,.cell"
-    const thebe_selector_input = "pre"
-    const thebe_selector_output = ".output, .cell_output"
-  </script>
-  <script async="async" src="../_static/sphinx-thebe.js"></script>
-  <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab7';</script>
-  <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png" />
-  <link rel="index" title="Index" href="../genindex.html" />
-  <link rel="search" title="Search" href="../search.html" />
-  <link rel="next" title="Lab 8 - Distributed Cloud Firewall" href="lab8.html" />
-  <link rel="prev" title="Lab 6 - Site2Cloud" href="lab6.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en" />
-</head>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab7';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 8 - Distributed Cloud Firewall" href="lab8.html" />
+    <link rel="prev" title="Lab 6 - Site2Cloud" href="lab6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-
-<body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%"
-  data-default-mode="">
-
-
-
+  
+  
   <a class="skip-link" href="#main-content">Skip to main content</a>
-
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary" />
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
   <label class="overlay overlay-primary" for="__primary"></label>
-
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary" />
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
   <label class="overlay overlay-secondary" for="__secondary"></label>
-
+  
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
-      <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..."
-          aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off"
-          spellcheck="false" />
-        <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-      </form>
-    </div>
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
   </div>
-
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-  </nav>
-
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-
+      
       <div class="bd-sidebar-primary bd-sidebar">
+        
 
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Operations Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Network Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Connection Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - FireNet - Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - FireNet - Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Routes Manipulation &amp; NAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - Site2Cloud</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7 - Secure Egress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - Distributed Cloud Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
+</ul>
 
-        <div class="sidebar-header-items sidebar-primary__section">
-
-
-
-
-        </div>
-
-        <div class="sidebar-primary-items__start sidebar-primary__section">
-          <div class="sidebar-primary-item">
-
-
-            <a class="navbar-brand logo" href="home.html">
-
-
-
-
-
-
-
-
-
-              <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Logo image" />
-              <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
-
-
-            </a>
-          </div>
-          <div class="sidebar-primary-item">
-            <nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-              <div class="bd-toc-item navbar-nav active">
-
-                <ul class="nav bd-sidenav bd-sidenav__home-link">
-                  <li class="toctree-l1">
-                    <a class="reference internal" href="home.html">
-                      Welcome to ACE Operations Lab
-                    </a>
-                  </li>
-                </ul>
-                <ul class="current nav bd-sidenav">
-                  <li class="toctree-l1"><a class="reference internal" href="pod.html">PODs Assignments</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Network Domains</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Connection Policy</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - FireNet - Interface</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - FireNet - Routes</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Routes Manipulation
-                      &amp; NAT</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - Site2Cloud</a></li>
-                  <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7 - Egress
-                      FQDN</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - Distributed Cloud
-                      Firewall</a></li>
-                  <li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
-                </ul>
-
-              </div>
-            </nav>
-          </div>
-        </div>
-
-
-        <div class="sidebar-primary-items__end sidebar-primary__section">
-        </div>
-
-        <div id="rtd-footer-container"></div>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
-
+      
       <main id="main-content" class="bd-main">
+        
+        
 
+<div class="sbt-scroll-pixel-helper"></div>
 
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
 
-        <div class="sbt-scroll-pixel-helper"></div>
-
-        <div class="bd-content">
-          <div class="bd-article-container">
-
-            <div class="bd-header-article">
-              <div class="header-article-items header-article__inner">
-
-                <div class="header-article-items__start">
-
-                  <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm"
-                      for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom"
-                      data-bs-toggle="tooltip">
-                      <span class="fa-solid fa-bars"></span>
-                    </label></div>
-
-                </div>
-
-
-                <div class="header-article-items__end">
-
-                  <div class="header-article-item">
-
-                    <div class="article-header-buttons">
+<div class="article-header-buttons">
 
 
 
 
 
-                      <div class="dropdown dropdown-download-buttons">
-                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                          aria-expanded="false" aria-label="Download this page">
-                          <i class="fas fa-download"></i>
-                        </button>
-                        <ul class="dropdown-menu">
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab7.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
 
 
 
-                          <li><a href="../_sources/docs/lab7.md" target="_blank"
-                              class="btn btn-sm btn-download-source-button dropdown-item" title="Download source file"
-                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
 
 
-                              <span class="btn__icon-container">
-                                <i class="fas fa-file"></i>
-                              </span>
-                              <span class="btn__text-container">.md</span>
-                            </a>
-                          </li>
-
-
-
-
-                          <li>
-                            <button onclick="window.print()" class="btn btn-sm btn-download-pdf-button dropdown-item"
-                              title="Print to PDF" data-bs-placement="left" data-bs-toggle="tooltip">
-
-
-                              <span class="btn__icon-container">
-                                <i class="fas fa-file-pdf"></i>
-                              </span>
-                              <span class="btn__text-container">.pdf</span>
-                            </button>
-                          </li>
-
-                        </ul>
-                      </div>
-
-
-
-
-                      <button onclick="toggleFullScreen()" class="btn btn-sm btn-fullscreen-button"
-                        title="Fullscreen mode" data-bs-placement="bottom" data-bs-toggle="tooltip">
-
-
-                        <span class="btn__icon-container">
-                          <i class="fas fa-expand"></i>
-                        </span>
-
-                      </button>
-
-
-                      <script>
-                        document.write(`
+<script>
+document.write(`
   <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
     <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
     <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
-                      </script>
+</script>
 
-                      <script>
-                        document.write(`
+<script>
+document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
-                      </script>
-                      <label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"
-                        title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-                        <span class="fa-solid fa-list"></span>
-                      </label>
-                    </div>
-                  </div>
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
 
-                </div>
-
-              </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 7 - Secure Egress</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
 
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-7-secure-egress">
+<h1>Lab 7 - Secure Egress<a class="headerlink" href="#lab-7-secure-egress" title="Permalink to this heading">#</a></h1>
+<section id="scenario">
+<h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
+<p>BU2 DB needs to get updates, however the VM is inside a private subnet. The BU2 DB owner has raised a request that solely the <em>apt-get</em> commands should be allowed (<ins>other kind of egress traffic should be prohibited</ins>).</p>
+<p>Furthermore, all egress traffic must be tracked, whereby <strong><em>Logging</em></strong> must be enabled.</p>
+<p>You are requested to activate the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature on the <strong><em>ace-azure-east-us-spoke2</em></strong> VPC solely, and create the rules that would fulfil the aforementioned request.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/lab7-topology.png"><img alt="../_images/lab7-topology.png" src="../_images/lab7-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Lab 7 Scenario Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Enable the Egress on the VPC where the BU2 DB resides.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code> button.</p>
+<p>Select the <strong><em>ace-azure-east-us-spoke2</em></strong> VPC.</p>
+<p>Do not forget to click on <strong>Add</strong>.</p>
+</div>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab7-vpc.png" src="../_images/lab7-vpc.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This action will install a <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Route</span></code> within the Private Subnets, pointing to the <strong><em>ace-azure-east-us-spoke2</em></strong> GW.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab7-defaultroute.png" src="../_images/lab7-defaultroute.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<ul class="simple">
+<li><p>Enable the <strong>Distributed Cloud Firewall</strong> feature.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code> button, and then to the subsequent <code class="docutils literal notranslate"><span class="pre">&quot;Begin</span> <span class="pre">Using</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code> button.</p>
+</div>
+<p>You will immediately notice a pop-up message, informing you that the <code class="docutils literal notranslate"><span class="pre">Greenfield</span> <span class="pre">Rule</span></code> will be created for allowing all kind of traffic in a typical <strong><em>Deny-List</em></strong> model.</p>
+<p>Click on <strong>Begin</strong>.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab7-greenfield.png" src="../_images/lab7-greenfield.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Greenfield Rule</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">&quot;Logging&quot;</span></code> on the Greenfield-Rule.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Click on the pencil icon on the right-hand side of the entry <strong>Greenfield-Rule</strong>.</p>
+</div>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab7-editgreen.png" src="../_images/lab7-editgreen.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Edit the Greenfield-Ruyle</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab7-enablelog.png" src="../_images/lab7-enablelog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Enable Logging</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>Save In Drafts</strong> and then click on <strong>Commit</strong>, to push the change into the Data Plane.</p>
+<ul class="simple">
+<li><p>SSH to the BU2 DB (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB).</p></li>
+</ul>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab7-sshbu2db.png" src="../_images/lab7-sshbu2db.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">BU2 DB ip address</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Issue the following curl commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.google.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
+</pre></div>
+</div>
+<p>All commands will be successful, however, this is not what the request asked you to configure…</p>
+<ul class="simple">
+<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">Allow-List</span> <span class="pre">Model</span></code> (i.e. ZTNA approach), creating an <strong>Explicit Deny Rule</strong> first.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+Rule&quot;</span></code> button.</p>
+</div>
+<p>Create an <code class="docutils literal notranslate"><span class="pre">Explicit</span> <span class="pre">Deny</span> <span class="pre">Rule</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>Explicit-Deny-Rule</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Deny</strong></span></p></li>
+</ul>
+<p>Do not forget once again to click on <strong>Save In Drafts</strong> and then click on <strong>Commit</strong>.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab6-egressrule.png" src="../_images/lab6-egressrule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As soon as the Explicit-Deny-Rule is deployed the SSH session with the BU2 DB will be terminated.</p>
+<p>You will have to reestablish the SSH session with BU2 DB!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The East-West traffic is blocked now!</p>
+</div>
+<ul class="simple">
+<li><p>Explore the <strong>SmartGroups</strong> section on the CoPilot</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; SmartGroups</strong></p>
+</div>
+<p>You will notice two SmartGroups, called BU1 and BU2, in addition to the pre-defined SmartGroups (i.e. <em>Anywhere</em> and <em>Public Internet</em>).</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab7-bus.png" src="../_images/lab7-bus.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">SmartGroups list</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Expand either SmartGroups to find out what VMs have been associated to each of these logical container.</p></li>
+</ul>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab7-bus2.png" src="../_images/lab7-bus2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">BU1’s members</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>It is evident that BU1 Frontend turns out belonging to the BU1 SmartGroup, whereas the BU2 DB is a member of the BU2 SmartGroup.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>These two SmartGroups had been preprovisioned for you at the launch of the PODs.</p>
+</div>
+<ul class="simple">
+<li><p>Create an <strong>inter-rule</strong> that allows SSH from BU1 to BU2.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>inter-ssh-bu1-bu2</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>BU1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>BU2</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#33ECFF'>22</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> this new rule!</p>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab7-bus3.png" src="../_images/lab7-bus3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text">Three rules</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>SSH to BU2 DB from the BU1 Frontend, then check the logs!</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
+</div>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab7-bus5.png" src="../_images/lab7-bus5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">SSH logs</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now create another SmartGroup that identifies the BU2 DB, solely.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; SmartGroups</strong></p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>BU2-DB</span></p></li>
+<li><p><strong>CSP Tag Key</strong>: <span style='color:#33ECFF'>name</span></p></li>
+<li><p><strong>CSP Tag Value</strong>: <span style='color:#33ECFF'>ace-azure-east-us-spoke2-bu2-db</span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab7-bu2db.png" src="../_images/lab7-bu2db.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Create a WebGroup that matches the <em>ubuntu</em> domain, its sub-domains and the <em>canonical</em> domain!</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; WebGroups</strong> and then click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code>.</p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">WebGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>ubuntu-update</span></p></li>
+<li><p><strong>Type</strong>: <span style='color:#33ECFF'>Domains</span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'>*.ubuntu.com</span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'> *.archive.ubuntu.com</span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'> *.canonical.com</span></p></li>
+</ul>
+<p>then click on <strong>Save</strong>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul class="simple">
+<li><p>The FQDNs <code class="docutils literal notranslate"><span class="pre">*.ubuntu.com</span></code> and <code class="docutils literal notranslate"><span class="pre">*.canonical.com</span></code> are both using a first-level wilcard. These wildcards will be placeholders for <em><a class="reference external" href="http://ntp.ubuntu.com">ntp.ubuntu.com</a></em>, <em><a class="reference external" href="http://ftp.ubuntu.com">ftp.ubuntu.com</a></em>, <em><a class="reference external" href="http://download.ubuntu.com">download.ubuntu.com</a></em>, <em><a class="reference external" href="http://contracts.canonical.com">contracts.canonical.com</a></em>…</p></li>
+<li><p>The FQDN <code class="docutils literal notranslate"><span class="pre">*.archive.ubuntu.com</span></code> is using a second-level wilcard, that allows to create a subdivision within <em><a class="reference external" href="http://archive.ubuntu.com">archive.ubuntu.com</a></em>.</p></li>
+</ul>
+</div>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab7-webgroup.png" src="../_images/lab7-webgroup.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now create an <strong>inter-rule</strong> that allows BU2 DB to generate traffic towards Internet but only for reaching out the <ins>ubuntu servers</ins> !</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>inter-ubuntu-bu2db-internet</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>BU2-DB</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>Public internet</span></p></li>
+<li><p><strong>WebGroups</strong>: <span style='color:#33ECFF'>ubuntu-update</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>Any</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and the <strong>Commit</strong> your rule once again!</p>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab7-lastrule.png" src="../_images/lab7-lastrule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab7-lastcommit.png" src="../_images/lab7-lastcommit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now try issuing the following curl commands once again from the BU2 DB virtual machine:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.google.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
+</pre></div>
+</div>
+<p>You will notice three <strong>Drop</strong> entries within the Monitor section that have matched the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code>, successfully.</p>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab7-explicitdeny.png" src="../_images/lab7-explicitdeny.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now try to run the apt-get commands !</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Now check the logs within the <strong>Egress</strong> section!</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the <strong>ace-azure-east-us-spoke2</strong> VNet</p>
+</div>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You have successfully applied the Secure Egress Control, leveraging both the Egress feature and the DCF rules!</p>
+</section>
+</section>
 
-
-            <div id="jb-print-docs-body" class="onlyprint">
-              <h1>Lab 7 - Egress FQDN</h1>
-              <!-- Table of contents -->
-              <div id="print-main-content">
-                <div id="jb-print-toc">
-
-                  <div>
-                    <h2> Contents </h2>
-                  </div>
-                  <nav aria-label="Page">
-                    <ul class="visible nav section-nav flex-column">
-                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1.
-                          SCENARIO</a></li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div id="searchbox"></div>
-            <article class="bd-article" role="main">
-
-              <section class="tex2jax_ignore mathjax_ignore" id="lab-7-egress-fqdn">
-                <h1>Lab 7 - Egress FQDN<a class="headerlink" href="#lab-7-egress-fqdn"
-                    title="Permalink to this heading">#</a></h1>
-                <section id="scenario">
-                  <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
-                  <p>BU2 DB needs to get updates, however the VM is inside a private subnet. The BU2 DB owner has raised
-                    a request that solely the <em>apt-get</em> commands should be allowed (<ins>other kind of egress
-                      traffic should be prohibited</ins>).</p>
-                  <p>Furthermore, all egress traffic must be tracked, whereby <strong><em>Logging</em></strong> must be
-                    enabled.</p>
-                  <p>You are requested to activate the <code
-                      class="docutils literal notranslate"><span class="pre">Egress</span></code> feature on the
-                    <strong><em>ace-azure-east-us-spoke2</em></strong> VPC solely, and create the rules that would
-                    fulfil the aforementioned request.</p>
-                  <figure class="align-center" id="id1">
-                    <a class="reference internal image-reference" href="../_images/lab7-topology.png"><img
-                        alt="../_images/lab7-topology.png" src="../_images/lab7-topology.png"
-                        style="height: 400px;" /></a>
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 88 </span><span class="caption-text">Lab 7 Scenario
-                          Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <ul class="simple">
-                    <li>
-                      <p>Enable the Egress on the VPC where the BU2 DB resides.</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Go to <strong>CoPilot &gt; Egress &gt; Egress VPC/VNets</strong> and then click on the <code
-                        class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code>
-                      button.</p>
-                    <p>Select the <strong><em>ace-azure-east-us-spoke2</em></strong> VPC.</p>
-                    <p>Do not forget to click on <strong>Add</strong>.</p>
-                  </div>
-                  <figure class="align-center" id="id2">
-                    <img alt="../_images/lab7-vpc.png" src="../_images/lab7-vpc.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 89 </span><span
-                          class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id2"
-                          title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <ul class="simple">
-                    <li>
-                      <p>Enable the <strong>Distributed Cloud Firewall</strong> feature.</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Go to <strong>CoPilot &gt; Distributed Cloud Firewall</strong> and then click on the <code
-                        class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>
-                      button, and then to the subsequent <code
-                        class="docutils literal notranslate"><span class="pre">&quot;Begin</span> <span class="pre">Using</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>
-                      button.</p>
-                  </div>
-                  <p>You will immediately notice a pop-up message, informing you that the <code
-                      class="docutils literal notranslate"><span class="pre">Greenfield</span> <span class="pre">Rule</span></code>
-                    will be created for allowing all kind of traffic in a typical <strong><em>Deny-List</em></strong>
-                    model.</p>
-                  <p>Click on <strong>Begin</strong>.</p>
-                  <figure class="align-center" id="id3">
-                    <img alt="../_images/lab7-greenfield.png" src="../_images/lab7-greenfield.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 90 </span><span class="caption-text">Greenfield Rule</span><a
-                          class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <ul class="simple">
-                    <li>
-                      <p>Enable the <code
-                          class="docutils literal notranslate"><span class="pre">&quot;Logging&quot;</span></code> on
-                        the Greenfield-Rule.</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Click on the pencil icon on the right-hand side of the entry <strong>Greenfield-Rule</strong>.
-                    </p>
-                  </div>
-                  <figure class="align-center" id="id4">
-                    <img alt="../_images/lab7-editgreen.png" src="../_images/lab7-editgreen.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 91 </span><span class="caption-text">Edit the
-                          Greenfield-Ruyle</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a>
-                      </p>
-                    </figcaption>
-                  </figure>
-                  <figure class="align-center" id="id5">
-                    <img alt="../_images/lab7-enablelog.png" src="../_images/lab7-enablelog.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 92 </span><span class="caption-text">Enable Logging</span><a
-                          class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <p>Do not forget to click on <strong>Save In Drafts</strong> and then click on
-                    <strong>Commit</strong>, to push the change into the Data Plane.</p>
-                  <ul class="simple">
-                    <li>
-                      <p>SSH to the BU2 DB (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend
-                        first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB).</p>
-                    </li>
-                  </ul>
-                  <figure class="align-center" id="id6">
-                    <img alt="../_images/lab7-sshbu2db.png" src="../_images/lab7-sshbu2db.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 93 </span><span class="caption-text">BU2 DB ip
-                          address</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <p>Issue the following curl commands:</p>
-                  <div class="highlight-bash notranslate">
-                    <div class="highlight">
-                      <pre><span></span>curl<span class="w"> </span>www.google.com
-</pre>
-                    </div>
-                  </div>
-                  <div class="highlight-bash notranslate">
-                    <div class="highlight">
-                      <pre><span></span>curl<span class="w"> </span>www.wikipedia.com
-</pre>
-                    </div>
-                  </div>
-                  <div class="highlight-bash notranslate">
-                    <div class="highlight">
-                      <pre><span></span>curl<span class="w"> </span>www.espn.com
-</pre>
-                    </div>
-                  </div>
-                  <p>All commands will be successful, however, this is not what the request asked you to configure…</p>
-                  <ul class="simple">
-                    <li>
-                      <p>Enable the <code
-                          class="docutils literal notranslate"><span class="pre">Allow-List</span> <span class="pre">Model</span></code>
-                        (i.e. ZTNA approach), creating an <strong>Explicit Deny Rule</strong> first.</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Go to <strong>CoPilot &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code
-                        class="docutils literal notranslate"><span class="pre">&quot;+Rule&quot;</span></code> button.
-                    </p>
-                  </div>
-                  <p>Create an <code
-                      class="docutils literal notranslate"><span class="pre">Explicit</span> <span class="pre">Deny</span> <span class="pre">Rule</span></code>:
-                  </p>
-                  <ul class="simple">
-                    <li>
-                      <p><strong>Name</strong>: <span style='color:#33ECFF'>Explicit-Deny-Rule</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Destination Smartgroups</strong>: <span
-                          style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Deny</strong></span></p>
-                    </li>
-                  </ul>
-                  <p>Do not forget once again to click on <strong>Save In Drafts</strong> and then click on
-                    <strong>Commit</strong>.</p>
-                  <figure class="align-center" id="id7">
-                    <img alt="../_images/lab6-egressrule.png" src="../_images/lab6-egressrule.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 94 </span><span
-                          class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id7"
-                          title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <p>As soon as the Explicit-Deny-Rule is deployed the SSH session with the BU2 DB will be terminated.
-                  </p>
-                  <p>You will have to reestablish the SSH session with BU2 DB!</p>
-                  <div class="admonition warning">
-                    <p class="admonition-title">Warning</p>
-                    <p>The East-West traffic is blocked now!</p>
-                  </div>
-                  <ul class="simple">
-                    <li>
-                      <p>Explore the <strong>SmartGroups</strong> section on the CoPilot</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Go to <strong>CoPilot &gt; SmartGroups</strong></p>
-                  </div>
-                  <p>You will notice two SmartGroups, called BU1 and BU2, in addition to the pre-defined SmartGroups
-                    (i.e. <em>Anywhere</em> and <em>Public Internet</em>).</p>
-                  <figure class="align-center" id="id8">
-                    <img alt="../_images/lab7-bus.png" src="../_images/lab7-bus.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 95 </span><span class="caption-text">SmartGroups
-                          list</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <ul class="simple">
-                    <li>
-                      <p>Expand either SmartGroups to find out what VMs have been associated to each logical container.
-                      </p>
-                    </li>
-                  </ul>
-                  <figure class="align-center" id="id9">
-                    <img alt="../_images/lab7-bus2.png" src="../_images/lab7-bus2.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 96 </span><span class="caption-text">BU1’s members</span><a
-                          class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <p>It is evident that BU1 Frontend turns out belonging to the BU1 SmartGroup, whereas the BU2 DB is a
-                    member of the BU2 SmartGroup.</p>
-                  <div class="admonition important">
-                    <p class="admonition-title">Important</p>
-                    <p>These two SmartGroups had been preprovisioned for you at the launch of the PODs.</p>
-                  </div>
-                  <ul class="simple">
-                    <li>
-                      <p>Create an <strong>inter-rule</strong> that allows SSH from BU1 to BU2.</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click
-                      on the <code
-                        class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code>
-                      button.</p>
-                  </div>
-                  <p>Ensure these parameters are entered in the pop-up window <code
-                      class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:
-                  </p>
-                  <ul class="simple">
-                    <li>
-                      <p><strong>Name</strong>: <span style='color:#33ECFF'>inter-ssh-bu1-bu2</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>BU1</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>BU2</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Protocol</strong>: <span style='color:#33ECFF'>TCP</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Port</strong>: <span style='color:#33ECFF'>22</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p>
-                    </li>
-                  </ul>
-                  <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>commit</strong> this
-                    new rule!</p>
-                  <figure class="align-center" id="id10">
-                    <img alt="../_images/lab7-bus3.png" src="../_images/lab7-bus3.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 97 </span><span class="caption-text">Three rules</span><a
-                          class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <ul class="simple">
-                    <li>
-                      <p>SSH to BU2 DB from the BU1 Frontend, then check the logs!</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
-                  </div>
-                  <figure class="align-center" id="id11">
-                    <img alt="../_images/lab7-bus5.png" src="../_images/lab7-bus5.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 98 </span><span class="caption-text">SSH logs</span><a
-                          class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <ul class="simple">
-                    <li>
-                      <p>Now create another SmartGroup that identifies the BU2 DB, solely.</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Go to <strong>CoPilot &gt; SmartGroups</strong></p>
-                  </div>
-                  <p>Ensure these parameters are entered in the pop-up window <code
-                      class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:
-                  </p>
-                  <ul class="simple">
-                    <li>
-                      <p><strong>Name</strong>: <span style='color:#33ECFF'>BU2-DB</span></p>
-                    </li>
-                    <li>
-                      <p><strong>CSP Tag Key</strong>: <span style='color:#33ECFF'>name</span></p>
-                    </li>
-                    <li>
-                      <p><strong>CSP Tag Value</strong>: <span
-                          style='color:#33ECFF'>ace-azure-east-us-spoke2-bu2-db</span></p>
-                    </li>
-                  </ul>
-                  <p>Do not forget to click on <strong>Save</strong>.</p>
-                  <figure class="align-center" id="id12">
-                    <img alt="../_images/lab7-bu2db.png" src="../_images/lab7-bu2db.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 99 </span><span class="caption-text">BU2 DB
-                          SmartGroup</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <ul class="simple">
-                    <li>
-                      <p>Create a WebGroup that matches the <em>ubuntu</em> domain and sub-domains!</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; WebGroups</strong> and
-                      then click on <code
-                        class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code>.
-                    </p>
-                  </div>
-                  <p>Ensure these parameters are entered in the pop-up window <code
-                      class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">WebGroup&quot;</span></code>:
-                  </p>
-                  <ul class="simple">
-                    <li>
-                      <p><strong>Name</strong>: <span style='color:#33ECFF'>ubuntu-update</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Type</strong>: <span style='color:#33ECFF'>Domains</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'>*.ubuntu.com</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'> *.archive.ubuntu.com</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Domains/URLs</strong>: <span style='color:#33ECFF'> *.canonical.com</span></p>
-                    </li>
-                  </ul>
-                  <p>then click on <strong>Save</strong>.</p>
-                  <div class="admonition caution">
-                    <p class="admonition-title">Caution</p>
-                    <ul class="simple">
-                      <li>
-                        <p>The FQDNs <code
-                            class="docutils literal notranslate"><span class="pre">*.ubuntu.com</span></code> and <code
-                            class="docutils literal notranslate"><span class="pre">*.canonical.com</span></code> are
-                          both using a first-level wilcard. These wildcards will be placeholders for <em><a
-                              class="reference external" href="http://ntp.ubuntu.com">ntp.ubuntu.com</a></em>, <em><a
-                              class="reference external" href="http://ftp.ubuntu.com">ftp.ubuntu.com</a></em>, <em><a
-                              class="reference external" href="http://download.ubuntu.com">download.ubuntu.com</a></em>,
-                          <em><a class="reference external"
-                              href="http://contracts.canonical.com">contracts.canonical.com</a></em>…</p>
-                      </li>
-                      <li>
-                        <p>The FQDN <code
-                            class="docutils literal notranslate"><span class="pre">*.archive.ubuntu.com</span></code> is
-                          using a second-level wilcard, that allows to create a subdivision within <em><a
-                              class="reference external" href="http://archive.ubuntu.com">archive.ubuntu.com</a></em>.
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
-                  <figure class="align-center" id="id13">
-                    <img alt="../_images/lab7-webgroup.png" src="../_images/lab7-webgroup.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 100 </span><span class="caption-text">ubuntu-update</span><a
-                          class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <ul class="simple">
-                    <li>
-                      <p>Now create an <strong>inter-rule</strong> that allows BU2 DB to generate traffic towards
-                        Internet but only for reaching out the <ins>ubuntu servers</ins> !</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click
-                      on the <code
-                        class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code>
-                      button.</p>
-                  </div>
-                  <p>Ensure these parameters are entered in the pop-up window <code
-                      class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:
-                  </p>
-                  <ul class="simple">
-                    <li>
-                      <p><strong>Name</strong>: <span style='color:#33ECFF'>inter-ubuntu-bu2db-internet</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>BU2-DB</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>Public internet</span>
-                      </p>
-                    </li>
-                    <li>
-                      <p><strong>WebGroups</strong>: <span style='color:#33ECFF'>ubuntu-update</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Protocol</strong>: <span style='color:#33ECFF'>Any</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p>
-                    </li>
-                    <li>
-                      <p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p>
-                    </li>
-                  </ul>
-                  <p>Do not forget to click on <strong>Save In Drafts</strong>, and the <strong>commit</strong> your
-                    rule once again!</p>
-                  <figure class="align-center" id="id14">
-                    <img alt="../_images/lab7-lastrule.png" src="../_images/lab7-lastrule.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 101 </span><span
-                          class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id14"
-                          title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <figure class="align-center" id="id15">
-                    <img alt="../_images/lab7-lastcommit.png" src="../_images/lab7-lastcommit.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 102 </span><span class="caption-text">DCF rules list</span><a
-                          class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <ul class="simple">
-                    <li>
-                      <p>Now try issuing the following curl commands once again from the BU2 DB virtual machine:</p>
-                    </li>
-                  </ul>
-                  <div class="highlight-bash notranslate">
-                    <div class="highlight">
-                      <pre><span></span>curl<span class="w"> </span>www.google.com
-</pre>
-                    </div>
-                  </div>
-                  <div class="highlight-bash notranslate">
-                    <div class="highlight">
-                      <pre><span></span>curl<span class="w"> </span>www.wikipedia.com
-</pre>
-                    </div>
-                  </div>
-                  <div class="highlight-bash notranslate">
-                    <div class="highlight">
-                      <pre><span></span>curl<span class="w"> </span>www.espn.com
-</pre>
-                    </div>
-                  </div>
-                  <p>You will notice three <strong>Deny</strong> entries within the Monitor section that have matched
-                    the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code>,
-                    successfully.</p>
-                  <figure class="align-center" id="id16">
-                    <img alt="../_images/lab7-explicitdeny.png" src="../_images/lab7-explicitdeny.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 103 </span><span
-                          class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id16"
-                          title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <ul class="simple">
-                    <li>
-                      <p>Now try to run the apt-get commands !</p>
-                    </li>
-                  </ul>
-                  <div class="highlight-bash notranslate">
-                    <div class="highlight">
-                      <pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span>
-</pre>
-                    </div>
-                  </div>
-                  <p>and</p>
-                  <div class="highlight-bash notranslate">
-                    <div class="highlight">
-                      <pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
-</pre>
-                    </div>
-                  </div>
-                  <ul class="simple">
-                    <li>
-                      <p>Now check the logs within the <strong>Egress</strong> section!</p>
-                    </li>
-                  </ul>
-                  <div class="admonition tip">
-                    <p class="admonition-title">Tip</p>
-                    <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the
-                      <strong>ace-azure-east-us-spoke2</strong> VNet</p>
-                  </div>
-                  <figure class="align-center" id="id17">
-                    <img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 104 </span><span
-                          class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id17"
-                          title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <figure class="align-center" id="id18">
-                    <img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" />
-                    <figcaption>
-                      <p><span class="caption-number">Fig. 105 </span><span
-                          class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id18"
-                          title="Permalink to this image">#</a></p>
-                    </figcaption>
-                  </figure>
-                  <p>You have successfully applied the Secure Egress Control, leveraging both the Egress feature and the
-                    DCF rules!</p>
-                </section>
-              </section>
-
-              <script type="text/x-thebe-config">
+    <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -859,109 +661,107 @@
         predefinedOutput: true
     }
     </script>
-              <script>kernelName = 'python3'</script>
+    <script>kernelName = 'python3'</script>
 
-            </article>
+                </article>
+              
 
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 6 - Site2Cloud</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab8.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 8 - Distributed Cloud Firewall</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
+</ul>
+  </nav></div>
 
-            <footer class="bd-footer-article">
-
-              <div class="footer-article-items footer-article__inner">
-
-                <div class="footer-article-item"><!-- Previous / next buttons -->
-                  <div class="prev-next-area">
-                    <a class="left-prev" href="lab6.html" title="previous page">
-                      <i class="fa-solid fa-angle-left"></i>
-                      <div class="prev-next-info">
-                        <p class="prev-next-subtitle">previous</p>
-                        <p class="prev-next-title">Lab 6 - Site2Cloud</p>
-                      </div>
-                    </a>
-                    <a class="right-next" href="lab8.html" title="next page">
-                      <div class="prev-next-info">
-                        <p class="prev-next-subtitle">next</p>
-                        <p class="prev-next-title">Lab 8 - Distributed Cloud Firewall</p>
-                      </div>
-                      <i class="fa-solid fa-angle-right"></i>
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-
-            </footer>
-
+</div></div>
+              
+            
           </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
 
-
-          <div class="bd-sidebar-secondary bd-toc">
-            <div class="sidebar-secondary-items sidebar-secondary__inner">
-
-              <div class="sidebar-secondary-item">
-                <div class="page-toc tocsection onthispage">
-                  <i class="fa-solid fa-list"></i> Contents
-                </div>
-                <nav class="bd-toc-nav page-toc">
-                  <ul class="visible nav section-nav flex-column">
-                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1.
-                        SCENARIO</a></li>
-                  </ul>
-                </nav>
-              </div>
-
-            </div>
-          </div>
-
-
-        </div>
-        <footer class="bd-footer-content">
-
-          <div class="bd-footer-content__inner container">
-
-            <div class="footer-item">
-
-              <p class="component-author">
-                By Aviatrix ACE
-              </p>
-
-            </div>
-
-            <div class="footer-item">
-
-              <p class="copyright">
-
-                © Copyright 2023.
-                <br />
-
-              </p>
-
-            </div>
-
-            <div class="footer-item">
-
-            </div>
-
-            <div class="footer-item">
-
-            </div>
-
-          </div>
-        </footer>
-
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
 
       </main>
     </div>
   </div>
-
+  
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
-</body>
-
+  </body>
 </html>
