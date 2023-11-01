@@ -333,10 +333,21 @@ document.write(`
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
 <p>BU1 and BU2 were able to communicate with each other as of Friday EOB (i.e end of LAB2).</p>
 <p>However, the network team received a complaint from BU1 Frontend Team that the connectivity with BU2 Mobile App was no longer working.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The traffic between the two VPCs in AWS is inspected by a <strong>Firewall</strong> deployed through the Aviatrix <strong>FireNet</strong> feature.</p>
+<p>The <strong><code class="docutils literal notranslate"><span class="pre">Inspection</span> <span class="pre">Policy</span></code></strong> had been already applied on each Spoke VPC in AWS, at the launch of the PODs. The traffic generating from or going to either of the AWS VPCs will be sent to the Firewall by the Transit FireNet Gateway.</p>
 <figure class="align-center" id="id1">
+<img alt="../_images/lab3-policy2.png" src="../_images/lab3-policy2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Inspection Policies on the FireNet Transit GW</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/lab3-topology.png"><img alt="../_images/lab3-topology.png" src="../_images/lab3-topology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Lab 3 Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Lab 3 Topology</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -349,10 +360,10 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id3">
 <img alt="../_images/lab3-pingfails.png" src="../_images/lab3-pingfails.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -360,145 +371,158 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the gateway <strong>ace-aws-eu-west-1-spoke1</strong>  <strong>&gt; Gateway Routes</strong> and search for the subnet <strong>10.1.212.0/24</strong>, where BU2 Mobile App resides.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select for example the gateway <strong>ace-aws-eu-west-1-spoke1</strong>  <strong>&gt; Gateway Routes</strong> and search for the subnet <strong>10.1.212.0/24</strong>, where BU2 Mobile App resides.</p>
 </div>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id4">
 <img alt="../_images/lab3-routecheck.png" src="../_images/lab3-routecheck.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Filtering out</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Filtering out</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>From the outcome above, it is evident that Spoke1 in AWS has the destination route in its RTB.</p>
+<p>From the outcome above, it is evident that Spoke1 in AWS has the destination route in its RTB. You can verify the inverse, inspecting the Routing Table of  the Spoke2 in AWS.</p>
 <ul class="simple">
 <li><p>Use <strong>Diagnostics Tools</strong> from the <em>Spoke1 Gateway</em> in AWS and try to ping/traceroute the instance behind the other spoke (i.e. BU2 Mobile App).</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Retrieve the private IP address of the <strong>BU2 Mobile App</strong> from the Cloud Assets inventory!</p>
-<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for <code class="docutils literal notranslate"><span class="pre">&quot;mobile&quot;</span></code>, then retrieve the private IP of the EC2 instance.</p>
+<p>Retrieve the private IP address of the <strong>BU2 Mobile App</strong> from the Cloud Assets inventory, first!</p>
+<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for <code class="docutils literal notranslate"><span class="pre">&quot;mobile&quot;</span></code>, then retrieve the private IP of the interested EC2 instance.</p>
 </div>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id5">
 <img alt="../_images/lab3-personalpod.png" src="../_images/lab3-personalpod.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Private IP of BU2 Mobile App</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Private IP of BU2 Mobile App</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong> then select the GW <strong>ace-aws-eu-west-1-spoke1</strong> and ping the private IP of BU2 Mobile App</p>
 </div>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id6">
 <img alt="../_images/lab3-pingfailss.png" src="../_images/lab3-pingfailss.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Ping is unsuccessful</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Ping is unsuccessful</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the outcome above you can notice that from the Spoke1 GW in AWS, the BU2 Mobile App is not reachable.</p>
 <ul class="simple">
 <li><p>Now try to ping both workloads (i.e. BU1 Frontend and BU2 Mobile App) from the <strong>Transit</strong> GW in AWS.</p></li>
 </ul>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id7">
 <img alt="../_images/lab3-bu1ping.png" src="../_images/lab3-bu1ping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Ping is ok from the Transit GW towards BU1 Frontend</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Ping is ok from the Transit GW towards BU1 Frontend</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id8">
 <img alt="../_images/lab3-bu2ping.png" src="../_images/lab3-bu2ping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Ping is ok from the Transit GW towards BU2 Mobile App</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Ping is ok from the Transit GW towards BU2 Mobile App</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the outcome above, you can notice that the Transit GW in AWS can ping both BU1 Frontend and BU2 Mobile App, successfully.</p>
 <ul class="simple">
-<li><p>Check the FireNet section!</p></li>
+<li><p>Let’s check the <strong>FireNet</strong> section!</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet</strong></p>
 </div>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id9">
 <img alt="../_images/lab3-unreachable.png" src="../_images/lab3-unreachable.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 34 </span><span class="caption-text">The FW is down</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">The FW is unreachable</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will notice that the Firewall turns out being down.</p>
-<p>Click on the <strong>Firewall</strong> tab!</p>
-<ul class="simple">
-<li><p>Try to ping the <strong>LAN</strong> interface of the FW from the <strong>Transit FireNet Gateway</strong>.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>First you need to retrieve the LAN Interface IP address of the FW.
-Go to <strong>Controller &gt; FIREWALL NETWORK &gt; List &gt;</strong> select the Transit Firenet GW, under the <strong>Firenet TAB &gt;</strong> click on <strong>Details &gt; Diagnostics &gt;</strong> then click on <strong>Run</strong> and then on <strong>Show</strong>.</p>
+<p>Click on the <strong>Firewall</strong> tab! You will notice that the Firewall turns out being down.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The ICMP health check is initiated every 5 seconds from the Aviatrix Transit FireNet Gateway. The 5-second setting is the default and cannot be changed.</p>
 </div>
-<figure class="align-center" id="id9">
-<img alt="../_images/lab3-details.png" src="../_images/lab3-details.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Transit FireNet Gateway Details</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Scroll through the whole configuration till the ACE-FW section: the IP is beside the string <strong>“lan_private_ip”</strong>.</p>
 <figure class="align-center" id="id10">
-<img alt="../_images/lab3-lanip.png" src="../_images/lab3-lanip.png" />
+<img alt="../_images/lab3-fwdown.png" src="../_images/lab3-fwdown.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Lan Private IP of the FW</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">The FW is down</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p><strong>[WORKAROUND]</strong> Try to find a way to exclude traffic from being sent to the FW.</p></li>
+<li><p>Apply a quick <strong>workaround</strong>. Before exploring the firewall configuration, exclude from the East-West Inspection, either of the CIDRs of the two AWS Spoke VPCs.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>Controller &gt; FIREWALL NETWORK &gt; List &gt; Firenet</strong> tab &gt; select the Transit FireNet GW and click on <strong>DETAILS</strong>.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong> and click on the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW.</p>
+<p>Then click on <strong>Settings</strong> and insert the CIDR of the AWS <strong>ace-aws-eu-west-1-spoke2</strong> VPC on the field <code class="docutils literal notranslate"><span class="pre">&quot;Exclude</span> <span class="pre">from</span> <span class="pre">East-West</span> <span class="pre">Inspection&quot;</span></code>.</p>
+<p>Do not forget to click on <strong>Save</strong>.</p>
 </div>
 <figure class="align-center" id="id11">
-<img alt="../_images/lab3-details.png" src="../_images/lab3-details.png" />
+<img alt="../_images/lab3-firenetgw.png" src="../_images/lab3-firenetgw.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Transit FireNet Gateway Details</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">The Transit FireNet GW</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Scroll down till the <strong>Network List Excluded From East-West Inspection</strong> section and add the source subnet <strong>10.1.211.0/24</strong> (e.g. this is the subnet where the BU! Frontend resides), as depicted below.</p>
 <figure class="align-center" id="id12">
-<img alt="../_images/lab3-excemption.png" src="../_images/lab3-excemption.png" />
+<img alt="../_images/lab3-excemption2.png" src="../_images/lab3-excemption2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Exemption</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Try to ping once again the BU2 Mobile App from the B1 Frontend. This time the ping will be successful thanks to the workaround!</p>
-<figure class="align-center" id="id13">
-<img alt="../_images/lab3-successful.png" src="../_images/lab3-successful.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Ping is successful</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Exclude the CIDR</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Remove the workaround previously applied and have a look at the dashboard on the main page of the Controller.</p></li>
+<li><p>Issue the ping towards the <strong>BU2 Mobile App</strong> from the <strong>BU1 Frontend</strong>. This time the connectvity will work!</p></li>
+</ul>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab3-pingok2.png" src="../_images/lab3-pingok2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Launch a <strong>traceroute</strong> towards the Private IP address of the BU2 Mobile App.</p></li>
 </ul>
 <figure class="align-center" id="id14">
-<img alt="../_images/lab3-alert.png" src="../_images/lab3-alert.png" />
+<img alt="../_images/lab3-traceroute.png" src="../_images/lab3-traceroute.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Dashboard: the Widget is showing an Alert!</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Traceroute is ok</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will notice a clear yellow alarm on the Trasit FireNet widget! Click on the widget, then select the Transit Firenet GW and click on <strong>DETAILS</strong>.</p>
-<figure class="align-center" id="id15">
-<img alt="../_images/lab3-down.png" src="../_images/lab3-down.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 41 </span><span class="caption-text">FW is unreachable</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>This is a clear outcome that there is a problem on the FW. Ultimately, the firewall is not reachable.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The traceroute outcome shows the whole path from the source, the BU1 Frontend, till the recipient, the BU2 Mobile App.</p>
+<p><ins>Undoubtedly, the Firewall is excluded from this path!</ins></p>
+</div>
 <ul class="simple">
-<li><p>Log into the FW (refer to your POD portal for the credentials for logging in) and explore its configuration.</p></li>
+<li><p>Now remove the workaround and explore the Firewall configuration!</p></li>
 </ul>
-<figure class="align-center" id="id16">
-<img alt="../_images/lab3-down.png" src="../_images/lab3-down.png" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW, then click on <strong>Settings</strong> and remove the CIDR <code class="docutils literal notranslate"><span class="pre">10.1.212.0/24</span></code>.</p>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+</div>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab3-removeex.png" src="../_images/lab3-removeex.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 42 </span><span class="caption-text">FW credentials</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Remove the excemption</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<ul class="simple">
+<li><p>Log in to the FW (<ins>refer to your POD portal for the credentials</ins>) and explore the configuration.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can access the Firewall in two ways:</p>
+<ol class="arabic simple">
+<li><p>From the URL available on the <strong>POD Portal</strong>.</p></li>
+<li><p><strong>CoPilot &gt; Security &gt; FireNet &gt; Firewall</strong> and click on the <strong>URL</strong>.</p></li>
+</ol>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab3-url.png" src="../_images/lab3-url.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">FW URL</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<ul class="simple">
+<li><p>Insert the credentials.</p></li>
+</ul>
 <figure class="align-center" id="id17">
 <img alt="../_images/lab3-fw.png" src="../_images/lab3-fw.png" />
 <figcaption>
@@ -509,20 +533,40 @@ Go to <strong>Controller &gt; FIREWALL NETWORK &gt; List &gt;</strong> select th
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>FW &gt; Network &gt; Interfaces</strong> and click the LAN interface (port2) and fix the issue!</p>
 </div>
-<p>The port was disabled to simulate the failure of the GW…</p>
+<p>The port was disabled to simulate a software failure of the FW…</p>
+<p>Click on the greyed-out interface LAN (port2)</p>
 <figure class="align-center" id="id18">
 <img alt="../_images/lab3-fwint.png" src="../_images/lab3-fwint.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 44 </span><span class="caption-text">FW interface</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Relaunch the ping from <strong>BU1 Frontend</strong> towards <strong>BU2 Mobile App</strong>, after having <ins>re-enabled</ins> the LAN interface of the firewall.</p>
+<p>Scroll down until you see the <code class="docutils literal notranslate"><span class="pre">&quot;Status&quot;</span></code> button of the interface and finally reactivate it.</p>
+<p>Of course, then click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id19">
-<img alt="../_images/lab3-pingworks.png" src="../_images/lab3-pingworks.png" />
+<img alt="../_images/lab3-enableint.png" src="../_images/lab3-enableint.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Ping is ok!</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Reactivate the LAN port</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Relaunch the ping from <strong>BU1 Frontend</strong> towards <strong>BU2 Mobile App</strong>, after having <ins>reenabled</ins> the LAN interface of the firewall.</p>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab3-pingworks.png" src="../_images/lab3-pingworks.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Ping is ok!</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Relaunch also the traceroute from <strong>BU1 Frontend</strong> towards <strong>BU2 Mobile App</strong>.</p>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab3-traceroute2.png" src="../_images/lab3-traceroute2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Ping is ok!</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This time the traceroute outcome shows twice the IP address of the Transit FireNet GW (i.e. <strong>.143</strong> as shown in the screenshot above) along the path, due to the fact that the traffic is now diverted towards the Firewall that, after the completion of the Deep Packet Inspection, sends the permitted traffic back to the Transit FireNet GW.</p>
+</div>
 </section>
 </section>
 
