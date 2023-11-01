@@ -510,7 +510,7 @@ The logs above confirm that the ICMP protocol is permitted within the Smart Grou
 
 Create a new rule that allows ICMP FROM bu2 TO bu1.
 
-Go to **CoPilot > Security > Distributed Firewalling > Rules** and click on the `"+ Rule"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
 ```{figure} images/lab10-newrule4.png
 ---

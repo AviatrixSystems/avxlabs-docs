@@ -4,11 +4,15 @@
 
 Welcome to the `Aviatrix Certified Engineer Multicloud Network Security Specialty` training.
 
-During this hands on deep dive session, you will gain knowledge and experience in these areas:
+During this session, you will gain knowledge and experience in these areas:
 
-* Learn how cloud security is different than on-premises security
-* Understand native security in the major cloud service providers (CSPs) – AWS, Azure, GCP, OCI
-* Learn trends in security and why the model of embedded security is the key
-* Understand the types of traffic patterns from applications and user perspectives that are possible in the cloud
-* Cover Audit, InfoSec, governance, and compliance requirements
-* Use important lessons learned from breaches such as Capital One and SolarWinds to understand security concerns in the cloud
+- Learn how cloud security is different than on-premises security
+- Understand native security in the major cloud service providers (CSPs) – AWS and Azure
+- Learn trends in security and why the model of embedded security is the key
+- Understand the types of traffic patterns from applications and user perspectives that are possible in the cloud
+- Build Zero Trust Network Architecture (aka ZTA or ZTN) for public cloud using [NIST SP 800-207 approach](https://www.nist.gov/publications/zero-trust-architecture)
+- Understand the concepts of dynamic policy, secure egress filtering, network-segmentation, micro-segmentation and how to implement it in your cloud network design
+- Implement secure cloud networking designs while reducing the cost
+- Apply security controls to block reputation and signature based attacks
+- Provide deeper visibility for security, operational excellence
+- Cover Audit, InfoSec, governance, and compliance requirements
