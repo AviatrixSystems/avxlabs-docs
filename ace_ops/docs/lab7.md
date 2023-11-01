@@ -1,4 +1,4 @@
-# Lab 7 - Egress FQDN
+# Lab 7 - Secure Egress
 
 ## 1. SCENARIO
 
@@ -19,7 +19,7 @@ Lab 7 Scenario Topology
 - Enable the Egress on the VPC where the BU2 DB resides.
 
 ```{tip}
-Go to **CoPilot > Egress > Egress VPC/VNets** and then click on the `"+ Local Egress on VPC/VNets"` button.
+Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"+ Local Egress on VPC/VNets"` button.
 
 Select the **_ace-azure-east-us-spoke2_** VPC.
 
@@ -33,10 +33,20 @@ align: center
 ace-azure-east-us-spoke2
 ```
 
+```{important}
+This action will install a `Default Route` within the Private Subnets, pointing to the **_ace-azure-east-us-spoke2_** GW.
+
+```{figure} images/lab7-defaultroute.png
+---
+align: center
+---
+ace-azure-east-us-spoke2
+```
+
 - Enable the **Distributed Cloud Firewall** feature.
 
 ```{tip}
-Go to **CoPilot > Distributed Cloud Firewall** and then click on the `"Enable Distributed Cloud Firewall"` button, and then to the subsequent `"Begin Using Distributed Cloud Firewall"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall** and then click on the `"Enable Distributed Cloud Firewall"` button, and then to the subsequent `"Begin Using Distributed Cloud Firewall"` button.
 ```
 
 You will immediately notice a pop-up message, informing you that the `Greenfield Rule` will be created for allowing all kind of traffic in a typical **_Deny-List_** model.
@@ -98,7 +108,7 @@ All commands will be successful, however, this is not what the request asked you
 - Enable the `Allow-List Model` (i.e. ZTNA approach), creating an **Explicit Deny Rule** first.
 
 ```{tip}
-Go to **CoPilot > Distributed Cloud Firewall > Rules** and click on the `"+Rule"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+Rule"` button.
 ```
 
 Create an `Explicit Deny Rule`:
@@ -141,7 +151,7 @@ align: center
 SmartGroups list
 ```
 
-- Expand either SmartGroups to find out what VMs have been associated to each logical container.
+- Expand either SmartGroups to find out what VMs have been associated to each of these logical container.
 
 ```{figure} images/lab7-bus2.png
 ---
@@ -172,7 +182,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Logging**: <span style='color:#33ECFF'>On</span>
 - **Action**: <span style='color:#33ECFF'>**Permit**</span>
 
-Do not forget to click on **Save In Drafts**, and then **commit** this new rule!
+Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
 
 ```{figure} images/lab7-bus3.png
 ---
@@ -215,7 +225,7 @@ align: center
 BU2 DB SmartGroup
 ```
 
-- Create a WebGroup that matches the *ubuntu* domain and sub-domains!
+- Create a WebGroup that matches the *ubuntu* domain, its sub-domains and the *canonical* domain!
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and then click on `"+ WebGroup"`.
@@ -260,7 +270,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Logging**: <span style='color:#33ECFF'>On</span>
 - **Action**: <span style='color:#33ECFF'>**Permit**</span>
 
-Do not forget to click on **Save In Drafts**, and the **commit** your rule once again!
+Do not forget to click on **Save In Drafts**, and the **Commit** your rule once again!
 
 ```{figure} images/lab7-lastrule.png
 ---
@@ -288,7 +298,7 @@ curl www.wikipedia.com
 curl www.espn.com
 ```
 
-You will notice three **Deny** entries within the Monitor section that have matched the `Explicit-Deny-Rule`, successfully.
+You will notice three **Drop** entries within the Monitor section that have matched the `Explicit-Deny-Rule`, successfully.
 
 ```{figure} images/lab7-explicitdeny.png
 ---
