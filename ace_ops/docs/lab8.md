@@ -21,7 +21,7 @@ Existing DCF rules
 
 - The BU2 Mobile App has raised a complaint that is not able to use the SSH protocol <span style='color:lightgreen'>**towards**</span> BU1.
 
-You have been engaged to create the following **four** new additional rules:
+You have been engaged to create the following **_four_** new additional rules:
 
 - **Intra-rule**: allow SSH <span style='color:orange'>**within**</span> BU1
 - **Intra-rule**: allow ICMP <span style='color:orange'>**within**</span> BU1

@@ -4,8 +4,13 @@
 
 Let’s start the investigation to bring up back our application. The communication between the ALB inside the Ingress VPC and the Proxy VM is broken.
 
-![Lab Overview](images/ingress-proxy.png)
-_Figure 5: Ingress to Proxy Failure_
+```{figure} images/ingress-proxy.png
+---
+height: 400px
+align: center
+---
+Ingress to Proxy Failure
+```
 
 * Search for the Private IP address of the Proxy VM
 
@@ -16,9 +21,11 @@ Go to **CoPilot > Cloud Fabric > Topology** and find the Proxy VM and retrieve i
 * Try to ping the Proxy VM from the *Ingress Spoke GW*.
 
 ```{hint}
-Select the *Ingress Spoke GW* on the topology and launch the **Gateway Diagnostics** for *ping/traceroute*.
+Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
+
+Select the **_Ingress Spoke GW_** and launch a **traceroute**/**ping** towards the private IP address of the Proxy VM.
 ```
 
 ```{attention}
-By the end of this challenge you need to ensure that the flow goes beyond the Ingress spoke to the Transit and to the Proxy Spoke.
+By the end of this challenge you need to ensure that the flow goes beyond the Ingress Spoke to the Transit and to the Proxy Spoke.
 ```

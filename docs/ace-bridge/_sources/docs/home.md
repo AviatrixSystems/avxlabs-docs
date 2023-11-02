@@ -5,8 +5,13 @@ The objective behind this section is to collaborate together on a pre-built scen
 ## 1 - Initial Scenario
 The lab topology can be found below:
 
-![Lab Overview](images/Topology-single.png)
-_Figure 1: Initial Topology_
+```{figure} images/Topology-single.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
 
 ### 1.1. - Notes
 A few notes on the scenario are here:
@@ -38,5 +43,9 @@ A few notes on the scenario are here:
 If you succeed in fixing all the problems, this how the Wordpress app page would look like.
 ```
 
-![Lab Overview](images/final-wordpress.png)
-_Figure 2: Wordpress is OK_
+```{figure} images/final-wordpress.png
+---
+align: center
+---
+Wordpress is OK
+```
