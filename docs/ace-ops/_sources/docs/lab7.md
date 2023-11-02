@@ -16,6 +16,8 @@ align: center
 Lab 7 Scenario Topology
 ```
 
+## 2. CHANGE REQUEST
+
 - Enable the Egress on the VPC where the BU2 DB resides.
 
 ```{tip}
@@ -270,7 +272,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Logging**: <span style='color:#33ECFF'>On</span>
 - **Action**: <span style='color:#33ECFF'>**Permit**</span>
 
-Do not forget to click on **Save In Drafts**, and the **Commit** your rule once again!
+Do not forget to click on **Save In Drafts**, and then **Commit** your rule once again!
 
 ```{figure} images/lab7-lastrule.png
 ---

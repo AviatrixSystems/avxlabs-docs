@@ -331,7 +331,7 @@ document.write(`
 <h1>Lab 8 - Distributed Cloud Firewall<a class="headerlink" href="#lab-8-distributed-cloud-firewall" title="Permalink to this heading">#</a></h1>
 <section id="scenario">
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
-<p>ACE’s environment has been split up in two Smart Groups: <strong>BU1</strong> and <strong>BU2</strong>. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.</p>
+<p>ACE’s environment has been split up in two SmartGroups: <strong>BU1</strong> and <strong>BU2</strong>. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.</p>
 <p>Furthermore, four DCF rules have been applied so far.</p>
 <figure class="align-center" id="id1">
 <img alt="../_images/lab8-initialrule.png" src="../_images/lab8-initialrule.png" />
@@ -340,12 +340,16 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>The BU1 Frontend has raised a complaint that is not able to SSH <span style='color:orange'><strong>within</strong></span> BU1.</p></li>
-<li><p>The BU2 Mobile App has raised a complaint that is not able to SSH <span style='color:lightgreen'><strong>towards</strong></span> BU1.</p></li>
+<li><p>The BU1 Frontend has raised a complaint that is not able to use the SSH protocol <span style='color:orange'><strong>within</strong></span> BU1.</p></li>
+<li><p>The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:orange'><strong>within</strong></span> BU1.</p></li>
+<li><p>The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:lightgreen'><strong>towards</strong></span> BU2.</p></li>
+<li><p>The BU2 Mobile App has raised a complaint that is not able to use the SSH protocol <span style='color:lightgreen'><strong>towards</strong></span> BU1.</p></li>
 </ul>
 <p>You have been engaged to create the following <strong>two</strong> additional rules:</p>
 <ul class="simple">
 <li><p><strong>Intra-rule</strong>: allow SSH <span style='color:orange'><strong>within</strong></span> BU1</p></li>
+<li><p><strong>Intra-rule</strong>: allow ICMP <span style='color:orange'><strong>within</strong></span> BU1</p></li>
+<li><p><strong>Inter-rule</strong>: allow ICMP <span style='color:lightblue'><strong>from</strong></span> BU1 <strong>to</strong> BU2</p></li>
 <li><p><strong>Inter-rule</strong>: allow SSH <span style='color:lightblue'><strong>from</strong></span> BU2 <strong>to</strong> BU1</p></li>
 </ul>
 <figure class="align-center" id="id2">
@@ -358,75 +362,177 @@ document.write(`
 <section id="change-request">
 <h2>2. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>SSH on the <strong>BU1 Frontend</strong> and try to SSH to any other instance in BU1.</p>
+<li><p>SSH on the <strong>BU1 Frontend</strong> and try to SSH to any other instances in BU1.</p>
 <ul>
 <li><p>SSH fails as expected.</p></li>
 </ul>
 </li>
 </ul>
 <figure class="align-center" id="id3">
-<img alt="../_images/lab8-topology.png" src="../_images/lab8-topology.png" />
+<img alt="../_images/lab8-sshbu1.png" src="../_images/lab8-sshbu1.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 109 </span><span class="caption-text">SSH fails within BU1</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Create an intra-rule that allows SSH <strong>within</strong> bu1 and then verify that SSH is permitted among BU1’s instances. Do not forget to enable <strong>“Logging”</strong>.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>+Rule</strong>.
-Please bear in mind that once the rule has been created is not immediately applied on the Data Plane (i.e. it is just kept in <em>SAVED DRAFTS</em> state). You have to click on <strong>COMMIT</strong>.</p>
-</div>
-<figure class="align-center" id="id4">
-<img alt="../_images/lab8-sshok.png" src="../_images/lab8-sshok.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 110 </span><span class="caption-text">SSH is ok within BU1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Afterwards try also to check the <strong>Monitor</strong> section in order to explore the logs!</p>
-<figure class="align-center" id="id5">
-<img alt="../_images/lab8-monitor.png" src="../_images/lab8-monitor.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>SSH on the <strong>BU2 Mobile App</strong> and try to SSH to <strong>BU1 Frontend</strong>.</p>
-<ul>
-<li><p>SSH fails as expected.</p></li>
-<li><p>Refer to your POD portal or check the Topology for the FQDN/IP of BU1 Frontend. Moreover, refer to the private symbolic names or private IPs!</p></li>
-</ul>
-</li>
-</ul>
-<figure class="align-center" id="id6">
-<img alt="../_images/lab8-bu2tobu1.png" src="../_images/lab8-bu2tobu1.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 112 </span><span class="caption-text">BU2 to BU1 fails</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Create an inter-rule that allows SSH <strong>from</strong> BU2 <strong>to</strong> BU1 and then verify that SSH is permitted from Mobile App BU2 towards Frontend BU1. Do not forgert to enable the <strong>“Logging”</strong>.</p></li>
+<li><p>Create an intra-rule that allows SSH <strong>within</strong> BU1 and then verify that SSH is permitted among BU1’s instances.
+Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>+Rule</strong>.</p>
 </div>
-<figure class="align-center" id="id7">
-<img alt="../_images/lab8-bu2tobu1ok.png" src="../_images/lab8-bu2tobu1ok.png" />
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>intra-ssh-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>BU1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>BU1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#33ECFF'>22</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab8-rule01.png" src="../_images/lab8-rule01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 113 </span><span class="caption-text">BU2 to BU1 is ok</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 110 </span><span class="caption-text">SSH is ok within BU1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Check again the <strong>Monitor</strong> section to find out the new logs for the inter-rule!</p></li>
+<li><p>Retry to SSH to the BU1 Analytics from the BU1 Frontend; this time the operation will be accomplished!</p></li>
 </ul>
-<figure class="align-center" id="id8">
-<img alt="../_images/lab8-monitor2.png" src="../_images/lab8-monitor2.png" />
+<figure class="align-center" id="id5">
+<img alt="../_images/lab8-sshok.png" src="../_images/lab8-sshok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 111 </span><span class="caption-text">SSH is ok within BU1</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<ul class="simple">
+<li><p>Now terminate the SSH session with the BU1 Analytics, typing <code class="docutils literal notranslate"><span class="pre">&quot;exit&quot;</span></code>, and issue the ping command towards the BU1 Anlytics from the BU1 Frontend.</p></li>
+</ul>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab8-pingbu1.png" src="../_images/lab8-pingbu1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Create another intra-rule that allows ICMP <strong>within</strong> BU1 and then verify that ICMP is permitted among BU1’s instances. Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>+Rule</strong>.</p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>intra-icmp-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>BU1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>BU1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>ICMP</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab8-icmprulebu1.png" src="../_images/lab8-icmprulebu1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The ping will work this time thanks to this new fresh intra-rule!</p></li>
+</ul>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab8-icmprulebu1ok.png" src="../_images/lab8-icmprulebu1ok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Let’s try to ping the BU2 Mobile App from the BU1 Frontend. The ping will fail due to the absence of an <strong>inter-rule</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab8-pingbu1bu2.png" src="../_images/lab8-pingbu1bu2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 115 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>This time create an inter-rule that allows ICMP <strong>from</strong> BU1 <strong>towards</strong> BU2. Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>+Rule</strong>.</p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>inter-icmp-bu1-bu2</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>BU1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>BU2</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>ICMP</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab8-penultimaterule.png" src="../_images/lab8-penultimaterule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Retry to ping the BU2 Mobile App from the BU1 Frontend. The ping will be successful thanks to the inter-rule!</p></li>
+</ul>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab8-penultimateping.png" src="../_images/lab8-penultimateping.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 117 </span><span class="caption-text">Ping from BU1 to BU2</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now, let’s SSH to the BU2 Mobile App and hen ttry to SSH to the BU1 Frontend.</p></li>
+</ul>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab8-bu2sshbu1.png" src="../_images/lab8-bu2sshbu1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 118 </span><span class="caption-text">SSH from BU2 to BU1 will fail</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Create another inter-rule that allows ssh <strong>from</strong> BU2 <strong>towards</strong> BU1. Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>+Rule</strong>.</p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>inter-ssh-bu2-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>BU2</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>BU1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#33ECFF'>22</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab8-lastrule.png" src="../_images/lab8-lastrule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 119 </span><span class="caption-text">The last inter-rule!</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Let’s try to issue the SSH command from the BU2 Mobile App towards the BU1 Frontend. thsi time the SSH will work successfully.</p></li>
+</ul>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab8-lastssh.png" src="../_images/lab8-lastssh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 120 </span><span class="caption-text">The last inter-rule!</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Congratulations, you have completed all labs and created a nice set of DCF rules across your Multicloud infrastructure!</p>
 </section>
 </section>
 
