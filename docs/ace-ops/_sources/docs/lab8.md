@@ -4,7 +4,7 @@
 
 ACE’s environment has been split up in two SmartGroups: **BU1** and **BU2**. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.
 
-Furthermore, four DCF rules have been applied so far.
+Furthermore, four DCF rules have been already applied so far.
 
 ```{figure} images/lab8-initialrule.png
 ---
@@ -21,7 +21,7 @@ Existing DCF rules
 
 - The BU2 Mobile App has raised a complaint that is not able to use the SSH protocol <span style='color:lightgreen'>**towards**</span> BU1.
 
-You have been engaged to create the following **two** additional rules:
+You have been engaged to create the following **_four_** new additional rules:
 
 - **Intra-rule**: allow SSH <span style='color:orange'>**within**</span> BU1
 - **Intra-rule**: allow ICMP <span style='color:orange'>**within**</span> BU1
@@ -72,7 +72,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 ---
 align: center
 ---
-SSH is ok within BU1
+Another intra-rule
 ```
 
 - Retry to SSH to the BU1 Analytics from the BU1 Frontend; this time the operation will be accomplished!
@@ -84,7 +84,7 @@ align: center
 SSH is ok within BU1
 ```
 
-- Now terminate the SSH session with the BU1 Analytics, typing `"exit"`, and issue the ping command towards the BU1 Anlytics from the BU1 Frontend.
+- Now terminate the SSH session with the BU1 Analytics, typing `"exit"`, and issue the ping command towards the BU1 Anlytics from the BU1 Frontend. The ping will not work!
 
 ```{figure} images/lab8-pingbu1.png
 ---
@@ -114,7 +114,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 ---
 align: center
 ---
-Ping will fail
+New intra-rule
 ```
 
 - The ping will work this time thanks to this new fresh intra-rule!
@@ -123,7 +123,7 @@ Ping will fail
 ---
 align: center
 ---
-Ping will fail
+Ping will be ok!
 ```
 
 - Let's try to ping the BU2 Mobile App from the BU1 Frontend. The ping will fail due to the absence of an **inter-rule**.
@@ -168,7 +168,7 @@ align: center
 Ping from BU1 to BU2
 ```
 
-- Now, let's SSH to the BU2 Mobile App and hen ttry to SSH to the BU1 Frontend.
+- Now, let's SSH to the BU2 Mobile App and then let's try to SSH to the BU1 Frontend. Of course, SSH will fail!
 
 ```{figure} images/lab8-bu2sshbu1.png
 ---
@@ -177,7 +177,7 @@ align: center
 SSH from BU2 to BU1 will fail
 ```
 
-- Create another inter-rule that allows ssh **from** BU2 **towards** BU1. Do not forget to enable **“Logging”**, for auditing purposes.
+- Create another inter-rule that allows SSH **from** BU2 **towards** BU1. Do not forget to enable **“Logging”**, for auditing purposes.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**.
@@ -202,7 +202,7 @@ align: center
 The last inter-rule!
 ```
 
-- Let's try to issue the SSH command from the BU2 Mobile App towards the BU1 Frontend. thsi time the SSH will work successfully.
+- Let's try to issue the SSH command from the BU2 Mobile App towards the BU1 Frontend. This time the SSH will work smoothly.
 
 ```{figure} images/lab8-lastssh.png
 ---

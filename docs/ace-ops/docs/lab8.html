@@ -332,7 +332,7 @@ document.write(`
 <section id="scenario">
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
 <p>ACE’s environment has been split up in two SmartGroups: <strong>BU1</strong> and <strong>BU2</strong>. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.</p>
-<p>Furthermore, four DCF rules have been applied so far.</p>
+<p>Furthermore, four DCF rules have been already applied so far.</p>
 <figure class="align-center" id="id1">
 <img alt="../_images/lab8-initialrule.png" src="../_images/lab8-initialrule.png" />
 <figcaption>
@@ -345,7 +345,7 @@ document.write(`
 <li><p>The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:lightgreen'><strong>towards</strong></span> BU2.</p></li>
 <li><p>The BU2 Mobile App has raised a complaint that is not able to use the SSH protocol <span style='color:lightgreen'><strong>towards</strong></span> BU1.</p></li>
 </ul>
-<p>You have been engaged to create the following <strong>two</strong> additional rules:</p>
+<p>You have been engaged to create the following <strong><em>four</em></strong> new additional rules:</p>
 <ul class="simple">
 <li><p><strong>Intra-rule</strong>: allow SSH <span style='color:orange'><strong>within</strong></span> BU1</p></li>
 <li><p><strong>Intra-rule</strong>: allow ICMP <span style='color:orange'><strong>within</strong></span> BU1</p></li>
@@ -396,7 +396,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id4">
 <img alt="../_images/lab8-rule01.png" src="../_images/lab8-rule01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 110 </span><span class="caption-text">SSH is ok within BU1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 110 </span><span class="caption-text">Another intra-rule</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -409,7 +409,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now terminate the SSH session with the BU1 Analytics, typing <code class="docutils literal notranslate"><span class="pre">&quot;exit&quot;</span></code>, and issue the ping command towards the BU1 Anlytics from the BU1 Frontend.</p></li>
+<li><p>Now terminate the SSH session with the BU1 Analytics, typing <code class="docutils literal notranslate"><span class="pre">&quot;exit&quot;</span></code>, and issue the ping command towards the BU1 Anlytics from the BU1 Frontend. The ping will not work!</p></li>
 </ul>
 <figure class="align-center" id="id6">
 <img alt="../_images/lab8-pingbu1.png" src="../_images/lab8-pingbu1.png" />
@@ -437,7 +437,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id7">
 <img alt="../_images/lab8-icmprulebu1.png" src="../_images/lab8-icmprulebu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 113 </span><span class="caption-text">New intra-rule</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -446,7 +446,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id8">
 <img alt="../_images/lab8-icmprulebu1ok.png" src="../_images/lab8-icmprulebu1ok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Ping will be ok!</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -491,7 +491,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now, let’s SSH to the BU2 Mobile App and hen ttry to SSH to the BU1 Frontend.</p></li>
+<li><p>Now, let’s SSH to the BU2 Mobile App and then let’s try to SSH to the BU1 Frontend. Of course, SSH will fail!</p></li>
 </ul>
 <figure class="align-center" id="id12">
 <img alt="../_images/lab8-bu2sshbu1.png" src="../_images/lab8-bu2sshbu1.png" />
@@ -500,7 +500,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Create another inter-rule that allows ssh <strong>from</strong> BU2 <strong>towards</strong> BU1. Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
+<li><p>Create another inter-rule that allows SSH <strong>from</strong> BU2 <strong>towards</strong> BU1. Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -524,7 +524,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Let’s try to issue the SSH command from the BU2 Mobile App towards the BU1 Frontend. thsi time the SSH will work successfully.</p></li>
+<li><p>Let’s try to issue the SSH command from the BU2 Mobile App towards the BU1 Frontend. This time the SSH will work smoothly.</p></li>
 </ul>
 <figure class="align-center" id="id14">
 <img alt="../_images/lab8-lastssh.png" src="../_images/lab8-lastssh.png" />

@@ -4,8 +4,13 @@
 
 You have received a call just now from the Web VM owner that reported that the remote Database route is not advertised.
 
-![Lab Overview](images/segmentation2.png)
-_Figure 7: Network Isolation_
+```{figure} images/segmentation2.png
+---
+height: 400px
+align: center
+---
+Network Isolation
+```
 
 * Search the Private IP of the Database VM and try to ping it from the *Web Spoke GW*. 
   Does the ping work?
@@ -17,4 +22,3 @@ Check the **RTBs** of all the gateways involved in the path between the Web VM a
 ```{attention}
 By the end of this challenge you need to ensure that the Database route has been propagated throughout the whole cloud network (i.e. Transit and Spoke GWs).
 ```
-
