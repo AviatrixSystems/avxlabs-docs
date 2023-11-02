@@ -186,7 +186,7 @@ Do not forget to click on **Save**.
 ---
 align: center
 ---
-Remove the excemption
+Remove the exemption
 ```
 
 - Log in to the FW (<ins>refer to your POD portal for the credentials</ins>) and explore the configuration.

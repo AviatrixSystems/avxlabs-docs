@@ -2,7 +2,7 @@
 
 ## 1. SCENARIO
 
-ACE’s environment has been split up in two Smart Groups: **BU1** and **BU2**. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.
+ACE’s environment has been split up in two SmartGroups: **BU1** and **BU2**. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.
 
 Furthermore, four DCF rules have been applied so far.
 
@@ -13,13 +13,19 @@ align: center
 Existing DCF rules
 ```
 
-- The BU1 Frontend has raised a complaint that is not able to SSH <span style='color:orange'>**within**</span> BU1.
+- The BU1 Frontend has raised a complaint that is not able to use the SSH protocol <span style='color:orange'>**within**</span> BU1.
 
-- The BU2 Mobile App has raised a complaint that is not able to SSH <span style='color:lightgreen'>**towards**</span> BU1.
+- The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:orange'>**within**</span> BU1.
+
+- The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:lightgreen'>**towards**</span> BU2.
+
+- The BU2 Mobile App has raised a complaint that is not able to use the SSH protocol <span style='color:lightgreen'>**towards**</span> BU1.
 
 You have been engaged to create the following **two** additional rules:
 
 - **Intra-rule**: allow SSH <span style='color:orange'>**within**</span> BU1
+- **Intra-rule**: allow ICMP <span style='color:orange'>**within**</span> BU1
+- **Inter-rule**: allow ICMP <span style='color:lightblue'>**from**</span> BU1 **to** BU2
 - **Inter-rule**: allow SSH <span style='color:lightblue'>**from**</span> BU2 **to** BU1
 
 
@@ -33,22 +39,43 @@ Lab 8 Scenario Topology
 
 ## 2. CHANGE REQUEST
 
-- SSH on the **BU1 Frontend** and try to SSH to any other instance in BU1.
+- SSH on the **BU1 Frontend** and try to SSH to any other instances in BU1.
   - SSH fails as expected.
 
-```{figure} images/lab8-topology.png
+```{figure} images/lab8-sshbu1.png
 ---
 align: center
 ---
 SSH fails within BU1
 ```
 
-- Create an intra-rule that allows SSH **within** bu1 and then verify that SSH is permitted among BU1’s instances. Do not forget to enable **“Logging”**.
+- Create an intra-rule that allows SSH **within** BU1 and then verify that SSH is permitted among BU1’s instances. 
+  Do not forget to enable **“Logging”**, for auditing purposes.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**.
-Please bear in mind that once the rule has been created is not immediately applied on the Data Plane (i.e. it is just kept in *SAVED DRAFTS* state). You have to click on **COMMIT**.
 ```
+
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+
+- **Name**: <span style='color:#33ECFF'>intra-ssh-bu1</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>BU1</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>BU1</span>
+- **Protocol**: <span style='color:#33ECFF'>TCP</span>
+- **Port**: <span style='color:#33ECFF'>22</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
+
+```{figure} images/lab8-rule01.png
+---
+align: center
+---
+SSH is ok within BU1
+```
+
+- Retry to SSH to the BU1 Analytics from the BU1 Frontend; this time the operation will be accomplished!
 
 ```{figure} images/lab8-sshok.png
 ---
@@ -57,44 +84,141 @@ align: center
 SSH is ok within BU1
 ```
 
-Afterwards try also to check the **Monitor** section in order to explore the logs!
+- Now terminate the SSH session with the BU1 Analytics, typing `"exit"`, and issue the ping command towards the BU1 Anlytics from the BU1 Frontend.
 
-```{figure} images/lab8-monitor.png
+```{figure} images/lab8-pingbu1.png
 ---
 align: center
 ---
-Monitor
+Ping will fail
 ```
 
-- SSH on the **BU2 Mobile App** and try to SSH to **BU1 Frontend**.
-  - SSH fails as expected.
-  - Refer to your POD portal or check the Topology for the FQDN/IP of BU1 Frontend. Moreover, refer to the private symbolic names or private IPs!
-
-```{figure} images/lab8-bu2tobu1.png
----
-align: center
----
-BU2 to BU1 fails
-```
-
-- Create an inter-rule that allows SSH **from** BU2 **to** BU1 and then verify that SSH is permitted from Mobile App BU2 towards Frontend BU1. Do not forgert to enable the **“Logging”**.
+- Create another intra-rule that allows ICMP **within** BU1 and then verify that ICMP is permitted among BU1’s instances. Do not forget to enable **“Logging”**, for auditing purposes.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**.
 ```
 
-```{figure} images/lab8-bu2tobu1ok.png
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+
+- **Name**: <span style='color:#33ECFF'>intra-icmp-bu1</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>BU1</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>BU1</span>
+- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
+
+```{figure} images/lab8-icmprulebu1.png
 ---
 align: center
 ---
-BU2 to BU1 is ok
+Ping will fail
 ```
 
-- Check again the **Monitor** section to find out the new logs for the inter-rule!
+- The ping will work this time thanks to this new fresh intra-rule!
 
-```{figure} images/lab8-monitor2.png
+```{figure} images/lab8-icmprulebu1ok.png
 ---
 align: center
 ---
-Monitor
+Ping will fail
 ```
+
+- Let's try to ping the BU2 Mobile App from the BU1 Frontend. The ping will fail due to the absence of an **inter-rule**.
+
+```{figure} images/lab8-pingbu1bu2.png
+---
+align: center
+---
+Ping will fail
+```
+
+- This time create an inter-rule that allows ICMP **from** BU1 **towards** BU2. Do not forget to enable **“Logging”**, for auditing purposes.
+
+```{tip}
+Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**.
+```
+
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+
+- **Name**: <span style='color:#33ECFF'>inter-icmp-bu1-bu2</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>BU1</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>BU2</span>
+- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
+
+```{figure} images/lab8-penultimaterule.png
+---
+align: center
+---
+Ping will fail
+```
+
+- Retry to ping the BU2 Mobile App from the BU1 Frontend. The ping will be successful thanks to the inter-rule!
+
+```{figure} images/lab8-penultimateping.png
+---
+align: center
+---
+Ping from BU1 to BU2
+```
+
+- Now, let's SSH to the BU2 Mobile App and hen ttry to SSH to the BU1 Frontend.
+
+```{figure} images/lab8-bu2sshbu1.png
+---
+align: center
+---
+SSH from BU2 to BU1 will fail
+```
+
+- Create another inter-rule that allows ssh **from** BU2 **towards** BU1. Do not forget to enable **“Logging”**, for auditing purposes.
+
+```{tip}
+Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**.
+```
+
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+
+- **Name**: <span style='color:#33ECFF'>inter-ssh-bu2-bu1</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>BU2</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>BU1</span>
+- **Protocol**: <span style='color:#33ECFF'>TCP</span>
+- **Port**: <span style='color:#33ECFF'>22</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
+
+```{figure} images/lab8-lastrule.png
+---
+align: center
+---
+The last inter-rule!
+```
+
+- Let's try to issue the SSH command from the BU2 Mobile App towards the BU1 Frontend. thsi time the SSH will work successfully.
+
+```{figure} images/lab8-lastssh.png
+---
+align: center
+---
+The last inter-rule!
+```
+
+Congratulations, you have completed all labs and created a nice set of DCF rules across your Multicloud infrastructure!
+
+
+
+
+
+
+
+
+
+
