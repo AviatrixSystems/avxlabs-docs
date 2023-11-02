@@ -2,14 +2,22 @@
 
 ## HTTP Request fails
 
-Perform an HTTP request towards the Wordpress URL clicking on the Wordpress button available inside the POD portal assigned to you, as depicted below.
+Perform an HTTP request towards the Wordpress URL by clicking on the Wordpress button available inside the POD portal assigned to you, as depicted below.
 
-![Lab Overview](images/wordpress.png)
-_Figure 3: Wordpress URL_
+```{figure} images/wordpress.png
+---
+align: center
+---
+POD Portal
+```
 
-You will notice that the Wordpress app is down.
+You will notice that the Wordpress app is **down**.
 
-![Lab Overview](images/gateway-timeout2.png)
-_Figure 4: Wordpress URL_
+```{figure} images/gateway-timeout2.png
+---
+align: center
+---
+Wordpress URL
+```
 
 
