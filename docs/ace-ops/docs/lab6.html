@@ -448,6 +448,16 @@ connection between the GCP Spoke GW and the OnPrem Partner router and also for r
 <p><span class="caption-number">Fig. 81 </span><span class="caption-text">Retrieving the Public IP</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For Windows OS you can use the command <code class="docutils literal notranslate"><span class="pre">&quot;nslookup&quot;</span></code>.</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab6-nslookup.png" src="../_images/lab6-nslookup.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Nslookup</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
 <ul class="simple">
 <li><p><strong>Local Gateway Instance</strong>: <span style='color:#33ECFF'>ace-gcp-us-east1-spoke1</span></p></li>
 <li><p><strong>Local Tunnel IP</strong>: <span style='color:#33ECFF'>169.254.0.1/30</span></p></li>
@@ -458,25 +468,25 @@ connection between the GCP Spoke GW and the OnPrem Partner router and also for r
 <p class="admonition-title">Important</p>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 </div>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id10">
 <img alt="../_images/lab6-finals2c.png" src="../_images/lab6-finals2c.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 82 </span><span class="caption-text">External Connection Configuration</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 83 </span><span class="caption-text">External Connection Configuration</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wait some seconds for the completion of the S2C. The new connection will show up with a red ball symbol.</p>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id11">
 <img alt="../_images/lab6-notdone.png" src="../_images/lab6-notdone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 83 </span><span class="caption-text">S2C is establishing the connection</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text">S2C is establishing the connection</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the <span style='color:orange'><strong>refresh</strong></span>
 button to see the status changing from red to green.</p>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab6-s2cok.png" src="../_images/lab6-s2cok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 84 </span><span class="caption-text">S2C is finally UP</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">S2C is finally UP</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -485,20 +495,20 @@ button to see the status changing from red to green.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>show<span class="w"> </span>ip<span class="w"> </span>int<span class="w"> </span>brief
 </pre></div>
 </div>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab6-tunnelup.png" src="../_images/lab6-tunnelup.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Tunnel1 up/up</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Tunnel1 up/up</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then from the <strong>OnPrem Partner</strong> router issue the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span><span class="nb">source</span><span class="w"> </span>gigabitethernet1
 </pre></div>
 </div>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id14">
 <img alt="../_images/lab6-pingok2.png" src="../_images/lab6-pingok2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -510,10 +520,10 @@ button to see the status changing from red to green.</p>
 <p>Click on <strong>Run</strong> and almost simultaneously issue once again the ping command from the CSR router.</p>
 <p>Filter based on the <code class="docutils literal notranslate"><span class="pre">&quot;ICMP&quot;</span></code> keyword.</p>
 </div>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab6-final.png" src="../_images/lab6-final.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Mapped NAT in action !</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Mapped NAT in action !</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
