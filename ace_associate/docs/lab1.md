@@ -11,7 +11,7 @@ The application components are already deployed in each of the VPCs/VNets, all y
 ![Lab Overview](images/lab1-topology.png)
 _Figure: Lab Overview_
 
-## Lab 1.1 - Aviatrix Controller
+## Lab 1.1 - Aviatrix Controler
 The **Aviatrix Controller** is deployed in a Shared Services VPC in AWS. 
 ### Description
 Log in to the Aviatrix Controller
