@@ -10,7 +10,7 @@ Click this link to {Download}`ACE-Cloud-Ops - 04 - Routes Manipulation and NAT P
 
 Click this link to {Download}`ACE-Cloud-Ops - 05 - Site2Cloud PDF<files/ACE-Cloud-Ops - 05 - Site2Cloud.pdf>`
 
-Click this link to {Download}`ACE-Cloud-Ops - 06 - Egress PDF<files/ACE-Cloud-Ops - 06 - Egress.pdf>`
+Click this link to {Download}`ACE-Cloud-Ops - 06 - Secure Egress PDF<files/ACE-Cloud-Ops - 06 - Secure Egress.pdf>`
 
 Click this link to {Download}`ACE-Cloud-Ops - 07 - Operational Best Practices<files/ACE-Cloud-Ops - 07 - Operational Best Practices.pdf>`
 
