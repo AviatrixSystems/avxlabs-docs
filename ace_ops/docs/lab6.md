@@ -131,6 +131,16 @@ align: center
 Retrieving the Public IP
 ```
 
+```{tip}
+For Windows OS you can use the command `"nslookup"`.
+
+```{figure} images/lab6-nslookup.png
+---
+align: center
+---
+Nslookup 
+```
+
   - **Local Gateway Instance**: <span style='color:#33ECFF'>ace-gcp-us-east1-spoke1</span>
   -  **Local Tunnel IP**: <span style='color:#33ECFF'>169.254.0.1/30</span>
   -  **Remote Tunnel IP**: <span style='color:#33ECFF'>169.254.0.2/30</span>
