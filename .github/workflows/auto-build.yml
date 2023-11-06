@@ -26,12 +26,12 @@ jobs:
       - id: build
         name: Build Book
         run: |
-          jupyter-book build --all ./ace_associate/
+          jupyter-book build --all ace_associate/
 
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: ${{ github.event.pull_request.head.ref }} # This is the branch that the PR is from.
-          publish_dir: ./docs
+          publish_dir: docs
           keep_files: true
