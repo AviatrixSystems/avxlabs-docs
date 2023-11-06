@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab A &#8212; Aviatrix Flightschool - IaC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/laba';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab B" href="labb.html" />
+    <link rel="prev" title="Welcome to Aviatrix IaC FlightSchool!" href="home.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to Aviatrix IaC FlightSchool!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labb.html">Lab B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labc.html">Lab C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labd.html">Lab D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labe.html">Lab E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Acronyms &amp; Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/laba.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab A</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-a-1-aviatrix-controller">Exercise A.1 - Aviatrix Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-a-2-access-accounts">Exercise A.2 - Access Accounts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-a-3-copilot">Exercise A.3 - CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-a-4-set-up-our-iac-environment">Exercise A.4 – Set up our IaC environment</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-a">
+<h1>Lab A<a class="headerlink" href="#lab-a" title="Permalink to this heading">#</a></h1>
+<section id="exercise-a-1-aviatrix-controller">
+<h2>Exercise A.1 - Aviatrix Controller<a class="headerlink" href="#exercise-a-1-aviatrix-controller" title="Permalink to this heading">#</a></h2>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h3>
+<p>Navigate and login to the Aviatrix Controller.</p>
+</section>
+<section id="validate">
+<h3>Validate<a class="headerlink" href="#validate" title="Permalink to this heading">#</a></h3>
+<p>Open your browser and navigate to:</p>
+<p><strong>URL:</strong> <code class="docutils literal notranslate"><span class="pre">https://ctrl.pod[x].aviatrixlab.com</span></code><br />
+<strong>User:</strong> <code class="docutils literal notranslate"><span class="pre">student</span></code><br />
+<strong>Password:</strong> <span style="color:orange"><em><strong>Please refer to your portal registration page for the password.</strong></em></span></p>
+<ul class="simple">
+<li><p><em>(replace <strong>[x]</strong> with your pod ID)</em></p></li>
+</ul>
+</section>
+<section id="expected-results">
+<h3>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this heading">#</a></h3>
+<p>Explore the Dashboard. As you can see, there is already a gateway deployed in Azure.</p>
+</section>
+</section>
+<section id="exercise-a-2-access-accounts">
+<h2>Exercise A.2 - Access Accounts<a class="headerlink" href="#exercise-a-2-access-accounts" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>Description<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>In order for the controller to be able to access the different CSP environments, we need to provide it with accounts with the correct privileges.</p>
+</section>
+<section id="id2">
+<h3>Validate<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Have a look at the access accounts already set up under <strong><em>Accounts -&gt; Access Accounts</em></strong></p>
+</section>
+<section id="id3">
+<h3>Expected Results<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Accounts in GCP, AWS and Azure have already been onboarded and you should see the three accounts in the list.  The accounts should also be green, meaning the permissions in the accounts are correctly configured.</p>
+</section>
+</section>
+<section id="exercise-a-3-copilot">
+<h2>Exercise A.3 - CoPilot<a class="headerlink" href="#exercise-a-3-copilot" title="Permalink to this heading">#</a></h2>
+<section id="id4">
+<h3>Description<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>Along with the Aviatrix Controller, CoPilot is also deployed in the Shared Services VPC.  CoPilot will be your best buddy for visualizing and operating the Multicloud environment.</p>
+</section>
+<section id="id5">
+<h3>Validate<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>You can access CoPilot by logging into the Controller, and clicking on the CoPilot button at the top of the Window.</p>
+<p><img alt="CoPilot Access" src="../_images/copilot.png" /><br />
+<em>Fig. CoPilot</em></p>
+<p>Alternatively, you can log in directly to CoPilot using the following details:</p>
+<p><strong>URL:</strong>  <code class="docutils literal notranslate"><span class="pre">https://cplt.pod&lt;#&gt;.aviatrixlab.com</span></code><br />
+<strong>Username:</strong>  <code class="docutils literal notranslate"><span class="pre">student</span></code><br />
+<strong>Password:</strong> <span style="color:orange"><em><strong>Please refer to your portal registration page for the password.</strong></em></span></p>
+<p>The Dashboard tab provides a global overview of your Multicloud network, the status, how much traffic is flowing, locations deployed, etc.</p>
+<p>Take a look into <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric--&gt;Topology</span></code> which visualizes the connectivity of the Multicloud environment. In the Topology view, all objects within a VPC/VNET are clustered together.  To open up a cluster, simply double-click.  This will display subnets, instances, Aviatrix Gateways, etc within a VPC/VNET.  Topology will also show you latency between links, and allows you to initiate some troubleshooting commands directly from the map.</p>
+<p>Tip: Double click on the blue bubbles for more detail!</p>
+</section>
+<section id="id6">
+<h3>Expected Results<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>By clicking the CoPilot link in the Controller, you should be redirected to CoPilot and automatically signed in.  You should be able to view Topology and see the current Multicloud Network topology.  Topology should look similar to this:</p>
+<p><img alt="Topology1" src="../_images/topology1.png" /><br />
+<em>Fig. Initial Topology</em></p>
+<p>As you can see, there is a VNET already deployed, but we only have one gateway deployed. This is the Azure transit gateway. The reason for this is, so we were able to provision the on-prem VPN gateway with the final IP of the Azure transit gateway. Other than this, no Aviatrix gateways are deployed.</p>
+</section>
+</section>
+<section id="exercise-a-4-set-up-our-iac-environment">
+<h2>Exercise A.4 – Set up our IaC environment<a class="headerlink" href="#exercise-a-4-set-up-our-iac-environment" title="Permalink to this heading">#</a></h2>
+<p>We are going to set up our environment to allow interaction with the controller through Terraform.
+If you don’t have Terraform set up on your machine, download and install it <a class="reference external" href="https://learn.hashicorp.com/tutorials/terraform/install-cli">here</a>. We’re assuming you’re using Terraform 1.1.0 or newer for this session.</p>
+<p>Next create a new folder on your pc/mac to store the Terraform project. I suggest “FlightSchool_IaC”, but your free to choose.</p>
+<p>In our Terraform project, we’re going to define which providers Terraform needs to download on initialization.
+Create a file called <a class="reference external" href="http://versions.tf">versions.tf</a> and add the following content:</p>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">aviatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AviatrixSystems/aviatrix&quot;</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt;2.24.0&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This informs Terraform on to download version 2.24.x of the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">Aviatrix terraform provider</a>. The <code class="docutils literal notranslate"><span class="pre">~&gt;</span></code> tells Terraform the version is constrained to the latest release of 2.24 and cannot go below or above to e.g. 2.25 or 2.23 This is often called the pessimistic constraint operator. More information on constraint operators can be found <a class="reference external" href="https://www.terraform.io/language/expressions/version-constraints">here</a>. The <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/guides/release-compatibility">Aviatrix provider compatibility</a> chart is useful in determining which provider version to use.</p>
+<p>Next we are going to initialize Terraform and see that the required provider gets installed. Execute the terraform init command from the project folder as shown below:</p>
+<p><img alt="TF Init" src="../_images/tf-init.png" />
+<em>Fig. Terraform Init</em></p>
+<p>Alright, next we need credentials for our Terraform provider to interact with the controller. Lets set these up in the controller. Go to <code class="docutils literal notranslate"><span class="pre">Accounts</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Account</span> <span class="pre">Users</span></code> and click <code class="docutils literal notranslate"><span class="pre">+ADD</span> <span class="pre">NEW</span></code>. Create a user to be used by Terraform later on and record the credentials:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Username</strong></p></td>
+<td><p><strong>Password</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Now we will use these credentials to set up our Terraform provider configuration. There are a couple of different ways to achieve this as you can see on our <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs#authentication">documentation page</a>. In a CI/CD pipeline deployment, I would typically advise using the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs#environment-variables">environmental variables</a> as that way you don’t have to store secrets in your code. But today we’ll use a <a class="reference external" href="https://www.terraform.io/language/values/variables#variable-definitions-tfvars-files">tfvars file</a>. Create the file <code class="docutils literal notranslate"><span class="pre">terraform.tfvars</span></code> in your project folder and add the credentials you just created:</p>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="na">controller_ip</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;pod-hostname, e.g. ctrl.pod50.aviatrixlab.com&gt;&quot;</span>
+<span class="na">controller_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;username&gt;&quot;</span>
+<span class="na">controller_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;password&gt;&quot;</span>
+</pre></div>
+</div>
+<p>Make sure to never add this file to your git repo when you are using this method and storing code in a repo (e.g. through <code class="docutils literal notranslate"><span class="pre">gitignore</span></code>).</p>
+<p>In order for the provider to use these credentials, we need to define the provider configuration and link to these credentials through variables. Create a file <code class="docutils literal notranslate"><span class="pre">variables.tf</span></code> and add the variable definitions in like this:</p>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;controller_ip&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;The IP or hostname of the Aviatrix controller we want to interact with&quot;</span>
+<span class="p">}</span>
+
+<span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;controller_username&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;The Username for the Aviatrix controller we want to interact with&quot;</span>
+<span class="p">}</span>
+
+<span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;controller_password&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;The password for the Aviatrix controller we want to interact with&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now let’s configure the Aviatrix terraform provider in a new file called <code class="docutils literal notranslate"><span class="pre">providers.tf</span></code> by referring to the variables we just declared:</p>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aviatrix&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">controller_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.controller_ip</span>
+<span class="w">  </span><span class="na">username</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">var.controller_username</span>
+<span class="w">  </span><span class="na">password</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">var.controller_password</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To test our provider configuration, lets test if we can query information from the controller using a <a class="reference external" href="https://www.terraform.io/language/data-sources">data source</a>. Let’s create a new file which will hold our actual code later. Name it <code class="docutils literal notranslate"><span class="pre">main.tf</span></code> and add the aviatrix_account data source to query information about one of the access accounts we noted down in lab A.1 and output it to console using an output.</p>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aviatrix_account&quot;</span><span class="w"> </span><span class="nv">&quot;aws_account&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">account_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
+<span class="p">}</span>
+
+<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;aws_account&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_account.aws_account</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When we execute a Terraform plan, we should get back the account details. As shown below:</p>
+<p><img alt="TF Output" src="../_images/aws-account-tf.png" /><br />
+<em>Fig. Terraform Output</em></p>
+<p>Great, we now have our provider set up and are ready to start deploying our infrastructure! Feel free to remove the data source and output if you don’t want to see this information displayed every time we execute another apply.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="home.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to Aviatrix IaC FlightSchool!</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="labb.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab B</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-a-1-aviatrix-controller">Exercise A.1 - Aviatrix Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-a-2-access-accounts">Exercise A.2 - Access Accounts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-a-3-copilot">Exercise A.3 - CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-a-4-set-up-our-iac-environment">Exercise A.4 – Set up our IaC environment</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix Flightschool
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

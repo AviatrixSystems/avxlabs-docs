@@ -1,0 +1,767 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 4 - RBAC &#8212; ACE Operations Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab4';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 5 - HPE WITH ACTIVE MESH" href="lab5.html" />
+    <link rel="prev" title="Lab 3 - NETWORK SEGMENTATION" href="lab3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Professional Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs ASSIGNMENTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 4 - RBAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab4.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 4 - RBAC</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-controller">2. Configuration: RBAC for the Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-permission-group">2.1. Create a Permission Group</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-user">2.2. Create a new User</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-controller">3. Verification: RBAC on the Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rback-user-controller-op">3.1. Log out and log back in as new RBACK User (controller-op)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-test">3.1.1. Positive Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-test">3.1.2. Negative Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-copilot">4. Configuration: RBAC for the CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-permission-group">4.1. Create a new Permission Group</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2. Create a new User</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-copilot">5. Verification: RBAC on the CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rbac-user-copilot-op">5.1. Log out and log back in as new RBAC User (copilot-op)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-4-rbac">
+<h1>Lab 4 - RBAC<a class="headerlink" href="#lab-4-rbac" title="Permalink to this heading">#</a></h1>
+<section id="objective">
+<h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<p>Implement <strong>Role-Based Access Control</strong> using Local Authentication both on the <strong>Controller</strong> and on the <strong>CoPilot</strong>.</p>
+<p>You will perform tasks to address the following scenario:</p>
+<ul class="simple">
+<li><p>For the <strong>Controller</strong>: create an Operator that has RW access to <strong>Dashboard</strong>, <strong>Useful Tools</strong> and <strong>Troubleshoot</strong> sections for all cloud accounts.</p></li>
+<li><p>For the <strong>CoPilot</strong>: create an Operator that has RW access to <strong>Dashboard</strong>, <strong>Topology</strong>, <strong>Monitor</strong> and <strong>Troubleshoot</strong> sections for all cloud accounts.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice that the account you are provided in the labs is a local user called <strong>student</strong> that is a member of the Permission Group <ins>”admin”</ins>.</p>
+</div>
+</section>
+<section id="configuration-rbac-for-the-controller">
+<h2>2. Configuration: RBAC for the Controller<a class="headerlink" href="#configuration-rbac-for-the-controller" title="Permalink to this heading">#</a></h2>
+<section id="create-a-permission-group">
+<h3>2.1. Create a Permission Group<a class="headerlink" href="#create-a-permission-group" title="Permalink to this heading">#</a></h3>
+<p>Navigate to <strong>CoPilot &gt; Administration &gt; User Access &gt; Permission Group</strong></p>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">“+Permission</span> <span class="pre">Group”</span></code>.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab4-pgcopilot.png" src="../_images/lab4-pgcopilot.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Permission Group creation on the CoPilot</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Name the group <strong>controller-operators</strong>, select all the <strong>Access Accounts</strong> available from the drop-down window and choose the <strong>Controller Permissions</strong>.</p>
+<p>Then from the <strong>API/Terraform Permissions</strong> field, select <strong>Dashboard</strong>, <strong>Useful Tools</strong> and <strong>Troubleshoot</strong> privileges, as depicted below.</p>
+<p>Click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab4-dropdown1.png" src="../_images/lab4-dropdown1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Permisionn Group configuration</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the list of permission groups you should see the new created <strong>controller-operators</strong>.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab4-controlleroperators.png" src="../_images/lab4-controlleroperators.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text">“controller-operators” Permission group</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="create-a-new-user">
+<h3>2.2. Create a new User<a class="headerlink" href="#create-a-new-user" title="Permalink to this heading">#</a></h3>
+<p>Navigate to <strong>CoPilot &gt; Administration &gt; User Access &gt; Users</strong></p>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">“+User”</span></code>.</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab4-user.png" src="../_images/lab4-user.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">+User</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure to enter the following values:</p>
+<ul class="simple">
+<li><p><strong>Username:</strong> <span style='color:#33ECFF'>controller-op</span></p></li>
+<li><p><strong>Email:</strong> <span style='color:#33ECFF'>[Enter your own]</span></p></li>
+<li><p><strong>Password:</strong> <span style='color:#33ECFF'>[Pick a strong password and remember it]</span></p></li>
+<li><p><strong>Confirm Password:</strong> <span style='color:#33ECFF'>[Repeat the previous password]</span></p></li>
+<li><p><strong>Permission Groups:</strong> <span style='color:#33ECFF'>controller-operators</span></p></li>
+</ul>
+<p>Then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab4-usercreation.png" src="../_images/lab4-usercreation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Add User</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the list of users, you should see the new created <strong><em>controller-op</em></strong>.</p>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab4-controllerop.png" src="../_images/lab4-controllerop.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">controller-op</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>At this point, you should have received an email and a message in the <strong>Notifications</strong> tray, similar to the message below:</p>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/lab4-notification.png"><img alt="../_images/lab4-notification.png" src="../_images/lab4-notification.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Notification message</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="verification-rbac-on-the-controller">
+<h2>3. Verification: RBAC on the Controller<a class="headerlink" href="#verification-rbac-on-the-controller" title="Permalink to this heading">#</a></h2>
+<section id="log-out-and-log-back-in-as-new-rback-user-controller-op">
+<h3>3.1. Log out and log back in as new RBACK User (controller-op)<a class="headerlink" href="#log-out-and-log-back-in-as-new-rback-user-controller-op" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>Controller</strong> and then hover over the user icon in the top-right corner and click on <strong>Sign out</strong>.</p>
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/lab4-signout.png"><img alt="../_images/lab4-signout.png" src="../_images/lab4-signout.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">Sign out</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Sign back in as a <strong>controller-op</strong> with the same password you picked earlier.</p>
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/lab4-signin.png"><img alt="../_images/lab4-signin.png" src="../_images/lab4-signin.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Sign back with controller-op</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You should see in the top-right corner that you are logged in as the <strong>controller-op</strong> RBAC User, a member of the <strong>controller-operators</strong> RBAC Group.</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/lab4-rbac.png"><img alt="../_images/lab4-rbac.png" src="../_images/lab4-rbac.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">RBAC sign-in</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="positive-test">
+<h3>3.1.1. Positive Test<a class="headerlink" href="#positive-test" title="Permalink to this heading">#</a></h3>
+<p>Navigate to <strong>Controller &gt; USEFUL TOOLS &gt; Create a VPC</strong> and click <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Add</span> <span class="pre">New&quot;</span></code></p>
+<p>Create a new VPC as follows (make sure that <strong><em>Aviatrix Transit VPC</em></strong> is not selected).</p>
+<ul class="simple">
+<li><p><strong>Cloud Type:</strong> <span style='color:#33ECFF'>AWS</span></p></li>
+<li><p><strong>Account Name:</strong> <span style='color:#33ECFF'>[your AWS account name will be auto-populated]</span></p></li>
+<li><p><strong>VPC Name:</strong> <span style='color:#33ECFF'>rbac-lab-test</span></p></li>
+<li><p><strong>VPC Region:</strong> <span style='color:#33ECFF'>us-east-1</span></p></li>
+<li><p><strong>VPC CIDR:</strong> <span style='color:#33ECFF'>10.0.150.0/24</span></p></li>
+<li><p><strong>Advanced:</strong> <span style='color:#33ECFF'>unchecked</span></p></li>
+<li><p><strong>Aviatrix Transit VPC:</strong> <span style='color:#33ECFF'><strong>unchecked</strong></span></p></li>
+<li><p><strong>Aviatrix FireNet VPC:</strong> <span style='color:#33ECFF'>unchecked</span></p></li>
+</ul>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab4-createvpc.png" src="../_images/lab4-createvpc.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text">Creating a VPC from the Controller</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will receive confirmation that your VPC was created successfully!</p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab4-success.png" src="../_images/lab4-success.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 107 </span><span class="caption-text">Successfully created</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="negative-test">
+<h3>3.1.2. Negative Test<a class="headerlink" href="#negative-test" title="Permalink to this heading">#</a></h3>
+<p>Navigate to <strong>Controller &gt; MULTI-CLOUD TRANSIT &gt; Segmentation</strong> and scroll down to <strong>Step 3, Add / Modify Connection Policy</strong></p>
+<p>Attempt to undo your work in the Network Segmentation Lab, by disconnecting the <span style='color:lightgreen'>Green</span> security domain from the <span style='color:lightblue'>Blue</span> one.</p>
+<p>Select the Green domain first and then click on the <strong>DEL</strong> button.</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab4-changesegmentation.png" src="../_images/lab4-changesegmentation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text">Modify Segmentation</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You should immediately receive an error in the Notifications tray such as this:</p>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="../_images/lab4-error.png"><img alt="../_images/lab4-error.png" src="../_images/lab4-error.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 109 </span><span class="caption-text">Error</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Before moving to the subsequent section, be sure to sign out as a <strong>controller-op</strong> and sign back in as a <strong>student</strong>.</p>
+</div>
+</section>
+</section>
+<section id="configuration-rbac-for-the-copilot">
+<h2>4. Configuration: RBAC for the CoPilot<a class="headerlink" href="#configuration-rbac-for-the-copilot" title="Permalink to this heading">#</a></h2>
+<section id="create-a-new-permission-group">
+<h3>4.1. Create a new Permission Group<a class="headerlink" href="#create-a-new-permission-group" title="Permalink to this heading">#</a></h3>
+<p>Navigate to <strong>CoPilot &gt; Administration &gt; User Acces &gt; Permission Group</strong></p>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">Permission</span> <span class="pre">Group”</span></code>.</p>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../_images/lab4-permission2.png"><img alt="../_images/lab4-permission2.png" src="../_images/lab4-permission2.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 110 </span><span class="caption-text">New Permission Group</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure to insert the following values inside the pop-up window <code class="docutils literal notranslate"><span class="pre">“Create</span> <span class="pre">Permission</span> <span class="pre">Group”</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:lightgreen'>copilot-operators</span></p></li>
+<li><p><strong>Users</strong>: <span style='color:lightgreen'>[empty]</span></p></li>
+<li><p><strong>Access Accounts</strong>: <span style='color:lightgreen'>choose all the accounts</span></p></li>
+</ul>
+<p>Click on <strong>“Clear All Views”</strong>, and then select the following sections (and subsections):</p>
+<ul class="simple">
+<li><p><strong>Cloud Fabric</strong> (and only the subsection <strong>Topology</strong>)</p></li>
+<li><p><strong>Monitor</strong></p></li>
+<li><p><strong>Diagnostics</strong></p></li>
+</ul>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab4-pg2.png" src="../_images/lab4-pg2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Create Permission Group</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab4-pg3.png" src="../_images/lab4-pg3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Create Permission Group (cont.ed)</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You should notice a <strong>Notification</strong> message popping up.</p>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab4-message.png" src="../_images/lab4-message.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Successfully created</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id1">
+<h3>4.2. Create a new User<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Navigate to <strong>CoPilot &gt; Administration &gt; User Acces &gt; Users</strong></p>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">User”</span></code>.</p>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab4-newuser.png" src="../_images/lab4-newuser.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 114 </span><span class="caption-text">+User</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure to enter the following values:</p>
+<ul class="simple">
+<li><p><strong>Username</strong>: <span style='color:lightgreen'>copilot-op</span></p></li>
+<li><p><strong>Email</strong>: <span style='color:lightgreen'>[Enter your own]</span></p></li>
+<li><p><strong>Password</strong>: <span style='color:lightgreen'>[Pick a strong password and remember it]</span></p></li>
+<li><p><strong>Confirm Password</strong>: <span style='color:lightgreen'>[Repeat the password previously inserted]</span></p></li>
+<li><p><strong>Permission Groups</strong>: <span style='color:lightgreen'>copilot-operators</span></p></li>
+</ul>
+<p>Then click on <strong>Save</strong>.</p>
+<p>This is the list of all users that you should be able to see at this point.</p>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab4-list.png" src="../_images/lab4-list.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 115 </span><span class="caption-text">List of users</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="verification-rbac-on-the-copilot">
+<h2>5. Verification: RBAC on the CoPilot<a class="headerlink" href="#verification-rbac-on-the-copilot" title="Permalink to this heading">#</a></h2>
+<section id="log-out-and-log-back-in-as-new-rbac-user-copilot-op">
+<h3>5.1. Log out and log back in as new RBAC User (copilot-op)<a class="headerlink" href="#log-out-and-log-back-in-as-new-rbac-user-copilot-op" title="Permalink to this heading">#</a></h3>
+<p>Hover over the user icon in the top-right corner and click <strong>Logout</strong>.</p>
+<figure class="align-center" id="id22">
+<a class="reference internal image-reference" href="../_images/lab4-logout.png"><img alt="../_images/lab4-logout.png" src="../_images/lab4-logout.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Log out</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Sign back in as a <strong>copilot-op</strong> with the same password you picked earlier.</p>
+<figure class="align-center" id="id23">
+<a class="reference internal image-reference" href="../_images/lab4-logincopilot.png"><img alt="../_images/lab4-logincopilot.png" src="../_images/lab4-logincopilot.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 117 </span><span class="caption-text">Log in CoPilot</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>You will immediately notice that the RBAC feature on the CoPilot is capable to limit to each persona the visibility of the platform, showing only those sections that have been permitted.</p>
+<p>The user copilot-op can only interact with the Cloud Fabric section (but only with the sub-section Topology, whereby, this user is not authorized to deploy gateways), the Monitor section and the Troubleshoot section.</p>
+<p>The other sections are not more visible.</p>
+</div>
+<figure class="align-center" id="id24">
+<img alt="../_images/lab4-newview.png" src="../_images/lab4-newview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Restricted Dashboard view</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be sure to sign out as a <strong>copilot-op</strong> and sign back in as a <strong>student</strong>, in order to complete this lab!</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 3 - NETWORK SEGMENTATION</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 5 - HPE WITH ACTIVE MESH</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-controller">2. Configuration: RBAC for the Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-permission-group">2.1. Create a Permission Group</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-user">2.2. Create a new User</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-controller">3. Verification: RBAC on the Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rback-user-controller-op">3.1. Log out and log back in as new RBACK User (controller-op)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-test">3.1.1. Positive Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-test">3.1.2. Negative Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-rbac-for-the-copilot">4. Configuration: RBAC for the CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-permission-group">4.1. Create a new Permission Group</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2. Create a new User</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-rbac-on-the-copilot">5. Verification: RBAC on the CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-out-and-log-back-in-as-new-rbac-user-copilot-op">5.1. Log out and log back in as new RBAC User (copilot-op)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
