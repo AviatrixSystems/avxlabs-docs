@@ -26,6 +26,7 @@ jobs:
       - id: build
         name: Build Book
         run: |
+          git pull origin ${{ github.event.pull_request.head.ref }}
           jb build ./ace_associate/
           cp -rf ./ace_associate/_build/html/ docs/ace-associate
           git push origin HEAD:${{ github.event.pull_request.head.ref }}
