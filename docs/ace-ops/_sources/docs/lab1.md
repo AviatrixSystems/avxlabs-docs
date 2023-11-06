@@ -189,24 +189,32 @@ On the Aviatrix Gateway widget, the very first gateway from the list is the gate
 * Use **Cloud Routes** for pinpointing the originator of the route **172.16.211.0/24**.
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Cloud Routes** and filter based on the subnet and based on the Gateway name (add the string “**spoke1**”).
+Go to **CoPilot > Diagnostics > Cloud Routes**, search for the subnet **172.16.211.0/24** on the *search field* and then filter based on the following condition: "Gateway *contains* spoke1".
+```
+
+```{figure} images/lab1-filtersearch.png
+---
+align: center
+---
+Search field and Filter icon
 ```
 
 ```{tip}
-The Originator has the egress interface that is equal to **eth0** (i.e. the LAN interface), which in turn means, direct connected.
+The Originator has the egress interface that corresponds to the **eth0** interface (i.e. the LAN interface), which in turn means, direct connected.
 ```
 
 ```{figure} images/lab1-cloudroutes.png
 ---
 align: center
 ---
-Cloud Routes
+Originator = eth0
 ```
 
 * Use **Cloud Routes** for pinpointing the originator of the route **10.0.0.0/24**.
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Cloud Routes** and filter based on the subnet. <ins>Remove the previous filter</ins>!
+Go to **CoPilot > Diagnostics > Cloud Routes** and search the subnet **10.0.0.0/24** on the *search field*. 
+<ins>Remove any previous filters</ins>!
 ```
 
 This time you need to proceed with a <ins>recursive lookup</ins>: from any Spoke GWs check the **NEXT HOP GATEWAY** column and try to find the originator of 10.0.0.0/24.
@@ -215,5 +223,5 @@ This time you need to proceed with a <ins>recursive lookup</ins>: from any Spoke
 ---
 align: center
 ---
-Cloud Routes - recursive lookup
+Cloud Routes - Recursive lookup
 ```

@@ -1,4 +1,4 @@
-# Verification - Customer Connection to the ALB
+# Verification - Connect to the ALB
 
 ## HTTP Request fails
 

@@ -32,7 +32,7 @@ This information is provided separately before the start of the labs inside a de
 - Test Instances in each cloud
 - Bootstrap package information for Palo Alto Firewall (VM-Series) [Lab 7]
 - Cisco Cloud Services Router 1000v Series (CSR) [Lab 8]
-- Malicious IP [Lab 9 - *a fresh mailicious IP will be provided by the trainer*]
+- Malicious IP [Lab 9 - *a fresh malicious IP will be provided by the trainer*]
 
 ## 5. Lab Topology
 
@@ -53,7 +53,7 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 - Multicloud Transit
 - Single/Multicloud Network Segmentation
 - Role-Based Access Control (RBAC)
-- High Performance Encryption (aka Insane Mode)
+- High Performance Encryption (aka *Insane Mode*)
 - ActiveMesh High Availability
 - Egress FQDN Filtering
 - FireNet
