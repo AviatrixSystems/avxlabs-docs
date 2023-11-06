@@ -14,6 +14,8 @@ jobs:
       - id: repo
         name: Repo Checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - id: python
         name: Python Setup
@@ -26,8 +28,6 @@ jobs:
       - id: build
         name: Build Book
         run: |
-          git checkout ${{ github.event.pull_request.head.ref }}
-          git pull
           jb build ./ace_associate/
           cp -rf ./ace_associate/_build/html/ docs/ace-associate
           git push
