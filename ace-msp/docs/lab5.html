@@ -1,0 +1,612 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 5 Advanced NAT Scenarios &#8212; ACE Multicloud Network for Managed Service Providers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab5';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 6 Advanced Routing &amp; Resiliency" href="lab6.html" />
+    <link rel="prev" title="Lab 4 Site2Cloud" href="lab4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE MSP instructor-led training!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Build the MSP Backbone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 Customer Isolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 FireNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 Site2Cloud</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 5 Advanced NAT Scenarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 Advanced Routing &amp; Resiliency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 Security Enhancements</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab5.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 5 Advanced NAT Scenarios</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-lab">5.0 - What’s in the lab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-topology">5.1 - Current Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snat-on-customer-a">5.2 - SNAT on Customer A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snat-on-customer-b">5.3 - SNAT on Customer B</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-nat">5.4 - Advanced NAT</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-advanced-nat-on-customer-a-gateway">5.4.1 - Configure Advanced NAT on customer-a Gateway</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-advanced-nat-on-customer-a-ha-gateway">5.4.2 - Configure Advanced NAT on customer-a ha Gateway</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advertise-virtual-ip-address">5.4.3 - Advertise Virtual IP Address</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5.4.4 - Verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapped-nat-scenario">5.5 - Mapped NAT Scenario</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-s2c-with-mapped-nat-towards-customer-c">5.5.1 - Configure S2C with Mapped NAT Towards Customer C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-mapped-s2c-configuration">5.5.2 - Verify Mapped S2C Configuration</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-5-advanced-nat-scenarios">
+<h1>Lab 5 Advanced NAT Scenarios<a class="headerlink" href="#lab-5-advanced-nat-scenarios" title="Permalink to this heading">#</a></h1>
+<section id="what-s-in-the-lab">
+<h2>5.0 - What’s in the lab?<a class="headerlink" href="#what-s-in-the-lab" title="Permalink to this heading">#</a></h2>
+<p>If you recall in Lab#4 we had an issue where there was no proper connectivity from either the client in Customer-A or B to the shared service application (aws_log1). We will commence lab 5 by solving this issue.</p>
+<p>In addition, we will be connecting our last and final customer (customer_c) to the cloud. Finally, we will look at how to solve an advanced scenario with overlapping addresses.</p>
+</section>
+<section id="current-topology">
+<h2>5.1 - Current Topology<a class="headerlink" href="#current-topology" title="Permalink to this heading">#</a></h2>
+<p>The below diagram explains the problem. If you look at the CIDR ranges of Customer-A-DC and Customer-B-Branch you will notice an overlap as both of them use 172.16.0.0/16. This is the reason why one of them will be successful in connecting to the shared service (aws_log1) whereas the other will fail.</p>
+<p>In order for us to solve the problem, we will configure a customized NAT on Customer A’s spoke gateways as well as customer B.</p>
+<p><img alt="Current Setup Explaining the problem" src="../_images/nat_from_customer_a_&amp;_customer_b_client_to_aws_log1.png" /><em>Figure 1: Explaining the Problem &amp; Solution</em></p>
+</section>
+<section id="snat-on-customer-a">
+<h2>5.2 - SNAT on Customer A<a class="headerlink" href="#snat-on-customer-a" title="Permalink to this heading">#</a></h2>
+<p>Figures (2 &amp; 3) show how to get the private address of the Spoke GW of customer-a. The reason we need the IP Address is we will be doing SNAT to this IP Address to resolve the overlapping CIDR problem with Customer-B. Please makes sure to use the IP address from your Pod and not the address on the screenshot.</p>
+<p><img alt="Adjust Columns" src="../_images/private_ip_add_column.png" /><em>Figure 2: Add the Private IP Column</em></p>
+<p><img alt="Get the Private Address of the Spoke GW" src="../_images/gateway_customer_a.png" /><em>Figure 3: Edit the Gateway Configuration</em></p>
+<p>Figures (4 _ 7) walk you through configuring the Customized SNAT Rule.</p>
+<p><img alt="Configure SNAT Part 1" src="../_images/customer_a_gw_1_nat_part_1.png" /><em>Figure 4: Configuring SNAT Rule Part 1</em></p>
+<p><img alt="Configure SNAT Part 2" src="../_images/customer_a_gw_1_nat_part_2.png" /><em>Figure 5: Configuring SNAT Rule Part 2</em></p>
+<p><img alt="Save the SNAT Rule" src="../_images/save_nat_rule.png" /><em>Figure 6: Save the SNAT Rules</em></p>
+<p><img alt="Update the SNAT Rule" src="../_images/update_nat_rules.png" /><em>Figure 7: Update the SNAT Rules</em></p>
+<p>Follow the same procedure for Customer A hagw.</p>
+<p><img alt="Select customer-a-hagw" src="../_images/gateway_select_customer_ha.png" />
+Figure 8: Edit the HA Gateway Configuration_</p>
+<p><img alt="SNAT customer-a-hagw P1" src="../_images/customer_a_gw_2_nat_part_1.png" /><em>Figure 9: Configuring SNAT Rule Part 1</em></p>
+<p><img alt="SNAT customer-a-hagw P2" src="../_images/customer_a_gw_2_nat_part_2.png" /><em>Figure 10: Configuring SNAT Rule Part 2</em></p>
+<p>Please don’t forget to save and update.</p>
+<p>Now let us do a Proxy test from customer-a-client towards AWS-Log1 should work. Notice the field Source Address, this should be one of the Spoke Gateway IP addresses.</p>
+<p><img alt="Edit the CSR Configuration" src="../_images/proxy_customer_a_client_to_aws_log1_snat.png" /><em>Figure 11: Proxy Customer A Client to AWS-Log1</em></p>
+</section>
+<section id="snat-on-customer-b">
+<h2>5.3 - SNAT on Customer B<a class="headerlink" href="#snat-on-customer-b" title="Permalink to this heading">#</a></h2>
+<p>This will be very similar to how we solved the problem for Customer A. We will select the gateway (customer_b) edit its configuration by configuring the Customized SNAT rule. This is done in Figures 12-14</p>
+<p><img alt="Select the GW" src="../_images/gateway_select_customer_b.png" /><em>Figure 12: Select Customer B Gateway</em></p>
+<p><img alt="Customer B Gateway SNAT Part 1" src="../_images/customer_b_gw_nat_part_1.png" /><em>Figure 13: Customer B Gateway SNAT Part 1</em></p>
+<p><img alt="Customer B Gateway SNAT Part 2" src="../_images/customer_b_gw_nat_part_2.png" /><em>Figure 14: Customer B Gateway SNAT Part 2</em></p>
+<p>Don’t forget to save and update!</p>
+<p>Now let us do a Proxy test from customer-b-client towards AWS-Log1 should work. Notice the field Source Address, this should be the private address of Spoke B (doesn’t have to be 10.4.0.41, please check the address within your lab pod)</p>
+<p><img alt="Proxy Customer B Client to AWS-Log1" src="../_images/customer_b_proof_ip_natted_snat_proxy_client_to_log1.png" /><em>Figure 15: Proxy Customer B Client to AWS-Log1</em></p>
+</section>
+<section id="advanced-nat">
+<h2>5.4 - Advanced NAT<a class="headerlink" href="#advanced-nat" title="Permalink to this heading">#</a></h2>
+<p>In sections 5.2/5.3 we have solved the problem of being able to access (aws_log1) from all clients in Customer A and B locations (customer_a_dc and customer b branch). What about the reverse direction i.e. initiating traffic from the AWS-Log1 VM towards Customer-A-Client and Customer-B-Client. You might want to try that before you proceed further.</p>
+<p>Test leveraging the proxy from AWS-Log1 to customer-a-client and customer-b-client. One of these two tests will not work.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://aws-log1.pod150.aviatrixlab.com/customer-a-client
+
+http://aws-log1.pod150.aviatrixlab.com/customer-b-client
+</pre></div>
+</div>
+<p>The problem in a nutshell is also a result of the overlapping addresses of Customers A and B. We will only solve the problem for Customer-A in order to avoid repetition.</p>
+<p>The problem and the solution are explained in the below diagram. The instructor will also be explaining the solution before you proceed.</p>
+<p><img alt="Explaining Advanced NAT Scenario" src="../_images/advanced_nat_scenario.png" /><em>Figure 16: Explaining Advanced NAT Scenario</em></p>
+<section id="configure-advanced-nat-on-customer-a-gateway">
+<h3>5.4.1 - Configure Advanced NAT on customer-a Gateway<a class="headerlink" href="#configure-advanced-nat-on-customer-a-gateway" title="Permalink to this heading">#</a></h3>
+<p><img alt="Edit customer-a GW configuration" src="../_images/gateway_customer_a.png" /><em>Figure 17: Edit customer-a GW configuration</em></p>
+<p><img alt="Configure DNAT Rule Part 1" src="../_images/dnat_customer_a_gw.png" />
+<em>Figure 18: Configure DNAT Rule Part 1</em>
+<img alt="Configure DNAT Rule Part 2" src="../_images/dnat_customer_a_gw_p2.png" />
+<em>Figure 19: Configure DNAT Rule Part 2</em>
+<img alt="Save DNAT Rule" src="../_images/dnat_customer_a_gw_save.png" /><em>Figure 20: Save DNAT Rule</em></p>
+<p><img alt="Update DNAT Configuration_" src="../_images/dnat_customer_a_gw_update.png" />
+<em>Figure 21: Update DNAT Configuration</em>
+<img alt="Add new SNAT Rule P2" src="../_images/customer_a_gw_snat_new_rule.png" />
+<em>Figure 22: Add new SNAT Rule P1</em>
+<img alt="Add new SNAT Rule P2" src="../_images/customer_a_gw_snat_new_rule_p2.png" />
+<em>Figure 23: Add new SNAT Rule P2</em>
+<img alt="Add new SNAT Rule towards CSR2 Part 1" src="../_images/customer_a_gw_snat_3rd_rule_p1.png" />
+<em>Figure 24: Add new SNAT Rule towards CSR2 Part 1</em>
+<img alt="Add new SNAT Rule towards CSR2 Part 2" src="../_images/customer_a_gw_snat_3rd_rule_p2.png" /><em>Figure 25: Add new SNAT Rule towards CSR2 Part 2</em></p>
+<p><img alt="All 3 SNAT Rules Part 1" src="../_images/3_snat_rules_together_p1.png" />
+<em>Figure 26: All 3 SNAT Rules Part 1</em></p>
+<p><img alt="All 3 SNAT Rules Part 2" src="../_images/3_snat_rules_together_p2.png" /><em>Figure 27: All 3 SNAT Rules Part 2</em></p>
+</section>
+<section id="configure-advanced-nat-on-customer-a-ha-gateway">
+<h3>5.4.2 - Configure Advanced NAT on customer-a ha Gateway<a class="headerlink" href="#configure-advanced-nat-on-customer-a-ha-gateway" title="Permalink to this heading">#</a></h3>
+<p>We will follow the same procedure we have done on the customer-a gateway.</p>
+<p>We start by selecting the customer-a-hagw and configuring the DNAT Rule.</p>
+<p><img alt="DNAT Rule customer-a-hagw Part 1" src="../_images/dnat_customer_a_gw.png" /><em>Figure 28: DNAT Rule customer-a-hagw Part 1</em></p>
+<p><img alt="DNAT Rule customer-a-hagw Part 2" src="../_images/dnat_customer_a_gw_p2.png" /><em>Figure 29: DNAT Rule customer-a-hagw Part 2</em></p>
+<p><img alt="SNAT Rule customer-a-hagw Part 1" src="../_images/customer_a_gw_snat_new_rule.png" /><em>Figure 30: SNAT Rule customer-a-hagw Part 1</em></p>
+<p><img alt="SNAT Rule customer-a-hagw Part 2" src="../_images/customer_a_ha_gw_snat_new_rule_p2.png" /><em>Figure 31: SNAT Rule customer-a-hagw Part 2</em></p>
+<p><img alt="SNAT Rule customer-a-hagw towards CSR2 Part 1" src="../_images/customer_a_gw_snat_3rd_rule_p1.png" /><em>Figure 32: SNAT Rule customer-a-hagw towards CSR2 Part 1</em></p>
+<p><img alt="SNAT Rule customer-a-hagw towards CSR2 Part 2" src="../_images/customer_a_ha_gw_snat_3rd_rule_p2.png" /><em>Figure 33: SNAT Rule customer-a-hagw towards CSR2 Part 2</em></p>
+</section>
+<section id="advertise-virtual-ip-address">
+<h3>5.4.3 - Advertise Virtual IP Address<a class="headerlink" href="#advertise-virtual-ip-address" title="Permalink to this heading">#</a></h3>
+<p>We have done everything right so far but how would the fabric know of the Virtual IP Address (192.168.100.100/32)? We need Customer-A gateways to actually advertise it into the Fabric as shown below.</p>
+<p><img alt="Customize Spoke Advertised VPC CIDR P1" src="../_images/customize_spoke_advertised_routes_192.168.100.100_lab_5_p1.png" /><em>Figure 34: Customize Spoke Advertised VPC CIDR Part 1</em></p>
+<p><img alt="Customize Spoke Advertised VPC CIDR P2" src="../_images/customize_spoke_advertised_routes_192.168.100.100_lab_5_p2.png" /><em>Figure 35: Customize Spoke Advertised VPC CIDR Part 2</em></p>
+</section>
+<section id="verification">
+<h3>5.4.4 - Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h3>
+<p>In this section, we will attempt to ping the virtual IP Addres (192.168.100.100) from AWS-Log1.</p>
+<p>Start by SSHing to both instances &amp; customer-a-client run the tcpdump command present in Figure 33. Once tcpdump is running on customer-a-client, initiate the ping towards the Virtual IP address that represents the client. You should see the packet being received by customer-a-client (dnat) while the source address is changed to one of the gateway addresses you configured (snat).</p>
+<p><img alt="Initiate the Ping from AWS-Log1 towards Virtual IP" src="../_images/ping_from_aws_log1_to_virtual_ip_address.png" /><em>Figure 36: Initiate the Ping from AWS-Log1 towards Virtual IP</em></p>
+<p><img alt="Run tcpdump on client to see the packetrs" src="../_images/tcpdump_on_customer_a_client.png" /><em>Figure 37: Run tcpdump on customer-a-client</em></p>
+</section>
+</section>
+<section id="mapped-nat-scenario">
+<h2>5.5 - Mapped NAT Scenario<a class="headerlink" href="#mapped-nat-scenario" title="Permalink to this heading">#</a></h2>
+<p>In this section, Customer C has asked us to connect its Colocation facility to its Landing Zone. It also needs to benefit from the applications within the shared services segment. One thing to note is that Customer C’s told us that its on-premises router doesn’t support BGP.</p>
+<p><img alt="Mapped NAT Scenario with Customer C Explained" src="../_images/mapped_nat_scenario_explained.png" /><em>Figure 38: Mapped NAT Scenario with Customer C Explained</em></p>
+<section id="configure-s2c-with-mapped-nat-towards-customer-c">
+<h3>5.5.1 - Configure S2C with Mapped NAT Towards Customer C<a class="headerlink" href="#configure-s2c-with-mapped-nat-towards-customer-c" title="Permalink to this heading">#</a></h3>
+<p>We will configure the Site2Cloud with Mapped NAT in Figures 34 &amp; 35.</p>
+<p><img alt="Configure Mapped NAT Aviatrix Side Part 1" src="../_images/s2c_mapped_nat_to_customer_c_colocation_p1.png" /><em>Figure 39: Configure Mapped NAT Aviatrix Side Part 1</em></p>
+<p><img alt="Configure Mapped NAT Aviatrix Side Part 2" src="../_images/s2c_mapped_nat_to_customer_c_colocation_p2.png" /><em>Figure 40: Configure Mapped NAT Aviatrix Side Part 2</em></p>
+<p>Now that we have configured the Site2Cloud connection from Aviatrix’ side, we can get the templatized configuration for Customer C CSR.This is shown in Figures 34-36.</p>
+<p><img alt="Get the CSR Configuration Template P1" src="../_images/edit_customer_c_to_get_csr_config.png" /><em>Figure 41: Get the CSR Configuration Template P1</em></p>
+<p><img alt="Get the CSR Configuration Template P2" src="../_images/edit_customer_c_to_get_csr_config_p2.png" /><em>Figure 42: Get the CSR Configuration Template P2</em></p>
+<p>Without Enable Traffic to Transit Gateway Mapped NAT will only work towards destinations within the same Spoke VPC. This doesn’t apply to our case as the target VM we want to reach is in the Shared Services thus we need to enable traffic to transit gateway setting. This is shown in Figure 36.</p>
+<p><img alt="Enable Forward Traffic to Transit Gateway" src="../_images/forward_traffic_to_transit_gw.png" /><em>Figure 43: Enable Forward Traffic to Transit Gateway</em></p>
+<p><img alt="Get the CSR Configuration Template P3" src="../_images/download_customer_c_csr_config.png" /><em>Figure 44: Get the CSR Configuration Template P3</em></p>
+<p>You need to make the changes highlighted in Figures 45 &amp; 46.</p>
+<p><img alt="Edit Customer C CSR Config Part 1" src="../_images/csr_config_change_p1.png" /><em>Figure 45: Edit Customer C CSR Config Part 1</em></p>
+<p><img alt="Edit Customer C CSR Config Part 2" src="../_images/csr_config_change_p2.png" /><em>Figure 46: Edit Customer C CSR Config Part 2</em></p>
+</section>
+<section id="verify-mapped-s2c-configuration">
+<h3>5.5.2 - Verify Mapped S2C Configuration<a class="headerlink" href="#verify-mapped-s2c-configuration" title="Permalink to this heading">#</a></h3>
+<p>We start by verifying that the tunnel is up on the CSR.</p>
+<p><img alt="CSR Tunnel Status is UP" src="../_images/check_tunnel_status_csr.png" /><em>Figure 47: CSR Tunnel Status is UP</em></p>
+<p>We also head to Cloud Routes within Copilot to look at the status of the S2C connection. Please note that we are not running BGP on top of this connection.</p>
+<p><img alt="Head to Cloud Routes within Copilot" src="../_images/copilot_cloud_routes.png" /><em>Figure 48: Head to Cloud Routes within Copilot</em></p>
+<p><img alt="Edit the CSR Configuration" src="../_images/site2cloud_status_customer_c_copilot.png" /><em>Figure 49: S2C Tunnel to Customer-C-Colo is UP</em></p>
+<p>Finally, we initiate traffic from customer-c-client towards AWS-Log1 VM.</p>
+<p><img alt="Ping the Mapped Address of AWS-Log1 VM" src="../_images/ping_client_c_172.18.0.44_(virtual_ip_works).png" />
+<em>Figure 50: Successful Ping from Customer-C-Client towards AWS-Log1 VM</em></p>
+<p><img alt="tcpdump aws-log1" src="../_images/tcpdump_lab_5_aws_log1_.png" />
+<em>Figure 51: tcpdump output on AWS-Log1 VM</em></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 4 Site2Cloud</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 6 Advanced Routing &amp; Resiliency</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-lab">5.0 - What’s in the lab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-topology">5.1 - Current Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snat-on-customer-a">5.2 - SNAT on Customer A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snat-on-customer-b">5.3 - SNAT on Customer B</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-nat">5.4 - Advanced NAT</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-advanced-nat-on-customer-a-gateway">5.4.1 - Configure Advanced NAT on customer-a Gateway</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-advanced-nat-on-customer-a-ha-gateway">5.4.2 - Configure Advanced NAT on customer-a ha Gateway</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advertise-virtual-ip-address">5.4.3 - Advertise Virtual IP Address</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5.4.4 - Verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapped-nat-scenario">5.5 - Mapped NAT Scenario</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-s2c-with-mapped-nat-towards-customer-c">5.5.1 - Configure S2C with Mapped NAT Towards Customer C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-mapped-s2c-configuration">5.5.2 - Verify Mapped S2C Configuration</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

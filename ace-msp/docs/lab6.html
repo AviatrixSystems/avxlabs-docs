@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 6 Advanced Routing &amp; Resiliency &#8212; ACE Multicloud Network for Managed Service Providers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab6';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 7 Security Enhancements" href="lab7.html" />
+    <link rel="prev" title="Lab 5 Advanced NAT Scenarios" href="lab5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE MSP instructor-led training!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Build the MSP Backbone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 Customer Isolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 FireNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 Site2Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 Advanced NAT Scenarios</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 6 Advanced Routing &amp; Resiliency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 Security Enhancements</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab6.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 6 Advanced Routing & Resiliency</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-lab">6.0 - What’s in the lab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-csr-routers">6.1 - Configure CSR Routers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#without-active-standby">6.2 - Without Active Standby</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-active-standby">6.3 - With Active Standby</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bgp-load-balancing">6.4 - BGP Load Balancing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resiliency-and-high-availability">6.5 - Resiliency and High Availability</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-6-advanced-routing-resiliency">
+<h1>Lab 6 Advanced Routing &amp; Resiliency<a class="headerlink" href="#lab-6-advanced-routing-resiliency" title="Permalink to this heading">#</a></h1>
+<section id="what-s-in-the-lab">
+<h2>6.0 - What’s in the lab?<a class="headerlink" href="#what-s-in-the-lab" title="Permalink to this heading">#</a></h2>
+<p>In this lab we explore a few features pertaining to Advanced Routing and Resiliency. We will look at BGP load balancing, resiliency testing, BGP Route Approval features &amp; failover for shared services.</p>
+</section>
+<section id="configure-csr-routers">
+<h2>6.1 - Configure CSR Routers<a class="headerlink" href="#configure-csr-routers" title="Permalink to this heading">#</a></h2>
+<p>Connect to customer-a-csr1k-1 as shown below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>admin@customer-a-csr-1.pod150.aviatrixlab.com<span class="w"> </span>
+</pre></div>
+</div>
+<p>Paste the below configuration commands.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conf<span class="w"> </span>t
+interface<span class="w"> </span>Loopback0
+<span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span><span class="m">1</span>.1.1.1<span class="w"> </span><span class="m">255</span>.255.255.0
+end
+</pre></div>
+</div>
+<p>Connect to customer-a-csr1k-2 as shown below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>admin@customer-a-csr-1.pod150.aviatrixlab.com<span class="w"> </span>
+</pre></div>
+</div>
+<p>Paste the below configuration commands.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conf<span class="w"> </span>t
+interface<span class="w"> </span>Loopback0
+<span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span><span class="m">1</span>.1.1.2<span class="w"> </span><span class="m">255</span>.255.255.0
+end
+</pre></div>
+</div>
+<p>Now we have advertised the same route from both of our CSRs belong to Customer-A. We will look at the route to 1.1.1.0/24 from the perspective of Customer-A Spoke Gateways.</p>
+<p><img alt="Lab 6 Scenario" src="../_images/lab_6_scenario.png" />
+<em>Figure 1: Lab 6 Scenario</em></p>
+</section>
+<section id="without-active-standby">
+<h2>6.2 - Without Active Standby<a class="headerlink" href="#without-active-standby" title="Permalink to this heading">#</a></h2>
+<p>Without enabling active/standby, Aviatrix Gateways will have both tunnels active where some destinations will be reached over a tunnel whereas others will be reached on another tunnel.</p>
+<p><img alt="Without Active Standby" src="../_images/ace_for_msps_lab_diagrams_without_active_standby.png" />
+<em>Figure 2: Without Active Standby</em></p>
+<p><img alt="Without Active Standby Customer A" src="../_images/without_a_as_both_tunnels_are_active_customer_a.png" />
+<em>Figure 3: Without Active Standby Customer A</em></p>
+<p><img alt="Without Active Standby Customer A HA" src="../_images/without_a_as_both_tunnels_are_active_customer_a_ha_gw.png" />
+<em>Figure 4: Without Active Standby Customer A HA GW</em></p>
+<p>Each Aviatrix Gateway will select a single tunnel to get to a particular destination. For instance we have the route 1.1.1.0/24 advertised from both CSRs, Aviatrix Gateways 1 &amp; 2 will each select a tunnel (tunnels 1 and 2 respectively) to get to 1.1.1.0/24. These tunnels are labeled in Red. In your lab setup the result might differ choosing tunnels 3 and 4 however the common theme is that 1 tunnel is chosen per gateway to get to a common destination (no load balancing).
+Thus, over the same connection To-DC-CSR1 each Aviatrix gateway selects its local tunnel to get there.</p>
+<p><img alt="Without A/S" src="../_images/without_active_standby_same_prefix.png" /><em>Figure 5: Without Active Standby Same Prefix</em></p>
+<p><img alt="Without A/S Customer-A" src="../_images/without_a_as_same_prefix_gw.png" /><em>Figure 6: Customer-A GW Preferred Path</em></p>
+<p><img alt="Without A/S Customer-A HA" src="../_images/without_a_as_same_prefix_ha_gw.png" /><em>Figure 7: Customer-A HA GW Preferred Path</em></p>
+</section>
+<section id="with-active-standby">
+<h2>6.3 - With Active Standby<a class="headerlink" href="#with-active-standby" title="Permalink to this heading">#</a></h2>
+<p>This option is to provide the flexibility on Aviatrix Transit Gateways and Aviatrix BGP Spoke Gateways to connect to on-prem with only one active tunnel and the other one as backup.</p>
+<p>So for the connection to CSR1, Gateway 1 is active and similarly Gateway 1 is active for the connection to CSR2. This mean that the exit from the Customer-A VPC has to always go through Gateway 1. If traffic is received by Gateway 2 from the instance (app) it will be forwarded over Tun 5 to get to Gateway 1 and then to the CSRs.</p>
+<p><img alt="Active Standby Traffic Path" src="../_images/with_active_standby.png" /><em>Figure 8: Active Standby Traffic Path</em></p>
+<p><img alt="Enable Active Standby Mode" src="../_images/enable_active_standby.png" /><em>Figure 9: Enable Active Standby Mode</em></p>
+<p><img alt="Check Active GW for Connection to CSR1" src="../_images/with_a_as_connection_towards_dc_csr1.png" /><em>Figure 10: Check Active GW for Connection to CSR1</em></p>
+<p><img alt="Check Active GW for Connection to CSR2" src="../_images/with_a_as_connection_towards_dc_csr2.png" /><em>Figure 11: Check Active GW for Connection to CSR2</em></p>
+<p><img alt="Customer A preferred Path with A/S" src="../_images/customer_a_preferred_path_with_as.png" /><em>Figure 12: Customer A preferred Path with A/S</em></p>
+<p><img alt="Customer A preferred Path with A/S" src="../_images/customer_a_hagw_preferred_path_with_as.png" /><em>Figure 13: Customer A HAGW preferred Path with A/S</em></p>
+</section>
+<section id="bgp-load-balancing">
+<h2>6.4 - BGP Load Balancing<a class="headerlink" href="#bgp-load-balancing" title="Permalink to this heading">#</a></h2>
+<p>First let us remove Active/Standby configuration on the Customer-A Spoke before proceeding.</p>
+<p><img alt="Disable Active/Standby" src="../_images/disable_active_standby_mode.png" /><em>Figure 14: Disable Active/Standby</em></p>
+<p>In this section we explore the routing between Customer-A landing zone and DataCenter.</p>
+<p>The below topology shows the setup where we will need to advertise the same route (1.1.1.0/24) from both CSRs within Customer-A-DC.</p>
+<p><img alt="Topology Without A/S" src="../_images/without_active_standby_same_prefix.png" /><em>Figure 15: Without Active Standby Same Prefix</em></p>
+<p><img alt="Select Customer-A" src="../_images/select_customer_a_gw.png" /><em>Figure 16: Select Customer A</em></p>
+<p><img alt="Without A/S Customer-A" src="../_images/without_a_as_same_prefix_gw.png" /><em>Figure 17: Without A/S Customer-A GW Preferred Path</em></p>
+<p><img alt="Without A/S Customer-A HA" src="../_images/without_a_as_same_prefix_ha_gw.png" /><em>Figure 18: Without A/S Customer-A HA GW Preferred Path</em></p>
+<p><img alt="Turn on BGP ECMP" src="../_images/bgp_ecmp.png" /><em>Figure 19: Turn on BGP ECMP</em></p>
+<p><img alt="Load Balancing Result" src="../_images/load_balancing_after_bgp_ecmp.png" /><em>Figure 20: Routing to 1.1.1.0 Customer-A With ECMP</em></p>
+<p><img alt="Load Balancing Result" src="../_images/load_balancing_after_bgp_ecmp_ha.png" /><em>Figure 21: Routing to 1.1.1.0 Customer-A With ECMP</em></p>
+</section>
+<section id="resiliency-and-high-availability">
+<h2>6.5 - Resiliency and High Availability<a class="headerlink" href="#resiliency-and-high-availability" title="Permalink to this heading">#</a></h2>
+<p>In this section, we will be shutting down one of the gateways to ensure proper failover of the setup.</p>
+<p>Let’s start by browsing to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">pod150</span><span class="o">.</span><span class="n">aviatrixlab</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">aws</span><span class="o">-</span><span class="n">log1</span>
+</pre></div>
+</div>
+<p><img alt="Proxy from Customer A client to AWS-log1" src="../_images/proxy_customer_a_client_to_aws_log1_.png" /><em>Figure 22: Proxy from Customer A client to AWS-log1</em></p>
+<p>The source address you will see might be different that the one in the screenshot however it needs to belong to one of the spoke gateways within Customer-A. Let’s navigate to the Customer-A spoke gateway and check which instance actually maps to the source address.</p>
+<p><img alt="Find IP addresses of Proxy Spokes" src="../_images/check_customer_a_spoke_gateway_ips.png" /><em>Figure 23: Find IP addresses of Proxy Spokes</em></p>
+<p>Now, we can conclude that the traffic is passing through customer-a-hagw. Note that it might be different in your case where that specific flow might pass through customer-a gateway however the logic still holds true.</p>
+<p>Access the AWS Console as present in the lab portal.
+Paste the below configuration commands.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">podX</span><span class="o">-</span><span class="n">aviatrix</span><span class="o">.</span><span class="n">signin</span><span class="o">.</span><span class="n">aws</span><span class="o">.</span><span class="n">amazon</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">console</span> 
+</pre></div>
+</div>
+<p>where X is the pod number. Signin with the credentials provided in the lab portal.</p>
+<p>Navigate to EC2 and shutdown the gateway the traffic is passing through (in my lab setup customer_a_ha_gw).</p>
+<p><img alt="Shutdown GW Traffic is Passing through" src="../_images/lab_6_failover_shutdown_gw_traffic_is_passing_through.png" /><em>Figure 24: Proxy from Customer A client to AWS-log1</em></p>
+<p><img alt="Proxy from Customer A client to AWS-log1" src="../_images/lab_6_failover_proxy_customer_a_client_to_aws_log1_after_failover.png" /><em>Figure 25: Proxy from Customer A client to AWS-log1</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 5 Advanced NAT Scenarios</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab7.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 7 Security Enhancements</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-lab">6.0 - What’s in the lab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-csr-routers">6.1 - Configure CSR Routers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#without-active-standby">6.2 - Without Active Standby</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-active-standby">6.3 - With Active Standby</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bgp-load-balancing">6.4 - BGP Load Balancing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resiliency-and-high-availability">6.5 - Resiliency and High Availability</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
