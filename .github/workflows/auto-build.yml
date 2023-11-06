@@ -26,10 +26,11 @@ jobs:
       - id: build
         name: Build Book
         run: |
+          git checkout ${{ github.event.pull_request.head.ref }}
           git pull
           jb build ./ace_associate/
           cp -rf ./ace_associate/_build/html/ docs/ace-associate
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          git push
 
       # - name: GitHub Pages action
       #   uses: peaceiris/actions-gh-pages@v3.6.1
