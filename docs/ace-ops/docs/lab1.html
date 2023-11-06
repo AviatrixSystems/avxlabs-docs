@@ -513,16 +513,22 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong> and filter based on the subnet and based on the Gateway name (add the string “<strong>spoke1</strong>”).</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The Originator has the egress interface that is equal to <strong>eth0</strong> (i.e. the LAN interface), which in turn means, direct connected.</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong>, search for the subnet <strong>172.16.211.0/24</strong> on the <em>search field</em> and then filter based on the following condition: “Gateway <em>contains</em> spoke1”.</p>
 </div>
 <figure class="align-center" id="id18">
+<img alt="../_images/lab1-filtersearch.png" src="../_images/lab1-filtersearch.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Search field and Filter icon</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The Originator has the egress interface that corresponds to the <strong>eth0</strong> interface (i.e. the LAN interface), which in turn means, direct connected.</p>
+</div>
+<figure class="align-center" id="id19">
 <img alt="../_images/lab1-cloudroutes.png" src="../_images/lab1-cloudroutes.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Cloud Routes</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Originator = eth0</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -530,13 +536,14 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong> and filter based on the subnet. <ins>Remove the previous filter</ins>!</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong> and search the subnet <strong>10.0.0.0/24</strong> on the <em>search field</em>.
+<ins>Remove any previous filters</ins>!</p>
 </div>
 <p>This time you need to proceed with a <ins>recursive lookup</ins>: from any Spoke GWs check the <strong>NEXT HOP GATEWAY</strong> column and try to find the originator of 10.0.0.0/24.</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab1-cloudroutes2.png" src="../_images/lab1-cloudroutes2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Cloud Routes - recursive lookup</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Cloud Routes - Recursive lookup</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
