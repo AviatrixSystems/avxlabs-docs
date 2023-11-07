@@ -108,7 +108,7 @@ align: center
 ```
 
 ```{important}
-The outcome above shows **5** Hops. The last Hop that has responded to the traceroute is the Spoke GW in GCP, therefore the BU1 DB has not responded to the traceroute!</ins>
+The outcome above shows **5** Hops. The last Hop that has responded to the traceroute is the Spoke1 GW in Azure, therefore the BU1 DB has not responded to the traceroute!</ins>
 ```
 
 - Launch a **Packet Capture** on the LAN interface (`eth0`) of the **_ace-azure-east-us-spoke1_** GW and filter out the outcome based on **ICMP**.
