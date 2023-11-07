@@ -218,7 +218,7 @@ Go to **FW > Network > Interfaces** and click the LAN interface (port2) and fix 
 
 The port was disabled to simulate a software failure of the FW...
 
-Click on the greyed-out interface LAN (port2)
+Double click on the greyed-out interface LAN (port2), or alternatively, select the interface and click on the **Edit** button.
 
 ```{figure} images/lab3-fwint.png
 ---
