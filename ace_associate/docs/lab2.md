@@ -5,8 +5,13 @@ Lab time: ~45 minutes
 
 Let’s go build out the connectivity for our app!
 
-![Lab Overview](images/lab1-topology.png)
-_Figure: Lab Overview_
+```{figure} images/lab1-topology.png
+---
+height: 400px
+align: center
+---
+Lab Overview
+```
 
 ## Lab 2.1 - Client / Web Connectivity
 ### Description
@@ -14,71 +19,112 @@ Test Connectivity to Web App
 ### Validate
 
 ```{hint}
- Use the Search on the left panel as shown in Lab 1, and search for Topology within CoPilot, or go to **_CoPilot_** > **_Topology_**, and then click the blue **azure-web-node_VNET_icon**.  The VNet should open up and you should see the Aviatrix Gateway.
-* Click the Aviatrix Gateway icon, then on the right side, click **_Tools_** and then click on **_GAteway Diagnostics_**
+Go to **CoPilot > Diagnostics > Diagnostics Tools**, and select the **azure-web-node** Gateway.
 ```
 
-![Topology](images/azure-vnet.png)  
-_Figure: Gateway Diagnostics_
+```{figure} images/lab2-diag.png
+---
+align: center
+---
+Gateway Diagnostics
+```
 
 * This provides you with the Network Engineer's toolkit (ICMP-based tools, TCP/UDP connectivity, packet captures) directly from an Aviatrix Gateway
-    * Try to ping:
+    * Select the `ping` option and launch ping towards the following nodes:
         * client-int.pod**X**.aviatrixlab.com
         * app.pod**X**.aviatrixlab.com
         * db.pod**X**.aviatrixlab.com
 
+```{tip}
+Keep the default value for the interface: `"Use Route Table"`.
+
+Click on **Run** for executing the ping command.
+```
+
 ```{note}
-Replace X in the **URLs** with the pod number assigned to you. You can view the pod number by accessing the [ACE Associate Lab Portal](https://associate-portal.ace.aviatrixlab.com)
+Replace X in the **URLs** with the pod number assigned to you. 
+
+You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
+```
+
+```{figure} images/lab2-ping.png
+---
+align: center
+---
+Lab Overview
 ```
  
 ### Expected Results
-We have not built any connectivity yet, so none of the connectivity tests should work yet.  
+We have not built any connectivity yet, <ins>so none of the connectivity tests should work yet</ins>.  
 
 ## Lab 2.2 - Attaching Spokes
 ### Description
 Attach Spoke VPCs/VNets to their Transits
 ### Validate
 * Open the CoPilot 
-* Navigate to **_Cloud Fabric -> Gateways -> Spoke Gateways_** and edit the Spoke Gateway **_azure-web-node_**
+* Navigate to **_Cloud Fabric > Gateways > Spoke Gateways_** and edit the Spoke Gateway **_azure-web-node_**
 
-![Attach Spokes](images/azure-web-node.png)
-_Figure: Edit the Spoke Gateway_
+```{figure} images/azure-web-node.png
+---
+align: center
+---
+Edit the Azure Spoke Gateway
+```
 
-Select the Transit Gateway **_azure-transit_** from the drop-down window from the "Attach To Transit Gateway" field, and then click on **_Save_**.
-![Attach Azure Transit](images/azure-transit.png)
-_Figure: Edit the Spoke Gateway_
+Select the Transit Gateway **_azure-transit_** from the drop-down window from the `"Attach To Transit Gateway"` field, and then click on **Save**.
 
-* Perform the following actions:
-    * Select _azure-web-node_ and connect it to the _azure-transit_
-    * Select _azure-app-node_ and connect it to the _azure-transit_
-    * Select _aws-db-node_ and connect it to the _aws-transit-gw_
+```{figure} images/azure-transit.png
+---
+align: center
+---
+Attach the Spoke to the corresponding Transit GW
+```
+
+* Perform these addiitonal actions: 
+  * Select _azure-app-node_ and connect it to the _azure-transit_
+  * Select _aws-db-node_ and connect it to the _aws-transit-gw_
 
 ```{note}
-To speed things up, feel free to open multiple browser tabs, and run a Spoke Attachment step in each tab
+To speed things up, feel free to open multiple browser tabs, and run the **Spoke Attachment** step in each tab
 ```
 
 ```{hint}
 You can verify if spokes were correctly attached by viewing notifications. On the top right corner, click on the **_task icon_**, you should see success notifications for the actions you performed above. See an example below:  
-![Attachment Notifications](images/task-icon.png)
+
+```{figure} images/task-icon.png
+---
+align: center
+---
+Notifications
 ```
 
 ### Expected Results
 
-Each attachment should take between 30-120 seconds. Check CoPilot Topology to see how the network looks after attaching the Gateways.  
+Each attachment should take between *30-120* seconds. Check CoPilot Topology to see how the network looks after attaching the Gateways.  
 
-![Toplogy](images/attach-topo.png)  
-_Figure: Topology Spokes Attached_  
+```{note}
+Go to **CoPilot > Cloud Fabric > Topology**
+```
+
+```{figure} images/attach-topo.png
+---
+align: center
+---
+Topology with the Attachments
+``` 
 
 ## Lab 2.3 - Test the Web App
 ### Description
 Test the Web App
 ### Validate
 * Open the Remote Access Server
-* Open Firefox from the Desktop on the Remote Access Server
+* Open **Firefox** from the Desktop on the Remote Access Server
 * Navigate to [http://web.pod**X**.aviatrixlab.com]()
 
 ```{note}
-Replace **X** in the **URL** with the pod number assigned to you. You can view the pod number by accessing the [ACE Associate Lab Portal](https://associate-portal.ace.aviatrixlab.com)
+Replace **X** in the **URL** with the pod number assigned to you. 
+
+You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
 ```
 
 ### Expected Results
@@ -88,29 +134,39 @@ _Figure: Web App_
 
 ## Lab 2.4 - CoPilot Diagnostics
 ### Description
-Using CoPilot Topology to Test Connectivity
+Using CoPilot Diagnostics Tools
 ### Validate
-* In **_CoPilot_** use the search button to navigate to **_Topology_**, click the **_azure-web-node_vnet_** icon  
-* Click on the Aviatrix Gateway icon and select **Tools > Gateway Diagnostics** on the right side of the screen
+* Go to **CoPilot > Diagnostics > Diagnostics Tools**, and select the **azure-web-node** Gateway.
 * Try to ping/traceroute:
     * client-int.pod**X**.aviatrixlab.com
     * app.pod**X**.aviatrixlab.com
     * db.pod**X**.aviatrixlab.com
-* Check out the Active Sessions or try a Packet Capture
+
+You should be able to ping successfully both the **APP** Virtual Machine and the **Client** within the DC, thanks to the attachments among the Gateways and the Site2Cloud connection with the remote CSR router.
+
+```{figure} images/lab2-attachment.png
+---
+align: center
+---
+Topology with the Attachments
+``` 
 
 ```{important}
 **_There is a huge benefit to owning the data path in the cloud!  You have complete visibility and have the tools needed to troubleshoot and operate your network!_** 
 ```
 
-
 ### Expected Results
 You should see something similar to this:
-  
-![CoPilot](images/copilot-ping.png)  
-_Figure: CoPilot Ping_
+
+```{figure} images/lab2-pingok.png
+---
+align: center
+---
+CoPilot Ping
+```   
 
 ```{note}
-Since there is no connectivity to AWS, the DB node should not be pingable Find network issues quicker with Topology!
+Since there is no connectivity to AWS, the DB node should not be pingable, due to the absence of the `Peering` between the two Transit Gateways!
 ```
 
 ## Lab 2.5 - FlowIQ
@@ -119,94 +175,170 @@ Using CoPilot **FlowIQ** to debug flows
 ### Validate
 1. Use the left hand search bar within CoPilot to locate **_FlowIQ_** 
 
-![CoPilot](images/flowiq-screen.png)  
-_Figure: CoPilot FlowIQ_
+```{figure} images/flowiq-screen.png
+---
+align: center
+---
+CoPilot FlowIQ
+```
 
 Select the **_Records_** tab.
 
-1. Under **_Filters_**, click on the **+ symbol** and create the first condition: select **_Destination Port_**, **_equals_** and then port **8080** (traffic from Web to App).
+1. Under the `"Filters"` field, click on the **+ symbol** and create the first condition: select **_Destination Port_**, **_equals_** and then port **8080** (traffic from Web to App).
 
-![Add Filter](images/lab2-condition.png)
-_Figure: First Condition_
+Do not forget to click on **Apply**.
 
-1. Click **_Add Condition_** again, make sure to select **_OR_**, select **_Destination Port_** is equal to **443** (traffic from App to DB). 
-   
-![Add Filter](images/lab2-addcondition.png)
-_Figure: Add Filter_
-1. In the **_Time Period_** field, select **Last 60 Minutes**.
+```{figure} images/lab2-plusbutton.png
+---
+align: center
+---
+Records
+```
+
+```{figure} images/lab2-destination.png
+---
+align: center
+---
+Condition
+```
+
+2. Click **_Add Condition_** again, make sure to select **_OR_** as boolean condition, select **_Destination Port_**, **equals** and then select port **443** (traffic from App to DB). 
+
+```{figure} images/lab2-addcondition.png
+---
+align: center
+---
+Add 2nd Condition
+```
+
+```{figure} images/lab2-or.png
+---
+align: center
+---
+Two condition with the Boolean OR
+```
+
+3. In the **_Time Period_** field, select **Last 60 Minutes**.
 2. Add the **_Destination Port_** parameter among the existing columns.
 
-![CoPilot](images/destination-port.png)  
-_Figure: Destination Port_
+```{figure} images/destination-port.png
+---
+align: center
+---
+Destination Port
+```
 
-6. Add also the **_TCP Flag Tags_** parameter among the existing columns.
+1. Add also the **_TCP Flag Tags_** parameter among the existing columns.
 
-![CoPilot](images/tcp-flag.png)  
-_Figure: TCP Flag Tags_
+```{figure} images/tcp-flag.png
+---
+align: center
+---
+TCP Flag Tags
+```
 
-7. Do not forget to click on **Apply**.
+Do not forget to click on **Apply**.
 
-8. In the Records tab, you can view the raw flow logs. You should see the `App` (i.e. 10.x.`32`.x) trying to connect to the `DB` (i.e. 10.x.`64`.x) tier, but we only get a **SYN**.
+- In the Records tab, you can view the raw flow logs. You should see the `App` (i.e. 10.x.`32`.x) trying to connect to the `DB` (i.e. 10.x.`64`.x) tier, but we only get a **SYN**.
 
 ### Expected Results
 You should see something similar to this showing successful flows from Web to App, but unsuccessful from App to DB:  
 
-![FlowIQ](images/syn.png)  
-_Figure: FlowIQ_  
+```{figure} images/syn.png
+---
+align: center
+---
+Only SYN packet
+```
 
 ```{note}
-No connectivity to the DB tier means that we only see SYNs. Use FlowIQ to get insights into all flows running over your secure cloud network.
+No connectivity to the DB tier means that we only see SYN packets, from the APP to the DB. 
+
+Use **FlowIQ** to get insights into all flows running over your secure cloud network.
 ```
 
 ## Lab 2.6 - CoPilot Topology
 ### Description
 Using CoPilot Topology to visualize your secure cloud network.
 ### Validate
--	Log in to CoPilot
+
 -	Search for **_Topology_**
+
+```{figure} images/lab2-search.png
+---
+align: center
+---
+Search field
+```
 
 ### Expected Results
 You should see something similar to this:
-  
-![Toplogy](images/attach-topo.png)  
-_Figure: Topology_
+
+```{figure} images/lab2-newtopo.png
+---
+align: center
+---
+Topology Overview
+```
 
 ```{note}
 - Azure Spokes are connected to the Azure Transit
-- AWS Spoke is connected to the AWS Transit. We do not have connectivity between AWS and Azure. Not yet at least!
+- AWS Spoke is connected to the AWS Transit. 
+
+We do not have connectivity between AWS and Azure. Not yet at least!
 ```
 
+```{important}
 **_Visualizing a network can be so helpful!_**
+```
 
 ## Lab 2.7 - Multicloud Peering
 
 ### Description
 
-By this point we should have verified that connectivity in Azure is good, but we are missing the connectivity between Azure and AWS. Aviatrix offers a simple but powerful method for interconnecting clouds.
+By this point we should have verified that connectivity in Azure is good, but we are missing the connectivity between Azure and AWS, in order to complete the 3-tier architecture connectivity, among, the APP, the WEB and the DB.
+
+ Aviatrix offers a simple but powerful method for interconnecting clouds.
 
 ### Validate
 
-* Open the CoPilot
-* Navigate **_Cloud Fabric -> Gateways -> Transit Gateways_** and edit the Transit Gateway **_aws-transit-gw_**, clicking on the pencil icon:
-  
-![Add Transit Peering](images/aws-transit-edit.png)
-_Figure: Edit Transit Gateway_
+* Navigate to **_Cloud Fabric -> Gateways -> Transit Gateways_** and edit the Transit Gateway **_aws-transit-gw_**, clicking on the pencil icon:
 
-* Select the Transit Gateway **_azure-transit_** from the drop-down window from the _"Peer To Transit Gateways"_ field, and then click on **_Save_**.
+```{figure} images/aws-transit-edit.png
+---
+align: center
+---
+Edit Transit Gateway
+```
 
-![Add Transit Peering](images/peering.png)
-_Figure: Establish peering between Transit Gateways_
-### Expected Results
+* Select the Transit Gateway **_azure-transit_** from the drop-down window from the `"Peer To Transit Gateways"` field, and then click on **Save**.
+
+```{figure} images/peering.png
+---
+align: center
+---
+Establish peering between Transit Gateways
+```
+
+## Expected Results
 * Verify that the peering has been established 
 * Navigate **_Cloud Fabric -> Gateways -> Transit Gateways_** and click on the transit gateway **_aws-transit-gw_**
 
-![Transit Peering](images/aws-transit-gw.png)  
-_Figure: Select the Transit GW_
+```{figure} images/aws-transit-gw.png
+---
+align: center
+---
+Select the Transit GW
+```
 
 * Then select the tab **_Connections -> Transit-Transit peering_**, as depicted below.
 
-![Transit Peering](images/peering-ok.png)  
-_Figure: Transit Peering established_
+```{figure} images/peering-ok.png
+---
+align: center
+---
+Transit Peering established
+```
 
 ```{warning}
 You may need to refresh or wait **_60-120 seconds_** for the connection status to become green (UP).
@@ -215,16 +347,23 @@ You may need to refresh or wait **_60-120 seconds_** for the connection status t
 
 **Congratulations!!! You have now built a Multicloud Network! Secure cloud networking has never been so easy...**
 
-![CoPilot](images/peering-ok2.png)  
-_Figure: CoPilot Transit Peering_  
+```{figure} images/peering-ok2.png
+---
+align: center
+---
+CoPilot Transit Peering
+```
 
 After this lab, this is how the overall topology would look like:
 
-![Final](images/lab2-final.png)  
-_Figure: full-blown MCNA_ 
+```{figure} images/lab2-final.png
+---
+align: center
+---
+Full-blown MCNA: Hub-and-Spoke Topology
+```
 
-
-## Lab 2.8 - Test the Web App
+### Lab 2.8 - Test the Web App
 ### Description
 Check whether the Web App is up and running.
 
@@ -235,20 +374,29 @@ Check whether the Web App is up and running.
 * If the site is already open, click the Refresh button
 
 ```{note}
-Replace **X** in the **URL** with the pod number assigned to you. You can view the pod number by accessing the [ACE Associate Lab Portal](https://associate-portal.ace.aviatrixlab.com)
+Replace **X** in the **URL** with the pod number assigned to you. 
+
+You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
 ```
 
 ### Expected Results
 You should see something similar to this, meaning the Database is still not accessible!
-![Web App](images/webapp-db-down.png)  
-_Figure: Web App_  
 
-## Lab 2.9 - Debug the Egress Rules
+```{figure} images/webapp-db-down.png
+---
+align: center
+---
+DB is still down...
+```
+
+## Lab 2.9 - Debug the Egress 
 ### Description
-The database is actually just a proxy to Amazon DynamoDB. Perhaps the proxy cannot reach DynamoDB.
+The database is actually just a **_proxy_** to Amazon DynamoDB. 
+
+Perhaps the proxy cannot reach DynamoDB.
 
 ### Validate
-* After testing that the connection between Web and App works and seeing that the DB connection fails, login to the CoPilot
+* After testing that the connection between Web and App works and seeing that the DB connection fails, verify the Distributed Cloud Firewall section.
 * Search within Copilot for **_Egress_**
 * Navigate to **_Egress -> Monitor_**
 * Select the VPC **_aws-db-node_**

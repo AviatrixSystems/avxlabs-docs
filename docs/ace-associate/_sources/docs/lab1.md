@@ -7,103 +7,101 @@ You have been tasked with building connectivity and security for an application 
 
 The application components are already deployed in each of the VPCs/VNets, all you have to do is build out the connectivity. The app is only available via private IP address, which you can access using a web-based RDP server, which is available on-prem.
 
+```{figure} images/lab1-topology.png
+---
+height: 400px
+align: center
+---
+Lab Overview
+```
 
-![Lab Overview](images/lab1-topology.png)
-_Figure: Lab Overview_
-
-## Lab 1.1 - Aviatrix Controller
-The **Aviatrix Controller** is deployed in a Shared Services VPC in AWS. 
+## Lab 1.1 - Aviatrix CoPilot
+The **Aviatrix CoPilot** is deployed in a *Shared Services VPC* in AWS, with the Aviatrix Controller. 
 ### Description
-Log in to the Aviatrix Controller
+Log in to the Aviatrix CoPilot
 ### Validate
-1. Open your browser and navigate to [ACE Associate Lab Portal](https://associate-portal.ace.aviatrixlab.com)
-2. Take note of the `username` and `password` for Aviatrix Controller.
-3. Click the **Open Controller** button
+1. Open your browser and navigate to <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
+2. Take note of the `username` and `password` for Aviatrix CoPilot.
+3. Click on the **Open CoPilot** button
 
-Alternatively, you can access the Aviatrix Controller using the information below:
+Alternatively, you can access the Aviatrix CoPilot using the information below:
 
-**URL:** ctrl.pod**X**.aviatrixlab.com  
+**URL:** cplt.pod**X**.aviatrixlab.com  
 
 ```{note}
-Replace X in the **URL** with the pod number assigned to you. You can view the pod number by accessing the [ACE Associate Lab Portal](https://associate-portal.ace.aviatrixlab.com)
+Replace X in the **URL** with the pod number assigned to you. 
 >Username: ```student```   
 >Password: ```refer to ACE Associate Lab Portal```
 ```
 
 ### Expected Results
-Explore the Dashboard. As you can see, there are already gateways deployed in different Cloud Service Provider (CSP) environments. Do they seem connected to each other? Do you think this connection is working? Why do you think so?
+You should be successfully logged into CoPilot and visualize the Dashboard section.
 
-## Lab 1.2 - Aviatrix CoPilot
-CoPilot is the Visualization component of the Aviatrix platform, which you use for Monitoring and Troubleshooting.
-### Description
-Log in to CoPilot
-### Validate
-You can access CoPilot by logging into the Controller and clicking on the apps icon in the top-right of the page, then the CoPilot dropdown.  
-
-![CoPilot Access](images/copilot.png)  
-_Figure: CoPilot_  
-
-Alternatively, you can log in directly to CoPilot using the following details:
-
-**URL:**  cplt.pod**X**.aviatrixlab.com
-
-```{note}
-Replace X in the **URL** with the pod number assigned to you. You can view the pod number by accessing the [ACE Associate Lab Portal](https://associate-portal.ace.aviatrixlab.com)
->
-> **Username:** ```student```   
-> **Password:** ```Same as Controller Password```
+```{figure} images/lab1-dashboard.png
+---
+align: center
+---
+Dashboard
 ```
 
-### Expected Results
-You should be successfully logged into CoPilot.
-
-Use the search bar on the left to get to the Topology Page within Copilot as shown below. 
+From the Navigation panel on the left-hand side, select **Cloud Fabric > Topology**. 
 
 The initial topology should look similar to the following screenshot.  Throughout the labs, refresh the CoPilot Topology to show the connectivity, and latency of the links.  
 
+```{figure} images/lab1-copilot-topology.png
+---
+align: center
+---
+CoPilot Topology
+```
 
-![CoPilot Topology](images/copilot-topology.png)  
-_Figure: CoPilot Topology_  
-
-
-## Lab 1.3 - Remote Access Server
+## Lab 1.2 - Remote Access Server
 To access the cloud environment, you have been provided a **clientless** Remote Access Server, which is running in your “Data Center”. This conveniently offers a *web-based* HTML5 based RDP experience, so there should be no need to install any client.
 
 ### Description
 Log in to the Remote Access Server.
 
 ### Validate
-1. Open your browser and navigate to [ACE Associate Lab Portal](https://associate-portal.ace.aviatrixlab.com)
+1. Open your browser and navigate to <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
 2. Take note of the `username` and `password` for Remote Access Server.
-3. Click the **Open Server** button
+3. Click on the **Open Server** button
 
 Alternatively, you can access the Remote Access Server using the details below:
 
 **URL:** client.pod**X**.aviatrixlab.com  
 
 ```{note}
-Replace X in the **URL** with the pod number assigned to you. You can view the pod number by accessing the [ACE Associate Lab Portal](https://associate-portal.ace.aviatrixlab.com)
->
+Replace X in the **URL** with the pod number assigned to you. 
 > **Username:** ```student```   
 > **Password:** ```refer to ACE Associate Lab Portal```
 ```
 
-![Remote Access Server Login](images/ras-login.png)  
-_Figure: Sample Remote Access Server Login_ 
+```{figure} images/ras-login.png
+---
+align: center
+---
+Sample Remote Access Server Login
+```
 
 ### Expected Results
 Once you log in, you will see:
-- An icon labeled 'LX Terminal'. Use this for performing Pings from the Remote Access Server.
-- An icon for Firefox web browser. Use this to perform other connectivity tests in Lab 2.
+- An icon labeled `LX Terminal`. Use this for performing Pings from the Remote Access Server.
+- An icon for `Firefox` web browser. Use this to perform other connectivity tests in Lab 2.
 
-![Remote Access Server Desktop](images/ras-desktop.png)  
-_Figure: Sample Remote Access Server Desktop_ 
-
-```{note}
-If you are experiencing sluggishness with the web-based RDP experience, you can use any RDP client. The username will be `podX`, where **X** is the pod number assigned to you.
+```{figure} images/ras-desktop.png
+---
+align: center
+---
+Sample Remote Access Server Desktop
 ```
 
-## Lab 1.5 - Servers
+```{note}
+If you are experiencing sluggishness with the web-based RDP experience, you can use any RDP client. 
+
+The username will be `podX`, where **X** is the pod number assigned to you.
+```
+
+## Lab 1.3 - Servers
 The application tiers have been pre-deployed and are available under the following FQDNs and Ports:
 
 | App Tier  | FQDN  | TCP Port  |
@@ -128,8 +126,10 @@ ping db.podX.aviatrixlab.com
 ```
 
 ```{hint}
-Replace **X** in the **URLs** with the pod number assigned to you. You can view the pod number by accessing the [ACE Associate Lab Portal](https://associate-portal.ace.aviatrixlab.com)
+Replace **X** in the **URLs** with the pod number assigned to you. 
+
+You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
 ```
 
 ### Expected Results
-The connectivity is not yet built, so none of the tests should work.
+The connectivity is not yet built, so none of the tests should work!

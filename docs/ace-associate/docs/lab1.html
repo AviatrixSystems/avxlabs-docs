@@ -308,28 +308,22 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-overview-what-s-in-the-lab">Lab Overview - What’s in the lab?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-1-aviatrix-controller">Lab 1.1 - Aviatrix Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-1-aviatrix-copilot">Lab 1.1 - Aviatrix CoPilot</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">Validate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-2-aviatrix-copilot">Lab 1.2 - Aviatrix CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-2-remote-access-server">Lab 1.2 - Remote Access Server</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Validate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-3-remote-access-server">Lab 1.3 - Remote Access Server</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-3-servers">Lab 1.3 - Servers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Validate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Expected Results</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-5-servers">Lab 1.5 - Servers</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Description</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Validate</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Expected Results</a></li>
 </ul>
 </li>
 </ul>
@@ -350,28 +344,32 @@ document.write(`
 <p>Lab time: ~15 minutes</p>
 <p>You have been tasked with building connectivity and security for an application in the cloud. It just so happens that the different tiers of the application are spread out across different VPCs and VNets in Azure and AWS.</p>
 <p>The application components are already deployed in each of the VPCs/VNets, all you have to do is build out the connectivity. The app is only available via private IP address, which you can access using a web-based RDP server, which is available on-prem.</p>
-<p><img alt="Lab Overview" src="../_images/lab1-topology.png" />
-<em>Figure: Lab Overview</em></p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/lab1-topology.png"><img alt="../_images/lab1-topology.png" src="../_images/lab1-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Lab Overview</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
-<section id="lab-1-1-aviatrix-controller">
-<h2>Lab 1.1 - Aviatrix Controller<a class="headerlink" href="#lab-1-1-aviatrix-controller" title="Permalink to this heading">#</a></h2>
-<p>The <strong>Aviatrix Controller</strong> is deployed in a Shared Services VPC in AWS.</p>
+<section id="lab-1-1-aviatrix-copilot">
+<h2>Lab 1.1 - Aviatrix CoPilot<a class="headerlink" href="#lab-1-1-aviatrix-copilot" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Aviatrix CoPilot</strong> is deployed in a <em>Shared Services VPC</em> in AWS, with the Aviatrix Controller.</p>
 <section id="description">
 <h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h3>
-<p>Log in to the Aviatrix Controller</p>
+<p>Log in to the Aviatrix CoPilot</p>
 </section>
 <section id="validate">
 <h3>Validate<a class="headerlink" href="#validate" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Open your browser and navigate to <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p></li>
-<li><p>Take note of the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code> for Aviatrix Controller.</p></li>
-<li><p>Click the <strong>Open Controller</strong> button</p></li>
+<li><p>Open your browser and navigate to <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a></p></li>
+<li><p>Take note of the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code> for Aviatrix CoPilot.</p></li>
+<li><p>Click on the <strong>Open CoPilot</strong> button</p></li>
 </ol>
-<p>Alternatively, you can access the Aviatrix Controller using the information below:</p>
-<p><strong>URL:</strong> ctrl.pod<strong>X</strong>.aviatrixlab.com</p>
+<p>Alternatively, you can access the Aviatrix CoPilot using the information below:</p>
+<p><strong>URL:</strong> cplt.pod<strong>X</strong>.aviatrixlab.com</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Replace X in the <strong>URL</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
+<p>Replace X in the <strong>URL</strong> with the pod number assigned to you.</p>
 <blockquote>
 <div><p>Username: <code class="docutils literal notranslate"><span class="pre">student</span></code><br />
 Password: <code class="docutils literal notranslate"><span class="pre">refer</span> <span class="pre">to</span> <span class="pre">ACE</span> <span class="pre">Associate</span> <span class="pre">Lab</span> <span class="pre">Portal</span></code></p>
@@ -380,85 +378,76 @@ Password: <code class="docutils literal notranslate"><span class="pre">refer</sp
 </section>
 <section id="expected-results">
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this heading">#</a></h3>
-<p>Explore the Dashboard. As you can see, there are already gateways deployed in different Cloud Service Provider (CSP) environments. Do they seem connected to each other? Do you think this connection is working? Why do you think so?</p>
+<p>You should be successfully logged into CoPilot and visualize the Dashboard section.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab1-dashboard.png" src="../_images/lab1-dashboard.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Dashboard</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the Navigation panel on the left-hand side, select <strong>Cloud Fabric &gt; Topology</strong>.</p>
+<p>The initial topology should look similar to the following screenshot.  Throughout the labs, refresh the CoPilot Topology to show the connectivity, and latency of the links.</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab1-copilot-topology.png" src="../_images/lab1-copilot-topology.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">CoPilot Topology</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
-<section id="lab-1-2-aviatrix-copilot">
-<h2>Lab 1.2 - Aviatrix CoPilot<a class="headerlink" href="#lab-1-2-aviatrix-copilot" title="Permalink to this heading">#</a></h2>
-<p>CoPilot is the Visualization component of the Aviatrix platform, which you use for Monitoring and Troubleshooting.</p>
+<section id="lab-1-2-remote-access-server">
+<h2>Lab 1.2 - Remote Access Server<a class="headerlink" href="#lab-1-2-remote-access-server" title="Permalink to this heading">#</a></h2>
+<p>To access the cloud environment, you have been provided a <strong>clientless</strong> Remote Access Server, which is running in your “Data Center”. This conveniently offers a <em>web-based</em> HTML5 based RDP experience, so there should be no need to install any client.</p>
 <section id="id1">
 <h3>Description<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p>Log in to CoPilot</p>
+<p>Log in to the Remote Access Server.</p>
 </section>
 <section id="id2">
 <h3>Validate<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<p>You can access CoPilot by logging into the Controller and clicking on the apps icon in the top-right of the page, then the CoPilot dropdown.</p>
-<p><img alt="CoPilot Access" src="../_images/copilot.png" /><br />
-<em>Figure: CoPilot</em></p>
-<p>Alternatively, you can log in directly to CoPilot using the following details:</p>
-<p><strong>URL:</strong>  cplt.pod<strong>X</strong>.aviatrixlab.com</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Replace X in the <strong>URL</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
-<blockquote>
-<div><p><strong>Username:</strong> <code class="docutils literal notranslate"><span class="pre">student</span></code><br />
-<strong>Password:</strong> <code class="docutils literal notranslate"><span class="pre">Same</span> <span class="pre">as</span> <span class="pre">Controller</span> <span class="pre">Password</span></code></p>
-</div></blockquote>
-</div>
-</section>
-<section id="id3">
-<h3>Expected Results<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
-<p>You should be successfully logged into CoPilot.</p>
-<p>Use the search bar on the left to get to the Topology Page within Copilot as shown below.</p>
-<p>The initial topology should look similar to the following screenshot.  Throughout the labs, refresh the CoPilot Topology to show the connectivity, and latency of the links.</p>
-<p><img alt="CoPilot Topology" src="../_images/copilot-topology.png" /><br />
-<em>Figure: CoPilot Topology</em></p>
-</section>
-</section>
-<section id="lab-1-3-remote-access-server">
-<h2>Lab 1.3 - Remote Access Server<a class="headerlink" href="#lab-1-3-remote-access-server" title="Permalink to this heading">#</a></h2>
-<p>To access the cloud environment, you have been provided a <strong>clientless</strong> Remote Access Server, which is running in your “Data Center”. This conveniently offers a <em>web-based</em> HTML5 based RDP experience, so there should be no need to install any client.</p>
-<section id="id4">
-<h3>Description<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
-<p>Log in to the Remote Access Server.</p>
-</section>
-<section id="id5">
-<h3>Validate<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Open your browser and navigate to <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p></li>
+<li><p>Open your browser and navigate to <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a></p></li>
 <li><p>Take note of the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code> for Remote Access Server.</p></li>
-<li><p>Click the <strong>Open Server</strong> button</p></li>
+<li><p>Click on the <strong>Open Server</strong> button</p></li>
 </ol>
 <p>Alternatively, you can access the Remote Access Server using the details below:</p>
 <p><strong>URL:</strong> client.pod<strong>X</strong>.aviatrixlab.com</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Replace X in the <strong>URL</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
+<p>Replace X in the <strong>URL</strong> with the pod number assigned to you.</p>
 <blockquote>
 <div><p><strong>Username:</strong> <code class="docutils literal notranslate"><span class="pre">student</span></code><br />
 <strong>Password:</strong> <code class="docutils literal notranslate"><span class="pre">refer</span> <span class="pre">to</span> <span class="pre">ACE</span> <span class="pre">Associate</span> <span class="pre">Lab</span> <span class="pre">Portal</span></code></p>
 </div></blockquote>
 </div>
-<p><img alt="Remote Access Server Login" src="../_images/ras-login.png" /><br />
-<em>Figure: Sample Remote Access Server Login</em></p>
+<figure class="align-center" id="id10">
+<img alt="../_images/ras-login.png" src="../_images/ras-login.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Sample Remote Access Server Login</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
-<section id="id6">
-<h3>Expected Results<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3>Expected Results<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>Once you log in, you will see:</p>
 <ul class="simple">
-<li><p>An icon labeled ‘LX Terminal’. Use this for performing Pings from the Remote Access Server.</p></li>
-<li><p>An icon for Firefox web browser. Use this to perform other connectivity tests in Lab 2.</p></li>
+<li><p>An icon labeled <code class="docutils literal notranslate"><span class="pre">LX</span> <span class="pre">Terminal</span></code>. Use this for performing Pings from the Remote Access Server.</p></li>
+<li><p>An icon for <code class="docutils literal notranslate"><span class="pre">Firefox</span></code> web browser. Use this to perform other connectivity tests in Lab 2.</p></li>
 </ul>
-<p><img alt="Remote Access Server Desktop" src="../_images/ras-desktop.png" /><br />
-<em>Figure: Sample Remote Access Server Desktop</em></p>
+<figure class="align-center" id="id11">
+<img alt="../_images/ras-desktop.png" src="../_images/ras-desktop.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Sample Remote Access Server Desktop</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you are experiencing sluggishness with the web-based RDP experience, you can use any RDP client. The username will be <code class="docutils literal notranslate"><span class="pre">podX</span></code>, where <strong>X</strong> is the pod number assigned to you.</p>
+<p>If you are experiencing sluggishness with the web-based RDP experience, you can use any RDP client.</p>
+<p>The username will be <code class="docutils literal notranslate"><span class="pre">podX</span></code>, where <strong>X</strong> is the pod number assigned to you.</p>
 </div>
 </section>
 </section>
-<section id="lab-1-5-servers">
-<h2>Lab 1.5 - Servers<a class="headerlink" href="#lab-1-5-servers" title="Permalink to this heading">#</a></h2>
+<section id="lab-1-3-servers">
+<h2>Lab 1.3 - Servers<a class="headerlink" href="#lab-1-3-servers" title="Permalink to this heading">#</a></h2>
 <p>The application tiers have been pre-deployed and are available under the following FQDNs and Ports:</p>
 <table class="table">
 <thead>
@@ -482,12 +471,12 @@ Password: <code class="docutils literal notranslate"><span class="pre">refer</sp
 </tr>
 </tbody>
 </table>
-<section id="id7">
-<h3>Description<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<section id="id4">
+<h3>Description<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>Test connectivity between App tiers</p>
 </section>
-<section id="id8">
-<h3>Validate<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h3>Validate<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>Throughout the labs, using the RDP Session, open Firefox and navigate to:</p>
 <p><strong>URL:</strong> web.pod<strong>X</strong>.aviatrixlab.com</p>
 <p>You can also try to ping the different app tiers using the Terminal icon on the Desktop of the Remote Access Server:</p>
@@ -498,12 +487,13 @@ ping<span class="w"> </span>db.podX.aviatrixlab.com
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>Replace <strong>X</strong> in the <strong>URLs</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
+<p>Replace <strong>X</strong> in the <strong>URLs</strong> with the pod number assigned to you.</p>
+<p>You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a></p>
 </div>
 </section>
-<section id="id9">
-<h3>Expected Results<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
-<p>The connectivity is not yet built, so none of the tests should work.</p>
+<section id="id6">
+<h3>Expected Results<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>The connectivity is not yet built, so none of the tests should work!</p>
 </section>
 </section>
 </section>
@@ -576,28 +566,22 @@ ping<span class="w"> </span>db.podX.aviatrixlab.com
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-overview-what-s-in-the-lab">Lab Overview - What’s in the lab?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-1-aviatrix-controller">Lab 1.1 - Aviatrix Controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-1-aviatrix-copilot">Lab 1.1 - Aviatrix CoPilot</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">Validate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-2-aviatrix-copilot">Lab 1.2 - Aviatrix CoPilot</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-2-remote-access-server">Lab 1.2 - Remote Access Server</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Validate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-3-remote-access-server">Lab 1.3 - Remote Access Server</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-3-servers">Lab 1.3 - Servers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Validate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Expected Results</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-5-servers">Lab 1.5 - Servers</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Description</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Validate</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Expected Results</a></li>
 </ul>
 </li>
 </ul>
