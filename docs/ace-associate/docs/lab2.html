@@ -356,7 +356,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-9-debug-the-egress-rules">Lab 2.9 - Debug the Egress Rules</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-9-debug-the-egress">Lab 2.9 - Debug the Egress</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Validate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Expected Results</a></li>
@@ -391,8 +391,12 @@ document.write(`
 <h2>Build<a class="headerlink" href="#build" title="Permalink to this heading">#</a></h2>
 <p>Lab time: ~45 minutes</p>
 <p>Let’s go build out the connectivity for our app!</p>
-<p><img alt="Lab Overview" src="../_images/lab1-topology.png" />
-<em>Figure: Lab Overview</em></p>
+<figure class="align-center" id="id31">
+<a class="reference internal image-reference" href="../_images/lab1-topology.png"><img alt="../_images/lab1-topology.png" src="../_images/lab1-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Lab Overview</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="lab-2-1-client-web-connectivity">
 <h2>Lab 2.1 - Client / Web Connectivity<a class="headerlink" href="#lab-2-1-client-web-connectivity" title="Permalink to this heading">#</a></h2>
@@ -404,17 +408,18 @@ document.write(`
 <h3>Validate<a class="headerlink" href="#validate" title="Permalink to this heading">#</a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>Use the Search on the left panel as shown in Lab 1, and search for Topology within CoPilot, or go to <strong><em>CoPilot</em></strong> &gt; <strong><em>Topology</em></strong>, and then click the blue <strong>azure-web-node_VNET_icon</strong>.  The VNet should open up and you should see the Aviatrix Gateway.</p>
-<ul class="simple">
-<li><p>Click the Aviatrix Gateway icon, then on the right side, click <strong><em>Tools</em></strong> and then click on <strong><em>GAteway Diagnostics</em></strong></p></li>
-</ul>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>, and select the <strong>azure-web-node</strong> Gateway.</p>
 </div>
-<p><img alt="Topology" src="../_images/azure-vnet.png" /><br />
-<em>Figure: Gateway Diagnostics</em></p>
+<figure class="align-center" id="id32">
+<img alt="../_images/lab2-diag.png" src="../_images/lab2-diag.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id32" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>This provides you with the Network Engineer’s toolkit (ICMP-based tools, TCP/UDP connectivity, packet captures) directly from an Aviatrix Gateway</p>
 <ul>
-<li><p>Try to ping:</p>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">ping</span></code> option and launch ping towards the following nodes:</p>
 <ul>
 <li><p>client-int.pod<strong>X</strong>.aviatrixlab.com</p></li>
 <li><p>app.pod<strong>X</strong>.aviatrixlab.com</p></li>
@@ -424,14 +429,26 @@ document.write(`
 </ul>
 </li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Keep the default value for the interface: <code class="docutils literal notranslate"><span class="pre">&quot;Use</span> <span class="pre">Route</span> <span class="pre">Table&quot;</span></code>.</p>
+<p>Click on <strong>Run</strong> for executing the ping command.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Replace X in the <strong>URLs</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
+<p>Replace X in the <strong>URLs</strong> with the pod number assigned to you.</p>
+<p>You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a></p>
 </div>
+<figure class="align-center" id="id33">
+<img alt="../_images/lab2-ping.png" src="../_images/lab2-ping.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Lab Overview</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="expected-results">
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this heading">#</a></h3>
-<p>We have not built any connectivity yet, so none of the connectivity tests should work yet.</p>
+<p>We have not built any connectivity yet, <ins>so none of the connectivity tests should work yet</ins>.</p>
 </section>
 </section>
 <section id="lab-2-2-attaching-spokes">
@@ -444,17 +461,24 @@ document.write(`
 <h3>Validate<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Open the CoPilot</p></li>
-<li><p>Navigate to <strong><em>Cloud Fabric -&gt; Gateways -&gt; Spoke Gateways</em></strong> and edit the Spoke Gateway <strong><em>azure-web-node</em></strong></p></li>
+<li><p>Navigate to <strong><em>Cloud Fabric &gt; Gateways &gt; Spoke Gateways</em></strong> and edit the Spoke Gateway <strong><em>azure-web-node</em></strong></p></li>
 </ul>
-<p><img alt="Attach Spokes" src="../_images/azure-web-node.png" />
-<em>Figure: Edit the Spoke Gateway</em></p>
-<p>Select the Transit Gateway <strong><em>azure-transit</em></strong> from the drop-down window from the “Attach To Transit Gateway” field, and then click on <strong><em>Save</em></strong>.
-<img alt="Attach Azure Transit" src="../_images/azure-transit.png" />
-<em>Figure: Edit the Spoke Gateway</em></p>
+<figure class="align-center" id="id34">
+<img alt="../_images/azure-web-node.png" src="../_images/azure-web-node.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Edit the Azure Spoke Gateway</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the Transit Gateway <strong><em>azure-transit</em></strong> from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code> field, and then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id35">
+<img alt="../_images/azure-transit.png" src="../_images/azure-transit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Attach the Spoke to the corresponding Transit GW</span><a class="headerlink" href="#id35" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
-<li><p>Perform the following actions:</p>
+<li><p>Perform these addiitonal actions:</p>
 <ul>
-<li><p>Select <em>azure-web-node</em> and connect it to the <em>azure-transit</em></p></li>
 <li><p>Select <em>azure-app-node</em> and connect it to the <em>azure-transit</em></p></li>
 <li><p>Select <em>aws-db-node</em> and connect it to the <em>aws-transit-gw</em></p></li>
 </ul>
@@ -462,19 +486,32 @@ document.write(`
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To speed things up, feel free to open multiple browser tabs, and run a Spoke Attachment step in each tab</p>
+<p>To speed things up, feel free to open multiple browser tabs, and run the <strong>Spoke Attachment</strong> step in each tab</p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>You can verify if spokes were correctly attached by viewing notifications. On the top right corner, click on the <strong><em>task icon</em></strong>, you should see success notifications for the actions you performed above. See an example below:<br />
-<img alt="Attachment Notifications" src="../_images/task-icon.png" /></p>
+<p>You can verify if spokes were correctly attached by viewing notifications. On the top right corner, click on the <strong><em>task icon</em></strong>, you should see success notifications for the actions you performed above. See an example below:</p>
+<figure class="align-center" id="id36">
+<img alt="../_images/task-icon.png" src="../_images/task-icon.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Notifications</span><a class="headerlink" href="#id36" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </section>
 <section id="id3">
 <h3>Expected Results<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
-<p>Each attachment should take between 30-120 seconds. Check CoPilot Topology to see how the network looks after attaching the Gateways.</p>
-<p><img alt="Toplogy" src="../_images/attach-topo.png" /><br />
-<em>Figure: Topology Spokes Attached</em></p>
+<p>Each attachment should take between <em>30-120</em> seconds. Check CoPilot Topology to see how the network looks after attaching the Gateways.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong></p>
+</div>
+<figure class="align-center" id="id37">
+<img alt="../_images/attach-topo.png" src="../_images/attach-topo.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Topology with the Attachments</span><a class="headerlink" href="#id37" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-2-3-test-the-web-app">
@@ -487,12 +524,13 @@ document.write(`
 <h3>Validate<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Open the Remote Access Server</p></li>
-<li><p>Open Firefox from the Desktop on the Remote Access Server</p></li>
+<li><p>Open <strong>Firefox</strong> from the Desktop on the Remote Access Server</p></li>
 <li><p>Navigate to <span class="xref myst">http://web.pod<strong>X</strong>.aviatrixlab.com</span></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Replace <strong>X</strong> in the <strong>URL</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
+<p>Replace <strong>X</strong> in the <strong>URL</strong> with the pod number assigned to you.</p>
+<p>You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a></p>
 </div>
 </section>
 <section id="id6">
@@ -506,13 +544,12 @@ document.write(`
 <h2>Lab 2.4 - CoPilot Diagnostics<a class="headerlink" href="#lab-2-4-copilot-diagnostics" title="Permalink to this heading">#</a></h2>
 <section id="id7">
 <h3>Description<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
-<p>Using CoPilot Topology to Test Connectivity</p>
+<p>Using CoPilot Diagnostics Tools</p>
 </section>
 <section id="id8">
 <h3>Validate<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>In <strong><em>CoPilot</em></strong> use the search button to navigate to <strong><em>Topology</em></strong>, click the <strong><em>azure-web-node_vnet</em></strong> icon</p></li>
-<li><p>Click on the Aviatrix Gateway icon and select <strong>Tools &gt; Gateway Diagnostics</strong> on the right side of the screen</p></li>
+<li><p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>, and select the <strong>azure-web-node</strong> Gateway.</p></li>
 <li><p>Try to ping/traceroute:</p>
 <ul>
 <li><p>client-int.pod<strong>X</strong>.aviatrixlab.com</p></li>
@@ -520,8 +557,14 @@ document.write(`
 <li><p>db.pod<strong>X</strong>.aviatrixlab.com</p></li>
 </ul>
 </li>
-<li><p>Check out the Active Sessions or try a Packet Capture</p></li>
 </ul>
+<p>You should be able to ping successfully both the <strong>APP</strong> Virtual Machine and the <strong>Client</strong> within the DC, thanks to the attachments among the Gateways and the Site2Cloud connection with the remote CSR router.</p>
+<figure class="align-center" id="id38">
+<img alt="../_images/lab2-attachment.png" src="../_images/lab2-attachment.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Topology with the Attachments</span><a class="headerlink" href="#id38" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p><strong><em>There is a huge benefit to owning the data path in the cloud!  You have complete visibility and have the tools needed to troubleshoot and operate your network!</em></strong></p>
@@ -530,11 +573,15 @@ document.write(`
 <section id="id9">
 <h3>Expected Results<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>You should see something similar to this:</p>
-<p><img alt="CoPilot" src="../_images/copilot-ping.png" /><br />
-<em>Figure: CoPilot Ping</em></p>
+<figure class="align-center" id="id39">
+<img alt="../_images/lab2-pingok.png" src="../_images/lab2-pingok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">CoPilot Ping</span><a class="headerlink" href="#id39" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Since there is no connectivity to AWS, the DB node should not be pingable Find network issues quicker with Topology!</p>
+<p>Since there is no connectivity to AWS, the DB node should not be pingable, due to the absence of the <code class="docutils literal notranslate"><span class="pre">Peering</span></code> between the two Transit Gateways!</p>
 </div>
 </section>
 </section>
@@ -549,43 +596,81 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Use the left hand search bar within CoPilot to locate <strong><em>FlowIQ</em></strong></p></li>
 </ol>
-<p><img alt="CoPilot" src="../_images/flowiq-screen.png" /><br />
-<em>Figure: CoPilot FlowIQ</em></p>
+<figure class="align-center" id="id40">
+<img alt="../_images/flowiq-screen.png" src="../_images/flowiq-screen.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">CoPilot FlowIQ</span><a class="headerlink" href="#id40" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Select the <strong><em>Records</em></strong> tab.</p>
 <ol class="arabic simple">
-<li><p>Under <strong><em>Filters</em></strong>, click on the <strong>+ symbol</strong> and create the first condition: select <strong><em>Destination Port</em></strong>, <strong><em>equals</em></strong> and then port <strong>8080</strong> (traffic from Web to App).</p></li>
+<li><p>Under the <code class="docutils literal notranslate"><span class="pre">&quot;Filters&quot;</span></code> field, click on the <strong>+ symbol</strong> and create the first condition: select <strong><em>Destination Port</em></strong>, <strong><em>equals</em></strong> and then port <strong>8080</strong> (traffic from Web to App).</p></li>
 </ol>
-<p><img alt="Add Filter" src="../_images/lab2-condition.png" />
-<em>Figure: First Condition</em></p>
-<ol class="arabic simple">
-<li><p>Click <strong><em>Add Condition</em></strong> again, make sure to select <strong><em>OR</em></strong>, select <strong><em>Destination Port</em></strong> is equal to <strong>443</strong> (traffic from App to DB).</p></li>
+<p>Do not forget to click on <strong>Apply</strong>.</p>
+<figure class="align-center" id="id41">
+<img alt="../_images/lab2-plusbutton.png" src="../_images/lab2-plusbutton.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Records</span><a class="headerlink" href="#id41" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id42">
+<img alt="../_images/lab2-destination.png" src="../_images/lab2-destination.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id42" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Click <strong><em>Add Condition</em></strong> again, make sure to select <strong><em>OR</em></strong> as boolean condition, select <strong><em>Destination Port</em></strong>, <strong>equals</strong> and then select port <strong>443</strong> (traffic from App to DB).</p></li>
 </ol>
-<p><img alt="Add Filter" src="../_images/lab2-addcondition.png" />
-<em>Figure: Add Filter</em></p>
-<ol class="arabic simple">
+<figure class="align-center" id="id43">
+<img alt="../_images/lab2-addcondition.png" src="../_images/lab2-addcondition.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Add 2nd Condition</span><a class="headerlink" href="#id43" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id44">
+<img alt="../_images/lab2-or.png" src="../_images/lab2-or.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Two condition with the Boolean OR</span><a class="headerlink" href="#id44" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="3">
 <li><p>In the <strong><em>Time Period</em></strong> field, select <strong>Last 60 Minutes</strong>.</p></li>
 <li><p>Add the <strong><em>Destination Port</em></strong> parameter among the existing columns.</p></li>
 </ol>
-<p><img alt="CoPilot" src="../_images/destination-port.png" /><br />
-<em>Figure: Destination Port</em></p>
-<ol class="arabic simple" start="6">
+<figure class="align-center" id="id45">
+<img alt="../_images/destination-port.png" src="../_images/destination-port.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Destination Port</span><a class="headerlink" href="#id45" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
 <li><p>Add also the <strong><em>TCP Flag Tags</em></strong> parameter among the existing columns.</p></li>
 </ol>
-<p><img alt="CoPilot" src="../_images/tcp-flag.png" /><br />
-<em>Figure: TCP Flag Tags</em></p>
-<ol class="arabic simple" start="7">
-<li><p>Do not forget to click on <strong>Apply</strong>.</p></li>
+<figure class="align-center" id="id46">
+<img alt="../_images/tcp-flag.png" src="../_images/tcp-flag.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">TCP Flag Tags</span><a class="headerlink" href="#id46" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>Apply</strong>.</p>
+<ul class="simple">
 <li><p>In the Records tab, you can view the raw flow logs. You should see the <code class="docutils literal notranslate"><span class="pre">App</span></code> (i.e. 10.x.<code class="docutils literal notranslate"><span class="pre">32</span></code>.x) trying to connect to the <code class="docutils literal notranslate"><span class="pre">DB</span></code> (i.e. 10.x.<code class="docutils literal notranslate"><span class="pre">64</span></code>.x) tier, but we only get a <strong>SYN</strong>.</p></li>
-</ol>
+</ul>
 </section>
 <section id="id12">
 <h3>Expected Results<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <p>You should see something similar to this showing successful flows from Web to App, but unsuccessful from App to DB:</p>
-<p><img alt="FlowIQ" src="../_images/syn.png" /><br />
-<em>Figure: FlowIQ</em></p>
+<figure class="align-center" id="id47">
+<img alt="../_images/syn.png" src="../_images/syn.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Only SYN packet</span><a class="headerlink" href="#id47" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>No connectivity to the DB tier means that we only see SYNs. Use FlowIQ to get insights into all flows running over your secure cloud network.</p>
+<p>No connectivity to the DB tier means that we only see SYN packets, from the APP to the DB.</p>
+<p>Use <strong>FlowIQ</strong> to get insights into all flows running over your secure cloud network.</p>
 </div>
 </section>
 </section>
@@ -598,44 +683,65 @@ document.write(`
 <section id="id14">
 <h3>Validate<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Log in to CoPilot</p></li>
 <li><p>Search for <strong><em>Topology</em></strong></p></li>
 </ul>
+<figure class="align-center" id="id48">
+<img alt="../_images/lab2-search.png" src="../_images/lab2-search.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Search field</span><a class="headerlink" href="#id48" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id15">
 <h3>Expected Results<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
 <p>You should see something similar to this:</p>
-<p><img alt="Toplogy" src="../_images/attach-topo.png" /><br />
-<em>Figure: Topology</em></p>
+<figure class="align-center" id="id49">
+<img alt="../_images/lab2-newtopo.png" src="../_images/lab2-newtopo.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Topology Overview</span><a class="headerlink" href="#id49" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p>Azure Spokes are connected to the Azure Transit</p></li>
-<li><p>AWS Spoke is connected to the AWS Transit. We do not have connectivity between AWS and Azure. Not yet at least!</p></li>
+<li><p>AWS Spoke is connected to the AWS Transit.</p></li>
 </ul>
+<p>We do not have connectivity between AWS and Azure. Not yet at least!</p>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p><strong><em>Visualizing a network can be so helpful!</em></strong></p>
+</div>
 </section>
 </section>
 <section id="lab-2-7-multicloud-peering">
 <h2>Lab 2.7 - Multicloud Peering<a class="headerlink" href="#lab-2-7-multicloud-peering" title="Permalink to this heading">#</a></h2>
 <section id="id16">
 <h3>Description<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
-<p>By this point we should have verified that connectivity in Azure is good, but we are missing the connectivity between Azure and AWS. Aviatrix offers a simple but powerful method for interconnecting clouds.</p>
+<p>By this point we should have verified that connectivity in Azure is good, but we are missing the connectivity between Azure and AWS, in order to complete the 3-tier architecture connectivity, among, the APP, the WEB and the DB.</p>
+<p>Aviatrix offers a simple but powerful method for interconnecting clouds.</p>
 </section>
 <section id="id17">
 <h3>Validate<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Open the CoPilot</p></li>
-<li><p>Navigate <strong><em>Cloud Fabric -&gt; Gateways -&gt; Transit Gateways</em></strong> and edit the Transit Gateway <strong><em>aws-transit-gw</em></strong>, clicking on the pencil icon:</p></li>
+<li><p>Navigate to <strong><em>Cloud Fabric -&gt; Gateways -&gt; Transit Gateways</em></strong> and edit the Transit Gateway <strong><em>aws-transit-gw</em></strong>, clicking on the pencil icon:</p></li>
 </ul>
-<p><img alt="Add Transit Peering" src="../_images/aws-transit-edit.png" />
-<em>Figure: Edit Transit Gateway</em></p>
+<figure class="align-center" id="id50">
+<img alt="../_images/aws-transit-edit.png" src="../_images/aws-transit-edit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Edit Transit Gateway</span><a class="headerlink" href="#id50" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
-<li><p>Select the Transit Gateway <strong><em>azure-transit</em></strong> from the drop-down window from the <em>“Peer To Transit Gateways”</em> field, and then click on <strong><em>Save</em></strong>.</p></li>
+<li><p>Select the Transit Gateway <strong><em>azure-transit</em></strong> from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code> field, and then click on <strong>Save</strong>.</p></li>
 </ul>
-<p><img alt="Add Transit Peering" src="../_images/peering.png" />
-<em>Figure: Establish peering between Transit Gateways</em></p>
+<figure class="align-center" id="id51">
+<img alt="../_images/peering.png" src="../_images/peering.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Establish peering between Transit Gateways</span><a class="headerlink" href="#id51" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id18">
 <h3>Expected Results<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
@@ -643,13 +749,21 @@ document.write(`
 <li><p>Verify that the peering has been established</p></li>
 <li><p>Navigate <strong><em>Cloud Fabric -&gt; Gateways -&gt; Transit Gateways</em></strong> and click on the transit gateway <strong><em>aws-transit-gw</em></strong></p></li>
 </ul>
-<p><img alt="Transit Peering" src="../_images/aws-transit-gw.png" /><br />
-<em>Figure: Select the Transit GW</em></p>
+<figure class="align-center" id="id52">
+<img alt="../_images/aws-transit-gw.png" src="../_images/aws-transit-gw.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Select the Transit GW</span><a class="headerlink" href="#id52" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Then select the tab <strong><em>Connections -&gt; Transit-Transit peering</em></strong>, as depicted below.</p></li>
 </ul>
-<p><img alt="Transit Peering" src="../_images/peering-ok.png" /><br />
-<em>Figure: Transit Peering established</em></p>
+<figure class="align-center" id="id53">
+<img alt="../_images/peering-ok.png" src="../_images/peering-ok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Transit Peering established</span><a class="headerlink" href="#id53" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>You may need to refresh or wait <strong><em>60-120 seconds</em></strong> for the connection status to become green (UP).</p>
@@ -658,11 +772,19 @@ document.write(`
 </ul>
 </div>
 <p><strong>Congratulations!!! You have now built a Multicloud Network! Secure cloud networking has never been so easy…</strong></p>
-<p><img alt="CoPilot" src="../_images/peering-ok2.png" /><br />
-<em>Figure: CoPilot Transit Peering</em></p>
+<figure class="align-center" id="id54">
+<img alt="../_images/peering-ok2.png" src="../_images/peering-ok2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">CoPilot Transit Peering</span><a class="headerlink" href="#id54" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>After this lab, this is how the overall topology would look like:</p>
-<p><img alt="Final" src="../_images/lab2-final.png" /><br />
-<em>Figure: CoPilot Transit Peering</em></p>
+<figure class="align-center" id="id55">
+<img alt="../_images/lab2-final.png" src="../_images/lab2-final.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Full-blown MCNA: Hub-and-Spoke Topology</span><a class="headerlink" href="#id55" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-2-8-test-the-web-app">
@@ -682,26 +804,32 @@ document.write(`
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Replace <strong>X</strong> in the <strong>URL</strong> with the pod number assigned to you. You can view the pod number by accessing the <a class="reference external" href="https://associate-portal.ace.aviatrixlab.com">ACE Associate Lab Portal</a></p>
+<p>Replace <strong>X</strong> in the <strong>URL</strong> with the pod number assigned to you.</p>
+<p>You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a></p>
 </div>
 </section>
 <section id="id21">
 <h3>Expected Results<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
-<p>You should see something similar to this, meaning the Database is still not accessible!
-<img alt="Web App" src="../_images/webapp-db-down.png" /><br />
-<em>Figure: Web App</em></p>
+<p>You should see something similar to this, meaning the Database is still not accessible!</p>
+<figure class="align-center" id="id56">
+<img alt="../_images/webapp-db-down.png" src="../_images/webapp-db-down.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">DB is still down…</span><a class="headerlink" href="#id56" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
-<section id="lab-2-9-debug-the-egress-rules">
-<h2>Lab 2.9 - Debug the Egress Rules<a class="headerlink" href="#lab-2-9-debug-the-egress-rules" title="Permalink to this heading">#</a></h2>
+<section id="lab-2-9-debug-the-egress">
+<h2>Lab 2.9 - Debug the Egress<a class="headerlink" href="#lab-2-9-debug-the-egress" title="Permalink to this heading">#</a></h2>
 <section id="id22">
 <h3>Description<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
-<p>The database is actually just a proxy to Amazon DynamoDB. Perhaps the proxy cannot reach DynamoDB.</p>
+<p>The database is actually just a <strong><em>proxy</em></strong> to Amazon DynamoDB.</p>
+<p>Perhaps the proxy cannot reach DynamoDB.</p>
 </section>
 <section id="id23">
 <h3>Validate<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>After testing that the connection between Web and App works and seeing that the DB connection fails, login to the CoPilot</p></li>
+<li><p>After testing that the connection between Web and App works and seeing that the DB connection fails, verify the Distributed Cloud Firewall section.</p></li>
 <li><p>Search within Copilot for <strong><em>Egress</em></strong></p></li>
 <li><p>Navigate to <strong><em>Egress -&gt; Monitor</em></strong></p></li>
 <li><p>Select the VPC <strong><em>aws-db-node</em></strong></p></li>
@@ -730,21 +858,23 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Open the Controller, navigate to <strong><em>Security</em></strong> -&gt; <strong><em>Egress Control</em></strong></p></li>
 <li><p>Scroll down to <strong><em>Step #3 – Egress FQDN Filter</em></strong></p></li>
-<li><p>Click the <strong>Edit</strong> button next to <strong><em>Default-Egress-Policy</em></strong>
-<img alt="Edit Egress Rule" src="../_images/edit-egress-rule.png" />
-<em>Figure: Edit Egress Rule</em></p></li>
+<li><p>Click the <strong>Edit</strong> button next to <strong><em>Default-Egress-Policy</em></strong></p></li>
+</ol>
+<p><img alt="Edit Egress Rule" src="../_images/edit-egress-rule.png" />
+<em>Figure: Edit Egress Rule</em></p>
+<ol class="arabic simple" start="4">
 <li><p>Click <strong>Add New</strong> and enter:</p>
 <ul class="simple">
 <li><p><strong>Domain Name:</strong> <code class="docutils literal notranslate"><span class="pre">dynamodb.us-west-2.amazonaws.com</span></code></p></li>
 <li><p><strong>Protocol:</strong> <code class="docutils literal notranslate"><span class="pre">tcp</span></code></p></li>
 <li><p><strong>Port:</strong> <code class="docutils literal notranslate"><span class="pre">443</span></code></p></li>
 <li><p><strong>Action:</strong> <code class="docutils literal notranslate"><span class="pre">Allow</span></code></p></li>
-<li><p>Click <strong>Save</strong> and then <strong>Update</strong>
-<img alt="Add Egress Rule" src="../_images/add-egress-rule.png" />
-<em>Figure: Add Egress Rule</em></p></li>
+<li><p>Click <strong>Save</strong> and then <strong>Update</strong></p></li>
 </ul>
 </li>
 </ol>
+<p><img alt="Add Egress Rule" src="../_images/add-egress-rule.png" />
+<em>Figure: Add Egress Rule</em></p>
 </section>
 <section id="id27">
 <h3>Expected Results<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h3>
@@ -900,7 +1030,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-9-debug-the-egress-rules">Lab 2.9 - Debug the Egress Rules</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-9-debug-the-egress">Lab 2.9 - Debug the Egress</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Validate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Expected Results</a></li>
