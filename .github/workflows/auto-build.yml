@@ -25,7 +25,8 @@ jobs:
       #     cache: "pip"
       # - run: pip install -r requirements.txt
 
-      - name: List Juptyer Book Folders
+      # Finds folders that have the _toc.yml file.
+      - name: List Jupyter Book Folders
         id: pl
         uses: Rishabh510/Path-lister-action@master
         with:
@@ -34,9 +35,9 @@ jobs:
 
       - name: Output results
         run: |
-          echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
           for i in ${{ steps.pl.outputs.paths }}; do
-          echo $i
+          splitFolderName=(${i//_/ })
+          echo ${splitFolderName[0]}
           done
 
       # - id: build
