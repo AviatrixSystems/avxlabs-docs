@@ -17,13 +17,13 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
-      # - id: python
-      #   name: Python Setup
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: 3.9
-      #     cache: "pip"
-      # - run: pip install -r requirements.txt
+      - id: python
+        name: Python Setup
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+          cache: "pip"
+      - run: pip install -r requirements.txt
 
       # Finds folders that have the _toc.yml file.
       - name: List Jupyter Book Folders
