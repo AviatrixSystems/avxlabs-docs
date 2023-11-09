@@ -33,11 +33,21 @@ jobs:
           path: "."
           type: "_toc.yml"
 
-      - name: Output results
+      - name: Build Jupyter Book
         run: |
           for i in ${{ steps.pl.outputs.paths }}; do
           folderName=${i%"_toc.yml"}
-          echo ${folderName}
+
+          echo $folderName
+          newFolderName=${folderName//"_"/"-"}
+          echo $newFolderName
+
+          # Build the book
+          # jb clean --all ${folderName}
+          # jb build ${folderName}
+
+          # Move the files to the docs folder
+          # cp -rf ${folderName}/_build/html/ docs/${folderName
           done
 
       # - id: build
