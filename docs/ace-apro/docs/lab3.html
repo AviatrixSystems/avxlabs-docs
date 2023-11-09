@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 3 - NETWORK SEGMENTATION &#8212; ACE Operations Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab3';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 4 - RBAC" href="lab4.html" />
+    <link rel="prev" title="Lab 2 - TRANSIT NETWORKING" href="lab2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Professional Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs ASSIGNMENTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 3 - NETWORK SEGMENTATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 3 - NETWORK SEGMENTATION</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-overview">2. Network Segmentation Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-transit-gateways">4.1. Aviatrix Transit Gateways</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domains">4.2 Network Domains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-segment-attachments">5. Verification of Segment Attachments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification">5.1. CoPilot Verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-policy">6. Connection Policy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-connection-policy">6.1. Verification of Connection Policy</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-3-network-segmentation">
+<h1>Lab 3 - NETWORK SEGMENTATION<a class="headerlink" href="#lab-3-network-segmentation" title="Permalink to this heading">#</a></h1>
+<section id="objective">
+<h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<p>Implement network segmentation between workloads across multicloud and on-premises environments using network domains.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Network Segmentation will be extended to on-premises in the Site2Cloud lab.</p>
+</div>
+</section>
+<section id="network-segmentation-overview">
+<h2>2. Network Segmentation Overview<a class="headerlink" href="#network-segmentation-overview" title="Permalink to this heading">#</a></h2>
+<p>Enterprises can define their network domains (aka <em>segments</em>) and group VNets/VPCs/VCNs with similar security policies without requiring firewall solutions.</p>
+<p>Aviatrix transit and spokes architecture help (aka <em>Hub &amp; Spoke</em> architecture) enterprises create customised segments and onboard branches, partners and customers in their respective segments so no partner can communicate with each other unless desired.</p>
+</section>
+<section id="topology">
+<h2>3. Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
+<p>In this lab, we will use Aviatrix CoPilot to enable <code class="docutils literal notranslate"><span class="pre">Network</span> <span class="pre">Segmentation</span></code> in Azure, AWS and GCP, in order to segregate VPC/VNet with similarities. At this point, there is a flat routing domain and the communication among the three CSPs occurs through the Transit Core Backbone layer.</p>
+<p>Green VPC resources in AWS and Azure can communicate with each other, while access is restricted to Blue VPC resources in GCP. Later, we will ease this restriction with a <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code>: Blue and Green segments will be able to communicate with others as well.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/lab3-topology.png"><img alt="../_images/lab3-topology.png" src="../_images/lab3-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Topology for Lab 3</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="configuration">
+<h2>4. Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<section id="aviatrix-transit-gateways">
+<h3>4.1. Aviatrix Transit Gateways<a class="headerlink" href="#aviatrix-transit-gateways" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains &gt; Transit Gateways</strong>:</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/lab3-enabletransit.png"><img alt="../_images/lab3-enabletransit.png" src="../_images/lab3-enabletransit.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Enable the feature</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Enable all three Aviatrix Transit Gateways in Azure, GCP and AWS (<ins><strong>us-east-2</strong> only for now</ins>) for network segmentation as shown below:</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab3-enabletransit2.png" src="../_images/lab3-enabletransit2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Enable Segmentation on the relevant Transit GWs</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="network-domains">
+<h2>4.2 Network Domains<a class="headerlink" href="#network-domains" title="Permalink to this heading">#</a></h2>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains &gt; + Network Domain</strong></p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/lab3-networkdomain.png"><img alt="../_images/lab3-networkdomain.png" src="../_images/lab3-networkdomain.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Network Domain creation</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Create <strong>two</strong> network domains (Green and Blue) and associate them to their respective Spokes as follows:</p>
+<ul class="simple">
+<li><p><span style='color:lightgreen'>Green</span>- azure-us-west-spoke1 (do not select azure-us-west-<strong>spoke2</strong>)</p></li>
+<li><p><span style='color:lightgreen'>Green</span> - aws-us-east2-spoke1 (do not select aws-us-<strong>east1</strong>-spoke1)</p></li>
+<li><p><span style='color:lightblue'>Blue</span> - gcp-us-central1-spoke1</p></li>
+</ul>
+<p>Click on <strong>Save</strong> after creating each Network Domain.</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab3-green.png" src="../_images/lab3-green.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Green network domain</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab3-blue.png" src="../_images/lab3-blue.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 80 </span><span class="caption-text">Blue network domain</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is what the lab topology looks like after enabling network segmentation:</p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/lab3-topologywithnd.png"><img alt="../_images/lab3-topologywithnd.png" src="../_images/lab3-topologywithnd.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 81 </span><span class="caption-text">Topology with Network Domains</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="verification-of-segment-attachments">
+<h2>5. Verification of Segment Attachments<a class="headerlink" href="#verification-of-segment-attachments" title="Permalink to this heading">#</a></h2>
+<section id="copilot-verification">
+<h3>5.1. CoPilot Verification<a class="headerlink" href="#copilot-verification" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong></p>
+<p>Verify the segments and the associations as shown below:</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab3-verification.png" src="../_images/lab3-verification.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Associations verification</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong>:</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab3-exploretransit.png" src="../_images/lab3-exploretransit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Select Transit in US-East-2</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then select the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab and inspect the routing table of the network domain <strong>Green</strong>, likewise the routing table of the network domain <strong>Blue</strong>:</p>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab3-exploregreen.png" src="../_images/lab3-exploregreen.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Explore Green</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab3-exploreblue.png" src="../_images/lab3-exploreblue.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Explore Blue</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Overview &gt; Logical View</strong></p>
+<p>The nodes depicted in the Logical View represent spokes and site2cloud instances. Hover over a node to highlight reachability. Nodes are grouped by colored arcs representing network domains. At this time, only the spoke gateways in Azure and AWS (i.e. Green Network Domain) are connected:</p>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab3-logicalview.png" src="../_images/lab3-logicalview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Logical View</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Open <strong>three</strong> terminal windows and SSH to the test instances/VMs in each cloud and ping the <strong>private</strong> IPs of each other to test the Multicloud connectivity (Refer to pod info).</p>
+<p>Azure and AWS resources will ping each other, but neither will be able to access GCP VM, since GCP spoke is in a different segment (Blue).</p>
+<p><strong>AWS</strong>:</p>
+<p>SSH into <strong><em>aws-us-east2-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab3-ping1.png" src="../_images/lab3-ping1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Ping test from AWS</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Azure</strong>:</p>
+<p>SSH into <strong><em>azure-us-west-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab3-ping2.png" src="../_images/lab3-ping2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Ping test from Azure</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>GCP</strong>:</p>
+<p>SSH into <strong><em>gcp-us-central1-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab3-ping3.png" src="../_images/lab3-ping3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Ping test from GCP</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="connection-policy">
+<h2>6. Connection Policy<a class="headerlink" href="#connection-policy" title="Permalink to this heading">#</a></h2>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong></p>
+<p>Click the pencil icon to edit. You can either select the Green domain or the Blue domain.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The connection policy is always bidirectional!</p>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab3-editnd.png" src="../_images/lab3-editnd.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Edit Blue</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the appropriate option from the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Connect</span> <span class="pre">to</span> <span class="pre">Network</span> <span class="pre">Domain&quot;</span></code></strong> pull-down menu (Green shown here). Then click <strong>Save</strong>:</p>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="../_images/lab3-applycp.png"><img alt="../_images/lab3-applycp.png" src="../_images/lab3-applycp.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Apply the connection polic</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="verification-of-connection-policy">
+<h3>6.1. Verification of Connection Policy<a class="headerlink" href="#verification-of-connection-policy" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Overview &gt; Logical View</strong></p>
+<p>Now you will see that the spoke gateways in all three clouds are connected. This is because the Blue and Green Network Domains are directly connected:</p>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab3-cpnew.png" src="../_images/lab3-cpnew.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Logical View with the connection policy</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Retest the connectivity; now you will have end-to-end connectivity across the multicloud environment.</p>
+<p><strong>AWS</strong>:</p>
+<p>SSH into <strong><em>aws-us-east2-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab3-newtest.png" src="../_images/lab3-newtest.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">New Test from AWS</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Azure</strong>:</p>
+<p>SSH into <strong><em>azure-us-west-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab3-newtest2.png" src="../_images/lab3-newtest2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">New Test from Azure</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>GCP</strong>:</p>
+<p>SSH into <strong><em>gcp-us-central1-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab3-newtest3.png" src="../_images/lab3-newtest3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">New Test from GCP</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After this lab, this is how the overall topology would look like:</p>
+<figure class="align-center" id="id22">
+<a class="reference internal image-reference" href="../_images/lab3-finaltopology.png"><img alt="../_images/lab3-finaltopology.png" src="../_images/lab3-finaltopology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Final topology for Lab 3</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 2 - TRANSIT NETWORKING</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 4 - RBAC</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-overview">2. Network Segmentation Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-transit-gateways">4.1. Aviatrix Transit Gateways</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domains">4.2 Network Domains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-segment-attachments">5. Verification of Segment Attachments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification">5.1. CoPilot Verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-policy">6. Connection Policy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-connection-policy">6.1. Verification of Connection Policy</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

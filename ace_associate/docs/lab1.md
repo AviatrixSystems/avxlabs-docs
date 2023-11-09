@@ -128,7 +128,7 @@ ping db.podX.aviatrixlab.com
 ```{hint}
 Replace **X** in the **URLs** with the pod number assigned to you. 
 
-You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
+You can view the pod number by accessing the **ACE Associate Lab Portal**
 ```
 
 ### Expected Results
