@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 7 - SITE2CLOUD &#8212; ACE Operations Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab7';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 8 - DISTRIBUTED CLOUD FIREWALL" href="lab8.html" />
+    <link rel="prev" title="Lab 6 - FIRENET" href="lab6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Operations Lab - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="ACE Operations Lab - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Professional Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs ASSIGNMENTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - FIRENET</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab7.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 7 - SITE2CLOUD</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-overview">2. Site2Cloud Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-cloud-to-on-prem">4.1. Site2Cloud Connection (Cloud to On-Prem)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-on-prem-to-cloud">4.2. Site2Cloud Connection (On-prem to Cloud)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-the-txt-file">4.2.1 Modify the txt.file</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-7-site2cloud">
+<h1>Lab 7 - SITE2CLOUD<a class="headerlink" href="#lab-7-site2cloud" title="Permalink to this heading">#</a></h1>
+<section id="objective">
+<h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<p>The objective of this lab is to resolve an IP address overlap between an on-premises partner and the cloud. You will be using the <strong>Site2Cloud Mapped NAT</strong> feature to achieve this.</p>
+</section>
+<section id="site2cloud-overview">
+<h2>2. Site2Cloud Overview<a class="headerlink" href="#site2cloud-overview" title="Permalink to this heading">#</a></h2>
+<p>Site2Cloud builds an encrypted connection between two sites over the Internet in an easy-to-use and template-driven manner. Its workflow is similar to any CSP’s virtual private network workflow.</p>
+<p>On one end of the tunnel is an Aviatrix Gateway; on the other could be an on-premises router, firewall or another public cloud VPC/VNet that Aviatrix Controller does not manage.</p>
+</section>
+<section id="topology">
+<h2>3. Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
+<p>In this lab, you will achieve Site2Cloud connectivity to a Cisco Cloud Services Router 1000v (CSR) emulating an on-premises branch router.</p>
+<p>In this lab, you will work with the overlapping IP addresses in this topology:</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/lab8-topology.png" src="../_images/lab8-topology.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 197 </span><span class="caption-text">Lab 8 Initial Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="configuration">
+<h2>4. Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<section id="site2cloud-connection-cloud-to-on-prem">
+<h3>4.1. Site2Cloud Connection (Cloud to On-Prem)<a class="headerlink" href="#site2cloud-connection-cloud-to-on-prem" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">External</span> <span class="pre">Connection&quot;</span></code> button.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab8-s2c.png" src="../_images/lab8-s2c.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 198 </span><span class="caption-text">S2C creation</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Create a connection from Cloud (GCP) to an on-prem Partner site.</p>
+<p>Use the following settings on the <code class="docutils literal notranslate"><span class="pre">&quot;Add</span> <span class="pre">External</span> <span class="pre">Connection&quot;</span></code> window:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>GCP-to-OnPremPartner</span></p></li>
+<li><p><strong>External Device</strong>: <span style='color:#33ECFF'>Static Route-Based (Mapped)</span></p></li>
+<li><p><strong>Local Gateway</strong>: <span style='color:#33ECFF'>gcp-us-central1-spoke1</span></p></li>
+<li><p><strong>Real Local Subnet CIDR(s)</strong>: <span style='color:#33ECFF'>172.16.1.0/24</span></p></li>
+<li><p><strong>Virtual Local Subnet CIDR(s)</strong>: <span style='color:#33ECFF'>192.168.200.0/24</span></p></li>
+<li><p><strong>Remote Gateway Type</strong>: <span style='color:#33ECFF'>Generic</span></p></li>
+<li><p><strong>Real Remote Subnet CIDR(s)</strong>: <span style='color:#33ECFF'>172.16.1.0/24</span></p></li>
+<li><p><strong>Virtual Remote Subnet CIDR(s)</strong>: <span style='color:#33ECFF'>192.168.100.0/24</span></p></li>
+<li><p><strong>Authetication Method</strong>: <span style='color:#33ECFF'>PSK</span></p></li>
+<li><p><strong>Pre-Shared Key</strong>: <span style='color:#33ECFF'>Aviatrix123#</span></p></li>
+<li><p><strong>Remote Gateway IP</strong>: <span style='color:#33ECFF'>[<strong>Refer to your Pod assignment for the CSR Public IP</strong>]</span></p></li>
+<li><p><strong>Local Gateway Instance</strong>: <span style='color:#33ECFF'>gcp-us-central1-spoke1</span></p></li>
+</ul>
+<p>Then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab8-s2ctemplate.png" src="../_images/lab8-s2ctemplate.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 199 </span><span class="caption-text">S2C template</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The configurationt template will grey out after clicking on Save. Be patient and wait for the Aviatrix Controller to complete the deployment. <ins>This will create the first leg of the connection, on the GCP Spoke GW</ins>. This will stay <strong>Down</strong> until the other end is configured.</p>
+</div>
+<p>Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.</p>
+<ul class="simple">
+<li><p><strong>192.168.100.0/24</strong> will be used for the cloud to reach on-prem resources, and 1:1 NAT will be used.</p></li>
+<li><p><strong>192.168.200.0/24</strong> will be used from on-prem to reach cloud resources.</p></li>
+</ul>
+<p>For example, gcp-us-central1-test1 (172.16.1.100) will be reached at 192.168.200.100 due to 1:1 NAT.</p>
+</section>
+<section id="site2cloud-connection-on-prem-to-cloud">
+<h3>4.2. Site2Cloud Connection (On-prem to Cloud)<a class="headerlink" href="#site2cloud-connection-on-prem-to-cloud" title="Permalink to this heading">#</a></h3>
+<p>The CoPilot provides a <strong><em>template</em></strong> that can be used to configure the remote router/firewall.</p>
+<p>Select the Site-to-Cloud connection row you created and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Three</span> <span class="pre">dots&quot;</span></code> icon and choose <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">Configuration&quot;</span></code> to generate and download the configuration template.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab8-template.png" src="../_images/lab8-template.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 200 </span><span class="caption-text">CFG file</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Insert the following value inside the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">Configuration&quot;</span></code> window:</p>
+<ul class="simple">
+<li><p><strong>Vendor</strong>: <span style='color:#33ECFF'>Cisco</span></p></li>
+<li><p><strong>Platform</strong>: <span style='color:#33ECFF'>ISR,ASR, or CSR</span></p></li>
+<li><p><strong>Software</strong>: <span style='color:#33ECFF'>IOS(XE)</span></p></li>
+</ul>
+<p>and then click on <strong>Download</strong>.</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab8-template2.png" src="../_images/lab8-template2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 201 </span><span class="caption-text">Download CFG file</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Cisco CSR is not acting as an actual branch router because it is being NAT’d by an AWS IGW. For that purpose, you need to specify that the <strong><code class="docutils literal notranslate"><span class="pre">Remote</span> <span class="pre">Identifier</span></code></strong> of the IKE tunnel is the private IP of the CSR, not the public IP.</p>
+</div>
+<p>To find out the <strong>Private IP</strong> of the CSR, SSH as <code class="docutils literal notranslate"><span class="pre">admin</span></code> to the on-premises router (same as the Remote Peer IP above) and issue the IOS command <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">ip</span> <span class="pre">interface</span> <span class="pre">brief</span></code> (can be abbreviated to <strong><em>sh ip int br</em></strong>).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Refer to your <strong>POD</strong> portal for retrieving the Public IP of the CSR.</p>
+</div>
+<p>The Private IP that you need to copy is that one assigned to the <strong><em>GigabitEthernet1</em></strong> interface.</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab8-giga.png" src="../_images/lab8-giga.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 202 </span><span class="caption-text">GigabitEthernet1 IP address</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Use the Private IP of the GigabitEthernet1 interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the above output.</p>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong> and click on the <code class="docutils literal notranslate"><span class="pre">GCP-to-OnPremPartner</span></code> connection.</p>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab8-s2craw.png" src="../_images/lab8-s2craw.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 203 </span><span class="caption-text">S2C node</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab, expand the <code class="docutils literal notranslate"><span class="pre">&quot;General&quot;</span></code> section and paste the Private IP on the <code class="docutils literal notranslate"><span class="pre">&quot;Remote</span> <span class="pre">Gateway</span> <span class="pre">Identifier&quot;</span></code> field, as depicted below.</p>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab8-settings.png" src="../_images/lab8-settings.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 204 </span><span class="caption-text">Remote Gateway Identifier</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="modify-the-txt-file">
+<h3>4.2.1 Modify the txt.file<a class="headerlink" href="#modify-the-txt-file" title="Permalink to this heading">#</a></h3>
+<p>Make the following four changes to the downloaded Site2Cloud text file:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;crypto_policy_number&gt;</span></code> : <span style='color:#33ECFF'>1</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;tunnel_number1&gt;</span></code>: <span style='color:#33ECFF'>1</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;ios_wan_interface1&gt;</span></code>: <span style='color:#33ECFF'>gi1</span></p>
+<p>ip route 192.168.200.0 255.255.255.0 Tunnel<code class="docutils literal notranslate"><span class="pre">&lt;tunnel_number&gt;</span></code>: <span style='color:#33ECFF'>1</span></p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab8-txt1.png" src="../_images/lab8-txt1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 205 </span><span class="caption-text">txt.file modification</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab8-txt2.png" src="../_images/lab8-txt2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 206 </span><span class="caption-text">txt.file modification 2</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Copy the entire configuration to the clipboard.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If your SSH session to the Cisco CSR hasn’t timed out, SSH back in (please refer to your <strong>POD</strong> portal file for its public IP).</p>
+</div>
+<p>Type <code class="docutils literal notranslate"><span class="pre">configure</span> <span class="pre">terminal</span></code> (can be abbreviated to <strong><em><code class="docutils literal notranslate"><span class="pre">&quot;conf</span> <span class="pre">t&quot;</span></code></em></strong>).</p>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab8-ssh.png" src="../_images/lab8-ssh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 207 </span><span class="caption-text">SSH to the CSR</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Paste</strong> the configuration to the terminal.</p></li>
+</ul>
+<p>After doing so, type <code class="docutils literal notranslate"><span class="pre">end</span></code> to exit configuration mode, followed by <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">ip</span> <span class="pre">int</span> <span class="pre">br</span></code> to verify that the tunnel interface is up on the CSR.</p>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab8-up.png" src="../_images/lab8-up.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 208 </span><span class="caption-text">Connection is up/up</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="verification">
+<h2>5. Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h2>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Click on the <strong>refresh</strong> button to see the colored ball changing from red to green.</p>
+<p>The status will be reflected on the screen in about <strong>1 minute</strong>.</p>
+</div>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab8-refresh.png" src="../_images/lab8-refresh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 209 </span><span class="caption-text">Connection is up/up also on the CoPilot</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Verify the newly created tunnel is up (might take a few seconds once configuration is applied on the CSR (alternatively you can just click on the <code class="docutils literal notranslate"><span class="pre">Refresh</span></code> button).</p></li>
+</ul>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong></p>
+<p>Click to expand the <strong><em>gcp-us-central1-spoke1</em></strong> VPC to view the on-premises connection.</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab8-onprem.png" src="../_images/lab8-onprem.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 210 </span><span class="caption-text">OnPrem partner site</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Go to <strong>OnPrem Router &gt; SSH Console</strong>.</p>
+<p>From the on-premises router’s console, enter a ping sourced from the <strong><em>GigabitEthernet1</em></strong> interface to the test instance in GCP (<strong><em>gcp-us-central1-spoke1-test1</em></strong>) as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">192</span>.168.200.100<span class="w"> </span><span class="nb">source</span><span class="w"> </span>gi1
+</pre></div>
+</div>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab8-pingok.png" src="../_images/lab8-pingok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 211 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong> and click on the icon of the Spoke Gateway <strong><em>gcp-us-central1-spoke1</em></strong>, click on <code class="docutils literal notranslate"><span class="pre">Tools</span></code> and then click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Diagnostics</span></code>.</p>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab8-diag.png" src="../_images/lab8-diag.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 212 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Choose the <code class="docutils literal notranslate"><span class="pre">“Active</span> <span class="pre">Sessions”</span></code> option and in the Search field write <code class="docutils literal notranslate"><span class="pre">“icmp”</span></code> and then click on <strong>Run</strong>. You will notice the subnets involved (i.e. real and virtual subnets) in the Mapped NAT.</p>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab8-active2.png" src="../_images/lab8-active2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 213 </span><span class="caption-text">Active Sessions</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You will have to relaunch the ping command once again from the CSR router and click on <strong>Run</strong> on the CoPilot for capturing the Active Sessions!</p>
+</div>
+<p>After completing this lab, this is what the overall lab topology would look like:</p>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/lab8-finaltopology.png"><img alt="../_images/lab8-finaltopology.png" src="../_images/lab8-finaltopology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 214 </span><span class="caption-text">Lab 8 Final Topology</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 6 - FIRENET</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab8.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 8 - DISTRIBUTED CLOUD FIREWALL</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-overview">2. Site2Cloud Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-cloud-to-on-prem">4.1. Site2Cloud Connection (Cloud to On-Prem)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-on-prem-to-cloud">4.2. Site2Cloud Connection (On-prem to Cloud)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-the-txt-file">4.2.1 Modify the txt.file</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

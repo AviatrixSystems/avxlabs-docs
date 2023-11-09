@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 1 - VPCs/VNets Creation &#8212; ACE Operations Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab1';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 2 - TRANSIT NETWORKING" href="lab2.html" />
+    <link rel="prev" title="PODs ASSIGNMENTS" href="pod.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Operations Lab - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="ACE Operations Lab - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Professional Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs ASSIGNMENTS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 1 - VPCs/VNets Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slides.html">SLIDES</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 1 - VPCs/VNets Creation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-vnet">2. Azure VNet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-azure-vnet">2.1. Create Azure VNet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-azure-portal">2.2. Verify from Azure Portal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-vpc">3. AWS VPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-aws-vpc">3.1. Create AWS VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">3.2. Verify from AWS Console</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gcp-vpc">4. GCP VPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gcp-vpc">4.1. Create GCP VPC</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-1-vpcs-vnets-creation">
+<h1>Lab 1 - VPCs/VNets Creation<a class="headerlink" href="#lab-1-vpcs-vnets-creation" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>In this lab, you will create <strong>3</strong> VPCs/VNets, one in each cloud, i.e., Azure, AWS and GCP.</p>
+<p>The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).</p>
+<p>Refer to your POD assignment for CoPilot login information, as depicted below. Click on the <code class="docutils literal notranslate"><span class="pre">URL</span></code> of the CoPilot and log in using the credentials assigned to your POD.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/lab1-portal.png" src="../_images/lab1-portal.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">POD portal</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="azure-vnet">
+<h2>2. Azure VNet<a class="headerlink" href="#azure-vnet" title="Permalink to this heading">#</a></h2>
+<section id="create-azure-vnet">
+<h3>2.1. Create Azure VNet<a class="headerlink" href="#create-azure-vnet" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong>.</p>
+<p>Verify whether the CIDR range <code class="docutils literal notranslate"><span class="pre">192.168.12.0/24</span></code> is overlapping or not, as shown below.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab1-vnet1.png" src="../_images/lab1-vnet1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Searching for a subnet conflict</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s create an Application/Spoke VNet. Click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab1-vnet2.png" src="../_images/lab1-vnet2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">VNet creation</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Insert the following values:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>azure-us-central-spoke1</span></p></li>
+<li><p><strong>Cloud</strong>: <span style='color:#33ECFF'>Azure Global</span></p></li>
+<li><p><strong>Account</strong>: <span style='color:#33ECFF'>azure-account [use the drop-down window]</span></p></li>
+<li><p><strong>Region</strong>: <span style='color:#33ECFF'>Central US [use the drop-down window]</span></p></li>
+<li><p><strong>VPC CIDR</strong>: <span style='color:#33ECFF'>192.168.12.0/24</span></p></li>
+<li><p><strong>VPC Function</strong>: <span style='color:#33ECFF'>Default [use the drop-down window]</span></p></li>
+</ul>
+<p>Then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab1-vnet3.png" src="../_images/lab1-vnet3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">VNet template</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will immediately notice a message on the top-right corner.</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab1-vnet4.png" src="../_images/lab1-vnet4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">“In progress” message</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the CoPilot search bar, type <code class="docutils literal notranslate"><span class="pre">“task”</span></code> and then click the search result <code class="docutils literal notranslate"><span class="pre">“Notifications</span> <span class="pre">/</span> <span class="pre">Tasks”</span></code>. Observe the VNet creation Task and wait for it to complete.</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab1-vnet5.png" src="../_images/lab1-vnet5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Notification</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="verify-from-azure-portal">
+<h3>2.2. Verify from Azure Portal<a class="headerlink" href="#verify-from-azure-portal" title="Permalink to this heading">#</a></h3>
+<p>Log into the <a href="https://portal.azure.com/#home" target="_blank">Azure portal</a>. Refer to your pod info for login information.</p>
+<p>Once you are logged in, navigate to <code class="docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Networks</span></code>.</p>
+<p>Be sure to filter your <code class="docutils literal notranslate"><span class="pre">Subscription</span></code> <ins>by your pod number</ins>, for example, for Pod 22 filter by <code class="docutils literal notranslate"><span class="pre">csp_azure_shared_ace_labs_22</span></code>.</p>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab1-vnet6.png" src="../_images/lab1-vnet6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Azure portal</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Once in the VNet you just created, navigate to <code class="docutils literal notranslate"><span class="pre">Subnets</span></code>. Explore all the constructs that were created in Central US.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab1-vnet7.png" src="../_images/lab1-vnet7.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Azure subnets</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the Portal, navigate to <strong>Home &gt; Route tables</strong>. Explore the route tables.</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab1-vnet8.png" src="../_images/lab1-vnet8.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Route tables</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="aws-vpc">
+<h2>3. AWS VPC<a class="headerlink" href="#aws-vpc" title="Permalink to this heading">#</a></h2>
+<section id="create-aws-vpc">
+<h3>3.1. Create AWS VPC<a class="headerlink" href="#create-aws-vpc" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong> and then click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab1-vpc1.png" src="../_images/lab1-vpc1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Insert the following values:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>aws-us-west2-spoke1</span></p></li>
+<li><p><strong>Cloud</strong>: <span style='color:#33ECFF'>AWS</span></p></li>
+<li><p><strong>Account</strong>: <span style='color:#33ECFF'>aws-account [use the drop-down window]</span></p></li>
+<li><p><strong>Region</strong>: <span style='color:#33ECFF'>us-west-2 (Oregon) [use the drop-down window]</span></p></li>
+<li><p><strong>VPC CIDR</strong>: <span style='color:#33ECFF'>10.0.22.0/24</span></p></li>
+<li><p><strong>VPC Function</strong>: <span style='color:#33ECFF'>Default [use the drop-down window]</span></p></li>
+</ul>
+<p>Then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab1-vpc2.png" src="../_images/lab1-vpc2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">VPC configuration</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Monitor the progress of the VPC creation through the hourglass icon.</p>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab1-vpc3.png" src="../_images/lab1-vpc3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Hourglass icon</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).</p>
+<p>You can filter by CIDR <code class="docutils literal notranslate"><span class="pre">10.0.22.0/24</span></code>.</p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab1-vpc4.png" src="../_images/lab1-vpc4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="verify-from-aws-console">
+<h3>3.2. Verify from AWS Console<a class="headerlink" href="#verify-from-aws-console" title="Permalink to this heading">#</a></h3>
+<p>Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for <strong>Pod 100</strong>):</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab1-vpc5.png" src="../_images/lab1-vpc5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Change the region to <code class="docutils literal notranslate"><span class="pre">Oregon</span> <span class="pre">(us-west-2)</span></code> in the top-right corner and invoke the VPC service. You can see the <code class="docutils literal notranslate"><span class="pre">VPC</span></code> created with the CIDR block.</p>
+<p>From there, navigate to <code class="docutils literal notranslate"><span class="pre">Subnets</span></code>.</p>
+<p>As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet per Availability Zone. Since us-west-2 has 4 AZs, therefore eight subnets are created.</p>
+<p>From there, navigate to <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Tables</span></code>.</p>
+<p>Here, also, you can see the eight route tables that the Controller created. They are mapped to each subnet. The Public Subnets have a 0/0 route pointing to the Internet Gateway, which the Controller also deployed.</p>
+</section>
+</section>
+<section id="gcp-vpc">
+<h2>4. GCP VPC<a class="headerlink" href="#gcp-vpc" title="Permalink to this heading">#</a></h2>
+<section id="create-gcp-vpc">
+<h3>4.1. Create GCP VPC<a class="headerlink" href="#create-gcp-vpc" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt;</strong> Click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab1-gcp1.png" src="../_images/lab1-gcp1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Insert the following values:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>gcp-us-west2-spoke1</span></p></li>
+<li><p><strong>Cloud</strong>: <span style='color:#33ECFF'>GCP</span></p></li>
+<li><p><strong>Account</strong>: <span style='color:#33ECFF'>gcp-account [use the drop-down window]</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>gcp-us-west2-spoke1-sub1</span></p></li>
+<li><p><strong>Region</strong>: <span style='color:#33ECFF'>us-west2 [use the drop-down window]</span></p></li>
+<li><p><strong>CIDR</strong>: <span style='color:#33ECFF'>172.16.22.0/24</span></p></li>
+</ul>
+<p>Then click on <strong>Save</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure there are no white spaces at the beginning or end of the VPC name.</p>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab1-gcp2.png" src="../_images/lab1-gcp2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">VPC template</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately(alternatively, refresh the web page for triggering the change).</p>
+<p>You can filter by CIDR <code class="docutils literal notranslate"><span class="pre">172.16.22.0/24</span></code>.</p>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab1-gcp3.png" src="../_images/lab1-gcp3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The VPCs and VNet created in this lab will not be used in subsequent labs.</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pod.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">PODs ASSIGNMENTS</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 2 - TRANSIT NETWORKING</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-vnet">2. Azure VNet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-azure-vnet">2.1. Create Azure VNet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-azure-portal">2.2. Verify from Azure Portal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-vpc">3. AWS VPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-aws-vpc">3.1. Create AWS VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">3.2. Verify from AWS Console</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gcp-vpc">4. GCP VPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gcp-vpc">4.1. Create GCP VPC</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
