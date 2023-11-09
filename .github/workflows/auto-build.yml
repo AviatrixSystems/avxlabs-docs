@@ -36,8 +36,8 @@ jobs:
       - name: Output results
         run: |
           for i in ${{ steps.pl.outputs.paths }}; do
-          splitFolderName=(${i//_/ })
-          echo ${splitFolderName[0]}
+          folderName=${i%"_toc.yml"}
+          echo ${folderName}
           done
 
       # - id: build
