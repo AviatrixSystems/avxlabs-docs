@@ -44,7 +44,7 @@ Click on **Run** for executing the ping command.
 ```{note}
 Replace X in the **URLs** with the pod number assigned to you. 
 
-You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
+You can view the pod number by accessing the **ACE Associate Lab Portal**
 ```
 
 ```{figure} images/lab2-ping.png
@@ -124,7 +124,7 @@ Test the Web App
 ```{note}
 Replace **X** in the **URL** with the pod number assigned to you. 
 
-You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
+You can view the pod number by accessing the **ACE Associate Lab Portal**
 ```
 
 ### Expected Results
@@ -302,7 +302,7 @@ By this point we should have verified that connectivity in Azure is good, but we
 
 ### Validate
 
-* Navigate to **_Cloud Fabric -> Gateways -> Transit Gateways_** and edit the Transit Gateway **_aws-transit-gw_**, clicking on the pencil icon:
+* Navigate to **Cloud Fabric > Gateways > Transit Gateways** and edit the Transit Gateway **_aws-transit-gw_**, clicking on the pencil icon:
 
 ```{figure} images/aws-transit-edit.png
 ---
@@ -321,8 +321,12 @@ Establish peering between Transit Gateways
 ```
 
 ## Expected Results
-* Verify that the peering has been established 
-* Navigate **_Cloud Fabric -> Gateways -> Transit Gateways_** and click on the transit gateway **_aws-transit-gw_**
+* Verify that the peering has been established
+
+```{tip}
+Navigate **Cloud Fabric > Gateways > Transit Gateways** and click on the transit gateway **_aws-transit-gw_**
+```
+
 
 ```{figure} images/aws-transit-gw.png
 ---
@@ -331,7 +335,7 @@ align: center
 Select the Transit GW
 ```
 
-* Then select the tab **_Connections -> Transit-Transit peering_**, as depicted below.
+* Then select the tab **Connections > Transit-Transit peering**, as depicted below.
 
 ```{figure} images/peering-ok.png
 ---
@@ -376,7 +380,7 @@ Check whether the Web App is up and running.
 ```{note}
 Replace **X** in the **URL** with the pod number assigned to you. 
 
-You can view the pod number by accessing the <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
+You can view the pod number by accessing the **ACE Associate Lab Portal**
 ```
 
 ### Expected Results
@@ -389,70 +393,150 @@ align: center
 DB is still down...
 ```
 
-## Lab 2.9 - Debug the Egress 
+## Lab 2.9 - Debug the Egress section
 ### Description
 The database is actually just a **_proxy_** to Amazon DynamoDB. 
 
 Perhaps the proxy cannot reach DynamoDB.
 
 ### Validate
-* After testing that the connection between Web and App works and seeing that the DB connection fails, verify the Distributed Cloud Firewall section.
-* Search within Copilot for **_Egress_**
-* Navigate to **_Egress -> Monitor_**
-* Select the VPC **_aws-db-node_**
+* After testing that the connection between Web and App works and seeing that the DB connection fails, verify the `Logs` on the **Egress** section.
 
-![Web App](images/egress-monitor.png)  
-_Figure: Egress_  
+```{tip}
+Go to **CoPilot > Security > Egress > Monitor** and select the **_aws-db-node_** VPC.
+```
 
+```{figure} images/lab2-egressmonitor.png
+---
+align: center
+---
+Egress Monitor section
+```
+
+You will see immediatelly all the Logs related to the Distributed Cloud Firewall Rules. 
+
+- Search for the `"Denied"` action.
 
 ### Expected Results
-* It appears that the Egress filter is not allowing access to:  **_dynamodb.us-west-2.amazonaws.com_**
+* It appears that the Egress filter is not allowing access to:  **_dynamodb.us-west-2.amazonaws.com_** on port **443**.
 * You should see somethiing like the following:
 
-![Egress Search](images/egress-outcome.png)  
-_Figure: Egress outcome_  
- 
-## Lab 2.10 - Modify the Egress Rules
+```{figure} images/lab2-denied.png
+---
+align: center
+---
+Egress Monitor section
+```
+
+## Lab 2.10 - Inspect the Distributed Cloud Firewall 
 ### Description
-Modify the Egress Rules.
+Check the Distributed Cloud Firewall Rules
 ### Validate
-1. Open the Controller, navigate to **_Security_** -> **_Egress Control_**
-2. Scroll down to **_Step #3 – Egress FQDN Filter_**
-3. Click the **Edit** button next to **_Default-Egress-Policy_**
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**
 
-![Edit Egress Rule](images/edit-egress-rule.png)
-_Figure: Edit Egress Rule_
+```{figure} images/lab2-dcf.png
+---
+align: center
+---
+DCF rules
+```
 
-4. Click **Add New** and enter:
-    * **Domain Name:** `dynamodb.us-west-2.amazonaws.com`
-    * **Protocol:** `tcp`
-    * **Port:** `443`
-    * **Action:** `Allow`
-    * Click **Save** and then **Update**
+You will notice **4** rules:
 
-![Add Egress Rule](images/add-egress-rule.png)
-_Figure: Add Egress Rule_ 
+1- <span style='color:#00FFFF'>**allow-internet-http**</span>
+  - This rule allows the DB instance to generate **HTTP** (port 80) towards Internet against specific domains (there is a WebGroup named *"allowed-internet-http"* attached to the rule itself).
+
+2- <span style='color:#00FFFF'>**allow-internet-https**</span>
+  - This rule allows the DB instance to generate **HTTPS** (port 443) towards Internet against specific domains (there is a WebGroup named *"allowed-internet-https"* attached to the rule itself).
+
+3- <span style='color:#00FFFF'>**allow-rfc1918**</span>
+  - This rule allows all kind of **_East-West_** traffic within the multicloud infrastructure.
+
+4- <span style='color:#00FFFF'>**default-deny-all**</span>
+  - This is the **_Explicit Deny Rule_** that permits to achieve the ZTNA (Zero Trust Network Access) approach!
+
+The denied domain is **_dynamodb.us-west-2.amazonaws.com_**. This domain should be allowed within the WebGroup `"allowed-internet-https"`! 
+
+## Lab 2.11 - Check and Modify the WebGroup
+### Description
+Modify the Distributed Cloud Firewall WebGroup
+### Validate
+Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and modify the WebGroup `"allowed-internet-https"`
+
+```{figure} images/lab2-webgroup.png
+---
+align: center
+---
+WebGroups
+```
+
+You will notice that the WebGroup only contains two domains:
+
+1- *.us.east-1.amazonaws.com
+
+2- *.snapcraft.io
+
+```{figure} images/lab2-webgroupno.png
+---
+align: center
+---
+WebGroups
+```
+
+- Add the required Domain Name `dynamodb.us-west-2.amazonaws.com` within the *Domains/URLs* field and then click on **Save**.
+
+```{figure} images/lab2-webgroupok.png
+---
+align: center
+---
+Editing the WebGroup 
+``` 
 
 ### Expected Results
-You should have seen **Allow** entries for **_*.ubuntu.com_** and **_github.com_**.  After adding an entry for **_dynamodb_**, your Web App should be working.  
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on the `"L7 Logs"`.
 
-## Lab 2.11 - Sign-in to the Web App
+```{figure} images/lab2-finalok.png
+---
+align: center
+---
+L7 Log
+``` 
+
+You will notice that now the DB instance can successfully reach the DynamoDB!
+
+## Lab 2.12 - Sign-in to the Web App
 ### Description
 Now that we have built the connectivity, our Web App should be up and running.
 
 ### Validate
-* Log in to the Remote Access Server
+* Log in to the **Remote Access Server**
 * Open Firefox on the Desktop and navigate to: [http://web.pod**X**.aviatrixlab.com]()
 
 ```{note}
-Replace **X** in the **URL** with the pod number assigned to you. You can view the pod number by accessing the [ACE Associate Lab Portal](https://associate-portal.ace.aviatrixlab.com)
+Replace **X** in the **URL** with the pod number assigned to you.
+
+You can view the pod number by accessing the **ACE Associate Lab Portal**
 ```
+
+You will finally see all the three tiers (i.e. Web, App and DB) in `"STATUS: UP"`
 
 * Click **Sign In**, enter something in the **Comments** and click **Submit** to sign-in to the **WALL OF FAME**
 
 ### Expected Results
-![DB Tier Working](images/db-working.png)  
-_Figure: DB Tier Working_  
+
+```{figure} images/lab2-signin.png
+---
+align: center
+---
+Sign In
+```
+
+```{figure} images/lab2-submit.png
+---
+align: center
+---
+Insert your Comment!
+```
 
 ```{note}
 You should see that all 3 App Tiers are now up and can talk to each other. You should also be able to register yourself in the form, and also be able to view the Wall of Fame!

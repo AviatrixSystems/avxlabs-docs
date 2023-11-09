@@ -47,7 +47,7 @@ align: center
 Dashboard
 ```
 
-- Before starting building your multicloud infrastructure, adjust the fetch timers on the CoPilot.
+- Before starting building your multicloud infrastructure, adjust the **fetch timers** on the CoPilot.
 
 ```{hint}
 Go to **CoPilot > Settings > Resources > Task Server**
@@ -105,9 +105,9 @@ These are very aggressive settings. In a Production environment, you should not 
 
 ## 4. Initial configuration
 
-Go to **CoPilot > Dashboard** and click on the widget called `"Aviatrix Gateways"`. 
+Go to **CoPilot > Dashboard** and check the `Gateways Health` either of the Spoke GW Clusters or the Transit GW Clusters. 
 
-When you begin this lab, you should have **nine** gateways in your pod:
+When you begin this lab, you should have **five** Gateway Clusters in your pod:
 
 ```{figure} images/lab2-dashboardgw.png
 ---
@@ -116,7 +116,17 @@ align: center
 Dashboard with existing GWs
 ```
 
-Nevertheless, if you go to **CoPilot > Cloud Fabric > Gateways > Overview (default tab)**, you will notice that the number of Transit Gateways is set to **three**, whereas the number of Spoke Gateways is set to **two**.
+```{figure} images/lab2-clustergw.png
+---
+align: center
+---
+Dashboard with existing GWs
+```
+
+- **2x** <span style='color:orange'>Spoke GW Clusters</span>
+- **3x** <span style='color:green'>Transit GW Clusters</span>
+
+If you go to **CoPilot > Cloud Fabric > Gateways > Overview (default tab)**, you will notice that the number of Transit Gateways is set to **three** indeed, whereas the number of Spoke Gateways is set to **two**.
 
 ```{figure} images/lab2-cluster.png
 ---
@@ -362,7 +372,7 @@ align: center
 Deployment in progress
 ```
 
-Once all gateways have been created, confirm from **CoPilot > Dashboard** that **14** gateways exist in your environment:
+Once all gateways have been created, confirm from **CoPilot > Cloud Fabric > Gateways > Overview (default TAB)** the presence of a total of **nine** GW Clusters!
 
 ```{figure} images/lab2-14gws.png
 ---
@@ -497,6 +507,7 @@ At this point, after **attaching** Spoke Gateways to their respective Transit Ga
 
 ```{figure} images/lab2-topologywithattachments.png
 ---
+height: 400px
 align: center
 ---
 New state of the topology
@@ -610,6 +621,7 @@ At this point, this is what the overall topology would look like:
 
 ```{figure} images/lab2-peeringtopology.png
 ---
+height: 400px
 align: center
 ---
 New Topopology state after Peerings deployment
