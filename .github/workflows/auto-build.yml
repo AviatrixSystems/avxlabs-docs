@@ -17,36 +17,48 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
-      - name: Verify Commit
-        uses: vchain-us/verify-action@master
+      # - id: python
+      #   name: Python Setup
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: 3.9
+      #     cache: "pip"
+      # - run: pip install -r requirements.txt
 
-      - id: python
-        name: Python Setup
-        uses: actions/setup-python@v2
+      - name: List Juptyer Book Folders
+        id: pl
+        uses: Rishabh510/Path-lister-action@master
         with:
-          python-version: 3.9
-          cache: "pip"
-      - run: pip install -r requirements.txt
+          path: "."
+          type: "_toc.yml"
 
-      - id: build
-        name: Build Book
+      - name: Output results
         run: |
-          jb build ./ace_associate/
+          echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
+          for i in ${{ steps.pl.outputs.paths }}; do
+          echo $i
+          done
 
-      - name: Move Files
-        run: |
-          cp -rf ./ace_associate/_build/html/ docs/ace-associate
+      # - id: build
+      #   name: Build AVX Docs
+      #   run: |
+      #     jb clean --all ./ace_associate/
+      #     jb build ./ace_associate/
 
-      - name: Setup Git Config
-        run: |
-          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+      # - name: Move Files
+      #   run: |
+      #     cp -rf ./ace_associate/_build/html/ docs/ace-associate
 
-      - name: Commit Files
+      # - name: Setup Git Config
+      #   run: |
+      #     # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+      #     git config user.name "GitHub Actions Bot"
+      #     git config user.email "<>"
 
-        run: |
-          # Stage the file, commit and push
-          git add .
-          git commit -m "auto build from GitHub Actions"
-          git push origin ${{ github.event.pull_request.head.ref }}
+      # - name: Commit Files
+
+      #   run: |
+      #     # Stage the file, commit and push
+      #     git add .
+      #     git commit -m "auto build from GitHub Actions"
+      #     git push origin ${{ github.event.pull_request.head.ref }}
