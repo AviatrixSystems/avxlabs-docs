@@ -38,16 +38,18 @@ jobs:
           for i in ${{ steps.pl.outputs.paths }}; do
           folderName=${i%"_toc.yml"}
 
-          echo $folderName
+          # Replace _ with - for built folder name.
           newFolderName=${folderName//"_"/"-"}
-          echo $newFolderName
+
+          echo "Building book for $folderName"
 
           # Build the book
-          # jb clean --all ${folderName}
-          # jb build ${folderName}
+          jb clean --all ${folderName}
+          jb build ${folderName}
 
           # Move the files to the docs folder
-          # cp -rf ${folderName}/_build/html/ docs/${folderName
+          echo "Moving files to docs/${newFolderName}"
+          cp -rf ${folderName}/_build/html/ docs/${newFolderName}
           done
 
       # - id: build
@@ -60,16 +62,16 @@ jobs:
       #   run: |
       #     cp -rf ./ace_associate/_build/html/ docs/ace-associate
 
-      # - name: Setup Git Config
-      #   run: |
-      #     # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-      #     git config user.name "GitHub Actions Bot"
-      #     git config user.email "<>"
+      - name: Setup Git Config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
 
-      # - name: Commit Files
+      - name: Commit Files
 
-      #   run: |
-      #     # Stage the file, commit and push
-      #     git add .
-      #     git commit -m "auto build from GitHub Actions"
-      #     git push origin ${{ github.event.pull_request.head.ref }}
+        run: |
+          # Stage the file, commit and push
+          git add .
+          git commit -m "auto build from GitHub Actions"
+          git push origin ${{ github.event.pull_request.head.ref }}
