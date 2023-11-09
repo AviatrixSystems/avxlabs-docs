@@ -1,0 +1,849 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 3 - Expanding to multi-cloud &#8212; Aviatrix Flightschool</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab3';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 4 - Beefing up security" href="lab4.html" />
+    <link rel="prev" title="Lab 2 - Office Connectivity" href="lab2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Aviatrix Flightschool - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Aviatrix Flightschool - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to Aviatrix FlightSchool!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Office Connectivity</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 3 - Expanding to multi-cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - Beefing up security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Infrastructure as Code (Bonus Lab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 3 - Expanding to multi-cloud</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-1-deploy-the-aws-transit-vpc">Lab 3.1 - Deploy the AWS transit VPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-2-deploy-the-aviatrix-transit-gateway">Lab 3.2 - Deploy the Aviatrix Transit Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-3-attach-spoke-gateways-to-aviatrix-transit-gateway">Lab 3.3 - Attach Spoke Gateways to Aviatrix Transit Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-4-enable-network-segmentation-on-the-aws-transit">Lab 3.4 - Enable network segmentation on the AWS transit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-5-create-network-domains">Lab 3.5 - Create Network Domains</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-6-create-a-connection-policy">Lab 3.6 - Create a connection policy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-7-test-connectivity-to-aws-spokes">Lab 3.7 - Test Connectivity to AWS Spokes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Expected Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-summary">Lab 3 Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-3-expanding-to-multi-cloud">
+<h1>Lab 3 - Expanding to multi-cloud<a class="headerlink" href="#lab-3-expanding-to-multi-cloud" title="Permalink to this heading">#</a></h1>
+<p>Lab time: ~30 minutes</p>
+<p><strong><em>Scenario</em></strong>:  The business has decided to go multi-cloud! Some apps simply run better in other clouds, and why put all eggs in one basket? During this exercise we will deploy in AWS an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer Azure and AWS and test out the connectivity.</p>
+<p>The Spoke VPCs and gateways have already been created to save you time. The process is very similar to deploying the transit gateway.</p>
+<p><img alt="Topology" src="../_images/lab-3.png" /><br />
+<em>Fig. Current Topology</em></p>
+<section id="lab-3-1-deploy-the-aws-transit-vpc">
+<h2>Lab 3.1 - Deploy the AWS transit VPC<a class="headerlink" href="#lab-3-1-deploy-the-aws-transit-vpc" title="Permalink to this heading">#</a></h2>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h3>
+<p>Let’s go ahead and create the Transit VPC in AWS using the topology builder in Copilot.</p>
+</section>
+<section id="validate">
+<h3>Validate<a class="headerlink" href="#validate" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Log in to Aviatrix Copilot</p></li>
+<li><p>Scroll down on the left-hand pane to <strong><em>Cloud Fabric -&gt; Topology -&gt; Builder</em></strong></p></li>
+<li><p>Click <strong>Select Cloud Region</strong> and enter the following fields:</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Cloud Provider</strong></p></td>
+<td><p>AWS</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Account</strong></p></td>
+<td><p>aws-account</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Region</strong></p></td>
+<td><p>eu-central-1 (Frankfurt)</p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Topology builder" src="../_images/lab-3-topology-builder.png" /><br />
+<em>Fig. Set up the topology builder</em></p>
+<ul class="simple">
+<li><p>Hit save to start the configuration session.</p></li>
+<li><p>Click The “+” sign next to transit, to add a new transit.</p></li>
+</ul>
+<p><img alt="Topology builder" src="../_images/lab-3-topology-builder-vpc.png" /><br />
+<em>Fig. Add transit</em></p>
+<ul class="simple">
+<li><p>Enter the following fields:</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Transit Gateway VPC</strong></p></td>
+<td><p>Create New VPC/VNet</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VPC Name</strong></p></td>
+<td><p>aws-transit</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>VPC CIDR</strong></p></td>
+<td><p>10.pod[#].40.0/23</p></td>
+</tr>
+</tbody>
+</table>
+<p>For the VPC CIDR, replace <strong>pod[#]</strong> with your pod number. For example, if your pod number is 150, pod[#] should be replaced with 150, so the complete CIDR will become 10.150.40.0/23. The topology builder will automatically create all the required public and private subnets, IGW, and routing tables.</p>
+<p><img alt="Create a VPC" src="../_images/lab3-create-vpc.png" /><br />
+<em>Fig. Create a VPC</em></p>
+<p>Hit save, and the VPC will be created.</p>
+</section>
+<section id="expected-results">
+<h3>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this heading">#</a></h3>
+<p>You created a VPC with multiple subnets directly in the Aviatrix GUI.</p>
+</section>
+</section>
+<section id="lab-3-2-deploy-the-aviatrix-transit-gateway">
+<h2>Lab 3.2 - Deploy the Aviatrix Transit Gateway<a class="headerlink" href="#lab-3-2-deploy-the-aviatrix-transit-gateway" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>Description<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>In this exercise we are going to launch the Aviatrix Transit Gateway in the newly created Transit VPC in AWS.</p>
+</section>
+<section id="id2">
+<h3>Validate<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Enter the following fields:</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Transit Gateway VPC</strong></p></td>
+<td><p>aws-transit</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Gateway Name</strong></p></td>
+<td><p>aws-transit</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Gateway Size</strong></p></td>
+<td><p>t3.small</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Instance 1 (Primary)</strong></p></td>
+<td><p>aws-transit-Public-1-eu-central-1a + Allocate New EIP</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Transit Peers</strong></p></td>
+<td><p>Click edit and add the azure-transit as a peer and save</p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Screenshot" src="../_images/lab3-transit-config.png" /><br />
+<em>Fig. Create Aviatrix Transit Gateway</em></p>
+<p><img alt="Screenshot" src="../_images/lab3-transit-peering.png" /><br />
+<em>Fig. Configure transit peering</em></p>
+<ul class="simple">
+<li><p>Hit Save to save the transit gateway settings and return to the topology builder overview.</p></li>
+<li><p>You now get the option to either generate your changes as Terraform code, or deploy directly from the UI. Choose and click deploy.</p></li>
+</ul>
+<p><img alt="Screenshot" src="../_images/lab3-overview.png" /><br />
+<em>Fig. Overview</em></p>
+<ul class="simple">
+<li><p>As you can see, the topology builder will now start to deploy the transit gateway. Wait for this to finish. It will take about 5-10 minutes.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Important:</strong> By default, routes are not propagated between spokes attached to the transit gateway. We have to enable a setting on our transit gateway to allow this to happen.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Go to <strong><em>Cloud Fabric -&gt; Gateways -&gt; Transit Gateways</em></strong> and click on <strong><em>aws-transit</em></strong>.</p></li>
+<li><p>Open the settings pane and enable and save <strong>Connected Transit</strong> under the General settings.</p></li>
+</ul>
+<p><img alt="Screenshot" src="../_images/lab3-connected-transit.png" /><br />
+<em>Fig. Enable connected transit</em></p>
+</section>
+<section id="id3">
+<h3>Expected Results<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Now that we have the aws-transit deployed, peered to azure-transit and have enabled connected transit, we should see these changes reflected in our topology view. (under <strong><em>Cloud Fabric -&gt; Topology</em></strong>)</p>
+<p><img alt="Screenshot" src="../_images/lab3-result.png" /><br />
+<em>Fig. Topology view</em></p>
+</section>
+</section>
+<section id="lab-3-3-attach-spoke-gateways-to-aviatrix-transit-gateway">
+<h2>Lab 3.3 - Attach Spoke Gateways to Aviatrix Transit Gateway<a class="headerlink" href="#lab-3-3-attach-spoke-gateways-to-aviatrix-transit-gateway" title="Permalink to this heading">#</a></h2>
+<section id="id4">
+<h3>Description<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>Now that we have our aws-transit set up, we need to establish connectivity between the AWS spoke gateways and the aws-transit gateway. The spoke gateways have been pre-deployed to save some time, but the process is much the same as the transit gateway you have just deployed.</p>
+</section>
+<section id="id5">
+<h3>Validate<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Go to <strong><em>Cloud Fabric -&gt; Gateways -&gt; Spoke Gateways</em></strong>.</p></li>
+<li><p>Click the edit button (pencil) behind the <strong><em>aws-prod</em></strong> gateway.</p></li>
+</ul>
+<p><img alt="Screenshot" src="../_images/lab3-edit-spoke.png" /><br />
+<em>Fig. Edit spoke</em></p>
+<ul class="simple">
+<li><p>Change the attachment from empty to <strong><em>aws-transit</em></strong> and hit save.</p></li>
+</ul>
+<p><img alt="Screenshot" src="../_images/lab3-attach-spoke.png" /><br />
+<em>Fig. Attach Spoke Gateway to Transit</em></p>
+<ul class="simple">
+<li><p>Repeat the process for the <strong><em>aws-shared</em></strong> spoke gateway.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Expected Results<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>The AWS spoke gateways should now be attached to the aws-transit. Within a few minutes, we should see these changes reflected in our topology view. (under <strong><em>Cloud Fabric -&gt; Topology</em></strong>)</p>
+<p><img alt="Topology" src="../_images/lab3-copilot-spoke-attach.png" /><br />
+<em>Fig. CoPilot Topology with Attached Spokes</em></p>
+<ul class="simple">
+<li><p>If your topology does not show the connection to the spokes, refresh the page after a minute or so.</p></li>
+</ul>
+</section>
+</section>
+<section id="lab-3-4-enable-network-segmentation-on-the-aws-transit">
+<h2>Lab 3.4 - Enable network segmentation on the AWS transit<a class="headerlink" href="#lab-3-4-enable-network-segmentation-on-the-aws-transit" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h3>Description<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>Just like we enabled network segmentation on the azure-transit before, we want to extend this segmentation to AWS and enable it on the aws-transit as well.</p>
+</section>
+<section id="id8">
+<h3>Validate<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In the Copilot, go to <strong><em>Networking -&gt; Network Segmentation -&gt; Network Domains</em></strong>. and click the <strong><em>Transit Gateways</em></strong> button.</p></li>
+<li><p>In the transit gateway pane, enable segmentation for aws-transit.</p></li>
+</ul>
+<p><img alt="Screenshot" src="../_images/lab2-enable-segmentation.png" /><br />
+<em>Fig. Transit Segmentation</em></p>
+<p><img alt="Screenshot" src="../_images/lab3-enable-segmentation-3.png" /><br />
+<em>Fig. Enable Segmentation</em></p>
+</section>
+<section id="id9">
+<h3>Expected Results<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<p>Segmentation is now enabled on both gateways.</p>
+</section>
+</section>
+<section id="lab-3-5-create-network-domains">
+<h2>Lab 3.5 - Create Network Domains<a class="headerlink" href="#lab-3-5-create-network-domains" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h3>Description<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>For our AWS spokes, we want to create network domains and associations, just like we did for the Azure spokes before.</p>
+</section>
+<section id="id11">
+<h3>Validate<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<p>In CoPilot, go to <strong><em>Networking -&gt; Network Segmentation -&gt; Network Domains</em></strong>. Use the <strong><em>+ Network Domains</em></strong> button to add the following domains and associations:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Domain</p></th>
+<th class="head text-left"><p>Association</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>AWS-Shared</p></td>
+<td class="text-left"><p>aws-shared</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>AWS-Prod</p></td>
+<td class="text-left"><p>aws-prod</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3>Expected Results<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<p>After adding the network domains and associations, you should see the following in Copilot:</p>
+<p><img alt="Screenshot" src="../_images/lab3-network-domains.png" /><br />
+<em>Fig. Add network domains</em></p>
+</section>
+</section>
+<section id="lab-3-6-create-a-connection-policy">
+<h2>Lab 3.6 - Create a connection policy<a class="headerlink" href="#lab-3-6-create-a-connection-policy" title="Permalink to this heading">#</a></h2>
+<section id="id13">
+<h3>Description<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<p>We want the development team in the office, to be able to access AWS-Shared.</p>
+</section>
+<section id="id14">
+<h3>Validate<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Edit the <strong><em>Office</em></strong> network domain under <strong><em>Networking -&gt; Network Segmentation -&gt; Network Domains</em></strong> in Copilot.</p></li>
+</ul>
+<p><img alt="Screenshot" src="../_images/lab3-edit-network-domain.png" /><br />
+<em>Fig. Edit network domain</em></p>
+<ul class="simple">
+<li><p>Now add the <strong><em>AWS-Shared</em></strong> domain as a connected domain.</p></li>
+</ul>
+<p><img alt="Screenshot" src="../_images/lab3-add-network-domain-policy.png" /><br />
+<em>Fig. Add network domain connection</em></p>
+</section>
+<section id="id15">
+<h3>Expected Results<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The network domains should now be connected to each other, as shown on the screenshot below.</p></li>
+<li><p>Another great place to visualize the connectivity between network domains is <strong><em>Networking -&gt; Network Segmentation-&gt; Overview</em></strong>.</p></li>
+</ul>
+<p><img alt="Screenshot" src="../_images/lab3-add-connected-network-domain-result.png" /><br />
+<em>Fig. Add network domain connection</em></p>
+<p><img alt="Screenshot" src="../_images/lab3-network-domain-overview.png" /><br />
+<em>Fig. Network domain overview</em></p>
+</section>
+</section>
+<section id="lab-3-7-test-connectivity-to-aws-spokes">
+<h2>Lab 3.7 - Test Connectivity to AWS Spokes<a class="headerlink" href="#lab-3-7-test-connectivity-to-aws-spokes" title="Permalink to this heading">#</a></h2>
+<section id="id16">
+<h3>Description<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<p>The AWS Spokes should be connected to the AWS Transit so now we can check connectivity to the spokes from the office.</p>
+</section>
+<section id="id17">
+<h3>Validate<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Open the Remote Access Server and open the <strong>RDP - Client</strong> (or navigate to <code class="docutils literal notranslate"><span class="pre">https://client.pod[#].aviatrixlab.com</span></code>). This is the on-prem Host.</p></li>
+<li><p>Open up the Firefox browser on the RDP desktop</p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">http://localhost</span></code></p></li>
+</ul>
+<blockquote>
+<div><p>Do we have access to aws-shared and azure-build?</p>
+</div></blockquote>
+</section>
+<section id="id18">
+<h3>Expected Results<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>As you can see, you now have access to azure-build and aws-shared.</p></li>
+</ul>
+<p><img alt="Screenshot" src="../_images/lab3-office-access.png" /><br />
+<em>Fig. Office Access</em></p>
+<blockquote>
+<div><p>Were these connections succesful?</p>
+</div></blockquote>
+</section>
+<section id="id19">
+<h3>Expected Results<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
+<p>From the office, you should be able to reach aws-shared, but not aws-prod.</p>
+</section>
+</section>
+<section id="lab-3-summary">
+<h2>Lab 3 Summary<a class="headerlink" href="#lab-3-summary" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>AWS has been onboarded</p></li>
+<li><p>You deployed a VPC and an Aviatrix Transit Gateway in AWS</p></li>
+<li><p>You connected all of the Spoke VPCs to the Transit</p></li>
+<li><p>You created a Multicloud Transit network, connecting AWS and Azure</p></li>
+<li><p>You are able to reach the AWS environment from On-Prem, via the Azure Transit</p></li>
+<li><p>Again, not a single route table entry needed to be touched on the CSP side</p></li>
+<li><p>You have end to end visibility into all network traffic</p></li>
+<li><p>All connectivity is private and encrypted across the entirety of the Aviatrix Cloud Fabric - from on-prem and within and between the clouds</p></li>
+</ul>
+<p><img alt="Screenshot" src="../_images/end-lab-3.png" /><br />
+<em>Fig. Topology after Lab 3</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 2 - Office Connectivity</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 4 - Beefing up security</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-1-deploy-the-aws-transit-vpc">Lab 3.1 - Deploy the AWS transit VPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-2-deploy-the-aviatrix-transit-gateway">Lab 3.2 - Deploy the Aviatrix Transit Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-3-attach-spoke-gateways-to-aviatrix-transit-gateway">Lab 3.3 - Attach Spoke Gateways to Aviatrix Transit Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-4-enable-network-segmentation-on-the-aws-transit">Lab 3.4 - Enable network segmentation on the AWS transit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-5-create-network-domains">Lab 3.5 - Create Network Domains</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-6-create-a-connection-policy">Lab 3.6 - Create a connection policy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-7-test-connectivity-to-aws-spokes">Lab 3.7 - Test Connectivity to AWS Spokes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Expected Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-summary">Lab 3 Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix Flightschool
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

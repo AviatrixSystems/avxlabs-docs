@@ -1,0 +1,1260 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 10 - DISTRIBUTED CLOUD FIREWALL &#8212; ACE Operations Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab10';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 11 - BONUS" href="lab11.html" />
+    <link rel="prev" title="Lab 9 - THREATIQ &amp; THREATGUARD" href="lab9.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Operations Lab - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="ACE Operations Lab - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Professional Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">PODs ASSIGNMENTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - RBAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab10.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 10 - DISTRIBUTED CLOUD FIREWALL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-overview">2. Distributed Cloud Firewall Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-creation">3. Smart Group Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1. Smart Group “bu1”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu2">3.2. Smart Group “bu2”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp">3.3. Connectivity verification (ICMP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh">3.4.  Connectivity verification (SSH)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-creation">4. Rules Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establish-a-ztn-approach">4.1. Establish a ZTN approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu1">4.2. Create an intra-rule that allows ICMP inside bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu2">4.2. Create an intra-rule that allows ICMP inside bu2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-traffic-from-your-laptop-to-bu1">5.1. Verify SSH traffic from your laptop to bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2">5.2. Verify ICMP within bu1 and from bu1 towards bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-within-bu1">5.3. Verify SSH within bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-rule-that-allows-ssh-in-bu1">5.4. Add a rule that allows SSH in bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-vm-in-bu2">5.4. SSH to VM in bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2">5.5. Verify ICMP traffic within bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-from-bu2-to-bu1">5.6. Inter-rule from bu2 to bu1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#east-1-and-the-multi-tier-transit">6. East-1 and the Multi-Tier Transit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-of-the-mtt">6.1 Activation of the MTT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-east1">6.2 Smart Group “east1”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">6.3 Create an inter-rule that allows ICMP from bu2 towards east1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-bu2-and-east1">6.4 Verify connectivity between bu2 and east1</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-10-distributed-cloud-firewall">
+<h1>Lab 10 - DISTRIBUTED CLOUD FIREWALL<a class="headerlink" href="#lab-10-distributed-cloud-firewall" title="Permalink to this heading">#</a></h1>
+<section id="objective">
+<h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<p>This lab will demonstrate how the <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> work.</p>
+</section>
+<section id="distributed-cloud-firewall-overview">
+<h2>2. Distributed Cloud Firewall Overview<a class="headerlink" href="#distributed-cloud-firewall-overview" title="Permalink to this heading">#</a></h2>
+<p>The Distributed Cloud Firewall feature allows to create logical containers, called <code class="docutils literal notranslate"><span class="pre">Smart</span> <span class="pre">Groups</span></code>, that encompass instances that present similarities inside a VPC/VNet/VCN, and then it also allows to enforce rules (aka <strong><em>Distributed Cloud Firewalling Rules</em></strong>) within a Smart Group (i.e. the <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code>) or among Smart Groups (i.e. the <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At this point in the lab, there is a unique routing domain (i.e. a <strong><em>Flat Routing Domain</em></strong>), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.</p>
+</div>
+<p>All the Test instances have been deployed with the typical <ins>CSP tags</ins>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong>CSP tagging</strong> is the recommended method for defining the SmartGroups.</p>
+</div>
+<p>In this lab you are asked to achieve the following requirements among the instances deployed across the three CSPs:</p>
+<ul class="simple">
+<li><p>Create a Smart Group with the name <code class="docutils literal notranslate"><span class="pre">&quot;bu1&quot;</span></code> leveraging the tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code>.</p></li>
+<li><p>Create a Smart Group with the name <code class="docutils literal notranslate"><span class="pre">&quot;bu2&quot;</span></code> leveraging the tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code>.</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that allows ICMP traffic within bu1.</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that allows ICMP traffic within bu2.</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that allows SSH traffic within bu1.</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> that allows ICMP traffic only <ins>from</ins> bu2 <ins>to</ins> bu1.</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/lab10-initial.png"><img alt="../_images/lab10-initial.png" src="../_images/lab10-initial.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Initial Topology Lab 10</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="smart-group-creation">
+<h2>3. Smart Group Creation<a class="headerlink" href="#smart-group-creation" title="Permalink to this heading">#</a></h2>
+<p>Create two Smart Groups and classify each Smart Group, leveraging the CSP tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code>:</p>
+<ul class="simple">
+<li><p>Assign the name <code class="docutils literal notranslate"><span class="pre">&quot;bu1&quot;</span></code> to the Smart Group <strong>#1</strong>.</p></li>
+<li><p>Assign the name <code class="docutils literal notranslate"><span class="pre">&quot;bu2&quot;</span></code> to the Smart Group <strong>#2</strong>.</p></li>
+</ul>
+<section id="smart-group-bu1">
+<h3>3.1. Smart Group “bu1”<a class="headerlink" href="#smart-group-bu1" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; SmartGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code>.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab10-smart2.png" src="../_images/lab10-smart2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>CSP Tag Key</strong>: <span style='color:#33ECFF'>environment</span></p></li>
+<li><p><strong>CSP Tag Value</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+</ul>
+<p>Before clicking on <strong>SAVE</strong>, discover what instances match the condition, turning on the knob <code class="docutils literal notranslate"><span class="pre">&quot;Resource</span> <span class="pre">Selection&quot;</span></code>.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab10-smart3.png" src="../_images/lab10-smart3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The CoPilot shows that there are two instances that perfectly match the condition:</p>
+<ul class="simple">
+<li><p><strong>aws-us-east2-spoke1-test1</strong> in AWS</p></li>
+<li><p><strong>azure-us-west-spoke1-test1</strong> in Azure</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab10-smart4.png" src="../_images/lab10-smart4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">Resources that match the condition</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="smart-group-bu2">
+<h3>3.2. Smart Group “bu2”<a class="headerlink" href="#smart-group-bu2" title="Permalink to this heading">#</a></h3>
+<p>Create another Smart Group clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab10-smart5.png" src="../_images/lab10-smart5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+<li><p><strong>CSP Tag Key</strong>: <span style='color:#33ECFF'>environment</span></p></li>
+<li><p><strong>CSP Tag Value</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+</ul>
+<p>Before clicking on <strong>SAVE</strong>, discover what instances match the condition, turning on the knob <code class="docutils literal notranslate"><span class="pre">&quot;Resource</span> <span class="pre">Selection&quot;</span></code>.</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab10-smart6.png" src="../_images/lab10-smart6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Resource Selections</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The CoPilot shows that there are three instances that match the condition:</p>
+<ul class="simple">
+<li><p><strong>aws-us-east2-spoke1-test2</strong> in AWS</p></li>
+<li><p><strong>azure-us-west-spoke2-test1</strong> in Azure</p></li>
+<li><p><strong>gcp-us-central1-spoke1-test1</strong> in GCP</p></li>
+</ul>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab10-smart7.png" src="../_images/lab10-smart7.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Resources that match the condition</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>At this point, you have only created logical containers that do not affect the existing routing domain.</p>
+<p>Let’s verify that everything has been kept unchanged! Bear in mind that there is the <code class="docutils literal notranslate"><span class="pre">Greenfield-Rule</span></code> at the very top of your DCF rules list, whereby all kind of traffic will be permitted.</p>
+</section>
+<section id="connectivity-verification-icmp">
+<h3>3.3. Connectivity verification (ICMP)<a class="headerlink" href="#connectivity-verification-icmp" title="Permalink to this heading">#</a></h3>
+<p>Open a terminal window and SSH to the public IP of the instance <strong>aws-us-east2-spoke1-test1</strong>, and from there ping the private IP of each other instances to verify that the connectivity within AWS, and from AWS to GCP and Azure has not been modified.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to your POD for the private IPs.</p>
+</div>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab10-ping.png" src="../_images/lab10-ping.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="connectivity-verification-ssh">
+<h3>3.4.  Connectivity verification (SSH)<a class="headerlink" href="#connectivity-verification-ssh" title="Permalink to this heading">#</a></h3>
+<p>Verify also from the instance <strong>aws-us-east2-spoke1-test1</strong> that you can SSH to the private instance in AWS, to the instance in GCP and likewise to the other two instances in Azure.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to your POD for the private IPs.</p>
+</div>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab10-sshtoaws.png" src="../_images/lab10-sshtoaws.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">SSH to test2 in AWS US-East-2</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab10-sshtogcp.png" src="../_images/lab10-sshtogcp.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">SSH to GCP</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab10-sshtoazure1.png" src="../_images/lab10-sshtoazure1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">SSH to Azure</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab10-sshtoazure2.png" src="../_images/lab10-sshtoazure2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 286 </span><span class="caption-text">SSH to Azure</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.</p>
+</section>
+</section>
+<section id="rules-creation">
+<h2>4. Rules Creation<a class="headerlink" href="#rules-creation" title="Permalink to this heading">#</a></h2>
+<section id="establish-a-ztn-approach">
+<h3>4.1. Establish a ZTN approach<a class="headerlink" href="#establish-a-ztn-approach" title="Permalink to this heading">#</a></h3>
+<p>First and foremost, let’s move the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code> at the very top of the list of your DCF rules.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default)</strong>, click on the the “two arrows” icon on the righ-hand side of the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code> and choose <em><code class="docutils literal notranslate"><span class="pre">&quot;Move</span> <span class="pre">Rule&quot;</span></code></em> at the very Top. Then click on <strong>Save in Draft</strong>.</p>
+</div>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab10-explicit.png" src="../_images/lab10-explicit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 287 </span><span class="caption-text">Move the rule</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then <strong>commit</strong> your change!</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab10-commit.png" src="../_images/lab10-commit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 288 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="create-an-intra-rule-that-allows-icmp-inside-bu1">
+<h3>4.2. Create an intra-rule that allows ICMP inside bu1<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu1" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab10-newrule.png" src="../_images/lab10-newrule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 289 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Insert the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>intra-icmp-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>ICMP</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab10-rule1.png" src="../_images/lab10-rule1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 290 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>At this point, there would be one uncommitted rule at the very top, as depicted below.</p>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab10-rule2.png" src="../_images/lab10-rule2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 291 </span><span class="caption-text">Current lidt of rules</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="create-an-intra-rule-that-allows-icmp-inside-bu2">
+<h3>4.2. Create an intra-rule that allows ICMP inside bu2<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu2" title="Permalink to this heading">#</a></h3>
+<p>Create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab10-rule3.png" src="../_images/lab10-rule3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 292 </span><span class="caption-text">New rule</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>intra-icmp-bu2</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>ICMP</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+<li><p><strong>Place Rule</strong>: <span style='color:#33ECFF'>Below</span></p>
+<ul>
+<li><p><strong>Existing Rule</strong>: <span style='color:#33ECFF'>intra-icmp-bu1</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab10-intrabu2.png" src="../_images/lab10-intrabu2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 293 </span><span class="caption-text">intra-icmp-bu2</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>At this point, you will have two new rules marked as <code class="docutils literal notranslate"><span class="pre">New</span></code>, therefore you can proceed and click on the <strong>Commit</strong> button.</p>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab10-rule5.png" src="../_images/lab10-rule5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 294 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="verification">
+<h2>5. Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h2>
+<p>Afte the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols should look like:</p>
+<figure class="align-center" id="id21">
+<a class="reference internal image-reference" href="../_images/lab10-topology2.png"><img alt="../_images/lab10-topology2.png" src="../_images/lab10-topology2.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 295 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="verify-ssh-traffic-from-your-laptop-to-bu1">
+<h3>5.1. Verify SSH traffic from your laptop to bu1<a class="headerlink" href="#verify-ssh-traffic-from-your-laptop-to-bu1" title="Permalink to this heading">#</a></h3>
+<p>SSH to the Public IP of the instance <strong>aws-us-east2-spoke1-test1</strong>.</p>
+<figure class="align-center" id="id22">
+<img alt="../_images/lab10-sshpod.png" src="../_images/lab10-sshpod.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 296 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="verify-icmp-within-bu1-and-from-bu1-towards-bu2">
+<h3>5.2. Verify ICMP within bu1 and from bu1 towards bu2<a class="headerlink" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2" title="Permalink to this heading">#</a></h3>
+<p>Ping the following instances from <strong>aws-us-east2-spoke1-test1</strong>:</p>
+<ul class="simple">
+<li><p><strong>gcp-us-central1-spoke1-test1</strong> in GCP</p></li>
+<li><p><strong>azure-us-west-spoke1-test1</strong> in Azure</p></li>
+<li><p><strong>azure-us-west-spoke2-test1</strong> in Azure</p></li>
+</ul>
+<p>According to the rules created before, only the ping towards the <strong>azure-us-west-spoke1-test1</strong> will work, because this instance belongs to the same Smart Group bu1 as the instance from where you will be launching ICMP packets.</p>
+<figure class="align-center" id="id23">
+<img alt="../_images/lab10-pingcheck.png" src="../_images/lab10-pingcheck.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 297 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s investigate the logs:</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Turn on the <strong>Auto Refresh</strong> knob. Moreover, refresh the web page to trigger the logs.</p>
+</div>
+<figure class="align-center" id="id24">
+<img alt="../_images/lab10-monitor.png" src="../_images/lab10-monitor.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 298 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now, let’s try to ping the instance <strong>aws-us-east2-spoke1-test2</strong> from <strong>aws-us-east2-spoke1-test1</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The instance <strong>aws-us-east2-spoke1-test1</strong> is in the same VPC. Although these two instances have been deployed in two distinct and separate Smart Groups, the communication will occur until you don’t enable the <code class="docutils literal notranslate"><span class="pre">&quot;intra-vpc</span> <span class="pre">separation&quot;</span></code>.</p>
+</div>
+<figure class="align-center" id="id25">
+<img alt="../_images/lab10-pingtotest2.png" src="../_images/lab10-pingtotest2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 299 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage&quot;</span></code> button inside the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group</span> <span class="pre">(SG)</span> <span class="pre">Orchestration&quot;</span></code> field.</p>
+<figure class="align-center" id="id26">
+<img alt="../_images/lab10-orchestration.png" src="../_images/lab10-orchestration.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 300 </span><span class="caption-text">SG Orchestration</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Enable the <strong><em>SG orchestration</em></strong> on the <strong><em>aws-us-east2-spoke1</em></strong> VPC, putting a tick on the checkbox <code class="docutils literal notranslate"><span class="pre">&quot;I</span> <span class="pre">understand</span> <span class="pre">the</span> <span class="pre">network</span> <span class="pre">impact&quot;</span></code>, and then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id27">
+<img alt="../_images/lab10-orchestration2.png" src="../_images/lab10-orchestration2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 301 </span><span class="caption-text">Manage SG Orchestration</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Relaunch the ping from <strong>aws-us-east2-spoke1-test1</strong> towards <strong>aws-us-east2-spoke1-test1</strong>.</p>
+<figure class="align-center" id="id28">
+<img alt="../_images/lab10-pingtotest2fail.png" src="../_images/lab10-pingtotest2fail.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 302 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2, thanks to the Security Group Orchestration carried out by the Aviatrix Controller.</p>
+</div>
+</section>
+<section id="verify-ssh-within-bu1">
+<h3>5.3. Verify SSH within bu1<a class="headerlink" href="#verify-ssh-within-bu1" title="Permalink to this heading">#</a></h3>
+<p>SSH to the Private IP of the instance <strong><em>azure-us-west-spoke1-test1</em></strong> in Azure. Despite the fact that the instance is within the same Smart Group “bu1”, the SSH will fail due to the absence of a rule that would permit SSH traffic within the Smart Group.</p>
+<figure class="align-center" id="id29">
+<img alt="../_images/lab10-sshfail.png" src="../_images/lab10-sshfail.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 303 </span><span class="caption-text">SSH fails</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="add-a-rule-that-allows-ssh-in-bu1">
+<h3>5.4. Add a rule that allows SSH in bu1<a class="headerlink" href="#add-a-rule-that-allows-ssh-in-bu1" title="Permalink to this heading">#</a></h3>
+<p>Create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<figure class="align-center" id="id30">
+<img alt="../_images/lab10-newrule2.png" src="../_images/lab10-newrule2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 304 </span><span class="caption-text">New rule</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>intra-ssh-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#33ECFF'>22</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+<li><p><strong>Place Rule</strong>: <span style='color:#33ECFF'>Below</span></p>
+<ul>
+<li><p><strong>Existing Rule</strong>: <span style='color:#33ECFF'>intra-icmp-bu2</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id31">
+<img alt="../_images/lab10-sshbu1.png" src="../_images/lab10-sshbu1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 305 </span><span class="caption-text">Create rule</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> to enforce the new rule in the <strong>Data Plane</strong>.</p>
+<figure class="align-center" id="id32">
+<img alt="../_images/lab10-commitsshbu1.png" src="../_images/lab10-commitsshbu1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 306 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id32" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Try once again to SSH to the Private IP of the instance <strong><em>azure-us-west-spoke1-test1</em></strong> in Azure in BU1.</p></li>
+</ul>
+<p>This time the connection will be established, thanks to the new intra-rule.</p>
+<figure class="align-center" id="id33">
+<img alt="../_images/lab10-sshbu1ok.png" src="../_images/lab10-sshbu1ok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 307 </span><span class="caption-text">SSH ok</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s investigate the logs once again.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
+<figure class="align-center" id="id34">
+<img alt="../_images/lab10-logsshbu1.png" src="../_images/lab10-logsshbu1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 308 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the log above is quite evident that the <code class="docutils literal notranslate"><span class="pre">&quot;intra-ssh-bu1</span></code>” rule is permitting SSH traffic within the Smart Group bu1, successfully.</p>
+<p>After the creation of the previous intra-rule, this is how the topology with the permitted protocols should look like:</p>
+<figure class="align-center" id="id35">
+<a class="reference internal image-reference" href="../_images/lab10-topologynew.png"><img alt="../_images/lab10-topologynew.png" src="../_images/lab10-topologynew.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 309 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id35" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ssh-to-vm-in-bu2">
+<h3>5.4. SSH to VM in bu2<a class="headerlink" href="#ssh-to-vm-in-bu2" title="Permalink to this heading">#</a></h3>
+<p>SSH to the Public IP of the instance <strong><em>gcp-us-central1-spoke1-test1</em></strong>:</p>
+<figure class="align-center" id="id36">
+<img alt="../_images/lab10-sshtocentral.png" src="../_images/lab10-sshtocentral.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 310 </span><span class="caption-text">SSH to gcp-us-central1-spoke1-test1</span><a class="headerlink" href="#id36" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="verify-icmp-traffic-within-bu2">
+<h3>5.5. Verify ICMP traffic within bu2<a class="headerlink" href="#verify-icmp-traffic-within-bu2" title="Permalink to this heading">#</a></h3>
+<p>Ping the following instances:</p>
+<ul class="simple">
+<li><p><strong>aws-us-east2-spoke1-test1</strong> in AWS</p></li>
+<li><p><strong>aws-us-east2-spoke1-test2</strong> in AWS</p></li>
+<li><p><strong>azure-us-west-spoke1-test1</strong> in Azure</p></li>
+<li><p><strong>azure-us-west-spoke2-test1</strong> in Azure</p></li>
+</ul>
+<p>According to the rules created before, only the ping towards the <strong>azure-us-west-spoke2-test1</strong> and <strong>aws-us-east2-spoke1-test2</strong> will work, because these two instance belongs to the same Smart Group bu2 as the instance from where you will be launching the ICMP packets.</p>
+<figure class="align-center" id="id37">
+<img alt="../_images/lab10-pingtestgcp.png" src="../_images/lab10-pingtestgcp.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 311 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id37" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s investigate the logs once again.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
+<figure class="align-center" id="id38">
+<img alt="../_images/lab10-bu2monitor.png" src="../_images/lab10-bu2monitor.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 312 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id38" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The logs above confirm that the ICMP protocol is permitted within the Smart Group bu2.</p>
+</section>
+<section id="inter-rule-from-bu2-to-bu1">
+<h3>5.6. Inter-rule from bu2 to bu1<a class="headerlink" href="#inter-rule-from-bu2-to-bu1" title="Permalink to this heading">#</a></h3>
+<p>Create a new rule that allows ICMP FROM bu2 TO bu1.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<figure class="align-center" id="id39">
+<img alt="../_images/lab10-newrule4.png" src="../_images/lab10-newrule4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 313 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id39" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>inter-icmp-bu2-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>bu1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>ICMP</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+<li><p><strong>Place Rule</strong>: <span style='color:#33ECFF'>Below</span></p>
+<ul>
+<li><p><strong>Existing Rule</strong>: <span style='color:#33ECFF'>intra-ssh-bu1</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id40">
+<img alt="../_images/lab10-interssh.png" src="../_images/lab10-interssh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 314 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id40" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Enforce the this new rule in the data plane clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> button.</p>
+<figure class="align-center" id="id41">
+<img alt="../_images/lab10-newcommit2.png" src="../_images/lab10-newcommit2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 315 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id41" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>SSH to the Public IP of the instance <strong><em>azure-us-west-spoke2-test1</em></strong>.</p>
+<p>Ping the following instances:</p>
+<ul class="simple">
+<li><p><strong>aws-us-east2-spoke1-test1</strong> in AWS</p></li>
+<li><p><strong>aws-us-east2-spoke1-test2</strong> in AWS</p></li>
+<li><p><strong>gcp-us-central1-spoke1-test1</strong> in GCP</p></li>
+<li><p><strong>azure-us-west-spoke1-test1</strong> in Azure</p></li>
+</ul>
+<p>Thit time all pings will be successful, thanks to the inter-rule applied between bu2 and bu1.</p>
+<figure class="align-center" id="id42">
+<img alt="../_images/lab10-pingallok.png" src="../_images/lab10-pingallok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 316 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id42" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s investigate the logs once again.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
+<figure class="align-center" id="id43">
+<img alt="../_images/lab10-monitorfresh.png" src="../_images/lab10-monitorfresh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 317 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id43" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu2 to bu1.</p>
+<p>After the creation of the previous inter-rule, this is how the topology with all the permitted protocols should look like.</p>
+<figure class="align-center" id="id44">
+<a class="reference internal image-reference" href="../_images/lab10-lastdrawing2.png"><img alt="../_images/lab10-lastdrawing2.png" src="../_images/lab10-lastdrawing2.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 318 </span><span class="caption-text">New Topology with the DCF rules</span><a class="headerlink" href="#id44" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The last inter-rule works smoothly only because the ICMP traffic is generated from the bu2, however, if you SSH to any instances in the Smart Group bu1, the ICMP traffic towards bu2 will fail due to the direction of the inter-rule that was created before: <strong>FROM</strong> bu2 <strong>TO</strong> bu1 (please note the direction of the arrow in the drawing).</p>
+</div>
+<figure class="align-center" id="id45">
+<img alt="../_images/lab10-direction.png" src="../_images/lab10-direction.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 319 </span><span class="caption-text">From To</span><a class="headerlink" href="#id45" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.</p>
+</section>
+</section>
+<section id="east-1-and-the-multi-tier-transit">
+<h2>6. East-1 and the Multi-Tier Transit<a class="headerlink" href="#east-1-and-the-multi-tier-transit" title="Permalink to this heading">#</a></h2>
+<section id="activation-of-the-mtt">
+<h3>6.1 Activation of the MTT<a class="headerlink" href="#activation-of-the-mtt" title="Permalink to this heading">#</a></h3>
+<p>Let’s now also involve the AWS region <strong>US-EAST-1</strong>.</p>
+<p>This time, you have to allow the ICMP traffic between the Smart Group <strong>bu2</strong> and the ec2 instance <strong><em>aws-us-east1-spoke1-test2</em></strong>, solely.</p>
+<figure class="align-center" id="id46">
+<a class="reference internal image-reference" href="../_images/lab10-newtopology3.png"><img alt="../_images/lab10-newtopology3.png" src="../_images/lab10-newtopology3.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 320 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id46" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>SSH to the Public IP of the instance <strong><em>azure-us-west-spoke2-test1</em></strong>.</p>
+<p>Ping the following instance:</p>
+<ul class="simple">
+<li><p><strong>aws-us-east1-spoke1-test2</strong> in AWS</p></li>
+</ul>
+<figure class="align-center" id="id47">
+<img alt="../_images/lab10-pingfails10.png" src="../_images/lab10-pingfails10.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 321 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id47" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The ping fails, therefore, let’s check the routing table of the Spoke Gateway <strong><em>azure-us-west-spoke2</em></strong>.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the relevant gateway <strong><em>azure-us-west-spoke2</em></strong></p>
+<figure class="align-center" id="id48">
+<img alt="../_images/lab10-spoke2azure.png" src="../_images/lab10-spoke2azure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 322 </span><span class="caption-text">azure-us-west-spoke2</span><a class="headerlink" href="#id48" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab and check whether the destination route is present in the routing table or not.</p>
+<figure class="align-center" id="id49">
+<img alt="../_images/lab10-gatewayroutes.png" src="../_images/lab10-gatewayroutes.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 323 </span><span class="caption-text">Gateway Routes</span><a class="headerlink" href="#id49" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The destination route is not inside the routing table, due to the fact that the Transit Gateway in AWS US-EAST-1 region has only one peering with the Transit Gateway in AWS US-EAST-2 region, therefore the Controller will install the routes that belong to US-EAST-1 only inside the routing tables of the Gateways in AWS US-EAST-2, excluding the rest of the Gateways of the MCNA. If you want to distribute the routes from AWS US-EAST-1 region in the whole MCNA, you have <ins>two possibilities</ins>:</p>
+</div>
+<ul>
+<li><p>Enabling <code class="docutils literal notranslate"><span class="pre">&quot;Full-Mesh&quot;</span></code> on the Transit Gateways in <strong><em>aws-us-east1-transit</em></strong> VPC</p>
+<p><strong>OR</strong></p>
+</li>
+<li><p>Enabling <code class="docutils literal notranslate"><span class="pre">&quot;Multi-Tier</span> <span class="pre">Transit&quot;</span></code></p></li>
+</ul>
+<p>Let’s enable this time the MTT feature!</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the Transit Gateway <strong><em>aws-us-east1-transit</em></strong>.</p>
+<figure class="align-center" id="id50">
+<img alt="../_images/lab10-mtt.png" src="../_images/lab10-mtt.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 324 </span><span class="caption-text">aws-us-east1-transit</span><a class="headerlink" href="#id50" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Go to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;“Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section and insert the AS number <strong>64512</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">&quot;“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id51">
+<img alt="../_images/lab10-mtt2.png" src="../_images/lab10-mtt2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 325 </span><span class="caption-text">Settings</span><a class="headerlink" href="#id51" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Repeat the previous action for the remaning Transit Gateways:</p>
+<ul class="simple">
+<li><p><strong>aws-us-east2-transit</strong>: <span style='color:#33ECFF'>ASN <strong>64513</strong></span></p></li>
+<li><p><strong>gcp-us-central1-transit</strong>: <span style='color:#33ECFF'>ASN <strong>64514</strong></span></p></li>
+<li><p><strong>azure-us-west-transit</strong>: <span style='color:#33ECFF'>ASN <strong>64515</strong></span></p></li>
+</ul>
+<p>Go to C<strong>oPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the Transit Gateway <strong><em>aws-us-east2-transit</em></strong>.</p>
+<figure class="align-center" id="id52">
+<img alt="../_images/lab10-mtt3.png" src="../_images/lab10-mtt3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 326 </span><span class="caption-text">aws-us-east2-transit</span><a class="headerlink" href="#id52" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Go to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;General&quot;</span></code> section and activate the <code class="docutils literal notranslate"><span class="pre">&quot;Multi-Tier</span> <span class="pre">Transit&quot;</span></code>, turning on the corresponding knob.</p>
+<p>Then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id53">
+<img alt="../_images/lab10-mtt4.png" src="../_images/lab10-mtt4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 327 </span><span class="caption-text">Multi-Tier Transit</span><a class="headerlink" href="#id53" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s verify once again the routing table of the Spoke Gateway in <strong><em>azure-us-west-spoke2</em></strong>.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the relevant gateway <strong><em>azure-us-west-spoke2</em></strong></p>
+<figure class="align-center" id="id54">
+<img alt="../_images/lab10-mtt5.png" src="../_images/lab10-mtt5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 328 </span><span class="caption-text">azure-us-west-spoke2</span><a class="headerlink" href="#id54" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This time if you click on the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab, you will be able to see the destination route in <strong>aws-us-east1-spoke1</strong> VPC.</p>
+<figure class="align-center" id="id55">
+<img alt="../_images/lab10-mtt6.png" src="../_images/lab10-mtt6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 329 </span><span class="caption-text">10.0.12.0/23</span><a class="headerlink" href="#id55" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>SSH to the Public IP of the instance <strong><em>azure-us-west-spoke2-test1</em></strong>.</p></li>
+</ul>
+<p>Ping the following instance:</p>
+<ul class="simple">
+<li><p><strong>aws-us-east1-spoke1-test2</strong> in AWS</p></li>
+</ul>
+<figure class="align-center" id="id56">
+<img alt="../_images/lab10-mtt7.png" src="../_images/lab10-mtt7.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 330 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id56" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Although this time there is a valid route to the destination, thanks to the <strong>MTT</strong> feature, the pings fails.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The reason is that the ec2-instance  <strong>aws-us-east1-spoke1-test2</strong> is not allocated to any Smart Groups yet!</p>
+</div>
+</section>
+<section id="smart-group-east1">
+<h3>6.2 Smart Group “east1”<a class="headerlink" href="#smart-group-east1" title="Permalink to this heading">#</a></h3>
+<p>Let’s create another Smart Group for the test instance <strong><em>aws-us-east1-spoke1-test2</em></strong> in US-EAST-1 region in AWS.</p>
+<p>Go to <strong>Copilot &gt; SmartGroups</strong> and click on  <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
+<figure class="align-center" id="id57">
+<img alt="../_images/lab10-mttnew.png" src="../_images/lab10-mttnew.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 331 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id57" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>east1</span></p></li>
+<li><p><strong>CSP Tag Key</strong>: <span style='color:#33ECFF'>Name</span></p></li>
+<li><p><strong>CSP Tag Value</strong>: <span style='color:#33ECFF'>aws-us-east1-spoke1-test2</span></p></li>
+</ul>
+<figure class="align-center" id="id58">
+<img alt="../_images/lab10-mtt9.png" src="../_images/lab10-mtt9.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 332 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id58" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The CoPilot shows that there is just one single instance that matches the condition:</p>
+<ul class="simple">
+<li><p><strong>aws-us-east1-spoke1-test2</strong> in AWS</p></li>
+</ul>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+</section>
+<section id="create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">
+<h3>6.3 Create an inter-rule that allows ICMP from bu2 towards east1<a class="headerlink" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<figure class="align-center" id="id59">
+<img alt="../_images/lab10-mtt8.png" src="../_images/lab10-mtt8.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 333 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id59" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#33ECFF'>inter-icmp-bu2-east1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#33ECFF'>bu2</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#33ECFF'>east1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#33ECFF'>ICMP</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#33ECFF'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Then click on <strong>Save In Drafts</strong>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please note the direction of this new inter-rule: <strong>FROM</strong> bu2 <strong>TO</strong> east1</p>
+</div>
+<figure class="align-center" id="id60">
+<img alt="../_images/lab10-lastrule.png" src="../_images/lab10-lastrule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 334 </span><span class="caption-text">The Last Rule…</span><a class="headerlink" href="#id60" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now you can carry on with the last <strong>commit</strong>!</p>
+<figure class="align-center" id="id61">
+<img alt="../_images/lab10-lastcommit.png" src="../_images/lab10-lastcommit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 335 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id61" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="verify-connectivity-between-bu2-and-east1">
+<h3>6.4 Verify connectivity between bu2 and east1<a class="headerlink" href="#verify-connectivity-between-bu2-and-east1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>SSH to the Public IP of the instance <strong><em>azure-us-west-spoke2-test1</em></strong> and ping the private IP of the ec2-instance <strong><em>aws-us-east1-spoke1-test2</em></strong></p></li>
+</ul>
+<figure class="align-center" id="id62">
+<img alt="../_images/lab10-lastping.png" src="../_images/lab10-lastping.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 336 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id62" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This time the ping will be successful!</p>
+<p><code class="docutils literal notranslate"><span class="pre">Congratulations,</span> <span class="pre">you</span> <span class="pre">have</span> <span class="pre">deployed</span> <span class="pre">the</span> <span class="pre">full-blown</span> <span class="pre">Aviatrix</span> <span class="pre">solution!</span></code></p>
+<figure class="align-center" id="id63">
+<a class="reference internal image-reference" href="../_images/lab10-lastdrawing.png"><img alt="../_images/lab10-lastdrawing.png" src="../_images/lab10-lastdrawing.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 337 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id63" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab9.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 9 - THREATIQ &amp; THREATGUARD</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab11.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 11 - BONUS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-overview">2. Distributed Cloud Firewall Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-creation">3. Smart Group Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1. Smart Group “bu1”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu2">3.2. Smart Group “bu2”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp">3.3. Connectivity verification (ICMP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh">3.4.  Connectivity verification (SSH)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-creation">4. Rules Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establish-a-ztn-approach">4.1. Establish a ZTN approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu1">4.2. Create an intra-rule that allows ICMP inside bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu2">4.2. Create an intra-rule that allows ICMP inside bu2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-traffic-from-your-laptop-to-bu1">5.1. Verify SSH traffic from your laptop to bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2">5.2. Verify ICMP within bu1 and from bu1 towards bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-within-bu1">5.3. Verify SSH within bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-rule-that-allows-ssh-in-bu1">5.4. Add a rule that allows SSH in bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-vm-in-bu2">5.4. SSH to VM in bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2">5.5. Verify ICMP traffic within bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-from-bu2-to-bu1">5.6. Inter-rule from bu2 to bu1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#east-1-and-the-multi-tier-transit">6. East-1 and the Multi-Tier Transit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-of-the-mtt">6.1 Activation of the MTT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-east1">6.2 Smart Group “east1”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">6.3 Create an inter-rule that allows ICMP from bu2 towards east1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-bu2-and-east1">6.4 Verify connectivity between bu2 and east1</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

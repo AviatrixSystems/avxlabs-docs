@@ -1,0 +1,1196 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 2 &#8212; ACE Associate</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab2';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Summary" href="summary.html" />
+    <link rel="prev" title="Lab 1" href="lab1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Associate - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="ACE Associate - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Associate instructor-led training!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build">Build</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-1-client-web-connectivity">Lab 2.1 - Client / Web Connectivity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-2-attaching-spokes">Lab 2.2 - Attaching Spokes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-3-test-the-web-app">Lab 2.3 - Test the Web App</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-4-copilot-diagnostics">Lab 2.4 - CoPilot Diagnostics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-5-flowiq">Lab 2.5 - FlowIQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-6-copilot-topology">Lab 2.6 - CoPilot Topology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-7-multicloud-peering">Lab 2.7 - Multicloud Peering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Validate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Expected Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-8-test-the-web-app">Lab 2.8 - Test the Web App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-9-debug-the-egress-section">Lab 2.9 - Debug the Egress section</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-10-inspect-the-distributed-cloud-firewall">Lab 2.10 - Inspect the Distributed Cloud Firewall</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Validate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-11-check-and-modify-the-webgroup">Lab 2.11 - Check and Modify the WebGroup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-12-sign-in-to-the-web-app">Lab 2.12 - Sign-in to the Web App</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">Expected Results</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-2">
+<h1>Lab 2<a class="headerlink" href="#lab-2" title="Permalink to this heading">#</a></h1>
+<section id="build">
+<h2>Build<a class="headerlink" href="#build" title="Permalink to this heading">#</a></h2>
+<p>Lab time: ~45 minutes</p>
+<p>Let’s go build out the connectivity for our app!</p>
+<figure class="align-center" id="id33">
+<a class="reference internal image-reference" href="../_images/lab1-topology.png"><img alt="../_images/lab1-topology.png" src="../_images/lab1-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Lab Overview</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="lab-2-1-client-web-connectivity">
+<h2>Lab 2.1 - Client / Web Connectivity<a class="headerlink" href="#lab-2-1-client-web-connectivity" title="Permalink to this heading">#</a></h2>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h3>
+<p>Test Connectivity to Web App</p>
+</section>
+<section id="validate">
+<h3>Validate<a class="headerlink" href="#validate" title="Permalink to this heading">#</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>, and select the <strong>azure-web-node</strong> Gateway.</p>
+</div>
+<figure class="align-center" id="id34">
+<img alt="../_images/lab2-diag.png" src="../_images/lab2-diag.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>This provides you with the Network Engineer’s toolkit (ICMP-based tools, TCP/UDP connectivity, packet captures) directly from an Aviatrix Gateway</p>
+<ul>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">ping</span></code> option and launch ping towards the following nodes:</p>
+<ul>
+<li><p>client-int.pod<strong>X</strong>.aviatrixlab.com</p></li>
+<li><p>app.pod<strong>X</strong>.aviatrixlab.com</p></li>
+<li><p>db.pod<strong>X</strong>.aviatrixlab.com</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Keep the default value for the interface: <code class="docutils literal notranslate"><span class="pre">&quot;Use</span> <span class="pre">Route</span> <span class="pre">Table&quot;</span></code>.</p>
+<p>Click on <strong>Run</strong> for executing the ping command.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace X in the <strong>URLs</strong> with the pod number assigned to you.</p>
+<p>You can view the pod number by accessing the <strong>ACE Associate Lab Portal</strong></p>
+</div>
+<figure class="align-center" id="id35">
+<img alt="../_images/lab2-ping.png" src="../_images/lab2-ping.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Lab Overview</span><a class="headerlink" href="#id35" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="expected-results">
+<h3>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this heading">#</a></h3>
+<p>We have not built any connectivity yet, <ins>so none of the connectivity tests should work yet</ins>.</p>
+</section>
+</section>
+<section id="lab-2-2-attaching-spokes">
+<h2>Lab 2.2 - Attaching Spokes<a class="headerlink" href="#lab-2-2-attaching-spokes" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>Description<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Attach Spoke VPCs/VNets to their Transits</p>
+</section>
+<section id="id2">
+<h3>Validate<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Open the CoPilot</p></li>
+<li><p>Navigate to <strong><em>Cloud Fabric &gt; Gateways &gt; Spoke Gateways</em></strong> and edit the Spoke Gateway <strong><em>azure-web-node</em></strong></p></li>
+</ul>
+<figure class="align-center" id="id36">
+<img alt="../_images/azure-web-node.png" src="../_images/azure-web-node.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Edit the Azure Spoke Gateway</span><a class="headerlink" href="#id36" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the Transit Gateway <strong><em>azure-transit</em></strong> from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code> field, and then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id37">
+<img alt="../_images/azure-transit.png" src="../_images/azure-transit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Attach the Spoke to the corresponding Transit GW</span><a class="headerlink" href="#id37" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Perform these addiitonal actions:</p>
+<ul>
+<li><p>Select <em>azure-app-node</em> and connect it to the <em>azure-transit</em></p></li>
+<li><p>Select <em>aws-db-node</em> and connect it to the <em>aws-transit-gw</em></p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To speed things up, feel free to open multiple browser tabs, and run the <strong>Spoke Attachment</strong> step in each tab</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can verify if spokes were correctly attached by viewing notifications. On the top right corner, click on the <strong><em>task icon</em></strong>, you should see success notifications for the actions you performed above. See an example below:</p>
+<figure class="align-center" id="id38">
+<img alt="../_images/task-icon.png" src="../_images/task-icon.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Notifications</span><a class="headerlink" href="#id38" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="id3">
+<h3>Expected Results<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Each attachment should take between <em>30-120</em> seconds. Check CoPilot Topology to see how the network looks after attaching the Gateways.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong></p>
+</div>
+<figure class="align-center" id="id39">
+<img alt="../_images/attach-topo.png" src="../_images/attach-topo.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Topology with the Attachments</span><a class="headerlink" href="#id39" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="lab-2-3-test-the-web-app">
+<h2>Lab 2.3 - Test the Web App<a class="headerlink" href="#lab-2-3-test-the-web-app" title="Permalink to this heading">#</a></h2>
+<section id="id4">
+<h3>Description<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>Test the Web App</p>
+</section>
+<section id="id5">
+<h3>Validate<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Open the Remote Access Server</p></li>
+<li><p>Open <strong>Firefox</strong> from the Desktop on the Remote Access Server</p></li>
+<li><p>Navigate to <span class="xref myst">http://web.pod<strong>X</strong>.aviatrixlab.com</span></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <strong>X</strong> in the <strong>URL</strong> with the pod number assigned to you.</p>
+<p>You can view the pod number by accessing the <strong>ACE Associate Lab Portal</strong></p>
+</div>
+</section>
+<section id="id6">
+<h3>Expected Results<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>You should see something similar to this:<br />
+<img alt="Web App" src="../_images/webapp-not-working.png" /><br />
+<em>Figure: Web App</em></p>
+</section>
+</section>
+<section id="lab-2-4-copilot-diagnostics">
+<h2>Lab 2.4 - CoPilot Diagnostics<a class="headerlink" href="#lab-2-4-copilot-diagnostics" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h3>Description<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>Using CoPilot Diagnostics Tools</p>
+</section>
+<section id="id8">
+<h3>Validate<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>, and select the <strong>azure-web-node</strong> Gateway.</p></li>
+<li><p>Try to ping/traceroute:</p>
+<ul>
+<li><p>client-int.pod<strong>X</strong>.aviatrixlab.com</p></li>
+<li><p>app.pod<strong>X</strong>.aviatrixlab.com</p></li>
+<li><p>db.pod<strong>X</strong>.aviatrixlab.com</p></li>
+</ul>
+</li>
+</ul>
+<p>You should be able to ping successfully both the <strong>APP</strong> Virtual Machine and the <strong>Client</strong> within the DC, thanks to the attachments among the Gateways and the Site2Cloud connection with the remote CSR router.</p>
+<figure class="align-center" id="id40">
+<img alt="../_images/lab2-attachment.png" src="../_images/lab2-attachment.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Topology with the Attachments</span><a class="headerlink" href="#id40" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong><em>There is a huge benefit to owning the data path in the cloud!  You have complete visibility and have the tools needed to troubleshoot and operate your network!</em></strong></p>
+</div>
+</section>
+<section id="id9">
+<h3>Expected Results<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<p>You should see something similar to this:</p>
+<figure class="align-center" id="id41">
+<img alt="../_images/lab2-pingok.png" src="../_images/lab2-pingok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">CoPilot Ping</span><a class="headerlink" href="#id41" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since there is no connectivity to AWS, the DB node should not be pingable, due to the absence of the <code class="docutils literal notranslate"><span class="pre">Peering</span></code> between the two Transit Gateways!</p>
+</div>
+</section>
+</section>
+<section id="lab-2-5-flowiq">
+<h2>Lab 2.5 - FlowIQ<a class="headerlink" href="#lab-2-5-flowiq" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h3>Description<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>Using CoPilot <strong>FlowIQ</strong> to debug flows</p>
+</section>
+<section id="id11">
+<h3>Validate<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Use the left hand search bar within CoPilot to locate <strong><em>FlowIQ</em></strong></p></li>
+</ol>
+<figure class="align-center" id="id42">
+<img alt="../_images/flowiq-screen.png" src="../_images/flowiq-screen.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">CoPilot FlowIQ</span><a class="headerlink" href="#id42" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <strong><em>Records</em></strong> tab.</p>
+<ol class="arabic simple">
+<li><p>Under the <code class="docutils literal notranslate"><span class="pre">&quot;Filters&quot;</span></code> field, click on the <strong>+ symbol</strong> and create the first condition: select <strong><em>Destination Port</em></strong>, <strong><em>equals</em></strong> and then port <strong>8080</strong> (traffic from Web to App).</p></li>
+</ol>
+<p>Do not forget to click on <strong>Apply</strong>.</p>
+<figure class="align-center" id="id43">
+<img alt="../_images/lab2-plusbutton.png" src="../_images/lab2-plusbutton.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Records</span><a class="headerlink" href="#id43" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id44">
+<img alt="../_images/lab2-destination.png" src="../_images/lab2-destination.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id44" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Click <strong><em>Add Condition</em></strong> again, make sure to select <strong><em>OR</em></strong> as boolean condition, select <strong><em>Destination Port</em></strong>, <strong>equals</strong> and then select port <strong>443</strong> (traffic from App to DB).</p></li>
+</ol>
+<figure class="align-center" id="id45">
+<img alt="../_images/lab2-addcondition.png" src="../_images/lab2-addcondition.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Add 2nd Condition</span><a class="headerlink" href="#id45" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id46">
+<img alt="../_images/lab2-or.png" src="../_images/lab2-or.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Two condition with the Boolean OR</span><a class="headerlink" href="#id46" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>In the <strong><em>Time Period</em></strong> field, select <strong>Last 60 Minutes</strong>.</p></li>
+<li><p>Add the <strong><em>Destination Port</em></strong> parameter among the existing columns.</p></li>
+</ol>
+<figure class="align-center" id="id47">
+<img alt="../_images/destination-port.png" src="../_images/destination-port.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Destination Port</span><a class="headerlink" href="#id47" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>Add also the <strong><em>TCP Flag Tags</em></strong> parameter among the existing columns.</p></li>
+</ol>
+<figure class="align-center" id="id48">
+<img alt="../_images/tcp-flag.png" src="../_images/tcp-flag.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">TCP Flag Tags</span><a class="headerlink" href="#id48" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>Apply</strong>.</p>
+<ul class="simple">
+<li><p>In the Records tab, you can view the raw flow logs. You should see the <code class="docutils literal notranslate"><span class="pre">App</span></code> (i.e. 10.x.<code class="docutils literal notranslate"><span class="pre">32</span></code>.x) trying to connect to the <code class="docutils literal notranslate"><span class="pre">DB</span></code> (i.e. 10.x.<code class="docutils literal notranslate"><span class="pre">64</span></code>.x) tier, but we only get a <strong>SYN</strong>.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>Expected Results<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<p>You should see something similar to this showing successful flows from Web to App, but unsuccessful from App to DB:</p>
+<figure class="align-center" id="id49">
+<img alt="../_images/syn.png" src="../_images/syn.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Only SYN packet</span><a class="headerlink" href="#id49" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No connectivity to the DB tier means that we only see SYN packets, from the APP to the DB.</p>
+<p>Use <strong>FlowIQ</strong> to get insights into all flows running over your secure cloud network.</p>
+</div>
+</section>
+</section>
+<section id="lab-2-6-copilot-topology">
+<h2>Lab 2.6 - CoPilot Topology<a class="headerlink" href="#lab-2-6-copilot-topology" title="Permalink to this heading">#</a></h2>
+<section id="id13">
+<h3>Description<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<p>Using CoPilot Topology to visualize your secure cloud network.</p>
+</section>
+<section id="id14">
+<h3>Validate<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Search for <strong><em>Topology</em></strong></p></li>
+</ul>
+<figure class="align-center" id="id50">
+<img alt="../_images/lab2-search.png" src="../_images/lab2-search.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Search field</span><a class="headerlink" href="#id50" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id15">
+<h3>Expected Results<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<p>You should see something similar to this:</p>
+<figure class="align-center" id="id51">
+<img alt="../_images/lab2-newtopo.png" src="../_images/lab2-newtopo.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Topology Overview</span><a class="headerlink" href="#id51" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Azure Spokes are connected to the Azure Transit</p></li>
+<li><p>AWS Spoke is connected to the AWS Transit.</p></li>
+</ul>
+<p>We do not have connectivity between AWS and Azure. Not yet at least!</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong><em>Visualizing a network can be so helpful!</em></strong></p>
+</div>
+</section>
+</section>
+<section id="lab-2-7-multicloud-peering">
+<h2>Lab 2.7 - Multicloud Peering<a class="headerlink" href="#lab-2-7-multicloud-peering" title="Permalink to this heading">#</a></h2>
+<section id="id16">
+<h3>Description<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<p>By this point we should have verified that connectivity in Azure is good, but we are missing the connectivity between Azure and AWS, in order to complete the 3-tier architecture connectivity, among, the APP, the WEB and the DB.</p>
+<p>Aviatrix offers a simple but powerful method for interconnecting clouds.</p>
+</section>
+<section id="id17">
+<h3>Validate<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Navigate to <strong>Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and edit the Transit Gateway <strong><em>aws-transit-gw</em></strong>, clicking on the pencil icon:</p></li>
+</ul>
+<figure class="align-center" id="id52">
+<img alt="docs/images/aws-transit-edit.png" src="docs/images/aws-transit-edit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Edit Transit Gateway</span><a class="headerlink" href="#id52" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Select the Transit Gateway <strong><em>azure-transit</em></strong> from the drop-down window from the <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code> field, and then click on <strong>Save</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id53">
+<img alt="../_images/peering.png" src="../_images/peering.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Establish peering between Transit Gateways</span><a class="headerlink" href="#id53" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id18">
+<h2>Expected Results<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Verify that the peering has been established</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate <strong>Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the transit gateway <strong><em>aws-transit-gw</em></strong></p>
+</div>
+<figure class="align-center" id="id54">
+<img alt="docs/images/aws-transit-gw.png" src="docs/images/aws-transit-gw.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Select the Transit GW</span><a class="headerlink" href="#id54" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Then select the tab <strong>Connections &gt; Transit-Transit peering</strong>, as depicted below.</p></li>
+</ul>
+<figure class="align-center" id="id55">
+<img alt="../_images/peering-ok.png" src="../_images/peering-ok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Transit Peering established</span><a class="headerlink" href="#id55" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You may need to refresh or wait <strong><em>60-120 seconds</em></strong> for the connection status to become green (UP).</p>
+<ul class="simple">
+<li><p>Check CoPilot Topology to verify the state of the links</p></li>
+</ul>
+</div>
+<p><strong>Congratulations!!! You have now built a Multicloud Network! Secure cloud networking has never been so easy…</strong></p>
+<figure class="align-center" id="id56">
+<img alt="../_images/peering-ok2.png" src="../_images/peering-ok2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">CoPilot Transit Peering</span><a class="headerlink" href="#id56" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After this lab, this is how the overall topology would look like:</p>
+<figure class="align-center" id="id57">
+<img alt="../_images/lab2-final.png" src="../_images/lab2-final.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Full-blown MCNA: Hub-and-Spoke Topology</span><a class="headerlink" href="#id57" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="lab-2-8-test-the-web-app">
+<h3>Lab 2.8 - Test the Web App<a class="headerlink" href="#lab-2-8-test-the-web-app" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="id19">
+<h3>Description<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
+<p>Check whether the Web App is up and running.</p>
+</section>
+<section id="id20">
+<h3>Validate<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Using the RDP session, open Firefox and navigate to:</p></li>
+</ul>
+<p><span class="xref myst">http://web.pod<strong>X</strong>.aviatrixlab.com</span></p>
+<ul class="simple">
+<li><p>If the site is already open, click the Refresh button</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <strong>X</strong> in the <strong>URL</strong> with the pod number assigned to you.</p>
+<p>You can view the pod number by accessing the <strong>ACE Associate Lab Portal</strong></p>
+</div>
+</section>
+<section id="id21">
+<h3>Expected Results<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
+<p>You should see something similar to this, meaning the Database is still not accessible!</p>
+<figure class="align-center" id="id58">
+<img alt="../_images/webapp-db-down.png" src="../_images/webapp-db-down.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">DB is still down…</span><a class="headerlink" href="#id58" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="lab-2-9-debug-the-egress-section">
+<h2>Lab 2.9 - Debug the Egress section<a class="headerlink" href="#lab-2-9-debug-the-egress-section" title="Permalink to this heading">#</a></h2>
+<section id="id22">
+<h3>Description<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
+<p>The database is actually just a <strong><em>proxy</em></strong> to Amazon DynamoDB.</p>
+<p>Perhaps the proxy cannot reach DynamoDB.</p>
+</section>
+<section id="id23">
+<h3>Validate<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>After testing that the connection between Web and App works and seeing that the DB connection fails, verify the <code class="docutils literal notranslate"><span class="pre">Logs</span></code> on the <strong>Egress</strong> section.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the <strong><em>aws-db-node</em></strong> VPC.</p>
+</div>
+<figure class="align-center" id="id59">
+<img alt="../_images/lab2-egressmonitor.png" src="../_images/lab2-egressmonitor.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Egress Monitor section</span><a class="headerlink" href="#id59" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will see immediatelly all the Logs related to the Distributed Cloud Firewall Rules.</p>
+<ul class="simple">
+<li><p>Search for the <code class="docutils literal notranslate"><span class="pre">&quot;Denied&quot;</span></code> action.</p></li>
+</ul>
+</section>
+<section id="id24">
+<h3>Expected Results<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>It appears that the Egress filter is not allowing access to:  <strong><em><a class="reference external" href="http://dynamodb.us-west-2.amazonaws.com">dynamodb.us-west-2.amazonaws.com</a></em></strong> on port <strong>443</strong>.</p></li>
+<li><p>You should see somethiing like the following:</p></li>
+</ul>
+<figure class="align-center" id="id60">
+<img alt="../_images/lab2-denied.png" src="../_images/lab2-denied.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Egress Monitor section</span><a class="headerlink" href="#id60" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="lab-2-10-inspect-the-distributed-cloud-firewall">
+<h2>Lab 2.10 - Inspect the Distributed Cloud Firewall<a class="headerlink" href="#lab-2-10-inspect-the-distributed-cloud-firewall" title="Permalink to this heading">#</a></h2>
+<section id="id25">
+<h3>Description<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h3>
+<p>Check the Distributed Cloud Firewall Rules</p>
+</section>
+<section id="id26">
+<h3>Validate<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong></p>
+<figure class="align-center" id="id61">
+<img alt="../_images/lab2-dcf.png" src="../_images/lab2-dcf.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">DCF rules</span><a class="headerlink" href="#id61" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will notice <strong>4</strong> rules:</p>
+<p>1- <span style='color:#00FFFF'><strong>allow-internet-http</strong></span></p>
+<ul class="simple">
+<li><p>This rule allows the DB instance to generate <strong>HTTP</strong> (port 80) towards Internet against specific domains (there is a WebGroup named <em>“allowed-internet-http”</em> attached to the rule itself).</p></li>
+</ul>
+<p>2- <span style='color:#00FFFF'><strong>allow-internet-https</strong></span></p>
+<ul class="simple">
+<li><p>This rule allows the DB instance to generate <strong>HTTPS</strong> (port 443) towards Internet against specific domains (there is a WebGroup named <em>“allowed-internet-https”</em> attached to the rule itself).</p></li>
+</ul>
+<p>3- <span style='color:#00FFFF'><strong>allow-rfc1918</strong></span></p>
+<ul class="simple">
+<li><p>This rule allows all kind of <strong><em>East-West</em></strong> traffic within the multicloud infrastructure.</p></li>
+</ul>
+<p>4- <span style='color:#00FFFF'><strong>default-deny-all</strong></span></p>
+<ul class="simple">
+<li><p>This is the <strong><em>Explicit Deny Rule</em></strong> that permits to achieve the ZTNA (Zero Trust Network Access) approach!</p></li>
+</ul>
+<p>The denied domain is <strong><em><a class="reference external" href="http://dynamodb.us-west-2.amazonaws.com">dynamodb.us-west-2.amazonaws.com</a></em></strong>. This domain should be allowed within the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;allowed-internet-https&quot;</span></code>!</p>
+</section>
+</section>
+<section id="lab-2-11-check-and-modify-the-webgroup">
+<h2>Lab 2.11 - Check and Modify the WebGroup<a class="headerlink" href="#lab-2-11-check-and-modify-the-webgroup" title="Permalink to this heading">#</a></h2>
+<section id="id27">
+<h3>Description<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h3>
+<p>Modify the Distributed Cloud Firewall WebGroup</p>
+</section>
+<section id="id28">
+<h3>Validate<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; WebGroups</strong> and modify the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;allowed-internet-https&quot;</span></code></p>
+<figure class="align-center" id="id62">
+<img alt="../_images/lab2-webgroup.png" src="../_images/lab2-webgroup.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">WebGroups</span><a class="headerlink" href="#id62" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will notice that the WebGroup only contains two domains:</p>
+<p>1- *.us.east-1.amazonaws.com</p>
+<p>2- *.snapcraft.io</p>
+<figure class="align-center" id="id63">
+<img alt="../_images/lab2-webgroupno.png" src="../_images/lab2-webgroupno.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">WebGroups</span><a class="headerlink" href="#id63" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Add the required Domain Name <code class="docutils literal notranslate"><span class="pre">dynamodb.us-west-2.amazonaws.com</span></code> within the <em>Domains/URLs</em> field and then click on <strong>Save</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id64">
+<img alt="../_images/lab2-webgroupok.png" src="../_images/lab2-webgroupok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Editing the WebGroup</span><a class="headerlink" href="#id64" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id29">
+<h3>Expected Results<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h3>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and filter out based on the <code class="docutils literal notranslate"><span class="pre">&quot;L7</span> <span class="pre">Logs&quot;</span></code>.</p>
+<figure class="align-center" id="id65">
+<img alt="../_images/lab2-finalok.png" src="../_images/lab2-finalok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">L7 Log</span><a class="headerlink" href="#id65" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will notice that now the DB instance can successfully reach the DynamoDB!</p>
+</section>
+</section>
+<section id="lab-2-12-sign-in-to-the-web-app">
+<h2>Lab 2.12 - Sign-in to the Web App<a class="headerlink" href="#lab-2-12-sign-in-to-the-web-app" title="Permalink to this heading">#</a></h2>
+<section id="id30">
+<h3>Description<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h3>
+<p>Now that we have built the connectivity, our Web App should be up and running.</p>
+</section>
+<section id="id31">
+<h3>Validate<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Log in to the <strong>Remote Access Server</strong></p></li>
+<li><p>Open Firefox on the Desktop and navigate to: <span class="xref myst">http://web.pod<strong>X</strong>.aviatrixlab.com</span></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <strong>X</strong> in the <strong>URL</strong> with the pod number assigned to you.</p>
+<p>You can view the pod number by accessing the <strong>ACE Associate Lab Portal</strong></p>
+</div>
+<p>You will finally see all the three tiers (i.e. Web, App and DB) in <code class="docutils literal notranslate"><span class="pre">&quot;STATUS:</span> <span class="pre">UP&quot;</span></code></p>
+<ul class="simple">
+<li><p>Click <strong>Sign In</strong>, enter something in the <strong>Comments</strong> and click <strong>Submit</strong> to sign-in to the <strong>WALL OF FAME</strong></p></li>
+</ul>
+</section>
+<section id="id32">
+<h3>Expected Results<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h3>
+<figure class="align-center" id="id66">
+<img alt="../_images/lab2-signin.png" src="../_images/lab2-signin.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Sign In</span><a class="headerlink" href="#id66" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id67">
+<img alt="../_images/lab2-submit.png" src="../_images/lab2-submit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Insert your Comment!</span><a class="headerlink" href="#id67" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should see that all 3 App Tiers are now up and can talk to each other. You should also be able to register yourself in the form, and also be able to view the Wall of Fame!</p>
+<p><strong>Nice work!</strong></p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="summary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Summary</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build">Build</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-1-client-web-connectivity">Lab 2.1 - Client / Web Connectivity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-2-attaching-spokes">Lab 2.2 - Attaching Spokes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-3-test-the-web-app">Lab 2.3 - Test the Web App</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-4-copilot-diagnostics">Lab 2.4 - CoPilot Diagnostics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-5-flowiq">Lab 2.5 - FlowIQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-6-copilot-topology">Lab 2.6 - CoPilot Topology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-7-multicloud-peering">Lab 2.7 - Multicloud Peering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Validate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Expected Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-8-test-the-web-app">Lab 2.8 - Test the Web App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-9-debug-the-egress-section">Lab 2.9 - Debug the Egress section</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-10-inspect-the-distributed-cloud-firewall">Lab 2.10 - Inspect the Distributed Cloud Firewall</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Validate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-11-check-and-modify-the-webgroup">Lab 2.11 - Check and Modify the WebGroup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-12-sign-in-to-the-web-app">Lab 2.12 - Sign-in to the Web App</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">Expected Results</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

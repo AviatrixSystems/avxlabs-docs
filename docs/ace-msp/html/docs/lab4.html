@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 4 Site2Cloud &#8212; ACE Multicloud Network for Managed Service Providers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab4';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 5 Advanced NAT Scenarios" href="lab5.html" />
+    <link rel="prev" title="Lab 3 FireNet" href="lab3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Multicloud Network for Managed Service Providers - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="ACE Multicloud Network for Managed Service Providers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE MSP instructor-led training!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Build the MSP Backbone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 Customer Isolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 FireNet</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 4 Site2Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 Advanced NAT Scenarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 Advanced Routing &amp; Resiliency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 Security Enhancements</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab4.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 4 Site2Cloud</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-lab">4.0 - What’s in the lab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-topology">4.1 - Current Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-customer-a-dc-to-customer-a-landing-zone">4.2 - Connect Customer-A-DC to Customer-A Landing Zone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-s2c-tunnel-to-csr1">4.2.1  - Configure the S2C Tunnel to CSR1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-configuration">4.2.1.1  - Additional Configuration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-ipsec-bgp-from-csr1-perspective">4.2.1.2  - Validate IPSec/BGP From CSR1 Perspective</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-ipsec-bgp-from-copilot">4.2.1.3  - Validate IPSec/BGP from Copilot</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-s2c-tunnel-to-csr2">4.2.2  - Configure the S2C Tunnel to CSR2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2.2.1  - Additional Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">4.2.3 - Connectivity Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-customer-b-branch-to-customer-b-landing-zone">4.3 - Connect Customer-B-Branch to Customer-B Landing Zone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-s2c-tunnel-to-customer-b-csr">4.3.1  - Configure the S2C Tunnel to Customer B CSR</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.3.2.1  - Additional Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.3.2 - Connectivity Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.4 - Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-4-site2cloud">
+<h1>Lab 4 Site2Cloud<a class="headerlink" href="#lab-4-site2cloud" title="Permalink to this heading">#</a></h1>
+<section id="what-s-in-the-lab">
+<h2>4.0 - What’s in the lab?<a class="headerlink" href="#what-s-in-the-lab" title="Permalink to this heading">#</a></h2>
+<p>The MSP has done major strides in terms of setting up the backbone, segmenting its Customer Infrastructure, as well as deploying NG FWs.</p>
+<p>Other teams within the MSP have been busy working with the 3 Customers to setup minimal infrastructure and applications. We have just received an official request from Customers A and B to connect their on-premise locations to their respective landing zones.</p>
+</section>
+<section id="current-topology">
+<h2>4.1 - Current Topology<a class="headerlink" href="#current-topology" title="Permalink to this heading">#</a></h2>
+<p>This is the current state of the topology.</p>
+<p><img alt="Final Topology Lab 2" src="../_images/initial_topology.png" /><em>Figure 1: Current State of the Topology</em></p>
+</section>
+<section id="connect-customer-a-dc-to-customer-a-landing-zone">
+<h2>4.2 - Connect Customer-A-DC to Customer-A Landing Zone<a class="headerlink" href="#connect-customer-a-dc-to-customer-a-landing-zone" title="Permalink to this heading">#</a></h2>
+<section id="configure-the-s2c-tunnel-to-csr1">
+<h3>4.2.1  - Configure the S2C Tunnel to CSR1<a class="headerlink" href="#configure-the-s2c-tunnel-to-csr1" title="Permalink to this heading">#</a></h3>
+<p>In this section, we will be connecting Customer-A DC Location to the Customer-A landing zone within our MSP.</p>
+<p>We will be configuring full mesh connectivity between the 2 Aviatrix Spoke Gateways within our Customer-A Landing Zone and the 2 on-prem CSRs.</p>
+<p>This will be configured in 2 main steps:</p>
+<ol class="arabic simple">
+<li><p>Tunnels (1 &amp; 2) from both Aviatrix Spoke Gateways towards CSR 1</p></li>
+<li><p>Tunnels (3 &amp; 4) from both Aviatrix Spoke Gateways towards CSR 2</p></li>
+</ol>
+<p><img alt="S2C Tunnel towards CSR 1 Part 1" src="../_images/customer_a_tunnels_1_&amp;_2.png" />
+<em>Figure 2: S2C Tunnel towards CSR 1 Explained</em></p>
+<p>Please follow the below steps to configure the S2C tunnel towards CSR 1.</p>
+<p><img alt="S2C Tunnel towards CSR 1 Part 1" src="../_images/site2cloud_customer_a_csr_1_part_1.png" />
+<img alt="S2C Tunnel towards CSR 1 Part 2" src="../_images/site2cloud_customer_a_csr_1_part_2.png" /><em>Figure 3: S2C to Customer A CSR 1</em></p>
+<p>Now we have configured the S2C tunnel from Aviatrix side. Aviatrix takes another step in simplifying S2C tunnel creation by providing the configuration of common on-prem network devices.</p>
+<p>You can follow the below procedure to get the template for the CSR configuration.</p>
+<p><img alt="Download the CSR Configuration" src="../_images/get_csr_configuration_part_1.png" />
+<img alt="Download the CSR Configuration" src="../_images/get_csr_configuration_part_2.png" />
+<img alt="Download the CSR Configuration" src="../_images/csr_configuration_part_4.png" /><em>Figure 4: Download Configuration of CSR Router</em></p>
+<p>Make the following highlighted changes to the downloaded CSR configuration template.</p>
+<p><img alt="Edit the CSR Configuration" src="../_images/modify_csr_config_part_1.png" />
+<img alt="Edit the CSR Configuration" src="../_images/modfy_csr_config_part_2.png" />
+<img alt="Edit the CSR Configuration" src="../_images/modify_csr_config_part_3.png" />
+<em>Figure 5: CSR1 Edit Configuration</em></p>
+<section id="additional-configuration">
+<h4>4.2.1.1  - Additional Configuration<a class="headerlink" href="#additional-configuration" title="Permalink to this heading">#</a></h4>
+<p>Add the below configuration on CSR1</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conf</span> <span class="n">t</span>
+<span class="n">interface</span> <span class="n">GigabitEthernet2</span>
+ <span class="n">ip</span> <span class="n">address</span> <span class="n">dhcp</span>
+ <span class="n">no</span> <span class="n">shutdown</span>
+ <span class="n">negotiation</span> <span class="n">auto</span>
+ <span class="n">no</span> <span class="n">mop</span> <span class="n">enabled</span>
+ <span class="n">no</span> <span class="n">mop</span> <span class="n">sysid</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+</section>
+<section id="validate-ipsec-bgp-from-csr1-perspective">
+<h4>4.2.1.2  - Validate IPSec/BGP From CSR1 Perspective<a class="headerlink" href="#validate-ipsec-bgp-from-csr1-perspective" title="Permalink to this heading">#</a></h4>
+<p>In this section, we validate the state of the BGP session between CSR1 and the 2 Spoke Gateways.</p>
+<p><img alt="Validate BGP Neighborship" src="../_images/verify_bgp_neighborship_csr1.png" />
+<em>Figure 6: show ip bgp summary</em></p>
+<p><img alt="Validate Received Routes" src="../_images/check_bgp_learned_routes.png" />
+<em>Figure 7: show ip route bgp</em></p>
+<p>For the show ip bgp neighbor advertised routes make sure you reference your neighbor which you found in the show ip bgp summary output.</p>
+<p><img alt="Validate Advertised Routes" src="../_images/check_bgp_advertised_routes.png" />
+<em>Figure 8: show ip bgp neighbor advertised routes</em></p>
+</section>
+<section id="validate-ipsec-bgp-from-copilot">
+<h4>4.2.1.3  - Validate IPSec/BGP from Copilot<a class="headerlink" href="#validate-ipsec-bgp-from-copilot" title="Permalink to this heading">#</a></h4>
+<p>In this section, we validate the state of the IPSec/BGP session between CSR1 and the 2 Spoke Gateways leveraging Copilot.</p>
+<p>Use the search bar within Copilot to navigate to Cloud Routes and then go to the Site2Cloud tab.</p>
+<p>Here we can see that the state of 2 Tunnels from customer-a and customer-a-hagw are both up to CSR1.</p>
+<p><img alt="Validate S2C Connection" src="../_images/s2c_tunnel_status_copilot.png" />
+<em>Figure 9: Copilot S2C Status</em></p>
+<p>The below diagram shows the state of the BGP session.</p>
+<p><img alt="Validate BGP Connection" src="../_images/bgp_neighborship_focusing_on_primary_gw.png" />
+<em>Figure 10: Copilot BGP Established</em></p>
+<p>You can also see the Learned Routes via BGP here.</p>
+<p><img alt="Validate BGP Connection" src="../_images/learned_cidrs.png" />
+<em>Figure 11: Copilot BGP Learned Routes</em></p>
+</section>
+</section>
+<section id="configure-the-s2c-tunnel-to-csr2">
+<h3>4.2.2  - Configure the S2C Tunnel to CSR2<a class="headerlink" href="#configure-the-s2c-tunnel-to-csr2" title="Permalink to this heading">#</a></h3>
+<p>In this section, we repeat the same procedure we have done in 4.2.1 to configure the Site2Cloud tunnels from Customer-A landing zones to CSR2 in the Data Center. This is depicted in Figure</p>
+<p><img alt="S2C Tunnel towards CSR 1 Part 1" src="../_images/customer_a_tunnels_3_&amp;_4.png" />
+<em>Figure 12: S2C Tunnel towards CSR 1 Explained</em></p>
+<p>Please follow the below steps to configure the S2C tunnel towards CSR 2.</p>
+<p><img alt="Configure S2C to CSR2 P1" src="../_images/site2cloud_customer_a_csr_2_part_1.png" />
+<img alt="Configure S2C to CSR2 P2" src="../_images/site2cloud_customer_a_csr_1_part_2.png" />
+<em>Figure 13: S2C to Customer A CSR 1</em>
+Now we have configured the S2C tunnel from Aviatrix side. Aviatrix takes another step in simplifying S2C tunnel creation by providing the configuration of common on-prem network devices.</p>
+<p>You can follow the below procedure to get the template for the CSR configuration.</p>
+<p><img alt="Get the CSR Configuration" src="../_images/get_csr_2_configuration_part_1.png" />
+<img alt="Get the CSR Configuration" src="../_images/get_csr_2_configuration_part_2.png" />
+<img alt="Get the CSR Configuration" src="../_images/get_csr_2_configuration_part_3.png" />
+<em>Figure 14: Download Configuration of CSR Router</em></p>
+<p>Make the following highlighted changes to the downloaded CSR configuration template.</p>
+<p><img alt="Edit the CSR Configuration" src="../_images/modify_csr_2_config_part_1.png" />
+<img alt="Edit the CSR Configuration" src="../_images/modify_csr_2_config_part_2.png" />
+<img alt="Edit the CSR Configuration" src="../_images/modify_csr_2_config_part_3.png" />
+<em>Figure 15: CSR2 Edit Configuration</em></p>
+<p>In terms of the verification, follow the same steps available in sections 4.2.1.1 and 4.2.1.2 to ensure that IPSec/BGP are up with CSR2.</p>
+<section id="id1">
+<h4>4.2.2.1  - Additional Configuration<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<p>Add the below configuration on Customer-A CSR2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conf</span> <span class="n">t</span>
+<span class="n">interface</span> <span class="n">GigabitEthernet2</span>
+ <span class="n">ip</span> <span class="n">address</span> <span class="n">dhcp</span>
+ <span class="n">no</span> <span class="n">shutdown</span>
+ <span class="n">negotiation</span> <span class="n">auto</span>
+ <span class="n">no</span> <span class="n">mop</span> <span class="n">enabled</span>
+ <span class="n">no</span> <span class="n">mop</span> <span class="n">sysid</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="connectivity-test">
+<h2>4.2.3 - Connectivity Test<a class="headerlink" href="#connectivity-test" title="Permalink to this heading">#</a></h2>
+<p>This is a brief section where we ensure that data plane connectivity tests succeed.</p>
+<p>Here we ping the application residing within Customer’s A landing zone from customer A client in the DC.We also leverage the NGINX proxy for the same purpose.</p>
+<p><img alt="Ping Customer-a-client to Customer-a-App" src="../_images/ping_customer_a_client_to_customer_a_app.png" />
+<em>Figure 16: Ping Customer-a-client to Customer-a-App</em></p>
+<p><img alt="Proxy Customer-a-client to Customer-a-App" src="../_images/proxy_customer_a_client_to_customer_a_app.png" />
+<em>Figure 17: Proxy Customer-a-client to Customer-a-App</em></p>
+<p>Here we ping the application (aws_log1) residing within the MSP’s shared services from customer A client in the DC.We also leverage the NGINX proxy for the same purpose.</p>
+<p><img alt="Ping Customer-a-client to AWS-Log1" src="../_images/ping_customer_a_client_to_aws_log_1.png" />
+<em>Figure 18: Ping Customer-a-client to aws-log1</em></p>
+<p><img alt="Proxy Customer-a-client to AWS-Log1" src="../_images/proxy_customer_a_client_to_aws_log_1.png" />
+<em>Figure 19: Proxy Customer-a-client to aws-log1</em></p>
+</section>
+<section id="connect-customer-b-branch-to-customer-b-landing-zone">
+<h2>4.3 - Connect Customer-B-Branch to Customer-B Landing Zone<a class="headerlink" href="#connect-customer-b-branch-to-customer-b-landing-zone" title="Permalink to this heading">#</a></h2>
+<p>The MSP is very happy to have fully onboarded their first customer (customer_a) and connected it to its external location. Now we have to follow the same procedure for Customer-B.</p>
+<section id="configure-the-s2c-tunnel-to-customer-b-csr">
+<h3>4.3.1  - Configure the S2C Tunnel to Customer B CSR<a class="headerlink" href="#configure-the-s2c-tunnel-to-customer-b-csr" title="Permalink to this heading">#</a></h3>
+<p>Please follow the below steps to configure the S2C tunnel towards Customer B’s CSR.</p>
+<p><img alt="S2C Tunnel towards Customer B CSR  Part 1" src="../_images/site2cloud_customer_b_csr_part_1.png" />
+<img alt="S2C Tunnel towards Customer B CSR" src="../_images/site2cloud_customer_b_csr_part_2.png" /><em>Figure 20: S2C to Customer B CSR</em></p>
+<p>You can follow the below procedure to get the template for the CSR B configuration.</p>
+<p><img alt="Edit the CSR Configuration" src="../_images/get_the_config_of_customer_b_csr_p1.png" /></p>
+<p><img alt="Edit the CSR Configuration" src="../_images/get_the_config_of_customer_b_csr_p2.png" /></p>
+<p><img alt="Get the CSR Configuration" src="../_images/get_csr_2_configuration_part_3.png" /><em>Figure 21: Download Configuration of CSR Router</em></p>
+<p>Make the following highlighted changes to the downloaded CSR configuration template.</p>
+<p><img alt="Edit the CSR Configuration" src="../_images/modify_customer_b_csr_part_1.png" />
+<img alt="Edit the CSR Configuration" src="../_images/modify_customer_b_csr_part_2.png" />
+<em>Figure 21: CSR Edit Configuration</em></p>
+<p>In terms of the verification, you can follow the same steps available in sections 4.2.1.1 and 4.2.1.2.</p>
+<section id="id2">
+<h4>4.3.2.1  - Additional Configuration<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<p>Add the below configuration on Customer-B CSR</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conf</span> <span class="n">t</span>
+<span class="n">interface</span> <span class="n">GigabitEthernet2</span>
+ <span class="n">ip</span> <span class="n">address</span> <span class="n">dhcp</span>
+ <span class="n">no</span> <span class="n">shutdown</span>
+ <span class="n">negotiation</span> <span class="n">auto</span>
+ <span class="n">no</span> <span class="n">mop</span> <span class="n">enabled</span>
+ <span class="n">no</span> <span class="n">mop</span> <span class="n">sysid</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id3">
+<h2>4.3.2 - Connectivity Test<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>Here we ping the application residing within Customer B landing zone from customer B client in the branch.We also leverage the NGINX proxy for the same purpose. This test should fail at this point in time.</p>
+<p><img alt="Ping Customer-b-client to Customer-b-App" src="../_images/ping_customer_b_client_to_customer_b_app.png" />
+<em>Figure 22: Ping Customer-b-client to Customer-b-App</em></p>
+<p><img alt="Proxy Customer-b-client to Customer-b-App" src="../_images/proxy_customer_b_client_to_app.png" />
+<em>Figure 23: Proxy Customer-a-client to Customer-a-App</em></p>
+<p>Here we leverage the NGINX proxy to test the connectivity from customer-b-client to AWS-Log1. This test may or may not succeed in your lab. The instructor will provide more details on the problem and we will be solving it in the subsequent lab.</p>
+<p><img alt="Proxy Customer-b-client to AWS-Log1" src="../_images/proxy_customer_b_client_to_aws_log_1.png" />
+<em>Figure 24: Proxy Customer-a-client to aws-log1</em></p>
+</section>
+<section id="conclusion">
+<h2>4.4 - Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>In this lab we learned all the intricacies of how to configure a S2C connection to any external location in terms of the configuratio options from Aviatrix’s side, downloading and editing the on-prem configuration files and validating the connectivity at the IPSec/BGP levels.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 3 FireNet</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 5 Advanced NAT Scenarios</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-lab">4.0 - What’s in the lab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-topology">4.1 - Current Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-customer-a-dc-to-customer-a-landing-zone">4.2 - Connect Customer-A-DC to Customer-A Landing Zone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-s2c-tunnel-to-csr1">4.2.1  - Configure the S2C Tunnel to CSR1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-configuration">4.2.1.1  - Additional Configuration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-ipsec-bgp-from-csr1-perspective">4.2.1.2  - Validate IPSec/BGP From CSR1 Perspective</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-ipsec-bgp-from-copilot">4.2.1.3  - Validate IPSec/BGP from Copilot</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-s2c-tunnel-to-csr2">4.2.2  - Configure the S2C Tunnel to CSR2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2.2.1  - Additional Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">4.2.3 - Connectivity Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-customer-b-branch-to-customer-b-landing-zone">4.3 - Connect Customer-B-Branch to Customer-B Landing Zone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-s2c-tunnel-to-customer-b-csr">4.3.1  - Configure the S2C Tunnel to Customer B CSR</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.3.2.1  - Additional Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.3.2 - Connectivity Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.4 - Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
