@@ -1,6 +1,6 @@
 # Lab 1
 
-## Lab Overview - What's in the lab?
+## Lab Overview - What's in the lab, this is an example?
 Lab time: ~15 minutes
 
 You have been tasked with building connectivity and security for an application in the cloud. It just so happens that the different tiers of the application are spread out across different VPCs and VNets in Azure and AWS.
