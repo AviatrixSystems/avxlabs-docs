@@ -57,26 +57,20 @@ Or paste this line directly into your browser bar:
 ===================================================
 ```
 
-7. Copy the contents of `your_folder/_build/html/` to the root `docs` folder (not the one inside your folder) in a new folder called `your-folder`. Example: if your working directory is `./ace_associate`, your publish directory would be `./docs/ace-associate`.
-
-```bash
-cp -rf ./ace_associate/_build/html/ docs/ace-associate
-```
-
-8. Commit your changes locally (to the local copy of the repository branch)
+7. Commit your changes locally (to the local copy of the repository branch)
 
 ```bash
 git add .
 git commit -m "meaningful message that describes the changes in this commit"
 ```
 
-9. Push your changes to the remote repository (push to origin)
+8. Push your changes to the remote repository (push to origin)
 
 ```bash
 git push
 ```
 
-10. Create a [PR](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) to have the new guide published.
+9. Create a [PR](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) to have the new guide published.
 
 ## Useful code examples
 
