@@ -1,0 +1,68 @@
+name: deploy-book
+
+on:
+  pull_request:
+    types:
+      - review_requested
+      - synchronize # Checks any commits made to the PR
+
+# This job installs dependencies, builds the book.
+jobs:
+  deploy-book:
+    runs-on: ubuntu-latest
+    steps:
+      - id: repo
+        name: Repo Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - id: python
+        name: Python Setup
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+          cache: "pip"
+      - run: pip install -r requirements.txt
+
+      # Finds folders that have the _toc.yml file.
+      - name: List Jupyter Book Folders
+        id: pl
+        uses: Rishabh510/Path-lister-action@master
+        with:
+          path: "."
+          type: "_toc.yml"
+
+      - name: Build Jupyter Book
+        run: |
+          for i in ${{ steps.pl.outputs.paths }}; do
+          folderName=${i%"_toc.yml"}
+
+          # Replace _ with - for built folder name.
+          newFolderName=${folderName//"_"/"-"}
+
+          echo "Building book for $folderName"
+
+          # Build the book
+          jb clean --all ${folderName}
+          jb build ${folderName}
+
+          # Move the files to the docs folder
+          echo "Moving files to docs/${newFolderName}"
+          rm -rf docs/${newFolderName}
+          cp -rf ${folderName}/_build/html/ docs/${newFolderName}
+          done
+
+      - name: Setup Git Config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: Commit Files
+
+        run: |
+          # Stage the file, commit and push
+          git add .
+          git commit -m "auto build from GitHub Actions"
+          git push origin ${{ github.event.pull_request.head.ref }}
