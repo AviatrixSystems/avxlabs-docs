@@ -1,4 +1,4 @@
-# Welcome to ACE Operations "Let's Troubleshoot Together" Session
+# Welcome to ACE Operations "Let's Troubleshoot Together" Lab
 
 The objective behind this section is to collaborate together on a pre-built scenario to put in practice some of the troubleshooting techniques and tools you have learned and benefit from the real power of the Aviatrix platform.
 
