@@ -173,7 +173,7 @@ Since there is no connectivity to AWS, the DB node should not be pingable, due t
 ### Description
 Using CoPilot **FlowIQ** to debug flows
 ### Validate
-1. Use the left hand search bar within CoPilot to locate **_FlowIQ_** 
+1. Use the left hand search bar within CoPilot to locate **_FlowIQ_** and then click on `Records` TAB!
 
 ```{figure} images/flowiq-screen.png
 ---
@@ -182,9 +182,7 @@ align: center
 CoPilot FlowIQ
 ```
 
-Select the **_Records_** tab.
-
-1. Under the `"Filters"` field, click on the **+ symbol** and create the first condition: select **_Destination Port_**, **_equals_** and then port **8080** (traffic from Web to App).
+2. Under the `"Filters"` field, click on the **+ symbol** and create the first condition: select **_Destination Port_**, **_equals_** and then port **8080** (traffic from Web to App).
 
 Do not forget to click on **Apply**.
 
@@ -202,7 +200,7 @@ align: center
 Condition
 ```
 
-2. Click **_Add Condition_** again, make sure to select **_OR_** as boolean condition, select **_Destination Port_**, **equals** and then select port **443** (traffic from App to DB). 
+3. Click **_Add Condition_** again, make sure to select **_OR_** as boolean condition, select **_Destination Port_**, **equals** and then select port **443** (traffic from App to DB). 
 
 ```{figure} images/lab2-addcondition.png
 ---
@@ -218,8 +216,8 @@ align: center
 Two condition with the Boolean OR
 ```
 
-3. In the **_Time Period_** field, select **Last 60 Minutes**.
-2. Add the **_Destination Port_** parameter among the existing columns.
+4. In the **_Time Period_** field, select **Last 60 Minutes**.
+5. Add the **_Destination Port_** parameter among the existing columns.
 
 ```{figure} images/destination-port.png
 ---
@@ -228,7 +226,7 @@ align: center
 Destination Port
 ```
 
-1. Add also the **_TCP Flag Tags_** parameter among the existing columns.
+6. Add also the **_TCP Flag Tags_** parameter among the existing columns.
 
 ```{figure} images/tcp-flag.png
 ---
