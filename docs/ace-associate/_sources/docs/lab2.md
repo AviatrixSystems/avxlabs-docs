@@ -80,7 +80,7 @@ align: center
 Attach the Spoke to the corresponding Transit GW
 ```
 
-* Perform these addiitonal actions: 
+* Perform these additional actions: 
   * Select _azure-app-node_ and connect it to the _azure-transit_
   * Select _aws-db-node_ and connect it to the _aws-transit-gw_
 
