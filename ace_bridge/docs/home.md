@@ -5,7 +5,7 @@ The objective behind this section is to collaborate together on a pre-built scen
 ## 1 - Initial Scenario
 The lab topology can be found below:
 
-```{figure} images/Topology-single.png
+```{figure} images/initial-topo.png
 ---
 height: 400px
 align: center
