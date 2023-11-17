@@ -177,12 +177,12 @@ SSH to Azure
 The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.
 
 ## 4. Rules Creation
-### 4.1. Establish a ZTN approach
+### 4.1. Build a Zero Trust Cloud Network Architecture
 
 First and foremost, let's move the `Explicit-Deny-Rule` at the very top of the list of your DCF rules.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the "two arrows" icon on the righ-hand side of the `Explicit-Deny-Rule` and choose *`"Move Rule"`* at the very Top. Then click on **Save in Draft**.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the `Explicit-Deny-Rule` and choose *`"Move Rule"`* at the very Top. Then click on **Save in Draft**.
 ```
 
 ```{figure} images/lab10-explicit.png
@@ -199,6 +199,10 @@ Then **commit** your change!
 align: center
 ---
 Commit
+```
+
+```{warning}
+Zero Trust architecture is "Never trust, always verify", a critical component to enterprise cloud adoption success!
 ```
 
 ### 4.2. Create an intra-rule that allows ICMP inside bu1
