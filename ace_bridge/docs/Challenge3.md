@@ -12,12 +12,16 @@ align: center
 Network Isolation
 ```
 
+<details>
+  <summary>Click here for the Hints!</summary>
+  
 * Search the Private IP of the Database VM and try to ping it from the *Web Spoke GW*. 
   Does the ping work?
 
 ```{hint}
 Check the **RTBs** of all the gateways involved in the path between the Web VM and the Database VM!
 ```
+</details>
 
 ```{attention}
 By the end of this challenge you need to ensure that the Database route has been propagated throughout the whole cloud network (i.e. Transit and Spoke GWs).
