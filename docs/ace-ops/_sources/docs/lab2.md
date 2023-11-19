@@ -40,7 +40,9 @@ BU1 editing
 - Check Network Segmentation on the CoPilot by searching segmentation and look at the **Logical View**.
 
 ```{tip}
-Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**. This time you can notice the relationships established between the two Network Domains.
+Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**. 
+
+This time you can notice the network relationships successfully established between the two Network Domains.
 ```
 
 ```{figure} images/lab2-logicalview.png
@@ -52,8 +54,8 @@ Logical View
 
 - Verify the connectivity **between** BU1 and BU2 domains.
 
-  - SSH to any instances inside any BUs and carry out ping/ssh commands between the two BUs.
-  - Ping and SSH between the two BUs should finally work, thanks to the Connection Policy (aka **VRF leaking**).
+  - SSH to BU1 Frontend and carry out ping/ssh commands towards BU2 Mobile App.
+  - Ping and SSH between the two BUs should finally work, thanks to the `Connection Policy` (aka **_VRF leaking_**).
 
 ```{figure} images/lab2-pingbu2.png
 ---
@@ -76,5 +78,20 @@ View on a specific RTB
 ```
 
 ```{important}
-The Spoke Gateways provide visibility only of the Global Routing Table (aka **GRT**).
+The Spoke Gateways provide visibility only of the main routing table, the Global Routing Table (aka **GRT**), whereas the transit Gateways provide visibility of all routings tables (the main and the additional RTBs created through the Segmentation feature)
+```
+
+- Check the Route DB 
+
+```{tip}
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Route DB** and filter out based on any Network Domains.
+```
+
+You will notice that the `"Segmentation"` is currently enabled and furthermore, you will see to what RTB each subnet belongs to.
+
+```{figure} images/lab2-rib.png
+---
+align: center
+---
+Route DB
 ```
