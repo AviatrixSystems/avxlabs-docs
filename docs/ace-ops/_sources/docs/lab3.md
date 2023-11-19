@@ -9,7 +9,7 @@ However, the network team received a complaint from BU1 Frontend Team that the c
 ```{warning}
 The traffic between the two VPCs in AWS is inspected by a **Firewall** deployed through the Aviatrix **FireNet** feature.
 
-The **`Inspection Policy`** had been already applied on each Spoke VPC in AWS, at the launch of the PODs. The traffic generating from or going to either of the AWS VPCs will be sent to the Firewall by the Transit FireNet Gateway.
+The **`Inspection Policy`** had been already applied on each Spoke VPC in AWS, at the launch of the PODs. The traffic generating from or going to either of the AWS VPCs will be sent to the Firewall by the Transit FireNet Gateway for carrying out the Deep Packet Inspection.
 
 ```{figure} images/lab3-policy2.png
 ---
