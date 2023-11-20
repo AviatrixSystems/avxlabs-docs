@@ -190,7 +190,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
 ---
 align: center
 ---
-Three rules
+Three Rules
 ```
 
 - SSH to BU2 DB from the BU1 Frontend, then check the logs!
