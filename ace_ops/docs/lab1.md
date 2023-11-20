@@ -54,12 +54,12 @@ These are very aggressive settings. In a Production environment, you should NOT 
 ```
 
 - Verify connectivity between clients **within** the same BU:
-    - SSH to the BU1 Frontend in AWS.
-    - From BU1 Frontend ping BU1 Analytics in GCP.
+    - SSH to the **BU1 Frontend** in AWS.
+    - From BU1 Frontend ping **BU1 Analytics** in GCP.
 
 There are **two** methods for SSH to any instances inside the multicloud infrastructure of this lab:
 
-1. Using an **SSH client** from your laptop (<ins>recommended method!</ins>).
+1. Using an <span style='color:orange'>**SSH client**</span> from your laptop (<ins>recommended method!</ins>).
 
 ```{figure} images/lab1-publicip.png
 ---
@@ -75,7 +75,7 @@ align: center
 DNS name
 ```
 
-1. Using the <span style='color:#00FFFF'>**Apache Jumpbox**</span> from the POD Portal, <ins>for example if you are within your corporate network and an inbound restriction is applied on port **22**</ins>.
+1. Using the <span style='color:#00FFFF'>**Apache Jumpbox**</span> from the POD Portal, <ins>for example if you are within your corporate network and tipically an outbound restriction rule is blocking the port **22**</ins>.
 
 ```{figure} images/lab1-jumpbox.png
 ---
@@ -130,9 +130,15 @@ BU1 connectivity
 ```
 
 * Verify the network segregation **between** the two BUs:
-  * From BU1 Frontend try to ping BU2 Mobile App.
+  * From **BU1 Frontend** try to ping **BU2 Mobile App**.
 
 Ping and SSH commands should not work this time, due to the separation between the two segments (i.e. <ins>these are two different Routing Domains</ins>).
+
+```{important}
+Refer always to your personal POD for the IP addresses. 
+
+The screenshots are used as examples and might indicate different IP addresses from those present on your POD!
+```
 
 ```{figure} images/lab1-pingfails.png
 ---
@@ -170,7 +176,13 @@ Network Domain (aka VRF)
 * Use <span style='color:#FF0000'>**FlowIQ**</span> from the POD Portal, <ins> for inspecting the NetFlow Data.
 
 ```{tip}
-Go to **CoPilot > Monitor > FlowIQ** and filter based, for instance, on the destination IP **172.16.211.100** (i.e. BU1 Analytics).
+Go to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based, for instance, on the destination IP **172.16.211.100** (i.e. BU1 Analytics).
+
+```{figure} images/lab1-plus.png
+---
+align: center
+---
+FlowIQ Filter
 ```
 
 Then check the Flow Exporters widget, then from the drop-down menu and select the *Aviatrix Gateway* widget: you will see the list of the Aviatrix gateways involved along the path.

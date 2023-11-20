@@ -166,3 +166,75 @@ align: center
 ---
 Ping is ok
 ```
+
+## 3. CHANGE REQUEST
+
+- Now that you have restored the connectivity, the BU2 DB owner has also asked you to filter out the route **10.0.211.0/24** from the routing table of the Azure Spoke2 GW.
+
+```{important}
+The subnet `10.0.211.0/24` is advertised by the OnPrem DC Router towards the Aviatrix MCNA through the Site2Cloud connection.
+
+```{figure} images/lab5-newrequest2.png
+---
+align: center
+---
+S2C route
+```
+
+You are asked to maintain visible this route (therefore installed in the routing tables) on all the Spoke gateways, <ins>except the Azure Spoke2 GW!</ins>
+
+```{figure} images/lab5-newrequest.png
+---
+height: 400px
+align: center
+---
+New request: remove the route
+```
+
+- Verify first the presence of the route inside the routing table of the Azure Spoke2 GW.
+
+```{tip}
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Gateway Routes** tab.
+
+Now search for `10.0.211.0/24`.
+```
+
+```{figure} images/lab5-newrequest3.png
+---
+align: center
+---
+Remote route from the OnPrem DC
+```
+
+- Filter out the route 10.0.211.0/24 from the `Settings` section (i.e. *Route Manipulation* section).
+
+```{tip}
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Settings** tab.
+Expand the **Routing** section and insert the subnet **10.0.211.0/24** inside the `"Exclude Learned CIDRs to Spoke VPC/VNet Route Table"` option.
+
+Do not forget to click on **Save**.
+```
+
+```{figure} images/lab5-newrequest4.png
+---
+align: center
+---
+Exclude the route
+```
+
+- Verify that the route has been withdrawn from the routing table of the Azure Spoke2 GW.
+
+```{tip}
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Gateway Routes** tab.
+
+Now search for `10.0.211.0/24`.
+```
+
+```{figure} images/lab5-newrequest5.png
+---
+align: center
+---
+Route
+```
+
+You can notice that route has been removed from the routing table, successfully.
