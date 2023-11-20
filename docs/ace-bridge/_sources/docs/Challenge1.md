@@ -12,6 +12,9 @@ align: center
 Ingress to Proxy Failure
 ```
 
+<details>
+  <summary>Click here for the Hints!</summary>
+  
 * Search for the Private IP address of the Proxy VM
 
 ```{hint}
@@ -25,6 +28,8 @@ Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
 
 Select the **_Ingress Spoke GW_** and launch a **traceroute**/**ping** towards the private IP address of the Proxy VM.
 ```
+</details>
+
 
 ```{attention}
 By the end of this challenge you need to ensure that the flow goes beyond the Ingress Spoke to the Transit and to the Proxy Spoke.
