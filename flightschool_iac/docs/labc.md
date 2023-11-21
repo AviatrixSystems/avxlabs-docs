@@ -178,7 +178,7 @@ module "transit_peering" {
 
 ## Exercise C.5 Deploy and connect the spokes
 
-In this lab, we’re going to be deploying the spoke gateways in existing VPC’s and VNET, as is not uncommon in a real world scenario. In order to do so, we need to collect some information on these VPC’s (ID’s and subnets). As these VPC’s were created by the controller, we can use the [aviatrix_vpc data source](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/data-sources/aviatrix_vpc) to query these attributes! Set up your data sources to gather all VPC details (aws-dev, aws-prod, azure-dev and gcp-dev).
+In this lab, we’re going to be deploying the spoke gateways in existing VPCs and VNETs, as is not uncommon in a real world scenario. In order to do so, we need to collect some information on these VPC’s (ID’s and subnets). As these VPC’s were created by the controller, we can use the [aviatrix_vpc data source](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/data-sources/aviatrix_vpc) to query these attributes! Set up your data sources to gather all VPC details (aws-dev, aws-prod, azure-dev and gcp-dev).
 
 Spoiler code:
 

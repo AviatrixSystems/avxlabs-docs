@@ -145,7 +145,7 @@ Packet Capture
 
 You will only notice **ICMP Echo Request** packets going out from the LAN interface. Moreover the Source IP is completely different from the expected source IP: instead of an IP from the CIDR 10.1.211.0/24 (the legit source CIDR), the source IP is an address from the `50.50.50.0/24` CIDR!
 
-- Fix the issue checking the **Routes Manipulation** section on the **Spoke GW in GCP**.
+- Fix the issue checking the **Routes Manipulation** section on the **Spoke1 GW in Azure**.
 
 ```{tip}
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke1_** GW in Azure **> Settings > Network Address Translation (NAT)**, delete the NAT Rule and click on **SAVE**.
