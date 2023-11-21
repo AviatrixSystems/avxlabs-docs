@@ -12,6 +12,6 @@ Click this link to {Download}`ACE-Cloud-Ops - 05 - Site2Cloud PDF<files/ACE-Clou
 
 Click this link to {Download}`ACE-Cloud-Ops - 06 - Secure Egress PDF<files/ACE-Cloud-Ops - 06 - Secure Egress.pdf>`
 
-Click this link to {Download}`ACE-Cloud-Ops - 07 - Operational Best Practices<files/ACE-Cloud-Ops - 07 - Operational Best Practices.pdf>`
+Click this link to {Download}`ACE-Cloud-Ops - 07 - Operational Best Practices PDF<files/ACE-Cloud-Ops - 07 - Operational Best Practices.pdf>`
 
-Click this link to {Download}`ACE-Cloud-Ops - 08 - Distributed Cloud Firewall<files/ACE-Cloud-Ops - 08 - Distributed Cloud Firewall.pdf>`
+Click this link to {Download}`ACE-Cloud-Ops - 08 - Distributed Cloud Firewall PDF<files/ACE-Cloud-Ops - 08 - Distributed Cloud Firewall.pdf>`

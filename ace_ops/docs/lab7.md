@@ -186,7 +186,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
 
-```{figure} images/lab7-bus3.png
+```{figure} images/lab7-bus3new.png
 ---
 align: center
 ---
