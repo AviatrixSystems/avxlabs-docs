@@ -181,7 +181,21 @@ align: center
 S2C route
 ```
 
-You are asked to maintain visible this route (therefore installed in the routing tables) on all the Spoke gateways, <ins>except the Azure Spoke2 GW!</ins>
+- Check the BGP Learned Routes
+
+```{tip}
+Go to **CoPilot > Diagnostics > Cloud Routes > BGP Info** and then click on the **3 dots** icon on the right-hand side of the screen and select the `"Show BGP Learned Routes"` option.
+```
+
+```{figure} images/lab5-bgpinfo.png
+---
+height: 400px
+align: center
+---
+New request: remove the route
+```
+
+You are asked to maintain visible this route (therefore fully installed in the routing tables) on all the Spoke gateways, <ins>except the Azure Spoke2 GW!</ins>
 
 ```{figure} images/lab5-newrequest.png
 ---

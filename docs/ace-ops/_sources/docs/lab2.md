@@ -2,7 +2,8 @@
 
 ## 1. SCENARIO
 
-Now ACE Inc. has decided that BU1 and BU2 need to be able to communicate with each other. You are engaged for applying a **Connection Policy** in order to merge the two routing domains.
+Now ACE Inc. has decided that BU1 and BU2 need to be able to communicate with each other. You are engaged for applying a **Connection Policy** in order to merge the two Routing Domains.
+
 After the change has been applied, verify that both the network domains have been merged together, successfully.
 
 ```{figure} images/lab2-topology.png
