@@ -45,8 +45,11 @@ Raise Hand tool on Zoom
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW **> Approval**
 
 ```{note}
-Wait for approximately **one minute** for BGP in order to send the Update. Then click on the <span style='color:orange'>**refresh button**</span> to see a default route being advertised from the DC.
-This route will remain in <ins>pending state</ins> and it will be not advertised within the MCNA untill it gets the final approval from the Aviatrix administrator.
+Wait for approximately **one minute** for BGP in order to send the Update. Then click on the <span style='color:orange'>**refresh button**</span> to see a <ins>default route</ins> being advertised from the DC.
+
+This route will remain in <ins>**pending state**</ins> and it will be not advertised within the MCNA untill it gets the final approval from the Aviatrix Administrator.
+
+**Do not approve it**! If you accidentally approve it, you can click on **Remove** and store it back on the Pending status.
 ```
 
 ```{figure} images/lab6-pending.png
@@ -57,7 +60,9 @@ Refresh
 ```
 
 ```{important}
-You have successfully prevented that somebody from the DC could jeopardize the whole network inside the multicloud infrastructure! <ins>Of course do not approve that default route</ins>!
+You have successfully prevented that somebody from the DC could jeopardize the whole network inside the multicloud infrastructure! 
+
+<ins>Once again do not approve that default route</ins>!
 ```
 
 ## 3. SCENARIO#2

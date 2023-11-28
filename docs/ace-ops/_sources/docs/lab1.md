@@ -53,6 +53,10 @@ Commit
 These are very aggressive settings. In a Production environment, you should NOT set these intervals that frequently!
 ```
 
+```{caution}
+Refer **always** to your personal POD for the IP addresses. The IP addresses visible on the subsequent screenshots are just examples taken from a different POD, used for creating the lab guides!
+```
+
 - Verify connectivity between clients **within** the same BU:
     - SSH to the **BU1 Frontend** in AWS.
     - From BU1 Frontend ping **BU1 Analytics** in GCP.
@@ -103,18 +107,36 @@ Guacamole Menu
 ```
 
 ```{tip}
-The IP addresses can be easily retrieved either from the **Properties** section of each Virtual Machine on the Topology, or alternatively, you can retrieve the **DNS symbolic name** from your personal POD portal.
+The IP addresses can be easily retrieved using **3** different methods, as you like:
+1) From the **Properties** section of each Virtual Machine on the Topology.
+2) From the **Virtual Machines** Inventory (**CoPilot > Cloud Resources > Cloud Assets**).
+3) Alternatively, you can retrieve the **DNS symbolic name** from your personal POD portal.
 ```
+- Dynamic Topology
 
 ```{figure} images/lab1-ec2.png
 ---
+height: 400px
 align: center
 ---
 Instance Properties
 ```
 
+- Cloud Assets
+
+```{figure} images/lab1-assets.png
+---
+height: 400px
+align: center
+---
+Public DNS Name
+```
+
+- POD Portal - Symbolyc names
+
 ```{figure} images/lab1-podred.png
 ---
+height: 400px
 align: center
 ---
 Public DNS Name
@@ -147,7 +169,7 @@ align: center
 BU1 to BU2 fails
 ```
 
-* Check Network Segmentation on the CoPilot by searching segmentation and look at the **Logical View**.
+* Check the **Network Segmentation** on the CoPilot, and then look at the **Logical View**.
 
 ```{tip}
 Go to **CoPilot > Networking > Network Segmentation > Overview**
@@ -160,10 +182,10 @@ align: center
 Logical View
 ```
 
-* Check the different routing tables (VRFs) maintained by any of the Transit Gateways.
+* Check the different routing tables (*VRFs*) maintained by any of the Transit Gateways.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ace-aws-eu-west-1-transit** gateway **> Gateway Routes** and filter out based on the Network Domain (i.e. either BU1 or BU2).
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ace-aws-eu-west-1-transit** Gateway **> Gateway Routes** and filter out based on the Network Domain (i.e. either BU1 or BU2).
 ```
 
 ```{figure} images/lab1-bu1vrf.png
@@ -176,16 +198,20 @@ Network Domain (aka VRF)
 * Use <span style='color:#FF0000'>**FlowIQ**</span> from the POD Portal, <ins> for inspecting the NetFlow Data.
 
 ```{tip}
-Go to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based, for instance, on the destination IP **172.16.211.100** (i.e. BU1 Analytics).
+Go to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based, for instance, on the `"Destination IP Address"` **172.16.211.100** (i.e. BU1 Analytics).
+
+Do not forget to click on **Apply**.
+```
 
 ```{figure} images/lab1-plus.png
 ---
+height: 400px
 align: center
 ---
 FlowIQ Filter
 ```
 
-Then check the Flow Exporters widget, then from the drop-down menu and select the *Aviatrix Gateway* widget: you will see the list of the Aviatrix gateways involved along the path.
+Then check the `"Flow Exporters"` widget, then from the drop-down menu select the **`"Aviatrix Gateway*"`** widget: you will see the list of the Aviatrix Gateways involved along the path.
 
 ```{figure} images/lab1-flowiq.png
 ---
@@ -195,13 +221,15 @@ FlowIQ
 ```
 
 ```{note}
-On the Aviatrix Gateway widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
+On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
 * Use **Cloud Routes** for pinpointing the originator of the route **172.16.211.0/24**.
 
 ```{tip}
 Go to **CoPilot > Diagnostics > Cloud Routes**, search for the subnet **172.16.211.0/24** on the *search field* and then filter based on the following condition: "Gateway *contains* spoke1".
+
+The filter button is on the left-hand side of the screen and is shaped like a small funnel.
 ```
 
 ```{figure} images/lab1-filtersearch.png
@@ -212,7 +240,7 @@ Search field and Filter icon
 ```
 
 ```{tip}
-The Originator has the egress interface that corresponds to the **eth0** interface (i.e. the LAN interface), which in turn means, direct connected.
+The **Originator** has the egress interface that corresponds to the **eth0** interface (i.e. the LAN interface), which in turn means, direct connected.
 ```
 
 ```{figure} images/lab1-cloudroutes.png
@@ -226,6 +254,7 @@ Originator = eth0
 
 ```{tip}
 Go to **CoPilot > Diagnostics > Cloud Routes** and search the subnet **10.0.0.0/24** on the *search field*. 
+
 <ins>Remove any previous filters</ins>!
 ```
 
