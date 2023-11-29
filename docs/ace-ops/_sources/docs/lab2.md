@@ -85,10 +85,10 @@ The Spoke Gateways provide visibility only of the main routing table, the Global
 - Check the Route DB 
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Route DB** and filter out based on any Network Domains.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Route DB**.
 ```
 
-You will notice that the `"Segmentation"` is currently enabled and furthermore, you will see what RTB each subnet belongs to.
+You will notice that the `"Segmentation"` is currently enabled and furthermore, moreover you will also see what RTB each subnet belongs to.
 
 ```{figure} images/lab2-rib.png
 ---
