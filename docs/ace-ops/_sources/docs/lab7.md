@@ -18,7 +18,7 @@ Lab 7 Scenario Topology
 
 ## 2. CHANGE REQUEST
 
-- Enable the Egress on the VPC where the BU2 DB resides.
+- Enable the Egress on the VNEt where the BU2 DB resides.
 
 ```{tip}
 Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"+ Local Egress on VPC/VNets"` button.
@@ -84,7 +84,121 @@ Enable Logging
 
 Do not forget to click on **Save In Drafts** and then click on **Commit**, to push the change into the Data Plane.
 
-- SSH to the BU2 DB (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB).
+- Use the **_Spoke1 VNet_** as Test VNet to find out the domains that should be allowed in order to successfully execute the *apt-get* commands.
+
+```{figure} images/lab7-test.png
+---
+align: center
+---
+Spoke1 VNet as test VNet
+```
+
+  - Enable the Egress on the **_Spoke1 VNEt_** too.
+
+```{tip}
+Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"+ Local Egress on VPC/VNets"` button.
+
+Select the **_ace-azure-east-us-spoke1_** VPC.
+
+Do not forget to click on **Add**.
+
+```{figure} images/lab7-test2.png
+---
+align: center
+---
+Enable Egress on Spoke1 VNet
+```
+
+- SSH to the **BU1 DB** (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU1 DB).
+
+```{figure} images/lab7-test3.png
+---
+align: center
+---
+SSH to BU1 DB
+```
+
+- Enable the `Discovery Mode` on the Greenfield-Rule
+
+```{tip}
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and edit the Greenfield-Rule, clicking on the pencil icon on the right-hand side.
+
+This time attach the `Any-Web` WebGroup and then click on S**ave In Drafts**.
+```
+
+```{figure} images/lab7-test4.png
+---
+align: center
+---
+Edit the Greenfield-Rule
+```
+
+```{figure} images/lab7-test5.png
+---
+align: center
+---
+Any-Web
+```
+
+```{figure} images/lab7-test6.png
+---
+align: center
+---
+Commit
+```
+
+- Now execute the **_apt-get_** commands from the BU1 DB !
+
+```bash
+sudo apt-get update -y 
+```
+and
+```bash
+sudo apt-get upgrade -y
+```
+
+- Check the domains hit by the *apt-get* commands
+
+```{tip}
+Go to **CoPilot > Security > Egress > Monitor** and select the *ace-azure-east-us-spoke1* on the `"VPC/VNets"` field.
+
+Identify all the required domains for launching successfully the *apt-get* commands, inspecting the whole list of logs. 
+```
+
+The required domains are four!
+
+<details>
+  <summary>Click here for discovering the <span style='color:#33ECFF'>domains</span></summary>
+  
+- motd.ubuntu.com
+- azure.archive.ubuntu.com
+- livepatch.canonical.com
+- esm.ubuntu.com
+</details>
+
+```{figure} images/lab7-test7.png
+---
+align: center
+---
+Monitor
+```
+
+- Detach the *Any-Web* Webgroup from the Greenfield-Rule.
+
+```{tip}
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the pencil icon on the righ-hand side.
+
+Clear the `WebGroups` field and then click on **Save In Drafts**. Do not forget then to click on **Commit**.
+```
+
+```{figure} images/lab7-test8.png
+---
+align: center
+---
+Detaching the Any-Web
+```
+
+- SSH to the **BU2 DB** (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB).
 
 ```{figure} images/lab7-sshbu2db.png
 ---
@@ -107,7 +221,7 @@ curl www.espn.com
 
 All commands will be successful, however, this is not what the request asked you to configure...
 
-- Enable the `Allow-List Model` (i.e. ZTNA approach), creating an **Explicit Deny Rule** first.
+- Enable the `Allow-List Model` (i.e. ZTN Model - **Zero Trust Network Model**), creating an **Explicit Deny Rule** first.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+Rule"` button.
@@ -309,7 +423,7 @@ align: center
 inter-ubuntu-bu2db-internet
 ```
 
-- Now try to run the apt-get commands !
+- Now try to run the **apt-get** commands !
 
 ```bash
 sudo apt-get update -y 

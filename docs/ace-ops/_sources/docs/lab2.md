@@ -85,14 +85,81 @@ The Spoke Gateways provide visibility only of the main routing table, the Global
 - Check the Route DB 
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Route DB**.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Route DB**
 ```
 
-You will notice that the `"Segmentation"` is currently enabled and furthermore, moreover you will also see what RTB each subnet belongs to.
+You will notice that the `"Segmentation"` is currently enabled and furthermore, you will also see what RTB each subnet belongs to.
 
 ```{figure} images/lab2-rib.png
 ---
 align: center
 ---
 Route DB
+```
+
+## 3. TROUBLESHOOT REQUEST
+
+* From the **BU1 Frontend**, execute the *`curl`* command towards the private IP of **BU2 Mobile App**.
+
+```{figure} images/lab2-curl.png
+---
+align: center
+---
+curl fails...
+```
+
+You will notice that after issuing the curl command, it will hang and then, after some seconds, it will convey a message reporting that the attempt to connect to port **80** failed.
+
+```{important}
+Curl is not working, despite having both Ping and SSH working correctly.
+```
+
+```{figure} images/lab2-curl2.png
+---
+align: center
+---
+PING and SSH are successful
+```
+
+* Use `AppIQ` for checking the *native cloud constructs* that separate the two nodes involved on this test.
+
+```{tip}
+Go to **CoPilot > Diagnostics > AppIQ > FlightPath**
+
+```{figure} images/lab2-curl3.png
+---
+align: center
+---
+PING and SSH are successful
+```
+
+* Select the following parameters and then click on **Run AppIQ**.
+  - Source: <span style='color:#33ECFF'>ace-aws-eu-west-1-spoke1-bu1-frontend</span>
+  - Destination: <span style='color:#33ECFF'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span>
+  - Protocol: <span style='color:#33ECFF'>TCP</span>
+  - Port: <span style='color:#33ECFF'>80</span>
+  - Interface: <span style='color:#33ECFF'>Private *(default)*</span>
+
+```{figure} images/lab2-curl4.png
+---
+align: center
+---
+AppIQ configuration
+```
+
+Wait for some seconds and then check the report!
+
+The Security Group attached to BU2 Mobile APP is missing a rule that would allow inbound traffic on tcp/80.
+
+```{figure} images/lab2-curl5.png
+---
+align: center
+---
+AppIQ configuration
+```
+
+```{note}
+FlightPath is a troubleshooting tool. It retrieves and displays, in a side by side fashion, cloud provider’s network related information such as **Security Groups**, **NACLs** and **Route Tables**. 
+
+This helps you to identify connectivity problems on the underlay environments of each CSP involved along the path of the communication between two nodes.
 ```

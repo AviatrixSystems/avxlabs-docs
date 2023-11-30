@@ -13,7 +13,7 @@ Network Isolation
 ```
 
 <details>
-  <summary>Click here for the Hints!</summary>
+  <summary>Click here for the <span style='color:#33ECFF'>Hints!</span></summary>
   
 * Launch ping from the Web Spoke GW towards the Database VM.
 * Simultaneously, launch packet capture on the *Database Spoke GW*.

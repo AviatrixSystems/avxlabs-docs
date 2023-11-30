@@ -13,7 +13,7 @@ Network Isolation
 ```
 
 <details>
-  <summary>Click here for the Hints!</summary>
+  <summary>Click here for the <span style='color:#33ECFF'>Hints!</span></summary>
   
 * Search the Private IP of the Database VM and try to ping it from the *Web Spoke GW*. 
   Does the ping work?
