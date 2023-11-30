@@ -13,7 +13,7 @@ Ingress to Proxy Failure
 ```
 
 <details>
-  <summary>Click here for the Hints!</summary>
+  <summary>Click here for the <span style='color:#33ECFF'>Hints!</span></summary>
   
 * Search for the Private IP address of the Proxy VM
 

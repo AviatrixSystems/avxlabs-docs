@@ -13,7 +13,7 @@ Proxy to Web Failure
 ```
 
 <details>
-  <summary>Click here for the Hints!</summary>
+  <summary>Click here for the <span style='color:#33ECFF'>Hints!</span></summary>
 
 Use Copilot to figure out the IP address of the **Web VM**.
 
