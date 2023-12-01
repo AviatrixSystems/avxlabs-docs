@@ -130,7 +130,7 @@ Go to **CoPilot > Diagnostics > AppIQ > FlightPath**
 ---
 align: center
 ---
-PING and SSH are successful
+FlightPath
 ```
 
 * Select the following parameters and then click on **Run AppIQ**.
@@ -155,7 +155,7 @@ The Security Group attached to BU2 Mobile APP is missing a rule that would allow
 ---
 align: center
 ---
-AppIQ configuration
+AppIQ report
 ```
 
 ```{note}

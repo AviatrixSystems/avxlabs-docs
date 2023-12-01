@@ -347,7 +347,8 @@ document.write(`
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
 <p>BU2 DB needs to get updates, however the VM is inside a private subnet. The BU2 DB owner has raised a request that solely the <em>apt-get</em> commands should be allowed (<ins>other kind of egress traffic should be prohibited</ins>).</p>
 <p>Furthermore, all egress traffic must be tracked, whereby <strong><em>Logging</em></strong> must be enabled.</p>
-<p>You are requested to activate the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature on the <strong><em>ace-azure-east-us-spoke2</em></strong> VPC solely, and create the rules that would fulfil the aforementioned request.</p>
+<p>You are requested to activate the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature on the <strong><em>ace-azure-east-us-spoke2</em></strong> VNet and to use the <strong><em>Spoke1 VNet</em></strong> as a Test VNet, but just temporarily.</p>
+<p>In addition to this, you area also requested to create the rules that would fulfil the aforementioned request.</p>
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/lab7-topology.png"><img alt="../_images/lab7-topology.png" src="../_images/lab7-topology.png" style="height: 400px;" /></a>
 <figcaption>
@@ -358,7 +359,7 @@ document.write(`
 <section id="change-request">
 <h2>2. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Enable the Egress on the VNEt where the BU2 DB resides.</p></li>
+<li><p>Enable the Egress on the VNet where the BU2 DB resides.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -525,12 +526,26 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
+<li><p>Now that you have discovered the domains that are triggered when the <em>apt-get</em> commands are executed, you can proceed in disabling the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature from the Spoke1 VNet.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on the <code class="docutils literal notranslate"><span class="pre">remove</span></code> button
+beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
+</div>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab7-disableegress.png" src="../_images/lab7-disableegress.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Disable Egress on Spoke1 VNet</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>SSH to the <strong>BU2 DB</strong> (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB).</p></li>
 </ul>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab7-sshbu2db.png" src="../_images/lab7-sshbu2db.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 118 </span><span class="caption-text">BU2 DB ip address</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 119 </span><span class="caption-text">BU2 DB ip address</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Issue the following curl commands:</p>
@@ -560,10 +575,10 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Deny</strong></span></p></li>
 </ul>
 <p>Do not forget once again to click on <strong>Save In Drafts</strong> and then click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab6-egressrule.png" src="../_images/lab6-egressrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 120 </span><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As soon as the Explicit-Deny-Rule is deployed the SSH session with the BU2 DB will be terminated.</p>
@@ -580,19 +595,19 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; SmartGroups</strong></p>
 </div>
 <p>You will notice two SmartGroups, called BU1 and BU2, in addition to the pre-defined SmartGroups (i.e. <em>Anywhere</em> and <em>Public Internet</em>).</p>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab7-bus.png" src="../_images/lab7-bus.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 120 </span><span class="caption-text">SmartGroups list</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 121 </span><span class="caption-text">SmartGroups list</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Expand either SmartGroups to find out what VMs have been associated to each of these logical container.</p></li>
 </ul>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab7-bus2.png" src="../_images/lab7-bus2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 121 </span><span class="caption-text">BU1’s members</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 122 </span><span class="caption-text">BU1’s members</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>It is evident that BU1 Frontend turns out belonging to the BU1 SmartGroup, whereas the BU2 DB is a member of the BU2 SmartGroup.</p>
@@ -618,10 +633,10 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> this new rule!</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab7-bus3new.png" src="../_images/lab7-bus3new.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 122 </span><span class="caption-text">Three Rules</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Three Rules</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -631,10 +646,10 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
 </div>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab7-bus5.png" src="../_images/lab7-bus5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 123 </span><span class="caption-text">SSH logs</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 124 </span><span class="caption-text">SSH logs</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -651,10 +666,10 @@ document.write(`
 <li><p><strong>CSP Tag Value</strong>: <span style='color:#33ECFF'>ace-azure-east-us-spoke2-bu2-db</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab7-bu2db.png" src="../_images/lab7-bu2db.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 124 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 125 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -680,10 +695,10 @@ document.write(`
 <li><p>The FQDN <code class="docutils literal notranslate"><span class="pre">*.archive.ubuntu.com</span></code> is using a second-level wilcard, that allows to create a subdivision within <em><a class="reference external" href="http://archive.ubuntu.com">archive.ubuntu.com</a></em>.</p></li>
 </ul>
 </div>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab7-webgroup.png" src="../_images/lab7-webgroup.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 125 </span><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 126 </span><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -704,16 +719,16 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#33ECFF'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule once again!</p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab7-lastrule.png" src="../_images/lab7-lastrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 126 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 127 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id25">
 <img alt="../_images/lab7-lastcommit.png" src="../_images/lab7-lastcommit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 127 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 128 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -729,10 +744,10 @@ document.write(`
 </pre></div>
 </div>
 <p>You will notice three <strong>Drop</strong> entries within the Monitor section that have matched the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code>, successfully.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab7-explicitdeny.png" src="../_images/lab7-explicitdeny.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 128 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 129 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -752,19 +767,19 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the <strong>ace-azure-east-us-spoke2</strong> VNet</p>
 </div>
-<figure class="align-center" id="id26">
-<img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 129 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 <figure class="align-center" id="id27">
-<img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" />
+<img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 130 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You have successfully applied the Secure Egress Control, leveraging both the Egress feature and the DCF rules!</p>
+<figure class="align-center" id="id28">
+<img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 131 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You have successfully applied the Secure Egress Control, leveraging both the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature and the <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> rules!</p>
 </section>
 </section>
 
