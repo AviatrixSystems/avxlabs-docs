@@ -6,7 +6,9 @@ BU2 DB needs to get updates, however the VM is inside a private subnet. The BU2 
 
 Furthermore, all egress traffic must be tracked, whereby **_Logging_** must be enabled.
 
-You are requested to activate the `Egress` feature on the **_ace-azure-east-us-spoke2_** VPC solely, and create the rules that would fulfil the aforementioned request.
+You are requested to activate the `Egress` feature on the **_ace-azure-east-us-spoke2_** VNet and to use the **_Spoke1 VNet_** as a Test VNet, but just temporarily. 
+
+In addition to this, you area also requested to create the rules that would fulfil the aforementioned request.
 
 ```{figure} images/lab7-topology.png
 ---
@@ -18,7 +20,7 @@ Lab 7 Scenario Topology
 
 ## 2. CHANGE REQUEST
 
-- Enable the Egress on the VNEt where the BU2 DB resides.
+- Enable the Egress on the VNet where the BU2 DB resides.
 
 ```{tip}
 Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"+ Local Egress on VPC/VNets"` button.
@@ -196,6 +198,20 @@ Clear the `WebGroups` field and then click on **Save In Drafts**. Do not forget 
 align: center
 ---
 Detaching the Any-Web
+```
+
+- Now that you have discovered the domains that are triggered when the *apt-get* commands are executed, you can proceed in disabling the `Egress` feature from the Spoke1 VNet.
+
+```{tip}
+Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `remove` button 
+beside the **_ace-azure-east-us-spoke1_** VNet entry.
+```
+
+```{figure} images/lab7-disableegress.png
+---
+align: center
+---
+Disable Egress on Spoke1 VNet
 ```
 
 - SSH to the **BU2 DB** (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB).
@@ -453,4 +469,4 @@ align: center
 ace-azure-east-us-spoke2
 ```
 
-You have successfully applied the Secure Egress Control, leveraging both the Egress feature and the DCF rules!
+You have successfully applied the Secure Egress Control, leveraging both the `Egress` feature and the `Distributed Cloud Firewall` rules!

@@ -84,6 +84,14 @@ align: center
 SSH is ok within BU1
 ```
 
+```{figure} images/lab8-intrassh-bu1.png
+---
+height: 400px
+align: center
+---
+Intra-SSH BU1
+```
+
 - Now terminate the SSH session with the BU1 Analytics, typing `"exit"`, and issue the ping command towards the BU1 Anlytics from the BU1 Frontend. The ping will not work!
 
 ```{figure} images/lab8-pingbu1.png
@@ -126,6 +134,14 @@ align: center
 Ping will be ok!
 ```
 
+```{figure} images/lab8-intrasshicmp-bu1.png
+---
+height: 400px
+align: center
+---
+Intra-SSH-ICMP BU1
+```
+
 - Let's try to ping the BU2 Mobile App from the BU1 Frontend. The ping will fail due to the absence of an **inter-rule**.
 
 ```{figure} images/lab8-pingbu1bu2.png
@@ -166,6 +182,14 @@ Ping will fail
 align: center
 ---
 Ping from BU1 to BU2
+```
+
+```{figure} images/lab8-intericmp-bu1bu2.png
+---
+height: 400px
+align: center
+---
+Inter-ICMP BU1 to BU2
 ```
 
 - Now, let's SSH to the BU2 Mobile App and then let's try to SSH to the BU1 Frontend. Of course, SSH will fail!
@@ -211,14 +235,12 @@ align: center
 The last inter-rule!
 ```
 
+```{figure} images/lab8-interssh-bu2bu1.png
+---
+height: 400px
+align: center
+---
+Inter-SSH BU2 to BU1
+```
+
 Congratulations, you have completed all labs and created a nice set of DCF rules across your Multicloud infrastructure!
-
-
-
-
-
-
-
-
-
-
