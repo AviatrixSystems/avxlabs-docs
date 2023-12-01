@@ -92,13 +92,35 @@ align: center
 Intra-SSH BU1
 ```
 
-- Now terminate the SSH session with the BU1 Analytics, typing `"exit"`, and issue the ping command towards the BU1 Anlytics from the BU1 Frontend. The ping will not work!
+- Check the Logs generated after the action carried out before.
+
+```{tip}
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+```
+
+```{figure} images/lab8-monitornew.png
+---
+align: center
+---
+Monitor: Logs
+```
+
+- Now terminate the SSH session with the BU1 Analytics, typing `"exit"`, and issue the ping command towards the BU1 Analytics from the BU1 Frontend. The ping will not work!
 
 ```{figure} images/lab8-pingbu1.png
 ---
 align: center
 ---
 Ping will fail
+```
+
+- Check again the **Logs** from the `Monitor` section. The ICMP attempt hit the **_Explicit-Deny-Rule_**, whereby the action was denied!
+
+```{figure} images/lab8-denyicmp.png
+---
+align: center
+---
+Monitor: Denied ICMP
 ```
 
 - Create another intra-rule that allows ICMP **within** BU1 and then verify that ICMP is permitted among BU1’s instances. Do not forget to enable **“Logging”**, for auditing purposes.
@@ -132,6 +154,15 @@ New intra-rule
 align: center
 ---
 Ping will be ok!
+```
+
+- Once again, inspect the Monitor section to see immediately the corresponding *logs* of the action carried out before.
+
+```{figure} images/lab8-pingpermitted.png
+---
+align: center
+---
+Monitor: successful logs
 ```
 
 ```{figure} images/lab8-intrasshicmp-bu1.png
@@ -241,6 +272,28 @@ height: 400px
 align: center
 ---
 Inter-SSH BU2 to BU1
+```
+
+## 3. CHANGE REQUEST
+
+- Now before completing the lab, remove the `Inspection Policy` from the Transit GW in AWS. The Aviatrix Distributed Cloud Firewall has been enabled across the whole multicloud infrastructure, therefore we can get rid of the bolted Firewall in AWS.
+
+```{tip}
+Go to **CoPilot > Security > FireNet > FireNet Gateways** and click on the **_ace-aws-eu-west-1-transit1_** GW, then click on `Policy`, select the two Spoke VPCs in AWS and choose the `Remove` action.
+
+Traffic will be not be sent towards the FW anymore. Th DCF will perform the firewalling very close to the source!
+```{figure} images/lab8-manageatt.png
+---
+align: center
+---
+FireNet cfg
+```
+
+```{figure} images/lab8-lastone.png
+---
+align: center
+---
+remove the inspection Policy
 ```
 
 Congratulations, you have completed all labs and created a nice set of DCF rules across your Multicloud infrastructure!
