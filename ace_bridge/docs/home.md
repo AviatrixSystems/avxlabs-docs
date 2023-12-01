@@ -1,6 +1,6 @@
-# Welcome to ACE Operations "Let's Troubleshoot Together" Lab
+# Welcome to "Let's Troubleshoot Together" Lab
 
-The objective behind this section is to collaborate together on a pre-built scenario to put in practice some of the troubleshooting techniques and tools you have learned and benefit from the real power of the Aviatrix platform.
+The objective behind this section is to <ins>collaborate</ins> together on a pre-built scenario to put in practice some of the troubleshooting techniques and tools you have learned and benefit from the real power of the Aviatrix platform.
 
 ## 1 - Initial Scenario
 The lab topology can be found below:
@@ -34,6 +34,7 @@ A few notes on the scenario are here:
 * One volunteer of the team should share the screen and navigate through the Controller and CoPilot.
 * Use solely the CoPilot and the Controller. 
 * The Wordpress application that is very critical to your business is <ins>broken</ins>! You are going to collaborate together to identify all the issues that are causing it to break.
+* There are <span style='color:red'>4</span> challenges that you need to pinpoint and resolve. In addition to them, you have also to fulfil the request aforementioned in the **_Notes_** above (i.e. the underlined bullet points).
 * Once the **90** minutes are done, the instructor will close the breakout rooms and each team will discuss their findings & learnings for **~ 10 minutes**.
 * Once this is done, the instructor will highlight some of the key values that the Aviatrix Platform brings into troubleshooting and operating the setup.
 

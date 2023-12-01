@@ -205,13 +205,12 @@ Do not forget to click on **Apply**.
 
 ```{figure} images/lab1-plus.png
 ---
-height: 400px
 align: center
 ---
 FlowIQ Filter
 ```
 
-Then check the `"Flow Exporters"` widget, then from the drop-down menu select the **`"Aviatrix Gateway*"`** widget: you will see the list of the Aviatrix Gateways involved along the path.
+Then check the `"Flow Exporters"` widget, then from the drop-down menu select the **`"Aviatrix Gateway"`** widget: you will see the list of the Aviatrix Gateways involved along the path.
 
 ```{figure} images/lab1-flowiq.png
 ---

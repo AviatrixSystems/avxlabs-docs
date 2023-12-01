@@ -330,6 +330,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">3. TROUBLESHOOT REQUEST</a></li>
 </ul>
             </nav>
         </div>
@@ -426,15 +427,81 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the gateway <strong>ace-aws-eu-west-1-transit1</strong> <strong>&gt; Route DB</strong>.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the gateway <strong>ace-aws-eu-west-1-transit1</strong> <strong>&gt; Route DB</strong></p>
 </div>
-<p>You will notice that the <code class="docutils literal notranslate"><span class="pre">&quot;Segmentation&quot;</span></code> is currently enabled and furthermore, moreover you will also see what RTB each subnet belongs to.</p>
+<p>You will notice that the <code class="docutils literal notranslate"><span class="pre">&quot;Segmentation&quot;</span></code> is currently enabled and furthermore, you will also see what RTB each subnet belongs to.</p>
 <figure class="align-center" id="id7">
 <img alt="../_images/lab2-rib.png" src="../_images/lab2-rib.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 30 </span><span class="caption-text">Route DB</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="troubleshoot-request">
+<h2>3. TROUBLESHOOT REQUEST<a class="headerlink" href="#troubleshoot-request" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>From the <strong>BU1 Frontend</strong>, execute the <em><code class="docutils literal notranslate"><span class="pre">curl</span></code></em> command towards the private IP of <strong>BU2 Mobile App</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab2-curl.png" src="../_images/lab2-curl.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">curl fails…</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will notice that after issuing the curl command, it will hang and then, after some seconds, it will convey a message reporting that the attempt to connect to port <strong>80</strong> failed.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Curl is not working, despite having both Ping and SSH working correctly.</p>
+</div>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab2-curl2.png" src="../_images/lab2-curl2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">PING and SSH are successful</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">AppIQ</span></code> for checking the <em>native cloud constructs</em> that separate the two nodes involved on this test.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; AppIQ &gt; FlightPath</strong></p>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab2-curl3.png" src="../_images/lab2-curl3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">PING and SSH are successful</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<ul class="simple">
+<li><p>Select the following parameters and then click on <strong>Run AppIQ</strong>.</p>
+<ul>
+<li><p>Source: <span style='color:#33ECFF'>ace-aws-eu-west-1-spoke1-bu1-frontend</span></p></li>
+<li><p>Destination: <span style='color:#33ECFF'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span></p></li>
+<li><p>Protocol: <span style='color:#33ECFF'>TCP</span></p></li>
+<li><p>Port: <span style='color:#33ECFF'>80</span></p></li>
+<li><p>Interface: <span style='color:#33ECFF'>Private <em>(default)</em></span></p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab2-curl4.png" src="../_images/lab2-curl4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">AppIQ configuration</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Wait for some seconds and then check the report!</p>
+<p>The Security Group attached to BU2 Mobile APP is missing a rule that would allow inbound traffic on tcp/80.</p>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab2-curl5.png" src="../_images/lab2-curl5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">AppIQ configuration</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FlightPath is a troubleshooting tool. It retrieves and displays, in a side by side fashion, cloud provider’s network related information such as <strong>Security Groups</strong>, <strong>NACLs</strong> and <strong>Route Tables</strong>.</p>
+<p>This helps you to identify connectivity problems on the underlay environments of each CSP involved along the path of the communication between two nodes.</p>
+</div>
 </section>
 </section>
 
@@ -503,6 +570,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">3. TROUBLESHOOT REQUEST</a></li>
 </ul>
   </nav></div>
 
