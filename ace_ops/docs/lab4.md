@@ -44,14 +44,20 @@ From the outcome above, once again it is evident that Spoke1 in AWS has the dest
 
 Try to verify the inverse, checking the destination route from the **AWS Spoke2** side.
 
-- Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and try to ping/traceroute the instance behind the other spoke (i.e. BU2 Mobile App).
+- This time launch the **Diagnostics Tools** directly from the *`Topology`* section.
+- From the *Spoke1 Gateway* in AWS, try to ping/traceroute the instance behind the other spoke (i.e. BU2 Mobile App).
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
+Go to **CoPilot > Cloud Fabric > Topology**
 
-Select the **_ace-aws-eu-west-1-spoke1_** Spoke GW and try to ping the private IP address of the BU2 Mobile App.
+Expand the **_ace-aws-eu-west-1-spoke1_** VPC, clicking on its corresponding icon, select the **_ace-aws-eu-west-1-spoke1_** Spoke GW and then click on the `Tools` button within the **Properties** window and click on `Gateway Diagnostics`.
 
-Repeat this operation: from the **_ace-aws-eu-west-1-spoke2_** Spoke GW, try to ping the private IP address of the BU1 Frontend too.
+<ins>Repeat this operation</ins>: from the **_ace-aws-eu-west-1-spoke2_** Spoke GW, try to ping the private IP address of the BU1 Frontend too.
+```{figure} images/lab4-mapdiag1.png
+---
+align: center
+---
+Diagnostics Tools from the Topology
 ```
 
 ```{figure} images/lab4-pingfails2.png

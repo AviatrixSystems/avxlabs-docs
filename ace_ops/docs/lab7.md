@@ -350,6 +350,10 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 Do not forget to click on **Save**.
 
+```{tip}
+Select the tag `"name"` with the *n lowercase*!
+```
+
 ```{figure} images/lab7-bu2db.png
 ---
 align: center
@@ -374,6 +378,8 @@ Ensure these parameters are entered in the pop-up window `"Create WebGroup"`:
 then click on **Save**.
 
 ```{caution}
+These are the domains identified before using the `Discovery Mode` (**= Greenfield-Rule + AnyWeb**).
+
 - The FQDNs `*.ubuntu.com` and `*.canonical.com` are both using a first-level wilcard. These wildcards will be placeholders for *ntp.ubuntu.com*, *ftp.ubuntu.com*, *download.ubuntu.com*, *contracts.canonical.com*...
 - The FQDN `*.archive.ubuntu.com` is using a second-level wilcard, that allows to create a subdivision within *archive.ubuntu.com*.
 ```
