@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 1 - Network Domains &#8212; ACE Operations (condensed) Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab1';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 2 - Routes Manipulation &amp; NAT" href="lab2.html" />
+    <link rel="prev" title="POD Portal" href="pod.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Operations (condensed) Lab - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="ACE Operations (condensed) Lab - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Operations (condensed version) Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 1 - Network Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Routes Manipulation &amp; NAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - Site2Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 1 - Network Domains</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">2. VALIDATION REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">3. CHANGE REQUEST</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-1-network-domains">
+<h1>Lab 1 - Network Domains<a class="headerlink" href="#lab-1-network-domains" title="Permalink to this heading">#</a></h1>
+<section id="scenario">
+<h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
+<p>Infrastructure <ins>was segmented</ins> recently into 2 network domains: <strong>BU1</strong> &amp; <strong>BU2</strong>.</p>
+<p>You are requested to ascertain the segregation between the two network domains.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/lab1-segmentation.png"><img alt="../_images/lab1-segmentation.png" src="../_images/lab1-segmentation.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Initial Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="validation-request">
+<h2>2. VALIDATION REQUEST<a class="headerlink" href="#validation-request" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Go to <strong>CoPilot &gt; Settings &gt; Resources &gt; Task Server</strong></p>
+<ul>
+<li><p>Ensure that both <strong>Fetch GW Routes</strong> and <strong>Fetch VPC Routes</strong> intervals are set to <ins>“1 second”</ins> each and then click on <strong>SAVE</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab1-task.png" src="../_images/lab1-task.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Task Server</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab1-fetchgwroutes.png" src="../_images/lab1-fetchgwroutes.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Fetch GW Routes</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab1-fetchvpcroutes.png" src="../_images/lab1-fetchvpcroutes.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Fetch VPC Routes</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Afterwards, click on <strong>Commit</strong>.</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab1-commit.png" src="../_images/lab1-commit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These are very aggressive settings. In a Production environment, you should NOT set these intervals that frequently!</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Refer <strong>always</strong> to your personal POD for the IP addresses. The IP addresses visible on the subsequent screenshots are just examples taken from a different POD, used for creating the lab guides!</p>
+</div>
+<ul class="simple">
+<li><p>Verify connectivity between clients <strong>within</strong> the same BU:</p>
+<ul>
+<li><p>SSH to the <strong>BU1 Frontend</strong> in AWS.</p></li>
+<li><p>From BU1 Frontend ping <strong>BU1 Analytics</strong> in GCP.</p></li>
+</ul>
+</li>
+</ul>
+<p>There are <strong>two</strong> methods for SSH to any instances inside the multicloud infrastructure of this lab:</p>
+<ol class="arabic simple">
+<li><p>Using an <span style='color:orange'><strong>SSH client</strong></span> from your laptop (<ins>recommended method!</ins>).</p></li>
+</ol>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab1-publicip.png" src="../_images/lab1-publicip.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Public IP</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab1-publicname.png" src="../_images/lab1-publicname.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">DNS name</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>Using the <span style='color:#00FFFF'><strong>Apache Jumpbox</strong></span> from the POD Portal, <ins>for example if you are within your corporate network and tipically an outbound restriction rule is blocking the port <strong>22</strong></ins>.</p></li>
+</ol>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab1-jumpbox.png" src="../_images/lab1-jumpbox.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Jumpbox</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab1-guacamoleaccess.png" src="../_images/lab1-guacamoleaccess.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Apache Guacamole Portal</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please bear in mind that if you decide to use the Jumpbox, <em>Copy and Paste</em> does not work directly from the host machine, therefore activate the <strong>Guacamole Menu</strong>, that is a sidebar which is hidden until explicitly shown. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing <strong>Ctrl+Alt+Shift</strong> on Windows machine (<strong>Control+Shift+Command</strong> on Mac).</p>
+</div>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab1-guacamoleterminal.png" src="../_images/lab1-guacamoleterminal.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Guacamole Menu</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The IP addresses can be easily retrieved using <strong>3</strong> different methods, as you like:</p>
+<ol class="arabic simple">
+<li><p>From the <strong>Properties</strong> section of each Virtual Machine on the Topology.</p></li>
+<li><p>From the <strong>Virtual Machines</strong> Inventory (<strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong>).</p></li>
+<li><p>Alternatively, you can retrieve the <strong>DNS symbolic name</strong> from your personal POD portal.</p></li>
+</ol>
+</div>
+<ul class="simple">
+<li><p>Dynamic Topology</p></li>
+</ul>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/lab1-ec2.png"><img alt="../_images/lab1-ec2.png" src="../_images/lab1-ec2.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Instance Properties</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Cloud Assets</p></li>
+</ul>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="../_images/lab1-assets.png"><img alt="../_images/lab1-assets.png" src="../_images/lab1-assets.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Public DNS Name</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>POD Portal - Symbolyc names</p></li>
+</ul>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../_images/lab1-podred.png"><img alt="../_images/lab1-podred.png" src="../_images/lab1-podred.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Public DNS Name</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ping and SSH will be successful <strong>within</strong> the same network domain!</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab1-pingok.png" src="../_images/lab1-pingok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">BU1 connectivity</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Verify the network segregation <strong>between</strong> the two BUs:</p>
+<ul>
+<li><p>From <strong>BU1 Frontend</strong> try to ping <strong>BU2 Mobile App</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<p>Ping and SSH commands should not work this time, due to the separation between the two segments (i.e. <ins>these are two different Routing Domains</ins>).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Refer always to your personal POD for the IP addresses.</p>
+<p>The screenshots are used as examples and might indicate different IP addresses from those present on your POD!</p>
+</div>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab1-pingfails.png" src="../_images/lab1-pingfails.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">BU1 to BU2 fails</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Check the <strong>Network Segmentation</strong> on the CoPilot, and then look at the <strong>Logical View</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Overview</strong></p>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab1-logicalview.png" src="../_images/lab1-logicalview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Logical View</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Check the different routing tables (<em>VRFs</em>) maintained by any of the Transit Gateways.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the <strong>ace-aws-eu-west-1-transit</strong> Gateway <strong>&gt; Gateway Routes</strong> and filter out based on the Network Domain (i.e. either BU1 or BU2).</p>
+</div>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab1-bu1vrf.png" src="../_images/lab1-bu1vrf.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Network Domain (aka VRF)</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Use <span style='color:#FF0000'><strong>FlowIQ</strong></span> from the POD Portal, <ins> for inspecting the NetFlow Data.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Monitor &gt; FlowIQ</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;+&quot;</span></code> icon and filter based, for instance, on the <code class="docutils literal notranslate"><span class="pre">&quot;Destination</span> <span class="pre">IP</span> <span class="pre">Address&quot;</span></code> <strong>172.16.211.100</strong> (i.e. BU1 Analytics).</p>
+<p>Do not forget to click on <strong>Apply</strong>.</p>
+</div>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab1-plus.png" src="../_images/lab1-plus.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">FlowIQ Filter</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then check the <code class="docutils literal notranslate"><span class="pre">&quot;Flow</span> <span class="pre">Exporters&quot;</span></code> widget, then from the drop-down menu select the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Aviatrix</span> <span class="pre">Gateway&quot;</span></code></strong> widget: you will see the list of the Aviatrix Gateways involved along the path.</p>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab1-flowiq.png" src="../_images/lab1-flowiq.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On the <strong>Aviatrix Gateway</strong> widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).</p>
+</div>
+<ul class="simple">
+<li><p>Use <strong>Cloud Routes</strong> for pinpointing the originator of the route <strong>172.16.211.0/24</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong>, search for the subnet <strong>172.16.211.0/24</strong> on the <em>search field</em> and then filter based on the following condition: “Gateway <em>contains</em> spoke1”.</p>
+<p>The filter button is on the left-hand side of the screen and is shaped like a small funnel.</p>
+</div>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab1-filtersearch.png" src="../_images/lab1-filtersearch.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Search field and Filter icon</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <strong>Originator</strong> has the egress interface that corresponds to the <strong>eth0</strong> interface (i.e. the LAN interface), which in turn means, direct connected.</p>
+</div>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab1-cloudroutes.png" src="../_images/lab1-cloudroutes.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Originator = eth0</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Use <strong>Cloud Routes</strong> for pinpointing the originator of the route <strong>10.0.0.0/24</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong> and search the subnet <strong>10.0.0.0/24</strong> on the <em>search field</em>.</p>
+<p><ins>Remove any previous filters</ins>!</p>
+</div>
+<p>This time you need to proceed with a <ins>recursive lookup</ins>: from any Spoke GWs check the <strong>NEXT HOP GATEWAY</strong> column and try to find the originator of 10.0.0.0/24.</p>
+<figure class="align-center" id="id22">
+<img alt="../_images/lab1-cloudroutes2.png" src="../_images/lab1-cloudroutes2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Cloud Routes - Recursive lookup</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="change-request">
+<h2>3. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Apply the Connection Policy</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong> and then edit either network domains.</p>
+</div>
+<p>The Connection Policy works bidirectionally!</p>
+<figure class="align-center" id="id23">
+<img alt="../_images/lab2-editnd.png" src="../_images/lab2-editnd.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Edit the Network Domain</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id24">
+<img alt="../_images/lab2-bu2nd.png" src="../_images/lab2-bu2nd.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">BU1 editing</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Check Network Segmentation on the CoPilot by searching segmentation and look at the <strong>Logical View</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Overview &gt; Logical View</strong>.</p>
+<p>This time you can notice the network relationships successfully established between the two Network Domains.</p>
+</div>
+<figure class="align-center" id="id25">
+<img alt="../_images/lab2-logicalview.png" src="../_images/lab2-logicalview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Logical View</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Verify the connectivity <strong>between</strong> BU1 and BU2 domains.</p>
+<ul>
+<li><p>SSH to BU1 Frontend and carry out ping/ssh commands towards BU2 Mobile App.</p></li>
+<li><p>Ping and SSH between the two BUs should finally work, thanks to the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code> (aka <strong><em>VRF leaking</em></strong>).</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id26">
+<img alt="../_images/lab2-pingbu2.png" src="../_images/lab2-pingbu2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">BU1 to BU2 is ok</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Check the different routing tables (VRFs) maintained by any of the Transit Gateways.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the gateway <strong>ace-aws-eu-west-1-transit1</strong> <strong>&gt; Gateway Routes</strong> and filter out based on any Network Domains.</p>
+</div>
+<figure class="align-center" id="id27">
+<img alt="../_images/lab2-bu1andbu2.png" src="../_images/lab2-bu1andbu2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">View on a specific RTB</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The Spoke Gateways provide visibility only of the main routing table, the Global Routing Table (aka <strong>GRT</strong>), whereas the transit Gateways provide visibility of all routings tables (the main and the additional RTBs created through the Segmentation feature)</p>
+</div>
+<ul class="simple">
+<li><p>Check the Route DB</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the gateway <strong>ace-aws-eu-west-1-transit1</strong> <strong>&gt; Route DB</strong></p>
+</div>
+<p>You will notice that the <code class="docutils literal notranslate"><span class="pre">&quot;Segmentation&quot;</span></code> is currently enabled and furthermore, you will also see what RTB each subnet belongs to.</p>
+<figure class="align-center" id="id28">
+<img alt="../_images/lab2-rib.png" src="../_images/lab2-rib.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Route DB</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is how the topology would look like at the end of this lab.</p>
+<figure class="align-center" id="id29">
+<a class="reference internal image-reference" href="../_images/lab2-topology.png"><img alt="../_images/lab2-topology.png" src="../_images/lab2-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Network Domains with the Connection Policy</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pod.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">POD Portal</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 2 - Routes Manipulation &amp; NAT</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">2. VALIDATION REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">3. CHANGE REQUEST</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

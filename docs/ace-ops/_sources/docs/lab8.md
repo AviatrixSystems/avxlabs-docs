@@ -263,7 +263,7 @@ The last inter-rule!
 ---
 align: center
 ---
-The last inter-rule!
+SSH works from BU2 to BU1
 ```
 
 ```{figure} images/lab8-interssh-bu2bu1.png
