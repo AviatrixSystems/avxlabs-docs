@@ -442,7 +442,7 @@ You will notice three **Drop** entries within the Monitor section that have matc
 ---
 align: center
 ---
-inter-ubuntu-bu2db-internet
+Explicit Deny Rule matching
 ```
 
 - Now try to run the **apt-get** commands !
@@ -472,7 +472,7 @@ ace-azure-east-us-spoke2
 ---
 align: center
 ---
-ace-azure-east-us-spoke2
+Allowed domains!
 ```
 
 You have successfully applied the Secure Egress Control, leveraging both the `Egress` feature and the `Distributed Cloud Firewall` rules!
