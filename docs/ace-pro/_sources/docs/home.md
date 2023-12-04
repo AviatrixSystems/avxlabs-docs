@@ -2,7 +2,7 @@
 
 # Welcome to ACE Professional Lab
 
-## 1. Preface
+## 1. Preface-
 
 These labs are intended for Aviatrix Customers, Partners, and Employees to aid in the Aviatrix solution learning process. The scope of this document is specifically to cover Aviatrix use-cases configuration steps to design and validate end-to-end Aviatrix functionality.
 
