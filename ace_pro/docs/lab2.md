@@ -20,7 +20,7 @@ In this lab, as shown in the topology below, we will configure the grey Aviatrix
 
 - **AWS**: us-east-2
 - **GCP**: us-central-1
-- **AZURE**: us-west (only spoke1)
+- **AZURE**: west-us (only spoke1)
 
 The rest of the topology has been pre-deployed to save time, including the test instances/VMs.
 
@@ -171,10 +171,10 @@ You can deploy up to maximum **fifteen** Spoke Gateways per each Spoke VPC/VNet/
 
 In this section, you will experience the power and simplicity of the Aviatrix platform by deploying (i.e. creating) 5 gateways:
 
- - **First Transit gateway in AWS US East 2:** <span style='color:#33ECFF'>aws-us-east2-transit</span>
- - **Second Transit gateway in AWS US East 2:** <span style='color:#33ECFF'>aws-us-east2-transit-1</span>
- - **Spoke gateway in AWS US East 2:** <span style='color:#33ECFF'>aws-us-east2-spoke1</span>
-- **Spoke gateway in Azure West US:** <span style='color:#33ECFF'>azure-us-west-spoke1</span>
+ - **First Transit gateway in AWS US East 2:** <span style='color:#33ECFF'>aws-us-east-2-transit</span>
+ - **Second Transit gateway in AWS US East 2:** <span style='color:#33ECFF'>aws-us-east-2-transit-1</span>
+ - **Spoke gateway in AWS US East 2:** <span style='color:#33ECFF'>aws-us-east-2-spoke1</span>
+- **Spoke gateway in Azure West US:** <span style='color:#33ECFF'>azure-west-us-spoke1</span>
 - **Spoke gateway in GCP US Central 1:** <span style='color:#33ECFF'>gcp-us-central1-spoke1</span>
 
 ```{warning}
@@ -196,11 +196,11 @@ Deploy Aviatrix Transit Gateways in AWS **_East-2_** region. To save time, Aviat
 
 Ensure these parameters are entered in the pop-up window `"Create Transit Gateway"`.
 
-- **Name:** <span style='color:#33ECFF'>aws-us-east2-transit</span>
+- **Name:** <span style='color:#33ECFF'>aws-us-east-2-transit</span>
 - **Cloud:** <span style='color:#33ECFF'>AWS (Standard)</span>
 - **Account:** <span style='color:#33ECFF'>aws-account</span>
 - **Region:** <span style='color:#33ECFF'>us-east-2 (Ohio)</span>
-- **VPC ID:** <span style='color:#33ECFF'>aws-us-east2-transit (Make sure you don't select aws-us-east2-**spoke** VPC)</span>
+- **VPC ID:** <span style='color:#33ECFF'>aws-us-east-2-transit (Make sure you don't select aws-us-east-2-**spoke1** VPC)</span>
 - **Instance Size:** <span style='color:#33ECFF'>c5n.large</span>
 - **High Performance Encryption:** <span style='color:#33ECFF'>**On**</span>
 
@@ -243,8 +243,8 @@ Task icon
 
 This action will instantiate two Transit Gateways with the following names:
 
-1. **aws-us-east2-transit**
-2. **aws-us-east2-transit-1**
+1. **aws-us-east-2-transit**
+2. **aws-us-east-2-transit-1**
 
 ```{note}
 The second gateway will receive **"-1"** appended to its name, in order to differentiate it from the first gateway.
@@ -273,11 +273,11 @@ Ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"
 Only one Spoke Gateway will be deployed in VPC aws-us-east2-spoke1.
 ```
 
-- **Name:** <span style='color:#33ECFF'>aws-us-east2-spoke1</span>
+- **Name:** <span style='color:#33ECFF'>aws-us-east-2-spoke1</span>
 - **Cloud:** <span style='color:#33ECFF'>AWS (Standard)</span>
 - **Account:** <span style='color:#33ECFF'>aws-account</span>
 - **Region:** <span style='color:#33ECFF'>us-east-2 (Ohio)</span>
-- **VPC ID:** <span style='color:#33ECFF'>aws-us-east2-spoke1 (Make sure you don't select aws-us-east2-**transit** VPC)</span>
+- **VPC ID:** <span style='color:#33ECFF'>aws-us-east-2-spoke1 (Make sure you don't select aws-us-east-2-**transit** VPC)</span>
 - **Instance Size:** <span style='color:#33ECFF'>t2.medium</span>
 - **High Performance Encryption:** <span style='color:#33ECFF'>**Off**</span>
 - **Attach to Subnet:** <span style='color:#33ECFF'>us-east-2a</span>
@@ -302,14 +302,14 @@ Repeat the previous steps for Azure, click on the button `"+ Spoke Gateway"` and
 Only one Spoke Gateway will be deployed in VNet azure-us-wes-spoke1.
 ```
 
-- **Name:** <span style='color:#33ECFF'>azure-us-west-spoke1</span>
+- **Name:** <span style='color:#33ECFF'>azure-west-us-spoke1</span>
 - **Cloud:** <span style='color:#33ECFF'>Azure (Global)</span>
 - **Account:** <span style='color:#33ECFF'>azure-account</span>
 - **Region:** <span style='color:#33ECFF'>West US</span>
-- **VNet:** <span style='color:#33ECFF'>azure-us-west-spoke1 (Make sure you don't select azure-us-west-**spoke2** VPC)</span>
+- **VNet:** <span style='color:#33ECFF'>azure-west-us-spoke1 (Make sure you don't select azure-west-us-**spoke2** VPC)</span>
 - **Instance Size:** <span style='color:#33ECFF'>Standard_B2ms</span>
 - **High Performance Encryption:** <span style='color:#33ECFF'>**Off**</span>
-- **Attach to Subnet:** <span style='color:#33ECFF'>azure-us-west-spoke1-Public-gateway-subnet-1</span>
+- **Attach to Subnet:** <span style='color:#33ECFF'>azure-west-us-spoke1-Public-gateway-subnet-1</span>
 - **Public IP:** <span style='color:#33ECFF'>Allocate New Static Public IP</span>
 
 ```{warning}
@@ -381,7 +381,7 @@ align: center
 Dashboard
 ```
 
-After created the Transit gateways pair in AWS and the Spoke gateways in each cloud, this is how a portion of the topology would look like.
+After created the Transit gateways pairs in AWS and the single Spoke gateways in each cloud, this is how a portion of the topology would look like.
 
 ```{figure} images/lab2-temptopology.png
 ---
@@ -410,7 +410,7 @@ Expand all the VPCs
 ```
 
 ```{important}
-The inner circle represents the Transit Gateway VPCs, and the outer one represents the Spoke Gateway VPCs. 
+The inner circle represents the Transit Gateway VPCs, whereas the outer one represents the Spoke Gateway VPCs. 
 
 <ins>It is clearly shown at this stage that the spokes are not connected to the transits yet</ins>. 
 ```
@@ -423,7 +423,7 @@ In this section you are going to attach the Aviatrix Spoke Gateways created abov
  
 ### 4.4.1. Spoke to Transit Attachment in AWS
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_aws-us-east2-spoke1_**, clicking on the pencil icon:
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_aws-us-east-2-spoke1_**, clicking on the pencil icon:
 
 ```{figure} images/lab2-spokeinawstotransit.png
 ---
@@ -432,7 +432,7 @@ align: center
 Attachment for AWS
 ```
 
-Select the Transit Gateway **_aws-us-east2-transit_** from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
+Select the Transit Gateway **_aws-us-east-2-transit_** from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
 
 ```{figure} images/lab2-editspokeinaws.png
 ---
@@ -452,9 +452,9 @@ Update in progress
 
 ### 4.4.2 Spoke to Transit Attachment in Azure
 
-- **azure-us-west-spoke1** to **azure-us-west-transit**
+- **azure-west-us-spoke1** to **azure-west-us-transit**
 
-Edit the Spoke Gateway **_azure-us-west-spoke1_** (not the **spoke2**), clicking on the pencil icon.
+Edit the Spoke Gateway **_azure-west-us-spoke1_** (not the **spoke2**), clicking on the pencil icon.
 
 ```{figure} images/lab2-editspokeinazure.png
 ---
@@ -463,7 +463,7 @@ align: center
 Edit spoke in Azure
 ```
 
-Select the Transit Gateway **_azure-us-west-transit_** from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
+Select the Transit Gateway **_azure-west-us-transit_** from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
 
 ```{figure} images/lab2-editazure.png
 ---
@@ -514,7 +514,7 @@ New state of the topology
 ```
 
 ```{note}
-The Spoke Gateway azure-us-west-**spoke2** will be attached to its Transit Gateways in a subsequent lab, likewise the Spoke Gateways in AWS **us-east-1** will be attached to the Transit Gateways in the same region only in a subsequent lab.
+The Spoke Gateway azure-west-us-**spoke2** will be attached to its Transit Gateways in a subsequent lab, likewise the Spoke Gateways in AWS **us-east-1** will be attached to the Transit Gateways in the same region only in a subsequent lab.
 ```
 
 ## 4.5. CoPilot Verification of Spoke-Transit Attachments
@@ -553,9 +553,9 @@ Go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
  
 ### 4.6.1. AWS and Azure
 
-- **aws-us-east2-transit** to **azure-us-west-transit**
+- **aws-us-east-2-transit** to **azure-us-west-transit**
 
-Edit the Transit Gateway **_aws-us-east2-transit_**, clicking on the pencil icon:
+Edit the Transit Gateway **_aws-us-east-2-transit_**, clicking on the pencil icon:
 
 ```{figure} images/lab2-edittransitinaws.png
 ---
@@ -573,11 +573,11 @@ align: center
 Peering AWS-Azure
 ```
 
-### 4.6.2 Azure AND GCP
+### 4.6.2 Azure and GCP
 
-- **azure-us-west-transit** to **gcp-us-central1-transit**
+- **azure-west-us-transit** to **gcp-us-central1-transit**
 
-Edit the Transit Gateway **_azure-us-west-transit_**, clicking on the pencil icon:
+Edit the Transit Gateway **_azure-west-us-transit_**, clicking on the pencil icon:
 
 ```{figure} images/lab2-edittransitinazure.png
 ---
@@ -597,7 +597,7 @@ Peering Azure-GCP
 
 ### 4.6.3. GCP and AWS
 
-- **gcp-us-central1-transit** to **aws-us-east2-transit**
+- **gcp-us-central1-transit** to **aws-us-east-2-transit**
 
 Edit the Transit Gateway **_gcp-us-central1-transit_**, clicking on the pencil icon:
 
@@ -608,7 +608,7 @@ align: center
 Edit Transit in GCP
 ```
 
-Select the Transit Gateway **_aws-us-east2-transit_** (<ins>not the east1 !</ins>) from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
+Select the Transit Gateway **_aws-us-east-2-transit_** (<ins>not the east1 !</ins>) from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
 
 ```{figure} images/lab2-peeringgcpaws.png
 ---
@@ -630,16 +630,16 @@ New Topopology state after Peerings deployment
 ```{note}
 Please pay close attention that the following pending elements will be completed only in a subsequent lab:
 
-- Attachment between **aws-us-east1-spoke1** and **aws-us-east1-transit**
-- Peering between **aws-us-east1-transit** and **aws-us-east2-transit**
-- Attachment between **azure-us-west-spoke2** and **azure-us-west-transit**
+- Attachment between **aws-us-east-1-spoke1** and **aws-us-east-1-transit**
+- Peering between **aws-us-east-1-transit** and **aws-us-east-2-transit**
+- Attachment between **azure-west-us-spoke2** and **azure-west-us-transit**
 ```
 
 ## 5. Verification
  
 ### 5.1. Verification of Transit Peerings on CoPilot(Cloud Fabric)
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east2-transit_**, then select the `"Connections"` tab and finally select the `"Transit-Transit Peering"` sub-tab: you will see **four** connections per each peering, that correspond to the `four IPSec tunnels`.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `"Connections"` tab and finally select the `"Transit-Transit Peering"` sub-tab: you will see **four** connections per each peering, that correspond to the `four IPSec tunnels`.
 
 ```{figure} images/lab2-verification.png
 ---
@@ -676,7 +676,7 @@ Expanded Topology
 
 Route Info DB is similar to *Routing Information Base (RIB)*. It will provide the overall routing information of a Transit Gateway known by the CoPilot.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east2-transit_**:
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east-2-transit_**:
 
 ```{figure} images/lab2-transitaws.png
 ---
@@ -705,8 +705,8 @@ Then ping the **private** IPs of each other to test the Multi-Cloud connectivity
 
 <ins>Refer to your pod portal for the private IPs or retrieve the private IPs from the topology</ins>.
 
-- SSH into aws-us-**east2**-spoke1-test1 (ssh student@public_ip)
-- SSH into azure-us-west-spoke1-test1 (ssh student@public_ip)
+- SSH into aws-us-**east-2**-spoke1-test1 (ssh student@public_ip)
+- SSH into azure-west-us-**spoke1**-test1 (ssh student@public_ip)
 - SSH into gcp-us-central1-spoke1-test1 (ssh student@public_ip)
 
 Run ping from the AWS instance to verify connectivity to Azure and GCP:

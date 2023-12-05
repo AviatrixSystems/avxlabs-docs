@@ -12,7 +12,7 @@ Aviatrix **`ActiveMesh`** technology provides network resiliency, better converg
 
 ## 3. Topology
 
-In this lab we will configure the pending attachment between the Spoke Gateways in aws-us-east1-spoke1 and the Transit Gateways in aws-us-east1-transit, and the peering between the Transit Gateways aws-us-east1-transit and the Transit Gateways in aws-us-east2-transit. The Gateways in AWS region us-east-1 are pre-configured with HPE (High Performance Encryption, also known as Insane Mode) and AWS us-east2 region was configured in Lab 3.
+In this lab we will configure the pending attachment between the Spoke Gateways in aws-us-east-1-spoke1 and the Transit Gateways in aws-us-east-1-transit, and the peering between the Transit Gateways aws-us-east-1-transit and the Transit Gateways in aws-us-east-2-transit. The Gateways in AWS region us-east-1 are pre-configured with HPE (High Performance Encryption, also known as Insane Mode) and AWS us-east-2 region was configured in Lab 3.
 
 ```{figure} images/lab5-topology.png
 ---
@@ -23,7 +23,7 @@ Lab 5 Topology
 ```
 
 ```{note}
-Please keep in mind that the Spoke Gateway in **azure-us-west-spoke2** VPC will still remain unattached in this lab!
+Please keep in mind that the Spoke Gateway in **azure-west-us-spoke2** VPC will still remain unattached in this lab!
 ```
 
 ## 4. High Performance Encryption Configuration
@@ -33,7 +33,7 @@ Please keep in mind that the Spoke Gateway in **azure-us-west-spoke2** VPC will 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
 ```{important}
-Verify that AWS US-EAST-1 region has a Transit gateway and a Spoke gateway that are not connected yet.
+Verify that **AWS US-EAST-1** region has a Transit gateway and a Spoke gateway that are not connected yet.
 ```
 
 ```{figure} images/lab5-topologycopilot.png
@@ -45,7 +45,7 @@ CoPilot view
 
 ### 4.2. Transit-Spoke Attachment
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **aws-us-east1-spoke1** clicking on the pencil icon:
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **aws-us-east-1-spoke1** clicking on the pencil icon:
 
 ```{figure} images/lab5-editspoke.png
 ---
@@ -67,7 +67,7 @@ Attachment
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
-Verify aws-us-east-1 Transit gateway and aws-us-east-1 Spoke gateway are now connected. 
+Verify that both **_aws-us-east-1-transit_** gateway and **_aws-us-east-1-spoke1_**  gateway are now connected. 
 
 ```{tip}
 Wait a handful of minutes and then refresh the web page, in order to see the changes applied on the topology!
@@ -82,13 +82,13 @@ Attachment on the CoPilot
 
 ## 4.4. Transit Peerings Configuration
 
-Here you will configure Transit Peering between **aws-us-east1** and **aws-us-east2** regions.
+Here you will configure Transit Peering between **aws-us-east-1** and **aws-us-east-2** regions.
 
 Go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
 
-- **aws-us-east1-transit** to **aws-us-east2-transit**
+- **aws-us-east-1-transit** to **aws-us-east-2-transit**
 
-Edit the Transit Gateway **aws-us-east1-transit**, clicking on the pencil icon:
+Edit the Transit Gateway **aws-us-east-1-transit**, clicking on the pencil icon:
 
 ```{figure} images/lab5-peering.png
 ---
@@ -97,7 +97,7 @@ align: center
 Edit Transit in US-EAST-1
 ```
 
-Select the Transit Gateway **_aws-us-east2-transit_** from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
+Select the Transit Gateway **_aws-us-east-2-transit_** from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
 
 ```{figure} images/lab5-peering2.png
 ---
@@ -108,13 +108,13 @@ Peering
 
 ### 4.4.1. Transit Peerings Verification
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east1-transit_**, select the `"Gateway Routes"` tab and check the route **10.0.1.0/24** for instance.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Gateway Routes"` tab and check the route **10.0.1.0/24** for instance.
 
 ```{note}
 It may take a minute or two to reflect here.
 ```
 
-You will find out that the route 10.0.1.0/24 is reachable through **nine** connections with the **_aws-us-east2-transit_**:
+You will find out that the route 10.0.1.0/24 is reachable through **nine** connections with the **_aws-us-east-2-transit_**:
 
 ```{figure} images/lab5-hpe.png
 ---
@@ -123,7 +123,7 @@ align: center
 HPE in action on the First Transit GW
 ```
 
-Likewise, the same route is also reachable via other **nine** connections but through the Second Transit Gateway **_aws-us-east2-transit-1_**:
+Likewise, the same route is also reachable via other **nine** connections but through the Second Transit Gateway **_aws-us-east-2-transit-1_**:
 
 ```{figure} images/lab5-hpe2.png
 ---
@@ -156,7 +156,7 @@ CoPilot Topology View
 ```
 
 ```{caution}
-The actual configuration of **_High Performance Encryption_**  on both the **_aws-us-east1-transit_** and the **_aws-us-east1-spoke1_** was done when the gateways were created before this lab.
+The actual configuration of **_`High Performance Encryption`_**  on both the **_aws-us-east-1-transit_** and the **_aws-us-east-1-spoke1_** was done when the gateways were created before this lab.
 ```
 
 ## 5. High Performance Encryption Verification
@@ -185,7 +185,9 @@ Native Peerings Properties
 
 ## 5.2. CoPilot Verification of HPE
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gatewasy **_aws-us-east1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. These tunnels are used with the Spoke Gateway aws-us-east1-spoke1 and the Transit Gateway aws-us-east2-transit, because HPE is also enabled on these gateways:
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gatewasy **_aws-us-east-1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. 
+
+These tunnels are used with the Spoke Gateway aws-us-east-1-spoke1 and the Transit Gateway aws-us-east-2-transit, because HPE is also enabled on these gateways:
 
 ```{figure} images/lab5-ipip.png
 ---
@@ -200,7 +202,7 @@ Interface Stats
 
 Go to **CoPilot > Diagnostics > Cloud Routes > VPC/VNet Routes**
 
-Click the filter button, select `“Name”` and enter **_aws-us-east1-spoke1-rtb-public-a_** to filter by just that route table.
+Click the filter button, select `“Name”` and enter **_aws-us-east-1-spoke1-Public-1-us-east-1a-rtb_** to filter by just that route table.
 
 ```{note}
 The RFC 1918 summary routes points to the Aviatrix Spoke gateway for this routing table programmed by the Aviatrix Controller:
@@ -220,7 +222,7 @@ align: center
 RFC1918 routes pointing towards the First Spoke GW
 ```
 
-Now select **_aws-us-east1-spoke1-rtb-public-b_**. 
+Now remove the previous filter and select **_aws-us-east-1-spoke1-Public-2-us-east-1b-rtb_**. 
 
 ```{note}
 This time the RFC 1918 summary routes points to the Aviatrix **Second** Spoke gateway for this routing table programmed by once again the Aviatrix Controller:
@@ -246,15 +248,15 @@ As you can see, Active/Active is achieved within a VPC as well. Each gateway is 
 
 Test that the EC2 instances in two subnets are pointing to two different routing tables. If one gateway goes down, the controller will switch the ENI of the available gateway in the routing table.
 
-SSH into **both** EC2 test instances in **_aws-us-east1-spoke1_** VPC (refer to your Pod assignment). These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
+SSH into **both** EC2 test instances in **_aws-us-east-1-spoke1_** VPC (refer to your Pod assignment). These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
 
-Ping the EC2 test instance (10.0.1.100) in aws-us-east2-spoke1. It will fail. **WHY?** Because we didn’t enable segmentation on **_aws-us-east1-transit_** and associate **_aws-us-east1-spoke1_** with the transit gateway in the appropriate network domain.
+Ping the EC2 test instance (10.0.1.100) in aws-us-east-2-spoke1 VPC. It will fail. **WHY?** Because we didn’t enable segmentation on **_aws-us-east-1-transit_** and associate **_aws-us-east-1-spoke1_** with the transit gateway in the appropriate network domain.
  
 ### 6.2.1 Enable Segmentation
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains > Transit Gateways**
 
-Enable Segmentation on **_aws-us-east1-transit_**:
+Enable Segmentation on **_aws-us-east-1-transit_**:
 
 ```{figure} images/lab5-enable.png
 ---
@@ -267,11 +269,10 @@ Enable Segmentation
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains**
 
-Associate **_aws-us-east1-spoke1_** with its transit in the <span style='color:lightgreen'>Green</span> network domain:
+Associate **_aws-us-east-1-spoke1_** with its transit in the <span style='color:lightgreen'>Green</span> network domain:
 
 ```{figure} images/lab5-green.png
 ---
-height: 400px
 align: center
 ---
 Association
@@ -289,9 +290,9 @@ New Logical Topology View
 
 ## 6.3. Connectivity test of ActiveMesh (Pt.2)
 
-Now SSH to the **_aws-us-east1-spoke1-test1_** in AWS US-East1 and launch ping towards **_aws-us-east2-spoke1-test1_** in AWS US-**East2**.
+Now SSH to the **_aws-us-east-1-spoke1-test1_** in AWS US-East1 and launch ping towards **_aws-us-east-2-spoke1-test1_** in AWS US-**East2**.
 
-SSH also to the **_aws-us-east1-spoke1-test2_** in AWS US-East1 and launch ping towards **_aws-us-east2-spoke1-test1_** in AWS US-**East2**.
+SSH also to the **_aws-us-east-1-spoke1-test2_** in AWS US-East1 and launch ping towards **_aws-us-east-2-spoke1-test1_** in AWS US-**East2**.
 
 ```{important}
 Please keep both the ping sessions running recursively on your SSH client!
@@ -322,7 +323,7 @@ align: center
 AWS console
 ```
 
-Change the region to **N. Virginia** and invoke EC2 service.
+Change the region to **N. Virginia** and invoke **EC2** service.
 
 ```{figure} images/lab5-region.png
 ---
@@ -340,7 +341,7 @@ align: center
 Instances running
 ```
 
-Search for **_aviatrix-aws-us-east1-spoke1_** and then select **Instance state > Stop instance**
+Search for **_aviatrix-aws-us-east-1-spoke1_** and then select **Instance state > Stop instance**
 
 ```{figure} images/lab5-stop.png
 ---
@@ -358,7 +359,7 @@ align: center
 Confirm the stop
 ```
 
-You will notice ping drops solely from **_aws-us-east1-spoke1-test1_**. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.
+You will notice ping drops solely from **_aws-us-east-1-spoke1-test1_**. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.
 
 This shows how the Aviatrix Controller intelligently auto-heals the VPC routing.
 
@@ -366,7 +367,7 @@ This shows how the Aviatrix Controller intelligently auto-heals the VPC routing.
 ---
 align: center
 ---
-Temporary disruption with FAST keepalive!_
+Temporary disruption with FAST keepalive!
 ```
 
 **Bonus Step**: `Restart` the Gateway from the AWS console and reverify the traffic flow.
@@ -394,8 +395,8 @@ Final Topology for Lab 5
 
 Use the following inputs:
 
-- **Source**: <span style='color:#33ECFF'>aws-us-east1-spoke1-test1</span>
-- **Destination**: <span style='color:#33ECFF'>aws-us-east2-spoke1-test1</span>
+- **Source**: <span style='color:#33ECFF'>aws-us-east-1-spoke1-test1</span>
+- **Destination**: <span style='color:#33ECFF'>aws-us-east-2-spoke1-test1</span>
 - **Protocol**: <span style='color:#33ECFF'>TCP</span>
 - **Port**: <span style='color:#33ECFF'>443</span>
 - **Interface**: <span style='color:#33ECFF'>Private</span>
@@ -407,7 +408,7 @@ align: center
 FlightPath config
 ```
 
-This will provide an AppIQ report of how **_aws-us-east1-spoke1-test1_** is connected with **_aws-us-east2-spoke1-test1_** and display the path along with end-to-end latency.
+This will provide an AppIQ report of how **_aws-us-east-1-spoke1-test1_** is connected with **_aws-us-east-2-spoke1-test1_** and display the path along with end-to-end latency.
 
 ```{note}
 You might see some links still depicted in **red**, after having restarted the Spoke Gateway. Be patient and relaunch the report and you will get the same outcome as depicted below.
@@ -457,10 +458,10 @@ Keep Alive Speed
 ### Transitive Routing
 
 ```{warning}
-The test instances in **_aws-us-east1-spoke1_** are not able to communicate with the test instances in GCP or in Azure.
+The test instances in **_aws-us-east-1-spoke1_** are not able to communicate with the test instances in GCP or in Azure.
 ```
 
-You can verify this with the Gateway routing table on the **CoPilot > Diagnostics > Cloud Routes > Gateway Routes > aws-us-east1-transit**. You will not see the GCP Spoke routes of **_172.16.1.0/24_**., for instance.
+You can verify this with the Gateway routing table on the **CoPilot > Diagnostics > Cloud Routes > Gateway Routes > aws-us-east-1-transit**. You will not see the GCP Spoke routes of **_172.16.1.0/24_**., for instance.
 
 - Why is that?
 What would be needed to make those routes visible?
