@@ -416,8 +416,8 @@ document.write(`
 </figure>
 <p>Create <strong>two</strong> network domains (Green and Blue) and associate them to their respective Spokes as follows:</p>
 <ul class="simple">
-<li><p><span style='color:lightgreen'>Green</span>- azure-us-west-spoke1 (do not select azure-us-west-<strong>spoke2</strong>)</p></li>
-<li><p><span style='color:lightgreen'>Green</span> - aws-us-east2-spoke1 (do not select aws-us-<strong>east1</strong>-spoke1)</p></li>
+<li><p><span style='color:lightgreen'>Green</span>- azure-west-us-spoke1 (do not select azure-west-us-<strong>spoke2</strong>)</p></li>
+<li><p><span style='color:lightgreen'>Green</span> - aws-us-east-2-spoke1 (do not select aws-us-<strong>east-1</strong>-spoke1)</p></li>
 <li><p><span style='color:lightblue'>Blue</span> - gcp-us-central1-spoke1</p></li>
 </ul>
 <p>Click on <strong>Save</strong> after creating each Network Domain.</p>
@@ -453,7 +453,7 @@ document.write(`
 <p><span class="caption-number">Fig. 82 </span><span class="caption-text">Associations verification</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and select the Transit Gateway <strong><em>aws-us-east2-transit</em></strong>:</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and select the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong>:</p>
 <figure class="align-center" id="id9">
 <img alt="../_images/lab3-exploretransit.png" src="../_images/lab3-exploretransit.png" />
 <figcaption>
@@ -484,7 +484,7 @@ document.write(`
 <p>Open <strong>three</strong> terminal windows and SSH to the test instances/VMs in each cloud and ping the <strong>private</strong> IPs of each other to test the Multicloud connectivity (Refer to pod info).</p>
 <p>Azure and AWS resources will ping each other, but neither will be able to access GCP VM, since GCP spoke is in a different segment (Blue).</p>
 <p><strong>AWS</strong>:</p>
-<p>SSH into <strong><em>aws-us-east2-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
+<p>SSH into <strong><em>aws-us-east-2-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
 <figure class="align-center" id="id13">
 <img alt="../_images/lab3-ping1.png" src="../_images/lab3-ping1.png" />
 <figcaption>
@@ -492,7 +492,7 @@ document.write(`
 </figcaption>
 </figure>
 <p><strong>Azure</strong>:</p>
-<p>SSH into <strong><em>azure-us-west-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
+<p>SSH into <strong><em>azure-west-us-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
 <figure class="align-center" id="id14">
 <img alt="../_images/lab3-ping2.png" src="../_images/lab3-ping2.png" />
 <figcaption>
@@ -542,7 +542,7 @@ document.write(`
 </figure>
 <p>Retest the connectivity; now you will have end-to-end connectivity across the multicloud environment.</p>
 <p><strong>AWS</strong>:</p>
-<p>SSH into <strong><em>aws-us-east2-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
+<p>SSH into <strong><em>aws-us-east-2-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
 <figure class="align-center" id="id19">
 <img alt="../_images/lab3-newtest.png" src="../_images/lab3-newtest.png" />
 <figcaption>

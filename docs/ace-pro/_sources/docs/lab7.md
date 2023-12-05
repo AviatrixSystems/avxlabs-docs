@@ -12,7 +12,7 @@ In addition, Firewall Network allows you to scale firewall deployment to multi A
  
 ## 3. Topology
 
-Up until now, in Azure you have only worked on **_azure-us-west-spoke1_**. This lab will introduce finally **_azure-us-west-spoke2_**, which is a gateway in the top-right corner of this topology that is already deployed (hence it is red); <ins>there is the attachment that has not been deployed yet</ins>!
+Up until now, in Azure you have only worked on **_azure-west-us-spoke1_**. This lab will introduce finally **_azure-west-us-spoke2_**, which is a gateway in the top-right corner of this topology that is already deployed (hence it is red); <ins>there is the attachment that has not been deployed yet</ins>!
 
 ```{figure} images/lab7-topology.png
 ---
@@ -25,9 +25,9 @@ Lab 7 Initial Topology
 ## 4. Configuration
 ### 4.1. Azure Transit to Spoke Peering
 
-First, you will need to configure the grey Aviatrix Spoke-Transit connection in the topology between **_azure-us-west-spoke2_** and **_azure-us-west-transit_**.
+First, you will need to configure the grey Aviatrix Spoke-Transit connection in the topology between **_azure-west-us-spoke2_** and **_azure-west-us-transit_**.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_azure-us-west-spoke2_**, clicking on the pencil icon:
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_azure-west-us-spoke2_**, clicking on the pencil icon:
 
 ```{figure} images/lab7-spoke.png
 ---
@@ -36,7 +36,7 @@ align: center
 Edit Spoke GW
 ```
 
-Attach **_azure-us-west-spoke2_** (pre-configured VNet) to **_azure-us-west-transit_** as shown below.
+Attach **_azure-west-us-spoke2_** (pre-configured VNet) to **_azure-west-us-transit_** as shown below.
 Do not forget to click on **Save**.
 
 ```{figure} images/lab7-attachment.png
@@ -47,7 +47,7 @@ Attachment
 ```
 
 ```{important}
-The **_azure-us-west-transit_** is already enabled for FireNet function.
+The **_azure-west-us-transit_** is already enabled for FireNet function.
 ```
 
 ### 4.2. PAN Firewall Deployment
@@ -75,8 +75,8 @@ FireNet
 
 Deploy a Firewall by entering these settings within the `Deploy Firewall` window:
 
-- **FireNet Instance**: <span style='color:#33ECFF'>azure-us-west-transit</span>
-- **Name**: <span style='color:#33ECFF'>azure-us-west-pan</span>
+- **FireNet Instance**: <span style='color:#33ECFF'>azure-west-us-transit</span>
+- **Name**: <span style='color:#33ECFF'>azure-west-us-pan</span>
 - **Firewall Image**: <span style='color:#33ECFF'>Palo Alto Networks VM-Series Next-Generation Firewall Bundle 1</span>
 
 ```{warning}
@@ -92,8 +92,8 @@ Marketplace contact under loading
 
 - **Firewall Image Version**: <span style='color:#33ECFF'>9.1.0</span>
 - **Firewall instance Size**: <span style='color:#33ECFF'>Standard_D3_v2</span>
-- **Management Interface Subnet**: <span style='color:#33ECFF'>azure-us-west-transit-Public-gateway-and-firewall-mgmt-1</span>
-- **Egress Interface Subnet**: <span style='color:#33ECFF'>azure-us-west-transit-Public-FW-ingress-egress-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
+- **Management Interface Subnet**: <span style='color:#33ECFF'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-1</span>
+- **Egress Interface Subnet**: <span style='color:#33ECFF'>azure-west-us-transit-Public-FW-ingress-egress-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
 - **Authentication**: <span style='color:#33ECFF'>Password</span>
 - **Username**: <span style='color:#33ECFF'>avxadmin [**Note**: username *admin* is not permitted in Azure]</span>
 - **Password**: <span style='color:#33ECFF'>[choose a **strong password** and remember it]</span>
@@ -154,7 +154,7 @@ Do not end the firewall's HTTPS session yet. You will return to this web interfa
 
 ## 4.4. Firewall Vendor Integration
 
-Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three dots"` symbol on the right-hand side of the **_azure-us-west-transit_** raw, and then click on `Vendor Integration`.
+Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three dots"` symbol on the right-hand side of the **_azure-west-us-transit_** raw, and then click on `Vendor Integration`.
 
 ```{figure} images/lab7-vendor.png
 ---
@@ -181,16 +181,23 @@ Vendor Integration template
 
 ```{note}
 Wait for some seconds for the Vendor Integration to complete.
+
+If you see an error message related to the *ethernet1/2*, wait some additional minutes before clicking again on **Save**.
+```{figure} images/lab7-message.png
+---
+align: center
+---
+Possible error message
 ```
 
 ```{figure} images/lab7-vendor3.png
 ---
 align: center
 ---
-Vendor Integration accomplished
+Vendor Integration accomplished successfully
 ```
 
-Go to **CoPilot > Security > FireNet > Firewall** and click on the **_azure-us-west-pan_** firewall
+Go to **CoPilot > Security > FireNet > Firewall** and click on the **_azure-west-us-pan_** firewall
 
 ```{figure} images/lab7-vendor4.png
 ---
@@ -236,7 +243,7 @@ Do not end the firewall's HTTPS session yet. You will return to this web interfa
 
 ## 4.6. FireNet Policy
 
-Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_azure-us-west-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
+Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_azure-west-us-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
 
 ```{figure} images/lab7-inspection2.png
 ---
@@ -275,7 +282,7 @@ Lab 7 Topology with FW deplopyed
 
 ## 5.1. Within Azure
 
-Before we can verify connectivity, we need to associate **_azure-us-west-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
+Before we can verify connectivity, we need to associate **_azure-west-us-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains**
 
@@ -288,7 +295,7 @@ align: center
 Edit Green
 ```
 
-Select the gateway **_azure-us-west-spoke2_** from the drop-down window, selecting the `"Associations"` field.
+Select the gateway **_azure-west-us-spoke2_** from the drop-down window, selecting the `"Associations"` field.
 
 Then click **Save**:
 
@@ -310,7 +317,7 @@ Lab 7 Final Topology
 ```
 
 ```{warning}
-On Lab 6 (Egress), the DCF functionality was enabled. The current active rule is the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53. Before launching any connectivity test, <ins>you need to move on the top of the list of the DCF rules, the **_Greenfield-Rule_** and disassociate the **_Any-Web_** WebGroup</ins>!
+On Lab 6 (Egress), the DCF functionality was enabled. The current active rule is the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53. Before launching any connectivity tests, <ins>you need to move the **_Greenfield-Rule_**  on the top of the list of the DCF rules, and disassociate the **_Any-Web_** WebGroup,</ins>!
 ```
 
 ```{figure} images/lab7-dcfrule.png
@@ -361,7 +368,7 @@ Final Commit
 
 ### 5.1.1 Luanch connectivity test
 
-**SSH** into **_azure-us-west-spoke1-test1_** and from there, ping **_azure-us-west-spoke2-test1_** on its private IP.
+**SSH** into **_azure-west-us-spoke1-test1_** and from there, ping **_azure-west-us-spoke2-test1_** on its private IP.
 
 ```{figure} images/lab7-ping.png
 ---
@@ -377,7 +384,7 @@ Pings are passing because the **`Allow-all`** rule on the Firewall is permitting
 Back on the PAN firewall, click on the `Monitor` tab. Then paste this string in the filter bar and hit **Enter**, which will apply the filter:
 
 ```bash
-(addr in 192.168.1.100)
+(addr in 192.168.1.10)
 ```
 
 ```{figure} images/lab7-monitor2.png
@@ -387,7 +394,7 @@ align: center
 Monitor on the PaloAlto
 ```
 
-Traffic is passing through firewall because **_azure-us-west-spoke1_** and **_azure-us-west-spoke2_** both are in the **Inspection Policy**.
+Traffic is passing through firewall because **_azure-west-us-spoke1_** and **_azure-west-us-spoke2_** both are in the **Inspection Policy**.
 
 ```{tip}
 Click on the **refresh** button to see the logs almost in continuous stream.
@@ -403,7 +410,7 @@ Ping GCP
 
 ## 5.2. Azure to GCP
 
-While on **_azure-us-west-spoke1-test1_**, ping **_gcp-us-central1-spoke1-test1_**.
+While on **_azure-west-us-spoke1-test1_**, ping **_gcp-us-central1-spoke1-test1_**.
 
 ```{figure} images/lab7-pinggcp.png
 ---
