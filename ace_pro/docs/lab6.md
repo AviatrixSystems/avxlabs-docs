@@ -16,12 +16,12 @@ align: center
 Lab 6 Initial Topology
 ```
 
-The VPC **aws-us-east2-spoke1** has a private subnet in its environment, whereby the Egress Control can be activated in this specific VPC.
+The VPC **aws-us-east-2-spoke1** has a private subnet in its environment, whereby the Egress Control can be activated in this specific VPC.
 
-- Explore the Private Routing Tables inside the VPC **aws-us-east2-spoke1**
+- Explore the Private Routing Tables inside the VPC **aws-us-east-2-spoke1**
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs fron the Route table field.
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs from the Route table field.
 ```
 
 ```{figure} images/lab6-spokegw.png
@@ -38,27 +38,27 @@ align: center
 Check the private RTB
 ```
 
-You will notice that any private RTBs has its own **CIDR** pointing to local and the three **RFC1918** routes. With this scenario, the EC2 instance can't reach the internet public zone, due to the absence of a default route.
+You will notice that any private RTBs has its own **CIDR** pointing to local and the three **RFC1918** routes. With this scenario, the EC2 instance can't reach the *Internet Public Zone*, due to the absence of the <ins>default route</ins>.
 
 ## 3. SSH to the EC2 instance in the Private Subnet
 
-- SSH to the **_aws-us-east2-spoke1-test1_** instance from your laptop. Refer to your POD portal or alternatively, you can retrieve the Public IP from the CoPilot's Topology.
+- SSH to the **_aws-us-east-2-spoke1-test1_** instance from your laptop. Refer to your POD portal or alternatively, you can retrieve the Public IP from the CoPilot's Topology.
 
 ```{figure} images/lab6-publicip.png
 ---
 align: center
 ---
-SSH to aws-us-east2-spoke1-test1
+SSH to aws-us-east-2-spoke1-test1
 ```
 
-- Then from the **_aws-us-east2-spoke1-test1_** instance SSH to the **_aws-us-east2-spoke1-test2_** instance.
+- Then from the **_aws-us-east-2-spoke1-test1_** instance SSH to the **_aws-us-east-2-spoke1-test2_** instance.
 
 ```{note}
-The **_aws-us-east2-spoke1-test2_** instance resides within a private subnet!
+The **_aws-us-east-2-spoke1-test2_** instance resides within a private subnet!
 ```
 
 ```{tip}
-Retrieve the Private IP of the **_aws-us-east2-spoke1-test2_** from the Topology
+Retrieve the Private IP of the **_aws-us-east-2-spoke1-test2_** from the Topology
 ```
 
 ```{figure} images/lab6-retrieve.png
@@ -71,10 +71,10 @@ Retrieve the private IP
 ## 4. Egress Control
 ### 4.1 Enable the Egress Control
 
-Now let's enable the egress within the VPC that is hosting the **_aws-us-east2-spoke1-test2_** instance.
+Now let's enable the egress within the VPC that is hosting the **_aws-us-east-2-spoke1-test2_** instance.
 
 ```{note}
-Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"+ Local Egress on VPC/VNets"`, then select the **_aws-us-east2-spoke1_** VPC and click on **Add**.
+Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"+ Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
 ```
 
 ```{figure} images/lab6-egress.png
@@ -86,7 +86,6 @@ Enable Local Egress
 
 ```{figure} images/lab6-vpcegress.png
 ---
-height: 400px
 align: center
 ---
 Choose the correct VPC
@@ -94,10 +93,10 @@ Choose the correct VPC
 
 ### 4.2 Inspect the Private RTB
 
-- As soon as the Egress Control is enabled, a `Default Route` is injected inside solely the Private RTBs (Public RTBs are not impacted, whereby, they will continue to have the defaulte route pointing towards the Native CSP IGW). Verify its presence in any Private RTBs inside the **_aws-us-east2-spoke1_** VPC.
+- As soon as the Egress Control is enabled, a `Default Route` is injected inside solely the Private RTBs (Public RTBs are not impacted, whereby, they will continue to have the defaulte route pointing towards the Native CSP IGW). Verify its presence in any Private RTBs inside the **_aws-us-east-2-spoke1_** VPC.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs fron the Route table field.
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs fron the Route table field.
 ```
 
 ```{figure} images/lab6-defaultroute.png
@@ -108,12 +107,12 @@ Default route has been injected
 ```
 
 ```{important}
-Now, thanks to the default route, the instance **_aws-us-east2-spoke1-test2_** will be able to generate traffic towards the internet public zone.
+Now, thanks to the default route, the instance **_aws-us-east-2-spoke1-test2_** will be able to generate traffic towards the internet public zone.
 ```
 
 ### 4.3 Generate Traffic
 
-From the **_aws-us-east2-spoke1-test2_** instance, try to curl the following websites:
+From the **_aws-us-east-2-spoke1-test2_** instance, try to curl the following websites:
 
 ```bash
 curl www.aviatrix.com
@@ -203,7 +202,7 @@ align: center
 Commit
 ```
 
-- Launch again the following curl commands from the instance **_aws-us-east2-spoke1-test2_**.
+- Launch again the following curl commands from the instance **_aws-us-east-2-spoke1-test2_**.
 
 ```bash
 curl www.aviatrix.com
@@ -233,7 +232,7 @@ Monitor: 4 logs
 
 Go to **CoPilot > Security > Egress > Overview (default)**
 
-Now you have finally the egress observability with a full list of domains hit by the EC2 instance inside the private subnet.
+Now you have finally the egress observability with a full list of domains hit by the EC2 instance inside that private subnet.
 
 ```{figure} images/lab6-overview.png
 ---
@@ -242,7 +241,7 @@ align: center
 Overview
 ```
 
-Furthermore, go to **CoPilot > Security > Egress > Monitor** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east2-spoke1 VPC_**.
+Furthermore, go to **CoPilot > Security > Egress > Monitor** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east-2-spoke1 VPC_**.
 
 ```{figure} images/lab6-monitor.png
 ---
@@ -258,7 +257,7 @@ You will get a granular Layer 7 visibility that allows you to get a good underst
 
 Let's move towards a posture where only the allowed egress domains are in place.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and click on `"+ WebGroups"` button*.
+Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and click on `"+ WebGroups"` button.
 
 ```{figure} images/lab6-webgroup.png
 ---
@@ -356,7 +355,7 @@ align: center
 Commit
 ```
 
-Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
+Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east-2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
 
 ### 5.2.2 Test the new rule
 
@@ -373,6 +372,15 @@ curl www.espn.com
 ```
 ```bash
 curl www.football.com
+```
+
+Only the first two curl commands will be successful.
+
+```{figure} images/lab6-newpic.png
+---
+align: center
+---
+Curl commands
 ```
 
 You will almost instanteously notice that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and therefore dropped.
@@ -421,7 +429,8 @@ Commit
 
 ### 5.3.2 Prepare the simulator
 
-- SSH to the **_aws-us-east2-spoke1-test2_** instance and launch the following commands.
+- SSH to the **_aws-us-east-2-spoke1-test2_** instance and launch the following commands.
+- You will be asked to type again the student password!
 
 ```bash
 sudo su -
@@ -478,7 +487,7 @@ align: center
 Commit
 ```
 
-From the EC2 instance **_aws-us-east2-spoke1-test2_**, type **5** for launching a malicious attack, specifically the attack will carry out an attempted connection towards a TOR server.
+From the EC2 instance **_aws-us-east-2-spoke1-test2_**, type **5** for launching a malicious attack, specifically the attack will carry out an attempted connection towards a TOR server.
 
 ```{figure} images/lab6-5.png
 ---

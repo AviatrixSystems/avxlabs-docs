@@ -65,8 +65,8 @@ Network Domain creation
 
 Create **two** network domains (Green and Blue) and associate them to their respective Spokes as follows:
 
--  <span style='color:lightgreen'>Green</span>- azure-us-west-spoke1 (do not select azure-us-west-**spoke2**)
-- <span style='color:lightgreen'>Green</span> - aws-us-east2-spoke1 (do not select aws-us-**east1**-spoke1)
+-  <span style='color:lightgreen'>Green</span>- azure-west-us-spoke1 (do not select azure-west-us-**spoke2**)
+- <span style='color:lightgreen'>Green</span> - aws-us-east-2-spoke1 (do not select aws-us-**east-1**-spoke1)
 - <span style='color:lightblue'>Blue</span> - gcp-us-central1-spoke1
 
 Click on **Save** after creating each Network Domain.
@@ -110,7 +110,7 @@ align: center
 Associations verification
 ```
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east2-transit_**:
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east-2-transit_**:
 
 ```{figure} images/lab3-exploretransit.png
 ---
@@ -152,7 +152,7 @@ Azure and AWS resources will ping each other, but neither will be able to access
 
 **AWS**:
 
-SSH into **_aws-us-east2-spoke1-test1_** (ssh student@public_ip)
+SSH into **_aws-us-east-2-spoke1-test1_** (ssh student@public_ip)
 
 ```{figure} images/lab3-ping1.png
 ---
@@ -163,7 +163,7 @@ Ping test from AWS
 
 **Azure**:
 
-SSH into **_azure-us-west-spoke1-test1_** (ssh student@public_ip)
+SSH into **_azure-west-us-spoke1-test1_** (ssh student@public_ip)
 
 ```{figure} images/lab3-ping2.png
 ---
@@ -227,7 +227,7 @@ Retest the connectivity; now you will have end-to-end connectivity across the mu
 
 **AWS**:
 
-SSH into **_aws-us-east2-spoke1-test1_** (ssh student@public_ip)
+SSH into **_aws-us-east-2-spoke1-test1_** (ssh student@public_ip)
 
 ```{figure} images/lab3-newtest.png
 ---
