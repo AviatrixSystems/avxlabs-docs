@@ -42,7 +42,7 @@ Insert the following parameters:
 - **VPC**: <span style='color:#33ECFF'>aws-us-east1-spoke1</span>
 - **Instance Size**: <span style='color:#33ECFF'>t2.medium</span>
 - **Attach to Unused Subnet**: <span style='color:#33ECFF'>us-east-1a</span>
-- **Instance Size**: <span style='color:#33ECFF'>aws-us-east1-spoke1-rtb-public-a</span>
+- **Route Table**: <span style='color:#33ECFF'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span>
 
 Do not forget to click on **Save**.
 
@@ -86,7 +86,7 @@ PSF rtb
 The subnet with the PSF gateway is a Public Subnet with 0/0 pointing to IGW. No workload instances should be deployed in this subnet.
 ```
 
-- Verify one more routing table that we selected while deploying the PSF Gateway: **_aws-us-east1-spoke1-public-a_**. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).
+- Verify one more routing table that we selected while deploying the PSF Gateway: **_aws-us-east1-spoke1-Public-1-us-east-1a-rtb_**. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).
 
 ```{figure} images/lab9-routetablepsf2.png
 ---
@@ -146,22 +146,13 @@ align: center
 Send Alert Settings
 ```
 
-Click on **Add Recipients**.
+Select the alias that was previously created from the drop-down window `"recipients"` and then click on **Save**.
 
 ```{figure} images/lab9-addrecipient.png
 ---
 align: center
 ---
 Add Recipient(s)
-```
-
-Select your email address from the pulldown menu and then click on **Confirm**.
-
-```{figure} images/lab9-addjoe.png
----
-align: center
----
-Add your email
 ```
 
 From this point onwards, if you enter a valid email address, you will receive email notifications about **ThreatIQ** alerts.
@@ -229,7 +220,7 @@ Curl towards the malicious IP
 Navigate back to **CoPilot > Security > ThreatIQ > Overview**
 
 ```{note}
-**Wait for some minutes**, before proceeding with the next action. Furthermore, set the **Time Period** to `"Custom"` and then set the end time a bit farther than your current time:
+**Wait for some minutes**, before proceeding with the next action. Furthermore, set the **Time Period** to `"Last Hour"` and click on **Apply**.
 ```
 
 ```{figure} images/lab9-custom.png
@@ -255,7 +246,7 @@ align: center
 Filter
 ```
 
-Afterwards, click on VIEW under the column Details.
+Afterwards, click on **VIEW** under the column Details.
 
 ```{note}
 The IP we selected might not be deemed a threat when you read this.
@@ -301,20 +292,13 @@ align: center
 Configuration VIEW
 ```
 
-Filter based on the malicious IP (both on **source** address and **destination** address): you will find out that ThreatGuard applied the enforcement `"force-drop"` in both directions.
+Filter based on the malicious IP (choose the **source IP**): you will find out that ThreatGuard applied the enforcement `"force-drop"` in both directions.
 
 ```{figure} images/lab9-force.png
 ---
 align: center
 ---
-Filter for source
-```
-
-```{figure} images/lab9-force2.png
----
-align: center
----
-Filter for destination
+Filter on Source IP
 ```
 
 Now try issuing the same curl command once again.
