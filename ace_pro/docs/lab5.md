@@ -80,6 +80,11 @@ align: center
 Attachment on the CoPilot
 ```
 
+```{important}
+Solid line = HPE connection
+Dotted line = Non-HPE connection
+```
+
 ## 4.4. Transit Peerings Configuration
 
 Here you will configure Transit Peering between **aws-us-east-1** and **aws-us-east-2** regions.

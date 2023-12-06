@@ -368,7 +368,7 @@ Final Commit
 
 ### 5.1.1 Luanch connectivity test
 
-**SSH** into **_azure-west-us-spoke1-test1_** and from there, ping **_azure-west-us-spoke2-test1_** on its private IP.
+**SSH** into **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-test1_** and from there, ping **_azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1_** on its private IP.
 
 ```{figure} images/lab7-ping.png
 ---
@@ -410,7 +410,7 @@ Ping GCP
 
 ## 5.2. Azure to GCP
 
-While on **_azure-west-us-spoke1-test1_**, ping **_gcp-us-central1-spoke1-test1_**.
+While on **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-test1_**, ping **_gcp-us-central1-spoke1-test1_**.
 
 ```{figure} images/lab7-pinggcp.png
 ---
