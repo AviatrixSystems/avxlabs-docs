@@ -220,7 +220,7 @@ Curl towards the malicious IP
 Navigate back to **CoPilot > Security > ThreatIQ > Overview**
 
 ```{note}
-**Wait for some minutes**, before proceeding with the next action. Furthermore, set the **Time Period** to `"Last Hour"` and click on **Apply**.
+**Wait for some minutes**, before proceeding with the next action. Furthermore, set the **Time Period** to `"Last 60 Minutes"` and click on **Apply**.
 ```
 
 ```{figure} images/lab9-custom.png
