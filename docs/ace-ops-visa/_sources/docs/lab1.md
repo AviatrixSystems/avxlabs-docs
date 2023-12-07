@@ -1,4 +1,4 @@
-# Lab 1 - Network Domains
+# Lab 1 - Network Domain
 
 ## 1. SCENARIO
 
