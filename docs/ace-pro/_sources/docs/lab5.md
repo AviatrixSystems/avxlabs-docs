@@ -82,7 +82,8 @@ Attachment on the CoPilot
 
 ```{important}
 Solid line = HPE connection
-Dotted line = Non-HPE connection
+
+Dashed line = Non-HPE connection
 ```
 
 ## 4.4. Transit Peerings Configuration
@@ -119,7 +120,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Trans
 It may take a minute or two to reflect here.
 ```
 
-You will find out that the route 10.0.1.0/24 is reachable through **nine** connections with the **_aws-us-east-2-transit_**:
+You will find out that the route 10.0.1.0/24 is reachable through **nine** connections with the **_aws-us-east-2-transit_**.
 
 ```{figure} images/lab5-hpe.png
 ---
@@ -161,7 +162,7 @@ CoPilot Topology View
 ```
 
 ```{caution}
-The actual configuration of **_`High Performance Encryption`_**  on both the **_aws-us-east-1-transit_** and the **_aws-us-east-1-spoke1_** was done when the gateways were created before this lab.
+The actual configuration of **`High Performance Encryption`**  on both the **_aws-us-east-1-transit_** and the **_aws-us-east-1-spoke1_** was done when the gateways were created before this lab.
 ```
 
 ## 5. High Performance Encryption Verification
@@ -251,11 +252,22 @@ As you can see, Active/Active is achieved within a VPC as well. Each gateway is 
  
 ## 6.2. Connectivity test of ActiveMesh (Pt.1)
 
-Test that the EC2 instances in two subnets are pointing to two different routing tables. If one gateway goes down, the controller will switch the ENI of the available gateway in the routing table.
+Test that the EC2 instances in two subnets are pointing to two different routing tables. If one gateway goes down, the controller will switch the **ENI** of the available gateway in the routing table.
 
-SSH into **both** EC2 test instances in **_aws-us-east-1-spoke1_** VPC (refer to your Pod assignment). These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
+SSH into **both** EC2 test instances in **_aws-us-east-1-spoke1_** VPC (refer to your Pod assignment). 
 
-Ping the EC2 test instance (10.0.1.100) in aws-us-east-2-spoke1 VPC. It will fail. **WHY?** Because we didn’t enable segmentation on **_aws-us-east-1-transit_** and associate **_aws-us-east-1-spoke1_** with the transit gateway in the appropriate network domain.
+These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
+
+Ping the EC2 test instance (10.0.1.100) in aws-us-east-2-spoke1 VPC. 
+
+```{figure} images/lab5-new8.png
+---
+align: center
+---
+from US-EAST-1 to US-EAST-2
+```
+
+It will fail. **WHY?** Because we didn’t enable segmentation on **_aws-us-east-1-transit_** and associate **_aws-us-east-1-spoke1_** with the transit gateway in the appropriate network domain.
  
 ### 6.2.1 Enable Segmentation
 
@@ -295,26 +307,40 @@ New Logical Topology View
 
 ## 6.3. Connectivity test of ActiveMesh (Pt.2)
 
-Now SSH to the **_aws-us-east-1-spoke1-test1_** in AWS US-East1 and launch ping towards **_aws-us-east-2-spoke1-test1_** in AWS US-**East2**.
+Now from to the **_aws-us-east-1-spoke1-test1_** in AWS US-East1, launch the ping command towards the **_aws-us-east-2-spoke1-test1_** in AWS US-**East2**.
 
-SSH also to the **_aws-us-east-1-spoke1-test2_** in AWS US-East1 and launch ping towards **_aws-us-east-2-spoke1-test1_** in AWS US-**East2**.
-
-```{important}
-Please keep both the ping sessions running recursively on your SSH client!
+```{figure} images/lab5-new.png
+---
+align: center
+---
+First ping 
 ```
 
 ```{figure} images/lab5-ping1.png
 ---
 align: center
 ---
-Ping from spoke1-test1
+ping from aws-us-east-1-spoke1-test1
+```
+
+Repeat the ping from the **_aws-us-east-1-spoke1-test2_** in AWS US-East1 towards **_aws-us-east-2-spoke1-test1_** in AWS US-**East2**.
+
+```{figure} images/lab5-new2.png
+---
+align: center
+---
+second ping
 ```
 
 ```{figure} images/lab5-ping2.png
 ---
 align: center
 ---
-Ping from spoke1-test2
+ping from aws-us-east-1-spoke1-test2
+```
+
+```{important}
+Please keep **both** the ping sessions running recursively on your SSH client! Don't interrupt the ping.
 ```
 
 To demonstrate ActiveMesh capability, you will shut down temporarily one of the spoke gateways and notice traffic converging to the other gateway.
