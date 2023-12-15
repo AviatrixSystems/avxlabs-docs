@@ -12,7 +12,7 @@ Network Segmentation will be extended to on-premises in the Site2Cloud lab.
 
 Enterprises can define their network domains (aka *segments*) and group VNets/VPCs/VCNs with similar security policies without requiring firewall solutions.
 
-Aviatrix transit and spokes architecture help (aka *Hub & Spoke* architecture) enterprises create customised segments and onboard branches, partners and customers in their respective segments so no partner can communicate with each other unless desired.
+Aviatrix transits and spokes architecture (aka *`Hub & Spoke`* architecture) help enterprises create customised segments and onboard branches, partners and customers in their respective segments so no partner can communicate with each other unless desired.
 
 ## 3. Topology
 
@@ -36,7 +36,6 @@ Go to **CoPilot > Networking > Network Segmentation > Network Domains > Transit 
 
 ```{figure} images/lab3-enabletransit.png
 ---
-height: 400px
 align: center
 ---
 Enable the feature
@@ -57,7 +56,6 @@ Go to **CoPilot > Networking > Network Segmentation > Network Domains > + Networ
 
 ```{figure} images/lab3-networkdomain.png
 ---
-height: 400px
 align: center
 ---
 Network Domain creation
@@ -204,7 +202,6 @@ Select the appropriate option from the **`"Connect to Network Domain"`** pull-do
 
 ```{figure} images/lab3-applycp.png
 ---
-height: 400px
 align: center
 ---
 Apply the connection polic
