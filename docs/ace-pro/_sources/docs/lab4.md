@@ -28,7 +28,7 @@ align: center
 Permission Group creation on the CoPilot
 ```
 
-Name the group **controller-operators**, select all the **Access Accounts** available from the drop-down window and choose the **Controller Permissions**.
+Name the group **"controller-operators"**, select all the **Access Accounts** available from the drop-down window and choose the **Controller Permissions**.
 
 Then from the **API/Terraform Permissions** field, select **Dashboard**, **Useful Tools** and **Troubleshoot** privileges, as depicted below.
 
@@ -93,7 +93,6 @@ At this point, you should have received an email and a message in the **Notifica
 
 ```{figure} images/lab4-notification.png
 ---
-height: 400px
 align: center
 ---
 Notification message
@@ -103,21 +102,19 @@ Notification message
  
 ### 3.1. Log out and log back in as new RBACK User (controller-op)
 
-Go to **Controller** and then hover over the user icon in the top-right corner and click on **Sign out**.
+- Go to your personal POD portal and click on the URL of the **Controller**.
 
-```{figure} images/lab4-signout.png
+```{figure} images/lab4-credentials.png
 ---
-height: 400px
 align: center
 ---
-Sign out
+POD Portal
 ```
 
-Sign back in as a **controller-op** with the same password you picked earlier.
+Sign in as a **controller-op** with the same password you picked earlier.
 
 ```{figure} images/lab4-signin.png
 ---
-height: 400px
 align: center
 ---
 Sign back with controller-op
@@ -127,7 +124,6 @@ You should see in the top-right corner that you are logged in as the **controlle
 
 ```{figure} images/lab4-rbac.png
 ---
-height: 400px
 align: center
 ---
 RBAC sign-in
@@ -183,7 +179,6 @@ You should immediately receive an error in the Notifications tray such as this:
 
 ```{figure} images/lab4-error.png
 ---
-height: 400px
 align: center
 ---
 Error
@@ -203,7 +198,6 @@ Click on `“+ Permission Group”`.
 
 ```{figure} images/lab4-permission2.png
 ---
-height: 400px
 align: center
 ---
 New Permission Group
@@ -284,7 +278,6 @@ Hover over the user icon in the top-right corner and click **Logout**.
 
 ```{figure} images/lab4-logout.png
 ---
-height: 400px
 align: center
 ---
 Log out
@@ -294,7 +287,6 @@ Sign back in as a **copilot-op** with the same password you picked earlier.
 
 ```{figure} images/lab4-logincopilot.png
 ---
-height: 400px
 align: center
 ---
 Log in CoPilot
@@ -303,7 +295,7 @@ Log in CoPilot
 ```{attention}
 You will immediately notice that the RBAC feature on the CoPilot is capable to limit to each persona the visibility of the platform, showing only those sections that have been permitted.
 
-The user copilot-op can only interact with the Cloud Fabric section (but only with the sub-section Topology, whereby, this user is not authorized to deploy gateways), the Monitor section and the Troubleshoot section.
+The user copilot-op can only interact with the Cloud Fabric section (but only with the sub-section **Topology**, whereby, this user is not authorized to deploy gateways), the **Monitor** section and the **Diagnostics** section.
 
 The other sections are not more visible.
 ```

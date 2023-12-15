@@ -2,7 +2,7 @@
 
 ## 1. SCENARIO
 
-Now ACE Inc. has decided that BU1 and BU2 need to be able to communicate with each other. You are engaged for applying a **Connection Policy** in order to merge the two Routing Domains.
+Now ACE Inc. has decided that BU1 and BU2 need to be able to communicate with each other. You are engaged for applying a `Connection Policy` in order to merge the two Routing Domains.
 
 After the change has been applied, verify that both the network domains have been merged together, successfully.
 
@@ -100,6 +100,10 @@ Route DB
 ## 3. TROUBLESHOOT REQUEST
 
 * From the **BU1 Frontend**, execute the *`curl`* command towards the private IP of **BU2 Mobile App**.
+  
+```{important}
+Refer always to your personal POD for the IP addresses. 
+```
 
 ```{figure} images/lab2-curl.png
 ---
@@ -108,7 +112,7 @@ align: center
 curl fails...
 ```
 
-You will notice that after issuing the curl command, it will hang and then, after some seconds, it will convey a message reporting that the attempt to connect to port **80** failed.
+You will notice that after issuing the curl command, it will hang and then, after some seconds, the parser will display a message reporting that the attempt to connect to port **80** failed.
 
 ```{important}
 Curl is not working, despite having both Ping and SSH working correctly.
@@ -125,6 +129,7 @@ PING and SSH are successful
 
 ```{tip}
 Go to **CoPilot > Diagnostics > AppIQ > FlightPath**
+```
 
 ```{figure} images/lab2-curl3.png
 ---
@@ -159,7 +164,104 @@ AppIQ report
 ```
 
 ```{note}
-FlightPath is a troubleshooting tool. It retrieves and displays, in a side by side fashion, cloud provider’s network related information such as **Security Groups**, **NACLs** and **Route Tables**. 
+`AppIQ` is a troubleshooting tool. It retrieves and displays, in a side by side fashion, cloud provider’s network related information such as **Security Groups**, **NACLs** and **Route Tables**. 
 
 This helps you to identify connectivity problems on the underlay environments of each CSP involved along the path of the communication between two nodes.
+```
+
+### 3.1. Verify from AWS Console
+
+Log in to the **AWS console**.
+
+```{important}
+Go to your personal POD portal and click on the Console button under the AWS Console section.
+
+Sign in using the provided credentials.
+```
+
+```{figure} images/lab2-console.png
+---
+align: center
+---
+POD Portal - AWS Console button
+```
+
+```{figure} images/lab2-aws.png
+---
+align: center
+---
+AWS 
+```
+
+Change the region to `Ireland (eu-west-1)` in the top-right corner and invoke the EC2 service, then click on the
+
+```{figure} images/lab2-euwest.png
+---
+align: center
+---
+AWS 
+```
+
+Click on **Instances (running)**.
+
+```{figure} images/lab2-instance.png
+---
+align: center
+---
+Instances (running)
+```
+
+Search for **_ace-aws-eu-west-1-spoke2-bu2-mobile-app_**, select the instance and choose the tab `"Security"` below and then click on the security group identificator with a long string.
+
+```{figure} images/lab2-sg.png
+---
+align: center
+---
+Change security groups
+```
+
+Explore the inbound rules and you will find out the absence on a rule that would permit the incoming traffic on port **tcp/80**.
+
+```{figure} images/lab2-sg2.png
+---
+align: center
+---
+Change security groups
+```
+
+Click on `"Edit inbound rules"`.
+
+```{figure} images/lab2-sg3.png
+---
+align: center
+---
+Change security groups
+```
+
+Click on `"Add rule"`.
+
+```{figure} images/lab2-sg4.png
+---
+align: center
+---
+Change security groups
+```
+
+Create the required inbound rule as depicted below and thenclick on the `"Save rules"` button.
+
+```{figure} images/lab2-sg5.png
+---
+align: center
+---
+New inbound rule: allow port 80
+```
+
+Now relaunch the **curl** command from the **_BU1 Frontend_** instance towards the private IP of the **_BU2 Mobile App_**.
+
+Curl command will work this time.
+```{figure} images/lab2-last.png
+---
+align: center
+---
+Curl is ok!
 ```

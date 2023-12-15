@@ -38,7 +38,9 @@ align: center
 Check the private RTB
 ```
 
-You will notice that any private RTBs has its own **CIDR** pointing to local and the three **RFC1918** routes. With this scenario, the EC2 instance can't reach the *Internet Public Zone*, due to the absence of the <ins>default route</ins>.
+You will notice that any private RTBs has its own **CIDR** pointing to local and the three **RFC1918** routes pointing to the Aviatrix Spoke Gateway. 
+
+With this scenario, the EC2 instance can't reach the *Internet Public Zone*, due to the absence of the <ins>default route</ins>.
 
 ## 3. SSH to the EC2 instance in the Private Subnet
 
@@ -54,7 +56,7 @@ SSH to aws-us-east-2-spoke1-test1
 - Then from the **_aws-us-east-2-spoke1-test1_** instance SSH to the **_aws-us-east-2-spoke1-test2_** instance.
 
 ```{note}
-The **_aws-us-east-2-spoke1-test2_** instance resides within a private subnet!
+The **_aws-us-east-2-spoke1-test2_** instance resides within a private subnet! 
 ```
 
 ```{tip}
@@ -93,7 +95,9 @@ Choose the correct VPC
 
 ### 4.2 Inspect the Private RTB
 
-- As soon as the Egress Control is enabled, a `Default Route` is injected inside solely the Private RTBs (Public RTBs are not impacted, whereby, they will continue to have the defaulte route pointing towards the Native CSP IGW). Verify its presence in any Private RTBs inside the **_aws-us-east-2-spoke1_** VPC.
+- As soon as the Egress Control is enabled, a `Default Route` is injected inside solely the Private RTBs (Public RTBs are not impacted, whereby, they will continue to have the defaulte route pointing towards the Native CSP IGW). 
+- 
+  Verify its presence in any Private RTBs inside the **_aws-us-east-2-spoke1_** VPC.
 
 ```{tip}
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs fron the Route table field.
@@ -162,7 +166,9 @@ align: center
 Activate DCF
 ```
 
-After having enabled the DCF, the `Greendfield-Rule` gets generated automatically. This rule essentially allows all kind of traffic.
+After having enabled the DCF, the `Greendfield-Rule` gets generated automatically. 
+
+This rule essentially allows all kind of traffic.
 
 ```{figure} images/lab6-greenfield.png
 ---
@@ -171,35 +177,48 @@ align: center
 Greenfield-Rule
 ```
 
-- Apply the `"Any-Web"` **Predefined** Web Group and `"Logging"` to the Greenfield-Rule, in order to activate the Observabiliy for the Egress traffic, likewise the `"Monitor"` feature section within the Distributed Cloud Firewall
+### 4.3 Create the Discovery-Rule
 
-```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the pencil icon for editing the **Greenfield-Rule**.
-```
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
-```{figure} images/lab6-pencil.png
+```{figure} images/lab6-newrule10.png
 ---
 align: center
 ---
-Pencil icon
+New Rule
 ```
 
-Then go to the `"WebGroups"` field and select the **Any-Web** WebGroup. Moreover, enable the `"Logging"` turning on the corresponding knob. Do not forget to click on **Save in Drafts**.
+Insert the following parameters
 
-```{figure} images/lab6-editgreen.png
+- **Name**: <span style='color:#33ECFF'>Discover-Rule</span>
+- **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#33ECFF'>Public Internet</span>
+- **WebGroups**: <span style='color:#33ECFF'>**Any-Web**</span>
+- **Protocol**: <span style='color:#33ECFF'>Any</span>
+- **Enforcement**: <span style='color:#33ECFF'>**Off**</span>
+- **Logging**: <span style='color:#33ECFF'>On</span>
+- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab6-new.png
 ---
 align: center
 ---
-Edit Greenfield-Rule
+Discover-Rule
 ```
 
-The modified Greenfield-Rule will remain in *Draft state* until you push the `"Commit"` button.
+Click on the **Commit** button and the rule previously created will work in watch/test mode due to the fact that the `enforcement` was turn off.
 
-```{figure} images/lab6-commit.png
+```{important}
+If the Enforcement slider is **On** (the default), the rule is enforced in the data plane. If the Enforcement slider is **Off**, the packets are only watched. This allows you to observe if the traffic impacted by this rule causes any inadvertent issues (such as traffic being dropped).
+```
+
+```{figure} images/lab6-newrule11.png
 ---
 align: center
 ---
-Commit
+Discover-Rule
 ```
 
 - Launch again the following curl commands from the instance **_aws-us-east-2-spoke1-test2_**.
@@ -217,10 +236,6 @@ curl www.espn.com
 curl www.football.com
 ```
 
-```{warning}
-Bear in mind that **ICMP** protocol will be not allowed with the current DCF rule configuration!
-```
-
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and you will see a total of **4 logs**.
 
 ```{figure} images/lab6-monitorpermit.png
@@ -234,7 +249,7 @@ Go to **CoPilot > Security > Egress > Overview (default)**
 
 Now you have finally the egress observability with a full list of domains hit by the EC2 instance inside that private subnet.
 
-```{figure} images/lab6-overview.png
+```{figure} images/lab6-newrul12.png
 ---
 align: center
 ---
@@ -252,7 +267,7 @@ Monitor
 
 You will get a granular Layer 7 visibility that allows you to get a good understanding of how the egress traffic has been consumed and also allows you to help make decisions on how to potentially optimize that.
 
-## 5. Zero Trust Network Approach
+## 5. ZTNA - Zero Trust Network Architecture
 ### 5.1 Create a New WebGroup
 
 Let's move towards a posture where only the allowed egress domains are in place.
@@ -287,7 +302,7 @@ The purpose of this **WebGroup** is to authorize traffic only towards both the D
 ```
 
 ## 5.2 New DCF Rule 
-## 5.2.1 Create a new rule
+### 5.2.1 Create a new rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
@@ -314,8 +329,8 @@ New Rule
 ```
 
 ```{important}
-- **Anywhere (0.0.0.0/0)** = 3x RFC1918's routes + Default Route (IGW)
-- **Publlic Internet** = Default Route (IGW)
+- **Anywhere (0.0.0.0/0)** = Default Route 
+- **Publlic Internet** = NON-RFC1918 routes
 ```
 
 Before committing, click once again on the `"+ Rule"` button.
@@ -356,6 +371,13 @@ Commit
 ```
 
 Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east-2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
+
+```{figure} images/lab6-newview.png
+---
+align: center
+---
+Commit
+```
 
 ### 5.2.2 Test the new rule
 
@@ -429,8 +451,11 @@ Commit
 
 ### 5.3.2 Prepare the simulator
 
-- SSH to the **_aws-us-east-2-spoke1-test2_** instance and launch the following commands.
-- You will be asked to type again the student password!
+- From the **_aws-us-east-2-spoke1-test2_** instance, launch the following commands.
+
+```{note}
+You will be asked to type again the student password!
+```
 
 ```bash
 sudo su -
@@ -446,7 +471,7 @@ align: center
 Commands issued
 ```
 
-The last command will show up a **_simulator_** from whom you will be able to launch an attack for testing the `"Suricata IDS"`
+The last command will show up a **_simulator_** from whom you will be able to launch an attack for testing the `"Suricata IDS"`.
 
 ```{figure} images/lab6-suricata.png
 ---

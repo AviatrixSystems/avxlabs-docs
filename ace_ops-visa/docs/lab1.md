@@ -57,10 +57,6 @@ These are very aggressive settings. In a Production environment, you should NOT 
 Refer **always** to your personal POD for the IP addresses. The IP addresses visible on the subsequent screenshots are just examples taken from a different POD, used for creating the lab guides!
 ```
 
-- Verify connectivity between clients **within** the same BU:
-    - SSH to the **BU1 Frontend** in AWS.
-    - From BU1 Frontend ping **BU1 Analytics** in GCP.
-
 There are **two** methods for SSH to any instances inside the multicloud infrastructure of this lab:
 
 1. Using an <span style='color:orange'>**SSH client**</span> from your laptop (<ins>recommended method!</ins>).
@@ -79,7 +75,7 @@ align: center
 DNS name
 ```
 
-1. Using the <span style='color:#00FFFF'>**Apache Jumpbox**</span> from the POD Portal, <ins>for example if you are within your corporate network and tipically an outbound restriction rule is blocking the port **22**</ins>.
+2. Using the <span style='color:#00FFFF'>**Apache Jumpbox**</span> from the POD Portal, <ins>for example if you are within your corporate network and tipically an outbound restriction rule is blocking the port **22**</ins>.
 
 ```{figure} images/lab1-jumpbox.png
 ---
@@ -109,38 +105,63 @@ Guacamole Menu
 ```{tip}
 The IP addresses can be easily retrieved using **3** different methods, as you like:
 1) From the **Properties** section of each Virtual Machine on the Topology.
-2) From the **Virtual Machines** Inventory (**CoPilot > Cloud Resources > Cloud Assets**).
-3) Alternatively, you can retrieve the **DNS symbolic name** from your personal POD portal.
+2) From the **Virtual Machines** Inventory.
+3) From your personal POD portal, where you can retrieve the **DNS symbolic names**.
 ```
-- Dynamic Topology
+
+- Dynamic Topology:
+
+Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
+
+```{caution}
+You can't use SSH with any Aviatrix Gateways!
+```
+
+```{figure} images/lab1-newpicture.png
+---
+align: center
+---
+EC2 Instance
+```
 
 ```{figure} images/lab1-ec2.png
 ---
-height: 400px
 align: center
 ---
 Instance Properties
 ```
 
-- Cloud Assets
+- Cloud Assets:
+
+Go to **CoPilot > Cloud resources > Cloud Assets > Virtual Machines** and from here you can search for any instances and retrieve their IP addresses!
 
 ```{figure} images/lab1-assets.png
 ---
 height: 400px
 align: center
 ---
-Public DNS Name
+Inventory
 ```
 
-- POD Portal - Symbolyc names
+- POD Portal:
+
+Use your personal POD in order to retrieve the symbolic names of any test instances.
+
+```{caution}
+- Use the symbolic name that contains the word `"public"` for logging to the instance from your laptop.
+- Use the symbolic name that contains the word `"private"` for the East-West traffic verification, once you have landed onto any test instances from your laptop. 
+```
 
 ```{figure} images/lab1-podred.png
 ---
-height: 400px
 align: center
 ---
-Public DNS Name
+DNS Names
 ```
+
+- Verify connectivity between clients **within** the same BU:
+    - SSH to the **BU1 Frontend** in AWS.
+    - From BU1 Frontend ping **BU1 Analytics** in GCP.
 
 Ping and SSH will be successful **within** the same network domain!
 

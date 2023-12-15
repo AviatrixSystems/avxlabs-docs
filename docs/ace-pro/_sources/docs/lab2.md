@@ -120,7 +120,7 @@ Dashboard with existing GWs
 ---
 align: center
 ---
-Dashboard with existing GWs
+Transit and Spoke clusters
 ```
 
 - **2x** <span style='color:orange'>Spoke GW Clusters</span>
@@ -146,7 +146,7 @@ align: center
 Transit GWs Clusters
 ```
 
-Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended a `"-hagw"`; this is imposed by the **_"aviatrix_transit_gateway"_** Terraform resource.
+Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended a `"-hagw"`; this is imposed by the **_"aviatrix_transit_gateway"_** `Terraform` resource.
 
 ```{note}
 You can deploy up to maximum **two** Transit Gateways per each Transit VPC/VNet/VCN.
@@ -270,7 +270,7 @@ align: center
 Ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"`.
 
 ```{note}
-Only one Spoke Gateway will be deployed in VPC aws-us-east2-spoke1.
+Only one Spoke Gateway will be deployed in VPC **aws-us-east2-spoke1**.
 ```
 
 - **Name:** <span style='color:#33ECFF'>aws-us-east-2-spoke1</span>
@@ -299,7 +299,7 @@ While the gateway is being created, you may proceed to the next section.
 Repeat the previous steps for Azure, click on the button `"+ Spoke Gateway"` and ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"`.
 
 ```{note}
-Only one Spoke Gateway will be deployed in VNet azure-us-wes-spoke1.
+Only one Spoke Gateway will be deployed in VNet **azure-west-us-spoke1**.
 ```
 
 - **Name:** <span style='color:#33ECFF'>azure-west-us-spoke1</span>
@@ -393,20 +393,20 @@ Overview of the new topology state
 
 ## 4.3. Explore the Cloud Fabric
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**.
+Go to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on `"Collapse all VPC/VNets"` button on the bottom right-hand side, as depicted below.
+
+```{figure} images/lab2-collapse.png
+---
+align: center
+---
+Collapse button
+```
 
 ```{figure} images/lab2-topologyoverview.png
 ---
 align: center
 ---
 VPC circles
-```
-
-```{figure} images/lab2-expand.png
----
-align: center
----
-Expand all the VPCs
 ```
 
 ```{important}
@@ -432,7 +432,7 @@ align: center
 Attachment for AWS
 ```
 
-Select the Transit Gateway **_aws-us-east-2-transit_** from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
+Select the Transit Gateway **_aws-us-east-<span style='color:#33ECFF'>2</span>-transit_** (do not select the **_aws-us-east-1-transit_**) from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
 
 ```{figure} images/lab2-editspokeinaws.png
 ---
@@ -541,12 +541,29 @@ align: center
 Expanded Topology
 ```
 
+Click on the `"Legend"` button to figure out what those icons represent.
+
+```{important}
+Dashed line = Default IPSec tunnel
+
+Solid line = HPE IPSec tunnel
+```
+
+```{figure} images/lab2-hpe.png
+---
+align: center
+---
+Expanded Topology
+```
+
 ## 4.6. Multicloud Transit Peerings
 
 In this section you are going to establish the peerings among the Aviatrix Transit Gateways.
 
-```{tip}
-Transit peering is bidirectional. You do not need to configure peering in the opposite direction.
+```{warning}
+Transit peering is **_bidirectional_**. 
+
+You do not need to configure peering in the opposite direction.
 ```
 
 Go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
@@ -699,15 +716,57 @@ Route DB
 
 Verify each test instance can ping each other.
 
-Open three terminal windows to SSH to the public IPs of the 3 spoke test instances/VMs in each cloud.
+Open three terminal windows to SSH to the **public IPs** of the 3 spoke **test instances/VMs** in each cloud.
 
 Then ping the **private** IPs of each other to test the Multi-Cloud connectivity. 
 
-<ins>Refer to your pod portal for the private IPs or retrieve the private IPs from the topology</ins>.
+<ins>Refer to your pod portal for the public/private IPs or retrieve them from the topology</ins>.
 
-- SSH into aws-us-**east-2**-spoke1-test1 (ssh student@public_ip)
-- SSH into azure-west-us-**spoke1**-test1 (ssh student@public_ip)
-- SSH into gcp-us-central1-spoke1-test1 (ssh student@public_ip)
+```{important}
+Refresh the web page, to see the changes reflected into your CoPilot's topology!
+```
+
+```{note}
+**`POD PORTAL`**:
+
+Both public and private IP addresses of the **test** instances are retrievable from your personal portal.
+```{figure} images/lab2-newpic.png
+---
+align: center
+---
+Route DB
+```
+
+```{note}
+**`TOPOLOGY`**:
+
+From the Topology expand the **_aws-us-east-2-spoke1_** VPC and select the instance with the EC2 logo.
+
+```{figure} images/lab2-newpic3.png
+---
+align: center
+---
+Test instance Properties
+
+```
+
+```{note}
+Do not select the instance with the Aviatrix logo!
+
+<ins>You can't ssh to any Aviatrix GW !</ins>
+
+
+```{figure} images/lab2-newpic2.png
+---
+align: center
+---
+Route DB
+```
+
+
+- SSH into aws-us-**east-2**-spoke1-<span style='color:red'>test1</span> (ssh student@public_ip)
+- SSH into azure-west-us-**spoke1**-<span style='color:red'>test1</span> (ssh student@public_ip)
+- SSH into gcp-us-central1-spoke1-<span style='color:red'>test1</span> (ssh student@public_ip)
 
 Run ping from the AWS instance to verify connectivity to Azure and GCP:
 
@@ -735,7 +794,3 @@ align: center
 ---
 Ping from GCP
 ```
-
-## 6. Bonus Question
-
-- What resources are created in the respective clouds when deploying the transit gateway?

@@ -8,6 +8,10 @@ The purpose of creating these VPCs/VNets is to familiarise yourself with the use
 
 Refer to your POD assignment for CoPilot login information, as depicted below. Click on the `URL` of the CoPilot and log in using the credentials assigned to your POD.
 
+```{important}
+Always refer to your personal POD portal for both passwords and additional information. The screenshots refer to a different POD and they are shown as examples!
+```
+
 ```{figure} images/lab1-portal.png
 ---
 align: center
@@ -78,7 +82,18 @@ Notification
 
 Log into the <a href="https://portal.azure.com/#home" target="_blank">Azure portal</a>. Refer to your pod info for login information.
 
-Once you are logged in, navigate to `Virtual Networks`.
+```{figure} images/lab1-newpic.png
+---
+align: center
+---
+Azure credentials
+```
+
+```{important}
+If you are already signed in with another account, kindly sign out!
+```
+
+Once you are signed in, navigate to `Virtual Networks`.
 
 ```{figure} images/lab1-virtualnetwork.png
 ---
@@ -87,22 +102,22 @@ align: center
 Azure Console
 ```
 
-You will see all the VNets for all the available Subscriptions.
+Click on the `"Subscription"` field, then click on the `"All"` button and then click on **Apply**.
 
-```{figure} images/lab1-virtualnetwork2.png
+```{figure} images/lab1-newpic2.png
 ---
 align: center
 ---
 Azure Console
 ```
 
-Be sure to filter your `Subscription` <ins>by your pod number</ins>, for example, for Pod 143 filter by `csp_azure_shared_ace_labs_143`.
+Now use the Filter field beside the Subscription field and be sure to filter your `Subscription`, <ins>by your pod number</ins>, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
 
 ```{figure} images/lab1-virtualnetwork3.png
 ---
 align: center
 ---
-Azure Console
+VNets
 ```
 
 Once you get visibility of the Subscription associated to your POD number, you will be able to find the VNets you just created. 
@@ -116,7 +131,14 @@ align: center
 Azure subnets
 ```
 
-From the Portal, navigate to **Home > Route tables**. Be sure once again to filter your `Subscription` <ins>by your pod number</ins>, for example, for Pod 143 filter by `csp_azure_shared_ace_labs_143`.
+From the Portal, navigate to **Home > Route tables**. Be sure once again to filter your `Subscription`, <ins>by your pod number</ins>, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
+
+```{figure} images/lab1-newpic3.png
+---
+align: center
+---
+Home
+```
 
 Explore the route tables.
 
@@ -131,7 +153,18 @@ Route tables
 
 ### 3.1. Create AWS VPC
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and then click on the button `“+ VPC/VNET”`.
+Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
+
+Verify once again whether the CIDR range `10.0.22.0/24` is overlapping or not, as shown below.
+
+```{figure} images/lab1-newpic5.png
+---
+align: center
+---
+Searching for a subnet conflict
+```
+
+This time let’s create an Application/Spoke VPC. Click on the button `“+ VPC/VNET”`.
 
 ```{figure} images/lab1-vpc1.png
 ---
@@ -191,9 +224,23 @@ AWS console
 
 Change the region to `Oregon (us-west-2)` in the top-right corner and invoke the VPC service. You can see the `VPC` created with the CIDR block.
 
+```{figure} images/lab1-newpic6.png
+---
+align: center
+---
+Oregon region
+```
+
 From there, navigate to `Subnets`.
 
-As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet per Availability Zone. Since us-west-2 has 4 AZs, therefore eight subnets are created.
+As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet per Availability Zone. Since us-west-2 has 4 AZs, therefore **eight** subnets are created.
+
+```{figure} images/lab1-newpic7.png
+---
+align: center
+---
+Oregon region
+```
 
 From there, navigate to `Route Tables`.
 
@@ -203,7 +250,18 @@ Here, also, you can see the eight route tables that the Controller created. They
 
 ### 4.1. Create GCP VPC
 
-Go to **CoPilot > Cloud Resources > Cloud Assets >** Click on the button `“+ VPC/VNET”`.
+Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
+
+Before starting the deployment of the VPC in GCP, verify once again whether the CIDR range `172.16.22.0/24` is overlapping or not, as shown below.
+
+```{figure} images/lab1-newpic8.png
+---
+align: center
+---
+Verification
+```
+
+This time let’s create an Application/Spoke VPC. Click on the button `“+ VPC/VNET”`.
 
 ```{figure} images/lab1-gcp1.png
 ---
@@ -234,7 +292,7 @@ align: center
 VPC template
 ```
 
-Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately(alternatively, refresh the web page for triggering the change).
+Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).
 
 You can filter by CIDR `172.16.22.0/24`.
 
@@ -243,6 +301,15 @@ You can filter by CIDR `172.16.22.0/24`.
 align: center
 ---
 Verification
+```
+
+```{caution}
+Kindly note that GCP console access is not provided!
+```{figure} images/lab1-newpic9.png
+---
+align: center
+---
+Only AWS and Azure
 ```
 
 ```{note}
