@@ -193,7 +193,7 @@ align: center
 AWS 
 ```
 
-Change the region to `Ireland (eu-west-1)` in the top-right corner and invoke the EC2 service, then click on the
+Change the region to `Ireland (eu-west-1)` in the top-right corner and invoke the EC2 service, then click on **Instances (running)**.
 
 ```{figure} images/lab2-euwest.png
 ---
@@ -201,8 +201,6 @@ align: center
 ---
 AWS 
 ```
-
-Click on **Instances (running)**.
 
 ```{figure} images/lab2-instance.png
 ---
@@ -220,7 +218,7 @@ align: center
 Change security groups
 ```
 
-Explore the inbound rules and you will find out the absence on a rule that would permit the incoming traffic on port **tcp/80**.
+Explore the inbound rules and you will find out the absence of a rule that would permit the incoming traffic on port **tcp/80**.
 
 ```{figure} images/lab2-sg2.png
 ---
@@ -247,7 +245,7 @@ align: center
 Change security groups
 ```
 
-Create the required inbound rule as depicted below and thenclick on the `"Save rules"` button.
+Create the required inbound rule as depicted below and then click on the `"Save rules"` button.
 
 ```{figure} images/lab2-sg5.png
 ---

@@ -270,7 +270,7 @@ Inspection Policy accomplished
 
 ## 5. Verification
 
-Verify the traffic flows within Azure and Azure to GCP as shown below by following steps 5.1 - 5.2:
+Verify the traffic flows within Azure and from Azure to GCP, as shown below, by following steps 5.1 - 5.2:
 
 ```{figure} images/lab7-topology2.png
 ---
@@ -286,7 +286,7 @@ Before we can verify connectivity, we need to associate **_azure-west-us-spoke2_
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains**
 
-Click the *pencil icon* to edit the Green network domain.
+Click on the *pencil icon* to edit the **Green** network domain.
 
 ```{figure} images/lab7-editnd.png
 ---
@@ -368,7 +368,7 @@ Final Commit
 
 ### 5.1.1 Luanch connectivity test
 
-**SSH** into **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-test1_** and from there, ping **_azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1_** on its private IP.
+**SSH** into **_azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1_** and from there, ping **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-test1_** on its private IP.
 
 ```{figure} images/lab7-ping.png
 ---
@@ -394,7 +394,7 @@ align: center
 Monitor on the PaloAlto
 ```
 
-Traffic is passing through firewall because **_azure-west-us-spoke1_** and **_azure-west-us-spoke2_** both are in the **Inspection Policy**.
+Traffic is passing through firewall because **_azure-west-us-spoke1_** and **_azure-west-us-spoke2_** both are inside the **Inspection Policy**.
 
 ```{tip}
 Click on the **refresh** button to see the logs almost in continuous stream.
@@ -410,7 +410,7 @@ Ping GCP
 
 ## 5.2. Azure to GCP
 
-While on **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-test1_**, ping **_gcp-us-central1-spoke1-test1_**.
+While on **_azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1_**, ping **_gcp-us-central1-spoke1-test1_**.
 
 ```{figure} images/lab7-pinggcp.png
 ---

@@ -111,7 +111,7 @@ align: center
 Azure Console
 ```
 
-Now use the Filter field beside the Subscription field and be sure to filter your `Subscription`, <ins>by your pod number</ins>, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
+Now use the **Filter** field beside the **Subscription** field and be sure to filter out based on your `Subscription`, <ins>by your pod number</ins>, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
 
 ```{figure} images/lab1-virtualnetwork3.png
 ---
@@ -131,7 +131,7 @@ align: center
 Azure subnets
 ```
 
-From the Portal, navigate to **Home > Route tables**. Be sure once again to filter your `Subscription`, <ins>by your pod number</ins>, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
+From the Portal, navigate to **Home > Route tables**. Be sure once again to filter out based on the `Subscription` assigned to your POD, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
 
 ```{figure} images/lab1-newpic3.png
 ---
