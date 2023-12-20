@@ -50,10 +50,17 @@ Use the following settings on the `"Add External Connection"` window:
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#33ECFF'>192.168.100.0/24</span>
 - **Authetication Method**: <span style='color:#33ECFF'>PSK</span>
 - **Pre-Shared Key**: <span style='color:#33ECFF'>Aviatrix123#</span>
-- **Remote Gateway IP**: <span style='color:#33ECFF'>[**Refer to your Pod assignment for the CSR Public IP**]</span>
+- **Remote Gateway IP**: <span style='color:#33ECFF'>[**Refer to your Pod assignment for the CSR Public IP - Lab8 section**]</span>
 - **Local Gateway Instance**: <span style='color:#33ECFF'>gcp-us-central1-spoke1</span>
 
 Then click on **Save**.
+
+```{figure} images/lab8-newone.png
+---
+align: center
+---
+Remote Public IP of the Cisco CSR
+```
 
 ```{figure} images/lab8-s2ctemplate.png
 ---
@@ -87,7 +94,7 @@ align: center
 CFG file
 ```
 
-Insert the following value inside the `"Download Configuration"` window:
+Select the following parameters inside the `"Download Configuration"` window:
 
 - **Vendor**: <span style='color:#33ECFF'>Cisco</span>
 - **Platform**: <span style='color:#33ECFF'>ISR,ASR, or CSR</span>
@@ -259,7 +266,7 @@ Active Sessions
 ```
 
 ```{important}
-You will have to relaunch the ping command once again from the CSR router and click on **Run** on the CoPilot for capturing the Active Sessions!
+You will have to relaunch the ping command once again from the CSR router and click on **Run** on the CoPilot for capturing the `Active Sessions`!
 ```
 
 After completing this lab, this is what the overall lab topology would look like:
