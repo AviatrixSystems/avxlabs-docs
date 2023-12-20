@@ -345,7 +345,14 @@ Please keep **both** the ping sessions running recursively on your SSH client! D
 
 To demonstrate ActiveMesh capability, you will shut down temporarily one of the spoke gateways and notice traffic converging to the other gateway.
 
-Login to <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 100</ins>):
+Login to **AWS console**</a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 55</ins>).
+
+```{figure} images/lab5-newone.png
+---
+align: center
+---
+AWS URL and credentials
+```
 
 ```{figure} images/lab5-awsconsole.png
 ---
@@ -401,7 +408,7 @@ align: center
 Temporary disruption with FAST keepalive!
 ```
 
-**Bonus Step**: `Restart` the Gateway from the AWS console and reverify the traffic flow.
+**Bonus Step**: `Restart` the Gateway from the AWS console and reverify the traffic flow. This time you will not notice any disruption: the traffic flow fill switch back to the aviatrix-aws-us-east-1-spoke1 GW.
 
 ```{figure} images/lab5-restart.png
 ---
@@ -442,7 +449,7 @@ FlightPath config
 This will provide an AppIQ report of how **_aws-us-east-1-spoke1-test1_** is connected with **_aws-us-east-2-spoke1-test1_** and display the path along with end-to-end latency.
 
 ```{note}
-You might see some links still depicted in **red**, after having restarted the Spoke Gateway. Be patient and relaunch the report and you will get the same outcome as depicted below.
+You might see some links still depicted in <span style='color:red'>**red**</span>, after having restarted the Spoke Gateway. Be patient and relaunch the report and you will get the same outcome as depicted below.
 ```
 
 ```{figure} images/lab5-flight2.png

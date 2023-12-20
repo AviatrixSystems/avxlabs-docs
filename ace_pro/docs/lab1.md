@@ -9,7 +9,7 @@ The purpose of creating these VPCs/VNets is to familiarise yourself with the use
 Refer to your POD assignment for CoPilot login information, as depicted below. Click on the `URL` of the CoPilot and log in using the credentials assigned to your POD.
 
 ```{important}
-Always refer to your personal POD portal for both passwords and additional information. The screenshots refer to a different POD and they are shown as examples!
+Always refer to your personal POD portal for both passwords and additional information. Please bear in mind that the screenshots refer to a different POD and they are shown just as examples!
 ```
 
 ```{figure} images/lab1-portal.png
@@ -93,7 +93,14 @@ Azure credentials
 If you are already signed in with another account, kindly sign out!
 ```
 
-Once you are signed in, navigate to `Virtual Networks`.
+```{figure} images/lab1-signin.png
+---
+align: center
+---
+Signing in
+```
+
+Once you are signed in, navigate to `Virtual Networks`, from the navigation panel on the left-hand side.
 
 ```{figure} images/lab1-virtualnetwork.png
 ---
@@ -102,7 +109,14 @@ align: center
 Azure Console
 ```
 
-Click on the `"Subscription"` field, then click on the `"All"` button and then click on **Apply**.
+Click on the `"Subscription equals..."` field, then click on the `"All"` button and then click on **Apply**.
+
+```{figure} images/lab1-subscriptionequal.png
+---
+align: center
+---
+Subscription equals...
+```
 
 ```{figure} images/lab1-newpic2.png
 ---
@@ -111,7 +125,7 @@ align: center
 Azure Console
 ```
 
-Now use the Filter field beside the Subscription field and be sure to filter your `Subscription`, <ins>by your pod number</ins>, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
+Now use the Filter field beside the "Subscription equals" field and be sure to filter your `Subscription`, <ins>by your pod number</ins>, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
 
 ```{figure} images/lab1-virtualnetwork3.png
 ---
@@ -177,7 +191,7 @@ Insert the following values:
 
  - **Name**: <span style='color:#33ECFF'>aws-us-west2-spoke1</span>
  - **Cloud**: <span style='color:#33ECFF'>AWS</span>
- - **Account**: <span style='color:#33ECFF'>aws-account [use the drop-down window - DO NOT select the aws-admin]</span>
+ - **Account**: <span style='color:#33ECFF'>aws-account [use the drop-down window - **DO NOT** select the aws-admin]</span>
  - **Region**: <span style='color:#33ECFF'>us-west-2 (Oregon) [use the drop-down window]</span>
  - **VPC CIDR**: <span style='color:#33ECFF'>10.0.22.0/24</span>
  - **VPC Function**: <span style='color:#33ECFF'>Default [use the drop-down window]</span>
@@ -301,6 +315,10 @@ You can filter by CIDR `172.16.22.0/24`.
 align: center
 ---
 Verification
+```
+
+```{tip}
+Expand the GCP VPC if you want to see the subnet _"gcp-us-west2-spoke1-sub1"_
 ```
 
 ```{caution}

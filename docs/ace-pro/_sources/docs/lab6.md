@@ -405,7 +405,7 @@ align: center
 Curl commands
 ```
 
-You will almost instanteously notice that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and therefore dropped.
+You will almost notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and therefore dropped.
 
 ```{figure} images/lab6-liveview.png
 ---
@@ -512,7 +512,7 @@ align: center
 Commit
 ```
 
-From the EC2 instance **_aws-us-east-2-spoke1-test2_**, type **5** for launching a malicious attack, specifically the attack will carry out an attempted connection towards a TOR server.
+From the EC2 instance **_aws-us-east-2-spoke1-test2_**, type **5** and click enter for launching a malicious attack, specifically the attack will try to establish a connection towards a TOR server.
 
 ```{figure} images/lab6-5.png
 ---
