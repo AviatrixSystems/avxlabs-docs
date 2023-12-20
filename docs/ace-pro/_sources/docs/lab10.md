@@ -123,12 +123,26 @@ At this point, you have only created logical containers that do not affect the e
 
 Let's verify that everything has been kept unchanged! Bear in mind that there is the `Greenfield-Rule` at the very top of your DCF rules list, whereby all kind of traffic will be permitted.
 
+```{figure} images/lab10-newone2.png
+---
+align: center
+---
+Greenfield-Rule in action
+```
+
 ### 3.3. Connectivity verification (ICMP)
 
-Open a terminal window and SSH to the public IP of the instance **aws-us-east2-spoke1-test1**, and from there ping the private IP of each other instances to verify that the connectivity within AWS, and from AWS to GCP and Azure has not been modified.
+Open a terminal window and SSH to the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity has not been modified.
 
 ```{note}
 Refer to your POD for the private IPs.
+```
+
+```{figure} images/lab10-newone.png
+---
+align: center
+---
+Ping
 ```
 
 ```{figure} images/lab10-ping.png
@@ -138,9 +152,16 @@ align: center
 Ping
 ```
 
+```{figure} images/lab10-newone3.png
+---
+align: center
+---
+Ping
+```
+
 ### 3.4.  Connectivity verification (SSH)
 
-Verify also from the instance **aws-us-east2-spoke1-test1** that you can SSH to the private instance in AWS, to the instance in GCP and likewise to the other two instances in Azure.
+Verify also from the instance **aws-us-east-2-spoke1-test1** that you can SSH to the private instance in AWS, to the instance in GCP and likewise to the other two instances in Azure.
 
 ```{note}
 Refer to your POD for the private IPs.
@@ -164,28 +185,44 @@ SSH to GCP
 ---
 align: center
 ---
-SSH to Azure
+SSH to Azure Spoke1
 ```
 
 ```{figure} images/lab10-sshtoazure2.png
 ---
 align: center
 ---
-SSH to Azure
+SSH to Azure Spoke2
+```
+
+```{figure} images/lab10-sshnew.png
+---
+align: center
+---
+SSH to AWS us-east-1-spoke1-test1
+```
+
+```{figure} images/lab10-sshnew2.png
+---
+align: center
+---
+SSH to AWS us-east-1-spoke1-test2
 ```
 
 The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.
 
 ## 4. Rules Creation
-### 4.1. Build a Zero Trust Cloud Network Architecture
+### 4.1. Build a Zero Trust  Network Architecture
 
 First and foremost, let's move the `Explicit-Deny-Rule` at the very top of the list of your DCF rules.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the `Explicit-Deny-Rule` and choose *`"Move Rule"`* at the very Top. Then click on **Save in Draft**.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the `Explicit-Deny-Rule` and choose *`"Move Rule"`* at the very Top. 
+
+Then click on **Save in Draft**.
 ```
 
-```{figure} images/lab10-explicit.png
+```{figure} images/lab10-newedit.png
 ---
 align: center
 ---
@@ -240,7 +277,7 @@ At this point, there would be one uncommitted rule at the very top, as depicted 
 ---
 align: center
 ---
-Current lidt of rules
+Current list of rules
 ```
 
 ### 4.2. Create an intra-rule that allows ICMP inside bu2
@@ -297,24 +334,24 @@ New Topology
 
 ### 5.1. Verify SSH traffic from your laptop to bu1
 
-SSH to the Public IP of the instance **aws-us-east2-spoke1-test1**.
+SSH to the Public IP of the instance **aws-us-east-2-spoke1-test1**.
 
 ```{figure} images/lab10-sshpod.png
 ---
 align: center
 ---
-SSH
+SSH from your laptop
 ```
 
 ### 5.2. Verify ICMP within bu1 and from bu1 towards bu2
 
-Ping the following instances from **aws-us-east2-spoke1-test1**:
+Ping the following instances from **aws-us-east-2-spoke1-test1**:
 
 - **gcp-us-central1-spoke1-test1** in GCP
-- **azure-us-west-spoke1-test1** in Azure
-- **azure-us-west-spoke2-test1** in Azure
+- **azure-west-us-spoke1-test1** in Azure
+- **azure-west-us-spoke2-test1** in Azure
 
-According to the rules created before, only the ping towards the **azure-us-west-spoke1-test1** will work, because this instance belongs to the same Smart Group bu1 as the instance from where you will be launching ICMP packets.
+According to the rules created before, only the ping towards the **azure-us-west-spoke1-test1** will work, because this instance belongs to the same Smart Group bu1 as the instance from where you generated ICMP traffic.
 
 ```{figure} images/lab10-pingcheck.png
 ---
@@ -338,10 +375,10 @@ align: center
 Monitor
 ```
 
-Now, let's try to ping the instance **aws-us-east2-spoke1-test2** from **aws-us-east2-spoke1-test1**. 
+Now, let's try to ping the instance **aws-us-east-2-spoke1-test2** from **aws-us-east-2-spoke1-test1**. 
 
 ```{warning}
-The instance **aws-us-east2-spoke1-test1** is in the same VPC. Although these two instances have been deployed in two distinct and separate Smart Groups, the communication will occur until you don't enable the `"intra-vpc separation"`.
+The instance **aws-us-east-2-spoke1-test1** is in the same VPC. Although these two instances have been deployed in two distinct and separate Smart Groups, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka _intra-vpc separation_).
 ```
 
 ```{figure} images/lab10-pingtotest2.png
@@ -351,7 +388,7 @@ align: center
 Ping
 ```
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button inside the `"Security Group (SG) Orchestration"` field.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button, inside the `"Security Group (SG) Orchestration"` field.
 
 ```{figure} images/lab10-orchestration.png
 ---
@@ -360,7 +397,7 @@ align: center
 SG Orchestration
 ```
 
-Enable the **_SG orchestration_** on the **_aws-us-east2-spoke1_** VPC, putting a tick on the checkbox `"I understand the network impact"`, and then click on **Save**.
+Enable the **_SG orchestration_** feature on the **_aws-us-east-2-spoke1_** VPC, flag the checkbox  `"I understand the network impact of the changes"` and then click on **Save**.
 
 ```{figure} images/lab10-orchestration2.png
 ---
@@ -369,7 +406,7 @@ align: center
 Manage SG Orchestration
 ```
 
-Relaunch the ping from **aws-us-east2-spoke1-test1** towards **aws-us-east2-spoke1-test1**. 
+Relaunch the ping from **aws-us-east-2-spoke1-<span style='color:#33ECFF'>test1</span>** towards **aws-us-east-2-spoke1-<span style='color:red'>test2</span>**. 
 
 ```{figure} images/lab10-pingtotest2fail.png
 ---
@@ -379,12 +416,12 @@ Ping fails
 ```
 
 ```{important}
-This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2, thanks to the Security Group Orchestration carried out by the Aviatrix Controller.
+This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2, thanks to the Security Group Orchestration carried out by the **Aviatrix Controller**.
 ```
 
 ### 5.3. Verify SSH within bu1
 
-SSH to the Private IP of the instance **_azure-us-west-spoke1-test1_** in Azure. Despite the fact that the instance is within the same Smart Group "bu1", the SSH will fail due to the absence of a rule that would permit SSH traffic within the Smart Group.
+SSH to the Private IP of the instance **_azure-west-us-spoke1-test1_** in Azure. Despite the fact that the instance is within the same Smart Group "bu1", the SSH will fail due to the absence of a rule that would permit SSH traffic within the Smart Group.
 
 ```{figure} images/lab10-sshfail.png
 ---
@@ -434,7 +471,7 @@ align: center
 Commit
 ```
 
-- Try once again to SSH to the Private IP of the instance **_azure-us-west-spoke1-test1_** in Azure in BU1.
+- Try once again to SSH to the Private IP of the instance **_azure-west-us-spoke1-<span style='color:red'>test1</span>_** in Azure in BU1.
 
 This time the connection will be established, thanks to the new intra-rule.
 
@@ -483,12 +520,12 @@ SSH to gcp-us-central1-spoke1-test1
 
 Ping the following instances:
 
-- **aws-us-east2-spoke1-test1** in AWS
-- **aws-us-east2-spoke1-test2** in AWS
-- **azure-us-west-spoke1-test1** in Azure
-- **azure-us-west-spoke2-test1** in Azure
+- **aws-us-east-2-spoke1-test1** in AWS
+- **aws-us-east-2-spoke1-test2** in AWS
+- **azure-west-us-spoke1-test1** in Azure
+- **azure-west-us-spoke2-test1** in Azure
 
-According to the rules created before, only the ping towards the **azure-us-west-spoke2-test1** and **aws-us-east2-spoke1-test2** will work, because these two instance belongs to the same Smart Group bu2 as the instance from where you will be launching the ICMP packets.
+According to the rules created before, only the ping towards the **azure-west-us-spoke2-test1** and **aws-us-east-2-spoke1-test2** will work, because these two instance belongs to the same Smart Group **bu2** as the instance from where you executed the ICMP traffic.
 
 ```{figure} images/lab10-pingtestgcp.png
 ---
@@ -552,13 +589,13 @@ align: center
 Commit
 ```
 
-SSH to the Public IP of the instance **_azure-us-west-spoke2-test1_**.
+SSH to the Public IP of the instance **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-<span style='color:#33ECFF'>test1</span>_**.
 
 Ping the following instances:
-- **aws-us-east2-spoke1-test1** in AWS
-- **aws-us-east2-spoke1-test2** in AWS
+- **aws-us-east-2-spoke1-test1** in AWS
+- **aws-us-east-2-spoke1-test2** in AWS
 - **gcp-us-central1-spoke1-test1** in GCP
-- **azure-us-west-spoke1-test1** in Azure
+- **azure-west-us-spoke1-test1** in Azure
 
 Thit time all pings will be successful, thanks to the inter-rule applied between bu2 and bu1.
 
@@ -622,11 +659,11 @@ align: center
 New Topology
 ```
 
-SSH to the Public IP of the instance **_azure-us-west-spoke2-test1_**.
+SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
 
 Ping the following instance:
 
-- **aws-us-east1-spoke1-test2** in AWS
+- **aws-us-east-1-spoke1-test2** in AWS
 
 ```{figure} images/lab10-pingfails10.png
 ---
@@ -635,15 +672,15 @@ align: center
 Ping
 ```
 
-The ping fails, therefore, let’s check the routing table of the Spoke Gateway **_azure-us-west-spoke2_**.
+The ping fails, therefore, let’s check the routing table of the Spoke Gateway **_azure-west-us-spoke2_**.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the relevant gateway **_azure-us-west-spoke2_**
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the gateway **_azure-west-us-spoke2_**
 
 ```{figure} images/lab10-spoke2azure.png
 ---
 align: center
 ---
-azure-us-west-spoke2
+azure-west-us-spoke2
 ```
 
 Then click on the `"Gateway Routes"` tab and check whether the destination route is present in the routing table or not.
@@ -656,7 +693,7 @@ Gateway Routes
 ```
 
 ```{note}
-The destination route is not inside the routing table, due to the fact that the Transit Gateway in AWS US-EAST-1 region has only one peering with the Transit Gateway in AWS US-EAST-2 region, therefore the Controller will install the routes that belong to US-EAST-1 only inside the routing tables of the Gateways in AWS US-EAST-2, excluding the rest of the Gateways of the MCNA. If you want to distribute the routes from AWS US-EAST-1 region in the whole MCNA, you have <ins>two possibilities</ins>:
+The destination route is **not** inside the routing table, due to the fact that the Transit Gateway in AWS US-EAST-1 region has only <ins>one peering</ins> with the Transit Gateway in AWS US-EAST-2 region, therefore the Controller will install the routes that belong to US-EAST-1 only inside the routing tables of the Gateways in AWS US-EAST-2, excluding the rest of the Gateways of the MCNA. If you want to distribute the routes from AWS US-EAST-1 region in the whole MCNA, you have <ins>two possibilities</ins>:
 ```
 
 - Enabling `"Full-Mesh"` on the Transit Gateways in **_aws-us-east1-transit_** VPC
@@ -667,13 +704,13 @@ The destination route is not inside the routing table, due to the fact that the 
 
 Let’s enable this time the MTT feature!
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east1-transit_**.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-1-transit_**.
 
 ```{figure} images/lab10-mtt.png
 ---
 align: center
 ---
-aws-us-east1-transit
+aws-us-east-1-transit
 ```
 
 Go to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
@@ -687,17 +724,17 @@ Settings
 
 Repeat the previous action for the remaning Transit Gateways:
 
-- **aws-us-east2-transit**: <span style='color:#33ECFF'>ASN **64513**</span>
+- **aws-us-east-2-transit**: <span style='color:#33ECFF'>ASN **64513**</span>
 - **gcp-us-central1-transit**: <span style='color:#33ECFF'>ASN **64514**</span>
-- **azure-us-west-transit**: <span style='color:#33ECFF'>ASN **64515**</span>
+- **azure-west-us-transit**: <span style='color:#33ECFF'>ASN **64515**</span>
 
-Go to C**oPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east2-transit_**.
+Go to C**oPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
 
 ```{figure} images/lab10-mtt3.png
 ---
 align: center
 ---
-aws-us-east2-transit
+aws-us-east-2-transit
 ```
 
 Go to `"Settings"` tab and expand the `"General"` section and activate the `"Multi-Tier Transit"`, turning on the corresponding knob. 
@@ -711,15 +748,15 @@ align: center
 Multi-Tier Transit
 ```
 
-Let’s verify once again the routing table of the Spoke Gateway in **_azure-us-west-spoke2_**.
+Let’s verify once again the routing table of the Spoke Gateway in **_azure-west-us-spoke2_**.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the relevant gateway **_azure-us-west-spoke2_**
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the relevant gateway **_azure-west-us-spoke2_**
 
 ```{figure} images/lab10-mtt5.png
 ---
 align: center
 ---
-azure-us-west-spoke2
+azure-west-us-spoke2
 ```
 
 This time if you click on the `"Gateway Routes"` tab, you will be able to see the destination route in **aws-us-east1-spoke1** VPC.
@@ -731,11 +768,11 @@ align: center
 10.0.12.0/23
 ```
 
-- SSH to the Public IP of the instance **_azure-us-west-spoke2-test1_**.
+- SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
 
 Ping the following instance:
 
-- **aws-us-east1-spoke1-test2** in AWS
+- **aws-us-east-1-spoke1-test2** in AWS (refer to your personal POD portal for the private IP).
 
 ```{figure} images/lab10-mtt7.png
 ---
@@ -747,12 +784,12 @@ Ping
 Although this time there is a valid route to the destination, thanks to the **MTT** feature, the pings fails. 
 
 ```{warning}
-The reason is that the ec2-instance  **aws-us-east1-spoke1-test2** is not allocated to any Smart Groups yet!
+The reason is that the ec2-instance  **aws-us-east-1-spoke1-test2** is not allocated to any Smart Groups yet!
 ```
 
 ### 6.2 Smart Group “east1”
 
-Let’s create another Smart Group for the test instance **_aws-us-east1-spoke1-test2_** in US-EAST-1 region in AWS.
+Let’s create another Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in US-EAST-1 region in AWS.
 
 Go to **Copilot > SmartGroups** and click on  `"+ SmartGroup"` button.
 
@@ -778,7 +815,7 @@ Resource Selection
 
 The CoPilot shows that there is just one single instance that matches the condition:
 
-- **aws-us-east1-spoke1-test2** in AWS
+- **aws-us-east-1-spoke1-test2** in AWS
 
 Do not forget to click on **Save**.
 
@@ -826,7 +863,7 @@ Commit
 
 ### 6.4 Verify connectivity between bu2 and east1
 
-- SSH to the Public IP of the instance **_azure-us-west-spoke2-test1_** and ping the private IP of the ec2-instance **_aws-us-east1-spoke1-test2_**
+- SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_** and ping the private IP of the ec2-instance **_aws-us-east-1-spoke1-test2_**
 
 ```{figure} images/lab10-lastping.png
 ---
@@ -836,6 +873,17 @@ Ping
 ```
 
 This time the ping will be successful!
+
+Check the logs once again.
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+
+```{figure} images/lab10-reallylast.png
+---
+align: center
+---
+inter-icmp-bu2-east1 Logs
+```
 
 `Congratulations, you have deployed the full-blown Aviatrix solution!`
 

@@ -198,7 +198,7 @@ Ensure these parameters are entered in the pop-up window `"Create Transit Gatewa
 
 - **Name:** <span style='color:#33ECFF'>aws-us-east-2-transit</span>
 - **Cloud:** <span style='color:#33ECFF'>AWS (Standard)</span>
-- **Account:** <span style='color:#33ECFF'>aws-account</span>
+- **Account:** <span style='color:#33ECFF'>aws-account </span>
 - **Region:** <span style='color:#33ECFF'>us-east-2 (Ohio)</span>
 - **VPC ID:** <span style='color:#33ECFF'>aws-us-east-2-transit (Make sure you don't select aws-us-east-2-**spoke1** VPC)</span>
 - **Instance Size:** <span style='color:#33ECFF'>c5n.large</span>

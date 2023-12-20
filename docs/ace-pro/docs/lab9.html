@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lab 9 - THREATIQ &amp; THREATGUARD &#8212; ACE Operations Lab</title>
+    <title>Lab 9 - THREATIQ &#8212; ACE Operations Lab</title>
   
   
   
@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - FIRENET</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 9 - THREATIQ &amp; THREATGUARD</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 9 - THREATIQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - BONUS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
@@ -322,7 +322,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 9 - THREATIQ & THREATGUARD</h1>
+    <h1>Lab 9 - THREATIQ</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -337,12 +337,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">4.2 Verification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">4.2 RTB verification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-threatiq-and-threatguard">5. Enable ThreatIQ and ThreatGuard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. Verification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-threatguard-in-action">5.1. Example of ThreatGuard in action</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-threatiq">5. Enable ThreatIQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-the-bad-guy">5.1 Generate traffic towards the “Bad Guy”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enforcement">5. Enforcement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-enforcement-force-drop">5.1. Automatic enforcement: “force-drop”</a></li>
 </ul>
 </li>
 </ul>
@@ -356,27 +359,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-9-threatiq-threatguard">
-<h1>Lab 9 - THREATIQ &amp; THREATGUARD<a class="headerlink" href="#lab-9-threatiq-threatguard" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-9-threatiq">
+<h1>Lab 9 - THREATIQ<a class="headerlink" href="#lab-9-threatiq" title="Permalink to this heading">#</a></h1>
 <section id="objective">
 <h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
-<p>This lab will demonstrate how <code class="docutils literal notranslate"><span class="pre">ThreatIQ</span></code> and <code class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code> work.</p>
+<p>This lab will demonstrate how <code class="docutils literal notranslate"><span class="pre">ThreatIQ</span></code> works.</p>
 </section>
 <section id="threatiq-overview">
 <h2>2. ThreatIQ Overview<a class="headerlink" href="#threatiq-overview" title="Permalink to this heading">#</a></h2>
-<p>Aviatrix gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. <strong>FlowIQ</strong> is one. <strong>ThreatIQ</strong> is another. ThreatIQ alerts you on Malicious IPs with bad reputations. These IPs are reported in the ThreatIQ database that CoPilot maintains.</p>
+<p>Aviatrix gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. <strong>FlowIQ</strong> is one. <strong>ThreatIQ</strong> is another. ThreatIQ alerts you on Malicious IPs with bad reputations, but then can also apply an enforcement. These IPs are reported in the ThreatIQ database that CoPilot maintains.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>ThreatIQ and ThreatGuard work as soon as a <strong><em>Public Subnet Filtering</em></strong> gateway is deployed. This is because the PSF gateway intercepts Ingress traffic.</p>
+<p>ThreatIQ protect all the Aviatrix Gateways</p>
 </div>
 </section>
 <section id="topology">
 <h2>3. Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
-<p>In this lab, we will deploy a <code class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in AWS US-EAST-1 region.</p>
-<figure class="align-center" id="id2">
+<p>In this lab, we will deploy a <code class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in AWS US-EAST-1 region, to protect the public subnet.</p>
+<figure class="align-center" id="id1">
 <img alt="../_images/lab9-initialtopology.png" src="../_images/lab9-initialtopology.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Lab 9 Initial Topology</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Lab 9 Initial Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -385,10 +388,10 @@ document.write(`
 <section id="deploy-the-psf">
 <h3>4.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf" title="Permalink to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">“+Gateway&quot;</span></code> button and then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id2">
 <img alt="../_images/lab9-psf.png" src="../_images/lab9-psf.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 261 </span><span class="caption-text">PSF</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 268 </span><span class="caption-text">PSF</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -402,38 +405,38 @@ document.write(`
 <li><p><strong>Route Table</strong>: <span style='color:#33ECFF'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id3">
 <img alt="../_images/lab9-psfcreate.png" src="../_images/lab9-psfcreate.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 262 </span><span class="caption-text">PSF template</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 269 </span><span class="caption-text">PSF template</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Wait for about <strong>8</strong> minutes for the completion of the PSF deployment</p>
 </div>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id4">
 <img alt="../_images/lab9-psfinprogress.png" src="../_images/lab9-psfinprogress.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 263 </span><span class="caption-text">PSF deployment in progress</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">PSF deployment in progress</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="verification">
-<h3>4.2 Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h3>
+<section id="rtb-verification">
+<h3>4.2 RTB verification<a class="headerlink" href="#rtb-verification" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Click on the <strong>PSF</strong> gateway, select the <strong>VPC/VNet Route Tables</strong> and then inspect the <strong><em>aviatrix-Aviatrix-Filter-Gateway</em></strong> Route Table</p></li>
 </ul>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id5">
 <img alt="../_images/lab9-psfclick.png" src="../_images/lab9-psfclick.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 264 </span><span class="caption-text">PSF deployed</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 271 </span><span class="caption-text">PSF deployed</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id6">
 <img alt="../_images/lab9-routetablepsf.png" src="../_images/lab9-routetablepsf.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 265 </span><span class="caption-text">PSF rtb</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 272 </span><span class="caption-text">PSF rtb</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -443,92 +446,70 @@ document.write(`
 <ul class="simple">
 <li><p>Verify one more routing table that we selected while deploying the PSF Gateway: <strong><em>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</em></strong>. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).</p></li>
 </ul>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id7">
 <img alt="../_images/lab9-routetablepsf2.png" src="../_images/lab9-routetablepsf2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 266 </span><span class="caption-text">aws-us-east1-spoke1-rtb-public-a</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 273 </span><span class="caption-text">aws-us-east1-spoke1-rtb-public-a</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
-<section id="enable-threatiq-and-threatguard">
-<h2>5. Enable ThreatIQ and ThreatGuard<a class="headerlink" href="#enable-threatiq-and-threatguard" title="Permalink to this heading">#</a></h2>
+<section id="enable-threatiq">
+<h2>5. Enable ThreatIQ<a class="headerlink" href="#enable-threatiq" title="Permalink to this heading">#</a></h2>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
 <p>Click on <strong>Send Alert</strong>:</p>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id8">
 <img alt="../_images/lab9-sendalert.png" src="../_images/lab9-sendalert.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Enable ThreatIQ</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Enable ThreatIQ</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then click on <strong>Notification Settings</strong>.</p>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id9">
 <img alt="../_images/lab9-notification.png" src="../_images/lab9-notification.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 268 </span><span class="caption-text">Notification Settings</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Notification Settings</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Email</span> <span class="pre">Address&quot;</span></code> button.</p>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id10">
 <img alt="../_images/lab9-email.png" src="../_images/lab9-email.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 269 </span><span class="caption-text">Email</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Email</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Choose an <strong>alias</strong>, insert your <strong>personal email</strong> and then click on <strong>Save</strong>:</p>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id11">
 <img alt="../_images/lab9-email2.png" src="../_images/lab9-email2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Alias and Personal Email</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Alias and Personal Email</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Navigate back to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
 <p>Click again on <strong>Send Alert</strong>:</p>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab9-sendalert2.png" src="../_images/lab9-sendalert2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 271 </span><span class="caption-text">Send Alert Settings</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">Send Alert Settings</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the alias that was previously created from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;recipients&quot;</span></code> and then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab9-addrecipient.png" src="../_images/lab9-addrecipient.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 272 </span><span class="caption-text">Add Recipient(s)</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Add Recipient(s)</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From this point onwards, if you enter a valid email address, you will receive email notifications about <strong>ThreatIQ</strong> alerts.</p>
 <p>Before enabling the blocking, on the far right side, ensure that the <strong>ThreatGuard firewall rules order</strong> is set to <code class="docutils literal notranslate"><span class="pre">Prepend</span></code>.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id14">
 <img alt="../_images/lab9-advanced.png" src="../_images/lab9-advanced.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 273 </span><span class="caption-text">Prepend</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Prepend</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Enable Block Threats (i.e. <code class="docutils literal notranslate"><span class="pre">ThreatGuard</span></code>):</p>
-<figure class="align-center" id="id16">
-<img alt="../_images/lab9-threatguard.png" src="../_images/lab9-threatguard.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 274 </span><span class="caption-text">ThreatGuard</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>By default, <ins><strong>all</strong> VPCs are enabled for ThreatGuard</ins>, therefore click on <strong>Save</strong> to continue.</p>
-<figure class="align-center" id="id17">
-<img alt="../_images/lab9-vpc.png" src="../_images/lab9-vpc.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Select VPC</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Then, click <strong>CONFIRM</strong>.</p>
-<figure class="align-center" id="id18">
-<img alt="../_images/lab9-confirm.png" src="../_images/lab9-confirm.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Confirm</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="id1">
-<h2>5. Verification<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="generate-traffic-towards-the-bad-guy">
+<h3>5.1 Generate traffic towards the “Bad Guy”<a class="headerlink" href="#generate-traffic-towards-the-bad-guy" title="Permalink to this heading">#</a></h3>
 <p>Wait for the instructor to provide a malicious IP. Let’s call it <code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -541,91 +522,134 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
 </pre></div>
 </div>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab9-instancetest.png" src="../_images/lab9-instancetest.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Curl towards the malicious IP</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Curl towards the malicious IP</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Navigate back to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Overview</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Wait for some minutes</strong>, before proceeding with the next action. Furthermore, set the <strong>Time Period</strong> to <code class="docutils literal notranslate"><span class="pre">&quot;Last</span> <span class="pre">60</span> <span class="pre">Minutes&quot;</span></code> and click on <strong>Apply</strong>.</p>
+<p><strong>Wait for about 4-5 minutes</strong>, before proceeding with the next action.</p>
+<p>Set the <strong>Time Period</strong> to <code class="docutils literal notranslate"><span class="pre">&quot;Last</span> <span class="pre">60</span> <span class="pre">Minutes&quot;</span></code> and click on <strong>Apply</strong>.</p>
 </div>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab9-custom.png" src="../_images/lab9-custom.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 278 </span><span class="caption-text">Overview</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">Overview</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You should see the IP in the table at the bottom. You can filter based on the destination IP address (insert the malicious IP address):</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab9-threat.png" src="../_images/lab9-threat.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Threats</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">Threats</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab9-threat2.png" src="../_images/lab9-threat2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Afterwards, click on <strong>VIEW</strong> under the column Details.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The IP we selected might not be deemed a threat when you read this.</p>
+<p>The IP shown in these screenshots  might not be deemed a threat when you read this. Please use the malicious IP provided by the instructor.</p>
 </div>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab9-view.png" src="../_images/lab9-view.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 281 </span><span class="caption-text">View</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">View</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab9-view2.png" src="../_images/lab9-view2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 282 </span><span class="caption-text">Threat details</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 286 </span><span class="caption-text">Threat details</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then select <strong>Threat Summary</strong> and pinpoint the metadata “tag” to determine how ThreatIQ has classified this IP.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab9-tor.png" src="../_images/lab9-tor.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 283 </span><span class="caption-text">“tag”</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 287 </span><span class="caption-text">“tag”</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="example-of-threatguard-in-action">
-<h3>5.1. Example of ThreatGuard in action<a class="headerlink" href="#example-of-threatguard-in-action" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="enforcement">
+<h2>5. Enforcement<a class="headerlink" href="#enforcement" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Enable <strong>Block Threats</strong></p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong> and turn on the toggle <code class="docutils literal notranslate"><span class="pre">&quot;Block</span> <span class="pre">Threats&quot;</span></code>.</p>
+</div>
+<figure class="align-center" id="id22">
+<img alt="../_images/lab9-threatguard.png" src="../_images/lab9-threatguard.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 288 </span><span class="caption-text">ThreatGuard</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>By default, <ins><strong>all</strong> VPCs are enabled for ThreatGuard</ins>, therefore click on <strong>Save</strong> to continue.</p>
+<figure class="align-center" id="id23">
+<img alt="../_images/lab9-vpc.png" src="../_images/lab9-vpc.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 289 </span><span class="caption-text">Select VPC</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then, click <strong>CONFIRM</strong>.</p>
+<figure class="align-center" id="id24">
+<img alt="../_images/lab9-confirm.png" src="../_images/lab9-confirm.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 290 </span><span class="caption-text">Confirm</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="automatic-enforcement-force-drop">
+<h3>5.1. Automatic enforcement: “force-drop”<a class="headerlink" href="#automatic-enforcement-force-drop" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Now try issuing the same curl command once again, from the test instance <strong><em>aws-us-east-1-spoke1-test1</em></strong></p></li>
+</ul>
+<figure class="align-center" id="id25">
+<img alt="../_images/lab9-failed.png" src="../_images/lab9-failed.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 291 </span><span class="caption-text">Curl fails</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Navigate to  <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The CoPilot UI frequently changes, and what you see below may differ from your experience.</p>
 </div>
 <ul class="simple">
-<li><p>Click on <strong>VIEW</strong> under the column View Rules:</p></li>
+<li><p>Click on the <strong>refresh</strong> button under.</p></li>
 </ul>
 <figure class="align-center" id="id26">
+<img alt="../_images/lab9-refresh.png" src="../_images/lab9-refresh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 292 </span><span class="caption-text">Refresh button</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Click on <strong>VIEW</strong> under the column View Rules, on the <strong><em>aws-us-east-1-psf</em></strong> row:</p></li>
+</ul>
+<figure class="align-center" id="id27">
 <img alt="../_images/lab9-viewrules.png" src="../_images/lab9-viewrules.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Configuration VIEW</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 293 </span><span class="caption-text">Configuration VIEW</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Filter based on the malicious IP (choose the <strong>source IP</strong>): you will find out that ThreatGuard applied the enforcement <code class="docutils literal notranslate"><span class="pre">&quot;force-drop&quot;</span></code> in both directions.</p>
-<figure class="align-center" id="id27">
+<p>Filter based on the malicious IP (choose the <strong>source IP</strong> as parameter): you will find out that ThreatIQ applied the enforcement <code class="docutils literal notranslate"><span class="pre">&quot;force-drop&quot;</span></code>.</p>
+<figure class="align-center" id="id28">
 <img alt="../_images/lab9-force.png" src="../_images/lab9-force.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 285 </span><span class="caption-text">Filter on Source IP</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 294 </span><span class="caption-text">Filter on Source IP</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now try issuing the same curl command once again.</p>
-<figure class="align-center" id="id28">
-<img alt="../_images/lab9-failed.png" src="../_images/lab9-failed.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 286 </span><span class="caption-text">Curl fails</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>ThreatGuard has successfully blocked the malicious IP!</p>
+<p><strong>ThreatIQ</strong> has successfully blocked the malicious IP!</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Before ending this lab, remove your email from the notification list!</p>
@@ -635,7 +659,7 @@ document.write(`
 <figure class="align-center" id="id29">
 <img alt="../_images/lab9-notification2.png" src="../_images/lab9-notification2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 287 </span><span class="caption-text">Edit ThreatIQ Alert</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 295 </span><span class="caption-text">Edit ThreatIQ Alert</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -645,14 +669,14 @@ document.write(`
 <figure class="align-center" id="id30">
 <img alt="../_images/lab9-joe.png" src="../_images/lab9-joe.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 288 </span><span class="caption-text">Stop alerts</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 296 </span><span class="caption-text">Stop alerts</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology would look like:</p>
 <figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab9-final.png"><img alt="../_images/lab9-final.png" src="../_images/lab9-final.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 289 </span><span class="caption-text">Final topology for Lab 9</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 297 </span><span class="caption-text">Final topology for Lab 9</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -727,12 +751,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">4.2 Verification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">4.2 RTB verification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-threatiq-and-threatguard">5. Enable ThreatIQ and ThreatGuard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. Verification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-threatguard-in-action">5.1. Example of ThreatGuard in action</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-threatiq">5. Enable ThreatIQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-the-bad-guy">5.1 Generate traffic towards the “Bad Guy”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enforcement">5. Enforcement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-enforcement-force-drop">5.1. Automatic enforcement: “force-drop”</a></li>
 </ul>
 </li>
 </ul>

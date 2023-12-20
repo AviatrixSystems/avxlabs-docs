@@ -92,17 +92,24 @@ Marketplace contact under loading
 
 - **Firewall Image Version**: <span style='color:#33ECFF'>9.1.0</span>
 - **Firewall instance Size**: <span style='color:#33ECFF'>Standard_D3_v2</span>
-- **Management Interface Subnet**: <span style='color:#33ECFF'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-1</span>
+- **Management Interface Subnet**: <span style='color:#33ECFF'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
 - **Egress Interface Subnet**: <span style='color:#33ECFF'>azure-west-us-transit-Public-FW-ingress-egress-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
 - **Authentication**: <span style='color:#33ECFF'>Password</span>
 - **Username**: <span style='color:#33ECFF'>avxadmin [**Note**: username *admin* is not permitted in Azure]</span>
 - **Password**: <span style='color:#33ECFF'>[choose a **strong password** and remember it]</span>
 - **Bootstrap Configuration**: <span style='color:#33ECFF'>turn **ON** the knob</span>
-- **Storage**: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info</ins></span>
-- **Storage Access Key**: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info</ins></span>
-- **File-Shared Folder**: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info</ins></span>
+- **Storage**: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
+- **Storage Access Key**: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
+- **File-Shared Folder**: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
 
 Then click on **Deploy**.
+
+```{figure} images/lab7-newone.png
+---
+align: center
+---
+POD Portal: lab 7 section 
+```
 
 ```{figure} images/lab7-firenetcfg.png
 ---
@@ -154,7 +161,7 @@ Do not end the firewall's HTTPS session yet. You will return to this web interfa
 
 ## 4.4. Firewall Vendor Integration
 
-Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three dots"` symbol on the right-hand side of the **_azure-west-us-transit_** raw, and then click on `Vendor Integration`.
+Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three dots"` symbol on the right-hand side of the **_azure-west-us-transit_** row, and then click on `Vendor Integration`.
 
 ```{figure} images/lab7-vendor.png
 ---
@@ -270,7 +277,7 @@ Inspection Policy accomplished
 
 ## 5. Verification
 
-Verify the traffic flows within Azure and Azure to GCP as shown below by following steps 5.1 - 5.2:
+Verify the traffic flows within Azure and from Azure to GCP as shown below, by following steps 5.1 - 5.2:
 
 ```{figure} images/lab7-topology2.png
 ---
@@ -317,7 +324,9 @@ Lab 7 Final Topology
 ```
 
 ```{warning}
-On Lab 6 (Egress), the DCF functionality was enabled. The current active rule is the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53. Before launching any connectivity tests, <ins>you need to move the **_Greenfield-Rule_**  on the top of the list of the DCF rules, and disassociate the **_Any-Web_** WebGroup,</ins>!
+On Lab 6 (Egress), the DCF functionality was enabled. The current permitted rules are the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53, and the `"allow-domains"` , that is only allowing http/https traffic towards two domains. Any other kind of traffic is denied because of the presence of the `"Explicit-Deny-Rule"`. 
+
+Before launching any connectivity tests, <ins>you need to move the **_Greenfield-Rule_**  on the top of the list of the DCF rules!
 ```
 
 ```{figure} images/lab7-dcfrule.png
@@ -330,7 +339,7 @@ DCF rules
 - Modify the Greenfield-Rule Priority
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the Greenfield-Rule and choose *`"Move Rule"`* at the very **Top**.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the **Greenfield-Rule** and choose *`"Move Rule"`* at the very **Top**.
 Then click on **Save in Draft**.
 ```
 
@@ -341,34 +350,46 @@ align: center
 Move at the Top
 ```
 
-Now click on the **_pencil icon_** of the Greenfield-Rule and then disassociate the **_Any-Web_** WebGroup. Do not forget to click on **Save In Drafts**.
+Do not forget to click on **Commits**.
 
 ```{figure} images/lab7-edit.png
 ---
 align: center
 ---
-Edit Greenfield
+Commit your changes
 ```
 
-```{figure} images/lab7-edit2.png
+- Apply the "Logging" option to the Greenfield-Rule
+
+```{tip}
+Click on the pencil icon beside the Greenfield-Rule row, then turn on the toggle for Logging and click on **Save in Drafts**.
+```
+
+```{figure} images/lab7-newone2.png
 ---
 align: center
 ---
-Disassociate Any-Web
+Edit the Greenfield-Rule
 ```
 
-You can proceed in committing your change.
-
-```{figure} images/lab7-finalcommit.png
+```{figure} images/lab7-newone3.png
 ---
 align: center
 ---
-Final Commit
+Editing the Greenfield-Rule
+```
+
+
+```{figure} images/lab7-newone4.png
+---
+align: center
+---
+Commit
 ```
 
 ### 5.1.1 Luanch connectivity test
 
-**SSH** into **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-test1_** and from there, ping **_azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1_** on its private IP.
+**SSH** into **_azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1_** and from there, ping **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-test1_** on its private IP.
 
 ```{figure} images/lab7-ping.png
 ---
@@ -407,10 +428,9 @@ align: center
 Ping GCP
 ```
 
-
 ## 5.2. Azure to GCP
 
-While on **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-test1_**, ping **_gcp-us-central1-spoke1-test1_**.
+While on **_azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1_**, ping **_gcp-us-central1-spoke1-test1_**.
 
 ```{figure} images/lab7-pinggcp.png
 ---
@@ -438,4 +458,18 @@ height: 400px
 align: center
 ---
 Final Topology for Lab 7
+```
+
+- Explore the logs on the Monitor section of the Distributed Cloud Firewall
+
+```{tip}
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+```
+
+```{figure} images/lab7-last.png
+---
+height: 400px
+align: center
+---
+Logs on DCF Monitor section
 ```
