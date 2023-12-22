@@ -109,7 +109,7 @@ The IP addresses can be easily retrieved using **3** different methods, as you l
 3) From your personal POD portal, where you can retrieve the **DNS symbolic names**.
 ```
 
-- Dynamic Topology:
+- **Dynamic Topology**:
 
 Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
 
@@ -131,7 +131,7 @@ align: center
 Instance Properties
 ```
 
-- Cloud Assets:
+- **Cloud Assets**:
 
 Go to **CoPilot > Cloud resources > Cloud Assets > Virtual Machines** and from here you can search for any instances and retrieve their IP addresses!
 
@@ -143,7 +143,7 @@ align: center
 Inventory
 ```
 
-- POD Portal:
+- **POD Portal**:
 
 Use your personal POD in order to retrieve the symbolic names of any test instances.
 

@@ -38,7 +38,7 @@ align: center
 BU1 editing
 ```
 
-- Check Network Segmentation on the CoPilot by searching segmentation and look at the **Logical View**.
+- Check the **Logical View** inside the network Segmentation section.
 
 ```{tip}
 Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**. 
@@ -166,7 +166,7 @@ AppIQ report
 ```{note}
 `AppIQ` is a troubleshooting tool. It retrieves and displays, in a side by side fashion, cloud provider’s network related information such as **Security Groups**, **NACLs** and **Route Tables**. 
 
-This helps you to identify connectivity problems on the underlay environments of each CSP involved along the path of the communication between two nodes.
+This helps you to identify connectivity problems on the underlay environments of each CSP involved along the communication path between two nodes.
 ```
 
 ### 3.1. Verify from AWS Console
@@ -176,7 +176,7 @@ Log in to the **AWS console**.
 ```{important}
 Go to your personal POD portal and click on the Console button under the AWS Console section.
 
-Sign in using the provided credentials.
+Sign in using the provided credentials (these screenshots refer to **Pod 143**).
 ```
 
 ```{figure} images/lab2-console.png
@@ -193,7 +193,7 @@ align: center
 AWS 
 ```
 
-Change the region to `Ireland (eu-west-1)` in the top-right corner and invoke the EC2 service, then click on the
+Change the region to `Ireland (eu-west-1)` in the top-right corner and invoke the **EC2** service, then click on the **Instances (running)** section.
 
 ```{figure} images/lab2-euwest.png
 ---
@@ -201,8 +201,6 @@ align: center
 ---
 AWS 
 ```
-
-Click on **Instances (running)**.
 
 ```{figure} images/lab2-instance.png
 ---
@@ -220,7 +218,7 @@ align: center
 Change security groups
 ```
 
-Explore the inbound rules and you will find out the absence on a rule that would permit the incoming traffic on port **tcp/80**.
+Explore the inbound rules and you will find out the absence of a rule that would permit the incoming traffic on port **tcp/80**.
 
 ```{figure} images/lab2-sg2.png
 ---
@@ -247,7 +245,7 @@ align: center
 Change security groups
 ```
 
-Create the required inbound rule as depicted below and thenclick on the `"Save rules"` button.
+Create the required inbound rule (i.e. _"allow tcp traffic from anywhere"_) as depicted below and then click on the `"Save rules"` button.
 
 ```{figure} images/lab2-sg5.png
 ---

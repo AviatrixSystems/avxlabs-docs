@@ -8,7 +8,7 @@ Furthermore, all egress traffic must be tracked, whereby **_Logging_** must be e
 
 You are requested to activate the `Egress` feature on the **_ace-azure-east-us-spoke2_** VNet and to use the **_Spoke1 VNet_** as a Test VNet, but just temporarily. 
 
-In addition to this, you area also requested to create the rules that would fulfil the aforementioned request.
+In addition to this, you area also requested to create the dcf rules that would fulfil the aforementioned request.
 
 ```{figure} images/lab7-topology.png
 ---
@@ -74,7 +74,7 @@ Click on the pencil icon on the right-hand side of the entry **Greenfield-Rule**
 ---
 align: center
 ---
-Edit the Greenfield-Ruyle
+Edit the Greenfield-Rule
 ```
 
 ```{figure} images/lab7-enablelog.png
@@ -86,6 +86,13 @@ Enable Logging
 
 Do not forget to click on **Save In Drafts** and then click on **Commit**, to push the change into the Data Plane.
 
+```{figure} images/lab7-lastone.png
+---
+align: center
+---
+Commit
+```
+
 - Use the **_Spoke1 VNet_** as Test VNet to find out the domains that should be allowed in order to successfully execute the *apt-get* commands.
 
 ```{figure} images/lab7-test.png
@@ -95,7 +102,7 @@ align: center
 Spoke1 VNet as test VNet
 ```
 
-  - Enable the Egress on the **_Spoke1 VNEt_** too.
+  - Enable the Egress on the **_Spoke1 VNet_** too.
 
 ```{tip}
 Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"+ Local Egress on VPC/VNets"` button.
@@ -125,7 +132,7 @@ SSH to BU1 DB
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and edit the Greenfield-Rule, clicking on the pencil icon on the right-hand side.
 
-This time attach the `Any-Web` WebGroup and then click on S**ave In Drafts**.
+This time attach the `Any-Web` WebGroup and then click on **Save In Drafts**.
 ```
 
 ```{figure} images/lab7-test4.png
@@ -141,6 +148,8 @@ align: center
 ---
 Any-Web
 ```
+
+Do not forget to **commit** your changes into the Data Path.
 
 ```{figure} images/lab7-test6.png
 ---
@@ -167,7 +176,7 @@ Go to **CoPilot > Security > Egress > Monitor** and select the *ace-azure-east-u
 Identify all the required domains for launching successfully the *apt-get* commands, inspecting the whole list of logs. 
 ```
 
-The required domains are four!
+The required domains are **five**!
 
 <details>
   <summary>Click here for discovering the <span style='color:#33ECFF'>domains</span></summary>
@@ -175,6 +184,7 @@ The required domains are four!
 - motd.ubuntu.com
 - azure.archive.ubuntu.com
 - livepatch.canonical.com
+- contracts.canonical.com
 - esm.ubuntu.com
 </details>
 
@@ -185,22 +195,31 @@ align: center
 Monitor
 ```
 
-- Detach the *Any-Web* Webgroup from the Greenfield-Rule.
+- Detach the **_Any-Web_** Webgroup from the Greenfield-Rule.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the pencil icon on the righ-hand side.
 
-Clear the `WebGroups` field and then click on **Save In Drafts**. Do not forget then to click on **Commit**.
+Clear the `WebGroups` field and then click on **Save In Drafts**. 
+
+Do not forget then to click on **Commit**.
 ```
 
 ```{figure} images/lab7-test8.png
 ---
 align: center
 ---
-Detaching the Any-Web
+Detaching the Any-Web WebGroup
 ```
 
-- Now that you have discovered the domains that are triggered when the *apt-get* commands are executed, you can proceed in disabling the `Egress` feature from the Spoke1 VNet.
+```{figure} images/lab7-lastone2.png
+---
+align: center
+---
+Commit your change
+```
+
+- Now that you have discovered the domains that are triggered when the **_apt-get_** commands are executed, you can proceed in disabling the `Egress` feature from the **Spoke1** VNet.
 
 ```{tip}
 Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `remove` button 
@@ -237,7 +256,7 @@ curl www.espn.com
 
 All commands will be successful, however, this is not what the request asked you to configure...
 
-- Enable the `Allow-List Model` (i.e. ZTN Model - **Zero Trust Network Model**), creating an **Explicit Deny Rule** first.
+- Enable the `ZTNA Model` (i.e.  **Zero Trust Network Architecture Model**), creating an **Explicit Deny Rule** first.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+Rule"` button.
@@ -274,7 +293,7 @@ The East-West traffic is blocked now!
 Go to **CoPilot > SmartGroups**
 ```
 
-You will notice two SmartGroups, called BU1 and BU2, in addition to the pre-defined SmartGroups (i.e. *Anywhere* and *Public Internet*).
+You will notice two SmartGroups, called **BU1** and **BU2**, in addition to the pre-defined SmartGroups (i.e. *Anywhere* and *Public Internet*).
 
 ```{figure} images/lab7-bus.png
 ---
