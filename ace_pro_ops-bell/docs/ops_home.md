@@ -12,7 +12,7 @@ There is already one **Site2Cloud** connection:
 
 Here is a view of the initial topology:
 
-```{figure} images/topology-initial.png
+```{figure} ../../ace_ops/docs/images/topology-initial.png
 ---
 height: 400px
 align: center
