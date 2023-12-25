@@ -6,7 +6,7 @@ Infrastructure <ins>was segmented</ins> recently into 2 network domains: **BU1**
 
 You are requested to ascertain the segregation between the two network domains.
 
-```{figure} images/lab1-segmentation.png
+```{figure} ../../ace_ops/docs/images/lab1-segmentation.png
 ---
 height: 400px
 align: center
