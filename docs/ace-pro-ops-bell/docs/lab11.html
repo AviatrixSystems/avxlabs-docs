@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Opeartions Lab 11 - Routes Manipulation &amp; NAT &#8212; ACE Operations Professional and Operations (Bell)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab11';</script>
+    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 11 - BONUS" href="lab12.html" />
+    <link rel="prev" title="Opeartions Lab 10 - Connection Policy" href="lab10.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Operations Professional and Operations (Bell) - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="ACE Operations Professional and Operations (Bell) - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Professional Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">ACE Professional POD Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - RBAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ops_home.html">Welcome to ACE Operations Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pod-ops.html">ACE Operations POD Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Opeartions Lab 9 - Network Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Opeartions Lab 10 - Connection Policy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Opeartions Lab 11 - Routes Manipulation &amp; NAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab12.html">Lab 11 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab11.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Opeartions Lab 11 - Routes Manipulation & NAT</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">3. CHANGE REQUEST</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="opeartions-lab-11-routes-manipulation-nat">
+<h1>Opeartions Lab 11 - Routes Manipulation &amp; NAT<a class="headerlink" href="#opeartions-lab-11-routes-manipulation-nat" title="Permalink to this heading">#</a></h1>
+<section id="scenario">
+<h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
+<p>BU1 is suddenly unable to communicate with both BU1 Analytics and BU1 DB.</p>
+<p>The network team discovered a disgruntled employee that jeopardized the connectivity between the involved workloads.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/lab5-topology.png"><img alt="../_images/lab5-topology.png" src="../_images/lab5-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 344 </span><span class="caption-text">Lab 5 Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="troubleshoot-request">
+<h2>2. TROUBLESHOOT REQUEST<a class="headerlink" href="#troubleshoot-request" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Verify that the connectivity between BU1 Frontend and BU1 Analytics is actually broken.</p>
+<ul>
+<li><p>SSH to BU1 Frontend and carry out ping/traceroute/ssh commands towards BU1 Analytics.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab5-pingfails.png" src="../_images/lab5-pingfails.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 345 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Check whether the AWS Spoke1 GW and the GCP Spoke1 GW have the relevant routes or not.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong>Spoke1 Gateway in AWS &gt; Gateway Routes</strong> and filter out based on the remote route.</p>
+<p>Repeat the same operation from the GCP’s Spoke perspective!</p>
+</div>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab5-filter.png" src="../_images/lab5-filter.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 346 </span><span class="caption-text">Filter out</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The <strong>Spoke1</strong> in AWS does not have the destination route to reach the destination in GCP, based on the outcome above…</p>
+<ul class="simple">
+<li><p>Check what route is received by the <strong>GCP Transit GW</strong> from the <strong>GCP Spoke1 GW</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the <strong><em>ace-gcp-us-east1-transit1</em></strong> Gateway in GCP <strong>&gt; Gateway Routes</strong> and filter based on the parameter depicted below.</p>
+</div>
+<ul class="simple">
+<li><p>“<strong>Next Hop Gateway</strong> <em>contains</em> <strong>gcp</strong>”</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab5-nexthop.png" src="../_images/lab5-nexthop.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 347 </span><span class="caption-text">Next Hop</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will notice that the Spoke1 in GCP is advertising a <strong>bogus/malicious</strong> route (i.e. <code class="docutils literal notranslate"><span class="pre">40.40.40.0/24</span></code>), whereas the legit route <strong>172.16.211.0/24</strong> has been withdrawn!</p>
+<ul class="simple">
+<li><p>Fix the issue checking the <strong>Route Manipulation</strong> section on the <strong>Spoke GW in GCP</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong>Spoke GW in GCP &gt; Settings &gt; Routing</strong> and <ins>remove</ins> the CIDR 40.40.40.0/24 from the <strong>Customize Spoke Advertised VPC/VNet CIDRs</strong> section and then click on <strong>SAVE</strong>.</p>
+</div>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab5-customize.png" src="../_images/lab5-customize.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 348 </span><span class="caption-text">Customize Spoke Advertised VPC/VNet CIDRs</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Relaunch the ping from <strong>BU1 Frontend</strong> towards <strong>BU1 Analytics</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab5-pingok.png" src="../_images/lab5-pingok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 349 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU1 DB</strong> is actually broken.</p>
+<ul>
+<li><p>SSH to BU1 Frontend and carry out ping/traceroute/ssh commands towards BU1 DB.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab5-pingfails2.png" src="../_images/lab5-pingfails2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 350 </span><span class="caption-text">Ping is unsuccessful</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Use <strong>Diagnostics Tools</strong> from the <em>Spoke1 Gateway</em> in AWS and launch a <strong>traceroute</strong> towards the BU1 DB in Azure.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools &gt; Gateway Diagnostics</strong>.</p>
+<p>Select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> Spoke GW and this time launch a <strong>traceroute</strong> towards the private IP address of the BU1 DB.</p>
+</div>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab5-5hops.png" src="../_images/lab5-5hops.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 351 </span><span class="caption-text">5 Hops…</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The outcome above shows <strong>5</strong> Hops. The last Hop that has responded to the traceroute is the Spoke1 GW in Azure, therefore the BU1 DB has not responded to the traceroute!</ins></p>
+</div>
+<ul class="simple">
+<li><p>Launch a <strong>Packet Capture</strong> on the LAN interface (<code class="docutils literal notranslate"><span class="pre">eth0</span></code>) of the <strong><em>ace-azure-east-us-spoke1</em></strong> GW and filter out the outcome based on <strong>ICMP</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools &gt; Gateway Diagnostics</strong>.</p>
+<p>Select the <strong><em>ace-azure-east-us-spoke1</em></strong> Spoke GW and launch the packet capture on its eth0 interface.</p>
+<p>This is the LAN interface within the VNet, where also the <strong>VNet router</strong> resides!</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><ins>Open two tabs</ins>: on the first tab launch a packet capture on the <strong>Azure Spoke GW1</strong> on the LAN interface (<code class="docutils literal notranslate"><span class="pre">etho</span></code>), <ins>and after few seconds</ins>, launch a ping from the <strong>BU1 Frontend</strong> towards <strong>BU1 DB</strong> (VM in Azure) and keep it running, although it will fail.</p>
+<ul class="simple">
+<li><p>Diminish the <code class="docutils literal notranslate"><span class="pre">Duration</span></code> to solely <strong>10</strong> seconds to speed up the capture!</p></li>
+<li><p>Filter out based on the <code class="docutils literal notranslate"><span class="pre">&quot;ICMP&quot;</span></code> protocol.</p></li>
+</ul>
+</div>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab5-pinfail.png" src="../_images/lab5-pinfail.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 352 </span><span class="caption-text">Ping to BU1 DB fails</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab5-packetcapture00.png" src="../_images/lab5-packetcapture00.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 353 </span><span class="caption-text">Packet Capture</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will only notice <strong>ICMP Echo Request</strong> packets going out from the LAN interface. Moreover the Source IP is completely different from the expected source IP: instead of an IP from the CIDR 10.1.211.0/24 (the legit source CIDR), the source IP is an address from the <code class="docutils literal notranslate"><span class="pre">50.50.50.0/24</span></code> CIDR!</p>
+<ul class="simple">
+<li><p>Fix the issue checking the <strong>Routes Manipulation</strong> section on the <strong>Spoke1 GW in Azure</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke1</em></strong> GW in Azure <strong>&gt; Settings &gt; Network Address Translation (NAT)</strong>, delete the NAT Rule and click on <strong>SAVE</strong>.</p>
+</div>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab5-deleterule.png" src="../_images/lab5-deleterule.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 354 </span><span class="caption-text">Deletion of the NAT rule</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Relaunch the ping from <strong>BU1 Frontend</strong> towards <strong>BU1 DB</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab5-pingok2.png" src="../_images/lab5-pingok2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 355 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="change-request">
+<h2>3. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Now that you have restored the connectivity, the BU2 DB owner has also asked you to filter out the route <strong>10.0.211.0/24</strong> from the routing table of the Azure Spoke2 GW.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The subnet <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code> is advertised by the OnPrem DC Router towards the Aviatrix MCNA through the Site2Cloud connection.</p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab5-newrequest2.png" src="../_images/lab5-newrequest2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 356 </span><span class="caption-text">S2C route</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<ul class="simple">
+<li><p>Check the BGP Learned Routes</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP Info</strong> and then click on the <strong>3 dots</strong> icon on the right-hand side of the screen and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code> option.</p>
+</div>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="../_images/lab5-bgpinfo.png"><img alt="../_images/lab5-bgpinfo.png" src="../_images/lab5-bgpinfo.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 357 </span><span class="caption-text">New request: remove the route</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You are asked to maintain visible this route (therefore fully installed in the routing tables) on all the Spoke gateways, <ins>except the Azure Spoke2 GW!</ins></p>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="../_images/lab5-newrequest.png"><img alt="../_images/lab5-newrequest.png" src="../_images/lab5-newrequest.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 358 </span><span class="caption-text">New request: remove the route</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Verify first the presence of the route inside the routing table of the Azure Spoke2 GW.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Gateway Routes</strong> tab.</p>
+<p>Now search for <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code>.</p>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab5-newrequest3.png" src="../_images/lab5-newrequest3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 359 </span><span class="caption-text">Remote route from the OnPrem DC</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Filter out the route 10.0.211.0/24 from the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> section (i.e. <em>Route Manipulation</em> section).</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Settings</strong> tab.
+Expand the <strong>Routing</strong> section and insert the subnet <strong>10.0.211.0/24</strong> inside the <code class="docutils literal notranslate"><span class="pre">&quot;Exclude</span> <span class="pre">Learned</span> <span class="pre">CIDRs</span> <span class="pre">to</span> <span class="pre">Spoke</span> <span class="pre">VPC/VNet</span> <span class="pre">Route</span> <span class="pre">Table&quot;</span></code> option.</p>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+</div>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab5-newrequest4.png" src="../_images/lab5-newrequest4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 360 </span><span class="caption-text">Exclude the route</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Verify that the route has been withdrawn from the routing table of the Azure Spoke2 GW.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Gateway Routes</strong> tab.</p>
+<p>Now search for <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code>.</p>
+</div>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab5-newrequest5.png" src="../_images/lab5-newrequest5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 361 </span><span class="caption-text">Route</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You can notice that route has been removed from the routing table, successfully.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab10.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Opeartions Lab 10 - Connection Policy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab12.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 11 - BONUS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">3. CHANGE REQUEST</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
