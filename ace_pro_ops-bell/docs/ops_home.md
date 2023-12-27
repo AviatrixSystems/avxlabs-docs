@@ -2,7 +2,7 @@
 # Welcome to ACE Operations Lab
 
 ## 1. LAB TOPOLOGY
-There are **8** labs in ACE Operations that are based on a fictitious company called **ACE Inc**.
+There are **3** labs in ACE Operations that are based on a fictitious company called **ACE Inc**.
 
 ACE Inc. is a SaaS provider that has a presence in AWS, GCP, and Azure.
 
