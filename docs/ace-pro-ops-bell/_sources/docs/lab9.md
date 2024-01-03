@@ -1,4 +1,4 @@
-# Opeartions Lab 9 - Network Domains
+# Lab 9 - NETWORK DOMAINS
 
 ## 1. SCENARIO
 
