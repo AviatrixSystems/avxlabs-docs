@@ -138,7 +138,7 @@ align: center
 Generate traffic
 ```
 
-Let's now check whether the Spoke Gateway could gather **NetFlow** data after generating the aforementioned *curl* commands.
+Let's now check whether the Spoke Gateway could gather **NetFlow** data after generating the aforementioned *curl* commands, or not.
 
 Go to **CoPilot > Security > Egress > Overview (default)**
 
@@ -211,7 +211,7 @@ Discover-Rule
 Click on the **Commit** button and the rule previously created will work in watch/test mode due to the fact that the `enforcement` was turn off.
 
 ```{important}
-If the Enforcement slider is **On** (the default), the rule is enforced in the data plane. If the Enforcement slider is **Off**, the packets are only watched. This allows you to observe if the traffic impacted by this rule causes any inadvertent issues (such as traffic being dropped).
+If the **Enforcement** slider is **On** (the default), the rule is enforced in the data plane. If the Enforcement slider is **Off**, the packets are only watched. This allows you to observe if the traffic impacted by this rule causes any inadvertent issues (such as traffic being dropped).
 ```
 
 ```{figure} images/lab6-newrule11.png
@@ -405,7 +405,7 @@ align: center
 Curl commands
 ```
 
-You will almost notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and therefore dropped.
+You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and therefore immediately dropped.
 
 ```{figure} images/lab6-liveview.png
 ---
