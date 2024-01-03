@@ -6,7 +6,13 @@ This lab will demonstrate how the `Distributed Cloud Firewall` work.
 
 ## 2. Distributed Cloud Firewall Overview
 
-The Distributed Cloud Firewall feature allows to create logical containers, called `Smart Groups`, that encompass instances that present similarities inside a VPC/VNet/VCN, and then it also allows to enforce rules (aka **_Distributed Cloud Firewalling Rules_**) within a Smart Group (i.e. the `intra-rule`) or among Smart Groups (i.e. the `inter-rule`).
+The Distributed Cloud Firewall functionality encompases several services, such as Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata IDS/IPS and Advanced NAT capabilities.
+
+In this lab you will create additional logical containers, called `SmartGroups`, that group instances that present similarities inside a VPC/VNet/VCN, and then you will enforce rules among these SmartGroups (aka **_Distributed Cloud Firewalling Rules_**):
+
+1) `intra-rule` = Rule applied within a Smart Group
+
+2) `inter-rule` = Rule applied among SmartGroups
 
 ```{note}
 At this point in the lab, there is a unique routing domain (i.e. a **_Flat Routing Domain_**), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.

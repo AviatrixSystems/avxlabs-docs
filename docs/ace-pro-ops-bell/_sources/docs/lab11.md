@@ -1,4 +1,4 @@
-# Opeartions Lab 11 - Routes Manipulation & NAT
+# Lab 11 - ROUTES MANIPULATION & NAT
 
 ## 1. SCENARIO
 

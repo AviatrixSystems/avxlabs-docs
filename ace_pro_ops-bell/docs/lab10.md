@@ -1,4 +1,4 @@
-# Opeartions Lab 10 - Connection Policy
+# Lab 10 - CONNECTION POLICY
 
 ## 1. SCENARIO
 
@@ -112,7 +112,7 @@ align: center
 curl fails...
 ```
 
-You will notice that after issuing the curl command, it will hang and then, after some seconds, the parser will display a message reporting that the attempt to connect to port **80** failed.
+You will notice that after issuing the curl command, it will hang and then, after some seconds, a message will be displayed reporting that the attempt to connecting to port **80** has indeed failed.
 
 ```{important}
 Curl is not working, despite having both Ping and SSH working correctly.
