@@ -53,6 +53,41 @@ Commit
 These are very aggressive settings. In a Production environment, you should NOT set these intervals that frequently!
 ```
 
+Go to **CoPilot > Cloud Fabric > Topology**  to explore your POD topology. 
+
+You will notice that the CoPilot is showing both the *Managed VPCs* and the *Unmanaged VPCs*.
+
+```{figure} images/lab1-managedvpc.png
+---
+align: center
+---
+Dynamic Topology
+```
+
+Click on the `"Managed"` button on the right-hand side of the screen, for hiding the Unmanaged VPCs.
+
+```{figure} images/lab1-managedvpc2.png
+---
+align: center
+---
+Properties of your Topology
+```
+
+```{note}
+**Managed VPC** = Indicates an Aviatrix gateway is running in the VPC/VNet.
+
+**Unmanaged VPC** = Indicates no Aviatrix gateways exist in the VPC/VNet.
+```
+
+After this action this is how your Topology should look like.
+
+```{figure} images/lab1-managedvpc3.png
+---
+align: center
+---
+Managed VPCs only
+```
+
 ```{caution}
 Refer **always** to your personal POD for the IP addresses. The IP addresses visible on the subsequent screenshots are just examples taken from a different POD, used for creating the lab guides!
 ```
@@ -178,7 +213,7 @@ BU1 connectivity
 Ping and SSH commands should not work this time, due to the separation between the two segments (i.e. <ins>these are two different Routing Domains</ins>).
 
 ```{important}
-Refer always to your personal POD for the IP addresses. 
+Once again refer always to your personal POD for the IP addresses. 
 
 The screenshots are used as examples and might indicate different IP addresses from those present on your POD!
 ```
