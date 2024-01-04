@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -77,7 +77,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -120,12 +120,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -339,7 +347,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-7-secure-egress">
 <h1>Lab 7 - Secure Egress<a class="headerlink" href="#lab-7-secure-egress" title="Permalink to this heading">#</a></h1>
@@ -347,12 +355,12 @@ document.write(`
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
 <p>BU2 DB needs to get updates, however the VM is inside a private subnet. The BU2 DB owner has raised a request that solely the <em>apt-get</em> commands should be allowed (<ins>other kind of egress traffic should be prohibited</ins>).</p>
 <p>Furthermore, all egress traffic must be tracked, whereby <strong><em>Logging</em></strong> must be enabled.</p>
-<p>You are requested to activate the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature on the <strong><em>ace-azure-east-us-spoke2</em></strong> VNet and to use the <strong><em>Spoke1 VNet</em></strong> as a Test VNet, but just temporarily.</p>
-<p>In addition to this, you area also requested to create the dcf rules that would fulfil the aforementioned request.</p>
+<p>You are requested to activate the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature on the <strong><em>ace-azure-east-us-spoke2</em></strong> VNet, likewise on the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet but just temporarily as a Test VNet.</p>
+<p>In addition to this, you area also requested to create the DCF rules that would fulfil the aforementioned request.</p>
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/lab7-topology.png"><img alt="../_images/lab7-topology.png" src="../_images/lab7-topology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Lab 7 Scenario Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Lab 7 Scenario Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -370,7 +378,7 @@ document.write(`
 <figure class="align-center" id="id2">
 <img alt="../_images/lab7-vpc.png" src="../_images/lab7-vpc.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 117 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 120 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -379,7 +387,7 @@ document.write(`
 <figure class="align-center" id="id3">
 <img alt="../_images/lab7-defaultroute.png" src="../_images/lab7-defaultroute.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 118 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 121 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -390,12 +398,12 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code> button, and then to the subsequent <code class="docutils literal notranslate"><span class="pre">&quot;Begin</span> <span class="pre">Using</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code> button.</p>
 </div>
-<p>You will immediately notice a pop-up message, informing you that the <code class="docutils literal notranslate"><span class="pre">Greenfield</span> <span class="pre">Rule</span></code> will be created for allowing all kind of traffic in a typical <strong><em>Deny-List</em></strong> model.</p>
+<p>You will immediately notice a pop-up message, informing you that the <code class="docutils literal notranslate"><span class="pre">Greenfield</span> <span class="pre">Rule</span></code> will be created for allowing all kind of traffic.</p>
 <p>Click on <strong>Begin</strong>.</p>
 <figure class="align-center" id="id4">
 <img alt="../_images/lab7-greenfield.png" src="../_images/lab7-greenfield.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Greenfield Rule</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 122 </span><span class="caption-text">Greenfield Rule</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -408,29 +416,29 @@ document.write(`
 <figure class="align-center" id="id5">
 <img alt="../_images/lab7-editgreen.png" src="../_images/lab7-editgreen.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 120 </span><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id6">
 <img alt="../_images/lab7-enablelog.png" src="../_images/lab7-enablelog.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 121 </span><span class="caption-text">Enable Logging</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Enable Logging</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Save In Drafts</strong> and then click on <strong>Commit</strong>, to push the change into the Data Plane.</p>
 <figure class="align-center" id="id7">
 <img alt="../_images/lab7-lastone.png" src="../_images/lab7-lastone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 122 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 125 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Use the <strong><em>Spoke1 VNet</em></strong> as Test VNet to find out the domains that should be allowed in order to successfully execute the <em>apt-get</em> commands.</p></li>
+<li><p>Use the <strong><em>Spoke1 VNet</em></strong> as a Test VNet to find out the domains that should be allowed, in order to selectively execute the <em>apt-get</em> commands only towards the defined domains.</p></li>
 </ul>
 <figure class="align-center" id="id8">
 <img alt="../_images/lab7-test.png" src="../_images/lab7-test.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Spoke1 VNet as test VNet</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 126 </span><span class="caption-text">Spoke1 VNet as test VNet</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -444,7 +452,7 @@ document.write(`
 <figure class="align-center" id="id9">
 <img alt="../_images/lab7-test2.png" src="../_images/lab7-test2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Enable Egress on Spoke1 VNet</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 127 </span><span class="caption-text">Enable Egress on Spoke1 VNet</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -454,7 +462,7 @@ document.write(`
 <figure class="align-center" id="id10">
 <img alt="../_images/lab7-test3.png" src="../_images/lab7-test3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 125 </span><span class="caption-text">SSH to BU1 DB</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 128 </span><span class="caption-text">SSH to BU1 DB</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -468,20 +476,20 @@ document.write(`
 <figure class="align-center" id="id11">
 <img alt="../_images/lab7-test4.png" src="../_images/lab7-test4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 126 </span><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 129 </span><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id12">
 <img alt="../_images/lab7-test5.png" src="../_images/lab7-test5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 127 </span><span class="caption-text">Any-Web</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 130 </span><span class="caption-text">Any-Web</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to <strong>commit</strong> your changes into the Data Path.</p>
 <figure class="align-center" id="id13">
 <img alt="../_images/lab7-test6.png" src="../_images/lab7-test6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 128 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 131 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -516,7 +524,7 @@ document.write(`
 <figure class="align-center" id="id14">
 <img alt="../_images/lab7-test7.png" src="../_images/lab7-test7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 129 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 132 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -531,13 +539,13 @@ document.write(`
 <figure class="align-center" id="id15">
 <img alt="../_images/lab7-test8.png" src="../_images/lab7-test8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 130 </span><span class="caption-text">Detaching the Any-Web WebGroup</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 133 </span><span class="caption-text">Detaching the Any-Web WebGroup</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id16">
 <img alt="../_images/lab7-lastone2.png" src="../_images/lab7-lastone2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 131 </span><span class="caption-text">Commit your change</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 134 </span><span class="caption-text">Commit your change</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -551,7 +559,7 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id17">
 <img alt="../_images/lab7-disableegress.png" src="../_images/lab7-disableegress.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 132 </span><span class="caption-text">Disable Egress on Spoke1 VNet</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 135 </span><span class="caption-text">Disable Egress on Spoke1 VNet</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -560,7 +568,7 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id18">
 <img alt="../_images/lab7-sshbu2db.png" src="../_images/lab7-sshbu2db.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 133 </span><span class="caption-text">BU2 DB ip address</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 136 </span><span class="caption-text">BU2 DB ip address</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Issue the following curl commands:</p>
@@ -593,7 +601,7 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id19">
 <img alt="../_images/lab6-egressrule.png" src="../_images/lab6-egressrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 134 </span><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As soon as the Explicit-Deny-Rule is deployed the SSH session with the BU2 DB will be terminated.</p>
@@ -613,7 +621,7 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id20">
 <img alt="../_images/lab7-bus.png" src="../_images/lab7-bus.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 135 </span><span class="caption-text">SmartGroups list</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 138 </span><span class="caption-text">SmartGroups list</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -622,7 +630,7 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id21">
 <img alt="../_images/lab7-bus2.png" src="../_images/lab7-bus2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 136 </span><span class="caption-text">BU1’s members</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 139 </span><span class="caption-text">BU1’s members</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>It is evident that BU1 Frontend turns out belonging to the BU1 SmartGroup, whereas the BU2 DB is a member of the BU2 SmartGroup.</p>
@@ -651,7 +659,7 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id22">
 <img alt="../_images/lab7-bus3new.png" src="../_images/lab7-bus3new.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Three Rules</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 140 </span><span class="caption-text">Three Rules</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -664,7 +672,7 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id23">
 <img alt="../_images/lab7-bus5.png" src="../_images/lab7-bus5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 138 </span><span class="caption-text">SSH logs</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 141 </span><span class="caption-text">SSH logs</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -688,11 +696,11 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id24">
 <img alt="../_images/lab7-bu2db.png" src="../_images/lab7-bu2db.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 139 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 142 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Create a WebGroup that matches the <em>ubuntu</em> domain, its sub-domains and the <em>canonical</em> domain!</p></li>
+<li><p>Create a WebGroup that matches the domains and sub-domains that you found earlier.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -718,7 +726,7 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id25">
 <img alt="../_images/lab7-webgroup.png" src="../_images/lab7-webgroup.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 140 </span><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 143 </span><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -742,13 +750,13 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id26">
 <img alt="../_images/lab7-lastrule.png" src="../_images/lab7-lastrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 141 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 144 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id27">
 <img alt="../_images/lab7-lastcommit.png" src="../_images/lab7-lastcommit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 142 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 145 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -767,7 +775,7 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id28">
 <img alt="../_images/lab7-explicitdeny.png" src="../_images/lab7-explicitdeny.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 143 </span><span class="caption-text">Explicit Deny Rule matching</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 146 </span><span class="caption-text">Explicit Deny Rule matching</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -790,13 +798,13 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <figure class="align-center" id="id29">
 <img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 144 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 147 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id30">
 <img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You have successfully applied the Secure Egress Control, leveraging both the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature and the <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> rules!</p>
@@ -860,6 +868,7 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -916,8 +925,8 @@ By Aviatrix ACE
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -6,9 +6,9 @@ BU2 DB needs to get updates, however the VM is inside a private subnet. The BU2 
 
 Furthermore, all egress traffic must be tracked, whereby **_Logging_** must be enabled.
 
-You are requested to activate the `Egress` feature on the **_ace-azure-east-us-spoke2_** VNet and to use the **_Spoke1 VNet_** as a Test VNet, but just temporarily. 
+You are requested to activate the `Egress` feature on the **_ace-azure-east-us-spoke2_** VNet, likewise on the **_ace-azure-east-us-spoke1_** VNet but just temporarily as a Test VNet.
 
-In addition to this, you area also requested to create the dcf rules that would fulfil the aforementioned request.
+In addition to this, you area also requested to create the DCF rules that would fulfil the aforementioned request.
 
 ```{figure} images/lab7-topology.png
 ---
@@ -53,7 +53,7 @@ ace-azure-east-us-spoke2
 Go to **CoPilot > Security > Distributed Cloud Firewall** and then click on the `"Enable Distributed Cloud Firewall"` button, and then to the subsequent `"Begin Using Distributed Cloud Firewall"` button.
 ```
 
-You will immediately notice a pop-up message, informing you that the `Greenfield Rule` will be created for allowing all kind of traffic in a typical **_Deny-List_** model.
+You will immediately notice a pop-up message, informing you that the `Greenfield Rule` will be created for allowing all kind of traffic.
 
 Click on **Begin**.
 
@@ -93,7 +93,7 @@ align: center
 Commit
 ```
 
-- Use the **_Spoke1 VNet_** as Test VNet to find out the domains that should be allowed in order to successfully execute the *apt-get* commands.
+- Use the **_Spoke1 VNet_** as a Test VNet to find out the domains that should be allowed, in order to selectively execute the *apt-get* commands only towards the defined domains.
 
 ```{figure} images/lab7-test.png
 ---
@@ -380,7 +380,7 @@ align: center
 BU2 DB SmartGroup
 ```
 
-- Create a WebGroup that matches the *ubuntu* domain, its sub-domains and the *canonical* domain!
+- Create a WebGroup that matches the domains and sub-domains that you found earlier.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and then click on `"+ WebGroup"`.

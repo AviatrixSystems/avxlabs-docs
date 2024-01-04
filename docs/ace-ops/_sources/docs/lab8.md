@@ -293,7 +293,7 @@ FireNet cfg
 ---
 align: center
 ---
-remove the inspection Policy
+Remove the inspection Policy
 ```
 
 Congratulations, you have completed all labs and created a nice set of DCF rules across your Multicloud infrastructure!
