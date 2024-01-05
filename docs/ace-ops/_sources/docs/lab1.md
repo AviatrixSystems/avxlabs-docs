@@ -149,7 +149,7 @@ The IP addresses can be easily retrieved using **3** different methods, as you l
 Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
 
 ```{caution}
-You can't use SSH with any Aviatrix Gateways!
+You can't connect to any Aviatrix Gateways using the SSH protocol!
 ```
 
 ```{figure} images/lab1-newpicture.png

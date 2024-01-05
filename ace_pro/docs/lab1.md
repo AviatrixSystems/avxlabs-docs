@@ -78,6 +78,14 @@ align: center
 Notification
 ```
 
+```{note}
+VPC Functions:
+
+**1) Default** = Spoke VPC
+
+**2) Transit + FireNet** 
+```
+
 ### 2.2. Verify from Azure Portal
 
 Log into the <a href="https://portal.azure.com/#home" target="_blank">Azure portal</a>. Refer to your pod info for login information.

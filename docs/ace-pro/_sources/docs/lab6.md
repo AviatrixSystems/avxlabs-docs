@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-In this lab, we will demonstrate how to enable the `Egress Control` (one of the features that belongs to the *Distributed Cloud Firewall* functionality) on the VPC that we want to target. Of course, the selected VPC should have at least a subnet associated into a Private Routing table (i.e. without a default route pointing to the IGW). The Controller will reroute the traffic through the Aviatrix Spoke Gateway. The Egress Control can guarantee immediately better visibility and better control in order to replace the **CSP Native NAT Gateways**. <ins>The Egress Control allows to reduce the cloud costs and at the same time, improve the security without impacting the architecture</ins>.
+In this lab, we will demonstrate how to enable the `Egress Control` (one of the features that belongs to the *Distributed Cloud Firewall* functionality) on the VPC that we want to target. Of course, the selected VPC should have at least a subnet associated to a Private Routing table (i.e. without a default route pointing to the IGW). The Controller will reroute the traffic through the Aviatrix Spoke Gateway. The Egress Control can guarantee immediately better visibility and better control in order to replace the **CSP Native NAT Gateways**. <ins>The Egress Control allows to reduce the cloud costs and at the same time, improve the security without impacting the architecture</ins>.
 
 ## 2. Topology
 
@@ -100,7 +100,7 @@ Choose the correct VPC
   Verify its presence in any Private RTBs inside the **_aws-us-east-2-spoke1_** VPC.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs fron the Route table field.
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs fron the **Route Table** field.
 ```
 
 ```{figure} images/lab6-defaultroute.png
@@ -190,7 +190,7 @@ New Rule
 
 Insert the following parameters
 
-- **Name**: <span style='color:#33ECFF'>Discover-Rule</span>
+- **Name**: <span style='color:#33ECFF'>Discovery-Rule</span>
 - **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#33ECFF'>Public Internet</span>
 - **WebGroups**: <span style='color:#33ECFF'>**Any-Web**</span>
