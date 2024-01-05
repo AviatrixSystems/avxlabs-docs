@@ -218,7 +218,7 @@ align: center
 Change security groups
 ```
 
-Explore the inbound rules and you will find out the absence of a rule that would permit the incoming traffic on port **tcp/80**.
+Explore the inbound rules and you will find out the absence of a rule that should permit the incoming traffic on port **tcp/80**.
 
 ```{figure} images/lab2-sg2.png
 ---
