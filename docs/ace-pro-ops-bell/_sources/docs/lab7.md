@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-This lab will demonstrate how the `Distributed Cloud Firewall` work.
+This lab will demonstrate how the `Distributed Cloud Firewall` works.
 
 ## 2. Distributed Cloud Firewall Overview
 
@@ -10,13 +10,164 @@ The Distributed Cloud Firewall functionality encompases several services, such a
 
 In this lab you will create additional logical containers, called `SmartGroups`, that group instances that present similarities inside a VPC/VNet/VCN, and then you will enforce rules among these SmartGroups (aka **_Distributed Cloud Firewalling Rules_**):
 
-1) `intra-rule` = Rule applied within a Smart Group
+1) `intra-rule` = Rule applied <ins>within</ins> a Smart Group
 
-2) `inter-rule` = Rule applied among SmartGroups
+2) `inter-rule` = Rule applied <ins>among</ins> SmartGroups
+
+## 3. Azure Spoke2
+
+Up until now, in Azure you have only worked on **_azure-west-us-spoke1_**. 
+
+This lab will introduce finally **_azure-west-us-spoke2_** GW, that is a gateway in the top-right corner of this topology that is already deployed (hence it is red), <ins>although its attachment has not been deployed yet</ins>!
+
+```{figure} images/lab7-topology.png
+---
+height: 400px
+align: center
+---
+Lab 7 Initial Topology
+```
+
+## 3.1 Azure Spoke2 Attachment
+
+First, you will need to configure the grey Aviatrix Spoke-Transit connection in the topology between **_azure-west-us-spoke2_** and **_azure-west-us-transit_**.
+
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_azure-west-us-spoke2_**, clicking on the pencil icon:
+
+```{figure} images/lab7-spoke.png
+---
+align: center
+---
+Edit Spoke GW
+```
+
+Attach **_azure-west-us-spoke2_** (pre-configured VNet) to **_azure-west-us-transit_** as shown below.
+Do not forget to click on **Save**.
+
+```{figure} images/lab7-attachment.png
+---
+align: center
+---
+Attachment
+```
+
+This is how the topology would look like, after the completion of the previous action.
+
+```{figure} images/lab7-newversiontopo.png
+---
+align: center
+---
+Topology
+```
+
+## 3.2. Network Domain Association
+
+You need also to associate **_azure-west-us-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
+
+Go to **CoPilot > Networking > Network Segmentation > Network Domains**
+
+Click the *pencil icon* to edit the **Green** network domain.
+
+```{figure} images/lab7-editnd.png
+---
+align: center
+---
+Edit Green
+```
+
+Select the gateway **_azure-west-us-spoke2_** from the drop-down window, selecting the `"Associations"` field.
+
+Then click **Save**:
+
+```{figure} images/lab7-nd2.png
+---
+align: center
+---
+Association
+```
+
+After this step, this is how the topology should look like.
+
+```{figure} images/lab7-finaltopology.png
+---
+height: 400px
+align: center
+---
+Lab 7 Topology
+```
 
 ```{note}
 At this point in the lab, there is a unique routing domain (i.e. a **_Flat Routing Domain_**), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.
 ```
+
+## 3.3. Existing DCF rules modification
+
+```{warning}
+On Lab 6 (Egress), the DCF functionality was enabled. The current permitted rules are the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53, and the `"allow-domains"` , that is only allowing http/https traffic towards two domains. Any other kind of traffic is denied because of the presence of the `"Explicit-Deny-Rule"`. 
+
+Let's move the **_Greenfield-Rule_**  on the top of the list of the DCF rules!
+```
+
+```{figure} images/lab7-dcfrule.png
+---
+align: center
+---
+DCF rules
+```
+
+- Modify the Greenfield-Rule Priority
+
+```{tip}
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the **Greenfield-Rule** and choose *`"Move Rule"`* at the very **Top**.
+Then click on **Save in Draft**.
+```
+
+```{figure} images/lab7-top.png
+---
+align: center
+---
+Move at the Top
+```
+
+Do not forget to click on **Commit**.
+
+```{figure} images/lab7-edit.png
+---
+align: center
+---
+Commit your changes
+```
+
+- Apply the "Logging" option to the Greenfield-Rule
+
+```{tip}
+Click on the pencil icon beside the Greenfield-Rule row, then turn on the toggle for Logging and click on **Save in Drafts**.
+
+Once again, click on **Commit**.
+```
+
+```{figure} images/lab7-newone2.png
+---
+align: center
+---
+Edit the Greenfield-Rule
+```
+
+```{figure} images/lab7-newone3.png
+---
+align: center
+---
+Editing the Greenfield-Rule
+```
+
+```{figure} images/lab7-newone4.png
+---
+align: center
+---
+Commit
+```
+
+## 4. New DCF request
 
 All the Test instances have been deployed with the typical <ins>CSP tags</ins>. 
 
@@ -38,17 +189,17 @@ In this lab you are asked to achieve the following requirements among the instan
 height: 400px
 align: center
 ---
-Initial Topology Lab 10
+Initial Topology Lab 7
 ```
 
-## 3. Smart Group Creation
+## 4.1 Smart Group Creation
 
 Create two Smart Groups and classify each Smart Group, leveraging the CSP tag `"environment"`:
 
 - Assign the name `"bu1"` to the Smart Group **#1**.
 - Assign the name `"bu2"` to the Smart Group **#2**.
 
-### 3.1. Smart Group “bu1”
+### 4.1.1. Smart Group “bu1”
 
 Go to **CoPilot > SmartGroups** and click on `"+ SmartGroup"`.
 
@@ -86,7 +237,7 @@ align: center
 Resources that match the condition
 ```
 
-### 3.2. Smart Group “bu2”
+### 4.1.2. Smart Group “bu2”
 
 Create another Smart Group clicking on the `"+ SmartGroup"` button.
 
@@ -136,19 +287,19 @@ align: center
 Greenfield-Rule in action
 ```
 
-### 3.3. Connectivity verification (ICMP)
+## 4.2. Connectivity verification (ICMP)
 
 Open a terminal window and SSH to the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity has not been modified.
 
 ```{note}
-Refer to your POD for the private IPs.
+Refer always to your personal POD for the private IPs.
 ```
 
 ```{figure} images/lab10-newone.png
 ---
 align: center
 ---
-Ping
+SSH to test1 in us-east-2 VPC
 ```
 
 ```{figure} images/lab10-ping.png
@@ -165,7 +316,7 @@ align: center
 Ping
 ```
 
-### 3.4.  Connectivity verification (SSH)
+## 4.3.  Connectivity verification (SSH)
 
 Verify also from the instance **aws-us-east-2-spoke1-test1** that you can SSH to the private instance in AWS, to the instance in GCP and likewise to the other two instances in Azure.
 
@@ -217,8 +368,8 @@ SSH to AWS us-east-1-spoke1-test2
 
 The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.
 
-## 4. Rules Creation
-### 4.1. Build a Zero Trust  Network Architecture
+## 5. Rules Creation
+### 5.1. Build a Zero Trust  Network Architecture
 
 First and foremost, let's move the `Explicit-Deny-Rule` at the very top of the list of your DCF rules.
 
@@ -248,7 +399,7 @@ Commit
 Zero Trust architecture is "Never trust, always verify", a critical component to enterprise cloud adoption success!
 ```
 
-### 4.2. Create an intra-rule that allows ICMP inside bu1
+### 5.2. Create an intra-rule that allows ICMP inside bu1
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -286,7 +437,7 @@ align: center
 Current list of rules
 ```
 
-### 4.2. Create an intra-rule that allows ICMP inside bu2
+### 5.3. Create an intra-rule that allows ICMP inside bu2
 
 Create another rule clicking on the `"+ Rule"` button.
 
@@ -326,7 +477,7 @@ align: center
 Commit
 ```
 
-## 5. Verification
+## 6. Verification
 
 Afte the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols should look like:
 
@@ -338,7 +489,7 @@ align: center
 New Topology
 ```
 
-### 5.1. Verify SSH traffic from your laptop to bu1
+### 6.1. Verify SSH traffic from your laptop to bu1
 
 SSH to the Public IP of the instance **aws-us-east-2-spoke1-test1**.
 
@@ -349,7 +500,7 @@ align: center
 SSH from your laptop
 ```
 
-### 5.2. Verify ICMP within bu1 and from bu1 towards bu2
+### 6.2. Verify ICMP within bu1 and from bu1 towards bu2
 
 Ping the following instances from **aws-us-east-2-spoke1-test1**:
 
@@ -422,10 +573,10 @@ Ping fails
 ```
 
 ```{important}
-This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2, thanks to the Security Group Orchestration carried out by the **Aviatrix Controller**.
+This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2, thanks to the **Security Group Orchestration** carried out automatically by the **Aviatrix Controller**.
 ```
 
-### 5.3. Verify SSH within bu1
+### 6.3. Verify SSH within bu1
 
 SSH to the Private IP of the instance **_azure-west-us-spoke1-test1_** in Azure. Despite the fact that the instance is within the same Smart Group "bu1", the SSH will fail due to the absence of a rule that would permit SSH traffic within the Smart Group.
 
@@ -436,7 +587,7 @@ align: center
 SSH fails
 ```
 
-### 5.4. Add a rule that allows SSH in bu1
+### 6.4. Add a rule that allows SSH in bu1
 
 Create another rule clicking on the `"+ Rule"` button.
 
@@ -479,7 +630,7 @@ Commit
 
 - Try once again to SSH to the Private IP of the instance **_azure-west-us-spoke1-<span style='color:red'>test1</span>_** in Azure in BU1.
 
-This time the connection will be established, thanks to the new intra-rule.
+This time the SSH session will be established, thanks to the new intra-rule.
 
 ```{figure} images/lab10-sshbu1ok.png
 ---
@@ -511,7 +662,7 @@ align: center
 New Topology
 ```
 
-### 5.4. SSH to VM in bu2
+### 6.4. SSH to VM in bu2
 
 SSH to the Public IP of the instance **_gcp-us-central1-spoke1-test1_**:
 
@@ -522,7 +673,7 @@ align: center
 SSH to gcp-us-central1-spoke1-test1
 ```
 
-### 5.5. Verify ICMP traffic within bu2
+### 6.5. Verify ICMP traffic within bu2
 
 Ping the following instances:
 
@@ -553,7 +704,7 @@ Monitor
 
 The logs above confirm that the ICMP protocol is permitted within the Smart Group bu2.
  
-### 5.6. Inter-rule from bu2 to bu1
+### 6.6. Inter-rule from bu2 to bu1
 
 Create a new rule that allows ICMP FROM bu2 TO bu1.
 
@@ -649,9 +800,9 @@ From To
 
 The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.
  
-## 6. East-1 and the Multi-Tier Transit
+## 7. East-1 and the Multi-Tier Transit
 
-### 6.1 Activation of the MTT
+### 7.1 Activation of the MTT
 
 Let’s now also involve the AWS region **US-EAST-1**.
 
@@ -793,7 +944,7 @@ Although this time there is a valid route to the destination, thanks to the **MT
 The reason is that the ec2-instance  **aws-us-east-1-spoke1-test2** is not allocated to any Smart Groups yet!
 ```
 
-### 6.2 Smart Group “east1”
+### 7.2 Smart Group “east1”
 
 Let’s create another Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in US-EAST-1 region in AWS.
 
@@ -825,7 +976,7 @@ The CoPilot shows that there is just one single instance that matches the condit
 
 Do not forget to click on **Save**.
 
-### 6.3 Create an inter-rule that allows ICMP from bu2 towards east1
+### 7.3 Create an inter-rule that allows ICMP from bu2 towards east1
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create another rule clicking on the `"+ Rule"` button.
 
@@ -867,7 +1018,7 @@ align: center
 Commit
 ```
 
-### 6.4 Verify connectivity between bu2 and east1
+### 7.4 Verify connectivity between bu2 and east1
 
 - SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_** and ping the private IP of the ec2-instance **_aws-us-east-1-spoke1-test2_**
 

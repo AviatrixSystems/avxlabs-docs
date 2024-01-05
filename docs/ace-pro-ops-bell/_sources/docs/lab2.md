@@ -363,6 +363,8 @@ Spoke GW in GCP
 
 ```{caution}
 You can see the progress of gateway deployment at any time by expanding the task icon in the top right corner of the CoPilot.
+
+<ins>Bear in mind that the gateways' creation process can take several minutes to complete, therefore please be patient!</ins>
 ```
 
 ```{figure} images/lab2-inprogress2.png
@@ -372,7 +374,7 @@ align: center
 Deployment in progress
 ```
 
-Once all gateways have been created, confirm from **CoPilot > Cloud Fabric > Gateways > Overview (default TAB)** the presence of a total of **nine** GW Clusters!
+Once all gateways have been created, confirm from **CoPilot > Cloud Fabric > Gateways > Overview (default TAB)** the presence of a total of **nine** GWs Clusters!
 
 ```{figure} images/lab2-14gws.png
 ---
@@ -393,7 +395,22 @@ Overview of the new topology state
 
 ## 4.3. Explore the Cloud Fabric
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on `"Collapse all VPC/VNets"` button on the bottom right-hand side, as depicted below.
+Go to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on  the `"Managed"` button to only showing the Managed VPCs!
+
+```{figure} images/lab2-newuitopo.png
+---
+align: center
+---
+Managed VPCs and Unmanaged VPCs
+```
+
+```{note}
+**Managed VPC** = Indicates an Aviatrix gateway is running in the VPC/VNet.
+
+**Unmanaged VPC** = Indicates no Aviatrix gateways exist in the VPC/VNet.
+```
+
+Now you can click on the `"Collapse all VPC/VNets"` button on the bottom right-hand side, as depicted below.
 
 ```{figure} images/lab2-collapse.png
 ---
@@ -691,7 +708,7 @@ Expanded Topology
 
 ### 5.3. Route Info DB
 
-Route Info DB is similar to *Routing Information Base (RIB)*. It will provide the overall routing information of a Transit Gateway known by the CoPilot.
+Route Info DB is akin to the *Routing Information Base (RIB)*. It will provide the overall routing information of a Transit Gateway known by the CoPilot.
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east-2-transit_**:
 
@@ -753,14 +770,14 @@ Test instance Properties
 ```{note}
 Do not select the instance with the Aviatrix logo!
 
-<ins>You can't ssh to any Aviatrix GW !</ins>
+<ins>You can't SSH to any Aviatrix GWs !</ins>
 
 
 ```{figure} images/lab2-newpic2.png
 ---
 align: center
 ---
-Route DB
+Different Logos
 ```
 
 

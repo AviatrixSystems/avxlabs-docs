@@ -12,7 +12,9 @@ In addition, Firewall Network allows you to scale firewall deployment to multi A
  
 ## 3. Topology
 
-Up until now, in Azure you have only worked on **_azure-west-us-spoke1_**. This lab will introduce finally **_azure-west-us-spoke2_**, which is a gateway in the top-right corner of this topology that is already deployed (hence it is red); <ins>there is the attachment that has not been deployed yet</ins>!
+Up until now, in Azure you have only worked on **_azure-west-us-spoke1_**. 
+
+This lab will introduce finally **_azure-west-us-spoke2_** GW, that is a gateway in the top-right corner of this topology that is already deployed (hence it is red), <ins>although its attachment has not been deployed yet</ins>!
 
 ```{figure} images/lab7-topology.png
 ---
@@ -313,7 +315,7 @@ align: center
 Association
 ```
 
-After this step, this is what Lab 7 topology looks like:
+After this step, this is how the topology should look like:
 
 ```{figure} images/lab7-finaltopology.png
 ---
@@ -350,7 +352,7 @@ align: center
 Move at the Top
 ```
 
-Do not forget to click on **Commits**.
+Do not forget to click on **Commit**.
 
 ```{figure} images/lab7-edit.png
 ---
@@ -363,6 +365,8 @@ Commit your changes
 
 ```{tip}
 Click on the pencil icon beside the Greenfield-Rule row, then turn on the toggle for Logging and click on **Save in Drafts**.
+
+Once again do not forget to click on **Commit**.
 ```
 
 ```{figure} images/lab7-newone2.png

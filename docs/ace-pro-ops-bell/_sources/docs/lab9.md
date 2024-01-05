@@ -149,7 +149,7 @@ The IP addresses can be easily retrieved using **3** different methods, as you l
 Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
 
 ```{caution}
-You can't use SSH with any Aviatrix Gateways!
+You can't connect to any Aviatrix Gateways using the SSH protocol!
 ```
 
 ```{figure} ../../ace_ops/docs/images/lab1-newpicture.png
@@ -213,7 +213,7 @@ BU1 connectivity
 Ping and SSH commands should not work this time, due to the separation between the two segments (i.e. <ins>these are two different Routing Domains</ins>).
 
 ```{important}
-Oncew again refer always to your personal POD for the IP addresses. 
+Once again refer always to your personal POD for the IP addresses. 
 
 The screenshots are used as examples and might indicate different IP addresses from those present on your POD!
 ```

@@ -269,7 +269,7 @@ Active Sessions
 You will have to relaunch the ping command once again from the CSR router and click on **Run** on the CoPilot for capturing the `Active Sessions`!
 ```
 
-After completing this lab, this is what the overall lab topology would look like:
+After completing this lab, this is what the overall lab topology should look like:
 
 ```{figure} images/lab8-finaltopology.png
 ---
