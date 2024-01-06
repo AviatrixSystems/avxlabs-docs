@@ -2,7 +2,7 @@
 
 ## Scenario
 
-After resolving the challenge #3, the Database VM administrator mentioned that the Database is receiving requests from an IP that belongs to the **192.168.0.0/16** space, instead of 10.2.0.0/16...
+After resolving the challenge #3, the Database VM administrator mentioned that the Database is receiving requests from an IP that belongs to the **192.168.0.0/16** space, instead of 10.2.0.0/16. 
 
 ```{figure} images/lab4-drawing.png
 ---
