@@ -534,7 +534,7 @@ align: center
 Detected Intrusions
 ```
 
-Click on any **Timestamp** to get additional insight on that specific attack.
+Click on any **Timestamps** to get additional insight on that specific attack.
 
 ```{figure} images/lab6-final.png
 ---
