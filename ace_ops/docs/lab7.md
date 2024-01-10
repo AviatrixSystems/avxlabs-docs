@@ -44,7 +44,7 @@ This action will install a `Default Route` within the Private Subnets, pointing 
 ---
 align: center
 ---
-ace-azure-east-us-spoke2
+Default route pointing to the AVX GW
 ```
 
 - Enable the **Distributed Cloud Firewall** feature.
