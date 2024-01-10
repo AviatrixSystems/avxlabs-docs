@@ -215,7 +215,7 @@ Search for **_ace-aws-eu-west-1-spoke2-bu2-mobile-app_**, select the instance an
 ---
 align: center
 ---
-Change security groups
+Security group
 ```
 
 Explore the inbound rules and you will find out the absence of a rule that should permit the incoming traffic on port **tcp/80**.
@@ -224,7 +224,7 @@ Explore the inbound rules and you will find out the absence of a rule that shoul
 ---
 align: center
 ---
-Change security groups
+Inspecting the security group
 ```
 
 Click on `"Edit inbound rules"`.
@@ -233,7 +233,7 @@ Click on `"Edit inbound rules"`.
 ---
 align: center
 ---
-Change security groups
+Edit the security group
 ```
 
 Click on `"Add rule"`.
@@ -242,7 +242,7 @@ Click on `"Add rule"`.
 ---
 align: center
 ---
-Change security groups
+Add a new SGr
 ```
 
 Create the required inbound rule (i.e. _"allow tcp traffic from anywhere"_) as depicted below and then click on the `"Save rules"` button.
