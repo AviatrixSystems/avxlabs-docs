@@ -192,7 +192,7 @@ Go to **CoPilot > Diagnostics > Cloud Routes > BGP Info** and then click on the 
 height: 400px
 align: center
 ---
-New request: remove the route
+Show BGP Learned Routes
 ```
 
 You are asked to maintain visible this route (therefore fully installed in the routing tables) on all the Spoke gateways, <ins>except the Azure Spoke2 GW!</ins>
@@ -202,7 +202,7 @@ You are asked to maintain visible this route (therefore fully installed in the r
 height: 400px
 align: center
 ---
-New request: remove the route
+Topology
 ```
 
 - Verify first the presence of the route inside the routing table of the Azure Spoke2 GW.
@@ -217,7 +217,7 @@ Now search for `10.0.211.0/24`.
 ---
 align: center
 ---
-Remote route from the OnPrem DC
+Search for the remote route from the OnPrem DC
 ```
 
 - Filter out the route 10.0.211.0/24 from the `Settings` section (i.e. *Route Manipulation* section).
@@ -248,7 +248,7 @@ Now search for `10.0.211.0/24`.
 ---
 align: center
 ---
-Route
+No Results found
 ```
 
 You can notice that route has been removed from the routing table, successfully.
