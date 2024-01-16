@@ -18,7 +18,7 @@ ACE Security pod topology
 
 ## URLs
 
-[Controller](https://ctrl.pod149.aviatrixlab.com)
+[Controller](https://ctrl.pod1.aviatrixlab.com)
 
 The Aviatrix Controller is a management and control plane or a single pane of glass that enables you to manage and support a single or multi-cloud network architecture. You can deploy an Aviatrix Controller through any of the four major CSP (Cloud Service Provider) marketplaces:
 
@@ -27,7 +27,7 @@ The Aviatrix Controller is a management and control plane or a single pane of gl
 - GCP (Google Cloud Platform)
 - OCI (Oracle Cloud Infrastructure)
 
-[CoPilot](https://cplt.pod149.aviatrixlab.com)
+[CoPilot](https://cplt.pod1.aviatrixlab.com)
 
 Aviatrix CoPilot provides a global operational view of your multicloud network, supporting business-critical cloud networking. CoPilot enables enterprises to implement intelligent cloud networking that embeds security into their networks with monitoring and diagnostic tools that help support application availability.
 
@@ -42,5 +42,5 @@ student
 Password:
 
 ```bash
-1021TBQXLP2!2vN
+1139U7kr!u#58S
 ```
