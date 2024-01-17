@@ -171,11 +171,11 @@ You can deploy up to maximum **fifteen** Spoke Gateways per each Spoke VPC/VNet/
 
 In this section, you will experience the power and simplicity of the Aviatrix platform by deploying (i.e. creating) 5 gateways:
 
- - **First Transit gateway in AWS US East 2:** <span style='color:#33ECFF'>aws-us-east-2-transit</span>
- - **Second Transit gateway in AWS US East 2:** <span style='color:#33ECFF'>aws-us-east-2-transit-1</span>
- - **Spoke gateway in AWS US East 2:** <span style='color:#33ECFF'>aws-us-east-2-spoke1</span>
-- **Spoke gateway in Azure West US:** <span style='color:#33ECFF'>azure-west-us-spoke1</span>
-- **Spoke gateway in GCP US Central 1:** <span style='color:#33ECFF'>gcp-us-central1-spoke1</span>
+ - **First Transit gateway in AWS US East 2:** <span style='color:#479608'>aws-us-east-2-transit</span>
+ - **Second Transit gateway in AWS US East 2:** <span style='color:#479608'>aws-us-east-2-transit-1</span>
+ - **Spoke gateway in AWS US East 2:** <span style='color:#479608'>aws-us-east-2-spoke1</span>
+- **Spoke gateway in Azure West US:** <span style='color:#479608'>azure-west-us-spoke1</span>
+- **Spoke gateway in GCP US Central 1:** <span style='color:#479608'>gcp-us-central1-spoke1</span>
 
 ```{warning}
 Please pay close attention to each step, as a misconfiguration could result in **20+** minutes of lost time! 
@@ -196,19 +196,19 @@ Deploy Aviatrix Transit Gateways in AWS **_East-2_** region. To save time, Aviat
 
 Ensure these parameters are entered in the pop-up window `"Create Transit Gateway"`.
 
-- **Name:** <span style='color:#33ECFF'>aws-us-east-2-transit</span>
-- **Cloud:** <span style='color:#33ECFF'>AWS (Standard)</span>
-- **Account:** <span style='color:#33ECFF'>aws-account </span>
-- **Region:** <span style='color:#33ECFF'>us-east-2 (Ohio)</span>
-- **VPC ID:** <span style='color:#33ECFF'>aws-us-east-2-transit (Make sure you don't select aws-us-east-2-**spoke1** VPC)</span>
-- **Instance Size:** <span style='color:#33ECFF'>c5n.large</span>
-- **High Performance Encryption:** <span style='color:#33ECFF'>**On**</span>
+- **Name:** <span style='color:#479608'>aws-us-east-2-transit</span>
+- **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
+- **Account:** <span style='color:#479608'>aws-account </span>
+- **Region:** <span style='color:#479608'>us-east-2 (Ohio)</span>
+- **VPC ID:** <span style='color:#479608'>aws-us-east-2-transit (Make sure you don't select aws-us-east-2-**spoke1** VPC)</span>
+- **Instance Size:** <span style='color:#479608'>c5n.large</span>
+- **High Performance Encryption:** <span style='color:#479608'>**On**</span>
 
 Click on `+ Instance` (Make sure you deploy also the Second Transit Gateway, in a different subnet).
 
-- **Attach to Subnet (row 1):** <span style='color:#33ECFF'>us-east-2a</span>
-- **Attach to Subnet (row 2):** <span style='color:#33ECFF'>us-east-2b</span>
-- **Public IP:** <span style='color:#33ECFF'>Allocate New Static Public IP</span>
+- **Attach to Subnet (row 1):** <span style='color:#479608'>us-east-2a</span>
+- **Attach to Subnet (row 2):** <span style='color:#479608'>us-east-2b</span>
+- **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
 ```{note}
 As soon as you select High Performance Encryption, **/26** subnets will appear in the drop-down window.
@@ -273,15 +273,15 @@ Ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"
 Only one Spoke Gateway will be deployed in VPC **aws-us-east2-spoke1**.
 ```
 
-- **Name:** <span style='color:#33ECFF'>aws-us-east-2-spoke1</span>
-- **Cloud:** <span style='color:#33ECFF'>AWS (Standard)</span>
-- **Account:** <span style='color:#33ECFF'>aws-account</span>
-- **Region:** <span style='color:#33ECFF'>us-east-2 (Ohio)</span>
-- **VPC ID:** <span style='color:#33ECFF'>aws-us-east-2-spoke1 (Make sure you don't select aws-us-east-2-**transit** VPC)</span>
-- **Instance Size:** <span style='color:#33ECFF'>t2.medium</span>
-- **High Performance Encryption:** <span style='color:#33ECFF'>**Off**</span>
-- **Attach to Subnet:** <span style='color:#33ECFF'>us-east-2a</span>
-- **Public IP:** <span style='color:#33ECFF'>Allocate New Static Public IP</span>
+- **Name:** <span style='color:#479608'>aws-us-east-2-spoke1</span>
+- **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
+- **Account:** <span style='color:#479608'>aws-account</span>
+- **Region:** <span style='color:#479608'>us-east-2 (Ohio)</span>
+- **VPC ID:** <span style='color:#479608'>aws-us-east-2-spoke1 (Make sure you don't select aws-us-east-2-**transit** VPC)</span>
+- **Instance Size:** <span style='color:#479608'>t2.medium</span>
+- **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
+- **Attach to Subnet:** <span style='color:#479608'>us-east-2a</span>
+- **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
 Click **SAVE**.
 
@@ -302,15 +302,15 @@ Repeat the previous steps for Azure, click on the button `"+ Spoke Gateway"` and
 Only one Spoke Gateway will be deployed in VNet **azure-west-us-spoke1**.
 ```
 
-- **Name:** <span style='color:#33ECFF'>azure-west-us-spoke1</span>
-- **Cloud:** <span style='color:#33ECFF'>Azure (Global)</span>
-- **Account:** <span style='color:#33ECFF'>azure-account</span>
-- **Region:** <span style='color:#33ECFF'>West US</span>
-- **VNet:** <span style='color:#33ECFF'>azure-west-us-spoke1 (Make sure you don't select azure-west-us-**spoke2** VPC)</span>
-- **Instance Size:** <span style='color:#33ECFF'>Standard_B2ms</span>
-- **High Performance Encryption:** <span style='color:#33ECFF'>**Off**</span>
-- **Attach to Subnet:** <span style='color:#33ECFF'>azure-west-us-spoke1-Public-gateway-subnet-1</span>
-- **Public IP:** <span style='color:#33ECFF'>Allocate New Static Public IP</span>
+- **Name:** <span style='color:#479608'>azure-west-us-spoke1</span>
+- **Cloud:** <span style='color:#479608'>Azure (Global)</span>
+- **Account:** <span style='color:#479608'>azure-account</span>
+- **Region:** <span style='color:#479608'>West US</span>
+- **VNet:** <span style='color:#479608'>azure-west-us-spoke1 (Make sure you don't select azure-west-us-**spoke2** VPC)</span>
+- **Instance Size:** <span style='color:#479608'>Standard_B2ms</span>
+- **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
+- **Attach to Subnet:** <span style='color:#479608'>azure-west-us-spoke1-Public-gateway-subnet-1</span>
+- **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
 ```{warning}
 Make sure you <ins>do not select the subnets that begins with az-1, az-2, or az-3</ins>. It is Aviatrix's recommended practice to deploy gateways in subnets with 'gateway' in their name, whereas workloads in subnets that do not have 'gateway' in their name).
@@ -342,15 +342,15 @@ Repeat the previous steps for GCP. Ensure these parameters are entered in the po
 Only one Spoke Gateway will be deployed in VPC **gcp-us-central1-spoke1**.
 ```
 
-- **Name:** <span style='color:#33ECFF'>gcp-us-central1-spoke1</span>
-- **Cloud:** <span style='color:#33ECFF'>GCP</span>
-- **Account:** <span style='color:#33ECFF'>gcp-account</span>
-- **VPC:** <span style='color:#33ECFF'>gcp-us-central1-spoke1</span>
-- **Instance Size:** <span style='color:#33ECFF'>n1-standard-1</span>
-- **High Performance Encryption:** <span style='color:#33ECFF'>**Off**</span>
-- **Attach to Subnet:** <span style='color:#33ECFF'>gcp-us-central1-spoke1-sub1</span>
-- **Zone:** <span style='color:#33ECFF'>us-central1-a</span>
-- **Public IP:** <span style='color:#33ECFF'>Allocate New Static Public IP</span>
+- **Name:** <span style='color:#479608'>gcp-us-central1-spoke1</span>
+- **Cloud:** <span style='color:#479608'>GCP</span>
+- **Account:** <span style='color:#479608'>gcp-account</span>
+- **VPC:** <span style='color:#479608'>gcp-us-central1-spoke1</span>
+- **Instance Size:** <span style='color:#479608'>n1-standard-1</span>
+- **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
+- **Attach to Subnet:** <span style='color:#479608'>gcp-us-central1-spoke1-sub1</span>
+- **Zone:** <span style='color:#479608'>us-central1-a</span>
+- **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
 Click **SAVE**.
 
@@ -449,7 +449,7 @@ align: center
 Attachment for AWS
 ```
 
-Select the Transit Gateway **_aws-us-east-<span style='color:#33ECFF'>2</span>-transit_** (do not select the **_aws-us-east-1-transit_**) from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
+Select the Transit Gateway **_aws-us-east-<span style='color:violet'>2</span>-transit_** (do not select the **_aws-us-east-1-transit_**) from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
 
 ```{figure} images/lab2-editspokeinaws.png
 ---

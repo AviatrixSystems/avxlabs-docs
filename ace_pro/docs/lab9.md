@@ -36,13 +36,13 @@ PSF
 ```
 
 Insert the following parameters:
-- **Name**: <span style='color:#33ECFF'>aws-us-east1-psf</span>
-- **Account**: <span style='color:#33ECFF'>aws-account</span>
-- **Region**: <span style='color:#33ECFF'>us-east-1 (N. Virginia)</span>
-- **VPC**: <span style='color:#33ECFF'>aws-us-east1-spoke1</span>
-- **Instance Size**: <span style='color:#33ECFF'>t2.medium</span>
-- **Attach to Unused Subnet**: <span style='color:#33ECFF'>us-east-1a</span>
-- **Route Table**: <span style='color:#33ECFF'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span>
+- **Name**: <span style='color:#479608'>aws-us-east1-psf</span>
+- **Account**: <span style='color:#479608'>aws-account</span>
+- **Region**: <span style='color:#479608'>us-east-1 (N. Virginia)</span>
+- **VPC**: <span style='color:#479608'>aws-us-east1-spoke1</span>
+- **Instance Size**: <span style='color:#479608'>t2.medium</span>
+- **Attach to Unused Subnet**: <span style='color:#479608'>us-east-1a</span>
+- **Route Table**: <span style='color:#479608'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span>
 
 Do not forget to click on **Save**.
 

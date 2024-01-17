@@ -77,9 +77,9 @@ FireNet
 
 Deploy a Firewall by entering these settings within the `Deploy Firewall` window:
 
-- **FireNet Instance**: <span style='color:#33ECFF'>azure-west-us-transit</span>
-- **Name**: <span style='color:#33ECFF'>azure-west-us-pan</span>
-- **Firewall Image**: <span style='color:#33ECFF'>Palo Alto Networks VM-Series Next-Generation Firewall Bundle 1</span>
+- **FireNet Instance**: <span style='color:#479608'>azure-west-us-transit</span>
+- **Name**: <span style='color:#479608'>azure-west-us-pan</span>
+- **Firewall Image**: <span style='color:#479608'>Palo Alto Networks VM-Series Next-Generation Firewall Bundle 1</span>
 
 ```{warning}
 When you click on the **Firewall Image** drop-down window, you will see a `"Loading"` message. The message means that the Controller is in the middle of contacting the Marketplace through the API calls, therefore, be patient and wait for some seconds.
@@ -92,17 +92,17 @@ align: center
 Marketplace contact under loading
 ```
 
-- **Firewall Image Version**: <span style='color:#33ECFF'>9.1.0</span>
-- **Firewall instance Size**: <span style='color:#33ECFF'>Standard_D3_v2</span>
-- **Management Interface Subnet**: <span style='color:#33ECFF'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
-- **Egress Interface Subnet**: <span style='color:#33ECFF'>azure-west-us-transit-Public-FW-ingress-egress-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
-- **Authentication**: <span style='color:#33ECFF'>Password</span>
-- **Username**: <span style='color:#33ECFF'>avxadmin [**Note**: username *admin* is not permitted in Azure]</span>
-- **Password**: <span style='color:#33ECFF'>[choose a **strong password** and remember it]</span>
-- **Bootstrap Configuration**: <span style='color:#33ECFF'>turn **ON** the knob</span>
-- **Storage**: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
-- **Storage Access Key**: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
-- **File-Shared Folder**: <span style='color:#33ECFF'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
+- **Firewall Image Version**: <span style='color:#479608'>9.1.0</span>
+- **Firewall instance Size**: <span style='color:#479608'>Standard_D3_v2</span>
+- **Management Interface Subnet**: <span style='color:#479608'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
+- **Egress Interface Subnet**: <span style='color:#479608'>azure-west-us-transit-Public-FW-ingress-egress-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
+- **Authentication**: <span style='color:#479608'>Password</span>
+- **Username**: <span style='color:#479608'>avxadmin [**Note**: username *admin* is not permitted in Azure]</span>
+- **Password**: <span style='color:#479608'>[choose a **strong password** and remember it]</span>
+- **Bootstrap Configuration**: <span style='color:#479608'>turn **ON** the knob</span>
+- **Storage**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
+- **Storage Access Key**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
+- **File-Shared Folder**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
 
 Then click on **Deploy**.
 
@@ -174,10 +174,10 @@ Vendor Integration
 
 Insert the following paramenters in the `"Vendor Integration"` pop-up window.
 
-- **Management IP Address**: <span style='color:#33ECFF'>**Auto populated**</span>
-- **Vendor**: <span style='color:#33ECFF'>Palo Alto Networks VM-Series</span>
-- **Username**: <span style='color:#33ECFF'>avxadmin</span>
-- **Password**: <span style='color:#33ECFF'>[the password you entered earlier]</span>
+- **Management IP Address**: <span style='color:#479608'>**Auto populated**</span>
+- **Vendor**: <span style='color:#479608'>Palo Alto Networks VM-Series</span>
+- **Username**: <span style='color:#479608'>avxadmin</span>
+- **Password**: <span style='color:#479608'>[the password you entered earlier]</span>
 
 Then click on **Save**.
 
@@ -393,7 +393,7 @@ Commit
 
 ### 5.1.1 Luanch connectivity test
 
-**SSH** into **_azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1_** and from there, ping **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-test1_** on its private IP.
+**SSH** into **_azure-west-us-spoke<span style='color:#479608'>1</span>-test1_** and from there, ping **_azure-west-us-spoke<span style='color:#bb05b9'>2</span>-test1_** on its private IP.
 
 ```{figure} images/lab7-ping.png
 ---
