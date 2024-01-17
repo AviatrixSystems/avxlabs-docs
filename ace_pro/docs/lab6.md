@@ -190,14 +190,14 @@ New Rule
 
 Insert the following parameters
 
-- **Name**: <span style='color:#33ECFF'>Discovery-Rule</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>Public Internet</span>
-- **WebGroups**: <span style='color:#33ECFF'>**Any-Web**</span>
-- **Protocol**: <span style='color:#33ECFF'>Any</span>
-- **Enforcement**: <span style='color:#33ECFF'>**Off**</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Name**: <span style='color:#479608'>Discovery-Rule</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
+- **WebGroups**: <span style='color:#479608'>**Any-Web**</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Enforcement**: <span style='color:#479608'>**Off**</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**.
 
@@ -283,10 +283,10 @@ WebGroups
 
 Create a **_WebGroup_** with the following parameters:
 
-- **Name**: <span style='color:#33ECFF'>two-domains</span>
-- **Type**: <span style='color:#33ECFF'>Domains</span>
-- **Domains/URLs**: <span style='color:#33ECFF'>www.aviatrix.com</span>
-- **Domains/URLs**: <span style='color:#33ECFF'>www.wikipedia.com</span>
+- **Name**: <span style='color:#479608'>two-domains</span>
+- **Type**: <span style='color:#479608'>Domains</span>
+- **Domains/URLs**: <span style='color:#479608'>www.aviatrix.com</span>
+- **Domains/URLs**: <span style='color:#479608'>www.wikipedia.com</span>
 
 Do not forget to click on **Save**.
 
@@ -308,12 +308,12 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on t
 
 Create a new **_DCF rule_** with the following parameters:
 
-- **Name**: <span style='color:#33ECFF'>allow-domains</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>Public Internet</span>
-- **WebGroups**: <span style='color:#33ECFF'>two-domains</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>Permit</span>
+- **Name**: <span style='color:#479608'>allow-domains</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
+- **WebGroups**: <span style='color:#479608'>two-domains</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
 
@@ -344,13 +344,13 @@ Before Commit
 
 Create an `Explicit Deny Rule` that will allow to see the logs for the `"Denied"` actions.
 
-- **Name**: <span style='color:#33ECFF'>Explicit-Deny-Rule</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Deny**</span>
-- **Place Rule**: <span style='color:#33ECFF'>Below</span>
-  - - **Existing Rule**: <span style='color:#33ECFF'>allow-domains</span>
+- **Name**: <span style='color:#479608'>Explicit-Deny-Rule</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - - **Existing Rule**: <span style='color:#479608'>allow-domains</span>
 
 Do not forget to click on **Save In Drafts**.
 
@@ -423,13 +423,13 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on t
 
 Create a new DCF Rule with the following parameters:
 
-- **Name**: <span style='color:#33ECFF'>Inspect-DNS</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>Public Internet</span>
-- **Protocol**: <span style='color:#33ECFF'>Any</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
-- **Intrusion Detection (IDS)**: <span style='color:#33ECFF'>On</span>
+- **Name**: <span style='color:#479608'>Inspect-DNS</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+- **Intrusion Detection (IDS)**: <span style='color:#479608'>On</span>
 
 Do not forget to click on **Save In Drafts**.
 
@@ -493,8 +493,8 @@ Edit existing rule
 
 Insert the following parameters and do not forget to click on **Save In Drafts**:
 
-- **Protocol**: <span style='color:#33ECFF'>UDP</span>
-- **Port**: <span style='color:#33ECFF'>53</span>
+- **Protocol**: <span style='color:#479608'>UDP</span>
+- **Port**: <span style='color:#479608'>53</span>
 
 ```{figure} images/lab6-dns.png
 ---

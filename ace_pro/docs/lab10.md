@@ -61,9 +61,9 @@ SmartGroup
 
 Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
 
-- **Name**: <span style='color:#33ECFF'>bu1</span>
-- **CSP Tag Key**: <span style='color:#33ECFF'>environment</span>
-- **CSP Tag Value**: <span style='color:#33ECFF'>bu1</span>
+- **Name**: <span style='color:#479608'>bu1</span>
+- **CSP Tag Key**: <span style='color:#479608'>environment</span>
+- **CSP Tag Value**: <span style='color:#479608'>bu1</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Resource Selection"`.
 
@@ -99,9 +99,9 @@ New Smart Group
 
 Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
 
-- **Name**: <span style='color:#33ECFF'>bu2</span>
-- **CSP Tag Key**: <span style='color:#33ECFF'>environment</span>
-- **CSP Tag Value**: <span style='color:#33ECFF'>bu2</span>
+- **Name**: <span style='color:#479608'>bu2</span>
+- **CSP Tag Key**: <span style='color:#479608'>environment</span>
+- **CSP Tag Value**: <span style='color:#479608'>bu2</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Resource Selection"`.
 
@@ -261,12 +261,12 @@ New Rule
 
 Insert the following parameters:
 
-- **Name**: <span style='color:#33ECFF'>intra-icmp-bu1</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>bu1</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>bu1</span>
-- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Name**: <span style='color:#479608'>intra-icmp-bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**.
 
@@ -299,14 +299,14 @@ New rule
 
 Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>intra-icmp-bu2</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>bu2</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>bu2</span>
-- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
-- **Place Rule**: <span style='color:#33ECFF'>Below</span>
-  - **Existing Rule**: <span style='color:#33ECFF'>intra-icmp-bu1</span>
+- **Name**: <span style='color:#479608'>intra-icmp-bu2</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>intra-icmp-bu1</span>
   
 Do not forget to click on **Save In Drafts**.
 
@@ -412,7 +412,7 @@ align: center
 Manage SG Orchestration
 ```
 
-Relaunch the ping from **aws-us-east-2-spoke1-<span style='color:#33ECFF'>test1</span>** towards **aws-us-east-2-spoke1-<span style='color:red'>test2</span>**. 
+Relaunch the ping from **aws-us-east-2-spoke1-<span style='color:#479608'>test1</span>** towards **aws-us-east-2-spoke1-<span style='color:red'>test2</span>**. 
 
 ```{figure} images/lab10-pingtotest2fail.png
 ---
@@ -449,15 +449,15 @@ New rule
 
 Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>intra-ssh-bu1</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>bu1</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>bu1</span>
-- **Protocol**: <span style='color:#33ECFF'>TCP</span>
-- **Port**: <span style='color:#33ECFF'>22</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
-- **Place Rule**: <span style='color:#33ECFF'>Below</span>
-  - **Existing Rule**: <span style='color:#33ECFF'>intra-icmp-bu2</span>
+- **Name**: <span style='color:#479608'>intra-ssh-bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>22</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>intra-icmp-bu2</span>
 
 Do not forget to click on **Save In Drafts**.
 
@@ -568,14 +568,14 @@ New Rule
 
 Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>inter-icmp-bu2-bu1</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>bu2</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>bu1</span>
-- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
-- **Place Rule**: <span style='color:#33ECFF'>Below</span>
-  - **Existing Rule**: <span style='color:#33ECFF'>intra-ssh-bu1</span>
+- **Name**: <span style='color:#479608'>inter-icmp-bu2-bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>intra-ssh-bu1</span>
   
 Do not forget to click on **Save In Drafts**.
 
@@ -595,7 +595,7 @@ align: center
 Commit
 ```
 
-SSH to the Public IP of the instance **_azure-west-us-spoke<span style='color:#33ECFF'>2</span>-<span style='color:#33ECFF'>test1</span>_**.
+SSH to the Public IP of the instance **_azure-west-us-spoke<span style='color:#479608'>2</span>-<span style='color:#479608'>test1</span>_**.
 
 Ping the following instances:
 - **aws-us-east-2-spoke1-test1** in AWS
@@ -730,9 +730,9 @@ Settings
 
 Repeat the previous action for the remaning Transit Gateways:
 
-- **aws-us-east-2-transit**: <span style='color:#33ECFF'>ASN **64513**</span>
-- **gcp-us-central1-transit**: <span style='color:#33ECFF'>ASN **64514**</span>
-- **azure-west-us-transit**: <span style='color:#33ECFF'>ASN **64515**</span>
+- **aws-us-east-2-transit**: <span style='color:#479608'>ASN **64513**</span>
+- **gcp-us-central1-transit**: <span style='color:#479608'>ASN **64514**</span>
+- **azure-west-us-transit**: <span style='color:#479608'>ASN **64515**</span>
 
 Go to C**oPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
 
@@ -808,9 +808,9 @@ New Smart Group
 
 Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
 
-- **Name**: <span style='color:#33ECFF'>east1</span>
-- **CSP Tag Key**: <span style='color:#33ECFF'>Name</span>
-- **CSP Tag Value**: <span style='color:#33ECFF'>aws-us-east1-spoke1-test2</span>
+- **Name**: <span style='color:#479608'>east1</span>
+- **CSP Tag Key**: <span style='color:#479608'>Name</span>
+- **CSP Tag Value**: <span style='color:#479608'>aws-us-east1-spoke1-test2</span>
 
 ```{figure} images/lab10-mtt9.png
 ---
@@ -838,12 +838,12 @@ New Rule
 
 Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>inter-icmp-bu2-east1</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>bu2</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>east1</span>
-- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Name**: <span style='color:#479608'>inter-icmp-bu2-east1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#479608'>east1</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
 
 Then click on **Save In Drafts**.
 
