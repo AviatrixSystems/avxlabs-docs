@@ -44,12 +44,12 @@ VNet creation
 
 Insert the following values:
 
- - **Name**: <span style='color:#33ECFF'>azure-us-central-spoke1</span>
- - **Cloud**: <span style='color:#33ECFF'>Azure Global</span>
- - **Account**: <span style='color:#33ECFF'>azure-account [use the drop-down window]</span>
- - **Region**: <span style='color:#33ECFF'>Central US [use the drop-down window]</span>
- - **VPC CIDR**: <span style='color:#33ECFF'>192.168.12.0/24</span>
- - **VPC Function**: <span style='color:#33ECFF'>Default [use the drop-down window]</span>
+ - **Name**: <span style='color:#479608'>azure-us-central-spoke1</span>
+ - **Cloud**: <span style='color:#479608'>Azure Global</span>
+ - **Account**: <span style='color:#479608'>azure-account [use the drop-down window]</span>
+ - **Region**: <span style='color:#479608'>Central US [use the drop-down window]</span>
+ - **VPC CIDR**: <span style='color:#479608'>192.168.12.0/24</span>
+ - **VPC Function**: <span style='color:#479608'>Default [use the drop-down window]</span>
 
 Then click on **Save**.
 
@@ -197,12 +197,12 @@ VPC creation
 
 Insert the following values:
 
- - **Name**: <span style='color:#33ECFF'>aws-us-west2-spoke1</span>
- - **Cloud**: <span style='color:#33ECFF'>AWS</span>
- - **Account**: <span style='color:#33ECFF'>aws-account [use the drop-down window - **DO NOT** select the aws-admin]</span>
- - **Region**: <span style='color:#33ECFF'>us-west-2 (Oregon) [use the drop-down window]</span>
- - **VPC CIDR**: <span style='color:#33ECFF'>10.0.22.0/24</span>
- - **VPC Function**: <span style='color:#33ECFF'>Default [use the drop-down window]</span>
+ - **Name**: <span style='color:#479608'>aws-us-west2-spoke1</span>
+ - **Cloud**: <span style='color:#479608'>AWS</span>
+ - **Account**: <span style='color:#479608'>aws-account [use the drop-down window - **DO NOT** select the aws-admin]</span>
+ - **Region**: <span style='color:#479608'>us-west-2 (Oregon) [use the drop-down window]</span>
+ - **VPC CIDR**: <span style='color:#479608'>10.0.22.0/24</span>
+ - **VPC Function**: <span style='color:#479608'>Default [use the drop-down window]</span>
 
 Then click on **Save**.
 
@@ -294,12 +294,12 @@ VPC creation
 
 Insert the following values:
 
- - **Name**: <span style='color:#33ECFF'>gcp-us-west2-spoke1</span>
- - **Cloud**: <span style='color:#33ECFF'>GCP</span>
- - **Account**: <span style='color:#33ECFF'>gcp-account [use the drop-down window]</span>
- - **Name**: <span style='color:#33ECFF'>gcp-us-west2-spoke1-sub1</span>
- - **Region**: <span style='color:#33ECFF'>us-west2 [use the drop-down window]</span>
- - **CIDR**: <span style='color:#33ECFF'>172.16.22.0/24</span>
+ - **Name**: <span style='color:#479608'>gcp-us-west2-spoke1</span>
+ - **Cloud**: <span style='color:#479608'>GCP</span>
+ - **Account**: <span style='color:#479608'>gcp-account [use the drop-down window]</span>
+ - **Name**: <span style='color:#479608'>gcp-us-west2-spoke1-sub1</span>
+ - **Region**: <span style='color:#479608'>us-west2 [use the drop-down window]</span>
+ - **CIDR**: <span style='color:#479608'>172.16.22.0/24</span>
 
 Then click on **Save**.
 

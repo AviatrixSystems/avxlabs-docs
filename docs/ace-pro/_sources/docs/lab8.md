@@ -40,18 +40,18 @@ Create a connection from Cloud (GCP) to an on-prem Partner site.
 
 Use the following settings on the `"Add External Connection"` window:
 
-- **Name**: <span style='color:#33ECFF'>GCP-to-OnPremPartner</span>
-- **External Device**: <span style='color:#33ECFF'>Static Route-Based (Mapped)</span>
-- **Local Gateway**: <span style='color:#33ECFF'>gcp-us-central1-spoke1</span>
-- **Real Local Subnet CIDR(s)**: <span style='color:#33ECFF'>172.16.1.0/24</span>
-- **Virtual Local Subnet CIDR(s)**: <span style='color:#33ECFF'>192.168.200.0/24</span>
-- **Remote Gateway Type**: <span style='color:#33ECFF'>Generic</span>
-- **Real Remote Subnet CIDR(s)**: <span style='color:#33ECFF'>172.16.1.0/24</span>
-- **Virtual Remote Subnet CIDR(s)**: <span style='color:#33ECFF'>192.168.100.0/24</span>
-- **Authetication Method**: <span style='color:#33ECFF'>PSK</span>
-- **Pre-Shared Key**: <span style='color:#33ECFF'>Aviatrix123#</span>
-- **Remote Gateway IP**: <span style='color:#33ECFF'>[**Refer to your Pod assignment for the CSR Public IP - Lab8 section**]</span>
-- **Local Gateway Instance**: <span style='color:#33ECFF'>gcp-us-central1-spoke1</span>
+- **Name**: <span style='color:#479608'>GCP-to-OnPremPartner</span>
+- **External Device**: <span style='color:#479608'>Static Route-Based (Mapped)</span>
+- **Local Gateway**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
+- **Real Local Subnet CIDR(s)**: <span style='color:#479608'>172.16.1.0/24</span>
+- **Virtual Local Subnet CIDR(s)**: <span style='color:#479608'>192.168.200.0/24</span>
+- **Remote Gateway Type**: <span style='color:#479608'>Generic</span>
+- **Real Remote Subnet CIDR(s)**: <span style='color:#479608'>172.16.1.0/24</span>
+- **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.100.0/24</span>
+- **Authetication Method**: <span style='color:#479608'>PSK</span>
+- **Pre-Shared Key**: <span style='color:#479608'>Aviatrix123#</span>
+- **Remote Gateway IP**: <span style='color:#479608'>[**Refer to your Pod assignment for the CSR Public IP - Lab8 section**]</span>
+- **Local Gateway Instance**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
 
 Then click on **Save**.
 
@@ -96,9 +96,9 @@ CFG file
 
 Select the following parameters inside the `"Download Configuration"` window:
 
-- **Vendor**: <span style='color:#33ECFF'>Cisco</span>
-- **Platform**: <span style='color:#33ECFF'>ISR,ASR, or CSR</span>
-- **Software**: <span style='color:#33ECFF'>IOS(XE)</span>
+- **Vendor**: <span style='color:#479608'>Cisco</span>
+- **Platform**: <span style='color:#479608'>ISR,ASR, or CSR</span>
+- **Software**: <span style='color:#479608'>IOS(XE)</span>
 
 and then click on **Download**.
 
