@@ -433,11 +433,11 @@ Final Topology for Lab 5
 
 Use the following inputs:
 
-- **Source**: <span style='color:#33ECFF'>aws-us-east-1-spoke1-test1</span>
-- **Destination**: <span style='color:#33ECFF'>aws-us-east-2-spoke1-test1</span>
-- **Protocol**: <span style='color:#33ECFF'>TCP</span>
-- **Port**: <span style='color:#33ECFF'>443</span>
-- **Interface**: <span style='color:#33ECFF'>Private</span>
+- **Source**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
+- **Destination**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>443</span>
+- **Interface**: <span style='color:#479608'>Private</span>
 
 ```{figure} images/lab5-flightpath.png
 ---

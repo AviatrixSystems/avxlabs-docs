@@ -139,11 +139,11 @@ FlightPath
 ```
 
 * Select the following parameters and then click on **Run AppIQ**.
-  - Source: <span style='color:#33ECFF'>ace-aws-eu-west-1-spoke1-bu1-frontend</span>
-  - Destination: <span style='color:#33ECFF'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span>
-  - Protocol: <span style='color:#33ECFF'>TCP</span>
-  - Port: <span style='color:#33ECFF'>80</span>
-  - Interface: <span style='color:#33ECFF'>Private *(default)*</span>
+  - Source: <span style='color:#479608'>ace-aws-eu-west-1-spoke1-bu1-frontend</span>
+  - Destination: <span style='color:#479608'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span>
+  - Protocol: <span style='color:#479608'>TCP</span>
+  - Port: <span style='color:#479608'>80</span>
+  - Interface: <span style='color:#479608'>Private *(default)*</span>
 
 ```{figure} images/lab2-curl4.png
 ---

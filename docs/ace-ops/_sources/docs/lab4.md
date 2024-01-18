@@ -139,10 +139,10 @@ Packet Capture
 
 Now click on the `"Column filter"` icon, and **uncheck** the following parameters (you are going to collect **_ICMP traffic_**, therefore you do not need to get the values for all the parameters!):
 
-  - <span style='color:#33ECFF'>Uncheck Source Port</span>
-  - <span style='color:#33ECFF'>Uncheck Dest Port</span>
-  - <span style='color:#33ECFF'>Uncheck Flags</span>
-  - <span style='color:#33ECFF'>Uncheck Length</span>
+  - <span style='color:#479608'>Uncheck Source Port</span>
+  - <span style='color:#479608'>Uncheck Dest Port</span>
+  - <span style='color:#479608'>Uncheck Flags</span>
+  - <span style='color:#479608'>Uncheck Length</span>
   
 ```{figure} images/lab4-packet2.png
 ---
