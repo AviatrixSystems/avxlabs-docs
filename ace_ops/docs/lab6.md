@@ -97,26 +97,26 @@ New S2C
 
 Configure the new S2C connection based on the schema below.
 
-- **Name**: <span style='color:#33ECFF'>S2C-PARTNER</span>
+- **Name**: <span style='color:#479608'>S2C-PARTNER</span>
 
 - **Connect Public Cloud to:**
-  -  <span style='color:#33ECFF'>External Device</span>
-  -  <span style='color:#33ECFF'>Static Route-Based (Mapped)</span>
+  -  <span style='color:#479608'>External Device</span>
+  -  <span style='color:#479608'>Static Route-Based (Mapped)</span>
 
-- **Local Gateway**: <span style='color:#33ECFF'>ace-gcp-us-east1-spoke1</span>
+- **Local Gateway**: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span>
 
-- **Real Local Subnet CIDR(s)**: <span style='color:#33ECFF'>172.16.211.0/24</span>
+- **Real Local Subnet CIDR(s)**: <span style='color:#479608'>172.16.211.0/24</span>
 
-- **Virtual Local Subnet CIDR(s)**: <span style='color:#33ECFF'>192.168.1.0/24</span>
+- **Virtual Local Subnet CIDR(s)**: <span style='color:#479608'>192.168.1.0/24</span>
 
-- **Remote Gateway Type**: <span style='color:#33ECFF'>Generic</span>
+- **Remote Gateway Type**: <span style='color:#479608'>Generic</span>
 
-- **Real Remote Subnet CIDR(s)**: <span style='color:#33ECFF'>172.16.211.0/24</span>
+- **Real Remote Subnet CIDR(s)**: <span style='color:#479608'>172.16.211.0/24</span>
 
-- **Virtual Remote Subnet CIDR(s)**: <span style='color:#33ECFF'>192.168.2.0/24</span>
+- **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.2.0/24</span>
 
 - **Advanced Settings:**
-  -  **IkEv2**: <span style='color:#33ECFF'>On</span>
+  -  **IkEv2**: <span style='color:#479608'>On</span>
 
 - **Connection:**
   -  **Remote Gateway IP**: <span style='color:tomato'>follow the Note below</span>
@@ -146,10 +146,10 @@ align: center
 Nslookup 
 ```
 
-  - **Local Gateway Instance**: <span style='color:#33ECFF'>ace-gcp-us-east1-spoke1</span>
-  -  **Local Tunnel IP**: <span style='color:#33ECFF'>169.254.0.1/30</span>
-  -  **Remote Tunnel IP**: <span style='color:#33ECFF'>169.254.0.2/30</span>
-  -  **Pre-Shared Key**: <span style='color:#33ECFF'>Aviatrix123#</span>
+  - **Local Gateway Instance**: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span>
+  -  **Local Tunnel IP**: <span style='color:#479608'>169.254.0.1/30</span>
+  -  **Remote Tunnel IP**: <span style='color:#479608'>169.254.0.2/30</span>
+  -  **Pre-Shared Key**: <span style='color:#479608'>Aviatrix123#</span>
 
 ```{important}
 Do not forget to click on **Save**.
