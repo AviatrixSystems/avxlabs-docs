@@ -58,13 +58,13 @@ Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>intra-ssh-bu1</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>BU1</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>BU1</span>
-- **Protocol**: <span style='color:#33ECFF'>TCP</span>
-- **Port**: <span style='color:#33ECFF'>22</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Name**: <span style='color:#479608'>intra-ssh-bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU1</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>22</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
@@ -131,12 +131,12 @@ Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>intra-icmp-bu1</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>BU1</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>BU1</span>
-- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Name**: <span style='color:#479608'>intra-icmp-bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU1</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
@@ -190,12 +190,12 @@ Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>inter-icmp-bu1-bu2</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>BU1</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>BU2</span>
-- **Protocol**: <span style='color:#33ECFF'>ICMP</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Name**: <span style='color:#479608'>inter-icmp-bu1-bu2</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU2</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
@@ -240,13 +240,13 @@ Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>inter-ssh-bu2-bu1</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>BU2</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>BU1</span>
-- **Protocol**: <span style='color:#33ECFF'>TCP</span>
-- **Port**: <span style='color:#33ECFF'>22</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Name**: <span style='color:#479608'>inter-ssh-bu2-bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU2</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU1</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>22</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 

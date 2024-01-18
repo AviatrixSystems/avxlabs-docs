@@ -264,11 +264,11 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on t
 
 Create an `Explicit Deny Rule`:
 
-- **Name**: <span style='color:#33ECFF'>Explicit-Deny-Rule</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>Anywhere(0.0.0.0/0)</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Deny**</span>
+- **Name**: <span style='color:#479608'>Explicit-Deny-Rule</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
 
 Do not forget once again to click on **Save In Drafts** and then click on **Commit**.
 
@@ -325,13 +325,13 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on t
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>inter-ssh-bu1-bu2</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>BU1</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>BU2</span>
-- **Protocol**: <span style='color:#33ECFF'>TCP</span>
-- **Port**: <span style='color:#33ECFF'>22</span>
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Name**: <span style='color:#479608'>inter-ssh-bu1-bu2</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU2</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>22</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
 
@@ -363,9 +363,9 @@ Go to **CoPilot > SmartGroups**
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
-- **Name**: <span style='color:#33ECFF'>BU2-DB</span>
-- **CSP Tag Key**: <span style='color:#33ECFF'>name</span>
-- **CSP Tag Value**: <span style='color:#33ECFF'>ace-azure-east-us-spoke2-bu2-db</span>
+- **Name**: <span style='color:#479608'>BU2-DB</span>
+- **CSP Tag Key**: <span style='color:#479608'>name</span>
+- **CSP Tag Value**: <span style='color:#479608'>ace-azure-east-us-spoke2-bu2-db</span>
 
 Do not forget to click on **Save**.
 
@@ -418,14 +418,14 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on t
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
-- **Name**: <span style='color:#33ECFF'>inter-ubuntu-bu2db-internet</span>
-- **Source Smartgroups**: <span style='color:#33ECFF'>BU2-DB</span>
-- **Destination Smartgroups**: <span style='color:#33ECFF'>Public internet</span>
-- **WebGroups**: <span style='color:#33ECFF'>ubuntu-update</span>
-- **Protocol**: <span style='color:#33ECFF'>Any</span>
+- **Name**: <span style='color:#479608'>inter-ubuntu-bu2db-internet</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU2-DB</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Public internet</span>
+- **WebGroups**: <span style='color:#479608'>ubuntu-update</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
 
-- **Logging**: <span style='color:#33ECFF'>On</span>
-- **Action**: <span style='color:#33ECFF'>**Permit**</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**, and then **Commit** your rule once again!
 
