@@ -17,7 +17,7 @@ Proxy to Web Failure
 
 Use Copilot to figure out the IP address of the **Web VM**.
 
-* Can you try to ping the Web VM from the *Proxy Spoke GW*?
+* Can you try to **traceroute**/ping the Web VM from the *Proxy Spoke GW*?
 
 ```{hint}
 Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.

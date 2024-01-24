@@ -218,7 +218,7 @@ If the **Enforcement** slider is **On** (the default), the rule is enforced in t
 ---
 align: center
 ---
-Discover-Rule
+Discovery-Rule
 ```
 
 - Launch again the following curl commands from the instance **_aws-us-east-2-spoke1-test2_**.
@@ -405,7 +405,7 @@ align: center
 Curl commands
 ```
 
-You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and therefore immediately dropped.
+You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and immediately dropped.
 
 ```{figure} images/lab6-liveview.png
 ---

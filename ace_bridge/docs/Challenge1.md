@@ -21,7 +21,7 @@ Ingress to Proxy Failure
 Go to **CoPilot > Cloud Fabric > Topology** and find the Proxy VM and retrieve its IP from the **Properties** section.
 ```
 
-* Try to ping the Proxy VM from the *Ingress Spoke GW*.
+* Try to **traceroute**/ping the Proxy VM from the *Ingress Spoke GW*.
 
 ```{hint}
 Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
