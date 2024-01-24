@@ -47,10 +47,9 @@ _Fig. Tunnel up_
 
 In order to test connectivity between cloud and the office, a test VM is available in the office with the FQDN `client-int.pod[#].aviatrixlab.com`. The IPSec tunnel is up, but maybe there is another blocker that prevents connectivity. Try the following test:
 
-* From CoPilot, navigate to **_Cloud Fabric-->Topology_**
-* Click on the **_azure-transit_** node. You should now see the connection to the office.
-* Click on the **Aviatrix Gateway icon (_azure-transit_)** and then click the Diagnostic Tools button on the right bottom of the screen (see lab 1.5 if you are unable to locate it).
-* Under the ping tab, enter the hostname `client-int.pod[#].aviatrixlab.com` and click PING
+* From CoPilot, navigate to **_Diagnostics-->Diagnostic Tools_**
+* Click on `Gateway Instance` drop-down and select the **_azure-transit_** node.
+* Select `Ping` in the vertical tabs and enter the hostname `client-int.pod[#].aviatrixlab.com` in the `Destination (IP / Host Name)` box. Then, click the **`Run`** button in the upper-right.
 
 ![Topology](images/lab2-onprem-ping.png)  
 _Fig. CoPilot Diag_  
@@ -82,8 +81,9 @@ If no CIDR's are showing up here, validate that the BGP peering has established 
 ![Topology](images/lab2-route-approval-2.png)  
 _Fig. Approve route_  
 
-* From CoPilot Topology, run **Diag** from the azure-transit gateway once again
-* Under the **Ping** tab, enter the hostname `client-int.pod[#].aviatrixlab.com` and click PING
+* Back to **_Diagnostics-->Diagnostic Tools_**
+* Click on `Gateway Instance` drop-down and again select the **_azure-transit_** node.
+* Select `Ping` in the vertical tabs and enter the hostname `client-int.pod[#].aviatrixlab.com` in the `Destination (IP / Host Name)` box. Again, click the **`Run`** button in the upper-right.
 
 > Was the ping successful this time?
 

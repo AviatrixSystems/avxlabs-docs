@@ -30,7 +30,7 @@ You can familiarize yourself with the different functions in CoPilot and after e
 
 The `Dashboard` tab provides a global overview of your Multicloud network, the status, how much traffic is flowing, locations deployed, etc.  
 
-Take a look into `Cloud Fabric-->Topology` which visualizes the connectivity of the Multicloud environment. Make sure you have `New topology experience` enabled. Topology will show you latency between links when you enable it on the top right hand corner in the latency pane. The topology view also allows you to initiate some troubleshooting commands directly from the map. Expand `azure-transit` in the middle of the screen, by clicking on it. Now you should see and be able to select the `azure-transit` gateway on the outside edge of the diagram. On the bottom right, you should see a diagnostics button. Click that and explore the diagnostics capabilities.
+Take a look into `Cloud Fabric-->Topology` which visualizes the connectivity of the Multicloud environment. Topology will show you latency between links when you enable it on the top right hand corner in the latency pane. The topology view also allows you to initiate some troubleshooting commands directly from the map. Expand `azure-transit` in the middle of the screen, by clicking on it. Now you should see and be able to select the `azure-transit` gateway on the outside edge of the diagram. On the bottom right, you should see a diagnostics button. Click that and explore the diagnostics capabilities.
 
 ### Expected Results
 
