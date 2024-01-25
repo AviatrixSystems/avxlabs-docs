@@ -82,12 +82,14 @@ In order to view the connectivity dashboards, a Remote Access Server is placed i
 * _Remember to replace <span style="color:orange">**[#]**</span> with your pod ID_
 * _If you want to use copy/paste in this Guacamole web console, use CTRL+ALT+SHIFT on a Windows device or CTRL+CMD+SHIFT on a MacOS device._
 
-* Connect into **RDP - Client** from the *ALL CONNECTIONS* pane.  
-
 ![Remote Access Server](images/lab1-remote-access.png)  
 _Fig. Remote Access Server_  
 
-* Open the web browser and browse to the office connectivity dashboard ```http://localhost```
+```{note}
+You can also access the Remote Access Server on port `3389` using the RDP client of your choice using the same credentials as above.
+```
+
+* Once logged in, open the web browser and browse to the office connectivity dashboard ```http://localhost```
 
 Now that we have validated the office connectivity, lets check the public web application that is already deployed in Azure.
 
