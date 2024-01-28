@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 1: AWS Networking Fundamentals &#8212; Aviatrix | AWS Immersion Day</title>
   
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab1';</script>
-    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 2: Aviatrix Distributed Firewall for Secure Egress" href="lab2.html" />
@@ -161,7 +164,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -354,9 +368,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-1-aws-networking-fundamentals">
-<h1>Lab 1: AWS Networking Fundamentals<a class="headerlink" href="#lab-1-aws-networking-fundamentals" title="Permalink to this heading">#</a></h1>
+<h1>Lab 1: AWS Networking Fundamentals<a class="headerlink" href="#lab-1-aws-networking-fundamentals" title="Link to this heading">#</a></h1>
 <section id="create-vpcs-igws-and-ec2-instances">
-<h2>Create VPCs, IGWs, and EC2 instances<a class="headerlink" href="#create-vpcs-igws-and-ec2-instances" title="Permalink to this heading">#</a></h2>
+<h2>Create VPCs, IGWs, and EC2 instances<a class="headerlink" href="#create-vpcs-igws-and-ec2-instances" title="Link to this heading">#</a></h2>
 <p>Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define. You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways. You can use both IPv4 and IPv6 in your VPC for secure and easy access to resources and applications.</p>
 <p>An internet gateway (IGW) is a horizontally scaled, redundant, and highly available VPC component that allows communication between instances in your VPC and the internet. It therefore imposes no availability risks or bandwidth constraints on your network traffic.
 In this lab, we will create three VPC’s with Internet Gateways.</p>
@@ -364,65 +378,65 @@ In this lab, we will create three VPC’s with Internet Gateways.</p>
 <p><img alt="LAB1" src="../_images/image5-new.png" /></p>
 </section>
 <section id="navigate-to-cloudformation">
-<h2>Navigate to CloudFormation<a class="headerlink" href="#navigate-to-cloudformation" title="Permalink to this heading">#</a></h2>
+<h2>Navigate to CloudFormation<a class="headerlink" href="#navigate-to-cloudformation" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h3>1.1.1<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p>If you have not already signed into event engine, open the link you received in your email. Let the instructor know if you have any issues getting logged in. For instructions on using event engine, <a class="reference internal" href="eventengine.html"><span class="doc std std-doc">click here</span></a></p>
+<h3>1.1.1<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>If you have not already signed into event engine, open the link you received in your email. Let the instructor know if you have any issues getting logged in. For instructions on using event engine, <a class="reference internal" href="eventengine.html"><span class="std std-doc">click here</span></a></p>
 </section>
 <section id="id2">
-<h3>1.1.2<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>1.1.2<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>To get started, navigate to <a class="reference external" href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks">VPC Dashboard Services</a>. Make sure that in the upper right-hand corner of the console it says <code class="docutils literal notranslate"><span class="pre">N.</span> <span class="pre">Virginia</span></code> (if not select N. Virginia from the drop down list)</p>
 <p><img alt="LAB1" src="../_images/region20211109.png" /></p>
 </section>
 <section id="id3">
-<h3>1.1.3<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>1.1.3<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Navigate to Cloudformation by searching for Cloudformation in Services search bar.</p>
 <p><img alt="LAB1" src="../_images/image6-20211109.png" /></p>
 </section>
 <section id="id4">
-<h3>1.1.4<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>1.1.4<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>Click <code class="docutils literal notranslate"><span class="pre">CreateStack</span></code> to launch the CloudFormation stack for this lab. Accept the defaults on each page, and select <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Stack</span></code>. Should you need to manually deploy the template <a class="reference external" href="https://s3.us-east-1.amazonaws.com/aws-immersion-day.aviatrixlab.com/AWS-ImmersionDay-lab-1-new.yaml">click here</a></p>
 </section>
 <section id="id5">
-<h3>1.1.5<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>1.1.5<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>Refresh every few minutes until the stack is in the status <code class="docutils literal notranslate"><span class="pre">CREATE_COMPLETE</span></code></p>
 <p><img alt="LAB1" src="../_images/stackEvent20211109.png" /></p>
 <p><img alt="LAB1" src="../_images/stackComplete20211109.png" /></p>
 </section>
 <section id="id6">
-<h3>1.1.6<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>1.1.6<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>Using figure1 below as a reference, validate that the infrastructure has been created as desired</p>
 <p><img alt="LAB1" src="../_images/firgure1-20211109.png" /></p>
 </section>
 <section id="id7">
-<h3>1.1.6.1<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>1.1.6.1<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>Navigate to the VPC service, validate that the VPCs and subnets have been created as follows:</p>
 <p><img alt="LAB1" src="../_images/vpcList20211109.png" /></p>
 <p><img alt="LAB1" src="../_images/subnetList20211109.png" /></p>
 <p><strong>Note:</strong> You may see a third subnet in each VPC, this is used later in the lab and can be ignored.</p>
 </section>
 <section id="id8">
-<h3>1.1.6.2<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3>1.1.6.2<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>You should also have an IGW for the default VPC and three newly created IGWs available and attached to the VPCs:</p>
 <p><img alt="LAB1" src="../_images/IGWList20211109.png" /></p>
 </section>
 <section id="id9">
-<h3>1.1.6.3<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3>1.1.6.3<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>You should also have an IGW for the default VPC and three newly created IGWs available and attached to the VPCs:</p>
 <p><img alt="LAB1" src="../_images/IGWList20211109.png" /></p>
 </section>
 <section id="id10">
-<h3>1.1.6.4<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3>1.1.6.4<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>Validate that the route tables for the VPC have been created, and updated to direct Internet-bound traffic to the IGW for each VPC. The Route Tables are named VPC A Route Table, VPC B Route Table, and VPC C Route Table.</p>
 <p><img alt="LAB1" src="../_images/routeTable2011109.png" /></p>
 </section>
 <section id="id11">
-<h3>1.1.6.5<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<h3>1.1.6.5<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>Navigate to the EC2 service, validate that there are 2 EC2 instances in the “running” state.</p>
 <p><img alt="LAB1" src="../_images/InstanceList20211109-new.png" /></p>
 </section>
 <section id="id12">
-<h3>1.1.6.6<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<h3>1.1.6.6<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p>For each EC2 instance, the Security Group rules under the Security tab should allow SSH (TCP port 22) and ICMP.</p>
 <p><img alt="LAB1" src="../_images/InstanceSelectA2011109-new.png" /></p>
 <p><img alt="LAB1" src="../_images/SecurityGroup20211109.png" /></p>

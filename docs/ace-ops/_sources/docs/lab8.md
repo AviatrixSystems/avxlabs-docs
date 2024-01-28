@@ -28,13 +28,12 @@ You have been engaged to create the following **_four_** new additional rules:
 - **Inter-rule**: allow ICMP <span style='color:lightblue'>**from**</span> BU1 **to** BU2
 - **Inter-rule**: allow SSH <span style='color:lightblue'>**from**</span> BU2 **to** BU1
 
-
 ```{figure} images/lab8-topology.png
 ---
 height: 400px
 align: center
 ---
-Lab 8 Scenario Topology
+Initial lab 8 Scenario Topology
 ```
 
 ## 2. CHANGE REQUEST
@@ -105,7 +104,7 @@ align: center
 Monitor: Logs
 ```
 
-- Now terminate the SSH session with the BU1 Analytics, typing `"exit"`, and issue the ping command towards the BU1 Analytics from the BU1 Frontend. The ping will not work!
+- Now terminate the SSH session with the BU1 Analytics, typing `"exit"`, and issue the **ping** command towards the BU1 Analytics from the BU1 Frontend. The ping will not work!
 
 ```{figure} images/lab8-pingbu1.png
 ---
@@ -223,7 +222,7 @@ align: center
 Inter-ICMP BU1 to BU2
 ```
 
-- Now, let's SSH to the BU2 Mobile App and then let's try to SSH to the BU1 Frontend. Of course, SSH will fail!
+- Now, let's SSH to the Public IP of the **BU2 Mobile App** and then try to SSH to the Private IP of the **BU1 Frontend**. Of course, SSH will fail!
 
 ```{figure} images/lab8-bu2sshbu1.png
 ---
@@ -254,7 +253,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 ---
 align: center
 ---
-The last inter-rule!
+"inter-ssh-bu2-bu1" Rule
 ```
 
 - Let's try to issue the SSH command from the BU2 Mobile App towards the BU1 Frontend. This time the SSH will work smoothly.

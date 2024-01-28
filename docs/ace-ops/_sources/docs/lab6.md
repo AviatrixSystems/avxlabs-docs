@@ -40,6 +40,13 @@ align: center
 Raise Hand tool on Zoom
 ```
 
+```{figure} images/lab6-inform.png
+---
+align: center
+---
+Communicate your POD number
+```
+
 <ins>Please wait for the trainer to inform you about the injection of the failure!</ins>
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW **> Approval**
@@ -122,7 +129,7 @@ Configure the new S2C connection based on the schema below.
   -  **Remote Gateway IP**: <span style='color:tomato'>follow the Note below</span>
 
 ```{note}
-Use the “**dig partner-csr-public.pod#.aviatrixlab.com +short**” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem Partner CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
+Use the “**dig partner-csr-public.pod#.aviatrixlab.com +short**” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem-Partner CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
 ```
 
 <ins>Replace the **#** symbol with your POD number!</ins>
@@ -137,7 +144,7 @@ Retrieving the Public IP
 ```
 
 ```{tip}
-For Windows OS you can use the command `"nslookup"`.
+For **Windows OS** you can use the command `"nslookup"`.
 
 ```{figure} images/lab6-nslookup.png
 ---

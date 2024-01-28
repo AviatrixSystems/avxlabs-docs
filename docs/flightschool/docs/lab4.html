@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 4 - Beefing up security &#8212; Aviatrix Flightschool</title>
   
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab4';</script>
-    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 5 - Infrastructure as Code (Bonus Lab)" href="lab5.html" />
@@ -161,7 +164,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -393,17 +407,17 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-4-beefing-up-security">
-<h1>Lab 4 - Beefing up security<a class="headerlink" href="#lab-4-beefing-up-security" title="Permalink to this heading">#</a></h1>
+<h1>Lab 4 - Beefing up security<a class="headerlink" href="#lab-4-beefing-up-security" title="Link to this heading">#</a></h1>
 <p>Lab time: ~60 minutes</p>
 <p><strong><em>Scenario</em></strong>:  FS Corp has just hired a new CISO. They appreciate all the connectivity and guardrails that you have put in place with network segmentation, but their security requirements are more stringent! In this lab, you’re going to beef up the security level using Aviatrix’ security capabilities.</p>
 <section id="lab-4-1-microsegmentation-inter-vnet-vpc">
-<h2>Lab 4.1 - Microsegmentation - Inter VNET/VPC<a class="headerlink" href="#lab-4-1-microsegmentation-inter-vnet-vpc" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4.1 - Microsegmentation - Inter VNET/VPC<a class="headerlink" href="#lab-4-1-microsegmentation-inter-vnet-vpc" title="Link to this heading">#</a></h2>
 <section id="description">
-<h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h3>
 <p>Because of the connection policy between the DMZ and prod, the Azure AppGW is currently able to reach not just the webserver, but also the app and db servers directly. This is undesirable, so the CISO has demanded you apply microsegmentation policies, to only allow specifically required traffic.</p>
 </section>
 <section id="validate">
-<h3>Validate<a class="headerlink" href="#validate" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h3>
 <p>We have prepared and installed a microsegmentation policy already. Lets review and modify it.</p>
 <ul class="simple">
 <li><p>Browse to <strong><em>Security -&gt; Distributed Cloud Firewall -&gt; Rules</em></strong></p></li>
@@ -423,22 +437,22 @@ document.write(`
 </ul>
 </section>
 <section id="expected-results">
-<h3>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
 <p>After enforcing our ruleset as a result of disabling the DefaultAllowAll rule, we should see a change in connectivity. The developer in the office can still access their applications. But the AppGW in the web application can no longer reach the app and db server directly, as seen below.</p>
 <p><img alt="Result" src="../_images/lab41-result.png" /><br />
 <em>Fig. Result</em></p>
 </section>
 </section>
 <section id="lab-4-2-microsegmentation-intra-vnet-vpc">
-<h2>Lab 4.2 - Microsegmentation - Intra VNET/VPC<a class="headerlink" href="#lab-4-2-microsegmentation-intra-vnet-vpc" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4.2 - Microsegmentation - Intra VNET/VPC<a class="headerlink" href="#lab-4-2-microsegmentation-intra-vnet-vpc" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h3>Description<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Now that we have solved the undesired access from the AppGW to the app and db servers, you may have noticed that the web server is still able to directly access the db server. This despite the fact that there is no rule that allows this traffic in our distributed firewall policy. How is this possible?</p>
 <p>The rules of the distributed firewall are deployed on the Aviatrix spoke gateways. Blocking traffic from the DMZ to the prod VNET can be enforced, because the traffic is traversing these gateways.
 Traffic between the web and db server, remains within the prod VNET however, and does not traverse the spoke gateway, where it can be enforced. Not to fear however, the Aviatrix controller can automatically enforce this microsegmentation by orchestrating the Azure NSG’s for us!</p>
 </section>
 <section id="id2">
-<h3>Validate<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>This feature is enabled on a per VNET bases.</p>
 <ul class="simple">
 <li><p>Browse to <strong><em>Security -&gt; Distributed Cloud Firewall -&gt; Settings</em></strong></p></li>
@@ -452,7 +466,7 @@ Traffic between the web and db server, remains within the prod VNET however, and
 </ul>
 </section>
 <section id="id3">
-<h3>Expected Results<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>After about 2-3 minutes, you should see that the webserver can no longer connect to the db server. The reason this takes a little longer than the previous rules to take effect, is because these changes are made within Azure itself and not on the Aviatrix gateway. You can check the status of the synchronization when you click on <strong><em>Manage</em></strong> again:</p>
 <p><img alt="Sync-Status" src="../_images/lab4-nsg-sync-status.png" /><br />
 <em>Fig. Sync Status</em></p>
@@ -462,13 +476,13 @@ Traffic between the web and db server, remains within the prod VNET however, and
 </section>
 </section>
 <section id="lab-4-3-internet-access-aws-shared">
-<h2>Lab 4.3 - Internet access - AWS Shared<a class="headerlink" href="#lab-4-3-internet-access-aws-shared" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4.3 - Internet access - AWS Shared<a class="headerlink" href="#lab-4-3-internet-access-aws-shared" title="Link to this heading">#</a></h2>
 <section id="id4">
-<h3>Description<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>The aws-shared server needs access to the internet to access software updates. We don’t want to enable full access to the internet though. We will be using the Aviatrix egress filtering capability to control the destinations it can reach. We will use a connectivity dashboard on the aws-shared server to monitor the connectivity.</p>
 </section>
 <section id="id5">
-<h3>Validate<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Open the Remote Access Server and open the <strong>RDP - Client</strong> (or navigate to <code class="docutils literal notranslate"><span class="pre">https://client.pod[#].aviatrixlab.com</span></code>). This is the on-prem Host.</p></li>
 <li><p>Open up the Firefox browser on the RDP desktop</p></li>
@@ -479,20 +493,20 @@ Traffic between the web and db server, remains within the prod VNET however, and
 </div></blockquote>
 </section>
 <section id="id6">
-<h3>Expected Results<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>As you can see, there is currently no connectivity possible. All egress connections are failing.</p>
 <p><img alt="No Internet Access" src="../_images/lab4-no-internet.png" /><br />
 <em>Fig. No Internet Access</em></p>
 </section>
 </section>
 <section id="lab-4-4-enable-source-nat">
-<h2>Lab 4.4 - Enable Source NAT<a class="headerlink" href="#lab-4-4-enable-source-nat" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4.4 - Enable Source NAT<a class="headerlink" href="#lab-4-4-enable-source-nat" title="Link to this heading">#</a></h2>
 <section id="id7">
-<h3>Description<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>By enabling source NAT on the aws-shared spoke gateway, we provide a path towards the internet through the spoke gateway.</p>
 </section>
 <section id="id8">
-<h3>Validate<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Go to <strong><em>Cloud Fabric -&gt; Gateways -&gt; Spoke Gateways</em></strong> and click on <strong><em>aws-shared</em></strong>.</p></li>
 <li><p>Go to the settings pane and under SNAT enable NAT and save the settings.</p></li>
@@ -503,20 +517,20 @@ Traffic between the web and db server, remains within the prod VNET however, and
 </div></blockquote>
 </section>
 <section id="id9">
-<h3>Expected Results<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>As you can see, all connectivity towards the internet is now allowed. With this setting enabled, the spoke gateway makes a great and cost effective replacement for cloud native NAT gateways.</p>
 <p><img alt="Internet Access" src="../_images/lab4-nat-enabled.png" /><br />
 <em>Fig. Internet Access</em></p>
 </section>
 </section>
 <section id="lab-4-5-configure-domain-filtering">
-<h2>Lab 4.5 - Configure domain filtering<a class="headerlink" href="#lab-4-5-configure-domain-filtering" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4.5 - Configure domain filtering<a class="headerlink" href="#lab-4-5-configure-domain-filtering" title="Link to this heading">#</a></h2>
 <section id="id10">
-<h3>Description<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>Now that we have enabled internet access for aws-shared through NAT translation on the spoke gateway, we want to make sure only trusted destinations are accessible. In this lab we will enable domain based filtering.</p>
 </section>
 <section id="id11">
-<h3>Validate<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Browse to <strong><em>Security -&gt; Distributed Cloud Firewall -&gt; WebGroups</em></strong> and check out the pre-configured WebGroup called <strong><em>allowed-web-group</em></strong>.</p></li>
 </ul>
@@ -539,7 +553,7 @@ Traffic between the web and db server, remains within the prod VNET however, and
 </div></blockquote>
 </section>
 <section id="id12">
-<h3>Expected Results<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p>After applying the changes, you should see that the aws-shared server can only access the desired destinations. All other access to the internet has been blocked.
 Only access to Github doesn’t quite work as expected. Let’s fix that in the next lab.</p>
 <p><img alt="Domains blocked" src="../_images/lab4-domains-blocked.png" /><br />
@@ -547,13 +561,13 @@ Only access to Github doesn’t quite work as expected. Let’s fix that in the 
 </section>
 </section>
 <section id="lab-4-6-configure-url-filtering">
-<h2>Lab 4.6 - Configure URL Filtering<a class="headerlink" href="#lab-4-6-configure-url-filtering" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4.6 - Configure URL Filtering<a class="headerlink" href="#lab-4-6-configure-url-filtering" title="Link to this heading">#</a></h2>
 <section id="id13">
-<h3>Description<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>This scenario is a bit more advanced. We need to allow access to our github repo, but the CISO doesn’t like the idea of opening up connectivity to all of Github. We need to figure out a way to specifically allow a URL.</p>
 </section>
 <section id="id14">
-<h3>Validate<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Browse to <strong><em>Security -&gt; Distributed Cloud Firewall -&gt; WebGroups</em></strong> and check out the pre-configured WebGroup called <strong><em>allowed-web-group</em></strong>.</p></li>
 </ul>
@@ -575,21 +589,21 @@ Only access to Github doesn’t quite work as expected. Let’s fix that in the 
 </div></blockquote>
 </section>
 <section id="id15">
-<h3>Expected Results<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <p>We have successfully enabled access to our specific repository, without allowing traffic to other parts of Github.</p>
 <p><img alt="URL Filtering working" src="../_images/lab4-url-filter-working.png" /><br />
 <em>Fig. URL Filtering working</em></p>
 </section>
 </section>
 <section id="lab-4-7-firenet">
-<h2>Lab 4.7 - Firenet<a class="headerlink" href="#lab-4-7-firenet" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4.7 - Firenet<a class="headerlink" href="#lab-4-7-firenet" title="Link to this heading">#</a></h2>
 <section id="id16">
-<h3>Description<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p>As you have been able to see in the previous labs, Aviatrix provides a ton of security features. We haven’t even gone into some of the other security capabilities of the platform, like TLS decryption, IDS and anomaly behavior detection. However, in some scenarios you need an external solution. For example, if all your organisation’s security operations are standardized around a 3rd party NGFW solution, it may be required to implement such a solution in the cloud as well. It can be challenging to implement a virtual appliance like a NGFW in the cloud, as this was never designed from the ground up to be used like this. Aviatrix makes is easy to incorporate such an appliance in the network, and does so in a consistent way across multiple clouds. This feature is called Firenet.</p>
 <p>We have already deployed a firewall instance in the lab. In order for Firenet to work properly, we need to tell the controller about it. In this lab you will accomplish this.</p>
 </section>
 <section id="id17">
-<h3>Validate<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Browse to <strong><em>Security -&gt; Firenet -&gt; Firewall</em></strong> and click on the <strong><em>+</em></strong> sign of the add firewall button.</p></li>
 <li><p>Click associate existing firewall.</p></li>
@@ -606,20 +620,20 @@ Only access to Github doesn’t quite work as expected. Let’s fix that in the 
 </ul>
 </section>
 <section id="id18">
-<h3>Expected Results<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <p>After a few minutes we should see the firewall in the list with a green status indication:</p>
 <p><img alt="Associate firewall result" src="../_images/lab4-associate-firewall-result.png" /><br />
 <em>Fig. Associate firewall result</em></p>
 </section>
 </section>
 <section id="lab-4-8-firewall-logging">
-<h2>Lab 4.8 - Firewall logging<a class="headerlink" href="#lab-4-8-firewall-logging" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4.8 - Firewall logging<a class="headerlink" href="#lab-4-8-firewall-logging" title="Link to this heading">#</a></h2>
 <section id="id19">
-<h3>Description<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
 <p>View the Firewall Logs</p>
 </section>
 <section id="id20">
-<h3>Validate<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
 <p>Access the Firewall logs by navigating to:</p>
 <p><strong>URL:</strong>  <code class="docutils literal notranslate"><span class="pre">https://fw.pod[x].aviatrixlab.com</span></code></p>
 <ul class="simple">
@@ -627,20 +641,20 @@ Only access to Github doesn’t quite work as expected. Let’s fix that in the 
 </ul>
 </section>
 <section id="id21">
-<h3>Expected Results<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
 <p>Since we have not yet enabled any inspection, the logs should be empty.</p>
 <p><img alt="Empty firewall logs" src="../_images/lab1-firewall.png" /><br />
 <em>Fig. Empty firewall logs</em></p>
 </section>
 </section>
 <section id="lab-4-9-enable-inspection">
-<h2>Lab 4.9 - Enable inspection<a class="headerlink" href="#lab-4-9-enable-inspection" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4.9 - Enable inspection<a class="headerlink" href="#lab-4-9-enable-inspection" title="Link to this heading">#</a></h2>
 <section id="id22">
-<h3>Description<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
 <p>The CISO has put in place a requirement that all traffic from the office needs to be inspected, before it can enter the spoke VNETs. In this lab we will enable inspection for traffic coming from the office VPN connection.</p>
 </section>
 <section id="id23">
-<h3>Validate<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Navigate to <strong><em>Security -&gt; Firenet</em></strong> and click on <strong><em>azure-transit</em></strong>.</p></li>
 <li><p>Browse to the policy tab.</p></li>
@@ -654,14 +668,14 @@ Only access to Github doesn’t quite work as expected. Let’s fix that in the 
 </ul>
 </section>
 <section id="id24">
-<h3>Expected Results<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
 <p>You should start seeing entries like the screenshot below.</p>
 <p><img alt="FW Logs" src="../_images/lab5-fw-logs-azure-dev.png" /><br />
 <em>Fig. FW Logs</em></p>
 </section>
 </section>
 <section id="lab-4-summary">
-<h2>Lab 4 Summary<a class="headerlink" href="#lab-4-summary" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4 Summary<a class="headerlink" href="#lab-4-summary" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>You have enabled microsegmentation between VNET’s and VPC’s.</p></li>
 <li><p>You have enabled microsegmentation within VNET’s and VPC’s, to allow for native SG and NSG orchestration.</p></li>

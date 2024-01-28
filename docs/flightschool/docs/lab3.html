@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 3 - Expanding to multi-cloud &#8212; Aviatrix Flightschool</title>
   
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab3';</script>
-    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 4 - Beefing up security" href="lab4.html" />
@@ -161,7 +164,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -382,20 +396,20 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-3-expanding-to-multi-cloud">
-<h1>Lab 3 - Expanding to multi-cloud<a class="headerlink" href="#lab-3-expanding-to-multi-cloud" title="Permalink to this heading">#</a></h1>
+<h1>Lab 3 - Expanding to multi-cloud<a class="headerlink" href="#lab-3-expanding-to-multi-cloud" title="Link to this heading">#</a></h1>
 <p>Lab time: ~30 minutes</p>
 <p><strong><em>Scenario</em></strong>:  The business has decided to go multi-cloud! Some apps simply run better in other clouds, and why put all eggs in one basket? During this exercise we will deploy in AWS an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer Azure and AWS and test out the connectivity.</p>
 <p>The Spoke VPCs and gateways have already been created to save you time. The process is very similar to deploying the transit gateway.</p>
 <p><img alt="Topology" src="../_images/lab-3.png" /><br />
 <em>Fig. Current Topology</em></p>
 <section id="lab-3-1-deploy-the-aws-transit-vpc">
-<h2>Lab 3.1 - Deploy the AWS transit VPC<a class="headerlink" href="#lab-3-1-deploy-the-aws-transit-vpc" title="Permalink to this heading">#</a></h2>
+<h2>Lab 3.1 - Deploy the AWS transit VPC<a class="headerlink" href="#lab-3-1-deploy-the-aws-transit-vpc" title="Link to this heading">#</a></h2>
 <section id="description">
-<h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h3>
 <p>Let’s go ahead and create the Transit VPC in AWS using the topology builder in Copilot.</p>
 </section>
 <section id="validate">
-<h3>Validate<a class="headerlink" href="#validate" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Log in to Aviatrix Copilot</p></li>
 <li><p>Scroll down on the left-hand pane to <strong><em>Cloud Fabric -&gt; Topology -&gt; Builder</em></strong></p></li>
@@ -454,18 +468,18 @@ document.write(`
 <p>Hit save, and the VPC will be created.</p>
 </section>
 <section id="expected-results">
-<h3>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
 <p>You created a VPC with multiple subnets directly in the Aviatrix GUI.</p>
 </section>
 </section>
 <section id="lab-3-2-deploy-the-aviatrix-transit-gateway">
-<h2>Lab 3.2 - Deploy the Aviatrix Transit Gateway<a class="headerlink" href="#lab-3-2-deploy-the-aviatrix-transit-gateway" title="Permalink to this heading">#</a></h2>
+<h2>Lab 3.2 - Deploy the Aviatrix Transit Gateway<a class="headerlink" href="#lab-3-2-deploy-the-aviatrix-transit-gateway" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h3>Description<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>In this exercise we are going to launch the Aviatrix Transit Gateway in the newly created Transit VPC in AWS.</p>
 </section>
 <section id="id2">
-<h3>Validate<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Enter the following fields:</p></li>
 </ul>
@@ -517,20 +531,20 @@ document.write(`
 <em>Fig. Enable connected transit</em></p>
 </section>
 <section id="id3">
-<h3>Expected Results<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Now that we have the aws-transit deployed, peered to azure-transit and have enabled connected transit, we should see these changes reflected in our topology view. (under <strong><em>Cloud Fabric -&gt; Topology</em></strong>)</p>
 <p><img alt="Screenshot" src="../_images/lab3-result.png" /><br />
 <em>Fig. Topology view</em></p>
 </section>
 </section>
 <section id="lab-3-3-attach-spoke-gateways-to-aviatrix-transit-gateway">
-<h2>Lab 3.3 - Attach Spoke Gateways to Aviatrix Transit Gateway<a class="headerlink" href="#lab-3-3-attach-spoke-gateways-to-aviatrix-transit-gateway" title="Permalink to this heading">#</a></h2>
+<h2>Lab 3.3 - Attach Spoke Gateways to Aviatrix Transit Gateway<a class="headerlink" href="#lab-3-3-attach-spoke-gateways-to-aviatrix-transit-gateway" title="Link to this heading">#</a></h2>
 <section id="id4">
-<h3>Description<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>Now that we have our aws-transit set up, we need to establish connectivity between the AWS spoke gateways and the aws-transit gateway. The spoke gateways have been pre-deployed to save some time, but the process is much the same as the transit gateway you have just deployed.</p>
 </section>
 <section id="id5">
-<h3>Validate<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Go to <strong><em>Cloud Fabric -&gt; Gateways -&gt; Spoke Gateways</em></strong>.</p></li>
 <li><p>Click the edit button (pencil) behind the <strong><em>aws-prod</em></strong> gateway.</p></li>
@@ -547,7 +561,7 @@ document.write(`
 </ul>
 </section>
 <section id="id6">
-<h3>Expected Results<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>The AWS spoke gateways should now be attached to the aws-transit. Within a few minutes, we should see these changes reflected in our topology view. (under <strong><em>Cloud Fabric -&gt; Topology</em></strong>)</p>
 <p><img alt="Topology" src="../_images/lab3-copilot-spoke-attach.png" /><br />
 <em>Fig. CoPilot Topology with Attached Spokes</em></p>
@@ -557,13 +571,13 @@ document.write(`
 </section>
 </section>
 <section id="lab-3-4-enable-network-segmentation-on-the-aws-transit">
-<h2>Lab 3.4 - Enable network segmentation on the AWS transit<a class="headerlink" href="#lab-3-4-enable-network-segmentation-on-the-aws-transit" title="Permalink to this heading">#</a></h2>
+<h2>Lab 3.4 - Enable network segmentation on the AWS transit<a class="headerlink" href="#lab-3-4-enable-network-segmentation-on-the-aws-transit" title="Link to this heading">#</a></h2>
 <section id="id7">
-<h3>Description<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>Just like we enabled network segmentation on the azure-transit before, we want to extend this segmentation to AWS and enable it on the aws-transit as well.</p>
 </section>
 <section id="id8">
-<h3>Validate<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>In the Copilot, go to <strong><em>Networking -&gt; Network Segmentation -&gt; Network Domains</em></strong>. and click the <strong><em>Transit Gateways</em></strong> button.</p></li>
 <li><p>In the transit gateway pane, enable segmentation for aws-transit.</p></li>
@@ -574,18 +588,18 @@ document.write(`
 <em>Fig. Enable Segmentation</em></p>
 </section>
 <section id="id9">
-<h3>Expected Results<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>Segmentation is now enabled on both gateways.</p>
 </section>
 </section>
 <section id="lab-3-5-create-network-domains">
-<h2>Lab 3.5 - Create Network Domains<a class="headerlink" href="#lab-3-5-create-network-domains" title="Permalink to this heading">#</a></h2>
+<h2>Lab 3.5 - Create Network Domains<a class="headerlink" href="#lab-3-5-create-network-domains" title="Link to this heading">#</a></h2>
 <section id="id10">
-<h3>Description<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>For our AWS spokes, we want to create network domains and associations, just like we did for the Azure spokes before.</p>
 </section>
 <section id="id11">
-<h3>Validate<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>In CoPilot, go to <strong><em>Networking -&gt; Network Segmentation -&gt; Network Domains</em></strong>. Use the <strong><em>+ Network Domains</em></strong> button to add the following domains and associations:</p>
 <table class="table">
 <thead>
@@ -604,20 +618,20 @@ document.write(`
 </table>
 </section>
 <section id="id12">
-<h3>Expected Results<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p>After adding the network domains and associations, you should see the following in Copilot:</p>
 <p><img alt="Screenshot" src="../_images/lab3-network-domains.png" /><br />
 <em>Fig. Add network domains</em></p>
 </section>
 </section>
 <section id="lab-3-6-create-a-connection-policy">
-<h2>Lab 3.6 - Create a connection policy<a class="headerlink" href="#lab-3-6-create-a-connection-policy" title="Permalink to this heading">#</a></h2>
+<h2>Lab 3.6 - Create a connection policy<a class="headerlink" href="#lab-3-6-create-a-connection-policy" title="Link to this heading">#</a></h2>
 <section id="id13">
-<h3>Description<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>We want the development team in the office, to be able to access AWS-Shared.</p>
 </section>
 <section id="id14">
-<h3>Validate<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Edit the <strong><em>Office</em></strong> network domain under <strong><em>Networking -&gt; Network Segmentation -&gt; Network Domains</em></strong> in Copilot.</p></li>
 </ul>
@@ -630,7 +644,7 @@ document.write(`
 <em>Fig. Add network domain connection</em></p>
 </section>
 <section id="id15">
-<h3>Expected Results<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The network domains should now be connected to each other, as shown on the screenshot below.</p></li>
 <li><p>Another great place to visualize the connectivity between network domains is <strong><em>Networking -&gt; Network Segmentation-&gt; Overview</em></strong>.</p></li>
@@ -642,13 +656,13 @@ document.write(`
 </section>
 </section>
 <section id="lab-3-7-test-connectivity-to-aws-spokes">
-<h2>Lab 3.7 - Test Connectivity to AWS Spokes<a class="headerlink" href="#lab-3-7-test-connectivity-to-aws-spokes" title="Permalink to this heading">#</a></h2>
+<h2>Lab 3.7 - Test Connectivity to AWS Spokes<a class="headerlink" href="#lab-3-7-test-connectivity-to-aws-spokes" title="Link to this heading">#</a></h2>
 <section id="id16">
-<h3>Description<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p>The AWS Spokes should be connected to the AWS Transit so now we can check connectivity to the spokes from the office.</p>
 </section>
 <section id="id17">
-<h3>Validate<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Open the Remote Access Server and open the <strong>RDP - Client</strong> (or navigate to <code class="docutils literal notranslate"><span class="pre">https://client.pod[#].aviatrixlab.com</span></code>). This is the on-prem Host.</p></li>
 <li><p>Open up the Firefox browser on the RDP desktop</p></li>
@@ -659,7 +673,7 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="id18">
-<h3>Expected Results<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>As you can see, you now have access to azure-build and aws-shared.</p></li>
 </ul>
@@ -670,12 +684,12 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="id19">
-<h3>Expected Results<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
 <p>From the office, you should be able to reach aws-shared, but not aws-prod.</p>
 </section>
 </section>
 <section id="lab-3-summary">
-<h2>Lab 3 Summary<a class="headerlink" href="#lab-3-summary" title="Permalink to this heading">#</a></h2>
+<h2>Lab 3 Summary<a class="headerlink" href="#lab-3-summary" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>AWS has been onboarded</p></li>
 <li><p>You deployed a VPC and an Aviatrix Transit Gateway in AWS</p></li>

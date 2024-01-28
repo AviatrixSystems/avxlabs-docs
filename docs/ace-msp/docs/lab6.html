@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 6 Advanced Routing &amp; Resiliency &#8212; ACE Multicloud Network for Managed Service Providers</title>
   
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab6';</script>
-    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 7 Security Enhancements" href="lab7.html" />
@@ -161,7 +164,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -345,13 +359,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-6-advanced-routing-resiliency">
-<h1>Lab 6 Advanced Routing &amp; Resiliency<a class="headerlink" href="#lab-6-advanced-routing-resiliency" title="Permalink to this heading">#</a></h1>
+<h1>Lab 6 Advanced Routing &amp; Resiliency<a class="headerlink" href="#lab-6-advanced-routing-resiliency" title="Link to this heading">#</a></h1>
 <section id="what-s-in-the-lab">
-<h2>6.0 - What’s in the lab?<a class="headerlink" href="#what-s-in-the-lab" title="Permalink to this heading">#</a></h2>
+<h2>6.0 - What’s in the lab?<a class="headerlink" href="#what-s-in-the-lab" title="Link to this heading">#</a></h2>
 <p>In this lab we explore a few features pertaining to Advanced Routing and Resiliency. We will look at BGP load balancing, resiliency testing, BGP Route Approval features &amp; failover for shared services.</p>
 </section>
 <section id="configure-csr-routers">
-<h2>6.1 - Configure CSR Routers<a class="headerlink" href="#configure-csr-routers" title="Permalink to this heading">#</a></h2>
+<h2>6.1 - Configure CSR Routers<a class="headerlink" href="#configure-csr-routers" title="Link to this heading">#</a></h2>
 <p>Connect to customer-a-csr1k-1 as shown below:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>admin@customer-a-csr-1.pod150.aviatrixlab.com<span class="w"> </span>
 </pre></div>
@@ -379,7 +393,7 @@ end
 <em>Figure 1: Lab 6 Scenario</em></p>
 </section>
 <section id="without-active-standby">
-<h2>6.2 - Without Active Standby<a class="headerlink" href="#without-active-standby" title="Permalink to this heading">#</a></h2>
+<h2>6.2 - Without Active Standby<a class="headerlink" href="#without-active-standby" title="Link to this heading">#</a></h2>
 <p>Without enabling active/standby, Aviatrix Gateways will have both tunnels active where some destinations will be reached over a tunnel whereas others will be reached on another tunnel.</p>
 <p><img alt="Without Active Standby" src="../_images/ace_for_msps_lab_diagrams_without_active_standby.png" />
 <em>Figure 2: Without Active Standby</em></p>
@@ -394,7 +408,7 @@ Thus, over the same connection To-DC-CSR1 each Aviatrix gateway selects its loca
 <p><img alt="Without A/S Customer-A HA" src="../_images/without_a_as_same_prefix_ha_gw.png" /><em>Figure 7: Customer-A HA GW Preferred Path</em></p>
 </section>
 <section id="with-active-standby">
-<h2>6.3 - With Active Standby<a class="headerlink" href="#with-active-standby" title="Permalink to this heading">#</a></h2>
+<h2>6.3 - With Active Standby<a class="headerlink" href="#with-active-standby" title="Link to this heading">#</a></h2>
 <p>This option is to provide the flexibility on Aviatrix Transit Gateways and Aviatrix BGP Spoke Gateways to connect to on-prem with only one active tunnel and the other one as backup.</p>
 <p>So for the connection to CSR1, Gateway 1 is active and similarly Gateway 1 is active for the connection to CSR2. This mean that the exit from the Customer-A VPC has to always go through Gateway 1. If traffic is received by Gateway 2 from the instance (app) it will be forwarded over Tun 5 to get to Gateway 1 and then to the CSRs.</p>
 <p><img alt="Active Standby Traffic Path" src="../_images/with_active_standby.png" /><em>Figure 8: Active Standby Traffic Path</em></p>
@@ -405,7 +419,7 @@ Thus, over the same connection To-DC-CSR1 each Aviatrix gateway selects its loca
 <p><img alt="Customer A preferred Path with A/S" src="../_images/customer_a_hagw_preferred_path_with_as.png" /><em>Figure 13: Customer A HAGW preferred Path with A/S</em></p>
 </section>
 <section id="bgp-load-balancing">
-<h2>6.4 - BGP Load Balancing<a class="headerlink" href="#bgp-load-balancing" title="Permalink to this heading">#</a></h2>
+<h2>6.4 - BGP Load Balancing<a class="headerlink" href="#bgp-load-balancing" title="Link to this heading">#</a></h2>
 <p>First let us remove Active/Standby configuration on the Customer-A Spoke before proceeding.</p>
 <p><img alt="Disable Active/Standby" src="../_images/disable_active_standby_mode.png" /><em>Figure 14: Disable Active/Standby</em></p>
 <p>In this section we explore the routing between Customer-A landing zone and DataCenter.</p>
@@ -419,7 +433,7 @@ Thus, over the same connection To-DC-CSR1 each Aviatrix gateway selects its loca
 <p><img alt="Load Balancing Result" src="../_images/load_balancing_after_bgp_ecmp_ha.png" /><em>Figure 21: Routing to 1.1.1.0 Customer-A With ECMP</em></p>
 </section>
 <section id="resiliency-and-high-availability">
-<h2>6.5 - Resiliency and High Availability<a class="headerlink" href="#resiliency-and-high-availability" title="Permalink to this heading">#</a></h2>
+<h2>6.5 - Resiliency and High Availability<a class="headerlink" href="#resiliency-and-high-availability" title="Link to this heading">#</a></h2>
 <p>In this section, we will be shutting down one of the gateways to ensure proper failover of the setup.</p>
 <p>Let’s start by browsing to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">customer</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">pod150</span><span class="o">.</span><span class="n">aviatrixlab</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">aws</span><span class="o">-</span><span class="n">log1</span>
