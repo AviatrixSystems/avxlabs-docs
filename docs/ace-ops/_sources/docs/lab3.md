@@ -116,7 +116,7 @@ The FW is unreachable
 Click on the **Firewall** tab! You will notice that the Firewall turns out being down.
 
 ```{important}
-The ICMP health check is initiated every 5 seconds from the Aviatrix Transit FireNet Gateway. The 5-second setting is the default and cannot be changed.
+The ICMP health check is initiated every **5** seconds from the Aviatrix Transit FireNet Gateway. The 5-second setting is the default and cannot be changed.
 ```
 
 ```{figure} images/lab3-fwdown.png

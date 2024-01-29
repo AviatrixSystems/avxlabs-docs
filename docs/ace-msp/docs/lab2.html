@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 2 Customer Isolation &#8212; ACE Multicloud Network for Managed Service Providers</title>
   
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab2';</script>
-    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 3 FireNet" href="lab3.html" />
@@ -161,7 +164,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -348,9 +362,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-2-customer-isolation">
-<h1>Lab 2 Customer Isolation<a class="headerlink" href="#lab-2-customer-isolation" title="Permalink to this heading">#</a></h1>
+<h1>Lab 2 Customer Isolation<a class="headerlink" href="#lab-2-customer-isolation" title="Link to this heading">#</a></h1>
 <section id="what-s-in-the-lab">
-<h2>2.0 - What’s in the lab?<a class="headerlink" href="#what-s-in-the-lab" title="Permalink to this heading">#</a></h2>
+<h2>2.0 - What’s in the lab?<a class="headerlink" href="#what-s-in-the-lab" title="Link to this heading">#</a></h2>
 <p>Having recently established our MSP, we have been getting initial demand from customers to host their applications within Cloud.</p>
 <p>Customers <strong>A</strong> already has existing workloads that they are looking to migrate from On-prem to AWS, Customer <strong>B</strong> is a newly founded startup who decided to initiate their required applications within AWS, whereas Customer <strong>C</strong> has decided to take the Azure Route. It is also worth noting that the MSP started receiving requests for MultiCloud presence for different business requirements.</p>
 <p>The landing zones with the respective workload &amp; spokes have already been created. We will start by connecting those customer landing zones to their respective transits based on their CSP preference as cited above. Next, we have a requirement to ensure total isolation between Tenants.</p>
@@ -359,7 +373,7 @@ document.write(`
 <em>Figure 2: Copilot Topology Verification</em></p>
 </section>
 <section id="connect-customers-a-to-aws-hub">
-<h2>2.1 - Connect Customers A to AWS Hub<a class="headerlink" href="#connect-customers-a-to-aws-hub" title="Permalink to this heading">#</a></h2>
+<h2>2.1 - Connect Customers A to AWS Hub<a class="headerlink" href="#connect-customers-a-to-aws-hub" title="Link to this heading">#</a></h2>
 <p>In this section, we will be connecting Customer A’s landing zone to AWS Hub.</p>
 <p><img alt="Search Bar" src="../_images/search_bar_gateways.png" />
 <em>Figure 3: Search Bar to Reach Gateways</em></p>
@@ -369,7 +383,7 @@ document.write(`
 <em>Figure 5: Customer-A AWS Attachment</em></p>
 </section>
 <section id="connect-customers-b-to-aws-hub">
-<h2>2.2 - Connect Customers B to AWS Hub<a class="headerlink" href="#connect-customers-b-to-aws-hub" title="Permalink to this heading">#</a></h2>
+<h2>2.2 - Connect Customers B to AWS Hub<a class="headerlink" href="#connect-customers-b-to-aws-hub" title="Link to this heading">#</a></h2>
 <p>In this section, we will be connecting Customer B’s landing zone to AWS Hub.</p>
 <p><img alt="Customer B Edit" src="../_images/customer_a_spoke_edit.png" />
 <em>Figure 6: Customer-B Spoke Edit</em></p>
@@ -377,7 +391,7 @@ document.write(`
 <em>Figure 7: Customer-B AWS Attachment</em></p>
 </section>
 <section id="connect-customers-c-to-azure-hub">
-<h2>2.4 - Connect Customers C to Azure Hub<a class="headerlink" href="#connect-customers-c-to-azure-hub" title="Permalink to this heading">#</a></h2>
+<h2>2.4 - Connect Customers C to Azure Hub<a class="headerlink" href="#connect-customers-c-to-azure-hub" title="Link to this heading">#</a></h2>
 <p>In this section, we will be connecting Customer B’s landing zone to Azure Hub.</p>
 <p><img alt="Customer C Edit" src="../_images/customer_c_spoke_edit.png" />
 <em>Figure 8: Customer-C Spoke Edit</em></p>
@@ -389,7 +403,7 @@ document.write(`
 <em>Figure 11: Copilot Topology</em></p>
 </section>
 <section id="pre-network-segmentation">
-<h2>2.5 - Pre-Network Segmentation<a class="headerlink" href="#pre-network-segmentation" title="Permalink to this heading">#</a></h2>
+<h2>2.5 - Pre-Network Segmentation<a class="headerlink" href="#pre-network-segmentation" title="Link to this heading">#</a></h2>
 <p>We look at the current state of tenant isolation before enabling any segmentation. The MSP wants to verify total seggregation and isolation between its Tenants.</p>
 <p>Please login to Customer A’s application(details are in your lab portal) and initiate a ping towards Customer B’s application. The results are shown in Figure 8.</p>
 <p><img alt="Pre-Seg Cust A to B App ping" src="../_images/pre_segmentation_customer_a_to_customer_b_app_ping.png" />
@@ -401,7 +415,7 @@ document.write(`
 <p>You can also try pinging aws-log1 from customer A application.</p>
 </section>
 <section id="create-network-domains">
-<h2>2.6 - Create Network Domains<a class="headerlink" href="#create-network-domains" title="Permalink to this heading">#</a></h2>
+<h2>2.6 - Create Network Domains<a class="headerlink" href="#create-network-domains" title="Link to this heading">#</a></h2>
 <p>In order to achieve Tenant isolation, we will be creating multiple Network Domains (a.k.a vrfs) and associating those Network Domains to the respective Spoke Gateways.</p>
 <p>One pre-requisite of Network Segmentation is to ensure that the Transits (aws_hub &amp; azure_hub) have segmentation enabled. This is shown in Figure 12 below.</p>
 <p><img alt="Network Segmentation Prereq" src="../_images/network_segmentation_enabled_on_transits.png" />
@@ -417,7 +431,7 @@ document.write(`
 <em>Figure 18: Create Customer-C Network Domain</em></p>
 </section>
 <section id="verify-customer-segmentation">
-<h2>2.7 - Verify Customer Segmentation<a class="headerlink" href="#verify-customer-segmentation" title="Permalink to this heading">#</a></h2>
+<h2>2.7 - Verify Customer Segmentation<a class="headerlink" href="#verify-customer-segmentation" title="Link to this heading">#</a></h2>
 <p>Now, we will re-attempt some connectivity tests after we configured the Network Domains.</p>
 <p>First, ping Customer B application from Customer A application.</p>
 <p><img alt="Customer A to Customer B Isolation Ping" src="../_images/post_segmentation_ping_customer_b_app.png" /><em>Figure 19: Customer A to Customer B Isolation Ping</em></p>
@@ -429,7 +443,7 @@ document.write(`
 <p><img alt="Customer A to AWS Log1 Isolation Proxy" src="../_images/post_segmentation_customer_a_aws_log1_browser.png" /><em>Figure 22: Customer A to AWS log1 Isolation Proxy</em></p>
 </section>
 <section id="access-to-shared-services">
-<h2>2.8 - Access to Shared Services<a class="headerlink" href="#access-to-shared-services" title="Permalink to this heading">#</a></h2>
+<h2>2.8 - Access to Shared Services<a class="headerlink" href="#access-to-shared-services" title="Link to this heading">#</a></h2>
 <p>The MSP wants to ensure that all its tenants can access the workloads in the Shared Services. A connection policy is required to allow all customer tenants (customers a,b and c) to access Shared Svcs Tenant. This is shown in Figure 21-23.</p>
 <p><img alt="Edit Shared Svcs Domain" src="../_images/edit_shared_svcs_domain.png" /><em>Figure 23: Edit Shared Svcs Domain</em></p>
 <p><img alt="Connection Policy from Shared Svcs to Customers A,B and C" src="../_images/connection_policy_shared_svcs___abc.png" />_Figure 24: Connection Policy Shared Svcs to all Customers</p>
@@ -440,7 +454,7 @@ document.write(`
 <p><img alt="Final Topology Lab 2" src="../_images/final_topology_lab_2.png" /><em>Figure 28: Current State of the Topology</em></p>
 </section>
 <section id="conclusion">
-<h2>2.8 - Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<h2>2.8 - Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>In this lab we started by connecting all Customer Landing Zones to their respective Hubs. We also had to ensure that Customers are isolated from one another and that all Customers should be able to access Shared Services. This requirement on isolation and connectivity can be met by leveraging Network Domains as well as Connection Policies.</p>
 </section>
 </section>

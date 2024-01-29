@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 7 Security Enhancements &#8212; ACE Multicloud Network for Managed Service Providers</title>
   
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab7';</script>
-    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Lab 6 Advanced Routing &amp; Resiliency" href="lab6.html" />
@@ -160,7 +163,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -347,16 +361,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-7-security-enhancements">
-<h1>Lab 7 Security Enhancements<a class="headerlink" href="#lab-7-security-enhancements" title="Permalink to this heading">#</a></h1>
+<h1>Lab 7 Security Enhancements<a class="headerlink" href="#lab-7-security-enhancements" title="Link to this heading">#</a></h1>
 <section id="what-s-in-the-lab">
-<h2>7.0 - What’s in the lab?<a class="headerlink" href="#what-s-in-the-lab" title="Permalink to this heading">#</a></h2>
+<h2>7.0 - What’s in the lab?<a class="headerlink" href="#what-s-in-the-lab" title="Link to this heading">#</a></h2>
 <p>In this lab we will mainly explore a subset of the security features that the platform provides. We will start with Distributed Firewalling where the source and destination are in two different VPCs to Intra-VNET segmentation and finally end with a quick configuration of ThreatIQ.</p>
 <p><img alt="Current Topology" src="docs/images/lab1/Backbone_Area_Configured.png" /><em>Figure 1: Current State of the Topology</em></p>
 </section>
 <section id="distributed-firewalling-inter-vpc-vnet">
-<h2>7.1 - Distributed Firewalling (Inter-VPC/VNET)<a class="headerlink" href="#distributed-firewalling-inter-vpc-vnet" title="Permalink to this heading">#</a></h2>
+<h2>7.1 - Distributed Firewalling (Inter-VPC/VNET)<a class="headerlink" href="#distributed-firewalling-inter-vpc-vnet" title="Link to this heading">#</a></h2>
 <section id="smart-group-creation">
-<h3>7.1.1  - Smart Group Creation<a class="headerlink" href="#smart-group-creation" title="Permalink to this heading">#</a></h3>
+<h3>7.1.1  - Smart Group Creation<a class="headerlink" href="#smart-group-creation" title="Link to this heading">#</a></h3>
 <p><img alt="Navigate to Smart Groups" src="docs/images/lab7/Navigate_to_SmartGroups.png" />
 <em>Figure 2: Navigate to Smart Groups</em></p>
 <p><img alt="Create Smart Group Aws-log1" src="docs/images/lab7/New_SG_creation_aws_log1.png" /><em>Figure 3: Create Smart Group Aws-log1</em></p>
@@ -367,7 +381,7 @@ document.write(`
 <p><img alt="Azure-Log2 SmartGroup Resource Matching" src="../_images/azure_log2_resource_matching.png" /><em>Figure 8: Azure-Log2 SmartGroup Resource Matching</em></p>
 </section>
 <section id="pre-dfw-connectivity-test">
-<h3>7.1.2  - Pre-DFW Connectivity Test<a class="headerlink" href="#pre-dfw-connectivity-test" title="Permalink to this heading">#</a></h3>
+<h3>7.1.2  - Pre-DFW Connectivity Test<a class="headerlink" href="#pre-dfw-connectivity-test" title="Link to this heading">#</a></h3>
 <p>Before any DFW rules, let us check the connectivity from aws-log1 to azure-log1 &amp; azure-log2 leveraging ping and the proxy.</p>
 <p><img alt="Ping from aws-log1 to azure-log1" src="docs/images/lab7/Pre_DFW_ping_from_aws_log1_to_azure_log1.png" /><em>Figure 9: Ping from aws-log1 to azure-log1</em></p>
 <p><img alt="Ping from aws-log1 to azure-log1" src="docs/images/lab7/Pre_DFW_Proxy_from_aws_log1_to_azure_log1.png" /><em>Figure 10: Proxy from aws-log1 to azure-log1</em></p>
@@ -375,7 +389,7 @@ document.write(`
 <p><img alt="Proxy from aws-log1 to azure-log2" src="docs/images/lab7/Pre_DFW_proxy_from_aws_log1_to_azure_log2.png" /><em>Figure 12: Proxy from aws-log1 to azure-log2</em></p>
 </section>
 <section id="distributed-firewall-rule">
-<h3>7.1.3  - Distributed Firewall Rule<a class="headerlink" href="#distributed-firewall-rule" title="Permalink to this heading">#</a></h3>
+<h3>7.1.3  - Distributed Firewall Rule<a class="headerlink" href="#distributed-firewall-rule" title="Link to this heading">#</a></h3>
 <p>Let’s start by enabling Distributed Firewalling.</p>
 <p><img alt="Navigate to DFW" src="docs/images/lab7/Navigate_to_Distributed_FW.png" /><em>Figure 13: Navigate to Distributed Firewalling</em></p>
 <p><img alt="Enable DFW" src="docs/images/lab7/Enable_Distributed_FW.png" /><em>Figure 14: Enable Distributed Firewalling</em></p>
@@ -384,7 +398,7 @@ document.write(`
 <p><img alt="Azure-Log2 SmartGroup Resource Matching" src="docs/images/lab7/A_aws_log1_azure_log1_p80_p2.png" /><em>Figure 16: Rule aws-log1 to azure-log1 tcp port 80 Part 2</em></p>
 </section>
 <section id="zooming-in-on-the-dfw-rule">
-<h3>7.1.4  - Zooming in on the DFW Rule<a class="headerlink" href="#zooming-in-on-the-dfw-rule" title="Permalink to this heading">#</a></h3>
+<h3>7.1.4  - Zooming in on the DFW Rule<a class="headerlink" href="#zooming-in-on-the-dfw-rule" title="Link to this heading">#</a></h3>
 <p>In the previous section, we just put a rule allowing HTTP traffic only from aws-log1 to azure-log1. Note that because the source and destination are in different VPC/VNETs the rules are applied on the gateways. The intelligence of the solution allows you to write a rule and the system decides where to enforce the rule (Gateway or NSGs in Azure).</p>
 <p><img alt="DFW Rules Impact Explained" src="docs/images/lab7/Distributed_FW_Explained.png" /><em>Figure 17: DFW Rules Impact Explained</em></p>
 <p>Now that we have explained how Distributed Firewalling works across VPCs/VNETs let us attempt to ping azure-log1 from aws-log1.</p>
@@ -405,7 +419,7 @@ Let us try to proxy from aws-log1 to azure-log1. This works as per the allowed p
 </section>
 </section>
 <section id="distributed-firewalling-intra-vnet">
-<h2>7.2 - Distributed Firewalling (Intra-VNET)<a class="headerlink" href="#distributed-firewalling-intra-vnet" title="Permalink to this heading">#</a></h2>
+<h2>7.2 - Distributed Firewalling (Intra-VNET)<a class="headerlink" href="#distributed-firewalling-intra-vnet" title="Link to this heading">#</a></h2>
 <p>This section shows Intra-VNET segmentation between two Virtual Machines in Azure namely azure-log1 and azure-log2.</p>
 <p>We start by logging into the Azure Portal (details are in the lab portal).</p>
 <p>We will see the Virtual Machine’s Network Security Group (NSG) configuration of both instances prior to enabling Intra-VNET firewalling.</p>

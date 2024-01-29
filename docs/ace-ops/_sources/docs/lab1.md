@@ -149,7 +149,7 @@ The IP addresses can be easily retrieved using **3** different methods, as you l
 Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
 
 ```{caution}
-You can't connect to any Aviatrix Gateways using the SSH protocol!
+You can't connect to any Aviatrix Gateways using the SSH protocol. The port 22 is hardened!
 ```
 
 ```{figure} images/lab1-newpicture.png
@@ -196,7 +196,7 @@ DNS Names
 
 - Verify connectivity between clients **within** the same BU:
     - SSH to the **BU1 Frontend** in AWS.
-    - From BU1 Frontend ping **BU1 Analytics** in GCP.
+    - From BU1 Frontend ping the <ins>private IP address</ins> of the **BU1 Analytics** in GCP.
 
 Ping and SSH will be successful **within** the same network domain!
 
@@ -208,14 +208,14 @@ BU1 connectivity
 ```
 
 * Verify the network segregation **between** the two BUs:
-  * From **BU1 Frontend** try to ping **BU2 Mobile App**.
+  * From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
 
 Ping and SSH commands should not work this time, due to the separation between the two segments (i.e. <ins>these are two different Routing Domains</ins>).
 
 ```{important}
 Once again refer always to your personal POD for the IP addresses. 
 
-The screenshots are used as examples and might indicate different IP addresses from those present on your POD!
+The screenshots are used as examples and might indicate different IP addresses from those shown on your personal POD portal!
 ```
 
 ```{figure} images/lab1-pingfails.png
@@ -266,7 +266,7 @@ align: center
 FlowIQ Filter
 ```
 
-Then check the `"Flow Exporters"` widget, then from the drop-down menu select the **`"Aviatrix Gateway"`** widget: you will see the list of the Aviatrix Gateways involved along the path.
+Then check the `"Flow Exporters"` widget, then from the drop-down menu select the **`"Aviatrix Gateway"`** widget: you will see the list of all the Aviatrix Gateways involved along the path.
 
 ```{figure} images/lab1-flowiq.png
 ---

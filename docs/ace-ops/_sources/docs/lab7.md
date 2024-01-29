@@ -358,7 +358,7 @@ SSH logs
 - Now create another SmartGroup that identifies the BU2 DB, solely.
 
 ```{tip}
-Go to **CoPilot > SmartGroups**
+Go to **CoPilot > SmartGroups** and click on the `"+ SmartGroup"` button.
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
@@ -455,7 +455,7 @@ curl www.wikipedia.com
 curl www.espn.com
 ```
 
-You will notice three **Drop** entries within the Monitor section that have matched the `Explicit-Deny-Rule`, successfully.
+You will notice three **Drop** entries within the **Monitor** section that have matched the `Explicit-Deny-Rule`, successfully.
 
 ```{figure} images/lab7-explicitdeny.png
 ---

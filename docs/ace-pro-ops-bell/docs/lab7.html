@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 7 - DISTRIBUTED CLOUD FIREWALL &#8212; ACE Operations Professional and Operations (Bell)</title>
   
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab7';</script>
-    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 8 - SITE2CLOUD" href="lab8.html" />
@@ -161,7 +164,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -386,13 +400,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-7-distributed-cloud-firewall">
-<h1>Lab 7 - DISTRIBUTED CLOUD FIREWALL<a class="headerlink" href="#lab-7-distributed-cloud-firewall" title="Permalink to this heading">#</a></h1>
+<h1>Lab 7 - DISTRIBUTED CLOUD FIREWALL<a class="headerlink" href="#lab-7-distributed-cloud-firewall" title="Link to this heading">#</a></h1>
 <section id="objective">
-<h2>1. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
 <p>This lab will demonstrate how the <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> works.</p>
 </section>
 <section id="distributed-cloud-firewall-overview">
-<h2>2. Distributed Cloud Firewall Overview<a class="headerlink" href="#distributed-cloud-firewall-overview" title="Permalink to this heading">#</a></h2>
+<h2>2. Distributed Cloud Firewall Overview<a class="headerlink" href="#distributed-cloud-firewall-overview" title="Link to this heading">#</a></h2>
 <p>The Distributed Cloud Firewall functionality encompases several services, such as Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata IDS/IPS and Advanced NAT capabilities.</p>
 <p>In this lab you will create additional logical containers, called <code class="docutils literal notranslate"><span class="pre">SmartGroups</span></code>, that group instances that present similarities inside a VPC/VNet/VCN, and then you will enforce rules among these SmartGroups (aka <strong><em>Distributed Cloud Firewalling Rules</em></strong>):</p>
 <ol class="arabic simple">
@@ -401,24 +415,24 @@ document.write(`
 </ol>
 </section>
 <section id="azure-spoke2">
-<h2>3. Azure Spoke2<a class="headerlink" href="#azure-spoke2" title="Permalink to this heading">#</a></h2>
+<h2>3. Azure Spoke2<a class="headerlink" href="#azure-spoke2" title="Link to this heading">#</a></h2>
 <p>Up until now, in Azure you have only worked on <strong><em>azure-west-us-spoke1</em></strong>.</p>
 <p>This lab will introduce finally <strong><em>azure-west-us-spoke2</em></strong> GW, that is a gateway in the top-right corner of this topology that is already deployed (hence it is red), <ins>although its attachment has not been deployed yet</ins>!</p>
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/lab7-topology.png"><img alt="../_images/lab7-topology.png" src="../_images/lab7-topology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 211 </span><span class="caption-text">Lab 7 Initial Topology</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 211 </span><span class="caption-text">Lab 7 Initial Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="azure-spoke2-attachment">
-<h2>3.1 Azure Spoke2 Attachment<a class="headerlink" href="#azure-spoke2-attachment" title="Permalink to this heading">#</a></h2>
+<h2>3.1 Azure Spoke2 Attachment<a class="headerlink" href="#azure-spoke2-attachment" title="Link to this heading">#</a></h2>
 <p>First, you will need to configure the grey Aviatrix Spoke-Transit connection in the topology between <strong><em>azure-west-us-spoke2</em></strong> and <strong><em>azure-west-us-transit</em></strong>.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and edit the Spoke Gateway <strong><em>azure-west-us-spoke2</em></strong>, clicking on the pencil icon:</p>
 <figure class="align-center" id="id2">
 <img alt="../_images/lab7-spoke.png" src="../_images/lab7-spoke.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 212 </span><span class="caption-text">Edit Spoke GW</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 212 </span><span class="caption-text">Edit Spoke GW</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Attach <strong><em>azure-west-us-spoke2</em></strong> (pre-configured VNet) to <strong><em>azure-west-us-transit</em></strong> as shown below.
@@ -426,26 +440,26 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id3">
 <img alt="../_images/lab7-attachment.png" src="../_images/lab7-attachment.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 213 </span><span class="caption-text">Attachment</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 213 </span><span class="caption-text">Attachment</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is how the topology would look like, after the completion of the previous action.</p>
 <figure class="align-center" id="id4">
 <img alt="../_images/lab7-newversiontopo.png" src="../_images/lab7-newversiontopo.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 214 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 214 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="network-domain-association">
-<h2>3.2. Network Domain Association<a class="headerlink" href="#network-domain-association" title="Permalink to this heading">#</a></h2>
+<h2>3.2. Network Domain Association<a class="headerlink" href="#network-domain-association" title="Link to this heading">#</a></h2>
 <p>You need also to associate <strong><em>azure-west-us-spoke2</em></strong> to the <span style='color:lightgreen'>Green</span> Network Domain.</p>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong></p>
 <p>Click the <em>pencil icon</em> to edit the <strong>Green</strong> network domain.</p>
 <figure class="align-center" id="id5">
 <img alt="../_images/lab7-editnd.png" src="../_images/lab7-editnd.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 215 </span><span class="caption-text">Edit Green</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 215 </span><span class="caption-text">Edit Green</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the gateway <strong><em>azure-west-us-spoke2</em></strong> from the drop-down window, selecting the <code class="docutils literal notranslate"><span class="pre">&quot;Associations&quot;</span></code> field.</p>
@@ -453,14 +467,14 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id6">
 <img alt="../_images/lab7-nd2.png" src="../_images/lab7-nd2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 216 </span><span class="caption-text">Association</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 216 </span><span class="caption-text">Association</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this step, this is how the topology should look like.</p>
 <figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="../_images/lab7-finaltopology.png"><img alt="../_images/lab7-finaltopology.png" src="../_images/lab7-finaltopology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 217 </span><span class="caption-text">Lab 7 Topology</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 217 </span><span class="caption-text">Lab 7 Topology</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -469,7 +483,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 </div>
 </section>
 <section id="existing-dcf-rules-modification">
-<h2>3.3. Existing DCF rules modification<a class="headerlink" href="#existing-dcf-rules-modification" title="Permalink to this heading">#</a></h2>
+<h2>3.3. Existing DCF rules modification<a class="headerlink" href="#existing-dcf-rules-modification" title="Link to this heading">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>On Lab 6 (Egress), the DCF functionality was enabled. The current permitted rules are the <code class="docutils literal notranslate"><span class="pre">&quot;Inspect-DNS&quot;</span></code>, that is only allowing traffic towards UDP port 53, and the <code class="docutils literal notranslate"><span class="pre">&quot;allow-domains&quot;</span></code> , that is only allowing http/https traffic towards two domains. Any other kind of traffic is denied because of the presence of the <code class="docutils literal notranslate"><span class="pre">&quot;Explicit-Deny-Rule&quot;</span></code>.</p>
@@ -478,7 +492,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id8">
 <img alt="../_images/lab7-dcfrule.png" src="../_images/lab7-dcfrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 218 </span><span class="caption-text">DCF rules</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 218 </span><span class="caption-text">DCF rules</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -492,14 +506,14 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id9">
 <img alt="../_images/lab7-top.png" src="../_images/lab7-top.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 219 </span><span class="caption-text">Move at the Top</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 219 </span><span class="caption-text">Move at the Top</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Commit</strong>.</p>
 <figure class="align-center" id="id10">
 <img alt="../_images/lab7-edit.png" src="../_images/lab7-edit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Commit your changes</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Commit your changes</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -513,24 +527,24 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id11">
 <img alt="../_images/lab7-newone2.png" src="../_images/lab7-newone2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 221 </span><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 221 </span><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id12">
 <img alt="../_images/lab7-newone3.png" src="../_images/lab7-newone3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 222 </span><span class="caption-text">Editing the Greenfield-Rule</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 222 </span><span class="caption-text">Editing the Greenfield-Rule</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id13">
 <img alt="../_images/lab7-newone4.png" src="../_images/lab7-newone4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 223 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 223 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="new-dcf-request">
-<h2>4. New DCF request<a class="headerlink" href="#new-dcf-request" title="Permalink to this heading">#</a></h2>
+<h2>4. New DCF request<a class="headerlink" href="#new-dcf-request" title="Link to this heading">#</a></h2>
 <p>All the Test instances have been deployed with the typical <ins>CSP tags</ins>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -548,24 +562,24 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id14">
 <a class="reference internal image-reference" href="../_images/lab10-initial.png"><img alt="../_images/lab10-initial.png" src="../_images/lab10-initial.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Initial Topology Lab 7</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Initial Topology Lab 7</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="smart-group-creation">
-<h2>4.1 Smart Group Creation<a class="headerlink" href="#smart-group-creation" title="Permalink to this heading">#</a></h2>
+<h2>4.1 Smart Group Creation<a class="headerlink" href="#smart-group-creation" title="Link to this heading">#</a></h2>
 <p>Create two Smart Groups and classify each Smart Group, leveraging the CSP tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code>:</p>
 <ul class="simple">
 <li><p>Assign the name <code class="docutils literal notranslate"><span class="pre">&quot;bu1&quot;</span></code> to the Smart Group <strong>#1</strong>.</p></li>
 <li><p>Assign the name <code class="docutils literal notranslate"><span class="pre">&quot;bu2&quot;</span></code> to the Smart Group <strong>#2</strong>.</p></li>
 </ul>
 <section id="smart-group-bu1">
-<h3>4.1.1. Smart Group “bu1”<a class="headerlink" href="#smart-group-bu1" title="Permalink to this heading">#</a></h3>
+<h3>4.1.1. Smart Group “bu1”<a class="headerlink" href="#smart-group-bu1" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; SmartGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code>.</p>
 <figure class="align-center" id="id15">
 <img alt="../_images/lab10-smart2.png" src="../_images/lab10-smart2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 225 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 225 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -578,7 +592,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id16">
 <img alt="../_images/lab10-smart3.png" src="../_images/lab10-smart3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 226 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 226 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there are two instances that perfectly match the condition:</p>
@@ -589,17 +603,17 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id17">
 <img alt="../_images/lab10-smart4.png" src="../_images/lab10-smart4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 227 </span><span class="caption-text">Resources that match the condition</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 227 </span><span class="caption-text">Resources that match the condition</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="smart-group-bu2">
-<h3>4.1.2. Smart Group “bu2”<a class="headerlink" href="#smart-group-bu2" title="Permalink to this heading">#</a></h3>
+<h3>4.1.2. Smart Group “bu2”<a class="headerlink" href="#smart-group-bu2" title="Link to this heading">#</a></h3>
 <p>Create another Smart Group clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
 <figure class="align-center" id="id18">
 <img alt="../_images/lab10-smart5.png" src="../_images/lab10-smart5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 228 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 228 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -612,7 +626,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id19">
 <img alt="../_images/lab10-smart6.png" src="../_images/lab10-smart6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Resource Selections</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Resource Selections</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there are three instances that match the condition:</p>
@@ -624,7 +638,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id20">
 <img alt="../_images/lab10-smart7.png" src="../_images/lab10-smart7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Resources that match the condition</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Resources that match the condition</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>At this point, you have only created logical containers that do not affect the existing routing domain.</p>
@@ -632,13 +646,13 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id21">
 <img alt="../_images/lab10-newone2.png" src="../_images/lab10-newone2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Greenfield-Rule in action</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Greenfield-Rule in action</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="connectivity-verification-icmp">
-<h2>4.2. Connectivity verification (ICMP)<a class="headerlink" href="#connectivity-verification-icmp" title="Permalink to this heading">#</a></h2>
+<h2>4.2. Connectivity verification (ICMP)<a class="headerlink" href="#connectivity-verification-icmp" title="Link to this heading">#</a></h2>
 <p>Open a terminal window and SSH to the public IP of the instance <strong>aws-us-east-2-spoke1-<span style='color:red'>test1</span></strong> (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity has not been modified.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -647,24 +661,24 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id22">
 <img alt="../_images/lab10-newone.png" src="../_images/lab10-newone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 232 </span><span class="caption-text">SSH to test1 in us-east-2 VPC</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 232 </span><span class="caption-text">SSH to test1 in us-east-2 VPC</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id23">
 <img alt="../_images/lab10-ping.png" src="../_images/lab10-ping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id24">
 <img alt="../_images/lab10-newone3.png" src="../_images/lab10-newone3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="connectivity-verification-ssh">
-<h2>4.3.  Connectivity verification (SSH)<a class="headerlink" href="#connectivity-verification-ssh" title="Permalink to this heading">#</a></h2>
+<h2>4.3.  Connectivity verification (SSH)<a class="headerlink" href="#connectivity-verification-ssh" title="Link to this heading">#</a></h2>
 <p>Verify also from the instance <strong>aws-us-east-2-spoke1-test1</strong> that you can SSH to the private instance in AWS, to the instance in GCP and likewise to the other two instances in Azure.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -673,45 +687,45 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id25">
 <img alt="../_images/lab10-sshtoaws.png" src="../_images/lab10-sshtoaws.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 235 </span><span class="caption-text">SSH to test2 in AWS US-East-2</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 235 </span><span class="caption-text">SSH to test2 in AWS US-East-2</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id26">
 <img alt="../_images/lab10-sshtogcp.png" src="../_images/lab10-sshtogcp.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 236 </span><span class="caption-text">SSH to GCP</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 236 </span><span class="caption-text">SSH to GCP</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id27">
 <img alt="../_images/lab10-sshtoazure1.png" src="../_images/lab10-sshtoazure1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 237 </span><span class="caption-text">SSH to Azure Spoke1</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 237 </span><span class="caption-text">SSH to Azure Spoke1</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id28">
 <img alt="../_images/lab10-sshtoazure2.png" src="../_images/lab10-sshtoazure2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 238 </span><span class="caption-text">SSH to Azure Spoke2</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 238 </span><span class="caption-text">SSH to Azure Spoke2</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id29">
 <img alt="../_images/lab10-sshnew.png" src="../_images/lab10-sshnew.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 239 </span><span class="caption-text">SSH to AWS us-east-1-spoke1-test1</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 239 </span><span class="caption-text">SSH to AWS us-east-1-spoke1-test1</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id30">
 <img alt="../_images/lab10-sshnew2.png" src="../_images/lab10-sshnew2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 240 </span><span class="caption-text">SSH to AWS us-east-1-spoke1-test2</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 240 </span><span class="caption-text">SSH to AWS us-east-1-spoke1-test2</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.</p>
 </section>
 <section id="rules-creation">
-<h2>5. Rules Creation<a class="headerlink" href="#rules-creation" title="Permalink to this heading">#</a></h2>
+<h2>5. Rules Creation<a class="headerlink" href="#rules-creation" title="Link to this heading">#</a></h2>
 <section id="build-a-zero-trust-network-architecture">
-<h3>5.1. Build a Zero Trust  Network Architecture<a class="headerlink" href="#build-a-zero-trust-network-architecture" title="Permalink to this heading">#</a></h3>
+<h3>5.1. Build a Zero Trust  Network Architecture<a class="headerlink" href="#build-a-zero-trust-network-architecture" title="Link to this heading">#</a></h3>
 <p>First and foremost, let’s move the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code> at the very top of the list of your DCF rules.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -721,14 +735,14 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id31">
 <img alt="../_images/lab10-newedit.png" src="../_images/lab10-newedit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 241 </span><span class="caption-text">Move the rule</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 241 </span><span class="caption-text">Move the rule</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then <strong>commit</strong> your change!</p>
 <figure class="align-center" id="id32">
 <img alt="../_images/lab10-commit.png" src="../_images/lab10-commit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 242 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id32" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 242 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -737,12 +751,12 @@ Then click on <strong>Save in Draft</strong>.</p>
 </div>
 </section>
 <section id="create-an-intra-rule-that-allows-icmp-inside-bu1">
-<h3>5.2. Create an intra-rule that allows ICMP inside bu1<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu1" title="Permalink to this heading">#</a></h3>
+<h3>5.2. Create an intra-rule that allows ICMP inside bu1<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu1" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id33">
 <img alt="../_images/lab10-newrule.png" src="../_images/lab10-newrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 243 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 243 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -758,24 +772,24 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id34">
 <img alt="../_images/lab10-rule1.png" src="../_images/lab10-rule1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 244 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 244 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>At this point, there would be one uncommitted rule at the very top, as depicted below.</p>
 <figure class="align-center" id="id35">
 <img alt="../_images/lab10-rule2.png" src="../_images/lab10-rule2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 245 </span><span class="caption-text">Current list of rules</span><a class="headerlink" href="#id35" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 245 </span><span class="caption-text">Current list of rules</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="create-an-intra-rule-that-allows-icmp-inside-bu2">
-<h3>5.3. Create an intra-rule that allows ICMP inside bu2<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu2" title="Permalink to this heading">#</a></h3>
+<h3>5.3. Create an intra-rule that allows ICMP inside bu2<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu2" title="Link to this heading">#</a></h3>
 <p>Create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id36">
 <img alt="../_images/lab10-rule3.png" src="../_images/lab10-rule3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 246 </span><span class="caption-text">New rule</span><a class="headerlink" href="#id36" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 246 </span><span class="caption-text">New rule</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -796,39 +810,39 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id37">
 <img alt="../_images/lab10-intrabu2.png" src="../_images/lab10-intrabu2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 247 </span><span class="caption-text">intra-icmp-bu2</span><a class="headerlink" href="#id37" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 247 </span><span class="caption-text">intra-icmp-bu2</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>At this point, you will have two new rules marked as <code class="docutils literal notranslate"><span class="pre">New</span></code>, therefore you can proceed and click on the <strong>Commit</strong> button.</p>
 <figure class="align-center" id="id38">
 <img alt="../_images/lab10-rule5.png" src="../_images/lab10-rule5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 248 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id38" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 248 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="verification">
-<h2>6. Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h2>
+<h2>6. Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
 <p>Afte the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols should look like:</p>
 <figure class="align-center" id="id39">
 <a class="reference internal image-reference" href="../_images/lab10-topology2.png"><img alt="../_images/lab10-topology2.png" src="../_images/lab10-topology2.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 249 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id39" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 249 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="verify-ssh-traffic-from-your-laptop-to-bu1">
-<h3>6.1. Verify SSH traffic from your laptop to bu1<a class="headerlink" href="#verify-ssh-traffic-from-your-laptop-to-bu1" title="Permalink to this heading">#</a></h3>
+<h3>6.1. Verify SSH traffic from your laptop to bu1<a class="headerlink" href="#verify-ssh-traffic-from-your-laptop-to-bu1" title="Link to this heading">#</a></h3>
 <p>SSH to the Public IP of the instance <strong>aws-us-east-2-spoke1-test1</strong>.</p>
 <figure class="align-center" id="id40">
 <img alt="../_images/lab10-sshpod.png" src="../_images/lab10-sshpod.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 250 </span><span class="caption-text">SSH from your laptop</span><a class="headerlink" href="#id40" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 250 </span><span class="caption-text">SSH from your laptop</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="verify-icmp-within-bu1-and-from-bu1-towards-bu2">
-<h3>6.2. Verify ICMP within bu1 and from bu1 towards bu2<a class="headerlink" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2" title="Permalink to this heading">#</a></h3>
+<h3>6.2. Verify ICMP within bu1 and from bu1 towards bu2<a class="headerlink" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2" title="Link to this heading">#</a></h3>
 <p>Ping the following instances from <strong>aws-us-east-2-spoke1-test1</strong>:</p>
 <ul class="simple">
 <li><p><strong>gcp-us-central1-spoke1-test1</strong> in GCP</p></li>
@@ -839,7 +853,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id41">
 <img alt="../_images/lab10-pingcheck.png" src="../_images/lab10-pingcheck.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id41" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s investigate the logs:</p>
@@ -851,7 +865,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id42">
 <img alt="../_images/lab10-monitor.png" src="../_images/lab10-monitor.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 252 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id42" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 252 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, let’s try to ping the instance <strong>aws-us-east-2-spoke1-test2</strong> from <strong>aws-us-east-2-spoke1-test1</strong>.</p>
@@ -862,28 +876,28 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id43">
 <img alt="../_images/lab10-pingtotest2.png" src="../_images/lab10-pingtotest2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id43" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage&quot;</span></code> button, inside the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group</span> <span class="pre">(SG)</span> <span class="pre">Orchestration&quot;</span></code> field.</p>
 <figure class="align-center" id="id44">
 <img alt="../_images/lab10-orchestration.png" src="../_images/lab10-orchestration.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 254 </span><span class="caption-text">SG Orchestration</span><a class="headerlink" href="#id44" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 254 </span><span class="caption-text">SG Orchestration</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enable the <strong><em>SG orchestration</em></strong> feature on the <strong><em>aws-us-east-2-spoke1</em></strong> VPC, flag the checkbox  <code class="docutils literal notranslate"><span class="pre">&quot;I</span> <span class="pre">understand</span> <span class="pre">the</span> <span class="pre">network</span> <span class="pre">impact</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">changes&quot;</span></code> and then click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id45">
 <img alt="../_images/lab10-orchestration2.png" src="../_images/lab10-orchestration2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Manage SG Orchestration</span><a class="headerlink" href="#id45" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Manage SG Orchestration</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Relaunch the ping from <strong>aws-us-east-2-spoke1-<span style='color:#33ECFF'>test1</span></strong> towards <strong>aws-us-east-2-spoke1-<span style='color:red'>test2</span></strong>.</p>
 <figure class="align-center" id="id46">
 <img alt="../_images/lab10-pingtotest2fail.png" src="../_images/lab10-pingtotest2fail.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id46" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -892,22 +906,22 @@ Then click on <strong>Save in Draft</strong>.</p>
 </div>
 </section>
 <section id="verify-ssh-within-bu1">
-<h3>6.3. Verify SSH within bu1<a class="headerlink" href="#verify-ssh-within-bu1" title="Permalink to this heading">#</a></h3>
+<h3>6.3. Verify SSH within bu1<a class="headerlink" href="#verify-ssh-within-bu1" title="Link to this heading">#</a></h3>
 <p>SSH to the Private IP of the instance <strong><em>azure-west-us-spoke1-test1</em></strong> in Azure. Despite the fact that the instance is within the same Smart Group “bu1”, the SSH will fail due to the absence of a rule that would permit SSH traffic within the Smart Group.</p>
 <figure class="align-center" id="id47">
 <img alt="../_images/lab10-sshfail.png" src="../_images/lab10-sshfail.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 257 </span><span class="caption-text">SSH fails</span><a class="headerlink" href="#id47" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 257 </span><span class="caption-text">SSH fails</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="add-a-rule-that-allows-ssh-in-bu1">
-<h3>6.4. Add a rule that allows SSH in bu1<a class="headerlink" href="#add-a-rule-that-allows-ssh-in-bu1" title="Permalink to this heading">#</a></h3>
+<h3>6.4. Add a rule that allows SSH in bu1<a class="headerlink" href="#add-a-rule-that-allows-ssh-in-bu1" title="Link to this heading">#</a></h3>
 <p>Create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id48">
 <img alt="../_images/lab10-newrule2.png" src="../_images/lab10-newrule2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 258 </span><span class="caption-text">New rule</span><a class="headerlink" href="#id48" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 258 </span><span class="caption-text">New rule</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -929,14 +943,14 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id49">
 <img alt="../_images/lab10-sshbu1.png" src="../_images/lab10-sshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Create rule</span><a class="headerlink" href="#id49" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Create rule</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> to enforce the new rule in the <strong>Data Plane</strong>.</p>
 <figure class="align-center" id="id50">
 <img alt="../_images/lab10-commitsshbu1.png" src="../_images/lab10-commitsshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id50" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -946,7 +960,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id51">
 <img alt="../_images/lab10-sshbu1ok.png" src="../_images/lab10-sshbu1ok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 261 </span><span class="caption-text">SSH ok</span><a class="headerlink" href="#id51" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 261 </span><span class="caption-text">SSH ok</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s investigate the logs once again.</p>
@@ -954,7 +968,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id52">
 <img alt="../_images/lab10-logsshbu1.png" src="../_images/lab10-logsshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id52" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the log above is quite evident that the <code class="docutils literal notranslate"><span class="pre">&quot;intra-ssh-bu1</span></code>” rule is permitting SSH traffic within the Smart Group bu1, successfully.</p>
@@ -962,22 +976,22 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id53">
 <a class="reference internal image-reference" href="../_images/lab10-topologynew.png"><img alt="../_images/lab10-topologynew.png" src="../_images/lab10-topologynew.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 263 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id53" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 263 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="ssh-to-vm-in-bu2">
-<h3>6.4. SSH to VM in bu2<a class="headerlink" href="#ssh-to-vm-in-bu2" title="Permalink to this heading">#</a></h3>
+<h3>6.4. SSH to VM in bu2<a class="headerlink" href="#ssh-to-vm-in-bu2" title="Link to this heading">#</a></h3>
 <p>SSH to the Public IP of the instance <strong><em>gcp-us-central1-spoke1-test1</em></strong>:</p>
 <figure class="align-center" id="id54">
 <img alt="../_images/lab10-sshtocentral.png" src="../_images/lab10-sshtocentral.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 264 </span><span class="caption-text">SSH to gcp-us-central1-spoke1-test1</span><a class="headerlink" href="#id54" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 264 </span><span class="caption-text">SSH to gcp-us-central1-spoke1-test1</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="verify-icmp-traffic-within-bu2">
-<h3>6.5. Verify ICMP traffic within bu2<a class="headerlink" href="#verify-icmp-traffic-within-bu2" title="Permalink to this heading">#</a></h3>
+<h3>6.5. Verify ICMP traffic within bu2<a class="headerlink" href="#verify-icmp-traffic-within-bu2" title="Link to this heading">#</a></h3>
 <p>Ping the following instances:</p>
 <ul class="simple">
 <li><p><strong>aws-us-east-2-spoke1-test1</strong> in AWS</p></li>
@@ -989,7 +1003,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id55">
 <img alt="../_images/lab10-pingtestgcp.png" src="../_images/lab10-pingtestgcp.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id55" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s investigate the logs once again.</p>
@@ -997,19 +1011,19 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id56">
 <img alt="../_images/lab10-bu2monitor.png" src="../_images/lab10-bu2monitor.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id56" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The logs above confirm that the ICMP protocol is permitted within the Smart Group bu2.</p>
 </section>
 <section id="inter-rule-from-bu2-to-bu1">
-<h3>6.6. Inter-rule from bu2 to bu1<a class="headerlink" href="#inter-rule-from-bu2-to-bu1" title="Permalink to this heading">#</a></h3>
+<h3>6.6. Inter-rule from bu2 to bu1<a class="headerlink" href="#inter-rule-from-bu2-to-bu1" title="Link to this heading">#</a></h3>
 <p>Create a new rule that allows ICMP FROM bu2 TO bu1.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id57">
 <img alt="../_images/lab10-newrule4.png" src="../_images/lab10-newrule4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 267 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id57" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 267 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -1030,14 +1044,14 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id58">
 <img alt="../_images/lab10-interssh.png" src="../_images/lab10-interssh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 268 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id58" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 268 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enforce the this new rule in the data plane clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> button.</p>
 <figure class="align-center" id="id59">
 <img alt="../_images/lab10-newcommit2.png" src="../_images/lab10-newcommit2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 269 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id59" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 269 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>SSH to the Public IP of the instance <strong><em>azure-west-us-spoke<span style='color:#33ECFF'>2</span>-<span style='color:#33ECFF'>test1</span></em></strong>.</p>
@@ -1052,7 +1066,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id60">
 <img alt="../_images/lab10-pingallok.png" src="../_images/lab10-pingallok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id60" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s investigate the logs once again.</p>
@@ -1060,7 +1074,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id61">
 <img alt="../_images/lab10-monitorfresh.png" src="../_images/lab10-monitorfresh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 271 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id61" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 271 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu2 to bu1.</p>
@@ -1068,7 +1082,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id62">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing2.png"><img alt="../_images/lab10-lastdrawing2.png" src="../_images/lab10-lastdrawing2.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 272 </span><span class="caption-text">New Topology with the DCF rules</span><a class="headerlink" href="#id62" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 272 </span><span class="caption-text">New Topology with the DCF rules</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1078,22 +1092,22 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id63">
 <img alt="../_images/lab10-direction.png" src="../_images/lab10-direction.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 273 </span><span class="caption-text">From To</span><a class="headerlink" href="#id63" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 273 </span><span class="caption-text">From To</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.</p>
 </section>
 </section>
 <section id="east-1-and-the-multi-tier-transit">
-<h2>7. East-1 and the Multi-Tier Transit<a class="headerlink" href="#east-1-and-the-multi-tier-transit" title="Permalink to this heading">#</a></h2>
+<h2>7. East-1 and the Multi-Tier Transit<a class="headerlink" href="#east-1-and-the-multi-tier-transit" title="Link to this heading">#</a></h2>
 <section id="activation-of-the-mtt">
-<h3>7.1 Activation of the MTT<a class="headerlink" href="#activation-of-the-mtt" title="Permalink to this heading">#</a></h3>
+<h3>7.1 Activation of the MTT<a class="headerlink" href="#activation-of-the-mtt" title="Link to this heading">#</a></h3>
 <p>Let’s now also involve the AWS region <strong>US-EAST-1</strong>.</p>
 <p>This time, you have to allow the ICMP traffic between the Smart Group <strong>bu2</strong> and the ec2 instance <strong><em>aws-us-east1-spoke1-test2</em></strong>, solely.</p>
 <figure class="align-center" id="id64">
 <a class="reference internal image-reference" href="../_images/lab10-newtopology3.png"><img alt="../_images/lab10-newtopology3.png" src="../_images/lab10-newtopology3.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 274 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id64" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 274 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>SSH to the Public IP of the instance <strong><em>azure-west-us-spoke2-test1</em></strong>.</p>
@@ -1104,7 +1118,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id65">
 <img alt="../_images/lab10-pingfails10.png" src="../_images/lab10-pingfails10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id65" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The ping fails, therefore, let’s check the routing table of the Spoke Gateway <strong><em>azure-west-us-spoke2</em></strong>.</p>
@@ -1112,14 +1126,14 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id66">
 <img alt="../_images/lab10-spoke2azure.png" src="../_images/lab10-spoke2azure.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 276 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id66" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab and check whether the destination route is present in the routing table or not.</p>
 <figure class="align-center" id="id67">
 <img alt="../_images/lab10-gatewayroutes.png" src="../_images/lab10-gatewayroutes.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Gateway Routes</span><a class="headerlink" href="#id67" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Gateway Routes</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1137,14 +1151,14 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id68">
 <img alt="../_images/lab10-mtt.png" src="../_images/lab10-mtt.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 278 </span><span class="caption-text">aws-us-east-1-transit</span><a class="headerlink" href="#id68" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">aws-us-east-1-transit</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;“Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section and insert the AS number <strong>64512</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">&quot;“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id69">
 <img alt="../_images/lab10-mtt2.png" src="../_images/lab10-mtt2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Settings</span><a class="headerlink" href="#id69" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Settings</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Repeat the previous action for the remaning Transit Gateways:</p>
@@ -1157,7 +1171,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id70">
 <img alt="../_images/lab10-mtt3.png" src="../_images/lab10-mtt3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 280 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id70" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;General&quot;</span></code> section and activate the <code class="docutils literal notranslate"><span class="pre">&quot;Multi-Tier</span> <span class="pre">Transit&quot;</span></code>, turning on the corresponding knob.</p>
@@ -1165,7 +1179,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id71">
 <img alt="../_images/lab10-mtt4.png" src="../_images/lab10-mtt4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Multi-Tier Transit</span><a class="headerlink" href="#id71" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Multi-Tier Transit</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s verify once again the routing table of the Spoke Gateway in <strong><em>azure-west-us-spoke2</em></strong>.</p>
@@ -1173,14 +1187,14 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id72">
 <img alt="../_images/lab10-mtt5.png" src="../_images/lab10-mtt5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 282 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id72" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time if you click on the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab, you will be able to see the destination route in <strong>aws-us-east1-spoke1</strong> VPC.</p>
 <figure class="align-center" id="id73">
 <img alt="../_images/lab10-mtt6.png" src="../_images/lab10-mtt6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 283 </span><span class="caption-text">10.0.12.0/23</span><a class="headerlink" href="#id73" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">10.0.12.0/23</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1193,7 +1207,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id74">
 <img alt="../_images/lab10-mtt7.png" src="../_images/lab10-mtt7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id74" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Although this time there is a valid route to the destination, thanks to the <strong>MTT</strong> feature, the pings fails.</p>
@@ -1203,13 +1217,13 @@ Then click on <strong>Save in Draft</strong>.</p>
 </div>
 </section>
 <section id="smart-group-east1">
-<h3>7.2 Smart Group “east1”<a class="headerlink" href="#smart-group-east1" title="Permalink to this heading">#</a></h3>
+<h3>7.2 Smart Group “east1”<a class="headerlink" href="#smart-group-east1" title="Link to this heading">#</a></h3>
 <p>Let’s create another Smart Group for the test instance <strong><em>aws-us-east-1-spoke1-test2</em></strong> in US-EAST-1 region in AWS.</p>
 <p>Go to <strong>Copilot &gt; SmartGroups</strong> and click on  <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
 <figure class="align-center" id="id75">
 <img alt="../_images/lab10-mttnew.png" src="../_images/lab10-mttnew.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 285 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id75" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -1221,7 +1235,7 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id76">
 <img alt="../_images/lab10-mtt9.png" src="../_images/lab10-mtt9.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 286 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id76" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 286 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there is just one single instance that matches the condition:</p>
@@ -1231,12 +1245,12 @@ Then click on <strong>Save in Draft</strong>.</p>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 </section>
 <section id="create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">
-<h3>7.3 Create an inter-rule that allows ICMP from bu2 towards east1<a class="headerlink" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1" title="Permalink to this heading">#</a></h3>
+<h3>7.3 Create an inter-rule that allows ICMP from bu2 towards east1<a class="headerlink" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id77">
 <img alt="../_images/lab10-mtt8.png" src="../_images/lab10-mtt8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 287 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id77" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 287 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -1256,26 +1270,26 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id78">
 <img alt="../_images/lab10-lastrule.png" src="../_images/lab10-lastrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 288 </span><span class="caption-text">The Last Rule…</span><a class="headerlink" href="#id78" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 288 </span><span class="caption-text">The Last Rule…</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you can carry on with the last <strong>commit</strong>!</p>
 <figure class="align-center" id="id79">
 <img alt="../_images/lab10-lastcommit.png" src="../_images/lab10-lastcommit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 289 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id79" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 289 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id79" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="verify-connectivity-between-bu2-and-east1">
-<h3>7.4 Verify connectivity between bu2 and east1<a class="headerlink" href="#verify-connectivity-between-bu2-and-east1" title="Permalink to this heading">#</a></h3>
+<h3>7.4 Verify connectivity between bu2 and east1<a class="headerlink" href="#verify-connectivity-between-bu2-and-east1" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>SSH to the Public IP of the instance <strong><em>azure-west-us-spoke2-test1</em></strong> and ping the private IP of the ec2-instance <strong><em>aws-us-east-1-spoke1-test2</em></strong></p></li>
 </ul>
 <figure class="align-center" id="id80">
 <img alt="../_images/lab10-lastping.png" src="../_images/lab10-lastping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 290 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id80" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 290 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id80" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time the ping will be successful!</p>
@@ -1284,14 +1298,14 @@ Then click on <strong>Save in Draft</strong>.</p>
 <figure class="align-center" id="id81">
 <img alt="../_images/lab10-reallylast.png" src="../_images/lab10-reallylast.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 291 </span><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id81" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 291 </span><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id81" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><code class="docutils literal notranslate"><span class="pre">Congratulations,</span> <span class="pre">you</span> <span class="pre">have</span> <span class="pre">deployed</span> <span class="pre">the</span> <span class="pre">full-blown</span> <span class="pre">Aviatrix</span> <span class="pre">solution!</span></code></p>
 <figure class="align-center" id="id82">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing.png"><img alt="../_images/lab10-lastdrawing.png" src="../_images/lab10-lastdrawing.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 292 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id82" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 292 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id82" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

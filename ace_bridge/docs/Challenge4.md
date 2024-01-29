@@ -2,7 +2,7 @@
 
 ## Scenario
 
-After resolving the challenge #3, the Database VM administrator found out that the workload is receiving requests from an unknown IP that belongs to the **11.60.0.0/16** space... 
+After resolving the challenge #3, the Database VM administrator found out that the workload is receiving requests from an unknown IP that belongs to the **11.64.0.0/16** space... 
 
 ```{figure} images/lab4-drawing.png
 ---
