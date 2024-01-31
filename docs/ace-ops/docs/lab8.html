@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 8 - Distributed Cloud Firewall &#8212; ACE Operations Lab</title>
   
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab8';</script>
-    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="PDFs" href="pdfs.html" />
@@ -161,7 +164,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -345,15 +359,15 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-8-distributed-cloud-firewall">
-<h1>Lab 8 - Distributed Cloud Firewall<a class="headerlink" href="#lab-8-distributed-cloud-firewall" title="Permalink to this heading">#</a></h1>
+<h1>Lab 8 - Distributed Cloud Firewall<a class="headerlink" href="#lab-8-distributed-cloud-firewall" title="Link to this heading">#</a></h1>
 <section id="scenario">
-<h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Permalink to this heading">#</a></h2>
+<h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
 <p>ACE’s environment has been split up in two SmartGroups: <strong>BU1</strong> and <strong>BU2</strong>. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.</p>
 <p>Furthermore, four DCF rules have been already applied so far.</p>
 <figure class="align-center" id="id2">
 <img alt="../_images/lab8-initialrule.png" src="../_images/lab8-initialrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Existing DCF rules</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Existing DCF rules</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -372,12 +386,12 @@ document.write(`
 <figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/lab8-topology.png"><img alt="../_images/lab8-topology.png" src="../_images/lab8-topology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Lab 8 Scenario Topology</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Lab 8 Scenario Topology</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="change-request">
-<h2>2. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Permalink to this heading">#</a></h2>
+<h2>2. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>SSH on the <strong>BU1 Frontend</strong> and try to SSH to any other instances in BU1.</p>
 <ul>
@@ -388,7 +402,7 @@ document.write(`
 <figure class="align-center" id="id4">
 <img alt="../_images/lab8-sshbu1.png" src="../_images/lab8-sshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 151 </span><span class="caption-text">SSH fails within BU1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 151 </span><span class="caption-text">SSH fails within BU1</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -413,7 +427,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id5">
 <img alt="../_images/lab8-rule01.png" src="../_images/lab8-rule01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Another intra-rule</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Another intra-rule</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -422,13 +436,13 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id6">
 <img alt="../_images/lab8-sshok.png" src="../_images/lab8-sshok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 153 </span><span class="caption-text">SSH is ok within BU1</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 153 </span><span class="caption-text">SSH is ok within BU1</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="../_images/lab8-intrassh-bu1.png"><img alt="../_images/lab8-intrassh-bu1.png" src="../_images/lab8-intrassh-bu1.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Intra-SSH BU1</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Intra-SSH BU1</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -441,7 +455,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id8">
 <img alt="../_images/lab8-monitornew.png" src="../_images/lab8-monitornew.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Monitor: Logs</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Monitor: Logs</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -450,7 +464,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id9">
 <img alt="../_images/lab8-pingbu1.png" src="../_images/lab8-pingbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -459,7 +473,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id10">
 <img alt="../_images/lab8-denyicmp.png" src="../_images/lab8-denyicmp.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Monitor: Denied ICMP</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Monitor: Denied ICMP</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -482,7 +496,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id11">
 <img alt="../_images/lab8-icmprulebu1.png" src="../_images/lab8-icmprulebu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 158 </span><span class="caption-text">New intra-rule</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 158 </span><span class="caption-text">New intra-rule</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -491,7 +505,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id12">
 <img alt="../_images/lab8-icmprulebu1ok.png" src="../_images/lab8-icmprulebu1ok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 159 </span><span class="caption-text">Ping will be ok!</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 159 </span><span class="caption-text">Ping will be ok!</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -500,13 +514,13 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id13">
 <img alt="../_images/lab8-pingpermitted.png" src="../_images/lab8-pingpermitted.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Monitor: successful logs</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Monitor: successful logs</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id14">
 <a class="reference internal image-reference" href="../_images/lab8-intrasshicmp-bu1.png"><img alt="../_images/lab8-intrasshicmp-bu1.png" src="../_images/lab8-intrasshicmp-bu1.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 161 </span><span class="caption-text">Intra-SSH-ICMP BU1</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 161 </span><span class="caption-text">Intra-SSH-ICMP BU1</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -515,7 +529,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id15">
 <img alt="../_images/lab8-pingbu1bu2.png" src="../_images/lab8-pingbu1bu2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 162 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 162 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -538,7 +552,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id16">
 <img alt="../_images/lab8-penultimaterule.png" src="../_images/lab8-penultimaterule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 163 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 163 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -547,13 +561,13 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id17">
 <img alt="../_images/lab8-penultimateping.png" src="../_images/lab8-penultimateping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 164 </span><span class="caption-text">Ping from BU1 to BU2</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 164 </span><span class="caption-text">Ping from BU1 to BU2</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id18">
 <a class="reference internal image-reference" href="../_images/lab8-intericmp-bu1bu2.png"><img alt="../_images/lab8-intericmp-bu1bu2.png" src="../_images/lab8-intericmp-bu1bu2.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 165 </span><span class="caption-text">Inter-ICMP BU1 to BU2</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 165 </span><span class="caption-text">Inter-ICMP BU1 to BU2</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -562,7 +576,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id19">
 <img alt="../_images/lab8-bu2sshbu1.png" src="../_images/lab8-bu2sshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 166 </span><span class="caption-text">SSH from BU2 to BU1 will fail</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 166 </span><span class="caption-text">SSH from BU2 to BU1 will fail</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -586,7 +600,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id20">
 <img alt="../_images/lab8-lastrule.png" src="../_images/lab8-lastrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 167 </span><span class="caption-text">The last inter-rule!</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 167 </span><span class="caption-text">The last inter-rule!</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -595,18 +609,18 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id21">
 <img alt="../_images/lab8-lastssh.png" src="../_images/lab8-lastssh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 168 </span><span class="caption-text">SSH works from BU2 to BU1</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 168 </span><span class="caption-text">SSH works from BU2 to BU1</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab8-interssh-bu2bu1.png"><img alt="../_images/lab8-interssh-bu2bu1.png" src="../_images/lab8-interssh-bu2bu1.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Inter-SSH BU2 to BU1</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Inter-SSH BU2 to BU1</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id1">
-<h2>3. CHANGE REQUEST<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>3. CHANGE REQUEST<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Now before completing the lab, remove the <code class="docutils literal notranslate"><span class="pre">Inspection</span> <span class="pre">Policy</span></code> from the Transit GW in AWS. The Aviatrix Distributed Cloud Firewall has been enabled across the whole multicloud infrastructure, therefore we can get rid of the bolted Firewall in AWS.</p></li>
 </ul>
@@ -617,14 +631,14 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <figure class="align-center" id="id23">
 <img alt="../_images/lab8-manageatt.png" src="../_images/lab8-manageatt.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 170 </span><span class="caption-text">FireNet cfg</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 170 </span><span class="caption-text">FireNet cfg</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
 <figure class="align-center" id="id24">
 <img alt="../_images/lab8-lastone.png" src="../_images/lab8-lastone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 171 </span><span class="caption-text">Remove the inspection Policy</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 171 </span><span class="caption-text">Remove the inspection Policy</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Congratulations, you have completed all labs and created a nice set of DCF rules across your Multicloud infrastructure!</p>

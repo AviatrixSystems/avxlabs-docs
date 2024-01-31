@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 5 - Infrastructure as Code (Bonus Lab) &#8212; Aviatrix Flightschool</title>
   
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab5';</script>
-    <link rel="shortcut icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Summary" href="summary.html" />
@@ -161,7 +164,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -351,16 +365,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-5-infrastructure-as-code-bonus-lab">
-<h1>Lab 5 - Infrastructure as Code (Bonus Lab)<a class="headerlink" href="#lab-5-infrastructure-as-code-bonus-lab" title="Permalink to this heading">#</a></h1>
+<h1>Lab 5 - Infrastructure as Code (Bonus Lab)<a class="headerlink" href="#lab-5-infrastructure-as-code-bonus-lab" title="Link to this heading">#</a></h1>
 <section id="lab-5-1-deploy-transit-and-spoke">
-<h2>Lab 5.1 - Deploy Transit and Spoke<a class="headerlink" href="#lab-5-1-deploy-transit-and-spoke" title="Permalink to this heading">#</a></h2>
+<h2>Lab 5.1 - Deploy Transit and Spoke<a class="headerlink" href="#lab-5-1-deploy-transit-and-spoke" title="Link to this heading">#</a></h2>
 <section id="description">
-<h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h3>
 <p>All the elements you have created through the UI, can also be created through the API or the official <strong>Aviatrix Terraform provider</strong>. You can find more information on these here:<br />
 <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs</a></p>
 </section>
 <section id="validate">
-<h3>Validate<a class="headerlink" href="#validate" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h3>
 <p>We have prepared some Terraform code for you, which you will explore and deploy.</p>
 <ul class="simple">
 <li><p>Open the Remote Access Server by navigating and logging in to <code class="docutils literal notranslate"><span class="pre">https://client.pod[#].aviatrixlab.com</span></code></p></li>
@@ -407,20 +421,20 @@ document.write(`
 <p>Once Terraform is finished, have a look at the newly created <strong>terraform.tfstate</strong> file. This contains information of all infrastructure created through Terraform. This is referred to as <strong>“the state”</strong>. Losing it can cause a lot of trouble, but that is for another (Terraform) lesson.</p>
 </section>
 <section id="expected-results">
-<h3>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
 <p>By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after a few minutes, you should see the new transit and spoke in CoPilot Topology.</p>
 <p><img alt="Topology" src="../_images/lab6-terraform-topology.png" /><br />
 <em>Fig. Topology</em></p>
 </section>
 </section>
 <section id="lab-5-2-create-transit-peerings">
-<h2>Lab 5.2 - Create Transit Peerings<a class="headerlink" href="#lab-5-2-create-transit-peerings" title="Permalink to this heading">#</a></h2>
+<h2>Lab 5.2 - Create Transit Peerings<a class="headerlink" href="#lab-5-2-create-transit-peerings" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h3>Description<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Description<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let’s see how we can use Infrastructure as Code to build a full mesh of the Transits.</p>
 </section>
 <section id="id2">
-<h3>Validate<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Validate<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Using the same Visual Studio Code session, let’s add some new code to the <code class="docutils literal notranslate"><span class="pre">main.tf</span></code> file</p></li>
 <li><p>We will be using the following module:  <code class="docutils literal notranslate"><span class="pre">https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest</span></code></p></li>
@@ -453,14 +467,14 @@ document.write(`
 </ul>
 </section>
 <section id="id3">
-<h3>Expected Results<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>Expected Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.</p>
 <p><img alt="Topology" src="../_images/lab6-topoloy-transit-peerings.png" /><br />
 <em>Fig. Topology</em></p>
 </section>
 </section>
 <section id="lab-5-summary">
-<h2>Lab 5 Summary<a class="headerlink" href="#lab-5-summary" title="Permalink to this heading">#</a></h2>
+<h2>Lab 5 Summary<a class="headerlink" href="#lab-5-summary" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>You deployed an Aviatrix Transit and Spoke using Terraform</p></li>
 <li><p>You added the new Transit to the Global Multicloud Transit Network with a few lines of code</p></li>
