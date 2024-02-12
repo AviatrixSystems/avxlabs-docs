@@ -10,7 +10,7 @@ Click this link to {Download}`ACE Security Mod02 - Read Only lab Access<files/AC
 
 Click this link to {Download}`ACE Security Mod03 - ZTA Tenets<files/ACE-Security-Mod03-ZTA_Tenets.pdf>`
 
-Click this link to {Download}`ACE Security Mod04 - CSP_Security Servicescd <files/ACE-Security-Mod04-CSP_Security Services.pdf>`
+Click this link to {Download}`ACE Security Mod04 - CSP_Security Servicescd <files/ACE-Security-Mod04-CSP_Security_Services.pdf>`
 
 Click this link to {Download}`ACE Security Mod05 - SmartGroups<files/ACE-Security-Mod05-SmartGroups.pdf>`
 
