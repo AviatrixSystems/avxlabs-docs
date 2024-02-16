@@ -1,8 +1,8 @@
 ![Lab Overview](../../docs/_logos/flightschool.png)
 
-# Welcome to Aviatrix FlightSchool!  
+# Welcome to Aviatrix Flight School!  
 
-This Lab Guide will guide you through the different parts of Aviatrix FlightSchool.
+This Lab Guide will guide you through the different parts of Aviatrix Flight School.
 
 During this hands on deep dive session, you will gain knowledge and experience in these areas:
 
