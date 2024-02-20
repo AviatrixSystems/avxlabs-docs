@@ -587,7 +587,7 @@ Go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
  
 ### 4.6.1. AWS and Azure
 
-- **aws-us-east-2-transit** to **azure-us-west-transit**
+- **aws-us-east-2-transit** to **azure-west-us-transit**
 
 Edit the Transit Gateway **_aws-us-east-2-transit_**, clicking on the pencil icon:
 
@@ -735,7 +735,7 @@ Verify each test instance can ping each other.
 
 Open three terminal windows to SSH to the **public IPs** of the 3 spoke **test instances/VMs** in each cloud.
 
-Then ping the **private** IPs of each other to test the Multi-Cloud connectivity. 
+Then ping the **private** IPs of each other VMs to test the Multi-Cloud connectivity. 
 
 <ins>Refer to your pod portal for the public/private IPs or retrieve them from the topology</ins>.
 
