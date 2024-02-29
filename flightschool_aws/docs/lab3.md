@@ -2,7 +2,7 @@
 
 Lab time: ~30 minutes
 
-**_Scenario_**:  The business has decided to go multi-cloud! Some apps simply run better in other clouds, and why put all eggs in one basket? During this exercise we will deploy in AWS an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer AWS `us-west-2` and AWS `us-east-1` and test out the connectivity.
+**_Scenario_**:  The business has decided to go multi-region! During this exercise we will deploy in AWS `us-east-1` an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer AWS `us-west-2` and AWS `us-east-1` and test out the connectivity.
 
 The Spoke VPCs and gateways have already been created to save you time. The process is very similar to deploying the transit gateway.
 
@@ -21,11 +21,11 @@ Let's go ahead and create the Transit VPC in AWS using the topology builder in C
 * Scroll down on the left-hand pane to **_Cloud Fabric -> Topology -> Builder_**
 * Click **Select Cloud Region** and enter the following fields:
 
-|                    |                          |
-| ------------------ | ------------------------ |
-| **Cloud Provider** | AWS                      |
-| **Account**        | aws-account              |
-| **Region**         | eu-central-1 (Frankfurt) |
+|                    |                         |
+| ------------------ | ----------------------- |
+| **Cloud Provider** | AWS                     |
+| **Account**        | aws-account             |
+| **Region**         | us-east-1 (N. Virginia) |
 
 ![Topology builder](images/lab-3-topology-builder.png)  
 _Fig. Set up the topology builder_  
@@ -70,7 +70,7 @@ In this exercise we are going to launch the Aviatrix Transit Gateway in the newl
 | **Transit Gateway VPC**  | aws-transit-east                                           |
 | **Gateway Name**         | aws-transit-east                                           |
 | **Gateway Size**         | t3.small                                                   |
-| **Instance 1 (Primary)** | aws-transit-east-Public-1-eu-central-1a + Allocate New EIP |
+| **Instance 1 (Primary)** | aws-transit-east-Public-1-us-east-1a + Allocate New EIP    |
 | **Transit Peers**        | Click edit and add the aws-transit-west as a peer and save |
 
 ![Screenshot](images/lab3-transit-config.png)  
@@ -106,12 +106,12 @@ _Fig. Topology view_
 
 ### Description
 
-Now that we have our aws-transit-east set up, we need to establish connectivity between the AWS spoke gateways and the aws-transit-east gateway. The spoke gateways have been pre-deployed to save some time, but the process is much the same as the transit gateway you have just deployed.
+Now that we have our `aws-transit-east` set up, we need to establish connectivity between the spoke gateways in `us-east-1` and the `aws-transit-east` gateway. The spoke gateways have been pre-deployed to save some time, but the process is much the same as the transit gateway you have just deployed.
 
 ### Validate
 
 * Go to **_Cloud Fabric -> Gateways -> Spoke Gateways_**.
-* Click the edit button (pencil) behind the **_aws-prod_** gateway. 
+* Click the edit button (pencil) behind the **_aws-prod-east_** gateway.
 
 ![Screenshot](images/lab3-edit-spoke.png)  
 _Fig. Edit spoke_  
@@ -163,10 +163,10 @@ For our AWS `us-east-1` spokes, we want to create network domains and associatio
 
 In CoPilot, go to **_Networking -> Network Segmentation -> Network Domains_**. Use the **_+ Network Domains_** button to add the following domains and associations:
 
-| Domain     | Association |
-| :--------- | :---------- |
-| AWS-Shared | aws-shared  |
-| AWS-Prod   | aws-prod    |
+| Domain        | Association   |
+| :------------ | :------------ |
+| AWS-Shared    | aws-shared    |
+| AWS-Prod-East | aws-prod-east |
 
 ### Expected Results
 
@@ -225,7 +225,7 @@ The AWS Spokes should be connected to the AWS Transit so now we can check connec
 ![Screenshot](images/lab3-office-access.png)  
 _Fig. Office Access_
 
-> Were these connections succesful?
+> Were these connections successful?
 
 ### Expected Results
 
@@ -237,10 +237,10 @@ From the office, you should be able to reach aws-shared, but not aws-prod.
 * You deployed a VPC and an Aviatrix Transit Gateway in AWS
 * You connected all of the Spoke VPCs to the Transit
 * You created a Multi-region Transit network, connecting AWS `us-west-2` and `us-east-1`
-* You are able to reach the AWS environment from On-Prem, via the AWS `us-west-2` Transit
+* You are able to reach the AWS `us-east-1` environment from On-Prem, via the AWS `us-west-2` Transit
 * Again, not a single route table entry needed to be touched on the CSP side
-* You have end to end visibility into all network traffic
-* All connectivity is private and encrypted across the entirety of the Aviatrix Cloud Fabric - from on-prem and within and between the clouds
+* You have end-to-end visibility into all network traffic
+* All connectivity is private and encrypted across the entirety of the Aviatrix Cloud Fabric - from on-prem and within and between the cloud regions
 
 ![Screenshot](images/end-lab-3.png)  
 _Fig. Topology after Lab 3_

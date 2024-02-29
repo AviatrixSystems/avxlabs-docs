@@ -39,7 +39,7 @@ You should be able to log in to CoPilot. You should be able to view Topology by 
 ![Topology1](images/lab1-copilot-topology.png)  
 _Fig. Initial Topology_  
 
-As you can see, we have the aws-transit-west gateway in the middle, with aws-build, aws-dmz and aws-prod spokes connected to it. The AWS VPC's are not yet connected to any transit.
+As you can see, we have the `aws-transit-west` gateway in the middle, with `aws-build`, `aws-dmz` and `aws-prod-west` spokes connected to it. The AWS VPC's are not yet connected to any transit.
 
 After selecting the transit gateway and clicking the diagnostics tools button, you should see the diagnostics pane. Have a look around at the troubleshooting tools here.
 
@@ -63,13 +63,13 @@ Take a look at the access accounts already set up. You can see them in Copilot u
 
 ### Expected Results
 
-An accounts in AWS has already been onboarded and you should see this account in the list. The accounts should also have an audit status **_pass_**, meaning the permissions in the accounts are correctly configured.
+An account in AWS has already been onboarded and you should see this account in the list. The account should also have an audit status **_pass_**, meaning the permissions in the accounts are correctly configured.
 
 ## Lab 1.3 - Connectivity Check
 
 ### Description
 
-Each Spoke VPC contains one or multiple Linux VM's to test connectivity. There is a web server running on each of the instances which you can use to test the connectivity. The purpose of this exercise is to verify the connectivity between Linux VMs in the Spoke VPCs in the different regions as well as the Office network. To make life a little easier, we have created 2 dashboards to show the status of all connectivity.
+Each Spoke VPC contains one or multiple Linux VMs to test connectivity. There is a web server running on each of the instances which you can use to test the connectivity. The purpose of this exercise is to verify the connectivity between Linux VMs in the Spoke VPCs in the different regions as well as the Office network. To make life a little easier, we have created 2 dashboards to show the status of all connectivity.
 
 ### Validate
 

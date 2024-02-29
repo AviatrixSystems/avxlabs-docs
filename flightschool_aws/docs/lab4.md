@@ -52,7 +52,7 @@ This feature is enabled on a per VPC basis.
 
 * Browse to **_Security -> Distributed Cloud Firewall -> Settings_**
 * Click on **_Manage_**
-* Enable the feature on the aws-prod vpc as shown below
+* Enable the feature on the `aws-prod-west` vpc as shown below
 
 ![Result](images/lab42-enable-intra-vnet-microsegmentation.png)  
 _Fig. Enable Microsegmentation_
@@ -186,7 +186,7 @@ We have already deployed a firewall instance in the lab. In order for Firenet to
 
 ### Validate
 
-* Browse to **_Security -> Firenet -> Firewall_** and click on the **_+_** sign of the add firewall button.
+* Browse to **_Security -> Firenet -> Firewall_** and click on the dropdown of the add firewall button.
 * Click associate existing firewall.
 
 ![Associate existing firewall](images/lab4-associate-existing-firewall-add.png)  
