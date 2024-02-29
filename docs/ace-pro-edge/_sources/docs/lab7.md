@@ -391,7 +391,7 @@ align: center
 Commit
 ```
 
-### 5.1.1 Luanch connectivity test
+### 5.1.1 Launch connectivity test
 
 **SSH** into **_azure-west-us-spoke<span style='color:#479608'>1</span>-test1_** and from there, ping **_azure-west-us-spoke<span style='color:#bb05b9'>2</span>-test1_** on its private IP.
 
@@ -472,7 +472,6 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{figure} images/lab7-last.png
 ---
-height: 400px
 align: center
 ---
 Logs on DCF Monitor section

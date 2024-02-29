@@ -130,7 +130,7 @@ Subscription equals...
 ---
 align: center
 ---
-Azure Console
+All Subscriptions
 ```
 
 Now use the Filter field beside the "Subscription equals" field and be sure to filter your `Subscription`, <ins>by your pod number</ins>, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
@@ -235,7 +235,14 @@ Verification
 
 ### 3.2. Verify from AWS Console
 
-Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for **Pod 100**):
+Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for **Pod 150**).
+
+```{figure} images/lab1-newaws.png
+---
+align: center
+---
+AWS console
+```
 
 ```{figure} images/lab1-vpc5.png
 ---
@@ -261,7 +268,7 @@ As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet 
 ---
 align: center
 ---
-Oregon region
+Subnets created by the Aviatrix Controller
 ```
 
 From there, navigate to `Route Tables`.
