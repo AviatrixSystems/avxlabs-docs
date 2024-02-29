@@ -13,7 +13,7 @@ _Fig. Lab Overview_
 
 ### Description
 
-Along with the Aviatrix Controller, CoPilot is also deployed. CoPilot will be your best buddy for configuring, visualizing and operating the Multicloud environment.
+Along with the Aviatrix Controller, CoPilot is also deployed. CoPilot will be your best buddy for configuring, visualizing and operating your cloud environment.
 
 ### Validate
 
@@ -28,13 +28,13 @@ Log in to CoPilot using the following details:
 You can familiarize yourself with the different functions in CoPilot and after each lab, we will verify the results in CoPilot.
 **Please note that it can take a minute for CoPilot to reflect changes on the network.**
 
-The `Dashboard` tab provides a global overview of your Multicloud network, the status, how much traffic is flowing, locations deployed, etc.  
+The `Dashboard` tab provides a global overview of your networks, the status, how much traffic is flowing, locations deployed, etc.  
 
-Take a look into `Cloud Fabric-->Topology` which visualizes the connectivity of the Multicloud environment. Topology will show you latency between links when you enable it on the top right hand corner in the latency pane. The topology view also allows you to initiate some troubleshooting commands directly from the map. Expand `aws-transit-west` in the middle of the screen, by clicking on it. Now you should see and be able to select the `aws-transit-west` gateway on the outside edge of the diagram. On the bottom right, you should see a diagnostics button. Click that and explore the diagnostics capabilities.
+Take a look into `Cloud Fabric-->Topology` which visualizes the connectivity of the environment. Topology will show you latency between links when you enable it on the top right hand corner in the latency pane. The topology view also allows you to initiate some troubleshooting commands directly from the map. Expand `aws-transit-west` in the middle of the screen, by clicking on it. Now you should see and be able to select the `aws-transit-west` gateway on the outside edge of the diagram. On the bottom right, you should see a diagnostics button. Click that and explore the diagnostics capabilities.
 
 ### Expected Results
 
-You should be able to log in to CoPilot. You should be able to view Topology by clicking `Cloud Fabric` -> `Topology` and see the current Multicloud Network topology. Topology should look similar to this:  
+You should be able to log in to CoPilot. You should be able to view Topology by clicking `Cloud Fabric` -> `Topology` and see the current network topology. Topology should look similar to this:  
 
 ![Topology1](images/lab1-copilot-topology.png)  
 _Fig. Initial Topology_  

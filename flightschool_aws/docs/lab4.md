@@ -192,7 +192,7 @@ We have already deployed a firewall instance in the lab. In order for Firenet to
 ![Associate existing firewall](images/lab4-associate-existing-firewall-add.png)  
 _Fig. Associate existing firewall_  
 
-* In the pane that opened, add the configuration as shown on the screenshot. Most information shows up when you click on the pull down menu's. Note the 6-digit suffix for the `resource group` and `firewall id` will be different than the screenshot.
+* In the pane that opened, add the configuration as shown on the screenshot. Most information shows up when you click on the pull down menu's.
 
 ![Existing firewall configuration](images/lab4-associate-existing-firewall.png)  
 _Fig. Existing firewall configuration_  

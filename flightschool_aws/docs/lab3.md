@@ -1,4 +1,4 @@
-# Lab 3 - Expanding to multi-cloud
+# Lab 3 - Expanding to multi-region
 
 Lab time: ~30 minutes
 

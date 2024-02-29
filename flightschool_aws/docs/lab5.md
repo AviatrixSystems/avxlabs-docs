@@ -95,7 +95,7 @@ module "transit-peering" {
 
 ### Expected Results
 
-After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.
+After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh multi-region network that was created.
 
 ![Topology](images/lab6-topoloy-transit-peerings.png)  
 _Fig. Topology_  
@@ -103,6 +103,6 @@ _Fig. Topology_
 ## Lab 5 Summary
 
 * You deployed an Aviatrix Transit and Spoke using Terraform
-* You added the new Transit to the Global Multicloud Transit Network with a few lines of code
+* You added the new Transit to the Global Transit Network with a few lines of code
 * Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution
 * In minutes, you can create the network, security and connectivity needed
