@@ -180,7 +180,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 1 - Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Office Connectivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - Expanding to multi-cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - Expanding to multi-region</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - Beefing up security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Infrastructure as Code (Bonus Lab)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
@@ -376,7 +376,7 @@ document.write(`
 <h2>Lab 1.1 - CoPilot<a class="headerlink" href="#lab-1-1-copilot" title="Link to this heading">#</a></h2>
 <section id="description">
 <h3>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h3>
-<p>Along with the Aviatrix Controller, CoPilot is also deployed. CoPilot will be your best buddy for configuring, visualizing and operating the Multicloud environment.</p>
+<p>Along with the Aviatrix Controller, CoPilot is also deployed. CoPilot will be your best buddy for configuring, visualizing and operating your cloud environment.</p>
 </section>
 <section id="validate">
 <h3>Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h3>
@@ -389,15 +389,15 @@ document.write(`
 </ul>
 <p>You can familiarize yourself with the different functions in CoPilot and after each lab, we will verify the results in CoPilot.
 <strong>Please note that it can take a minute for CoPilot to reflect changes on the network.</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Dashboard</span></code> tab provides a global overview of your Multicloud network, the status, how much traffic is flowing, locations deployed, etc.</p>
-<p>Take a look into <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric--&gt;Topology</span></code> which visualizes the connectivity of the Multicloud environment. Topology will show you latency between links when you enable it on the top right hand corner in the latency pane. The topology view also allows you to initiate some troubleshooting commands directly from the map. Expand <code class="docutils literal notranslate"><span class="pre">aws-transit-west</span></code> in the middle of the screen, by clicking on it. Now you should see and be able to select the <code class="docutils literal notranslate"><span class="pre">aws-transit-west</span></code> gateway on the outside edge of the diagram. On the bottom right, you should see a diagnostics button. Click that and explore the diagnostics capabilities.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Dashboard</span></code> tab provides a global overview of your networks, the status, how much traffic is flowing, locations deployed, etc.</p>
+<p>Take a look into <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric--&gt;Topology</span></code> which visualizes the connectivity of the environment. Topology will show you latency between links when you enable it on the top right hand corner in the latency pane. The topology view also allows you to initiate some troubleshooting commands directly from the map. Expand <code class="docutils literal notranslate"><span class="pre">aws-transit-west</span></code> in the middle of the screen, by clicking on it. Now you should see and be able to select the <code class="docutils literal notranslate"><span class="pre">aws-transit-west</span></code> gateway on the outside edge of the diagram. On the bottom right, you should see a diagnostics button. Click that and explore the diagnostics capabilities.</p>
 </section>
 <section id="expected-results">
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
-<p>You should be able to log in to CoPilot. You should be able to view Topology by clicking <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Topology</span></code> and see the current Multicloud Network topology. Topology should look similar to this:</p>
+<p>You should be able to log in to CoPilot. You should be able to view Topology by clicking <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Topology</span></code> and see the current network topology. Topology should look similar to this:</p>
 <p><img alt="Topology1" src="../_images/lab1-copilot-topology.png" /><br />
 <em>Fig. Initial Topology</em></p>
-<p>As you can see, we have the aws-transit-west gateway in the middle, with aws-build, aws-dmz and aws-prod spokes connected to it. The AWS VPC’s are not yet connected to any transit.</p>
+<p>As you can see, we have the <code class="docutils literal notranslate"><span class="pre">aws-transit-west</span></code> gateway in the middle, with <code class="docutils literal notranslate"><span class="pre">aws-build</span></code>, <code class="docutils literal notranslate"><span class="pre">aws-dmz</span></code> and <code class="docutils literal notranslate"><span class="pre">aws-prod-west</span></code> spokes connected to it. The AWS VPC’s are not yet connected to any transit.</p>
 <p>After selecting the transit gateway and clicking the diagnostics tools button, you should see the diagnostics pane. Have a look around at the troubleshooting tools here.</p>
 <p><img alt="CoPilot Diagnostics" src="../_images/lab1-copilot-diagnostics.png" /><br />
 <em>Fig. CoPilot Diagnostics</em></p>
@@ -418,14 +418,14 @@ document.write(`
 </section>
 <section id="id3">
 <h3>Expected Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>An accounts in AWS has already been onboarded and you should see this account in the list. The accounts should also have an audit status <strong><em>pass</em></strong>, meaning the permissions in the accounts are correctly configured.</p>
+<p>An account in AWS has already been onboarded and you should see this account in the list. The account should also have an audit status <strong><em>pass</em></strong>, meaning the permissions in the accounts are correctly configured.</p>
 </section>
 </section>
 <section id="lab-1-3-connectivity-check">
 <h2>Lab 1.3 - Connectivity Check<a class="headerlink" href="#lab-1-3-connectivity-check" title="Link to this heading">#</a></h2>
 <section id="id4">
 <h3>Description<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>Each Spoke VPC contains one or multiple Linux VM’s to test connectivity. There is a web server running on each of the instances which you can use to test the connectivity. The purpose of this exercise is to verify the connectivity between Linux VMs in the Spoke VPCs in the different regions as well as the Office network. To make life a little easier, we have created 2 dashboards to show the status of all connectivity.</p>
+<p>Each Spoke VPC contains one or multiple Linux VMs to test connectivity. There is a web server running on each of the instances which you can use to test the connectivity. The purpose of this exercise is to verify the connectivity between Linux VMs in the Spoke VPCs in the different regions as well as the Office network. To make life a little easier, we have created 2 dashboards to show the status of all connectivity.</p>
 </section>
 <section id="id5">
 <h3>Validate<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>

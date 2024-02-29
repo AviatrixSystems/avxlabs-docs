@@ -13,7 +13,7 @@ _Fig. Lab Overview_
 
 ### Description
 
-Along with the Aviatrix Controller, CoPilot is also deployed. CoPilot will be your best buddy for configuring, visualizing and operating the Multicloud environment.
+Along with the Aviatrix Controller, CoPilot is also deployed. CoPilot will be your best buddy for configuring, visualizing and operating your cloud environment.
 
 ### Validate
 
@@ -28,18 +28,18 @@ Log in to CoPilot using the following details:
 You can familiarize yourself with the different functions in CoPilot and after each lab, we will verify the results in CoPilot.
 **Please note that it can take a minute for CoPilot to reflect changes on the network.**
 
-The `Dashboard` tab provides a global overview of your Multicloud network, the status, how much traffic is flowing, locations deployed, etc.  
+The `Dashboard` tab provides a global overview of your networks, the status, how much traffic is flowing, locations deployed, etc.  
 
-Take a look into `Cloud Fabric-->Topology` which visualizes the connectivity of the Multicloud environment. Topology will show you latency between links when you enable it on the top right hand corner in the latency pane. The topology view also allows you to initiate some troubleshooting commands directly from the map. Expand `aws-transit-west` in the middle of the screen, by clicking on it. Now you should see and be able to select the `aws-transit-west` gateway on the outside edge of the diagram. On the bottom right, you should see a diagnostics button. Click that and explore the diagnostics capabilities.
+Take a look into `Cloud Fabric-->Topology` which visualizes the connectivity of the environment. Topology will show you latency between links when you enable it on the top right hand corner in the latency pane. The topology view also allows you to initiate some troubleshooting commands directly from the map. Expand `aws-transit-west` in the middle of the screen, by clicking on it. Now you should see and be able to select the `aws-transit-west` gateway on the outside edge of the diagram. On the bottom right, you should see a diagnostics button. Click that and explore the diagnostics capabilities.
 
 ### Expected Results
 
-You should be able to log in to CoPilot. You should be able to view Topology by clicking `Cloud Fabric` -> `Topology` and see the current Multicloud Network topology. Topology should look similar to this:  
+You should be able to log in to CoPilot. You should be able to view Topology by clicking `Cloud Fabric` -> `Topology` and see the current network topology. Topology should look similar to this:  
 
 ![Topology1](images/lab1-copilot-topology.png)  
 _Fig. Initial Topology_  
 
-As you can see, we have the aws-transit-west gateway in the middle, with aws-build, aws-dmz and aws-prod spokes connected to it. The AWS VPC's are not yet connected to any transit.
+As you can see, we have the `aws-transit-west` gateway in the middle, with `aws-build`, `aws-dmz` and `aws-prod-west` spokes connected to it. The AWS VPC's are not yet connected to any transit.
 
 After selecting the transit gateway and clicking the diagnostics tools button, you should see the diagnostics pane. Have a look around at the troubleshooting tools here.
 
@@ -63,13 +63,13 @@ Take a look at the access accounts already set up. You can see them in Copilot u
 
 ### Expected Results
 
-An accounts in AWS has already been onboarded and you should see this account in the list. The accounts should also have an audit status **_pass_**, meaning the permissions in the accounts are correctly configured.
+An account in AWS has already been onboarded and you should see this account in the list. The account should also have an audit status **_pass_**, meaning the permissions in the accounts are correctly configured.
 
 ## Lab 1.3 - Connectivity Check
 
 ### Description
 
-Each Spoke VPC contains one or multiple Linux VM's to test connectivity. There is a web server running on each of the instances which you can use to test the connectivity. The purpose of this exercise is to verify the connectivity between Linux VMs in the Spoke VPCs in the different regions as well as the Office network. To make life a little easier, we have created 2 dashboards to show the status of all connectivity.
+Each Spoke VPC contains one or multiple Linux VMs to test connectivity. There is a web server running on each of the instances which you can use to test the connectivity. The purpose of this exercise is to verify the connectivity between Linux VMs in the Spoke VPCs in the different regions as well as the Office network. To make life a little easier, we have created 2 dashboards to show the status of all connectivity.
 
 ### Validate
 

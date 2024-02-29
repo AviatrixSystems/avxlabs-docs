@@ -2,7 +2,7 @@
 
 Lab time: ~45 minutes  
 
-**_Scenario_**:  Your development team needs direct access to the aws-build server in AWS `us-west-2`. This requires a VPN connection from the office, into the cloud infrastructure.
+**_Scenario_**:  Your development team needs direct access to the `aws-build` server in AWS `us-west-2`. This requires a VPN connection from the office, into the cloud infrastructure.
 
 During this lab we will build and verify the connectivity to your office.
 
@@ -17,7 +17,7 @@ Your on-prem Network team has already configured an IPSec tunnel on the office r
 
 ### Validate
 
-In order to connect your Multicloud environment to the office, we will create an **_External Connection_**. This allows you to create a secure connectivity between the Cloud and the office with dynamic routing (BGP).
+In order to connect your multi-region environment to the office, we will create an **_External Connection_**. This allows you to create a secure connectivity between the Cloud and the office with dynamic routing (BGP).
 
 Now let’s add the office connection. In Copilot, navigate to **_Networking --> Connectivity --> External Connections (S2C)_**. Click the **_+ External Connection_** button to add a new connection.
 
@@ -26,7 +26,7 @@ Now let’s add the office connection. In Copilot, navigate to **_Networking -->
 | **Connection Name**         | aws-to-office                                                                                                                                                                                                      |
 | **Connect public cloud to** | External Device, BGP over IPsec                                                                                                                                                                                    |
 | **Local Gateway**           | aws-transit-west                                                                                                                                                                                                   |
-| **Local ASN**               | 65pod[#] _For Pods 1-9, double pad the pod# with an additional 0 (ie. 65004). For Pods 10-99 single pad (ie. 65010). For Pods > 100, no padding is needed (ie. 65100)_                                             |
+| **Local ASN**               | Pre-populated with `65pod[#]` when local gateway is selected.                                                                                                                                                      |
 | **Remote ASN**              | 65000                                                                                                                                                                                                              |
 | **Remote Gateway IP**       | <ip-address> _Please open a terminal session from your own pc and resolve the following FQDN to its IP address `onprem.pod[#].aviatrixlab.com`. Do NOT enter the FQDN on this field. Instead enter the IP address_ |
 | **Pre-shared Key**          | mapleleafs                                                                                                                                                                                                         |
@@ -199,12 +199,12 @@ Let's create some network domains, which can be used for segmentation.
 
 In CoPilot, go to **_Networking -> Network Segmentation -> Network Domains_**. As you can see, we don't have any network domains set up currently. Use the **_+ Network Domains_** button to add the following domains and associations:
 
-| Domain    | Association   |
-| :-------- | :------------ |
-| Office    | aws-to-office |
-| aws-build | aws-build     |
-| aws-prod  | aws-prod      |
-| aws-dmz   | aws-dmz       |
+| Domain        | Association   |
+| :------------ | :------------ |
+| Office        | aws-to-office |
+| AWS-Build     | aws-build     |
+| AWS-Prod-West | aws-prod-west |
+| AWS-Dmz       | aws-dmz       |
 
 ![Screenshot](images/lab2-add-network-domains.png)  
 _Fig. Add network domains_
@@ -248,7 +248,7 @@ In order for our developers to be able to access the build server again, we need
 ![Screenshot](images/lab2-edit-network-domain.png)  
 _Fig. Edit network domain_
 
-* Now add the **_Office_** and **_aws-prod_** domain as a connected domain.
+* Now add the **_Office_** and **_AWS-Prod-West_** domain as a connected domain.
 
 ![Screenshot](images/lab2-add-connected-network-domain.png)  
 _Fig. Add network domain connection_
@@ -301,8 +301,8 @@ As you can see, the Web web application is now broken:
 ![Web App connectivity](images/lab2-app-connectivity-broken.png)  
 _Fig. Office connectivity_  
 
-* Check the connection policies on the **_Networking -> Network Segmentation-> Overview_** page. Do you see a line connecting aws-dmz and aws-prod?
-* Create a connection policy between aws-dmz and aws-prod, similar to what you did in lab 2.9.
+* Check the connection policies on the **_Networking -> Network Segmentation-> Overview_** page. Do you see a line connecting `aws-dmz` and `aws-prod-west`?
+* Create a connection policy between `aws-dmz` and `aws-prod-west`, similar to what you did in lab 2.9.
 
 ![Add connection policy](images/lab2-add-connected-network-domain-2.png)  
 _Fig. Add connection policy_  
