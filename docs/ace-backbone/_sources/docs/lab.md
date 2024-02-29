@@ -1,15 +1,18 @@
 # Lab - Cloud Backbone and Hybrid Connectivity
 
-Lab time: ~45 minutes
-
 ## 1 - Initial Topology
 
-This is a current topology of a multicloud enterprise that has Data Center in US-East-1 and utilizes Equinix fabric as a Co-location facility in US-West-1 and EU region.
+This is a current topology of a multicloud enterprise that has Data Center in **US-East-1** and utilizes Equinix fabric as a Co-location facility in **US-West-1** and **EU** region.
 
 MPLS is heavily used for any East-West traffic between these regions across multicloud environment.
 
-![Lab Overview](images/cbhc-origtopology.jpeg)
-_Figure 1: Initial Topology_
+```{figure} images/cbhc-origtopology.jpeg
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
 
 ### 1.1 - Quick Knowledge Quiz
 
@@ -25,14 +28,31 @@ GCP -
 
 Please login to Aviatrix Copilot and navigate to topology page by leveraging search bar as shown below.
 
-![Search Bar](images/copilot_topology_search.png)
-<br>
-_Figure 2: Using the Search Bar_
+```{figure} images/copilot_topology_search.png
+---
+align: center
+---
+Using the Search Bar
+```
 
 The following topology will appear on your Copilot
 
-![Initial Topology](images/topology.png)
-_Figure 3: Cloud Backbone & Hybrid Connectivity Topology_
+```{tip}
+Click on the "Managed" button for only showing the managed VPCs
+
+```{figure} images/managed-vpc.png
+---
+align: center
+---
+Managed VPCs
+```
+
+```{figure} images/topology.png
+---
+align: center
+---
+Cloud Backbone & Hybrid Connectivity Topology
+```
 
 ### 2.1 - Quick Knowledge Quiz
 
@@ -46,55 +66,75 @@ Q3. To which Aviatrix cloud resources Aviatrix Edge is associated with?
 
 Let's verify:
 
-Cloud Resources --> Cloud Assets --> VPC/VNets Subnets
-<br/><br/>
+**Cloud Resources > Cloud Assets > VPC/VNets Subnets**
 
-![Cloud Asset](images/cloudassets.png)_Figure 4: Cloud Backbone Transit VPC/VNET/VCN_
-
-<br/>
+```{figure} images/cloudassets.png
+---
+align: center
+---
+Cloud Backbone Transit VPC/VNET/VCN
+```
 
 ### 3.2 - Transit Gateways
 
 Let's verify Aviatrix Transit Gateways and their peerings.
 
-Cloud Fabric --> Gateways --> Transit Gateways
+**Cloud Fabric > Gateways > Transit Gateways** then click on any Gateways Clusters and expand the "Connections" Tab!
 
-![Transit GWs](images/transitgws.png)
-_Figure 5: Transit Gateways_
-<br/><br/>
+```{figure} images/transitgws.png
+---
+align: center
+---
+Transit Gateways
+```
 
-Verify Transit peerings (screenshot not provided)
-<br/><br/>
+```{figure} images/transitgws2.png
+---
+align: center
+---
+Transit Gateways Peerings
+```
 
 ### 3.3 Connectivity between Aviatrix Cloud Backbone & Native CSP Constructs
 
 Verify connectivity between Aviatrix Cloud Backbone and native CSP constructs.
 
-Networking --> Connectivity --> External Connections (S2C)
+**Networking > Connectivity > External Connections (S2C)**
 
 You will notice different tunnel types due to CSP limitations.
 
-![Native Connectivity](images/natives2c.png)
-_Figure 6: Connectivity with Native CSP Constructs_
+```{figure} images/natives2c.png
+---
+align: center
+---
+Connectivity with Native CSP Constructs
+```
 
 ### 3.4 - Quick Knowledge Quiz
 
 Q4. How AWS, Azure and GCP transits are peered with each other?
 
 Q5. Was Aviatrix Cloud Backbone established using Standard or High Performance Encryption?
-<br/><br/>
 
 ## 4 - Traffic Routing
 
 Navigate to the Cloud Routes menu within Copilot by leveraging the search bar as shown below.
 
-![Search Bar](images/copilot_cloudroutes_search.png)<br/>
-_Figure 7: Search Bar - Cloud Routes_
+```{figure} images/copilot_cloudroutes_search.png
+---
+align: center
+---
+Search Bar - Cloud Routes
+```
 
 The following screen will appear:
 
-![Search Bar](images/gatewayroutes.png)
-_Figure 8: Cloud Routes_
+```{figure} images/gatewayroutes.png
+---
+align: center
+---
+Cloud Routes
+```
 
 Verify Backbone components are receiving the routes across Multicloud environment including Equinix.
 
@@ -102,29 +142,37 @@ Verify Backbone components are receiving the routes across Multicloud environmen
 
 Q6. What routes GCP Transit GW is receiving from the Equinix Fabric?
 
-<br/>
-
 ## 5 - Data Plane Verification
 
-Since this is a brownfield environment where this customer just stared using  Aviatrix Cloud Backbone for East-West communication and don't have Aviatrix Spoke Gateways in any application VPC/VNET/VCN, you won't be able to find the application ec2/VM on the dynamic topology map. To find the application ec2/VM public IP go to:
+Since this is a brownfield environment where this customer just stared using  Aviatrix Cloud Backbone for East-West communication and don't have Aviatrix Spoke Gateways in any application VPCS/VNETS/VCNS, you won't be able to find the application EC2/VM on the dynamic topology map. 
 
-Cloud Assets --> Virtual Machines<br/><br/>
+To find the application EC2/VM public IP go to:
 
-![Instance IPs](images/vm.png)
-_Figure 9: Virtual Machines_
+**Cloud Assets > Virtual Machines**
 
-<br/>
+```{figure} images/vm.png
+---
+align: center
+---
+Virtual Machines
+```
 
-SSH from your laptop to AWS ec2 instance using terminal:
+SSH from your laptop to AWS EC2 instance using terminal:
 
 ssh student@aws.pod#.aviatrixlab.com
 
-NOTE: pod# and password will be provided at the time of lab.
+```{note}
+pod# and password will be provided at the time of lab.
+```
 
 Ping GCP VM's private IP from the AWS instance to test the backbone:
 
-![Ping Verification](images/ping.png)
-_Figure 10: Ping Verification_
+```{figure} images/ping.png
+---
+align: center
+---
+Ping Verification
+```
 
 Access all the application instances/VMs using your laptop's browser using the following links:
 
@@ -134,8 +182,12 @@ http://azure.pod#.aviatrixlab.com/
 
 http://gcp.pod#.aviatrixlab.com/
 
-![Browser Verification](images/browser.png)
-_Figure 11: Browser Verification_
+```{figure} images/browser.png
+---
+align: center
+---
+Browser Verification
+```
 
 ## 6 - Troubleshooting
 
@@ -149,22 +201,32 @@ Path1 - <br/>
 Path2 - <br/>
 Path3 -
 
-#### 6.1.2 Diagnostics --> AppIQ --> FlightPath
+#### 6.1.2 **Diagnostics > AppIQ > FlightPath**
 
-![AppIQ](images/fp1.png)
-_Figure 12: AppIQ_
+```{figure} images/fp1.png
+---
+align: center
+---
+AppIQ
+```
 
- <br/> <br/>
-
-![FlightPath](images/fp2.png)
-_Figure 13: FlightPath_
+```{figure} images/fp2.png
+---
+align: center
+---
+FlightPath
+```
 
 #### 6.1.3 Latency Monitor
 
-Monitor --> Traffic & Latencies -->Gateways
+**Monitor > Traffic & Latencies >Gateways**
 
-![Latency](images/latency.png)
-_Figure 14: Latency Monitor_
+```{figure} images/latency.png
+---
+align: center
+---
+Latency Monitor
+```
 
 ## 7 - Conclusion
 

@@ -751,11 +751,11 @@ Both public and private IP addresses of the **test** instances are retrievable f
 ---
 align: center
 ---
-Route DB
+POD Portal info
 ```
 
 ```{note}
-**`TOPOLOGY`**:
+**`TOPOLOGY (CoPilot > Cloud Fabric > Topology)`**:
 
 From the Topology expand the **_aws-us-east-2-spoke1_** VPC and select the instance **_aws-us-east-2-spoke1-test1_** with the EC2 logo. 
 
