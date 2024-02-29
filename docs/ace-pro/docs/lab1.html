@@ -476,7 +476,7 @@ document.write(`
 <figure class="align-center" id="id11">
 <img alt="../_images/lab1-newpic2.png" src="../_images/lab1-newpic2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Azure Console</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">All Subscriptions</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now use the Filter field beside the “Subscription equals” field and be sure to filter your <code class="docutils literal notranslate"><span class="pre">Subscription</span></code>, <ins>by your pod number</ins>, for example for Pod 140 filter by <code class="docutils literal notranslate"><span class="pre">csp_azure_shared_ace_labs_140</span></code>.</p>
@@ -563,26 +563,32 @@ document.write(`
 </section>
 <section id="verify-from-aws-console">
 <h3>3.2. Verify from AWS Console<a class="headerlink" href="#verify-from-aws-console" title="Link to this heading">#</a></h3>
-<p>Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for <strong>Pod 100</strong>):</p>
+<p>Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for <strong>Pod 150</strong>).</p>
 <figure class="align-center" id="id21">
-<img alt="../_images/lab1-vpc5.png" src="../_images/lab1-vpc5.png" />
+<img alt="../_images/lab1-newaws.png" src="../_images/lab1-newaws.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 23 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Change the region to <code class="docutils literal notranslate"><span class="pre">Oregon</span> <span class="pre">(us-west-2)</span></code> in the top-right corner and invoke the VPC service. You can see the <code class="docutils literal notranslate"><span class="pre">VPC</span></code> created with the CIDR block.</p>
 <figure class="align-center" id="id22">
+<img alt="../_images/lab1-vpc5.png" src="../_images/lab1-vpc5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Change the region to <code class="docutils literal notranslate"><span class="pre">Oregon</span> <span class="pre">(us-west-2)</span></code> in the top-right corner and invoke the VPC service. You can see the <code class="docutils literal notranslate"><span class="pre">VPC</span></code> created with the CIDR block.</p>
+<figure class="align-center" id="id23">
 <img alt="../_images/lab1-newpic6.png" src="../_images/lab1-newpic6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Oregon region</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Oregon region</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From there, navigate to <code class="docutils literal notranslate"><span class="pre">Subnets</span></code>.</p>
 <p>As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet per Availability Zone. Since us-west-2 has 4 AZs, therefore <strong>eight</strong> subnets are created.</p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab1-newpic7.png" src="../_images/lab1-newpic7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Oregon region</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Subnets created by the Aviatrix Controller</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From there, navigate to <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Tables</span></code>.</p>
@@ -595,17 +601,17 @@ document.write(`
 <h3>4.1. Create GCP VPC<a class="headerlink" href="#create-gcp-vpc" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong>.</p>
 <p>Before starting the deployment of the VPC in GCP, verify once again whether the CIDR range <code class="docutils literal notranslate"><span class="pre">172.16.22.0/24</span></code> is overlapping or not, as shown below.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id25">
 <img alt="../_images/lab1-newpic8.png" src="../_images/lab1-newpic8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time let’s create an Application/Spoke VPC. Click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab1-gcp1.png" src="../_images/lab1-gcp1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following values:</p>
@@ -622,18 +628,18 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>Make sure there are no white spaces at the beginning or end of the VPC name.</p>
 </div>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id27">
 <img alt="../_images/lab1-gcp2.png" src="../_images/lab1-gcp2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">VPC template</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">VPC template</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).</p>
 <p>You can filter by CIDR <code class="docutils literal notranslate"><span class="pre">172.16.22.0/24</span></code>.</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id28">
 <img alt="../_images/lab1-gcp3.png" src="../_images/lab1-gcp3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -643,10 +649,10 @@ document.write(`
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Kindly note that GCP console access is not provided!</p>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab1-newpic9.png" src="../_images/lab1-newpic9.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Only AWS and Azure</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Only AWS and Azure</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
