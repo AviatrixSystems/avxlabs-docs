@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lab 3 - Expanding to multi-cloud &#8212; Aviatrix Flight School</title>
+    <title>Lab 3 - Expanding to multi-region &#8212; Aviatrix Flight School</title>
   
   
   
@@ -180,7 +180,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Office Connectivity</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 3 - Expanding to multi-cloud</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 3 - Expanding to multi-region</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - Beefing up security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Infrastructure as Code (Bonus Lab)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
@@ -322,7 +322,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 3 - Expanding to multi-cloud</h1>
+    <h1>Lab 3 - Expanding to multi-region</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,10 +387,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-3-expanding-to-multi-cloud">
-<h1>Lab 3 - Expanding to multi-cloud<a class="headerlink" href="#lab-3-expanding-to-multi-cloud" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-3-expanding-to-multi-region">
+<h1>Lab 3 - Expanding to multi-region<a class="headerlink" href="#lab-3-expanding-to-multi-region" title="Link to this heading">#</a></h1>
 <p>Lab time: ~30 minutes</p>
-<p><strong><em>Scenario</em></strong>:  The business has decided to go multi-cloud! Some apps simply run better in other clouds, and why put all eggs in one basket? During this exercise we will deploy in AWS an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer AWS <code class="docutils literal notranslate"><span class="pre">us-west-2</span></code> and AWS <code class="docutils literal notranslate"><span class="pre">us-east-1</span></code> and test out the connectivity.</p>
+<p><strong><em>Scenario</em></strong>:  The business has decided to go multi-region! During this exercise we will deploy in AWS <code class="docutils literal notranslate"><span class="pre">us-east-1</span></code> an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer AWS <code class="docutils literal notranslate"><span class="pre">us-west-2</span></code> and AWS <code class="docutils literal notranslate"><span class="pre">us-east-1</span></code> and test out the connectivity.</p>
 <p>The Spoke VPCs and gateways have already been created to save you time. The process is very similar to deploying the transit gateway.</p>
 <p><img alt="Topology" src="../_images/lab-3.png" /><br />
 <em>Fig. Current Topology</em></p>
@@ -421,7 +421,7 @@ document.write(`
 <td><p>aws-account</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Region</strong></p></td>
-<td><p>eu-central-1 (Frankfurt)</p></td>
+<td><p>us-east-1 (N. Virginia)</p></td>
 </tr>
 </tbody>
 </table>
@@ -492,7 +492,7 @@ document.write(`
 <td><p>t3.small</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Instance 1 (Primary)</strong></p></td>
-<td><p>aws-transit-east-Public-1-eu-central-1a + Allocate New EIP</p></td>
+<td><p>aws-transit-east-Public-1-us-east-1a + Allocate New EIP</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Transit Peers</strong></p></td>
 <td><p>Click edit and add the aws-transit-west as a peer and save</p></td>
@@ -533,13 +533,13 @@ document.write(`
 <h2>Lab 3.3 - Attach Spoke Gateways to Aviatrix Transit Gateway<a class="headerlink" href="#lab-3-3-attach-spoke-gateways-to-aviatrix-transit-gateway" title="Link to this heading">#</a></h2>
 <section id="id4">
 <h3>Description<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>Now that we have our aws-transit-east set up, we need to establish connectivity between the AWS spoke gateways and the aws-transit-east gateway. The spoke gateways have been pre-deployed to save some time, but the process is much the same as the transit gateway you have just deployed.</p>
+<p>Now that we have our <code class="docutils literal notranslate"><span class="pre">aws-transit-east</span></code> set up, we need to establish connectivity between the spoke gateways in <code class="docutils literal notranslate"><span class="pre">us-east-1</span></code> and the <code class="docutils literal notranslate"><span class="pre">aws-transit-east</span></code> gateway. The spoke gateways have been pre-deployed to save some time, but the process is much the same as the transit gateway you have just deployed.</p>
 </section>
 <section id="id5">
 <h3>Validate<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Go to <strong><em>Cloud Fabric -&gt; Gateways -&gt; Spoke Gateways</em></strong>.</p></li>
-<li><p>Click the edit button (pencil) behind the <strong><em>aws-prod</em></strong> gateway.</p></li>
+<li><p>Click the edit button (pencil) behind the <strong><em>aws-prod-east</em></strong> gateway.</p></li>
 </ul>
 <p><img alt="Screenshot" src="../_images/lab3-edit-spoke.png" /><br />
 <em>Fig. Edit spoke</em></p>
@@ -603,8 +603,8 @@ document.write(`
 <tr class="row-even"><td class="text-left"><p>AWS-Shared</p></td>
 <td class="text-left"><p>aws-shared</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>AWS-Prod</p></td>
-<td class="text-left"><p>aws-prod</p></td>
+<tr class="row-odd"><td class="text-left"><p>AWS-Prod-East</p></td>
+<td class="text-left"><p>aws-prod-east</p></td>
 </tr>
 </tbody>
 </table>
@@ -672,7 +672,7 @@ document.write(`
 <p><img alt="Screenshot" src="../_images/lab3-office-access.png" /><br />
 <em>Fig. Office Access</em></p>
 <blockquote>
-<div><p>Were these connections succesful?</p>
+<div><p>Were these connections successful?</p>
 </div></blockquote>
 </section>
 <section id="id19">
@@ -687,10 +687,10 @@ document.write(`
 <li><p>You deployed a VPC and an Aviatrix Transit Gateway in AWS</p></li>
 <li><p>You connected all of the Spoke VPCs to the Transit</p></li>
 <li><p>You created a Multi-region Transit network, connecting AWS <code class="docutils literal notranslate"><span class="pre">us-west-2</span></code> and <code class="docutils literal notranslate"><span class="pre">us-east-1</span></code></p></li>
-<li><p>You are able to reach the AWS environment from On-Prem, via the AWS <code class="docutils literal notranslate"><span class="pre">us-west-2</span></code> Transit</p></li>
+<li><p>You are able to reach the AWS <code class="docutils literal notranslate"><span class="pre">us-east-1</span></code> environment from On-Prem, via the AWS <code class="docutils literal notranslate"><span class="pre">us-west-2</span></code> Transit</p></li>
 <li><p>Again, not a single route table entry needed to be touched on the CSP side</p></li>
-<li><p>You have end to end visibility into all network traffic</p></li>
-<li><p>All connectivity is private and encrypted across the entirety of the Aviatrix Cloud Fabric - from on-prem and within and between the clouds</p></li>
+<li><p>You have end-to-end visibility into all network traffic</p></li>
+<li><p>All connectivity is private and encrypted across the entirety of the Aviatrix Cloud Fabric - from on-prem and within and between the cloud regions</p></li>
 </ul>
 <p><img alt="Screenshot" src="../_images/end-lab-3.png" /><br />
 <em>Fig. Topology after Lab 3</em></p>

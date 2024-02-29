@@ -61,7 +61,7 @@
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lab 3 - Expanding to multi-cloud" href="lab3.html" />
+    <link rel="next" title="Lab 3 - Expanding to multi-region" href="lab3.html" />
     <link rel="prev" title="Lab 1 - Getting Started" href="lab1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,7 +180,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Getting Started</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 2 - Office Connectivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - Expanding to multi-cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - Expanding to multi-region</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - Beefing up security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Infrastructure as Code (Bonus Lab)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
@@ -413,7 +413,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="lab-2-office-connectivity">
 <h1>Lab 2 - Office Connectivity<a class="headerlink" href="#lab-2-office-connectivity" title="Link to this heading">#</a></h1>
 <p>Lab time: ~45 minutes</p>
-<p><strong><em>Scenario</em></strong>:  Your development team needs direct access to the aws-build server in AWS <code class="docutils literal notranslate"><span class="pre">us-west-2</span></code>. This requires a VPN connection from the office, into the cloud infrastructure.</p>
+<p><strong><em>Scenario</em></strong>:  Your development team needs direct access to the <code class="docutils literal notranslate"><span class="pre">aws-build</span></code> server in AWS <code class="docutils literal notranslate"><span class="pre">us-west-2</span></code>. This requires a VPN connection from the office, into the cloud infrastructure.</p>
 <p>During this lab we will build and verify the connectivity to your office.</p>
 <p><img alt="Topology" src="../_images/lab-2.png" /><br />
 <em>Fig. AWS Deployment</em></p>
@@ -425,7 +425,7 @@ document.write(`
 </section>
 <section id="validate">
 <h3>Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h3>
-<p>In order to connect your Multicloud environment to the office, we will create an <strong><em>External Connection</em></strong>. This allows you to create a secure connectivity between the Cloud and the office with dynamic routing (BGP).</p>
+<p>In order to connect your multi-region environment to the office, we will create an <strong><em>External Connection</em></strong>. This allows you to create a secure connectivity between the Cloud and the office with dynamic routing (BGP).</p>
 <p>Now let’s add the office connection. In Copilot, navigate to <strong><em>Networking –&gt; Connectivity –&gt; External Connections (S2C)</em></strong>. Click the <strong><em>+ External Connection</em></strong> button to add a new connection.</p>
 <table class="table">
 <thead>
@@ -444,7 +444,7 @@ document.write(`
 <td><p>aws-transit-west</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Local ASN</strong></p></td>
-<td><p>65pod[#] <em>For Pods 1-9, double pad the pod# with an additional 0 (ie. 65004). For Pods 10-99 single pad (ie. 65010). For Pods &gt; 100, no padding is needed (ie. 65100)</em></p></td>
+<td><p>Pre-populated with <code class="docutils literal notranslate"><span class="pre">65pod[#]</span></code> when local gateway is selected.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Remote ASN</strong></p></td>
 <td><p>65000</p></td>
@@ -657,13 +657,13 @@ document.write(`
 <tr class="row-even"><td class="text-left"><p>Office</p></td>
 <td class="text-left"><p>aws-to-office</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>aws-build</p></td>
+<tr class="row-odd"><td class="text-left"><p>AWS-Build</p></td>
 <td class="text-left"><p>aws-build</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>aws-prod</p></td>
-<td class="text-left"><p>aws-prod</p></td>
+<tr class="row-even"><td class="text-left"><p>AWS-Prod-West</p></td>
+<td class="text-left"><p>aws-prod-west</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>aws-dmz</p></td>
+<tr class="row-odd"><td class="text-left"><p>AWS-Dmz</p></td>
 <td class="text-left"><p>aws-dmz</p></td>
 </tr>
 </tbody>
@@ -716,7 +716,7 @@ document.write(`
 <p><img alt="Screenshot" src="../_images/lab2-edit-network-domain.png" /><br />
 <em>Fig. Edit network domain</em></p>
 <ul class="simple">
-<li><p>Now add the <strong><em>Office</em></strong> and <strong><em>aws-prod</em></strong> domain as a connected domain.</p></li>
+<li><p>Now add the <strong><em>Office</em></strong> and <strong><em>AWS-Prod-West</em></strong> domain as a connected domain.</p></li>
 </ul>
 <p><img alt="Screenshot" src="../_images/lab2-add-connected-network-domain.png" /><br />
 <em>Fig. Add network domain connection</em></p>
@@ -777,8 +777,8 @@ document.write(`
 <p><img alt="Web App connectivity" src="../_images/lab2-app-connectivity-broken.png" /><br />
 <em>Fig. Office connectivity</em></p>
 <ul class="simple">
-<li><p>Check the connection policies on the <strong><em>Networking -&gt; Network Segmentation-&gt; Overview</em></strong> page. Do you see a line connecting aws-dmz and aws-prod?</p></li>
-<li><p>Create a connection policy between aws-dmz and aws-prod, similar to what you did in lab 2.9.</p></li>
+<li><p>Check the connection policies on the <strong><em>Networking -&gt; Network Segmentation-&gt; Overview</em></strong> page. Do you see a line connecting <code class="docutils literal notranslate"><span class="pre">aws-dmz</span></code> and <code class="docutils literal notranslate"><span class="pre">aws-prod-west</span></code>?</p></li>
+<li><p>Create a connection policy between <code class="docutils literal notranslate"><span class="pre">aws-dmz</span></code> and <code class="docutils literal notranslate"><span class="pre">aws-prod-west</span></code>, similar to what you did in lab 2.9.</p></li>
 </ul>
 <p><img alt="Add connection policy" src="../_images/lab2-add-connected-network-domain-2.png" /><br />
 <em>Fig. Add connection policy</em></p>
@@ -849,7 +849,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lab 3 - Expanding to multi-cloud</p>
+        <p class="prev-next-title">Lab 3 - Expanding to multi-region</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
