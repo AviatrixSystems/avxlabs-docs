@@ -110,7 +110,7 @@ align: center
 DNS name
 ```
 
-2. Using the <span style='color:#00FFFF'>**Apache Jumpbox**</span> from the POD Portal, <ins>for example if you are within your corporate network and tipically an outbound restriction rule is blocking the port **22**</ins>.
+2. Using the <span style='color:orange'>**Apache Jumpbox**</span> from the POD Portal, <ins>for example if you are within your corporate network and tipically an outbound restriction rule is blocking the port **22**</ins>.
 
 ```{figure} images/lab1-jumpbox.png
 ---
@@ -141,7 +141,7 @@ Guacamole Menu
 The IP addresses can be easily retrieved using **3** different methods, as you like:
 1) From the **Properties** section of each Virtual Machine on the Topology.
 2) From the **Virtual Machines** Inventory.
-3) From your personal POD portal, where you can retrieve the **DNS symbolic names**.
+3) From your personal POD portal, where you can also use the **DNS symbolic names**.
 ```
 
 - **Dynamic Topology**:
