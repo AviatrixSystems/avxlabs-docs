@@ -59,8 +59,37 @@ Then click on **Save**.
 ---
 align: center
 ---
-Remote Public IP of the Cisco CSR
+DNS Name of the Cisco CSR
 ```
+
+```{note}
+Use the command “**dig csr.pod#.aviatrixlab.com +short**” <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the on-prem-partner1 CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
+```
+
+<ins>Replace the **#** symbol with your POD number!</ins>
+
+The example is referring to POD #150 (please issue the command based on your POD number).
+
+```{figure} images/lab8-newdns.png
+---
+align: center
+---
+Dig command in action
+```
+
+```{tip}
+For **Windows OS** you can use the command `"nslookup"`:
+
+**nslookup csr.pod#.aviatrixlab.com**
+
+```{figure} images/lab8-nslookup.png
+---
+align: center
+---
+Nslookup 
+```
+
+This is how your template will look like.
 
 ```{figure} images/lab8-s2ctemplate.png
 ---

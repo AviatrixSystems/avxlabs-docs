@@ -195,12 +195,20 @@ Remove the exemption
 You can access the Firewall in two ways:
 1) From the URL available on the **POD Portal**.
 2) **CoPilot > Security > FireNet > Firewall** and click on the **URL**. 
+```
+
+```{figure} images/lab3-newportal.png
+---
+align: center
+---
+POD Portal
+```
 
 ```{figure} images/lab3-url.png
 ---
 align: center
 ---
-FW URL
+FW URL from the FireNet section on the CoPilot
 ```
 
 - Insert the credentials.
