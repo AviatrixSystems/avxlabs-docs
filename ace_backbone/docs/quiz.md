@@ -23,7 +23,7 @@ Portal
 ```{important}
 After logged in, proceed on clicking on **"ACE Cloud Backbone and Hybrid Connectivity Quiz"**.
 
-Last but not least, please do not forget to complete the quick suvey, click on **"Post Training Survey"**
+After submitted your quiz, click on **Next** and do not forget to complete the quick survey!
 ```
 
 ```{figure} images/survey.png
@@ -31,4 +31,18 @@ Last but not least, please do not forget to complete the quick suvey, click on *
 align: center
 ---
 Portal
+```
+
+```{figure} images/quiz2.png
+---
+align: center
+---
+Submit
+```
+
+```{figure} images/quiz3.png
+---
+align: center
+---
+Survey
 ```

@@ -65,11 +65,11 @@ align: center
 
 Ensure to enter the following values:
 
-- **Username:** <span style='color:#33ECFF'>controller-op</span>
-- **Email:** <span style='color:#33ECFF'>[Enter your own]</span>
-- **Password:** <span style='color:#33ECFF'>[Pick a strong password and remember it]</span>
-- **Confirm Password:** <span style='color:#33ECFF'>[Repeat the previous password]</span>
-- **Permission Groups:** <span style='color:#33ECFF'>controller-operators</span>
+- **Username:** <span style='color:#479608'>controller-op</span>
+- **Email:** <span style='color:#479608'>[Enter your own]</span>
+- **Password:** <span style='color:#479608'>[Pick a strong password and remember it]</span>
+- **Confirm Password:** <span style='color:#479608'>[Repeat the previous password]</span>
+- **Permission Groups:** <span style='color:#479608'>controller-operators</span>
 
 Then click on **Save**.
 
@@ -100,7 +100,7 @@ Notification message
 
 ## 3. Verification: RBAC on the Controller
  
-### 3.1. Log out and log back in as new RBACK User (controller-op)
+### 3.1. Log out and log back in as new RBAC User (controller-op)
 
 - Go to your personal POD portal and click on the URL of the **Controller**.
 
@@ -135,14 +135,13 @@ Navigate to **Controller > USEFUL TOOLS > Create a VPC** and click `"+ Add New"`
 
 Create a new VPC as follows (make sure that **_Aviatrix Transit VPC_** is not selected).
 
-- **Cloud Type:** <span style='color:#33ECFF'>AWS</span>
-- **Account Name:** <span style='color:#33ECFF'>[your AWS account name will be auto-populated]</span>
-- **VPC Name:** <span style='color:#33ECFF'>rbac-lab-test</span>
-- **VPC Region:** <span style='color:#33ECFF'>us-east-1</span>
-- **VPC CIDR:** <span style='color:#33ECFF'>10.0.150.0/24</span>
-- **Advanced:** <span style='color:#33ECFF'>unchecked</span>
-- **Aviatrix Transit VPC:** <span style='color:#33ECFF'>**unchecked**</span>
-- **Aviatrix FireNet VPC:** <span style='color:#33ECFF'>unchecked</span>
+- **Cloud Type:** <span style='color:#479608'>AWS</span>
+- **Account Name:** <span style='color:#479608'>[your AWS account name will be auto-populated]</span>
+- **VPC Name:** <span style='color:#479608'>rbac-lab-test</span>
+- **VPC Region:** <span style='color:#479608'>us-east-1</span>
+- **Advanced:** <span style='color:#479608'>unchecked</span>
+- **Aviatrix Transit VPC:** <span style='color:#479608'>**unchecked**</span>
+- **Aviatrix FireNet VPC:** <span style='color:#479608'>unchecked</span>
 
 ```{figure} images/lab4-createvpc.png
 ---

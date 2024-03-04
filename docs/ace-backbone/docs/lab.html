@@ -351,9 +351,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-plane-verification">5 - Data Plane Verification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">6 - Troubleshooting</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-paths">6.1 - Available Paths</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visually-from-the-dynamic-topology-map">6.1.1 Visually from the dynamic topology map <br/></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnostics-appiq-flightpath">6.1.2 <strong>Diagnostics &gt; AppIQ &gt; FlightPath</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#latency-monitor">6.1.3 Latency Monitor</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnostics-appiq-flightpath">6.1.1 <strong>Diagnostics &gt; AppIQ &gt; FlightPath</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#latency-monitor">6.1.2 Latency Monitor</a></li>
 </ul>
 </li>
 </ul>
@@ -374,7 +373,7 @@ document.write(`
 <h1>Lab - Cloud Backbone and Hybrid Connectivity<a class="headerlink" href="#lab-cloud-backbone-and-hybrid-connectivity" title="Link to this heading">#</a></h1>
 <section id="initial-topology">
 <h2>1 - Initial Topology<a class="headerlink" href="#initial-topology" title="Link to this heading">#</a></h2>
-<p>This is a current topology of a multicloud enterprise that has Data Center in <strong>US-East-1</strong> and utilizes Equinix fabric as a Co-location facility in <strong>US-West-1</strong> and <strong>EU</strong> region.</p>
+<p>This is the current topology of a multicloud enterprise that has Data Center in <strong>US-East-1</strong> and utilizes Equinix fabric as a Co-location facility in <strong>US-West-1</strong> and <strong>EU</strong> region.</p>
 <p>MPLS is heavily used for any East-West traffic between these regions across multicloud environment.</p>
 <figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/cbhc-origtopology.jpeg"><img alt="../_images/cbhc-origtopology.jpeg" src="../_images/cbhc-origtopology.jpeg" style="height: 400px;" /></a>
@@ -384,10 +383,7 @@ document.write(`
 </figure>
 <section id="quick-knowledge-quiz">
 <h3>1.1 - Quick Knowledge Quiz<a class="headerlink" href="#quick-knowledge-quiz" title="Link to this heading">#</a></h3>
-<p>Q. which native cloud services providers resources are used to onboard on-premise resources?</p>
-<p>AWS -</p>
-<p>Azure -</p>
-<p>GCP -</p>
+<p><span style='color:#479608'>Q1.</span> Which native cloud services providers resources are used to onboard on-premise resources?</p>
 </section>
 </section>
 <section id="dynamic-topology">
@@ -418,8 +414,8 @@ document.write(`
 </figure>
 <section id="id1">
 <h3>2.1 - Quick Knowledge Quiz<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Q2. Where is the Aviatrix Edge deployed?</p>
-<p>Q3. To which Aviatrix cloud resources Aviatrix Edge is associated with?</p>
+<p><span style='color:#479608'>Q2.</span> Where is the Aviatrix Edge deployed?</p>
+<p><span style='color:#479608'>Q3.</span> To which Aviatrix cloud resources Aviatrix Edge is associated with?</p>
 </section>
 </section>
 <section id="networking-security-infrastructure">
@@ -466,8 +462,8 @@ document.write(`
 </section>
 <section id="id2">
 <h3>3.4 - Quick Knowledge Quiz<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>Q4. How AWS, Azure and GCP transits are peered with each other?</p>
-<p>Q5. Was Aviatrix Cloud Backbone established using Standard or High Performance Encryption?</p>
+<p><span style='color:#479608'>Q4.</span> How AWS, Azure and GCP transits are peered with each other?</p>
+<p><span style='color:#479608'>Q5.</span> Was Aviatrix Cloud Backbone established using Standard or High Performance Encryption?</p>
 </section>
 </section>
 <section id="traffic-routing">
@@ -489,13 +485,13 @@ document.write(`
 <p>Verify Backbone components are receiving the routes across Multicloud environment including Equinix.</p>
 <section id="id3">
 <h3>4.1 - Quick Knowledge Quiz<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>Q6. What routes GCP Transit GW is receiving from the Equinix Fabric?</p>
+<p><span style='color:#479608'>Q6.</span> What routes GCP Transit GW is receiving from the Equinix Fabric?</p>
 </section>
 </section>
 <section id="data-plane-verification">
 <h2>5 - Data Plane Verification<a class="headerlink" href="#data-plane-verification" title="Link to this heading">#</a></h2>
-<p>Since this is a brownfield environment where this customer just stared using  Aviatrix Cloud Backbone for East-West communication and don’t have Aviatrix Spoke Gateways in any application VPCS/VNETS/VCNS, you won’t be able to find the application EC2/VM on the dynamic topology map.</p>
-<p>To find the application EC2/VM public IP go to:</p>
+<p>Since this is a brownfield environment where this customer just started using  Aviatrix Cloud Backbone for East-West communication and don’t have Aviatrix Spoke Gateways in any application VPCS/VNETS/VCNS, you won’t be able to find the application EC2/VM on the dynamic topology map.</p>
+<p>To find the application EC2/VM <ins>Public IP address</ins>, go to:</p>
 <p><strong>Cloud Assets &gt; Virtual Machines</strong></p>
 <figure class="align-center" id="id14">
 <img alt="../_images/vm.png" src="../_images/vm.png" />
@@ -503,11 +499,15 @@ document.write(`
 <p><span class="caption-number">Fig. 11 </span><span class="caption-text">Virtual Machines</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>SSH from your laptop to AWS EC2 instance using terminal:</p>
-<p>ssh student&#64;aws.pod#.aviatrixlab.com</p>
+<p>SSH from your laptop to the instance <strong><em>aws-instance</em></strong>, using your favourite SSH client:</p>
+<p>Alternatively, you can use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>student@aws.pod#.aviatrixlab.com
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>pod# and password will be provided at the time of lab.</p>
+<p><ins>Replace the <strong>#</strong> symbol with your POD number!</ins></p>
 </div>
 <p>Ping GCP VM’s private IP from the AWS instance to test the backbone:</p>
 <figure class="align-center" id="id15">
@@ -526,20 +526,16 @@ document.write(`
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Browser Verification</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p><span style='color:#479608'>Q7.</span> For Data Plane Verification, how to find the public and private IP address of Instances deployed in CSP’s?</p>
 </section>
 <section id="troubleshooting">
 <h2>6 - Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
 <section id="available-paths">
 <h3>6.1 - Available Paths<a class="headerlink" href="#available-paths" title="Link to this heading">#</a></h3>
 <p>Verify how many paths are available for an application to communicate between AWS and GCP, which one is the best path and why?</p>
-<section id="visually-from-the-dynamic-topology-map">
-<h4>6.1.1 Visually from the dynamic topology map <br/><a class="headerlink" href="#visually-from-the-dynamic-topology-map" title="Link to this heading">#</a></h4>
-<p>Path1 - <br/>
-Path2 - <br/>
-Path3 -</p>
-</section>
+<p><span style='color:#479608'>Q8.</span> Visually from the dynamic topology map in Copilot, verify how many paths are available for an application to communicate between AWS and GCP?</p>
 <section id="diagnostics-appiq-flightpath">
-<h4>6.1.2 <strong>Diagnostics &gt; AppIQ &gt; FlightPath</strong><a class="headerlink" href="#diagnostics-appiq-flightpath" title="Link to this heading">#</a></h4>
+<h4>6.1.1 <strong>Diagnostics &gt; AppIQ &gt; FlightPath</strong><a class="headerlink" href="#diagnostics-appiq-flightpath" title="Link to this heading">#</a></h4>
 <figure class="align-center" id="id17">
 <img alt="../_images/fp1.png" src="../_images/fp1.png" />
 <figcaption>
@@ -554,14 +550,15 @@ Path3 -</p>
 </figure>
 </section>
 <section id="latency-monitor">
-<h4>6.1.3 Latency Monitor<a class="headerlink" href="#latency-monitor" title="Link to this heading">#</a></h4>
-<p><strong>Monitor &gt; Traffic &amp; Latencies &gt;Gateways</strong></p>
+<h4>6.1.2 Latency Monitor<a class="headerlink" href="#latency-monitor" title="Link to this heading">#</a></h4>
+<p><strong>Monitor &gt; Traffic &amp; Latencies &gt; Gateways</strong></p>
 <figure class="align-center" id="id19">
 <img alt="../_images/latency.png" src="../_images/latency.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Latency Monitor</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p><span style='color:#479608'>Q9.</span> Which Path is best for an application to communicate between AWS and GCP?</p>
 </section>
 </section>
 </section>
@@ -657,9 +654,8 @@ Path3 -</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-plane-verification">5 - Data Plane Verification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">6 - Troubleshooting</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-paths">6.1 - Available Paths</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visually-from-the-dynamic-topology-map">6.1.1 Visually from the dynamic topology map <br/></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnostics-appiq-flightpath">6.1.2 <strong>Diagnostics &gt; AppIQ &gt; FlightPath</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#latency-monitor">6.1.3 Latency Monitor</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnostics-appiq-flightpath">6.1.1 <strong>Diagnostics &gt; AppIQ &gt; FlightPath</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#latency-monitor">6.1.2 Latency Monitor</a></li>
 </ul>
 </li>
 </ul>

@@ -388,11 +388,11 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and then c
 
 Ensure these parameters are entered in the pop-up window `"Create WebGroup"`:
 
-- **Name**: <span style='color:#33ECFF'>ubuntu-update</span>
-- **Type**: <span style='color:#33ECFF'>Domains</span>
-- **Domains/URLs**: <span style='color:#33ECFF'>*.ubuntu.com</span>
-- **Domains/URLs**: <span style='color:#33ECFF'> *.archive.ubuntu.com</span>
-- **Domains/URLs**: <span style='color:#33ECFF'> *.canonical.com</span>
+- **Name**: <span style='color:#479608'>ubuntu-update</span>
+- **Type**: <span style='color:#479608'>Domains</span>
+- **Domains/URLs**: <span style='color:#479608'> *.ubuntu.com</span>
+- **Domains/URLs**: <span style='color:#479608'> *.archive.ubuntu.com</span>
+- **Domains/URLs**: <span style='color:#479608'> *.canonical.com</span>
 
 then click on **Save**.
 

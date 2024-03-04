@@ -2,7 +2,7 @@
 
 ## 1 - Initial Topology
 
-This is a current topology of a multicloud enterprise that has Data Center in **US-East-1** and utilizes Equinix fabric as a Co-location facility in **US-West-1** and **EU** region.
+This is the current topology of a multicloud enterprise that has Data Center in **US-East-1** and utilizes Equinix fabric as a Co-location facility in **US-West-1** and **EU** region.
 
 MPLS is heavily used for any East-West traffic between these regions across multicloud environment.
 
@@ -16,13 +16,7 @@ Initial Topology
 
 ### 1.1 - Quick Knowledge Quiz
 
-Q. which native cloud services providers resources are used to onboard on-premise resources?
-
-AWS -
-
-Azure -
-
-GCP -
+<span style='color:#479608'>Q1.</span> Which native cloud services providers resources are used to onboard on-premise resources?
 
 ## 2 - Dynamic Topology
 
@@ -56,9 +50,9 @@ Cloud Backbone & Hybrid Connectivity Topology
 
 ### 2.1 - Quick Knowledge Quiz
 
-Q2. Where is the Aviatrix Edge deployed?
+<span style='color:#479608'>Q2.</span> Where is the Aviatrix Edge deployed?
 
-Q3. To which Aviatrix cloud resources Aviatrix Edge is associated with?
+<span style='color:#479608'>Q3.</span> To which Aviatrix cloud resources Aviatrix Edge is associated with?
 
 ## 3 - Networking & Security Infrastructure
 
@@ -112,9 +106,9 @@ Connectivity with Native CSP Constructs
 
 ### 3.4 - Quick Knowledge Quiz
 
-Q4. How AWS, Azure and GCP transits are peered with each other?
+<span style='color:#479608'>Q4.</span> How AWS, Azure and GCP transits are peered with each other?
 
-Q5. Was Aviatrix Cloud Backbone established using Standard or High Performance Encryption?
+<span style='color:#479608'>Q5.</span> Was Aviatrix Cloud Backbone established using Standard or High Performance Encryption?
 
 ## 4 - Traffic Routing
 
@@ -140,13 +134,13 @@ Verify Backbone components are receiving the routes across Multicloud environmen
 
 ### 4.1 - Quick Knowledge Quiz
 
-Q6. What routes GCP Transit GW is receiving from the Equinix Fabric?
+<span style='color:#479608'>Q6.</span> What routes GCP Transit GW is receiving from the Equinix Fabric?
 
 ## 5 - Data Plane Verification
 
-Since this is a brownfield environment where this customer just stared using  Aviatrix Cloud Backbone for East-West communication and don't have Aviatrix Spoke Gateways in any application VPCS/VNETS/VCNS, you won't be able to find the application EC2/VM on the dynamic topology map. 
+Since this is a brownfield environment where this customer just started using  Aviatrix Cloud Backbone for East-West communication and don't have Aviatrix Spoke Gateways in any application VPCS/VNETS/VCNS, you won't be able to find the application EC2/VM on the dynamic topology map. 
 
-To find the application EC2/VM public IP go to:
+To find the application EC2/VM <ins>Public IP address</ins>, go to:
 
 **Cloud Assets > Virtual Machines**
 
@@ -157,12 +151,18 @@ align: center
 Virtual Machines
 ```
 
-SSH from your laptop to AWS EC2 instance using terminal:
+SSH from your laptop to the instance **_aws-instance_**, using your favourite SSH client:
 
+Alternatively, you can use the following command: 
+
+```bash
 ssh student@aws.pod#.aviatrixlab.com
+```
 
 ```{note}
 pod# and password will be provided at the time of lab.
+
+<ins>Replace the **#** symbol with your POD number!</ins>
 ```
 
 Ping GCP VM's private IP from the AWS instance to test the backbone:
@@ -189,19 +189,17 @@ align: center
 Browser Verification
 ```
 
+<span style='color:#479608'>Q7.</span> For Data Plane Verification, how to find the public and private IP address of Instances deployed in CSP's?
+
 ## 6 - Troubleshooting
 
 ### 6.1 - Available Paths
 
 Verify how many paths are available for an application to communicate between AWS and GCP, which one is the best path and why?
 
-#### 6.1.1 Visually from the dynamic topology map <br/>
+<span style='color:#479608'>Q8.</span> Visually from the dynamic topology map in Copilot, verify how many paths are available for an application to communicate between AWS and GCP?
 
-Path1 - <br/>
-Path2 - <br/>
-Path3 -
-
-#### 6.1.2 **Diagnostics > AppIQ > FlightPath**
+#### 6.1.1 **Diagnostics > AppIQ > FlightPath**
 
 ```{figure} images/fp1.png
 ---
@@ -217,9 +215,9 @@ align: center
 FlightPath
 ```
 
-#### 6.1.3 Latency Monitor
+#### 6.1.2 Latency Monitor
 
-**Monitor > Traffic & Latencies >Gateways**
+**Monitor > Traffic & Latencies > Gateways**
 
 ```{figure} images/latency.png
 ---
@@ -227,6 +225,8 @@ align: center
 ---
 Latency Monitor
 ```
+
+<span style='color:#479608'>Q9.</span> Which Path is best for an application to communicate between AWS and GCP?
 
 ## 7 - Conclusion
 

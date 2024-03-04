@@ -4,7 +4,7 @@
 
 ACE’s OnPrem Data Center has recently hired a new network engineer.
 
-You have been engaged for activating the <span style='color:#00FFFF'>**Route Approval**</span> feature in order to protect the MCNA from unauthorized advertisements.
+You have been engaged for activating the <span style='color:orange'>**“Route Approval”**</span> feature in order to protect the MCNA from unauthorized advertisements.
 
 ```{figure} images/lab6-topology.png
 ---
@@ -31,7 +31,7 @@ align: center
 Route Approval
 ```
 
-Afterwards, inform the trainer that you have activated the feature with the tool <span style='color:#FFFF00'>**“Raise Hand”**</span> on Zoom, as depicted below, and type the number of your POD in the Zoom chat!
+Afterwards, inform the trainer that you have activated the feature with the tool <span style='color:orange'>**“Raise Hand”**</span> on Zoom, as depicted below, and type the number of your POD in the Zoom chat!
 
 ```{figure} images/lab6-raise.png
 ---
@@ -46,8 +46,6 @@ align: center
 ---
 Communicate your POD number
 ```
-
-<ins>Please wait for the trainer to inform you about the injection of the failure!</ins>
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW **> Approval**
 
@@ -144,7 +142,9 @@ Retrieving the Public IP
 ```
 
 ```{tip}
-For **Windows OS** you can use the command `"nslookup"`.
+For **Windows OS** you can use the command `"nslookup"`:
+
+**nslookup partner-csr-public.pod#.aviatrixlab.com**
 
 ```{figure} images/lab6-nslookup.png
 ---
