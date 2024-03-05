@@ -21,7 +21,7 @@ Portal
 ```
 
 ```{important}
-After logged in, proceed on clicking on **"ACE Cloud Backbone and Hybrid Connectivity Quiz"**.
+After logged in, proceed clicking on **"ACE Cloud Backbone and Hybrid Connectivity Quiz"**.
 
 After submitted your quiz, click on **Next** and do not forget to complete the quick survey!
 ```
