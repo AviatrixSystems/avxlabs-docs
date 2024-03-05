@@ -213,7 +213,7 @@ _Fig. Add network domains_
 
 After adding the network domains and associations, you should see the following in Copilot:
 
-![Screenshot](images/lab2-network-domains-result.png)  
+![Screenshot](images/lab2-first-network-domains-result.png)  
 _Fig. Network domains result_
 
 ## Lab 2.8 - Check office connectivity
