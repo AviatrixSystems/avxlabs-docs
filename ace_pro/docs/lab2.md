@@ -120,11 +120,12 @@ Dashboard with existing GWs
 ---
 align: center
 ---
-Transit and Spoke clusters
+Transit, Spoke & Edge
 ```
 
-- **2x** <span style='color:orange'>Spoke GW Clusters</span>
 - **3x** <span style='color:green'>Transit GW Clusters</span>
+- **2x** <span style='color:orange'>Spoke GW Clusters</span>
+- **1x** <span style='color:violet'>Edge GW Cluster</span>
 
 If you go to **CoPilot > Cloud Fabric > Gateways > Overview (default tab)**, you will notice that the number of Transit Gateways is set to **three** indeed, whereas the number of Spoke Gateways is set to **two**.
 
@@ -137,7 +138,9 @@ These are Clusters of GWs
 
 This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to the number of **_clusters_**, per each type of gateway.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and expand the three drop-down lists. You can find out that there are a total of **six** Transit Gateways (Public IPs may differ):
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and expand the three drop-down lists. 
+
+You can find out that there are a total of **six** Transit Gateways (Public IPs may differ):
 
 ```{figure} images/lab2-clustertransit.png
 ---
@@ -527,7 +530,7 @@ At this point, after **attaching** Spoke Gateways to their respective Transit Ga
 height: 400px
 align: center
 ---
-New state of the topology
+New state of the Dynamic Topology
 ```
 
 ```{note}
@@ -570,7 +573,7 @@ Solid line = HPE IPSec tunnel
 ---
 align: center
 ---
-Expanded Topology
+Legend
 ```
 
 ## 4.6. Multicloud Transit Peerings

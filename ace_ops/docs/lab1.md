@@ -251,7 +251,7 @@ align: center
 Network Domain (aka VRF)
 ```
 
-* Use <span style='color:#FF0000'>**FlowIQ**</span> from the POD Portal, <ins> for inspecting the NetFlow Data.
+* Use the <span style='color:#FF0000'>**FlowIQ**</span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.
 
 ```{tip}
 Go to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based, for instance, on the `"Destination IP Address"` **172.16.211.100** (i.e. BU1 Analytics).

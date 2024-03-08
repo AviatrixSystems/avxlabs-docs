@@ -149,7 +149,7 @@ align: center
 No Data Found
 ```
 
-You will notice the Message `"No Data Found"`. You have successfully activated your egress control without disrupting anything that is sitting on the private subnet, nevertheless, if you want to get the NetFlow information, you need to apply a `Distributed Cloud Firewall RULE`, such that you can start assess the behaviour of the Private Subnet and get a good understanding of what domains have been reached out from the private subnet.
+You will notice the Message `"No Data Found"`. You have successfully activated your egress control without disrupting anything that is sitting on the private subnet, nevertheless, if you want to get the NetFlow information, you need to apply a `Distributed Cloud Firewall RULE`, such that you can start evaluate the behaviour of the Private Subnet and get a good understanding of what domains have been reached out from the private subnet.
 
 ### 4.4 Enable DCF
 
@@ -272,13 +272,13 @@ You will get a granular Layer 7 visibility that allows you to get a good underst
 
 Let's move towards a posture where only the allowed egress domains are in place.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and click on `"+ WebGroups"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and click on `"+ WebGroup"` button.
 
 ```{figure} images/lab6-webgroup.png
 ---
 align: center
 ---
-WebGroups
++WebGroup
 ```
 
 Create a **_WebGroup_** with the following parameters:
