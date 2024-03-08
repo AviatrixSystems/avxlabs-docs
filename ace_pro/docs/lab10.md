@@ -277,7 +277,7 @@ align: center
 Create Rule
 ```
 
-At this point, there would be one uncommitted rule at the very top, as depicted below.
+At this point, there should be just one uncommitted rule at the very top, as depicted below.
 
 ```{figure} images/lab10-rule2.png
 ---
@@ -708,7 +708,7 @@ The destination route is **not** inside the routing table, due to the fact that 
 
 - Enabling `"Multi-Tier Transit"`
 
-Let’s enable this time the MTT feature!
+Let’s enable this time the **MTT** feature!
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-1-transit_**.
 
@@ -730,11 +730,15 @@ Settings
 
 Repeat the previous action for the remaning Transit Gateways:
 
-- **aws-us-east-2-transit**: <span style='color:#479608'>ASN **64513**</span>
+
 - **gcp-us-central1-transit**: <span style='color:#479608'>ASN **64514**</span>
 - **azure-west-us-transit**: <span style='color:#479608'>ASN **64515**</span>
 
-Go to C**oPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
+```{note}
+The **aws-us-east-2-transit** was already configured with its ASN in the Lab 8!
+```
+
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
 
 ```{figure} images/lab10-mtt3.png
 ---

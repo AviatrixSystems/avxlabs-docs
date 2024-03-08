@@ -163,7 +163,7 @@ Successfully created
 
 Navigate to **Controller > MULTI-CLOUD TRANSIT > Segmentation** and scroll down to **Step 3, Add / Modify Connection Policy**
 
-Attempt to undo your work in the Network Segmentation Lab, by disconnecting the <span style='color:lightgreen'>Green</span> security domain from the <span style='color:lightblue'>Blue</span> one.
+Attempt to undo your work in the Network Segmentation Lab, by disconnecting the <span style='color:#479608'>Green</span> security domain from the <span style='color:lightblue'>Blue</span> one.
 
 Select the Green domain first and then click on the **DEL** button.
 
