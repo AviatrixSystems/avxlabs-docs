@@ -1,6 +1,6 @@
 # avxlabs-docs
 
-Repository for lab guides for avxlabs-hosted classes including ACE, Flightschool, and Build workshops. These guides are written in [markdown](https://www.markdownguide.org/) and formatted in [jupyter{book}](https://jupyterbook.org/en/stable/intro.html). `Jupyter{book}` runs with a modified version of markdown called [MyST](https://jupyterbook.org/en/stable/content/myst.html) - markdown with added features.
+Repository for lab guides for avxlabs-hosted classes including ACE, Flight School, and Build workshops. These guides are written in [markdown](https://www.markdownguide.org/) and formatted in [jupyter{book}](https://jupyterbook.org/en/stable/intro.html). `Jupyter{book}` runs with a modified version of markdown called [MyST](https://jupyterbook.org/en/stable/content/myst.html) - markdown with added features.
 
 [MyST Cheatsheet](https://jupyterbook.org/en/stable/reference/cheatsheet.html)
 

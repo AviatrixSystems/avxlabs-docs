@@ -20,6 +20,6 @@ Lab guides for `aviatrixlabs`, hosted at [https://docs.aviatrixlab.com](https://
 ![SAP](_logos/ace_sap_banner.png)
 ![Design Expert](_logos/ace_de_banner.png)
 
-## Flightschool
+## Flight School
 
 [![Flightschool](_logos/flightschool.png)](https://docs.aviatrixlab.com/flightschool)

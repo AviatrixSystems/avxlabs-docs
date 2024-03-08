@@ -73,7 +73,7 @@ As you can see, there is a VNET already deployed, but we only have one gateway d
 We are going to set up our environment to allow interaction with the controller through Terraform.
 If you don’t have Terraform set up on your machine, download and install it [here](https://learn.hashicorp.com/tutorials/terraform/install-cli). We’re assuming you’re using Terraform 1.1.0 or newer for this session.
 
-Next create a new folder on your pc/mac to store the Terraform project. I suggest “FlightSchool_IaC”, but your free to choose.
+Next create a new folder on your pc/mac to store the Terraform project. I suggest “Flight_School_IaC”, but your free to choose.
 
 In our Terraform project, we’re going to define which providers Terraform needs to download on initialization.
 Create a file called versions.tf and add the following content:
