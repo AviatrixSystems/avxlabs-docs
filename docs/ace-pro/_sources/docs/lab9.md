@@ -220,7 +220,7 @@ align: center
 Filter
 ```
 
-Afterwards, click on **VIEW** under the column Details.
+Afterwards, click on **VIEW** on the right-hand side of the Timestamp.
 
 ```{note}
 The IP shown in these screenshots  might not be deemed a threat when you read this. Please use the malicious IP provided by the instructor.

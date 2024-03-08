@@ -1,6 +1,6 @@
 # Summary  
 
-Congratulations, you have completed Aviatrix FlightSchool!  Throughout the labs, we built connectivity in a single cloud, across multiple clouds, and did not have to touch a single Cloud Provider route table entry.  
+Congratulations, you have completed Aviatrix Flight School!  Throughout the labs, we built connectivity in a single cloud, across multiple clouds, and did not have to touch a single Cloud Provider route table entry.  
 
 We also added route domains and connection policies to segment our network, added Internet Egress security and have visibility into all traffic going over the AWS, Azure and GCP cloud networks.  
 

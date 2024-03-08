@@ -114,7 +114,7 @@ When you begin this lab, you should have **five** Gateway Clusters in your pod:
 align: center
 ---
 Dashboard with existing GWs
-```
+```   
 
 ```{figure} images/lab2-clustergw.png
 ---
