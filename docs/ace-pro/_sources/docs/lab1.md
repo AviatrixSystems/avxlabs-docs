@@ -86,90 +86,7 @@ VPC Functions:
 **2) Transit + FireNet** 
 ```
 
-### 2.2. Verify from Azure Portal
 
-Log into the <a href="https://portal.azure.com/#home" target="_blank">Azure portal</a>. Refer to your pod info for login information.
-
-```{figure} images/lab1-newpic.png
----
-align: center
----
-Azure credentials
-```
-
-```{important}
-If you are already signed in with another account, kindly sign out!
-```
-
-```{figure} images/lab1-signin.png
----
-align: center
----
-Signing in
-```
-
-Once you are signed in, navigate to `Virtual Networks`, from the navigation panel on the left-hand side.
-
-```{figure} images/lab1-virtualnetwork.png
----
-align: center
----
-Azure Console
-```
-
-Click on the `"Subscription equals..."` field, then click on the `"All"` button and then click on **Apply**.
-
-```{figure} images/lab1-subscriptionequal.png
----
-align: center
----
-Subscription equals...
-```
-
-```{figure} images/lab1-newpic2.png
----
-align: center
----
-All Subscriptions
-```
-
-Now use the Filter field beside the "Subscription equals" field and be sure to filter your `Subscription`, <ins>by your pod number</ins>, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
-
-```{figure} images/lab1-virtualnetwork3.png
----
-align: center
----
-VNets
-```
-
-Once you get visibility of the Subscription associated to your POD number, you will be able to find the VNets you just created. 
-
-Explore for instance, the **_azure-us-central-spoke1_** VNet and from there navigate to `Subnets`. Explore also all the constructs that were created in Central US.
-
-```{figure} images/lab1-virtualnetwork4.png
----
-align: center
----
-Azure subnets
-```
-
-From the Portal, navigate to **Home > Route tables**. Be sure once again to filter your `Subscription`, <ins>by your pod number</ins>, for example for Pod 140 filter by `csp_azure_shared_ace_labs_140`.
-
-```{figure} images/lab1-newpic3.png
----
-align: center
----
-Home
-```
-
-Explore the route tables.
-
-```{figure} images/lab1-virtualnetwork5.png
----
-align: center
----
-Route tables
-```
 
 ## 3. AWS VPC
 
@@ -235,7 +152,7 @@ Verification
 
 ### 3.2. Verify from AWS Console
 
-Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for **Pod 150**).
+Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for **Pod 2**).
 
 ```{figure} images/lab1-newaws.png
 ---
@@ -333,16 +250,7 @@ Verification
 ```
 
 ```{tip}
-Expand the GCP VPC if you want to see the subnet _"gcp-us-west2-spoke1-sub1"_
-```
-
-```{caution}
-Kindly note that GCP console access is not provided!
-```{figure} images/lab1-newpic9.png
----
-align: center
----
-Only AWS and Azure
+Expand the **GCP VPC** if you want to see the subnet _"gcp-us-west2-spoke1-sub1"_
 ```
 
 ```{note}

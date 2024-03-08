@@ -1,0 +1,935 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab C &#8212; Aviatrix Flight School - IaC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/labc';</script>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab D" href="labd.html" />
+    <link rel="prev" title="Lab B" href="labb.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="Aviatrix Flight School - IaC - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="Aviatrix Flight School - IaC - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to Aviatrix IaC Flight School!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="laba.html">Lab A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labb.html">Lab B</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labd.html">Lab D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labe.html">Lab E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Acronyms &amp; Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/labc.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab C</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vpcs-vnets-and-deploy-aviatrix-gateways">Create VPCs/VNets and deploy Aviatrix gateways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-c-1-deploy-the-aws-transit-vpc-and-transit-gateway">Exercise C.1 – Deploy the AWS transit VPC and Transit Gateway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-c-2-redeploy-the-aws-transit-with-the-mc-transit-module">Exercise C.2 – Redeploy the AWS transit with the mc-transit module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-c-3-deploy-gcp-transit">Exercise C.3 – Deploy GCP transit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-c-4-peering-the-transits">Exercise C.4 – Peering the transits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-c-5-deploy-and-connect-the-spokes">Exercise C.5 Deploy and connect the spokes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-c">
+<h1>Lab C<a class="headerlink" href="#lab-c" title="Link to this heading">#</a></h1>
+<section id="create-vpcs-vnets-and-deploy-aviatrix-gateways">
+<h2>Create VPCs/VNets and deploy Aviatrix gateways<a class="headerlink" href="#create-vpcs-vnets-and-deploy-aviatrix-gateways" title="Link to this heading">#</a></h2>
+</section>
+<section id="exercise-c-1-deploy-the-aws-transit-vpc-and-transit-gateway">
+<h2>Exercise C.1 – Deploy the AWS transit VPC and Transit Gateway<a class="headerlink" href="#exercise-c-1-deploy-the-aws-transit-vpc-and-transit-gateway" title="Link to this heading">#</a></h2>
+<p>In this exercise we will use the individual resources in our Terraform provider to <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_vpc">create a VPC</a> as well as an <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_transit_gateway">Aviatrix transit gateway</a>. Use the settings below and use the resource documentation to create the resources in the “<a class="reference external" href="http://main.tf">main.tf</a>” file.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Argument</p></td>
+<td><p>Value</p></td>
+</tr>
+<tr class="row-odd"><td><p>Name</p></td>
+<td><p>aws-transit</p></td>
+</tr>
+<tr class="row-even"><td><p>Region</p></td>
+<td><p>eu-central-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>CIDR</p></td>
+<td><p>10.<code class="docutils literal notranslate"><span class="pre">[pod#]</span></code>.40.0/23</p></td>
+</tr>
+<tr class="row-even"><td><p>Account</p></td>
+<td><p>aws-account</p></td>
+</tr>
+<tr class="row-odd"><td><p>Firenet VPC</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>Instance Size</p></td>
+<td><p>t2.micro</p></td>
+</tr>
+<tr class="row-odd"><td><p>Connected transit</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<p>Spoiler code: (make sure to adjust the CIDR for the VPC to your lab CIDR):</p>
+<hr class="docutils" />
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;aws_vpc&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">cloud_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="na">account_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
+<span class="w">    </span><span class="na">region</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eu-central-1&quot;</span>
+<span class="w">    </span><span class="na">name</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-transit&quot;</span>
+<span class="w">    </span><span class="na">cidr</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.50.40.0/23&quot;</span>
+<span class="w">    </span><span class="na">aviatrix_firenet_vpc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway&quot;</span><span class="w"> </span><span class="nv">&quot;aws_transit_gateway&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">cloud_type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="na">account_name</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
+<span class="w">    </span><span class="na">gw_name</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-transit&quot;</span>
+<span class="w">    </span><span class="na">vpc_id</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_vpc.aws_vpc.vpc_id</span>
+<span class="w">    </span><span class="na">vpc_reg</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eu-central-1&quot;</span>
+<span class="w">    </span><span class="na">gw_size</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
+<span class="w">    </span><span class="na">subnet</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_vpc.aws_vpc.public_subnets[0].cidr</span>
+<span class="w">    </span><span class="na">connected_transit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<hr class="docutils" />
+<p>Next, run a <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span></code> to execute the changes. Review the plan and then type yes to confirm and execute the changes.</p>
+<p>As you can see, we can deploy this building block through the Terraform resources of the Aviatrix provider. However, we still had to link some things together, figure out specific details, like cloud_type and when deploying a more advanced transit with HA or Firenet, we have a whole lot more things to do. This is why for these common patterns, we have of the shelf building blocks, called modules. For the next exercise we will use those.</p>
+</section>
+<section id="exercise-c-2-redeploy-the-aws-transit-with-the-mc-transit-module">
+<h2>Exercise C.2 – Redeploy the AWS transit with the mc-transit module<a class="headerlink" href="#exercise-c-2-redeploy-the-aws-transit-with-the-mc-transit-module" title="Link to this heading">#</a></h2>
+<p>In order to remove the transit we’ve build in exercise B.1, delete the aviatrix_vpc and aviatrix_transit_gateway resources from the “<a class="reference external" href="http://main.tf">main.tf</a>” file, and run a “terraform apply” again. You should see in the plan that everything gets deleted and confirm to execute this changes.</p>
+<p>Next, have a look at the <a class="reference external" href="https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit/aviatrix/latest/examples/azure_ha">Aviatrix mc-transit module</a> on the Terraform Registry. Use this module (v2.3.0), with the examples provided, to achieve the same result as before. Make sure to deploy an HA cluster this time! Let the instance size be automatically determined by the module. As we are inserting this module, we need to execute a <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code> first, before we can apply. This allows Terraform to download the module.</p>
+<p>Spoiler code:</p>
+<hr class="docutils" />
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;aws_transit&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit/aviatrix&quot;</span>
+<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2.3.0&quot;</span>
+
+<span class="w">    </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-transit&quot;</span>
+<span class="w">    </span><span class="na">cloud</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws&quot;</span>
+<span class="w">    </span><span class="na">region</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eu-central-1&quot;</span>
+<span class="w">    </span><span class="na">cidr</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.50.40.0/23&quot;</span>
+<span class="w">    </span><span class="na">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<hr class="docutils" />
+<p>As you can see, that was quite easy. The modules are opinionated. Meaning they have certain settings that are considered best practice enabled by default. As such we didn’t have to do anything in addition to make HA work, nor did we have to manually add connected transit as an option. When using the modules, you will mostly get the desired result without having to provide a lot of optional arguments.</p>
+</section>
+<section id="exercise-c-3-deploy-gcp-transit">
+<h2>Exercise C.3 – Deploy GCP transit<a class="headerlink" href="#exercise-c-3-deploy-gcp-transit" title="Link to this heading">#</a></h2>
+<p>Use the information below to deploy the GCP transit in the same way. Make sure to execute <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code> again before you run <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span></code>.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Argument</p></td>
+<td><p>Value</p></td>
+</tr>
+<tr class="row-odd"><td><p>Name</p></td>
+<td><p>gcp-transit</p></td>
+</tr>
+<tr class="row-even"><td><p>Region</p></td>
+<td><p>asia-southeast1</p></td>
+</tr>
+<tr class="row-odd"><td><p>CIDR</p></td>
+<td><p>10.<code class="docutils literal notranslate"><span class="pre">[pod#]</span></code>.60.0/23</p></td>
+</tr>
+<tr class="row-even"><td><p>Account</p></td>
+<td><p>gcp-account</p></td>
+</tr>
+</tbody>
+</table>
+<p>Spoiler code:</p>
+<hr class="docutils" />
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;gcp_transit&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit/aviatrix&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2.3.0&quot;</span>
+
+<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-transit&quot;</span>
+<span class="w">  </span><span class="na">cloud</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp&quot;</span>
+<span class="w">  </span><span class="na">region</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;asia-southeast1&quot;</span>
+<span class="w">  </span><span class="na">cidr</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.50.60.0/23&quot;</span>
+<span class="w">  </span><span class="na">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-account&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<hr class="docutils" />
+<p>Isn’t the resemblance between the AWS and GCP deployment striking? Despite the fact that these clouds differ greatly, the modules and Aviatrix platform have made code reusability between cloud platforms a breeze.</p>
+</section>
+<section id="exercise-c-4-peering-the-transits">
+<h2>Exercise C.4 – Peering the transits<a class="headerlink" href="#exercise-c-4-peering-the-transits" title="Link to this heading">#</a></h2>
+<p>Right now, the transits are disconnected from each other as you can see in CoPilot. Let’s create our full-mesh peering between these 3 transits. Use the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_transit_gateway_peering">transit peering</a> resource to accomplish this. Check the transit module documentation to find the output for the transit gateway’s name. For the Azure transit, check the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_transit_gateway">documentation for the aviatrix_transit_gateway resource</a>, as that is how we imported it. After applying the change, check the topology view in CoPilot.</p>
+<p>If you’re having trouble, check the spoiler code:</p>
+<hr class="docutils" />
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway_peering&quot;</span><span class="w"> </span><span class="nv">&quot;aws_azure&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">transit_gateway_name1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.aws_transit.transit_gateway.gw_name</span>
+<span class="w">  </span><span class="na">transit_gateway_name2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_transit_gateway.azure_transit.gw_name</span>
+<span class="p">}</span>
+
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway_peering&quot;</span><span class="w"> </span><span class="nv">&quot;gcp_azure&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">transit_gateway_name1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.gcp_transit.transit_gateway.gw_name</span>
+<span class="w">  </span><span class="na">transit_gateway_name2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_transit_gateway.azure_transit.gw_name</span>
+<span class="p">}</span>
+
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway_peering&quot;</span><span class="w"> </span><span class="nv">&quot;aws_gcp&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">transit_gateway_name1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.aws_transit.transit_gateway.gw_name</span>
+<span class="w">  </span><span class="na">transit_gateway_name2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.gcp_transit.transit_gateway.gw_name</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<hr class="docutils" />
+<p>Now, with 3 transits, this is easy. However, each transit we add, requires us to add he previous amount of transit gateways in peerings, to achieve a full mesh. To make life easier for that use case, we have another module available. The <a class="reference external" href="https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest">mc-transit-peering module</a>. Delete the transit peerings we’ve just created and run <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span></code> again to remove them.</p>
+<p>Recreate the peerings with the <a class="reference external" href="https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest">peering module</a>.</p>
+<p>Spoiler code:</p>
+<hr class="docutils" />
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;transit_peering&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit-peering/aviatrix&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.8&quot;</span>
+
+<span class="w">  </span><span class="na">transit_gateways</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nv">module.aws_transit.transit_gateway.gw_name</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">module.gcp_transit.transit_gateway.gw_name</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">aviatrix_transit_gateway.azure_transit.gw_name</span><span class="p">,</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exercise-c-5-deploy-and-connect-the-spokes">
+<h2>Exercise C.5 Deploy and connect the spokes<a class="headerlink" href="#exercise-c-5-deploy-and-connect-the-spokes" title="Link to this heading">#</a></h2>
+<p>In this lab, we’re going to be deploying the spoke gateways in existing VPCs and VNETs, as is not uncommon in a real world scenario. In order to do so, we need to collect some information on these VPC’s (ID’s and subnets). As these VPC’s were created by the controller, we can use the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/data-sources/aviatrix_vpc">aviatrix_vpc data source</a> to query these attributes! Set up your data sources to gather all VPC details (aws-dev, aws-prod, azure-dev and gcp-dev).</p>
+<p>Spoiler code:</p>
+<hr class="docutils" />
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;aws_dev&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-dev&quot;</span>
+<span class="p">}</span>
+
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;aws_prod&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-prod&quot;</span>
+<span class="p">}</span>
+
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;azure_dev&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;azure-dev&quot;</span>
+<span class="p">}</span>
+
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;gcp_dev&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-dev&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<hr class="docutils" />
+<p>Now that we have all VPC details, we can deploy the spoke gateways. Deploy the spoke gateways using the <a class="reference external" href="https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-spoke/aviatrix/latest/examples/aws_existing_vpc_spoke">MC-Spoke module</a> v1.4.1 and the settings below (hint, look at the examples for how to use with existing VPC’s). Make sure to deploy a non-ha gateway (to save some time). Since we are bringing in new modules, make sure to execute a “terraform init” before you apply.</p>
+<p>Tip: look at your state file and find the VPC data sources. Look at what attributes you can leverage as inputs to configure the spoke module. The gw subnets we are using, are the first entry in public_subnets, except in GCP, where we just use the first entry of subnets.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Argument</strong></p></td>
+<td><p><strong>Value</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Name</p></td>
+<td><p>aws-dev</p></td>
+</tr>
+<tr class="row-even"><td><p>Region</p></td>
+<td><p>eu-central-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gw Subnet</p></td>
+<td><p>10.<code class="docutils literal notranslate"><span class="pre">[pod#]</span></code>.43.48/28</p></td>
+</tr>
+<tr class="row-even"><td><p>Account</p></td>
+<td><p>aws-account</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ha_gw</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>Transit GW</p></td>
+<td><p>aws-transit</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Argument</strong></p></td>
+<td><p><strong>Value</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Name</p></td>
+<td><p>aws-prod</p></td>
+</tr>
+<tr class="row-even"><td><p>Region</p></td>
+<td><p>eu-central-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gw Subnet</p></td>
+<td><p>10.<code class="docutils literal notranslate"><span class="pre">[pod#]</span></code>.42.48/28</p></td>
+</tr>
+<tr class="row-even"><td><p>Account</p></td>
+<td><p>aws-account</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ha_gw</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>Transit GW</p></td>
+<td><p>aws-transit</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Argument</strong></p></td>
+<td><p><strong>Value</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Name</p></td>
+<td><p>azure-dev</p></td>
+</tr>
+<tr class="row-even"><td><p>Region</p></td>
+<td><p>East US</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gw Subnet</p></td>
+<td><p>10.<code class="docutils literal notranslate"><span class="pre">[pod#]</span></code>.53.0/28</p></td>
+</tr>
+<tr class="row-even"><td><p>Account</p></td>
+<td><p>azure-account</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ha_gw</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>Transit GW</p></td>
+<td><p>azure-transit</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Argument</strong></p></td>
+<td><p><strong>Value</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Name</p></td>
+<td><p>gcp-dev</p></td>
+</tr>
+<tr class="row-even"><td><p>Region</p></td>
+<td><p>eu-central-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gw Subnet</p></td>
+<td><p>10.<code class="docutils literal notranslate"><span class="pre">[pod#]</span></code>.62.0/24</p></td>
+</tr>
+<tr class="row-even"><td><p>Account</p></td>
+<td><p>aws-account</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ha_gw</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>Transit GW</p></td>
+<td><p>gcp-transit</p></td>
+</tr>
+</tbody>
+</table>
+<p>Spoiler code:</p>
+<hr class="docutils" />
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;aws_dev&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.4.1&quot;</span>
+
+<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AWS&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-dev&quot;</span>
+<span class="w">  </span><span class="na">region</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.aws_dev.region</span>
+<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
+<span class="w">  </span><span class="na">ha_gw</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<span class="w">  </span><span class="na">transit_gw</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">module.aws_transit.transit_gateway.gw_name</span>
+<span class="w">  </span><span class="na">use_existing_vpc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">vpc_id</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.aws_dev.vpc_id</span>
+<span class="w">  </span><span class="na">gw_subnet</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.aws_dev.public_subnets[0].cidr</span>
+<span class="p">}</span>
+
+<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;aws_prod&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.4.1&quot;</span>
+
+<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AWS&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-prod&quot;</span>
+<span class="w">  </span><span class="na">region</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.aws_prod.region</span>
+<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
+<span class="w">  </span><span class="na">ha_gw</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<span class="w">  </span><span class="na">transit_gw</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">module.aws_transit.transit_gateway.gw_name</span>
+<span class="w">  </span><span class="na">use_existing_vpc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">vpc_id</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.aws_prod.vpc_id</span>
+<span class="w">  </span><span class="na">gw_subnet</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.aws_prod.public_subnets[0].cidr</span>
+<span class="p">}</span>
+
+<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;azure_dev&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.4.1&quot;</span>
+
+<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Azure&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;azure-dev&quot;</span>
+<span class="w">  </span><span class="na">region</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.azure_dev.region</span>
+<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;azure-account&quot;</span>
+<span class="w">  </span><span class="na">ha_gw</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<span class="w">  </span><span class="na">transit_gw</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_transit_gateway.azure_transit.gw_name</span>
+<span class="w">  </span><span class="na">use_existing_vpc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">vpc_id</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.azure_dev.vpc_id</span>
+<span class="w">  </span><span class="na">gw_subnet</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.azure_dev.public_subnets[0].cidr</span>
+<span class="p">}</span>
+
+<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;gcp_dev&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.4.1&quot;</span>
+
+<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GCP&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-dev&quot;</span>
+<span class="w">  </span><span class="na">region</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.gcp_dev.region</span>
+<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-account&quot;</span>
+<span class="w">  </span><span class="na">ha_gw</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<span class="w">  </span><span class="na">transit_gw</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">module.gcp_transit.transit_gateway.gw_name</span>
+<span class="w">  </span><span class="na">use_existing_vpc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">vpc_id</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.gcp_dev.vpc_id</span>
+<span class="w">  </span><span class="na">gw_subnet</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.gcp_dev.subnets[0].cidr</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<hr class="docutils" />
+<p>At this point, all cloud resources should be connected and able to communicate with one another. Check the topology map in CoPilot and make sure all VPC’s are connected to the right transit as per diagram below.</p>
+<p><img alt="Topology" src="../_images/copilot-final-topology.png" />
+<em>Fig. Completed Topology</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "terraform"
+        },
+        kernelOptions: {
+            name: "terraform",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'terraform'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="labb.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab B</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="labd.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab D</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vpcs-vnets-and-deploy-aviatrix-gateways">Create VPCs/VNets and deploy Aviatrix gateways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-c-1-deploy-the-aws-transit-vpc-and-transit-gateway">Exercise C.1 – Deploy the AWS transit VPC and Transit Gateway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-c-2-redeploy-the-aws-transit-with-the-mc-transit-module">Exercise C.2 – Redeploy the AWS transit with the mc-transit module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-c-3-deploy-gcp-transit">Exercise C.3 – Deploy GCP transit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-c-4-peering-the-transits">Exercise C.4 – Peering the transits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-c-5-deploy-and-connect-the-spokes">Exercise C.5 Deploy and connect the spokes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix Flight School
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
