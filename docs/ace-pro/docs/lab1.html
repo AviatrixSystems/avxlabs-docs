@@ -438,6 +438,20 @@ document.write(`
 <p><strong>1) Default</strong> = Spoke VPC</p>
 <p><strong>2) Transit + FireNet</strong></p>
 </div>
+<p>It will take about <strong>3-4</strong> minutes for the creation of the VNet. You can periodically check the status of the task, clicking on the top right side, on the hourglass icon. Click on the refresh button. Once the task gets colored in green, you can finally assume that the VNet was successfully created.</p>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab1-new.png" src="../_images/lab1-new.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Hourglass icon</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Type the name of the VNet, azure-us-central-spoke1, inside the search field, then expand the VNet to explore the additional subnets created by the Aviatrix Controller.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab1-new2.png" src="../_images/lab1-new2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Confirmation</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="aws-vpc">
@@ -446,17 +460,17 @@ document.write(`
 <h3>3.1. Create AWS VPC<a class="headerlink" href="#create-aws-vpc" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong>.</p>
 <p>Verify once again whether the CIDR range <code class="docutils literal notranslate"><span class="pre">10.0.22.0/24</span></code> is overlapping or not, as shown below.</p>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id9">
 <img alt="../_images/lab1-newpic5.png" src="../_images/lab1-newpic5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Searching for a subnet conflict</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Searching for a subnet conflict</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time let’s create an Application/Spoke VPC. Click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id10">
 <img alt="../_images/lab1-vpc1.png" src="../_images/lab1-vpc1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following values:</p>
@@ -469,56 +483,63 @@ document.write(`
 <li><p><strong>VPC Function</strong>: <span style='color:#479608'>Default [use the drop-down window]</span></p></li>
 </ul>
 <p>Then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id11">
 <img alt="../_images/lab1-vpc2.png" src="../_images/lab1-vpc2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">VPC configuration</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">VPC configuration</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Monitor the progress of the VPC creation through the <strong>hourglass</strong> icon.</p>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab1-vpc3.png" src="../_images/lab1-vpc3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Hourglass icon</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Hourglass icon</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).</p>
+<p>Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, <ins>refresh the web page for triggering the change</ins>. It will take a little bit for reflecting into the “VPC/VNets &amp; Subnets” section).</p>
 <p>You can filter by CIDR <code class="docutils literal notranslate"><span class="pre">10.0.22.0/24</span></code>.</p>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab1-vpc4.png" src="../_images/lab1-vpc4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="verify-from-aws-console">
 <h3>3.2. Verify from AWS Console<a class="headerlink" href="#verify-from-aws-console" title="Link to this heading">#</a></h3>
-<p>Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for <strong>Pod 2</strong>).</p>
-<figure class="align-center" id="id12">
+<p>Log in to the <strong>AWS console</strong>. Refer to your pod info for login information (this screenshot is for <strong>Pod 2</strong>).</p>
+<figure class="align-center" id="id14">
 <img alt="../_images/lab1-newaws.png" src="../_images/lab1-newaws.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab1-vpc5.png" src="../_images/lab1-vpc5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Change the region to <code class="docutils literal notranslate"><span class="pre">Oregon</span> <span class="pre">(us-west-2)</span></code> in the top-right corner and invoke the VPC service. You can see the <code class="docutils literal notranslate"><span class="pre">VPC</span></code> created with the CIDR block.</p>
-<figure class="align-center" id="id14">
+<p>Change the region to <code class="docutils literal notranslate"><span class="pre">Oregon</span> <span class="pre">(us-west-2)</span></code> in the top-right corner and invoke the VPC service.</p>
+<figure class="align-center" id="id16">
 <img alt="../_images/lab1-newpic6.png" src="../_images/lab1-newpic6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Oregon region</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Oregon region</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You can see the <code class="docutils literal notranslate"><span class="pre">VPC</span></code> created with the assigned CIDR block.</p>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab1-new3.png" src="../_images/lab1-new3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">VPC</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From there, navigate to <code class="docutils literal notranslate"><span class="pre">Subnets</span></code>.</p>
 <p>As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet per Availability Zone. Since us-west-2 has 4 AZs, therefore <strong>eight</strong> subnets are created.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab1-newpic7.png" src="../_images/lab1-newpic7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Subnets created by the Aviatrix Controller</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Subnets created by the Aviatrix Controller</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From there, navigate to <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Tables</span></code>.</p>
@@ -531,17 +552,17 @@ document.write(`
 <h3>4.1. Create GCP VPC<a class="headerlink" href="#create-gcp-vpc" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong>.</p>
 <p>Before starting the deployment of the VPC in GCP, verify once again whether the CIDR range <code class="docutils literal notranslate"><span class="pre">172.16.22.0/24</span></code> is overlapping or not, as shown below.</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab1-newpic8.png" src="../_images/lab1-newpic8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time let’s create an Application/Spoke VPC. Click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab1-gcp1.png" src="../_images/lab1-gcp1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following values:</p>
@@ -558,18 +579,18 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>Make sure there are no white spaces at the beginning or end of the VPC name.</p>
 </div>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab1-gcp2.png" src="../_images/lab1-gcp2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">VPC template</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">VPC template</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).</p>
 <p>You can filter by CIDR <code class="docutils literal notranslate"><span class="pre">172.16.22.0/24</span></code>.</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab1-gcp3.png" src="../_images/lab1-gcp3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">

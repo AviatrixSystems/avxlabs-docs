@@ -22,7 +22,7 @@ In this lab, as shown in the topology below, we will configure the grey Aviatrix
 - **GCP**: us-central-1
 - **AZURE**: west-us (only spoke1)
 
-The rest of the topology has been pre-deployed to save time, including the test instances/VMs.
+The rest of the topology has been preprovisioned to save time, including the test instances/VMs and the **Edge** inside the on-prem DC.
 
 ```{figure} images/lab2-topology.png
 ---
@@ -107,7 +107,7 @@ These are very aggressive settings. In a Production environment, you should not 
 
 Go to **CoPilot > Dashboard** and check the `Gateways Health` either of the Spoke GW Clusters or the Transit GW Clusters. 
 
-When you begin this lab, you should have **five** Gateway Clusters in your pod:
+When you begin this lab, you should have **six** Gateway Clusters (i.e. 3x Transit GWs clusters, 2x Spoke GWs clusters and 1x Edge cluster) in your pod:
 
 ```{figure} images/lab2-dashboardgw.png
 ---
@@ -149,7 +149,7 @@ align: center
 Transit GWs Clusters
 ```
 
-Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended a `"-hagw"`; this is imposed by the **_"aviatrix_transit_gateway"_** `Terraform` resource.
+Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended an `"-hagw"`; this is imposed by the **_"aviatrix_transit_gateway"_** `Terraform` resource, at the launch time of the POD.
 
 ```{note}
 You can deploy up to maximum **two** Transit Gateways per each Transit VPC/VNet/VCN.
@@ -393,7 +393,7 @@ After created the Transit gateways pairs in AWS and the single Spoke gateways in
 height: 400px
 align: center
 ---
-Overview of the new topology state
+Overview of the new topology
 ```
 
 ## 4.3. Explore the Cloud Fabric
