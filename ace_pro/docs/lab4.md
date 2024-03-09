@@ -138,7 +138,8 @@ Create a new VPC as follows (make sure that **_Aviatrix Transit VPC_** is not se
 - **Cloud Type:** <span style='color:#479608'>AWS</span>
 - **Account Name:** <span style='color:#479608'>[your AWS account name will be auto-populated]</span>
 - **VPC Name:** <span style='color:#479608'>rbac-lab-test</span>
-- **VPC Region:** <span style='color:#479608'>us-east-1</span>
+- **Region:** <span style='color:#479608'>us-east-1</span>
+- **VPC CIDR:** <span style='color:#479608'>10.0.150.0/24</span>
 - **Advanced:** <span style='color:#479608'>unchecked</span>
 - **Aviatrix Transit VPC:** <span style='color:#479608'>**unchecked**</span>
 - **Aviatrix FireNet VPC:** <span style='color:#479608'>unchecked</span>

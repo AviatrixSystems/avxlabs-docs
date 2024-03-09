@@ -16,9 +16,9 @@ On one end of the tunnel is an Aviatrix Gateway; on the other could be an on-pre
  
 ## 3. Topology
 
-In this lab, you will achieve Site2Cloud connectivity to a Cisco Cloud Services Router 1000v (CSR) emulating an on-premises branch router.
+In this lab, you will first achieve Site2Cloud connectivity to a Cisco Cloud Services Router 1000v (CSR) emulating an on-premises branch router.
 
-In this lab, you will work with the overlapping IP addresses depiected in this drawing:
+In this lab, you will work with a typical overlapping IP addresses scenario depicted in the drawing below:
 
 ```{figure} images/lab8-topology.png
 ---

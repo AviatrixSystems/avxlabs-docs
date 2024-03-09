@@ -58,6 +58,7 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 - Egress FQDN Filtering
 - FireNet
 - Site2Cloud with Overlapping IPs
+- Edge
 - ThreatIQ and ThreatGuard
 - Distributed Cloud Firewall
 - Multi-Tier Transit
