@@ -86,7 +86,23 @@ VPC Functions:
 **2) Transit + FireNet** 
 ```
 
+It will take about **3-4** minutes for the creation of the VNet. You can periodically check the status of the task, clicking on the top right side, on the hourglass icon. Click on the refresh button. Once the task gets colored in green, you can finally assume that the VNet was successfully created.
 
+```{figure} images/lab1-new.png
+---
+align: center
+---
+Hourglass icon
+```
+
+Type the name of the VNet, azure-us-central-spoke1, inside the search field, then expand the VNet to explore the additional subnets created by the Aviatrix Controller.
+
+```{figure} images/lab1-new2.png
+---
+align: center
+---
+Confirmation
+```
 
 ## 3. AWS VPC
 
@@ -139,7 +155,7 @@ align: center
 Hourglass icon
 ```
 
-Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).
+Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, <ins>refresh the web page for triggering the change</ins>. It will take a little bit for reflecting into the "VPC/VNets & Subnets" section).
 
 You can filter by CIDR `10.0.22.0/24`.
 
@@ -152,7 +168,7 @@ Verification
 
 ### 3.2. Verify from AWS Console
 
-Log in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS console</a>. Refer to your pod info for login information (this screenshot is for **Pod 2**).
+Log in to the **AWS console**. Refer to your pod info for login information (this screenshot is for **Pod 2**).
 
 ```{figure} images/lab1-newaws.png
 ---
@@ -168,13 +184,22 @@ align: center
 AWS console
 ```
 
-Change the region to `Oregon (us-west-2)` in the top-right corner and invoke the VPC service. You can see the `VPC` created with the CIDR block.
+Change the region to `Oregon (us-west-2)` in the top-right corner and invoke the VPC service. 
 
 ```{figure} images/lab1-newpic6.png
 ---
 align: center
 ---
 Oregon region
+```
+
+You can see the `VPC` created with the assigned CIDR block.
+
+```{figure} images/lab1-new3.png
+---
+align: center
+---
+VPC
 ```
 
 From there, navigate to `Subnets`.

@@ -205,7 +205,7 @@ Do not forget to click on **Save In Drafts**.
 ---
 align: center
 ---
-Discover-Rule
+Committing the Discovery-Rule
 ```
 
 Click on the **Commit** button and the rule previously created will work in watch/test mode due to the fact that the `enforcement` was turn off.

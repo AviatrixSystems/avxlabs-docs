@@ -345,7 +345,7 @@ Please keep **both** the ping sessions running recursively on your SSH client! D
 
 To demonstrate ActiveMesh capability, you will shut down temporarily one of the spoke gateways and notice traffic converging to the other gateway.
 
-Login to **AWS console**</a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 55</ins>).
+Login to **AWS console**</a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 149</ins>).
 
 ```{figure} images/lab5-newone.png
 ---
