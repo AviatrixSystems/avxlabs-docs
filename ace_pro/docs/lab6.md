@@ -55,6 +55,13 @@ SSH to aws-us-east-2-spoke1-test1
 
 - Then from the **_aws-us-east-2-spoke1-test1_** instance SSH to the **_aws-us-east-2-spoke1-test2_** instance.
 
+```{figure} images/lab6-ssh.png
+---
+align: center
+---
+From test1 to test2
+```
+
 ```{note}
 The **_aws-us-east-2-spoke1-test2_** instance resides within a private subnet! 
 ```
@@ -451,15 +458,16 @@ Commit
 
 ### 5.3.2 Prepare the simulator
 
-- From the **_aws-us-east-2-spoke1-test2_** instance, launch the following commands.
+- From the **_aws-us-east-2-spoke1-test2_** instance, launch the following **two** commands.
+
+```bash
+sudo su -
+```
 
 ```{note}
 You will be asked to type again the student password!
 ```
 
-```bash
-sudo su -
-```
 ```bash
 curl -sSL https://raw.githubusercontent.com/0xtf/testmynids.org/master/tmNIDS -o /tmp/tmNIDS && chmod +x /tmp/tmNIDS && /tmp/tmNIDS
 ```
