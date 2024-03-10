@@ -531,7 +531,21 @@ Let's launch a connectivity test.
 
 **SSH** to the "edge" VM client that is behind the LAN router and then ping the **_aws-us-east-2-spoke1-test1_** EC2 in US-EAST-2.
 
+```{figure} images/lab8-edgenew.png
+---
+align: center
+---
+Connectivity test
+```
+
 Once again, refer to your personal POD for retrieving the DNS symbolic name of the client attached to the LAN router!
+
+```{figure} images/lab8-edgenew2.png
+---
+align: center
+---
+Connectivity test
+```
 
 ```{figure} images/lab8-edge21.png
 ---

@@ -82,7 +82,7 @@ Deploy a Firewall by entering these settings within the `Deploy Firewall` window
 - **Firewall Image**: <span style='color:#479608'>Palo Alto Networks VM-Series Next-Generation Firewall Bundle 1</span>
 
 ```{warning}
-When you click on the **Firewall Image** drop-down window, you will see a `"Loading"` message. The message means that the Controller is in the middle of contacting the Marketplace through the API calls, therefore, be patient and wait for some seconds.
+When you click on the **Firewall Image** drop-down window, you will see a `"Loading"` message. The message means that the Controller is in the middle of contacting the Marketplace through the API calls, therefore, be patient and wait for about <span style='color:#479608'>**_3 minutes!_**</span>
 ```
 
 ```{figure} images/lab7-marketplace.png
@@ -468,6 +468,13 @@ Final Topology for Lab 7
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+```
+
+```{figure} images/lab7-newlog.png
+---
+align: center
+---
+Filter based on icmp
 ```
 
 ```{figure} images/lab7-last.png

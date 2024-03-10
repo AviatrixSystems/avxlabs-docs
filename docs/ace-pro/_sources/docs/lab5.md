@@ -480,7 +480,7 @@ FlightPath Report PDF
 ## Bonus questions
 ### Gateway Keepalive Templates
 
-Experiment with <a href="https://read.docs.aviatrix.com/HowTos/gateway.html#gateway-keepalives" target="_blank">Gateway keepalive templates</a> and retest convergence times when bringing down a spoke gateway.
+Experiment with <a href="https://docs.aviatrix.com/previous/documentation/latest/building-your-network/gateway-keepalives.html" target="_blank">GATEWAY TO CONTROLLER COMMUNICATION</a> and retest convergence times when bringing down a spoke gateway.
 
 ```{tip}
 You can modify the <ins>Gateway to Controller Communication timer</ins> directly from the CoPilot. Go to **CoPilot > Cloud Fabric > Gateways > Settings > Gateway to Controller Communication** and change the `Keep Alive Speed` from **_medium_** (default) to **_fast_**. Then repeat the experiment carried out earlier.
