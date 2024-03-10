@@ -579,6 +579,10 @@ align: center
 FlowIQ Filter
 ```
 
+```{caution}
+If you do not get immediately any results, wait for a couple of minutes and apply again the filter!
+```
+
 Then scroll a little bit and check the `"Flow Exporters"` widget, then from the drop-down menu select the **`"Aviatrix Gateway"`** widget: you will see the list of all the Aviatrix Gateways involved along the path.
 
 ```{figure} images/lab8-flowiq.png
