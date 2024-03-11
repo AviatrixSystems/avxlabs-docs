@@ -200,7 +200,7 @@ Insert the following parameters
 - **Name**: <span style='color:#479608'>Discovery-Rule</span>
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
-- **WebGroups**: <span style='color:#479608'>**Any-Web**</span>
+- **WebGroups**: <span style='color:#479608'>**All-Web**</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**Off**</span>
 - **Logging**: <span style='color:#479608'>On</span>
