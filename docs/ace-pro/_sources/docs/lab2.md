@@ -670,6 +670,7 @@ Please pay close attention that the following pending elements will be completed
 - Attachment between **aws-us-east-1-spoke1** and **aws-us-east-1-transit**
 - Peering between **aws-us-east-1-transit** and **aws-us-east-2-transit**
 - Attachment between **azure-west-us-spoke2** and **azure-west-us-transit**
+- Attachment between **aws-us-east-2-transit** and **on-prem-dc-edge**
 ```
 
 ## 5. Verification
