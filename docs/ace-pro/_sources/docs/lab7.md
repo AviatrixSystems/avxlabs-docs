@@ -286,7 +286,7 @@ Verify the traffic flows within Azure and from Azure to GCP as shown below, by f
 height: 400px
 align: center
 ---
-Lab 7 Topology with FW deplopyed
+Lab 7 Topology with FW deployed and the Inspection Policy applied!
 ```
 
 ## 5.1. Within Azure
