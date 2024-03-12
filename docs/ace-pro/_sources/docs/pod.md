@@ -12,7 +12,7 @@ You can view your personal POD portal by clicking on the picture below.
 | **POD** | **Access Code** |          **Full Name**         |
 |:-------:|:---------------:|:------------------------------:|
 |    1    |       C18C      |        Michael Yandulov        |
-|    2    |       23B3      |         Saurabh Mishra         |
+|    2    |       23B3      |      Krishna Mohan Sharma      |
 |    3    |       56F4      |    Syed Muhammad Kazim Raza    |
 |    4    |       7A84      |          Sumeet Chavan         |
 |    5    |       2BFF      | Pandian Gurumurthy Karuppasamy |
