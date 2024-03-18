@@ -69,7 +69,7 @@ In this exercise we are going to launch the Aviatrix Transit Gateway in the newl
 | ------------------------ | ---------------------------------------------------------- |
 | **Transit Gateway VPC**  | aws-transit-east                                           |
 | **Gateway Name**         | aws-transit-east                                           |
-| **Gateway Size**         | t3.small                                                   |
+| **Gateway Size**         | t3.micro                                                   |
 | **Instance 1 (Primary)** | aws-transit-east-Public-1-us-east-1a + Allocate New EIP    |
 | **Transit Peers**        | Click edit and add the aws-transit-west as a peer and save |
 
