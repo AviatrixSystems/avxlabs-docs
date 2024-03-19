@@ -29,223 +29,67 @@ Check the **CoPilot > Networking > Connectivity**
 <span style='color:#479608'>Q3.</span> A major intrusion has occurred. From which instance was this detected? Mention Name
 
 ```{hint}
-Check the **CoPilot > Networking > Connectivity**
+Check the **CoPilot > Security > ThreatIQ**
 ```
 
+<span style='color:#479608'>Q4.</span> List if any region(s) are being blocked by GeoBlocking.
 
-
-
-
-## 2 - Dynamic Topology
-
-Please login to Aviatrix Copilot and navigate to topology page by leveraging search bar as shown below.
-
-```{figure} images/copilot_topology_search.png
----
-align: center
----
-Using the Search Bar
+```{hint}
+Check the **CoPilot > Security**
 ```
 
-The following topology will appear on your Copilot
+<span style='color:#479608'>Q4.</span> List if any region(s) are being blocked by GeoBlocking.
 
-```{tip}
-Click on the "Managed" button for only showing the managed VPCs
-
-```{figure} images/managed-vpc.png
----
-align: center
----
-Managed VPCs
+```{hint}
+Check the **CoPilot > Security**
 ```
 
-```{figure} images/topology.png
----
-align: center
----
-Cloud Backbone & Hybrid Connectivity Topology
+<span style='color:#479608'>Q5.</span> Spoke-aws-dev is isolated from 2 of the 6 spokes or onprem network domains. 
+Which 2 spokes can it not communicate with due to the configured network segmentation?
+
+```{hint}
+Check the **CoPilot > Networking > Network Segmentation**
 ```
 
-### 2.1 - Quick Knowledge Quiz
+<span style='color:#479608'>Q6.</span> Traffic from the gcp-dev-vm instance (in spoke-gcp-dev, network domain: gcp-dev) cannot connect to the azure-prod-vm instance (in spoke-azure-all, 
+network domain: azure-all) on port 443 despite the fact that the two network domains are connected. Why is this?
 
-<span style='color:#479608'>Q2.</span> Where is the Aviatrix Edge deployed?
-
-<span style='color:#479608'>Q3.</span> To which Aviatrix cloud resources Aviatrix Edge is associated with?
-
-## 3 - Networking & Security Infrastructure
-
-### 3.1 - Transit VPC/VNET/VCN
-
-Let's verify:
-
-**Cloud Resources > Cloud Assets > VPC/VNets Subnets**
-
-```{figure} images/cloudassets.png
----
-align: center
----
-Cloud Backbone Transit VPC/VNET/VCN
+```{hint}
+Check the **CoPilot > Security > Distributed Cloud Firewall**
 ```
 
-### 3.2 - Transit Gateways
+<span style='color:#479608'>Q7.</span> How many https egress domains are being explicitly allowed?
 
-Let's verify Aviatrix Transit Gateways and their peerings.
-
-**Cloud Fabric > Gateways > Transit Gateways** then click on any Gateways Clusters and expand the "Connections" Tab!
-
-```{figure} images/transitgws.png
----
-align: center
----
-Transit Gateways
+```{hint}
+Check the **CoPilot > Security > Distributed Cloud Firewall**
 ```
 
-```{figure} images/transitgws2.png
----
-align: center
----
-Transit Gateways Peerings
+<span style='color:#479608'>Q8.</span> The azure-dev-vm cannot communicate with the azure-prod-vm despite being deployed to the same vnet. Why is this?
+
+```{hint}
+Check the **CoPilot > Security > Distributed Cloud Firewall**
 ```
 
-### 3.3 Connectivity between Aviatrix Cloud Backbone & Native CSP Constructs
+<span style='color:#479608'>Q9.</span> There are 3 VMs that have been automatically added to the SmartGroup named dev. Why were they added to this group?
 
-Verify connectivity between Aviatrix Cloud Backbone and native CSP constructs.
-
-**Networking > Connectivity > External Connections (S2C)**
-
-You will notice different tunnel types due to CSP limitations.
-
-```{figure} images/natives2c.png
----
-align: center
----
-Connectivity with Native CSP Constructs
+```{hint}
+Check the **CoPilot > SmartGroups**
 ```
 
-### 3.4 - Quick Knowledge Quiz
+<span style='color:#479608'>Q10.</span> Name the Aviatrix gateway where ThreatIQ has detected malicious inbound attacks.
 
-<span style='color:#479608'>Q4.</span> How AWS, Azure and GCP transits are peered with each other?
-
-<span style='color:#479608'>Q5.</span> Was Aviatrix Cloud Backbone established using Standard or High Performance Encryption?
-
-## 4 - Traffic Routing
-
-Navigate to the Cloud Routes menu within Copilot by leveraging the search bar as shown below.
-
-```{figure} images/copilot_cloudroutes_search.png
----
-align: center
----
-Search Bar - Cloud Routes
+```{hint}
+Check the **CoPilot > Security > ThreatIQ**
 ```
 
-The following screen will appear:
+<span style='color:#479608'>Q11.</span> Name the Aviatrix gateway where ThreatIQ has detected malicious inbound attacks.
 
-```{figure} images/gatewayroutes.png
----
-align: center
----
-Cloud Routes
+```{hint}
+Check the **CoPilot > Security > Egress > Monitor**
 ```
 
-Verify Backbone components are receiving the routes across Multicloud environment including Equinix.
+<span style='color:#479608'>Q12.</span> Gateway Learned CIDR Approval is enabled on transit-aws. What is the pending learned CIDR?
 
-### 4.1 - Quick Knowledge Quiz
-
-<span style='color:#479608'>Q6.</span> What routes GCP Transit GW is receiving from the Equinix Fabric?
-
-## 5 - Data Plane Verification
-
-Since this is a brownfield environment where this customer just started using  Aviatrix Cloud Backbone for East-West communication and don't have Aviatrix Spoke Gateways in any application VPCS/VNETS/VCNS, you won't be able to find the application EC2/VM on the dynamic topology map. 
-
-To find the application EC2/VM <ins>Public IP address</ins>, go to:
-
-**Cloud Assets > Virtual Machines**
-
-```{figure} images/vm.png
----
-align: center
----
-Virtual Machines
+```{hint}
+Check the **CoPilot > Cloud Fabric > Gateways**
 ```
-
-SSH from your laptop to the instance **_aws-instance_**, using your favourite SSH client:
-
-Alternatively, you can use the following command: 
-
-```bash
-ssh student@aws.pod#.aviatrixlab.com
-```
-
-```{note}
-pod# and password will be provided at the time of lab.
-
-<ins>Replace the **#** symbol with your POD number!</ins>
-```
-
-Ping GCP VM's private IP from the AWS instance to test the backbone:
-
-```{figure} images/ping.png
----
-align: center
----
-Ping Verification
-```
-
-Access all the application instances/VMs using your laptop's browser using the following links:
-
-http://aws.pod#.aviatrixlab.com/
-
-http://azure.pod#.aviatrixlab.com/
-
-http://gcp.pod#.aviatrixlab.com/
-
-```{figure} images/browser.png
----
-align: center
----
-Browser Verification
-```
-
-<span style='color:#479608'>Q7.</span> For Data Plane Verification, how to find the public and private IP address of Instances deployed in CSP's?
-
-## 6 - Troubleshooting
-
-### 6.1 - Available Paths
-
-Verify how many paths are available for an application to communicate between AWS and GCP, which one is the best path and why?
-
-<span style='color:#479608'>Q8.</span> Visually from the dynamic topology map in Copilot, verify how many paths are available for an application to communicate between AWS and GCP?
-
-#### 6.1.1 **Diagnostics > AppIQ > FlightPath**
-
-```{figure} images/fp1.png
----
-align: center
----
-AppIQ
-```
-
-```{figure} images/fp2.png
----
-align: center
----
-FlightPath
-```
-
-#### 6.1.2 Latency Monitor
-
-**Monitor > Traffic & Latencies > Gateways**
-
-```{figure} images/latency.png
----
-align: center
----
-Latency Monitor
-```
-
-<span style='color:#479608'>Q9.</span> Which Path is best for an application to communicate between AWS and GCP?
-
-## 7 - Conclusion
-
-In this lab, we have successfully verified and troubleshooted Aviatrix Cloud Backbone and hybrid connectivity including Equinix colocation.
