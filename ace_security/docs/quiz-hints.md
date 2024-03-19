@@ -1,12 +1,10 @@
-# Lab - ACE Security
+# Quiz - Hints
 
 ## 1 - Initial Topology
 
-This is the current topology of a multicloud enterprise that has Data Center in **US-East-1** and utilizes Equinix fabric as a Co-location facility in **US-West-1** and **EU** region.
+This is the current topology of a multicloud enterprise that has two Data Centers: the first one is connected to the transit GW in AWS, whereas the second one is connected to the transit GW in Azure. The connectivity across the three CSPs occurs through the Aviatrix Transit Core Backbone.
 
-MPLS is heavily used for any East-West traffic between these regions across multicloud environment.
-
-```{figure} images/security-topology.jpeg
+```{figure} images/security-topology.png
 ---
 height: 400px
 align: center
@@ -14,9 +12,29 @@ align: center
 Initial Topology
 ```
 
-### 1.1 - Quick Knowledge Quiz
+## Hints
 
-<span style='color:#479608'>Q1.</span> Which native cloud services providers resources are used to onboard on-premise resources?
+<span style='color:#479608'>Q1.</span> Which Aviatrix CoPilot feature can block IP traffic to/from IP addresses associated with particular geographic regions.
+
+```{hint}
+Check the **CoPilot > Security**
+```
+
+<span style='color:#479608'>Q2.</span> What encryption scheme is being used by the site-to-cloud connection with the Azure transit gateway?
+
+```{hint}
+Check the **CoPilot > Networking > Connectivity**
+```
+
+<span style='color:#479608'>Q3.</span> A major intrusion has occurred. From which instance was this detected? Mention Name
+
+```{hint}
+Check the **CoPilot > Networking > Connectivity**
+```
+
+
+
+
 
 ## 2 - Dynamic Topology
 

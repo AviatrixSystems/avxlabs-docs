@@ -22,8 +22,6 @@ Portal
 
 ```{important}
 After logged in, click on **"ACE Multicloud Network Security Quiz"**.
-
-After submitted your quiz, click on **Next** and do not forget to complete the quick survey!
 ```
 
 - To complete the quiz, you must use the Aviatrix ACE-Security POD
@@ -36,6 +34,17 @@ After submitted your quiz, click on **Next** and do not forget to complete the q
 align: center
 ---
 Portal
+```
+
+```{figure} images/quiz-1.png
+---
+align: center
+---
+Start the Quiz
+```
+
+```{important}
+After submitted your quiz, click on **Next** and do not forget to complete the quick survey!
 ```
 
 ```{figure} images/quiz2.png
