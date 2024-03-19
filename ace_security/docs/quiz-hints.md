@@ -81,3 +81,8 @@ Check the **CoPilot > Security > ThreatIQ**
 ```{hint}
 Check the **CoPilot > Security > Egress > Monitor**
 ```
+<span style='color:#479608'>Q12.</span> As a member of the security team, you've been alerted to a compromised subnet, 10.1.2.0/24, posing a security risk through lateral movement. Your task is to swiftly identify the associated VPC. With limited time and unavailable IPAM and networking teams on a late Friday evening, and lacking knowledge of the cloud platform hosting the subnet, what approach do you employ to swiftly identify the cloud and VPC housing the subnet for immediate resolution?.
+
+```{hint}
+Check the **CoPilot > Cloud Resources**
+```
