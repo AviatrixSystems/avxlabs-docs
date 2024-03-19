@@ -36,6 +36,8 @@ align: center
 Portal
 ```
 
+
+
 - Start the Quiz!
 
 ```{figure} images/quiz-1.png
@@ -64,4 +66,5 @@ Submit
 align: center
 ---
 Survey
+
 ```
