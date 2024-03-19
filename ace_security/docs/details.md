@@ -40,5 +40,5 @@ student
 Password:
 
 ```bash
-210Hf67x##wFkH
+3168EXx74P4#fH
 ```
