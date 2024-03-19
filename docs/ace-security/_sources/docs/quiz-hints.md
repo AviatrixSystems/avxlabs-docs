@@ -1,6 +1,6 @@
 # Quiz - Hints
 
-## 1 - Initial Topology
+## Initial Topology
 
 This is the current topology of a multicloud enterprise that has two Data Centers: the first one is connected to the transit GW in AWS, whereas the second one is connected to the transit GW in Azure. The connectivity across the three CSPs occurs through the Aviatrix Transit Core Backbone.
 
