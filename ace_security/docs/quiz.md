@@ -38,16 +38,5 @@ align: center
 Portal
 ```
 
-```{figure} images/quiz2.png
----
-align: center
----
-Submit
-```
 
-```{figure} images/quiz3.png
----
-align: center
----
-Survey
 ```
