@@ -5,8 +5,8 @@
 The ACE Security course topology is deployed across 3 CSPs, comprising the following components:
 
 - 1 Transit VPC/Vnet and gateway per CSP - AWS, Azure, and GCP.
-- 2 Spoke VPCs in AWS and GCP with a single test instance deployed to each - 1 dev and 1 prod.
-- 1 Spoke Vnet in Azure with both dev and prod VMs deployed.
+- 2 Spoke VPCs in AWS and GCP with a single test instance deployed to each dev and prod VPC.
+- 1 Spoke VNet in Azure with both dev and prod VMs deployed.
 - 1 Site-to-cloud connection to each of the AWS and Azure Transit gateways.
 
 ```{figure} images/ace_sec_topology.png
