@@ -31,6 +31,3 @@ Click this link to {Download}`ACE Security Mod12 - Security Visibility<files/ACE
 Click this link to {Download}`ACE Security Mod13 - NetFlow Alters and Reports<files/ACE-Security-Mod13-NetFlow Alters and Reports.pdf>`
 
 Click this link to {Download}`ACE Security Mod14 - RBAC and User VPN<files/ACE-Security-Mod14-RBAC and User VPN.pdf>`
-
-Click this link to {Download}`ACE Security Mod15 - Closing Survey and Quiz<files/ACE-Security-Mod15-Closing Survey and Quiz.pdf>`
-
