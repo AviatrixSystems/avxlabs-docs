@@ -82,8 +82,8 @@ Check the **CoPilot > Security > ThreatIQ**
 Check the **CoPilot > Security > Egress > Monitor**
 ```
 
-<span style='color:#479608'>Q12.</span> Gateway Learned CIDR Approval is enabled on transit-aws. What is the pending learned CIDR?
+<span style='color:#479608'>Q12.</span> What's the most efficient method for identifying whether a VPC CIDR or a particular subnet is already in use across your multicloud environment without depending on IPAM?
 
 ```{hint}
-Check the **CoPilot > Cloud Fabric > Gateways**
+Check the **CoPilot > Cloud Resources > Cloud Assets**
 ```
