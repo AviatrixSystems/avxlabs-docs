@@ -10,7 +10,7 @@ Requirements
 ```{caution}
 The **ACE Security** certification is issued only if you have the **ACE Associate** certification.
 
-If you do not have the ACE Associate certification, please complete the self-paced training and pass the quiz!
+If you do not have the ACE Associate certification yet, please complete the self-paced training and pass the quiz!
 
 https://ace.aviatrix.com/ace-associate
 
