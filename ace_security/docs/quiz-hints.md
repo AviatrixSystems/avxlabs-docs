@@ -38,12 +38,6 @@ Check the **CoPilot > Security > ThreatIQ**
 Check the **CoPilot > Security**
 ```
 
-<span style='color:#479608'>Q4.</span> List if any region(s) are being blocked by GeoBlocking.
-
-```{hint}
-Check the **CoPilot > Security**
-```
-
 <span style='color:#479608'>Q5.</span> Spoke-aws-dev is isolated from 2 of the 6 spokes or onprem network domains. 
 Which 2 spokes can it not communicate with due to the configured network segmentation?
 
@@ -82,7 +76,7 @@ Check the **CoPilot > SmartGroups**
 Check the **CoPilot > Security > ThreatIQ**
 ```
 
-<span style='color:#479608'>Q11.</span> Name the Aviatrix gateway where ThreatIQ has detected malicious inbound attacks.
+<span style='color:#479608'>Q11.</span> Name 3 domains where egress connectivity is being attempted, but denied.
 
 ```{hint}
 Check the **CoPilot > Security > Egress > Monitor**
