@@ -6,7 +6,7 @@ This is the current topology of a multicloud enterprise that has Data Center in 
 
 MPLS is heavily used for any East-West traffic between these regions across multicloud environment.
 
-```{figure} images/security-origtopology.jpeg
+```{figure} images/security-topology.jpeg
 ---
 height: 400px
 align: center
