@@ -38,7 +38,6 @@ Portal
 
 
 
-
 - Start the Quiz!
 
 ```{figure} images/quiz-1.png
