@@ -82,7 +82,11 @@ Check the **CoPilot > Security > ThreatIQ**
 Check the **CoPilot > Security > Egress > Monitor**
 ```
 
+<<<<<<< Updated upstream
 <span style='color:#479608'>Q12.</span> What's the most efficient method for identifying whether a VPC CIDR or a particular subnet is already in use across your multicloud environment without depending on IPAM?
+=======
+<span style='color:#479608'>Q12.</span> You are part of security team and it was brought to your attention that subnet 10.1.2.0/24 is being compromised and could cause security threat to other applications due to lateral movement. Your job is to find which VPC this subnet belongs to. Time is running short, You don’t have access to IPAM team and you cannot connect with the networking team late Friday evening. You don’t event know which Cloud this subnet belongs to. You have access to CoPilot. Find which cloud and VPC does this subnet belong to, to fix the probolem ASAP?
+>>>>>>> Stashed changes
 
 ```{hint}
 Check the **CoPilot > Cloud Resources**
