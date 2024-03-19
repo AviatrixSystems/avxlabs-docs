@@ -27,7 +27,7 @@ After logged in, click on **"ACE Multicloud Network Security Quiz"**.
 - To complete the quiz, you must use the Aviatrix ACE-Security POD
 - Read-only access is provided
 - You have **24** hours to complete the quiz
-- After 24 hours labpod will be shutdown
+- After 24 hours lab pod will be shutdown
 
 ```{figure} images/survey.png
 ---
@@ -35,6 +35,8 @@ align: center
 ---
 Portal
 ```
+
+- Start the Quiz!
 
 ```{figure} images/quiz-1.png
 ---
@@ -47,14 +49,17 @@ Start the Quiz
 After submitted your quiz, click on **Next** and do not forget to complete the quick survey!
 ```
 
-```{figure} images/quiz2.png
+- Submit your answers!
+```{figure} images/quiz-2.png
 ---
 align: center
 ---
 Submit
 ```
 
-```{figure} images/quiz3.png
+- Fill in the post training Survey!
+
+```{figure} images/quiz-3.png
 ---
 align: center
 ---
