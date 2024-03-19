@@ -1,4 +1,4 @@
-# Welcome to ACE Cloud Backbone and Hybrid Connectivity instructor-led training!  
+# Welcome to ACE Cloud Backbone instructor-led training!  
 
 This Lab Guide will guide you through the different scenarios of how to build and manage multicloud backbone and hybrid connectivity.
 
