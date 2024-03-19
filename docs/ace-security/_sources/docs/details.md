@@ -31,7 +31,7 @@ Aviatrix **CoPilot** provides a global operational view of your multicloud netwo
 
 ## Access credentials
 
-User:
+Username:
 
 ```bash
 student
