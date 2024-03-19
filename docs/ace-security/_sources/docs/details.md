@@ -1,4 +1,4 @@
-# Pod Details
+# POD Details
 
 ## Topology
 
@@ -16,23 +16,7 @@ align: center
 ACE Security pod topology
 ```
 
-## URLs
-
-```{image} images/controller.png
-:alt: Controller
-:class: bg-primary
-:width: 25px
-:align: left
-```
-
-<a href="https://ctrl.pod1.aviatrixlab.com" target="_blank">Controller</a>
-
-The Aviatrix Controller is a management and control plane or a single pane of glass that enables you to manage and support a single or multi-cloud network architecture. You can deploy an Aviatrix Controller through any of the four major CSP (Cloud Service Provider) marketplaces:
-
-- AWS (Amazon Web Services)
-- Microsoft Azure
-- GCP (Google Cloud Platform)
-- OCI (Oracle Cloud Infrastructure)
+## URL
 
 ```{image} images/copilot.png
 :alt: CoPilot
@@ -43,7 +27,7 @@ The Aviatrix Controller is a management and control plane or a single pane of gl
 
 <a href="https://cplt.pod1.aviatrixlab.com" target="_blank">CoPilot</a>
 
-Aviatrix CoPilot provides a global operational view of your multicloud network, supporting business-critical cloud networking. CoPilot enables enterprises to implement intelligent cloud networking that embeds security into their networks with monitoring and diagnostic tools that help support application availability.
+Aviatrix **CoPilot** provides a global operational view of your multicloud network, supporting business-critical cloud networking. CoPilot enables enterprises to implement intelligent cloud networking that embeds security into their networks with monitoring and diagnostic tools that help support application availability.
 
 ## Access credentials
 
