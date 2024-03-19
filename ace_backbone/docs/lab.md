@@ -1,4 +1,4 @@
-# Lab - Cloud Backbone and Hybrid Connectivity
+# Lab - Cloud Backbone
 
 ## 1 - Initial Topology
 
