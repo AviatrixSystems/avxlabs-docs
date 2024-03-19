@@ -82,7 +82,7 @@ Check the **CoPilot > Security > ThreatIQ**
 Check the **CoPilot > Security > Egress > Monitor**
 ```
 
-<span style='color:#479608'>Q12.</span> What's the most efficient method for identifying whether a VPC CIDR or a particular subnet is already in use across your multicloud environment without depending on IPAM?
+<span style='color:#479608'>Q12.</span> What is the most efficient method for identifying whether a VPC CIDR or a particular subnet is already in use across your multicloud environment without depending on IPAM?
 
 ```{hint}
 Check the **CoPilot > Cloud Resources > Cloud Assets**
