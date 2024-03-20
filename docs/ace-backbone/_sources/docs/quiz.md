@@ -21,7 +21,7 @@ Portal
 ```
 
 ```{important}
-After logged in, click on **"ACE Cloud Backbone and Hybrid Connectivity Quiz"**.
+After logged in, click on **"ACE Cloud Backbone Connectivity Quiz"**.
 ```
 
 - To complete the quiz, you must use the Aviatrix ACE-Backbone POD

@@ -1,4 +1,4 @@
-# Lab - Cloud Backbone
+# Lab - Hints
 
 ## 1 - Initial Topology
 
@@ -17,6 +17,10 @@ Initial Topology
 ### 1.1 - Quick Knowledge Quiz
 
 <span style='color:#479608'>Q1.</span> Which native cloud services providers resources are used to onboard on-premise resources?
+
+```{hint}
+Check **CoPilot > Cloud Fabric > Topology**
+```
 
 ## 2 - Dynamic Topology
 
@@ -45,14 +49,22 @@ Managed VPCs
 ---
 align: center
 ---
-Cloud Backbone & Hybrid Connectivity Topology
+Cloud Backbone Topology
 ```
 
 ### 2.1 - Quick Knowledge Quiz
 
 <span style='color:#479608'>Q2.</span> Where is the Aviatrix Edge deployed?
 
+```{hint}
+Check **CoPilot > Cloud Fabric > Edge**
+```
+
 <span style='color:#479608'>Q3.</span> To which Aviatrix cloud resources Aviatrix Edge is associated with?
+
+```{hint}
+Check **CoPilot > Cloud Fabric > Topology**
+```
 
 ## 3 - Networking & Security Infrastructure
 
@@ -108,7 +120,15 @@ Connectivity with Native CSP Constructs
 
 <span style='color:#479608'>Q4.</span> How AWS, Azure and GCP transits are peered with each other?
 
+```{hint}
+Check **CoPilot > Cloud Fabric > Topology**
+```
+
 <span style='color:#479608'>Q5.</span> Was Aviatrix Cloud Backbone established using Standard or High Performance Encryption?
+
+```{hint}
+Check **CoPilot > Cloud Fabric > Topology > Legend**
+```
 
 ## 4 - Traffic Routing
 
@@ -136,9 +156,13 @@ Verify Backbone components are receiving the routes across Multicloud environmen
 
 <span style='color:#479608'>Q6.</span> What routes GCP Transit GW is receiving from the Equinix Fabric?
 
+```{hint}
+Check **CoPilot > Diagnostics > Cloud Routes > Gateway Routes** and loot at the *backbone-gcp*'s RTB
+```
+
 ## 5 - Data Plane Verification
 
-Since this is a brownfield environment where this customer just started using  Aviatrix Cloud Backbone for East-West communication and don't have Aviatrix Spoke Gateways in any application VPCS/VNETS/VCNS, you won't be able to find the application EC2/VM on the dynamic topology map. 
+Since this is a brownfield environment where this customer just started using  Aviatrix Cloud Backbone for East-West communication and doesn't have Aviatrix Spoke Gateways in any application VPCS/VNETS/VCNS, you won't be able to find the application EC2/VM on the dynamic topology map. 
 
 To find the application EC2/VM <ins>Public IP address</ins>, go to:
 
@@ -156,13 +180,13 @@ SSH from your laptop to the instance **_aws-instance_**, using your favourite SS
 Alternatively, you can use the following command: 
 
 ```bash
-ssh student@aws.pod#.aviatrixlab.com
+ssh student@aws.pod1.aviatrixlab.com
 ```
 
 ```{note}
-pod# and password will be provided at the time of lab.
+**username**: *student*
 
-<ins>Replace the **#** symbol with your POD number!</ins>
+**password**: *3168EXx74P4#fH*
 ```
 
 Ping GCP VM's private IP from the AWS instance to test the backbone:
@@ -176,11 +200,11 @@ Ping Verification
 
 Access all the application instances/VMs using your laptop's browser using the following links:
 
-http://aws.pod#.aviatrixlab.com/
+http://aws.pod1.aviatrixlab.com/
 
-http://azure.pod#.aviatrixlab.com/
+http://azure.pod1.aviatrixlab.com/
 
-http://gcp.pod#.aviatrixlab.com/
+http://gcp.pod1.aviatrixlab.com/
 
 ```{figure} images/browser.png
 ---
@@ -198,6 +222,10 @@ Browser Verification
 Verify how many paths are available for an application to communicate between AWS and GCP, which one is the best path and why?
 
 <span style='color:#479608'>Q8.</span> Visually from the dynamic topology map in Copilot, verify how many paths are available for an application to communicate between AWS and GCP?
+
+```{hint}
+Check **CoPilot > Cloud Fabric > Topology**
+```
 
 #### 6.1.1 **Diagnostics > AppIQ > FlightPath**
 
@@ -228,6 +256,10 @@ Latency Monitor
 
 <span style='color:#479608'>Q9.</span> Which Path is best for an application to communicate between AWS and GCP?
 
+```{hint}
+Check **CoPilot > Cloud Fabric > Topology**
+```
+
 ## 7 - Conclusion
 
-In this lab, we have successfully verified and troubleshooted Aviatrix Cloud Backbone and hybrid connectivity including Equinix colocation.
+In this lab, we have successfully verified and troubleshooted Aviatrix Cloud Backbone, including Equinix colocation.
