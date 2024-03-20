@@ -1,8 +1,8 @@
 ![Lab Overview](../../docs/_logos/ace_security_banner.png)
 
-# ACE Multicloud Network Security Specialty  
+# ACE Security Specialty  
 
-Welcome to the `Aviatrix Certified Engineer Multicloud Network Security Specialty` training.
+Welcome to the `Aviatrix Certified Engineer Security Specialty` training.
 
 During this session, you will gain knowledge and experience in these areas:
 
