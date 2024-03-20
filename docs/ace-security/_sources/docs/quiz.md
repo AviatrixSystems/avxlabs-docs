@@ -28,6 +28,7 @@ After logged in, click on **"ACE Multicloud Network Security Quiz"**.
 - Read-only access is provided
 - You have **24** hours to complete the quiz
 - After 24 hours lab pod will be shutdown
+- You have a total of **4** maximum attempts!
 
 ```{figure} images/survey.png
 ---
