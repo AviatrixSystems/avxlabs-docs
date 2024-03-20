@@ -80,7 +80,7 @@ The aws-shared server needs access to the internet to access software updates. W
 ### Validate
 
 * Open the Remote Access Server and open the **RDP - Client** (or navigate to `https://client.pod[#].aviatrixlab.com`). This is the on-prem Host.
-* Open up the Firefox browser on the RDP desktop
+* Open up the `Min` browser on the RDP desktop
 * Navigate to the egress connectivity dashboard `http://aws-shared/egress`
 
 > Does the aws-shared server have access to the internet?

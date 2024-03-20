@@ -213,7 +213,7 @@ The AWS Spokes should be connected to the AWS Transit so now we can check connec
 ### Validate
 
 * Open the Remote Access Server and open the **RDP - Client** (or navigate to `https://client.pod[#].aviatrixlab.com`). This is the on-prem Host.
-* Open up the Firefox browser on the RDP desktop
+* Open up the `Min` browser on the RDP desktop
 * Navigate to `http://localhost`
 
 > Do we have access to aws-shared and aws-build?
