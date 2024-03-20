@@ -100,7 +100,7 @@ At this point, the office is connected to the Aviatrix Transit Gateway in Azure.
 ### Validate
 
 * Open the Remote Access Server and open the **RDP - Client** (or navigate to `https://client.pod[#].aviatrixlab.com`). This is the on-prem Host.
-* Open up the Firefox browser on the RDP desktop
+* Open up the `Min` browser on the RDP desktop
 * Navigate to `http://azure-build.pod[#].aviatrixlab.com` or just `http://azure-build`
 
 ### Expected Results
@@ -156,7 +156,7 @@ While we have achieved our objective of providing the development team with acce
 ### Validate
 
 * Open the Remote Access Server and open the **RDP - Client** (or navigate to `https://client.pod[#].aviatrixlab.com`). This is the on-prem Host.
-* Open up the Firefox browser on the RDP desktop
+* Open up the `Min` browser on the RDP desktop
 * Navigate to `http://localhost`
 
 > Do we have access to more destinations than expected?
