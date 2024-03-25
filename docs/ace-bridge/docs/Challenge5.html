@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>POD Portal &#8212; ACE Bridge - Let&#39;s Troubleshoot Together</title>
+    <title>Challenge 5 - Web VM to DB VM &#8212; ACE Bridge - Let&#39;s Troubleshoot Together</title>
   
   
   
@@ -57,12 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/pod';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Challenge5';</script>
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Verification - Connect to the ALB" href="Verification.html" />
-    <link rel="prev" title="Welcome to “Let’s Troubleshoot Together” Lab" href="home.html" />
+    <link rel="prev" title="Challenge 4 - Network Isolation" href="Challenge4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,13 +177,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">POD Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Verification.html">Verification - Connect to the ALB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Challenge1.html">Challenge 1 - Ingress to Proxy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Challenge2.html">Challenge 2 - Proxy VM to Web VM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Challenge3.html">Challenge 3 - Proxy VM to Web VM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Challenge4.html">Challenge 4 - Network Isolation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Challenge5.html">Challenge 5 - Web VM to DB VM</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Challenge 5 - Web VM to DB VM</a></li>
 </ul>
 
     </div>
@@ -239,7 +238,7 @@
       
       
       
-      <li><a href="../_sources/docs/pod.md" target="_blank"
+      <li><a href="../_sources/docs/Challenge5.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -323,7 +322,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>POD Portal</h1>
+    <h1>Challenge 5 - Web VM to DB VM</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -333,7 +332,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link">Link</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
 </ul>
             </nav>
         </div>
@@ -345,14 +344,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="pod-portal">
-<h1>POD Portal<a class="headerlink" href="#pod-portal" title="Link to this heading">#</a></h1>
-<section id="link">
-<h2>Link<a class="headerlink" href="#link" title="Link to this heading">#</a></h2>
-<p>You can view your personal POD portal by clicking on the picture below.</p>
-<a href="https://bridge-portal.ace.aviatrixlab.com/" target="_blank">
-<p><img alt="My image" src="../_images/pod.png" /></p>
-</a>
+  <section class="tex2jax_ignore mathjax_ignore" id="challenge-5-web-vm-to-db-vm">
+<h1>Challenge 5 - Web VM to DB VM<a class="headerlink" href="#challenge-5-web-vm-to-db-vm" title="Link to this heading">#</a></h1>
+<section id="scenario">
+<h2>Scenario<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
+<p>After resolving the challenge #3, the Database VM administrator found out that the workload is receiving requests from an unknown IP that belongs to the <strong>11.64.0.0/16</strong> space…</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/lab4-drawing.png"><img alt="../_images/lab4-drawing.png" src="../_images/lab4-drawing.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Unknown CIDR</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<details>
+  <summary>Click here for the <span style='color:#33ECFF'>Hints!</span></summary>
+<ul class="simple">
+<li><p>Launch ping from the Web Spoke GW towards the Database VM.</p></li>
+<li><p>Simultaneously, launch packet capture on the <em>Database Spoke GW</em>.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Use the <strong>packet capture</strong> feature on a specific egress interface (both Tunnel and LAN interfaces) of the <em>Database Spoke GW</em>.</p>
+</div>
+</details>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>By the end of this challenge you need to ensure that the WEB VM is capable to reach the Database VM, successfully.</p>
+</div>
 </section>
 </section>
 
@@ -387,22 +404,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="home.html"
+       href="Challenge4.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to “Let’s Troubleshoot Together” Lab</p>
+        <p class="prev-next-title">Challenge 4 - Network Isolation</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="Verification.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Verification - Connect to the ALB</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -420,7 +428,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link">Link</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
 </ul>
   </nav></div>
 

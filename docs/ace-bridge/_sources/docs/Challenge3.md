@@ -1,28 +1,33 @@
-# Challenge 3 - Network Isolation
+# Challenge 3 - Proxy VM to Web VM
 
 ## Scenario
 
-You have received a call just now from the Web VM owner that reported that the remote Database route is not advertised.
+This time, you have received another complaint that the connectivity issue between the Proxy VM and the Web VM is related to the routing!
 
-```{figure} images/segmentation2.png
+Please investigate the connectivity from a **Network** point of view.
+
+```{figure} images/proxy-web2.png
 ---
 height: 400px
 align: center
 ---
-Network Isolation
+Proxy to Web Failure
 ```
 
 <details>
   <summary>Click here for the <span style='color:#33ECFF'>Hints!</span></summary>
-  
-* Search the Private IP of the Database VM and try to ping it from the *Web Spoke GW*. 
-  Does the ping work?
+
+Use Copilot to figure out the IP address of the **Web VM**.
+
+* Can you try to ping the Web VM from the *Proxy Spoke GW*?
 
 ```{hint}
-Check the **RTBs** of all the gateways involved in the path between the Web VM and the Database VM!
+Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
+
+Select the **_Proxy Spoke GW_** and launch a **traceroute** towards the private IP address of the Web VM.
 ```
 </details>
 
 ```{attention}
-By the end of this challenge you need to ensure that the Database route has been propagated throughout the whole cloud network (i.e. Transit and Spoke GWs).
+By the end of this challenge you need to ensure that traffic is flowing from the Proxy VM to the Web VM, and viceversa.
 ```

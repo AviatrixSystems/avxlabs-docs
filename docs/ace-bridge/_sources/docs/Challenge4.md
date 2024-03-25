@@ -1,28 +1,28 @@
-# Challenge 4 - Web VM to DB VM
+# Challenge 4 - Network Isolation
 
 ## Scenario
 
-After resolving the challenge #3, the Database VM administrator found out that the workload is receiving requests from an unknown IP that belongs to the **11.64.0.0/16** space... 
+You have received a call just now from the Web VM owner that reported that the remote Database route is not advertised.
 
-```{figure} images/lab4-drawing.png
+```{figure} images/segmentation2.png
 ---
 height: 400px
 align: center
 ---
-Unknown CIDR
+Network Isolation
 ```
 
 <details>
   <summary>Click here for the <span style='color:#33ECFF'>Hints!</span></summary>
   
-* Launch ping from the Web Spoke GW towards the Database VM.
-* Simultaneously, launch packet capture on the *Database Spoke GW*.
+* Search the Private IP of the Database VM and try to ping it from the *Web Spoke GW*. 
+  Does the ping work?
 
 ```{hint}
-Use the **packet capture** feature on a specific egress interface (both Tunnel and LAN interfaces) of the *Database Spoke GW*.
+Check the **RTBs** of all the gateways involved in the path between the Web VM and the Database VM!
 ```
 </details>
 
 ```{attention}
-By the end of this challenge you need to ensure that the WEB VM is capable to reach the Database VM, successfully.
+By the end of this challenge you need to ensure that the Database route has been propagated throughout the whole cloud network (i.e. Transit and Spoke GWs).
 ```
