@@ -1,4 +1,4 @@
-# Challenge 2 - Proxy VM to Web VM
+# Challenge 2 - Proxy to Web (Sec)
 
 ## Scenario
 

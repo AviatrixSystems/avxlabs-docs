@@ -1,4 +1,4 @@
-# Challenge 5 - Web VM to DB VM
+# Challenge 5 - Web to Database 
 
 ## Scenario
 
