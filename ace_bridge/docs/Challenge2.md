@@ -2,7 +2,7 @@
 
 ## Scenario
 
-There is an issue between the the Proxy VM and the Web VM. 
+There is an issue between the Proxy VM and the Web VM: the communication is somehow broken.
 
 Please investigate the connectivity from a **Security** point of view.
 

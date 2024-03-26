@@ -1,8 +1,8 @@
-# Challenge 3 - Proxy to Web (Net))
+# Challenge 3 - Proxy to Web (Net)
 
 ## Scenario
 
-This time, you have received another complaint that the connectivity issue between the Proxy VM and the Web VM is related to the routing!
+This time, you have received another complaint that the connectivity issue between the Proxy VM and the Web VM is now affecting the routing!
 
 Please investigate the connectivity from a **Network** point of view.
 
