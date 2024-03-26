@@ -1,4 +1,4 @@
-# Challenge 3 - Proxy VM to Web VM
+# Challenge 3 - Proxy to Web (Net))
 
 ## Scenario
 
