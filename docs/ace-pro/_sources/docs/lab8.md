@@ -4,7 +4,7 @@
 
 The objective of this lab is to resolve an IP address overlap between an on-premises partner and the cloud. You will be using the **Site2Cloud Mapped NAT** feature to achieve this. 
 
-Moreover, you are also asked to intereconnect the on-prem DC in New York to your MCNA. An Aviatrix Edge device has already been provisioned and it got already registered to the existing Aviatrix Controller.
+Moreover, you are also asked to interconnect the on-prem DC in New York to your MCNA. An Aviatrix Edge device has already been provisioned and it got already registered to the existing Aviatrix Controller.
  
 ## 2. Site2Cloud Overview
 
@@ -119,7 +119,7 @@ S2C template
 ```
 
 ```{caution}
-The configurationt template will grey out after clicking on Save. Be patient and wait for the Aviatrix Controller to complete the deployment. <ins>This will create the first leg of the connection, on the GCP Spoke GW</ins>. This will stay **Down** until the other end is configured.
+The configuration template will grey out after clicking on Save. Be patient and wait for the Aviatrix Controller to complete the deployment. <ins>This will create the first leg of the connection, on the GCP Spoke GW</ins>. This will stay **Down** until the other end is configured.
 ```
 
 Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.
