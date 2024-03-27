@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 3 - FireNet - Interface &#8212; ACE Operations Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab3';</script>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 4 - FireNet - Routes" href="lab4.html" />
+    <link rel="prev" title="Lab 2 - Connection Policy" href="lab2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Operations Lab - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="ACE Operations Lab - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Operations Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Network Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Connection Policy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 3 - FireNet - Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - FireNet - Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Routes Manipulation &amp; NAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - Site2Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - Secure Egress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - Distributed Cloud Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 3 - FireNet - Interface</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-3-firenet-interface">
+<h1>Lab 3 - FireNet - Interface<a class="headerlink" href="#lab-3-firenet-interface" title="Link to this heading">#</a></h1>
+<section id="scenario">
+<h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
+<p>BU1 and BU2 were able to communicate with each other as of Friday EOB (i.e end of LAB2).</p>
+<p>However, the network team received a complaint from BU1 Frontend Team that the connectivity with BU2 Mobile App was no longer working.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The traffic between the two VPCs in AWS is inspected by a <strong>Firewall</strong> deployed through the Aviatrix <strong>FireNet</strong> feature.</p>
+<p>The <strong><code class="docutils literal notranslate"><span class="pre">Inspection</span> <span class="pre">Policy</span></code></strong> had been already applied on each Spoke VPC in AWS, at the launch of the PODs. The traffic generating from or going to either of the AWS VPCs will be sent to the Firewall by the Transit FireNet Gateway for carrying out the Deep Packet Inspection.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/lab3-policy2.png" src="../_images/lab3-policy2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Inspection Policies on the FireNet Transit GW</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/lab3-topology.png"><img alt="../_images/lab3-topology.png" src="../_images/lab3-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Lab 3 Topology</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="troubleshoot-request">
+<h2>2. TROUBLESHOOT REQUEST<a class="headerlink" href="#troubleshoot-request" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU2 Mobile App</strong> is actually broken.</p>
+<ul>
+<li><p>SSH to BU1 Frontend and launch ping/ssh towards BU2 Mobile App.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab3-pingfails.png" src="../_images/lab3-pingfails.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Check whether the relevant Spoke Gateways have the required routes installed on their routing tables or not.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select for example the gateway <strong>ace-aws-eu-west-1-spoke1</strong>  <strong>&gt; Gateway Routes</strong> and search for the subnet <strong>10.1.212.0/24</strong>, where BU2 Mobile App resides.</p>
+</div>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab3-routecheck.png" src="../_images/lab3-routecheck.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Filtering out</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the outcome above, it is evident that Spoke1 in AWS has the destination route in its RTB. You can verify the inverse, inspecting the Routing Table of  the Spoke2 in AWS.</p>
+<ul class="simple">
+<li><p>Use <strong>Diagnostics Tools</strong> from the <em>Spoke1 Gateway</em> in AWS and try to ping/traceroute the instance behind the other spoke (i.e. BU2 Mobile App).</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Retrieve the private IP address of the <strong>BU2 Mobile App</strong> from the Cloud Assets inventory, first!</p>
+<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for <code class="docutils literal notranslate"><span class="pre">&quot;mobile&quot;</span></code>, then retrieve the private IP of the interested EC2 instance.</p>
+</div>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab3-personalpod.png" src="../_images/lab3-personalpod.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Private IP of BU2 Mobile App</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong> then select the GW <strong>ace-aws-eu-west-1-spoke1</strong> and ping the private IP of BU2 Mobile App</p>
+</div>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab3-pingfailss.png" src="../_images/lab3-pingfailss.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Ping is unsuccessful</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the outcome above you can notice that from the Spoke1 GW in AWS, the BU2 Mobile App is not reachable.</p>
+<ul class="simple">
+<li><p>Now try to ping both workloads (i.e. BU1 Frontend and BU2 Mobile App) from the <strong>Transit</strong> GW in AWS.</p></li>
+</ul>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab3-bu1ping.png" src="../_images/lab3-bu1ping.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Ping is ok from the Transit GW towards BU1 Frontend</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab3-bu2ping.png" src="../_images/lab3-bu2ping.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Ping is ok from the Transit GW towards BU2 Mobile App</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the outcome above, you can notice that the Transit GW in AWS can ping both BU1 Frontend and BU2 Mobile App, successfully.</p>
+<ul class="simple">
+<li><p>Let’s check the <strong>FireNet</strong> section!</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet</strong></p>
+</div>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab3-unreachable.png" src="../_images/lab3-unreachable.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">The FW is unreachable</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on the <strong>Firewall</strong> tab! You will notice that the Firewall turns out being down.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The ICMP health check is initiated every <strong>5</strong> seconds from the Aviatrix Transit FireNet Gateway. The 5-second setting is the default and cannot be changed.</p>
+</div>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab3-fwdown.png" src="../_images/lab3-fwdown.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">The FW is down</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Apply a quick <strong>workaround</strong>. Before exploring the firewall configuration, exclude from the East-West Inspection, either of the CIDRs of the two AWS Spoke VPCs.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong> and click on the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW.</p>
+<p>Then click on <strong>Settings</strong> and insert the CIDR of the AWS <strong>ace-aws-eu-west-1-spoke2</strong> VPC on the field <code class="docutils literal notranslate"><span class="pre">&quot;Exclude</span> <span class="pre">from</span> <span class="pre">East-West</span> <span class="pre">Inspection&quot;</span></code>.</p>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+</div>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab3-firenetgw.png" src="../_images/lab3-firenetgw.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">The Transit FireNet GW</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab3-excemption2.png" src="../_images/lab3-excemption2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Exclude the CIDR</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Issue the ping towards the <strong>BU2 Mobile App</strong> from the <strong>BU1 Frontend</strong>. This time the connectivity will work!</p></li>
+</ul>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab3-pingok2.png" src="../_images/lab3-pingok2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Launch a <strong>traceroute</strong> towards the Private IP address of the BU2 Mobile App.</p></li>
+</ul>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab3-traceroute.png" src="../_images/lab3-traceroute.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Traceroute is ok</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The traceroute outcome shows the whole path from the source, the BU1 Frontend, till the recipient, the BU2 Mobile App.</p>
+<p><ins>Undoubtedly, the Firewall is excluded from this path!</ins></p>
+</div>
+<ul class="simple">
+<li><p>Now remove the workaround and explore the Firewall configuration!</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW, then click on <strong>Settings</strong> and remove the CIDR <code class="docutils literal notranslate"><span class="pre">10.1.212.0/24</span></code>.</p>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+</div>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab3-removeex.png" src="../_images/lab3-removeex.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Remove the exemption</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Log in to the FW (<ins>refer to your POD portal for the credentials</ins>) and explore the configuration.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can access the Firewall in two ways:</p>
+<ol class="arabic simple">
+<li><p>From the URL available on the <strong>POD Portal</strong>.</p></li>
+<li><p><strong>CoPilot &gt; Security &gt; FireNet &gt; Firewall</strong> and click on the <strong>URL</strong>.</p></li>
+</ol>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab3-newportal.png" src="../_images/lab3-newportal.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">POD Portal</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab3-url.png" src="../_images/lab3-url.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">FW URL from the FireNet section on the CoPilot</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Insert the credentials.</p></li>
+</ul>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab3-fw.png" src="../_images/lab3-fw.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">FW access</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>FW &gt; Network &gt; Interfaces</strong> and click the LAN interface (port2) and fix the issue!</p>
+</div>
+<p>The port was disabled to simulate a software failure of the FW…</p>
+<p>Double click on the greyed-out interface LAN (port2), or alternatively, select the interface and click on the <strong>Edit</strong> button.</p>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab3-fwint.png" src="../_images/lab3-fwint.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">FW interface</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Scroll down until you see the <code class="docutils literal notranslate"><span class="pre">&quot;Status&quot;</span></code> button of the interface and finally reactivate it.</p>
+<p>Of course, then click on <strong>OK</strong>.</p>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab3-enableint.png" src="../_images/lab3-enableint.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Reactivate the LAN port</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Relaunch the ping from <strong>BU1 Frontend</strong> towards <strong>BU2 Mobile App</strong>, after having <ins>reactivated</ins> the LAN interface of the firewall.</p>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab3-pingworks.png" src="../_images/lab3-pingworks.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Ping is ok!</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Relaunch also the traceroute from <strong>BU1 Frontend</strong> towards <strong>BU2 Mobile App</strong>.</p>
+<figure class="align-center" id="id22">
+<img alt="../_images/lab3-traceroute2.png" src="../_images/lab3-traceroute2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Ping is ok!</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This time the traceroute outcome shows twice the IP address of the Transit FireNet GW (i.e. <strong>.134</strong> as shown in the screenshot above) along the path, due to the fact that the traffic is now diverted towards the Firewall that, after the completion of the Deep Packet Inspection, sends the permitted traffic back to the Transit FireNet GW.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 2 - Connection Policy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 4 - FireNet - Routes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
