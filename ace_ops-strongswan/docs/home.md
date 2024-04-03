@@ -8,7 +8,11 @@ ACE Inc. is a SaaS provider that has a presence in AWS, GCP, and Azure.
 
 There is already one **Site2Cloud** connection:
 
-- Onprem Data Center
+- Onprem DC1
+
+Moreover, there is already one **Aviatrix Edge** deployed:
+
+- Onprem DC2
 
 Here is a view of the initial topology:
 
@@ -22,6 +26,10 @@ Initial Topology
 
 ## 2. TECHNICAL DETAILS
 
+- There are two **WEB** workloads deployed inside aws eu-west-1 region.
+- There is one **APP** workload deployed inside gcp us-east-1 region.
+- There are two **DB** workloads deployed inside azure east-us region. 
+
 All applications in AWS and GCP have **Public** and **Private** IP’s, whereas instances in Azure <ins>only have Private IP’s</ins>.
 
 These are the CIDR blocks per each CSP:
@@ -31,9 +39,6 @@ These are the CIDR blocks per each CSP:
 - Azure = 192.168.0.0/16
 
 <ins>Databases do not have HTTP running</ins>. All other apps have HTTP running (i.e. curl command can be issued).
-
-- 3rd octet of all Spoke 1’s is 211
-- 3rd octet of all Spoke 2’s is 212
   
 Management access from Internet for instances in AWS and GCP is enabled, however, none of the apps are currently exposed to the Internet.
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lab 1 - Network Domains &#8212; ACE Operations Lab</title>
+    <title>Lab 1 - NETWORK SEGMENTATION &#8212; ACE Operations Lab</title>
   
   
   
@@ -179,7 +179,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 1 - Network Domains</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 1 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Connection Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - FireNet - Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - FireNet - Routes</a></li>
@@ -326,7 +326,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 1 - Network Domains</h1>
+    <h1>Lab 1 - NETWORK SEGMENTATION</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -336,8 +336,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">2. VALIDATION REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-1">1. SCENARIO#1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-server-timers">2. TASK SERVER TIMERS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-topology">3. DYNAMIC TOPOLOGY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">3. CONNECTIVITY TEST</a></li>
 </ul>
             </nav>
         </div>
@@ -349,12 +351,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-1-network-domains">
-<h1>Lab 1 - Network Domains<a class="headerlink" href="#lab-1-network-domains" title="Link to this heading">#</a></h1>
-<section id="scenario">
-<h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
-<p>Infrastructure <ins>was segmented</ins> recently into 2 network domains: <strong>BU1</strong> &amp; <strong>BU2</strong>.</p>
-<p>You are requested to ascertain the segregation between the two network domains.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-1-network-segmentation">
+<h1>Lab 1 - NETWORK SEGMENTATION<a class="headerlink" href="#lab-1-network-segmentation" title="Link to this heading">#</a></h1>
+<section id="scenario-1">
+<h2>1. SCENARIO#1<a class="headerlink" href="#scenario-1" title="Link to this heading">#</a></h2>
+<p>The Aviatrix multicloud network is already up and running.</p>
+<p>You are requested to ascertain that all the workloads can communicate to each other, leveraging the Aviatrix Transit Core Backbone.</p>
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/lab1-segmentation.png"><img alt="../_images/lab1-segmentation.png" src="../_images/lab1-segmentation.png" style="height: 400px;" /></a>
 <figcaption>
@@ -362,8 +364,8 @@ document.write(`
 </figcaption>
 </figure>
 </section>
-<section id="validation-request">
-<h2>2. VALIDATION REQUEST<a class="headerlink" href="#validation-request" title="Link to this heading">#</a></h2>
+<section id="task-server-timers">
+<h2>2. TASK SERVER TIMERS<a class="headerlink" href="#task-server-timers" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Settings &gt; Resources &gt; Task Server</strong></p>
 <ul>
@@ -400,6 +402,9 @@ document.write(`
 <p class="admonition-title">Warning</p>
 <p>These are very aggressive settings. In a Production environment, you should NOT set these intervals that frequently!</p>
 </div>
+</section>
+<section id="dynamic-topology">
+<h2>3. DYNAMIC TOPOLOGY<a class="headerlink" href="#dynamic-topology" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong>  to explore your POD topology.</p>
 <p>You will notice that the CoPilot is showing both the <em>Managed VPCs</em> and the <em>Unmanaged VPCs</em>.</p>
 <figure class="align-center" id="id6">
@@ -408,7 +413,7 @@ document.write(`
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">Dynamic Topology</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;Managed&quot;</span></code> button on the right-hand side of the screen, for hiding the Unmanaged VPCs.</p>
+<p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;Managed&quot;</span></code> button on the right-hand side of the Topology section, for hiding the Unmanaged VPCs.</p>
 <figure class="align-center" id="id7">
 <img alt="../_images/lab1-managedvpc2.png" src="../_images/lab1-managedvpc2.png" />
 <figcaption>
@@ -427,9 +432,12 @@ document.write(`
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">Managed VPCs only</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="connectivity-test">
+<h2>3. CONNECTIVITY TEST<a class="headerlink" href="#connectivity-test" title="Link to this heading">#</a></h2>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>Refer <strong>always</strong> to your personal POD for the IP addresses. The IP addresses visible on the subsequent screenshots are just examples taken from a different POD, used for creating the lab guides!</p>
+<p>Refer <strong>always</strong> to your personal POD for the IP addresses. The IP addresses visible on the subsequent screenshots are just examples taken from a different POD, used only for creating the lab guides!</p>
 </div>
 <p>There are <strong>two</strong> methods for SSH to any instances inside the multicloud infrastructure of this lab:</p>
 <ol class="arabic simple">
@@ -472,43 +480,62 @@ document.write(`
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Guacamole Menu</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The IP addresses can be easily retrieved using <strong>3</strong> different methods, as you like:</p>
-<ol class="arabic simple">
-<li><p>From the <strong>Properties</strong> section of each Virtual Machine on the Topology.</p></li>
-<li><p>From the <strong>Virtual Machines</strong> Inventory.</p></li>
-<li><p>From your personal POD portal, where you can also use the <strong>DNS symbolic names</strong>.</p></li>
-</ol>
-</div>
 <ul class="simple">
-<li><p><strong>Dynamic Topology</strong>:</p></li>
+<li><p>SSH to the <strong>WEB1</strong> in AWS.</p>
+<ul>
+<li><p>After landed on WEB1, ping the <ins>private IP address</ins> of the WEB2, APP1, DB1 and DB2.</p></li>
 </ul>
-<p>Expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC and click on the test instance, then explore the <code class="docutils literal notranslate"><span class="pre">&quot;Properties&quot;</span></code> section on the right-hand side.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>You can’t connect to any Aviatrix Gateways using the SSH protocol. The port 22 is hardened!</p>
-</div>
+</li>
+</ul>
 <figure class="align-center" id="id14">
-<img alt="../_images/lab1-newpicture.png" src="../_images/lab1-newpicture.png" />
+<img alt="../_images/lab1-newseg1.png" src="../_images/lab1-newseg1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">EC2 Instance</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">WEB1</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The IP addresses can be easily retrieved using <strong>2</strong> different methods, as you like:</p>
+<ol class="arabic simple">
+<li><p>From the <strong>Properties</strong> section of each Virtual Machine on the Topology.</p></li>
+<li><p>From the <strong>Cloud Assets</strong> section.</p></li>
+</ol>
+<p>From your personal POD portal, you can use the <strong>DNS symbolic names</strong>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also use the <strong>DNS symbolic names</strong> available on your personal POD portal (both private and public dns names!).</p>
+</div>
+<ul class="simple">
+<li><p><strong>Virtual Machine Properties</strong>:</p></li>
+</ul>
+<p>Expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC on the Topology and click on the test instance, then explore the <code class="docutils literal notranslate"><span class="pre">&quot;Properties&quot;</span></code> section on the right-hand side.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>You can’t connect to any Aviatrix Gateways using the SSH protocol.</p>
+<p>The port 22 is hardened!</p>
+</div>
 <figure class="align-center" id="id15">
+<img alt="../_images/lab1-newpicture.png" src="../_images/lab1-newpicture.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">EC2 Instance</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id16">
 <img alt="../_images/lab1-ec2.png" src="../_images/lab1-ec2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Instance Properties</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Instance Properties</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p><strong>Cloud Assets</strong>:</p></li>
 </ul>
 <p>Go to <strong>CoPilot &gt; Cloud resources &gt; Cloud Assets &gt; Virtual Machines</strong> and from here you can search for any instances and retrieve their IP addresses!</p>
-<figure class="align-center" id="id16">
+<p>Type <em>web1</em> inside the search field.</p>
+<figure class="align-center" id="id17">
 <img alt="../_images/lab1-assets.png" src="../_images/lab1-assets.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Inventory</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Inventory</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -522,25 +549,34 @@ document.write(`
 <li><p>Use the symbolic name that contains the word <code class="docutils literal notranslate"><span class="pre">&quot;private&quot;</span></code> for the East-West traffic verification, once you have landed onto any test instances from your laptop.</p></li>
 </ul>
 </div>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab1-podred.png" src="../_images/lab1-podred.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">DNS Names</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">DNS Name</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab1-newseg2.png" src="../_images/lab1-newseg2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">SSH to WEB1</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Verify connectivity between clients <strong>within</strong> the same BU:</p>
-<ul>
-<li><p>SSH to the <strong>BU1 Frontend</strong> in AWS.</p></li>
-<li><p>From BU1 Frontend ping the <ins>private IP address</ins> of the <strong>BU1 Analytics</strong> in GCP.</p></li>
+<li><p>Now retrieve the <strong>WEB2</strong>’s private IP address and launch the ping towards this workload</p></li>
 </ul>
-</li>
-</ul>
-<p>Ping and SSH will be successful <strong>within</strong> the same network domain!</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab1-pingok.png" src="../_images/lab1-pingok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">BU1 connectivity</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">WEB2</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Repeat the same test towards <strong>APP1</strong>. This time retrieve its private IP address from the Cloud Assets section.</p></li>
+</ul>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab1-pingok.png" src="../_images/lab1-pingok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">APP1 IP address</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -556,10 +592,10 @@ document.write(`
 <p>Once again refer always to your personal POD for the IP addresses.</p>
 <p>The screenshots are used as examples and might indicate different IP addresses from those shown on your personal POD portal!</p>
 </div>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab1-pingfails.png" src="../_images/lab1-pingfails.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">BU1 to BU2 fails</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">BU1 to BU2 fails</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -569,10 +605,10 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Overview</strong></p>
 </div>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab1-logicalview.png" src="../_images/lab1-logicalview.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Logical View</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Logical View</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -582,10 +618,10 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the <strong>ace-aws-eu-west-1-transit</strong> Gateway <strong>&gt; Gateway Routes</strong> and filter out based on the Network Domain (i.e. either BU1 or BU2).</p>
 </div>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab1-bu1vrf.png" src="../_images/lab1-bu1vrf.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Network Domain (aka VRF)</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Network Domain (aka VRF)</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -596,17 +632,17 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; Monitor &gt; FlowIQ</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;+&quot;</span></code> icon and filter based, for instance, on the <code class="docutils literal notranslate"><span class="pre">&quot;Destination</span> <span class="pre">IP</span> <span class="pre">Address&quot;</span></code> <strong>172.16.211.100</strong> (i.e. BU1 Analytics).</p>
 <p>Do not forget to click on <strong>Apply</strong>.</p>
 </div>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id25">
 <img alt="../_images/lab1-plus.png" src="../_images/lab1-plus.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">FlowIQ Filter</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">FlowIQ Filter</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then check the <code class="docutils literal notranslate"><span class="pre">&quot;Flow</span> <span class="pre">Exporters&quot;</span></code> widget, then from the drop-down menu select the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Aviatrix</span> <span class="pre">Gateway&quot;</span></code></strong> widget: you will see the list of all the Aviatrix Gateways involved along the path.</p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab1-flowiq.png" src="../_images/lab1-flowiq.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -621,20 +657,20 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong>, search for the subnet <strong>172.16.211.0/24</strong> on the <em>search field</em> and then filter based on the following condition: “Gateway <em>contains</em> spoke1”.</p>
 <p>The filter button is on the left-hand side of the screen and is shaped like a small funnel.</p>
 </div>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id27">
 <img alt="../_images/lab1-filtersearch.png" src="../_images/lab1-filtersearch.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Search field and Filter icon</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Search field and Filter icon</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The <strong>Originator</strong> has the egress interface that corresponds to the <strong>eth0</strong> interface (i.e. the LAN interface), which in turn means, direct connected.</p>
 </div>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id28">
 <img alt="../_images/lab1-cloudroutes.png" src="../_images/lab1-cloudroutes.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Originator = eth0</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Originator = eth0</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -646,10 +682,10 @@ document.write(`
 <p><ins>Remove any previous filters</ins>!</p>
 </div>
 <p>This time you need to proceed with a <ins>recursive lookup</ins>: from any Spoke GWs check the <strong>NEXT HOP GATEWAY</strong> column and try to find the originator of 10.0.0.0/24.</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab1-cloudroutes2.png" src="../_images/lab1-cloudroutes2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Cloud Routes - Recursive lookup</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Cloud Routes - Recursive lookup</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -719,8 +755,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">2. VALIDATION REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-1">1. SCENARIO#1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-server-timers">2. TASK SERVER TIMERS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-topology">3. DYNAMIC TOPOLOGY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">3. CONNECTIVITY TEST</a></li>
 </ul>
   </nav></div>
 

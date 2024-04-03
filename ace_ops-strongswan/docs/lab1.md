@@ -1,10 +1,10 @@
-# Lab 1 - Network Domains
+# Lab 1 - NETWORK SEGMENTATION
 
-## 1. SCENARIO
+## 1. SCENARIO#1
 
-Infrastructure <ins>was segmented</ins> recently into 2 network domains: **BU1** & **BU2**.
+The Aviatrix multicloud network is already up and running.
 
-You are requested to ascertain the segregation between the two network domains.
+You are requested to ascertain that all the workloads can communicate to each other, leveraging the Aviatrix Transit Core Backbone.
 
 ```{figure} images/lab1-segmentation.png
 ---
@@ -14,7 +14,7 @@ align: center
 Initial Topology
 ```
 
-## 2. VALIDATION REQUEST
+## 2. TASK SERVER TIMERS
 
 * Go to **CoPilot > Settings > Resources > Task Server**
   * Ensure that both **Fetch GW Routes** and **Fetch VPC Routes** intervals are set to <ins>“1 second”</ins> each and then click on **SAVE**.
@@ -53,6 +53,8 @@ Commit
 These are very aggressive settings. In a Production environment, you should NOT set these intervals that frequently!
 ```
 
+## 3. DYNAMIC TOPOLOGY
+
 Go to **CoPilot > Cloud Fabric > Topology**  to explore your POD topology. 
 
 You will notice that the CoPilot is showing both the *Managed VPCs* and the *Unmanaged VPCs*.
@@ -64,7 +66,7 @@ align: center
 Dynamic Topology
 ```
 
-Click on the `"Managed"` button on the right-hand side of the screen, for hiding the Unmanaged VPCs.
+Click on the `"Managed"` button on the right-hand side of the Topology section, for hiding the Unmanaged VPCs.
 
 ```{figure} images/lab1-managedvpc2.png
 ---
@@ -88,8 +90,11 @@ align: center
 Managed VPCs only
 ```
 
+## 3. CONNECTIVITY TEST
+
+
 ```{caution}
-Refer **always** to your personal POD for the IP addresses. The IP addresses visible on the subsequent screenshots are just examples taken from a different POD, used for creating the lab guides!
+Refer **always** to your personal POD for the IP addresses. The IP addresses visible on the subsequent screenshots are just examples taken from a different POD, used only for creating the lab guides!
 ```
 
 There are **two** methods for SSH to any instances inside the multicloud infrastructure of this lab:
@@ -137,19 +142,36 @@ align: center
 Guacamole Menu
 ```
 
-```{tip}
-The IP addresses can be easily retrieved using **3** different methods, as you like:
-1) From the **Properties** section of each Virtual Machine on the Topology.
-2) From the **Virtual Machines** Inventory.
-3) From your personal POD portal, where you can also use the **DNS symbolic names**.
+- SSH to the **WEB1** in AWS.
+    - After landed on WEB1, ping the <ins>private IP address</ins> of the WEB2, APP1, DB1 and DB2.
+
+```{figure} images/lab1-newseg1.png
+---
+align: center
+---
+WEB1
 ```
 
-- **Dynamic Topology**:
+```{tip}
+The IP addresses can be easily retrieved using **2** different methods, as you like:
+1) From the **Properties** section of each Virtual Machine on the Topology.
+2) From the **Cloud Assets** section.
 
-Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
+From your personal POD portal, you can use the **DNS symbolic names**.
+```
+
+```{tip}
+You can also use the **DNS symbolic names** available on your personal POD portal (both private and public dns names!).
+```
+
+- **Virtual Machine Properties**:
+
+Expand the **_ace-aws-eu-west-1-spoke1_** VPC on the Topology and click on the test instance, then explore the `"Properties"` section on the right-hand side.
 
 ```{caution}
-You can't connect to any Aviatrix Gateways using the SSH protocol. The port 22 is hardened!
+You can't connect to any Aviatrix Gateways using the SSH protocol. 
+
+The port 22 is hardened!
 ```
 
 ```{figure} images/lab1-newpicture.png
@@ -168,7 +190,9 @@ Instance Properties
 
 - **Cloud Assets**:
 
-Go to **CoPilot > Cloud resources > Cloud Assets > Virtual Machines** and from here you can search for any instances and retrieve their IP addresses!
+Go to **CoPilot > Cloud resources > Cloud Assets > Virtual Machines** and from here you can search for any instances and retrieve their IP addresses! 
+
+Type *web1* inside the search field.
 
 ```{figure} images/lab1-assets.png
 ---
@@ -191,20 +215,32 @@ Use your personal POD in order to retrieve the symbolic names of any test instan
 ---
 align: center
 ---
-DNS Names
+DNS Name
 ```
 
-- Verify connectivity between clients **within** the same BU:
-    - SSH to the **BU1 Frontend** in AWS.
-    - From BU1 Frontend ping the <ins>private IP address</ins> of the **BU1 Analytics** in GCP.
+```{figure} images/lab1-newseg2.png
+---
+align: center
+---
+SSH to WEB1
+```
 
-Ping and SSH will be successful **within** the same network domain!
+- Now retrieve the **WEB2**'s private IP address and launch the ping towards this workload
 
 ```{figure} images/lab1-pingok.png
 ---
 align: center
 ---
-BU1 connectivity
+WEB2
+```
+
+- Repeat the same test towards **APP1**. This time retrieve its private IP address from the Cloud Assets section.
+
+```{figure} images/lab1-pingok.png
+---
+align: center
+---
+APP1 IP address
 ```
 
 * Verify the network segregation **between** the two BUs:
