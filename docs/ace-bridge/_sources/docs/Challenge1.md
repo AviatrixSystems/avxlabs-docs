@@ -2,7 +2,7 @@
 
 ## Scenario
 
-Let’s start the investigation to bring up back our application. The communication between the ALB inside the Ingress VPC and the Proxy VM is broken. Identify the issue an restore the connectivity.
+Let’s start the investigation to bring up back our application. The communication between the ALB inside the Ingress VPC and the Proxy VM is broken. Identify the issue and restore the connectivity.
 
 ```{figure} images/ingress-proxy.png
 ---

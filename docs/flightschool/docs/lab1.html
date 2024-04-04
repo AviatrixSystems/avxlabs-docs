@@ -369,8 +369,12 @@ document.write(`
 <h2>Lab Overview - What’s in the lab?<a class="headerlink" href="#lab-overview-what-s-in-the-lab" title="Link to this heading">#</a></h2>
 <p>Lab time: ~15 minutes</p>
 <p>In this lab, we are going to explore our lab environment. The diagram below shows the current state of the lab environment. You will extend this environment during the exercises. The instructor will briefly explain the lab setup in the diagram. You can find a more complete and detailed diagram here.</p>
-<p><img alt="Lab Overview" src="../_images/lab-before2.png" />
-<em>Fig. Lab Overview</em></p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/lab-before2.png"><img alt="../_images/lab-before2.png" src="../_images/lab-before2.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Lab Overview</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="lab-1-1-copilot">
 <h2>Lab 1.1 - CoPilot<a class="headerlink" href="#lab-1-1-copilot" title="Link to this heading">#</a></h2>
@@ -395,14 +399,44 @@ document.write(`
 <section id="expected-results">
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
 <p>You should be able to log in to CoPilot. You should be able to view Topology by clicking <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Topology</span></code> and see the current Multicloud Network topology. Topology should look similar to this:</p>
-<p><img alt="Topology1" src="../_images/lab1-copilot-topology.png" /><br />
-<em>Fig. Initial Topology</em></p>
-<p>As you can see, we have the azure-transit gateway in the middle, with azure-build, azure-dmz and azure-prod spokes connected to it. The AWS VPC’s are not yet connected to any transit.</p>
-<p>After selecting the transit gateway and clicking the diagnostics tools button, you should see the diagnostics pane. Have a look around at the troubleshooting tools here.</p>
-<p><img alt="CoPilot Diagnostics" src="../_images/lab1-copilot-diagnostics.png" /><br />
-<em>Fig. CoPilot Diagnostics</em></p>
-<p><img alt="CoPilot Diagnostics Pane" src="../_images/lab1-copilot-diagnostics-pane.png" /><br />
-<em>Fig. CoPilot Diagnostics Pane</em></p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab1-copilot-topology.png" src="../_images/lab1-copilot-topology.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Initial Topology</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;Managed&quot;</span></code> button on the right-hand side of the screen, for hiding the Unmanaged VPCs.</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab1-managed.png" src="../_images/lab1-managed.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Initial Topology</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Managed VPC</strong> = Indicates an Aviatrix gateway is running in the VPC/VNet.</p>
+<p><strong>Unmanaged VPC</strong> = Indicates no Aviatrix gateways exist in the VPC/VNet.</p>
+</div>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab1-nounmanagaed.png" src="../_images/lab1-nounmanagaed.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Initial Topology without Unmanaged VPCs</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As you can see, we have the azure-transit gateway in the middle, with <strong>azure-build</strong>, <strong>azure-dmz</strong> and <strong>azure-prod</strong> spokes connected to it. The AWS VPC’s are not yet connected to any transit.</p>
+<p>After selecting the transit gateway and clicking the <strong>diagnostics tools</strong> button, you should see the diagnostics pane. Have a look around at the troubleshooting tools here.</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/lab1-copilot-diagnostics.png"><img alt="../_images/lab1-copilot-diagnostics.png" src="../_images/lab1-copilot-diagnostics.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">CoPilot Diagnostics</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab1-copilot-diagnostics-pane.png" src="../_images/lab1-copilot-diagnostics-pane.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">CoPilot Diagnostics Pane</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Close the diagnostics pane again.</p>
 </section>
 </section>
@@ -419,6 +453,12 @@ document.write(`
 <section id="id3">
 <h3>Expected Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Accounts in AWS and Azure have already been onboarded and you should see these accounts in the list. The accounts should also have an audit status <strong><em>pass</em></strong>, meaning the permissions in the accounts are correctly configured.</p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab1-accounts.png" src="../_images/lab1-accounts.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Cloud Accounts onboarded</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-1-3-connectivity-check">
@@ -437,8 +477,12 @@ document.write(`
 <li><p><em>Remember to replace <span style="color:orange"><strong>[#]</strong></span> with your pod ID</em></p></li>
 <li><p><em>If you want to use copy/paste in this Guacamole web console, use CTRL+ALT+SHIFT on a Windows device or CTRL+CMD+SHIFT on a MacOS device.</em></p></li>
 </ul>
-<p><img alt="Remote Access Server" src="../_images/lab1-remote-access.png" /><br />
-<em>Fig. Remote Access Server</em></p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab1-remote-access.png" src="../_images/lab1-remote-access.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Remote Access Server</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can also access the Remote Access Server on port <code class="docutils literal notranslate"><span class="pre">3389</span></code> using the RDP client of your choice using the same credentials as above.</p>
@@ -457,13 +501,21 @@ document.write(`
 <ul class="simple">
 <li><p>None of the connections from the office will be successful. Look at the Diagram in the Lab 1 Overview and you will see that the office is not connected yet.</p></li>
 </ul>
-<p><img alt="Office connectivity" src="../_images/lab1-connectivity-from-office.png" /><br />
-<em>Fig. Office connectivity</em></p>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab1-connectivity-from-office.png" src="../_images/lab1-connectivity-from-office.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Office connectivity</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Connectivity to the appgw, web, app and db servers should be working, proving that the already deployed application in Azure is up.</p></li>
 </ul>
-<p><img alt="Web app connectivity" src="../_images/lab1-connectivity-3tier-app.png" /><br />
-<em>Fig. Web app connectivity</em></p>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab1-connectivity-3tier-app.png" src="../_images/lab1-connectivity-3tier-app.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Web app connectivity</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="end-of-lab-1">

@@ -6,8 +6,13 @@ Lab time: ~45 minutes
 
 During this lab we will build and verify the connectivity to your office.
 
-![Topology](images/lab-2.png)  
-_Fig. Azure Deployment_
+```{figure} images/lab-2.png
+---
+height: 400px
+align: center
+---
+Azure Deployment
+```
 
 ## Lab 2.1 - Connection to the Office
 
@@ -19,12 +24,12 @@ Your on-prem Network team has already configured an IPSec tunnel on the office r
 
 In order to connect your Multicloud environment to the office, we will create an **_External Connection_**. This allows you to create a secure connectivity between the Cloud and the office with dynamic routing (BGP).
 
-Now let’s add the office connection. In Copilot, navigate to **_Networking --> Connectivity --> External Connections (S2C)_**. Click the **_+ External Connection_** button to add a new connection.
+Now let’s add the office connection. In Copilot, navigate to **_Networking --> Connectivity --> External Connections (S2C)_**. Click the **`+ External Connection`** button to add a new connection.
 
 |                             |                                                                                                                                                                                                                    |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Connection Name**         | azure-to-office                                                                                                                                                                                                    |
-| **Connect public cloud to** | External Device, BGP over IPsec                                                                                                                                                                                    |
+| **Name**         | azure-to-office                                                                                                                                                                                                    |
+| **Connect Public Cloud to** | External Device, BGP over IPsec                                                                                                                                                                                    |
 | **Local Gateway**           | azure-transit                                                                                                                                                                                                      |
 | **Local ASN**               | 65pod[#] _For Pods 1-9, double pad the pod# with an additional 0 (ie. 65004). For Pods 10-99 single pad (ie. 65010). For Pods > 100, no padding is needed (ie. 65100)_                                             |
 | **Remote ASN**              | 65000                                                                                                                                                                                                              |
@@ -35,15 +40,23 @@ Now let’s add the office connection. In Copilot, navigate to **_Networking -->
 
 It should look something like the example below. Make sure to put in your own remote gateway IP and AS number though.
 
-![Configure IPsec](images/lab2-configure-ipsec.png)  
-_Fig. Configure IPsec_
+```{figure} images/lab2-configure-ipsec.png
+---
+align: center
+---
+Configure IPsec
+```
 
-* Hit **_save_** to execute the changes.
+* Hit **_Save_** to execute the changes.
 
 After 1-2 minutes, you should see that the connection to the office is configured and up (green).
 
-![Topology](images/lab2-tunnel-up.png)  
-_Fig. Tunnel up_
+```{figure} images/lab2-tunnel-up.png
+---
+align: center
+---
+Tunnel up
+```
 
 In order to test connectivity between cloud and the office, a test VM is available in the office with the FQDN `client-int.pod[#].aviatrixlab.com`. The IPSec tunnel is up, but maybe there is another blocker that prevents connectivity. Try the following test:
 
@@ -51,8 +64,12 @@ In order to test connectivity between cloud and the office, a test VM is availab
 * Click on `Gateway Instance` drop-down and select the **_azure-transit_** node.
 * Select `Ping` in the vertical tabs and enter the hostname `client-int.pod[#].aviatrixlab.com` in the `Destination (IP / Host Name)` box. Then, click the **`Run`** button in the upper-right.
 
-![Topology](images/lab2-onprem-ping.png)  
-_Fig. CoPilot Diag_  
+```{figure} images/lab2-onprem-ping.png
+---
+align: center
+---
+CoPilot Diag
+```
 
 > Was the ping successful?
 
@@ -62,14 +79,18 @@ The Site2Cloud connection should be green and the BGP session should be establis
 
 Our lab environment now looks like this:  
 
-![Topology](images/lab2-topology1.png)  
-_Fig. Topology with On-Prem Connectivity_  
+```{figure} images/lab2-topology1.png
+---
+align: center
+---
+Topology with On-Prem Connectivity
+```
 
 ## Lab 2.2 - Approve the Learned Routes
 
 ### Description
 
-Aviatrix allows you to filter dynamically learned routes from external sites, and the azure-transit Gateway deployed in this lab has Route Approval enabled.  We want to approve the summarized route learned from on-prem.
+Aviatrix allows you to filter dynamically learned routes from external sites, and the azure-transit Gateway deployed in this lab has **Route Approval** enabled.  We want to approve the summarized route learned from on-prem.
 
 ### Validate
 
@@ -78,8 +99,12 @@ Aviatrix allows you to filter dynamically learned routes from external sites, an
 
 If no CIDR's are showing up here, validate that the BGP peering has established under **_Troubleshoot -> Cloud Routes -> BGP Info_**. If the peering is down, you likely made a configuration error.
 
-![Topology](images/lab2-route-approval-2.png)  
-_Fig. Approve route_  
+```{figure} images/lab2-route-approval-2.png
+---
+align: center
+---
+Approve route
+```
 
 * Back to **_Diagnostics-->Diagnostic Tools_**
 * Click on `Gateway Instance` drop-down and again select the **_azure-transit_** node.
@@ -89,7 +114,7 @@ _Fig. Approve route_
 
 ### Expected Results
 
-After adding the connection to on-prem and approving the learned routes, the connectivity tests should be successful. The process of route approvals allows you to be in charge of the learned routes!
+After adding the connection to on-prem and approving the learned routes, the connectivity tests should be successful. The process of route approval allows you to be in charge of the learned routes!
 
 ## Lab 2.3 - Office Connectivity Tests
 
@@ -108,8 +133,12 @@ At this point, the office is connected to the Aviatrix Transit Gateway in Azure.
 * You should see something similar to the following screenshot. Note you're connecting across the site2cloud connection to the dmz spoke via the transit gateway.
 * Remember the **source port** for the next exercise
 
-![Screenshot](images/lab2-priv-conn-test.png)  
-_Fig. Connectivity Test_  
+```{figure} images/lab2-priv-conn-test.png
+---
+align: center
+---
+Connectivity Test
+```
 
 ## Lab 2.4 - Verify the Flow Logs
 
@@ -127,21 +156,33 @@ CoPilot provides very rich visibility into all traffic going across the Aviatrix
 
 > New flow records might appear 1-2 minutes after they occurred, so just click on **Refresh Data** a few times to refresh the time period
 
-![Screenshot](images/lab2-flowiq-filter.png)  
-_Fig. FlowIQ Filter_  
+```{figure} images/lab2-flowiq-filter.png
+---
+align: center
+---
+FlowIQ Filter
+```
 
 ### Expected Results
 
 * By filtering on the source port, you should be able to see all of the details behind the traffic generated from on-prem
 
-![Screenshot](images/lab2-flowiq-overview.png)  
-_Fig. FlowIQ Overview_  
+```{figure} images/lab2-flowiq-overview.png
+---
+align: center
+---
+FlowIQ Overview
+```
 
 * By clicking on the **Records** tab, you will see the raw flow records
 * The most relevant fields are shown by default, but you can create custom views and show additional metadata relating to the traffic flows
 
-![Screenshot](images/lab2-flowiq-records.png)  
-_Fig. FlowIQ Records_  
+```{figure} images/lab2-flowiq-records.png
+---
+align: center
+---
+FlowIQ Records
+```
 
 > **Note** - Gateway and Interface Names show up after a specific polling interval.  If the Gateway or Spoke Attachment is newly created, the fields will be displayed after the configured CoPilot polling interval (default is one hour)
 
@@ -165,8 +206,12 @@ While we have achieved our objective of providing the development team with acce
 
 * As you can see, you now have access to all servers in Azure.
 
-![Screenshot](images/lab2-full-access.png)  
-_Fig. Full Access_
+```{figure} images/lab2-full-access.png
+---
+align: center
+---
+Full Access
+```
 
 ## Lab 2.6 - Enable network segmentation
 
@@ -176,14 +221,22 @@ Now that we have established, that too much network access to the Azure environm
 
 ### Validate
 
-* In the Copilot, go to **_Networking -> Network Segmentation -> Network Domains_**. and click the Transit gateways button.
-* In the transit gateway pane, enable segmentation for azure-transit.
+* In the Copilot, go to **_Networking -> Network Segmentation -> Network Domains_**. and click the `Transit Gateways` button.
+* In the transit gateway pane, enable segmentation for azure-transit and then click on **Save**.
 
-![Screenshot](images/lab2-enable-segmentation.png)  
-_Fig. Transit Segmentation_
+```{figure} images/lab2-enable-segmentation.png
+---
+align: center
+---
+Transit Segmentation
+```
 
-![Screenshot](images/lab2-enable-segmentation-2.png)  
-_Fig. Enable Segmentation_
+```{figure} images/lab2-enable-segmentation-2.png
+---
+align: center
+---
+Enable Segmentation
+```
 
 ### Expected Results
 
@@ -206,15 +259,23 @@ In CoPilot, go to **_Networking -> Network Segmentation -> Network Domains_**. A
 | Azure-Prod  | azure-prod      |
 | Azure-DMZ   | azure-dmz       |
 
-![Screenshot](images/lab2-add-network-domains.png)  
-_Fig. Add network domains_
+```{figure} images/lab2-add-network-domains.png
+---
+align: center
+---
+Add network domains
+```
 
 ### Expected Results
 
 After adding the network domains and associations, you should see the following in Copilot:
 
-![Screenshot](images/lab2-network-domains-result.png)  
-_Fig. Network domains result_
+```{figure} images/lab2-network-domains-result.png
+---
+align: center
+---
+Network domains result
+```
 
 ## Lab 2.8 - Check office connectivity
 
@@ -232,8 +293,12 @@ Now that we have implemented network segmentation, let's verify that we have lim
 
 * None of the connections should succeed. We have successfully limited developer access to Azure, but now we have lost access to the build server as well!
 
-![Office connectivity](images/lab1-connectivity-from-office.png)  
-_Fig. Office connectivity_  
+```{figure} images/lab1-connectivity-from-office.png
+---
+align: center
+---
+Office connectivity
+```
 
 ## Lab 2.9 - Create a connection policy
 
@@ -245,24 +310,40 @@ In order for our developers to be able to access the build server again, we need
 
 * Edit the **_Azure-Build_** network domain under **_Networking -> Network Segmentation -> Network Domains_** in Copilot.
 
-![Screenshot](images/lab2-edit-network-domain.png)  
-_Fig. Edit network domain_
+```{figure} images/lab2-edit-network-domain.png
+---
+align: center
+---
+Edit network domain
+```
 
 * Now add the **_Office_** and **_Azure-Prod_** domain as a connected domain.
 
-![Screenshot](images/lab2-add-connected-network-domain.png)  
-_Fig. Add network domain connection_
+```{figure} images/lab2-add-connected-network-domain.png
+---
+align: center
+---
+Add network domain connection
+```
 
 ### Expected Results
 
 * The network domains should now be connected to each other, as shown on the screenshot below.
 * Another great place to visualize the connectivity between network domains is **_Networking -> Network Segmentation-> Overview_**.
 
-![Screenshot](images/lab2-add-connected-network-domain-result.png)  
-_Fig. Add network domain connection_
+```{figure} images/lab2-add-connected-network-domain-result.png
+---
+align: center
+---
+Add network domain connection
+```
 
-![Screenshot](images/lab2-network-domain-overview.png)  
-_Fig. Network domain overview_
+```{figure} images/lab2-network-domain-overview.png
+---
+align: center
+---
+Network domain overview
+```
 
 ## Lab 2.10 - Check office connectivity
 
@@ -280,8 +361,12 @@ Now that we have implemented the connectivity policies, let's verify that we hav
 
 * The developers in the office now should only have access to the build server!
 
-![Office connectivity](images/lab2-access-to-build-only.png)  
-_Fig. Office connectivity_  
+```{figure} images/lab2-access-to-build-only.png
+---
+align: center
+---
+Office connectivity
+```
 
 ## Lab 2.11 - Fix Azure application
 
@@ -298,19 +383,31 @@ First check that the connectivity is indeed broken.
 
 As you can see, the Web web application is now broken:
 
-![Web App connectivity](images/lab2-app-connectivity-broken.png)  
-_Fig. Office connectivity_  
+```{figure} images/lab2-app-connectivity-broken.png
+---
+align: center
+---
+Office connectivity
+```
 
 * Check the connection policies on the **_Networking -> Network Segmentation-> Overview_** page. Do you see a line connecting Azure-DMZ and Azure-Prod?
 * Create a connection policy between Azure-DMZ and Azure-Prod, similar to what you did in lab 2.9.
 
-![Add connection policy](images/lab2-add-connected-network-domain-2.png)  
-_Fig. Add connection policy_  
+```{figure} images/lab2-add-connected-network-domain-2.png
+---
+align: center
+---
+Add connection policy
+```
 
 Check that the connectivity is restored.
 
-![Web app connectivity](images/lab1-connectivity-3tier-app.png)  
-_Fig. Web app connectivity_  
+```{figure} images/lab1-connectivity-3tier-app.png
+---
+align: center
+---
+Web app connectivity
+```
 
 ### Expected Results
 
