@@ -6,8 +6,13 @@ Lab time: ~15 minutes
 
 In this lab, we are going to explore our lab environment. The diagram below shows the current state of the lab environment. You will extend this environment during the exercises. The instructor will briefly explain the lab setup in the diagram. You can find a more complete and detailed diagram here.
 
-![Lab Overview](images/lab-before2.png)
-_Fig. Lab Overview_
+```{figure} images/lab-before2.png
+---
+height: 400px
+align: center
+---
+Lab Overview
+```
 
 ## Lab 1.1 - CoPilot
 
@@ -36,18 +41,53 @@ Take a look into `Cloud Fabric-->Topology` which visualizes the connectivity of 
 
 You should be able to log in to CoPilot. You should be able to view Topology by clicking `Cloud Fabric` -> `Topology` and see the current Multicloud Network topology. Topology should look similar to this:  
 
-![Topology1](images/lab1-copilot-topology.png)  
-_Fig. Initial Topology_  
+```{figure} images/lab1-copilot-topology.png
+---
+align: center
+---
+Initial Topology
+```
 
-As you can see, we have the azure-transit gateway in the middle, with azure-build, azure-dmz and azure-prod spokes connected to it. The AWS VPC's are not yet connected to any transit.
+Click on the `"Managed"` button on the right-hand side of the screen, for hiding the Unmanaged VPCs.
 
-After selecting the transit gateway and clicking the diagnostics tools button, you should see the diagnostics pane. Have a look around at the troubleshooting tools here.
+```{figure} images/lab1-managed.png
+---
+align: center
+---
+Initial Topology
+```
 
-![CoPilot Diagnostics](images/lab1-copilot-diagnostics.png)  
-_Fig. CoPilot Diagnostics_  
+```{note}
+**Managed VPC** = Indicates an Aviatrix gateway is running in the VPC/VNet.
 
-![CoPilot Diagnostics Pane](images/lab1-copilot-diagnostics-pane.png)  
-_Fig. CoPilot Diagnostics Pane_  
+**Unmanaged VPC** = Indicates no Aviatrix gateways exist in the VPC/VNet.
+```
+
+```{figure} images/lab1-nounmanagaed.png
+---
+align: center
+---
+Initial Topology without Unmanaged VPCs
+```
+
+As you can see, we have the azure-transit gateway in the middle, with **azure-build**, **azure-dmz** and **azure-prod** spokes connected to it. The AWS VPC's are not yet connected to any transit.
+
+After selecting the transit gateway and clicking the **diagnostics tools** button, you should see the diagnostics pane. Have a look around at the troubleshooting tools here.
+
+```{figure} images/lab1-copilot-diagnostics.png
+---
+height: 400px
+align: center
+---
+CoPilot Diagnostics
+```
+
+```{figure} images/lab1-copilot-diagnostics-pane.png
+---
+align: center
+---
+CoPilot Diagnostics Pane
+```
 
 Close the diagnostics pane again.
 
@@ -64,6 +104,13 @@ Take a look at the access accounts already set up. You can see them in Copilot u
 ### Expected Results
 
 Accounts in AWS and Azure have already been onboarded and you should see these accounts in the list. The accounts should also have an audit status **_pass_**, meaning the permissions in the accounts are correctly configured.
+
+```{figure} images/lab1-accounts.png
+---
+align: center
+---
+Cloud Accounts onboarded
+```
 
 ## Lab 1.3 - Connectivity Check
 
@@ -82,8 +129,12 @@ In order to view the connectivity dashboards, a Remote Access Server is placed i
 * _Remember to replace <span style="color:orange">**[#]**</span> with your pod ID_
 * _If you want to use copy/paste in this Guacamole web console, use CTRL+ALT+SHIFT on a Windows device or CTRL+CMD+SHIFT on a MacOS device._
 
-![Remote Access Server](images/lab1-remote-access.png)  
-_Fig. Remote Access Server_  
+```{figure} images/lab1-remote-access.png
+---
+align: center
+---
+Remote Access Server
+```
 
 ```{note}
 You can also access the Remote Access Server on port `3389` using the RDP client of your choice using the same credentials as above.
@@ -100,13 +151,21 @@ Now that we have validated the office connectivity, lets check the public web ap
 
 * None of the connections from the office will be successful. Look at the Diagram in the Lab 1 Overview and you will see that the office is not connected yet.
 
-![Office connectivity](images/lab1-connectivity-from-office.png)  
-_Fig. Office connectivity_  
+```{figure} images/lab1-connectivity-from-office.png
+---
+align: center
+---
+Office connectivity
+```
 
 * Connectivity to the appgw, web, app and db servers should be working, proving that the already deployed application in Azure is up.
 
-![Web app connectivity](images/lab1-connectivity-3tier-app.png)  
-_Fig. Web app connectivity_  
+```{figure} images/lab1-connectivity-3tier-app.png
+---
+align: center
+---
+Web app connectivity
+```
 
 ## End of lab 1
 
