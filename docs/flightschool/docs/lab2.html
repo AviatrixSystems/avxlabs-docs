@@ -415,8 +415,12 @@ document.write(`
 <p>Lab time: ~45 minutes</p>
 <p><strong><em>Scenario</em></strong>:  Your development team needs direct access to the azure-build server in Azure. This requires a VPN connection from the office, into the cloud infrastructure.</p>
 <p>During this lab we will build and verify the connectivity to your office.</p>
-<p><img alt="Topology" src="../_images/lab-2.png" /><br />
-<em>Fig. Azure Deployment</em></p>
+<figure class="align-center" id="id31">
+<a class="reference internal image-reference" href="../_images/lab-2.png"><img alt="../_images/lab-2.png" src="../_images/lab-2.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Azure Deployment</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="lab-2-1-connection-to-the-office">
 <h2>Lab 2.1 - Connection to the Office<a class="headerlink" href="#lab-2-1-connection-to-the-office" title="Link to this heading">#</a></h2>
 <section id="description">
@@ -426,7 +430,7 @@ document.write(`
 <section id="validate">
 <h3>Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h3>
 <p>In order to connect your Multicloud environment to the office, we will create an <strong><em>External Connection</em></strong>. This allows you to create a secure connectivity between the Cloud and the office with dynamic routing (BGP).</p>
-<p>Now let’s add the office connection. In Copilot, navigate to <strong><em>Networking –&gt; Connectivity –&gt; External Connections (S2C)</em></strong>. Click the <strong><em>+ External Connection</em></strong> button to add a new connection.</p>
+<p>Now let’s add the office connection. In Copilot, navigate to <strong><em>Networking –&gt; Connectivity –&gt; External Connections (S2C)</em></strong>. Click the <strong><code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">External</span> <span class="pre">Connection</span></code></strong> button to add a new connection.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
@@ -434,10 +438,10 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Connection Name</strong></p></td>
+<tr class="row-even"><td><p><strong>Name</strong></p></td>
 <td><p>azure-to-office</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Connect public cloud to</strong></p></td>
+<tr class="row-odd"><td><p><strong>Connect Public Cloud to</strong></p></td>
 <td><p>External Device, BGP over IPsec</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Local Gateway</strong></p></td>
@@ -464,22 +468,34 @@ document.write(`
 </tbody>
 </table>
 <p>It should look something like the example below. Make sure to put in your own remote gateway IP and AS number though.</p>
-<p><img alt="Configure IPsec" src="../_images/lab2-configure-ipsec.png" /><br />
-<em>Fig. Configure IPsec</em></p>
+<figure class="align-center" id="id32">
+<img alt="../_images/lab2-configure-ipsec.png" src="../_images/lab2-configure-ipsec.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Configure IPsec</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
-<li><p>Hit <strong><em>save</em></strong> to execute the changes.</p></li>
+<li><p>Hit <strong><em>Save</em></strong> to execute the changes.</p></li>
 </ul>
 <p>After 1-2 minutes, you should see that the connection to the office is configured and up (green).</p>
-<p><img alt="Topology" src="../_images/lab2-tunnel-up.png" /><br />
-<em>Fig. Tunnel up</em></p>
+<figure class="align-center" id="id33">
+<img alt="../_images/lab2-tunnel-up.png" src="../_images/lab2-tunnel-up.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Tunnel up</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>In order to test connectivity between cloud and the office, a test VM is available in the office with the FQDN <code class="docutils literal notranslate"><span class="pre">client-int.pod[#].aviatrixlab.com</span></code>. The IPSec tunnel is up, but maybe there is another blocker that prevents connectivity. Try the following test:</p>
 <ul class="simple">
 <li><p>From CoPilot, navigate to <strong><em>Diagnostics–&gt;Diagnostic Tools</em></strong></p></li>
 <li><p>Click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Instance</span></code> drop-down and select the <strong><em>azure-transit</em></strong> node.</p></li>
 <li><p>Select <code class="docutils literal notranslate"><span class="pre">Ping</span></code> in the vertical tabs and enter the hostname <code class="docutils literal notranslate"><span class="pre">client-int.pod[#].aviatrixlab.com</span></code> in the <code class="docutils literal notranslate"><span class="pre">Destination</span> <span class="pre">(IP</span> <span class="pre">/</span> <span class="pre">Host</span> <span class="pre">Name)</span></code> box. Then, click the <strong><code class="docutils literal notranslate"><span class="pre">Run</span></code></strong> button in the upper-right.</p></li>
 </ul>
-<p><img alt="Topology" src="../_images/lab2-onprem-ping.png" /><br />
-<em>Fig. CoPilot Diag</em></p>
+<figure class="align-center" id="id34">
+<img alt="../_images/lab2-onprem-ping.png" src="../_images/lab2-onprem-ping.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">CoPilot Diag</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <blockquote>
 <div><p>Was the ping successful?</p>
 </div></blockquote>
@@ -488,15 +504,19 @@ document.write(`
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
 <p>The Site2Cloud connection should be green and the BGP session should be established.  Still, connectivity tests should fail due to the route filtering on the transit which we will fix in the next step.</p>
 <p>Our lab environment now looks like this:</p>
-<p><img alt="Topology" src="../_images/lab2-topology1.png" /><br />
-<em>Fig. Topology with On-Prem Connectivity</em></p>
+<figure class="align-center" id="id35">
+<img alt="../_images/lab2-topology1.png" src="../_images/lab2-topology1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Topology with On-Prem Connectivity</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-2-2-approve-the-learned-routes">
 <h2>Lab 2.2 - Approve the Learned Routes<a class="headerlink" href="#lab-2-2-approve-the-learned-routes" title="Link to this heading">#</a></h2>
 <section id="id1">
 <h3>Description<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Aviatrix allows you to filter dynamically learned routes from external sites, and the azure-transit Gateway deployed in this lab has Route Approval enabled.  We want to approve the summarized route learned from on-prem.</p>
+<p>Aviatrix allows you to filter dynamically learned routes from external sites, and the azure-transit Gateway deployed in this lab has <strong>Route Approval</strong> enabled.  We want to approve the summarized route learned from on-prem.</p>
 </section>
 <section id="id2">
 <h3>Validate<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
@@ -505,8 +525,12 @@ document.write(`
 <li><p>Navigate to the Approval pane and approve the pending CIDR.</p></li>
 </ul>
 <p>If no CIDR’s are showing up here, validate that the BGP peering has established under <strong><em>Troubleshoot -&gt; Cloud Routes -&gt; BGP Info</em></strong>. If the peering is down, you likely made a configuration error.</p>
-<p><img alt="Topology" src="../_images/lab2-route-approval-2.png" /><br />
-<em>Fig. Approve route</em></p>
+<figure class="align-center" id="id36">
+<img alt="../_images/lab2-route-approval-2.png" src="../_images/lab2-route-approval-2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Approve route</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Back to <strong><em>Diagnostics–&gt;Diagnostic Tools</em></strong></p></li>
 <li><p>Click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Instance</span></code> drop-down and again select the <strong><em>azure-transit</em></strong> node.</p></li>
@@ -518,7 +542,7 @@ document.write(`
 </section>
 <section id="id3">
 <h3>Expected Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>After adding the connection to on-prem and approving the learned routes, the connectivity tests should be successful. The process of route approvals allows you to be in charge of the learned routes!</p>
+<p>After adding the connection to on-prem and approving the learned routes, the connectivity tests should be successful. The process of route approval allows you to be in charge of the learned routes!</p>
 </section>
 </section>
 <section id="lab-2-3-office-connectivity-tests">
@@ -541,8 +565,12 @@ document.write(`
 <li><p>You should see something similar to the following screenshot. Note you’re connecting across the site2cloud connection to the dmz spoke via the transit gateway.</p></li>
 <li><p>Remember the <strong>source port</strong> for the next exercise</p></li>
 </ul>
-<p><img alt="Screenshot" src="../_images/lab2-priv-conn-test.png" /><br />
-<em>Fig. Connectivity Test</em></p>
+<figure class="align-center" id="id37">
+<img alt="../_images/lab2-priv-conn-test.png" src="../_images/lab2-priv-conn-test.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Connectivity Test</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-2-4-verify-the-flow-logs">
@@ -566,22 +594,34 @@ document.write(`
 <blockquote>
 <div><p>New flow records might appear 1-2 minutes after they occurred, so just click on <strong>Refresh Data</strong> a few times to refresh the time period</p>
 </div></blockquote>
-<p><img alt="Screenshot" src="../_images/lab2-flowiq-filter.png" /><br />
-<em>Fig. FlowIQ Filter</em></p>
+<figure class="align-center" id="id38">
+<img alt="../_images/lab2-flowiq-filter.png" src="../_images/lab2-flowiq-filter.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">FlowIQ Filter</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id9">
 <h3>Expected Results<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>By filtering on the source port, you should be able to see all of the details behind the traffic generated from on-prem</p></li>
 </ul>
-<p><img alt="Screenshot" src="../_images/lab2-flowiq-overview.png" /><br />
-<em>Fig. FlowIQ Overview</em></p>
+<figure class="align-center" id="id39">
+<img alt="../_images/lab2-flowiq-overview.png" src="../_images/lab2-flowiq-overview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">FlowIQ Overview</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>By clicking on the <strong>Records</strong> tab, you will see the raw flow records</p></li>
 <li><p>The most relevant fields are shown by default, but you can create custom views and show additional metadata relating to the traffic flows</p></li>
 </ul>
-<p><img alt="Screenshot" src="../_images/lab2-flowiq-records.png" /><br />
-<em>Fig. FlowIQ Records</em></p>
+<figure class="align-center" id="id40">
+<img alt="../_images/lab2-flowiq-records.png" src="../_images/lab2-flowiq-records.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">FlowIQ Records</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <blockquote>
 <div><p><strong>Note</strong> - Gateway and Interface Names show up after a specific polling interval.  If the Gateway or Spoke Attachment is newly created, the fields will be displayed after the configured CoPilot polling interval (default is one hour)</p>
 </div></blockquote>
@@ -612,8 +652,12 @@ document.write(`
 <ul class="simple">
 <li><p>As you can see, you now have access to all servers in Azure.</p></li>
 </ul>
-<p><img alt="Screenshot" src="../_images/lab2-full-access.png" /><br />
-<em>Fig. Full Access</em></p>
+<figure class="align-center" id="id41">
+<img alt="../_images/lab2-full-access.png" src="../_images/lab2-full-access.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Full Access</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-2-6-enable-network-segmentation">
@@ -625,13 +669,21 @@ document.write(`
 <section id="id14">
 <h3>Validate<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>In the Copilot, go to <strong><em>Networking -&gt; Network Segmentation -&gt; Network Domains</em></strong>. and click the Transit gateways button.</p></li>
-<li><p>In the transit gateway pane, enable segmentation for azure-transit.</p></li>
+<li><p>In the Copilot, go to <strong><em>Networking -&gt; Network Segmentation -&gt; Network Domains</em></strong>. and click the <code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">Gateways</span></code> button.</p></li>
+<li><p>In the transit gateway pane, enable segmentation for azure-transit and then click on <strong>Save</strong>.</p></li>
 </ul>
-<p><img alt="Screenshot" src="../_images/lab2-enable-segmentation.png" /><br />
-<em>Fig. Transit Segmentation</em></p>
-<p><img alt="Screenshot" src="../_images/lab2-enable-segmentation-2.png" /><br />
-<em>Fig. Enable Segmentation</em></p>
+<figure class="align-center" id="id42">
+<img alt="../_images/lab2-enable-segmentation.png" src="../_images/lab2-enable-segmentation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Transit Segmentation</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id43">
+<img alt="../_images/lab2-enable-segmentation-2.png" src="../_images/lab2-enable-segmentation-2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Enable Segmentation</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id15">
 <h3>Expected Results<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
@@ -668,14 +720,22 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p><img alt="Screenshot" src="../_images/lab2-add-network-domains.png" /><br />
-<em>Fig. Add network domains</em></p>
+<figure class="align-center" id="id44">
+<img alt="../_images/lab2-add-network-domains.png" src="../_images/lab2-add-network-domains.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Add network domains</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id18">
 <h3>Expected Results<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <p>After adding the network domains and associations, you should see the following in Copilot:</p>
-<p><img alt="Screenshot" src="../_images/lab2-network-domains-result.png" /><br />
-<em>Fig. Network domains result</em></p>
+<figure class="align-center" id="id45">
+<img alt="../_images/lab2-network-domains-result.png" src="../_images/lab2-network-domains-result.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Network domains result</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-2-8-check-office-connectivity">
@@ -698,8 +758,12 @@ document.write(`
 <ul class="simple">
 <li><p>None of the connections should succeed. We have successfully limited developer access to Azure, but now we have lost access to the build server as well!</p></li>
 </ul>
-<p><img alt="Office connectivity" src="../_images/lab1-connectivity-from-office.png" /><br />
-<em>Fig. Office connectivity</em></p>
+<figure class="align-center" id="id46">
+<img alt="../_images/lab1-connectivity-from-office.png" src="../_images/lab1-connectivity-from-office.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Office connectivity</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-2-9-create-a-connection-policy">
@@ -713,13 +777,21 @@ document.write(`
 <ul class="simple">
 <li><p>Edit the <strong><em>Azure-Build</em></strong> network domain under <strong><em>Networking -&gt; Network Segmentation -&gt; Network Domains</em></strong> in Copilot.</p></li>
 </ul>
-<p><img alt="Screenshot" src="../_images/lab2-edit-network-domain.png" /><br />
-<em>Fig. Edit network domain</em></p>
+<figure class="align-center" id="id47">
+<img alt="../_images/lab2-edit-network-domain.png" src="../_images/lab2-edit-network-domain.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Edit network domain</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Now add the <strong><em>Office</em></strong> and <strong><em>Azure-Prod</em></strong> domain as a connected domain.</p></li>
 </ul>
-<p><img alt="Screenshot" src="../_images/lab2-add-connected-network-domain.png" /><br />
-<em>Fig. Add network domain connection</em></p>
+<figure class="align-center" id="id48">
+<img alt="../_images/lab2-add-connected-network-domain.png" src="../_images/lab2-add-connected-network-domain.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Add network domain connection</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id24">
 <h3>Expected Results<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
@@ -727,10 +799,18 @@ document.write(`
 <li><p>The network domains should now be connected to each other, as shown on the screenshot below.</p></li>
 <li><p>Another great place to visualize the connectivity between network domains is <strong><em>Networking -&gt; Network Segmentation-&gt; Overview</em></strong>.</p></li>
 </ul>
-<p><img alt="Screenshot" src="../_images/lab2-add-connected-network-domain-result.png" /><br />
-<em>Fig. Add network domain connection</em></p>
-<p><img alt="Screenshot" src="../_images/lab2-network-domain-overview.png" /><br />
-<em>Fig. Network domain overview</em></p>
+<figure class="align-center" id="id49">
+<img alt="../_images/lab2-add-connected-network-domain-result.png" src="../_images/lab2-add-connected-network-domain-result.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Add network domain connection</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id50">
+<img alt="../_images/lab2-network-domain-overview.png" src="../_images/lab2-network-domain-overview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Network domain overview</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-2-10-check-office-connectivity">
@@ -753,8 +833,12 @@ document.write(`
 <ul class="simple">
 <li><p>The developers in the office now should only have access to the build server!</p></li>
 </ul>
-<p><img alt="Office connectivity" src="../_images/lab2-access-to-build-only.png" /><br />
-<em>Fig. Office connectivity</em></p>
+<figure class="align-center" id="id51">
+<img alt="../_images/lab2-access-to-build-only.png" src="../_images/lab2-access-to-build-only.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Office connectivity</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-2-11-fix-azure-application">
@@ -774,17 +858,29 @@ document.write(`
 </li>
 </ul>
 <p>As you can see, the Web web application is now broken:</p>
-<p><img alt="Web App connectivity" src="../_images/lab2-app-connectivity-broken.png" /><br />
-<em>Fig. Office connectivity</em></p>
+<figure class="align-center" id="id52">
+<img alt="../_images/lab2-app-connectivity-broken.png" src="../_images/lab2-app-connectivity-broken.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Office connectivity</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Check the connection policies on the <strong><em>Networking -&gt; Network Segmentation-&gt; Overview</em></strong> page. Do you see a line connecting Azure-DMZ and Azure-Prod?</p></li>
 <li><p>Create a connection policy between Azure-DMZ and Azure-Prod, similar to what you did in lab 2.9.</p></li>
 </ul>
-<p><img alt="Add connection policy" src="../_images/lab2-add-connected-network-domain-2.png" /><br />
-<em>Fig. Add connection policy</em></p>
+<figure class="align-center" id="id53">
+<img alt="../_images/lab2-add-connected-network-domain-2.png" src="../_images/lab2-add-connected-network-domain-2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Add connection policy</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Check that the connectivity is restored.</p>
-<p><img alt="Web app connectivity" src="../_images/lab1-connectivity-3tier-app.png" /><br />
-<em>Fig. Web app connectivity</em></p>
+<figure class="align-center" id="id54">
+<img alt="../_images/lab1-connectivity-3tier-app.png" src="../_images/lab1-connectivity-3tier-app.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Web app connectivity</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id30">
 <h3>Expected Results<a class="headerlink" href="#id30" title="Link to this heading">#</a></h3>
