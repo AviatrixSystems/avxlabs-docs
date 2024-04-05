@@ -6,8 +6,13 @@ Lab time: ~30 minutes
 
 The Spoke VPCs and gateways have already been created to save you time. The process is very similar to deploying the transit gateway.
 
-![Topology](images/lab-3.png)  
-_Fig. Current Topology_  
+```{figure} images/lab-3.png
+---
+height: 400px
+align: center
+---
+Current Topology
+```
 
 ## Lab 3.1 - Deploy the AWS transit VPC
 
@@ -19,6 +24,15 @@ Let's go ahead and create the Transit VPC in AWS using the topology builder in C
 
 * Log in to Aviatrix Copilot
 * Scroll down on the left-hand pane to **_Cloud Fabric -> Topology -> Builder_**
+* Click on "Acknowledge".
+  
+```{figure} images/lab3-ack.png
+---
+align: center
+---
+Current Topology
+```
+
 * Click **Select Cloud Region** and enter the following fields:
 
 |                    |                          |
@@ -27,14 +41,22 @@ Let's go ahead and create the Transit VPC in AWS using the topology builder in C
 | **Account**        | aws-account              |
 | **Region**         | eu-central-1 (Frankfurt) |
 
-![Topology builder](images/lab-3-topology-builder.png)  
-_Fig. Set up the topology builder_  
+```{figure} images/lab-3-topology-builder.png
+---
+align: center
+---
+Set up the topology builder
+```
 
-* Hit save to start the configuration session.
+* Hit "Save" to start the configuration session.
 * Click The "+" sign next to transit, to add a new transit.
 
-![Topology builder](images/lab-3-topology-builder-vpc.png)  
-_Fig. Add transit_  
+```{figure} images/lab3-transit.png
+---
+align: center
+---
+New Transit
+```
 
 * Enter the following fields:
 
@@ -44,12 +66,23 @@ _Fig. Add transit_
 | **VPC Name**            | aws-transit         |
 | **VPC CIDR**            | 10.pod[#].40.0/23   |
 
+```{figure} images/lab3-vpc.png
+---
+align: center
+---
+Create New VPC
+```
+
+```{figure} images/lab3-newvpc.png
+---
+align: center
+---
+Template for the new VPC
+```
+
 For the VPC CIDR, replace **pod[#]** with your pod number. For example, if your pod number is 150, pod[#] should be replaced with 150, so the complete CIDR will become 10.150.40.0/23. The topology builder will automatically create all the required public and private subnets, IGW, and routing tables.
 
-![Create a VPC](images/lab3-create-vpc.png)  
-_Fig. Create a VPC_  
-
-Hit save, and the VPC will be created.
+Hit **Save**, and the VPC will be created.
   
 ### Expected Results
 
@@ -71,36 +104,63 @@ In this exercise we are going to launch the Aviatrix Transit Gateway in the newl
 | **Gateway Name**         | aws-transit                                             |
 | **Gateway Size**         | t3.micro                                                |
 | **Instance 1 (Primary)** | aws-transit-Public-1-eu-central-1a + Allocate New EIP   |
-| **Transit Peers**        | Click edit and add the azure-transit as a peer and save |
+| **Transit Peers**        | Click "Select Transit Gateways"" and add the **azure-transit** as a peer and save |
 
-![Screenshot](images/lab3-transit-config.png)  
-_Fig. Create Aviatrix Transit Gateway_  
+```{figure} images/lab3-transit-config.png
+---
+align: center
+---
+Create Aviatrix Transit Gateway
+```
 
-![Screenshot](images/lab3-transit-peering.png)  
-_Fig. Configure transit peering_  
+```{figure} images/lab3-transit-peering.png
+---
+align: center
+---
+Configure transit peering
+```
 
-* Hit Save to save the transit gateway settings and return to the topology builder overview.
-* You now get the option to either generate your changes as Terraform code, or deploy directly from the UI. Choose and click deploy.
+* Hit **Save** to save the transit gateway settings and return to the topology builder overview.
+* You now get the option to either generate your changes as Terraform code, or deploy directly from the UI. Choose and click **Deploy**.
 
-![Screenshot](images/lab3-overview.png)  
-_Fig. Overview_  
+```{figure} images/lab3-overview.png
+---
+align: center
+---
+Overview
+```
 
 * As you can see, the topology builder will now start to deploy the transit gateway. Wait for this to finish. It will take about 5-10 minutes.
+
+```{figure} images/lab3-deploy.png
+---
+align: center
+---
+Deploy
+```
 
 > **Important:** By default, routes are not propagated between spokes attached to the transit gateway. We have to enable a setting on our transit gateway to allow this to happen.  
 
 * Go to **_Cloud Fabric -> Gateways -> Transit Gateways_** and click on **_aws-transit_**.
 * Open the settings pane and enable and save **Connected Transit** under the General settings.
 
-![Screenshot](images/lab3-connected-transit.png)  
-_Fig. Enable connected transit_  
+```{figure} images/lab3-connected-transit.png
+---
+align: center
+---
+Enable connected transit
+```
 
 ### Expected Results
 
 Now that we have the aws-transit deployed, peered to azure-transit and have enabled connected transit, we should see these changes reflected in our topology view. (under **_Cloud Fabric -> Topology_**)
 
-![Screenshot](images/lab3-result.png)  
-_Fig. Topology view_  
+```{figure} images/lab3-result.png
+---
+align: center
+---
+Topology view
+```
 
 ## Lab 3.3 - Attach Spoke Gateways to Aviatrix Transit Gateway
 
@@ -110,24 +170,36 @@ Now that we have our aws-transit set up, we need to establish connectivity betwe
 
 ### Validate
 
-* Go to **_Cloud Fabric -> Gateways -> Spoke Gateways_**.
+* Go to **_Cloud Fabric -> Gateways -> Spoke Gateways_**
 * Click the edit button (pencil) behind the **_aws-prod_** gateway. 
 
-![Screenshot](images/lab3-edit-spoke.png)  
-_Fig. Edit spoke_  
+```{figure} images/lab3-edit-spoke.png
+---
+align: center
+---
+Edit spoke
+```
 
 * Change the attachment from empty to **_aws-transit_** and hit save.
 
-![Screenshot](images/lab3-attach-spoke.png)  
-_Fig. Attach Spoke Gateway to Transit_  
+```{figure} images/lab3-attach-spoke.png
+---
+align: center
+---
+Attach Spoke Gateway to Transit
+```
 
 * Repeat the process for the **_aws-shared_** spoke gateway.
 
 ### Expected Results
 The AWS spoke gateways should now be attached to the aws-transit. Within a few minutes, we should see these changes reflected in our topology view. (under **_Cloud Fabric -> Topology_**)
 
-![Topology](images/lab3-copilot-spoke-attach.png)  
-_Fig. CoPilot Topology with Attached Spokes_
+```{figure} images/lab3-copilot-spoke-attach.png
+---
+align: center
+---
+CoPilot Topology with Attached Spokes
+```
 
 * If your topology does not show the connection to the spokes, refresh the page after a minute or so.
 
@@ -139,14 +211,22 @@ Just like we enabled network segmentation on the azure-transit before, we want t
 
 ### Validate
 
-* In the Copilot, go to **_Networking -> Network Segmentation -> Network Domains_**. and click the **_Transit Gateways_** button.
-* In the transit gateway pane, enable segmentation for aws-transit.
+* In the Copilot, go to **_Networking -> Network Segmentation -> Network Domains_** and click the **_Transit Gateways_** button.
+* In the transit gateway pane, enable segmentation for **aws-transit**.
 
-![Screenshot](images/lab2-enable-segmentation.png)  
-_Fig. Transit Segmentation_
+```{figure} images/lab2-enable-segmentation.png
+---
+align: center
+---
+Transit Segmentation
+```
 
-![Screenshot](images/lab3-enable-segmentation-3.png)  
-_Fig. Enable Segmentation_
+```{figure} images/lab3-enable-segmentation-3.png
+---
+align: center
+---
+Enable Segmentation
+```
 
 ### Expected Results
 
@@ -160,7 +240,9 @@ For our AWS spokes, we want to create network domains and associations, just lik
 
 ### Validate
 
-In CoPilot, go to **_Networking -> Network Segmentation -> Network Domains_**. Use the **_+ Network Domains_** button to add the following domains and associations:
+In CoPilot, go to **_Networking -> Network Segmentation -> Network Domains_** 
+
+Use the **_+ Network Domains_** button to add the following domains and associations:
 
 | Domain     | Association |
 | :--------- | :---------- |
@@ -171,8 +253,12 @@ In CoPilot, go to **_Networking -> Network Segmentation -> Network Domains_**. U
 
 After adding the network domains and associations, you should see the following in Copilot:
 
-![Screenshot](images/lab3-network-domains.png)  
-_Fig. Add network domains_
+```{figure} images/lab3-network-domains.png
+---
+align: center
+---
+Add network domains
+```
 
 ## Lab 3.6 - Create a connection policy
 
@@ -184,24 +270,40 @@ We want the development team in the office, to be able to access AWS-Shared.
 
 * Edit the **_Office_** network domain under **_Networking -> Network Segmentation -> Network Domains_** in Copilot.
 
-![Screenshot](images/lab3-edit-network-domain.png)  
-_Fig. Edit network domain_
+```{figure} images/lab3-edit-network-domain.png
+---
+align: center
+---
+Edit network domain
+```
 
 * Now add the **_AWS-Shared_** domain as a connected domain.
 
-![Screenshot](images/lab3-add-network-domain-policy.png)  
-_Fig. Add network domain connection_
+```{figure} images/lab3-add-network-domain-policy.png
+---
+align: center
+---
+Add network domain connection
+```
 
 ### Expected Results
 
 * The network domains should now be connected to each other, as shown on the screenshot below.
 * Another great place to visualize the connectivity between network domains is **_Networking -> Network Segmentation-> Overview_**.
 
-![Screenshot](images/lab3-add-connected-network-domain-result.png)  
-_Fig. Add network domain connection_
+```{figure} images/lab3-add-connected-network-domain-result.png
+---
+align: center
+---
+Add network domain connection
+```
 
-![Screenshot](images/lab3-network-domain-overview.png)  
-_Fig. Network domain overview_
+```{figure} images/lab3-network-domain-overview.png
+---
+align: center
+---
+Network domain overview
+```
 
 ## Lab 3.7 - Test Connectivity to AWS Spokes
 
@@ -241,5 +343,10 @@ From the office, you should be able to reach aws-shared, but not aws-prod.
 * You have end to end visibility into all network traffic
 * All connectivity is private and encrypted across the entirety of the Aviatrix Cloud Fabric - from on-prem and within and between the clouds
 
-![Screenshot](images/end-lab-3.png)  
-_Fig. Topology after Lab 3_
+```{figure} images/end-lab-3.png
+---
+height: 400px
+align: center
+---
+Topology after Lab 3
+```
