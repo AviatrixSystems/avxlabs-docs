@@ -83,6 +83,10 @@ Template for the new VPC
 For the VPC CIDR, replace **pod[#]** with your pod number. For example, if your pod number is 150, pod[#] should be replaced with 150, so the complete CIDR will become 10.150.40.0/23. The topology builder will automatically create all the required public and private subnets, IGW, and routing tables.
 
 Hit **Save**, and the VPC will be created.
+
+```{note}
+Wait a few minutes for the **Aviatrix Controller** to create the new VPN and the additional native cloud constructs (i.e. IGW, Subnets, Routing Tables).
+```
   
 ### Expected Results
 

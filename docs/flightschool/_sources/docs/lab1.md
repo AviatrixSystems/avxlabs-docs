@@ -89,7 +89,7 @@ align: center
 CoPilot Diagnostics Pane
 ```
 
-Close the diagnostics pane again.
+Close the diagnostics pane.
 
 ## Lab 1.2 - Access Accounts
 
@@ -140,7 +140,7 @@ Remote Access Server
 You can also access the Remote Access Server on port `3389` using the RDP client of your choice using the same credentials as above.
 ```
 
-* Once logged in, open the web browser and browse to the office connectivity dashboard ```http://localhost```
+* Once logged in, launch the **Min Web Browser** and browse to the office connectivity dashboard ```http://localhost```
 
 Now that we have validated the office connectivity, lets check the public web application that is already deployed in Azure.
 
