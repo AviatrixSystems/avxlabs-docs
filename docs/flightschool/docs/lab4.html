@@ -414,25 +414,43 @@ document.write(`
 <ul class="simple">
 <li><p>Browse to <strong><em>Security -&gt; Distributed Cloud Firewall -&gt; Rules</em></strong></p></li>
 <li><p>Look at the policy to get an understanding of which rules are set up</p></li>
-<li><p>Edit the last policy <strong><em>DefaultAllowAll</em></strong> and set enforcement to off and hit save</p></li>
+<li><p>Edit the last policy <strong><em>DefaultAllowAll</em></strong> and set enforcement to off and hit “Save In Drafts”.</p></li>
 </ul>
-<p><img alt="Disable Allow All" src="../_images/lab4-disable-allow-all.png" /><br />
-<em>Fig. Disable allow all</em></p>
+<figure class="align-center" id="id25">
+<img alt="../_images/lab4-edit.png" src="../_images/lab4-edit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Edit the dcf rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id26">
+<img alt="../_images/lab4-disable-allow-all.png" src="../_images/lab4-disable-allow-all.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Disable allow all</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>You should now see that the rule is modified (highlighted in amber).</p>
 <ul class="simple">
 <li><p>Commit the change by clicking the commit button</p></li>
 </ul>
-<p><img alt="Commit changes" src="../_images/lab4-commit.png" /><br />
-<em>Fig. Commit changes</em></p>
+<figure class="align-center" id="id27">
+<img alt="../_images/lab4-commit.png" src="../_images/lab4-commit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Commit changes</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Check the connectivity on the web app and Office dashboards</p></li>
 </ul>
 </section>
 <section id="expected-results">
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
-<p>After enforcing our ruleset as a result of disabling the DefaultAllowAll rule, we should see a change in connectivity. The developer in the office can still access their applications. But the AppGW in the web application can no longer reach the app and db server directly, as seen below.</p>
-<p><img alt="Result" src="../_images/lab41-result.png" /><br />
-<em>Fig. Result</em></p>
+<p>After enforcing our ruleset as a result of disabling the <strong>DefaultAllowAll</strong> rule, we should see a change in connectivity. The developer in the office can still access their applications. But the AppGW in the web application can no longer reach the app and db server directly, as seen below.</p>
+<figure class="align-center" id="id28">
+<img alt="../_images/lab41-result.png" src="../_images/lab41-result.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Result</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-4-2-microsegmentation-intra-vnet-vpc">
@@ -449,10 +467,14 @@ Traffic between the web and db server, remains within the prod VNET however, and
 <ul class="simple">
 <li><p>Browse to <strong><em>Security -&gt; Distributed Cloud Firewall -&gt; Settings</em></strong></p></li>
 <li><p>Click on <strong><em>Manage</em></strong></p></li>
-<li><p>Enable the feature on the azure-prod vnet as shown below</p></li>
+<li><p>Enable the feature on the <strong>azure-prod</strong> vnet as shown below.</p></li>
 </ul>
-<p><img alt="Result" src="../_images/lab42-enable-intra-vnet-microsegmentation.png" /><br />
-<em>Fig. Enable Microsegmentation</em></p>
+<figure class="align-center" id="id29">
+<img alt="../_images/lab42-enable-intra-vnet-microsegmentation.png" src="../_images/lab42-enable-intra-vnet-microsegmentation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Enable Microsegmentation</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Check the connectivity dashboard for the web app</p></li>
 </ul>
@@ -460,11 +482,19 @@ Traffic between the web and db server, remains within the prod VNET however, and
 <section id="id3">
 <h3>Expected Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>After about 2-3 minutes, you should see that the webserver can no longer connect to the db server. The reason this takes a little longer than the previous rules to take effect, is because these changes are made within Azure itself and not on the Aviatrix gateway. You can check the status of the synchronization when you click on <strong><em>Manage</em></strong> again:</p>
-<p><img alt="Sync-Status" src="../_images/lab4-nsg-sync-status.png" /><br />
-<em>Fig. Sync Status</em></p>
+<figure class="align-center" id="id30">
+<img alt="../_images/lab4-nsg-sync-status.png" src="../_images/lab4-nsg-sync-status.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Sync Status</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Once this is completed, you should see the microsegmentation reflected in the connectivity status:</p>
-<p><img alt="Result" src="../_images/lab42-result.png" /><br />
-<em>Fig. Result</em></p>
+<figure class="align-center" id="id31">
+<img alt="../_images/lab42-result.png" src="../_images/lab42-result.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Result</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-4-3-internet-access-aws-shared">
@@ -487,8 +517,12 @@ Traffic between the web and db server, remains within the prod VNET however, and
 <section id="id6">
 <h3>Expected Results<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>As you can see, there is currently no connectivity possible. All egress connections are failing.</p>
-<p><img alt="No Internet Access" src="../_images/lab4-no-internet.png" /><br />
-<em>Fig. No Internet Access</em></p>
+<figure class="align-center" id="id32">
+<img alt="../_images/lab4-no-internet.png" src="../_images/lab4-no-internet.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">No Internet Access</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="lab-4-4-enable-source-nat">
@@ -504,6 +538,12 @@ Traffic between the web and db server, remains within the prod VNET however, and
 <li><p>Go to the settings pane and under SNAT enable NAT and save the settings.</p></li>
 <li><p>Check connectivity on the dashboard again.</p></li>
 </ul>
+<figure class="align-center" id="id33">
+<img alt="../_images/lab4-nat.png" src="../_images/lab4-nat.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">SNAT enabled</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <blockquote>
 <div><p>Does the aws-shared server have access to the internet now?</p>
 </div></blockquote>

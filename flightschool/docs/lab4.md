@@ -16,26 +16,45 @@ We have prepared and installed a microsegmentation policy already. Lets review a
 
 * Browse to **_Security -> Distributed Cloud Firewall -> Rules_**
 * Look at the policy to get an understanding of which rules are set up
-* Edit the last policy **_DefaultAllowAll_** and set enforcement to off and hit save
+* Edit the last policy **_DefaultAllowAll_** and set enforcement to off and hit "Save In Drafts".
 
-![Disable Allow All](images/lab4-disable-allow-all.png)  
-_Fig. Disable allow all_  
+```{figure} images/lab4-edit.png
+---
+align: center
+---
+Edit the dcf rule
+```
+
+```{figure} images/lab4-disable-allow-all.png
+---
+align: center
+---
+Disable allow all
+```
 
 You should now see that the rule is modified (highlighted in amber).
 
 * Commit the change by clicking the commit button
 
-![Commit changes](images/lab4-commit.png)  
-_Fig. Commit changes_  
+```{figure} images/lab4-commit.png
+---
+align: center
+---
+Commit changes
+```
 
 * Check the connectivity on the web app and Office dashboards
 
 ### Expected Results
 
-After enforcing our ruleset as a result of disabling the DefaultAllowAll rule, we should see a change in connectivity. The developer in the office can still access their applications. But the AppGW in the web application can no longer reach the app and db server directly, as seen below.
+After enforcing our ruleset as a result of disabling the **DefaultAllowAll** rule, we should see a change in connectivity. The developer in the office can still access their applications. But the AppGW in the web application can no longer reach the app and db server directly, as seen below.
 
-![Result](images/lab41-result.png)  
-_Fig. Result_  
+```{figure} images/lab41-result.png
+---
+align: center
+---
+Result
+```
 
 ## Lab 4.2 - Microsegmentation - Intra VNET/VPC
 
@@ -52,10 +71,14 @@ This feature is enabled on a per VNET bases.
 
 * Browse to **_Security -> Distributed Cloud Firewall -> Settings_**
 * Click on **_Manage_**
-* Enable the feature on the azure-prod vnet as shown below
+* Enable the feature on the **azure-prod** vnet as shown below.
 
-![Result](images/lab42-enable-intra-vnet-microsegmentation.png)  
-_Fig. Enable Microsegmentation_
+```{figure} images/lab42-enable-intra-vnet-microsegmentation.png
+---
+align: center
+---
+Enable Microsegmentation
+```
 
 * Check the connectivity dashboard for the web app
 
@@ -63,13 +86,21 @@ _Fig. Enable Microsegmentation_
 
 After about 2-3 minutes, you should see that the webserver can no longer connect to the db server. The reason this takes a little longer than the previous rules to take effect, is because these changes are made within Azure itself and not on the Aviatrix gateway. You can check the status of the synchronization when you click on **_Manage_** again:
 
-![Sync-Status](images/lab4-nsg-sync-status.png)  
-_Fig. Sync Status_
+```{figure} images/lab4-nsg-sync-status.png
+---
+align: center
+---
+Sync Status
+```
 
 Once this is completed, you should see the microsegmentation reflected in the connectivity status:
 
-![Result](images/lab42-result.png)  
-_Fig. Result_  
+```{figure} images/lab42-result.png
+---
+align: center
+---
+Result
+```
 
 ## Lab 4.3 - Internet access - AWS Shared
 
@@ -89,8 +120,12 @@ The aws-shared server needs access to the internet to access software updates. W
 
 As you can see, there is currently no connectivity possible. All egress connections are failing.
 
-![No Internet Access](images/lab4-no-internet.png)  
-_Fig. No Internet Access_  
+```{figure} images/lab4-no-internet.png
+---
+align: center
+---
+No Internet Access
+```
 
 ## Lab 4.4 - Enable Source NAT
 
@@ -103,6 +138,13 @@ By enabling source NAT on the aws-shared spoke gateway, we provide a path toward
 * Go to **_Cloud Fabric -> Gateways -> Spoke Gateways_** and click on **_aws-shared_**.
 * Go to the settings pane and under SNAT enable NAT and save the settings.
 * Check connectivity on the dashboard again.
+
+```{figure} images/lab4-nat.png
+---
+align: center
+---
+SNAT enabled
+```
 
 > Does the aws-shared server have access to the internet now?
 
