@@ -36,9 +36,22 @@ Now let’s add the office connection. In Copilot, navigate to **_Networking -->
 | **Remote Gateway IP**       | <ip-address> _Please open a terminal session from your own pc and resolve the following FQDN to its IP address `onprem.pod[#].aviatrixlab.com`. Do NOT enter the FQDN on this field. Instead enter the IP address_ |
 | **Pre-shared Key**          | mapleleafs                                                                                                                                                                                                         |
 | **Local Tunnel IP**         | 169.254.100.2/30                                                                                                                                                                                                   |
-| **Remote Tunnel IP**        | 169.254.100.1/30                                                                                                                                                                                                   |
+| **Remote Tunnel IP**        | 169.254.100.1/30                                                                                                                                                                                              |
 
-It should look something like the example below. Make sure to put in your own remote gateway IP and AS number though.
+It should look something like the example below. Make sure to put in your own remote gateway IP and AS number.
+
+```{figure} images/lab2-pod.png
+---
+align: center
+---
+Resolve the symbolic name with the "host" command
+```
+
+```{tip}
+For Linux/Mac you can use the `"host"` command.
+
+For Windows you can use the `"nslookup"` command.
+```
 
 ```{figure} images/lab2-configure-ipsec.png
 ---
@@ -391,7 +404,7 @@ Office connectivity
 ```
 
 * Check the connection policies on the **_Networking -> Network Segmentation-> Overview_** page. Do you see a line connecting Azure-DMZ and Azure-Prod?
-* Create a connection policy between Azure-DMZ and Azure-Prod, similar to what you did in lab 2.9.
+* Create a connection policy between **Azure-DMZ** and **Azure-Prod**, similar to what you did in lab 2.9.
 
 ```{figure} images/lab2-add-connected-network-domain-2.png
 ---
