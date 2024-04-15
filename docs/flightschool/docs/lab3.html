@@ -390,7 +390,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="lab-3-expanding-to-multi-cloud">
 <h1>Lab 3 - Expanding to multi-cloud<a class="headerlink" href="#lab-3-expanding-to-multi-cloud" title="Link to this heading">#</a></h1>
 <p>Lab time: ~30 minutes</p>
-<p><strong><em>Scenario</em></strong>:  The business has decided to go multi-cloud! Some apps simply run better in other clouds, and why put all eggs in one basket? During this exercise we will deploy in AWS an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer Azure and AWS and test out the connectivity.</p>
+<p><strong><em>Scenario</em></strong>:  The business has decided to go multicloud! Some apps simply run better in other clouds, and why put all eggs in one basket? During this exercise we will deploy in AWS an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer Azure and AWS and test out the connectivity.</p>
 <p>The Spoke VPCs and gateways have already been created to save you time. The process is very similar to deploying the transit gateway.</p>
 <figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab-3.png"><img alt="../_images/lab-3.png" src="../_images/lab-3.png" style="height: 400px;" /></a>
@@ -445,7 +445,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Hit “Save” to start the configuration session.</p></li>
+<li><p>Hit <strong>Save</strong> to start the configuration session.</p></li>
 <li><p>Click The “+” sign next to transit, to add a new transit.</p></li>
 </ul>
 <figure class="align-center" id="id23">
@@ -489,8 +489,8 @@ document.write(`
 </figure>
 <p>For the VPC CIDR, replace <strong>pod[#]</strong> with your pod number. For example, if your pod number is 150, pod[#] should be replaced with 150, so the complete CIDR will become 10.150.40.0/23. The topology builder will automatically create all the required public and private subnets, IGW, and routing tables.</p>
 <p>Hit <strong>Save</strong>, and the VPC will be created.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
 <p>Wait a few minutes for the <strong>Aviatrix Controller</strong> to create the new VPN and the additional native cloud constructs (i.e. IGW, Subnets, Routing Tables).</p>
 </div>
 </section>
@@ -557,8 +557,12 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>As you can see, the topology builder will now start to deploy the transit gateway. Wait for this to finish. It will take about 5-10 minutes.</p></li>
+<li><p>As you can see, the topology builder will now start to deploy the transit gateway. Wait for this to finish.</p></li>
 </ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>It will take about 5-10 minutes, therefore please be patient.</p>
+</div>
 <figure class="align-center" id="id29">
 <img alt="../_images/lab3-deploy.png" src="../_images/lab3-deploy.png" />
 <figcaption>
