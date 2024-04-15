@@ -16,7 +16,16 @@ We have prepared and installed a microsegmentation policy already. Lets review a
 
 * Browse to **_Security -> Distributed Cloud Firewall -> Rules_**
 * Look at the policy to get an understanding of which rules are set up
-* Edit the last policy **_DefaultAllowAll_** and set enforcement to off and hit "Save In Drafts".
+* Edit the last policy **_DefaultAllowAll_** and set enforcement to off and hit **Save In Draft**.
+
+```{caution}
+If you see this message, please click on the `"Enable Distributed Cloud Firewall"` button.
+```{figure} images/lab4-dcf.png
+---
+align: center
+---
+Enable dcf
+```
 
 ```{figure} images/lab4-edit.png
 ---
@@ -29,7 +38,7 @@ Edit the dcf rule
 ---
 align: center
 ---
-Disable allow all
+Unenforcement
 ```
 
 You should now see that the rule is modified (highlighted in amber).
@@ -93,7 +102,7 @@ align: center
 Sync Status
 ```
 
-Once this is completed, you should see the microsegmentation reflected in the connectivity status:
+Once this is completed, you should see the microsegmentation reflected in the Orchestration Status:
 
 ```{figure} images/lab42-result.png
 ---
@@ -152,8 +161,12 @@ SNAT enabled
 
 As you can see, all connectivity towards the internet is now allowed. With this setting enabled, the spoke gateway makes a great and cost effective replacement for cloud native NAT gateways.
 
-![Internet Access](images/lab4-nat-enabled.png)  
-_Fig. Internet Access_  
+```{figure} images/lab4-nat-enabled.png
+---
+align: center
+---
+Internet Access
+```
 
 ## Lab 4.5 - Configure domain filtering
 
@@ -165,18 +178,26 @@ Now that we have enabled internet access for aws-shared through NAT translation 
 
 * Browse to **_Security -> Distributed Cloud Firewall -> WebGroups_** and check out the pre-configured WebGroup called **_allowed-web-group_**.
 
-![WebGroup](images/lab4-webgroup.png)  
-_Fig. WebGroup_  
+```{figure} images/lab4-webgroup.png
+---
+align: center
+---
+WebGroup
+```
 
 > Which domains are configured in this WebGroup?
 
 * In the distributed firewalling rules, edit the policy with name **_aws_shared_web_traffic_**.
 * Under WebGroups, select **_allowed-web-group_** and save the rule.
 
-![Add WebGroup](images/lab4-add-webgroup.png)  
-_Fig. Add WebGroup_  
+```{figure} images/lab4-add-webgroup.png
+---
+align: center
+---
+Add WebGroup
+```
 
-* Hit the commit button, to apply the change.
+* Hit the **Commit** button, to apply the change.
 
 > Which domains can the aws-shared server access now? Check on the connectivity dashboard.
 
@@ -185,8 +206,12 @@ _Fig. Add WebGroup_
 After applying the changes, you should see that the aws-shared server can only access the desired destinations. All other access to the internet has been blocked.
 Only access to Github doesn't quite work as expected. Let's fix that in the next lab.
 
-![Domains blocked](images/lab4-domains-blocked.png)  
-_Fig. Domains blocked_  
+```{figure} images/lab4-domains-blocked.png
+---
+align: center
+---
+Domains blocked
+```
 
 ## Lab 4.6 - Configure URL Filtering
 
@@ -204,8 +229,12 @@ This scenario is a bit more advanced. We need to allow access to our github repo
 * Under WebGroups, add **_github-url_**.
 * Enable TLS decryption. This is required for the inspection engine to see the full URL in the https request.
 
-![Add URL filtering](images/lab4-url-filter-enabled.png)  
-_Fig. Add URL filtering_  
+```{figure} images/lab4-url-filter-enabled.png
+---
+align: center
+---
+Add URL filtering
+```
 
 * Save the rule and commit the change.
 
@@ -215,8 +244,12 @@ _Fig. Add URL filtering_
 
 We have successfully enabled access to our specific repository, without allowing traffic to other parts of Github.
 
-![URL Filtering working](images/lab4-url-filter-working.png)  
-_Fig. URL Filtering working_  
+```{figure} images/lab4-url-filter-working.png
+---
+align: center
+---
+URL Filtering working
+```
 
 ## Lab 4.7 - Firenet
 
@@ -228,25 +261,37 @@ We have already deployed a firewall instance in the lab. In order for Firenet to
 
 ### Validate
 
-* Browse to **_Security -> Firenet -> Firewall_** and click on the **_+_** sign of the add firewall button.
-* Click associate existing firewall.
+* Browse to **_Security -> Firenet -> Firewall_** and click on the **arrow** button for adding the firewall.
+* Click **Associate Existing Firewall**.
 
-![Associate existing firewall](images/lab4-associate-existing-firewall-add.png)  
-_Fig. Associate existing firewall_  
+```{figure} images/lab4-associate-existing-firewall-add.png
+---
+align: center
+---
+Associate existing firewall
+``` 
 
 * In the pane that opened, add the configuration as shown on the screenshot. Most information shows up when you click on the pull down menu's. Note the 6-digit suffix for the `resource group` and `firewall id` will be different than the screenshot.
 
-![Existing firewall configuration](images/lab4-associate-existing-firewall.png)  
-_Fig. Existing firewall configuration_  
+```{figure} images/lab4-associate-existing-firewall.png
+---
+align: center
+---
+Existing firewall configuration
+``` 
 
-* Click Associate
+* Click **Associate**.
 
 ### Expected Results
 
 After a few minutes we should see the firewall in the list with a green status indication:
 
-![Associate firewall result](images/lab4-associate-firewall-result.png)  
-_Fig. Associate firewall result_  
+```{figure} images/lab4-associate-firewall-result.png
+---
+align: center
+---
+Associate firewall result
+``` 
 
 ## Lab 4.8 - Firewall logging
 
@@ -266,8 +311,12 @@ Access the Firewall logs by navigating to:
 
 Since we have not yet enabled any inspection, the logs should be empty.
 
-![Empty firewall logs](images/lab1-firewall.png)  
-_Fig. Empty firewall logs_  
+```{figure} images/lab1-firewall.png
+---
+align: center
+---
+Empty firewall logs
+``` 
 
 ## Lab 4.9 - Enable inspection
 
@@ -278,11 +327,15 @@ The CISO has put in place a requirement that all traffic from the office needs t
 ### Validate
 
 * Navigate to **_Security -> Firenet_** and click on **_azure-transit_**.
-* Browse to the policy tab.
-* Under Inspection Policies, select **_azure-to-office_** and click **_Actions -> Add_**
+* Browse to the **Policy** tab.
+* Select **_azure-to-office_** and click **_Actions -> Add_**
 
-![Screenshot](images/lab4-add-firenet-policy.png)  
-_Fig. Associate an Existing Firewall Instance_  
+```{figure} images/lab4-add-firenet-policy.png
+---
+align: center
+---
+Inspection Policy
+```  
 
 * Open the **Firewall Logs** and see whether the traffic is now being routed over the firewall (this may take a few minutes, click the refresh button)
 * Firewall logs are available at `https://fw.pod[#].aviatrixlab.com`

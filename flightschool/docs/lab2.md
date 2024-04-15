@@ -108,7 +108,7 @@ Aviatrix allows you to filter dynamically learned routes from external sites, an
 ### Validate
 
 * Browse to the transit gateway settings in Copilot, under **_Cloud Fabric -> Gateways -> Transit Gateways_** and click on **_azure-transit_**.
-* Navigate to the Approval pane and approve the pending CIDR.
+* Navigate to the **Approval** tabcl and approve the pending CIDR.
 
 If no CIDR's are showing up here, validate that the BGP peering has established under **_Troubleshoot -> Cloud Routes -> BGP Info_**. If the peering is down, you likely made a configuration error.
 
