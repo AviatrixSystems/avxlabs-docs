@@ -2,7 +2,7 @@
 
 Lab time: ~30 minutes
 
-**_Scenario_**:  The business has decided to go multi-cloud! Some apps simply run better in other clouds, and why put all eggs in one basket? During this exercise we will deploy in AWS an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer Azure and AWS and test out the connectivity.
+**_Scenario_**:  The business has decided to go multicloud! Some apps simply run better in other clouds, and why put all eggs in one basket? During this exercise we will deploy in AWS an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer Azure and AWS and test out the connectivity.
 
 The Spoke VPCs and gateways have already been created to save you time. The process is very similar to deploying the transit gateway.
 
@@ -48,7 +48,7 @@ align: center
 Set up the topology builder
 ```
 
-* Hit "Save" to start the configuration session.
+* Hit **Save** to start the configuration session.
 * Click The "+" sign next to transit, to add a new transit.
 
 ```{figure} images/lab3-transit.png
@@ -84,7 +84,7 @@ For the VPC CIDR, replace **pod[#]** with your pod number. For example, if your 
 
 Hit **Save**, and the VPC will be created.
 
-```{note}
+```{caution}
 Wait a few minutes for the **Aviatrix Controller** to create the new VPN and the additional native cloud constructs (i.e. IGW, Subnets, Routing Tables).
 ```
   
@@ -134,7 +134,11 @@ align: center
 Overview
 ```
 
-* As you can see, the topology builder will now start to deploy the transit gateway. Wait for this to finish. It will take about 5-10 minutes.
+* As you can see, the topology builder will now start to deploy the transit gateway. Wait for this to finish.
+
+```{caution}
+It will take about 5-10 minutes, therefore please be patient.
+```
 
 ```{figure} images/lab3-deploy.png
 ---
