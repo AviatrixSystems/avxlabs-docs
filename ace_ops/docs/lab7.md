@@ -132,7 +132,7 @@ SSH to BU1 DB
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and edit the Greenfield-Rule, clicking on the pencil icon on the right-hand side.
 
-This time attach the `Any-Web` WebGroup and then click on **Save In Drafts**.
+This time attach the `All-Web` WebGroup and then click on **Save In Drafts**.
 ```
 
 ```{figure} images/lab7-test4.png
@@ -146,7 +146,7 @@ Edit the Greenfield-Rule
 ---
 align: center
 ---
-Any-Web
+All-Web
 ```
 
 Do not forget to **commit** your changes into the Data Path.
@@ -195,7 +195,7 @@ align: center
 Monitor
 ```
 
-- Detach the **_Any-Web_** Webgroup from the Greenfield-Rule.
+- Detach the **_All-Web_** Webgroup from the Greenfield-Rule.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the pencil icon on the righ-hand side.
@@ -209,7 +209,7 @@ Do not forget then to click on **Commit**.
 ---
 align: center
 ---
-Detaching the Any-Web WebGroup
+Detaching the All-Web WebGroup
 ```
 
 ```{figure} images/lab7-lastone2.png
@@ -397,7 +397,7 @@ Ensure these parameters are entered in the pop-up window `"Create WebGroup"`:
 then click on **Save**.
 
 ```{caution}
-These are the domains identified before using the `Discovery Mode` (**= Greenfield-Rule + AnyWeb**).
+These are the domains identified before using the `Discovery Mode` (**= Greenfield-Rule + All-Web**).
 
 - The FQDNs `*.ubuntu.com` and `*.canonical.com` are both using a first-level wilcard. These wildcards will be placeholders for *ntp.ubuntu.com*, *ftp.ubuntu.com*, *download.ubuntu.com*, *contracts.canonical.com*...
 - The FQDN `*.archive.ubuntu.com` is using a second-level wilcard, that allows to create a subdivision within *archive.ubuntu.com*.
