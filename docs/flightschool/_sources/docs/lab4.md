@@ -221,7 +221,7 @@ This scenario is a bit more advanced. We need to allow access to our github repo
 
 ### Validate
 
-* Browse to **_Security -> Distributed Cloud Firewall -> WebGroups_** and check out the pre-configured WebGroup called **_allowed-web-group_**.
+* Browse to **_Security -> Distributed Cloud Firewall -> WebGroups_** and check out the pre-configured WebGroup called **_github-url_**.
 
 > What is the URL configured in this WebGroup?
 
