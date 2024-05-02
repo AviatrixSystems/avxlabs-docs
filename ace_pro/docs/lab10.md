@@ -655,7 +655,7 @@ The inter-rule is Stateful in the sense that it will permit the echo-reply gener
 
 Let’s now also involve the AWS region **US-EAST-1**.
 
-This time, you have to allow the ICMP traffic between the Smart Group **bu2** and the ec2 instance **_aws-us-east1-spoke1-test2_**, solely.
+This time, you have to allow the ICMP traffic between the Smart Group **bu2** and the ec2 instance **_aws-us-east-1-spoke1-test2_**, solely.
 
 ```{figure} images/lab10-newtopology3.png
 ---
@@ -814,7 +814,7 @@ Ensure these parameters are entered in the pop-up window `"Create New SmartGroup
 
 - **Name**: <span style='color:#479608'>east1</span>
 - **CSP Tag Key**: <span style='color:#479608'>Name</span>
-- **CSP Tag Value**: <span style='color:#479608'>aws-us-east1-spoke1-test2</span>
+- **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span>
 
 ```{figure} images/lab10-mtt9.png
 ---
