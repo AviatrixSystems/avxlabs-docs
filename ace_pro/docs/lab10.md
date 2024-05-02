@@ -728,7 +728,7 @@ align: center
 Settings
 ```
 
-Repeat the previous action for the remaning Transit Gateways:
+Repeat the previous action for the remaning Transit Gateways, adding the following BGP ASNs:
 
 
 - **gcp-us-central1-transit**: <span style='color:#479608'>ASN **64514**</span>
