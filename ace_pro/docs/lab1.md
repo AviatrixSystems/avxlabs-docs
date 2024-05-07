@@ -219,7 +219,7 @@ Subnets created by the Aviatrix Controller
 
 From there, navigate to `Route Tables`.
 
-Here, also, you can see the eight route tables that the Controller created. They are mapped to each subnet. The Public Subnets have a 0/0 route pointing to the Internet Gateway, which the Controller also deployed.
+Here, also, you can see the eight route tables that the Controller created. They are mapped to each subnet. The Public Routing Tables have a 0/0 route pointing to the Internet Gateway, that the Controller also deployed.
 
 ## 4. GCP VPC
 
@@ -278,10 +278,10 @@ align: center
 Verification
 ```
 
-```{tip}
-Expand the **GCP VPC** if you want to see the subnet _"gcp-us-west2-spoke1-sub1"_
+```{note}
+Expand the **GCP VPC** if you want to see the subnet **"gcp-us-west2-spoke1-sub1"**_**
 ```
 
-```{note}
+```{caution}
 The VPCs and VNet created in this lab will not be used in subsequent labs.
 ```
