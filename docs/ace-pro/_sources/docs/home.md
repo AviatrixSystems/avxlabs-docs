@@ -6,7 +6,7 @@
 
 These labs are intended for Aviatrix Customers, Partners, and Employees to aid in the Aviatrix solution learning process. The scope of this document is specifically to cover Aviatrix use-cases configuration steps to design and validate end-to-end Aviatrix functionality.
 
-Unless otherwise mentioned, the lab PODs will be available until Friday afternoon US Pacific time the week of the training. In other words, <ins>the pods will be torn down on Friday afternoon</ins>.
+Unless otherwise mentioned, the lab PODs will be available until **Friday afternoon US Pacific time** the week of the training. In other words, <ins>the pods will be torn down on Friday afternoon</ins>.
 
 ## 2. Prerequisites
 
@@ -59,7 +59,8 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 - FireNet
 - Site2Cloud with Overlapping IPs
 - Edge
-- ThreatIQ 
+- ThreatIQ
+- CostIQ 
 - Distributed Cloud Firewall
 - Multi-Tier Transit
 
