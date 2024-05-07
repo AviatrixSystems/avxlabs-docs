@@ -95,7 +95,11 @@ align: center
 Hourglass icon
 ```
 
-Type the name of the VNet, azure-us-central-spoke1, inside the search field, then expand the VNet to explore the additional subnets created by the Aviatrix Controller.
+Go back to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and type the name of the VNet previously created, **azure-us-central-spoke1**, inside the search field, then expand the VNet to explore the additional subnets created by the Aviatrix Controller.
+
+```{tip}
+**Click on the refresh button!**
+```
 
 ```{figure} images/lab1-new2.png
 ---
@@ -130,7 +134,7 @@ VPC creation
 
 Insert the following values:
 
- - **Name**: <span style='color:#479608'>aws-us-west2-spoke1</span>
+ - **Name**: <span style='color:#479608'>aws-us-west-2-spoke1</span>
  - **Cloud**: <span style='color:#479608'>AWS</span>
  - **Account**: <span style='color:#479608'>aws-account [use the drop-down window - **DO NOT** select the aws-admin]</span>
  - **Region**: <span style='color:#479608'>us-west-2 (Oregon) [use the drop-down window]</span>
