@@ -95,7 +95,11 @@ align: center
 Hourglass icon
 ```
 
-Type the name of the VNet, azure-us-central-spoke1, inside the search field, then expand the VNet to explore the additional subnets created by the Aviatrix Controller.
+Go back to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and type the name of the VNet previously created, **azure-us-central-spoke1**, inside the search field, then expand the VNet to explore the additional subnets created by the Aviatrix Controller.
+
+```{tip}
+**Click on the refresh button!**
+```
 
 ```{figure} images/lab1-new2.png
 ---
@@ -130,7 +134,7 @@ VPC creation
 
 Insert the following values:
 
- - **Name**: <span style='color:#479608'>aws-us-west2-spoke1</span>
+ - **Name**: <span style='color:#479608'>aws-us-west-2-spoke1</span>
  - **Cloud**: <span style='color:#479608'>AWS</span>
  - **Account**: <span style='color:#479608'>aws-account [use the drop-down window - **DO NOT** select the aws-admin]</span>
  - **Region**: <span style='color:#479608'>us-west-2 (Oregon) [use the drop-down window]</span>
@@ -155,7 +159,7 @@ align: center
 Hourglass icon
 ```
 
-Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, <ins>refresh the web page for triggering the change</ins>. It will take a little bit for reflecting into the "VPC/VNets & Subnets" section).
+Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, <ins>refresh the web page for triggering the change</ins>). It will take a little bit for reflecting into the "VPC/VNets & Subnets" section.
 
 You can filter by CIDR `10.0.22.0/24`.
 
@@ -215,7 +219,7 @@ Subnets created by the Aviatrix Controller
 
 From there, navigate to `Route Tables`.
 
-Here, also, you can see the eight route tables that the Controller created. They are mapped to each subnet. The Public Subnets have a 0/0 route pointing to the Internet Gateway, which the Controller also deployed.
+Here, also, you can see the eight route tables that the Controller created. They are mapped to each subnet. The Public Routing Tables have a 0/0 route pointing to the Internet Gateway, that the Controller also deployed.
 
 ## 4. GCP VPC
 
@@ -274,10 +278,10 @@ align: center
 Verification
 ```
 
-```{tip}
-Expand the **GCP VPC** if you want to see the subnet _"gcp-us-west2-spoke1-sub1"_
+```{note}
+Expand the **GCP VPC** if you want to see the subnet **"gcp-us-west2-spoke1-sub1"**
 ```
 
-```{note}
+```{caution}
 The VPCs and VNet created in this lab will not be used in subsequent labs.
 ```
