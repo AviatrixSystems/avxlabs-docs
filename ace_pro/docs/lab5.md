@@ -12,7 +12,7 @@ Aviatrix **`ActiveMesh`** technology provides network resiliency, better converg
 
 ## 3. Topology
 
-In this lab we will configure the pending attachment between the Spoke Gateways in aws-us-east-1-spoke1 and the Transit Gateways in aws-us-east-1-transit, and the peering between the Transit Gateways aws-us-east-1-transit and the Transit Gateways in aws-us-east-2-transit. The Gateways in AWS region us-east-1 are pre-configured with HPE (High Performance Encryption, also known as `Insane Mode`) and AWS us-east-2 region was configured in Lab 3.
+In this lab we will configure the pending attachment between the Spoke Gateways in aws-us-east-1-spoke1 and the Transit Gateway in aws-us-east-1-transit, and the peering between the Transit Gateway _aws-us-east-1-transit_ and the Transit Gateway in _aws-us-east-2-transit_. The Gateway in AWS region us-east-1 is pre-configured with HPE (High Performance Encryption, also known as `Insane Mode`) and AWS us-east-2 region was configured in Lab 3.
 
 ```{figure} images/lab5-topology.png
 ---
@@ -126,16 +126,7 @@ You will find out that the route 10.0.1.0/24 is reachable through **nine** conne
 ---
 align: center
 ---
-HPE in action on the First Transit GW
-```
-
-Likewise, the same route is also reachable via other **nine** connections but through the Second Transit Gateway **_aws-us-east-2-transit-1_**:
-
-```{figure} images/lab5-hpe2.png
----
-align: center
----
-HPE in action on the Second Transit GW
+HPE in action 
 ```
 
 ```{important}
@@ -169,7 +160,7 @@ The actual configuration of **`High Performance Encryption`**  on both the **_aw
 
 ### 5.1. CoPilot Verification of the VPC Peerings(Transit-Transit and Spoke-Transit)
 
-HPE automatically creates an underlying VPC Peering attachment within AWS. Verify it on the CoPilot.
+HPE automatically creates an underlying **VPC Peering attachment** within AWS. Verify it on the CoPilot.
 
 Go to **CoPilot > Networking > Connectivity > Native Peering**
 
@@ -191,9 +182,9 @@ Native Peerings Properties
 
 ## 5.2. CoPilot Verification of HPE
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gatewasy **_aws-us-east-1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. 
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. 
 
-These tunnels are used with the Spoke Gateway aws-us-east-1-spoke1 and the Transit Gateway aws-us-east-2-transit, because HPE is also enabled on these gateways:
+These tunnels are used with the Spoke Gateway _aws-us-east-1-spoke1_ and the Transit Gateway _aws-us-east-2-transit_, because HPE is also enabled on these gateways:
 
 ```{figure} images/lab5-ipip.png
 ---
