@@ -278,10 +278,10 @@ align: center
 Verification
 ```
 
-```{tip}
+```{note}
 Expand the **GCP VPC** if you want to see the subnet **"gcp-us-west2-spoke1-sub1"**
 ```
 
-```{note}
+```{caution}
 The VPCs and VNet created in this lab will not be used in subsequent labs.
 ```
