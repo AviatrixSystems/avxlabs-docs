@@ -320,7 +320,7 @@ Repeat the ping from the **_aws-us-east-1-spoke1-test2_** in AWS US-East1 toward
 ---
 align: center
 ---
-second ping
+Second ping
 ```
 
 ```{figure} images/lab5-ping2.png
