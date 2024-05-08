@@ -222,6 +222,10 @@ align: center
 Create Transit Gateway
 ```
 
+```{note}
+Only one Transit Gateway will be deployed in VPC **aws-us-east2-transit**.
+```
+
 You will immediately get a message as follows.
 
 ```{figure} images/lab2-gwmessage.png
@@ -240,14 +244,11 @@ align: center
 Task icon
 ```
 
-This action will instantiate two Transit Gateways with the following names:
+This action will instantiate the Transit Gateway with the following name:
 
-1. **aws-us-east-2-transit**
-2. **aws-us-east-2-transit-1**
+- **aws-us-east-2-transit**
 
-```{note}
-The second gateway will receive **"-1"** appended to its name, in order to differentiate it from the first gateway.
-```
+
 
 Meanwhile the deployment is happening, you may proceed to the next section of this lab guide to deploy your Spoke gateways.
 
@@ -382,7 +383,7 @@ align: center
 Dashboard
 ```
 
-After created the Transit gateways pairs in AWS and the single Spoke gateways in each cloud, this is how a portion of the topology would look like.
+After created the Transit gateway in AWS  US-EAST-1 region and the single Spoke gateways in each cloud, this is how the topology would look like.
 
 ```{figure} images/lab2-temptopology.png
 ---
