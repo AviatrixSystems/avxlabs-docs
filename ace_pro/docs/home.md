@@ -31,7 +31,7 @@ This information is provided separately before the start of the labs inside a de
 - Aviatrix CoPilot
 - Test Instances in each cloud
 - Bootstrap package information for Palo Alto Firewall (VM-Series) [Lab 7]
-- Cisco Cloud Services Router 1000v Series (CSR) [Lab 8]
+- StrongSwan Router [Lab 8]
 - Malicious IP [Lab 9 - *a fresh malicious IP will be provided by the trainer*]
 
 ## 5. Lab Topology
