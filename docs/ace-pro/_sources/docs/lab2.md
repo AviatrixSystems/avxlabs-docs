@@ -35,7 +35,7 @@ Initial pre-provisioned topology
 ```{note}
 The test VPCs/VNet you created in Lab 1 will not be used in other labs.
 
-In this lab, the Transits will be deployed in pairs, but the Spokes will not.
+For sake of semplicity, in this lab, the Transits will NOT be deployed in pairs. As a best practice, Aviatrix recommend always to deploy two Transits to ensure High Availability.
 ```
 
 The CoPilot *dashboard* should look something like this:
@@ -140,7 +140,7 @@ This view within the Cloud Fabric section does not indicate the exact number of 
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and expand the three drop-down lists. 
 
-You can find out that there are a total of **six** Transit Gateways (Public IPs may differ):
+You can find out that there are a total of **Three** Transit Gateways (Public IPs may differ):
 
 ```{figure} images/lab2-clustertransit.png
 ---
@@ -148,8 +148,6 @@ align: center
 ---
 Transit GWs Clusters
 ```
-
-Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended an `"-hagw"`; this is imposed by the **_"aviatrix_transit_gateway"_** `Terraform` resource, at the launch time of the POD.
 
 ```{note}
 You can deploy up to maximum **two** Transit Gateways per each Transit VPC/VNet/VCN.
@@ -172,10 +170,10 @@ You can deploy up to maximum **fifteen** Spoke Gateways per each Spoke VPC/VNet/
 
 ### 4.1. Aviatrix Transit Gateways
 
-In this section, you will experience the power and simplicity of the Aviatrix platform by deploying (i.e. creating) 5 gateways:
+In this section, you will experience the power and simplicity of the Aviatrix platform by deploying (i.e. creating) 4 gateways:
 
- - **First Transit gateway in AWS US East 2:** <span style='color:#479608'>aws-us-east-2-transit</span>
- - **Second Transit gateway in AWS US East 2:** <span style='color:#479608'>aws-us-east-2-transit-1</span>
+ - **Transit gateway in AWS US East 2:** <span style='color:#479608'>aws-us-east-2-transit</span>
+ 
  - **Spoke gateway in AWS US East 2:** <span style='color:#479608'>aws-us-east-2-spoke1</span>
 - **Spoke gateway in Azure West US:** <span style='color:#479608'>azure-west-us-spoke1</span>
 - **Spoke gateway in GCP US Central 1:** <span style='color:#479608'>gcp-us-central1-spoke1</span>
@@ -207,10 +205,8 @@ Ensure these parameters are entered in the pop-up window `"Create Transit Gatewa
 - **Instance Size:** <span style='color:#479608'>c5n.large</span>
 - **High Performance Encryption:** <span style='color:#479608'>**On**</span>
 
-Click on `+ Instance` (Make sure you deploy also the Second Transit Gateway, in a different subnet).
+- **Attach to Subnet:** <span style='color:#479608'>us-east-2a</span>
 
-- **Attach to Subnet (row 1):** <span style='color:#479608'>us-east-2a</span>
-- **Attach to Subnet (row 2):** <span style='color:#479608'>us-east-2b</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
 ```{note}

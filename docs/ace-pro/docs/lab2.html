@@ -415,7 +415,7 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The test VPCs/VNet you created in Lab 1 will not be used in other labs.</p>
-<p>In this lab, the Transits will be deployed in pairs, but the Spokes will not.</p>
+<p>For sake of semplicity, in this lab, the Transits will NOT be deployed in pairs. As a best practice, Aviatrix recommend always to deploy two Transits to ensure High Availability.</p>
 </div>
 <p>The CoPilot <em>dashboard</em> should look something like this:</p>
 <figure class="align-center" id="id2">
@@ -504,14 +504,13 @@ document.write(`
 </figure>
 <p>This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to the number of <strong><em>clusters</em></strong>, per each type of gateway.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and expand the three drop-down lists.</p>
-<p>You can find out that there are a total of <strong>six</strong> Transit Gateways (Public IPs may differ):</p>
+<p>You can find out that there are a total of <strong>Three</strong> Transit Gateways (Public IPs may differ):</p>
 <figure class="align-center" id="id12">
 <img alt="../_images/lab2-clustertransit.png" src="../_images/lab2-clustertransit.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 36 </span><span class="caption-text">Transit GWs Clusters</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Furthermore, you can notice that the name of the cluster matches exactly the name of the first Transit Gateway, whereas the name of the second Transit Gateway is similar to the name of the first gateway but it has appended an <code class="docutils literal notranslate"><span class="pre">&quot;-hagw&quot;</span></code>; this is imposed by the <strong><em>“aviatrix_transit_gateway”</em></strong> <code class="docutils literal notranslate"><span class="pre">Terraform</span></code> resource, at the launch time of the POD.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can deploy up to maximum <strong>two</strong> Transit Gateways per each Transit VPC/VNet/VCN.</p>
@@ -530,10 +529,9 @@ document.write(`
 </div>
 <section id="aviatrix-transit-gateways">
 <h3>4.1. Aviatrix Transit Gateways<a class="headerlink" href="#aviatrix-transit-gateways" title="Link to this heading">#</a></h3>
-<p>In this section, you will experience the power and simplicity of the Aviatrix platform by deploying (i.e. creating) 5 gateways:</p>
+<p>In this section, you will experience the power and simplicity of the Aviatrix platform by deploying (i.e. creating) 4 gateways:</p>
 <ul class="simple">
-<li><p><strong>First Transit gateway in AWS US East 2:</strong> <span style='color:#479608'>aws-us-east-2-transit</span></p></li>
-<li><p><strong>Second Transit gateway in AWS US East 2:</strong> <span style='color:#479608'>aws-us-east-2-transit-1</span></p></li>
+<li><p><strong>Transit gateway in AWS US East 2:</strong> <span style='color:#479608'>aws-us-east-2-transit</span></p></li>
 <li><p><strong>Spoke gateway in AWS US East 2:</strong> <span style='color:#479608'>aws-us-east-2-spoke1</span></p></li>
 <li><p><strong>Spoke gateway in Azure West US:</strong> <span style='color:#479608'>azure-west-us-spoke1</span></p></li>
 <li><p><strong>Spoke gateway in GCP US Central 1:</strong> <span style='color:#479608'>gcp-us-central1-spoke1</span></p></li>
@@ -564,11 +562,7 @@ document.write(`
 <li><p><strong>VPC ID:</strong> <span style='color:#479608'>aws-us-east-2-transit (Make sure you don’t select aws-us-east-2-<strong>spoke1</strong> VPC)</span></p></li>
 <li><p><strong>Instance Size:</strong> <span style='color:#479608'>c5n.large</span></p></li>
 <li><p><strong>High Performance Encryption:</strong> <span style='color:#479608'><strong>On</strong></span></p></li>
-</ul>
-<p>Click on <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Instance</span></code> (Make sure you deploy also the Second Transit Gateway, in a different subnet).</p>
-<ul class="simple">
-<li><p><strong>Attach to Subnet (row 1):</strong> <span style='color:#479608'>us-east-2a</span></p></li>
-<li><p><strong>Attach to Subnet (row 2):</strong> <span style='color:#479608'>us-east-2b</span></p></li>
+<li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>us-east-2a</span></p></li>
 <li><p><strong>Public IP:</strong> <span style='color:#479608'>Allocate New Static Public IP</span></p></li>
 </ul>
 <div class="admonition note">
