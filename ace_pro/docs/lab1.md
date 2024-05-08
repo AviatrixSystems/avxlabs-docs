@@ -1,4 +1,4 @@
-# Lab 1 - VPCs/VNets Creation
+# Lab 1 - VPCs/VNets CREATION
 
 ## 1. Introduction
 
