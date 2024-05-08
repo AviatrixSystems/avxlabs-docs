@@ -35,7 +35,7 @@ Initial pre-provisioned topology
 ```{note}
 The test VPCs/VNet you created in Lab 1 will not be used in other labs.
 
-For sake of semplicity, in this lab, the Transits will NOT be deployed in pairs. As a best practice, Aviatrix recommend always to deploy two Transits to ensure High Availability.
+For sake of semplicity, in this lab, the Transits will NOT be deployed in pairs. As a best practice, Aviatrix recommends always to deploy two Transits to ensure High Availability.
 ```
 
 The CoPilot *dashboard* should look something like this:
@@ -531,7 +531,7 @@ New state of the Dynamic Topology
 ```
 
 ```{note}
-The Spoke Gateway azure-west-us-**spoke2** will be attached to its Transit Gateways in a subsequent lab, likewise the Spoke Gateways in AWS **us-east-1** will be attached to the Transit Gateways in the same region only in a subsequent lab.
+The Spoke Gateway azure-west-us-**spoke2** will be attached to its Transit Gateway in a subsequent lab, likewise the Spoke Gateways in AWS **us-east-1** will be attached to the Transit Gateway in the same region only in a subsequent lab.
 ```
 
 ## 4.5. CoPilot Verification of Spoke-Transit Attachments
@@ -642,7 +642,7 @@ align: center
 Edit Transit in GCP
 ```
 
-Select the Transit Gateway **_aws-us-east-2-transit_** (<ins>not the east1 !</ins>) from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
+Select the Transit Gateway **_aws-us-east-2-transit_** (<ins>not the east-1 !</ins>) from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
 
 ```{figure} images/lab2-peeringgcpaws.png
 ---
@@ -674,7 +674,7 @@ Please pay close attention that the following pending elements will be completed
  
 ### 5.1. Verification of Transit Peerings on CoPilot(Cloud Fabric)
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `"Connections"` tab and finally select the `"Transit-Transit Peering"` sub-tab: you will see **four** connections per each peering, that correspond to the `four IPSec tunnels`.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `"Connections"` tab and finally select the `"Transit-Transit Peering"` sub-tab: you will see **one** connection per each peering, that correspond to the `two IPSec tunnels`.
 
 ```{figure} images/lab2-verification.png
 ---

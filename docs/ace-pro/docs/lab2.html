@@ -415,7 +415,7 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The test VPCs/VNet you created in Lab 1 will not be used in other labs.</p>
-<p>For sake of semplicity, in this lab, the Transits will NOT be deployed in pairs. As a best practice, Aviatrix recommend always to deploy two Transits to ensure High Availability.</p>
+<p>For sake of semplicity, in this lab, the Transits will NOT be deployed in pairs. As a best practice, Aviatrix recommends always to deploy two Transits to ensure High Availability.</p>
 </div>
 <p>The CoPilot <em>dashboard</em> should look something like this:</p>
 <figure class="align-center" id="id2">
@@ -843,7 +843,7 @@ document.write(`
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Spoke Gateway azure-west-us-<strong>spoke2</strong> will be attached to its Transit Gateways in a subsequent lab, likewise the Spoke Gateways in AWS <strong>us-east-1</strong> will be attached to the Transit Gateways in the same region only in a subsequent lab.</p>
+<p>The Spoke Gateway azure-west-us-<strong>spoke2</strong> will be attached to its Transit Gateway in a subsequent lab, likewise the Spoke Gateways in AWS <strong>us-east-1</strong> will be attached to the Transit Gateway in the same region only in a subsequent lab.</p>
 </div>
 </section>
 </section>
@@ -941,7 +941,7 @@ document.write(`
 <p><span class="caption-number">Fig. 69 </span><span class="caption-text">Edit Transit in GCP</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Select the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong> (<ins>not the east1 !</ins>) from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code>, and then click on <strong>Save</strong>.</p>
+<p>Select the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong> (<ins>not the east-1 !</ins>) from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Peer</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code>, and then click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id46">
 <img alt="../_images/lab2-peeringgcpaws.png" src="../_images/lab2-peeringgcpaws.png" />
 <figcaption>
@@ -971,7 +971,7 @@ document.write(`
 <h2>5. Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
 <section id="verification-of-transit-peerings-on-copilot-cloud-fabric">
 <h3>5.1. Verification of Transit Peerings on CoPilot(Cloud Fabric)<a class="headerlink" href="#verification-of-transit-peerings-on-copilot-cloud-fabric" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong>, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Connections&quot;</span></code> tab and finally select the <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Transit</span> <span class="pre">Peering&quot;</span></code> sub-tab: you will see <strong>four</strong> connections per each peering, that correspond to the <code class="docutils literal notranslate"><span class="pre">four</span> <span class="pre">IPSec</span> <span class="pre">tunnels</span></code>.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong>, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Connections&quot;</span></code> tab and finally select the <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Transit</span> <span class="pre">Peering&quot;</span></code> sub-tab: you will see <strong>one</strong> connection per each peering, that correspond to the <code class="docutils literal notranslate"><span class="pre">two</span> <span class="pre">IPSec</span> <span class="pre">tunnels</span></code>.</p>
 <figure class="align-center" id="id48">
 <img alt="../_images/lab2-verification.png" src="../_images/lab2-verification.png" />
 <figcaption>
