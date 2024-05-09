@@ -5,12 +5,13 @@ You can view your Team POD portal by clicking on the picture below.
 
 | **TEAM #** | **Access Code** |
 |:----------:|:---------------:|
-|      1     |       S7M2      |
-|      2     |       S7M2      |
-|      3     |       S7M2      |
-|      4     |       S7M2      |
-|      5     |       S7M2      |
-|      6     |       S7M2      |
+|      1     |       SFBN      |
+|      2     |       SFBN      |
+|      3     |       SFBN      |
+|      4     |       SFBN      |
+|      5     |       SFBN      |
+|      6     |       SFBN      |
+|      7     |       SFBN      |
 
 <a href="https://bridge-portal.ace.aviatrixlab.com/" target="_blank">
 
