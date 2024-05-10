@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-The objective of this lab is to learn how to deploy Palo Alto Networks (aka PAN) VM-series firewalls in the Transit VNet and inspect traffic between the two Spoke VNets using firewall policies.
+The objective of this lab is to learn how to deploy **Palo Alto** Networks (aka PAN) VM-series firewalls in the Transit VNet and inspect traffic between the two Spoke VNets using firewall policies.
  
 ## 2. FireNet Overview (Firewall Nework)
 
@@ -49,7 +49,7 @@ Attachment
 ```
 
 ```{important}
-The **_azure-west-us-transit_** is already enabled for FireNet function.
+The **_azure-west-us-transit_** is already enabled for **FireNet** functionality.
 ```
 
 ### 4.2. PAN Firewall Deployment
@@ -94,8 +94,8 @@ Marketplace contact under loading
 
 - **Firewall Image Version**: <span style='color:#479608'>9.1.0</span>
 - **Firewall instance Size**: <span style='color:#479608'>Standard_D3_v2</span>
-- **Management Interface Subnet**: <span style='color:#479608'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
-- **Egress Interface Subnet**: <span style='color:#479608'>azure-west-us-transit-Public-FW-ingress-egress-1 [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
+- **Management Interface Subnet**: <span style='color:#479608'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-**1** [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
+- **Egress Interface Subnet**: <span style='color:#479608'>azure-west-us-transit-Public-FW-ingress-egress-**1** [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
 - **Authentication**: <span style='color:#479608'>Password</span>
 - **Username**: <span style='color:#479608'>avxadmin [**Note**: username *admin* is not permitted in Azure]</span>
 - **Password**: <span style='color:#479608'>[choose a **strong password** and remember it]</span>
