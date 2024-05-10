@@ -33,7 +33,7 @@ Lab 8 Initial Topology
 
 Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**. Here you will immediately notice the presence of an existing S2C connection. 
 
-This is the connection established between an Aviatrix Edge device deployed in the remote DC in New York and a LAN Router.
+This is the connection established between an **Aviatrix Edge** device deployed in the remote DC in New York and a LAN Router.
 
 ```{figure} images/lab8-edge1.png
 ---
@@ -83,7 +83,7 @@ DNS Name of the Cisco CSR
 ```
 
 ```{note}
-Use the command “**dig csr.pod#.aviatrixlab.com +short**” <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the on-prem-partner1 CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
+Use the command “**dig csr.pod#.aviatrixlab.com +short**” <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the on-prem-partner1 StrongSwan router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
 ```
 
 <ins>Replace the **#** symbol with your POD number!</ins>
@@ -119,7 +119,7 @@ S2C template
 ```
 
 ```{caution}
-The configuration template will grey out after clicking on Save. Be patient and wait for the Aviatrix Controller to complete the deployment. <ins>This will create the first leg of the connection, on the GCP Spoke GW</ins>. This will stay **Down** until the other end is configured.
+The configuration template will grey out after clicking on Save. Be patient and wait for the Aviatrix Controller to complete the deployment. <ins>This will create the first side of the connection, on the GCP Spoke GW</ins>.
 ```
 
 Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.
@@ -130,33 +130,9 @@ Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatr
 
 For example, gcp-us-central1-test1 (172.16.1.100) will be reached at 192.168.200.100 due to 1:1 NAT.
 
-### 4.2. Site2Cloud Connection - Template
+### 4.2. Site2Cloud Connection - StrongSwan's private IP
 
-The CoPilot provides a **_template_** that can be used to configure the remote router/firewall.
-
-Select the Site-to-Cloud connection row you created and click on the `"Three dots"` icon and choose `"Download Configuration"` to generate and download the configuration template.
-
-```{figure} images/lab8-template.png
----
-align: center
----
-CFG file
-```
-
-Select the following parameters inside the `"Download Configuration"` window:
-
-- **Vendor**: <span style='color:#479608'>Cisco</span>
-- **Platform**: <span style='color:#479608'>ISR,ASR, or CSR</span>
-- **Software**: <span style='color:#479608'>IOS(XE)</span>
-
-and then click on **Download**.
-
-```{figure} images/lab8-template2.png
----
-align: center
----
-Download CFG file
-```
+The StrongSwan has been alreayd pre-configured with the IPSec statements. Nevertheless, you need to fetch its private IP address!
 
 ```{note}
 The StrongSwan router is not acting as an actual branch router because it is being NAT'd by an **AWS IGW**. For that purpose, you need to specify that the **`Remote Identifier`** of the IKE tunnel is the private IP of the CSR, not the public IP.
