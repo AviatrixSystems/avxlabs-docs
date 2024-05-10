@@ -40,7 +40,7 @@ Check the private RTB
 
 You will notice that any private RTBs has its own **CIDR** pointing to local and the three **RFC1918** routes pointing to the Aviatrix Spoke Gateway. 
 
-With this scenario, the EC2 instance can't reach the *Internet Public Zone*, due to the absence of the <ins>default route</ins>.
+With this scenario, the EC2 instance can't reach the *Internet Public Zone*, due to the absence of a <ins>default route</ins>.
 
 ## 3. SSH to the EC2 instance in the Private Subnet
 
