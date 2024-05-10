@@ -141,7 +141,7 @@ The StrongSwan router is not acting as an actual branch router because it is bei
 To find out the **Private IP** of the StrongSwan router, SSH as `student` to the on-premises router (same as the Remote Peer IP above) and issue the command `ip addr show`. 
 
 ```{tip}
-The Public IP of the StrongSwan router is retrivebale via "dig" command, resolving its DNS symbolic name. please refer to the previous section.
+The Public IP of the StrongSwan router is retrievable via `"dig"` command, resolving its DNS symbolic name. Please refer to the previous section.
 ```
 
 The Private IP that you need to copy is that one assigned to the second interface, the **_ens#_** interface!
@@ -153,7 +153,7 @@ align: center
 ip addr show
 ```
 
-Use the Private IP of the ens# interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the above output.
+Use the Private IP of the **ens#** interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the above output.
 
 Go to **CoPilot > Networking > Connectivity > External Connection (S2C)** and click on the `GCP-to-OnPremPartner` connection.
 
@@ -190,49 +190,6 @@ align: center
 Remote Gateway Identifier
 ```
 
-### 4.2.1 Modify the txt.file 
-
-Make the following four changes to the downloaded Site2Cloud text file:
-
-`<crypto_policy_number>` : <span style='color:green'>1</span>
-
-`<tunnel_number1>`: <span style='color:green'>1</span>
-
-`<ios_wan_interface1>`: <span style='color:green'>gi1</span>
-
-ip route 192.168.200.0 255.255.255.0 Tunnel`<tunnel_number>`: <span style='color:green'>1</span>
-
-```{figure} images/lab8-txt1.png
----
-align: center
----
-txt.file modification
-```
-
-```{figure} images/lab8-txt2.png
----
-align: center
----
- txt.file modification 2
-```
-
-Copy the entire configuration to the clipboard.
-
-```{important}
-If your SSH session to the Cisco CSR hasn't timed out, SSH back in (<ins>please user the Public IP address that you generated through the dig/nslookup command</ins>). 
-```
-
-Type `configure terminal` (can be abbreviated to **_`"conf t"`_**).
-
-```{figure} images/lab8-ssh.png
----
-align: center
----
-SSH to the CSR
-```
-
-- **Paste** the configuration to the terminal.
-
 After doing so, type `end` to exit configuration mode, followed by `sh ip int br` to verify that the tunnel interface is up on the CSR.
 
 ```{figure} images/lab8-up.png
@@ -247,7 +204,7 @@ Connection is up/up
 Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**
 
 ```{tip}
-Click on the **refresh** button to see the colored ball changing from red to green.
+Click on the **refresh** button to see the stratus icon changing from red to green.
 
 The status will be reflected on the screen in about **1 minute**. 
 ```

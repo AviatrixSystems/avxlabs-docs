@@ -346,7 +346,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-cloud-to-on-prem">4.1. Site2Cloud Connection (Cloud to On-Prem)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-strongswan-s-private-ip">4.2. Site2Cloud Connection - StrongSwan’s private IP</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-the-txt-file">4.2.1 Modify the txt.file</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s2c-verification">5. S2C - Verification</a></li>
@@ -490,7 +489,7 @@ document.write(`
 <p>To find out the <strong>Private IP</strong> of the StrongSwan router, SSH as <code class="docutils literal notranslate"><span class="pre">student</span></code> to the on-premises router (same as the Remote Peer IP above) and issue the command <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">addr</span> <span class="pre">show</span></code>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The Public IP of the StrongSwan router is retrivebale via “dig” command, resolving its DNS symbolic name. please refer to the previous section.</p>
+<p>The Public IP of the StrongSwan router is retrievable via <code class="docutils literal notranslate"><span class="pre">&quot;dig&quot;</span></code> command, resolving its DNS symbolic name. Please refer to the previous section.</p>
 </div>
 <p>The Private IP that you need to copy is that one assigned to the second interface, the <strong><em>ens#</em></strong> interface!</p>
 <figure class="align-center" id="id9">
@@ -499,7 +498,7 @@ document.write(`
 <p><span class="caption-number">Fig. 253 </span><span class="caption-text">ip addr show</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Use the Private IP of the ens# interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the above output.</p>
+<p>Use the Private IP of the <strong>ens#</strong> interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the above output.</p>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong> and click on the <code class="docutils literal notranslate"><span class="pre">GCP-to-OnPremPartner</span></code> connection.</p>
 <figure class="align-center" id="id10">
 <img alt="../_images/lab8-s2craw.png" src="../_images/lab8-s2craw.png" />
@@ -529,46 +528,11 @@ document.write(`
 <p><span class="caption-number">Fig. 256 </span><span class="caption-text">Remote Gateway Identifier</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
-<section id="modify-the-txt-file">
-<h3>4.2.1 Modify the txt.file<a class="headerlink" href="#modify-the-txt-file" title="Link to this heading">#</a></h3>
-<p>Make the following four changes to the downloaded Site2Cloud text file:</p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;crypto_policy_number&gt;</span></code> : <span style='color:green'>1</span></p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;tunnel_number1&gt;</span></code>: <span style='color:green'>1</span></p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;ios_wan_interface1&gt;</span></code>: <span style='color:green'>gi1</span></p>
-<p>ip route 192.168.200.0 255.255.255.0 Tunnel<code class="docutils literal notranslate"><span class="pre">&lt;tunnel_number&gt;</span></code>: <span style='color:green'>1</span></p>
-<figure class="align-center" id="id13">
-<img alt="../_images/lab8-txt1.png" src="../_images/lab8-txt1.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 257 </span><span class="caption-text">txt.file modification</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id14">
-<img alt="../_images/lab8-txt2.png" src="../_images/lab8-txt2.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 258 </span><span class="caption-text">txt.file modification 2</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Copy the entire configuration to the clipboard.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>If your SSH session to the Cisco CSR hasn’t timed out, SSH back in (<ins>please user the Public IP address that you generated through the dig/nslookup command</ins>).</p>
-</div>
-<p>Type <code class="docutils literal notranslate"><span class="pre">configure</span> <span class="pre">terminal</span></code> (can be abbreviated to <strong><em><code class="docutils literal notranslate"><span class="pre">&quot;conf</span> <span class="pre">t&quot;</span></code></em></strong>).</p>
-<figure class="align-center" id="id15">
-<img alt="../_images/lab8-ssh.png" src="../_images/lab8-ssh.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 259 </span><span class="caption-text">SSH to the CSR</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p><strong>Paste</strong> the configuration to the terminal.</p></li>
-</ul>
 <p>After doing so, type <code class="docutils literal notranslate"><span class="pre">end</span></code> to exit configuration mode, followed by <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">ip</span> <span class="pre">int</span> <span class="pre">br</span></code> to verify that the tunnel interface is up on the CSR.</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab8-up.png" src="../_images/lab8-up.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Connection is up/up</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Connection is up/up</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -578,13 +542,13 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Click on the <strong>refresh</strong> button to see the colored ball changing from red to green.</p>
+<p>Click on the <strong>refresh</strong> button to see the stratus icon changing from red to green.</p>
 <p>The status will be reflected on the screen in about <strong>1 minute</strong>.</p>
 </div>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id14">
 <img alt="../_images/lab8-refresh.png" src="../_images/lab8-refresh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 261 </span><span class="caption-text">Connection is up/up also on the CoPilot</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 258 </span><span class="caption-text">Connection is up/up also on the CoPilot</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -592,34 +556,34 @@ document.write(`
 </ul>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong></p>
 <p>Filter out based on the GCP Cloud, expand all the VPCs and you will see the new S2C connection with the remote OnPrem-Partner site!</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab8-onprem.png" src="../_images/lab8-onprem.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 262 </span><span class="caption-text">OnPrem-Partner site</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 259 </span><span class="caption-text">OnPrem-Partner site</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now go back to your SSH terminal, and from the on-premises router’s console, enter a ping sourced from the <strong><em>GigabitEthernet1</em></strong> interface to the test instance in GCP (<strong><em>gcp-us-central1-spoke1-test1</em></strong>) as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">192</span>.168.200.100<span class="w"> </span><span class="nb">source</span><span class="w"> </span>gi1
 </pre></div>
 </div>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab8-pingok.png" src="../_images/lab8-pingok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 263 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong> and click on the icon of the Spoke Gateway <strong><em>gcp-us-central1-spoke1</em></strong>, click on <code class="docutils literal notranslate"><span class="pre">Tools</span></code> and then click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Diagnostics</span></code>.</p>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab8-diag.png" src="../_images/lab8-diag.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 264 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 261 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Choose the <code class="docutils literal notranslate"><span class="pre">“Active</span> <span class="pre">Sessions”</span></code> option and in the Search field type <code class="docutils literal notranslate"><span class="pre">“icmp”</span></code> and then click on <strong>Run</strong>. You will notice the subnets involved (i.e. real and virtual subnets) in the Mapped NAT.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab8-active2.png" src="../_images/lab8-active2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Active Sessions</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Active Sessions</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -627,10 +591,10 @@ document.write(`
 <p>You will have to relaunch the ping command once again from the CSR router and click on <strong>Run</strong> on the CoPilot for capturing the <code class="docutils literal notranslate"><span class="pre">Active</span> <span class="pre">Sessions</span></code>!</p>
 </div>
 <p>After completing the S2C connection, this is what the overall lab topology would look like:</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../_images/lab8-finaltopology.png"><img alt="../_images/lab8-finaltopology.png" src="../_images/lab8-finaltopology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 266 </span><span class="caption-text">The Topology with the new S2C connection</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 263 </span><span class="caption-text">The Topology with the new S2C connection</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -639,78 +603,78 @@ document.write(`
 <p>Now let’s connect the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Edge</span></code> to the existing MCNA.</p>
 <p>First and foremost let’s explore the BGP Map that describes the connectivity established through the BGPoverLAN.</p>
 <p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> and click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Map&quot;</span></code> option.</p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab8-edge3.png" src="../_images/lab8-edge3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 267 </span><span class="caption-text">CoPilot BGP Map</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 264 </span><span class="caption-text">CoPilot BGP Map</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You can notice both the AS numbers of each side of the connection and the /30 prefix length used in the underlay.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab8-edge4.png" src="../_images/lab8-edge4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 268 </span><span class="caption-text">BGPoverLAN inside the On-Prem DC</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 265 </span><span class="caption-text">BGPoverLAN inside the On-Prem DC</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Close the BGP Map and then click again on the threee dots icon and this time select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code>.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab8-edge5.png" src="../_images/lab8-edge5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 269 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The LAN router is advertising <strong>225</strong> routes to the Aviatrix Edge.</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab8-edge6.png" src="../_images/lab8-edge6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 270 </span><span class="caption-text">225 Routes</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 267 </span><span class="caption-text">225 Routes</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If you check also the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Advertised</span> <span class="pre">Routes&quot;</span></code> outcome, you will notice that the Aviatrix Edge is not advertising any routes, because it is not connected to the MCNA yet!</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab8-edge7.png" src="../_images/lab8-edge7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 271 </span><span class="caption-text">No routes advertised by the Edge yet</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 268 </span><span class="caption-text">No routes advertised by the Edge yet</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="peering-between-edge-and-the-transit">
 <h3>6.1. Peering between Edge and the Transit<a class="headerlink" href="#peering-between-edge-and-the-transit" title="Link to this heading">#</a></h3>
 <p>Let’s establish a peering between the Aviatrix Edge device and the pair of Transit Gateways in <strong>US-EAST-2</strong>.</p>
 <p>In the Topology depicted below, you will notice that there is a workstation named “edge” attached to the LAN router. Once the peerings has been established, you will launch your ping from that client!</p>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab8-edge8.png"><img alt="../_images/lab8-edge8.png" src="../_images/lab8-edge8.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 272 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 269 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>First and foremost, you have to configure a <strong>BGP ASN</strong> on the <strong><em>aws-us-east-2-transit</em></strong> GWs cluster!</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong>.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab8-edge12.png" src="../_images/lab8-edge12.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 273 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section and insert the AS number <strong>64513</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id27">
 <img alt="../_images/lab8-edge13.png" src="../_images/lab8-edge13.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 271 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now it’s time to establish the peering!</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Edge &gt; Edge Gateways</strong> and click on the three dots icon beside the Edge device entry and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code>.</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id28">
 <img alt="../_images/lab8-edge9.png" src="../_images/lab8-edge9.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Manage Transit Gateway Attachment</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 272 </span><span class="caption-text">Manage Transit Gateway Attachment</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code> button.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab8-edge10.png" src="../_images/lab8-edge10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Transit Gateway Attachment</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 273 </span><span class="caption-text">Transit Gateway Attachment</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Fill in the peering template using the following settings:</p>
@@ -722,46 +686,46 @@ document.write(`
 <li><p><strong>Number of Tunnels</strong>: <span style='color:#479608'>4</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id30">
 <img alt="../_images/lab8-edge11.png" src="../_images/lab8-edge11.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Peering creation template</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Peering creation template</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wait for a bunch of seconds for the Aviatrix Controller to establish the peering and then a message will pop up confirming that the operation has been accomplished, successfully!</p>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id31">
 <img alt="../_images/lab8-edge14.png" src="../_images/lab8-edge14.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 278 </span><span class="caption-text">Peering created</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Peering created</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s verify the presence of the peering previously created on the Topology.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id32">
 <img alt="../_images/lab8-edge15.png" src="../_images/lab8-edge15.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 279 </span><span class="caption-text">New peering</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">New peering</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> cluster.</p>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id33">
 <img alt="../_images/lab8-edge16.png" src="../_images/lab8-edge16.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 280 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Connections&quot;</span></code> tab and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Edge</span> <span class="pre">Peering&quot;</span></code>. You will notice this additional tab that confirms the presence of a peering between the Transit GW in the cloud and the Edge running in the DC!</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id34">
 <img alt="../_images/lab8-edge17.png" src="../_images/lab8-edge17.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Transit-Edge Peering</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">Transit-Edge Peering</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is how the Topology would look like after the creation of the peering.</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab8-edge18.png"><img alt="../_images/lab8-edge18.png" src="../_images/lab8-edge18.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 282 </span><span class="caption-text">Peerings established!</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Peerings established!</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The Edge devices allows to extend all the Aviatrix functionalities to the remote DC!</p>
@@ -770,10 +734,10 @@ document.write(`
 <h3>6.2. Network Domain Association<a class="headerlink" href="#network-domain-association" title="Link to this heading">#</a></h3>
 <p>Let’s assocciate the Edge connection to any of the existing Network Domains.</p>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong> and edit, for instance, the <strong>Green</strong> domain. Select the on-prem-edge connection and do not forget to click on <strong>Save</strong>!</p>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id36">
 <img alt="../_images/lab8-edge19.png" src="../_images/lab8-edge19.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 283 </span><span class="caption-text">Network Domain Association</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Network Domain Association</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s explore again the Cloud Routes section!
@@ -782,10 +746,10 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 <p class="admonition-title">Important</p>
 <p>This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge deviceby the <strong>Aviatrix Controller</strong> after the peering establishment!</p>
 </div>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id37">
 <img alt="../_images/lab8-edge20.png" src="../_images/lab8-edge20.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 284 </span><span class="caption-text">BGP Advertised Routes</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">BGP Advertised Routes</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -793,30 +757,30 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 <h3>6.3. Edge: Connectivity Test<a class="headerlink" href="#edge-connectivity-test" title="Link to this heading">#</a></h3>
 <p>Let’s launch a connectivity test.</p>
 <p><strong>SSH</strong> to the “edge” VM client that is behind the LAN router and then ping the <strong><em>aws-us-east-2-spoke1-test1</em></strong> EC2 in US-EAST-2.</p>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id38">
 <img alt="../_images/lab8-edgenew.png" src="../_images/lab8-edgenew.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 285 </span><span class="caption-text">Connectivity test</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">Connectivity test</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Once again, refer to your personal POD for retrieving the DNS symbolic name of the client attached to the LAN router!</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id39">
 <img alt="../_images/lab8-edgenew2.png" src="../_images/lab8-edgenew2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 286 </span><span class="caption-text">Connectivity test</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">Connectivity test</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id40">
 <img alt="../_images/lab8-edge21.png" src="../_images/lab8-edge21.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 287 </span><span class="caption-text">Connectivity test</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Connectivity test</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered an additional VPC!</p>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id41">
 <img alt="../_images/lab8-edge22.png" src="../_images/lab8-edge22.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 288 </span><span class="caption-text">Connectivity test</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">Connectivity test</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -830,10 +794,10 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 <p>Go to <strong>CoPilot &gt; Monitor &gt; FlowIQ</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;+&quot;</span></code> icon and filter based  on the <code class="docutils literal notranslate"><span class="pre">&quot;Destination</span> <span class="pre">IP</span> <span class="pre">Address&quot;</span></code> <strong>10.0.1.100</strong> (i.e. <strong><em>aws-us-east-2-spoke1-test1</em></strong>).</p>
 <p>Do not forget to click on <strong>Apply</strong>.</p>
 </div>
-<figure class="align-center" id="id45">
+<figure class="align-center" id="id42">
 <img alt="../_images/lab8-edge24.png" src="../_images/lab8-edge24.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 289 </span><span class="caption-text">FlowIQ Filter</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 286 </span><span class="caption-text">FlowIQ Filter</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -841,10 +805,10 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 <p>If you do not get immediately any results, wait for a couple of minutes and apply again the filter!</p>
 </div>
 <p>Then scroll a little bit and check the <code class="docutils literal notranslate"><span class="pre">&quot;Flow</span> <span class="pre">Exporters&quot;</span></code> widget, then from the drop-down menu select the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Aviatrix</span> <span class="pre">Gateway&quot;</span></code></strong> widget: you will see the list of all the Aviatrix Gateways involved along the path.</p>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id43">
 <img alt="../_images/lab8-flowiq.png" src="../_images/lab8-flowiq.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 290 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 287 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -852,10 +816,10 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 <p>On the <strong>Aviatrix Gateway</strong> widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).</p>
 </div>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id44">
 <a class="reference internal image-reference" href="../_images/lab8-edge25.png"><img alt="../_images/lab8-edge25.png" src="../_images/lab8-edge25.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 291 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 288 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -932,7 +896,6 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-cloud-to-on-prem">4.1. Site2Cloud Connection (Cloud to On-Prem)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-strongswan-s-private-ip">4.2. Site2Cloud Connection - StrongSwan’s private IP</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-the-txt-file">4.2.1 Modify the txt.file</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s2c-verification">5. S2C - Verification</a></li>
