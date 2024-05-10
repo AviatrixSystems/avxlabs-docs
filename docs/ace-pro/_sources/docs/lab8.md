@@ -79,11 +79,11 @@ Then click on **Save**.
 ---
 align: center
 ---
-DNS Name of the Cisco CSR
+DNS Name of the StrongSwan router
 ```
 
 ```{note}
-Use the command “**dig csr.pod#.aviatrixlab.com +short**” <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the on-prem-partner1 StrongSwan router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
+Use the command “**dig strongswan.pod#.aviatrixlab.com +short**” <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the **on-prem-partner1 StrongSwan router** and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
 ```
 
 <ins>Replace the **#** symbol with your POD number!</ins>
@@ -100,7 +100,7 @@ Dig command in action
 ```{tip}
 For **Windows OS** you can use the command `"nslookup"`:
 
-**nslookup csr.pod#.aviatrixlab.com**
+**nslookup strongswan.pod#.aviatrixlab.com**
 
 ```{figure} images/lab8-nslookup.png
 ---
@@ -109,7 +109,7 @@ align: center
 Nslookup 
 ```
 
-This is how your template will look like.
+This is how your template would look like.
 
 ```{figure} images/lab8-s2ctemplate.png
 ---
@@ -132,7 +132,7 @@ For example, gcp-us-central1-test1 (172.16.1.100) will be reached at 192.168.200
 
 ### 4.2. Site2Cloud Connection - StrongSwan's private IP
 
-The StrongSwan has been alreayd pre-configured with the IPSec statements. Nevertheless, you need to fetch its private IP address!
+The StrongSwan has been alreayd pre-configured with the IPSec commands. Nevertheless, you need to fetch its private IP address!
 
 ```{note}
 The StrongSwan router is not acting as an actual branch router because it is being NAT'd by an **AWS IGW**. For that purpose, you need to specify that the **`Remote Identifier`** of the IKE tunnel is the private IP of the CSR, not the public IP.
@@ -165,7 +165,7 @@ S2C node
 ```
 
 ```{note}
-The connection will show up in red, which in turn means, it is not yet established.
+The connection will show up in red, which in turn means, it is not established yet.
 ```
 
 Then click on the `"Settings"` tab, expand the `"General"` section and paste the Private IP on the `"Remote Gateway Identifier"` field, as depicted below. 
@@ -190,7 +190,7 @@ align: center
 Remote Gateway Identifier
 ```
 
-After doing so, type `end` to exit configuration mode, followed by `sh ip int br` to verify that the tunnel interface is up on the CSR.
+After doing so, click on the refres button
 
 ```{figure} images/lab8-up.png
 ---
