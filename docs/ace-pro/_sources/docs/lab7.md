@@ -464,7 +464,7 @@ align: center
 Final Topology for Lab 7
 ```
 
-- Explore the logs on the Monitor section of the Distributed Cloud Firewall
+- Explore the logs on the Monitor section of the Distributed Cloud Firewall. Filter out based on protocol **ICMP**.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
@@ -474,7 +474,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 ---
 align: center
 ---
-Filter based on icmp
+Filter based on ICMP
 ```
 
 ```{figure} images/lab7-last.png

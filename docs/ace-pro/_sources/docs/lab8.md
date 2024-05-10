@@ -4,7 +4,7 @@
 
 The objective of this lab is to resolve an IP address overlap between an on-premises partner and the cloud. You will be using the **Site2Cloud Mapped NAT** feature to achieve this. 
 
-Moreover, you are also asked to interconnect the on-prem DC in New York to your MCNA. An Aviatrix Edge device has already been provisioned and it got already registered to the existing Aviatrix Controller.
+Moreover, you are also asked to interconnect the on-prem DC in New York to your MCNA. An **Aviatrix Edge** device has already been provisioned and it got already registered to the existing Aviatrix Controller.
  
 ## 2. Site2Cloud Overview
 
@@ -16,7 +16,7 @@ On one end of the tunnel is an Aviatrix Gateway; on the other could be an on-pre
  
 ## 3. Topology
 
-In this lab, you will first achieve Site2Cloud connectivity to a Cisco Cloud Services Router 1000v (CSR) emulating an on-premises branch router.
+In this lab, you will first achieve Site2Cloud connectivity to a `StrongSwan Router`, emulating an on-premises branch router.
 
 In this lab, you will work with a typical overlapping IP addresses scenario depicted in the drawing below:
 
@@ -69,7 +69,7 @@ Create a connection from Cloud (GCP) to an on-prem Partner site, using the follo
 - **Real Remote Subnet CIDR(s)**: <span style='color:#479608'>172.16.1.0/24</span>
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.100.0/24</span>
 - **Authetication Method**: <span style='color:#479608'>PSK</span>
-- **Pre-Shared Key**: <span style='color:#479608'>Aviatrix123#</span>
+- **Pre-Shared Key**: <span style='color:#479608'>[**Refer to your Pod assignment for the CSR Public IP - Lab8 section**]</span>
 - **Remote Gateway IP**: <span style='color:#479608'>[**Refer to your Pod assignment for the CSR Public IP - Lab8 section**]</span>
 - **Local Gateway Instance**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
 
@@ -159,25 +159,25 @@ Download CFG file
 ```
 
 ```{note}
-The Cisco CSR is not acting as an actual branch router because it is being NAT'd by an AWS IGW. For that purpose, you need to specify that the **`Remote Identifier`** of the IKE tunnel is the private IP of the CSR, not the public IP.
+The StrongSwan router is not acting as an actual branch router because it is being NAT'd by an **AWS IGW**. For that purpose, you need to specify that the **`Remote Identifier`** of the IKE tunnel is the private IP of the CSR, not the public IP.
 ```
 
-To find out the **Private IP** of the CSR, SSH as `admin` to the on-premises router (same as the Remote Peer IP above) and issue the IOS command `show ip interface brief` (can be abbreviated to **_sh ip int br_**). 
+To find out the **Private IP** of the StrongSwan router, SSH as `student` to the on-premises router (same as the Remote Peer IP above) and issue the command `ip addr show`. 
 
 ```{tip}
-Refer to your **POD** portal for retrieving the Public IP of the CSR.
+The Public IP of the StrongSwan router is retrivebale via "dig" command, resolving its DNS symbolic name. please refer to the previous section.
 ```
 
-The Private IP that you need to copy is that one assigned to the **_GigabitEthernet1_** interface.
+The Private IP that you need to copy is that one assigned to the second interface, the **_ens#_** interface!
 
 ```{figure} images/lab8-giga.png
 ---
 align: center
 ---
-GigabitEthernet1 IP address
+ip addr show
 ```
 
-Use the Private IP of the GigabitEthernet1 interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the above output.
+Use the Private IP of the ens# interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the above output.
 
 Go to **CoPilot > Networking > Connectivity > External Connection (S2C)** and click on the `GCP-to-OnPremPartner` connection.
 
@@ -188,7 +188,22 @@ align: center
 S2C node
 ```
 
+```{note}
+The connection will show up in red, which in turn means, it is not yet established.
+```
+
 Then click on the `"Settings"` tab, expand the `"General"` section and paste the Private IP on the `"Remote Gateway Identifier"` field, as depicted below. 
+
+```{note}
+You will find the public IP address. Please delete it and paste the private IP address (i.e. ens# interrface).
+```
+
+```{figure} images/lab8-delete.png
+---
+align: center
+---
+Delete the existing Public IP address
+```
 
 Do not forget to click on **Save**.
 
