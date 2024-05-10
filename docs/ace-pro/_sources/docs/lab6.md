@@ -107,7 +107,7 @@ Choose the correct VPC
   Verify its presence in any Private RTBs inside the **_aws-us-east-2-spoke1_** VPC.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs fron the **Route Table** field.
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any Private RTBs from the **Route Table** field.
 ```
 
 ```{figure} images/lab6-defaultroute.png
@@ -466,6 +466,12 @@ sudo su -
 
 ```{note}
 You will be asked to type again the student password!
+
+```{figure} images/lab6-password.png
+---
+align: center
+---
+Root PWD
 ```
 
 ```bash
