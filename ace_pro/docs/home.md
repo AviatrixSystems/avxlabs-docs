@@ -75,5 +75,5 @@ Full-Blown MCNA
 ```{note}
 Throughout the labs, you will notice some additional pre-configured constructs, which will be utilised in the later labs. Please pay special attention to selecting the right region, gateway or VPC/VNet.
 
-In particular, resources in AWS us-east-1 will not be used until Lab 5. Likewise, resources in Azure US West Spoke 2 will not be used until Lab 7.
+In particular, resources in AWS us-east-1 will not be used until Lab 5. Likewise, resources in Azure west-us-spoke2 will not be used until Lab 7.
 ```
