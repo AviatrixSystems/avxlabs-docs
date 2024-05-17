@@ -18,6 +18,8 @@ Aviatrix transits and spokes architecture (aka *`Hub & Spoke`* architecture) hel
 
 In this lab, we will use Aviatrix CoPilot to enable `Network Segmentation` in Azure, AWS and GCP, in order to segregate VPC/VNet with similarities. At this point, there is a flat routing domain and the communication among the three CSPs occurs through the Transit Core Backbone layer.
 
+You will create two segments: **Green** and **Blue**.
+
 Green VPC resources in AWS and Azure can communicate with each other, while access is restricted to Blue VPC resources in GCP. Later, we will ease this restriction with a `Connection Policy`: Blue and Green segments will be able to communicate with others as well.
 
 ```{figure} images/lab3-topology.png

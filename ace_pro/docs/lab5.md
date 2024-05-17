@@ -12,7 +12,7 @@ Aviatrix **`ActiveMesh`** technology provides network resiliency, better converg
 
 ## 3. Topology
 
-In this lab we will configure the pending attachment between the Spoke Gateways in aws-us-east-1-spoke1 and the Transit Gateway in aws-us-east-1-transit, and the peering between the Transit Gateway _aws-us-east-1-transit_ and the Transit Gateway in _aws-us-east-2-transit_. The Gateway in AWS region us-east-1 is pre-configured with HPE (High Performance Encryption, also known as `Insane Mode`) and AWS us-east-2 region was configured in Lab 3.
+In this lab we will configure the pending attachment between the Spoke Gateways in _aws-us-east-1-spoke1_ and the Transit Gateway in _aws-us-east-1-transit_, and the peering between the Transit Gateway _aws-us-east-1-transit_ and the Transit Gateway in _aws-us-east-2-transit_. The Gateway in AWS region us-east-1 is pre-configured with HPE (High Performance Encryption, also known as `Insane Mode`) and AWS us-east-2 region was configured in Lab 3.
 
 ```{figure} images/lab5-topology.png
 ---
