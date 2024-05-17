@@ -6,7 +6,7 @@ In this lab, you will create **3** VPCs/VNets, one in each cloud, i.e., Azure, A
 
 The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).
 
-Refer to your POD assignment for CoPilot login information, as depicted below. Click on the `URL` of the CoPilot and log in using the credentials assigned to your POD.
+Refer to your POD assignment for CoPilot login information, as depicted below. Click on the `URL` button of the CoPilot and log in using the credentials assigned to your POD.
 
 ```{important}
 Always refer to your personal POD portal for both passwords and additional information. Please bear in mind that the screenshots refer to a different POD and they are shown just as examples!
@@ -106,6 +106,10 @@ Go back to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and type the
 align: center
 ---
 Confirmation
+```
+
+```{note}
+It will take few minutes to see four subnets (i.e 2x public subnets and 2x private subnets).
 ```
 
 ## 3. AWS VPC
@@ -221,6 +225,13 @@ From there, navigate to `Route Tables`.
 
 Here, also, you can see the eight route tables that the Controller created. They are mapped to each subnet. The Public Routing Tables have a 0/0 route pointing to the Internet Gateway, that the Controller also deployed.
 
+```{figure} images/lab1-rt.png
+---
+align: center
+---
+Routing Tables created by the Aviatrix Controller
+```
+
 ## 4. GCP VPC
 
 ### 4.1. Create GCP VPC
@@ -267,7 +278,7 @@ align: center
 VPC template
 ```
 
-Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).
+Wait for some minutes and then verify the completion of the VPC creation in the VPC list, as soon as you see the confirmation pop-up message. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).
 
 You can filter by CIDR `172.16.22.0/24`.
 

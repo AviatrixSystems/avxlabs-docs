@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-Build Transit Network in Azure, GCP and AWS using Aviatrix Multicloud Transit hub and spoke model.
+Build Transit Network in Azure, GCP and AWS using Aviatrix Multicloud Transit `hub and spoke model`.
 
 In this lab, we will use Aviatrix CoPilot to connect three major clouds, i.e. Azure, GCP and AWS. The workloads in VPCs/VNets, in all three clouds, must communicate without manual configuration on the native consoles.
 
@@ -202,7 +202,7 @@ Ensure these parameters are entered in the pop-up window `"Create Transit Gatewa
 - **Account:** <span style='color:#479608'>aws-account </span>
 - **Region:** <span style='color:#479608'>us-east-2 (Ohio)</span>
 - **VPC ID:** <span style='color:#479608'>aws-us-east-2-transit (Make sure you don't select aws-us-east-2-**spoke1** VPC)</span>
-- **Instance Size:** <span style='color:#479608'>c5n.large</span>
+- **Instance Size:** <span style='color:#479608'>c5.large</span>
 - **High Performance Encryption:** <span style='color:#479608'>**On**</span>
 
 - **Attach to Subnet:** <span style='color:#479608'>us-east-2a</span>
@@ -747,7 +747,7 @@ Refresh the web page, to see the changes reflected into your CoPilot's topology!
 ```{note}
 **`POD PORTAL`**:
 
-Both public and private IP addresses of the **test** instances are retrievable from your personal portal.
+Both public DNS names and private IP addresses of the **test** instances are retrievable from your personal portal.
 ```{figure} images/lab2-newpic.png
 ---
 align: center
@@ -758,7 +758,7 @@ POD Portal info
 ```{note}
 **`TOPOLOGY (CoPilot > Cloud Fabric > Topology)`**:
 
-From the Topology expand the **_aws-us-east-2-spoke1_** VPC and select the instance **_aws-us-east-2-spoke1-test1_** with the EC2 logo. 
+Explore the **_aws-us-east-2-spoke1_** VPC and select the instance **_aws-us-east-2-spoke1-test1_** with the EC2 logo, then check its properties: you will be able to fetch both Public and Private IP addresses.
 
 ```{figure} images/lab2-newpic3.png
 ---
