@@ -304,7 +304,7 @@ Now from to the **_aws-us-east-1-spoke1-test1_** in AWS US-East1, launch the pin
 ---
 align: center
 ---
-First ping 
+Instances are now in the same Segment! 
 ```
 
 ```{figure} images/lab5-ping1.png
