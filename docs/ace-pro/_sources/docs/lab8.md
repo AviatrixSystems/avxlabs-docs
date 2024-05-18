@@ -139,7 +139,7 @@ Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatr
 
 For example, gcp-us-central1-test1 (172.16.1.100) will be reached at 192.168.200.100 due to 1:1 NAT.
 
-### 4.2. Site2Cloud Connection - StrongSwan's private IP
+### 4.2. Site2Cloud Connection - StrongSwan's private IP address
 
 The StrongSwan has been alreayd pre-configured with the IPSec commands. Nevertheless, you need to fetch its private IP address!
 
@@ -199,6 +199,45 @@ align: center
 Remote Gateway Identifier
 ```
 
+### 4.3 Site2Cloud Connection - StrongSwan's configuration
+
+Now you have to complete the IPSec configuration of the StrongSwan router.
+
+SSH to the StrongSwan router. You can either use the public IP address that you retrieved before using the dig/nslookup command or you can use its dns name available on your personal POD portal.
+
+```{figure} images/lab8-personalpod.png
+---
+align: center
+---
+StrongSwan's DNS name
+```
+
+```{figure} images/lab8-strong.png
+---
+align: center
+---
+SSH
+```
+
+Now you need to **edit** the StrongSwan's router configuration file. 
+Check the content of the following file: `/etc/swanctl/swanctl.conf`
+
+Type the following command:
+
+```bash
+cat /etc/swanctl/swanctl.conf
+```
+
+You will need to replace **`REPLACE_WITH_SPOKE_GW_PUBLIC_IP`** with the public IP of the spoke gateway in 3 places in /`etc/swanctl/swanctl.conf`
+
+```{figure} images/lab8-replace.png
+---
+align: center
+---
+cfg file
+```
+
+Go to CoPilot > Cloud Fabric > Gateways > Spoke Gateways and then copy
 After doing so, click on the refres button
 
 ```{figure} images/lab8-up.png
