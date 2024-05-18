@@ -436,7 +436,7 @@ Create a new DCF Rule with the following parameters:
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
-- **Intrusion Detection (IDS)**: <span style='color:#479608'>On</span>
+- **Intrusion Detection (IDS)**: <span style='color:#479608'>**On**</span>
 
 Do not forget to click on **Save In Drafts**.
 
