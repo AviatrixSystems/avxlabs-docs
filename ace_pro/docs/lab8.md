@@ -228,7 +228,7 @@ Type the following command:
 cat /etc/swanctl/swanctl.conf
 ```
 
-You will need to replace the string **`REPLACE_WITH_SPOKE_GW_PUBLIC_IP`** with the public IP address of the GCP spoke gateway in 3 places in /`etc/swanctl/swanctl.conf`
+You will need to replace the string **`REPLACE_WITH_SPOKE_GW_PUBLIC_IP`** with the public IP address of the GCP spoke gateway in 3 places in `/etc/swanctl/swanctl.conf`
 
 ```{figure} images/lab8-replace.png
 ---
@@ -253,7 +253,18 @@ Now go back on the SSH session established with the StrongSwan router and edit t
 Type the following command:
 
 ```bash
+sudo su -
+```
+
+```bash
 vim /etc/swanctl/swanctl.conf
+```
+
+```{figure} images/lab8-sudo.png
+---
+align: center
+---
+sudo + vim
 ```
 
 ```{figure} images/lab8-insert.png
@@ -272,7 +283,25 @@ align: center
 editing
 ```
 
-When you have complete the change, type
+When you are done with the change, type `"ESC"` and then `":x"` in order to exit the Insert mode and save the configuration successfully!
+
+Now you need to type the following two commands:
+
+```bash
+swanctl --load-all
+```
+
+```bash
+swanctl --initiate --child gcp_tun1
+```
+
+```{figure} images/lab8-swan.png
+---
+align: center
+---
+swanctl daemon
+```
+
 ## 5. S2C - Verification
 
 Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**
