@@ -49,6 +49,15 @@ align: center
 BGPoverLAN
 ```
 
+The S2C connection with Edge will be configured on the subsequent task. Now let's configure the S2C connection with the partner site!
+
+```{figure} images/lab8-partner.png
+---
+align: center
+---
+S2C between Partner and GCP
+```
+
 Click on the `"+ External Connection"` button and let's create a new connection from scratch:
 
 ```{figure} images/lab8-s2c.png
@@ -168,7 +177,7 @@ S2C node
 The connection will show up in red, which in turn means, it is not established yet.
 ```
 
-Then click on the `"Settings"` tab, expand the `"General"` section and paste the Private IP on the `"Remote Gateway Identifier"` field, as depicted below. 
+Then click on the `"Settings"` tab, expand the `"General"` section, delete the existing Public IP address from the `"Remote Gateway Identifier"` field and paste the Private IP that you retrieved from the StrongSwan router, as depicted below. 
 
 ```{note}
 You will find the public IP address. Please delete it and paste the private IP address (i.e. ens# interrface).
