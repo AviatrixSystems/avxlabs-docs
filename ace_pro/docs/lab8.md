@@ -139,67 +139,7 @@ Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatr
 
 For example, gcp-us-central1-test1 (172.16.1.100) will be reached at 192.168.200.100 due to 1:1 NAT.
 
-### 4.2. Site2Cloud Connection - StrongSwan's private IP address
-
-The StrongSwan has been alreayd pre-configured with the IPSec commands. Nevertheless, you need to fetch its private IP address!
-
-```{note}
-The StrongSwan router is not acting as an actual branch router because it is being NAT'd by an **AWS IGW**. For that purpose, you need to specify that the **`Remote Identifier`** of the IKE tunnel is the private IP of the CSR, not the public IP.
-```
-
-To find out the **Private IP** of the StrongSwan router, SSH as `student` to the on-premises router (same as the Remote Peer IP above) and issue the command `ip addr show`. 
-
-```{tip}
-The Public IP of the StrongSwan router is retrievable via `"dig"` command, resolving its DNS symbolic name. Please refer to the previous section.
-```
-
-The Private IP that you need to copy is that one assigned to the second interface, the **_ens#_** interface!
-
-```{figure} images/lab8-giga.png
----
-align: center
----
-ip addr show
-```
-
-Use the Private IP of the **ens#** interface. It would be something in 172.16.1.0/24, such as 172.16.1.176, in the above output.
-
-Go to **CoPilot > Networking > Connectivity > External Connection (S2C)** and click on the `GCP-to-OnPremPartner` connection.
-
-```{figure} images/lab8-s2craw.png
----
-align: center
----
-S2C node
-```
-
-```{note}
-The connection will show up in red, which in turn means, it is not established yet.
-```
-
-Then click on the `"Settings"` tab, expand the `"General"` section, delete the existing Public IP address from the `"Remote Gateway Identifier"` field and paste the Private IP that you retrieved from the StrongSwan router, as depicted below. 
-
-```{note}
-You will find the public IP address. Please delete it and paste the private IP address (i.e. ens# interrface).
-```
-
-```{figure} images/lab8-delete.png
----
-align: center
----
-Delete the existing Public IP address
-```
-
-Do not forget to click on **Save**.
-
-```{figure} images/lab8-settings.png
----
-align: center
----
-Remote Gateway Identifier
-```
-
-### 4.3 Site2Cloud Connection - StrongSwan's configuration
+### 4.2 Site2Cloud Connection - StrongSwan's configuration
 
 Now you have to complete the IPSec configuration of the StrongSwan router.
 
