@@ -228,7 +228,7 @@ Type the following command:
 cat /etc/swanctl/swanctl.conf
 ```
 
-You will need to replace **`REPLACE_WITH_SPOKE_GW_PUBLIC_IP`** with the public IP of the spoke gateway in 3 places in /`etc/swanctl/swanctl.conf`
+You will need to replace the string **`REPLACE_WITH_SPOKE_GW_PUBLIC_IP`** with the public IP address of the GCP spoke gateway in 3 places in /`etc/swanctl/swanctl.conf`
 
 ```{figure} images/lab8-replace.png
 ---
@@ -237,16 +237,42 @@ align: center
 cfg file
 ```
 
-Go to CoPilot > Cloud Fabric > Gateways > Spoke Gateways and then copy
-After doing so, click on the refres button
+Let's retrieve the Public IP address assigned to the GCP Spoke Gateway.
 
-```{figure} images/lab8-up.png
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and then identify the GCP Spoke Gateway and **copy** its Public IP address.
+
+```{figure} images/lab8-gcppublic.png
 ---
 align: center
 ---
-Connection is up/up
+Public IP address
 ```
 
+Now go back on the SSH session established with the StrongSwan router and edit the cfg file.
+
+Type the following command:
+
+```bash
+vim /etc/swanctl/swanctl.conf
+```
+
+```{figure} images/lab8-insert.png
+---
+align: center
+---
+Insert mode
+```
+
+Delete the string **`REPLACE_WITH_SPOKE_GW_PUBLIC_IP`** and paste the Public IP address of the Spoke Gateway
+
+```{figure} images/lab8-deleteandcopy.png
+---
+align: center
+---
+editing
+```
+
+When you have complete the change, type
 ## 5. S2C - Verification
 
 Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**
