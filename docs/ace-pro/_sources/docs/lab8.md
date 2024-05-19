@@ -372,11 +372,10 @@ No routes advertised by the Edge yet
 
 Let's establish a peering between the Aviatrix Edge device and the Transit Gateway in **US-EAST-2**. 
 
-In the Topology depicted below, you will notice that there is a workstation named "edge" attached to the LAN router. Once the peerings has been established, you will launch your ping from that client, for the connectivity verification!
+In the Topology depicted below, you will notice that there is a workstation named "edge" attached to the LAN router. Once the attachment has been established, you will launch your ping from that client, for the connectivity verification!
 
 ```{figure} images/lab8-edge8.png
 ---
-height: 400px
 align: center
 ---
 Peerings not established yet!
@@ -578,7 +577,7 @@ FlowIQ Filter
 ```
 
 ```{caution}
-If you do not get immediately any results, wait for **3-4** minutes and then click on the **`"Refresh Data"`** button!
+If you do not get immediately any outcomes, wait for **3-4** minutes and then click on the **`"Refresh Data"`** button!
 ```{figure} images/lab8-refresh2.png
 ---
 align: center
@@ -601,7 +600,7 @@ On the **Aviatrix Gateway** widget, the very first gateway from the list is the 
 
 ### 6.4. Edge: "It's more than a Spoke GW""
 
-The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus the Edge device is regarded much more than a classic Spoke gateway.
+The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus <ins>the Edge device is regarded much more than a classic Spoke gateway</ins>.
 
 Let's connect the Edge device also to the Transit Gateway in **US-Central-1** in **GCP**.
 
@@ -691,6 +690,44 @@ Topology
 
 #### 6.4.1 Edge: As-Path Prepend
 
+Now, let's SSH on the EC2 _aws-us-east-2-spoke1-test1_  and then launch the command traceroute towards the VM _gcp-us-central1-spoke1-test1_ in GCP
+
+```{figure} images/lab8-edgedouble21.png
+---
+align: center
+---
+aws-us-east-2-spoke1-test1 
+```
+
+Install the **`inetutils-traceroute`** package, typing the following command:
+
+```bash
+sudo apt install inetutils-traceroute
+```
+
+```{caution}
+You will be asked to type the student's password!
+```
+
+```{figure} images/lab8-edgedouble22.png
+---
+align: center
+---
+apt install 
+```
+
+Now type the traceroute command towards the test VM in GCP:
+
+```bash
+traceroute 172.16.1.100
+```
+
+```{figure} images/lab8-edgedouble23.png
+---
+align: center
+---
+Traceroute
+```
 
 After this lab, this is how the overall topology would look like:
 

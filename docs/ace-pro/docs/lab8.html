@@ -674,9 +674,9 @@ Check the content of the following file: <code class="docutils literal notransla
 <section id="attachment-between-edge-and-the-transit">
 <h3>6.1. Attachment between Edge and the Transit<a class="headerlink" href="#attachment-between-edge-and-the-transit" title="Link to this heading">#</a></h3>
 <p>Let’s establish a peering between the Aviatrix Edge device and the Transit Gateway in <strong>US-EAST-2</strong>.</p>
-<p>In the Topology depicted below, you will notice that there is a workstation named “edge” attached to the LAN router. Once the peerings has been established, you will launch your ping from that client, for the connectivity verification!</p>
+<p>In the Topology depicted below, you will notice that there is a workstation named “edge” attached to the LAN router. Once the attachment has been established, you will launch your ping from that client, for the connectivity verification!</p>
 <figure class="align-center" id="id29">
-<a class="reference internal image-reference" href="../_images/lab8-edge8.png"><img alt="../_images/lab8-edge8.png" src="../_images/lab8-edge8.png" style="height: 400px;" /></a>
+<img alt="../_images/lab8-edge8.png" src="../_images/lab8-edge8.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 274 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
@@ -842,7 +842,7 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 </figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>If you do not get immediately any results, wait for <strong>3-4</strong> minutes and then click on the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Refresh</span> <span class="pre">Data&quot;</span></code></strong> button!</p>
+<p>If you do not get immediately any outcomes, wait for <strong>3-4</strong> minutes and then click on the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Refresh</span> <span class="pre">Data&quot;</span></code></strong> button!</p>
 <figure class="align-center" id="id48">
 <img alt="../_images/lab8-refresh2.png" src="../_images/lab8-refresh2.png" />
 <figcaption>
@@ -864,7 +864,7 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 </section>
 <section id="edge-it-s-more-than-a-spoke-gw">
 <h3>6.4. Edge: “It’s more than a Spoke GW””<a class="headerlink" href="#edge-it-s-more-than-a-spoke-gw" title="Link to this heading">#</a></h3>
-<p>The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus the Edge device is regarded much more than a classic Spoke gateway.</p>
+<p>The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus <ins>the Edge device is regarded much more than a classic Spoke gateway</ins>.</p>
 <p>Let’s connect the Edge device also to the Transit Gateway in <strong>US-Central-1</strong> in <strong>GCP</strong>.</p>
 <figure class="align-center" id="id50">
 <img alt="../_images/lab8-edgedouble.png" src="../_images/lab8-edgedouble.png" />
@@ -934,11 +934,42 @@ You will notice the existing attachment (grayout) with the Transit Gateway in AW
 </figure>
 <section id="edge-as-path-prepend">
 <h4>6.4.1 Edge: As-Path Prepend<a class="headerlink" href="#edge-as-path-prepend" title="Link to this heading">#</a></h4>
-<p>After this lab, this is how the overall topology would look like:</p>
+<p>Now, let’s SSH on the EC2 <em>aws-us-east-2-spoke1-test1</em>  and then launch the command traceroute towards the VM <em>gcp-us-central1-spoke1-test1</em> in GCP</p>
 <figure class="align-center" id="id58">
+<img alt="../_images/lab8-edgedouble21.png" src="../_images/lab8-edgedouble21.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 303 </span><span class="caption-text">aws-us-east-2-spoke1-test1</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Install the <strong><code class="docutils literal notranslate"><span class="pre">inetutils-traceroute</span></code></strong> package, typing the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>inetutils-traceroute
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>You will be asked to type the student’s password!</p>
+</div>
+<figure class="align-center" id="id59">
+<img alt="../_images/lab8-edgedouble22.png" src="../_images/lab8-edgedouble22.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 304 </span><span class="caption-text">apt install</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now type the traceroute command towards the test VM in GCP:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>traceroute<span class="w"> </span><span class="m">172</span>.16.1.100
+</pre></div>
+</div>
+<figure class="align-center" id="id60">
+<img alt="../_images/lab8-edgedouble23.png" src="../_images/lab8-edgedouble23.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 305 </span><span class="caption-text">Traceroute</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After this lab, this is how the overall topology would look like:</p>
+<figure class="align-center" id="id61">
 <a class="reference internal image-reference" href="../_images/lab8-edge25.png"><img alt="../_images/lab8-edge25.png" src="../_images/lab8-edge25.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 303 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 306 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
