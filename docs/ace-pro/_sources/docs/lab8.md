@@ -317,7 +317,6 @@ align: center
 ---
 The Topology with the new S2C connection
 ```
-
 ## 6. Edge
 
 Now let's connect the `Aviatrix Edge` to the existing MCNA. 
@@ -333,7 +332,7 @@ align: center
 CoPilot BGP Map
 ```
 
-You can notice both the AS numbers of each side of the connection and the /30 subnet used in the underlay.
+You can notice both the AS numbers of each side of the connection and the **/30** subnet used in the underlay.
 
 ```{figure} images/lab8-edge4.png
 ---
@@ -369,7 +368,7 @@ align: center
 No routes advertised by the Edge yet
 ```
 
-### 6.1. Peering between Edge and the Transit
+### 6.1. Attachment between Edge and the Transit
 
 Let's establish a peering between the Aviatrix Edge device and the Transit Gateway in **US-EAST-2**. 
 
@@ -383,7 +382,7 @@ align: center
 Peerings not established yet!
 ```
 
-First and foremost, you have to configure a **BGP ASN** on the **_aws-us-east-2-transit_** GWs cluster!
+First and foremost, you have to configure a **BGP ASN** on the **_aws-us-east-2-transit_** GW!
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_**.
 
@@ -403,7 +402,7 @@ align: center
 BGP ASN
 ```
 
-Now it's time to establish the peering! 
+Now it's time to establish the attachment! 
 
 Go to **CoPilot > Cloud Fabric > Edge > Edge Gateways** and click on the three dots icon beside the Edge device entry and then click on `"Manage Transit Gateway Attachment"`.
 
@@ -602,11 +601,101 @@ On the **Aviatrix Gateway** widget, the very first gateway from the list is the 
 
 ### 6.4. Edge: "It's more than a Spoke GW""
 
+The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus the Edge device is regarded much more than a classic Spoke gateway.
+
+Let's connect the Edge device also to the Transit Gateway in **US-Central-1** in **GCP**.
+
+```{figure} images/lab8-edgedouble.png
+---
+align: center
+---
+New Attachment towards GCP
+```
+
+Once again, you have to configure a **BGP ASN** on the **_gcp-us-central1-transit_** GW first, before deploying any new attachments.
+
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_**.
+
+```{figure} images/lab8-edgedouble5.png
+---
+align: center
+---
+gcp-us-central1-transit
+```
+
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section and insert the AS number **64514** on the empty field related to the `“Local AS Number”`, then click on **Save**.
+
+```{figure} images/lab8-edgedouble6.png
+---
+align: center
+---
+BGP ASN
+```
+
+Now you are ready to proceed with the rest of the configuration on the Edge section!
+
+Go to **CoPilot > Cloud Fabric > Edge > Edge Gateways** and click on the three dots icon beside the Edge device entry and then click on `"Manage Transit Gateway Attachment"`.
+
+```{figure} images/lab8-edgedouble2.png
+---
+align: center
+---
+Manage Transit Gateway Attachment
+```
+
+Now click on the `"+ Transit Gateway Attachment"` button.
+You will notice the existing attachment (grayout) with the Transit Gateway in AWS US-East-2.
+
+```{figure} images/lab8-edgedouble3.png
+---
+align: center
+---
+New Attachment
+```
+
+Fill in the attachment template using the following settings:
+
+- **Transt Gateway**: <span style='color:#479608'>gcp-us-central1-transit</span>
+- **Connecting Edge Interfaces**: <span style='color:#479608'>WAN(etho)</span>
+- **Attach over Private Network**: <span style='color:#479608'>**OFF**</span>
+- **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
+
+Do not forget to click on **Save**.
+
+```{figure} images/lab8-edgedouble4.png
+---
+align: center
+---
+Edge Attachment Template
+```
+
+Wait for 1 minute for the Aviatrix Controller to establish the attachment between the Edge and the GCP Transit Gateway. Once the operation is completed you will be notified!
+
+```{figure} images/lab8-edgedouble9.png
+---
+align: center
+---
+Notification
+```
+
+Let's verify the presence of the new attachment previously created on the Topology. 
+
+Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
+
+```{figure} images/lab8-edgedouble10.png
+---
+align: center
+---
+Topology
+```
+
+#### 6.4.1 Edge: As-Path Prepend
+
+
 After this lab, this is how the overall topology would look like:
 
 ```{figure} images/lab8-edge25.png
 ---
-
 height: 400px
 align: center
 ---

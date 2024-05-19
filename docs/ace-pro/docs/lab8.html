@@ -350,11 +350,14 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s2c-verification">5. S2C - Verification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge">6. Edge</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peering-between-edge-and-the-transit">6.1. Peering between Edge and the Transit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">6.1. Attachment between Edge and the Transit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">6.2. Network Domain Association</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity-test">6.3. Edge: Connectivity Test</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-flowiq">6.3. Edge: FlowIQ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">6.4. Edge: “It’s more than a Spoke GW””</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">6.4. Edge: “It’s more than a Spoke GW””</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-path-prepend">6.4.1 Edge: As-Path Prepend</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -640,7 +643,7 @@ Check the content of the following file: <code class="docutils literal notransla
 <p><span class="caption-number">Fig. 269 </span><span class="caption-text">CoPilot BGP Map</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You can notice both the AS numbers of each side of the connection and the /30 subnet used in the underlay.</p>
+<p>You can notice both the AS numbers of each side of the connection and the <strong>/30</strong> subnet used in the underlay.</p>
 <figure class="align-center" id="id25">
 <img alt="../_images/lab8-edge4.png" src="../_images/lab8-edge4.png" />
 <figcaption>
@@ -668,8 +671,8 @@ Check the content of the following file: <code class="docutils literal notransla
 <p><span class="caption-number">Fig. 273 </span><span class="caption-text">No routes advertised by the Edge yet</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="peering-between-edge-and-the-transit">
-<h3>6.1. Peering between Edge and the Transit<a class="headerlink" href="#peering-between-edge-and-the-transit" title="Link to this heading">#</a></h3>
+<section id="attachment-between-edge-and-the-transit">
+<h3>6.1. Attachment between Edge and the Transit<a class="headerlink" href="#attachment-between-edge-and-the-transit" title="Link to this heading">#</a></h3>
 <p>Let’s establish a peering between the Aviatrix Edge device and the Transit Gateway in <strong>US-EAST-2</strong>.</p>
 <p>In the Topology depicted below, you will notice that there is a workstation named “edge” attached to the LAN router. Once the peerings has been established, you will launch your ping from that client, for the connectivity verification!</p>
 <figure class="align-center" id="id29">
@@ -678,7 +681,7 @@ Check the content of the following file: <code class="docutils literal notransla
 <p><span class="caption-number">Fig. 274 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>First and foremost, you have to configure a <strong>BGP ASN</strong> on the <strong><em>aws-us-east-2-transit</em></strong> GWs cluster!</p>
+<p>First and foremost, you have to configure a <strong>BGP ASN</strong> on the <strong><em>aws-us-east-2-transit</em></strong> GW!</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong>.</p>
 <figure class="align-center" id="id30">
 <img alt="../_images/lab8-edge12.png" src="../_images/lab8-edge12.png" />
@@ -693,7 +696,7 @@ Check the content of the following file: <code class="docutils literal notransla
 <p><span class="caption-number">Fig. 276 </span><span class="caption-text">BGP ASN</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now it’s time to establish the peering!</p>
+<p>Now it’s time to establish the attachment!</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Edge &gt; Edge Gateways</strong> and click on the three dots icon beside the Edge device entry and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code>.</p>
 <figure class="align-center" id="id32">
 <img alt="../_images/lab8-edge9.png" src="../_images/lab8-edge9.png" />
@@ -861,13 +864,84 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 </section>
 <section id="edge-it-s-more-than-a-spoke-gw">
 <h3>6.4. Edge: “It’s more than a Spoke GW””<a class="headerlink" href="#edge-it-s-more-than-a-spoke-gw" title="Link to this heading">#</a></h3>
-<p>After this lab, this is how the overall topology would look like:</p>
+<p>The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus the Edge device is regarded much more than a classic Spoke gateway.</p>
+<p>Let’s connect the Edge device also to the Transit Gateway in <strong>US-Central-1</strong> in <strong>GCP</strong>.</p>
 <figure class="align-center" id="id50">
-<a class="reference internal image-reference" href="../_images/lab8-edge25.png"><img alt="../_images/lab8-edge25.png" src="../_images/lab8-edge25.png" style="height: 400px;" /></a>
+<img alt="../_images/lab8-edgedouble.png" src="../_images/lab8-edgedouble.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 295 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 295 </span><span class="caption-text">New Attachment towards GCP</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Once again, you have to configure a <strong>BGP ASN</strong> on the <strong><em>gcp-us-central1-transit</em></strong> GW first, before deploying any new attachments.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>gcp-us-central1-transit</em></strong>.</p>
+<figure class="align-center" id="id51">
+<img alt="../_images/lab8-edgedouble5.png" src="../_images/lab8-edgedouble5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 296 </span><span class="caption-text">gcp-us-central1-transit</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section and insert the AS number <strong>64514</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id52">
+<img alt="../_images/lab8-edgedouble6.png" src="../_images/lab8-edgedouble6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 297 </span><span class="caption-text">BGP ASN</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now you are ready to proceed with the rest of the configuration on the Edge section!</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Edge &gt; Edge Gateways</strong> and click on the three dots icon beside the Edge device entry and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code>.</p>
+<figure class="align-center" id="id53">
+<img alt="../_images/lab8-edgedouble2.png" src="../_images/lab8-edgedouble2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 298 </span><span class="caption-text">Manage Transit Gateway Attachment</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code> button.
+You will notice the existing attachment (grayout) with the Transit Gateway in AWS US-East-2.</p>
+<figure class="align-center" id="id54">
+<img alt="../_images/lab8-edgedouble3.png" src="../_images/lab8-edgedouble3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 299 </span><span class="caption-text">New Attachment</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Fill in the attachment template using the following settings:</p>
+<ul class="simple">
+<li><p><strong>Transt Gateway</strong>: <span style='color:#479608'>gcp-us-central1-transit</span></p></li>
+<li><p><strong>Connecting Edge Interfaces</strong>: <span style='color:#479608'>WAN(etho)</span></p></li>
+<li><p><strong>Attach over Private Network</strong>: <span style='color:#479608'><strong>OFF</strong></span></p></li>
+<li><p><strong>High Performance Encryption</strong>: <span style='color:#479608'><strong>OFF</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id55">
+<img alt="../_images/lab8-edgedouble4.png" src="../_images/lab8-edgedouble4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 300 </span><span class="caption-text">Edge Attachment Template</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Wait for 1 minute for the Aviatrix Controller to establish the attachment between the Edge and the GCP Transit Gateway. Once the operation is completed you will be notified!</p>
+<figure class="align-center" id="id56">
+<img alt="../_images/lab8-edgedouble9.png" src="../_images/lab8-edgedouble9.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 301 </span><span class="caption-text">Notification</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s verify the presence of the new attachment previously created on the Topology.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
+<figure class="align-center" id="id57">
+<img alt="../_images/lab8-edgedouble10.png" src="../_images/lab8-edgedouble10.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 302 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="edge-as-path-prepend">
+<h4>6.4.1 Edge: As-Path Prepend<a class="headerlink" href="#edge-as-path-prepend" title="Link to this heading">#</a></h4>
+<p>After this lab, this is how the overall topology would look like:</p>
+<figure class="align-center" id="id58">
+<a class="reference internal image-reference" href="../_images/lab8-edge25.png"><img alt="../_images/lab8-edge25.png" src="../_images/lab8-edge25.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 303 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 </section>
 </section>
@@ -946,11 +1020,14 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s2c-verification">5. S2C - Verification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge">6. Edge</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peering-between-edge-and-the-transit">6.1. Peering between Edge and the Transit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">6.1. Attachment between Edge and the Transit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">6.2. Network Domain Association</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity-test">6.3. Edge: Connectivity Test</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-flowiq">6.3. Edge: FlowIQ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">6.4. Edge: “It’s more than a Spoke GW””</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">6.4. Edge: “It’s more than a Spoke GW””</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-path-prepend">6.4.1 Edge: As-Path Prepend</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
