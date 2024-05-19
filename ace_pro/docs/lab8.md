@@ -482,7 +482,6 @@ This is how the Topology would look like after the creation of the attachment.
 
 ```{figure} images/lab8-edge18.png
 ---
-height: 400px
 align: center
 ---
 Attachment established!
@@ -607,6 +606,7 @@ After this lab, this is how the overall topology would look like:
 
 ```{figure} images/lab8-edge25.png
 ---
+
 height: 400px
 align: center
 ---
