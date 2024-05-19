@@ -9,7 +9,7 @@ This lab will demonstrate how `ThreatIQ` works.
 Aviatrix gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. **FlowIQ** is one. **ThreatIQ** is another. ThreatIQ alerts you on Malicious IPs with bad reputations, but then can also apply an enforcement. These IPs are reported in the ThreatIQ database that CoPilot maintains.
 
 ```{important}
-ThreatIQ protect all the Aviatrix Gateways
+ThreatIQ protect all the Aviatrix Gateways and it relies on a well-known database, provided by **`Proofpoint`**.
 ```
 
 ## 3. Topology
@@ -36,7 +36,7 @@ PSF
 ```
 
 Insert the following parameters:
-- **Name**: <span style='color:#479608'>aws-us-east1-psf</span>
+- **Name**: <span style='color:#479608'>aws-us-east-1-psf</span>
 - **Account**: <span style='color:#479608'>aws-account</span>
 - **Region**: <span style='color:#479608'>us-east-1 (N. Virginia)</span>
 - **VPC**: <span style='color:#479608'>aws-us-east1-spoke1</span>
