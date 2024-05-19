@@ -333,7 +333,7 @@ align: center
 CoPilot BGP Map
 ```
 
-You can notice both the AS numbers of each side of the connection and the /30 prefix length used in the underlay.
+You can notice both the AS numbers of each side of the connection and the /30 subnet used in the underlay.
 
 ```{figure} images/lab8-edge4.png
 ---
@@ -371,9 +371,9 @@ No routes advertised by the Edge yet
 
 ### 6.1. Peering between Edge and the Transit
 
-Let's establish a peering between the Aviatrix Edge device and the pair of Transit Gateways in **US-EAST-2**. 
+Let's establish a peering between the Aviatrix Edge device and the Transit Gateway in **US-EAST-2**. 
 
-In the Topology depicted below, you will notice that there is a workstation named "edge" attached to the LAN router. Once the peerings has been established, you will launch your ping from that client!
+In the Topology depicted below, you will notice that there is a workstation named "edge" attached to the LAN router. Once the peerings has been established, you will launch your ping from that client, for the connectivity verification!
 
 ```{figure} images/lab8-edge8.png
 ---
@@ -391,7 +391,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the 
 ---
 align: center
 ---
-Peerings not established yet!
+aws-us-east-2-transit
 ```
 
 Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section and insert the AS number **64513** on the empty field related to the `“Local AS Number”`, then click on **Save**.
@@ -400,7 +400,7 @@ Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"
 ---
 align: center
 ---
-Peerings not established yet!
+BGP ASN
 ```
 
 Now it's time to establish the peering! 
@@ -423,7 +423,7 @@ align: center
 Transit Gateway Attachment
 ```
 
-Fill in the peering template using the following settings:
+Fill in the attachment template using the following settings:
 
 - **Transt Gateway**: <span style='color:#479608'>aws-us-east-2-transit</span>
 - **Connecting Edge Interfaces**: <span style='color:#479608'>WAN(etho)</span>
@@ -437,10 +437,10 @@ Do not forget to click on **Save**.
 ---
 align: center
 ---
-Peering creation template
+Attachment creation template
 ```
 
-Wait for a bunch of seconds for the Aviatrix Controller to establish the peering and then a message will pop up confirming that the operation has been accomplished, successfully!
+Wait for a bunch of seconds for the Aviatrix Controller to establish the attachment and then a message will pop up confirming that the operation has been accomplished, successfully!
 
 ```{figure} images/lab8-edge14.png
 ---
@@ -449,7 +449,7 @@ align: center
 Peering created
 ```
 
-Let's verify the presence of the peering previously created on the Topology. 
+Let's verify the presence of the attachment previously created on the Topology. 
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
@@ -457,7 +457,7 @@ Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 ---
 align: center
 ---
-New peering
+New attachment
 ```
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** cluster.
@@ -469,7 +469,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Connections"` tab and then click on `"Transit-Edge Peering"`. You will notice this additional tab that confirms the presence of a peering between the Transit GW in the cloud and the Edge running in the DC!
+Select the `"Connections"` tab and then click on `"Transit-Edge Peering"`. You will notice this additional tab that confirms the presence of an attachment between the Transit GW in the cloud and the Edge running in the DC!
 
 ```{figure} images/lab8-edge17.png
 ---
@@ -478,14 +478,14 @@ align: center
 Transit-Edge Peering
 ```
 
-This is how the Topology would look like after the creation of the peering.
+This is how the Topology would look like after the creation of the attachment.
 
 ```{figure} images/lab8-edge18.png
 ---
 height: 400px
 align: center
 ---
-Peerings established!
+Attachment established!
 ```
 
 The Edge devices allows to extend all the Aviatrix functionalities to the remote DC!
@@ -507,7 +507,7 @@ Let's explore again the Cloud Routes section!
 Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Advertised Routes` option.
 
 ```{important}
-This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge deviceby the **Aviatrix Controller** after the peering establishment!
+This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge device by the **Aviatrix Controller**, after the attachemnt got established!
 ```
 
 ```{figure} images/lab8-edge20.png
@@ -564,6 +564,13 @@ Go to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based  
 Do not forget to click on **Apply**.
 ```
 
+```{figure} images/lab8-plus.png
+---
+align: center
+---
+Create the filter
+```
+
 ```{figure} images/lab8-edge24.png
 ---
 align: center
@@ -572,7 +579,12 @@ FlowIQ Filter
 ```
 
 ```{caution}
-If you do not get immediately any results, wait for a couple of minutes and apply again the filter!
+If you do not get immediately any results, wait for **3-4** minutes and then click on the **`"Refresh Data"`** button!
+```{figure} images/lab8-refresh2.png
+---
+align: center
+---
+Refresh
 ```
 
 Then scroll a little bit and check the `"Flow Exporters"` widget, then from the drop-down menu select the **`"Aviatrix Gateway"`** widget: you will see the list of all the Aviatrix Gateways involved along the path.
@@ -587,6 +599,8 @@ FlowIQ
 ```{note}
 On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
+
+### 6.4. Edge: "It's more than a Spoke GW""
 
 After this lab, this is how the overall topology would look like:
 

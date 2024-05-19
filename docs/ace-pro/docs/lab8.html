@@ -354,6 +354,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">6.2. Network Domain Association</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity-test">6.3. Edge: Connectivity Test</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-flowiq">6.3. Edge: FlowIQ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">6.4. Edge: “It’s more than a Spoke GW””</a></li>
 </ul>
 </li>
 </ul>
@@ -639,7 +640,7 @@ Check the content of the following file: <code class="docutils literal notransla
 <p><span class="caption-number">Fig. 269 </span><span class="caption-text">CoPilot BGP Map</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You can notice both the AS numbers of each side of the connection and the /30 prefix length used in the underlay.</p>
+<p>You can notice both the AS numbers of each side of the connection and the /30 subnet used in the underlay.</p>
 <figure class="align-center" id="id25">
 <img alt="../_images/lab8-edge4.png" src="../_images/lab8-edge4.png" />
 <figcaption>
@@ -669,8 +670,8 @@ Check the content of the following file: <code class="docutils literal notransla
 </figure>
 <section id="peering-between-edge-and-the-transit">
 <h3>6.1. Peering between Edge and the Transit<a class="headerlink" href="#peering-between-edge-and-the-transit" title="Link to this heading">#</a></h3>
-<p>Let’s establish a peering between the Aviatrix Edge device and the pair of Transit Gateways in <strong>US-EAST-2</strong>.</p>
-<p>In the Topology depicted below, you will notice that there is a workstation named “edge” attached to the LAN router. Once the peerings has been established, you will launch your ping from that client!</p>
+<p>Let’s establish a peering between the Aviatrix Edge device and the Transit Gateway in <strong>US-EAST-2</strong>.</p>
+<p>In the Topology depicted below, you will notice that there is a workstation named “edge” attached to the LAN router. Once the peerings has been established, you will launch your ping from that client, for the connectivity verification!</p>
 <figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab8-edge8.png"><img alt="../_images/lab8-edge8.png" src="../_images/lab8-edge8.png" style="height: 400px;" /></a>
 <figcaption>
@@ -682,14 +683,14 @@ Check the content of the following file: <code class="docutils literal notransla
 <figure class="align-center" id="id30">
 <img alt="../_images/lab8-edge12.png" src="../_images/lab8-edge12.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section and insert the AS number <strong>64513</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id31">
 <img alt="../_images/lab8-edge13.png" src="../_images/lab8-edge13.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">BGP ASN</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now it’s time to establish the peering!</p>
@@ -707,7 +708,7 @@ Check the content of the following file: <code class="docutils literal notransla
 <p><span class="caption-number">Fig. 278 </span><span class="caption-text">Transit Gateway Attachment</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Fill in the peering template using the following settings:</p>
+<p>Fill in the attachment template using the following settings:</p>
 <ul class="simple">
 <li><p><strong>Transt Gateway</strong>: <span style='color:#479608'>aws-us-east-2-transit</span></p></li>
 <li><p><strong>Connecting Edge Interfaces</strong>: <span style='color:#479608'>WAN(etho)</span></p></li>
@@ -719,22 +720,22 @@ Check the content of the following file: <code class="docutils literal notransla
 <figure class="align-center" id="id34">
 <img alt="../_images/lab8-edge11.png" src="../_images/lab8-edge11.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Peering creation template</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Attachment creation template</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Wait for a bunch of seconds for the Aviatrix Controller to establish the peering and then a message will pop up confirming that the operation has been accomplished, successfully!</p>
+<p>Wait for a bunch of seconds for the Aviatrix Controller to establish the attachment and then a message will pop up confirming that the operation has been accomplished, successfully!</p>
 <figure class="align-center" id="id35">
 <img alt="../_images/lab8-edge14.png" src="../_images/lab8-edge14.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 280 </span><span class="caption-text">Peering created</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Let’s verify the presence of the peering previously created on the Topology.</p>
+<p>Let’s verify the presence of the attachment previously created on the Topology.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
 <figure class="align-center" id="id36">
 <img alt="../_images/lab8-edge15.png" src="../_images/lab8-edge15.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 281 </span><span class="caption-text">New peering</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">New attachment</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> cluster.</p>
@@ -744,18 +745,18 @@ Check the content of the following file: <code class="docutils literal notransla
 <p><span class="caption-number">Fig. 282 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Connections&quot;</span></code> tab and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Edge</span> <span class="pre">Peering&quot;</span></code>. You will notice this additional tab that confirms the presence of a peering between the Transit GW in the cloud and the Edge running in the DC!</p>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Connections&quot;</span></code> tab and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Edge</span> <span class="pre">Peering&quot;</span></code>. You will notice this additional tab that confirms the presence of an attachment between the Transit GW in the cloud and the Edge running in the DC!</p>
 <figure class="align-center" id="id38">
 <img alt="../_images/lab8-edge17.png" src="../_images/lab8-edge17.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 283 </span><span class="caption-text">Transit-Edge Peering</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This is how the Topology would look like after the creation of the peering.</p>
+<p>This is how the Topology would look like after the creation of the attachment.</p>
 <figure class="align-center" id="id39">
 <a class="reference internal image-reference" href="../_images/lab8-edge18.png"><img alt="../_images/lab8-edge18.png" src="../_images/lab8-edge18.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Peerings established!</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Attachment established!</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The Edge devices allows to extend all the Aviatrix functionalities to the remote DC!</p>
@@ -774,7 +775,7 @@ Check the content of the following file: <code class="docutils literal notransla
 Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> and click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Advertised</span> <span class="pre">Routes</span></code> option.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge deviceby the <strong>Aviatrix Controller</strong> after the peering establishment!</p>
+<p>This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge device by the <strong>Aviatrix Controller</strong>, after the attachemnt got established!</p>
 </div>
 <figure class="align-center" id="id41">
 <img alt="../_images/lab8-edge20.png" src="../_images/lab8-edge20.png" />
@@ -825,31 +826,46 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 <p>Do not forget to click on <strong>Apply</strong>.</p>
 </div>
 <figure class="align-center" id="id46">
+<img alt="../_images/lab8-plus.png" src="../_images/lab8-plus.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 291 </span><span class="caption-text">Create the filter</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id47">
 <img alt="../_images/lab8-edge24.png" src="../_images/lab8-edge24.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 291 </span><span class="caption-text">FlowIQ Filter</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 292 </span><span class="caption-text">FlowIQ Filter</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>If you do not get immediately any results, wait for a couple of minutes and apply again the filter!</p>
+<p>If you do not get immediately any results, wait for <strong>3-4</strong> minutes and then click on the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Refresh</span> <span class="pre">Data&quot;</span></code></strong> button!</p>
+<figure class="align-center" id="id48">
+<img alt="../_images/lab8-refresh2.png" src="../_images/lab8-refresh2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 293 </span><span class="caption-text">Refresh</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 <p>Then scroll a little bit and check the <code class="docutils literal notranslate"><span class="pre">&quot;Flow</span> <span class="pre">Exporters&quot;</span></code> widget, then from the drop-down menu select the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Aviatrix</span> <span class="pre">Gateway&quot;</span></code></strong> widget: you will see the list of all the Aviatrix Gateways involved along the path.</p>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id49">
 <img alt="../_images/lab8-flowiq.png" src="../_images/lab8-flowiq.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 292 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 294 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>On the <strong>Aviatrix Gateway</strong> widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).</p>
 </div>
+</section>
+<section id="edge-it-s-more-than-a-spoke-gw">
+<h3>6.4. Edge: “It’s more than a Spoke GW””<a class="headerlink" href="#edge-it-s-more-than-a-spoke-gw" title="Link to this heading">#</a></h3>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id50">
 <a class="reference internal image-reference" href="../_images/lab8-edge25.png"><img alt="../_images/lab8-edge25.png" src="../_images/lab8-edge25.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 293 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 295 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -934,6 +950,7 @@ Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">6.2. Network Domain Association</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity-test">6.3. Edge: Connectivity Test</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-flowiq">6.3. Edge: FlowIQ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">6.4. Edge: “It’s more than a Spoke GW””</a></li>
 </ul>
 </li>
 </ul>
