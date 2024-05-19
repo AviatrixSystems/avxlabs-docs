@@ -729,6 +729,63 @@ align: center
 Traceroute
 ```
 
+The traceroute will reveal that the destination is exactly **5** hops away.
+
+```{figure} images/lab8-edgedouble25.png
+---
+align: center
+---
+5 hops
+```
+
+Let's harness the **as-path prepend** feature for manipulating the traffic. 
+
+```{important}
+The routes exchanged between transit gateways are considered BGP-like routes! This is because the Aviatrix Controller orchestrating the SD routing, also has to use a mechanism for the routing decision, and therefore these routes seem bgp routes, indeed they have some attributes similar to the attributes used with bgp routes. For instance, each Transit has its own as path, and this is used for the best path selection process. Nevertheless, bear in mind that the control plane within the MCNA is based on `SDN`, Software Defined Networking!
+```
+
+Go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW.
+
+```{figure} images/lab8-edgedouble30.png
+---
+align: center
+---
+aws-us-east-2-transit
+```
+
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget,  select the `gcp-us-central1-transit-peering` connection and type twice the AS number 64513. 
+
+Of course, then click on **Save**.
+
+```{figure} images/lab8-edgedouble31.png
+---
+align: center
+---
+as-path prepend
+```
+
+Now let's move on the GCP Transit GW configuration section.
+
+o to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_** GW.
+
+```{figure} images/lab8-edgedouble32.png
+---
+align: center
+---
+gcp-us-central1-transit
+```
+
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget select the `aws-us-east-2-transit-peering` connection and type twice the AS number 64514. 
+
+Click on **Save** to apply the change!
+
+```{figure} images/lab8-edgedouble33.png
+---
+align: center
+---
+as-path prepend
+```
+
 After this lab, this is how the overall topology would look like:
 
 ```{figure} images/lab8-edge25.png

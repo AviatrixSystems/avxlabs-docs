@@ -965,11 +965,54 @@ You will notice the existing attachment (grayout) with the Transit Gateway in AW
 <p><span class="caption-number">Fig. 305 </span><span class="caption-text">Traceroute</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>After this lab, this is how the overall topology would look like:</p>
+<p>The traceroute will reveal that the destination is exactly <strong>5</strong> hops away.</p>
 <figure class="align-center" id="id61">
+<img alt="../_images/lab8-edgedouble25.png" src="../_images/lab8-edgedouble25.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 306 </span><span class="caption-text">5 hops</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s harness the <strong>as-path prepend</strong> feature for manipulating the traffic.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The routes exchanged between transit gateways are considered BGP-like routes! This is because the Aviatrix Controller orchestrating the SD routing, also has to use a mechanism for the routing decision, and therefore these routes seem bgp routes, indeed they have some attributes similar to the attributes used with bgp routes. For instance, each Transit has its own as path, and this is used for the best path selection process. Nevertheless, bear in mind that the control plane within the MCNA is based on <code class="docutils literal notranslate"><span class="pre">SDN</span></code>, Software Defined Networking!</p>
+</div>
+<p>Go to <strong>CoPilot &gt; Cloud fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW.</p>
+<figure class="align-center" id="id62">
+<img alt="../_images/lab8-edgedouble30.png" src="../_images/lab8-edgedouble30.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 307 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section, then under the <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">Path</span> <span class="pre">Prepend</span></code> widget,  select the <code class="docutils literal notranslate"><span class="pre">gcp-us-central1-transit-peering</span></code> connection and type twice the AS number 64513.</p>
+<p>Of course, then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id63">
+<img alt="../_images/lab8-edgedouble31.png" src="../_images/lab8-edgedouble31.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 308 </span><span class="caption-text">as-path prepend</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now let’s move on the GCP Transit GW configuration section.</p>
+<p>o to <strong>CoPilot &gt; Cloud fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>gcp-us-central1-transit</em></strong> GW.</p>
+<figure class="align-center" id="id64">
+<img alt="../_images/lab8-edgedouble32.png" src="../_images/lab8-edgedouble32.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 309 </span><span class="caption-text">gcp-us-central1-transit</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section, then under the <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">Path</span> <span class="pre">Prepend</span></code> widget select the <code class="docutils literal notranslate"><span class="pre">aws-us-east-2-transit-peering</span></code> connection and type twice the AS number 64514.</p>
+<p>Click on <strong>Save</strong> to apply the change!</p>
+<figure class="align-center" id="id65">
+<img alt="../_images/lab8-edgedouble33.png" src="../_images/lab8-edgedouble33.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 310 </span><span class="caption-text">as-path prepend</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After this lab, this is how the overall topology would look like:</p>
+<figure class="align-center" id="id66">
 <a class="reference internal image-reference" href="../_images/lab8-edge25.png"><img alt="../_images/lab8-edge25.png" src="../_images/lab8-edge25.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 306 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 311 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
