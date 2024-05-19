@@ -539,7 +539,7 @@ align: center
 Connectivity test
 ```
 
-```{figure} images/lab8-edge21.png
+```{figure} images/lab8-edge22.png
 ---
 align: center
 ---
@@ -547,11 +547,12 @@ Connectivity test
 ```
 
 The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered an additional VPC!
-```{figure} images/lab8-edge22.png
+
+```{figure} images/lab8-edge30.png
 ---
 align: center
 ---
-Connectivity test
+Ping
 ```
 
 ### 6.3. Edge: FlowIQ
