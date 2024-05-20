@@ -685,11 +685,99 @@ document.write(`
 </section>
 <section id="costiq">
 <h2>6. CostIQ<a class="headerlink" href="#costiq" title="Link to this heading">#</a></h2>
-<p>After this lab, this is how the overall topology would look like:</p>
+<p>Before completing this lab, let’s enable <code class="docutils literal notranslate"><span class="pre">CostIQ</span></code> and define the following <strong>Cost Centers</strong> and <strong>Shared Service</strong>.</p>
+<p><strong><span style='color:orange'>COST CENTERS</span></strong>:</p>
+<p><strong>AWS</strong>:</p>
+<ul class="simple">
+<li><p>aws-us-east-1-spoke1</p></li>
+<li><p>aws-us-east-1-spoke2</p></li>
+</ul>
+<p><strong>GCP</strong>:</p>
+<ul class="simple">
+<li><p>gcp-us-central1-spoke1</p></li>
+</ul>
+<p><strong>AZURE</strong>:</p>
+<ul class="simple">
+<li><p>azure-west-us-spoke1</p></li>
+<li><p>azure-west-us-spoke2</p></li>
+</ul>
+<p><strong><span style='color:green'>SHARED SERVICE</span></strong>:</p>
+<p><strong>NEW YORK DC</strong>:</p>
+<ul class="simple">
+<li><p>workstation client “edge”</p></li>
+</ul>
+<p>Go to <strong>Copilot &gt; Billing &amp; Cost &gt; CostIQ</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">CostIQ&quot;</span></code> button, on the right-hand side.</p>
 <figure class="align-center" id="id31">
+<img alt="../_images/lab9-costiq.png" src="../_images/lab9-costiq.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 352 </span><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Cost</span> <span class="pre">Center&quot;</span></code> and create the <strong>AWS</strong> Cost Center aforementioned.</p>
+<figure class="align-center" id="id32">
+<img alt="../_images/lab9-costiq02.png" src="../_images/lab9-costiq02.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 353 </span><span class="caption-text">“+ Cost Center”</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id33">
+<img alt="../_images/lab9-costiq03.png" src="../_images/lab9-costiq03.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 354 </span><span class="caption-text">AWS</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Repeat the action creating the remaining two Cost Centers: <strong>GCP</strong> and <strong>Azure</strong>, associating the corresponing Application VPCs/VNets.</p>
+<figure class="align-center" id="id34">
+<img alt="../_images/lab9-costiq04.png" src="../_images/lab9-costiq04.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 355 </span><span class="caption-text">GCP</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id35">
+<img alt="../_images/lab9-costiq05.png" src="../_images/lab9-costiq05.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 356 </span><span class="caption-text">AZURE</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You should immediately get insights on how they have been utilized.</p>
+<figure class="align-center" id="id36">
+<img alt="../_images/lab9-costiq06.png" src="../_images/lab9-costiq06.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 357 </span><span class="caption-text">Cost Centers Overview</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now let’s discover the <strong>Public IP address</strong> of the workstation client “edge” in the new York DC. Copy the DNS name available on your portal and resolve it using the <code class="docutils literal notranslate"><span class="pre">host/nslookup</span></code> command.</p>
+<figure class="align-center" id="id37">
+<img alt="../_images/lab9-costiq10.png" src="../_images/lab9-costiq10.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 358 </span><span class="caption-text">Edge’s dns name workstation</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id38">
+<img alt="../_images/lab9-costiq11.png" src="../_images/lab9-costiq11.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 359 </span><span class="caption-text">Host command in action</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s move on the Shared Service tab and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Shared</span> <span class="pre">Service&quot;</span></code>.</p>
+<figure class="align-center" id="id39">
+<img alt="../_images/lab9-costiq12.png" src="../_images/lab9-costiq12.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 360 </span><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Create the <strong>Shared Service</strong>* based on the aforementioned requirements.</p>
+<figure class="align-center" id="id40">
+<img alt="../_images/lab9-costiq13.png" src="../_images/lab9-costiq13.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 361 </span><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After this lab, this is how the overall topology would look like:</p>
+<figure class="align-center" id="id41">
 <a class="reference internal image-reference" href="../_images/lab9-final.png"><img alt="../_images/lab9-final.png" src="../_images/lab9-final.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 352 </span><span class="caption-text">Final topology for Lab 9</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 362 </span><span class="caption-text">Final topology for Lab 9</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
