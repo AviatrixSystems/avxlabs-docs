@@ -539,7 +539,7 @@ Connectivity test
 ---
 align: center
 ---
-Connectivity test
+Target for the connectivity test
 ```
 
 The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered an additional VPC!
@@ -777,7 +777,7 @@ Route DB
 ---
 align: center
 ---
-aws-us-east-2-transit
+1 AS Path length
 ```
 
 From the **_aws-us-east-2-transit_** perspective, the destination route `172.16.1.0` is far just one single AS (i.e. 64514)
@@ -844,7 +844,7 @@ traceroute
 
 The traceroute is still showing the Transit peering as the preferred path, although the `as-path prepend` was correctly applied earlier. 
 
-There is another option that needs to be enabled in order to complete this lab. Go to **CoPilot > Cloud fabric > Edge > Edge Gateways** and click on the edge device.
+There is another option that needs to be enabled in order to complete this lab. Go to **CoPilot > Cloud Fabric > Edge > Edge Gateways** and click on the `Edge` device.
 
 ```{figure} images/lab8-almostdone02.png
 ---

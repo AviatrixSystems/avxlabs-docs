@@ -6,7 +6,7 @@ This lab will demonstrate how `ThreatIQ` works.
  
 ## 2. ThreatIQ Overview
 
-Aviatrix gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. **FlowIQ** is one. **ThreatIQ** is another. ThreatIQ alerts you on Malicious IPs with bad reputations, but then can also apply an enforcement. These IPs are reported in the ThreatIQ database that CoPilot maintains.
+Aviatrix Gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. **FlowIQ** is one. **ThreatIQ** is another. ThreatIQ alerts you on Malicious IPs with bad reputations, but then can also apply an enforcement. These IPs are reported in the ThreatIQ database that CoPilot maintains.
 
 ```{important}
 ThreatIQ protect all the Aviatrix Gateways and it relies on a well-known database, provided by **`Proofpoint`**.
@@ -46,7 +46,7 @@ Insert the following parameters:
 
 Do not forget to click on **Save**.
 
-```{figure} images/lab9-psfcreate.png
+```{figure} images/lab9-new.png
 ---
 align: center
 ---
@@ -54,7 +54,7 @@ PSF template
 ```
 
 ```{warning}
-Wait for about **8** minutes for the completion of the PSF deployment
+Wait for about **8** minutes for the completion of the PSF deployment.
 ```
 
 ```{figure} images/lab9-psfinprogress.png
@@ -157,7 +157,7 @@ Add Recipient(s)
 
 From this point onwards, if you enter a valid email address, you will receive email notifications about **ThreatIQ** alerts.
 
-Before enabling the blocking, on the far right side, ensure that the **ThreatGuard firewall rules order** is set to `Prepend`.
+Before enabling the blocking, on the right-hand side, ensure that the **ThreatGuard firewall rules order** is set to `Prepend`.
 
 ```{figure} images/lab9-advanced.png
 ---
