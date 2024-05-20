@@ -14,7 +14,7 @@ ThreatIQ protect all the Aviatrix Gateways and it relies on a well-known databas
 
 ## 3. Topology
 
-In this lab, we will deploy a `“PSF"` gateway in AWS US-EAST-1 region, to protect the public subnet.
+In this lab, we will deploy a `“PSF"` gateway in AWS **US-EAST-1** region, to protect the public subnet.
 
 ```{figure} images/lab9-initialtopology.png
 ---
@@ -356,6 +356,8 @@ align: center
 ---
 Stop alerts
 ```
+
+## 6. CostIQ
 
 After this lab, this is how the overall topology would look like:
 
