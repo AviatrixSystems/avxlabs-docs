@@ -26,7 +26,7 @@ Click this link to {Download}`ACE Prof Mod10 - Firewall Networks<files/ACE Prof 
 
 Click this link to {Download}`ACE Prof Mod11 - Site2Cloud<files/ACE Prof Mod11 - Site2Cloud.pdf>`
 
-Click this link to {Download}`ACE Prof Mod12 - ThreatIQ with ThreatGuard<files/ACE Prof Mod12 - ThreatIQ with ThreatGuard.pdf>`
+Click this link to {Download}`ACE Prof Mod12 - ThreatIQ and CostIQ<files/ACE Prof Mod12 - ThreatIQ and CostIQ.pdf>`
 
 Click this link to {Download}`ACE Prof Mod13 - Distributed Cloud Firewall<files/ACE Prof Mod13 - Distributed Cloud Firewall.pdf>`
 
