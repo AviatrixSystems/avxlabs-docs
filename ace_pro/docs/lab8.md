@@ -577,7 +577,8 @@ FlowIQ Filter
 ```
 
 ```{caution}
-If you do not get immediately any outcomes, wait for **3-4** minutes and then click on the **`"Refresh Data"`** button!
+It may take about **5** minutes for flow data to appear in the CoPilot UI, therefore please wait for a bit
+and then click on the **`"Refresh Data"`** button!
 ```{figure} images/lab8-refresh2.png
 ---
 align: center
@@ -741,10 +742,48 @@ align: center
 Let's harness the **as-path prepend** feature for manipulating the traffic. 
 
 ```{important}
-The routes exchanged between transit gateways are considered BGP-like routes! This is because the Aviatrix Controller orchestrating the SD routing, also has to use a mechanism for the routing decision, and therefore these routes seem bgp routes, indeed they have some attributes similar to the attributes used with bgp routes. For instance, each Transit has its own as path, and this is used for the best path selection process. Nevertheless, bear in mind that the control plane within the MCNA is based on `SDN`, Software Defined Networking!
+The routes exchanged between transit gateways are considered BGP-like routes! This is because the Aviatrix Controller orchestrating the SD routing, also has to use a mechanism for the routing decision, and therefore these routes seem BGP routes, indeed they have some attributes similar to the attributes used with BGP routes. For instance, each Transit has its own AS PATH, and this is used for the best path selection process. Nevertheless, bear in mind that the control plane within the MCNA is based on `SDN` (Software Defined Networking).
 ```
 
-Go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW.
+The objective of this task is to define a **Primary** path through the Edge device, whereas the path between the Transit gateways will be used as a **Backup** path.
+
+```{figure} images/lab8-primary.png
+---
+align: center
+---
+Primary and Backup
+```
+
+let's first check the `Route DB` of the **_aws-us-east-2-transit_** GW.
+
+Go to **CoPilot > Cloud Fabric > gateways > Transit Gateways** and select the **_aws-us-east-2-transit_** Gateway.
+
+```{figure} images/lab8-primary01.png
+---
+align: center
+---
+aws-us-east-2-transit
+```
+
+Select the `"Route DB"` tab and then right-hand side, type **172.16.1.0** on the Search field.
+
+```{figure} images/lab8-primary03.png
+---
+align: center
+---
+Route DB
+```
+
+```{figure} images/lab8-primary02.png
+---
+align: center
+---
+aws-us-east-2-transit
+```
+
+From the **_aws-us-east-2-transit_** perspective, the destination route `172.16.1.0` is far just one single AS (i.e. 64514)
+
+Now let's apply the route manipulation. Go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW.
 
 ```{figure} images/lab8-edgedouble30.png
 ---
@@ -753,7 +792,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget,  select the `gcp-us-central1-transit-peering` connection and type twice the AS number 64513. 
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget,  select the `gcp-us-central1-transit-peering` connection and type **twice** the AS number 64513. 
 
 Of course, then click on **Save**.
 
@@ -764,9 +803,9 @@ align: center
 as-path prepend
 ```
 
-Now let's move on the GCP Transit GW configuration section.
+Let's repeat the same kind of configuration on the **GCP** Transit GW.
 
-o to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_** GW.
+Go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_** GW.
 
 ```{figure} images/lab8-edgedouble32.png
 ---
@@ -775,7 +814,7 @@ align: center
 gcp-us-central1-transit
 ```
 
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget select the `aws-us-east-2-transit-peering` connection and type twice the AS number 64514. 
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget select the `aws-us-east-2-transit-peering` connection and type **twice** the AS number 64514. 
 
 Click on **Save** to apply the change!
 
@@ -785,6 +824,17 @@ align: center
 ---
 as-path prepend
 ```
+
+Now go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** , inside the Search field.
+
+```{figure} images/lab8-path.png
+---
+align: center
+---
+As path length = 3
+```
+
+Thanks to the `AS Path Prepend`, 
 
 After this lab, this is how the overall topology would look like:
 
