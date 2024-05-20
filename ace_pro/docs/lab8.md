@@ -741,7 +741,7 @@ align: center
 Let's harness the **as-path prepend** feature for manipulating the traffic. 
 
 ```{important}
-The routes exchanged between transit gateways are considered BGP-like routes! This is because the Aviatrix Controller orchestrating the SD routing, also has to use a mechanism for the routing decision, and therefore these routes seem BGP routes, indeed they have some attributes similar to the attributes used with BGP routes. For instance, each Transit has its own AS PATH, and this is used for the best path selection process. Nevertheless, bear in mind that the control plane within the MCNA is based on `SDN` (Software Defined Networking).
+The routes exchanged between transit gateways are considered `BGP-like routes`! This is because the Aviatrix Controller orchestrating the SD routing, also has to use a mechanism for the routing decision, and therefore these routes seem BGP routes, indeed they have some attributes similar to the attributes used with BGP routes. For instance, each Transit has its own `AS PATH`, and this is used for the best path selection process. Nevertheless, bear in mind that the control plane within the MCNA is based on `SDN` (Software Defined Networking).
 ```
 
 The objective of this task is to define a **Primary** path through the Edge device, whereas the path between the Transit gateways will be used as a **Backup** path.
@@ -753,7 +753,7 @@ align: center
 Primary and Backup
 ```
 
-let's first check the `Route DB` of the **_aws-us-east-2-transit_** GW.
+Let's first check the `Route DB` of the **_aws-us-east-2-transit_** GW.
 
 Go to **CoPilot > Cloud Fabric > gateways > Transit Gateways** and select the **_aws-us-east-2-transit_** Gateway.
 
@@ -764,7 +764,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Route DB"` tab and then right-hand side, type **172.16.1.0** on the Search field.
+Select the `"Route DB"` tab, then on right-hand side  type **172.16.1.0** on the Search field.
 
 ```{figure} images/lab8-primary03.png
 ---
@@ -824,7 +824,7 @@ align: center
 as-path prepend
 ```
 
-Now go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** , inside the Search field.
+Now go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** inside the Search field. This time the AS Path Length will turn out being equal to 3, due to to the route manipulation that harnessed the `as-path prepend` feature.
 
 ```{figure} images/lab8-path.png
 ---
@@ -833,7 +833,50 @@ align: center
 As path length = 3
 ```
 
-Thanks to the `AS Path Prepend`, 
+Now, let's launch again the traceroute towards 172.16.1.100 from the **_aws-us-east-2-spoke1-test1_**.
+
+```{figure} images/lab8-almostdone.png
+---
+align: center
+---
+traceroute
+```
+
+The traceroute is still showing the Transit peering as the preferred path, although the `as-path prepend` was correctly applied earlier. 
+
+There is another option that needs to be enabled in order to complete this lab. Go to **CoPilot > Cloud fabric > Edge > Edge Gateways** and click on the edge device.
+
+```{figure} images/lab8-almostdone02.png
+---
+align: center
+---
+edge
+```
+
+Select the `"Settings"` tab and then expand the `"Routing"` section, then turn on the knob `Transitive Routing`.
+
+```{figure} images/lab8-almostdone03.png
+---
+align: center
+---
+edge
+```
+
+Let's relaunch the traceroute towards 172.16.1.100 from the **_aws-us-east-2-spoke1-test1_**.
+
+```{figure} images/lab8-almostdone04.png
+---
+align: center
+---
+traceroute
+```
+
+```{figure} images/lab8-almostdone05.png
+---
+align: center
+---
+6 Hops
+```
 
 After this lab, this is how the overall topology would look like:
 
