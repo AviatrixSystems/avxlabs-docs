@@ -426,8 +426,7 @@ Fill in the attachment template using the following settings:
 - **Transt Gateway**: <span style='color:#479608'>aws-us-east-2-transit</span>
 - **Connecting Edge Interfaces**: <span style='color:#479608'>WAN(etho)</span>
 - **Attach over Private Network**: <span style='color:#479608'>**OFF**</span>
-- **High Performance Encryption**: <span style='color:#479608'>**ON**</span>
-- **Number of Tunnels**: <span style='color:#479608'>4</span>
+- **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
 
 Do not forget to click on **Save**.
 
@@ -662,7 +661,7 @@ Fill in the attachment template using the following settings:
 
 Do not forget to click on **Save**.
 
-```{figure} images/lab8-edgedouble4.png
+```{figure} images/lab8-attachment01.png
 ---
 align: center
 ---
