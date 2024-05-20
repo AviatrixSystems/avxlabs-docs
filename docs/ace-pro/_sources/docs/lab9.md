@@ -359,6 +359,110 @@ Stop alerts
 
 ## 6. CostIQ
 
+Before completing this lab, let's enable `CostIQ` and define the following **Cost Centers** and **Shared Service**.
+
+**<span style='color:orange'>COST CENTERS</span>**:
+
+**AWS**:
+- aws-us-east-1-spoke1
+- aws-us-east-1-spoke2
+
+**GCP**:
+- gcp-us-central1-spoke1
+
+**AZURE**:
+- azure-west-us-spoke1
+- azure-west-us-spoke2
+
+**<span style='color:green'>SHARED SERVICE</span>**:
+
+**NEW YORK DC**:
+- workstation client "edge"
+
+Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` button, on the right-hand side.
+
+```{figure} images/lab9-costiq.png
+---
+align: center
+---
+Enable CostIQ
+```
+
+Now click on `"+ Cost Center"` and create the **AWS** Cost Center aforementioned.
+
+```{figure} images/lab9-costiq02.png
+---
+align: center
+---
+"+ Cost Center"
+```
+
+```{figure} images/lab9-costiq03.png
+---
+align: center
+---
+AWS
+```
+
+Repeat the action creating the remaining two Cost Centers: **GCP** and **Azure**, associating the corresponing Application VPCs/VNets.
+
+```{figure} images/lab9-costiq04.png
+---
+align: center
+---
+GCP
+```
+
+```{figure} images/lab9-costiq05.png
+---
+align: center
+---
+AZURE
+```
+
+You should immediately get insights on how they have been utilized.
+
+```{figure} images/lab9-costiq06.png
+---
+align: center
+---
+Cost Centers Overview
+```
+
+Now let's discover the **Public IP address** of the workstation client "edge" in the new York DC. Copy the DNS name available on your portal and resolve it using the `host/nslookup` command.
+
+```{figure} images/lab9-costiq10.png
+---
+align: center
+---
+Edge's dns name workstation
+```
+
+```{figure} images/lab9-costiq11.png
+---
+align: center
+---
+Host command in action
+```
+
+Let's move on the Shared Service tab and click on `"+ Shared Service"`.
+
+```{figure} images/lab9-costiq12.png
+---
+align: center
+---
+"+ Shared Service"
+```
+
+Create the **Shared Service*** based on the aforementioned requirements.
+
+```{figure} images/lab9-costiq13.png
+---
+align: center
+---
+"+ Shared Service"
+```
+
 After this lab, this is how the overall topology would look like:
 
 ```{figure} images/lab9-final.png
