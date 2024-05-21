@@ -371,10 +371,15 @@ Let's investigate the logs:
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{tip}
-Turn on the **Auto Refresh** knob. Moreover, refresh the web page to trigger the logs.
+Turn on the **Auto Refresh** knob. Moreover, refresh the web page to trigger the logs. You can also filter out based on the protocol **ICMP**.
+```{figure} images/lab10-monitor.png
+---
+align: center
+---
+Auto Fefresh and Filter
 ```
 
-```{figure} images/lab10-monitor.png
+```{figure} images/lab10-monitor99.png
 ---
 align: center
 ---
