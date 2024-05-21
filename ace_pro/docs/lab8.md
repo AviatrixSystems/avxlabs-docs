@@ -248,7 +248,7 @@ swanctl daemon
 Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**
 
 ```{tip}
-Click on the **refresh** button to see the stratus icon changing from red to green.
+Click on the **refresh** button to see the status icon changing from red to green.
 
 The status will be reflected on the screen in about **1 minute**. 
 ```
@@ -257,14 +257,12 @@ The status will be reflected on the screen in about **1 minute**.
 ---
 align: center
 ---
-Connection is up/up also on the CoPilot
+Connection is up
 ```
-
-- Verify the newly created tunnel is up (might take a few seconds once configuration is applied on the CSR (alternatively you can just click on the `Refresh` button).
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)**
 
-Filter out based on the GCP Cloud, expand all the VPCs and you will see the new S2C connection with the remote OnPrem-Partner site!
+Filter out based on the **GCP** Cloud, expand all the VPCs and you will see the new S2C connection with the remote OnPrem-Partner site!
 
 ```{figure} images/lab8-onprem.png
 ---
@@ -273,10 +271,14 @@ align: center
 OnPrem-Partner site
 ```
 
-Now go back to your SSH terminal, and from the on-premises router’s console, enter a ping sourced from the **_GigabitEthernet1_** interface to the test instance in GCP (**_gcp-us-central1-spoke1-test1_**) as follows: 
+Now go back to your SSH terminal, and from the on-premises router’s console (i.e. StrongSwan), issue the following command to verify the connectivity with the **_gcp-us-central1-spoke1-test1_**:
 
 ```bash
-ping 192.168.200.100 source gi1
+ping 192.168.200.100 
+```
+
+```{tip}
+Keep the ping running recursively!
 ```
 
 ```{figure} images/lab8-pingok.png
@@ -302,10 +304,6 @@ Choose the `“Active Sessions”` option and in the Search field type `“icmp�
 align: center
 ---
 Active Sessions
-```
-
-```{important}
-You will have to relaunch the ping command once again from the CSR router and click on **Run** on the CoPilot for capturing the `Active Sessions`! 
 ```
 
 After completing the S2C connection, this is what the overall lab topology would look like:
