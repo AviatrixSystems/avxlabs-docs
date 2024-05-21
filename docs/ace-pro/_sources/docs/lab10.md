@@ -713,7 +713,7 @@ The destination route is **not** inside the routing table, due to the fact that 
 
 - Enabling `"Multi-Tier Transit"`
 
-Let’s enable this time the **MTT** feature!
+Let’s enable the **MTT** feature, to see its beahvior in action!
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-1-transit_**.
 
@@ -733,14 +733,19 @@ align: center
 Settings
 ```
 
-Repeat the previous action for the remaning Transit Gateways, adding the following BGP ASNs:
+Repeat the previous action for the last Transit Gateway still without BGP ASN:
 
-
-- **gcp-us-central1-transit**: <span style='color:#479608'>ASN **64514**</span>
 - **azure-west-us-transit**: <span style='color:#479608'>ASN **64515**</span>
 
+```{figure} images/lab10-newlab.png
+---
+align: center
+---
+azure-west-us-transit
+```
+
 ```{note}
-The **aws-us-east-2-transit** was already configured with its ASN in the Lab 8!
+Both the **aws-us-east-2-transit** and the the **gcp-us-central1-transit** got already configured with their ASNs during the Lab 8!
 ```
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
@@ -774,13 +779,13 @@ align: center
 azure-west-us-spoke2
 ```
 
-This time if you click on the `"Gateway Routes"` tab, you will be able to see the destination route in **aws-us-east1-spoke1** VPC.
+This time if you click on the `"Gateway Routes"` tab, you will be able to see the destination route, **10.0.12.0/24**, in **aws-us-east1-spoke1** VPC.
 
 ```{figure} images/lab10-mtt6.png
 ---
 align: center
 ---
-10.0.12.0/23
+10.0.12.0/24
 ```
 
 - SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
@@ -796,7 +801,7 @@ align: center
 Ping
 ```
 
-Although this time there is a valid route to the destination, thanks to the **MTT** feature, the pings fails. 
+Although this time there is a valid route to the destination, thanks to the **MTT** feature, the pings still fails. 
 
 ```{warning}
 The reason is that the ec2-instance  **aws-us-east-1-spoke1-test2** is not allocated to any Smart Groups yet!
@@ -857,7 +862,9 @@ Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 Then click on **Save In Drafts**.
 
 ```{caution}
-Please note the direction of this new inter-rule: **FROM** bu2 **TO** east1
+Please note the direction of this new inter-rule: 
+
+**FROM** bu2 **TO** east1
 ```
 
 ```{figure} images/lab10-lastrule.png

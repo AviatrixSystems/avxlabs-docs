@@ -1008,7 +1008,7 @@ document.write(`
 </li>
 <li><p>Enabling <code class="docutils literal notranslate"><span class="pre">&quot;Multi-Tier</span> <span class="pre">Transit&quot;</span></code></p></li>
 </ul>
-<p>Let’s enable this time the <strong>MTT</strong> feature!</p>
+<p>Let’s enable the <strong>MTT</strong> feature, to see its beahvior in action!</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the Transit Gateway <strong><em>aws-us-east-1-transit</em></strong>.</p>
 <figure class="align-center" id="id56">
 <img alt="../_images/lab10-mtt.png" src="../_images/lab10-mtt.png" />
@@ -1023,43 +1023,48 @@ document.write(`
 <p><span class="caption-number">Fig. 419 </span><span class="caption-text">Settings</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Repeat the previous action for the remaning Transit Gateways, adding the following BGP ASNs:</p>
+<p>Repeat the previous action for the last Transit Gateway still without BGP ASN:</p>
 <ul class="simple">
-<li><p><strong>gcp-us-central1-transit</strong>: <span style='color:#479608'>ASN <strong>64514</strong></span></p></li>
 <li><p><strong>azure-west-us-transit</strong>: <span style='color:#479608'>ASN <strong>64515</strong></span></p></li>
 </ul>
+<figure class="align-center" id="id58">
+<img alt="../_images/lab10-newlab.png" src="../_images/lab10-newlab.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 420 </span><span class="caption-text">azure-west-us-transit</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <strong>aws-us-east-2-transit</strong> was already configured with its ASN in the Lab 8!</p>
+<p>Both the <strong>aws-us-east-2-transit</strong> and the the <strong>gcp-us-central1-transit</strong> got already configured with their ASNs during the Lab 8!</p>
 </div>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong>.</p>
-<figure class="align-center" id="id58">
+<figure class="align-center" id="id59">
 <img alt="../_images/lab10-mtt3.png" src="../_images/lab10-mtt3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 420 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 421 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;General&quot;</span></code> section and activate the <code class="docutils literal notranslate"><span class="pre">&quot;Multi-Tier</span> <span class="pre">Transit&quot;</span></code>, turning on the corresponding knob.</p>
 <p>Then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id59">
+<figure class="align-center" id="id60">
 <img alt="../_images/lab10-mtt4.png" src="../_images/lab10-mtt4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 421 </span><span class="caption-text">Multi-Tier Transit</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 422 </span><span class="caption-text">Multi-Tier Transit</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s verify once again the routing table of the Spoke Gateway in <strong><em>azure-west-us-spoke2</em></strong>.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the relevant gateway <strong><em>azure-west-us-spoke2</em></strong></p>
-<figure class="align-center" id="id60">
+<figure class="align-center" id="id61">
 <img alt="../_images/lab10-mtt5.png" src="../_images/lab10-mtt5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 422 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 423 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This time if you click on the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab, you will be able to see the destination route in <strong>aws-us-east1-spoke1</strong> VPC.</p>
-<figure class="align-center" id="id61">
+<p>This time if you click on the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab, you will be able to see the destination route, <strong>10.0.12.0/24</strong>, in <strong>aws-us-east1-spoke1</strong> VPC.</p>
+<figure class="align-center" id="id62">
 <img alt="../_images/lab10-mtt6.png" src="../_images/lab10-mtt6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 423 </span><span class="caption-text">10.0.12.0/23</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 424 </span><span class="caption-text">10.0.12.0/24</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1069,13 +1074,13 @@ document.write(`
 <ul class="simple">
 <li><p><strong>aws-us-east-1-spoke1-test2</strong> in AWS (refer to your personal POD portal for the private IP).</p></li>
 </ul>
-<figure class="align-center" id="id62">
+<figure class="align-center" id="id63">
 <img alt="../_images/lab10-mtt7.png" src="../_images/lab10-mtt7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 424 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 425 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Although this time there is a valid route to the destination, thanks to the <strong>MTT</strong> feature, the pings fails.</p>
+<p>Although this time there is a valid route to the destination, thanks to the <strong>MTT</strong> feature, the pings still fails.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The reason is that the ec2-instance  <strong>aws-us-east-1-spoke1-test2</strong> is not allocated to any Smart Groups yet!</p>
@@ -1085,10 +1090,10 @@ document.write(`
 <h3>6.2 Smart Group “east1”<a class="headerlink" href="#smart-group-east1" title="Link to this heading">#</a></h3>
 <p>Let’s create another Smart Group for the test instance <strong><em>aws-us-east-1-spoke1-test2</em></strong> in US-EAST-1 region in AWS.</p>
 <p>Go to <strong>Copilot &gt; SmartGroups</strong> and click on  <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id63">
+<figure class="align-center" id="id64">
 <img alt="../_images/lab10-mttnew.png" src="../_images/lab10-mttnew.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 425 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 426 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -1097,10 +1102,10 @@ document.write(`
 <li><p><strong>CSP Tag Key</strong>: <span style='color:#479608'>Name</span></p></li>
 <li><p><strong>CSP Tag Value</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span></p></li>
 </ul>
-<figure class="align-center" id="id64">
+<figure class="align-center" id="id65">
 <img alt="../_images/lab10-mtt9.png" src="../_images/lab10-mtt9.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 426 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 427 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there is just one single instance that matches the condition:</p>
@@ -1112,10 +1117,10 @@ document.write(`
 <section id="create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">
 <h3>6.3 Create an inter-rule that allows ICMP from bu2 towards east1<a class="headerlink" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id65">
+<figure class="align-center" id="id66">
 <img alt="../_images/lab10-mtt8.png" src="../_images/lab10-mtt8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 427 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 428 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -1130,19 +1135,20 @@ document.write(`
 <p>Then click on <strong>Save In Drafts</strong>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>Please note the direction of this new inter-rule: <strong>FROM</strong> bu2 <strong>TO</strong> east1</p>
+<p>Please note the direction of this new inter-rule:</p>
+<p><strong>FROM</strong> bu2 <strong>TO</strong> east1</p>
 </div>
-<figure class="align-center" id="id66">
+<figure class="align-center" id="id67">
 <img alt="../_images/lab10-lastrule.png" src="../_images/lab10-lastrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 428 </span><span class="caption-text">The Last Rule…</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 429 </span><span class="caption-text">The Last Rule…</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you can carry on with the last <strong>commit</strong>!</p>
-<figure class="align-center" id="id67">
+<figure class="align-center" id="id68">
 <img alt="../_images/lab10-lastcommit.png" src="../_images/lab10-lastcommit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 429 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 430 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1151,26 +1157,26 @@ document.write(`
 <ul class="simple">
 <li><p>SSH to the Public IP of the instance <strong><em>azure-west-us-spoke2-test1</em></strong> and ping the private IP of the ec2-instance <strong><em>aws-us-east-1-spoke1-test2</em></strong></p></li>
 </ul>
-<figure class="align-center" id="id68">
+<figure class="align-center" id="id69">
 <img alt="../_images/lab10-lastping.png" src="../_images/lab10-lastping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 430 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 431 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time the ping will be successful!</p>
 <p>Check the logs once again.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
-<figure class="align-center" id="id69">
+<figure class="align-center" id="id70">
 <img alt="../_images/lab10-reallylast.png" src="../_images/lab10-reallylast.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 431 </span><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 432 </span><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><code class="docutils literal notranslate"><span class="pre">Congratulations,</span> <span class="pre">you</span> <span class="pre">have</span> <span class="pre">deployed</span> <span class="pre">the</span> <span class="pre">full-blown</span> <span class="pre">Aviatrix</span> <span class="pre">solution!</span></code></p>
-<figure class="align-center" id="id70">
+<figure class="align-center" id="id71">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing.png"><img alt="../_images/lab10-lastdrawing.png" src="../_images/lab10-lastdrawing.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 432 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 433 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
