@@ -429,7 +429,7 @@ align: center
 Cost Centers Overview
 ```
 
-Now let's discover the **Public IP address** of the workstation client "edge" in the new York DC. Copy the DNS name available on your portal and resolve it using the `host/nslookup` command.
+Now let's discover the **Public IP address** of the workstation client "edge" in the **New York DC**. Copy the DNS name available on your portal and resolve it using the `host/nslookup` command.
 
 ```{figure} images/lab9-costiq10.png
 ---
@@ -454,7 +454,7 @@ align: center
 "+ Shared Service"
 ```
 
-Create the **Shared Service*** based on the aforementioned requirements.
+Create the **Shared Service** based on the aforementioned requirements.
 
 ```{figure} images/lab9-costiq13.png
 ---
