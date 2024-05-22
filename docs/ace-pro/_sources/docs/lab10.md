@@ -979,8 +979,6 @@ The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now pref
 The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a Hub and Spoke Topology!
 ```
 
-
-
 ```{figure} images/lab10-spoke2spoke07.png
 ---
 align: center
