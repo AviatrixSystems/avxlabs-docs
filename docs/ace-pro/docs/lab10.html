@@ -1180,7 +1180,7 @@ document.write(`
 </section>
 <section id="spoke-to-spoke-attachment">
 <h2>7. Spoke to Spoke Attachment<a class="headerlink" href="#spoke-to-spoke-attachment" title="Link to this heading">#</a></h2>
-<p>Now that you have enabled the Distributed Cloud Firewall, the owner of the <strong><em>azure-west-us-spoke2-test1</em></strong> VM would like to communicate directly with the nearby <strong><em>azure-west-us-spoke1-test1</em></strong> VM, avoding that the traffic generated from the VPC is sent to the NGFW, first.</p>
+<p>Now that you have enabled the Distributed Cloud Firewall, the owner of the <strong><em>azure-west-us-spoke2-test1</em></strong> VM would like to communicate directly with the nearby <strong><em>azure-west-us-spoke1-test1</em></strong> VM, avoding that the traffic generated from the VNet is sent to the NGFW, first.</p>
 <figure class="align-center" id="id71">
 <img alt="../_images/lab10-spoke2spoke01.png" src="../_images/lab10-spoke2spoke01.png" />
 <figcaption>
@@ -1204,7 +1204,7 @@ document.write(`
 <p><span class="caption-number">Fig. 435 </span><span class="caption-text">azure-west-us-spoke1</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now go to Cloud Fabric &gt; Topology and check the new attachment between the two Spoke Gateways in Azure.</p>
+<p>Now go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong> and check the new attachment between the two Spoke Gateways in Azure.</p>
 <figure class="align-center" id="id74">
 <img alt="../_images/lab10-spoke2spoke04.png" src="../_images/lab10-spoke2spoke04.png" />
 <figcaption>
@@ -1215,16 +1215,20 @@ document.write(`
 <p class="admonition-title">Caution</p>
 <p>It will take approximately <strong>2</strong> minutes to reflect into the Topology.</p>
 </div>
-<p>Let’s check the routing table of the Spoke2 in Azure.</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways</strong> and select the <strong>azure-west-us-spoke2</strong>.</p>
+<p>Let’s check the <strong>Routing Table</strong> of the <strong><em>Spoke2</em></strong> in Azure.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways</strong>, select the <strong>azure-west-us-spoke2</strong>, then select the <strong>Gateways Routes</strong> tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">192.168.1.0</span></code></strong> on the right-hand side.</p>
 <figure class="align-center" id="id75">
 <img alt="../_images/lab10-spoke2spoke05.png" src="../_images/lab10-spoke2spoke05.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 437 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now select the <strong>Gateways Routes</strong> tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">192.168.1.0</span></code></strong> on the right-hand side.</p>
 <p>You will notice that the destination is now reachable with a lower metric (50)!</p>
+<p>The traffic generated from the <strong><em>azure-west-us-spoke2-test1</em></strong> VM will now prefer going through the Spoke-to-Spoke Attachment, for the communication with the Spoke1 VNet.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a Hub and Spoke Topology!</p>
+</div>
 <figure class="align-center" id="id76">
 <img alt="../_images/lab10-spoke2spoke06.png" src="../_images/lab10-spoke2spoke06.png" />
 <figcaption>
