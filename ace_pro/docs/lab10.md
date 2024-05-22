@@ -41,7 +41,7 @@ align: center
 Initial Topology Lab 10
 ```
 
-## 3. Smart Group Creation
+## 3. Smart Groups Creation
 
 Create two Smart Groups and classify each Smart Group, leveraging the CSP tag `"environment"`:
 
@@ -217,7 +217,7 @@ SSH to AWS us-east-1-spoke1-test2
 
 The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.
 
-## 4. Rules Creation
+## 4. DCF Rules Creation
 ### 4.1. Build a Zero Trust  Network Architecture
 
 First and foremost, let's move the `Explicit-Deny-Rule` at the very top of the list of your DCF rules.
@@ -905,6 +905,81 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 align: center
 ---
 inter-icmp-bu2-east1 Logs
+```
+
+## 7. Spoke to Spoke Attachment
+
+Now that you have enabled the Distributed Cloud Firewall, the owner of the **_azure-west-us-spoke2-test1_** VM would like to communicate directly with the nearby **_azure-west-us-spoke1-test1_** VM, avoding that the traffic generated from the VPC is sent to the NGFW, first.
+
+```{figure} images/lab10-spoke2spoke01.png
+---
+align: center
+---
+No More NGFW
+```
+
+### 7.1 Creating a Spoke to Spoke Attachment
+
+Go to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** GW and click on the **`Manage Transit Gateway Attachment`** icon on the right side of its row.
+
+```{figure} images/lab10-spoke2spoke02.png
+---
+align: center
+---
+Manage Transit Gateway Attachment
+```
+
+Select the **Spoke Gateway** tab and then choose the **azure-west-us-spoke1** GW from the drop-down window.
+
+Do not forget to click on **Save**.
+
+```{figure} images/lab10-spoke2spoke03.png
+---
+align: center
+---
+azure-west-us-spoke1
+```
+
+Now go to Cloud Fabric > Topology and check the new attachment between the two Spoke Gateways in Azure.
+
+```{figure} images/lab10-spoke2spoke04.png
+---
+align: center
+---
+Spoke to Spoke Attachment
+```
+
+```{caution}
+It will take approximately **2** minutes to reflect into the Topology.
+```
+
+Let's check the routing table of the Spoke2 in Azure.
+
+Go to **CoPilot > Cloud Fabric > Gateways** and select the **azure-west-us-spoke2**.
+
+```{figure} images/lab10-spoke2spoke05.png
+---
+align: center
+---
+azure-west-us-spoke2
+```
+
+Now select the **Gateways Routes** tab and search for the subnet **`192.168.1.0`** on the right-hand side.
+
+You will notice that the destination is now reachable with a lower metric (50)!
+
+```{figure} images/lab10-spoke2spoke06.png
+---
+align: center
+---
+Metric 50
+```
+
+```{figure} images/lab10-spoke2spoke07.png
+---
+align: center
+---
+Spoke to Spoke
 ```
 
 `Congratulations, you have deployed the full-blown Aviatrix solution!`
