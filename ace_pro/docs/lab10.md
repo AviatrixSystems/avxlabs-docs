@@ -964,13 +964,7 @@ align: center
 azure-west-us-spoke2
 ```
 
-You will notice that the destination is now reachable with a lower metric (50)! 
-
-The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now prefer going through the Spoke-to-Spoke Attachment, for the communication with the Spoke1 VNet.
-
-```{important}
-The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a Hub and Spoke Topology!
-```
+You will notice that the destination is now reachable with a lower metric (50)!
 
 ```{figure} images/lab10-spoke2spoke06.png
 ---
@@ -978,6 +972,14 @@ align: center
 ---
 Metric 50
 ```
+
+The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now prefer going through the Spoke-to-Spoke Attachment, for the communication with the Spoke1 VNet.
+
+```{important}
+The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a Hub and Spoke Topology!
+```
+
+
 
 ```{figure} images/lab10-spoke2spoke07.png
 ---
