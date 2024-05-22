@@ -342,14 +342,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-overview">2. Distributed Cloud Firewall Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-creation">3. Smart Group Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-groups-creation">3. Smart Groups Creation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1. Smart Group “bu1”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu2">3.2. Smart Group “bu2”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp">3.3. Connectivity verification (ICMP)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh">3.4.  Connectivity verification (SSH)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-creation">4. Rules Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dcf-rules-creation">4. DCF Rules Creation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-zero-trust-network-architecture">4.1. Build a Zero Trust  Network Architecture</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu1">4.2. Create an intra-rule that allows ICMP inside bu1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu2">4.2. Create an intra-rule that allows ICMP inside bu2</a></li>
@@ -370,6 +370,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-east1">6.2 Smart Group “east1”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">6.3 Create an inter-rule that allows ICMP from bu2 towards east1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-bu2-and-east1">6.4 Verify connectivity between bu2 and east1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spoke-to-spoke-attachment">7. Spoke to Spoke Attachment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spoke-to-spoke-attachment">7.1 Creating a Spoke to Spoke Attachment</a></li>
 </ul>
 </li>
 </ul>
@@ -422,8 +426,8 @@ document.write(`
 </figcaption>
 </figure>
 </section>
-<section id="smart-group-creation">
-<h2>3. Smart Group Creation<a class="headerlink" href="#smart-group-creation" title="Link to this heading">#</a></h2>
+<section id="smart-groups-creation">
+<h2>3. Smart Groups Creation<a class="headerlink" href="#smart-groups-creation" title="Link to this heading">#</a></h2>
 <p>Create two Smart Groups and classify each Smart Group, leveraging the CSP tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code>:</p>
 <ul class="simple">
 <li><p>Assign the name <code class="docutils literal notranslate"><span class="pre">&quot;bu1&quot;</span></code> to the Smart Group <strong>#1</strong>.</p></li>
@@ -578,8 +582,8 @@ document.write(`
 <p>The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.</p>
 </section>
 </section>
-<section id="rules-creation">
-<h2>4. Rules Creation<a class="headerlink" href="#rules-creation" title="Link to this heading">#</a></h2>
+<section id="dcf-rules-creation">
+<h2>4. DCF Rules Creation<a class="headerlink" href="#dcf-rules-creation" title="Link to this heading">#</a></h2>
 <section id="build-a-zero-trust-network-architecture">
 <h3>4.1. Build a Zero Trust  Network Architecture<a class="headerlink" href="#build-a-zero-trust-network-architecture" title="Link to this heading">#</a></h3>
 <p>First and foremost, let’s move the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code> at the very top of the list of your DCF rules.</p>
@@ -1172,11 +1176,72 @@ document.write(`
 <p><span class="caption-number">Fig. 432 </span><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p><code class="docutils literal notranslate"><span class="pre">Congratulations,</span> <span class="pre">you</span> <span class="pre">have</span> <span class="pre">deployed</span> <span class="pre">the</span> <span class="pre">full-blown</span> <span class="pre">Aviatrix</span> <span class="pre">solution!</span></code></p>
+</section>
+</section>
+<section id="spoke-to-spoke-attachment">
+<h2>7. Spoke to Spoke Attachment<a class="headerlink" href="#spoke-to-spoke-attachment" title="Link to this heading">#</a></h2>
+<p>Now that you have enabled the Distributed Cloud Firewall, the owner of the <strong><em>azure-west-us-spoke2-test1</em></strong> VM would like to communicate directly with the nearby <strong><em>azure-west-us-spoke1-test1</em></strong> VM, avoding that the traffic generated from the VPC is sent to the NGFW, first.</p>
 <figure class="align-center" id="id71">
+<img alt="../_images/lab10-spoke2spoke01.png" src="../_images/lab10-spoke2spoke01.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 433 </span><span class="caption-text">No More NGFW</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="creating-a-spoke-to-spoke-attachment">
+<h3>7.1 Creating a Spoke to Spoke Attachment<a class="headerlink" href="#creating-a-spoke-to-spoke-attachment" title="Link to this heading">#</a></h3>
+<p>Go to <strong>Copilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong>, locate the <strong><em>azure-west-us-spoke2</em></strong> GW and click on the <strong><code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment</span></code></strong> icon on the right side of its row.</p>
+<figure class="align-center" id="id72">
+<img alt="../_images/lab10-spoke2spoke02.png" src="../_images/lab10-spoke2spoke02.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 434 </span><span class="caption-text">Manage Transit Gateway Attachment</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <strong>Spoke Gateway</strong> tab and then choose the <strong>azure-west-us-spoke1</strong> GW from the drop-down window.</p>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id73">
+<img alt="../_images/lab10-spoke2spoke03.png" src="../_images/lab10-spoke2spoke03.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 435 </span><span class="caption-text">azure-west-us-spoke1</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now go to Cloud Fabric &gt; Topology and check the new attachment between the two Spoke Gateways in Azure.</p>
+<figure class="align-center" id="id74">
+<img alt="../_images/lab10-spoke2spoke04.png" src="../_images/lab10-spoke2spoke04.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 436 </span><span class="caption-text">Spoke to Spoke Attachment</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>It will take approximately <strong>2</strong> minutes to reflect into the Topology.</p>
+</div>
+<p>Let’s check the routing table of the Spoke2 in Azure.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways</strong> and select the <strong>azure-west-us-spoke2</strong>.</p>
+<figure class="align-center" id="id75">
+<img alt="../_images/lab10-spoke2spoke05.png" src="../_images/lab10-spoke2spoke05.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 437 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now select the <strong>Gateways Routes</strong> tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">192.168.1.0</span></code></strong> on the right-hand side.</p>
+<p>You will notice that the destination is now reachable with a lower metric (50)!</p>
+<figure class="align-center" id="id76">
+<img alt="../_images/lab10-spoke2spoke06.png" src="../_images/lab10-spoke2spoke06.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 438 </span><span class="caption-text">Metric 50</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id77">
+<img alt="../_images/lab10-spoke2spoke07.png" src="../_images/lab10-spoke2spoke07.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 439 </span><span class="caption-text">Spoke to Spoke</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">Congratulations,</span> <span class="pre">you</span> <span class="pre">have</span> <span class="pre">deployed</span> <span class="pre">the</span> <span class="pre">full-blown</span> <span class="pre">Aviatrix</span> <span class="pre">solution!</span></code></p>
+<figure class="align-center" id="id78">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing.png"><img alt="../_images/lab10-lastdrawing.png" src="../_images/lab10-lastdrawing.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 433 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 440 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1249,14 +1314,14 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-overview">2. Distributed Cloud Firewall Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-creation">3. Smart Group Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-groups-creation">3. Smart Groups Creation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1. Smart Group “bu1”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu2">3.2. Smart Group “bu2”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp">3.3. Connectivity verification (ICMP)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh">3.4.  Connectivity verification (SSH)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-creation">4. Rules Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dcf-rules-creation">4. DCF Rules Creation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-zero-trust-network-architecture">4.1. Build a Zero Trust  Network Architecture</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu1">4.2. Create an intra-rule that allows ICMP inside bu1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu2">4.2. Create an intra-rule that allows ICMP inside bu2</a></li>
@@ -1277,6 +1342,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-east1">6.2 Smart Group “east1”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">6.3 Create an inter-rule that allows ICMP from bu2 towards east1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-bu2-and-east1">6.4 Verify connectivity between bu2 and east1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spoke-to-spoke-attachment">7. Spoke to Spoke Attachment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spoke-to-spoke-attachment">7.1 Creating a Spoke to Spoke Attachment</a></li>
 </ul>
 </li>
 </ul>
