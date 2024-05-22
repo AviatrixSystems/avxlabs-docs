@@ -909,7 +909,7 @@ inter-icmp-bu2-east1 Logs
 
 ## 7. Spoke to Spoke Attachment
 
-Now that you have enabled the Distributed Cloud Firewall, the owner of the **_azure-west-us-spoke2-test1_** VM would like to communicate directly with the nearby **_azure-west-us-spoke1-test1_** VM, avoding that the traffic generated from the VPC is sent to the NGFW, first.
+Now that you have enabled the Distributed Cloud Firewall, the owner of the **_azure-west-us-spoke2-test1_** VM would like to communicate directly with the nearby **_azure-west-us-spoke1-test1_** VM, avoding that the traffic generated from the VNet is sent to the NGFW, first.
 
 ```{figure} images/lab10-spoke2spoke01.png
 ---
@@ -940,7 +940,7 @@ align: center
 azure-west-us-spoke1
 ```
 
-Now go to Cloud Fabric > Topology and check the new attachment between the two Spoke Gateways in Azure.
+Now go to **CoPilot > Cloud Fabric > Topology** and check the new attachment between the two Spoke Gateways in Azure.
 
 ```{figure} images/lab10-spoke2spoke04.png
 ---
@@ -953,9 +953,9 @@ Spoke to Spoke Attachment
 It will take approximately **2** minutes to reflect into the Topology.
 ```
 
-Let's check the routing table of the Spoke2 in Azure.
+Let's check the **Routing Table** of the **_Spoke2_** in Azure.
 
-Go to **CoPilot > Cloud Fabric > Gateways** and select the **azure-west-us-spoke2**.
+Go to **CoPilot > Cloud Fabric > Gateways**, select the **azure-west-us-spoke2**, then select the **Gateways Routes** tab and search for the subnet **`192.168.1.0`** on the right-hand side.
 
 ```{figure} images/lab10-spoke2spoke05.png
 ---
@@ -964,9 +964,13 @@ align: center
 azure-west-us-spoke2
 ```
 
-Now select the **Gateways Routes** tab and search for the subnet **`192.168.1.0`** on the right-hand side.
+You will notice that the destination is now reachable with a lower metric (50)! 
 
-You will notice that the destination is now reachable with a lower metric (50)!
+The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now prefer going through the Spoke-to-Spoke Attachment, for the communication with the Spoke1 VNet.
+
+```{important}
+The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a Hub and Spoke Topology!
+```
 
 ```{figure} images/lab10-spoke2spoke06.png
 ---
