@@ -79,8 +79,8 @@ Create a connection from Cloud (GCP) to an on-prem Partner site, using the follo
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.100.0/24</span>
 - **IKEv2**: <span style='color:#479608'>**ON**</span>
 - **Authetication Method**: <span style='color:#479608'>PSK</span>
-- **Pre-Shared Key**: <span style='color:#479608'>[**Refer to your Pod assignment for the CSR Public IP - Lab8 section**]</span>
-- **Remote Gateway IP**: <span style='color:#479608'>[**Refer to your Pod assignment for the CSR Public IP - Lab8 section**]</span>
+- **Pre-Shared Key**: <span style='color:#479608'>[**Refer to your Pod assignment for the StrongSwan PSK - Lab8 section**]</span>
+- **Remote Gateway IP**: <span style='color:#479608'>[**Refer to your Pod assignment for the StrongSwan Public IP - Lab8 section**]</span>
 - **Local Gateway Instance**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
 
 Then click on **Save**.
