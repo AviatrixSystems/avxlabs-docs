@@ -176,7 +176,7 @@ Wait for the instructor to provide a malicious IP. Let's call it `<malicious-IP>
 
 SSH to the EC2 instance **_aws-us-east1-spoke1-test1_**
 
-- Now test `ThreatGuard` by first issuing this command (make sure to enter **HTTPS**):
+- Now test `ThreatIQ` by first issuing this command (make sure to enter **HTTPS**):
 
 ```bash
 curl https://<malicious-IP>
@@ -261,10 +261,10 @@ Go to **CoPilot > Security > ThreatIQ > Configuration** and turn on the toggle `
 ---
 align: center
 ---
-ThreatGuard
+ThreatIQ - Automatic Enforcement
 ```
 
-By default, <ins>**all** VPCs are enabled for ThreatGuard</ins>, therefore click on **Save** to continue.
+By default, <ins>**all** VPCs are enabled for ThreatIQ</ins>, therefore click on **Save** to continue.
 
 
 ```{figure} images/lab9-vpc.png
