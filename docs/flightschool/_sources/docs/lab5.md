@@ -15,13 +15,17 @@ We have prepared some Terraform code for you, which you will explore and deploy.
 * Double-click on **RDP - Client**
 * Open the **Visual Studio Code** located on the Desktop
 
-![VS Studio Code](images/lab6-vs-code-open-folder.png)  
-_Fig. VS Studio_  
+```{figure} images/lab6-vs-code-open-folder.png
+---
+align: center
+---
+VS Studio
+```
 
 * Select the folder `terraform-lab` and click **Open**
   * _When prompted to trust the authors of the files in this folder, select Yes_
 * Let’s explore the Terraform files in this directory:
-  * Explore the file contents of **main.tf, variables.tf, providers.tf and vars.tfvars**
+  * Explore the file contents of **main.tf, variables.tf, providers.tf** and **terraform.tfvars**
 
 > What do you expect will be created when we run this Terraform code?
 
@@ -52,10 +56,14 @@ Once Terraform is finished, have a look at the newly created **terraform.tfstate
 
 ### Expected Results
 
-By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after a few minutes, you should see the new transit and spoke in CoPilot Topology.  
+By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about **8 minutes**, you should see the new transit and spoke in CoPilot Topology.  
 
-![Topology](images/lab6-terraform-topology.png)  
-_Fig. Topology_  
+```{figure} images/lab6-terraform-topology.png
+---
+align: center
+---
+Topology
+```
 
 ## Lab 5.2 - Create Transit Peerings
 
@@ -88,7 +96,7 @@ module "transit-peering" {
 
 > Make sure that the Transit Gateway names match to your environment
 
-* Save the file in Visual Studio Code
+* **SAVE** the file in Visual Studio Code
 * Go back to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
 * Run the command `terraform plan` to assess the changes
 * Run the command `terraform apply --auto-approve`
@@ -97,8 +105,12 @@ module "transit-peering" {
 
 After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.
 
-![Topology](images/lab6-topoloy-transit-peerings.png)  
-_Fig. Topology_  
+```{figure} images/lab6-topoloy-transit-peerings.png
+---
+align: center
+---
+Full Mesh
+```
 
 ## Lab 5 Summary
 

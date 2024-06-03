@@ -187,7 +187,7 @@ WebGroup
 
 > Which domains are configured in this WebGroup?
 
-* In the distributed firewalling rules, edit the policy with name **_aws_shared_web_traffic_**.
+* In the distributed firewalling rules, edit the policy with name **_aws-shared-web-traffic_**.
 * Under WebGroups, select **_allowed-web-group_** and save the rule.
 
 ```{figure} images/lab4-add-webgroup.png
@@ -225,7 +225,7 @@ This scenario is a bit more advanced. We need to allow access to our github repo
 
 > What is the URL configured in this WebGroup?
 
-* In the distributed firewalling rules, edit the policy with name **_aws_shared_web_traffic_** again.
+* In the distributed firewalling rules, edit the policy with name **_aws-shared-web-traffic_** again.
 * Under WebGroups, add **_github-url_**.
 * Enable TLS decryption. This is required for the inspection engine to see the full URL in the https request.
 
@@ -344,8 +344,12 @@ Inspection Policy
 
 You should start seeing entries like the screenshot below.
 
-![FW Logs](images/lab5-fw-logs-azure-dev.png)  
-_Fig. FW Logs_  
+```{figure} images/lab5-fw-logs-azure-dev.png
+---
+align: center
+---
+FW Logs
+``` 
 
 ## Lab 4 Summary
 
