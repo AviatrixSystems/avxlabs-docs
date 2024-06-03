@@ -30,6 +30,15 @@ Log in to CoPilot using the following details:
 
 * _Remember to replace <span style="color:orange">**[#]**</span> with your pod ID_
 
+```{note}
+CoPilot details are available on your personal POD Portal!
+```{figure} images/lab1-portal.png
+---
+align: center
+---
+Personal POD Portal
+```
+
 You can familiarize yourself with the different functions in CoPilot and after each lab, we will verify the results in CoPilot.
 **Please note that it can take a minute for CoPilot to reflect changes on the network.**
 
@@ -48,7 +57,7 @@ align: center
 Initial Topology
 ```
 
-Click on the `"Managed"` button on the right-hand side of the screen, for hiding the Unmanaged VPCs.
+Click on the `"Managed"` button on the right-hand side of the screen, for hiding the **Unmanaged VPCs**.
 
 ```{figure} images/lab1-managed.png
 ---
@@ -103,7 +112,7 @@ Take a look at the access accounts already set up. You can see them in Copilot u
 
 ### Expected Results
 
-Accounts in AWS and Azure have already been onboarded and you should see these accounts in the list. The accounts should also have an audit status **_pass_**, meaning the permissions in the accounts are correctly configured.
+Accounts in AWS and Azure have already been onboarded and you should see these accounts in the list. The accounts should also have an audit status equal to **_pass_**, meaning the permissions in the accounts are correctly configured.
 
 ```{figure} images/lab1-accounts.png
 ---
