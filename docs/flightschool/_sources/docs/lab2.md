@@ -108,7 +108,15 @@ Aviatrix allows you to filter dynamically learned routes from external sites, an
 ### Validate
 
 * Browse to the transit gateway settings in Copilot, under **_Cloud Fabric -> Gateways -> Transit Gateways_** and click on **_azure-transit_**.
-* Navigate to the **Approval** tabcl and approve the pending CIDR.
+
+```{figure} images/lab2-transitclick.png
+---
+align: center
+---
+Approve route
+```
+
+* Navigate to the **Approval** tab and approve the pending CIDR.
 
 If no CIDR's are showing up here, validate that the BGP peering has established under **_Troubleshoot -> Cloud Routes -> BGP Info_**. If the peering is down, you likely made a configuration error.
 
@@ -226,7 +234,7 @@ align: center
 Full Access
 ```
 
-## Lab 2.6 - Enable network segmentation
+## Lab 2.6 - Enable Network Segmentation
 
 ### Description
 
@@ -391,7 +399,7 @@ Now that we have enabled segmentation, we have not only limited connectivity fro
 
 First check that the connectivity is indeed broken.
 
-* From your own pc connect to:
+* Log on to the Remote Access Server and connect to:
   * `http://azure-lb.pod[#].aviatrixlab.com/test`
 
 As you can see, the Web web application is now broken:
