@@ -3,7 +3,7 @@
 ## Link
 You can view your personal POD portal by clicking on the picture below.
 
-- **Access Code**: <span style='color:#479608'>xxxx</span>
+- **Access Code**: <span style='color:#479608'>X3BP</span>
 
 <a href="https://portal.flightschool.aviatrixlab.com/" target="_blank">
 
