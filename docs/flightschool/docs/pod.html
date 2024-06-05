@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lab 5 - Infrastructure as Code (Bonus Lab) &#8212; Aviatrix Flight School</title>
+    <title>POD Portal &#8212; Aviatrix Flight School</title>
   
   
   
@@ -57,12 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab5';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/pod';</script>
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Summary" href="summary.html" />
-    <link rel="prev" title="Lab 4 - Beefing up security" href="lab4.html" />
+    <link rel="next" title="Lab 1 - Getting Started" href="lab1.html" />
+    <link rel="prev" title="Welcome to Aviatrix Flight School!" href="home.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,12 +179,12 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">POD Portal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Office Connectivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - Expanding to multi-cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - Beefing up security</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 5 - Infrastructure as Code (Bonus Lab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Infrastructure as Code (Bonus Lab)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
 </ul>
 
@@ -240,7 +240,7 @@
       
       
       
-      <li><a href="../_sources/docs/lab5.md" target="_blank"
+      <li><a href="../_sources/docs/pod.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +324,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 5 - Infrastructure as Code (Bonus Lab)</h1>
+    <h1>POD Portal</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -334,19 +334,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-1-deploy-transit-and-spoke">Lab 5.1 - Deploy Transit and Spoke</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">Validate</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-2-create-transit-peerings">Lab 5.2 - Create Transit Peerings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Validate</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Expected Results</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-summary">Lab 5 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link">Link</a></li>
 </ul>
             </nav>
         </div>
@@ -358,135 +346,17 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-5-infrastructure-as-code-bonus-lab">
-<h1>Lab 5 - Infrastructure as Code (Bonus Lab)<a class="headerlink" href="#lab-5-infrastructure-as-code-bonus-lab" title="Link to this heading">#</a></h1>
-<section id="lab-5-1-deploy-transit-and-spoke">
-<h2>Lab 5.1 - Deploy Transit and Spoke<a class="headerlink" href="#lab-5-1-deploy-transit-and-spoke" title="Link to this heading">#</a></h2>
-<section id="description">
-<h3>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h3>
-<p>All the elements you have created through the UI, can also be created through the API or the official <strong>Aviatrix Terraform provider</strong>. You can find more information on these here:<br />
-<a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs</a></p>
-</section>
-<section id="validate">
-<h3>Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h3>
-<p>We have prepared some Terraform code for you, which you will explore and deploy.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="pod-portal">
+<h1>POD Portal<a class="headerlink" href="#pod-portal" title="Link to this heading">#</a></h1>
+<section id="link">
+<h2>Link<a class="headerlink" href="#link" title="Link to this heading">#</a></h2>
+<p>You can view your personal POD portal by clicking on the picture below.</p>
 <ul class="simple">
-<li><p>Open the Remote Access Server by navigating and logging in to <code class="docutils literal notranslate"><span class="pre">https://client.pod[#].aviatrixlab.com</span></code></p></li>
-<li><p>Double-click on <strong>RDP - Client</strong></p></li>
-<li><p>Open the <strong>Visual Studio Code</strong> located on the Desktop</p></li>
+<li><p><strong>Access Code</strong>: <span style='color:#479608'>WIAD</span></p></li>
 </ul>
-<figure class="align-center" id="id4">
-<img alt="../_images/lab6-vs-code-open-folder.png" src="../_images/lab6-vs-code-open-folder.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 83 </span><span class="caption-text">VS Studio</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Select the folder <code class="docutils literal notranslate"><span class="pre">terraform-lab</span></code> and click <strong>Open</strong></p>
-<ul>
-<li><p><em>When prompted to trust the authors of the files in this folder, select Yes</em></p></li>
-</ul>
-</li>
-<li><p>Let’s explore the Terraform files in this directory:</p>
-<ul>
-<li><p>Explore the file contents of <strong><a class="reference external" href="http://main.tf">main.tf</a>, <a class="reference external" href="http://variables.tf">variables.tf</a>, <a class="reference external" href="http://providers.tf">providers.tf</a></strong> and <strong>terraform.tfvars</strong></p></li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<div><p>What do you expect will be created when we run this Terraform code?</p>
-</div></blockquote>
-<p>In this lab, we are using Terraform modules, provided by Aviatrix. These allow you to quickly build out your environment, based on larger building blocks, rather than individual resources. You can find more available modules here:</p>
-<p><a class="reference external" href="https://registry.terraform.io/namespaces/terraform-aviatrix-modules">https://registry.terraform.io/namespaces/terraform-aviatrix-modules</a></p>
-<p>Let’s run this code.</p>
-<ul class="simple">
-<li><p>Open the <strong>LXTerminal</strong> App on the Desktop</p></li>
-<li><p>Move over to the directory where the Terraform files are located:</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">terraform-lab</span></code></p>
-<ul class="simple">
-<li><p>First thing we need to do is to initialize Terraform. This allows for the required providers and modules to be downloaded.</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code></p>
-<ul class="simple">
-<li><p>Next we will execute a “plan”. This means that Terraform will compare the live environment with the desired state we declared in our Terraform files</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">plan</span></code></p>
-<ul class="simple">
-<li><p>Investigate the proposed changes by Terraform. Now we will apply them to the live environment:</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span> <span class="pre">--auto-approve</span></code></p>
-<p>Once Terraform is finished, have a look at the newly created <strong>terraform.tfstate</strong> file. This contains information of all infrastructure created through Terraform. This is referred to as <strong>“the state”</strong>. Losing it can cause a lot of trouble, but that is for another (Terraform) lesson.</p>
-</section>
-<section id="expected-results">
-<h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
-<p>By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about <strong>8 minutes</strong>, you should see the new transit and spoke in CoPilot Topology.</p>
-<figure class="align-center" id="id5">
-<img alt="../_images/lab6-terraform-topology.png" src="../_images/lab6-terraform-topology.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-<section id="lab-5-2-create-transit-peerings">
-<h2>Lab 5.2 - Create Transit Peerings<a class="headerlink" href="#lab-5-2-create-transit-peerings" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>Description<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let’s see how we can use Infrastructure as Code to build a full mesh of the Transits.</p>
-</section>
-<section id="id2">
-<h3>Validate<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Using the same Visual Studio Code session, let’s add some new code to the <code class="docutils literal notranslate"><span class="pre">main.tf</span></code> file</p></li>
-<li><p>We will be using the following module:  <code class="docutils literal notranslate"><span class="pre">https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest</span></code></p></li>
-</ul>
-<div class="highlight-hcl notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;transit-peering&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit-peering/aviatrix&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.8&quot;</span>
-
-<span class="w">  </span><span class="na">transit_gateways</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;aws-transit&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;azure-transit&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;aws-transit-example&quot;</span>
-<span class="w">  </span><span class="p">]</span>
-
-<span class="c1">  #Lets make sure we don&#39;t mess with the transit peering that already exists.</span>
-<span class="w">  </span><span class="na">prune_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="s2">&quot;aws-transit&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;azure-transit&quot;</span><span class="p">},</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>Make sure that the Transit Gateway names match to your environment</p>
-</div></blockquote>
-<ul class="simple">
-<li><p><strong>SAVE</strong> the file in Visual Studio Code</p></li>
-<li><p>Go back to the <strong>LXTerminal</strong> and run <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code> again to download the <code class="docutils literal notranslate"><span class="pre">mc-transit-peering</span></code> module</p></li>
-<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">plan</span></code> to assess the changes</p></li>
-<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span> <span class="pre">--auto-approve</span></code></p></li>
-</ul>
-</section>
-<section id="id3">
-<h3>Expected Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.</p>
-<figure class="align-center" id="id6">
-<img alt="../_images/lab6-topoloy-transit-peerings.png" src="../_images/lab6-topoloy-transit-peerings.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-<section id="lab-5-summary">
-<h2>Lab 5 Summary<a class="headerlink" href="#lab-5-summary" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>You deployed an Aviatrix Transit and Spoke using Terraform</p></li>
-<li><p>You added the new Transit to the Global Multicloud Transit Network with a few lines of code</p></li>
-<li><p>Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution</p></li>
-<li><p>In minutes, you can create the network, security and connectivity needed</p></li>
-</ul>
+<a href="https://portal.ace.aviatrixlab.com/" target="_blank">
+<p><img alt="My image" src="../_images/pod.png" /></p>
+</a>
 </section>
 </section>
 
@@ -521,20 +391,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="lab4.html"
+       href="home.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lab 4 - Beefing up security</p>
+        <p class="prev-next-title">Welcome to Aviatrix Flight School!</p>
       </div>
     </a>
     <a class="right-next"
-       href="summary.html"
+       href="lab1.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Summary</p>
+        <p class="prev-next-title">Lab 1 - Getting Started</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -554,19 +424,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-1-deploy-transit-and-spoke">Lab 5.1 - Deploy Transit and Spoke</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">Validate</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-2-create-transit-peerings">Lab 5.2 - Create Transit Peerings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Validate</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Expected Results</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-summary">Lab 5 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link">Link</a></li>
 </ul>
   </nav></div>
 
