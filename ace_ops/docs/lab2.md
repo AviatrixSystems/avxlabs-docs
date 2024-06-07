@@ -154,7 +154,7 @@ AppIQ configuration
 
 Wait for some seconds and then check the report!
 
-The Security Group attached to BU2 Mobile APP is missing a rule that would allow inbound traffic on tcp/80.
+The Security Group attached to BU2 Mobile APP is missing a rule that should allow inbound traffic on tcp/80.
 
 ```{figure} images/lab2-curl5.png
 ---
@@ -245,7 +245,7 @@ align: center
 Change security groups
 ```
 
-Create the required inbound rule (i.e. _"allow tcp traffic from anywhere"_) as depicted below and then click on the `"Save rules"` button.
+Create the required inbound rule (i.e. _"allow **http** traffic from anywhere"_) as depicted below and then click on the `"Save rules"` button.
 
 ```{figure} images/lab2-sg5.png
 ---
