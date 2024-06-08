@@ -220,7 +220,7 @@ align: center
 Search for the remote route from the OnPrem DC
 ```
 
-- Filter out the route 10.0.211.0/24 from the `Settings` section (i.e. *Route Manipulation* section).
+- Filter out the route `10.0.211.0/24` from the `Settings` section (i.e. *Route Manipulation* section).
 
 ```{tip}
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Settings** tab.
