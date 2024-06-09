@@ -99,7 +99,7 @@ Commit
 ---
 align: center
 ---
-Spoke1 VNet as test VNet
+Spoke1 VNet1 as test VNet
 ```
 
   - Enable the Egress on the **_Spoke1 VNet_** too.
@@ -364,13 +364,15 @@ Go to **CoPilot > SmartGroups** and click on the `"+ SmartGroup"` button.
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>BU2-DB</span>
-- **CSP Tag Key**: <span style='color:#479608'>name</span>
-- **CSP Tag Value**: <span style='color:#479608'>ace-azure-east-us-spoke2-bu2-db</span>
+- **CSP Tag Key**: <span style='color:#479608'>environment</span>
+  --> **CSP Tag Value**: <span style='color:#479608'>bu2</span>
+- **CSP Tag Key**: <span style='color:#479608'>Region</span>
+  --> **CSP Tag Value**: <span style='color:#479608'>eastus</span>
 
 Do not forget to click on **Save**.
 
 ```{tip}
-Select the tag `"name"` with the *n lowercase*!
+The SmartGroup can match **multiple tags** simultaneously, harnessing the boolean expressions!
 ```
 
 ```{figure} images/lab7-bu2db.png
@@ -380,7 +382,7 @@ align: center
 BU2 DB SmartGroup
 ```
 
-- Create a WebGroup that matches the domains and sub-domains that you found earlier.
+- Create a **WebGroup** that matches the domains and sub-domains that you found earlier.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and then click on `"+ WebGroup"`.
