@@ -62,6 +62,8 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 - ThreatIQ
 - CostIQ 
 - Distributed Cloud Firewall
+- Network Insight API
+- IaC with Terraform
 - Multi-Tier Transit
 - Spoke to Spoke Attachment
 
