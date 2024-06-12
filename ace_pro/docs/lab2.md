@@ -38,7 +38,7 @@ The test VPCs/VNet you created in Lab 1 will not be used in other labs.
 For sake of semplicity, in this lab, the Transits will NOT be deployed in pairs. As a best practice, Aviatrix recommends always to deploy two Transits to ensure High Availability.
 ```
 
-The CoPilot *dashboard* should look something like this:
+The CoPilot *Dashboard* should look something like this:
 
 ```{figure} images/lab2-dashboard.png
 ---
