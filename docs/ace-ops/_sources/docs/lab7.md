@@ -40,6 +40,8 @@ ace-azure-east-us-spoke2
 ```{important}
 This action will install a `Default Route` within the Private Subnets, pointing to the **_ace-azure-east-us-spoke2_** GW.
 
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_ace-azure-east-us-spoke2_** Gateway, then click on the `VPC/VNet Route Tables` tab and select a **Private** Routing Table from the Route Table field!
+
 ```{figure} images/lab7-defaultroute.png
 ---
 align: center
