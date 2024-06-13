@@ -249,13 +249,13 @@ SSH into **both** EC2 test instances in **_aws-us-east-1-spoke1_** VPC (refer to
 
 These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
 
-Ping the EC2 test instance (10.0.1.100) in aws-us-east-2-spoke1 VPC. 
+Ping the EC2 test instance (10.0.1.100) in aws-us-east-2-spoke1 VPC.
 
 ```{figure} images/lab5-new8.png
 ---
 align: center
 ---
-from US-EAST-1 to US-EAST-2
+From US-EAST-1 to US-EAST-2
 ```
 
 It will fail. **WHY?** Because we didn’t enable segmentation on **_aws-us-east-1-transit_** and associate **_aws-us-east-1-spoke1_** with the transit gateway in the appropriate network domain.
