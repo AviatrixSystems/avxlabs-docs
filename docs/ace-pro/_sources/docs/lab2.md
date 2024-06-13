@@ -107,16 +107,9 @@ These are very aggressive settings. In a Production environment, you should not 
 
 Go to **CoPilot > Dashboard** and check the `Gateways Health` either of the Spoke GW Clusters or the Transit GW Clusters. 
 
-When you begin this lab, you should have **six** Gateway Clusters (i.e. 3x Transit GWs clusters, 2x Spoke GWs clusters and 1x Edge cluster) in your pod:
+When you begin this lab, you should have **six** Gateway Clusters (i.e. 3x Transit GWs clusters, 2x Spoke GWs clusters and 1x Edge cluster) in your pod.
 
 ```{figure} images/lab2-dashboardgw.png
----
-align: center
----
-Dashboard with existing GWs
-```
-
-```{figure} images/lab2-clustergw.png
 ---
 align: center
 ---
