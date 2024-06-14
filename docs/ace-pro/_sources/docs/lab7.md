@@ -9,10 +9,10 @@ The objective of this lab is to learn how to deploy **Palo Alto** Networks (aka 
 Aviatrix Firewall Network (aka *`FireNet`*) is a turnkey solution to deploy and manage firewall instances in the cloud, as shown in the topology below. Firewall Network significantly simplifies virtual firewall deployment and allows the firewall to inspect VPC/VNet/VCN to VPC/VNet/VCN (East West) traffic, VPC/VNet/VCN to Internet (Egress) traffic, and VPC/VNet/VCN to on-prem including partners and branches (North South) traffic.
 
 In addition, Firewall Network allows you to scale firewall deployment to multi AZ and multi instances/VMs in maximum throughput active/active state without the SNAT requirement.
- 
+
 ## 3. Topology
 
-Up until now, in Azure you have only worked on **_azure-west-us-spoke1_**. 
+Up until now, in Azure you have only worked on **_azure-west-us-spoke1_**.
 
 This lab will introduce finally **_azure-west-us-spoke2_** GW, that is a gateway in the top-right corner of this topology that is already deployed (hence it is red), <ins>although its attachment has not been deployed yet</ins>!
 
