@@ -21,7 +21,7 @@ The VPC **aws-us-east-2-spoke1** has a private subnet in its environment, whereb
 - Explore the Private Routing Tables inside the VPC **aws-us-east-2-spoke1**
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs from the Route table field.
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any of the Private RTBs from the `Route Table` field.
 ```
 
 ```{figure} images/lab6-spokegw.png
