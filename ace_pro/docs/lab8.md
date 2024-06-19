@@ -49,7 +49,9 @@ align: center
 BGPoverLAN
 ```
 
-The S2C connection with Edge will be configured on the subsequent task. Now let's configure the S2C connection with the partner site!
+The S2C connection with Edge will be configured on the subsequent task. 
+
+Now let's configure the S2C connection with the Partner site!
 
 ```{figure} images/lab8-partner.png
 ---
