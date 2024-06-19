@@ -163,14 +163,29 @@ You will notice the Message `"No Data Found"`. You have successfully activated y
 - Enable the Distributed Cloud Firewall.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Begin Using Distributed Cloud Firewall"`
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Enable Distributed Cloud Firewall"`.
+Afterwards click on `"Begin using Distributed Cloud Firewall"`, then click on `"Begin"`.
 ```
 
 ```{figure} images/lab6-activate.png
 ---
 align: center
 ---
-Activate DCF
+Enable Distributed Cloud Firewall
+```
+
+```{figure} images/lab6-newjoe.png
+---
+align: center
+---
+Begin using Distributed Cloud Firewall
+```
+
+```{figure} images/lab6-newjoe2.png
+---
+align: center
+---
+Begin
 ```
 
 After having enabled the DCF, the `Greendfield-Rule` gets generated automatically. 

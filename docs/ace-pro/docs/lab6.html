@@ -532,30 +532,43 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Begin</span> <span class="pre">Using</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code></p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>.
+Afterwards click on <code class="docutils literal notranslate"><span class="pre">&quot;Begin</span> <span class="pre">using</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>, then click on <code class="docutils literal notranslate"><span class="pre">&quot;Begin&quot;</span></code>.</p>
 </div>
 <figure class="align-center" id="id13">
 <img alt="../_images/lab6-activate.png" src="../_images/lab6-activate.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 177 </span><span class="caption-text">Activate DCF</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 177 </span><span class="caption-text">Enable Distributed Cloud Firewall</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab6-newjoe.png" src="../_images/lab6-newjoe.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Begin using Distributed Cloud Firewall</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab6-newjoe2.png" src="../_images/lab6-newjoe2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 179 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After having enabled the DCF, the <code class="docutils literal notranslate"><span class="pre">Greendfield-Rule</span></code> gets generated automatically.</p>
 <p>This rule essentially allows all kind of traffic.</p>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab6-greenfield.png" src="../_images/lab6-greenfield.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 180 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="create-the-discovery-rule">
 <h3>4.3 Create the Discovery-Rule<a class="headerlink" href="#create-the-discovery-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab6-newrule10.png" src="../_images/lab6-newrule10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 179 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 181 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters</p>
@@ -570,10 +583,10 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab6-new.png" src="../_images/lab6-new.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 180 </span><span class="caption-text">Committing the Discovery-Rule</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 182 </span><span class="caption-text">Committing the Discovery-Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the <strong>Commit</strong> button and the rule previously created will work in watch/test mode due to the fact that the <code class="docutils literal notranslate"><span class="pre">enforcement</span></code> was turn off.</p>
@@ -581,10 +594,10 @@ document.write(`
 <p class="admonition-title">Important</p>
 <p>If the <strong>Enforcement</strong> slider is <strong>On</strong> (the default), the rule is enforced in the data plane. If the Enforcement slider is <strong>Off</strong>, the packets are only watched. This allows you to observe if the traffic impacted by this rule causes any inadvertent issues (such as traffic being dropped).</p>
 </div>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab6-newrule11.png" src="../_images/lab6-newrule11.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 181 </span><span class="caption-text">Discovery-Rule</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 183 </span><span class="caption-text">Discovery-Rule</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -603,25 +616,25 @@ document.write(`
 </pre></div>
 </div>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and you will see a total of <strong>4 logs</strong>.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab6-monitorpermit.png" src="../_images/lab6-monitorpermit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 182 </span><span class="caption-text">Monitor: 4 logs</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 184 </span><span class="caption-text">Monitor: 4 logs</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Overview (default)</strong></p>
 <p>Now you have finally the egress observability with a full list of domains hit by the EC2 instance inside that private subnet.</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab6-newrul12.png" src="../_images/lab6-newrul12.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 183 </span><span class="caption-text">Overview</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 185 </span><span class="caption-text">Overview</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Furthermore, go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window, select the <strong><em>aws-us-east-2-spoke1 VPC</em></strong>.</p>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab6-monitor.png" src="../_images/lab6-monitor.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 184 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 186 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will get a granular Layer 7 visibility that allows you to get a good understanding of how the egress traffic has been consumed and also allows you to help make decisions on how to potentially optimize that.</p>
@@ -633,10 +646,10 @@ document.write(`
 <h3>5.1 Create a New WebGroup<a class="headerlink" href="#create-a-new-webgroup" title="Link to this heading">#</a></h3>
 <p>Let’s move towards a posture where only the allowed egress domains are in place.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; WebGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab6-webgroup.png" src="../_images/lab6-webgroup.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 185 </span><span class="caption-text">+WebGroup</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 187 </span><span class="caption-text">+WebGroup</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create a <strong><em>WebGroup</em></strong> with the following parameters:</p>
@@ -647,10 +660,10 @@ document.write(`
 <li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab6-webgroup2.png" src="../_images/lab6-webgroup2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 186 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 188 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -678,10 +691,10 @@ document.write(`
 <p class="admonition-title">Warning</p>
 <p>Keep the other parameters with their default values!</p>
 </div>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id25">
 <img alt="../_images/lab6-newrule.png" src="../_images/lab6-newrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 187 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 189 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -692,10 +705,10 @@ document.write(`
 </ul>
 </div>
 <p>Before committing, click once again on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab6-beforecommitting.png" src="../_images/lab6-beforecommitting.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 188 </span><span class="caption-text">Before Commit</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 190 </span><span class="caption-text">Before Commit</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create an <code class="docutils literal notranslate"><span class="pre">Explicit</span> <span class="pre">Deny</span> <span class="pre">Rule</span></code> that will allow to see the logs for the <code class="docutils literal notranslate"><span class="pre">&quot;Denied&quot;</span></code> actions.</p>
@@ -715,26 +728,26 @@ document.write(`
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id27">
 <img alt="../_images/lab6-explicitdeny.png" src="../_images/lab6-explicitdeny.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 191 </span><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Now you can proceed and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id28">
 <img alt="../_images/lab6-newcommit.png" src="../_images/lab6-newcommit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 190 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 192 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the <strong><em>Live View</em></strong> from the <code class="docutils literal notranslate"><span class="pre">&quot;Time</span> <span class="pre">Period&quot;</span></code> field, then select the <strong><em>aws-us-east-2-spoke1</em></strong> VPC from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window.</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab6-newview.png" src="../_images/lab6-newview.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 191 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -756,17 +769,17 @@ document.write(`
 </pre></div>
 </div>
 <p>Only the first two curl commands will be successful.</p>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id30">
 <img alt="../_images/lab6-newpic.png" src="../_images/lab6-newpic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 192 </span><span class="caption-text">Curl commands</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Curl commands</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice almost instanteously that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong> will match the new <code class="docutils literal notranslate"><span class="pre">&quot;Explicit</span> <span class="pre">Deny</span> <span class="pre">Rule&quot;</span></code>, therefore it will be denied and immediately dropped.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id31">
 <img alt="../_images/lab6-liveview.png" src="../_images/lab6-liveview.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Denied</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Denied</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -788,17 +801,17 @@ document.write(`
 <li><p><strong>Intrusion Detection (IDS)</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id32">
 <img alt="../_images/lab6-ids.png" src="../_images/lab6-ids.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Inspect-DNS</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 196 </span><span class="caption-text">Inspect-DNS</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Proceed clicking on the <strong>Commit</strong> button.</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id33">
 <img alt="../_images/lab6-idscommit.png" src="../_images/lab6-idscommit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 197 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -813,27 +826,27 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You will be asked to type again the student password!</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id34">
 <img alt="../_images/lab6-password.png" src="../_images/lab6-password.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 196 </span><span class="caption-text">Root PWD</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 198 </span><span class="caption-text">Root PWD</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/0xtf/testmynids.org/master/tmNIDS<span class="w"> </span>-o<span class="w"> </span>/tmp/tmNIDS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/tmp/tmNIDS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>/tmp/tmNIDS
 </pre></div>
 </div>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id35">
 <img alt="../_images/lab6-sudo.png" src="../_images/lab6-sudo.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 197 </span><span class="caption-text">Commands issued</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Commands issued</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The last command will show up a <strong><em>simulator</em></strong> from whom you will be able to launch an attack for testing the <code class="docutils literal notranslate"><span class="pre">&quot;Suricata</span> <span class="pre">IDS&quot;</span></code>.</p>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id36">
 <img alt="../_images/lab6-suricata.png" src="../_images/lab6-suricata.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 198 </span><span class="caption-text">Simulator</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 200 </span><span class="caption-text">Simulator</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -842,10 +855,10 @@ document.write(`
 <ul class="simple">
 <li><p>Before launching the attack, edit the new DCF rule, clicking on the pencil icon beside the <strong><em>Inspect-DNS</em></strong> rule.</p></li>
 </ul>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id37">
 <img alt="../_images/lab6-suricataedit.png" src="../_images/lab6-suricataedit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Edit existing rule</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 201 </span><span class="caption-text">Edit existing rule</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters and do not forget to click on <strong>Save In Drafts</strong>:</p>
@@ -853,24 +866,24 @@ document.write(`
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>UDP</span></p></li>
 <li><p><strong>Port</strong>: <span style='color:#479608'>53</span></p></li>
 </ul>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id38">
 <img alt="../_images/lab6-dns.png" src="../_images/lab6-dns.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 200 </span><span class="caption-text">Modify the rule</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 202 </span><span class="caption-text">Modify the rule</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now click on the <strong>Commit</strong> button.</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id39">
 <img alt="../_images/lab6-commit3.png" src="../_images/lab6-commit3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 201 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 203 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the EC2 instance <strong><em>aws-us-east-2-spoke1-test2</em></strong>, type <strong>5</strong> and click enter for launching a malicious attack, specifically the attack will try to establish a connection towards a TOR server.</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id40">
 <img alt="../_images/lab6-5.png" src="../_images/lab6-5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 202 </span><span class="caption-text">Malicious known attack</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 204 </span><span class="caption-text">Malicious known attack</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Detected Intrusions</strong>, and you will be able to find indicators that detected that attempt to contact a TOR server, through a DNS request.</p>
@@ -878,17 +891,17 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>If you do not see the logs immediately, click on the <strong>refresh</strong> button</p>
 </div>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id41">
 <img alt="../_images/lab6-refresh.png" src="../_images/lab6-refresh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 203 </span><span class="caption-text">Detected Intrusions</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 205 </span><span class="caption-text">Detected Intrusions</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on any <strong>Timestamps</strong> to get additional insight on that specific attack.</p>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id42">
 <img alt="../_images/lab6-final.png" src="../_images/lab6-final.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 204 </span><span class="caption-text">Additional insights</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 206 </span><span class="caption-text">Additional insights</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -896,10 +909,10 @@ document.write(`
 <p>The indicator is showing clearly that we tried reaching out to Google DNS and then querying for a TOR domain!</p>
 </div>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id43">
 <a class="reference internal image-reference" href="../_images/lab6-finaltopo.png"><img alt="../_images/lab6-finaltopo.png" src="../_images/lab6-finaltopo.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 205 </span><span class="caption-text">Final Topology for Lab 6</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 207 </span><span class="caption-text">Final Topology for Lab 6</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
