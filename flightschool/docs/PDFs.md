@@ -14,6 +14,6 @@ Click this link to {Download}`ACE-A - Mod04 - CSPNetworking-Azure101<files/ACE-A
 
 Click this link to {Download}`ACE-A - Mod05 - MCNA<files/ACE-A - Mod05 - MCNA.pdf>`
 
-Click this link to {Download}`AACE-A - Mod06 - Aviatrix Features 1<files/ACE-A - Mod06 - Aviatrix Features 1.pdf>`
+Click this link to {Download}`ACE-A - Mod06 - Aviatrix Features 1<files/ACE-A - Mod06 - Aviatrix Features 1.pdf>`
 
-Click this link to {Download}`AACE-A - Mod06 - Aviatrix Features 2<files/ACE-A - Mod07 - Aviatrix Features 2.pdf>`
+Click this link to {Download}`ACE-A - Mod06 - Aviatrix Features 2<files/ACE-A - Mod07 - Aviatrix Features 2.pdf>`
