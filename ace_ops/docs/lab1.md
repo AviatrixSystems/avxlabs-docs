@@ -149,7 +149,7 @@ The IP addresses can be easily retrieved using **3** different methods, as you l
 Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
 
 ```{caution}
-You can't connect to any Aviatrix Gateways using the SSH protocol. The port 22 is hardened!
+You can't connect to any Aviatrix Gateways using the **SSH** protocol. The port 22 is hardened!
 ```
 
 ```{figure} images/lab1-newpicture.png
@@ -209,6 +209,7 @@ BU1 connectivity
 
 * Verify the network segregation **between** the two BUs:
   * From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
+  * From **BU1 Frontend** try to SSH **BU2 Mobile App** (use its Private IP address!).
 
 Ping and SSH commands should not work this time, due to the separation between the two segments (i.e. <ins>these are two different Routing Domains</ins>).
 
@@ -225,7 +226,7 @@ align: center
 BU1 to BU2 fails
 ```
 
-* Check the **Network Segmentation** on the CoPilot, and then look at the **Logical View**.
+* Check the **Network Segmentation** section on the CoPilot, and then look at the **Logical View**.
 
 ```{tip}
 Go to **CoPilot > Networking > Network Segmentation > Overview**
@@ -238,10 +239,19 @@ align: center
 Logical View
 ```
 
+* Check the **Network Domains** Tab, too.
+
+```{figure} images/lab1-noconnection.png
+---
+align: center
+---
+Network Domains
+```
+  
 * Check the different routing tables (*VRFs*) maintained by any of the Transit Gateways.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ace-aws-eu-west-1-transit** Gateway **> Gateway Routes** and filter out based on the Network Domain (i.e. either BU1 or BU2).
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ace-aws-eu-west-1-transit** Gateway **> Gateway Routes** and filter out based on any Network Domains (i.e. either BU1 or BU2).
 ```
 
 ```{figure} images/lab1-bu1vrf.png
@@ -249,6 +259,17 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ac
 align: center
 ---
 Network Domain (aka VRF)
+```
+
+```{tip}
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ace-aws-eu-west-1-transit** Gateway and then select the tab **Route DB**. 
+
+You will notice that the `Segmentation` feature is indeed enabled. Moreover, you will notice the different RTBs.
+```{figure} images/lab1-newjoe.png
+---
+align: center
+---
+RIB
 ```
 
 * Use the <span style='color:#FF0000'>**FlowIQ**</span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.

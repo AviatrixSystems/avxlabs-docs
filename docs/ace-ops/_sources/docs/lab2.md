@@ -38,7 +38,7 @@ align: center
 BU1 editing
 ```
 
-- Check the **Logical View** inside the network Segmentation section.
+- Check the **Logical View** inside the Network Segmentation section.
 
 ```{tip}
 Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**. 
@@ -79,22 +79,7 @@ View on a specific RTB
 ```
 
 ```{important}
-The Spoke Gateways provide visibility only of the main routing table, the Global Routing Table (aka **GRT**), whereas the transit Gateways provide visibility of all routings tables (the main and the additional RTBs created through the Segmentation feature)
-```
-
-- Check the Route DB 
-
-```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Route DB**
-```
-
-You will notice that the `"Segmentation"` is currently enabled and furthermore, you will also see what RTB each subnet belongs to.
-
-```{figure} images/lab2-rib.png
----
-align: center
----
-Route DB
+The **Spoke** Gateways provide visibility only of the main routing table, the Global Routing Table (aka **GRT**), whereas the **Transit** Gateways provide visibility of all routings tables (the main rtb + any additional RTBs created through the Segmentation feature).
 ```
 
 ## 3. TROUBLESHOOT REQUEST
