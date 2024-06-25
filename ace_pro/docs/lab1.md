@@ -95,7 +95,7 @@ align: center
 Hourglass icon
 ```
 
-Go back to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and type the name of the VNet previously created, **azure-us-central-spoke1**, inside the search field, then expand the VNet to explore the additional subnets created by the Aviatrix Controller.
+Go back to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and type the name of the VNet previously created, **`azure-us-central-spoke1`**, inside the search field, then expand the VNet to explore the additional subnets created by the Aviatrix Controller.
 
 ```{tip}
 **Click on the refresh button!**
@@ -192,7 +192,7 @@ align: center
 AWS console
 ```
 
-Change the region to `Oregon (us-west-2)` in the top-right corner and invoke the VPC service. 
+Change the region to `Oregon (us-west-2)` in the top-right corner and invoke the **VPC** service. 
 
 ```{figure} images/lab1-newpic6.png
 ---
