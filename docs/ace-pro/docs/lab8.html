@@ -484,7 +484,8 @@ document.write(`
 </figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>The configuration template will grey out after clicking on Save. Be patient and wait for the Aviatrix Controller to complete the deployment. <ins>This will create the first side of the connection, on the GCP Spoke GW</ins>.</p>
+<p>The configuration template will grey out after clicking on <strong>Save</strong>.</p>
+<p>Be patient and wait for the <strong><em>Aviatrix Controller</em></strong> to complete the deployment. <ins>This will create the first side of the connection, on the GCP Spoke GW</ins>.</p>
 </div>
 <p>Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.</p>
 <ul class="simple">
@@ -495,7 +496,7 @@ document.write(`
 </section>
 <section id="site2cloud-connection-strongswan-s-configuration">
 <h3>4.2 Site2Cloud Connection - StrongSwan’s configuration<a class="headerlink" href="#site2cloud-connection-strongswan-s-configuration" title="Link to this heading">#</a></h3>
-<p>Now you have to complete the IPSec configuration of the StrongSwan router.</p>
+<p>Now you have to complete the IPSec configuration of the <strong>StrongSwan</strong> router.</p>
 <p>SSH to the StrongSwan router. You can either use the public IP address that you retrieved before using the dig/nslookup command or you can use its dns name available on your personal POD portal.</p>
 <figure class="align-center" id="id10">
 <img alt="../_images/lab8-personalpod.png" src="../_images/lab8-personalpod.png" />
@@ -634,7 +635,7 @@ Check the content of the following file: <code class="docutils literal notransla
 <section id="edge">
 <h2>6. Edge<a class="headerlink" href="#edge" title="Link to this heading">#</a></h2>
 <p>Now let’s connect the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Edge</span></code> to the existing MCNA.</p>
-<p>First and foremost let’s explore the BGP Map that describes the connectivity established through the BGPoverLAN.</p>
+<p>First and foremost let’s explore the <strong>BGP Map</strong> that describes the connectivity established through the BGPoverLAN.</p>
 <p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> and click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Map&quot;</span></code> option.</p>
 <figure class="align-center" id="id24">
 <img alt="../_images/lab8-edge3.png" src="../_images/lab8-edge3.png" />
@@ -696,7 +697,7 @@ Check the content of the following file: <code class="docutils literal notransla
 </figcaption>
 </figure>
 <p>Now it’s time to establish the attachment!</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Edge &gt; Edge Gateways</strong> and click on the three dots icon beside the Edge device entry and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code>.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Edge &gt; Gateways</strong> and click on the <strong>three dots icon</strong> beside the Edge device entry and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code>.</p>
 <figure class="align-center" id="id32">
 <img alt="../_images/lab8-edge9.png" src="../_images/lab8-edge9.png" />
 <figcaption>
@@ -746,7 +747,7 @@ Check the content of the following file: <code class="docutils literal notransla
 <p><span class="caption-number">Fig. 283 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Connections&quot;</span></code> tab and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Edge</span> <span class="pre">Peering&quot;</span></code>. You will notice this additional tab that confirms the presence of an attachment between the Transit GW in the cloud and the Edge running in the DC!</p>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Attachments&quot;</span></code> tab and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Edge</span> <span class="pre">Peering&quot;</span></code>. You will notice this additional tab that confirms the presence of an attachment between the Transit GW in the cloud and the Edge running in the DC!</p>
 <figure class="align-center" id="id38">
 <img alt="../_images/lab8-edge17.png" src="../_images/lab8-edge17.png" />
 <figcaption>
@@ -765,7 +766,7 @@ Check the content of the following file: <code class="docutils literal notransla
 <section id="network-domain-association">
 <h3>6.2. Network Domain Association<a class="headerlink" href="#network-domain-association" title="Link to this heading">#</a></h3>
 <p>Let’s assocciate the Edge connection to any of the existing Network Domains.</p>
-<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong> and edit, for instance, the <strong>Green</strong> domain. Select the on-prem-edge connection and do not forget to click on <strong>Save</strong>!</p>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong> and edit, for instance, the <strong>Green</strong> domain. Select the <strong><code class="docutils literal notranslate"><span class="pre">on-prem-edge</span></code></strong> connection and do not forget to click on <strong>Save</strong>!</p>
 <figure class="align-center" id="id40">
 <img alt="../_images/lab8-edge19.png" src="../_images/lab8-edge19.png" />
 <figcaption>

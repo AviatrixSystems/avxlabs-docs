@@ -131,7 +131,9 @@ S2C template
 ```
 
 ```{caution}
-The configuration template will grey out after clicking on Save. Be patient and wait for the Aviatrix Controller to complete the deployment. <ins>This will create the first side of the connection, on the GCP Spoke GW</ins>.
+The configuration template will grey out after clicking on **Save**. 
+
+Be patient and wait for the **_Aviatrix Controller_** to complete the deployment. <ins>This will create the first side of the connection, on the GCP Spoke GW</ins>.
 ```
 
 Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.
@@ -144,7 +146,7 @@ For example, gcp-us-central1-test1 (172.16.1.100) will be reached at 192.168.200
 
 ### 4.2 Site2Cloud Connection - StrongSwan's configuration
 
-Now you have to complete the IPSec configuration of the StrongSwan router.
+Now you have to complete the IPSec configuration of the **StrongSwan** router.
 
 SSH to the StrongSwan router. You can either use the public IP address that you retrieved before using the dig/nslookup command or you can use its dns name available on your personal POD portal.
 
@@ -321,7 +323,7 @@ The Topology with the new S2C connection
 
 Now let's connect the `Aviatrix Edge` to the existing MCNA. 
 
-First and foremost let's explore the BGP Map that describes the connectivity established through the BGPoverLAN.
+First and foremost let's explore the **BGP Map** that describes the connectivity established through the BGPoverLAN.
 
 Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Map"` option.
 
@@ -403,7 +405,7 @@ BGP ASN
 
 Now it's time to establish the attachment! 
 
-Go to **CoPilot > Cloud Fabric > Edge > Edge Gateways** and click on the three dots icon beside the Edge device entry and then click on `"Manage Transit Gateway Attachment"`.
+Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the **three dots icon** beside the Edge device entry and then click on `"Manage Transit Gateway Attachment"`.
 
 ```{figure} images/lab8-edge9.png
 ---
@@ -466,7 +468,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Connections"` tab and then click on `"Transit-Edge Peering"`. You will notice this additional tab that confirms the presence of an attachment between the Transit GW in the cloud and the Edge running in the DC!
+Select the `"Attachments"` tab and then click on `"Transit-Edge Peering"`. You will notice this additional tab that confirms the presence of an attachment between the Transit GW in the cloud and the Edge running in the DC!
 
 ```{figure} images/lab8-edge17.png
 ---
@@ -490,7 +492,7 @@ The Edge devices allows to extend all the Aviatrix functionalities to the remote
 
 Let's assocciate the Edge connection to any of the existing Network Domains.
 
-Go to **CoPilot > Networking > Network Segmentation > Network Domains** and edit, for instance, the **Green** domain. Select the on-prem-edge connection and do not forget to click on **Save**!
+Go to **CoPilot > Networking > Network Segmentation > Network Domains** and edit, for instance, the **Green** domain. Select the **`on-prem-edge`** connection and do not forget to click on **Save**!
 
 ```{figure} images/lab8-edge19.png
 ---
