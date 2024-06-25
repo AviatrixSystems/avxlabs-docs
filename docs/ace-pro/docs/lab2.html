@@ -389,7 +389,7 @@ document.write(`
 <h1>Lab 2 - TRANSIT NETWORKING<a class="headerlink" href="#lab-2-transit-networking" title="Link to this heading">#</a></h1>
 <section id="objective">
 <h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
-<p>Build Transit Network in Azure, GCP and AWS using Aviatrix Multicloud Transit <code class="docutils literal notranslate"><span class="pre">hub</span> <span class="pre">and</span> <span class="pre">spoke</span> <span class="pre">model</span></code>.</p>
+<p>Build Transit Network in Azure, GCP and AWS using Aviatrix Multicloud Transit <code class="docutils literal notranslate"><span class="pre">Hub-and-Spoke</span> <span class="pre">Topology</span></code>.</p>
 <p>In this lab, we will use Aviatrix CoPilot to connect three major clouds, i.e. Azure, GCP and AWS. The workloads in VPCs/VNets, in all three clouds, must communicate without manual configuration on the native consoles.</p>
 </section>
 <section id="multicloud-connectivity-overview">
@@ -681,7 +681,7 @@ document.write(`
 <li><p><strong>Name:</strong> <span style='color:#479608'>gcp-us-central1-spoke1</span></p></li>
 <li><p><strong>Cloud:</strong> <span style='color:#479608'>GCP</span></p></li>
 <li><p><strong>Account:</strong> <span style='color:#479608'>gcp-account</span></p></li>
-<li><p><strong>VPC:</strong> <span style='color:#479608'>gcp-us-central1-spoke1</span></p></li>
+<li><p><strong>VPC:</strong> <span style='color:#479608'>gcp-us-central1-spoke1 (Make sure you don’t select gcp-us-<strong>west2</strong>-spoke1 VPC)</span></p></li>
 <li><p><strong>Instance Size:</strong> <span style='color:#479608'>n1-standard-1</span></p></li>
 <li><p><strong>High Performance Encryption:</strong> <span style='color:#479608'><strong>Off</strong></span></p></li>
 <li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>gcp-us-central1-spoke1-sub1</span></p></li>
@@ -966,7 +966,7 @@ document.write(`
 <h2>5. Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
 <section id="verification-of-transit-peerings-on-copilot-cloud-fabric">
 <h3>5.1. Verification of Transit Peerings on CoPilot(Cloud Fabric)<a class="headerlink" href="#verification-of-transit-peerings-on-copilot-cloud-fabric" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong>, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Connections&quot;</span></code> tab and finally select the <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Transit</span> <span class="pre">Peering&quot;</span></code> sub-tab: you will see <strong>one</strong> connection per each peering, that correspond to the <code class="docutils literal notranslate"><span class="pre">two</span> <span class="pre">IPSec</span> <span class="pre">tunnels</span></code>.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong>, then select the <code class="docutils literal notranslate"><span class="pre">Attachments&quot;</span></code> tab and finally select the <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Transit</span> <span class="pre">Peering&quot;</span></code> tab: you will see <strong>one</strong> connection per each peering, that correspond to the <code class="docutils literal notranslate"><span class="pre">two</span> <span class="pre">IPSec</span> <span class="pre">tunnels</span></code>.</p>
 <figure class="align-center" id="id47">
 <img alt="../_images/lab2-verification.png" src="../_images/lab2-verification.png" />
 <figcaption>

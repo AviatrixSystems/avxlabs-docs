@@ -289,7 +289,7 @@ align: center
 Lab 7 Topology with FW deployed and the Inspection Policy applied!
 ```
 
-## 5.1. Within Azure
+## 5.1. Inside Azure
 
 Before we can verify connectivity, we need to associate **_azure-west-us-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
 
@@ -482,4 +482,10 @@ Filter based on ICMP
 align: center
 ---
 Logs on DCF Monitor section
+```
+
+```{important}
+The same policy is present on both the PaloAlto firewall and on the Spoke Gateway...
+
+Maybe it's time to finally embrace the full **`"Distributed Cloud Firewall"`** solution, and getting rid of the NGFW!
 ```

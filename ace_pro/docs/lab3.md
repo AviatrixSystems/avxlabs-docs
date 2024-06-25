@@ -206,7 +206,7 @@ Select the appropriate option from the **`"Connect to Network Domain"`** pull-do
 ---
 align: center
 ---
-Apply the connection polic
+Apply the Connection Policy
 ```
 
 ### 6.1. Verification of Connection Policy
