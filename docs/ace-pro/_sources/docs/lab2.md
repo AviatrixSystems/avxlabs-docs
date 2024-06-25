@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-Build Transit Network in Azure, GCP and AWS using Aviatrix Multicloud Transit `hub and spoke model`.
+Build Transit Network in Azure, GCP and AWS using Aviatrix Multicloud Transit `Hub-and-Spoke Topology`.
 
 In this lab, we will use Aviatrix CoPilot to connect three major clouds, i.e. Azure, GCP and AWS. The workloads in VPCs/VNets, in all three clouds, must communicate without manual configuration on the native consoles.
 
@@ -338,7 +338,7 @@ Only one Spoke Gateway will be deployed in VPC **gcp-us-central1-spoke1**.
 - **Name:** <span style='color:#479608'>gcp-us-central1-spoke1</span>
 - **Cloud:** <span style='color:#479608'>GCP</span>
 - **Account:** <span style='color:#479608'>gcp-account</span>
-- **VPC:** <span style='color:#479608'>gcp-us-central1-spoke1</span>
+- **VPC:** <span style='color:#479608'>gcp-us-central1-spoke1 (Make sure you don't select gcp-us-**west2**-spoke1 VPC)</span>
 - **Instance Size:** <span style='color:#479608'>n1-standard-1</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
 - **Attach to Subnet:** <span style='color:#479608'>gcp-us-central1-spoke1-sub1</span>
@@ -667,7 +667,7 @@ Please pay close attention that the following pending elements will be completed
  
 ### 5.1. Verification of Transit Peerings on CoPilot(Cloud Fabric)
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `"Connections"` tab and finally select the `"Transit-Transit Peering"` sub-tab: you will see **one** connection per each peering, that correspond to the `two IPSec tunnels`.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `Attachments"` tab and finally select the `"Transit-Transit Peering"` tab: you will see **one** connection per each peering, that correspond to the `two IPSec tunnels`.
 
 ```{figure} images/lab2-verification.png
 ---
