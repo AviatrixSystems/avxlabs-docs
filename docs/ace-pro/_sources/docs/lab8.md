@@ -501,7 +501,7 @@ align: center
 Network Domain Association
 ```
 
-You have successfully extended the network Segmentation on top of the DC.
+You have successfully extended the `Network Segmentation` on top of the DC.
 
 ```{figure} images/lab8-newjoe.png
 ---
@@ -511,6 +511,8 @@ The DC is now another VPC
 ```
 
 Let's explore again the Cloud Routes section!
+
+
 Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Advertised Routes` option.
 
 ```{important}
@@ -553,7 +555,7 @@ align: center
 Workstation Edge credentials
 ```
 
-You will lend on the Desktop of the Workstation Edge, and from here launch the `LX Terminal`.
+You will land on the Desktop of the Workstation Edge and from here launch the `LX Terminal`.
 
 ```{figure} images/lab8-newjoe4.png
 ---
@@ -571,7 +573,7 @@ align: center
 Target for the connectivity test
 ```
 
-The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered an additional VPC!
+The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered as just an additional VPC!
 
 ```{figure} images/lab8-edge30.png
 ---
@@ -616,11 +618,18 @@ Refresh
 
 Then scroll a little bit and check the `"Flow Exporters"` widget, then from the drop-down menu select the **`"Aviatrix Gateway"`** widget: you will see the list of all the Aviatrix Gateways involved along the path.
 
+```{figure} images/lab8-newjoe6.png
+---
+align: center
+---
+Widget
+```
+
 ```{figure} images/lab8-flowiq.png
 ---
 align: center
 ---
-FlowIQ
+Aviatrix Gateway
 ```
 
 ```{note}
@@ -719,7 +728,7 @@ Topology
 
 #### 6.4.1 Edge: As-Path Prepend
 
-Now, let's SSH on the EC2 _aws-us-east-2-spoke1-test1_  and then launch the command traceroute towards the VM _gcp-us-central1-spoke1-test1_ in GCP
+Now, let's **SSH** on the EC2 _**aws-us-east-2-spoke1-test1**_  and then launch the command _traceroute_ towards the VM _gcp-us-central1-spoke1-test1_ in GCP
 
 ```{figure} images/lab8-edgedouble21.png
 ---
@@ -728,7 +737,7 @@ align: center
 aws-us-east-2-spoke1-test1 
 ```
 
-Install the **`inetutils-traceroute`** package, typing the following command:
+- Install the **`inetutils-traceroute`** package, typing the following command:
 
 ```bash
 sudo apt install inetutils-traceroute
@@ -853,7 +862,7 @@ align: center
 as-path prepend
 ```
 
-Now go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** inside the Search field. This time the AS Path Length will turn out being equal to 3, due to to the route manipulation that harnessed the `as-path prepend` feature.
+Now go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** inside the Search field. This time the AS Path Length will turn out being equal to 3, due to to the route manipulation that harnessed the `as-path prepend` feature.
 
 ```{figure} images/lab8-path.png
 ---
@@ -871,7 +880,7 @@ align: center
 traceroute
 ```
 
-The traceroute is still showing the Transit peering as the preferred path, although the `as-path prepend` was correctly applied earlier. 
+The traceroute is still showing the Transit peering between AWS and GCP as the preferred path, although the `as-path prepend` was correctly applied earlier. 
 
 There is another option that needs to be enabled in order to complete this lab. Go to **CoPilot > Cloud Fabric > Edge > Edge Gateways** and click on the `Edge` device.
 
@@ -882,7 +891,7 @@ align: center
 edge
 ```
 
-Select the `"Settings"` tab and then expand the `"Routing"` section, then turn on the knob `Transitive Routing`.
+Select the `"Settings"` Tab and then expand the `"Routing"` section, afterwards turn on the knob `Transitive Routing` and do not forget to click on **Save**.
 
 ```{figure} images/lab8-almostdone03.png
 ---
