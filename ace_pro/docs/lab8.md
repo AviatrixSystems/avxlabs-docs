@@ -501,6 +501,15 @@ align: center
 Network Domain Association
 ```
 
+You have successfully extended the network Segmentation on top of the DC.
+
+```{figure} images/lab8-newjoe.png
+---
+align: center
+---
+The DC is now another VPC
+```
+
 Let's explore again the Cloud Routes section!
 Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Advertised Routes` option.
 
@@ -517,25 +526,43 @@ BGP Advertised Routes
 
 ### 6.3. Edge: Connectivity Test
 
-Let's launch a connectivity test. 
+Let's launch a connectivity test, from the Workstation "Edge" inside the DC in New York. 
 
-**SSH** to the "edge" VM client that is behind the LAN router and then ping the **_aws-us-east-2-spoke1-test1_** EC2 in US-EAST-2.
+```{figure} images/lab8-newjoe2.png
+---
+align: center
+---
+BGP Advertised Routes
+```
+
+Go to your personal POD portal, scroll down untill your reach the **Lab 8** section and click on the `"Open Workstation"` button.
 
 ```{figure} images/lab8-edgenew.png
 ---
 align: center
 ---
-Connectivity test
+Workstation Edge access from the POD Portal
 ```
 
-Once again, refer to your personal POD for retrieving the DNS symbolic name of the client attached to the LAN router!
+Subsequently, insert the credentials available from the POD Portal.
 
-```{figure} images/lab8-edgenew2.png
+```{figure} images/lab8-newjoe3.png
 ---
 align: center
 ---
-Connectivity test
+Workstation Edge credentials
 ```
+
+You will lend on the Desktop of the Workstation Edge, and from here launch the `LX Terminal`.
+
+```{figure} images/lab8-newjoe4.png
+---
+align: center
+---
+LX Terminal
+```
+
+Now execute the ping command towards the private IP address of the **aws-us-east-2-spoke1-test1** instance.
 
 ```{figure} images/lab8-edge22.png
 ---
