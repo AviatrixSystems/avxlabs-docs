@@ -157,7 +157,7 @@ Add Recipient(s)
 
 From this point onwards, if you enter a valid email address, you will receive email notifications about **ThreatIQ** alerts.
 
-Before enabling the blocking, on the right-hand side, ensure that the **ThreatGuard firewall rules order** is set to `Prepend`.
+Before enabling the blocking,  ensure that the **ThreatGuard firewall rules order** is set to `Prepend` on the right-hand side.
 
 ```{figure} images/lab9-advanced.png
 ---
@@ -429,7 +429,8 @@ align: center
 Cost Centers Overview
 ```
 
-Now let's discover the **Public IP address** of the workstation client "edge" in the **New York DC**. Copy the DNS name available on your portal and resolve it using the `host/nslookup` command.
+Now let's discover the **Public IP address** of the `Workstation Edge` in the **New York DC**. 
+Copy the DNS name available on your POD portal and resolve it using the `host/nslookup` command.
 
 ```{figure} images/lab9-costiq10.png
 ---
