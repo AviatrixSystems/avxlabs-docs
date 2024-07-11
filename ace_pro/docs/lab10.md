@@ -158,9 +158,23 @@ align: center
 Ping
 ```
 
+```{figure} images/lab10-newjoe10.png
+---
+align: center
+---
+Ping
+```
+
+```{figure} images/lab10-newjoe11.png
+---
+align: center
+---
+Ping
+```
+
 ### 3.4.  Connectivity verification (SSH)
 
-Verify also from the instance **aws-us-east-2-spoke1-test1** that you can SSH to the private instance in AWS, to the instance in GCP and likewise to the other two instances in Azure.
+Verify also from the instance **aws-us-east-2-spoke1-test1** that you can SSH to the private instance in AWS (us-east-2), to the instance in GCP, to the instances in AWS (us-east-2) and likewise to the other two instances in Azure.
 
 ```{note}
 Refer to your POD for the private IPs.
@@ -177,35 +191,35 @@ SSH to test2 in AWS US-East-2
 ---
 align: center
 ---
-SSH to GCP
+SSH to test1 in GCP US-Central1
 ```
 
 ```{figure} images/lab10-sshtoazure1.png
 ---
 align: center
 ---
-SSH to Azure Spoke1
+SSH to test1 in Azure West-US
 ```
 
 ```{figure} images/lab10-sshtoazure2.png
 ---
 align: center
 ---
-SSH to Azure Spoke2
+SSH to test2 in Azure West-US
 ```
 
 ```{figure} images/lab10-sshnew.png
 ---
 align: center
 ---
-SSH to AWS us-east-1-spoke1-test1
+SSH to test1 in AWS US-East1 
 ```
 
 ```{figure} images/lab10-sshnew2.png
 ---
 align: center
 ---
-SSH to AWS us-east-1-spoke1-test2
+SSH to test2 in AWS US-East1
 ```
 
 The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.

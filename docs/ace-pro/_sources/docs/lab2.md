@@ -273,7 +273,7 @@ Only one Spoke Gateway will be deployed in VPC **aws-us-east2-spoke1**.
 - **VPC ID:** <span style='color:#479608'>aws-us-east-2-spoke1 (Make sure you don't select aws-us-east-2-**transit** VPC)</span>
 - **Instance Size:** <span style='color:#479608'>t2.medium</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
-- **Attach to Subnet:** <span style='color:#479608'>us-east-2a</span>
+- **Attach to Subnet:** <span style='color:#479608'>aws-us-east-2-spoke1-Public-1-us-east-2a</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
 Click **SAVE**.
