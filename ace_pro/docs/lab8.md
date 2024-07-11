@@ -292,7 +292,7 @@ align: center
 Ping ok
 ```
 
-Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, click on `Tools` and then click on `Gateway Diagnostics`.
+Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, scroll down through all the **Properties**, click on the `Tools` button and then click on `Gateway Diagnostics`.
 
 ```{figure} images/lab8-diag.png
 ---
@@ -671,7 +671,7 @@ BGP ASN
 
 Now you are ready to proceed with the rest of the configuration on the Edge section!
 
-Go to **CoPilot > Cloud Fabric > Edge > Edge Gateways** and click on the three dots icon beside the Edge device entry and then click on `"Manage Transit Gateway Attachment"`.
+Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the three dots icon beside the Edge device entry and then click on `"Manage Transit Gateway Attachment"`.
 
 ```{figure} images/lab8-edgedouble2.png
 ---
@@ -728,7 +728,7 @@ Topology
 
 #### 6.4.1 Edge: As-Path Prepend
 
-Now, let's **SSH** on the EC2 _**aws-us-east-2-spoke1-test1**_  and then launch the command _traceroute_ towards the VM _gcp-us-central1-spoke1-test1_ in GCP
+Now, let's **SSH** on the EC2 _**aws-us-east-2-spoke1-test1**_  and then launch the command _traceroute_ towards the VM _**gcp-us-central1-spoke1-test1**_ in GCP
 
 ```{figure} images/lab8-edgedouble21.png
 ---
@@ -793,7 +793,7 @@ Primary and Backup
 
 Let's first check the `Route DB` of the **_aws-us-east-2-transit_** GW.
 
-Go to **CoPilot > Cloud Fabric > gateways > Transit Gateways** and select the **_aws-us-east-2-transit_** Gateway.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the **_aws-us-east-2-transit_** Gateway.
 
 ```{figure} images/lab8-primary01.png
 ---
@@ -882,13 +882,13 @@ traceroute
 
 The traceroute is still showing the Transit peering between AWS and GCP as the preferred path, although the `as-path prepend` was correctly applied earlier. 
 
-There is another option that needs to be enabled in order to complete this lab. Go to **CoPilot > Cloud Fabric > Edge > Edge Gateways** and click on the `Edge` device.
+There is another option that needs to be enabled in order to complete this lab. Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `Edge` device.
 
 ```{figure} images/lab8-almostdone02.png
 ---
 align: center
 ---
-edge
+Edge
 ```
 
 Select the `"Settings"` Tab and then expand the `"Routing"` section, afterwards turn on the knob `Transitive Routing` and do not forget to click on **Save**.

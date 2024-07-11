@@ -2,13 +2,21 @@
 
 ## 1. Objective
 
-This lab will demonstrate how the `Distributed Cloud Firewall` works.
+All the elements you have created through the UI, can also be created through the API or the official **Aviatrix Terraform provider**. 
 
-## 2. Distributed Cloud Firewall Overview
+You can find more information on these here:
+https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs
 
-The Distributed Cloud Firewall functionality encompases several services, such as Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata IDS/IPS and Advanced NAT capabilities.
+## 2. Validate
 
-In this lab you will create additional logical containers, called `SmartGroups`, that group instances that present similarities inside a VPC/VNet/VCN, and then you will enforce rules among these SmartGroups (aka **_Distributed Cloud Firewalling Rules_**):
+We have prepared some Terraform code for you, which you will explore and deploy.
+
+    Open the Remote Access Server by navigating and logging in to https://client.pod[#].aviatrixlab.com
+
+    Double-click on RDP - Client
+
+    Open the Visual Studio Code located on the Desktop
+
 
 1) `intra-rule` = Rule applied within a Smart Group
 
