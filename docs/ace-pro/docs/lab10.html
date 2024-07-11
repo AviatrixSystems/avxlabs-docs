@@ -1174,39 +1174,46 @@ document.write(`
 <p><span class="caption-number">Fig. 436 </span><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>After the creation of both the previous inter-rule and the additional Smart Group, this is how the topology with all the permitted protocols should look like.</p>
+<figure class="align-center" id="id70">
+<img alt="../_images/lab10-newjoe.png" src="../_images/lab10-newjoe.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 437 </span><span class="caption-text">Final Topology</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="spoke-to-spoke-attachment">
 <h2>7. Spoke to Spoke Attachment<a class="headerlink" href="#spoke-to-spoke-attachment" title="Link to this heading">#</a></h2>
 <p>Now that you have enabled the Distributed Cloud Firewall, the owner of the <strong><em>azure-west-us-spoke2-test1</em></strong> VM would like to communicate directly with the nearby <strong><em>azure-west-us-spoke1-test1</em></strong> VM, avoding that the traffic generated from the VNet is sent to the NGFW, first.</p>
-<figure class="align-center" id="id70">
+<figure class="align-center" id="id71">
 <img alt="../_images/lab10-spoke2spoke01.png" src="../_images/lab10-spoke2spoke01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 437 </span><span class="caption-text">No More NGFW</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 438 </span><span class="caption-text">No More NGFW</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="creating-a-spoke-to-spoke-attachment">
 <h3>7.1 Creating a Spoke to Spoke Attachment<a class="headerlink" href="#creating-a-spoke-to-spoke-attachment" title="Link to this heading">#</a></h3>
 <p>Go to <strong>Copilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong>, locate the <strong><em>azure-west-us-spoke2</em></strong> GW and click on the <strong><code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment</span></code></strong> icon on the right side of its row.</p>
-<figure class="align-center" id="id71">
+<figure class="align-center" id="id72">
 <img alt="../_images/lab10-spoke2spoke02.png" src="../_images/lab10-spoke2spoke02.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 438 </span><span class="caption-text">Manage Transit Gateway Attachment</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 439 </span><span class="caption-text">Manage Transit Gateway Attachment</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <strong>Spoke Gateway</strong> tab and then choose the <strong>azure-west-us-spoke1</strong> GW from the drop-down window.</p>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id72">
+<figure class="align-center" id="id73">
 <img alt="../_images/lab10-spoke2spoke03.png" src="../_images/lab10-spoke2spoke03.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 439 </span><span class="caption-text">azure-west-us-spoke1</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 440 </span><span class="caption-text">azure-west-us-spoke1</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong> and check the new attachment between the two Spoke Gateways in Azure.</p>
-<figure class="align-center" id="id73">
+<figure class="align-center" id="id74">
 <img alt="../_images/lab10-spoke2spoke04.png" src="../_images/lab10-spoke2spoke04.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 440 </span><span class="caption-text">Spoke to Spoke Attachment</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 441 </span><span class="caption-text">Spoke to Spoke Attachment</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1215,17 +1222,17 @@ document.write(`
 </div>
 <p>Let’s check the <strong>Routing Table</strong> of the <strong><em>Spoke2</em></strong> in Azure.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways</strong>, select the <strong>azure-west-us-spoke2</strong>, then select the <strong>Gateways Routes</strong> tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">192.168.1.0</span></code></strong> on the right-hand side.</p>
-<figure class="align-center" id="id74">
+<figure class="align-center" id="id75">
 <img alt="../_images/lab10-spoke2spoke05.png" src="../_images/lab10-spoke2spoke05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 441 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 442 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice that the destination is now reachable with a lower metric (50)!</p>
-<figure class="align-center" id="id75">
+<figure class="align-center" id="id76">
 <img alt="../_images/lab10-spoke2spoke06.png" src="../_images/lab10-spoke2spoke06.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 442 </span><span class="caption-text">Metric 50</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 443 </span><span class="caption-text">Metric 50</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The traffic generated from the <strong><em>azure-west-us-spoke2-test1</em></strong> VM will now prefer going through the Spoke-to-Spoke Attachment, for the communication with the Spoke1 VNet.</p>
@@ -1233,17 +1240,17 @@ document.write(`
 <p class="admonition-title">Important</p>
 <p>The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a Hub and Spoke Topology!</p>
 </div>
-<figure class="align-center" id="id76">
+<figure class="align-center" id="id77">
 <img alt="../_images/lab10-spoke2spoke07.png" src="../_images/lab10-spoke2spoke07.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 443 </span><span class="caption-text">Spoke to Spoke</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Spoke to Spoke</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><code class="docutils literal notranslate"><span class="pre">Congratulations,</span> <span class="pre">you</span> <span class="pre">have</span> <span class="pre">deployed</span> <span class="pre">the</span> <span class="pre">full-blown</span> <span class="pre">Aviatrix</span> <span class="pre">solution!</span></code></p>
-<figure class="align-center" id="id77">
+<figure class="align-center" id="id78">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing.png"><img alt="../_images/lab10-lastdrawing.png" src="../_images/lab10-lastdrawing.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 445 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
