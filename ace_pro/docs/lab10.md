@@ -109,7 +109,7 @@ Before clicking on **SAVE**, discover what instances match the condition, turnin
 ---
 align: center
 ---
-Resource Selections
+Resource Selection
 ```
 
 The CoPilot shows that there are three instances that match the condition:
@@ -148,14 +148,7 @@ Refer to your POD for the private IPs.
 ---
 align: center
 ---
-Ping
-```
-
-```{figure} images/lab10-ping.png
----
-align: center
----
-Ping
+SSH
 ```
 
 ```{figure} images/lab10-newone3.png
@@ -649,7 +642,7 @@ The last inter-rule works smoothly only because the ICMP traffic is generated fr
 ---
 align: center
 ---
-From To
+From-To
 ```
 
 The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.
