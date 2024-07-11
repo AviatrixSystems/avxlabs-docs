@@ -900,6 +900,15 @@ align: center
 inter-icmp-bu2-east1 Logs
 ```
 
+After the creation of both the previous inter-rule and the additional Smart Group, this is how the topology with all the permitted protocols should look like.
+
+```{figure} images/lab10-newjoe.png
+---
+align: center
+---
+Final Topology
+```
+
 ## 7. Spoke to Spoke Attachment
 
 Now that you have enabled the Distributed Cloud Firewall, the owner of the **_azure-west-us-spoke2-test1_** VM would like to communicate directly with the nearby **_azure-west-us-spoke1-test1_** VM, avoding that the traffic generated from the VNet is sent to the NGFW, first.
