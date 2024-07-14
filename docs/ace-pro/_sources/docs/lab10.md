@@ -710,6 +710,13 @@ align: center
 Gateway Routes
 ```
 
+```{figure} images/lab10-newjoe20.png
+---
+align: center
+---
+10.0.12.0
+```
+
 ```{note}
 The destination route is **not** inside the routing table, due to the fact that the Transit Gateway in AWS US-EAST-1 region has only <ins>one peering</ins> with the Transit Gateway in AWS US-EAST-2 region, therefore the Controller will install the routes that belong to US-EAST-1 only inside the routing tables of the Gateways in AWS US-EAST-2, excluding the rest of the Gateways of the MCNA. If you want to distribute the routes from AWS US-EAST-1 region in the whole MCNA, you have <ins>two possibilities</ins>:
 ```
@@ -918,6 +925,7 @@ After the creation of both the previous inter-rule and the additional Smart Grou
 
 ```{figure} images/lab10-newjoe.png
 ---
+height: 400px
 align: center
 ---
 Final Topology
