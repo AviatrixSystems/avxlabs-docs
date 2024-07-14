@@ -38,8 +38,16 @@ align: center
 VS Studio
 ```
 
-* Select the folder `terraform-lab` and click **Open**
+* Click on the **Home** icon and then select the folder `terraform-lab` and click **Select**
   * _When prompted to trust the authors of the files in this folder, select Yes_
+
+```{figure} images/lab11-edge4.png
+---
+align: center
+---
+terraform-ba folder
+```
+
 * Let’s explore the Terraform files in this directory:
   * Explore the file contents of **main.tf, variables.tf, providers.tf** and **terraform.tfvars**
 
@@ -71,3 +79,66 @@ Let's run this code.
 Once Terraform is finished, have a look at the newly created **terraform.tfstate** file. This contains information of all infrastructure created through Terraform. This is referred to as **“the state”**. Losing it can cause a lot of trouble, but that is for another (Terraform) lesson.
 
 ### Expected Results
+
+By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about **8 minutes**, you should see the new transit and spoke in CoPilot Topology.  
+
+```{figure} images/lab6-terraform-topology.png
+---
+align: center
+---
+Topology
+```
+
+## Lab 5.2 - Create Transit Peerings
+
+### Description
+
+In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let's see how we can use Infrastructure as Code to build a full mesh of the Transits.
+
+### Validate
+
+* Using the same Visual Studio Code session, let's add some new code to the `main.tf` file
+* We will be using the following module:  `https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest`
+
+```hcl
+module "transit-peering" {
+  source  = "terraform-aviatrix-modules/mc-transit-peering/aviatrix"
+  version = "1.0.8"
+
+  transit_gateways = [
+    "aws-transit",
+    "azure-transit",
+    "aws-transit-example"
+  ]
+
+  #Lets make sure we don't mess with the transit peering that already exists.
+  prune_list = [
+    {"aws-transit" : "azure-transit"},
+  ]
+}
+```
+
+> Make sure that the Transit Gateway names match to your environment
+
+* **SAVE** the file in Visual Studio Code
+* Go back to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
+* Run the command `terraform plan` to assess the changes
+* Run the command `terraform apply --auto-approve`
+
+### Expected Results
+
+After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.
+
+```{figure} images/lab6-topoloy-transit-peerings.png
+---
+align: center
+---
+Full Mesh
+```
+
+## Lab 11 Summary
+
+* You deployed an Aviatrix Transit and Spoke using Terraform
+* You added the new Transit to the Global Multicloud Transit Network with a few lines of code
+* Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution
+* In minutes, you can create the network, security and connectivity needed
