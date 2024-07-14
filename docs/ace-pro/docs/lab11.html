@@ -349,6 +349,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-2-create-transit-peerings">Lab 5.2 - Create Transit Peerings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-summary">Lab 11 Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -372,34 +379,42 @@ document.write(`
 <h2>2. Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h2>
 <p>We have prepared some Terraform code for you, which you will explore and deploy.</p>
 <p>Go to your personal POD Portal, identify the Lab11 section and click on the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Workstation</span></code> button.</p>
-<figure class="align-center" id="id1">
+<figure class="align-center" id="id3">
 <img alt="../_images/lab11-edge.png" src="../_images/lab11-edge.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 449 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 449 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the corresponding credentials, available on the POD Portal, to log in to the remote “edge” Workstation.</p>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id4">
 <img alt="../_images/lab11-edge2.png" src="../_images/lab11-edge2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 450 </span><span class="caption-text">Edge Workstation credentials</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 450 </span><span class="caption-text">Edge Workstation credentials</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Open the <strong>Visual Studio Code</strong> located on the Desktop</p></li>
 </ul>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id5">
 <img alt="../_images/lab11-edge3.png" src="../_images/lab11-edge3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 451 </span><span class="caption-text">VS Studio</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 451 </span><span class="caption-text">VS Studio</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Select the folder <code class="docutils literal notranslate"><span class="pre">terraform-lab</span></code> and click <strong>Open</strong></p>
+<li><p>Click on the <strong>Home</strong> icon and then select the folder <code class="docutils literal notranslate"><span class="pre">terraform-lab</span></code> and click <strong>Select</strong></p>
 <ul>
 <li><p><em>When prompted to trust the authors of the files in this folder, select Yes</em></p></li>
 </ul>
 </li>
+</ul>
+<figure class="align-center" id="id6">
+<img alt="docs/images/lab11-edge4.png" src="docs/images/lab11-edge4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 452 </span><span class="caption-text">terraform-ba folder</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>Let’s explore the Terraform files in this directory:</p>
 <ul>
 <li><p>Explore the file contents of <strong><a class="reference external" href="http://main.tf">main.tf</a>, <a class="reference external" href="http://variables.tf">variables.tf</a>, <a class="reference external" href="http://providers.tf">providers.tf</a></strong> and <strong>terraform.tfvars</strong></p></li>
@@ -432,7 +447,73 @@ document.write(`
 <p>Once Terraform is finished, have a look at the newly created <strong>terraform.tfstate</strong> file. This contains information of all infrastructure created through Terraform. This is referred to as <strong>“the state”</strong>. Losing it can cause a lot of trouble, but that is for another (Terraform) lesson.</p>
 <section id="expected-results">
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
+<p>By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about <strong>8 minutes</strong>, you should see the new transit and spoke in CoPilot Topology.</p>
+<figure class="align-center" id="id7">
+<img alt="docs/images/lab6-terraform-topology.png" src="docs/images/lab6-terraform-topology.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 453 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
+</section>
+<section id="lab-5-2-create-transit-peerings">
+<h2>Lab 5.2 - Create Transit Peerings<a class="headerlink" href="#lab-5-2-create-transit-peerings" title="Link to this heading">#</a></h2>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h3>
+<p>In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let’s see how we can use Infrastructure as Code to build a full mesh of the Transits.</p>
+</section>
+<section id="id1">
+<h3>Validate<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Using the same Visual Studio Code session, let’s add some new code to the <code class="docutils literal notranslate"><span class="pre">main.tf</span></code> file</p></li>
+<li><p>We will be using the following module:  <code class="docutils literal notranslate"><span class="pre">https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest</span></code></p></li>
+</ul>
+<div class="highlight-hcl notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;transit-peering&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit-peering/aviatrix&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.8&quot;</span>
+
+<span class="w">  </span><span class="na">transit_gateways</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;aws-transit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;azure-transit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;aws-transit-example&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+
+<span class="c1">  #Lets make sure we don&#39;t mess with the transit peering that already exists.</span>
+<span class="w">  </span><span class="na">prune_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="s2">&quot;aws-transit&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;azure-transit&quot;</span><span class="p">},</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Make sure that the Transit Gateway names match to your environment</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>SAVE</strong> the file in Visual Studio Code</p></li>
+<li><p>Go back to the <strong>LXTerminal</strong> and run <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code> again to download the <code class="docutils literal notranslate"><span class="pre">mc-transit-peering</span></code> module</p></li>
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">plan</span></code> to assess the changes</p></li>
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span> <span class="pre">--auto-approve</span></code></p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Expected Results<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.</p>
+<figure class="align-center" id="id8">
+<img alt="docs/images/lab6-topoloy-transit-peerings.png" src="docs/images/lab6-topoloy-transit-peerings.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 454 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="lab-11-summary">
+<h2>Lab 11 Summary<a class="headerlink" href="#lab-11-summary" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>You deployed an Aviatrix Transit and Spoke using Terraform</p></li>
+<li><p>You added the new Transit to the Global Multicloud Transit Network with a few lines of code</p></li>
+<li><p>Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution</p></li>
+<li><p>In minutes, you can create the network, security and connectivity needed</p></li>
+</ul>
 </section>
 </section>
 
@@ -505,6 +586,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-2-create-transit-peerings">Lab 5.2 - Create Transit Peerings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-summary">Lab 11 Summary</a></li>
 </ul>
   </nav></div>
 
