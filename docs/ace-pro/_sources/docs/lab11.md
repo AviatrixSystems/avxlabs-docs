@@ -11,7 +11,7 @@ https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs
 
 We have prepared some Terraform code for you, which you will explore and deploy.
 
-Go to your personal POD Portal, identify the Lab11 section and click on the `Open Workstation` button.
+Go to your personal POD Portal, identify the **_Lab11_** section and click on the `Open Workstation` button.
 
 ```{figure} images/lab11-edge.png
 ---
@@ -80,7 +80,7 @@ Once Terraform is finished, have a look at the newly created **terraform.tfstate
 
 ### Expected Results
 
-By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about **8 minutes**, you should see the new transit and spoke in CoPilot Topology.  
+By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about **5 minutes**, you should see the new transit and spoke in CoPilot Topology.  
 
 ```{figure} images/lab11-terraform-topology.png
 ---
@@ -89,62 +89,43 @@ align: center
 Topology
 ```
 
-## Lab 5.2 - Create Transit Peerings
+## Lab 11.2 - Network Insights API
 
 ### Description
 
-In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let's see how we can use Infrastructure as Code to build a full mesh of the Transits.
+The `Aviatrix Network Insights API` simplifies the process of navigating network interface statistics and micro-gateway status data. By integrating this API with your visualization platforms (with vendors you already know and love!), you can easily make data-driven decisions.
 
 ### Validate
 
-* Using the same Visual Studio Code session, let's add some new code to the `main.tf` file
-* We will be using the following module:  `https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest`
+* Go to your personal POD Portal, identify the **_Lab11_** section and click on the `Open Grafana` button.
 
-```hcl
-module "transit-peering" {
-  source  = "terraform-aviatrix-modules/mc-transit-peering/aviatrix"
-  version = "1.0.8"
-
-  transit_gateways = [
-    "aws-us-east-2-transit",
-    "aws-transit-example"
-  ]
-}
-```
-
-> Make sure that the Transit Gateway names match to your environment
-
-
-```{note}
-Please bear in mind that *Copy and Paste* does not work directly from the host machine, therefore activate the **Workstation Menu**, that is a sidebar which is hidden until explicitly shown. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing **Ctrl+Alt+Shift** on Windows machine (**Control+Shift+Command** on Mac).
-```
-
-```{figure} images/lab11-guacamoleterminal.png
+```{figure} images/lab11-edge10.png
 ---
 align: center
 ---
-Guacamole Menu
+Lab 11 section on the POD Portal
 ```
 
-* **SAVE** the file in Visual Studio Code
-* Go back to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
-* Run the command `terraform plan` to assess the changes
-* Run the command `terraform apply --auto-approve`
+Enter the required credentials that are available on the POD Portal and then click on **Log in**.
 
-### Expected Results
-
-After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.
-
-```{figure} images/lab6-topoloy-transit-peerings.png
+```{figure} images/lab11-edge20.png
 ---
 align: center
 ---
-Full Mesh
+Lab 11 section on the POD Portal
 ```
 
-## Lab 11 Summary
+You will immediately notice the Receive Rate and Transmit Rate stats!
 
-* You deployed an Aviatrix Transit and Spoke using Terraform
-* You added the new Transit to the Global Multicloud Transit Network with a few lines of code
-* Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution
-* In minutes, you can create the network, security and connectivity needed
+```{figure} images/lab11-edge30.png
+---
+align: center
+---
+Receive Rate and Transmit Rate
+```
+
+```{caution}
+Go to **CoPilot > Settings > Configuration** and then identify the `"Network Insights API"` widget.
+
+You will find the API Key generated on the CoPilot and then used on Prometheus/Grafana!
+```
