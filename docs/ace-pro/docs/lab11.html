@@ -449,7 +449,7 @@ document.write(`
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
 <p>By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about <strong>8 minutes</strong>, you should see the new transit and spoke in CoPilot Topology.</p>
 <figure class="align-center" id="id7">
-<img alt="docs/images/lab6-terraform-topology.png" src="docs/images/lab6-terraform-topology.png" />
+<img alt="../_images/lab11-terraform-topology.png" src="../_images/lab11-terraform-topology.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 453 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
@@ -473,14 +473,8 @@ document.write(`
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.8&quot;</span>
 
 <span class="w">  </span><span class="na">transit_gateways</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;aws-transit&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;azure-transit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;aws-us-east-2-transit&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;aws-transit-example&quot;</span>
-<span class="w">  </span><span class="p">]</span>
-
-<span class="c1">  #Lets make sure we don&#39;t mess with the transit peering that already exists.</span>
-<span class="w">  </span><span class="na">prune_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="s2">&quot;aws-transit&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;azure-transit&quot;</span><span class="p">},</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -488,6 +482,16 @@ document.write(`
 <blockquote>
 <div><p>Make sure that the Transit Gateway names match to your environment</p>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please bear in mind that <em>Copy and Paste</em> does not work directly from the host machine, therefore activate the <strong>Workstation Menu</strong>, that is a sidebar which is hidden until explicitly shown. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing <strong>Ctrl+Alt+Shift</strong> on Windows machine (<strong>Control+Shift+Command</strong> on Mac).</p>
+</div>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab11-guacamoleterminal.png" src="../_images/lab11-guacamoleterminal.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 454 </span><span class="caption-text">Guacamole Menu</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p><strong>SAVE</strong> the file in Visual Studio Code</p></li>
 <li><p>Go back to the <strong>LXTerminal</strong> and run <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code> again to download the <code class="docutils literal notranslate"><span class="pre">mc-transit-peering</span></code> module</p></li>
@@ -498,10 +502,10 @@ document.write(`
 <section id="id2">
 <h3>Expected Results<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.</p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id9">
 <img alt="docs/images/lab6-topoloy-transit-peerings.png" src="docs/images/lab6-topoloy-transit-peerings.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 454 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 455 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

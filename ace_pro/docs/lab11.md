@@ -82,7 +82,7 @@ Once Terraform is finished, have a look at the newly created **terraform.tfstate
 
 By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about **8 minutes**, you should see the new transit and spoke in CoPilot Topology.  
 
-```{figure} images/lab6-terraform-topology.png
+```{figure} images/lab11-terraform-topology.png
 ---
 align: center
 ---
@@ -106,19 +106,25 @@ module "transit-peering" {
   version = "1.0.8"
 
   transit_gateways = [
-    "aws-transit",
-    "azure-transit",
+    "aws-us-east-2-transit",
     "aws-transit-example"
-  ]
-
-  #Lets make sure we don't mess with the transit peering that already exists.
-  prune_list = [
-    {"aws-transit" : "azure-transit"},
   ]
 }
 ```
 
 > Make sure that the Transit Gateway names match to your environment
+
+
+```{note}
+Please bear in mind that *Copy and Paste* does not work directly from the host machine, therefore activate the **Workstation Menu**, that is a sidebar which is hidden until explicitly shown. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing **Ctrl+Alt+Shift** on Windows machine (**Control+Shift+Command** on Mac).
+```
+
+```{figure} images/lab11-guacamoleterminal.png
+---
+align: center
+---
+Guacamole Menu
+```
 
 * **SAVE** the file in Visual Studio Code
 * Go back to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
