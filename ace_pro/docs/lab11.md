@@ -45,7 +45,7 @@ VS Studio
 ---
 align: center
 ---
-terraform-ba folder
+terraform-lab folder
 ```
 
 * Let’s explore the Terraform files in this directory:
