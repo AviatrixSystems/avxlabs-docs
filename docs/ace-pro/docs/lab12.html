@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lab 12 - BONUS &#8212; ACE Operations Lab</title>
+    <title>Lab 12 - TERRAFORM &amp; NETWORK INSIGHTS API &#8212; ACE Operations Lab</title>
   
   
   
@@ -61,8 +61,8 @@
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="LOGOS-ICONS" href="logos-icons.html" />
-    <link rel="prev" title="Lab 11 - TERRAFORM &amp; NETWORK INSIGHTS API" href="lab11.html" />
+    <link rel="next" title="Lab 13 - BONUS" href="lab13.html" />
+    <link rel="prev" title="Lab 11 - DISTRIBUTED CLOUD FIREWALL" href="lab11.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,11 +189,12 @@
 <li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - HPE WITH ACTIVE MESH</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - EGRESS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - FIRENET</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD &amp; EDGE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; COSTIQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - TERRAFORM &amp; NETWORK INSIGHTS API</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 12 - BONUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - EDGE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - THREATIQ &amp; COSTIQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 12 - TERRAFORM &amp; NETWORK INSIGHTS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab13.html">Lab 13 - BONUS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
 </ul>
@@ -334,7 +335,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 12 - BONUS</h1>
+    <h1>Lab 12 - TERRAFORM & NETWORK INSIGHTS API</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -345,7 +346,15 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">2. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">2. Validate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-network-insights-api">Lab 11.2 - Network Insights API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Validate</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -357,31 +366,132 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-12-bonus">
-<h1>Lab 12 - BONUS<a class="headerlink" href="#lab-12-bonus" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-12-terraform-network-insights-api">
+<h1>Lab 12 - TERRAFORM &amp; NETWORK INSIGHTS API<a class="headerlink" href="#lab-12-terraform-network-insights-api" title="Link to this heading">#</a></h1>
 <section id="objective">
 <h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
-<p>Since the ACE Professional lab pods are available only for the duration of the training, <a href="https://community.aviatrix.com/tech-zone-14/aviatrix-cloud-sandbox-starter-spin-up-cloud-networks-in-minutes-203" target="_blank">Aviatrix Sandbox Starter Tool</a> is a cost-effective way to continue your learning by deploying your own sandbox environment. Using this tool and your own AWS (and, optionally, Azure) credentials, you can deploy:</p>
-<ul class="simple">
-<li><p>An Aviatrix Controller</p></li>
-<li><p>A Transit in AWS along with 2 Spokes (Optional)</p></li>
-<li><p>Test instances in the 2 AWS VPCs (Optional)</p></li>
-<li><p>A Transit in Azure along with 2 Spokes (Optional)</p></li>
-<li><p>Transit Peering between the AWS and Azure Transits (Optional)</p></li>
-</ul>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The cost ranges from <code class="docutils literal notranslate"><span class="pre">$0.09</span></code> an hour to <code class="docutils literal notranslate"><span class="pre">$1.65</span></code> an hour.</p>
-</div>
+<p>All the elements you have created through the UI, can also be created through the API or the official <strong>Aviatrix Terraform provider</strong>.</p>
+<p>You can find more information on these here:
+<a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs</a></p>
 </section>
-<section id="topology">
-<h2>2. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
-<figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/lab11-topology.png"><img alt="../_images/lab11-topology.png" src="../_images/lab11-topology.png" style="height: 400px;" /></a>
+<section id="validate">
+<h2>2. Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h2>
+<p>We have prepared some Terraform code for you, which you will explore and deploy.</p>
+<p>Go to your personal POD Portal, identify the <strong><em>Lab11</em></strong> section and click on the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Workstation</span></code> button.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab11-edge.png" src="../_images/lab11-edge.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 457 </span><span class="caption-text">SST Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 449 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Insert the corresponding credentials, available on the POD Portal, to log in to the remote “edge” Workstation.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab11-edge2.png" src="../_images/lab11-edge2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 450 </span><span class="caption-text">Edge Workstation credentials</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Open the <strong>Visual Studio Code</strong> located on the Desktop</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab11-edge3.png" src="../_images/lab11-edge3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 451 </span><span class="caption-text">VS Studio</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Click on the <strong>Home</strong> icon and then select the folder <code class="docutils literal notranslate"><span class="pre">terraform-lab</span></code> and click <strong>Select</strong></p>
+<ul>
+<li><p><em>When prompted to trust the authors of the files in this folder, select Yes</em></p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab11-edge4.png" src="../_images/lab11-edge4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 452 </span><span class="caption-text">terraform-lab folder</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Let’s explore the Terraform files in this directory:</p>
+<ul>
+<li><p>Explore the file contents of <strong><a class="reference external" href="http://main.tf">main.tf</a>, <a class="reference external" href="http://variables.tf">variables.tf</a>, <a class="reference external" href="http://providers.tf">providers.tf</a></strong> and <strong>terraform.tfvars</strong></p></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><p>What do you expect will be created when we run this Terraform code?</p>
+</div></blockquote>
+<p>In this lab, we are using Terraform modules, provided by Aviatrix. These allow you to quickly build out your environment, based on larger building blocks, rather than individual resources. You can find more available modules here:</p>
+<p><a class="reference external" href="https://registry.terraform.io/namespaces/terraform-aviatrix-modules">https://registry.terraform.io/namespaces/terraform-aviatrix-modules</a></p>
+<p>Let’s run this code.</p>
+<ul class="simple">
+<li><p>Open the <strong>LXTerminal</strong> App on the Desktop</p></li>
+<li><p>Move over to the directory where the Terraform files are located:</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">terraform-lab</span></code></p>
+<ul class="simple">
+<li><p>First thing we need to do is to initialize Terraform. This allows for the required providers and modules to be downloaded.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code></p>
+<ul class="simple">
+<li><p>Next we will execute a “plan”. This means that Terraform will compare the live environment with the desired state we declared in our Terraform files</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">plan</span></code></p>
+<ul class="simple">
+<li><p>Investigate the proposed changes by Terraform. Now we will apply them to the live environment:</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span> <span class="pre">--auto-approve</span></code></p>
+<p>Once Terraform is finished, have a look at the newly created <strong>terraform.tfstate</strong> file. This contains information of all infrastructure created through Terraform. This is referred to as <strong>“the state”</strong>. Losing it can cause a lot of trouble, but that is for another (Terraform) lesson.</p>
+<section id="expected-results">
+<h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
+<p>By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about <strong>5 minutes</strong>, you should see the new transit and spoke in CoPilot Topology.</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab11-terraform-topology.png" src="../_images/lab11-terraform-topology.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 453 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="lab-11-2-network-insights-api">
+<h2>Lab 11.2 - Network Insights API<a class="headerlink" href="#lab-11-2-network-insights-api" title="Link to this heading">#</a></h2>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Network</span> <span class="pre">Insights</span> <span class="pre">API</span></code> simplifies the process of navigating network interface statistics and micro-gateway status data. By integrating this API with your visualization platforms (with vendors you already know and love!), you can easily make data-driven decisions.</p>
+</section>
+<section id="id1">
+<h3>Validate<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Go to your personal POD Portal, identify the <strong><em>Lab11</em></strong> section and click on the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Grafana</span></code> button.</p></li>
+</ul>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab11-edge10.png" src="../_images/lab11-edge10.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 454 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Enter the required credentials that are available on the POD Portal and then click on <strong>Log in</strong>.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab11-edge20.png" src="../_images/lab11-edge20.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 455 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will immediately notice the Receive Rate and Transmit Rate stats!</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab11-edge30.png" src="../_images/lab11-edge30.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 456 </span><span class="caption-text">Receive Rate and Transmit Rate</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Go to <strong>CoPilot &gt; Settings &gt; Configuration</strong> and then identify the <code class="docutils literal notranslate"><span class="pre">&quot;Network</span> <span class="pre">Insights</span> <span class="pre">API&quot;</span></code> widget.</p>
+<p>You will find the API Key generated on the CoPilot and then used on Prometheus/Grafana!</p>
+</div>
+</section>
 </section>
 </section>
 
@@ -421,15 +531,15 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lab 11 - TERRAFORM &amp; NETWORK INSIGHTS API</p>
+        <p class="prev-next-title">Lab 11 - DISTRIBUTED CLOUD FIREWALL</p>
       </div>
     </a>
     <a class="right-next"
-       href="logos-icons.html"
+       href="lab13.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">LOGOS-ICONS</p>
+        <p class="prev-next-title">Lab 13 - BONUS</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -450,7 +560,15 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">2. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">2. Validate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-network-insights-api">Lab 11.2 - Network Insights API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Validate</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
