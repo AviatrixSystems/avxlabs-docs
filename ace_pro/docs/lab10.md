@@ -1,1021 +1,475 @@
-# Lab 10 - DISTRIBUTED CLOUD FIREWALL
+# Lab 10 - THREATIQ & COSTIQ
 
 ## 1. Objective
 
-This lab will demonstrate how the `Distributed Cloud Firewall` works.
+This lab will demonstrate how `ThreatIQ` works.
+ 
+## 2. ThreatIQ Overview
 
-## 2. Distributed Cloud Firewall Overview
-
-The Distributed Cloud Firewall functionality encompases several services, such as Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata IDS/IPS and Advanced NAT capabilities.
-
-In this lab you will create additional logical containers, called `Smart Groups`, that group instances that present similarities inside a VPC/VNet/VCN, and then you will enforce rules among these Smart Groups (aka **_Distributed Cloud Firewalling Rules_**):
-
-1) `intra-rule` = Rule applied within a Smart Group
-
-2) `inter-rule` = Rule applied among Smart Groups
-
-```{note}
-At this point in the lab, there is a unique routing domain (i.e. a **_Flat Routing Domain_**), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.
-```
-
-All the Test instances have been deployed with the typical <ins>CSP tags</ins>. 
+Aviatrix Gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. **FlowIQ** is one. **ThreatIQ** is another. ThreatIQ alerts you on Malicious IPs with bad reputations, but then can also apply an enforcement. These IPs are reported in the ThreatIQ database that CoPilot maintains.
 
 ```{important}
-The **CSP tagging** is the recommended method for defining the SmartGroups.
+ThreatIQ protect all the Aviatrix Gateways and it relies on a well-known database, provided by **`Proofpoint`**.
 ```
 
-In this lab you are asked to achieve the following requirements among the instances deployed across the three CSPs:
+## 3. Topology
 
-- Create a Smart Group with the name `"bu1"` leveraging the tag `"environment"`.
-- Create a Smart Group with the name `"bu2"` leveraging the tag `"environment"`.
-- Create an `intra-rule` that allows ICMP traffic within bu1.
-- Create an `intra-rule` that allows ICMP traffic within bu2.
-- Create an `intra-rule` that allows SSH traffic within bu1.
-- Create an `inter-rule` that allows ICMP traffic only <ins>from</ins> bu2 <ins>to</ins> bu1.
+In this lab, we will deploy a `“PSF"` gateway in AWS **US-EAST-1** region, to protect the public subnet.
 
-```{figure} images/lab10-initial.png
----
-height: 400px
-align: center
----
-Initial Topology Lab 10
-```
-
-## 3. Smart Groups Creation
-
-Create two Smart Groups and classify each Smart Group, leveraging the CSP tag `"environment"`:
-
-- Assign the name `"bu1"` to the Smart Group **#1**.
-- Assign the name `"bu2"` to the Smart Group **#2**.
-
-### 3.1. Smart Group “bu1”
-
-Go to **CoPilot > SmartGroups** and click on `"+ SmartGroup"`.
-
-```{figure} images/lab10-smart2.png
+```{figure} images/lab9-initialtopology.png
 ---
 align: center
 ---
-SmartGroup
+Lab 9 Initial Topology
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
+## 4. PSF
+### 4.1 Deploy the PSF
 
-- **Name**: <span style='color:#479608'>bu1</span>
-- **CSP Tag Key**: <span style='color:#479608'>environment</span>
-- **CSP Tag Value**: <span style='color:#479608'>bu1</span>
+Go to **CoPilot > Cloud Fabric > Gateways > Specialty Gateways**, then click on the `“+Gateway"` button and then choose the **Public Subnet Filtering Gateway**.
 
-Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Resource Selection"`.
-
-```{figure} images/lab10-smart3.png
+```{figure} images/lab9-psf.png
 ---
 align: center
 ---
-Resource Selection
-```
-
-The CoPilot shows that there are two instances that perfectly match the condition:
-
-- **aws-us-east2-spoke1-test1** in AWS
-- **azure-us-west-spoke1-test1** in Azure
-
-```{figure} images/lab10-smart4.png
----
-align: center
----
-Resources that match the condition
-```
-
-### 3.2. Smart Group “bu2”
-
-Create another Smart Group clicking on the `"+ SmartGroup"` button.
-
-```{figure} images/lab10-smart5.png
----
-align: center
----
-New Smart Group
-```
-
-Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
-
-- **Name**: <span style='color:#479608'>bu2</span>
-- **CSP Tag Key**: <span style='color:#479608'>environment</span>
-- **CSP Tag Value**: <span style='color:#479608'>bu2</span>
-
-Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Resource Selection"`.
-
-```{figure} images/lab10-smart6.png
----
-align: center
----
-Resource Selection
-```
-
-The CoPilot shows that there are three instances that match the condition:
-
-- **aws-us-east2-spoke1-test2** in AWS
-- **azure-us-west-spoke2-test1** in Azure
-- **gcp-us-central1-spoke1-test1** in GCP
-
-```{figure} images/lab10-smart7.png
----
-align: center
----
-Resources that match the condition
-```
-
-At this point, you have only created logical containers that do not affect the existing routing domain.
-
-Let's verify that everything has been kept unchanged! Bear in mind that there is the `Greenfield-Rule` at the very top of your DCF rules list, whereby all kind of traffic will be permitted.
-
-```{figure} images/lab10-newone2.png
----
-align: center
----
-Greenfield-Rule in action
-```
-
-### 3.3. Connectivity verification (ICMP)
-
-Open a terminal window and SSH to the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity has not been modified.
-
-```{note}
-Refer to your POD for the private IPs.
-```
-
-```{figure} images/lab10-newone.png
----
-align: center
----
-SSH
-```
-
-```{figure} images/lab10-newone3.png
----
-align: center
----
-Ping
-```
-
-```{figure} images/lab10-newjoe10.png
----
-align: center
----
-Ping
-```
-
-```{figure} images/lab10-newjoe11.png
----
-align: center
----
-Ping
-```
-
-### 3.4.  Connectivity verification (SSH)
-
-Verify also from the instance **aws-us-east-2-spoke1-test1** that you can SSH to the private instance in AWS (us-east-2), to the instance in GCP, to the instances in AWS (us-east-2) and likewise to the other two instances in Azure.
-
-```{note}
-Refer to your POD for the private IPs.
-```
-
-```{figure} images/lab10-sshtoaws.png
----
-align: center
----
-SSH to test2 in AWS US-East-2
-```
-
-```{figure} images/lab10-sshtogcp.png
----
-align: center
----
-SSH to test1 in GCP US-Central1
-```
-
-```{figure} images/lab10-sshtoazure1.png
----
-align: center
----
-SSH to test1 in Azure West-US
-```
-
-```{figure} images/lab10-sshtoazure2.png
----
-align: center
----
-SSH to test2 in Azure West-US
-```
-
-```{figure} images/lab10-sshnew.png
----
-align: center
----
-SSH to test1 in AWS US-East1 
-```
-
-```{figure} images/lab10-sshnew2.png
----
-align: center
----
-SSH to test2 in AWS US-East1
-```
-
-The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.
-
-## 4. DCF Rules Creation
-### 4.1. Build a Zero Trust  Network Architecture
-
-First and foremost, let's move the `Explicit-Deny-Rule` at the very top of the list of your DCF rules.
-
-```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the `Explicit-Deny-Rule` and choose *`"Move Rule"`* at the very Top. 
-
-Then click on **Save in Draft**.
-```
-
-```{figure} images/lab10-newedit.png
----
-align: center
----
-Move the rule
-```
-
-Then **commit** your change!
-
-```{figure} images/lab10-commit.png
----
-align: center
----
-Commit
-```
-
-```{warning}
-Zero Trust architecture is "Never trust, always verify", a critical component to enterprise cloud adoption success!
-```
-
-### 4.2. Create an intra-rule that allows ICMP inside bu1
-
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
-
-```{figure} images/lab10-newrule.png
----
-align: center
----
-New Rule
+PSF
 ```
 
 Insert the following parameters:
+- **Name**: <span style='color:#479608'>aws-us-east-1-psf</span>
+- **Account**: <span style='color:#479608'>aws-account</span>
+- **Region**: <span style='color:#479608'>us-east-1 (N. Virginia)</span>
+- **VPC**: <span style='color:#479608'>aws-us-east1-spoke1</span>
+- **Instance Size**: <span style='color:#479608'>t2.medium</span>
+- **Attach to Unused Subnet**: <span style='color:#479608'>us-east-1a</span>
+- **Route Table**: <span style='color:#479608'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span>
 
-- **Name**: <span style='color:#479608'>intra-icmp-bu1</span>
-- **Source Smartgroups**: <span style='color:#479608'>bu1</span>
-- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
-- **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
+Do not forget to click on **Save**.
 
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab10-rule1.png
+```{figure} images/lab9-new.png
 ---
 align: center
 ---
-Create Rule
+PSF template
 ```
 
-At this point, there should be just one uncommitted rule at the very top, as depicted below.
+```{warning}
+Wait for about **8** minutes for the completion of the PSF deployment.
+```
 
-```{figure} images/lab10-rule2.png
+```{figure} images/lab9-psfinprogress.png
 ---
 align: center
 ---
-Current list of rules
+PSF deployment in progress
 ```
 
-### 4.2. Create an intra-rule that allows ICMP inside bu2
+### 4.2 RTB verification
 
-Create another rule clicking on the `"+ Rule"` button.
+- Click on the **PSF** gateway, select the **VPC/VNet Route Tables** and then inspect the **_aviatrix-Aviatrix-Filter-Gateway_** Route Table
 
-```{figure} images/lab10-rule3.png
+```{figure} images/lab9-psfclick.png
 ---
 align: center
 ---
-New rule
+PSF deployed
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
-
-- **Name**: <span style='color:#479608'>intra-icmp-bu2</span>
-- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
-- **Destination Smartgroups**: <span style='color:#479608'>bu2</span>
-- **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
-- **Place Rule**: <span style='color:#479608'>Below</span>
-  - **Existing Rule**: <span style='color:#479608'>intra-icmp-bu1</span>
-  
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab10-intrabu2.png
+```{figure} images/lab9-routetablepsf.png
 ---
 align: center
 ---
-intra-icmp-bu2
+PSF rtb
 ```
 
-At this point, you will have two new rules marked as `New`, therefore you can proceed and click on the **Commit** button.
+```{note}
+The subnet with the PSF gateway is a Public Subnet with 0/0 pointing to IGW. No workload instances should be deployed in this subnet.
+```
 
-```{figure} images/lab10-rule5.png
+- Verify one more routing table that we selected while deploying the PSF Gateway: **_aws-us-east1-spoke1-Public-1-us-east-1a-rtb_**. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).
+
+```{figure} images/lab9-routetablepsf2.png
 ---
 align: center
 ---
-Commit
+aws-us-east1-spoke1-rtb-public-a
 ```
 
-## 5. Verification
+## 5. Enable ThreatIQ 
 
-Afte the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols should look like:
+Navigate to **CoPilot > Security > ThreatIQ > Configuration**
 
-```{figure} images/lab10-topology2.png
----
-height: 400px
-align: center
----
-New Topology
-```
+Click on **Send Alert**:
 
-### 5.1. Verify SSH traffic from your laptop to bu1
-
-SSH to the Public IP of the instance **aws-us-east-2-spoke1-test1**.
-
-```{figure} images/lab10-sshpod.png
+```{figure} images/lab9-sendalert.png
 ---
 align: center
 ---
-SSH from your laptop
+Enable ThreatIQ
 ```
 
-### 5.2. Verify ICMP within bu1 and from bu1 towards bu2
+Then click on **Notification Settings**.
 
-Ping the following instances from **aws-us-east-2-spoke1-test1**:
-
-- **gcp-us-central1-spoke1-test1** in GCP
-- **azure-west-us-spoke1-test1** in Azure
-- **azure-west-us-spoke2-test1** in Azure
-
-According to the rules created before, only the ping towards the **azure-us-west-spoke1-test1** will work, because this instance belongs to the same Smart Group bu1 as the instance from where you generated ICMP traffic.
-
-```{figure} images/lab10-pingcheck.png
+```{figure} images/lab9-notification.png
 ---
 align: center
 ---
-Ping
+Notification Settings
 ```
 
-Let's investigate the logs:
+Now click on the `"+ Email Address"` button.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+```{figure} images/lab9-email.png
+---
+align: center
+---
+Email
+```
+
+Choose an **alias**, insert your **personal email** and then click on **Save**:
+
+```{figure} images/lab9-email2.png
+---
+align: center
+---
+Alias and Personal Email
+```
+
+Navigate back to **CoPilot > Security > ThreatIQ > Configuration**
+
+Click again on **Send Alert**:
+
+```{figure} images/lab9-sendalert2.png
+---
+align: center
+---
+Send Alert Settings
+```
+
+Select the alias that was previously created from the drop-down window `"recipients"` and then click on **Save**.
+
+```{figure} images/lab9-addrecipient.png
+---
+align: center
+---
+Add Recipient(s)
+```
+
+From this point onwards, if you enter a valid email address, you will receive email notifications about **ThreatIQ** alerts.
+
+Before enabling the blocking,  ensure that the **ThreatGuard firewall rules order** is set to `Prepend` on the right-hand side.
+
+```{figure} images/lab9-advanced.png
+---
+align: center
+---
+Prepend
+```
+
+### 5.1 Generate traffic towards the "Bad Guy"
+
+Wait for the instructor to provide a malicious IP. Let's call it `<malicious-IP>`. 
+
+```{important}
+<ins>Note down this IP address!</ins>
+```
+
+SSH to the EC2 instance **_aws-us-east1-spoke1-test1_**
+
+- Now test `ThreatIQ` by first issuing this command (make sure to enter **HTTPS**):
+
+```bash
+curl https://<malicious-IP>
+```
+
+```{figure} images/lab9-instancetest.png
+---
+align: center
+---
+Curl towards the malicious IP
+```
+
+Navigate back to **CoPilot > Security > ThreatIQ > Overview**
+
+```{note}
+**Wait for about 4-5 minutes**, before proceeding with the next action. 
+
+Set the **Time Period** to `"Last 60 Minutes"` and click on **Apply**.
+```
+
+```{figure} images/lab9-custom.png
+---
+align: center
+---
+Overview
+```
+
+You should see the IP in the table at the bottom. You can filter based on the destination IP address (insert the malicious IP address):
+
+```{figure} images/lab9-threat.png
+---
+align: center
+---
+Threats
+```
+
+```{figure} images/lab9-threat2.png
+---
+align: center
+---
+Filter
+```
+
+Afterwards, click on **VIEW** on the right-hand side of the Timestamp.
+
+```{note}
+The IP shown in these screenshots  might not be deemed a threat when you read this. Please use the malicious IP provided by the instructor.
+```
+
+```{figure} images/lab9-view.png
+---
+align: center
+---
+View
+```
+
+```{figure} images/lab9-view2.png
+---
+align: center
+---
+Threat details
+```
+
+Then select **Threat Summary** and pinpoint the metadata "tag" to determine how ThreatIQ has classified this IP.
+
+```{figure} images/lab9-tor.png
+---
+align: center
+---
+"tag"
+```
+
+## 5. Enforcement
+
+- Enable **Block Threats**
 
 ```{tip}
-Turn on the **Auto Refresh** knob. Moreover, refresh the web page to trigger the logs. You can also filter out based on the protocol **ICMP**.
-```{figure} images/lab10-monitor.png
+Go to **CoPilot > Security > ThreatIQ > Configuration** and turn on the toggle `"Block Threats"`.
+```
+
+```{figure} images/lab9-threatguard.png
 ---
 align: center
 ---
-Auto Fefresh and Filter
+ThreatIQ - Automatic Enforcement
 ```
 
-```{figure} images/lab10-monitor99.png
+By default, <ins>**all** VPCs are enabled for ThreatIQ</ins>, therefore click on **Save** to continue.
+
+
+```{figure} images/lab9-vpc.png
 ---
 align: center
 ---
-Monitor
+Select VPC
 ```
 
-Now, let's try to ping the instance **aws-us-east-2-spoke1-test2** from **aws-us-east-2-spoke1-test1**. 
+Then, click **CONFIRM**.
 
-```{warning}
-The instance **aws-us-east-2-spoke1-test1** is in the same VPC. Although these two instances have been deployed in two distinct and separate Smart Groups, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka _intra-vpc separation_).
-```
-
-```{figure} images/lab10-pingtotest2.png
+```{figure} images/lab9-confirm.png
 ---
 align: center
 ---
-Ping
+Confirm
 ```
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button, inside the `"Security Group (SG) Orchestration"` field.
 
-```{figure} images/lab10-orchestration.png
+
+### 5.1. Automatic enforcement: "force-drop"
+
+- Now try issuing the same curl command once again, from the test instance **_aws-us-east-1-spoke1-test1_**
+
+```{figure} images/lab9-failed.png
 ---
 align: center
 ---
-SG Orchestration
+Curl fails
 ```
 
-Enable the **_SG orchestration_** feature on the **_aws-us-east-2-spoke1_** VPC, flag the checkbox  `"I understand the network impact of the changes"` and then click on **Save**.
+Navigate to  **CoPilot > Security > ThreatIQ > Configuration**
 
-```{figure} images/lab10-orchestration2.png
----
-align: center
----
-Manage SG Orchestration
+```{note}
+The CoPilot UI frequently changes, and what you see below may differ from your experience. 
 ```
 
-Relaunch the ping from **aws-us-east-2-spoke1-<span style='color:#479608'>test1</span>** towards **aws-us-east-2-spoke1-<span style='color:red'>test2</span>**. 
-
-```{figure} images/lab10-pingtotest2fail.png
----
-align: center
----
-Ping fails
-```
-
-```{important}
-This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2, thanks to the Security Group Orchestration carried out by the **Aviatrix Controller**.
-```
-
-### 5.3. Verify SSH within bu1
-
-SSH to the Private IP of the instance **_azure-west-us-spoke1-test1_** in Azure. Despite the fact that the instance is within the same Smart Group "bu1", the SSH will fail due to the absence of a rule that would permit SSH traffic within the Smart Group.
-
-```{figure} images/lab10-sshfail.png
----
-align: center
----
-SSH fails
-```
-
-### 5.4. Add a rule that allows SSH in bu1
-
-Create another rule clicking on the `"+ Rule"` button.
-
-```{figure} images/lab10-newrule2.png
----
-align: center
----
-New rule
-```
-
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
-
-- **Name**: <span style='color:#479608'>intra-ssh-bu1</span>
-- **Source Smartgroups**: <span style='color:#479608'>bu1</span>
-- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
-- **Protocol**: <span style='color:#479608'>TCP</span>
-- **Port**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
-- **Place Rule**: <span style='color:#479608'>Below</span>
-  - **Existing Rule**: <span style='color:#479608'>intra-icmp-bu2</span>
-
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab10-sshbu1.png
----
-align: center
----
-Create rule
-```
-
-Click on `"Commit"` to enforce the new rule in the **Data Plane**.
-
-```{figure} images/lab10-commitsshbu1.png
----
-align: center
----
-Commit
-```
-
-- Try once again to SSH to the Private IP of the instance **_azure-west-us-spoke1-<span style='color:red'>test1</span>_** in Azure in BU1.
-
-This time the connection will be established, thanks to the new intra-rule.
-
-```{figure} images/lab10-sshbu1ok.png
----
-align: center
----
-SSH ok
-```
-
-Let's investigate the logs once again.
-
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
-
-```{figure} images/lab10-logsshbu1.png
----
-align: center
----
-Logs 
-```
-
-From the log above is quite evident that the `"intra-ssh-bu1`" rule is permitting SSH traffic within the Smart Group bu1, successfully.
-
-After the creation of the previous intra-rule, this is how the topology with the permitted protocols should look like:
-
-```{figure} images/lab10-topologynew.png
----
-height: 400px
-align: center
----
-New Topology
-```
-
-### 5.4. SSH to VM in bu2
-
-SSH to the Public IP of the instance **_gcp-us-central1-spoke1-test1_**:
-
-```{figure} images/lab10-sshtocentral.png
----
-align: center
----
-SSH to gcp-us-central1-spoke1-test1
-```
-
-### 5.5. Verify ICMP traffic within bu2
-
-Ping the following instances:
-
-- **aws-us-east-2-spoke1-test1** in AWS
-- **aws-us-east-2-spoke1-test2** in AWS
-- **azure-west-us-spoke1-test1** in Azure
-- **azure-west-us-spoke2-test1** in Azure
-
-According to the rules created before, only the ping towards the **azure-west-us-spoke2-test1** and **aws-us-east-2-spoke1-test2** will work, because these two instance belongs to the same Smart Group **bu2** as the instance from where you executed the ICMP traffic.
-
-```{figure} images/lab10-pingtestgcp.png
----
-align: center
----
-Ping
-```
-
-Let's investigate the logs once again.
-
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
-
-```{figure} images/lab10-bu2monitor.png
----
-align: center
----
-Monitor
-```
-
-The logs above confirm that the ICMP protocol is permitted within the Smart Group bu2.
- 
-### 5.6. Inter-rule from bu2 to bu1
-
-Create a new rule that allows ICMP FROM bu2 TO bu1.
-
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
-
-```{figure} images/lab10-newrule4.png
----
-align: center
----
-New Rule
-```
-
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
-
-- **Name**: <span style='color:#479608'>inter-icmp-bu2-bu1</span>
-- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
-- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
-- **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
-- **Place Rule**: <span style='color:#479608'>Below</span>
-  - **Existing Rule**: <span style='color:#479608'>intra-ssh-bu1</span>
+- Click on the **refresh** button under.
   
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab10-interssh.png
+```{figure} images/lab9-refresh.png
 ---
 align: center
 ---
-Create Rule
+Refresh button
 ```
 
-Enforce the this new rule in the data plane clicking on the `"Commit"` button.
+- Click on **VIEW** under the column View Rules, on the **_aws-us-east-1-psf_** row:
 
-```{figure} images/lab10-newcommit2.png
+```{figure} images/lab9-viewrules.png
 ---
 align: center
 ---
-Commit
+Configuration VIEW
 ```
 
-SSH to the Public IP of the instance **_azure-west-us-spoke<span style='color:#479608'>2</span>-<span style='color:#479608'>test1</span>_**.
+Filter based on the malicious IP (choose the **source IP** as parameter): you will find out that ThreatIQ applied the enforcement `"force-drop"`.
 
-Ping the following instances:
-- **aws-us-east-2-spoke1-test1** in AWS
-- **aws-us-east-2-spoke1-test2** in AWS
-- **gcp-us-central1-spoke1-test1** in GCP
-- **azure-west-us-spoke1-test1** in Azure
-
-Thit time all pings will be successful, thanks to the inter-rule applied between bu2 and bu1.
-
-```{figure} images/lab10-pingallok.png
----
-
-align: center
----
-Ping ok
-```
-
-Let's investigate the logs once again.
-
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
-
-```{figure} images/lab10-monitorfresh.png
+```{figure} images/lab9-force.png
 ---
 align: center
 ---
-Monitor
+Filter on Source IP
 ```
 
-The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu2 to bu1.
-
-After the creation of the previous inter-rule, this is how the topology with all the permitted protocols should look like.
-
-```{figure} images/lab10-lastdrawing2.png
----
-height: 400px
-align: center
----
-New Topology with the DCF rules
-```
-
-```{note}
-The last inter-rule works smoothly only because the ICMP traffic is generated from the bu2, however, if you SSH to any instances in the Smart Group bu1, the ICMP traffic towards bu2 will fail due to the direction of the inter-rule that was created before: **FROM** bu2 **TO** bu1 (please note the direction of the arrow in the drawing).
-```
-
-```{figure} images/lab10-direction.png
----
-align: center
----
-From-To
-```
-
-The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.
- 
-## 6. East-1 and the Multi-Tier Transit
-
-### 6.1 Activation of the MTT
-
-Let’s now also involve the AWS region **US-EAST-1**.
-
-This time, you have to allow the ICMP traffic between the Smart Group **bu2** and the ec2 instance **_aws-us-east-1-spoke1-test2_**, solely.
-
-```{figure} images/lab10-newtopology3.png
----
-height: 400px
-align: center
----
-New Topology
-```
-
-SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
-
-Ping the following instance:
-
-- **aws-us-east-1-spoke1-test2** in AWS
-
-```{figure} images/lab10-pingfails10.png
----
-align: center
----
-Ping
-```
-
-The ping fails, therefore, let’s check the routing table of the Spoke Gateway **_azure-west-us-spoke2_**.
-
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the gateway **_azure-west-us-spoke2_**
-
-```{figure} images/lab10-spoke2azure.png
----
-align: center
----
-azure-west-us-spoke2
-```
-
-Then click on the `"Gateway Routes"` tab and check whether the destination route is present in the routing table or not.
-
-```{figure} images/lab10-gatewayroutes.png
----
-align: center
----
-Gateway Routes
-```
-
-```{figure} images/lab10-newjoe20.png
----
-align: center
----
-10.0.12.0
-```
-
-```{note}
-The destination route is **not** inside the routing table, due to the fact that the Transit Gateway in AWS US-EAST-1 region has only <ins>one peering</ins> with the Transit Gateway in AWS US-EAST-2 region, therefore the Controller will install the routes that belong to US-EAST-1 only inside the routing tables of the Gateways in AWS US-EAST-2, excluding the rest of the Gateways of the MCNA. If you want to distribute the routes from AWS US-EAST-1 region in the whole MCNA, you have <ins>two possibilities</ins>:
-```
-
-- Enabling `"Full-Mesh"` on the Transit Gateways in **_aws-us-east1-transit_** VPC
-
-    **OR**
-
-- Enabling `"Multi-Tier Transit"`
-
-Let’s enable the **MTT** feature, to see its beahvior in action!
-
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-1-transit_**.
-
-```{figure} images/lab10-mtt.png
----
-align: center
----
-aws-us-east-1-transit
-```
-
-Go to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
-
-```{figure} images/lab10-mtt2.png
----
-align: center
----
-Settings
-```
-
-Repeat the previous action for the last Transit Gateway still without BGP ASN:
-
-- **azure-west-us-transit**: <span style='color:#479608'>ASN **64515**</span>
-
-```{figure} images/lab10-newlab.png
----
-align: center
----
-azure-west-us-transit
-```
-
-```{note}
-Both the **aws-us-east-2-transit** and the the **gcp-us-central1-transit** got already configured with their ASNs during the Lab 8!
-```
-
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
-
-```{figure} images/lab10-mtt3.png
----
-align: center
----
-aws-us-east-2-transit
-```
-
-Go to `"Settings"` tab and expand the `"General"` section and activate the `"Multi-Tier Transit"`, turning on the corresponding knob. 
-
-Then click on **Save**.
-
-```{figure} images/lab10-mtt4.png
----
-align: center
----
-Multi-Tier Transit
-```
-
-Let’s verify once again the routing table of the Spoke Gateway in **_azure-west-us-spoke2_**.
-
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the relevant gateway **_azure-west-us-spoke2_**
-
-```{figure} images/lab10-mtt5.png
----
-align: center
----
-azure-west-us-spoke2
-```
-
-This time if you click on the `"Gateway Routes"` tab, you will be able to see the destination route, **10.0.12.0/24**, in **aws-us-east1-spoke1** VPC.
-
-```{figure} images/lab10-mtt6.png
----
-align: center
----
-10.0.12.0/24
-```
-
-- SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
-
-Ping the following instance:
-
-- **aws-us-east-1-spoke1-test2** in AWS (refer to your personal POD portal for the private IP).
-
-```{figure} images/lab10-mtt7.png
----
-align: center
----
-Ping
-```
-
-Although this time there is a valid route to the destination, thanks to the **MTT** feature, the pings still fails. 
+**ThreatIQ** has successfully blocked the malicious IP!
 
 ```{warning}
-The reason is that the ec2-instance  **aws-us-east-1-spoke1-test2** is not allocated to any Smart Groups yet!
+Before ending this lab, remove your email from the notification list!
 ```
 
-### 6.2 Smart Group “east1”
+Navigate to **CoPilot > Monitor > Notifications > Alerts Configuration**
 
-Let’s create another Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in US-EAST-1 region in AWS.
+Click on the pencil icon for editing the configured alert named `"ThreatIQ Alert"`:
 
-Go to **Copilot > SmartGroups** and click on  `"+ SmartGroup"` button.
-
-```{figure} images/lab10-mttnew.png
+```{figure} images/lab9-notification2.png
 ---
 align: center
 ---
-New Smart Group
+Edit ThreatIQ Alert
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
+- Remove the recipient that is identified based on the alias that you chose before, then click on **Save**.
 
-- **Name**: <span style='color:#479608'>east1</span>
-- **CSP Tag Key**: <span style='color:#479608'>Name</span>
-- **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span>
+ThreatIQ will immediately stop sending the alerts to your personal email:
 
-```{figure} images/lab10-mtt9.png
+```{figure} images/lab9-joe.png
 ---
 align: center
 ---
-Resource Selection
+Stop alerts
 ```
 
-The CoPilot shows that there is just one single instance that matches the condition:
+## 6. CostIQ
 
-- **aws-us-east-1-spoke1-test2** in AWS
+Before completing this lab, let's enable `CostIQ` and define the following **Cost Centers** and **Shared Service**.
 
-Do not forget to click on **Save**.
+**<span style='color:orange'>COST CENTERS</span>**:
 
-### 6.3 Create an inter-rule that allows ICMP from bu2 towards east1
+**AWS**:
+- aws-us-east-1-spoke1
+- aws-us-east-1-spoke2
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create another rule clicking on the `"+ Rule"` button.
+**GCP**:
+- gcp-us-central1-spoke1
 
-```{figure} images/lab10-mtt8.png
+**AZURE**:
+- azure-west-us-spoke1
+- azure-west-us-spoke2
+
+**<span style='color:green'>SHARED SERVICE</span>**:
+
+**NEW YORK DC**:
+- workstation client "edge"
+
+Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` button, on the right-hand side.
+
+```{figure} images/lab9-costiq.png
 ---
 align: center
 ---
-New Rule
+Enable CostIQ
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+Now click on `"+ Cost Center"` and create the **AWS** Cost Center aforementioned.
 
-- **Name**: <span style='color:#479608'>inter-icmp-bu2-east1</span>
-- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
-- **Destination Smartgroups**: <span style='color:#479608'>east1</span>
-- **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
-
-Then click on **Save In Drafts**.
-
-```{caution}
-Please note the direction of this new inter-rule: 
-
-**FROM** bu2 **TO** east1
-```
-
-```{figure} images/lab10-lastrule.png
+```{figure} images/lab9-costiq02.png
 ---
 align: center
 ---
-The Last Rule...
+"+ Cost Center"
 ```
 
-Now you can carry on with the last **commit**!
-
-```{figure} images/lab10-lastcommit.png
+```{figure} images/lab9-costiq03.png
 ---
 align: center
 ---
-Commit
+AWS
 ```
 
-### 6.4 Verify connectivity between bu2 and east1
+Repeat the action creating the remaining two Cost Centers: **GCP** and **Azure**, associating the corresponing Application VPCs/VNets.
 
-- SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_** and ping the private IP of the ec2-instance **_aws-us-east-1-spoke1-test2_**
-
-```{figure} images/lab10-lastping.png
+```{figure} images/lab9-costiq04.png
 ---
 align: center
 ---
-Ping
+GCP
 ```
 
-This time the ping will be successful!
-
-Check the logs once again.
-
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
-
-```{figure} images/lab10-reallylast.png
+```{figure} images/lab9-costiq05.png
 ---
 align: center
 ---
-inter-icmp-bu2-east1 Logs
+AZURE
 ```
 
-After the creation of both the previous inter-rule and the additional Smart Group, this is how the topology with all the permitted protocols should look like.
+You should immediately get insights on how they have been utilized.
 
-```{figure} images/lab10-newjoe.png
+```{figure} images/lab9-costiq06.png
+---
+align: center
+---
+Cost Centers Overview
+```
+
+Now let's discover the **Public IP address** of the `Workstation Edge` in the **New York DC**. 
+Copy the DNS name available on your POD portal and resolve it using the `host/nslookup` command.
+
+```{figure} images/lab9-costiq10.png
+---
+align: center
+---
+Edge's dns name workstation
+```
+
+```{figure} images/lab9-costiq11.png
+---
+align: center
+---
+Host command in action
+```
+
+Let's move on the Shared Service tab and click on `"+ Shared Service"`.
+
+```{figure} images/lab9-costiq12.png
+---
+align: center
+---
+"+ Shared Service"
+```
+
+Create the **Shared Service** based on the aforementioned requirements.
+
+```{figure} images/lab9-costiq13.png
+---
+align: center
+---
+"+ Shared Service"
+```
+
+After this lab, this is how the overall topology would look like:
+
+```{figure} images/lab9-final.png
 ---
 height: 400px
 align: center
 ---
-Final Topology
-```
-
-## 7. Spoke to Spoke Attachment
-
-Now that you have enabled the Distributed Cloud Firewall, the owner of the **_azure-west-us-spoke2-test1_** VM would like to communicate directly with the nearby **_azure-west-us-spoke1-test1_** VM, avoding that the traffic generated from the VNet is sent to the NGFW, first.
-
-```{figure} images/lab10-spoke2spoke01.png
----
-align: center
----
-No More NGFW
-```
-
-### 7.1 Creating a Spoke to Spoke Attachment
-
-Go to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** GW and click on the **`Manage Transit Gateway Attachment`** icon on the right side of its row.
-
-```{figure} images/lab10-spoke2spoke02.png
----
-align: center
----
-Manage Transit Gateway Attachment
-```
-
-Select the **Spoke Gateway** tab and then choose the **azure-west-us-spoke1** GW from the drop-down window.
-
-Do not forget to click on **Save**.
-
-```{figure} images/lab10-spoke2spoke03.png
----
-align: center
----
-azure-west-us-spoke1
-```
-
-Now go to **CoPilot > Cloud Fabric > Topology** and check the new attachment between the two Spoke Gateways in Azure.
-
-```{figure} images/lab10-spoke2spoke04.png
----
-align: center
----
-Spoke to Spoke Attachment
-```
-
-```{caution}
-It will take approximately **2** minutes to reflect into the Topology.
-```
-
-Let's check the **Routing Table** of the **_Spoke2_** in Azure.
-
-Go to **CoPilot > Cloud Fabric > Gateways**, select the **azure-west-us-spoke2**, then select the **Gateways Routes** tab and search for the subnet **`192.168.1.0`** on the right-hand side.
-
-```{figure} images/lab10-spoke2spoke05.png
----
-align: center
----
-azure-west-us-spoke2
-```
-
-You will notice that the destination is now reachable with a **lower** metric (50)!
-
-```{figure} images/lab10-spoke2spoke06.png
----
-align: center
----
-Metric 50
-```
-
-The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now prefer going through the Spoke-to-Spoke Attachment, for the communication with the Spoke1 VNet.
-
-```{important}
-The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a Hub and Spoke Topology!
-```
-
-```{figure} images/lab10-spoke2spoke07.png
----
-align: center
----
-Spoke to Spoke
-```
-
-`Congratulations, you have deployed the full-blown Aviatrix solution!`
-
-```{figure} images/lab10-lastdrawing.png
----
-height: 400px
-align: center
----
-Full-Blown Aviatrix Solution
+Final topology for Lab 9
 ```

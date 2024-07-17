@@ -1,475 +1,608 @@
-# Lab 9 - THREATIQ & COSTIQ
+# Lab 9 - EDGE
 
-## 1. Objective
+## 1. General Objectives
 
-This lab will demonstrate how `ThreatIQ` works.
- 
-## 2. ThreatIQ Overview
+Now let's connect the `Aviatrix Edge` to the existing MCNA. 
 
-Aviatrix Gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. **FlowIQ** is one. **ThreatIQ** is another. ThreatIQ alerts you on Malicious IPs with bad reputations, but then can also apply an enforcement. These IPs are reported in the ThreatIQ database that CoPilot maintains.
+First and foremost let's explore the **BGP Map** that describes the connectivity established through the BGPoverLAN.
 
-```{important}
-ThreatIQ protect all the Aviatrix Gateways and it relies on a well-known database, provided by **`Proofpoint`**.
-```
+Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Map"` option.
 
-## 3. Topology
-
-In this lab, we will deploy a `“PSF"` gateway in AWS **US-EAST-1** region, to protect the public subnet.
-
-```{figure} images/lab9-initialtopology.png
+```{figure} images/lab8-edge3.png
 ---
 align: center
 ---
-Lab 9 Initial Topology
+CoPilot BGP Map
 ```
 
-## 4. PSF
-### 4.1 Deploy the PSF
+You can notice both the AS numbers of each side of the connection and the **/30** subnet used in the underlay.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Specialty Gateways**, then click on the `“+Gateway"` button and then choose the **Public Subnet Filtering Gateway**.
-
-```{figure} images/lab9-psf.png
+```{figure} images/lab8-edge4.png
 ---
 align: center
 ---
-PSF
+BGPoverLAN inside the On-Prem DC
 ```
 
-Insert the following parameters:
-- **Name**: <span style='color:#479608'>aws-us-east-1-psf</span>
-- **Account**: <span style='color:#479608'>aws-account</span>
-- **Region**: <span style='color:#479608'>us-east-1 (N. Virginia)</span>
-- **VPC**: <span style='color:#479608'>aws-us-east1-spoke1</span>
-- **Instance Size**: <span style='color:#479608'>t2.medium</span>
-- **Attach to Unused Subnet**: <span style='color:#479608'>us-east-1a</span>
-- **Route Table**: <span style='color:#479608'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span>
+Close the BGP Map and then click again on the threee dots icon and this time select the `"Show BGP Learned Routes"`.
+
+```{figure} images/lab8-edge5.png
+---
+align: center
+---
+Show BGP Learned Routes
+```
+
+The LAN router is advertising **225** routes to the Aviatrix Edge.
+
+```{figure} images/lab8-edge6.png
+---
+align: center
+---
+225 Routes
+```
+
+If you check also the `"Show BGP Advertised Routes"` outcome, you will notice that the Aviatrix Edge is not advertising any routes, because it is not connected to the MCNA yet!
+
+```{figure} images/lab8-edge7.png
+---
+align: center
+---
+No routes advertised by the Edge yet
+```
+
+### 6.1. Attachment between Edge and the Transit
+
+Let's establish a peering between the Aviatrix Edge device and the Transit Gateway in **US-EAST-2**. 
+
+In the Topology depicted below, you will notice that there is a workstation named "edge" attached to the LAN router. Once the attachment has been established, you will launch your ping from that client, for the connectivity verification!
+
+```{figure} images/lab8-edge8.png
+---
+align: center
+---
+Peerings not established yet!
+```
+
+First and foremost, you have to configure a **BGP ASN** on the **_aws-us-east-2-transit_** GW!
+
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_**.
+
+```{figure} images/lab8-edge12.png
+---
+align: center
+---
+aws-us-east-2-transit
+```
+
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section and insert the AS number **64513** on the empty field related to the `“Local AS Number”`, then click on **Save**.
+
+```{figure} images/lab8-edge13.png
+---
+align: center
+---
+BGP ASN
+```
+
+Now it's time to establish the attachment! 
+
+Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the **three dots icon** beside the Edge device entry and then click on `"Manage Transit Gateway Attachment"`.
+
+```{figure} images/lab8-edge9.png
+---
+align: center
+---
+Manage Transit Gateway Attachment
+```
+
+Click on the `"+ Transit Gateway Attachment"` button.
+
+```{figure} images/lab8-edge10.png
+---
+align: center
+---
+Transit Gateway Attachment
+```
+
+Fill in the attachment template using the following settings:
+
+- **Transt Gateway**: <span style='color:#479608'>aws-us-east-2-transit</span>
+- **Connecting Edge Interfaces**: <span style='color:#479608'>WAN(etho)</span>
+- **Attach over Private Network**: <span style='color:#479608'>**OFF**</span>
+- **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
 
 Do not forget to click on **Save**.
 
-```{figure} images/lab9-new.png
+```{figure} images/lab8-edge11.png
 ---
 align: center
 ---
-PSF template
+Attachment creation template
 ```
 
-```{warning}
-Wait for about **8** minutes for the completion of the PSF deployment.
-```
+Wait for a bunch of seconds for the Aviatrix Controller to establish the attachment and then a message will pop up confirming that the operation has been accomplished, successfully!
 
-```{figure} images/lab9-psfinprogress.png
+```{figure} images/lab8-edge14.png
 ---
 align: center
 ---
-PSF deployment in progress
+Peering created
 ```
 
-### 4.2 RTB verification
+Let's verify the presence of the attachment previously created on the Topology. 
 
-- Click on the **PSF** gateway, select the **VPC/VNet Route Tables** and then inspect the **_aviatrix-Aviatrix-Filter-Gateway_** Route Table
+Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
-```{figure} images/lab9-psfclick.png
+```{figure} images/lab8-edge15.png
 ---
 align: center
 ---
-PSF deployed
+New attachment
 ```
 
-```{figure} images/lab9-routetablepsf.png
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** cluster.
+
+```{figure} images/lab8-edge16.png
 ---
 align: center
 ---
-PSF rtb
+aws-us-east-2-transit
 ```
 
-```{note}
-The subnet with the PSF gateway is a Public Subnet with 0/0 pointing to IGW. No workload instances should be deployed in this subnet.
-```
+Select the `"Attachments"` tab and then click on `"Transit-Edge Peering"`. You will notice this additional tab that confirms the presence of an attachment between the Transit GW in the cloud and the Edge running in the DC!
 
-- Verify one more routing table that we selected while deploying the PSF Gateway: **_aws-us-east1-spoke1-Public-1-us-east-1a-rtb_**. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).
-
-```{figure} images/lab9-routetablepsf2.png
+```{figure} images/lab8-edge17.png
 ---
 align: center
 ---
-aws-us-east1-spoke1-rtb-public-a
+Transit-Edge Peering
 ```
 
-## 5. Enable ThreatIQ 
+This is how the Topology would look like after the creation of the attachment.
 
-Navigate to **CoPilot > Security > ThreatIQ > Configuration**
-
-Click on **Send Alert**:
-
-```{figure} images/lab9-sendalert.png
+```{figure} images/lab8-edge18.png
 ---
 align: center
 ---
-Enable ThreatIQ
+Attachment established!
 ```
 
-Then click on **Notification Settings**.
+The Edge devices allows to extend all the Aviatrix functionalities to the remote DC!
 
-```{figure} images/lab9-notification.png
+### 6.2. Network Domain Association
+
+Let's assocciate the Edge connection to any of the existing Network Domains.
+
+Go to **CoPilot > Networking > Network Segmentation > Network Domains** and edit, for instance, the **Green** domain. Select the **`on-prem-edge`** connection and do not forget to click on **Save**!
+
+```{figure} images/lab8-edge19.png
 ---
 align: center
 ---
-Notification Settings
+Network Domain Association
 ```
 
-Now click on the `"+ Email Address"` button.
+You have successfully extended the `Network Segmentation` on top of the DC.
 
-```{figure} images/lab9-email.png
+```{figure} images/lab8-newjoe.png
 ---
 align: center
 ---
-Email
+The DC is now another VPC
 ```
 
-Choose an **alias**, insert your **personal email** and then click on **Save**:
+Let's explore again the Cloud Routes section!
 
-```{figure} images/lab9-email2.png
----
-align: center
----
-Alias and Personal Email
-```
 
-Navigate back to **CoPilot > Security > ThreatIQ > Configuration**
-
-Click again on **Send Alert**:
-
-```{figure} images/lab9-sendalert2.png
----
-align: center
----
-Send Alert Settings
-```
-
-Select the alias that was previously created from the drop-down window `"recipients"` and then click on **Save**.
-
-```{figure} images/lab9-addrecipient.png
----
-align: center
----
-Add Recipient(s)
-```
-
-From this point onwards, if you enter a valid email address, you will receive email notifications about **ThreatIQ** alerts.
-
-Before enabling the blocking,  ensure that the **ThreatGuard firewall rules order** is set to `Prepend` on the right-hand side.
-
-```{figure} images/lab9-advanced.png
----
-align: center
----
-Prepend
-```
-
-### 5.1 Generate traffic towards the "Bad Guy"
-
-Wait for the instructor to provide a malicious IP. Let's call it `<malicious-IP>`. 
+Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Advertised Routes` option.
 
 ```{important}
-<ins>Note down this IP address!</ins>
+This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge device by the **Aviatrix Controller**, after the attachemnt got established!
 ```
 
-SSH to the EC2 instance **_aws-us-east1-spoke1-test1_**
-
-- Now test `ThreatIQ` by first issuing this command (make sure to enter **HTTPS**):
-
-```bash
-curl https://<malicious-IP>
-```
-
-```{figure} images/lab9-instancetest.png
+```{figure} images/lab8-edge20.png
 ---
 align: center
 ---
-Curl towards the malicious IP
+BGP Advertised Routes
 ```
 
-Navigate back to **CoPilot > Security > ThreatIQ > Overview**
+### 6.3. Edge: Connectivity Test
 
-```{note}
-**Wait for about 4-5 minutes**, before proceeding with the next action. 
+Let's launch a connectivity test, from the Workstation "Edge" inside the DC in New York. 
 
-Set the **Time Period** to `"Last 60 Minutes"` and click on **Apply**.
-```
-
-```{figure} images/lab9-custom.png
+```{figure} images/lab8-newjoe2.png
 ---
 align: center
 ---
-Overview
+BGP Advertised Routes
 ```
 
-You should see the IP in the table at the bottom. You can filter based on the destination IP address (insert the malicious IP address):
+Go to your personal POD portal, scroll down untill your reach the **Lab 8** section and click on the `"Open Workstation"` button.
 
-```{figure} images/lab9-threat.png
+```{figure} images/lab8-edgenew.png
 ---
 align: center
 ---
-Threats
+Workstation Edge access from the POD Portal
 ```
 
-```{figure} images/lab9-threat2.png
+Subsequently, insert the credentials available from the POD Portal.
+
+```{figure} images/lab8-newjoe3.png
 ---
 align: center
 ---
-Filter
+Workstation Edge credentials
 ```
 
-Afterwards, click on **VIEW** on the right-hand side of the Timestamp.
+You will land on the Desktop of the Workstation Edge and from here launch the `LX Terminal`.
 
-```{note}
-The IP shown in these screenshots  might not be deemed a threat when you read this. Please use the malicious IP provided by the instructor.
-```
-
-```{figure} images/lab9-view.png
+```{figure} images/lab8-newjoe4.png
 ---
 align: center
 ---
-View
+LX Terminal
 ```
 
-```{figure} images/lab9-view2.png
+Now execute the ping command towards the private IP address of the **aws-us-east-2-spoke1-test1** instance.
+
+```{figure} images/lab8-edge22.png
 ---
 align: center
 ---
-Threat details
+Target for the connectivity test
 ```
 
-Then select **Threat Summary** and pinpoint the metadata "tag" to determine how ThreatIQ has classified this IP.
+The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered as just an additional VPC!
 
-```{figure} images/lab9-tor.png
+```{figure} images/lab8-edge30.png
 ---
 align: center
 ---
-"tag"
+Ping
 ```
 
-## 5. Enforcement
+### 6.3. Edge: FlowIQ
 
-- Enable **Block Threats**
+* Use <span style='color:#FF0000'>**FlowIQ**</span> from the Aviatrix CoPilot, <ins> for inspecting the NetFlow Data.
 
 ```{tip}
-Go to **CoPilot > Security > ThreatIQ > Configuration** and turn on the toggle `"Block Threats"`.
+Go to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based  on the `"Destination IP Address"` **10.0.1.100** (i.e. **_aws-us-east-2-spoke1-test1_**).
+
+Do not forget to click on **Apply**.
 ```
 
-```{figure} images/lab9-threatguard.png
+```{figure} images/lab8-plus.png
 ---
 align: center
 ---
-ThreatIQ - Automatic Enforcement
+Create the filter
 ```
 
-By default, <ins>**all** VPCs are enabled for ThreatIQ</ins>, therefore click on **Save** to continue.
-
-
-```{figure} images/lab9-vpc.png
+```{figure} images/lab8-edge24.png
 ---
 align: center
 ---
-Select VPC
+FlowIQ Filter
 ```
 
-Then, click **CONFIRM**.
-
-```{figure} images/lab9-confirm.png
+```{caution}
+It may take about **5** minutes for flow data to appear in the CoPilot UI, therefore please wait for a bit
+and then click on the **`"Refresh Data"`** button!
+```{figure} images/lab8-refresh2.png
 ---
 align: center
 ---
-Confirm
+Refresh
 ```
 
+Then scroll a little bit and check the `"Flow Exporters"` widget, then from the drop-down menu select the **`"Aviatrix Gateway"`** widget: you will see the list of all the Aviatrix Gateways involved along the path.
 
-
-### 5.1. Automatic enforcement: "force-drop"
-
-- Now try issuing the same curl command once again, from the test instance **_aws-us-east-1-spoke1-test1_**
-
-```{figure} images/lab9-failed.png
+```{figure} images/lab8-newjoe6.png
 ---
 align: center
 ---
-Curl fails
+Widget
 ```
 
-Navigate to  **CoPilot > Security > ThreatIQ > Configuration**
+```{figure} images/lab8-flowiq.png
+---
+align: center
+---
+Aviatrix Gateway
+```
 
 ```{note}
-The CoPilot UI frequently changes, and what you see below may differ from your experience. 
+On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
-- Click on the **refresh** button under.
-  
-```{figure} images/lab9-refresh.png
+### 6.4. Edge: "It's more than a Spoke GW""
+
+The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus <ins>the Edge device is regarded much more than a classic Spoke gateway</ins>.
+
+Let's connect the Edge device also to the Transit Gateway in **US-Central-1** in **GCP**.
+
+```{figure} images/lab8-edgedouble.png
 ---
 align: center
 ---
-Refresh button
+New Attachment towards GCP
 ```
 
-- Click on **VIEW** under the column View Rules, on the **_aws-us-east-1-psf_** row:
+Once again, you have to configure a **BGP ASN** on the **_gcp-us-central1-transit_** GW first, before deploying any new attachments.
 
-```{figure} images/lab9-viewrules.png
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_**.
+
+```{figure} images/lab8-edgedouble5.png
 ---
 align: center
 ---
-Configuration VIEW
+gcp-us-central1-transit
 ```
 
-Filter based on the malicious IP (choose the **source IP** as parameter): you will find out that ThreatIQ applied the enforcement `"force-drop"`.
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section and insert the AS number **64514** on the empty field related to the `“Local AS Number”`, then click on **Save**.
 
-```{figure} images/lab9-force.png
+```{figure} images/lab8-edgedouble6.png
 ---
 align: center
 ---
-Filter on Source IP
+BGP ASN
 ```
 
-**ThreatIQ** has successfully blocked the malicious IP!
+Now you are ready to proceed with the rest of the configuration on the Edge section!
 
-```{warning}
-Before ending this lab, remove your email from the notification list!
-```
+Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the three dots icon beside the Edge device entry and then click on `"Manage Transit Gateway Attachment"`.
 
-Navigate to **CoPilot > Monitor > Notifications > Alerts Configuration**
-
-Click on the pencil icon for editing the configured alert named `"ThreatIQ Alert"`:
-
-```{figure} images/lab9-notification2.png
+```{figure} images/lab8-edgedouble2.png
 ---
 align: center
 ---
-Edit ThreatIQ Alert
+Manage Transit Gateway Attachment
 ```
 
-- Remove the recipient that is identified based on the alias that you chose before, then click on **Save**.
+Now click on the `"+ Transit Gateway Attachment"` button.
+You will notice the existing attachment (grayout) with the Transit Gateway in AWS US-East-2.
 
-ThreatIQ will immediately stop sending the alerts to your personal email:
-
-```{figure} images/lab9-joe.png
+```{figure} images/lab8-edgedouble3.png
 ---
 align: center
 ---
-Stop alerts
+New Attachment
 ```
 
-## 6. CostIQ
+Fill in the attachment template using the following settings:
 
-Before completing this lab, let's enable `CostIQ` and define the following **Cost Centers** and **Shared Service**.
+- **Transt Gateway**: <span style='color:#479608'>gcp-us-central1-transit</span>
+- **Connecting Edge Interfaces**: <span style='color:#479608'>WAN(etho)</span>
+- **Attach over Private Network**: <span style='color:#479608'>**OFF**</span>
+- **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
 
-**<span style='color:orange'>COST CENTERS</span>**:
+Do not forget to click on **Save**.
 
-**AWS**:
-- aws-us-east-1-spoke1
-- aws-us-east-1-spoke2
-
-**GCP**:
-- gcp-us-central1-spoke1
-
-**AZURE**:
-- azure-west-us-spoke1
-- azure-west-us-spoke2
-
-**<span style='color:green'>SHARED SERVICE</span>**:
-
-**NEW YORK DC**:
-- workstation client "edge"
-
-Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` button, on the right-hand side.
-
-```{figure} images/lab9-costiq.png
+```{figure} images/lab8-attachment01.png
 ---
 align: center
 ---
-Enable CostIQ
+Edge Attachment Template
 ```
 
-Now click on `"+ Cost Center"` and create the **AWS** Cost Center aforementioned.
+Wait for 1 minute for the Aviatrix Controller to establish the attachment between the Edge and the GCP Transit Gateway. Once the operation is completed you will be notified!
 
-```{figure} images/lab9-costiq02.png
+```{figure} images/lab8-edgedouble9.png
 ---
 align: center
 ---
-"+ Cost Center"
+Notification
 ```
 
-```{figure} images/lab9-costiq03.png
+Let's verify the presence of the new attachment previously created on the Topology. 
+
+Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
+
+```{figure} images/lab8-edgedouble10.png
 ---
 align: center
 ---
-AWS
+Topology
 ```
 
-Repeat the action creating the remaining two Cost Centers: **GCP** and **Azure**, associating the corresponing Application VPCs/VNets.
+#### 6.4.1 Edge: As-Path Prepend
 
-```{figure} images/lab9-costiq04.png
+Now, let's **SSH** on the EC2 _**aws-us-east-2-spoke1-test1**_  and then launch the command _traceroute_ towards the VM _**gcp-us-central1-spoke1-test1**_ in GCP
+
+```{figure} images/lab8-edgedouble21.png
 ---
 align: center
 ---
-GCP
+aws-us-east-2-spoke1-test1 
 ```
 
-```{figure} images/lab9-costiq05.png
+- Install the **`inetutils-traceroute`** package, typing the following command:
+
+```bash
+sudo apt install inetutils-traceroute
+```
+
+```{caution}
+You will be asked to type the student's password!
+```
+
+```{figure} images/lab8-edgedouble22.png
 ---
 align: center
 ---
-AZURE
+apt install 
 ```
 
-You should immediately get insights on how they have been utilized.
+Now type the traceroute command towards the test VM in GCP:
 
-```{figure} images/lab9-costiq06.png
+```bash
+traceroute 172.16.1.100
+```
+
+```{figure} images/lab8-edgedouble23.png
 ---
 align: center
 ---
-Cost Centers Overview
+Traceroute
 ```
 
-Now let's discover the **Public IP address** of the `Workstation Edge` in the **New York DC**. 
-Copy the DNS name available on your POD portal and resolve it using the `host/nslookup` command.
+The traceroute will reveal that the destination is exactly **5** hops away.
 
-```{figure} images/lab9-costiq10.png
+```{figure} images/lab8-edgedouble25.png
 ---
 align: center
 ---
-Edge's dns name workstation
+5 hops
 ```
 
-```{figure} images/lab9-costiq11.png
+Let's harness the **as-path prepend** feature for manipulating the traffic. 
+
+```{important}
+The routes exchanged between transit gateways are considered `BGP-like routes`! This is because the Aviatrix Controller orchestrating the SD routing, also has to use a mechanism for the routing decision, and therefore these routes seem BGP routes, indeed they have some attributes similar to the attributes used with BGP routes. For instance, each Transit has its own `AS PATH`, and this is used for the best path selection process. Nevertheless, bear in mind that the control plane within the MCNA is based on `SDN` (Software Defined Networking).
+```
+
+The objective of this task is to define a **Primary** path through the Edge device, whereas the path between the Transit gateways will be used as a **Backup** path.
+
+```{figure} images/lab8-primary.png
 ---
 align: center
 ---
-Host command in action
+Primary and Backup
 ```
 
-Let's move on the Shared Service tab and click on `"+ Shared Service"`.
+Let's first check the `Route DB` of the **_aws-us-east-2-transit_** GW.
 
-```{figure} images/lab9-costiq12.png
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the **_aws-us-east-2-transit_** Gateway.
+
+```{figure} images/lab8-primary01.png
 ---
 align: center
 ---
-"+ Shared Service"
+aws-us-east-2-transit
 ```
 
-Create the **Shared Service** based on the aforementioned requirements.
+Select the `"Route DB"` tab, then on right-hand side  type **172.16.1.0** on the Search field.
 
-```{figure} images/lab9-costiq13.png
+```{figure} images/lab8-primary03.png
 ---
 align: center
 ---
-"+ Shared Service"
+Route DB
+```
+
+```{figure} images/lab8-primary02.png
+---
+align: center
+---
+1 AS Path length
+```
+
+From the **_aws-us-east-2-transit_** perspective, the destination route `172.16.1.0` is far just one single AS (i.e. 64514)
+
+Now let's apply the route manipulation. Go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW.
+
+```{figure} images/lab8-edgedouble30.png
+---
+align: center
+---
+aws-us-east-2-transit
+```
+
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget,  select the `gcp-us-central1-transit-peering` connection and type **twice** the AS number 64513. 
+
+Of course, then click on **Save**.
+
+```{figure} images/lab8-edgedouble31.png
+---
+align: center
+---
+as-path prepend
+```
+
+Let's repeat the same kind of configuration on the **GCP** Transit GW.
+
+Go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_** GW.
+
+```{figure} images/lab8-edgedouble32.png
+---
+align: center
+---
+gcp-us-central1-transit
+```
+
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget select the `aws-us-east-2-transit-peering` connection and type **twice** the AS number 64514. 
+
+Click on **Save** to apply the change!
+
+```{figure} images/lab8-edgedouble33.png
+---
+align: center
+---
+as-path prepend
+```
+
+Now go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** inside the Search field. This time the AS Path Length will turn out being equal to 3, due to to the route manipulation that harnessed the `as-path prepend` feature.
+
+```{figure} images/lab8-path.png
+---
+align: center
+---
+As path length = 3
+```
+
+Now, let's launch again the traceroute towards 172.16.1.100 from the **_aws-us-east-2-spoke1-test1_**.
+
+```{figure} images/lab8-almostdone.png
+---
+align: center
+---
+traceroute
+```
+
+The traceroute is still showing the Transit peering between AWS and GCP as the preferred path, although the `as-path prepend` was correctly applied earlier. 
+
+There is another option that needs to be enabled in order to complete this lab. Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `Edge` device.
+
+```{figure} images/lab8-almostdone02.png
+---
+align: center
+---
+Edge
+```
+
+Select the `"Settings"` Tab and then expand the `"Routing"` section, afterwards turn on the knob `Transitive Routing` and do not forget to click on **Save**.
+
+```{figure} images/lab8-almostdone03.png
+---
+align: center
+---
+edge
+```
+
+Let's relaunch the traceroute towards 172.16.1.100 from the **_aws-us-east-2-spoke1-test1_**.
+
+```{figure} images/lab8-almostdone04.png
+---
+align: center
+---
+traceroute
+```
+
+```{figure} images/lab8-almostdone05.png
+---
+align: center
+---
+6 Hops
 ```
 
 After this lab, this is how the overall topology would look like:
 
-```{figure} images/lab9-final.png
+```{figure} images/lab8-edge25.png
 ---
 height: 400px
 align: center
 ---
-Final topology for Lab 9
+Final Topology for Lab 8
 ```
