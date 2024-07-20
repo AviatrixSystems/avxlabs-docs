@@ -32,8 +32,8 @@ Click this link to {Download}`ACE Prof Mod13 - Iac and NetworkInsights-API <file
 
 Click this link to {Download}`ACE Prof Mod14 - RBAC <files/ACE Prof Mod14 - RBAC.pdf>`
 
-Click this link to {Download}`ACE Prof Mod15 - Knowledge Check - Design Exercise <files/ACE Prof Mod15 - Knowledge Check - Design Exercise>`
+Click this link to {Download}`ACE Prof Mod15 - Knowledge Check - Design Exercise<files/ACE Prof Mod15 - Knowledge Check - Design Exercise.pdf>`
 
 Click this link to {Download}`ACE Prof Mod16 - Lets Design Together <files/ACE Prof Mod16 - Lets Design Together.pdf>`
 
-Click this link to {Download}`ACE Prof Mod17 - Survey <files/ACE Prof Mod17 - Survey.pdf>
+Click this link to {Download}`ACE Prof Mod17 - Survey <files/ACE Prof Mod17 - Survey.pdf>`
