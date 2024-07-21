@@ -1,4 +1,4 @@
-# Lab 8 - SITE2CLOUD
+# Lab 7 - SITE2CLOUD
 
 ## 1. General Objectives
 

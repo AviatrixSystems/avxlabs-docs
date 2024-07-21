@@ -1,4 +1,4 @@
-# Lab 10 - THREATIQ & COSTIQ
+# Lab 9 - THREATIQ & COSTIQ
 
 ## 1. Objective
 

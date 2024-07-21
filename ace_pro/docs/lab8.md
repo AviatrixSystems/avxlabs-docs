@@ -1,4 +1,4 @@
-# Lab 9 - EDGE
+# Lab 8 - EDGE
 
 ## 1. General Objectives
 
