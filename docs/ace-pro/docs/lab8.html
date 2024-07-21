@@ -1,0 +1,987 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 8 - EDGE &#8212; ACE Operations Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab8';</script>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 9 - THREATIQ &amp; COSTIQ" href="lab9.html" />
+    <link rel="prev" title="Lab 7 - SITE2CLOUD" href="lab7.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Operations Lab - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="ACE Operations Lab - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Professional Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets CREATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - HPE WITH ACTIVE MESH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - EGRESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - SITE2CLOUD</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 8 - EDGE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; COSTIQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - TERRAFORM &amp; NETWORK INSIGHTS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab8.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 8 - EDGE</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-objectives">1. General Objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">6.1. Attachment between Edge and the Transit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">6.2. Network Domain Association</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity-test">6.3. Edge: Connectivity Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-flowiq">6.3. Edge: FlowIQ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">6.4. Edge: “It’s more than a Spoke GW””</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-path-prepend">6.4.1 Edge: As-Path Prepend</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-8-edge">
+<h1>Lab 8 - EDGE<a class="headerlink" href="#lab-8-edge" title="Link to this heading">#</a></h1>
+<section id="general-objectives">
+<h2>1. General Objectives<a class="headerlink" href="#general-objectives" title="Link to this heading">#</a></h2>
+<p>Now let’s connect the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Edge</span></code> to the existing MCNA.</p>
+<p>First and foremost let’s explore the <strong>BGP Map</strong> that describes the connectivity established through the BGPoverLAN.</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> and click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Map&quot;</span></code> option.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/lab8-edge3.png" src="../_images/lab8-edge3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 247 </span><span class="caption-text">CoPilot BGP Map</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You can notice both the AS numbers of each side of the connection and the <strong>/30</strong> subnet used in the underlay.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab8-edge4.png" src="../_images/lab8-edge4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 248 </span><span class="caption-text">BGPoverLAN inside the On-Prem DC</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Close the BGP Map and then click again on the threee dots icon and this time select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code>.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab8-edge5.png" src="../_images/lab8-edge5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 249 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The LAN router is advertising <strong>225</strong> routes to the Aviatrix Edge.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab8-edge6.png" src="../_images/lab8-edge6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 250 </span><span class="caption-text">225 Routes</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If you check also the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Advertised</span> <span class="pre">Routes&quot;</span></code> outcome, you will notice that the Aviatrix Edge is not advertising any routes, because it is not connected to the MCNA yet!</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/lab8-edge7.png" src="../_images/lab8-edge7.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 251 </span><span class="caption-text">No routes advertised by the Edge yet</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="attachment-between-edge-and-the-transit">
+<h3>6.1. Attachment between Edge and the Transit<a class="headerlink" href="#attachment-between-edge-and-the-transit" title="Link to this heading">#</a></h3>
+<p>Let’s establish a peering between the Aviatrix Edge device and the Transit Gateway in <strong>US-EAST-2</strong>.</p>
+<p>In the Topology depicted below, you will notice that there is a workstation named “edge” attached to the LAN router. Once the attachment has been established, you will launch your ping from that client, for the connectivity verification!</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab8-edge8.png" src="../_images/lab8-edge8.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 252 </span><span class="caption-text">Peerings not established yet!</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>First and foremost, you have to configure a <strong>BGP ASN</strong> on the <strong><em>aws-us-east-2-transit</em></strong> GW!</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong>.</p>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab8-edge12.png" src="../_images/lab8-edge12.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 253 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section and insert the AS number <strong>64513</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab8-edge13.png" src="../_images/lab8-edge13.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 254 </span><span class="caption-text">BGP ASN</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now it’s time to establish the attachment!</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Edge &gt; Gateways</strong> and click on the <strong>three dots icon</strong> beside the Edge device entry and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code>.</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab8-edge9.png" src="../_images/lab8-edge9.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Manage Transit Gateway Attachment</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code> button.</p>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab8-edge10.png" src="../_images/lab8-edge10.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Transit Gateway Attachment</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Fill in the attachment template using the following settings:</p>
+<ul class="simple">
+<li><p><strong>Transt Gateway</strong>: <span style='color:#479608'>aws-us-east-2-transit</span></p></li>
+<li><p><strong>Connecting Edge Interfaces</strong>: <span style='color:#479608'>WAN(etho)</span></p></li>
+<li><p><strong>Attach over Private Network</strong>: <span style='color:#479608'><strong>OFF</strong></span></p></li>
+<li><p><strong>High Performance Encryption</strong>: <span style='color:#479608'><strong>OFF</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab8-edge11.png" src="../_images/lab8-edge11.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Attachment creation template</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Wait for a bunch of seconds for the Aviatrix Controller to establish the attachment and then a message will pop up confirming that the operation has been accomplished, successfully!</p>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab8-edge14.png" src="../_images/lab8-edge14.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 258 </span><span class="caption-text">Peering created</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s verify the presence of the attachment previously created on the Topology.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab8-edge15.png" src="../_images/lab8-edge15.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 259 </span><span class="caption-text">New attachment</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> cluster.</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab8-edge16.png" src="../_images/lab8-edge16.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 260 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Attachments&quot;</span></code> tab and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Edge</span> <span class="pre">Peering&quot;</span></code>. You will notice this additional tab that confirms the presence of an attachment between the Transit GW in the cloud and the Edge running in the DC!</p>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab8-edge17.png" src="../_images/lab8-edge17.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 261 </span><span class="caption-text">Transit-Edge Peering</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is how the Topology would look like after the creation of the attachment.</p>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab8-edge18.png" src="../_images/lab8-edge18.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Attachment established!</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Edge devices allows to extend all the Aviatrix functionalities to the remote DC!</p>
+</section>
+<section id="network-domain-association">
+<h3>6.2. Network Domain Association<a class="headerlink" href="#network-domain-association" title="Link to this heading">#</a></h3>
+<p>Let’s assocciate the Edge connection to any of the existing Network Domains.</p>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong> and edit, for instance, the <strong>Green</strong> domain. Select the <strong><code class="docutils literal notranslate"><span class="pre">on-prem-edge</span></code></strong> connection and do not forget to click on <strong>Save</strong>!</p>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab8-edge19.png" src="../_images/lab8-edge19.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 263 </span><span class="caption-text">Network Domain Association</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You have successfully extended the <code class="docutils literal notranslate"><span class="pre">Network</span> <span class="pre">Segmentation</span></code> on top of the DC.</p>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab8-newjoe.png" src="../_images/lab8-newjoe.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 264 </span><span class="caption-text">The DC is now another VPC</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s explore again the Cloud Routes section!</p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> and click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Advertised</span> <span class="pre">Routes</span></code> option.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge device by the <strong>Aviatrix Controller</strong>, after the attachemnt got established!</p>
+</div>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab8-edge20.png" src="../_images/lab8-edge20.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 265 </span><span class="caption-text">BGP Advertised Routes</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="edge-connectivity-test">
+<h3>6.3. Edge: Connectivity Test<a class="headerlink" href="#edge-connectivity-test" title="Link to this heading">#</a></h3>
+<p>Let’s launch a connectivity test, from the Workstation “Edge” inside the DC in New York.</p>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab8-newjoe2.png" src="../_images/lab8-newjoe2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 266 </span><span class="caption-text">BGP Advertised Routes</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Go to your personal POD portal, scroll down untill your reach the <strong>Lab 8</strong> section and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Open</span> <span class="pre">Workstation&quot;</span></code> button.</p>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab8-edgenew.png" src="../_images/lab8-edgenew.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Workstation Edge access from the POD Portal</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Subsequently, insert the credentials available from the POD Portal.</p>
+<figure class="align-center" id="id22">
+<img alt="../_images/lab8-newjoe3.png" src="../_images/lab8-newjoe3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 268 </span><span class="caption-text">Workstation Edge credentials</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will land on the Desktop of the Workstation Edge and from here launch the <code class="docutils literal notranslate"><span class="pre">LX</span> <span class="pre">Terminal</span></code>.</p>
+<figure class="align-center" id="id23">
+<img alt="../_images/lab8-newjoe4.png" src="../_images/lab8-newjoe4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 269 </span><span class="caption-text">LX Terminal</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now execute the ping command towards the private IP address of the <strong>aws-us-east-2-spoke1-test1</strong> instance.</p>
+<figure class="align-center" id="id24">
+<img alt="../_images/lab8-edge22.png" src="../_images/lab8-edge22.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Target for the connectivity test</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered as just an additional VPC!</p>
+<figure class="align-center" id="id25">
+<img alt="../_images/lab8-edge30.png" src="../_images/lab8-edge30.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 271 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="edge-flowiq">
+<h3>6.3. Edge: FlowIQ<a class="headerlink" href="#edge-flowiq" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use <span style='color:#FF0000'><strong>FlowIQ</strong></span> from the Aviatrix CoPilot, <ins> for inspecting the NetFlow Data.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Monitor &gt; FlowIQ</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;+&quot;</span></code> icon and filter based  on the <code class="docutils literal notranslate"><span class="pre">&quot;Destination</span> <span class="pre">IP</span> <span class="pre">Address&quot;</span></code> <strong>10.0.1.100</strong> (i.e. <strong><em>aws-us-east-2-spoke1-test1</em></strong>).</p>
+<p>Do not forget to click on <strong>Apply</strong>.</p>
+</div>
+<figure class="align-center" id="id26">
+<img alt="../_images/lab8-plus.png" src="../_images/lab8-plus.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 272 </span><span class="caption-text">Create the filter</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id27">
+<img alt="../_images/lab8-edge24.png" src="../_images/lab8-edge24.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 273 </span><span class="caption-text">FlowIQ Filter</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>It may take about <strong>5</strong> minutes for flow data to appear in the CoPilot UI, therefore please wait for a bit
+and then click on the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Refresh</span> <span class="pre">Data&quot;</span></code></strong> button!</p>
+<figure class="align-center" id="id28">
+<img alt="../_images/lab8-refresh2.png" src="../_images/lab8-refresh2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Refresh</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<p>Then scroll a little bit and check the <code class="docutils literal notranslate"><span class="pre">&quot;Flow</span> <span class="pre">Exporters&quot;</span></code> widget, then from the drop-down menu select the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Aviatrix</span> <span class="pre">Gateway&quot;</span></code></strong> widget: you will see the list of all the Aviatrix Gateways involved along the path.</p>
+<figure class="align-center" id="id29">
+<img alt="../_images/lab8-newjoe6.png" src="../_images/lab8-newjoe6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Widget</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id30">
+<img alt="../_images/lab8-flowiq.png" src="../_images/lab8-flowiq.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Aviatrix Gateway</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On the <strong>Aviatrix Gateway</strong> widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).</p>
+</div>
+</section>
+<section id="edge-it-s-more-than-a-spoke-gw">
+<h3>6.4. Edge: “It’s more than a Spoke GW””<a class="headerlink" href="#edge-it-s-more-than-a-spoke-gw" title="Link to this heading">#</a></h3>
+<p>The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus <ins>the Edge device is regarded much more than a classic Spoke gateway</ins>.</p>
+<p>Let’s connect the Edge device also to the Transit Gateway in <strong>US-Central-1</strong> in <strong>GCP</strong>.</p>
+<figure class="align-center" id="id31">
+<img alt="../_images/lab8-edgedouble.png" src="../_images/lab8-edgedouble.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">New Attachment towards GCP</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Once again, you have to configure a <strong>BGP ASN</strong> on the <strong><em>gcp-us-central1-transit</em></strong> GW first, before deploying any new attachments.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>gcp-us-central1-transit</em></strong>.</p>
+<figure class="align-center" id="id32">
+<img alt="../_images/lab8-edgedouble5.png" src="../_images/lab8-edgedouble5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">gcp-us-central1-transit</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section and insert the AS number <strong>64514</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id33">
+<img alt="../_images/lab8-edgedouble6.png" src="../_images/lab8-edgedouble6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">BGP ASN</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now you are ready to proceed with the rest of the configuration on the Edge section!</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Edge &gt; Gateways</strong> and click on the three dots icon beside the Edge device entry and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code>.</p>
+<figure class="align-center" id="id34">
+<img alt="../_images/lab8-edgedouble2.png" src="../_images/lab8-edgedouble2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Manage Transit Gateway Attachment</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code> button.
+You will notice the existing attachment (grayout) with the Transit Gateway in AWS US-East-2.</p>
+<figure class="align-center" id="id35">
+<img alt="../_images/lab8-edgedouble3.png" src="../_images/lab8-edgedouble3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">New Attachment</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Fill in the attachment template using the following settings:</p>
+<ul class="simple">
+<li><p><strong>Transt Gateway</strong>: <span style='color:#479608'>gcp-us-central1-transit</span></p></li>
+<li><p><strong>Connecting Edge Interfaces</strong>: <span style='color:#479608'>WAN(etho)</span></p></li>
+<li><p><strong>Attach over Private Network</strong>: <span style='color:#479608'><strong>OFF</strong></span></p></li>
+<li><p><strong>High Performance Encryption</strong>: <span style='color:#479608'><strong>OFF</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id36">
+<img alt="../_images/lab8-attachment01.png" src="../_images/lab8-attachment01.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">Edge Attachment Template</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Wait for 1 minute for the Aviatrix Controller to establish the attachment between the Edge and the GCP Transit Gateway. Once the operation is completed you will be notified!</p>
+<figure class="align-center" id="id37">
+<img alt="../_images/lab8-edgedouble9.png" src="../_images/lab8-edgedouble9.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">Notification</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s verify the presence of the new attachment previously created on the Topology.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
+<figure class="align-center" id="id38">
+<img alt="../_images/lab8-edgedouble10.png" src="../_images/lab8-edgedouble10.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="edge-as-path-prepend">
+<h4>6.4.1 Edge: As-Path Prepend<a class="headerlink" href="#edge-as-path-prepend" title="Link to this heading">#</a></h4>
+<p>Now, let’s <strong>SSH</strong> on the EC2 <em><strong>aws-us-east-2-spoke1-test1</strong></em>  and then launch the command <em>traceroute</em> towards the VM <em><strong>gcp-us-central1-spoke1-test1</strong></em> in GCP</p>
+<figure class="align-center" id="id39">
+<img alt="../_images/lab8-edgedouble21.png" src="../_images/lab8-edgedouble21.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">aws-us-east-2-spoke1-test1</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Install the <strong><code class="docutils literal notranslate"><span class="pre">inetutils-traceroute</span></code></strong> package, typing the following command:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>inetutils-traceroute
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>You will be asked to type the student’s password!</p>
+</div>
+<figure class="align-center" id="id40">
+<img alt="../_images/lab8-edgedouble22.png" src="../_images/lab8-edgedouble22.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 286 </span><span class="caption-text">apt install</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now type the traceroute command towards the test VM in GCP:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>traceroute<span class="w"> </span><span class="m">172</span>.16.1.100
+</pre></div>
+</div>
+<figure class="align-center" id="id41">
+<img alt="../_images/lab8-edgedouble23.png" src="../_images/lab8-edgedouble23.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 287 </span><span class="caption-text">Traceroute</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The traceroute will reveal that the destination is exactly <strong>5</strong> hops away.</p>
+<figure class="align-center" id="id42">
+<img alt="../_images/lab8-edgedouble25.png" src="../_images/lab8-edgedouble25.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 288 </span><span class="caption-text">5 hops</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s harness the <strong>as-path prepend</strong> feature for manipulating the traffic.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The routes exchanged between transit gateways are considered <code class="docutils literal notranslate"><span class="pre">BGP-like</span> <span class="pre">routes</span></code>! This is because the Aviatrix Controller orchestrating the SD routing, also has to use a mechanism for the routing decision, and therefore these routes seem BGP routes, indeed they have some attributes similar to the attributes used with BGP routes. For instance, each Transit has its own <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">PATH</span></code>, and this is used for the best path selection process. Nevertheless, bear in mind that the control plane within the MCNA is based on <code class="docutils literal notranslate"><span class="pre">SDN</span></code> (Software Defined Networking).</p>
+</div>
+<p>The objective of this task is to define a <strong>Primary</strong> path through the Edge device, whereas the path between the Transit gateways will be used as a <strong>Backup</strong> path.</p>
+<figure class="align-center" id="id43">
+<img alt="../_images/lab8-primary.png" src="../_images/lab8-primary.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 289 </span><span class="caption-text">Primary and Backup</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s first check the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">DB</span></code> of the <strong><em>aws-us-east-2-transit</em></strong> GW.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and select the <strong><em>aws-us-east-2-transit</em></strong> Gateway.</p>
+<figure class="align-center" id="id44">
+<img alt="../_images/lab8-primary01.png" src="../_images/lab8-primary01.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 290 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab, then on right-hand side  type <strong>172.16.1.0</strong> on the Search field.</p>
+<figure class="align-center" id="id45">
+<img alt="../_images/lab8-primary03.png" src="../_images/lab8-primary03.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 291 </span><span class="caption-text">Route DB</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id46">
+<img alt="../_images/lab8-primary02.png" src="../_images/lab8-primary02.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 292 </span><span class="caption-text">1 AS Path length</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the <strong><em>aws-us-east-2-transit</em></strong> perspective, the destination route <code class="docutils literal notranslate"><span class="pre">172.16.1.0</span></code> is far just one single AS (i.e. 64514)</p>
+<p>Now let’s apply the route manipulation. Go to <strong>CoPilot &gt; Cloud fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW.</p>
+<figure class="align-center" id="id47">
+<img alt="../_images/lab8-edgedouble30.png" src="../_images/lab8-edgedouble30.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 293 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section, then under the <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">Path</span> <span class="pre">Prepend</span></code> widget,  select the <code class="docutils literal notranslate"><span class="pre">gcp-us-central1-transit-peering</span></code> connection and type <strong>twice</strong> the AS number 64513.</p>
+<p>Of course, then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id48">
+<img alt="../_images/lab8-edgedouble31.png" src="../_images/lab8-edgedouble31.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 294 </span><span class="caption-text">as-path prepend</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s repeat the same kind of configuration on the <strong>GCP</strong> Transit GW.</p>
+<p>Go to <strong>CoPilot &gt; Cloud fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>gcp-us-central1-transit</em></strong> GW.</p>
+<figure class="align-center" id="id49">
+<img alt="../_images/lab8-edgedouble32.png" src="../_images/lab8-edgedouble32.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 295 </span><span class="caption-text">gcp-us-central1-transit</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section, then under the <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">Path</span> <span class="pre">Prepend</span></code> widget select the <code class="docutils literal notranslate"><span class="pre">aws-us-east-2-transit-peering</span></code> connection and type <strong>twice</strong> the AS number 64514.</p>
+<p>Click on <strong>Save</strong> to apply the change!</p>
+<figure class="align-center" id="id50">
+<img alt="../_images/lab8-edgedouble33.png" src="../_images/lab8-edgedouble33.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 296 </span><span class="caption-text">as-path prepend</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab and then once again, on the right-hand side, type <strong>172.16.1.0</strong> inside the Search field. This time the AS Path Length will turn out being equal to 3, due to to the route manipulation that harnessed the <code class="docutils literal notranslate"><span class="pre">as-path</span> <span class="pre">prepend</span></code> feature.</p>
+<figure class="align-center" id="id51">
+<img alt="../_images/lab8-path.png" src="../_images/lab8-path.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 297 </span><span class="caption-text">As path length = 3</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now, let’s launch again the traceroute towards 172.16.1.100 from the <strong><em>aws-us-east-2-spoke1-test1</em></strong>.</p>
+<figure class="align-center" id="id52">
+<img alt="../_images/lab8-almostdone.png" src="../_images/lab8-almostdone.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 298 </span><span class="caption-text">traceroute</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The traceroute is still showing the Transit peering between AWS and GCP as the preferred path, although the <code class="docutils literal notranslate"><span class="pre">as-path</span> <span class="pre">prepend</span></code> was correctly applied earlier.</p>
+<p>There is another option that needs to be enabled in order to complete this lab. Go to <strong>CoPilot &gt; Cloud Fabric &gt; Edge &gt; Gateways</strong> and click on the <code class="docutils literal notranslate"><span class="pre">Edge</span></code> device.</p>
+<figure class="align-center" id="id53">
+<img alt="../_images/lab8-almostdone02.png" src="../_images/lab8-almostdone02.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 299 </span><span class="caption-text">Edge</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> Tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Routing&quot;</span></code> section, afterwards turn on the knob <code class="docutils literal notranslate"><span class="pre">Transitive</span> <span class="pre">Routing</span></code> and do not forget to click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id54">
+<img alt="../_images/lab8-almostdone03.png" src="../_images/lab8-almostdone03.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 300 </span><span class="caption-text">edge</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s relaunch the traceroute towards 172.16.1.100 from the <strong><em>aws-us-east-2-spoke1-test1</em></strong>.</p>
+<figure class="align-center" id="id55">
+<img alt="../_images/lab8-almostdone04.png" src="../_images/lab8-almostdone04.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 301 </span><span class="caption-text">traceroute</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id56">
+<img alt="../_images/lab8-almostdone05.png" src="../_images/lab8-almostdone05.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 302 </span><span class="caption-text">6 Hops</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After this lab, this is how the overall topology would look like:</p>
+<figure class="align-center" id="id57">
+<a class="reference internal image-reference" href="../_images/lab8-edge25.png"><img alt="../_images/lab8-edge25.png" src="../_images/lab8-edge25.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 303 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab7.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 7 - SITE2CLOUD</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab9.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 9 - THREATIQ &amp; COSTIQ</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-objectives">1. General Objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">6.1. Attachment between Edge and the Transit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">6.2. Network Domain Association</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity-test">6.3. Edge: Connectivity Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-flowiq">6.3. Edge: FlowIQ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">6.4. Edge: “It’s more than a Spoke GW””</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-path-prepend">6.4.1 Edge: As-Path Prepend</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
