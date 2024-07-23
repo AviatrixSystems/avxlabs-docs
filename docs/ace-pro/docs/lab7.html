@@ -523,44 +523,18 @@ Check the content of the following file: <code class="docutils literal notransla
 </figcaption>
 </figure>
 <p>Now go back on the SSH session established with the StrongSwan router and edit the cfg file.</p>
-<p>Type the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>su<span class="w"> </span>-
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vim<span class="w"> </span>/etc/swanctl/swanctl.conf
+<p>Run  the following bash script:
+Note: below &lt;REPLACE_WITH_SPOKE_GW_PUBLIC_IP&gt; with GCP Spoke gateway public IPof your pod e.g. in our pod GCP spoke Gateway public IP is 104.155.177.203.
+so in this case.
+we need to execute following.
+sudo ./update_swanctl.sh 104.155.177.203</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>./update_swanctl.sh<span class="w"> </span>&lt;REPLACE_WITH_SPOKE_GW_PUBLIC_IP&gt;
 </pre></div>
 </div>
 <figure class="align-center" id="id14">
-<img alt="../_images/lab8-sudo.png" src="../_images/lab8-sudo.png" />
+<img alt="../_images/lab8-bash.png" src="../_images/lab8-bash.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 237 </span><span class="caption-text">sudo + vim</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id15">
-<img alt="../_images/lab8-insert.png" src="../_images/lab8-insert.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 238 </span><span class="caption-text">Insert mode</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Delete the string <strong><code class="docutils literal notranslate"><span class="pre">REPLACE_WITH_SPOKE_GW_PUBLIC_IP</span></code></strong> and paste the Public IP address of the Spoke Gateway</p>
-<figure class="align-center" id="id16">
-<img alt="../_images/lab8-deleteandcopy.png" src="../_images/lab8-deleteandcopy.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 239 </span><span class="caption-text">editing</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>When you are done with the change, type <code class="docutils literal notranslate"><span class="pre">&quot;ESC&quot;</span></code> and then <code class="docutils literal notranslate"><span class="pre">&quot;:x&quot;</span></code> in order to exit the Insert mode and save the configuration successfully!</p>
-<p>Now you need to type the following two commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swanctl<span class="w"> </span>--load-all
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swanctl<span class="w"> </span>--initiate<span class="w"> </span>--child<span class="w"> </span>gcp_tun1
-</pre></div>
-</div>
-<figure class="align-center" id="id17">
-<img alt="../_images/lab8-swan.png" src="../_images/lab8-swan.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 240 </span><span class="caption-text">swanctl daemon</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 237 </span><span class="caption-text">sudo bash script</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -573,18 +547,18 @@ Check the content of the following file: <code class="docutils literal notransla
 <p>Click on the <strong>refresh</strong> button to see the status icon changing from red to green.</p>
 <p>The status will be reflected on the screen in about <strong>1 minute</strong>.</p>
 </div>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab8-refresh.png" src="../_images/lab8-refresh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 241 </span><span class="caption-text">Connection is up</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 238 </span><span class="caption-text">Connection is up</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong></p>
 <p>Filter out based on the <strong>GCP</strong> Cloud, expand all the VPCs and you will see the new S2C connection with the remote OnPrem-Partner site!</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab8-onprem.png" src="../_images/lab8-onprem.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 242 </span><span class="caption-text">OnPrem-Partner site</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 239 </span><span class="caption-text">OnPrem-Partner site</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now go back to your SSH terminal, and from the on-premises router’s console (i.e. StrongSwan), issue the following command to verify the connectivity with the <strong><em>gcp-us-central1-spoke1-test1</em></strong>:</p>
@@ -595,31 +569,31 @@ Check the content of the following file: <code class="docutils literal notransla
 <p class="admonition-title">Tip</p>
 <p>Keep the ping running recursively!</p>
 </div>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab8-pingok.png" src="../_images/lab8-pingok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 243 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 240 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong> and click on the icon of the Spoke Gateway <strong><em>gcp-us-central1-spoke1</em></strong>, scroll down through all the <strong>Properties</strong>, click on the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> button and then click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Diagnostics</span></code>.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab8-diag.png" src="../_images/lab8-diag.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 244 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 241 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Choose the <code class="docutils literal notranslate"><span class="pre">“Active</span> <span class="pre">Sessions”</span></code> option and in the Search field type <code class="docutils literal notranslate"><span class="pre">“icmp”</span></code> and then click on <strong>Run</strong>. You will notice the subnets involved (i.e. real and virtual subnets) in the Mapped NAT.</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab8-active2.png" src="../_images/lab8-active2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 245 </span><span class="caption-text">Active Sessions</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 242 </span><span class="caption-text">Active Sessions</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After completing the S2C connection, this is what the overall lab topology would look like:</p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab8-finaltopology.png"><img alt="../_images/lab8-finaltopology.png" src="../_images/lab8-finaltopology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 246 </span><span class="caption-text">The Topology with the new S2C connection</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 243 </span><span class="caption-text">The Topology with the new S2C connection</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
