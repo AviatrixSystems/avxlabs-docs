@@ -164,7 +164,7 @@ align: center
 SSH
 ```
 
-Now you need to **edit** the StrongSwan's router configuration file. 
+- Now you need to **edit** the StrongSwan's router configuration file. 
 Check the content of the following file: `/etc/swanctl/swanctl.conf`
 
 Type the following command:
@@ -173,7 +173,7 @@ Type the following command:
 cat /etc/swanctl/swanctl.conf
 ```
 
-You will need to replace the string **`REPLACE_WITH_SPOKE_GW_PUBLIC_IP`** with the public IP address of the GCP spoke gateway in 3 places in `/etc/swanctl/swanctl.conf`
+You will need to replace the string **`REPLACE_WITH_SPOKE_GW_PUBLIC_IP`** with the public IP address of the GCP spoke gateway in 3 places within `/etc/swanctl/swanctl.conf`
 
 ```{figure} images/lab8-replace.png
 ---
@@ -193,13 +193,15 @@ align: center
 Public IP address
 ```
 
-Now go back on the SSH session established with the StrongSwan router and edit the cfg file.
+Now go back on the **SSH** session established with the StrongSwan router and instead of editig the cfg file manually, you are going to use a **_script_** for automatically updating the content of the coonfiguration file!
 
-Run  the following bash script:
-Note: below <REPLACE_WITH_SPOKE_GW_PUBLIC_IP> with GCP Spoke gateway public IPof your pod e.g. in our pod GCP spoke Gateway public IP is 104.155.177.203.
-so in this case.
-we need to execute following.
-sudo ./update_swanctl.sh 104.155.177.203
+- Run  the following bash script:
+
+
+```{tip}
+Below <REPLACE_WITH_SPOKE_GW_PUBLIC_IP> with GCP Spoke gateway public IP of your POD.
+```
+
 ```bash
 sudo ./update_swanctl.sh <REPLACE_WITH_SPOKE_GW_PUBLIC_IP>
 ```

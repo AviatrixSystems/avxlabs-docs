@@ -501,13 +501,15 @@ document.write(`
 <p><span class="caption-number">Fig. 234 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now you need to <strong>edit</strong> the StrongSwan’s router configuration file.
-Check the content of the following file: <code class="docutils literal notranslate"><span class="pre">/etc/swanctl/swanctl.conf</span></code></p>
+<ul class="simple">
+<li><p>Now you need to <strong>edit</strong> the StrongSwan’s router configuration file.
+Check the content of the following file: <code class="docutils literal notranslate"><span class="pre">/etc/swanctl/swanctl.conf</span></code></p></li>
+</ul>
 <p>Type the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>/etc/swanctl/swanctl.conf
 </pre></div>
 </div>
-<p>You will need to replace the string <strong><code class="docutils literal notranslate"><span class="pre">REPLACE_WITH_SPOKE_GW_PUBLIC_IP</span></code></strong> with the public IP address of the GCP spoke gateway in 3 places in <code class="docutils literal notranslate"><span class="pre">/etc/swanctl/swanctl.conf</span></code></p>
+<p>You will need to replace the string <strong><code class="docutils literal notranslate"><span class="pre">REPLACE_WITH_SPOKE_GW_PUBLIC_IP</span></code></strong> with the public IP address of the GCP spoke gateway in 3 places within <code class="docutils literal notranslate"><span class="pre">/etc/swanctl/swanctl.conf</span></code></p>
 <figure class="align-center" id="id12">
 <img alt="../_images/lab8-replace.png" src="../_images/lab8-replace.png" />
 <figcaption>
@@ -522,12 +524,14 @@ Check the content of the following file: <code class="docutils literal notransla
 <p><span class="caption-number">Fig. 236 </span><span class="caption-text">Public IP address</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now go back on the SSH session established with the StrongSwan router and edit the cfg file.</p>
-<p>Run  the following bash script:
-Note: below &lt;REPLACE_WITH_SPOKE_GW_PUBLIC_IP&gt; with GCP Spoke gateway public IPof your pod e.g. in our pod GCP spoke Gateway public IP is 104.155.177.203.
-so in this case.
-we need to execute following.
-sudo ./update_swanctl.sh 104.155.177.203</p>
+<p>Now go back on the <strong>SSH</strong> session established with the StrongSwan router and instead of editig the cfg file manually, you are going to use a <strong><em>script</em></strong> for automatically updating the content of the coonfiguration file!</p>
+<ul class="simple">
+<li><p>Run  the following bash script:</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Below &lt;REPLACE_WITH_SPOKE_GW_PUBLIC_IP&gt; with GCP Spoke gateway public IP of your POD.</p>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>./update_swanctl.sh<span class="w"> </span>&lt;REPLACE_WITH_SPOKE_GW_PUBLIC_IP&gt;
 </pre></div>
 </div>
