@@ -427,7 +427,7 @@ align: center
 Curl commands
 ```
 
-You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and immediately dropped.
+go to You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and immediately dropped.
 
 ```{figure} images/lab6-liveview.png
 ---
