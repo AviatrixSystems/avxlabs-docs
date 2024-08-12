@@ -751,7 +751,7 @@ POD Portal info
 ```{note}
 **`TOPOLOGY (CoPilot > Cloud Fabric > Topology)`**:
 
-Explore the **_aws-us-east-2-spoke1_** VPC and select the instance **_aws-us-east-2-spoke1-test1_** with the EC2 logo, then check its properties: you will be able to fetch both Public and Private IP addresses.
+Explore the **_aws-us-east-2-spoke1_** VPC and select the instance **_aws-us-east-2-spoke1-test1_** with the **EC2 instance logo**, then check its properties: you will be able to fetch both Public and Private IP addresses.
 
 ```{figure} images/lab2-newpic3.png
 ---
