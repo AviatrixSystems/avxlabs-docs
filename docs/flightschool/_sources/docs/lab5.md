@@ -73,25 +73,14 @@ In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gatewa
 
 ### Validate
 
-* Using the same Visual Studio Code session, let's add some new code to the `main.tf` file
+* Using the same Visual Studio Code session, let's uncomment the code in the `peering.tf` file
 * We will be using the following module:  `https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest`
 
-```hcl
-module "transit-peering" {
-  source  = "terraform-aviatrix-modules/mc-transit-peering/aviatrix"
-  version = "1.0.8"
-
-  transit_gateways = [
-    "aws-transit",
-    "azure-transit",
-    "aws-transit-example"
-  ]
-
-  #Lets make sure we don't mess with the transit peering that already exists.
-  prune_list = [
-    {"aws-transit" : "azure-transit"},
-  ]
-}
+```{figure} images/lab6-transit-peering.png
+---
+align: center
+---
+Transit Peering
 ```
 
 > Make sure that the Transit Gateway names match to your environment

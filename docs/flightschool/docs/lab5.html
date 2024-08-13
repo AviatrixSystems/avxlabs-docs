@@ -439,26 +439,15 @@ document.write(`
 <section id="id2">
 <h3>Validate<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Using the same Visual Studio Code session, let’s add some new code to the <code class="docutils literal notranslate"><span class="pre">main.tf</span></code> file</p></li>
+<li><p>Using the same Visual Studio Code session, let’s uncomment the code in the <code class="docutils literal notranslate"><span class="pre">peering.tf</span></code> file</p></li>
 <li><p>We will be using the following module:  <code class="docutils literal notranslate"><span class="pre">https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest</span></code></p></li>
 </ul>
-<div class="highlight-hcl notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;transit-peering&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit-peering/aviatrix&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.8&quot;</span>
-
-<span class="w">  </span><span class="na">transit_gateways</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;aws-transit&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;azure-transit&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;aws-transit-example&quot;</span>
-<span class="w">  </span><span class="p">]</span>
-
-<span class="c1">  #Lets make sure we don&#39;t mess with the transit peering that already exists.</span>
-<span class="w">  </span><span class="na">prune_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="s2">&quot;aws-transit&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;azure-transit&quot;</span><span class="p">},</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab6-transit-peering.png" src="../_images/lab6-transit-peering.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Transit Peering</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <blockquote>
 <div><p>Make sure that the Transit Gateway names match to your environment</p>
 </div></blockquote>
@@ -472,10 +461,10 @@ document.write(`
 <section id="id3">
 <h3>Expected Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.</p>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id7">
 <img alt="../_images/lab6-topoloy-transit-peerings.png" src="../_images/lab6-topoloy-transit-peerings.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
