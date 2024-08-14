@@ -4,7 +4,7 @@
 
 The objective of this lab is to resolve an IP address overlap between an on-premises partner and the cloud. You will be using the **Site2Cloud Mapped NAT** feature to achieve this. 
 
-Moreover, you are also asked to interconnect the on-prem DC in New York to your MCNA. An **Aviatrix Edge** device has already been provisioned and it got already registered to the existing Aviatrix Controller.
+Moreover, you are also asked to interconnect the on-prem DC in New York to your MCNA. An **Aviatrix Edge** device has already been provisioned and it got already registered to the existing **Aviatrix Controller**.
  
 ## 2. Site2Cloud Overview
 
@@ -49,9 +49,9 @@ align: center
 BGPoverLAN
 ```
 
-The S2C connection with Edge will be configured on the subsequent task. 
+The S2C connection with Edge will be configured on the subsequent task.
 
-Now let's configure the S2C connection with the Partner site!
+Now let's configure the **S2C** connection with the Partner site!
 
 ```{figure} images/lab8-partner.png
 ---
@@ -95,12 +95,12 @@ DNS Name of the StrongSwan router
 ```
 
 ```{note}
-Use the command “**dig strongswan.pod#.aviatrixlab.com +short**” <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the **on-prem-partner1 StrongSwan router** and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
+Use the command “**host strongswan.pod#.aviatrixlab.com**” <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the **on-prem-partner1 StrongSwan router** and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
 ```
 
 <ins>Replace the **#** symbol with your POD number!</ins>
 
-The example is referring to POD #150 (please issue the command based on your POD number).
+The example is referring to POD #100 (<ins>please issue the command based on your POD number</ins>).
 
 ```{figure} images/lab8-newdns.png
 ---
