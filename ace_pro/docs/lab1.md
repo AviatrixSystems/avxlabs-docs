@@ -6,7 +6,7 @@ In this lab, you will create **3** VPCs/VNets, one in each cloud, i.e., Azure, A
 
 The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).
 
-Refer to your POD assignment for CoPilot login information, as depicted below. Click on the `URL` button of the CoPilot and log in using the credentials assigned to your POD.
+Refer to your POD assignment for CoPilot login information, as depicted below. Click on the `URL` button of the CoPilot (i.e "Open Copilot") and log in using the credentials assigned to your POD.
 
 ```{important}
 Always refer to your personal POD portal for both passwords and additional information. Please bear in mind that the screenshots refer to a different POD and they are shown just as examples!
@@ -24,7 +24,7 @@ POD portal
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
-Verify whether the CIDR range `192.168.12.0/24` is overlapping or not, as shown below.
+Verify whether the CIDR range `192.168.12.0/24` is overlapping with an existing in used cidr or not, as shown below.
 
 ```{figure} images/lab1-vnet1.png
 ---
@@ -33,7 +33,7 @@ align: center
 Searching for a subnet conflict
 ```
 
-Let’s create an Application/Spoke VNet. Click on the button `“+ VPC/VNET”`.
+Let’s create an **Application/Spoke** VNet. Click on the button `“+ VPC/VNET”`.
 
 ```{figure} images/lab1-vnet2.png
 ---
@@ -88,6 +88,15 @@ VPC Functions:
 
 It will take about **3-4** minutes for the creation of the VNet. You can periodically check the status of the task, clicking on the top right side, on the *hourglass icon*. Click on the refresh button. Once the task gets colored in green, you can finally assume that the VNet was successfully created.
 
+```{important}
+**Clean up the SEARCH FIELD to restore the navigation panel view.**
+```{figure} images/lab1-cleanup.png
+---
+align: center
+---
+Hourglass icon
+```
+
 ```{figure} images/lab1-new.png
 ---
 align: center
@@ -118,7 +127,7 @@ It will take few minutes to see the four subnets (i.e 2x public subnets and 2x p
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
-Verify once again whether the CIDR range `10.0.22.0/24` is overlapping or not, as shown below.
+Verify once again whether the CIDR range `10.0.22.0/24` is overlapping with an existing cidr or not, as shown below.
 
 ```{figure} images/lab1-newpic5.png
 ---
@@ -127,7 +136,7 @@ align: center
 Searching for a subnet conflict
 ```
 
-This time let’s create an Application/Spoke VPC. Click on the button `“+ VPC/VNET”`.
+This time let’s create an **Application/Spoke** VPC. Click on the button `“+ VPC/VNET”`.
 
 ```{figure} images/lab1-vpc1.png
 ---
@@ -163,7 +172,9 @@ align: center
 Hourglass icon
 ```
 
-Verify the VPC creation in the VPC list. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, <ins>refresh the web page for triggering the change</ins>. It will take a little bit for reflecting into the "VPC/VNets & Subnets" section).
+Verify the VPC creation in the VPC list. Hit the **Refresh icon** if you do not see the CIDR immediately (alternatively, <ins>refresh the web page for triggering the change</ins>). 
+
+It will take a little bit for reflecting into the "VPC/VNets & Subnets" section (almost **2-3** minutes).
 
 You can filter by CIDR `10.0.22.0/24`.
 
@@ -232,13 +243,25 @@ align: center
 Routing Tables created by the Aviatrix Controller
 ```
 
+From there, navigate to `Internet gateways`.
+
+Here, also, you can see the **IGW** created by the Aviatrix Controller.
+You can notice that the IGW has the same name of the VPC that you defined, moreover it is also attached to this VPC.
+
+```{figure} images/lab1-igw.png
+---
+align: center
+---
+Internet Gateway created by the Aviatrix Controller
+```
+
 ## 4. GCP VPC
 
 ### 4.1. Create GCP VPC
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
-Before starting the deployment of the VPC in GCP, verify once again whether the CIDR range `172.16.22.0/24` is overlapping or not, as shown below.
+Before starting the deployment of the VPC in GCP, verify once again whether the CIDR range `172.16.22.0/24` is overlapping with an existing cidr or not, as shown below.
 
 ```{figure} images/lab1-newpic8.png
 ---
@@ -247,7 +270,7 @@ align: center
 Verification
 ```
 
-This time let’s create an Application/Spoke VPC. Click on the button `“+ VPC/VNET”`.
+This time let’s create an **Application/Spoke** VPC. Click on the button `“+ VPC/VNET”`.
 
 ```{figure} images/lab1-gcp1.png
 ---
