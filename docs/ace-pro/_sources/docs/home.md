@@ -27,7 +27,6 @@ To access Aviatrix Multicloud Networking and Security Bootcamp labs, use one of 
 
 This information is provided separately before the start of the labs inside a dedicated portal.
 
-- Aviatrix Controller
 - Aviatrix CoPilot
 - Test Instances in each cloud
 - Bootstrap package information for Palo Alto Firewall (VM-Series) [Lab 7]
@@ -52,10 +51,9 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 - Single Cloud Transit
 - Multicloud Transit
 - Single/Multicloud Network Segmentation
-- Role-Based Access Control (RBAC)
 - High Performance Encryption (aka *Insane Mode*)
 - ActiveMesh High Availability
-- Egress FQDN Filtering
+- Egress
 - FireNet
 - Site2Cloud with Overlapping IPs
 - Edge
