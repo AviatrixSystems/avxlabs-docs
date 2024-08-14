@@ -86,7 +86,7 @@ BGP ASN
 
 Now it's time to establish the attachment! 
 
-Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the **three dots icon** beside the Edge device entry and then click on `"Manage Transit Gateway Attachment"`.
+Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `"Manage Transit Gateway Attachment"` button, on the right-hand side of the screen.
 
 ```{figure} images/lab8-edge9.png
 ---
@@ -95,7 +95,7 @@ align: center
 Manage Transit Gateway Attachment
 ```
 
-Click on the `"+ Transit Gateway Attachment"` button.
+Click on the `"+Attachment"` button.
 
 ```{figure} images/lab8-edge10.png
 ---
@@ -107,7 +107,7 @@ Transit Gateway Attachment
 Fill in the attachment template using the following settings:
 
 - **Transt Gateway**: <span style='color:#479608'>aws-us-east-2-transit</span>
-- **Connecting Edge Interfaces**: <span style='color:#479608'>WAN(etho)</span>
+- **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
 - **Attach over Private Network**: <span style='color:#479608'>**OFF**</span>
 - **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
 
