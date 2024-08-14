@@ -94,7 +94,7 @@ It will take about **3-4** minutes for the creation of the VNet. You can periodi
 ---
 align: center
 ---
-Clean up the search field
+Clean up the Search Field
 ```
 
 ```{figure} images/lab1-new.png
@@ -252,7 +252,7 @@ You can notice that the IGW has the same name of the VPC that you defined, moreo
 ---
 align: center
 ---
-Internet Gateway created by the Aviatrix Controller
+IGW created by the Aviatrix Controller
 ```
 
 ## 4. GCP VPC
