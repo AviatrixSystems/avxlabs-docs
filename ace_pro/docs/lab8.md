@@ -95,7 +95,7 @@ align: center
 Manage Transit Gateway Attachment
 ```
 
-Click on the `"+Attachment"` button and do not forget to also clicking on the **Save** button.
+Click on the `"+Attachment"` button and do not forget to also clicking on the **Save** sbutton.
 
 ```{figure} images/lab8-edge10.png
 ---
