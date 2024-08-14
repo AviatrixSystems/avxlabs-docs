@@ -94,7 +94,7 @@ It will take about **3-4** minutes for the creation of the VNet. You can periodi
 ---
 align: center
 ---
-Hourglass icon
+Clean up the search field
 ```
 
 ```{figure} images/lab1-new.png
