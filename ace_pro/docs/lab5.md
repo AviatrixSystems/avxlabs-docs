@@ -258,7 +258,7 @@ curl www.espn.com
 curl www.football.com
 ```
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and you will see a total of **4 logs**.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and you will see the corresponding **four logs**.
 
 ```{figure} images/lab6-monitorpermit.png
 ---
@@ -583,5 +583,7 @@ After this lab, this is how the overall topology would look like:
 height: 400px
 align: center
 ---
-Final Topology for Lab 6
+Final Topology for Lab 5
 ```
+
+
