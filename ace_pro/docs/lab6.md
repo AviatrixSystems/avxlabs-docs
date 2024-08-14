@@ -338,7 +338,7 @@ align: center
 DCF rules
 ```
 
-- Modify the Greenfield-Rule Priority
+- Modify the **Greenfield-Rule's Priority**
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the **Greenfield-Rule** and choose *`"Move Rule"`* at the very **Top**.
@@ -461,7 +461,7 @@ After completing this Lab, the overall topology would look like this:
 height: 400px
 align: center
 ---
-Final Topology for Lab 7
+Final Topology for Lab 6
 ```
 
 - Explore the logs on the Monitor section of the Distributed Cloud Firewall. Filter out based on protocol **ICMP**.
@@ -487,5 +487,5 @@ Logs on DCF Monitor section
 ```{important}
 The same policy is present on both the PaloAlto firewall and on the Spoke Gateway...
 
-Maybe it's time to finally embrace the full **`"Distributed Cloud Firewall"`** solution, and getting rid of the NGFW!
+Maybe it's time to finally embrace the full-blown **`"Distributed Cloud Firewall"`** solution, and getting rid of the NGFW!
 ```
