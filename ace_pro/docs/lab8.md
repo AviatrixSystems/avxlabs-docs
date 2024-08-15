@@ -95,7 +95,7 @@ align: center
 Manage Transit Gateway Attachment
 ```
 
-Click on the `"+Attachment"` button and do not forget to also clicking on the **Save** sbutton.
+Click on the `"+Attachment"` button and do not forget to also clicking on the **Save** button.
 
 ```{figure} images/lab8-edge10.png
 ---
@@ -106,7 +106,7 @@ Transit Gateway Attachment
 
 Fill in the attachment template using the following settings:
 
-- **Transt Gateway**: <span style='color:#479608'>aws-us-east-2-transit</span>
+- **Transit Gateway**: <span style='color:#479608'>aws-us-east-2-transit</span>
 - **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
 - **Attach over Private Network**: <span style='color:#479608'>**OFF**</span>
 - **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
@@ -352,7 +352,7 @@ BGP ASN
 
 Now you are ready to proceed with the rest of the configuration on the Edge section!
 
-Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the three dots icon beside the Edge device entry and then click on `"Manage Transit Gateway Attachment"`.
+Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `"Manage Transit Gateway Attachment"` button, on the right-hand side of the screen.
 
 ```{figure} images/lab8-edgedouble2.png
 ---
@@ -361,8 +361,8 @@ align: center
 Manage Transit Gateway Attachment
 ```
 
-Now click on the `"+ Transit Gateway Attachment"` button.
-You will notice the existing attachment (grayout) with the Transit Gateway in AWS US-East-2.
+Now click on the `"+ Attachment"` button.
+You will notice the existing attachment (grayedout) with the Transit Gateway in AWS US-East-2.
 
 ```{figure} images/lab8-edgedouble3.png
 ---
@@ -373,8 +373,8 @@ New Attachment
 
 Fill in the attachment template using the following settings:
 
-- **Transt Gateway**: <span style='color:#479608'>gcp-us-central1-transit</span>
-- **Connecting Edge Interfaces**: <span style='color:#479608'>WAN(etho)</span>
+- **Transit Gateway**: <span style='color:#479608'>gcp-us-central1-transit</span>
+- **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
 - **Attach over Private Network**: <span style='color:#479608'>**OFF**</span>
 - **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
 
