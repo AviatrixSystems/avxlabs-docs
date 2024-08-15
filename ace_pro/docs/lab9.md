@@ -479,6 +479,22 @@ align: center
 "+ Shared Service"
 ```
 
+If you kept running the ping on the Workstation Edge's terminal, then you should see both the relative traffic and the absolute one from any Cost Centers towards the Shared Service.
+
+```{figure} images/lab9-ping.png
+---
+align: center
+---
+Ping from the Wortkstation "Edge"
+```
+
+```{figure} images/lab9-counter.png
+---
+align: center
+---
+From the Cost Center towards the Shared Service
+```
+
 After this lab, this is how the overall topology would look like:
 
 ```{figure} images/lab9-final.png
