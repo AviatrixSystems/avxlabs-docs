@@ -242,7 +242,7 @@ align: center
 Move the rule
 ```
 
-Then **commit** your change!
+Then **Commit** your change!
 
 ```{figure} images/lab10-commit.png
 ---
@@ -503,6 +503,15 @@ SSH ok
 Let's investigate the logs once again.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+
+```{caution}
+Remove the previous filter!
+```{figure} images/lab10-removefilter.png
+---
+align: center
+---
+SSH ok
+```
 
 ```{figure} images/lab10-logsshbu1.png
 ---
@@ -953,7 +962,7 @@ align: center
 Manage Transit Gateway Attachment
 ```
 
-Select the **Spoke Gateway** tab and then choose the **azure-west-us-spoke1** GW from the drop-down window.
+Select the **Spoke Gateway** tab, click on the `"+ Attachment"` button and then choose the **azure-west-us-spoke1** GW from the drop-down window.
 
 Do not forget to click on **Save**.
 
@@ -962,6 +971,13 @@ Do not forget to click on **Save**.
 align: center
 ---
 azure-west-us-spoke1
+```
+
+```{figure} images/lab10-newspokeatt.png
+---
+align: center
+---
+Save
 ```
 
 Now go to **CoPilot > Cloud Fabric > Topology** and check the new attachment between the two Spoke Gateways in Azure.
