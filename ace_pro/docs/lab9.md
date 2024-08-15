@@ -441,26 +441,24 @@ align: center
 Cost Centers Overview
 ```
 
-Now let's discover the **Public IP address** of the `Workstation Edge` in the **New York DC**. 
+Now let's discover the **CIDRs** of **New York DC**:
 
-- Copy the DNS name available on your POD portal and resolve it using the `host/nslookup` command.
-
-```{tip}
-Check the `"Lab 7 and 8"` section on your POD Portal!
-```
+- Go to **CoPilot > Diagnostics > Cloud Routes > BGP Info**, then click on the three dots icon and select the `"Show BGP Learned Routes"`.
 
 ```{figure} images/lab9-costiq10.png
 ---
 align: center
 ---
-Edge's dns name workstation
+Show BGP Learned Routes
 ```
 
-```{figure} images/lab9-costiq11.png
+You will find out that all the local subnets advertised by the DC belong to the cidr *10.40.0.0/16*.
+
+```{figure} images/lab9-cidr.png
 ---
 align: center
 ---
-Host command in action
+CIDR
 ```
 
 Let's move on the Shared Service tab and click on `"+ Shared Service"`.
