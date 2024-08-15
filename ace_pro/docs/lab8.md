@@ -432,7 +432,16 @@ You will be asked to type the student's password!
 ---
 align: center
 ---
-apt install 
+inetutils-traceroute
+```
+
+When you see this pop-up message, just click on the **Enter** button on your keyboard!
+
+```{figure} images/lab8-popup.png
+---
+align: center
+---
+confirm
 ```
 
 Now type the traceroute command towards the test VM in GCP:
@@ -563,7 +572,9 @@ traceroute
 
 The traceroute is still showing the Transit peering between AWS and GCP as the preferred path, although the `as-path prepend` was correctly applied earlier. 
 
-There is another option that needs to be enabled in order to complete this lab. Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `Edge` device.
+There is another option that needs to be enabled in order to complete this lab. 
+
+Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `Edge` device.
 
 ```{figure} images/lab8-almostdone02.png
 ---
