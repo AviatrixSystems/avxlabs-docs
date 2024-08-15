@@ -194,7 +194,7 @@ Navigate back to **CoPilot > Security > ThreatIQ > Overview**
 ```{note}
 **Wait for about 4-5 minutes**, before proceeding with the next action. 
 
-Set the **Time Period** to `"Last 60 Minutes"` and click on **Apply**.
+Set the **Time Period** to `"Last 24 Hours"` and click on **Apply**.
 ```
 
 ```{figure} images/lab9-custom.png
@@ -220,6 +220,15 @@ align: center
 Filter
 ```
 
+```{tip}
+If you do not get any outcomes, kindly change the Time Period to `"Last 60 Minutes"`.
+```{figure} images/lab9-trigger.png
+---
+align: center
+---
+Trigger the outcome
+```
+
 Afterwards, click on **VIEW** on the right-hand side of the Timestamp.
 
 ```{note}
@@ -231,13 +240,6 @@ The IP shown in these screenshots  might not be deemed a threat when you read th
 align: center
 ---
 View
-```
-
-```{figure} images/lab9-view2.png
----
-align: center
----
-Threat details
 ```
 
 Then select **Threat Summary** and pinpoint the metadata "tag" to determine how ThreatIQ has classified this IP.
@@ -254,7 +256,14 @@ align: center
 - Enable **Block Threats**
 
 ```{tip}
-Go to **CoPilot > Security > ThreatIQ > Configuration** and turn on the toggle `"Block Threats"`.
+Go to **CoPilot > Security > ThreatIQ > Configuration**, click on the arrow to show the hidden section and then turn on the toggle `"Block Threats"`.
+```
+
+```{figure} images/lab9-hiddenview.png
+---
+align: center
+---
+Click on the arrow!
 ```
 
 ```{figure} images/lab9-threatguard.png
@@ -265,7 +274,6 @@ ThreatIQ - Automatic Enforcement
 ```
 
 By default, <ins>**all** VPCs are enabled for ThreatIQ</ins>, therefore click on **Save** to continue.
-
 
 ```{figure} images/lab9-vpc.png
 ---
@@ -283,11 +291,14 @@ align: center
 Confirm
 ```
 
-
-
 ### 5.1. Automatic enforcement: "force-drop"
 
-- Now try issuing the same curl command once again, from the test instance **_aws-us-east-1-spoke1-test1_**
+- Now wait for about <ins>8 minutes</ins>!
+- Then issue the same curl command once again, from the test instance **_aws-us-east-1-spoke1-test1_**
+
+```{caution}
+Do not issue the curl command immediately! Wait for 8 minutes as suggested above.
+```
 
 ```{figure} images/lab9-failed.png
 ---
@@ -379,6 +390,7 @@ Before completing this lab, let's enable `CostIQ` and define the following **Cos
 **NEW YORK DC**:
 - workstation client "edge"
 
+
 Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` button, on the right-hand side.
 
 ```{figure} images/lab9-costiq.png
@@ -430,7 +442,12 @@ Cost Centers Overview
 ```
 
 Now let's discover the **Public IP address** of the `Workstation Edge` in the **New York DC**. 
-Copy the DNS name available on your POD portal and resolve it using the `host/nslookup` command.
+
+- Copy the DNS name available on your POD portal and resolve it using the `host/nslookup` command.
+
+```{tip}
+Check the `"Lab 7 and 8"` section on your POD Portal!
+```
 
 ```{figure} images/lab9-costiq10.png
 ---
