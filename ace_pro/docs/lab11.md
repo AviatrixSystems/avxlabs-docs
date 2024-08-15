@@ -38,7 +38,7 @@ align: center
 VS Studio
 ```
 
-* Click on the **Home** icon and then select the folder `terraform-lab` and click **Select**
+* Click on the **Home** icon and then select the folder `terraform-lab` and click **Open**
   * _When prompted to trust the authors of the files in this folder, select Yes_
 
 ```{figure} images/lab11-edge4.png
@@ -46,6 +46,20 @@ VS Studio
 align: center
 ---
 terraform-lab folder
+```
+
+```{figure} images/lab11-newedge2.png
+---
+align: center
+---
+Click "Open"
+```
+
+```{figure} images/lab11-newedge.png
+---
+align: center
+---
+Yes, I trust the authors
 ```
 
 * Let’s explore the Terraform files in this directory:
