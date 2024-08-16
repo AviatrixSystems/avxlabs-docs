@@ -509,9 +509,48 @@ document.write(`
 <p><span class="caption-number">Fig. 441 </span><span class="caption-text"><a class="reference external" href="http://peering.tf">peering.tf</a></span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<blockquote>
-<div><p>Make sure that the Transit Gateway names match to your environment</p>
-</div></blockquote>
+<ul class="simple">
+<li><p>Now copy the following statements and paste them inside the file previously created:</p></li>
+</ul>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;transit-peering&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit-peering/aviatrix&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.9&quot;</span>
+
+<span class="w">  </span><span class="na">transit_gateways</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;aws-us-west-2-transit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;aws-us-east-2-transit&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Copy and Paste</em> does not work directly from the host machine towards the Workstation “Edge”, therefore activate the <strong>Hidden Menu</strong>, that is a sidebar that is maintained hidden until explicitly enabled. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing <strong>Ctrl+Alt+Shift</strong> on Windows machine (<strong>Control+Shift+Command</strong> on Mac).</p>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab11-clip1.png" src="../_images/lab11-clip1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 442 </span><span class="caption-text">Hidden Clipboard</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab11-clip2.png" src="../_images/lab11-clip2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 443 </span><span class="caption-text">Copy the statemets from the Lab Guides and paste them</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab11-clip3.png" src="../_images/lab11-clip3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Copy from the hidden clipboard and paste them inside the <a class="reference external" href="http://peering.tf">peering.tf</a></span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab11-clip4.png" src="../_images/lab11-clip4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 445 </span><span class="caption-text">Close the Clipboard and save!</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p><strong>SAVE</strong> the file in Visual Studio Code</p></li>
 <li><p>Go back to the <strong>LXTerminal</strong> and run <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code> again to download the <code class="docutils literal notranslate"><span class="pre">mc-transit-peering</span></code> module</p></li>
@@ -522,10 +561,10 @@ document.write(`
 <section id="id2">
 <h3>Expected Results<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id20">
 <img alt="docs/images/lab6-topoloy-transit-peerings.png" src="docs/images/lab6-topoloy-transit-peerings.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 442 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 446 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -550,24 +589,24 @@ document.write(`
 <ul class="simple">
 <li><p>Go to your personal POD Portal, identify the <strong><em>Lab11</em></strong> section and click on the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Grafana</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab11-edge10.png" src="../_images/lab11-edge10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 443 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 447 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enter the required credentials that are available on the POD Portal and then click on <strong>Log in</strong>.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab11-edge20.png" src="../_images/lab11-edge20.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 448 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will immediately notice the Receive Rate and Transmit Rate stats!</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab11-edge30.png" src="../_images/lab11-edge30.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 445 </span><span class="caption-text">Receive Rate and Transmit Rate</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 449 </span><span class="caption-text">Receive Rate and Transmit Rate</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
