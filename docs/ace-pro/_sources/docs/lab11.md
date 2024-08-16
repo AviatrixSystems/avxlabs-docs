@@ -117,7 +117,7 @@ align: center
 Topology
 ```
 
-## Lab 11.2 - Create Transit Peering
+## 3. Create Transit Peering
 
 ### Description
 
@@ -228,14 +228,14 @@ align: center
 New Peering
 ```
 
-## Lab 11.2 Summary
+## 4. IAC Summary
 
 * You deployed an Aviatrix Transit and Spoke using Terraform
 * You added the new Transit to the Global Multicloud Transit Network with a few lines of code
 * Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution
 * In minutes, you can create the network, security and connectivity needed
 
-## Lab 11.3 - Network Insights API
+## 5. - Network Insights API
 
 ### Description
 
@@ -273,5 +273,19 @@ Receive Rate and Transmit Rate
 ```{caution}
 Go to **CoPilot > Settings > Configuration** and then identify the `"Network Insights API"` widget.
 
-You will find the API Key generated on the CoPilot and then used on Prometheus/Grafana!
+You will find the **API Key** generated on the CoPilot and then used on Prometheus/Grafana!
+```
+
+```{figure} images/lab11-networkinsight1.png
+---
+align: center
+---
+Network Insight API section
+```
+
+```{figure} images/lab11-networkinsight2.png
+---
+align: center
+---
+API key 
 ```
