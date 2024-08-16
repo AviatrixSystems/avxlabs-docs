@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lab 11 - TERRAFORM &amp; NETWORK INSIGHTS API &#8212; ACE Operations Lab</title>
+    <title>Lab 11 - IAC &amp; NETWORK INSIGHTS API &#8212; ACE Operations Lab</title>
   
   
   
@@ -192,7 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - EDGE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; COSTIQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 11 - TERRAFORM &amp; NETWORK INSIGHTS API</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 11 - IAC &amp; NETWORK INSIGHTS API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
 </ul>
@@ -333,7 +333,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 11 - TERRAFORM & NETWORK INSIGHTS API</h1>
+    <h1>Lab 11 - IAC & NETWORK INSIGHTS API</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -343,12 +343,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vpcs-transit-gw-spoke-gw-and-attachment">1. Create VPCs, Transit GW, Spoke GW and Attachment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vpcs-transit-gw-spoke-gw-and-attachment-through-terraform">1. Create VPCs, Transit GW, Spoke GW and Attachment through Terraform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">2. Validate</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-create-transit-peerings">Lab 11.2 - Create Transit Peerings</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-create-transit-peering">Lab 11.2 - Create Transit Peering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Validate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Expected Results</a></li>
@@ -371,10 +371,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-11-terraform-network-insights-api">
-<h1>Lab 11 - TERRAFORM &amp; NETWORK INSIGHTS API<a class="headerlink" href="#lab-11-terraform-network-insights-api" title="Link to this heading">#</a></h1>
-<section id="create-vpcs-transit-gw-spoke-gw-and-attachment">
-<h2>1. Create VPCs, Transit GW, Spoke GW and Attachment<a class="headerlink" href="#create-vpcs-transit-gw-spoke-gw-and-attachment" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-11-iac-network-insights-api">
+<h1>Lab 11 - IAC &amp; NETWORK INSIGHTS API<a class="headerlink" href="#lab-11-iac-network-insights-api" title="Link to this heading">#</a></h1>
+<section id="create-vpcs-transit-gw-spoke-gw-and-attachment-through-terraform">
+<h2>1. Create VPCs, Transit GW, Spoke GW and Attachment through Terraform<a class="headerlink" href="#create-vpcs-transit-gw-spoke-gw-and-attachment-through-terraform" title="Link to this heading">#</a></h2>
 <p>All the elements you have created through the UI, can also be created through the API or the official <strong>Aviatrix Terraform provider</strong>.</p>
 <p>You can find more information on these here:
 <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs</a></p>
@@ -484,8 +484,8 @@ document.write(`
 </figure>
 </section>
 </section>
-<section id="lab-11-2-create-transit-peerings">
-<h2>Lab 11.2 - Create Transit Peerings<a class="headerlink" href="#lab-11-2-create-transit-peerings" title="Link to this heading">#</a></h2>
+<section id="lab-11-2-create-transit-peering">
+<h2>Lab 11.2 - Create Transit Peering<a class="headerlink" href="#lab-11-2-create-transit-peering" title="Link to this heading">#</a></h2>
 <section id="description">
 <h3>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h3>
 <p>In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let’s see how we can use Infrastructure as Code to build a full mesh of the Transits.</p>
@@ -493,13 +493,20 @@ document.write(`
 <section id="id1">
 <h3>Validate<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Using the same <strong>Visual Studio Code</strong> session, let’s uncomment the code in the <code class="docutils literal notranslate"><span class="pre">peering.tf</span></code> file</p></li>
+<li><p>Using the same <strong>Visual Studio Code</strong> session, let’s create the <code class="docutils literal notranslate"><span class="pre">peering.tf</span></code> file.</p></li>
 <li><p>We will be using the following module:  <code class="docutils literal notranslate"><span class="pre">https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest</span></code></p></li>
+<li><p>Go back to the <strong>Visual Studio Code</strong> session and create a new file. Name it <code class="docutils literal notranslate"><span class="pre">peering.tf</span></code>.</p></li>
 </ul>
 <figure class="align-center" id="id14">
-<img alt="docs/images/lab6-transit-peering.png" src="docs/images/lab6-transit-peering.png" />
+<img alt="../_images/lab11-newfile.png" src="../_images/lab11-newfile.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 440 </span><span class="caption-text">Transit Peering</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 440 </span><span class="caption-text">New File</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab11-peering.png" src="../_images/lab11-peering.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 441 </span><span class="caption-text"><a class="reference external" href="http://peering.tf">peering.tf</a></span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <blockquote>
@@ -515,10 +522,10 @@ document.write(`
 <section id="id2">
 <h3>Expected Results<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id16">
 <img alt="docs/images/lab6-topoloy-transit-peerings.png" src="docs/images/lab6-topoloy-transit-peerings.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 441 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 442 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -543,24 +550,24 @@ document.write(`
 <ul class="simple">
 <li><p>Go to your personal POD Portal, identify the <strong><em>Lab11</em></strong> section and click on the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Grafana</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id16">
-<img alt="../_images/lab11-edge10.png" src="../_images/lab11-edge10.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 442 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Enter the required credentials that are available on the POD Portal and then click on <strong>Log in</strong>.</p>
 <figure class="align-center" id="id17">
-<img alt="../_images/lab11-edge20.png" src="../_images/lab11-edge20.png" />
+<img alt="../_images/lab11-edge10.png" src="../_images/lab11-edge10.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 443 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will immediately notice the Receive Rate and Transmit Rate stats!</p>
+<p>Enter the required credentials that are available on the POD Portal and then click on <strong>Log in</strong>.</p>
 <figure class="align-center" id="id18">
+<img alt="../_images/lab11-edge20.png" src="../_images/lab11-edge20.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will immediately notice the Receive Rate and Transmit Rate stats!</p>
+<figure class="align-center" id="id19">
 <img alt="../_images/lab11-edge30.png" src="../_images/lab11-edge30.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Receive Rate and Transmit Rate</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 445 </span><span class="caption-text">Receive Rate and Transmit Rate</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -636,12 +643,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vpcs-transit-gw-spoke-gw-and-attachment">1. Create VPCs, Transit GW, Spoke GW and Attachment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vpcs-transit-gw-spoke-gw-and-attachment-through-terraform">1. Create VPCs, Transit GW, Spoke GW and Attachment through Terraform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">2. Validate</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-create-transit-peerings">Lab 11.2 - Create Transit Peerings</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-create-transit-peering">Lab 11.2 - Create Transit Peering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Validate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Expected Results</a></li>
