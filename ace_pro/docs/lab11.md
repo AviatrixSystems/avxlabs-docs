@@ -258,7 +258,7 @@ Enter the required credentials that are available on the POD Portal and then cli
 ---
 align: center
 ---
-Lab 11 section on the POD Portal
+Grafana Login Page
 ```
 
 You will immediately notice the Receive Rate and Transmit Rate stats!
