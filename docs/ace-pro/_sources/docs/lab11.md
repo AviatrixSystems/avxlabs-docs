@@ -189,20 +189,43 @@ align: center
 Close the Clipboard and save!
 ```
 
-* **SAVE** the file in Visual Studio Code
+* **SAVE** the file in Visual Studio Code.
 * Go back to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
-* Run the command `terraform plan` to assess the changes
-* Run the command `terraform apply --auto-approve`
-
-### Expected Results
-
-After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.
-
-```{figure} images/lab6-topoloy-transit-peerings.png
+  
+```{figure} images/lab11-clip5.png
 ---
 align: center
 ---
-Full Mesh
+Once again "terraform init"
+```
+
+* Run the command `terraform plan` to assess the changes
+
+```{figure} images/lab11-clip6.png
+---
+align: center
+---
+Once again "terraform plan"
+```
+
+* Run the command `terraform apply --auto-approve`
+
+```{figure} images/lab11-clip7.png
+---
+align: center
+---
+Once again "terraform apply"
+```
+
+### Expected Results
+
+After a few minutes, a new peering will be established between the **aws-us-east-2-transit** GW and the **aws-us-west-2-transit** GW. You can go to CoPilot and have a look at the new topology.
+
+```{figure} images/lab11-topoloy-transit-peerings.png
+---
+align: center
+---
+New Peering
 ```
 
 ## Lab 11.2 Summary
