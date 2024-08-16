@@ -343,14 +343,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vpcs-transit-gw-spoke-gw-and-attachment">1. Create VPCs, Transit GW, Spoke GW and Attachment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">2. Validate</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-network-insights-api">Lab 11.2 - Network Insights API</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-create-transit-peerings">Lab 11.2 - Create Transit Peerings</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-summary">Lab 11.2 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-3-network-insights-api">Lab 11.3 - Network Insights API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Validate</a></li>
 </ul>
 </li>
 </ul>
@@ -366,8 +373,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-11-terraform-network-insights-api">
 <h1>Lab 11 - TERRAFORM &amp; NETWORK INSIGHTS API<a class="headerlink" href="#lab-11-terraform-network-insights-api" title="Link to this heading">#</a></h1>
-<section id="objective">
-<h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<section id="create-vpcs-transit-gw-spoke-gw-and-attachment">
+<h2>1. Create VPCs, Transit GW, Spoke GW and Attachment<a class="headerlink" href="#create-vpcs-transit-gw-spoke-gw-and-attachment" title="Link to this heading">#</a></h2>
 <p>All the elements you have created through the UI, can also be created through the API or the official <strong>Aviatrix Terraform provider</strong>.</p>
 <p>You can find more information on these here:
 <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs</a></p>
@@ -376,26 +383,26 @@ document.write(`
 <h2>2. Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h2>
 <p>We have prepared some Terraform code for you, which you will explore and deploy.</p>
 <p>Go to your personal POD Portal, identify the <strong><em>Lab11</em></strong> section and click on the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Workstation</span></code> button.</p>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id5">
 <img alt="../_images/lab11-edge.png" src="../_images/lab11-edge.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 431 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 431 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the corresponding credentials, available on the POD Portal, to log in to the remote “edge” Workstation.</p>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id6">
 <img alt="../_images/lab11-edge2.png" src="../_images/lab11-edge2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 432 </span><span class="caption-text">Edge Workstation credentials</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 432 </span><span class="caption-text">Edge Workstation credentials</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Open the <strong>Visual Studio Code</strong> located on the Desktop</p></li>
 </ul>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id7">
 <img alt="../_images/lab11-edge3.png" src="../_images/lab11-edge3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 433 </span><span class="caption-text">VS Studio</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 433 </span><span class="caption-text">VS Studio</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -405,22 +412,22 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id8">
 <img alt="../_images/lab11-edge4.png" src="../_images/lab11-edge4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 434 </span><span class="caption-text">terraform-lab folder</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 434 </span><span class="caption-text">terraform-lab folder</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id9">
 <img alt="../_images/lab11-newedge2.png" src="../_images/lab11-newedge2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 435 </span><span class="caption-text">Click “Open”</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 435 </span><span class="caption-text">Click “Open”</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id10">
 <img alt="../_images/lab11-newedge.png" src="../_images/lab11-newedge.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 436 </span><span class="caption-text">Yes, I trust the authors</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 436 </span><span class="caption-text">Yes, I trust the authors</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -430,6 +437,12 @@ document.write(`
 </ul>
 </li>
 </ul>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab11-terraform2.png" src="../_images/lab11-terraform2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 437 </span><span class="caption-text">Manifest</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <blockquote>
 <div><p>What do you expect will be created when we run this Terraform code?</p>
 </div></blockquote>
@@ -448,6 +461,12 @@ document.write(`
 <ul class="simple">
 <li><p>Next we will execute a “plan”. This means that Terraform will compare the live environment with the desired state we declared in our Terraform files</p></li>
 </ul>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab11-terraform.png" src="../_images/lab11-terraform.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 438 </span><span class="caption-text">Visual Studio Code</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p><code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">plan</span></code></p>
 <ul class="simple">
 <li><p>Investigate the proposed changes by Terraform. Now we will apply them to the live environment:</p></li>
@@ -456,44 +475,92 @@ document.write(`
 <p>Once Terraform is finished, have a look at the newly created <strong>terraform.tfstate</strong> file. This contains information of all infrastructure created through Terraform. This is referred to as <strong>“the state”</strong>. Losing it can cause a lot of trouble, but that is for another (Terraform) lesson.</p>
 <section id="expected-results">
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
-<p>By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about <strong>5 minutes</strong>, you should see the new transit and spoke in CoPilot Topology.</p>
-<figure class="align-center" id="id8">
+<p>By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about <strong>6 minutes</strong>, you should see the new transit and spoke in CoPilot Topology.</p>
+<figure class="align-center" id="id13">
 <img alt="../_images/lab11-terraform-topology.png" src="../_images/lab11-terraform-topology.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 437 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 439 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
-<section id="lab-11-2-network-insights-api">
-<h2>Lab 11.2 - Network Insights API<a class="headerlink" href="#lab-11-2-network-insights-api" title="Link to this heading">#</a></h2>
+<section id="lab-11-2-create-transit-peerings">
+<h2>Lab 11.2 - Create Transit Peerings<a class="headerlink" href="#lab-11-2-create-transit-peerings" title="Link to this heading">#</a></h2>
 <section id="description">
 <h3>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Network</span> <span class="pre">Insights</span> <span class="pre">API</span></code> simplifies the process of navigating network interface statistics and micro-gateway status data. By integrating this API with your visualization platforms (with vendors you already know and love!), you can easily make data-driven decisions.</p>
+<p>In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let’s see how we can use Infrastructure as Code to build a full mesh of the Transits.</p>
 </section>
 <section id="id1">
 <h3>Validate<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p>Using the same <strong>Visual Studio Code</strong> session, let’s uncomment the code in the <code class="docutils literal notranslate"><span class="pre">peering.tf</span></code> file</p></li>
+<li><p>We will be using the following module:  <code class="docutils literal notranslate"><span class="pre">https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest</span></code></p></li>
+</ul>
+<figure class="align-center" id="id14">
+<img alt="docs/images/lab6-transit-peering.png" src="docs/images/lab6-transit-peering.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 440 </span><span class="caption-text">Transit Peering</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<blockquote>
+<div><p>Make sure that the Transit Gateway names match to your environment</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>SAVE</strong> the file in Visual Studio Code</p></li>
+<li><p>Go back to the <strong>LXTerminal</strong> and run <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code> again to download the <code class="docutils literal notranslate"><span class="pre">mc-transit-peering</span></code> module</p></li>
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">plan</span></code> to assess the changes</p></li>
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span> <span class="pre">--auto-approve</span></code></p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Expected Results<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.</p>
+<figure class="align-center" id="id15">
+<img alt="docs/images/lab6-topoloy-transit-peerings.png" src="docs/images/lab6-topoloy-transit-peerings.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 441 </span><span class="caption-text">Full Mesh</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="lab-11-2-summary">
+<h2>Lab 11.2 Summary<a class="headerlink" href="#lab-11-2-summary" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>You deployed an Aviatrix Transit and Spoke using Terraform</p></li>
+<li><p>You added the new Transit to the Global Multicloud Transit Network with a few lines of code</p></li>
+<li><p>Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution</p></li>
+<li><p>In minutes, you can create the network, security and connectivity needed</p></li>
+</ul>
+</section>
+<section id="lab-11-3-network-insights-api">
+<h2>Lab 11.3 - Network Insights API<a class="headerlink" href="#lab-11-3-network-insights-api" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>Description<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Network</span> <span class="pre">Insights</span> <span class="pre">API</span></code> simplifies the process of navigating network interface statistics and micro-gateway status data. By integrating this API with your visualization platforms (with vendors you already know and love!), you can easily make data-driven decisions.</p>
+</section>
+<section id="id4">
+<h3>Validate<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ul class="simple">
 <li><p>Go to your personal POD Portal, identify the <strong><em>Lab11</em></strong> section and click on the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Grafana</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab11-edge10.png" src="../_images/lab11-edge10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 438 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 442 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enter the required credentials that are available on the POD Portal and then click on <strong>Log in</strong>.</p>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab11-edge20.png" src="../_images/lab11-edge20.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 439 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 443 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will immediately notice the Receive Rate and Transmit Rate stats!</p>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab11-edge30.png" src="../_images/lab11-edge30.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 440 </span><span class="caption-text">Receive Rate and Transmit Rate</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Receive Rate and Transmit Rate</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -569,14 +636,21 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vpcs-transit-gw-spoke-gw-and-attachment">1. Create VPCs, Transit GW, Spoke GW and Attachment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">2. Validate</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-network-insights-api">Lab 11.2 - Network Insights API</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-create-transit-peerings">Lab 11.2 - Create Transit Peerings</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Expected Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-2-summary">Lab 11.2 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-11-3-network-insights-api">Lab 11.3 - Network Insights API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Validate</a></li>
 </ul>
 </li>
 </ul>
