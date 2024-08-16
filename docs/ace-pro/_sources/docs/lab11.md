@@ -1,6 +1,6 @@
-# Lab 11 - TERRAFORM & NETWORK INSIGHTS API
+# Lab 11 - IAC & NETWORK INSIGHTS API
 
-## 1. Create VPCs, Transit GW, Spoke GW and Attachment
+## 1. Create VPCs, Transit GW, Spoke GW and Attachment through Terraform
 
 All the elements you have created through the UI, can also be created through the API or the official **Aviatrix Terraform provider**. 
 
@@ -117,7 +117,7 @@ align: center
 Topology
 ```
 
-## Lab 11.2 - Create Transit Peerings
+## Lab 11.2 - Create Transit Peering
 
 ### Description
 
@@ -125,14 +125,22 @@ In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gatewa
 
 ### Validate
 
-* Using the same **Visual Studio Code** session, let's uncomment the code in the `peering.tf` file
+* Using the same **Visual Studio Code** session, let's create the `peering.tf` file.
 * We will be using the following module:  `https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest`
+* Go back to the **Visual Studio Code** session and create a new file. Name it `peering.tf`.
 
-```{figure} images/lab6-transit-peering.png
+```{figure} images/lab11-newfile.png
 ---
 align: center
 ---
-Transit Peering
+New File
+```
+
+```{figure} images/lab11-peering.png
+---
+align: center
+---
+peering.tf
 ```
 
 > Make sure that the Transit Gateway names match to your environment
