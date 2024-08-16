@@ -1,6 +1,6 @@
 # Lab 11 - TERRAFORM & NETWORK INSIGHTS API
 
-## 1. Objective
+## 1. Create VPCs, Transit GW, Spoke GW and Attachment
 
 All the elements you have created through the UI, can also be created through the API or the official **Aviatrix Terraform provider**. 
 
@@ -65,6 +65,13 @@ Yes, I trust the authors
 * Let’s explore the Terraform files in this directory:
   * Explore the file contents of **main.tf, variables.tf, providers.tf** and **terraform.tfvars**
 
+```{figure} images/lab11-terraform2.png
+---
+align: center
+---
+Manifest
+```
+
 > What do you expect will be created when we run this Terraform code?
 
 In this lab, we are using Terraform modules, provided by Aviatrix. These allow you to quickly build out your environment, based on larger building blocks, rather than individual resources. You can find more available modules here:  
@@ -84,6 +91,13 @@ Let's run this code.
 
 * Next we will execute a “plan”. This means that Terraform will compare the live environment with the desired state we declared in our Terraform files
 
+```{figure} images/lab11-terraform.png
+---
+align: center
+---
+Visual Studio Code
+```
+
 `terraform plan`
 
 * Investigate the proposed changes by Terraform. Now we will apply them to the live environment:
@@ -94,7 +108,7 @@ Once Terraform is finished, have a look at the newly created **terraform.tfstate
 
 ### Expected Results
 
-By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about **5 minutes**, you should see the new transit and spoke in CoPilot Topology.  
+By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about **6 minutes**, you should see the new transit and spoke in CoPilot Topology.  
 
 ```{figure} images/lab11-terraform-topology.png
 ---
@@ -103,7 +117,50 @@ align: center
 Topology
 ```
 
-## Lab 11.2 - Network Insights API
+## Lab 11.2 - Create Transit Peerings
+
+### Description
+
+In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let's see how we can use Infrastructure as Code to build a full mesh of the Transits.
+
+### Validate
+
+* Using the same **Visual Studio Code** session, let's uncomment the code in the `peering.tf` file
+* We will be using the following module:  `https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest`
+
+```{figure} images/lab6-transit-peering.png
+---
+align: center
+---
+Transit Peering
+```
+
+> Make sure that the Transit Gateway names match to your environment
+
+* **SAVE** the file in Visual Studio Code
+* Go back to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
+* Run the command `terraform plan` to assess the changes
+* Run the command `terraform apply --auto-approve`
+
+### Expected Results
+
+After a few minutes, a full mesh between all Transit gateways should be created. You can go to CoPilot Topology and have a look at the full mesh Multicloud network that was created.
+
+```{figure} images/lab6-topoloy-transit-peerings.png
+---
+align: center
+---
+Full Mesh
+```
+
+## Lab 11.2 Summary
+
+* You deployed an Aviatrix Transit and Spoke using Terraform
+* You added the new Transit to the Global Multicloud Transit Network with a few lines of code
+* Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution
+* In minutes, you can create the network, security and connectivity needed
+
+## Lab 11.3 - Network Insights API
 
 ### Description
 
