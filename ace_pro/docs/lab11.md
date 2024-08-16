@@ -143,7 +143,51 @@ align: center
 peering.tf
 ```
 
-> Make sure that the Transit Gateway names match to your environment
+* Now copy the following statements and paste them inside the file previously created:
+
+```terraform
+module "transit-peering" {
+  source  = "terraform-aviatrix-modules/mc-transit-peering/aviatrix"
+  version = "1.0.9"
+
+  transit_gateways = [
+    "aws-us-west-2-transit",
+    "aws-us-east-2-transit"
+  ]
+} 
+```
+
+```{note}
+*Copy and Paste* does not work directly from the host machine towards the Workstation "Edge", therefore activate the **Hidden Menu**, that is a sidebar that is maintained hidden until explicitly enabled. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing **Ctrl+Alt+Shift** on Windows machine (**Control+Shift+Command** on Mac).
+```
+
+```{figure} images/lab11-clip1.png
+---
+align: center
+---
+Hidden Clipboard
+```
+
+```{figure} images/lab11-clip2.png
+---
+align: center
+---
+Copy the statemets from the Lab Guides and paste them
+```
+
+```{figure} images/lab11-clip3.png
+---
+align: center
+---
+Copy from the hidden clipboard and paste them inside the peering.tf
+```
+
+```{figure} images/lab11-clip4.png
+---
+align: center
+---
+Close the Clipboard and save!
+```
 
 * **SAVE** the file in Visual Studio Code
 * Go back to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
