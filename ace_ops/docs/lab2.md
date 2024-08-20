@@ -26,7 +26,7 @@ The Connection Policy works bidirectionally!
 
 ```{figure} images/lab2-editnd.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Edit the Network Domain
@@ -61,7 +61,7 @@ Logical View
 
 ```{figure} images/lab2-pingbu2.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 BU1 to BU2 is ok
@@ -213,7 +213,7 @@ Explore the inbound rules and you will find out the absence of a rule that shoul
 
 ```{figure} images/lab2-sg2.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 The Security Group attached to the Mobile App
@@ -223,7 +223,7 @@ Click on `"Edit inbound rules"`.
 
 ```{figure} images/lab2-sg3.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Edit the SG
@@ -243,7 +243,7 @@ Create the required inbound rule (i.e. _"allow **http** traffic from anywhere"_)
 
 ```{figure} images/lab2-sg5.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 New inbound rule: allow port 80
