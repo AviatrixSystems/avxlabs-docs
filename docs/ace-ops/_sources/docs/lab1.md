@@ -29,7 +29,7 @@ Task Server
 
 ```{figure} images/lab1-fetchgwroutes.png
 ---
-height: 200px
+height: 300px
 align: center
 ---
 Fetch GW Routes
@@ -37,7 +37,7 @@ Fetch GW Routes
 
 ```{figure} images/lab1-fetchvpcroutes.png
 ---
-height: 200px
+height: 300px
 align: center
 ---
 Fetch VPC Routes
@@ -105,7 +105,6 @@ There are **two** methods for SSH to any instances inside the multicloud infrast
 
 ```{figure} images/lab1-publicip.png
 ---
-height: 400px
 align: center
 ---
 Public IP
@@ -113,7 +112,6 @@ Public IP
 
 ```{figure} images/lab1-publicname.png
 ---
-height: 400px
 align: center
 ---
 DNS name
@@ -123,7 +121,7 @@ DNS name
 
 ```{figure} images/lab1-jumpbox.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Jumpbox
@@ -131,7 +129,6 @@ Jumpbox
 
 ```{figure} images/lab1-guacamoleaccess.png
 ---
-height: 400px
 align: center
 ---
 Apache Guacamole Portal
@@ -186,7 +183,7 @@ Go to **CoPilot > Cloud resources > Cloud Assets > Virtual Machines** and from h
 
 ```{figure} images/lab1-assets.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Inventory
@@ -203,7 +200,7 @@ Use your personal POD in order to retrieve the symbolic names of any test instan
 
 ```{figure} images/lab1-podred.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 DNS Names
@@ -251,7 +248,6 @@ Go to **CoPilot > Networking > Network Segmentation > Overview**
 
 ```{figure} images/lab1-logicalview.png
 ---
-height: 400px
 align: center
 ---
 Logical View
@@ -261,7 +257,7 @@ Logical View
 
 ```{figure} images/lab1-noconnection.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Network Domains
@@ -303,7 +299,7 @@ Do not forget to click on **Apply**.
 
 ```{figure} images/lab1-plus.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 FlowIQ Filter
@@ -333,7 +329,7 @@ The filter button is on the left-hand side of the screen and is shaped like a sm
 
 ```{figure} images/lab1-filtersearch.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Search field and Filter icon
@@ -345,7 +341,7 @@ The **Originator** has the egress interface that corresponds to the **eth0** int
 
 ```{figure} images/lab1-cloudroutes.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Originator = eth0
@@ -363,7 +359,7 @@ This time you need to proceed with a <ins>recursive lookup</ins>: from any Spoke
 
 ```{figure} images/lab1-cloudroutes2.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Cloud Routes - Recursive lookup
