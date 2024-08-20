@@ -101,7 +101,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{figure} images/lab8-monitornew.png
 ---
-height: 200px
+height: 100px
 align: center
 ---
 Monitor: Logs
@@ -120,7 +120,7 @@ Ping will fail
 
 ```{figure} images/lab8-denyicmp.png
 ---
-height: 200px
+height: 100px
 align: center
 ---
 Monitor: Denied ICMP
@@ -164,7 +164,7 @@ Ping will be ok!
 
 ```{figure} images/lab8-pingpermitted.png
 ---
-height: 200px
+height: 100px
 align: center
 ---
 Monitor: successful logs
