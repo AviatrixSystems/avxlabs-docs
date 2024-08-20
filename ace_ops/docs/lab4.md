@@ -157,7 +157,7 @@ align: center
 Restrict the visibility of the Packet Capture to the required parameters
 ```
 
-Choose the `"eth2"` interface and diminish the `"Duration"` of the packet capture to **10** seconds!
+Choose the `"eth-fn0"` interface and diminish the `"Duration"` of the packet capture to **10** seconds!
 
 Then click on **Run**.
 
@@ -170,7 +170,7 @@ Only ICMP Echo Request packets have been captured...
 ```
 
 ```{important}
-You will notice only **ECHO Request** packets captured on the eth2 interface of the Transit FireNet GW.
+You will notice only **ECHO Request** packets captured on the **_eth-fn0_** interface of the Transit FireNet GW.
 
 The FW is not forwarding the traffic back! The **ECHO Reply** packets <ins>get dropped at the FW</ins>!
 ```
