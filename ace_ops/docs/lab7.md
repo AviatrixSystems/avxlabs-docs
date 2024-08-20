@@ -501,7 +501,7 @@ Go to **CoPilot > Security > Egress > Monitor** and select the **ace-azure-east-
 
 ```{figure} images/lab7-last.png
 ---
-height: 150px
+height: 250px
 align: center
 ---
 ace-azure-east-us-spoke2
@@ -509,7 +509,7 @@ ace-azure-east-us-spoke2
 
 ```{figure} images/lab7-lastlog.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 Allowed domains!
