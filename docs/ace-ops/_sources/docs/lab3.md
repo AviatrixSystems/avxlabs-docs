@@ -90,7 +90,7 @@ From the outcome above you can notice that from the Spoke1 GW in AWS, the BU2 Mo
 
 ```{figure} images/lab3-bu1ping.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Ping is ok from the Transit GW towards BU1 Frontend
@@ -98,7 +98,7 @@ Ping is ok from the Transit GW towards BU1 Frontend
 
 ```{figure} images/lab3-bu2ping.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Ping is ok from the Transit GW towards BU2 Mobile App
@@ -114,7 +114,7 @@ Go to **CoPilot > Security > FireNet**
 
 ```{figure} images/lab3-unreachable.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 The FW is unreachable
@@ -128,7 +128,7 @@ The ICMP health check is initiated every **5** seconds from the Aviatrix Transit
 
 ```{figure} images/lab3-fwdown.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 The FW is down
@@ -216,7 +216,7 @@ POD Portal
 
 ```{figure} images/lab3-url.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 FW URL from the FireNet section on the CoPilot
