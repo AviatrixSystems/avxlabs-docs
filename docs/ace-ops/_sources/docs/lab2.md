@@ -135,7 +135,7 @@ FlightPath
 
 ```{figure} images/lab2-curl4.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 AppIQ configuration

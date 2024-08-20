@@ -13,6 +13,7 @@ The **`Inspection Policy`** had been already applied on each Spoke VPC in AWS, a
 
 ```{figure} images/lab3-policy2.png
 ---
+height: 300px
 align: center
 ---
 Inspection Policies on the FireNet Transit GW
@@ -47,6 +48,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select for exampl
 
 ```{figure} images/lab3-routecheck.png
 ---
+height: 400px
 align: center
 ---
 Filtering out
@@ -64,6 +66,7 @@ Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search
 
 ```{figure} images/lab3-personalpod.png
 ---
+height: 400px
 align: center
 ---
 Private IP of BU2 Mobile App
@@ -75,6 +78,7 @@ Go to **CoPilot > Diagnostics > Diagnostics Tools** then select the GW **ace-aws
 
 ```{figure} images/lab3-pingfailss.png
 ---
+height: 400px
 align: center
 ---
 Ping is unsuccessful
@@ -108,6 +112,7 @@ Go to **CoPilot > Security > FireNet**
 
 ```{figure} images/lab3-unreachable.png
 ---
+height: 400px
 align: center
 ---
 The FW is unreachable
@@ -121,6 +126,7 @@ The ICMP health check is initiated every **5** seconds from the Aviatrix Transit
 
 ```{figure} images/lab3-fwdown.png
 ---
+height: 400px
 align: center
 ---
 The FW is down
@@ -138,6 +144,7 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab3-firenetgw.png
 ---
+height: 400px
 align: center
 ---
 The Transit FireNet GW
@@ -184,6 +191,7 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab3-removeex.png
 ---
+height: 400px
 align: center
 ---
 Remove the exemption
@@ -206,6 +214,7 @@ POD Portal
 
 ```{figure} images/lab3-url.png
 ---
+height: 400px
 align: center
 ---
 FW URL from the FireNet section on the CoPilot
