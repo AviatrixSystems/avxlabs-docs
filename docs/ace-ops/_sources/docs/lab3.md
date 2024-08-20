@@ -48,7 +48,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select for exampl
 
 ```{figure} images/lab3-routecheck.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Filtering out
@@ -66,7 +66,7 @@ Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search
 
 ```{figure} images/lab3-personalpod.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Private IP of BU2 Mobile App
@@ -78,7 +78,7 @@ Go to **CoPilot > Diagnostics > Diagnostics Tools** then select the GW **ace-aws
 
 ```{figure} images/lab3-pingfailss.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Ping is unsuccessful
@@ -90,6 +90,7 @@ From the outcome above you can notice that from the Spoke1 GW in AWS, the BU2 Mo
 
 ```{figure} images/lab3-bu1ping.png
 ---
+height: 300px
 align: center
 ---
 Ping is ok from the Transit GW towards BU1 Frontend
@@ -97,6 +98,7 @@ Ping is ok from the Transit GW towards BU1 Frontend
 
 ```{figure} images/lab3-bu2ping.png
 ---
+height: 300px
 align: center
 ---
 Ping is ok from the Transit GW towards BU2 Mobile App
@@ -112,7 +114,7 @@ Go to **CoPilot > Security > FireNet**
 
 ```{figure} images/lab3-unreachable.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 The FW is unreachable
@@ -126,7 +128,7 @@ The ICMP health check is initiated every **5** seconds from the Aviatrix Transit
 
 ```{figure} images/lab3-fwdown.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 The FW is down
@@ -144,7 +146,7 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab3-firenetgw.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 The Transit FireNet GW
@@ -191,7 +193,7 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab3-removeex.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Remove the exemption
@@ -214,7 +216,7 @@ POD Portal
 
 ```{figure} images/lab3-url.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 FW URL from the FireNet section on the CoPilot
