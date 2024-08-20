@@ -29,7 +29,6 @@ Task Server
 
 ```{figure} images/lab1-fetchgwroutes.png
 ---
-height: 300px
 align: center
 ---
 Fetch GW Routes
@@ -37,7 +36,6 @@ Fetch GW Routes
 
 ```{figure} images/lab1-fetchvpcroutes.png
 ---
-height: 300px
 align: center
 ---
 Fetch VPC Routes
@@ -73,7 +71,7 @@ Click on the `"Managed"` button on the right-hand side of the screen, for hiding
 
 ```{figure} images/lab1-managedvpc2.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Properties of your Topology
@@ -121,7 +119,7 @@ DNS name
 
 ```{figure} images/lab1-jumpbox.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Jumpbox
@@ -183,7 +181,7 @@ Go to **CoPilot > Cloud resources > Cloud Assets > Virtual Machines** and from h
 
 ```{figure} images/lab1-assets.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Inventory
@@ -257,7 +255,7 @@ Logical View
 
 ```{figure} images/lab1-noconnection.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Network Domains
@@ -299,7 +297,7 @@ Do not forget to click on **Apply**.
 
 ```{figure} images/lab1-plus.png
 ---
-height: 300px
+height: 500px
 align: center
 ---
 FlowIQ Filter
@@ -309,7 +307,7 @@ Then check the `"Flow Exporters"` widget, then from the drop-down menu select th
 
 ```{figure} images/lab1-flowiq.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 FlowIQ
