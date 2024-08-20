@@ -73,6 +73,7 @@ Click on the `"Managed"` button on the right-hand side of the screen, for hiding
 
 ```{figure} images/lab1-managedvpc2.png
 ---
+height: 400px
 align: center
 ---
 Properties of your Topology
@@ -88,6 +89,7 @@ After this action this is how your Topology should look like.
 
 ```{figure} images/lab1-managedvpc3.png
 ---
+height: 400px
 align: center
 ---
 Managed VPCs only
@@ -103,6 +105,7 @@ There are **two** methods for SSH to any instances inside the multicloud infrast
 
 ```{figure} images/lab1-publicip.png
 ---
+height: 400px
 align: center
 ---
 Public IP
@@ -110,6 +113,7 @@ Public IP
 
 ```{figure} images/lab1-publicname.png
 ---
+height: 400px
 align: center
 ---
 DNS name
@@ -119,6 +123,7 @@ DNS name
 
 ```{figure} images/lab1-jumpbox.png
 ---
+height: 400px
 align: center
 ---
 Jumpbox
@@ -126,6 +131,7 @@ Jumpbox
 
 ```{figure} images/lab1-guacamoleaccess.png
 ---
+height: 400px
 align: center
 ---
 Apache Guacamole Portal
@@ -137,6 +143,7 @@ Please bear in mind that if you decide to use the Jumpbox, *Copy and Paste* does
 
 ```{figure} images/lab1-guacamoleterminal.png
 ---
+height: 400px
 align: center
 ---
 Guacamole Menu
@@ -159,6 +166,7 @@ You can't connect to any Aviatrix Gateways using the **SSH** protocol. The port 
 
 ```{figure} images/lab1-newpicture.png
 ---
+height: 400px
 align: center
 ---
 EC2 Instance
@@ -166,6 +174,7 @@ EC2 Instance
 
 ```{figure} images/lab1-ec2.png
 ---
+height: 400px
 align: center
 ---
 Instance Properties
@@ -177,7 +186,7 @@ Go to **CoPilot > Cloud resources > Cloud Assets > Virtual Machines** and from h
 
 ```{figure} images/lab1-assets.png
 ---
-
+height: 400px
 align: center
 ---
 Inventory
@@ -194,6 +203,7 @@ Use your personal POD in order to retrieve the symbolic names of any test instan
 
 ```{figure} images/lab1-podred.png
 ---
+height: 400px
 align: center
 ---
 DNS Names
@@ -207,6 +217,7 @@ Ping and SSH will be successful **within** the same network domain!
 
 ```{figure} images/lab1-pingok.png
 ---
+height: 400px
 align: center
 ---
 BU1 connectivity
@@ -226,6 +237,7 @@ The screenshots are used as examples and might indicate different IP addresses f
 
 ```{figure} images/lab1-pingfails.png
 ---
+height: 400px
 align: center
 ---
 BU1 to BU2 fails
@@ -239,6 +251,7 @@ Go to **CoPilot > Networking > Network Segmentation > Overview**
 
 ```{figure} images/lab1-logicalview.png
 ---
+height: 400px
 align: center
 ---
 Logical View
@@ -248,6 +261,7 @@ Logical View
 
 ```{figure} images/lab1-noconnection.png
 ---
+height: 400px
 align: center
 ---
 Network Domains
@@ -261,6 +275,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ac
 
 ```{figure} images/lab1-bu1vrf.png
 ---
+height: 400px
 align: center
 ---
 Network Domain (aka VRF)
@@ -272,6 +287,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ac
 You will notice that the `Segmentation` feature is indeed enabled. Moreover, you will notice the different RTBs.
 ```{figure} images/lab1-newjoe.png
 ---
+height: 400px
 align: center
 ---
 RIB
@@ -287,6 +303,7 @@ Do not forget to click on **Apply**.
 
 ```{figure} images/lab1-plus.png
 ---
+height: 400px
 align: center
 ---
 FlowIQ Filter
@@ -296,6 +313,7 @@ Then check the `"Flow Exporters"` widget, then from the drop-down menu select th
 
 ```{figure} images/lab1-flowiq.png
 ---
+height: 400px
 align: center
 ---
 FlowIQ
@@ -315,6 +333,7 @@ The filter button is on the left-hand side of the screen and is shaped like a sm
 
 ```{figure} images/lab1-filtersearch.png
 ---
+height: 400px
 align: center
 ---
 Search field and Filter icon
@@ -326,6 +345,7 @@ The **Originator** has the egress interface that corresponds to the **eth0** int
 
 ```{figure} images/lab1-cloudroutes.png
 ---
+height: 400px
 align: center
 ---
 Originator = eth0
@@ -343,6 +363,7 @@ This time you need to proceed with a <ins>recursive lookup</ins>: from any Spoke
 
 ```{figure} images/lab1-cloudroutes2.png
 ---
+height: 400px
 align: center
 ---
 Cloud Routes - Recursive lookup
