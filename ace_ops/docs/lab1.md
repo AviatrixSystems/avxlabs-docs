@@ -71,7 +71,7 @@ Click on the `"Managed"` button on the right-hand side of the screen, for hiding
 
 ```{figure} images/lab1-managedvpc2.png
 ---
-height: 300px
+height: 500px
 align: center
 ---
 Properties of your Topology
@@ -297,7 +297,7 @@ Do not forget to click on **Apply**.
 
 ```{figure} images/lab1-plus.png
 ---
-height: 500px
+height: 150px
 align: center
 ---
 FlowIQ Filter
@@ -307,7 +307,7 @@ Then check the `"Flow Exporters"` widget, then from the drop-down menu select th
 
 ```{figure} images/lab1-flowiq.png
 ---
-height: 300px
+height: 500px
 align: center
 ---
 FlowIQ
@@ -327,7 +327,7 @@ The filter button is on the left-hand side of the screen and is shaped like a sm
 
 ```{figure} images/lab1-filtersearch.png
 ---
-height: 200px
+height: 100px
 align: center
 ---
 Search field and Filter icon
