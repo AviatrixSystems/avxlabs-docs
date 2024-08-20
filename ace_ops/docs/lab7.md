@@ -74,7 +74,7 @@ Click on the pencil icon on the right-hand side of the entry **Greenfield-Rule**
 
 ```{figure} images/lab7-editgreen.png
 ---
-height: 400px
+height: 150px
 align: center
 ---
 Edit the Greenfield-Rule
@@ -91,7 +91,7 @@ Do not forget to click on **Save In Drafts** and then click on **Commit**, to pu
 
 ```{figure} images/lab7-lastone.png
 ---
-height: 400px
+height: 150px
 align: center
 ---
 Commit
@@ -143,7 +143,7 @@ This time attach the `All-Web` WebGroup and then click on **Save In Drafts**.
 
 ```{figure} images/lab7-test4.png
 ---
-height: 400px
+height: 150px
 align: center
 ---
 Edit the Greenfield-Rule
@@ -160,7 +160,7 @@ Do not forget to **commit** your changes into the Data Path.
 
 ```{figure} images/lab7-test6.png
 ---
-height: 400px
+height: 150px
 align: center
 ---
 Commit
@@ -198,7 +198,7 @@ The required domains are **five**!
 
 ```{figure} images/lab7-test7.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Monitor
@@ -237,7 +237,7 @@ beside the **_ace-azure-east-us-spoke1_** VNet entry.
 
 ```{figure} images/lab7-disableegress.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Disable Egress on Spoke1 VNet
@@ -317,7 +317,7 @@ SmartGroups list
 
 ```{figure} images/lab7-bus2.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 BU1's members
@@ -349,7 +349,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
 
 ```{figure} images/lab7-bus3new.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Three Rules
@@ -363,7 +363,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{figure} images/lab7-bus5.png
 ---
-height: 400px
+height: 150px
 align: center
 ---
 SSH logs
@@ -455,7 +455,7 @@ inter-ubuntu-bu2db-internet
 
 ```{figure} images/lab7-lastcommit.png
 ---
-height: 400px
+height: 150px
 align: center
 ---
 DCF rules list
@@ -477,7 +477,7 @@ You will notice three **Drop** entries within the **Monitor** section that have 
 
 ```{figure} images/lab7-explicitdeny.png
 ---
-height: 400px
+height: 150px
 align: center
 ---
 Explicit Deny Rule matching
@@ -501,7 +501,7 @@ Go to **CoPilot > Security > Egress > Monitor** and select the **ace-azure-east-
 
 ```{figure} images/lab7-last.png
 ---
-height: 400px
+height: 150px
 align: center
 ---
 ace-azure-east-us-spoke2
@@ -509,7 +509,7 @@ ace-azure-east-us-spoke2
 
 ```{figure} images/lab7-lastlog.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Allowed domains!
