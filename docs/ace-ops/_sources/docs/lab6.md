@@ -97,6 +97,7 @@ Go to **CoPilot > Networking >  Connectivity > External Connection (S2C) >** the
 
 ```{figure} images/lab6-s2c.png
 ---
+height: 300px
 align: center
 ---
 New S2C

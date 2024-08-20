@@ -8,6 +8,7 @@ Furthermore, four DCF rules have been already applied so far.
 
 ```{figure} images/lab8-initialrule.png
 ---
+height: 350px
 align: center
 ---
 Existing DCF rules
@@ -69,6 +70,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
 ```{figure} images/lab8-rule01.png
 ---
+height: 300px
 align: center
 ---
 Another intra-rule
@@ -99,6 +101,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{figure} images/lab8-monitornew.png
 ---
+height: 300px
 align: center
 ---
 Monitor: Logs
@@ -117,6 +120,7 @@ Ping will fail
 
 ```{figure} images/lab8-denyicmp.png
 ---
+height: 300px
 align: center
 ---
 Monitor: Denied ICMP
@@ -141,6 +145,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
 ```{figure} images/lab8-icmprulebu1.png
 ---
+height: 300px
 align: center
 ---
 New intra-rule
@@ -159,6 +164,7 @@ Ping will be ok!
 
 ```{figure} images/lab8-pingpermitted.png
 ---
+height: 300px
 align: center
 ---
 Monitor: successful logs
@@ -200,9 +206,10 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
 ```{figure} images/lab8-penultimaterule.png
 ---
+height: 300px
 align: center
 ---
-Ping will fail
+DCF Rules List
 ```
 
 - Retry to ping the BU2 Mobile App from the BU1 Frontend. The ping will be successful thanks to the inter-rule!
@@ -251,6 +258,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
 ```{figure} images/lab8-lastrule.png
 ---
+height: 300px
 align: center
 ---
 "inter-ssh-bu2-bu1" Rule
