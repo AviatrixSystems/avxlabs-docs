@@ -35,6 +35,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **ace-
 
 ```{figure} images/lab4-filter.png
 ---
+height: 300px
 align: center
 ---
 Filter out
@@ -55,6 +56,7 @@ Expand the **_ace-aws-eu-west-1-spoke1_** VPC, clicking on its corresponding ico
 <ins>Repeat this operation</ins>: from the **_ace-aws-eu-west-1-spoke2_** Spoke GW, try to ping the private IP address of the BU1 Frontend too.
 ```{figure} images/lab4-mapdiag1.png
 ---
+height: 400px
 align: center
 ---
 Diagnostics Tools from the Topology
@@ -62,6 +64,7 @@ Diagnostics Tools from the Topology
 
 ```{figure} images/lab4-pingfails2.png
 ---
+height: 300px
 align: center
 ---
 Ping fails from ace-aws-eu-west-1-spoke1 towards BU2 Mobile App
@@ -69,6 +72,7 @@ Ping fails from ace-aws-eu-west-1-spoke1 towards BU2 Mobile App
 
 ```{figure} images/lab4-pingfails.png
 ---
+height: 300px
 align: center
 ---
 Ping fails from ace-aws-eu-west-1-spoke2 towards BU1 Frontend
@@ -100,6 +104,7 @@ Go to **CoPilot > Security > FireNet**
 
 ```{figure} images/lab4-firewallok.png
 ---
+height: 300px
 align: center
 ---
 The FW is UP
@@ -131,6 +136,7 @@ Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, selec
 
 ```{figure} images/lab4-packet1.png
 ---
+height: 400px
 align: center
 ---
 Packet Capture
@@ -157,6 +163,7 @@ Then click on **Run**.
 
 ```{figure} images/lab4-packet3.png
 ---
+height: 400px
 align: center
 ---
 Only ICMP Echo Request packets have been captured...
@@ -176,6 +183,7 @@ Go to **CoPilot > Security > FireNet > Firewall**, click on the **_ACE-FW_** fir
 
 ```{figure} images/lab4-vendor1.png
 ---
+height: 300px
 align: center
 ---
 10.0.0.0/8 is not installed in the RTB of the FW

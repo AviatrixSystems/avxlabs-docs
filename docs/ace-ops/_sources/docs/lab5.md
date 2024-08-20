@@ -36,6 +36,7 @@ Repeat the same operation from the GCP's Spoke perspective!
 
 ```{figure} images/lab5-filter.png
 ---
+height: 400px
 align: center
 ---
 Filter out
@@ -53,6 +54,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_a
 
 ```{figure} images/lab5-nexthop.png
 ---
+height: 400px
 align: center
 ---
 Next Hop
@@ -68,6 +70,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **Spok
 
 ```{figure} images/lab5-customize.png
 ---
+height: 400px
 align: center
 ---
 Customize Spoke Advertised VPC/VNet CIDRs
@@ -138,6 +141,7 @@ Ping to BU1 DB fails
 
 ```{figure} images/lab5-packetcapture00.png
 ---
+height: 400px
 align: center
 ---
 Packet Capture
@@ -153,6 +157,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace
 
 ```{figure} images/lab5-deleterule.png
 ---
+height: 400px
 align: center
 ---
 Deletion of the NAT rule
@@ -189,7 +194,7 @@ Go to **CoPilot > Diagnostics > Cloud Routes > BGP Info** and then click on the 
 
 ```{figure} images/lab5-bgpinfo.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 Show BGP Learned Routes
@@ -215,6 +220,7 @@ Now search for `10.0.211.0/24`.
 
 ```{figure} images/lab5-newrequest3.png
 ---
+height: 300px
 align: center
 ---
 Search for the remote route from the OnPrem DC
@@ -231,6 +237,7 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab5-newrequest4.png
 ---
+height: 300px
 align: center
 ---
 Exclude the route
@@ -246,6 +253,7 @@ Now search for `10.0.211.0/24`.
 
 ```{figure} images/lab5-newrequest5.png
 ---
+height: 300px
 align: center
 ---
 No Results found
