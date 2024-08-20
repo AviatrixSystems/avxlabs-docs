@@ -64,7 +64,7 @@ Diagnostics Tools from the Topology
 
 ```{figure} images/lab4-pingfails2.png
 ---
-height: 300px
+height: 450px
 align: center
 ---
 Ping fails from ace-aws-eu-west-1-spoke1 towards BU2 Mobile App
@@ -72,7 +72,7 @@ Ping fails from ace-aws-eu-west-1-spoke1 towards BU2 Mobile App
 
 ```{figure} images/lab4-pingfails.png
 ---
-height: 300px
+height: 450px
 align: center
 ---
 Ping fails from ace-aws-eu-west-1-spoke2 towards BU1 Frontend
@@ -104,7 +104,7 @@ Go to **CoPilot > Security > FireNet**
 
 ```{figure} images/lab4-firewallok.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 The FW is UP
@@ -183,7 +183,7 @@ Go to **CoPilot > Security > FireNet > Firewall**, click on the **_ACE-FW_** fir
 
 ```{figure} images/lab4-vendor1.png
 ---
-height: 300px
+height: 350px
 align: center
 ---
 10.0.0.0/8 is not installed in the RTB of the FW
