@@ -26,6 +26,7 @@ Then click on **Save**.
 
 ```{figure} images/lab6-routeapproval.png
 ---
+height: 400px
 align: center
 ---
 Route Approval
@@ -59,6 +60,7 @@ This route will remain in <ins>**pending state**</ins> and it will be not advert
 
 ```{figure} images/lab6-pending.png
 ---
+height: 400px
 align: center
 ---
 Refresh
@@ -173,6 +175,7 @@ Wait some seconds for the completion of the S2C. The new connection will show up
 
 ```{figure} images/lab6-notdone.png
 ---
+height: 400px
 align: center
 ---
 S2C is establishing the connection
@@ -183,6 +186,7 @@ Click on the <span style='color:orange'>**refresh**</span>
 
 ```{figure} images/lab6-s2cok.png
 ---
+height: 400px
 align: center
 ---
 S2C is finally UP
@@ -226,6 +230,7 @@ Filter based on the `"ICMP"` keyword.
 
 ```{figure} images/lab6-final.png
 ---
+height: 400px
 align: center
 ---
 Mapped NAT in action !
