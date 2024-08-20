@@ -327,7 +327,7 @@ The filter button is on the left-hand side of the screen and is shaped like a sm
 
 ```{figure} images/lab1-filtersearch.png
 ---
-height: 100px
+height: 500px
 align: center
 ---
 Search field and Filter icon
