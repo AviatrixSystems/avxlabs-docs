@@ -29,7 +29,7 @@ Task Server
 
 ```{figure} images/lab1-fetchgwroutes.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Fetch GW Routes
@@ -37,7 +37,7 @@ Fetch GW Routes
 
 ```{figure} images/lab1-fetchvpcroutes.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Fetch VPC Routes
