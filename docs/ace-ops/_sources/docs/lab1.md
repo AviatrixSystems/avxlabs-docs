@@ -21,6 +21,7 @@ Initial Topology
 
 ```{figure} images/lab1-task.png
 ---
+height: 400px
 align: center
 ---
 Task Server
@@ -28,6 +29,7 @@ Task Server
 
 ```{figure} images/lab1-fetchgwroutes.png
 ---
+height: 400px
 align: center
 ---
 Fetch GW Routes
@@ -35,6 +37,7 @@ Fetch GW Routes
 
 ```{figure} images/lab1-fetchvpcroutes.png
 ---
+height: 400px
 align: center
 ---
 Fetch VPC Routes
@@ -44,6 +47,7 @@ Afterwards, click on **Commit**.
 
 ```{figure} images/lab1-commit.png
 ---
+height: 400px
 align: center
 ---
 Commit
@@ -59,6 +63,7 @@ You will notice that the CoPilot is showing both the *Managed VPCs* and the *Unm
 
 ```{figure} images/lab1-managedvpc.png
 ---
+height: 400px
 align: center
 ---
 Dynamic Topology
