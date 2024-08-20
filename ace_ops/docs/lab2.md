@@ -26,6 +26,7 @@ The Connection Policy works bidirectionally!
 
 ```{figure} images/lab2-editnd.png
 ---
+height: 300px
 align: center
 ---
 Edit the Network Domain
@@ -60,6 +61,7 @@ Logical View
 
 ```{figure} images/lab2-pingbu2.png
 ---
+height: 300px
 align: center
 ---
 BU1 to BU2 is ok
@@ -118,6 +120,7 @@ Go to **CoPilot > Diagnostics > AppIQ > FlightPath**
 
 ```{figure} images/lab2-curl3.png
 ---
+height: 300px
 align: center
 ---
 FlightPath
@@ -132,6 +135,7 @@ FlightPath
 
 ```{figure} images/lab2-curl4.png
 ---
+height: 200px
 align: center
 ---
 AppIQ configuration
@@ -143,6 +147,7 @@ The Security Group attached to BU2 Mobile APP is missing a rule that should allo
 
 ```{figure} images/lab2-curl5.png
 ---
+height: 300px
 align: center
 ---
 AppIQ report
@@ -166,6 +171,7 @@ Sign in using the provided credentials (these screenshots refer to **Pod 143**).
 
 ```{figure} images/lab2-console.png
 ---
+height: 300px
 align: center
 ---
 POD Portal - AWS Console button
@@ -200,40 +206,44 @@ Search for **_ace-aws-eu-west-1-spoke2-bu2-mobile-app_**, select the instance an
 ---
 align: center
 ---
-Change security groups
+Select the Security Group
 ```
 
 Explore the inbound rules and you will find out the absence of a rule that should permit the incoming traffic on port **tcp/80**.
 
 ```{figure} images/lab2-sg2.png
 ---
+height: 300px
 align: center
 ---
-Change security groups
+The Security Group attached to the Mobile App
 ```
 
 Click on `"Edit inbound rules"`.
 
 ```{figure} images/lab2-sg3.png
 ---
+height: 300px
 align: center
 ---
-Change security groups
+Edit the SG
 ```
 
 Click on `"Add rule"`.
 
 ```{figure} images/lab2-sg4.png
 ---
+height: 300px
 align: center
 ---
-Change security groups
+Add a new rule
 ```
 
 Create the required inbound rule (i.e. _"allow **http** traffic from anywhere"_) as depicted below and then click on the `"Save rules"` button.
 
 ```{figure} images/lab2-sg5.png
 ---
+height: 300px
 align: center
 ---
 New inbound rule: allow port 80
