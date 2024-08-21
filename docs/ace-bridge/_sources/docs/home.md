@@ -44,6 +44,7 @@ If you succeed in fixing all the problems, this how the Wordpress app page would
 
 ```{figure} images/final-wordpress.png
 ---
+height: 400px
 align: center
 ---
 Wordpress is OK
