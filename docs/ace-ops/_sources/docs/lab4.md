@@ -125,10 +125,10 @@ align: center
 Keep the ping running...
 ```
 
-- Now let's launch a *packet capture* on the `eth2` interface of the Transit FireNet GW.
+- Now let's launch a *packet capture* on the `eth-fn0` interface of the Transit FireNet GW.
 
 ```{important}
-The **eth2** interface is hooked up to the **LAN** interface of the Firewall, within the **_transit1-dmz-firewall_** subnet!
+The **eth-fn0** interface is hooked up to the **LAN** interface of the Firewall, within the **_transit1-dmz-firewall_** subnet!
 ```
 
 ```{tip}
