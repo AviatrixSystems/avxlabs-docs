@@ -16,7 +16,7 @@ You will notice that the Wordpress app is **down**.
 
 ```{figure} images/gateway-timeout2.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Wordpress URL
