@@ -6,6 +6,7 @@ Perform an HTTP request towards the Wordpress URL by clicking on the Wordpress b
 
 ```{figure} images/wordpress.png
 ---
+height: 400px
 align: center
 ---
 POD Portal
@@ -15,6 +16,7 @@ You will notice that the Wordpress app is **down**.
 
 ```{figure} images/gateway-timeout2.png
 ---
+height: 400px
 align: center
 ---
 Wordpress URL
