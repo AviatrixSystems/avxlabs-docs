@@ -1,4 +1,4 @@
-# Lab 8 - EDGE
+# Lab 8 - AVIATRIX EDGE
 
 ## 1. General Objectives
 
