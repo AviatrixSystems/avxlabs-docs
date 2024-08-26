@@ -1,4 +1,4 @@
-# Lab 5 - EGRESS
+# Lab 5 - SECURE EGRESS
 
 ## 1. Objective
 
@@ -48,6 +48,7 @@ With this scenario, the EC2 instance can't reach the *Internet Public Zone*, due
 
 ```{figure} images/lab6-publicip.png
 ---
+height: 400px
 align: center
 ---
 SSH to aws-us-east-2-spoke1-test1
@@ -72,6 +73,7 @@ Retrieve the Private IP of the **_aws-us-east-2-spoke1-test2_** from the Topolog
 
 ```{figure} images/lab6-retrieve.png
 ---
+height: 400px
 align: center
 ---
 Retrieve the private IP
@@ -151,6 +153,7 @@ Go to **CoPilot > Security > Egress > Overview (default)**
 
 ```{figure} images/lab6-nodatafound.png
 ---
+height: 400px
 align: center
 ---
 No Data Found
@@ -194,6 +197,7 @@ This rule essentially allows all kind of traffic.
 
 ```{figure} images/lab6-greenfield.png
 ---
+height: 250px
 align: center
 ---
 Greenfield-Rule
@@ -238,6 +242,7 @@ If the **Enforcement** slider is **On** (the default), the rule is enforced in t
 
 ```{figure} images/lab6-newrule11.png
 ---
+height: 250px
 align: center
 ---
 Discovery-Rule
@@ -262,6 +267,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and you will
 
 ```{figure} images/lab6-monitorpermit.png
 ---
+height: 250px
 align: center
 ---
 Monitor: 4 logs
@@ -273,6 +279,7 @@ Now you have finally the egress observability with a full list of domains hit by
 
 ```{figure} images/lab6-newrul12.png
 ---
+height: 400px
 align: center
 ---
 Overview
@@ -282,6 +289,7 @@ Furthermore, go to **CoPilot > Security > Egress > Monitor** and from the `"VPC/
 
 ```{figure} images/lab6-monitor.png
 ---
+height: 250px
 align: center
 ---
 Monitor
@@ -359,6 +367,7 @@ Before committing, click once again on the `"+ Rule"` button.
 
 ```{figure} images/lab6-beforecommitting.png
 ---
+height: 250px
 align: center
 ---
 Before Commit
@@ -387,6 +396,7 @@ Explicit-Deny-Rule
 
 ```{figure} images/lab6-newcommit.png
 ---
+height: 250px
 align: center
 ---
 Commit
@@ -396,9 +406,10 @@ Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** f
 
 ```{figure} images/lab6-newview.png
 ---
+height: 400px
 align: center
 ---
-Commit
+Select the VPC
 ```
 
 ### 5.2.2 Test the new rule
@@ -431,6 +442,7 @@ go to You will notice almost instanteously that only **_www.aviatrix.com_** and 
 
 ```{figure} images/lab6-liveview.png
 ---
+height: 250px
 align: center
 ---
 Denied
@@ -466,6 +478,7 @@ Proceed clicking on the **Commit** button.
 
 ```{figure} images/lab6-idscommit.png
 ---
+height: 250px
 align: center
 ---
 Commit
@@ -515,6 +528,7 @@ Simulator
 
 ```{figure} images/lab6-suricataedit.png
 ---
+height: 250px
 align: center
 ---
 Edit existing rule
@@ -536,6 +550,7 @@ Now click on the **Commit** button.
 
 ```{figure} images/lab6-commit3.png
 ---
+height: 250px
 align: center
 ---
 Commit
@@ -558,6 +573,7 @@ If you do not see the logs immediately, click on the **refresh** button
 
 ```{figure} images/lab6-refresh.png
 ---
+height: 300px
 align: center
 ---
 Detected Intrusions
@@ -567,6 +583,7 @@ Click on any **Timestamps** to get additional insight on that specific attack.
 
 ```{figure} images/lab6-final.png
 ---
+height: 300px
 align: center
 ---
 Additional insights
