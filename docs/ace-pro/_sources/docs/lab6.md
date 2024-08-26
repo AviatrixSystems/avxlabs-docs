@@ -33,6 +33,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke 
 
 ```{figure} images/lab7-spoke.png
 ---
+height: 300px
 align: center
 ---
 Edit Spoke GW
@@ -70,6 +71,7 @@ Go to **CoPilot > Security > FireNet > Firewall**, then click on the `"+ Firewal
 
 ```{figure} images/lab7-firenetbutton.png
 ---
+height: 300px
 align: center
 ---
 FireNet
@@ -137,6 +139,7 @@ You will know the Firewall is created when you see the corresponding entry like 
 
 ```{figure} images/lab7-url.png
 ---
+height: 300px
 align: center
 ---
 Deployment completed
@@ -167,6 +170,7 @@ Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three 
 
 ```{figure} images/lab7-vendor.png
 ---
+height: 300px
 align: center
 ---
 Vendor Integration
@@ -183,6 +187,7 @@ Then click on **Save**.
 
 ```{figure} images/lab7-vendor2.png
 ---
+
 align: center
 ---
 Vendor Integration template
@@ -210,6 +215,7 @@ Go to **CoPilot > Security > FireNet > Firewall** and click on the **_azure-west
 
 ```{figure} images/lab7-vendor4.png
 ---
+height: 300px
 align: center
 ---
 Click on the Firewall
@@ -219,6 +225,7 @@ You will see the RFC 1918 routes that the Controller automatically programmed on
 
 ```{figure} images/lab7-vendor5.png
 ---
+height: 400px
 align: center
 ---
 Vendor Integration outcome
@@ -299,6 +306,7 @@ Click the *pencil icon* to edit the Green network domain.
 
 ```{figure} images/lab7-editnd.png
 ---
+height: 300px
 align: center
 ---
 Edit Green
@@ -333,6 +341,7 @@ Before launching any connectivity tests, <ins>you need to move the **_Greenfield
 
 ```{figure} images/lab7-dcfrule.png
 ---
+height: 300px
 align: center
 ---
 DCF rules
@@ -347,6 +356,7 @@ Then click on **Save in Draft**.
 
 ```{figure} images/lab7-top.png
 ---
+height: 300px
 align: center
 ---
 Move at the Top
@@ -356,6 +366,7 @@ Do not forget to click on **Commit**.
 
 ```{figure} images/lab7-edit.png
 ---
+height: 300px
 align: center
 ---
 Commit your changes
@@ -371,6 +382,7 @@ Once again do not forget to click on **Commit**.
 
 ```{figure} images/lab7-newone2.png
 ---
+height: 300px
 align: center
 ---
 Edit the Greenfield-Rule
@@ -383,9 +395,9 @@ align: center
 Editing the Greenfield-Rule
 ```
 
-
 ```{figure} images/lab7-newone4.png
 ---
+height: 300px
 align: center
 ---
 Commit
@@ -414,6 +426,7 @@ Back on the PAN firewall, click on the `Monitor` tab. Then paste this string in 
 
 ```{figure} images/lab7-monitor2.png
 ---
+height: 300px
 align: center
 ---
 Monitor on the PaloAlto
@@ -449,6 +462,7 @@ Back on the PAN firewall, click the **refresh** button in the top-right corner t
 
 ```{figure} images/lab7-finalmonitor.png
 ---
+height: 300px
 align: center
 ---
 Monitoring traffic towards GCP
@@ -479,6 +493,7 @@ Filter based on ICMP
 
 ```{figure} images/lab7-last.png
 ---
+height: 300px
 align: center
 ---
 Logs on DCF Monitor section
