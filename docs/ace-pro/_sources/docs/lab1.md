@@ -14,7 +14,7 @@ Always refer to your personal POD portal for both passwords and additional infor
 
 ```{figure} images/lab1-portal.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 POD portal
@@ -39,7 +39,7 @@ Let’s create an **Application/Spoke** VNet. Click on the button `“+ VPC/VNET
 
 ```{figure} images/lab1-vnet2.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 VNet creation
@@ -96,7 +96,6 @@ It will take about **3-4** minutes for the creation of the VNet. You can periodi
 **Clean up the SEARCH FIELD to restore the navigation panel view.**
 ```{figure} images/lab1-cleanup.png
 ---
-height: 400px
 align: center
 ---
 Clean up the Search Field
@@ -117,7 +116,7 @@ Go back to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and type the
 
 ```{figure} images/lab1-new2.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Confirmation
@@ -174,7 +173,7 @@ Monitor the progress of the VPC creation through the **hourglass** icon.
 
 ```{figure} images/lab1-vpc3.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Hourglass icon
@@ -188,7 +187,7 @@ You can filter by CIDR `10.0.22.0/24`.
 
 ```{figure} images/lab1-vpc4.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Verification
@@ -225,7 +224,7 @@ You can see the `VPC` created with the assigned CIDR block.
 
 ```{figure} images/lab1-new3.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 VPC
@@ -248,7 +247,6 @@ Here, also, you can see the **eight** route tables that the Aviatrix Controller 
 
 ```{figure} images/lab1-rt.png
 ---
-height: 400px
 align: center
 ---
 Routing Tables created by the Aviatrix Controller
@@ -261,6 +259,7 @@ You can notice that the IGW has the same name of the VPC that you defined, moreo
 
 ```{figure} images/lab1-igw.png
 ---
+height: 250px
 align: center
 ---
 IGW created by the Aviatrix Controller
@@ -319,7 +318,7 @@ You can filter by CIDR `172.16.22.0/24`.
 
 ```{figure} images/lab1-gcp3.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Verification
