@@ -29,7 +29,7 @@ Verify whether the CIDR range `192.168.12.0/24` is overlapping with an existing 
 
 ```{figure} images/lab1-vnet1.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Searching for a subnet conflict
@@ -76,7 +76,7 @@ From the CoPilot search bar, type `“task”` and then click the search result 
 
 ```{figure} images/lab1-vnet5.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Notification
@@ -224,7 +224,7 @@ You can see the `VPC` created with the assigned CIDR block.
 
 ```{figure} images/lab1-new3.png
 ---
-height: 250px
+height: 300px
 align: center
 ---
 VPC
