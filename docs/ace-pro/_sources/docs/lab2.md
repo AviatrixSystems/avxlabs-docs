@@ -140,7 +140,7 @@ You can find out that there are a total of **Three** Transit Gateways (Public IP
 
 ```{figure} images/lab2-clustertransit.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Transit GWs Clusters
@@ -154,7 +154,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and expand the uniq
 
 ```{figure} images/lab2-clusterspoke.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Spoke GWs Clusters
@@ -184,10 +184,10 @@ Please pay close attention to each step, as a misconfiguration could result in *
 
 ```{figure} images/lab2-transitbutton.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
-+ Transit Gateway
++Transit Gateway
 ```
 
 Deploy Aviatrix Transit Gateways in AWS **_East-2_** region. To save time, Aviatrix Transit Gateways in Azure, GCP and AWS east-1 region have already been pre-deployed in pairs for this lab.
@@ -257,10 +257,10 @@ This is **CoPilot > Cloud Fabric > Gateways > Spoke Gateways > + Spoke Gateway**
 
 ```{figure} images/lab2-spokecreate.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
-+ Spoke Gateway
++Spoke Gateway
 ```
 
 ### 4.2.1. Spoke Gateway in AWS
@@ -444,7 +444,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke 
 
 ```{figure} images/lab2-spokeinawstotransit.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Attachment for AWS
@@ -476,7 +476,7 @@ Edit the Spoke Gateway **_azure-west-us-spoke1_** (not the **spoke2**), clicking
 
 ```{figure} images/lab2-editspokeinazure.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Edit spoke in Azure
@@ -499,7 +499,7 @@ Edit the Spoke Gateway **_gcp-us-central-spoke1_**, clicking on the pencil icon:
 
 ```{figure} images/lab2-editspokeingcp.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Edit spoke in GCP
@@ -596,7 +596,7 @@ Edit the Transit Gateway **_aws-us-east-2-transit_**, clicking on the pencil ico
 
 ```{figure} images/lab2-edittransitinaws.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Edit Transit in AWS
@@ -619,7 +619,7 @@ Edit the Transit Gateway **_azure-west-us-transit_**, clicking on the pencil ico
 
 ```{figure} images/lab2-edittransitinazure.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Edit Transit in Azure
@@ -642,7 +642,7 @@ Edit the Transit Gateway **_gcp-us-central1-transit_**, clicking on the pencil i
 
 ```{figure} images/lab2-editgcp2.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Edit Transit in GCP
