@@ -52,18 +52,18 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 - Multicloud Transit
 - Single/Multicloud Network Segmentation
 - High Performance Encryption (aka *Insane Mode*)
-- ActiveMesh High Availability
-- Egress
+- ActiveMesh with High Availability
+- Secure Egress
 - FireNet
 - Site2Cloud with Overlapping IPs
 - Edge
 - ThreatIQ
-- CostIQ 
+- CostIQ
 - Distributed Cloud Firewall
 - Network Insights API
 - IaC with Terraform
 - Multi-Tier Transit
-- Spoke to Spoke Attachment
+- Spoke-to-Spoke Attachment
 
 ```{figure} images/home-finaltopology.png
 ---
