@@ -228,6 +228,16 @@ align: center
 New Peering
 ```
 
+`Congratulations, you have deployed the full-blown Aviatrix solution!`
+
+```{figure} images/lab11-lastdrawing.png
+---
+height: 400px
+align: center
+---
+Full-Blown Aviatrix Solution
+```
+
 ## 4. IAC Summary
 
 * You deployed an Aviatrix Transit and Spoke using Terraform

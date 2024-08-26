@@ -1026,7 +1026,7 @@ align: center
 Spoke to Spoke
 ```
 
-`Congratulations, you have deployed the full-blown Aviatrix solution!`
+After this lab, this is how the overall topology would look like:
 
 ```{figure} images/lab10-lastdrawing.png
 ---
