@@ -196,7 +196,7 @@ The connection policy is always bidirectional!
 
 ```{figure} images/lab3-editnd.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Edit Blue

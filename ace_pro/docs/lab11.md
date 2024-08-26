@@ -33,6 +33,7 @@ Edge Workstation credentials
 
 ```{figure} images/lab11-edge3.png
 ---
+height: 400px
 align: center
 ---
 VS Studio
@@ -194,6 +195,7 @@ Close the Clipboard and save!
   
 ```{figure} images/lab11-clip5.png
 ---
+height: 400px
 align: center
 ---
 Once again "terraform init"
@@ -203,6 +205,7 @@ Once again "terraform init"
 
 ```{figure} images/lab11-clip6.png
 ---
+height: 400px
 align: center
 ---
 Once again "terraform plan"
@@ -212,6 +215,7 @@ Once again "terraform plan"
 
 ```{figure} images/lab11-clip7.png
 ---
+height: 400px
 align: center
 ---
 Once again "terraform apply"
@@ -292,6 +296,7 @@ You will find the **API Key** generated on the CoPilot and then used on Promethe
 
 ```{figure} images/lab11-networkinsight1.png
 ---
+height: 400px
 align: center
 ---
 Network Insight API section
