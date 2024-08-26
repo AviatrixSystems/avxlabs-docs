@@ -50,7 +50,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke 
 
 ```{figure} images/lab5-editspoke.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Edit Spoke US-East-1
@@ -100,7 +100,7 @@ Edit the Transit Gateway **aws-us-east-1-transit**, clicking on the pencil icon:
 
 ```{figure} images/lab5-peering.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Edit Transit in US-EAST-1
@@ -169,7 +169,7 @@ Go to **CoPilot > Networking > Connectivity > Native Peering**
 
 ```{figure} images/lab5-native0.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Native Peerings
@@ -179,7 +179,7 @@ Click on any VPC peerings to expand its properties on the right side.
 
 ```{figure} images/lab5-native.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Native Peerings Properties
@@ -380,7 +380,7 @@ Search for **_aviatrix-aws-us-east-1-spoke1_** and then select **Instance state 
 
 ```{figure} images/lab5-stop.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Stop the Instance
@@ -410,7 +410,7 @@ Temporary disruption with FAST keepalive!
 
 ```{figure} images/lab5-restart.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Restart
@@ -473,7 +473,6 @@ You can also download the entire report in pdf format by clicking the **PDF icon
 
 ```{figure} images/lab5-download.png
 ---
-height: 200px
 align: center
 ---
 FlightPath Report PDF
@@ -490,7 +489,7 @@ You can modify the <ins>Gateway to Controller Communication timer</ins> directly
 
 ```{figure} images/lab5-keepalive.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Keep Alive Speed
