@@ -10,6 +10,7 @@ Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three
 
 ```{figure} images/lab8-edge3.png
 ---
+height: 200px
 align: center
 ---
 CoPilot BGP Map
@@ -90,6 +91,7 @@ Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `"Manage Tra
 
 ```{figure} images/lab8-edge9.png
 ---
+height: 200px
 align: center
 ---
 Manage Transit Gateway Attachment
@@ -177,6 +179,7 @@ Go to **CoPilot > Networking > Network Segmentation > Network Domains** and edit
 
 ```{figure} images/lab8-edge19.png
 ---
+height: 400px
 align: center
 ---
 Network Domain Association
@@ -222,6 +225,7 @@ Go to your personal POD portal, scroll down untill your reach the **Lab 8** sect
 
 ```{figure} images/lab8-edgenew.png
 ---
+height: 250px
 align: center
 ---
 Workstation Edge access from the POD Portal
@@ -282,6 +286,7 @@ Create the filter
 
 ```{figure} images/lab8-edge24.png
 ---
+height: 200px
 align: center
 ---
 FlowIQ Filter
@@ -356,6 +361,7 @@ Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `"Manage Tra
 
 ```{figure} images/lab8-edgedouble2.png
 ---
+height: 200px
 align: center
 ---
 Manage Transit Gateway Attachment
@@ -496,6 +502,7 @@ Select the `"Route DB"` tab, then on right-hand side  type **172.16.1.0** on the
 
 ```{figure} images/lab8-primary03.png
 ---
+height: 250px
 align: center
 ---
 Route DB
@@ -556,6 +563,7 @@ Now go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on 
 
 ```{figure} images/lab8-path.png
 ---
+height: 300px
 align: center
 ---
 As path length = 3
