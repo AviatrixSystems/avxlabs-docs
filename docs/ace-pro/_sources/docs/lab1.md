@@ -14,6 +14,7 @@ Always refer to your personal POD portal for both passwords and additional infor
 
 ```{figure} images/lab1-portal.png
 ---
+height: 400px
 align: center
 ---
 POD portal
@@ -28,6 +29,7 @@ Verify whether the CIDR range `192.168.12.0/24` is overlapping with an existing 
 
 ```{figure} images/lab1-vnet1.png
 ---
+height: 400px
 align: center
 ---
 Searching for a subnet conflict
@@ -37,6 +39,7 @@ Let’s create an **Application/Spoke** VNet. Click on the button `“+ VPC/VNET
 
 ```{figure} images/lab1-vnet2.png
 ---
+height: 400px
 align: center
 ---
 VNet creation
@@ -73,6 +76,7 @@ From the CoPilot search bar, type `“task”` and then click the search result 
 
 ```{figure} images/lab1-vnet5.png
 ---
+height: 400px
 align: center
 ---
 Notification
@@ -92,6 +96,7 @@ It will take about **3-4** minutes for the creation of the VNet. You can periodi
 **Clean up the SEARCH FIELD to restore the navigation panel view.**
 ```{figure} images/lab1-cleanup.png
 ---
+height: 400px
 align: center
 ---
 Clean up the Search Field
@@ -112,6 +117,7 @@ Go back to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and type the
 
 ```{figure} images/lab1-new2.png
 ---
+height: 400px
 align: center
 ---
 Confirmation
@@ -131,6 +137,7 @@ Verify once again whether the CIDR range `10.0.22.0/24` is overlapping with an e
 
 ```{figure} images/lab1-newpic5.png
 ---
+height: 400px
 align: center
 ---
 Searching for a subnet conflict
@@ -167,6 +174,7 @@ Monitor the progress of the VPC creation through the **hourglass** icon.
 
 ```{figure} images/lab1-vpc3.png
 ---
+height: 400px
 align: center
 ---
 Hourglass icon
@@ -180,6 +188,7 @@ You can filter by CIDR `10.0.22.0/24`.
 
 ```{figure} images/lab1-vpc4.png
 ---
+height: 400px
 align: center
 ---
 Verification
@@ -216,6 +225,7 @@ You can see the `VPC` created with the assigned CIDR block.
 
 ```{figure} images/lab1-new3.png
 ---
+height: 400px
 align: center
 ---
 VPC
@@ -238,6 +248,7 @@ Here, also, you can see the **eight** route tables that the Aviatrix Controller 
 
 ```{figure} images/lab1-rt.png
 ---
+height: 400px
 align: center
 ---
 Routing Tables created by the Aviatrix Controller
@@ -265,6 +276,7 @@ Before starting the deployment of the VPC in GCP, verify once again whether the 
 
 ```{figure} images/lab1-newpic8.png
 ---
+height: 400px
 align: center
 ---
 Verification
@@ -307,6 +319,7 @@ You can filter by CIDR `172.16.22.0/24`.
 
 ```{figure} images/lab1-gcp3.png
 ---
+height: 400px
 align: center
 ---
 Verification
