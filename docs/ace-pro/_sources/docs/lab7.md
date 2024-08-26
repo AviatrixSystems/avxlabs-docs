@@ -37,6 +37,7 @@ This is the connection established between an **Aviatrix Edge** device deployed 
 
 ```{figure} images/lab8-edge1.png
 ---
+height: 250px
 align: center
 ---
 Existing S2C connection
@@ -225,6 +226,7 @@ The status will be reflected on the screen in about **1 minute**.
 
 ```{figure} images/lab8-refresh.png
 ---
+height: 250px
 align: center
 ---
 Connection is up
@@ -236,6 +238,7 @@ Filter out based on the **GCP** Cloud, expand all the VPCs and you will see the 
 
 ```{figure} images/lab8-onprem.png
 ---
+height: 400px
 align: center
 ---
 OnPrem-Partner site
@@ -262,6 +265,7 @@ Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and cl
 
 ```{figure} images/lab8-diag.png
 ---
+height: 400px
 align: center
 ---
 Gateway Diagnostics
