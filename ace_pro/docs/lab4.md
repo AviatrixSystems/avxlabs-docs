@@ -38,6 +38,7 @@ Verify that **AWS US-EAST-1** region has a Transit gateway and a Spoke gateway t
 
 ```{figure} images/lab5-topologycopilot.png
 ---
+height: 400px
 align: center
 ---
 CoPilot view
@@ -49,6 +50,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke 
 
 ```{figure} images/lab5-editspoke.png
 ---
+height: 300px
 align: center
 ---
 Edit Spoke US-East-1
@@ -98,6 +100,7 @@ Edit the Transit Gateway **aws-us-east-1-transit**, clicking on the pencil icon:
 
 ```{figure} images/lab5-peering.png
 ---
+height: 300px
 align: center
 ---
 Edit Transit in US-EAST-1
@@ -166,6 +169,7 @@ Go to **CoPilot > Networking > Connectivity > Native Peering**
 
 ```{figure} images/lab5-native0.png
 ---
+height: 300px
 align: center
 ---
 Native Peerings
@@ -175,6 +179,7 @@ Click on any VPC peerings to expand its properties on the right side.
 
 ```{figure} images/lab5-native.png
 ---
+height: 300px
 align: center
 ---
 Native Peerings Properties
@@ -356,6 +361,7 @@ Change the region to **N. Virginia** and invoke **EC2** service.
 
 ```{figure} images/lab5-region.png
 ---
+height: 300px
 align: center
 ---
 Change the region
@@ -374,6 +380,7 @@ Search for **_aviatrix-aws-us-east-1-spoke1_** and then select **Instance state 
 
 ```{figure} images/lab5-stop.png
 ---
+height: 300px
 align: center
 ---
 Stop the Instance
@@ -403,6 +410,7 @@ Temporary disruption with FAST keepalive!
 
 ```{figure} images/lab5-restart.png
 ---
+height: 300px
 align: center
 ---
 Restart
@@ -432,6 +440,7 @@ Use the following inputs:
 
 ```{figure} images/lab5-flightpath.png
 ---
+height: 300px
 align: center
 ---
 FlightPath config
@@ -445,6 +454,7 @@ You might see some links still depicted in <span style='color:red'>**red**</span
 
 ```{figure} images/lab5-flight2.png
 ---
+height: 400px
 align: center
 ---
 FlightPath Report
@@ -463,6 +473,7 @@ You can also download the entire report in pdf format by clicking the **PDF icon
 
 ```{figure} images/lab5-download.png
 ---
+height: 200px
 align: center
 ---
 FlightPath Report PDF
@@ -479,6 +490,7 @@ You can modify the <ins>Gateway to Controller Communication timer</ins> directly
 
 ```{figure} images/lab5-keepalive.png
 ---
+height: 300px
 align: center
 ---
 Keep Alive Speed
