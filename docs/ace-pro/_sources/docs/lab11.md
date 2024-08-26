@@ -262,6 +262,10 @@ align: center
 Lab 11 section on the POD Portal
 ```
 
+```{important}
+The API Key was generated at the lunch of all PODs and was applied on the Prometheus/Grafana server!
+```
+
 Enter the required credentials that are available on the POD Portal and then click on **Log in**.
 
 ```{figure} images/lab11-edge20.png
