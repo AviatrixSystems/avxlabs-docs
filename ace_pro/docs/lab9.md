@@ -60,7 +60,7 @@ Wait for about **8** minutes for the completion of the PSF deployment.
 
 ```{figure} images/lab9-psfinprogress.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 PSF deployment in progress
@@ -144,7 +144,7 @@ Click again on **Send Alert**:
 
 ```{figure} images/lab9-sendalert2.png
 ---
-height: 350px
+height: 300px
 align: center
 ---
 Send Alert Settings
@@ -241,7 +241,7 @@ The IP shown in these screenshots  might not be deemed a threat when you read th
 
 ```{figure} images/lab9-view.png
 ---
-height: 350px
+height: 200px
 align: center
 ---
 View
@@ -266,7 +266,7 @@ Go to **CoPilot > Security > ThreatIQ > Configuration**, click on the arrow to s
 
 ```{figure} images/lab9-hiddenview.png
 ---
-height: 350px
+height: 200px
 align: center
 ---
 Click on the arrow!
@@ -323,7 +323,7 @@ The CoPilot UI frequently changes, and what you see below may differ from your e
   
 ```{figure} images/lab9-refresh.png
 ---
-height: 350px
+height: 200px
 align: center
 ---
 Refresh button
@@ -333,7 +333,7 @@ Refresh button
 
 ```{figure} images/lab9-viewrules.png
 ---
-height: 350px
+height: 200px
 align: center
 ---
 View Rules
@@ -343,6 +343,7 @@ Filter based on the malicious IP (choose the **source IP** as parameter): you wi
 
 ```{figure} images/lab9-force.png
 ---
+height: 200px
 align: center
 ---
 Filter on Source IP
@@ -360,7 +361,7 @@ Click on the pencil icon for editing the configured alert named `"ThreatIQ Alert
 
 ```{figure} images/lab9-notification2.png
 ---
-height: 350px
+height: 300px
 align: center
 ---
 Edit ThreatIQ Alert
@@ -404,7 +405,7 @@ Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` b
 
 ```{figure} images/lab9-costiq.png
 ---
-height: 350px
+height: 200px
 align: center
 ---
 Enable CostIQ
@@ -446,7 +447,7 @@ You should immediately get insights on how they have been utilized.
 
 ```{figure} images/lab9-costiq06.png
 ---
-height: 350px
+height: 200px
 align: center
 ---
 Cost Centers Overview
