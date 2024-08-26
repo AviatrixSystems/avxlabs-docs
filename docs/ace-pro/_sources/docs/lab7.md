@@ -37,7 +37,7 @@ This is the connection established between an **Aviatrix Edge** device deployed 
 
 ```{figure} images/lab8-edge1.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Existing S2C connection
