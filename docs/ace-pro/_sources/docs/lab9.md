@@ -30,6 +30,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Specialty Gateways**, then click on 
 
 ```{figure} images/lab9-psf.png
 ---
+height: 400px
 align: center
 ---
 PSF
@@ -59,6 +60,7 @@ Wait for about **8** minutes for the completion of the PSF deployment.
 
 ```{figure} images/lab9-psfinprogress.png
 ---
+height: 250px
 align: center
 ---
 PSF deployment in progress
@@ -70,6 +72,7 @@ PSF deployment in progress
 
 ```{figure} images/lab9-psfclick.png
 ---
+height: 250px
 align: center
 ---
 PSF deployed
@@ -141,6 +144,7 @@ Click again on **Send Alert**:
 
 ```{figure} images/lab9-sendalert2.png
 ---
+height: 350px
 align: center
 ---
 Send Alert Settings
@@ -237,6 +241,7 @@ The IP shown in these screenshots  might not be deemed a threat when you read th
 
 ```{figure} images/lab9-view.png
 ---
+height: 350px
 align: center
 ---
 View
@@ -261,6 +266,7 @@ Go to **CoPilot > Security > ThreatIQ > Configuration**, click on the arrow to s
 
 ```{figure} images/lab9-hiddenview.png
 ---
+height: 350px
 align: center
 ---
 Click on the arrow!
@@ -317,6 +323,7 @@ The CoPilot UI frequently changes, and what you see below may differ from your e
   
 ```{figure} images/lab9-refresh.png
 ---
+height: 350px
 align: center
 ---
 Refresh button
@@ -326,9 +333,10 @@ Refresh button
 
 ```{figure} images/lab9-viewrules.png
 ---
+height: 350px
 align: center
 ---
-Configuration VIEW
+View Rules
 ```
 
 Filter based on the malicious IP (choose the **source IP** as parameter): you will find out that ThreatIQ applied the enforcement `"force-drop"`.
@@ -352,6 +360,7 @@ Click on the pencil icon for editing the configured alert named `"ThreatIQ Alert
 
 ```{figure} images/lab9-notification2.png
 ---
+height: 350px
 align: center
 ---
 Edit ThreatIQ Alert
@@ -395,6 +404,7 @@ Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` b
 
 ```{figure} images/lab9-costiq.png
 ---
+height: 350px
 align: center
 ---
 Enable CostIQ
@@ -436,6 +446,7 @@ You should immediately get insights on how they have been utilized.
 
 ```{figure} images/lab9-costiq06.png
 ---
+height: 350px
 align: center
 ---
 Cost Centers Overview
@@ -490,6 +501,7 @@ Ping from the Wortkstation "Edge"
 
 ```{figure} images/lab9-counter.png
 ---
+height: 350px
 align: center
 ---
 From the Cost Center towards the Shared Service
