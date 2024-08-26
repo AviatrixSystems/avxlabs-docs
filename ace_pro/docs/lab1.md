@@ -224,7 +224,7 @@ You can see the `VPC` created with the assigned CIDR block.
 
 ```{figure} images/lab1-new3.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 VPC
@@ -259,7 +259,7 @@ You can notice that the IGW has the same name of the VPC that you defined, moreo
 
 ```{figure} images/lab1-igw.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 IGW created by the Aviatrix Controller
