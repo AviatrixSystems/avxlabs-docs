@@ -86,11 +86,9 @@ Let's run this code.
 
 `cd terraform-lab`
 
-* First thing we need to do is to initialize Terraform. This allows for the required providers and modules to be downloaded.  
+* First thing we need to do is to **initialize** Terraform. This allows for the required providers and modules to be downloaded.  
 
 `terraform init`
-
-* Next we will execute a “plan”. This means that Terraform will compare the live environment with the desired state we declared in our Terraform files
 
 ```{figure} images/lab11-terraform.png
 ---
@@ -98,6 +96,8 @@ align: center
 ---
 Visual Studio Code
 ```
+
+* Next we will execute a “plan”. This means that Terraform will compare the live environment with the desired state we declared in our Terraform files
 
 `terraform plan`
 
@@ -300,6 +300,10 @@ height: 400px
 align: center
 ---
 Network Insight API section
+```
+
+```{tip}
+Download the API Key and explore the content of the file!
 ```
 
 ```{figure} images/lab11-networkinsight2.png
