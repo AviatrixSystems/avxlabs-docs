@@ -14,7 +14,7 @@ Always refer to your personal POD portal for both passwords and additional infor
 
 ```{figure} images/lab1-portal.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 POD portal
@@ -76,7 +76,7 @@ From the CoPilot search bar, type `“task”` and then click the search result 
 
 ```{figure} images/lab1-vnet5.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Notification
@@ -259,7 +259,7 @@ You can notice that the IGW has the same name of the VPC that you defined, moreo
 
 ```{figure} images/lab1-igw.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 IGW created by the Aviatrix Controller
