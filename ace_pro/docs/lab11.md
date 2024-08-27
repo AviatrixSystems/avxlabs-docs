@@ -97,7 +97,7 @@ align: center
 Visual Studio Code
 ```
 
-* Next we will execute a “plan”. This means that Terraform will compare the live environment with the desired state we declared in our Terraform files
+* Next we will execute a “plan”. This means that Terraform will compare the live environment with the desired state we declared in our Terraform files.
 
 `terraform plan`
 

@@ -64,6 +64,10 @@ align: center
 Task Server
 ```
 
+```{caution}
+The order of the **_Task Servers_** on the screenshot above might be different on your CoPilot
+```
+
 ```{figure} images/lab2-fetchtopology.png
 ---
 align: center
@@ -154,7 +158,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and expand the uniq
 
 ```{figure} images/lab2-clusterspoke.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Spoke GWs Clusters
@@ -184,7 +188,7 @@ Please pay close attention to each step, as a misconfiguration could result in *
 
 ```{figure} images/lab2-transitbutton.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 +Transit Gateway
@@ -257,7 +261,7 @@ This is **CoPilot > Cloud Fabric > Gateways > Spoke Gateways > + Spoke Gateway**
 
 ```{figure} images/lab2-spokecreate.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 +Spoke Gateway
