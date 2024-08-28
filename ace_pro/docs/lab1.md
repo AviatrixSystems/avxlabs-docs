@@ -39,7 +39,6 @@ Let’s create an **Application/Spoke** VNet. Click on the button `“+ VPC/VNET
 
 ```{figure} images/lab1-vnet2.png
 ---
-height: 300px
 align: center
 ---
 VNet creation
