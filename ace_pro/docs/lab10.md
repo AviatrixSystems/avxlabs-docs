@@ -131,6 +131,7 @@ Let's verify that everything has been kept unchanged! Bear in mind that there is
 
 ```{figure} images/lab10-newone2.png
 ---
+height: 300px
 align: center
 ---
 Greenfield-Rule in action
@@ -146,6 +147,7 @@ Refer to your POD for the private IPs.
 
 ```{figure} images/lab10-newone.png
 ---
+height: 400px
 align: center
 ---
 SSH
@@ -237,6 +239,7 @@ Then click on **Save in Draft**.
 
 ```{figure} images/lab10-newedit.png
 ---
+height: 300px
 align: center
 ---
 Move the rule
@@ -246,6 +249,7 @@ Then **Commit** your change!
 
 ```{figure} images/lab10-commit.png
 ---
+height: 300px
 align: center
 ---
 Commit
@@ -288,6 +292,7 @@ At this point, there should be just one uncommitted rule at the very top, as dep
 
 ```{figure} images/lab10-rule2.png
 ---
+height: 300px
 align: center
 ---
 Current list of rules
@@ -328,6 +333,7 @@ At this point, you will have two new rules marked as `New`, therefore you can pr
 
 ```{figure} images/lab10-rule5.png
 ---
+height: 300px
 align: center
 ---
 Commit
@@ -388,6 +394,7 @@ Auto Fefresh and Filter
 
 ```{figure} images/lab10-monitor99.png
 ---
+height: 300px
 align: center
 ---
 Monitor
@@ -410,6 +417,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click o
 
 ```{figure} images/lab10-orchestration.png
 ---
+height: 300px
 align: center
 ---
 SG Orchestration
@@ -484,6 +492,7 @@ Click on `"Commit"` to enforce the new rule in the **Data Plane**.
 
 ```{figure} images/lab10-commitsshbu1.png
 ---
+height: 300px
 align: center
 ---
 Commit
@@ -515,6 +524,7 @@ SSH ok
 
 ```{figure} images/lab10-logsshbu1.png
 ---
+height: 200px
 align: center
 ---
 Logs 
@@ -567,6 +577,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{figure} images/lab10-bu2monitor.png
 ---
+height: 300px
 align: center
 ---
 Monitor
@@ -611,6 +622,7 @@ Enforce the this new rule in the data plane clicking on the `"Commit"` button.
 
 ```{figure} images/lab10-newcommit2.png
 ---
+height: 300px
 align: center
 ---
 Commit
@@ -640,6 +652,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{figure} images/lab10-monitorfresh.png
 ---
+height: 300px
 align: center
 ---
 Monitor
@@ -721,6 +734,7 @@ Gateway Routes
 
 ```{figure} images/lab10-newjoe20.png
 ---
+height: 300px
 align: center
 ---
 10.0.12.0
@@ -751,6 +765,7 @@ Go to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` sec
 
 ```{figure} images/lab10-mtt2.png
 ---
+height: 300px
 align: center
 ---
 Settings
@@ -806,6 +821,7 @@ This time if you click on the `"Gateway Routes"` tab, you will be able to see th
 
 ```{figure} images/lab10-mtt6.png
 ---
+height: 300px
 align: center
 ---
 10.0.12.0/24
@@ -901,6 +917,7 @@ Now you can carry on with the last **commit**!
 
 ```{figure} images/lab10-lastcommit.png
 ---
+height: 300px
 align: center
 ---
 Commit
@@ -925,6 +942,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{figure} images/lab10-reallylast.png
 ---
+height: 200px
 align: center
 ---
 inter-icmp-bu2-east1 Logs
@@ -957,6 +975,7 @@ Go to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azur
 
 ```{figure} images/lab10-spoke2spoke02.png
 ---
+height: 200px
 align: center
 ---
 Manage Transit Gateway Attachment
@@ -1008,6 +1027,7 @@ You will notice that the destination is now reachable with a **lower** metric (5
 
 ```{figure} images/lab10-spoke2spoke06.png
 ---
+height: 300px
 align: center
 ---
 Metric 50
