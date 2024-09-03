@@ -65,7 +65,7 @@ Ensure these parameters are entered in the pop-up window `"Create New SmartGroup
 - **CSP Tag Key**: <span style='color:#479608'>environment</span>
 - **CSP Tag Value**: <span style='color:#479608'>bu1</span>
 
-Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Resource Selection"`.
+Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
 ```{figure} images/lab10-smart3.png
 ---
@@ -103,7 +103,7 @@ Ensure these parameters are entered in the pop-up window `"Create New SmartGroup
 - **CSP Tag Key**: <span style='color:#479608'>environment</span>
 - **CSP Tag Value**: <span style='color:#479608'>bu2</span>
 
-Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Resource Selection"`.
+Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
 ```{figure} images/lab10-smart6.png
 ---
