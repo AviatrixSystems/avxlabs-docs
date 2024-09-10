@@ -32,6 +32,8 @@ Log in to CoPilot using the following details:
 
 ```{note}
 CoPilot details are available on your personal POD Portal!
+
+You can access to your **CoPilot** directly clicking on the `"Open Copilot"` button!
 ```{figure} images/lab1-portal.png
 ---
 align: center
@@ -120,7 +122,7 @@ Accounts in AWS and Azure have already been onboarded and you should see these a
 
 ```{figure} images/lab1-accounts.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Cloud Accounts onboarded
@@ -175,8 +177,24 @@ Remote Access Server
 
 Now that we have validated the office connectivity, lets check the public web application that is already deployed in Azure.
 
-* Open the web browser and browse to the Web App connectivity dashboard ```http://azure-lb.pod[#].aviatrixlab.com/test```
+* Open a new tab from the same browser and browse to the Web App connectivity dashboard ```http://azure-lb.pod[#].aviatrixlab.com/test```
 * _Remember to replace <span style="color:orange">**[#]**</span> with your pod ID_
+
+```{figure} images/lab1-newtab.png
+---
+height: 300px
+align: center
+---
+New Tab
+```
+
+```{figure} images/lab1-newtab2.png
+---
+height: 300px
+align: center
+---
+Type the new URL
+```
 
 ### Expected Results
 
@@ -194,6 +212,7 @@ Office connectivity
 
 ```{figure} images/lab1-connectivity-3tier-app.png
 ---
+height: 300px
 align: center
 ---
 Web app connectivity
