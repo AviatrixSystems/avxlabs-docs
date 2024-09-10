@@ -29,7 +29,7 @@ Enable dcf
 
 ```{figure} images/lab4-edit.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Edit the dcf rule
@@ -85,7 +85,7 @@ This feature is enabled on a per VNET bases.
 
 ```{figure} images/lab4-manage.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Security Group (SG) Orchestration
@@ -301,7 +301,7 @@ After a few minutes we should see the firewall in the list with a green status i
 
 ```{figure} images/lab4-associate-firewall-result.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Associate firewall result
