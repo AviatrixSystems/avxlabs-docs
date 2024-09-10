@@ -55,9 +55,10 @@ For Windows you can use the `"nslookup"` command.
 
 ```{figure} images/lab2-configure-ipsec.png
 ---
+height: 300px
 align: center
 ---
-Configure IPsec
+Configure BGPoverIPsec
 ```
 
 * Hit **_Save_** to execute the changes.
@@ -66,6 +67,7 @@ After 1-2 minutes, you should see that the connection to the office is configure
 
 ```{figure} images/lab2-tunnel-up.png
 ---
+height: 200px
 align: center
 ---
 Tunnel up
@@ -79,9 +81,10 @@ In order to test connectivity between cloud and the office, a test VM is availab
 
 ```{figure} images/lab2-onprem-ping.png
 ---
+height: 300px
 align: center
 ---
-CoPilot Diag
+Diagnostic Tools
 ```
 
 > Was the ping successful?
@@ -94,6 +97,7 @@ Our lab environment now looks like this:
 
 ```{figure} images/lab2-topology1.png
 ---
+height: 400px
 align: center
 ---
 Topology with On-Prem Connectivity
@@ -111,9 +115,10 @@ Aviatrix allows you to filter dynamically learned routes from external sites, an
 
 ```{figure} images/lab2-transitclick.png
 ---
+height: 200px
 align: center
 ---
-Approve route
+azure-transit
 ```
 
 * Navigate to the **Approval** tab and approve the pending CIDR.
@@ -122,9 +127,18 @@ If no CIDR's are showing up here, validate that the BGP peering has established 
 
 ```{figure} images/lab2-route-approval-2.png
 ---
+height: 200px
 align: center
 ---
 Approve route
+```
+
+```{figure} images/lab2-approve.png
+---
+height: 200px
+align: center
+---
+Successful update
 ```
 
 * Back to **_Diagnostics-->Diagnostic Tools_**
@@ -156,9 +170,10 @@ At this point, the office is connected to the Aviatrix Transit Gateway in Azure.
 
 ```{figure} images/lab2-priv-conn-test.png
 ---
+height: 300px
 align: center
 ---
-Connectivity Test
+http://azure-build
 ```
 
 ## Lab 2.4 - Verify the Flow Logs
