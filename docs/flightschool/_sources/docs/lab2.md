@@ -55,7 +55,7 @@ For Windows you can use the `"nslookup"` command.
 
 ```{figure} images/lab2-configure-ipsec.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Configure BGPoverIPsec
@@ -81,7 +81,7 @@ In order to test connectivity between cloud and the office, a test VM is availab
 
 ```{figure} images/lab2-onprem-ping.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Diagnostic Tools
@@ -186,7 +186,8 @@ CoPilot provides very rich visibility into all traffic going across the Aviatrix
 
 * Open **CoPilot** -> **Monitor** -> **FlowIQ** and click **Last 60 Minutes** to update the Date Range Filters
 * Using the source port from the previous lab, let's create the following filter:
-  * Click in the **Filters** box. Under **Matches all conditions (AND)**, select the metric **Source Port**
+  * Click on the "+" button inside the **Filters** box.
+* Under **Matches all conditions (AND)**, select the metric **Source Port**.
   * Select **equals**
   * Then, enter the source port from the website of the previous exercise and hit **_Apply_**. The Overview immediately filters to your criteria.
 
@@ -194,6 +195,7 @@ CoPilot provides very rich visibility into all traffic going across the Aviatrix
 
 ```{figure} images/lab2-flowiq-filter.png
 ---
+height: 300px
 align: center
 ---
 FlowIQ Filter
@@ -201,10 +203,11 @@ FlowIQ Filter
 
 ### Expected Results
 
-* By filtering on the source port, you should be able to see all of the details behind the traffic generated from on-prem
+* By filtering on the source port, you should be able to see all of the details behind the traffic generated from on-prem.
 
 ```{figure} images/lab2-flowiq-overview.png
 ---
+height: 400px
 align: center
 ---
 FlowIQ Overview
@@ -215,6 +218,7 @@ FlowIQ Overview
 
 ```{figure} images/lab2-flowiq-records.png
 ---
+height: 200px
 align: center
 ---
 FlowIQ Records
@@ -244,6 +248,7 @@ While we have achieved our objective of providing the development team with acce
 
 ```{figure} images/lab2-full-access.png
 ---
+height: 400px
 align: center
 ---
 Full Access
@@ -297,6 +302,7 @@ In CoPilot, go to **_Networking -> Network Segmentation -> Network Domains_**. A
 
 ```{figure} images/lab2-add-network-domains.png
 ---
+height: 400px
 align: center
 ---
 Add network domains
@@ -348,6 +354,7 @@ In order for our developers to be able to access the build server again, we need
 
 ```{figure} images/lab2-edit-network-domain.png
 ---
+height: 200px
 align: center
 ---
 Edit network domain
@@ -371,11 +378,12 @@ Add network domain connection
 ---
 align: center
 ---
-Add network domain connection
+Add Network domain connection
 ```
 
 ```{figure} images/lab2-network-domain-overview.png
 ---
+height: 300px
 align: center
 ---
 Network domain overview
@@ -426,7 +434,9 @@ align: center
 Office connectivity
 ```
 
-* Check the connection policies on the **_Networking -> Network Segmentation-> Overview_** page. Do you see a line connecting Azure-DMZ and Azure-Prod?
+* Check the connection policies on the **_Networking -> Network Segmentation-> Overview_** page. 
+
+Do you see a line connecting Azure-DMZ and Azure-Prod?
 * Create a connection policy between **Azure-DMZ** and **Azure-Prod**, similar to what you did in lab 2.9.
 
 ```{figure} images/lab2-add-connected-network-domain-2.png
