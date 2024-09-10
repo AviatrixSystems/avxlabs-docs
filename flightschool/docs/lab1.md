@@ -178,7 +178,10 @@ Remote Access Server
 Now that we have validated the office connectivity, lets check the public web application that is already deployed in Azure.
 
 * Open a new tab from the same browser and browse to the Web App connectivity dashboard ```http://azure-lb.pod[#].aviatrixlab.com/test```
-* _Remember to replace <span style="color:orange">**[#]**</span> with your pod ID_
+
+```{tip}
+_Remember to replace <span style="color:orange">**[#]**</span> with your pod ID_
+```
 
 ```{figure} images/lab1-newtab.png
 ---
