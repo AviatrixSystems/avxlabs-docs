@@ -52,6 +52,7 @@ You should be able to log in to CoPilot. You should be able to view Topology by 
 
 ```{figure} images/lab1-copilot-topology.png
 ---
+height: 400px
 align: center
 ---
 Initial Topology
@@ -63,7 +64,7 @@ Click on the `"Managed"` button on the right-hand side of the screen, for hiding
 ---
 align: center
 ---
-Initial Topology
+Filters
 ```
 
 ```{note}
@@ -74,21 +75,24 @@ Initial Topology
 
 ```{figure} images/lab1-nounmanagaed.png
 ---
+height: 400px
 align: center
 ---
-Initial Topology without Unmanaged VPCs
+Initial Topology without the Unmanaged VPCs
 ```
 
 As you can see, we have the azure-transit gateway in the middle, with **azure-build**, **azure-dmz** and **azure-prod** spokes connected to it. The AWS VPC's are not yet connected to any transit.
 
-After selecting the transit gateway and clicking the **diagnostics tools** button, you should see the diagnostics pane. Have a look around at the troubleshooting tools here.
+After selecting the Transit Gateway icon, scroll down through all its **Properties** on the right-hand side and click on the **Tools** button, then select the `Gateway Diagnostics`. 
+
+Have a look around at the troubleshooting tools here.
 
 ```{figure} images/lab1-copilot-diagnostics.png
 ---
 height: 400px
 align: center
 ---
-CoPilot Diagnostics
+Gateway Diagnostics
 ```
 
 ```{figure} images/lab1-copilot-diagnostics-pane.png
@@ -116,6 +120,7 @@ Accounts in AWS and Azure have already been onboarded and you should see these a
 
 ```{figure} images/lab1-accounts.png
 ---
+height: 300px
 align: center
 ---
 Cloud Accounts onboarded
@@ -140,6 +145,7 @@ In order to view the connectivity dashboards, a Remote Access Server is placed i
 
 ```{figure} images/lab1-remote-access.png
 ---
+height: 400px
 align: center
 ---
 Remote Access Server
@@ -150,6 +156,22 @@ You can also access the Remote Access Server on port `3389` using the RDP client
 ```
 
 * Once logged in, launch the **Min Web Browser** and browse to the office connectivity dashboard ```http://localhost```
+
+```{figure} images/lab1-minibrowser.png
+---
+height: 200px
+align: center
+---
+Remote Access Server
+```
+
+```{figure} images/lab1-minibrowse2.png
+---
+height: 300px
+align: center
+---
+Remote Access Server
+```
 
 Now that we have validated the office connectivity, lets check the public web application that is already deployed in Azure.
 
@@ -162,6 +184,7 @@ Now that we have validated the office connectivity, lets check the public web ap
 
 ```{figure} images/lab1-connectivity-from-office.png
 ---
+height: 300px
 align: center
 ---
 Office connectivity
