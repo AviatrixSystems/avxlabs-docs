@@ -96,7 +96,7 @@ In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gatewa
 ---
 align: center
 ---
-Topology
+Uncomment
 ```
 
 ```{figure} images/lab6-transit-peering.png
