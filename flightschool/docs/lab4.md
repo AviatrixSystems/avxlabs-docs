@@ -12,7 +12,7 @@ Because of the connection policy between the DMZ and prod, the Azure AppGW is cu
 
 ### Validate
 
-We have prepared and installed a microsegmentation policy already. Lets review and modify it.
+We have prepared and installed a **microsegmentation** policy already. Lets review and modify it.
 
 * Browse to **_Security -> Distributed Cloud Firewall -> Rules_**
 * Look at the policy to get an understanding of which rules are set up
@@ -29,6 +29,7 @@ Enable dcf
 
 ```{figure} images/lab4-edit.png
 ---
+height: 400px
 align: center
 ---
 Edit the dcf rule
@@ -47,6 +48,7 @@ You should now see that the rule is modified (highlighted in amber).
 
 ```{figure} images/lab4-commit.png
 ---
+height: 300px
 align: center
 ---
 Commit changes
@@ -80,6 +82,15 @@ This feature is enabled on a per VNET bases.
 
 * Browse to **_Security -> Distributed Cloud Firewall -> Settings_**
 * Click on **_Manage_**
+
+```{figure} images/lab4-manage.png
+---
+height: 400px
+align: center
+---
+Security Group (SG) Orchestration
+```
+
 * Enable the feature on the **azure-prod** vnet as shown below.
 
 ```{figure} images/lab42-enable-intra-vnet-microsegmentation.png
@@ -150,6 +161,7 @@ By enabling source NAT on the aws-shared spoke gateway, we provide a path toward
 
 ```{figure} images/lab4-nat.png
 ---
+height: 200px
 align: center
 ---
 SNAT enabled
@@ -176,10 +188,11 @@ Now that we have enabled internet access for aws-shared through NAT translation 
 
 ### Validate
 
-* Browse to **_Security -> Distributed Cloud Firewall -> WebGroups_** and check out the pre-configured WebGroup called **_allowed-web-group_**.
+* Browse to **_Groups -> WebGroups_** and check out the pre-configured WebGroup called **_allowed-web-group_**.
 
 ```{figure} images/lab4-webgroup.png
 ---
+height: 400px
 align: center
 ---
 WebGroup
@@ -221,13 +234,13 @@ This scenario is a bit more advanced. We need to allow access to our github repo
 
 ### Validate
 
-* Browse to **_Security -> Distributed Cloud Firewall -> WebGroups_** and check out the pre-configured WebGroup called **_github-url_**.
+* Browse to **_Groups -> WebGroups_** and check out the pre-configured WebGroup called **_github-url_**.
 
 > What is the URL configured in this WebGroup?
 
 * In the distributed firewalling rules, edit the policy with name **_aws-shared-web-traffic_** again.
 * Under WebGroups, add **_github-url_**.
-* Enable TLS decryption. This is required for the inspection engine to see the full URL in the https request.
+* Enable **`TLS decryption`**. This is required for the inspection engine to see the full URL in the https request.
 
 ```{figure} images/lab4-url-filter-enabled.png
 ---
@@ -236,7 +249,7 @@ align: center
 Add URL filtering
 ```
 
-* Save the rule and commit the change.
+* Save the rule and **commit** the change.
 
 > Which domains can the aws-shared server access now? Check on the connectivity dashboard.
 
@@ -288,6 +301,7 @@ After a few minutes we should see the firewall in the list with a green status i
 
 ```{figure} images/lab4-associate-firewall-result.png
 ---
+height: 400px
 align: center
 ---
 Associate firewall result
@@ -309,7 +323,7 @@ Access the Firewall logs by navigating to:
 
 ### Expected Results
 
-Since we have not yet enabled any inspection, the logs should be empty.
+Since we have not yet enabled any **inspection**, the logs should be empty.
 
 ```{figure} images/lab1-firewall.png
 ---
