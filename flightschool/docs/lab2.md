@@ -55,7 +55,6 @@ For Windows you can use the `"nslookup"` command.
 
 ```{figure} images/lab2-configure-ipsec.png
 ---
-height: 400px
 align: center
 ---
 Configure BGPoverIPsec
@@ -195,7 +194,7 @@ CoPilot provides very rich visibility into all traffic going across the Aviatrix
 
 ```{figure} images/lab2-flowiq-filter.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 FlowIQ Filter
@@ -248,7 +247,6 @@ While we have achieved our objective of providing the development team with acce
 
 ```{figure} images/lab2-full-access.png
 ---
-height: 400px
 align: center
 ---
 Full Access
