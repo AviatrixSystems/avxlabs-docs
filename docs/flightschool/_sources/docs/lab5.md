@@ -22,8 +22,24 @@ align: center
 VS Studio
 ```
 
-* Select the folder `terraform-lab` and click **Open**
-  * _When prompted to trust the authors of the files in this folder, select Yes_
+* Click on **Home** and then select the folder `terraform-lab`, afterwards click **Open**.
+
+```{figure} images/lab5-new.png
+---
+align: center
+---
+terraform-lab
+```
+
+* _When prompted to trust the authors of the files in this folder, select **Yes**_
+
+```{figure} images/lab5-new2.png
+---
+align: center
+---
+Yes, I trust the authors
+```
+
 * Let’s explore the Terraform files in this directory:
   * Explore the file contents of **main.tf, variables.tf, providers.tf** and **terraform.tfvars**
 
@@ -75,6 +91,13 @@ In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gatewa
 
 * Using the same Visual Studio Code session, let's uncomment the code in the `peering.tf` file
 * We will be using the following module:  `https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest`
+
+```{figure} images/lab5-uncomment.png
+---
+align: center
+---
+Topology
+```
 
 ```{figure} images/lab6-transit-peering.png
 ---
