@@ -185,7 +185,6 @@ _Remember to replace <span style="color:orange">**[#]**</span> with your pod ID_
 
 ```{figure} images/lab1-newtab.png
 ---
-height: 300px
 align: center
 ---
 New Tab
@@ -193,7 +192,7 @@ New Tab
 
 ```{figure} images/lab1-newtab2.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Type the new URL
@@ -205,7 +204,6 @@ Type the new URL
 
 ```{figure} images/lab1-connectivity-from-office.png
 ---
-height: 300px
 align: center
 ---
 Office connectivity
@@ -215,7 +213,6 @@ Office connectivity
 
 ```{figure} images/lab1-connectivity-3tier-app.png
 ---
-height: 300px
 align: center
 ---
 Web app connectivity
