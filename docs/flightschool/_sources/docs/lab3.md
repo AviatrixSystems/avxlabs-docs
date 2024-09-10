@@ -43,6 +43,7 @@ Current Topology
 
 ```{figure} images/lab-3-topology-builder.png
 ---
+height: 400px
 align: center
 ---
 Set up the topology builder
@@ -112,6 +113,7 @@ In this exercise we are going to launch the Aviatrix Transit Gateway in the newl
 
 ```{figure} images/lab3-transit-config.png
 ---
+height: 400px
 align: center
 ---
 Create Aviatrix Transit Gateway
@@ -119,6 +121,7 @@ Create Aviatrix Transit Gateway
 
 ```{figure} images/lab3-transit-peering.png
 ---
+height: 400px
 align: center
 ---
 Configure transit peering
@@ -129,6 +132,7 @@ Configure transit peering
 
 ```{figure} images/lab3-overview.png
 ---
+height: 300px
 align: center
 ---
 Overview
@@ -165,6 +169,7 @@ Now that we have the aws-transit deployed, peered to azure-transit and have enab
 
 ```{figure} images/lab3-result.png
 ---
+height: 400px
 align: center
 ---
 Topology view
@@ -183,6 +188,7 @@ Now that we have our aws-transit set up, we need to establish connectivity betwe
 
 ```{figure} images/lab3-edit-spoke.png
 ---
+height: 200px
 align: center
 ---
 Edit spoke
@@ -197,7 +203,14 @@ align: center
 Attach Spoke Gateway to Transit
 ```
 
-* Repeat the process for the **_aws-shared_** spoke gateway.
+* Repeat the process for the **_aws-shared_** spoke gateway!
+
+```{figure} images/lab3-aws-shared.png
+---
+align: center
+---
+Attach Spoke Gateway to Transit
+```
 
 ### Expected Results
 The AWS spoke gateways should now be attached to the aws-transit. Within a few minutes, we should see these changes reflected in our topology view. (under **_Cloud Fabric -> Topology_**)
@@ -331,8 +344,12 @@ The AWS Spokes should be connected to the AWS Transit so now we can check connec
 
 * As you can see, you now have access to azure-build and aws-shared.
 
-![Screenshot](images/lab3-office-access.png)  
-_Fig. Office Access_
+```{figure} images/lab3-office-access.png
+---
+align: center
+---
+Office Access
+```
 
 > Were these connections succesful?
 
