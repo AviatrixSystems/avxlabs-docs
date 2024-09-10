@@ -71,7 +71,7 @@ Click on the `"Managed"` button on the right-hand side of the screen, for hiding
 
 ```{figure} images/lab1-managedvpc2.png
 ---
-height: 500px
+height: 400px
 align: center
 ---
 Properties of your Topology
