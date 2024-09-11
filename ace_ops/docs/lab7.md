@@ -303,7 +303,7 @@ The East-West traffic is blocked now!
 - Explore the **SmartGroups** section on the CoPilot
 
 ```{tip}
-Go to **CoPilot > SmartGroups**
+Go to **CoPilot > Groups**
 ```
 
 You will notice two SmartGroups, called **BU1** and **BU2**, in addition to the pre-defined SmartGroups (i.e. *Anywhere* and *Public Internet*).
@@ -374,7 +374,7 @@ SSH logs
 - Now create another SmartGroup that identifies the BU2 DB, solely.
 
 ```{tip}
-Go to **CoPilot > SmartGroups** and click on the `"+ SmartGroup"` button.
+Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
@@ -384,6 +384,14 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
   --> **CSP Tag Value**: <span style='color:#479608'>bu2</span>
 - **CSP Tag Key**: <span style='color:#479608'>Region</span>
   --> **CSP Tag Value**: <span style='color:#479608'>eastus</span>
+
+```{figure} images/lab7-anothercondition.png
+---
+height: 150px
+align: center
+---
++Add condition
+```
 
 Do not forget to click on **Save**.
 
@@ -401,7 +409,7 @@ BU2 DB SmartGroup
 - Create a **WebGroup** that matches the domains and sub-domains that you found earlier.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and then click on `"+ WebGroup"`.
+Go to **CoPilot > Groups > WebGroups** and then click on `"+ WebGroup"`.
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create WebGroup"`:
