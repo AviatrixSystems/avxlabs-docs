@@ -180,8 +180,10 @@ sudo apt-get upgrade -y
 
 ```{tip}
 Go to **CoPilot > Security > Egress > Monitor** and select the *ace-azure-east-us-spoke1* on the `"VPC/VNets"` field.
+```
 
-Identify all the required domains for launching successfully the *apt-get* commands, inspecting the whole list of logs. 
+```{warning}
+<ins>Identify all the required domains for launching successfully the *apt-get* commands, inspecting **solely** the whole list of logs.</ins>
 ```
 
 The required domains are **five**!
