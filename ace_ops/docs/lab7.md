@@ -387,7 +387,7 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 ```{figure} images/lab7-anothercondition.png
 ---
-height: 150px
+height: 300px
 align: center
 ---
 +Add condition
