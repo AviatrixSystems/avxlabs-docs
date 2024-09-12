@@ -35,7 +35,9 @@ align: center
 Searching for a subnet conflict
 ```
 
-Let’s create an **Application/Spoke** VNet. Click on the button `“+ VPC/VNET”`.
+Let’s create an **Application/Spoke** VNet. 
+
+Click on the button `“+ VPC/VNET”`.
 
 ```{figure} images/lab1-vnet2.png
 ---
@@ -122,7 +124,7 @@ Confirmation
 ```
 
 ```{note}
-It will take few minutes to see the four subnets (i.e 2x public subnets and 2x private subnets). Please, be patient!
+It will take <ins>few minutes</ins> to see the four subnets (i.e 2x public subnets and 2x private subnets). <ins>Please, be patient!</ins>
 ```
 
 ## 3. AWS VPC
@@ -223,7 +225,7 @@ You can see the `VPC` created with the assigned CIDR block.
 
 ```{figure} images/lab1-new3.png
 ---
-height: 200px
+height: 150px
 align: center
 ---
 VPC
@@ -258,7 +260,7 @@ You can notice that the IGW has the same name of the VPC that you defined, moreo
 
 ```{figure} images/lab1-igw.png
 ---
-height: 250px
+height: 150px
 align: center
 ---
 IGW created by the Aviatrix Controller
