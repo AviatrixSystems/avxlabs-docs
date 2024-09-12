@@ -197,7 +197,7 @@ This rule essentially allows all kind of traffic.
 
 ```{figure} images/lab6-greenfield.png
 ---
-height: 250px
+height: 150px
 align: center
 ---
 Greenfield-Rule
@@ -242,7 +242,7 @@ If the **Enforcement** slider is **On** (the default), the rule is enforced in t
 
 ```{figure} images/lab6-newrule11.png
 ---
-height: 250px
+height: 150px
 align: center
 ---
 Discovery-Rule
@@ -302,7 +302,7 @@ You will get a granular Layer 7 visibility that allows you to get a good underst
 
 Let's move towards a posture where only the allowed egress domains are in place.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > WebGroups** and click on `"+ WebGroup"` button.
+Go to **CoPilot > Groups** and click on `"+ WebGroup"` button.
 
 ```{figure} images/lab6-webgroup.png
 ---
