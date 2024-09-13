@@ -573,7 +573,7 @@ If you do not see the logs immediately, click on the **refresh** button
 
 ```{figure} images/lab6-refresh.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Detected Intrusions

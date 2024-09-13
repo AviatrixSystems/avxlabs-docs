@@ -33,7 +33,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke 
 
 ```{figure} images/lab7-spoke.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Edit Spoke GW
@@ -71,7 +71,6 @@ Go to **CoPilot > Security > FireNet > Firewall**, then click on the `"+ Firewal
 
 ```{figure} images/lab7-firenetbutton.png
 ---
-height: 300px
 align: center
 ---
 FireNet
@@ -139,7 +138,7 @@ You will know the Firewall is created when you see the corresponding entry like 
 
 ```{figure} images/lab7-url.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Deployment completed
@@ -170,7 +169,7 @@ Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three 
 
 ```{figure} images/lab7-vendor.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Vendor Integration
@@ -215,7 +214,7 @@ Go to **CoPilot > Security > FireNet > Firewall** and click on the **_azure-west
 
 ```{figure} images/lab7-vendor4.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Click on the Firewall
@@ -229,6 +228,10 @@ height: 400px
 align: center
 ---
 Vendor Integration outcome
+```
+
+```{caution}
+IP address **168.63.129.16** is a virtual public IP address that is used to facilitate a communication channel to Azure platform resources. Customers can define any address space for their private virtual network in Azure. Therefore, the Azure platform resources must be presented as a unique public IP address.
 ```
 
 ## 4.5. Verify Routes Installed on Firewall
@@ -306,7 +309,7 @@ Click the *pencil icon* to edit the Green network domain.
 
 ```{figure} images/lab7-editnd.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Edit Green
@@ -341,7 +344,7 @@ Before launching any connectivity tests, <ins>you need to move the **_Greenfield
 
 ```{figure} images/lab7-dcfrule.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 DCF rules
@@ -356,7 +359,7 @@ Then click on **Save in Draft**.
 
 ```{figure} images/lab7-top.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Move at the Top
@@ -493,7 +496,7 @@ Filter based on ICMP
 
 ```{figure} images/lab7-last.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Logs on DCF Monitor section
