@@ -245,7 +245,17 @@ RFC1918 routes pointing towards the Second Spoke GW
 ```
 
 As you can see, Active/Active is achieved within a VPC as well. Each gateway is active on the Availability Zone where it resides.
- 
+
+```{important}
+Do not forget to remove the filter previously applied!
+```{figure} images/lab4-removefilter.png
+---
+height: 250px
+align: center
+---
+Remove the filter
+```
+
 ## 6.2. Connectivity test of ActiveMesh (Pt.1)
 
 Test that the EC2 instances in two subnets are pointing to two different routing tables. If one gateway goes down, the controller will switch the **ENI** of the available gateway in the routing table.
