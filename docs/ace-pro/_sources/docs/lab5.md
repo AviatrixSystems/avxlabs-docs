@@ -302,7 +302,7 @@ You will get a granular Layer 7 visibility that allows you to get a good underst
 
 Let's move towards a posture where only the allowed egress domains are in place.
 
-Go to **CoPilot > Groups** and click on `"+ WebGroup"` button.
+Go to **CoPilot > Groups > WebGroups** and click on `"+ WebGroup"` button.
 
 ```{figure} images/lab6-webgroup.png
 ---
