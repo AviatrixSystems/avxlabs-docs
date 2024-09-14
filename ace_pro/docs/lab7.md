@@ -37,7 +37,7 @@ This is the connection established between an **Aviatrix Edge** device deployed 
 
 ```{figure} images/lab8-edge1.png
 ---
-height: 200px
+height: 150px
 align: center
 ---
 Existing S2C connection
@@ -135,6 +135,8 @@ S2C template
 The configuration template will grey out after clicking on **Save**. 
 
 Be patient and wait for the **_Aviatrix Controller_** to complete the deployment. <ins>This will create the first side of the connection, on the GCP Spoke GW</ins>.
+
+The StrongSwan router was already preconfigured at the launch of each POD!
 ```
 
 Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.
@@ -261,7 +263,7 @@ align: center
 Ping ok
 ```
 
-Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, scroll down through all the **Properties**, click on the `Tools` button and then click on `Gateway Diagnostics`.
+Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, <ins>scroll down through all the **Properties**</ins>, click on the `Tools` button and then click on `Gateway Diagnostics`.
 
 ```{figure} images/lab8-diag.png
 ---
