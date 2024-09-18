@@ -200,9 +200,8 @@ Now go back on the **SSH** session established with the StrongSwan router and in
 
 - Run  the following bash script:
 
-
 ```{tip}
-Below <REPLACE_WITH_SPOKE_GW_PUBLIC_IP> with GCP Spoke gateway public IP of your POD.
+Below replace the string **<REPLACE_WITH_SPOKE_GW_PUBLIC_IP>** with GCP Spoke gateway public IP of your POD.
 ```
 
 ```bash
