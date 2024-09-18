@@ -91,7 +91,7 @@ VPC Functions:
 **2) Transit + FireNet** 
 ```
 
-It will take about **3-4** minutes for the creation of the VNet. You can periodically check the status of the task, clicking on the top right side, on the *hourglass icon*. Click on the refresh button. Once the task gets colored in green, you can finally assume that the VNet was successfully created.
+It will take about **3-4** minutes for the creation of the VNet. You can periodically check the status of the task, clicking on the top right-hand side, on the *hourglass icon*. Click on the refresh button. Once the task gets colored in green, you can finally assume that the VNet was successfully created.
 
 ```{important}
 **Clean up the SEARCH FIELD to restore the navigation panel view.**
