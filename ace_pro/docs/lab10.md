@@ -971,14 +971,14 @@ No More NGFW
 
 ### 7.1 Creating a Spoke to Spoke Attachment
 
-Go to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** GW and click on the **`Manage Transit Gateway Attachment`** icon on the right side of its row.
+Go to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** GW and click on the **`Manage Gateway Attachments`** icon on the right-hand side.
 
 ```{figure} images/lab10-spoke2spoke02.png
 ---
 height: 200px
 align: center
 ---
-Manage Transit Gateway Attachment
+Manage Gateway Attachments
 ```
 
 Select the **Spoke Gateway** tab, click on the `"+ Attachment"` button and then choose the **azure-west-us-spoke1** GW from the drop-down window.
