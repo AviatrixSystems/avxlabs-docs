@@ -381,7 +381,7 @@ Fill in the attachment template using the following settings:
 
 - **Transit Gateway**: <span style='color:#479608'>gcp-us-central1-transit</span>
 - **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
-- **Attach over Private Network**: <span style='color:#479608'>**OFF**</span>
+- **Attach over**: <span style='color:#479608'>**Public Network**</span>
 - **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
 
 Do not forget to click on **Save**.
@@ -526,7 +526,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget,  select the `gcp-us-central1-transit-peering` connection and type **twice** the AS number 64513. 
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget,  select the `gcp-us-central1-transit-peering` connection and type **three times** the AS number 64513. 
 
 Of course, then click on **Save**.
 
@@ -548,7 +548,7 @@ align: center
 gcp-us-central1-transit
 ```
 
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget select the `aws-us-east-2-transit-peering` connection and type **twice** the AS number 64514. 
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget select the `aws-us-east-2-transit-peering` connection and type **three times** the AS number 64514. 
 
 Click on **Save** to apply the change!
 
@@ -615,6 +615,21 @@ align: center
 ---
 6 Hops
 ```
+
+Now go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the "Route DB" tab and then once again, on the right-hand side, type `172.16.1.0` inside the Search field.
+
+This time the AS Path Length will turn out being equal to 2. 
+
+<ins>The best path is via the Edge!</ins>
+
+```{figure} images/lab8-2path.png
+---
+height: 300px
+align: center
+---
+As path length = 2
+```
+
 
 After this lab, this is how the overall topology would look like:
 
