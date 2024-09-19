@@ -50,7 +50,7 @@ Create two Smart Groups and classify each Smart Group, leveraging the CSP tag `"
 
 ### 3.1. Smart Group “bu1”
 
-Go to **CoPilot > SmartGroups** and click on `"+ SmartGroup"`.
+Go to **CoPilot > Groups > SmartGroups** and click on `"+ SmartGroup"`.
 
 ```{figure} images/lab10-smart2.png
 ---
@@ -239,7 +239,7 @@ Then click on **Save in Draft**.
 
 ```{figure} images/lab10-newedit.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Move the rule
@@ -394,7 +394,7 @@ Auto Refresh and Filter
 
 ```{figure} images/lab10-monitor99.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Monitor
@@ -524,7 +524,7 @@ SSH ok
 
 ```{figure} images/lab10-logsshbu1.png
 ---
-height: 200px
+height: 150px
 align: center
 ---
 Logs 
@@ -577,7 +577,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{figure} images/lab10-bu2monitor.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Monitor
@@ -652,7 +652,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{figure} images/lab10-monitorfresh.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 Monitor
@@ -850,7 +850,7 @@ The reason is that the ec2-instance  **aws-us-east-1-spoke1-test2** is not alloc
 
 Let’s create another Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in US-EAST-1 region in AWS.
 
-Go to **Copilot > Groups** and click on  `"+ SmartGroup"` button.
+Go to **Copilot > Groups > SmartGroups** and click on  `"+ SmartGroup"` button.
 
 ```{figure} images/lab10-mttnew.png
 ---
