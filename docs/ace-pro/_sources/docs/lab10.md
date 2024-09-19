@@ -59,7 +59,7 @@ align: center
 SmartGroup
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>bu1</span>
 - **CSP Tag Key**: <span style='color:#479608'>environment</span>
@@ -97,7 +97,7 @@ align: center
 New Smart Group
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>bu2</span>
 - **CSP Tag Key**: <span style='color:#479608'>environment</span>
@@ -859,7 +859,7 @@ align: center
 New Smart Group
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New SmartGroup"`:
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>east1</span>
 - **CSP Tag Key**: <span style='color:#479608'>Name</span>
