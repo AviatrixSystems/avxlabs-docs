@@ -110,7 +110,7 @@ Fill in the attachment template using the following settings:
 
 - **Transit Gateway**: <span style='color:#479608'>aws-us-east-2-transit</span>
 - **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
-- **Attach over Private Network**: <span style='color:#479608'>**OFF**</span>
+- **Attach over**: <span style='color:#479608'>**Public Network**</span>
 - **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
 
 Do not forget to click on **Save**.
