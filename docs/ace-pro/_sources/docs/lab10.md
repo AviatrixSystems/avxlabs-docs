@@ -389,7 +389,7 @@ Turn on the **Auto Refresh** knob. Moreover, refresh the web page to trigger the
 ---
 align: center
 ---
-Auto Fefresh and Filter
+Auto Refresh and Filter
 ```
 
 ```{figure} images/lab10-monitor99.png
@@ -768,7 +768,7 @@ Go to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` sec
 height: 300px
 align: center
 ---
-Settings
+Border Gateway Protocol (BGP)
 ```
 
 Repeat the previous action for the last Transit Gateway still without BGP ASN:
@@ -850,7 +850,7 @@ The reason is that the ec2-instance  **aws-us-east-1-spoke1-test2** is not alloc
 
 Let’s create another Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in US-EAST-1 region in AWS.
 
-Go to **Copilot > SmartGroups** and click on  `"+ SmartGroup"` button.
+Go to **Copilot > Groups** and click on  `"+ SmartGroup"` button.
 
 ```{figure} images/lab10-mttnew.png
 ---
