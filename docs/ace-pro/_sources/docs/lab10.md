@@ -989,7 +989,7 @@ Do not forget to click on **Save**.
 ---
 align: center
 ---
-azure-west-us-spoke1
+azure-west-us-spoke2
 ```
 
 ```{figure} images/lab10-newspokeatt.png
