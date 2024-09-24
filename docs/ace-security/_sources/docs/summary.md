@@ -8,5 +8,6 @@ The ACE Program is the industry’s first and only multicloud networking certifi
 
 [![ACE Assoc](../../docs/_logos/ace_associate_banner.png)](https://aviatrix.com/ace-associate/)
 [![ACE IaC](../../docs/_logos/ace_automation_banner.png)](https://aviatrix.com/ace-automation/)
+[![ACE Backbone](../../docs/_logos/ace_backbone_banner.png)](https://aviatrix.com/ace-backbone/)
 [![ACE Ops](../../docs/_logos/ace_operations_banner.png)](https://aviatrix.com/ace-operations/)
 [![ACE Pro](../../docs/_logos/ace_professional_banner.png)](https://aviatrix.com/ace-professional/)
