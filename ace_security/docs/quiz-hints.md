@@ -67,7 +67,7 @@ Check **CoPilot > Security > Distributed Cloud Firewall**
 <span style='color:#479608'>Q9.</span> There are 3 VMs that have been automatically added to the SmartGroup named dev. Why were they added to this group?
 
 ```{hint}
-Check **CoPilot > SmartGroups**
+Check **CoPilot > Groups > SmartGroups**
 ```
 
 <span style='color:#479608'>Q10.</span> Name the Aviatrix gateway where ThreatIQ has detected malicious inbound attacks.
