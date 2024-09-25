@@ -76,7 +76,7 @@ Check **CoPilot > Groups > SmartGroups**
 Check **CoPilot > Security > ThreatIQ**
 ```
 
-<span style='color:#479608'>Q11.</span> Name 3 domains where egress connectivity is being attempted, but denied.
+<span style='color:#479608'>Q11.</span> Name 3 domains where Internet egress connectivity is being attempted, but denied.
 
 ```{hint}
 Check **CoPilot > Security > Egress > Monitor**
