@@ -6,7 +6,7 @@ They will be removed by <ins>EOD Friday of the week of the training</ins>.
 
 Click this link to {Download}`ACE Security Mod01 - Introduction<files/ACE-Security-Mod01-Introduction.pdf>`
 
-Click this link to {Download}`ACE Security Mod02 - ZTA Tenets<files/ACE-Security-Mod02-ZTA Tenets>`
+Click this link to {Download}`ACE Security Mod02 - ZTA Tenets<files/ACE-Security-Mod02-ZTA Tenets.pdf>`
 
 Click this link to {Download}`ACE Security Mod03 - Asset-Inventory-and-Grouping<files/ACE-Security-Mod03-Asset-Inventory-and-Grouping.pdf>`
 
