@@ -29,7 +29,7 @@ Check **CoPilot > Networking > Connectivity**
 <span style='color:#479608'>Q3.</span> A major intrusion has occurred. From which instance was this detected? Mention Name
 
 ```{hint}
-Check **CoPilot > Security > ThreatIQ**
+Check **CoPilot > Security > Distributed Cloud Firewall > Detected Intrusions**
 ```
 
 <span style='color:#479608'>Q4.</span> List if any region(s) are being blocked by GeoBlocking.
