@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lab 5 - SECURE EGRESS &#8212; ACE Operations Lab</title>
+    <title>Lab 5 - Cloud Perimeter Security (Secure Cloud Egress) &#8212; ACE Operations Lab</title>
   
   
   
@@ -186,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - HPE WITH ACTIVE MESH</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 5 - SECURE EGRESS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 5 - Cloud Perimeter Security (Secure Cloud Egress)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - FIRENET</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - SITE2CLOUD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - AVIATRIX EDGE</a></li>
@@ -333,7 +333,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 5 - SECURE EGRESS</h1>
+    <h1>Lab 5 - Cloud Perimeter Security (Secure Cloud Egress)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,11 +380,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-5-secure-egress">
-<h1>Lab 5 - SECURE EGRESS<a class="headerlink" href="#lab-5-secure-egress" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-5-cloud-perimeter-security-secure-cloud-egress">
+<h1>Lab 5 - Cloud Perimeter Security (Secure Cloud Egress)<a class="headerlink" href="#lab-5-cloud-perimeter-security-secure-cloud-egress" title="Link to this heading">#</a></h1>
 <section id="objective">
 <h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
-<p>In this lab, we will demonstrate how to enable the <code class="docutils literal notranslate"><span class="pre">Egress</span> <span class="pre">Control</span></code> (one of the features that belongs to the <em>Distributed Cloud Firewall</em> functionality) on the VPC that we want to target. Of course, the selected VPC should have at least a subnet associated to a Private Routing table (i.e. without a default route pointing to the IGW). The Controller will reroute the traffic through the Aviatrix Spoke Gateway. The Egress Control can guarantee immediately better visibility and better control in order to replace the <strong>CSP Native NAT Gateways</strong>. <ins>The Egress Control allows to reduce the cloud costs and at the same time, improve the security without impacting the architecture</ins>.</p>
+<p>In this lab, we will demonstrate how to enable the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Perimeter</span> <span class="pre">Security</span> <span class="pre">(Secure</span> <span class="pre">Cloud</span> <span class="pre">Egress)</span></code> (one of the features that belongs to the <em>Distributed Cloud Firewall</em> functionality) on the VPC that we want to target. Of course, the selected VPC should have at least a subnet associated to a Private Routing table (i.e. without a default route pointing to the IGW). The Controller will reroute the traffic through the Aviatrix Spoke Gateway. The Egress Control can guarantee immediately better visibility and better control in order to replace the <strong>CSP Native NAT Gateways</strong>. <ins>Cloud Perimeter Security (Secure Cloud Egress) allows to reduce the cloud costs and at the same time, improve the security without impacting the architecture</ins>.</p>
 </section>
 <section id="topology">
 <h2>2. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
@@ -477,8 +477,11 @@ document.write(`
 </section>
 <section id="inspect-the-private-rtb">
 <h3>4.2 Inspect the Private RTB<a class="headerlink" href="#inspect-the-private-rtb" title="Link to this heading">#</a></h3>
+<p>Upon enabling Local Egress on the specified VPC, the Aviatrix Controller will immediately execute two actions on the specified VPC:</p>
+<p>Injecting a Default Route: This route is added exclusively to the Private Route Tables (RTBs). Public Route Tables (RTBs) remain unaffected and will continue to have their default route pointing towards the native Cloud Service Provider (CSP) Internet Gateway (IGW).</p>
+<p>Enabling Single IP SNAT on VPC Spoke Gateway: Source Network Address Translation (SNAT) will be enabled on the VPC spoke gateway using a single IP address.</p>
+<p>At this point, the Aviatrix  performs the same functions as the CSP NAT Gateway.</p>
 <ul class="simple">
-<li><p>As soon as the Egress Control is enabled, a <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Route</span></code> is injected inside solely the Private RTBs (Public RTBs are not impacted, whereby, they will continue to have the defaulte route pointing towards the Native CSP IGW).</p></li>
 <li><p>Verify its presence in any Private RTBs inside the <strong><em>aws-us-east-2-spoke1</em></strong> VPC.</p></li>
 </ul>
 <div class="admonition tip">
