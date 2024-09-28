@@ -1,4 +1,8 @@
-# Lab 8 - AVIATRIX EDGE
+# Lab 8 - Secure High-Performance Datacenter Edge
+
+You are  asked to interconnect the on-prem DC in New York to your MCNA. An **Aviatrix Edge** device has already been provisioned and it got already registered to the existing **Aviatrix Controller**.
+
+Aviatrix Secure High-Performance Datacenter Edge solution gives power back to the network administrators to deliver cloud connectivity without compromise.  The solution delivers encrypted, line-rate performance with single region, multi region, or multi cloud redundancy options and full visibility and troubleshooting capabilities end to end.
 
 ## 1. General Objectives
 
