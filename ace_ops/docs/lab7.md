@@ -1,4 +1,6 @@
-# Lab 7 - Secure Egress
+# Lab 7 - Cloud Perimeter Security (Secure Cloud Egress)
+
+The borderless nature of the cloud creates significant challenges in securing egress traffic, controlling network visibility, and managing spend. Provider-native solutions offer only basic security, high egress data costs, compliance challenges, and exposure to threats like data exfiltration. This leads to operational inefficiencies, increased security risks, and a slower time to market.
 
 ## 1. SCENARIO
 
