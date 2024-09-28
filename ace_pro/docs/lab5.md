@@ -1,8 +1,8 @@
-# Lab 5 - SECURE EGRESS
+# Lab 5 - Cloud Perimeter Security (Secure Cloud Egress)
 
 ## 1. Objective
 
-In this lab, we will demonstrate how to enable the `Egress Control` (one of the features that belongs to the *Distributed Cloud Firewall* functionality) on the VPC that we want to target. Of course, the selected VPC should have at least a subnet associated to a Private Routing table (i.e. without a default route pointing to the IGW). The Controller will reroute the traffic through the Aviatrix Spoke Gateway. The Egress Control can guarantee immediately better visibility and better control in order to replace the **CSP Native NAT Gateways**. <ins>The Egress Control allows to reduce the cloud costs and at the same time, improve the security without impacting the architecture</ins>.
+In this lab, we will demonstrate how to enable the `Cloud Perimeter Security (Secure Cloud Egress)` (one of the features that belongs to the *Distributed Cloud Firewall* functionality) on the VPC that we want to target. Of course, the selected VPC should have at least a subnet associated to a Private Routing table (i.e. without a default route pointing to the IGW). The Controller will reroute the traffic through the Aviatrix Spoke Gateway. The Egress Control can guarantee immediately better visibility and better control in order to replace the **CSP Native NAT Gateways**. <ins>Cloud Perimeter Security (Secure Cloud Egress) allows to reduce the cloud costs and at the same time, improve the security without impacting the architecture</ins>.
 
 ## 2. Topology
 
@@ -104,7 +104,14 @@ Choose the correct VPC
 
 ### 4.2 Inspect the Private RTB
 
-- As soon as the Egress Control is enabled, a `Default Route` is injected inside solely the Private RTBs (Public RTBs are not impacted, whereby, they will continue to have the defaulte route pointing towards the Native CSP IGW). 
+Upon enabling Local Egress on the specified VPC, the Aviatrix Controller will immediately execute two actions on the specified VPC:
+
+Injecting a Default Route: This route is added exclusively to the Private Route Tables (RTBs). Public Route Tables (RTBs) remain unaffected and will continue to have their default route pointing towards the native Cloud Service Provider (CSP) Internet Gateway (IGW).
+
+Enabling Single IP SNAT on VPC Spoke Gateway: Source Network Address Translation (SNAT) will be enabled on the VPC spoke gateway using a single IP address.
+
+At this point, the Aviatrix  performs the same functions as the CSP NAT Gateway.
+
 - 
   Verify its presence in any Private RTBs inside the **_aws-us-east-2-spoke1_** VPC.
 
