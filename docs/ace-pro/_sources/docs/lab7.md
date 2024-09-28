@@ -4,7 +4,6 @@
 
 The objective of this lab is to resolve an IP address overlap between an on-premises partner and the cloud. You will be using the **Site2Cloud Mapped NAT** feature to achieve this. 
 
-Moreover, you are also asked to interconnect the on-prem DC in New York to your MCNA. An **Aviatrix Edge** device has already been provisioned and it got already registered to the existing **Aviatrix Controller**.
  
 ## 2. Site2Cloud Overview
 
