@@ -1,4 +1,4 @@
-# Lab 8 - Secure High-Performance Datacenter Edge
+# Lab 8 - SECURE HIGH-PERFORMANCE DATACENTER EDGE
 
 You are  asked to interconnect the on-prem DC in New York to your MCNA. An **Aviatrix Edge** device has already been provisioned and it got already registered to the existing **Aviatrix Controller**.
 
