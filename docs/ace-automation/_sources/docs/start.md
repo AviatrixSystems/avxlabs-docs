@@ -2,7 +2,8 @@
 
 ## Pod Registration
 
-A set of cloud accounts has been reserved for each class participant. What we at Aviatrix call a "POD". To register for your pod, please open the [registration portal](https://automation-portal.ace.aviatrixlab.com/), enter your details and the access code provided by the instructor. After clicking submit, you will assigned a pod number and given details about the pod; URLs, usernames, passwords, etc to be used throughout the course.
+A set of cloud accounts has been reserved for each class participant. What we at Aviatrix call a "POD". To register for your pod, please open the 
+<a href="https://automation-portal.ace.aviatrixlab.com/" target="_blank">registration portal</a>, enter your details and the access code provided by the instructor. After clicking submit, you will assigned a pod number and given details about the pod; URLs, usernames, passwords, etc to be used throughout the course.
 
 ## Initial Topology
 
@@ -12,7 +13,7 @@ Let's take a look at the initial topology deployed to your pod:
 
 Note the 3 VPCs:
 
-- An `Aviatrix` in AWS, containing the Aviatrix Controller, CoPilot, and a jumpbox ec2 to be used as a terraform execution environment with the code for these labs and terraform already installed.
+- An `Aviatrix` vpc in AWS, containing the Aviatrix Controller, CoPilot, and a jumpbox ec2 to be used as a terraform execution environment with the code for these labs and terraform already installed.
 - A spoke VPC in AWS with 3 ec2 instances in their own subnet(s)
 - A spoke VNet in Azure wih 3 VMs in their own subnet(s)
 
@@ -24,6 +25,8 @@ The Aviatrix Controller is the control plane for your cloud networks. When execu
 
 Aviatrix CoPilot is the management UI for the Aviatrix platform and provides visibility into complex multicloud networks managed by the Aviatrix Controller.
 
+![CoPilot](images/start_portal_copilot.png)
+
 Open CoPilot now with the link and credentials from your pod registration page. Then click `Cloud Fabric` on the left-hand nav and choose `Topology`. You can see CoPilot is already visualizing the infrastructure in your cloud accounts.
 
 ![CoPilot](images/start_copilot.png)
@@ -31,6 +34,8 @@ Open CoPilot now with the link and credentials from your pod registration page. 
 ## Gatus Dashboards
 
 All of the pre-deployed instances are running [Gatus](https://gatus.io/) and attempting to connect to each other on various ports. There are two gatus dashboard(s), deployed to `aws-gatus` and `azure-gatus`, visualize this connectivity continuously and in real-time. `Green` means a tcp connection was successful and `red` means it was unsuccessful.
+
+![CoPilot](images/start_portal_gatus.png)
 
 The **AWS** gatus dashboard has 3 sections:
 
@@ -50,6 +55,8 @@ As you move through the labs, you'll refer to the dashboards to see the effect t
 
 A jumpbox instance has been deployed to act as an execution environment with Terraform and Visual Studio Code already installed should the student require it. It is running [Apache Guacamole](https://guacamole.apache.org/), a clientless remote desktop gateway. It can be accessed via https on the link provided in the portal or via RDP (faster experience) if you have a client and connectivity over port `3389` to the Internet.
 
+![Jumpbox](images/start_portal_jumpbox.png)
+
 ## Code
 
 The Terraform code we'll be executing for these labs has been pre-installed on the jumpbox in the student home directory, but is also available on GitHub should you prefer to run on your own workstation.
@@ -65,11 +72,14 @@ Open Visual Studio Code using the desktop shortcut. Then pull down the `File` me
 Select the `terraform.tfvars`. This is the only file you will need to modify to perform each lab, setting values from `false` to `true` to enable different use-cases to run. You'll notice at the top, your pod number and passwords have already been populated for you.
 
 ![tfvars](images/start_tfvars.png)
+
 You're all set and can skip the next section and move directly to `Expected Results`.
 
 ### Workstation execution
 
 Should you choose to use your own workstation to run terraform, version `1.5` is the minimum required.
+
+![Terraform](images/start_portal_tf.png)
 
 Clone the code using the link in the portal. Open `terraform.tfvars` in the editor or your choice and modify the first 3 values using your pod registration page. When finished your tfvars should look similar to this:
 

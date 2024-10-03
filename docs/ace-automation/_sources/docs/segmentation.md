@@ -26,7 +26,7 @@ Note that there are no network domains configured or applied.
 
 ## Configure and apply segmentation
 
-Back to your `terraform.tfvars` file. Update the `apply_segmentation` variable from `false` to `true`.
+Back to your `terraform.tfvars` file. Update the `apply_segmentation` variable from `false` to `true`. Be sure to save the file after making the update.
 
 Then from `LXTerminal` on the jumpbox, issue the following command.
 
@@ -56,7 +56,7 @@ Let's check back in the gatus. As expected, the spokes are now fully isolated. T
 
 ## Configure and apply policy
 
-Back to your `terraform.tfvars` file. Update the `apply_policy` variable from `false` to `true`.
+Back to your `terraform.tfvars` file. Update the `apply_policy` variable from `false` to `true`. Be sure to save the file after making the update.
 
 Then from `LXTerminal` on the jumpbox, issue the following command.
 

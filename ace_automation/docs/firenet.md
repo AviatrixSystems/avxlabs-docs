@@ -26,7 +26,7 @@ As such open connectivity between clouds is established.
 
 ## Configure and apply
 
-Back to your `terraform.tfvars` file. Update the `enable_firenet` variable from `false` to `true`.
+Back to your `terraform.tfvars` file. Update the `enable_firenet` variable from `false` to `true`. Be sure to save the file after making the update.
 
 Then from `LXTerminal` on the jumpbox, issue the following command.
 

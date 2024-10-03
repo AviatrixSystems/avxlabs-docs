@@ -364,7 +364,8 @@ document.write(`
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
 <section id="pod-registration">
 <h2>Pod Registration<a class="headerlink" href="#pod-registration" title="Link to this heading">#</a></h2>
-<p>A set of cloud accounts has been reserved for each class participant. What we at Aviatrix call a “POD”. To register for your pod, please open the <a class="reference external" href="https://automation-portal.ace.aviatrixlab.com/">registration portal</a>, enter your details and the access code provided by the instructor. After clicking submit, you will assigned a pod number and given details about the pod; URLs, usernames, passwords, etc to be used throughout the course.</p>
+<p>A set of cloud accounts has been reserved for each class participant. What we at Aviatrix call a “POD”. To register for your pod, please open the
+<a href="https://automation-portal.ace.aviatrixlab.com/" target="_blank">registration portal</a>, enter your details and the access code provided by the instructor. After clicking submit, you will assigned a pod number and given details about the pod; URLs, usernames, passwords, etc to be used throughout the course.</p>
 </section>
 <section id="initial-topology">
 <h2>Initial Topology<a class="headerlink" href="#initial-topology" title="Link to this heading">#</a></h2>
@@ -372,7 +373,7 @@ document.write(`
 <p><img alt="Initial Topology" src="../_images/start_initial_topology.png" /></p>
 <p>Note the 3 VPCs:</p>
 <ul class="simple">
-<li><p>An <code class="docutils literal notranslate"><span class="pre">Aviatrix</span></code> in AWS, containing the Aviatrix Controller, CoPilot, and a jumpbox ec2 to be used as a terraform execution environment with the code for these labs and terraform already installed.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">Aviatrix</span></code> vpc in AWS, containing the Aviatrix Controller, CoPilot, and a jumpbox ec2 to be used as a terraform execution environment with the code for these labs and terraform already installed.</p></li>
 <li><p>A spoke VPC in AWS with 3 ec2 instances in their own subnet(s)</p></li>
 <li><p>A spoke VNet in Azure wih 3 VMs in their own subnet(s)</p></li>
 </ul>
@@ -384,12 +385,14 @@ document.write(`
 <section id="copilot">
 <h2>CoPilot<a class="headerlink" href="#copilot" title="Link to this heading">#</a></h2>
 <p>Aviatrix CoPilot is the management UI for the Aviatrix platform and provides visibility into complex multicloud networks managed by the Aviatrix Controller.</p>
+<p><img alt="CoPilot" src="../_images/start_portal_copilot.png" /></p>
 <p>Open CoPilot now with the link and credentials from your pod registration page. Then click <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric</span></code> on the left-hand nav and choose <code class="docutils literal notranslate"><span class="pre">Topology</span></code>. You can see CoPilot is already visualizing the infrastructure in your cloud accounts.</p>
 <p><img alt="CoPilot" src="../_images/start_copilot.png" /></p>
 </section>
 <section id="gatus-dashboards">
 <h2>Gatus Dashboards<a class="headerlink" href="#gatus-dashboards" title="Link to this heading">#</a></h2>
 <p>All of the pre-deployed instances are running <a class="reference external" href="https://gatus.io/">Gatus</a> and attempting to connect to each other on various ports. There are two gatus dashboard(s), deployed to <code class="docutils literal notranslate"><span class="pre">aws-gatus</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-gatus</span></code>, visualize this connectivity continuously and in real-time. <code class="docutils literal notranslate"><span class="pre">Green</span></code> means a tcp connection was successful and <code class="docutils literal notranslate"><span class="pre">red</span></code> means it was unsuccessful.</p>
+<p><img alt="CoPilot" src="../_images/start_portal_gatus.png" /></p>
 <p>The <strong>AWS</strong> gatus dashboard has 3 sections:</p>
 <ul class="simple">
 <li><p>aviatrix: a placeholder that can be ignored</p></li>
@@ -407,6 +410,7 @@ document.write(`
 <section id="jumpbox">
 <h2>Jumpbox<a class="headerlink" href="#jumpbox" title="Link to this heading">#</a></h2>
 <p>A jumpbox instance has been deployed to act as an execution environment with Terraform and Visual Studio Code already installed should the student require it. It is running <a class="reference external" href="https://guacamole.apache.org/">Apache Guacamole</a>, a clientless remote desktop gateway. It can be accessed via https on the link provided in the portal or via RDP (faster experience) if you have a client and connectivity over port <code class="docutils literal notranslate"><span class="pre">3389</span></code> to the Internet.</p>
+<p><img alt="Jumpbox" src="../_images/start_portal_jumpbox.png" /></p>
 </section>
 <section id="code">
 <h2>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
@@ -417,12 +421,13 @@ document.write(`
 <p>Open Visual Studio Code using the desktop shortcut. Then pull down the <code class="docutils literal notranslate"><span class="pre">File</span></code> menu and click <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Folder</span></code>. Select <code class="docutils literal notranslate"><span class="pre">Home</span></code>, <code class="docutils literal notranslate"><span class="pre">ace-automation-ilt</span></code>, then click Open in the bottom right.</p>
 <p><img alt="VS Code" src="../_images/start_vs_code.png" /></p>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">terraform.tfvars</span></code>. This is the only file you will need to modify to perform each lab, setting values from <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> to enable different use-cases to run. You’ll notice at the top, your pod number and passwords have already been populated for you.</p>
-<p><img alt="tfvars" src="../_images/start_tfvars.png" />
-You’re all set and can skip the next section and move directly to <code class="docutils literal notranslate"><span class="pre">Expected</span> <span class="pre">Results</span></code>.</p>
+<p><img alt="tfvars" src="../_images/start_tfvars.png" /></p>
+<p>You’re all set and can skip the next section and move directly to <code class="docutils literal notranslate"><span class="pre">Expected</span> <span class="pre">Results</span></code>.</p>
 </section>
 <section id="workstation-execution">
 <h3>Workstation execution<a class="headerlink" href="#workstation-execution" title="Link to this heading">#</a></h3>
 <p>Should you choose to use your own workstation to run terraform, version <code class="docutils literal notranslate"><span class="pre">1.5</span></code> is the minimum required.</p>
+<p><img alt="Terraform" src="../_images/start_portal_tf.png" /></p>
 <p>Clone the code using the link in the portal. Open <code class="docutils literal notranslate"><span class="pre">terraform.tfvars</span></code> in the editor or your choice and modify the first 3 values using your pod registration page. When finished your tfvars should look similar to this:</p>
 <p><img alt="tfvars" src="../_images/start_tfvars.png" /></p>
 </section>

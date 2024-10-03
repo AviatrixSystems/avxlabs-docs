@@ -356,7 +356,7 @@ document.write(`
 <h1>Customized Spoke VPC Routing<a class="headerlink" href="#customized-spoke-vpc-routing" title="Link to this heading">#</a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Estimated time to complete: <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">minutes</span></code></p>
+<p>Estimated time to complete: <code class="docutils literal notranslate"><span class="pre">15</span> <span class="pre">minutes</span></code></p>
 </div>
 <p>In this lab, the goal is to demonstrate custom routing to a spoke for a cidr not defined in the vpc.</p>
 <p>The instance, <code class="docutils literal notranslate"><span class="pre">aws-1</span></code> has a loopback interface defined on <code class="docutils literal notranslate"><span class="pre">172.16.0.1/32</span></code>.</p>
@@ -371,7 +371,7 @@ document.write(`
 </section>
 <section id="configure-and-apply">
 <h2>Configure and apply<a class="headerlink" href="#configure-and-apply" title="Link to this heading">#</a></h2>
-<p>Back to your <code class="docutils literal notranslate"><span class="pre">terraform.tfvars</span></code> file. Update the <code class="docutils literal notranslate"><span class="pre">apply_custom_spoke_routing</span></code> variable from <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>Back to your <code class="docutils literal notranslate"><span class="pre">terraform.tfvars</span></code> file. Update the <code class="docutils literal notranslate"><span class="pre">apply_custom_spoke_routing</span></code> variable from <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Be sure to save the file after making the update.</p>
 <p>Then from <code class="docutils literal notranslate"><span class="pre">LXTerminal</span></code> on the jumpbox, issue the following command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>terraform<span class="w"> </span>apply<span class="w"> </span>--auto-approve
 </pre></div>
@@ -395,7 +395,7 @@ document.write(`
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Inside the local <code class="docutils literal notranslate"><span class="pre">mcna</span></code> module, you’ll see you’ll see the aws spoke affected by the that variables boolean state:</p>
+<p>Inside the local <code class="docutils literal notranslate"><span class="pre">mcna</span></code> module, you’ll see the aws spoke affected by the that variables boolean state:</p>
 <div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;spoke_aws&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.6.3&quot;</span>

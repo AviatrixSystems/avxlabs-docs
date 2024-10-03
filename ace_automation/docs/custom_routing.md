@@ -1,7 +1,7 @@
 # Customized Spoke VPC Routing
 
 ```{important}
-Estimated time to complete: `10 minutes`
+Estimated time to complete: `15 minutes`
 ```
 
 In this lab, the goal is to demonstrate custom routing to a spoke for a cidr not defined in the vpc.
@@ -24,7 +24,7 @@ The solution is to implement a custom configuration on the `aws-spoke` spoke gat
 
 ## Configure and apply
 
-Back to your `terraform.tfvars` file. Update the `apply_custom_spoke_routing` variable from `false` to `true`.
+Back to your `terraform.tfvars` file. Update the `apply_custom_spoke_routing` variable from `false` to `true`. Be sure to save the file after making the update.
 
 Then from `LXTerminal` on the jumpbox, issue the following command.
 
@@ -56,7 +56,7 @@ module "mcna" {
 
 ```
 
-Inside the local `mcna` module, you'll see you'll see the aws spoke affected by the that variables boolean state:
+Inside the local `mcna` module, you'll see the aws spoke affected by the that variables boolean state:
 
 ```terraform
 module "spoke_aws" {
