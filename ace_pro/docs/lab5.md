@@ -1,8 +1,8 @@
-# Lab 5 - Cloud Perimeter Security (Secure Cloud Egress)
+# Lab 5 - CLOUD PERIMETER SECURITY (Secure Cloud Egress)
 
 ## 1. Objective
 
-In this lab, we will demonstrate how to enable the `Cloud Perimeter Security (Secure Cloud Egress)` (one of the features that belongs to the *Distributed Cloud Firewall* functionality) on the VPC that we want to target. Of course, the selected VPC should have at least a subnet associated to a Private Routing table (i.e. without a default route pointing to the IGW). The Controller will reroute the traffic through the Aviatrix Spoke Gateway. The Egress Control can guarantee immediately better visibility and better control in order to replace the **CSP Native NAT Gateways**. <ins>Cloud Perimeter Security (Secure Cloud Egress) allows to reduce the cloud costs and at the same time, improve the security without impacting the architecture</ins>.
+In this lab, we will demonstrate how to enable the `Cloud Perimeter Security` (**Secure Cloud Egress**), one of the features that belongs to the *Distributed Cloud Firewall* functionality, on the VPC that we want to target. Of course, the selected VPC should have at least a subnet associated to a Private Routing table (i.e. without a default route pointing to the IGW). The Controller will reroute the traffic through the Aviatrix Spoke Gateway. The Egress Control can guarantee immediately better visibility and better control in order to replace the **CSP Native NAT Gateways**. <ins>Cloud Perimeter Security (Secure Cloud Egress) allows to reduce the cloud costs and at the same time, improve the security without impacting the architecture</ins>.
 
 ## 2. Topology
 
