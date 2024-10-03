@@ -337,15 +337,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-dcf">Enable DCF</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-dcf">Apply DCF</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results-dcf">Expected Results - DCF</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-dcf-tag-rule">Enable DCF Tag Rule</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-dcf-tag-rule">Apply DCF Tag Rule</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results-tag">Expected Results - Tag</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-microsegmentation">Enable Microsegmentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-microsegmentation">Apply Microsegmentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results-microseg">Expected Results - Microseg</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-connectivity">Initial Connectivity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-and-apply-dcf-rules">Configure and apply DCF rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dcf-results">DCF Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-and-enable-a-tag-based-rule">Configure and enable a tag-based rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-and-apply-microsegmentation">Configure and apply microsegmentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#microsegmentation-results">Microsegmentation Results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
 </ul>
             </nav>
@@ -360,35 +358,111 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="distributed-cloud-firewall-dcf">
 <h1>Distributed Cloud Firewall (DCF)<a class="headerlink" href="#distributed-cloud-firewall-dcf" title="Link to this heading">#</a></h1>
-<section id="enable-dcf">
-<h2>Enable DCF<a class="headerlink" href="#enable-dcf" title="Link to this heading">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Estimated time to complete: <code class="docutils literal notranslate"><span class="pre">30</span> <span class="pre">minutes</span></code></p>
+</div>
+<p>In this lab, the goal is to leverage Aviatrix’s Distributed Cloud Firewall (DCF) to further secure cloud connectivity. We will do this by:</p>
+<ul class="simple">
+<li><p>Enabling DCF</p></li>
+<li><p>Applying a set of rules that act broadly on defined CIDR ranges</p></li>
+<li><p>Applying a set of rules that act specifically on compute with designated tags</p></li>
+<li><p>Applying Security Group (SG) Orchestration to implement microsegmentation within the VPC/VNet</p></li>
+</ul>
+<p>There is no infrastructure to deploy as this is all Aviatrix configuration. For SG orchestration, the controller will be orchestrating NSG and SGs within the respective cloud providers out-of-band from the terraform execution.</p>
+<section id="initial-connectivity">
+<h2>Initial Connectivity<a class="headerlink" href="#initial-connectivity" title="Link to this heading">#</a></h2>
+<p>We’re starting with the connected topology we ended with in the Segmentation lab.</p>
+<p><img alt="MCNA Topology" src="../_images/segmentation_topology.png" /></p>
+<p>As such open connectivity between clouds is established.</p>
+<p><img alt="Gatus" src="../_images/mcna_gatus_cloudx.png" /></p>
+<p>All throughout these labs, intra-VPC/Vnet connectivity has been uninhibited since that traffic never crosses an Aviatrix gateway.</p>
+<p><img alt="Gatus" src="../_images/dcf_intra_vpc.png" /></p>
 </section>
-<section id="apply-dcf">
-<h2>Apply DCF<a class="headerlink" href="#apply-dcf" title="Link to this heading">#</a></h2>
+<section id="configure-and-apply-dcf-rules">
+<h2>Configure and apply DCF rules<a class="headerlink" href="#configure-and-apply-dcf-rules" title="Link to this heading">#</a></h2>
+<p>Back to your <code class="docutils literal notranslate"><span class="pre">terraform.tfvars</span></code> file. Update the <code class="docutils literal notranslate"><span class="pre">enable_dcf</span></code> variable from <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Be sure to save the file after making the update.</p>
+<p>Then from <code class="docutils literal notranslate"><span class="pre">LXTerminal</span></code> on the jumpbox, issue the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>terraform<span class="w"> </span>apply<span class="w"> </span>--auto-approve
+</pre></div>
+</div>
+<p>It should only take a minute to enable and apply the dcf rules.</p>
 </section>
-<section id="expected-results-dcf">
-<h2>Expected Results - DCF<a class="headerlink" href="#expected-results-dcf" title="Link to this heading">#</a></h2>
+<section id="dcf-results">
+<h2>DCF Results<a class="headerlink" href="#dcf-results" title="Link to this heading">#</a></h2>
+<p>Let’s take a look at the DCF rules that were applied. Open CoPilot and navigate to <code class="docutils literal notranslate"><span class="pre">Security</span></code>, then <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> in the left hand nav.</p>
+<p><img alt="DCF" src="../_images/dcf_rules.png" /></p>
+<p>Notice there are 5 rules, only two of which are enforced (the green check (enforced) vs the grey slash (unenforced)).</p>
+<p>Let’s focus on the 2 enforced rules <code class="docutils literal notranslate"><span class="pre">allow-https</span></code> and <code class="docutils literal notranslate"><span class="pre">default-deny-all</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">allow-https</span></code> rule is allow tcp port 443 between the <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-spoke</span></code> groups. Let’s take a look at what that means.</p>
+<p>In CoPilot, navigate to <code class="docutils literal notranslate"><span class="pre">Groups</span></code> in the left-hand nav and click on <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code>. Notice that the group is defined by a set of CIDRs. Now click on <code class="docutils literal notranslate"><span class="pre">azure-spoke</span></code> and confirm the same.</p>
+<p><img alt="DCF" src="../_images/dcf_groups.png" /></p>
+<p>We can conclude that all traffic throughout the Aviatrix network will be denied, except port 443 between the set of CIDRs defined by the <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-spoke</span></code> groups. Let’s confirm with gatus.</p>
+<p><img alt="DCF" src="../_images/dcf_443.png" /></p>
 </section>
-<section id="enable-dcf-tag-rule">
-<h2>Enable DCF Tag Rule<a class="headerlink" href="#enable-dcf-tag-rule" title="Link to this heading">#</a></h2>
+<section id="configure-and-enable-a-tag-based-rule">
+<h2>Configure and enable a tag-based rule<a class="headerlink" href="#configure-and-enable-a-tag-based-rule" title="Link to this heading">#</a></h2>
+<p>Back to your <code class="docutils literal notranslate"><span class="pre">terraform.tfvars</span></code> file. Update the <code class="docutils literal notranslate"><span class="pre">enable_dcf_tag_rule</span></code> variable from <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Be sure to save the file after making the update.</p>
+<p>Then from <code class="docutils literal notranslate"><span class="pre">LXTerminal</span></code> on the jumpbox, issue the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>terraform<span class="w"> </span>apply<span class="w"> </span>--auto-approve
+</pre></div>
+</div>
+<p>It should only take a minute to enable the rule.</p>
 </section>
-<section id="apply-dcf-tag-rule">
-<h2>Apply DCF Tag Rule<a class="headerlink" href="#apply-dcf-tag-rule" title="Link to this heading">#</a></h2>
+<section id="expected-results">
+<h2>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h2>
+<p>Back to CoPilot, navigate back to your DCF rules. Notice that rule 200, allowing port <code class="docutils literal notranslate"><span class="pre">1433</span></code> to connect between the <code class="docutils literal notranslate"><span class="pre">inter-cloud</span></code> group has now been enforced.</p>
+<p><img alt="DCF tag" src="../_images/dcf_tag_enable.png" /></p>
+<p>Let’s take a look at what is defined by that group by navigating back to <code class="docutils literal notranslate"><span class="pre">Groups</span></code> and clicking on <code class="docutils literal notranslate"><span class="pre">inter-cloud</span></code></p>
+<p><img alt="DCF tag" src="../_images/dcf_1433.png" /></p>
+<p>Here you’ll see that this group applies to any instance with the <code class="docutils literal notranslate"><span class="pre">Allowxcloud</span></code> or <code class="docutils literal notranslate"><span class="pre">allowxcloud</span></code> tag set to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Further you’ll see that the <code class="docutils literal notranslate"><span class="pre">aws-1</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-1</span></code> instances both meet that criteria. You can conclude that those two instances should now be able to communicated on port <code class="docutils literal notranslate"><span class="pre">1433</span></code>.</p>
+<p>Let’s confirm with gatus.</p>
+<p><img alt="Gatus" src="../_images/dcf_gatus_1433.png" /></p>
 </section>
-<section id="expected-results-tag">
-<h2>Expected Results - Tag<a class="headerlink" href="#expected-results-tag" title="Link to this heading">#</a></h2>
+<section id="configure-and-apply-microsegmentation">
+<h2>Configure and apply microsegmentation<a class="headerlink" href="#configure-and-apply-microsegmentation" title="Link to this heading">#</a></h2>
+<p>Back to your <code class="docutils literal notranslate"><span class="pre">terraform.tfvars</span></code> file. Update the <code class="docutils literal notranslate"><span class="pre">enable_sg_orchestration</span></code> variable from <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Be sure to save the file after making the update.</p>
+<p>Then from <code class="docutils literal notranslate"><span class="pre">LXTerminal</span></code> on the jumpbox, issue the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>terraform<span class="w"> </span>apply<span class="w"> </span>--auto-approve
+</pre></div>
+</div>
+<p>It should only take a minute to enable the sg orchestration feature.</p>
 </section>
-<section id="enable-microsegmentation">
-<h2>Enable Microsegmentation<a class="headerlink" href="#enable-microsegmentation" title="Link to this heading">#</a></h2>
-</section>
-<section id="apply-microsegmentation">
-<h2>Apply Microsegmentation<a class="headerlink" href="#apply-microsegmentation" title="Link to this heading">#</a></h2>
-</section>
-<section id="expected-results-microseg">
-<h2>Expected Results - Microseg<a class="headerlink" href="#expected-results-microseg" title="Link to this heading">#</a></h2>
+<section id="microsegmentation-results">
+<h2>Microsegmentation Results<a class="headerlink" href="#microsegmentation-results" title="Link to this heading">#</a></h2>
+<p>With SG Orchestration enabled, the dcf rules that were previously applied only to Aviatrix gateways are now implemented to control traffic inside the VPC/Vnets by, as the name implies, orchestrating NSGs, firewall rules, and security groups in the CSPs themselves.</p>
+<p>In CoPilot, confirm that all dcf rules are now enabled.</p>
+<p><img alt="DCF" src="../_images/dcf_rules_applied.png" /></p>
+<p>Also, confirm that SG orchestration is enabled on the <code class="docutils literal notranslate"><span class="pre">AWS</span></code> and <code class="docutils literal notranslate"><span class="pre">Azure</span></code> VPC/VNet by navigating to <code class="docutils literal notranslate"><span class="pre">Security</span></code>, <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> and then click <code class="docutils literal notranslate"><span class="pre">Settings</span></code> in the top nav, and then click <code class="docutils literal notranslate"><span class="pre">Manage</span></code> in the Security Group (SG) Orchestration section.</p>
+<p><img alt="DCF" src="../_images/dcf_sg_orch.png" /></p>
+<p>In the resulting view, you’re looking to confirm the <code class="docutils literal notranslate"><span class="pre">Orchestration</span> <span class="pre">Status</span></code> both <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-spoke</span></code> is <code class="docutils literal notranslate"><span class="pre">Completed</span></code>.</p>
+<p><img alt="DCF" src="../_images/dcf_sg_status.png" /></p>
+<p>If it’s blank or In Progress, you can refresh with the icon in the bottom right.</p>
+<p>When completed, let’s check the effect on gatus.</p>
+<p><img alt="Gatus" src="../_images/dcf_intra.png" /></p>
+<p>The rules that were previously applied to the Aviatrix gateways are now securing instances within the VPC/VNets also!</p>
+<p>In the aws console, you can see the orchestrated security groups by filtering on <code class="docutils literal notranslate"><span class="pre">AVX-SEC</span></code></p>
+<p><img alt="Security Groups" src="../_images/dcf_aws.png" /></p>
 </section>
 <section id="code">
 <h2>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
+<p>Let’s take a look at the code behind the applies. Looking at the root <code class="docutils literal notranslate"><span class="pre">main.tf</span></code> you can see that the <code class="docutils literal notranslate"><span class="pre">enable_dcf</span></code> variable enables execution of the local <code class="docutils literal notranslate"><span class="pre">dcf</span></code> module. The <code class="docutils literal notranslate"><span class="pre">enable_dcf_tag_rule</span></code> and <code class="docutils literal notranslate"><span class="pre">enable_sg_orchestration</span></code> variables are passed to enable rules and orchestration.</p>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;dcf&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">count</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nv">var.enable_dcf</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="na">source</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;./dcf&quot;</span>
+<span class="w">  </span><span class="na">azure_spoke_vpc_id</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">module.mcna[0].spoke_vpc_azure.vpc_id</span>
+<span class="w">  </span><span class="na">aws_spoke_vpc_id</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">module.mcna[0].spoke_vpc_aws.vpc_id</span>
+<span class="w">  </span><span class="na">aws_region</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">local.backbone.aws.transit_region_name</span>
+<span class="w">  </span><span class="na">azure_region</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="nv">local.backbone.azure.transit_region_name</span>
+<span class="w">  </span><span class="na">aws_account</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nv">local.backbone.aws.transit_account</span>
+<span class="w">  </span><span class="na">azure_account</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">local.backbone.azure.transit_account</span>
+<span class="w">  </span><span class="na">enable_sg_orchestration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.enable_sg_orchestration</span>
+<span class="w">  </span><span class="na">enable_dcf_tag_rule</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">var.enable_dcf_tag_rule</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Inside the local <code class="docutils literal notranslate"><span class="pre">dcf</span></code> module, you’ll see the dcf rules definition, groups definition sg orchestration enablement, and rules (policy) enforcement.</p>
+<p>That completes the dcf lab. Use the navigation below when you’re ready to move onto the next section.</p>
 </section>
 </section>
 
@@ -401,16 +475,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "terraform"
+            mode: "python"
         },
         kernelOptions: {
-            name: "terraform",
+            name: "python3",
             path: "./docs"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'terraform'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -456,15 +530,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-dcf">Enable DCF</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-dcf">Apply DCF</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results-dcf">Expected Results - DCF</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-dcf-tag-rule">Enable DCF Tag Rule</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-dcf-tag-rule">Apply DCF Tag Rule</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results-tag">Expected Results - Tag</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-microsegmentation">Enable Microsegmentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-microsegmentation">Apply Microsegmentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results-microseg">Expected Results - Microseg</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-connectivity">Initial Connectivity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-and-apply-dcf-rules">Configure and apply DCF rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dcf-results">DCF Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-and-enable-a-tag-based-rule">Configure and enable a tag-based rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-and-apply-microsegmentation">Configure and apply microsegmentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#microsegmentation-results">Microsegmentation Results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
 </ul>
   </nav></div>
