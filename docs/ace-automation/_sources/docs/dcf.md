@@ -9,7 +9,7 @@ In this lab, the goal is to leverage Aviatrix's Distributed Cloud Firewall (DCF)
 - Enabling DCF
 - Applying a set of rules that act broadly on defined CIDR ranges
 - Applying a set of rules that act specifically on compute with designated tags
-- Applying Security Group (SG) Orchestration to implement microsegmentation within the VPC/VNet
+- Enabling `Security Group (SG) Orchestration` to implement microsegmentation within the VPC/VNet
 
 There is no infrastructure to deploy as this is all Aviatrix configuration. For SG orchestration, the controller will be orchestrating NSG and SGs within the respective cloud providers out-of-band from the terraform execution.
 
@@ -49,7 +49,7 @@ Notice there are 5 rules, only two of which are enforced (the green check (enfor
 
 Let's focus on the 2 enforced rules `allow-https` and `default-deny-all`.
 
-The `allow-https` rule is allow tcp port 443 between the `aws-spoke` and `azure-spoke` groups. Let's take a look at what that means.
+The `allow-https` rule is allowing tcp port 443 between the `aws-spoke` and `azure-spoke` groups. Let's take a look at what that means.
 
 In CoPilot, navigate to `Groups` in the left-hand nav and click on `aws-spoke`. Notice that the group is defined by a set of CIDRs. Now click on `azure-spoke` and confirm the same.
 
@@ -73,7 +73,7 @@ It should only take a minute to enable the rule.
 
 ## Expected Results
 
-Back to CoPilot, navigate back to your DCF rules. Notice that rule 200, allowing port `1433` to connect between the `inter-cloud` group has now been enforced. 
+Back to CoPilot, navigate back to your DCF rules. Notice that rule 200, allowing port `1433` to connect between the `inter-cloud` group has now been enforced.
 
 ![DCF tag](images/dcf_tag_enable.png)
 
@@ -111,11 +111,11 @@ Also, confirm that SG orchestration is enabled on the `AWS` and `Azure` VPC/VNet
 
 ![DCF](images/dcf_sg_orch.png)
 
-In the resulting view, you're looking to confirm the `Orchestration Status` both `aws-spoke` and `azure-spoke` is `Completed`.
+In the resulting view, you're looking to confirm the `Orchestration Status` for both `aws-spoke` and `azure-spoke` is `Completed`.
 
 ![DCF](images/dcf_sg_status.png)
 
-If it's blank or In Progress, you can refresh with the icon in the bottom right.
+If it's blank or In Progress, you can refresh with the icon in the bottom right after waiting a minute or so.
 
 When completed, let's check the effect on gatus.
 

@@ -187,8 +187,8 @@
 <li class="toctree-l1"><a class="reference internal" href="segmentation.html">Network Segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dcf.html">Distributed Cloud Firewall (DCF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom_routing.html">Customized Spoke VPC Routing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
 </ul>
 
     </div>
@@ -380,7 +380,7 @@ document.write(`
 </section>
 <section id="controller">
 <h2>Controller<a class="headerlink" href="#controller" title="Link to this heading">#</a></h2>
-<p>The Aviatrix Controller is the control plane for your cloud networks. When executing terraform resources using the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">Aviatrix Provider</a>, it’s the Controller api that is orchestrating infrastructure in your cloud accounts and configuration within the Aviatrix platform.</p>
+<p>The Aviatrix Controller is the control plane for your cloud networks. When executing terraform resources using the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">Aviatrix Provider</a>, it’s the Controller api that is orchestrating infrastructure in your cloud accounts and configuration within the Aviatrix platform. In this course, we will only be interacting with the controller via code.</p>
 </section>
 <section id="copilot">
 <h2>CoPilot<a class="headerlink" href="#copilot" title="Link to this heading">#</a></h2>
@@ -404,8 +404,9 @@ document.write(`
 <li><p>aviatrix: a placeholder that can be ignored</p></li>
 <li><p>AWS connectivity: polling connectivity between <code class="docutils literal notranslate"><span class="pre">azure-1</span></code> and <code class="docutils literal notranslate"><span class="pre">aws-1</span></code></p></li>
 <li><p>Intra-vpc connectivity: polling connectivity between <code class="docutils literal notranslate"><span class="pre">azure-1</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-2</span></code></p></li>
+<li><p>Spoke routing - custom: polling connectivity between <code class="docutils literal notranslate"><span class="pre">azure-1</span></code> and <code class="docutils literal notranslate"><span class="pre">aws-1</span></code> using a custom internal (to <code class="docutils literal notranslate"><span class="pre">aws-1</span></code>) ip address - <code class="docutils literal notranslate"><span class="pre">172.16.0.1</span></code></p></li>
 </ul>
-<p>As you move through the labs, you’ll refer to the dashboards to see the effect that various configuration has on connectivity.</p>
+<p>As you move through the labs, you’ll refer to the dashboards to see the effect that various configuration has on connectivity. Throughout the lab guide, reference to one (<code class="docutils literal notranslate"><span class="pre">AWS</span></code> or <code class="docutils literal notranslate"><span class="pre">Azure</span></code>) gatus dashboard applies to both.</p>
 </section>
 <section id="jumpbox">
 <h2>Jumpbox<a class="headerlink" href="#jumpbox" title="Link to this heading">#</a></h2>
@@ -415,6 +416,7 @@ document.write(`
 <section id="code">
 <h2>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
 <p>The Terraform code we’ll be executing for these labs has been pre-installed on the jumpbox in the student home directory, but is also available on GitHub should you prefer to run on your own workstation.</p>
+<p><img alt="GitHub" src="../_images/start_github.png" /></p>
 <section id="jumpbox-execution">
 <h3>Jumpbox execution<a class="headerlink" href="#jumpbox-execution" title="Link to this heading">#</a></h3>
 <p>From the portal registration page, click <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Server</span></code> in the <code class="docutils literal notranslate"><span class="pre">Jumpbox</span></code> section to open the jumpbox in a new tab (or RDP with the client of your choice). Log in with the username and password provided. Clicking the values copies them to your clipboard.</p>

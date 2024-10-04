@@ -187,8 +187,8 @@
 <li class="toctree-l1"><a class="reference internal" href="segmentation.html">Network Segmentation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Distributed Cloud Firewall (DCF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom_routing.html">Customized Spoke VPC Routing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
 </ul>
 
     </div>
@@ -367,7 +367,7 @@ document.write(`
 <li><p>Enabling DCF</p></li>
 <li><p>Applying a set of rules that act broadly on defined CIDR ranges</p></li>
 <li><p>Applying a set of rules that act specifically on compute with designated tags</p></li>
-<li><p>Applying Security Group (SG) Orchestration to implement microsegmentation within the VPC/VNet</p></li>
+<li><p>Enabling <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Group</span> <span class="pre">(SG)</span> <span class="pre">Orchestration</span></code> to implement microsegmentation within the VPC/VNet</p></li>
 </ul>
 <p>There is no infrastructure to deploy as this is all Aviatrix configuration. For SG orchestration, the controller will be orchestrating NSG and SGs within the respective cloud providers out-of-band from the terraform execution.</p>
 <section id="initial-connectivity">
@@ -394,7 +394,7 @@ document.write(`
 <p><img alt="DCF" src="../_images/dcf_rules.png" /></p>
 <p>Notice there are 5 rules, only two of which are enforced (the green check (enforced) vs the grey slash (unenforced)).</p>
 <p>Let’s focus on the 2 enforced rules <code class="docutils literal notranslate"><span class="pre">allow-https</span></code> and <code class="docutils literal notranslate"><span class="pre">default-deny-all</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">allow-https</span></code> rule is allow tcp port 443 between the <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-spoke</span></code> groups. Let’s take a look at what that means.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">allow-https</span></code> rule is allowing tcp port 443 between the <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-spoke</span></code> groups. Let’s take a look at what that means.</p>
 <p>In CoPilot, navigate to <code class="docutils literal notranslate"><span class="pre">Groups</span></code> in the left-hand nav and click on <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code>. Notice that the group is defined by a set of CIDRs. Now click on <code class="docutils literal notranslate"><span class="pre">azure-spoke</span></code> and confirm the same.</p>
 <p><img alt="DCF" src="../_images/dcf_groups.png" /></p>
 <p>We can conclude that all traffic throughout the Aviatrix network will be denied, except port 443 between the set of CIDRs defined by the <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-spoke</span></code> groups. Let’s confirm with gatus.</p>
@@ -435,9 +435,9 @@ document.write(`
 <p><img alt="DCF" src="../_images/dcf_rules_applied.png" /></p>
 <p>Also, confirm that SG orchestration is enabled on the <code class="docutils literal notranslate"><span class="pre">AWS</span></code> and <code class="docutils literal notranslate"><span class="pre">Azure</span></code> VPC/VNet by navigating to <code class="docutils literal notranslate"><span class="pre">Security</span></code>, <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> and then click <code class="docutils literal notranslate"><span class="pre">Settings</span></code> in the top nav, and then click <code class="docutils literal notranslate"><span class="pre">Manage</span></code> in the Security Group (SG) Orchestration section.</p>
 <p><img alt="DCF" src="../_images/dcf_sg_orch.png" /></p>
-<p>In the resulting view, you’re looking to confirm the <code class="docutils literal notranslate"><span class="pre">Orchestration</span> <span class="pre">Status</span></code> both <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-spoke</span></code> is <code class="docutils literal notranslate"><span class="pre">Completed</span></code>.</p>
+<p>In the resulting view, you’re looking to confirm the <code class="docutils literal notranslate"><span class="pre">Orchestration</span> <span class="pre">Status</span></code> for both <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> and <code class="docutils literal notranslate"><span class="pre">azure-spoke</span></code> is <code class="docutils literal notranslate"><span class="pre">Completed</span></code>.</p>
 <p><img alt="DCF" src="../_images/dcf_sg_status.png" /></p>
-<p>If it’s blank or In Progress, you can refresh with the icon in the bottom right.</p>
+<p>If it’s blank or In Progress, you can refresh with the icon in the bottom right after waiting a minute or so.</p>
 <p>When completed, let’s check the effect on gatus.</p>
 <p><img alt="Gatus" src="../_images/dcf_intra.png" /></p>
 <p>The rules that were previously applied to the Aviatrix gateways are now securing instances within the VPC/VNets also!</p>
