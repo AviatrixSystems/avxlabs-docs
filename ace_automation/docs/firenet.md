@@ -4,13 +4,13 @@
 Estimated time to complete: `45 minutes`
 ```
 
-In this lab, the goal is to insert a Palo Alto Firewall into the east-west data path at the AWS transit using Aviatrix FireNet. A palo boostrap configuration has been deployed to S3, but otherwise, this will be done solely with the Aviatrix terraform provider.
+In this lab, the goal is to insert a Palo Alto Firewall into the east-west data path at the AWS transit using Aviatrix FireNet. A Palo boostrap configuration has been deployed to S3, but otherwise, this will be done solely with the Aviatrix terraform provider.
 
 The following infrastructure will be deployed terraform:
 
 - A Palo Alto Networks VM-Series Next-Generation Firewall (BYOL)
 
-In addition to the explicit infrastructure deployed via Terraform, the Aviatrix platform will also handle programming routes into the respective cloud route tables such that traffic passing through the AWS transit will be forwarded to the FW before returning and continuing across the Aviatrix network (firewall rules allowing).
+In addition to the explicit infrastructure deployed via Terraform, the Aviatrix platform will also handle programming routes into the respective CSP route tables such that traffic passing through the AWS transit will be forwarded to the FW before returning and continuing across the Aviatrix network (firewall rules allowing).
 
 The Palo bootstrap configuration is set to allow and log RFC1918, so no traffic will be dropped.
 
@@ -37,7 +37,7 @@ terraform apply --auto-approve
 It takes roughly 23 minutes for the firewall to be deployed, initialized, and inserted into the data path.
 
 ```{note}
-If you're watching your gatus dashboards through the entirety of the process, you'll notice connectivity never stops. The Aviatrix transit waits until the fw is fully initialized and configured before inserting it in the data path.
+If you're watching your gatus dashboards through the entirety of the process, you'll notice connectivity never stops. The Aviatrix transit waits until the fw is fully initialized and configured before inserting it into the data path.
 ```
 
 ## Expected Results
@@ -52,6 +52,8 @@ And, inter-cloud connectivity is still noted.
 
 Let's take a look the Palo. By default, the management UI is closed to the internet, so we'll have to modify the security group to allow it.
 
+From the pod registration portal, use the `Console` link and credentials to log into AWS.
+
 ![Portal](images/firenet_aws.png)
 
 Navigate to `EC2` and select `Security Groups` under `Network & Security` in the left-hand nav.
@@ -60,11 +62,13 @@ Search for `management`. Only 1 security group will match.
 
 ![Security Group](images/firenet_sg.png)
 
-Click on its `Security Group ID` then `Edit inbound rules` in the lower-right and add a rule that allows `HTTPS` from your IP.
+Click on its `Security Group ID` then `Edit inbound rules` in the lower-right and add a rule that allows `HTTPS` from your `0.0.0.0/0`.
 
 Then go to CoPilot. In the left-hand nav, select `Security`, then `FireNet`, then the `Firewall` tab at the top. Then, click the `Management UI` to open Palo.
 
 ![FireNet](images/firenet_firenet.png)
+
+If you're blocked from accessing the Palo management UI due to corporate security policy, you can use Firefox on the jumpbox for access.
 
 Log in with the credentials provided in the portal registration page. After clicking through several pop-ups, click on the `Monitor` tab in the top nav.
 
