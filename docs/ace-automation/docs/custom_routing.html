@@ -61,7 +61,7 @@
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Appendix" href="appendix.html" />
+    <link rel="next" title="Summary" href="summary.html" />
     <link rel="prev" title="Distributed Cloud Firewall (DCF)" href="dcf.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,8 +187,8 @@
 <li class="toctree-l1"><a class="reference internal" href="segmentation.html">Network Segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dcf.html">Distributed Cloud Firewall (DCF)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Customized Spoke VPC Routing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
 </ul>
 
     </div>
@@ -358,16 +358,16 @@ document.write(`
 <p class="admonition-title">Important</p>
 <p>Estimated time to complete: <code class="docutils literal notranslate"><span class="pre">15</span> <span class="pre">minutes</span></code></p>
 </div>
-<p>In this lab, the goal is to demonstrate custom routing to a spoke for a cidr not defined in the vpc.</p>
+<p>In this lab, the goal is to demonstrate custom routing to a spoke for a cidr not configured in the vpc.</p>
 <p>The instance, <code class="docutils literal notranslate"><span class="pre">aws-1</span></code> has a loopback interface defined on <code class="docutils literal notranslate"><span class="pre">172.16.0.1/32</span></code>.</p>
 <p>A single route in the <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> vpc has been pre-deployed, routing <code class="docutils literal notranslate"><span class="pre">172.16.0.1/32</span></code> to the <code class="docutils literal notranslate"><span class="pre">aws-1</span></code> instance. There is no other infrastructure to deploy as the rest of the configuration is within Aviatrix.</p>
 <section id="initial-connectivity">
 <h2>Initial Connectivity<a class="headerlink" href="#initial-connectivity" title="Link to this heading">#</a></h2>
 <p>View the topology, now with the addition of the <code class="docutils literal notranslate"><span class="pre">172.16.0.1/32</span></code> cidr defined on the <code class="docutils literal notranslate"><span class="pre">aws-1</span></code> instance.</p>
 <p><img alt="Routing Topology" src="../_images/routing_topology.png" /></p>
-<p>The Azure gatus dashboard has a section called <code class="docutils literal notranslate"><span class="pre">Spoke</span> <span class="pre">routing</span> <span class="pre">-</span> <span class="pre">custom</span></code>. Unsurprisingly, there is no connectivity from <code class="docutils literal notranslate"><span class="pre">azure-1</span></code> to <code class="docutils literal notranslate"><span class="pre">aws-1</span></code> for that cidr. The <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> gateway is only advertising the routes for the cidr defined by its vpc - the default behavior.</p>
+<p>The Azure gatus dashboard has a section called <code class="docutils literal notranslate"><span class="pre">Spoke</span> <span class="pre">routing</span> <span class="pre">-</span> <span class="pre">custom</span></code>. Unsurprisingly, there is no connectivity from <code class="docutils literal notranslate"><span class="pre">azure-1</span></code> to <code class="docutils literal notranslate"><span class="pre">aws-1</span></code> for that cidr. The <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> Aviatrix gateway is only advertising the routes for the cidr defined by its vpc - the default behavior.</p>
 <p><img alt="Gatus" src="../_images/routing_gatus.png" /></p>
-<p>The solution is to implement a custom configuration on the <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> spoke gateway to advertise that cidr to the rest of the network.</p>
+<p>The solution is to implement a custom configuration on the <code class="docutils literal notranslate"><span class="pre">aws-spoke</span></code> gateway to advertise that cidr to the rest of the Aviatrix network.</p>
 </section>
 <section id="configure-and-apply">
 <h2>Configure and apply<a class="headerlink" href="#configure-and-apply" title="Link to this heading">#</a></h2>
@@ -449,11 +449,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="appendix.html"
+       href="summary.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Appendix</p>
+        <p class="prev-next-title">Summary</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

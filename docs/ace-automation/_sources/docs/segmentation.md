@@ -38,7 +38,7 @@ It should only take a minute to apply the network domains to each spoke - `Blue`
 
 ## Segmentation Results
 
-We've now placed each spoke network in its own network segment.
+We have now placed each spoke network in its own network segment.
 
 ![Topology](images/segmentation_topology.png)
 
@@ -46,7 +46,7 @@ Refresh your network segmentation screen in CoPilot. You'll now see that each sp
 
 ![Segmentation](images/segmentation_segmented.png)
 
-Click on `Network Domains` in the top nav. You'll see the domain definitions and associations.
+Click on `Network Domains` in the top nav. You'll see the domain definitions and their associations.
 
 ![Domains](images/segmentation_domains.png)
 

@@ -4,7 +4,7 @@
 Estimated time to complete: `15 minutes`
 ```
 
-In this lab, the goal is to demonstrate custom routing to a spoke for a cidr not defined in the vpc.
+In this lab, the goal is to demonstrate custom routing to a spoke for a cidr not configured in the vpc.
 
 The instance, `aws-1` has a loopback interface defined on `172.16.0.1/32`.
 
@@ -16,11 +16,11 @@ View the topology, now with the addition of the `172.16.0.1/32` cidr defined on 
 
 ![Routing Topology](images/routing_topology.png)
 
-The Azure gatus dashboard has a section called `Spoke routing - custom`. Unsurprisingly, there is no connectivity from `azure-1` to `aws-1` for that cidr. The `aws-spoke` gateway is only advertising the routes for the cidr defined by its vpc - the default behavior.
+The Azure gatus dashboard has a section called `Spoke routing - custom`. Unsurprisingly, there is no connectivity from `azure-1` to `aws-1` for that cidr. The `aws-spoke` Aviatrix gateway is only advertising the routes for the cidr defined by its vpc - the default behavior.
 
 ![Gatus](images/routing_gatus.png)
 
-The solution is to implement a custom configuration on the `aws-spoke` spoke gateway to advertise that cidr to the rest of the network.
+The solution is to implement a custom configuration on the `aws-spoke` gateway to advertise that cidr to the rest of the Aviatrix network.
 
 ## Configure and apply
 

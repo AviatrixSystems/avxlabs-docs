@@ -9,7 +9,7 @@ In this lab, the goal is to bridge two unconnected networks in two separate clou
 The following infrastructure will be deployed:
 
 - A transit VPC in AWS
-- A transit Vnet in Azure
+- A transit VNet in Azure
 - An Aviatrix transit gateway in the transit vpc in AWS
 - An Aviatrix transit gateway in the transit vnet in Azure
 - An Aviatrix spoke gateway in the brownfield spoke vpc in AWS
@@ -116,6 +116,6 @@ The local mcna module itself consisted of 2 aviatrix modules:
 - [backbone](https://registry.terraform.io/modules/terraform-aviatrix-modules/backbone/aviatrix/latest): itself a collection of [mc-transit](https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit/aviatrix/latest), [mc-firenet](https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-firenet/aviatrix/latest), and [mc-transit-peering](https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest) modules
 - [mc-spoke](https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-spoke/aviatrix/latest)
 
-These collection of Aviatrix-supported modules make it very easy to deploy and connect networks across all major cloud providers.
+This collection of Aviatrix-supported modules make it very easy to deploy and connect networks across all major cloud providers.
 
 Next, we'll demonstrate inserting a 3rd-party firewall into the east-west data path. Use the navigation below when you're ready to move onto the next section.

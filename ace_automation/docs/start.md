@@ -2,7 +2,7 @@
 
 ## Pod Registration
 
-A set of cloud accounts has been reserved for each class participant. What we at Aviatrix call a "POD". To register for your pod, please open the 
+A set of cloud accounts has been reserved for each class participant. What we at Aviatrix call a "POD". To register for your pod, please open the
 <a href="https://automation-portal.ace.aviatrixlab.com/" target="_blank">registration portal</a>, enter your details and the access code provided by the instructor. After clicking submit, you will assigned a pod number and given details about the pod; URLs, usernames, passwords, etc to be used throughout the course.
 
 ## Initial Topology
@@ -19,7 +19,7 @@ Note the 3 VPCs:
 
 ## Controller
 
-The Aviatrix Controller is the control plane for your cloud networks. When executing terraform resources using the [Aviatrix Provider](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs), it's the Controller api that is orchestrating infrastructure in your cloud accounts and configuration within the Aviatrix platform.
+The Aviatrix Controller is the control plane for your cloud networks. When executing terraform resources using the [Aviatrix Provider](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs), it's the Controller api that is orchestrating infrastructure in your cloud accounts and configuration within the Aviatrix platform. In this course, we will only be interacting with the controller via code.
 
 ## CoPilot
 
@@ -48,8 +48,9 @@ The **Azure** gatus dashboard has 4 sections:
 - aviatrix: a placeholder that can be ignored
 - AWS connectivity: polling connectivity between `azure-1` and `aws-1`
 - Intra-vpc connectivity: polling connectivity between `azure-1` and `azure-2`
+- Spoke routing - custom: polling connectivity between `azure-1` and `aws-1` using a custom internal (to `aws-1`) ip address - `172.16.0.1`
 
-As you move through the labs, you'll refer to the dashboards to see the effect that various configuration has on connectivity.
+As you move through the labs, you'll refer to the dashboards to see the effect that various configuration has on connectivity. Throughout the lab guide, reference to one (`AWS` or `Azure`) gatus dashboard applies to both.
 
 ## Jumpbox
 
@@ -60,6 +61,8 @@ A jumpbox instance has been deployed to act as an execution environment with Ter
 ## Code
 
 The Terraform code we'll be executing for these labs has been pre-installed on the jumpbox in the student home directory, but is also available on GitHub should you prefer to run on your own workstation.
+
+![GitHub](images/start_github.png)
 
 ### Jumpbox execution
 

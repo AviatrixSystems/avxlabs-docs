@@ -187,8 +187,8 @@
 <li class="toctree-l1"><a class="reference internal" href="segmentation.html">Network Segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dcf.html">Distributed Cloud Firewall (DCF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom_routing.html">Customized Spoke VPC Routing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
 </ul>
 
     </div>
@@ -358,12 +358,12 @@ document.write(`
 <p class="admonition-title">Important</p>
 <p>Estimated time to complete: <code class="docutils literal notranslate"><span class="pre">45</span> <span class="pre">minutes</span></code></p>
 </div>
-<p>In this lab, the goal is to insert a Palo Alto Firewall into the east-west data path at the AWS transit using Aviatrix FireNet. A palo boostrap configuration has been deployed to S3, but otherwise, this will be done solely with the Aviatrix terraform provider.</p>
+<p>In this lab, the goal is to insert a Palo Alto Firewall into the east-west data path at the AWS transit using Aviatrix FireNet. A Palo boostrap configuration has been deployed to S3, but otherwise, this will be done solely with the Aviatrix terraform provider.</p>
 <p>The following infrastructure will be deployed terraform:</p>
 <ul class="simple">
 <li><p>A Palo Alto Networks VM-Series Next-Generation Firewall (BYOL)</p></li>
 </ul>
-<p>In addition to the explicit infrastructure deployed via Terraform, the Aviatrix platform will also handle programming routes into the respective cloud route tables such that traffic passing through the AWS transit will be forwarded to the FW before returning and continuing across the Aviatrix network (firewall rules allowing).</p>
+<p>In addition to the explicit infrastructure deployed via Terraform, the Aviatrix platform will also handle programming routes into the respective CSP route tables such that traffic passing through the AWS transit will be forwarded to the FW before returning and continuing across the Aviatrix network (firewall rules allowing).</p>
 <p>The Palo bootstrap configuration is set to allow and log RFC1918, so no traffic will be dropped.</p>
 <section id="initial-connectivity">
 <h2>Initial Connectivity<a class="headerlink" href="#initial-connectivity" title="Link to this heading">#</a></h2>
@@ -382,7 +382,7 @@ document.write(`
 <p>It takes roughly 23 minutes for the firewall to be deployed, initialized, and inserted into the data path.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you’re watching your gatus dashboards through the entirety of the process, you’ll notice connectivity never stops. The Aviatrix transit waits until the fw is fully initialized and configured before inserting it in the data path.</p>
+<p>If you’re watching your gatus dashboards through the entirety of the process, you’ll notice connectivity never stops. The Aviatrix transit waits until the fw is fully initialized and configured before inserting it into the data path.</p>
 </div>
 </section>
 <section id="expected-results">
@@ -392,13 +392,15 @@ document.write(`
 <p>And, inter-cloud connectivity is still noted.</p>
 <p><img alt="Gatus" src="../_images/mcna_gatus_cloudx.png" /></p>
 <p>Let’s take a look the Palo. By default, the management UI is closed to the internet, so we’ll have to modify the security group to allow it.</p>
+<p>From the pod registration portal, use the <code class="docutils literal notranslate"><span class="pre">Console</span></code> link and credentials to log into AWS.</p>
 <p><img alt="Portal" src="../_images/firenet_aws.png" /></p>
 <p>Navigate to <code class="docutils literal notranslate"><span class="pre">EC2</span></code> and select <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Groups</span></code> under <code class="docutils literal notranslate"><span class="pre">Network</span> <span class="pre">&amp;</span> <span class="pre">Security</span></code> in the left-hand nav.</p>
 <p>Search for <code class="docutils literal notranslate"><span class="pre">management</span></code>. Only 1 security group will match.</p>
 <p><img alt="Security Group" src="../_images/firenet_sg.png" /></p>
-<p>Click on its <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Group</span> <span class="pre">ID</span></code> then <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">inbound</span> <span class="pre">rules</span></code> in the lower-right and add a rule that allows <code class="docutils literal notranslate"><span class="pre">HTTPS</span></code> from your IP.</p>
+<p>Click on its <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Group</span> <span class="pre">ID</span></code> then <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">inbound</span> <span class="pre">rules</span></code> in the lower-right and add a rule that allows <code class="docutils literal notranslate"><span class="pre">HTTPS</span></code> from your <code class="docutils literal notranslate"><span class="pre">0.0.0.0/0</span></code>.</p>
 <p>Then go to CoPilot. In the left-hand nav, select <code class="docutils literal notranslate"><span class="pre">Security</span></code>, then <code class="docutils literal notranslate"><span class="pre">FireNet</span></code>, then the <code class="docutils literal notranslate"><span class="pre">Firewall</span></code> tab at the top. Then, click the <code class="docutils literal notranslate"><span class="pre">Management</span> <span class="pre">UI</span></code> to open Palo.</p>
 <p><img alt="FireNet" src="../_images/firenet_firenet.png" /></p>
+<p>If you’re blocked from accessing the Palo management UI due to corporate security policy, you can use Firefox on the jumpbox for access.</p>
 <p>Log in with the credentials provided in the portal registration page. After clicking through several pop-ups, click on the <code class="docutils literal notranslate"><span class="pre">Monitor</span></code> tab in the top nav.</p>
 <p><img alt="Palo" src="../_images/firenet_palo.png" /></p>
 <p>Note the traffic is now flowing across the Palo firewall as it traverses from <code class="docutils literal notranslate"><span class="pre">AWS</span></code> to <code class="docutils literal notranslate"><span class="pre">Azure</span></code>.</p>
