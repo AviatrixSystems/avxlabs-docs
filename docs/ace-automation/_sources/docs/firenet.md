@@ -62,7 +62,7 @@ Search for `management`. Only 1 security group will match.
 
 ![Security Group](images/firenet_sg.png)
 
-Click on its `Security Group ID` then `Edit inbound rules` in the lower-right and add a rule that allows `HTTPS` from your `0.0.0.0/0`.
+Click on its `Security Group ID` then `Edit inbound rules` in the lower-right and add a rule that allows type `HTTPS` with a source of `My IP`. If you're using the jumpbox to access the PAN UI, you'll either need to find and use its public IP explicitly, or use  `0.0.0.0/0`.
 
 Then go to CoPilot. In the left-hand nav, select `Security`, then `FireNet`, then the `Firewall` tab at the top. Then, click the `Management UI` to open Palo.
 
