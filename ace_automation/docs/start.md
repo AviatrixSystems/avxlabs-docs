@@ -9,7 +9,7 @@ A set of cloud accounts has been reserved for each class participant. What we at
 
 Let's take a look at the initial topology deployed to your pod:
 
-![Initial Topology](images/start_initial_topology.png)
+![Initial Topology](images/start_topology.png)
 
 Note the 3 VPCs:
 
@@ -94,7 +94,7 @@ In this section we've gotten an overview of the lab environment and its componen
 
 ![Gatus cloud](images/start_gatus_cloud_conx.png)
 
-Next, look at the intra-vnet/vpc connectivity and note that everything is `green`. Instances within the vpc/vnet are able to connect on all ports.
+Next, look at the intra-vnet/vpc connectivity and note that everything is `green`. Instances within the vpc/vnet are able to connect on all ports since no microsegmentation has yet been applied.
 
 ![Gatus vpc](images/start_gatus_vpc.png)
 
