@@ -180,13 +180,13 @@ SSH from your laptop to the instance **_aws-instance_**, using your favourite SS
 Alternatively, you can use the following command: 
 
 ```bash
-ssh student@aws.pod31.aviatrixlab.com
+ssh student@aws.pod6.aviatrixlab.com
 ```
 
 ```{note}
 **username**: *student*
 
-**password**: *4138V2BvWMHq!c*
+**password**: *1056ES!73qJfR9*
 ```
 
 Ping GCP VM's private IP from the AWS instance to test the backbone:
@@ -200,11 +200,11 @@ Ping Verification
 
 Access all the application instances/VMs using your laptop's browser using the following links:
 
-http://aws.pod31.aviatrixlab.com/
+http://aws.pod6.aviatrixlab.com/
 
-http://azure.pod31.aviatrixlab.com/
+http://azure.pod6.aviatrixlab.com/
 
-http://gcp.pod31.aviatrixlab.com/
+http://gcp.pod6.aviatrixlab.com/
 
 ```{figure} images/browser.png
 ---
