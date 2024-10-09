@@ -339,7 +339,7 @@ align: center
 View Rules
 ```
 
-Filter based on the malicious IP (choose the **source IP** as parameter): you will find out that ThreatIQ applied the enforcement `"force-drop"`.
+Filter based on the malicious IP (choose the **Source IP** as parameter): you will find out that ThreatIQ applied the enforcement `"force-drop"`.
 
 ```{figure} images/lab9-force.png
 ---
@@ -401,7 +401,7 @@ Before completing this lab, let's enable `CostIQ` and define the following **Cos
 - workstation client "edge"
 
 
-Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` button, on the right-hand side.
+Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` button.
 
 ```{figure} images/lab9-costiq.png
 ---
@@ -464,7 +464,7 @@ align: center
 Show BGP Learned Routes
 ```
 
-You will find out that all the local subnets advertised by the DC belong to the cidr *10.40.0.0/16*.
+You will find out that all the local subnets advertised by the DC belong to the cidr **10.40.0.0/16**.
 
 ```{figure} images/lab9-cidr.png
 ---
