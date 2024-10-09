@@ -441,7 +441,7 @@ document.write(`
 <p><span class="caption-number">Fig. 255 </span><span class="caption-text">Manage Transit Gateway Attachment</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;+Attachment&quot;</span></code> button and do not forget to also clicking on the <strong>Save</strong> button.</p>
+<p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;+Attachment&quot;</span></code> button.</p>
 <figure class="align-center" id="id10">
 <img alt="../_images/lab8-edge10.png" src="../_images/lab8-edge10.png" />
 <figcaption>
@@ -779,14 +779,14 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 </figcaption>
 </figure>
 <p>From the <strong><em>aws-us-east-2-transit</em></strong> perspective, the destination route <code class="docutils literal notranslate"><span class="pre">172.16.1.0</span></code> is far just one single AS (i.e. 64514)</p>
-<p>Now let’s apply the route manipulation. Go to <strong>CoPilot &gt; Cloud fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW.</p>
+<p>Now let’s apply the route manipulation. Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW.</p>
 <figure class="align-center" id="id48">
 <img alt="../_images/lab8-edgedouble30.png" src="../_images/lab8-edgedouble30.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 294 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section, then under the <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">Path</span> <span class="pre">Prepend</span></code> widget,  select the <code class="docutils literal notranslate"><span class="pre">gcp-us-central1-transit-peering</span></code> connection and type <strong>three times</strong> the AS number 64513.</p>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section, then under the <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">Path</span> <span class="pre">Prepend</span></code> widget,  select the <code class="docutils literal notranslate"><span class="pre">gcp-us-central1-transit-peering</span></code> connection and type <strong>two times</strong> the AS number 64513.</p>
 <p>Of course, then click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id49">
 <img alt="../_images/lab8-edgedouble31.png" src="../_images/lab8-edgedouble31.png" />
@@ -802,7 +802,7 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 <p><span class="caption-number">Fig. 296 </span><span class="caption-text">gcp-us-central1-transit</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section, then under the <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">Path</span> <span class="pre">Prepend</span></code> widget select the <code class="docutils literal notranslate"><span class="pre">aws-us-east-2-transit-peering</span></code> connection and type <strong>three times</strong> the AS number 64514.</p>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section, then under the <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">Path</span> <span class="pre">Prepend</span></code> widget select the <code class="docutils literal notranslate"><span class="pre">aws-us-east-2-transit-peering</span></code> connection and type <strong>two times</strong> the AS number 64514.</p>
 <p>Click on <strong>Save</strong> to apply the change!</p>
 <figure class="align-center" id="id51">
 <img alt="../_images/lab8-edgedouble33.png" src="../_images/lab8-edgedouble33.png" />
@@ -853,8 +853,8 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 <p><span class="caption-number">Fig. 303 </span><span class="caption-text">6 Hops</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now go back to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab and then once again, on the right-hand side, type <code class="docutils literal notranslate"><span class="pre">172.16.1.0/24</span></code> inside the Search field.</p>
-<p>This time the AS Path Length will turn out being equal to 2.</p>
+<p>Now go back to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab and then once again, on the right-hand side, type <code class="docutils literal notranslate"><span class="pre">172.16.1.0</span></code> inside the Search field.</p>
+<p>This time the AS Path Length will turn out being equal to <strong>2</strong>.</p>
 <p><ins>The best path is via the Edge!</ins></p>
 <figure class="align-center" id="id58">
 <a class="reference internal image-reference" href="../_images/lab8-2path.png"><img alt="../_images/lab8-2path.png" src="../_images/lab8-2path.png" style="height: 300px;" /></a>

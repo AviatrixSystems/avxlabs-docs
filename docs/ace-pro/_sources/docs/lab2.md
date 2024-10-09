@@ -347,7 +347,7 @@ Only one Spoke Gateway will be deployed in VPC **gcp-us-central1-spoke1**.
 - **Name:** <span style='color:#479608'>gcp-us-central1-spoke1</span>
 - **Cloud:** <span style='color:#479608'>GCP</span>
 - **Account:** <span style='color:#479608'>gcp-account</span>
-- **VPC:** <span style='color:#479608'>gcp-us-central1-spoke1 (Make sure you don't select gcp-us-**west2**-spoke1 VPC)</span>
+- **VPC:** <span style='color:#479608'>gcp-us-**central1**-spoke1 (Make sure you don't select gcp-us-**west2**-spoke1 VPC)</span>
 - **Instance Size:** <span style='color:#479608'>n1-standard-1</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
 - **Attach to Subnet:** <span style='color:#479608'>gcp-us-central1-spoke1-sub1</span>
