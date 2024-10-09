@@ -232,7 +232,7 @@ The previous outcomes confirm undoubtetly that the connectivity is working smoot
 First and foremost, let's move the `Explicit-Deny-Rule` at the very top of the list of your DCF rules.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the `Explicit-Deny-Rule` and choose *`"Move Rule"`* at the very Top. 
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the `Explicit-Deny-Rule` and choose *`"Move Rule"`* at the very **Top**. 
 
 Then click on **Save in Draft**.
 ```
@@ -290,6 +290,8 @@ Create Rule
 
 At this point, there should be just one uncommitted rule at the very top, as depicted below.
 
+Click on **Commit**.
+
 ```{figure} images/lab10-rule2.png
 ---
 height: 300px
@@ -309,7 +311,7 @@ align: center
 New rule
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 - **Name**: <span style='color:#479608'>intra-icmp-bu2</span>
 - **Source Smartgroups**: <span style='color:#479608'>bu2</span>
@@ -329,7 +331,7 @@ align: center
 intra-icmp-bu2
 ```
 
-At this point, you will have two new rules marked as `New`, therefore you can proceed and click on the **Commit** button.
+At this point, you will have one new rule marked as `New`, therefore you can proceed and click on the **Commit** button.
 
 ```{figure} images/lab10-rule5.png
 ---
@@ -467,7 +469,7 @@ align: center
 New rule
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 - **Name**: <span style='color:#479608'>intra-ssh-bu1</span>
 - **Source Smartgroups**: <span style='color:#479608'>bu1</span>
@@ -519,7 +521,16 @@ Remove the previous filter!
 ---
 align: center
 ---
-SSH ok
+Remove the current applied filter
+```
+
+Now set a new filter based on the parameters showed in the screenshot below:
+
+```{figure} images/lab10-newfilter.png
+---
+align: center
+---
+Source Group = bu1
 ```
 
 ```{figure} images/lab10-logsshbu1.png
@@ -575,6 +586,15 @@ Let's investigate the logs once again.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
+```{caution}
+Remove the previous filter!
+```{figure} images/lab10-removefilter2.png
+---
+align: center
+---
+Remove the current applied filter
+```
+
 ```{figure} images/lab10-bu2monitor.png
 ---
 height: 150px
@@ -584,7 +604,7 @@ Monitor
 ```
 
 The logs above confirm that the ICMP protocol is permitted within the Smart Group bu2.
- 
+
 ### 5.6. Inter-rule from bu2 to bu1
 
 Create a new rule that allows ICMP FROM bu2 TO bu1.
@@ -649,6 +669,15 @@ Ping ok
 Let's investigate the logs once again.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+
+Set a new filter based on the parameters showed in the screenshot below:
+
+```{figure} images/lab10-newfilter3.png
+---
+align: center
+---
+Rule = inter-icmp-bu2-bu1
+```
 
 ```{figure} images/lab10-monitorfresh.png
 ---
@@ -889,7 +918,7 @@ align: center
 New Rule
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 - **Name**: <span style='color:#479608'>inter-icmp-bu2-east1</span>
 - **Source Smartgroups**: <span style='color:#479608'>bu2</span>
@@ -940,6 +969,15 @@ Check the logs once again.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
+```{caution}
+Set a new filter!
+```{figure} images/lab10-removefilter4.png
+---
+align: center
+---
+New filter applied
+```
+
 ```{figure} images/lab10-reallylast.png
 ---
 height: 200px
@@ -983,8 +1021,6 @@ Manage Gateway Attachments
 
 Select the **Spoke Gateway** tab, click on the `"+ Attachment"` button and then choose the **azure-west-us-spoke1** GW from the drop-down window.
 
-Do not forget to click on **Save**.
-
 ```{figure} images/lab10-spoke2spoke03.png
 ---
 align: center
@@ -998,6 +1034,8 @@ align: center
 ---
 Save
 ```
+
+Do not forget to click on **Save**.
 
 Now go to **CoPilot > Cloud Fabric > Topology** and check the new attachment between the two Spoke Gateways in Azure.
 
