@@ -19,7 +19,7 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 
 ## Damaged Reputation and Employee Fired
 
-To further complicate matters, ABC Healthcare recently suffered a data exfiltration attack, leading to significant disruptions, reputational damage, and a negative impact on their stock value. This incident resulted in the dismissal of the previous cloud network architects.
+To further complicate matters, ABC Healthcare recently suffered a data exfiltration attack, which led to significant disruptions, reputational damage, and a negative impact on its stock value. This incident resulted in the dismissal of the previous cloud network architects.
 
 ## You are the Newly Hired Cloud Networking Architect
 
@@ -27,13 +27,13 @@ You, the newly appointed architect, have been tasked with securing this traffic 
 
 ## LAB Objective
 
-Your job to do a POC/POV in your lab and demonstrate how your company can leverage Aviatrix Cloud Perimeter Solution to solve this pain point. You need to deploy the Aviatrix Secure Egress solution using Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than with the native AWS NAT Gateway.
-The Zero Trust policy should only allow following websites and block all other FQDNs.
-The lab intentionally does not provide all the steps to you to complete this lab. You should leverage <a href="https://docs.aviatrix.com" target="_blank">docs.aviatrix.com</a> if you are stuck.
+It is your job to do a POC/POV in your lab and demonstrate how your company can leverage Aviatrix Cloud Perimeter Solution to solve this pain point. You need to deploy the Aviatrix Secure Egress solution using Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than the AWS NAT Gateway.
+The Zero Trust policy should only allow the following domains and block all other FQDNs.
+The lab intentionally only provides some of the steps for you to complete this lab. You should leverage <a href="https://docs.aviatrix.com" target="_blank">docs.aviatrix.com</a> if you are stuck.
 
-- allowed-internet-http domains
+- `allowed-internet-http` domains
   - *.ubuntu.com
-- allowed-internet-https domains
+- `allowed-internet-https` domains
   - *.alibabacloud.com
   - azure.microsoft.com
   - aws.amazon.com
@@ -47,7 +47,7 @@ The lab intentionally does not provide all the steps to you to complete this lab
 
 ## Listen to the following recording
 
-Listen carefully there will be quiz questions based on this 4 min video too.
+Listen carefully. There will be quiz questions based on this 4 min video, also.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cNx51ZJhxek?si=V83b5ledWF08f1lx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## LAB Pre-Req
@@ -60,7 +60,7 @@ Before starting the lab, change the following timers to their lowest value
 DO NOT ATTEMPT TO CHANGE THESE TIMES IN PRE-PROD or PROD SETUP. THIS WOULD CAUSE SERIOUS ISSUES.
 ```
 
-It should look like the following
+It should look like the following:
 
 ![Task Server](images/egress_timers_updated.png)
 
@@ -71,7 +71,7 @@ Do not change these times in the production setup
 
 ## Successful Completion of LAB
 
-After completing the lab, your screen more or less should look like the following. The IP addresses and UUIDs could be different.
+After completing the lab, your screen should look more or less like the following. The IP addresses and UUIDs could be different.
 
 ![Topology](images/egress_topology.png)
 
@@ -85,7 +85,7 @@ After completing the lab, your screen more or less should look like the followin
 
 ## Lab Hints
 
-### Create Secure Egress DFC Rules
+### Create Secure Egress DCF Rules
 
 - Create three rules
 - The last DCF rule is a zero-trust rule
@@ -116,7 +116,7 @@ After completing the lab, your screen more or less should look like the followin
 
 ![Spoke](images/egress_spoke_gw.png)
 
-Check the Egress setting. The Egress traffic is going using the native NAT GW.
+Check the Egress setting. The Egress traffic is going through the AWS NAT GW.
 
 ![Egress](images/egress_egress.png)
 
@@ -133,7 +133,7 @@ Check the Egress setting. The Egress traffic is going using the native NAT GW.
 Add Local Egress on VPC/VNets
 Adding Egress Control on VPC/VNet changes the default route on VPC/VNet to point to the Spoke Gateway and enables SNAT. Egress Control also requires additional resources on the Spoke Gateway.VPC/VNets
 
-Now the diagram should look the following
+Now the diagram should look like the following:
 
 ![Vpc](images/egress_vpc.png)
 
