@@ -25,7 +25,7 @@ ACE Security pod topology
 :align: left
 ```
 
-<a href="https://cplt.pod1.aviatrixlab.com" target="_blank">CoPilot</a>
+<a href="https://cplt.pod21.aviatrixlab.com" target="_blank">CoPilot</a>
 
 Aviatrix **CoPilot** provides a global operational view of your multicloud network, supporting business-critical cloud networking. CoPilot enables enterprises to implement intelligent cloud networking that embeds security into their networks with monitoring and diagnostic tools that help support application availability.
 
@@ -40,5 +40,5 @@ student
 Password:
 
 ```bash
-921P7hY#YH5N3E
+1012fw633#SYTY3
 ```
