@@ -50,6 +50,34 @@ The lab intentionally only provides some of the steps for you to complete this l
 Listen carefully. There will be quiz questions based on this 4 min video, also.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cNx51ZJhxek?si=V83b5ledWF08f1lx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+
+## LAB Access Details
+
+| **POD#** | **Copilot** |
+|:----------:|:---------------:|
+|      1     |       <a href="https://cplt.pod1.aviatrixlab.com" target="_blank">CoPilot1</a>     |
+|      2     |       <a href="https://cplt.pod2.aviatrixlab.com" target="_blank">CoPilot2</a>      |
+|      3     |       <a href="https://cplt.pod3.aviatrixlab.com" target="_blank">CoPilot3</a>      |
+|      4     |       <a href="https://cplt.pod4.aviatrixlab.com" target="_blank">CoPilot4</a>      |
+|      1     |       <a href="https://cplt.pod5.aviatrixlab.com" target="_blank">CoPilot5</a>     |
+|      2     |       <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">CoPilot6</a>      |
+|      3     |       <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">CoPilot7</a>      |
+|      4     |       <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">CoPilot8</a>      |
+
+## Access credentials
+
+Username:
+
+```bash
+student
+```
+
+Password:
+
+```bash
+1012fw633#SYTY3
+```
+
 ## LAB Pre-Req
 
 Before starting the lab, change the following timers to their lowest value
