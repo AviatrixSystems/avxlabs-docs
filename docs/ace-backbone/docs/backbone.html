@@ -1,0 +1,697 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Handson Lab &#8212; ACE Cloud Backbone &amp; Hybrid Connectivity</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/backbone';</script>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Cloud Backbone & Hybrid Connectivity - Home"/>
+    <img src="../_static/aviatrix-logo.png" class="logo__image only-dark pst-js-only" alt="ACE Cloud Backbone & Hybrid Connectivity - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Cloud Backbone
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="details.html">POD Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quiz.html">Quiz and Survey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab.html">Lab - Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/backbone.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Handson Lab</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expensive-and-limited-csp-native-nat-gateway">Expensive and Limited CSP Native NAT Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-charges-reference">Data Charges Reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#damaged-reputation-and-employee-fired">Damaged Reputation and Employee Fired</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-the-newly-hired-cloud-networking-architect">You are the Newly Hired Cloud Networking Architect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">LAB Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-to-the-following-recording">Listen to the following recording</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-access-details">LAB Access Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-credentials">Access credentials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req">LAB Pre-Req</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#successful-completion-of-lab">Successful Completion of LAB</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-hints">Lab Hints</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-secure-egress-dcf-rules">Create Secure Egress DCF Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">Create rfc1918 SmartGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">Deploy Aviatrix Spoke GW</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-spoke-gw-to-become-the-egress-gw">Enable spoke GW to become the Egress GW</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="handson-lab">
+<h1>Handson Lab<a class="headerlink" href="#handson-lab" title="Link to this heading">#</a></h1>
+<section id="scenario">
+<h2>Scenario<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
+<p>ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the AWS cloud environment. For their internet egress traffic, they rely on AWS NAT Gateway. While AWS NAT Gateway serves well for IP address translation, it’s not designed to be a robust security solution. This lack of dedicated security has raised concerns about data privacy and HIPAA compliance among ABC Healthcare’s management.</p>
+</section>
+<section id="expensive-and-limited-csp-native-nat-gateway">
+<h2>Expensive and Limited CSP Native NAT Gateway<a class="headerlink" href="#expensive-and-limited-csp-native-nat-gateway" title="Link to this heading">#</a></h2>
+<p>The current AWS NAT Gateway doesn’t provide the necessary visibility and logging capabilities, and it’s also very expensive due to 2 cents per GB egress data processing charges. ABC Healthcare’s average monthly egress traffic is around 500 TB.
+The native solution also lacks visibility, is cost-prohibitive, and doesn’t support zero trust architecture—putting sensitive patient data and the healthcare provider’s reputation at risk.</p>
+<section id="data-charges-reference">
+<h3>Data Charges Reference<a class="headerlink" href="#data-charges-reference" title="Link to this heading">#</a></h3>
+<p><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/identify-and-optimize-public-ipv4-address-usage-on-aws" target="_blank">Networking and content delivery</a></p>
+<p><a href="https://aws.amazon.com/blogs/apn/aws-data-transfer-charges-for-server-and-serverless-architectures" target="_blank">Data transfer</a></p>
+<p><a href="https://www.cloudzero.com/blog/aws-egress-costs/#:~:text=Data%20transfers%20out%20of%20AWS,$0.0900%20and%20$0.0500%20per%20GB" target="_blank">Egress cost</a></p>
+</section>
+</section>
+<section id="damaged-reputation-and-employee-fired">
+<h2>Damaged Reputation and Employee Fired<a class="headerlink" href="#damaged-reputation-and-employee-fired" title="Link to this heading">#</a></h2>
+<p>To further complicate matters, ABC Healthcare recently suffered a data exfiltration attack, which led to significant disruptions, reputational damage, and a negative impact on its stock value. This incident resulted in the dismissal of the previous cloud network architects.</p>
+</section>
+<section id="you-are-the-newly-hired-cloud-networking-architect">
+<h2>You are the Newly Hired Cloud Networking Architect<a class="headerlink" href="#you-are-the-newly-hired-cloud-networking-architect" title="Link to this heading">#</a></h2>
+<p>You, the newly appointed architect, have been tasked with securing this traffic using the Aviatrix Secure Egress solution. Your mission is to implement a solution that enhances visibility, provides detailed logging, and complies with regulatory mandates while being cost-effective and efficient.</p>
+</section>
+<section id="lab-objective">
+<h2>LAB Objective<a class="headerlink" href="#lab-objective" title="Link to this heading">#</a></h2>
+<p>It is your job to do a POC/POV in your lab and demonstrate how your company can leverage Aviatrix Cloud Perimeter Solution to solve this pain point. You need to deploy the Aviatrix Secure Egress solution using Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than the AWS NAT Gateway.
+The Zero Trust policy should only allow the following domains and block all other FQDNs.
+The lab intentionally only provides some of the steps for you to complete this lab. You should leverage <a href="https://docs.aviatrix.com" target="_blank">docs.aviatrix.com</a> if you are stuck.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">allowed-internet-http</span></code> domains</p>
+<ul>
+<li><p>*.ubuntu.com</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code> domains</p>
+<ul>
+<li><p>*.alibabacloud.com</p></li>
+<li><p><a class="reference external" href="http://azure.microsoft.com">azure.microsoft.com</a></p></li>
+<li><p><a class="reference external" href="http://aws.amazon.com">aws.amazon.com</a></p></li>
+<li><p>*.amazonaws.com</p></li>
+<li><p>*.aviatrix.com</p></li>
+<li><p><a class="reference external" href="http://aviatrix.com">aviatrix.com</a></p></li>
+<li><p><a class="reference external" href="http://cloud.google.com">cloud.google.com</a></p></li>
+<li><p>*.docker.com</p></li>
+<li><p>*.docker.io</p></li>
+<li><p><a class="reference external" href="http://www.oracle.com">www.oracle.com</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="listen-to-the-following-recording">
+<h2>Listen to the following recording<a class="headerlink" href="#listen-to-the-following-recording" title="Link to this heading">#</a></h2>
+<p>Listen carefully. There will be quiz questions based on this 4 min video, also.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cNx51ZJhxek?si=V83b5ledWF08f1lx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</section>
+<section id="lab-access-details">
+<h2>LAB Access Details<a class="headerlink" href="#lab-access-details" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><strong>POD#</strong></p></th>
+<th class="head text-center"><p><strong>Copilot</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p><a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD1</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>2</p></td>
+<td class="text-center"><p><a href="https://cplt.pod2.aviatrixlab.com" target="_blank">POD2</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>3</p></td>
+<td class="text-center"><p><a href="https://cplt.pod3.aviatrixlab.com" target="_blank">POD3</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>4</p></td>
+<td class="text-center"><p><a href="https://cplt.pod4.aviatrixlab.com" target="_blank">POD4</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>5</p></td>
+<td class="text-center"><p><a href="https://cplt.pod5.aviatrixlab.com" target="_blank">POD5</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>6</p></td>
+<td class="text-center"><p><a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD6</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>7</p></td>
+<td class="text-center"><p><a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD7</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>8</p></td>
+<td class="text-center"><p><a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD8</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>9</p></td>
+<td class="text-center"><p><a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD9</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>10</p></td>
+<td class="text-center"><p><a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>11</p></td>
+<td class="text-center"><p><a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>12</p></td>
+<td class="text-center"><p><a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>13</p></td>
+<td class="text-center"><p><a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>14</p></td>
+<td class="text-center"><p><a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>15</p></td>
+<td class="text-center"><p><a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>16</p></td>
+<td class="text-center"><p><a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>17</p></td>
+<td class="text-center"><p><a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>18</p></td>
+<td class="text-center"><p><a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>19</p></td>
+<td class="text-center"><p><a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>20</p></td>
+<td class="text-center"><p><a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="access-credentials">
+<h2>Access credentials<a class="headerlink" href="#access-credentials" title="Link to this heading">#</a></h2>
+<p>Username:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>student
+</pre></div>
+</div>
+<p>Password:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>1012fw633#SYTY3
+</pre></div>
+</div>
+</section>
+<section id="lab-pre-req">
+<h2>LAB Pre-Req<a class="headerlink" href="#lab-pre-req" title="Link to this heading">#</a></h2>
+<p>Before starting the lab, change the following timers to their lowest value</p>
+<p><img alt="Task Server" src="docs/images/egress_timers.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>DO NOT ATTEMPT TO CHANGE THESE TIMES IN PRE-PROD or PROD SETUP. THIS WOULD CAUSE SERIOUS ISSUES.</p>
+</div>
+<p>It should look like the following:</p>
+<p><img alt="Task Server" src="docs/images/egress_timers_updated.png" /></p>
+<p>Do not change these times in the production setup</p>
+<ul class="simple">
+<li><p>Aviatrix Spoke GW must be deployed in Region us-east-1 in the “egress-vpc”</p></li>
+<li><p>GW Instance Size should be t3a.small</p></li>
+</ul>
+</section>
+<section id="successful-completion-of-lab">
+<h2>Successful Completion of LAB<a class="headerlink" href="#successful-completion-of-lab" title="Link to this heading">#</a></h2>
+<p>After completing the lab, your screen should look more or less like the following. The IP addresses and UUIDs could be different.</p>
+<p><img alt="Topology" src="docs/images/egress_topology.png" /></p>
+<p><img alt="Gateway" src="docs/images/egress_spoke.png" /></p>
+<p><img alt="Monitor" src="docs/images/egress_monitor.png" /></p>
+<p><img alt="Filter" src="docs/images/egress_monitor_filter.png" /></p>
+<p><img alt="Routes" src="docs/images/egress_vpc_routes.png" /></p>
+</section>
+<section id="lab-hints">
+<h2>Lab Hints<a class="headerlink" href="#lab-hints" title="Link to this heading">#</a></h2>
+<section id="create-secure-egress-dcf-rules">
+<h3>Create Secure Egress DCF Rules<a class="headerlink" href="#create-secure-egress-dcf-rules" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create three rules</p></li>
+<li><p>The last DCF rule is a zero-trust rule</p></li>
+<li><p>Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code> web group</p></li>
+<li><p>Rule 0 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-http</span></code> web group</p></li>
+</ul>
+<p><img alt="DCF" src="docs/images/egress_dcf_rules.png" /></p>
+</section>
+<section id="create-rfc1918-smartgroup">
+<h3>Create rfc1918 SmartGroup<a class="headerlink" href="#create-rfc1918-smartgroup" title="Link to this heading">#</a></h3>
+<p><img alt="Group" src="docs/images/egress_groups.png" /></p>
+<p><img alt="rfc1918" src="docs/images/egress_rfc1918.png" /></p>
+</section>
+<section id="create-webgroup-to-define-fqdn-allowed-to-access-internet">
+<h3>Create WebGroup to Define FQDN Allowed to Access Internet<a class="headerlink" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet" title="Link to this heading">#</a></h3>
+<p><img alt="WebGroup" src="docs/images/egress_create_group.png" /></p>
+<p><img alt="Edit Group" src="docs/images/egress_edit_group.png" /></p>
+<p><img alt="Polling" src="docs/images/egress_polling.png" /></p>
+</section>
+<section id="deploy-aviatrix-spoke-gw">
+<h3>Deploy Aviatrix Spoke GW<a class="headerlink" href="#deploy-aviatrix-spoke-gw" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The public IP address will be different (Public EIP automatically allocated by CSP)</p></li>
+<li><p>The Subnet CIDR could be different (automatically picked up by Aviatrix Controller)</p></li>
+<li><p>Region: us-east-1</p></li>
+</ul>
+<p><img alt="Spoke" src="docs/images/egress_spoke_gw.png" /></p>
+<p>Check the Egress setting. The Egress traffic is going through the AWS NAT GW.</p>
+<p><img alt="Egress" src="docs/images/egress_egress.png" /></p>
+</section>
+<section id="enable-spoke-gw-to-become-the-egress-gw">
+<h3>Enable spoke GW to become the Egress GW<a class="headerlink" href="#enable-spoke-gw-to-become-the-egress-gw" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Click +Local Egress on VPC/VNets.</p></li>
+<li><p>In the Add Local Egress on VPC/VNets dialog, select the VPC/VNets on which to enable Local Egress.</p></li>
+<li><p>Click Add.</p></li>
+</ol>
+<p><a class="reference external" href="https://docs.aviatrix.com/copilot/latest/network-security/index.html">Read more at Aviatrix Documentation</a></p>
+<p><img alt="Local" src="docs/images/egress_add_local.png" /></p>
+<p>Add Local Egress on VPC/VNets
+Adding Egress Control on VPC/VNet changes the default route on VPC/VNet to point to the Spoke Gateway and enables SNAT. Egress Control also requires additional resources on the Spoke Gateway.VPC/VNets</p>
+<p>Now the diagram should look like the following:</p>
+<p><img alt="Vpc" src="docs/images/egress_vpc.png" /></p>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>By bringing Aviatrix Secure Egress into play, our healthcare provider shored up their defenses, dropped the high costs, and eliminated the visibility black hole courtesy of the AWS NAT Gateway. Sensitive patient data is safe, and the provider’s reputation will be secured.
+Remember, Aviatrix Secure Egress is your go-to for a secure, cost-effective solution for managing internet-bound traffic. Need more help? Our support team’s got your back.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expensive-and-limited-csp-native-nat-gateway">Expensive and Limited CSP Native NAT Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-charges-reference">Data Charges Reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#damaged-reputation-and-employee-fired">Damaged Reputation and Employee Fired</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-the-newly-hired-cloud-networking-architect">You are the Newly Hired Cloud Networking Architect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">LAB Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-to-the-following-recording">Listen to the following recording</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-access-details">LAB Access Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-credentials">Access credentials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req">LAB Pre-Req</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#successful-completion-of-lab">Successful Completion of LAB</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-hints">Lab Hints</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-secure-egress-dcf-rules">Create Secure Egress DCF Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">Create rfc1918 SmartGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">Deploy Aviatrix Spoke GW</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-spoke-gw-to-become-the-egress-gw">Enable spoke GW to become the Egress GW</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
