@@ -1,4 +1,4 @@
-# Backbone Lab
+# Handson Lab
 
 ## Scenario
 
