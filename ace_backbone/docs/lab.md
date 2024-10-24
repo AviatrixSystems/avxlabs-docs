@@ -85,7 +85,7 @@ Cloud Backbone Transit VPC/VNET/VCN
 
 Let's verify Aviatrix Transit Gateways and their peerings.
 
-**Cloud Fabric > Gateways > Transit Gateways** then click on any Gateways Clusters and expand the "Connections" Tab!
+**Cloud Fabric > Gateways > Transit Gateways** then click on any Gateways Clusters and expand the **"Attachments"** Tab!
 
 ```{figure} images/transitgws.png
 ---
@@ -200,11 +200,11 @@ Ping Verification
 
 Access all the application instances/VMs using your laptop's browser using the following links:
 
-http://aws.pod6.aviatrixlab.com/
+http://aws.pod4.aviatrixlab.com/
 
-http://azure.pod6.aviatrixlab.com/
+http://azure.pod4.aviatrixlab.com/
 
-http://gcp.pod6.aviatrixlab.com/
+http://gcp.pod4.aviatrixlab.com/
 
 ```{figure} images/browser.png
 ---
@@ -245,7 +245,7 @@ FlightPath
 
 #### 6.1.2 Latency Monitor
 
-**Monitor > Traffic & Latencies > Gateways**
+**Monitor > Traffic & Latencies > Latencies**
 
 ```{figure} images/latency.png
 ---
