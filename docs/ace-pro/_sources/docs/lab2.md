@@ -205,7 +205,7 @@ Ensure these parameters are entered in the pop-up window `"Create Transit Gatewa
 - **Account:** <span style='color:#479608'>aws-account </span>
 - **Region:** <span style='color:#479608'>us-east-2 (Ohio)</span>
 - **VPC ID:** <span style='color:#479608'>aws-us-east-2-transit (Make sure you don't select aws-us-east-2-**spoke1** VPC)</span>
-- **Instance Size:** <span style='color:#479608'>c5.large</span>
+- **Instance Size:** <span style='color:#479608'>c6in.large</span>
 - **High Performance Encryption:** <span style='color:#479608'>**On**</span>
 
 - **Attach to Subnet:** <span style='color:#479608'>us-east-2a</span>
