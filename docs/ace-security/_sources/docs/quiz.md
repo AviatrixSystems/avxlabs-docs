@@ -24,10 +24,9 @@ Portal
 After logged in, click on **"ACE Multicloud Network Security Quiz"**.
 ```
 
-- To complete the quiz, you must use the Aviatrix ACE-Security POD
-- Read-only access is provided
-- You have **24** hours to complete the quiz
-- After 24 hours lab pod will be shutdown
+- In order to address certain quiz questions effectively, it is necessary to  "Cloud Perimeter Egress Security" Pod Access.
+- You have **8** hours to complete the quiz
+- After 8 hours lab pod will be shutdown
 - You have a total of **3** maximum attempts!
 
 ```{figure} images/survey.png

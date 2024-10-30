@@ -64,7 +64,7 @@
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="PDFs" href="PDFs.html" />
+    <link rel="next" title="Summary" href="summary.html" />
     <link rel="prev" title="Quiz and Survey" href="quiz.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -170,13 +170,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="details.html">POD Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Shared Read only POD Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="egress.html">Cloud Perimeter Security Egress Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quiz.html">Quiz and Survey</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Quiz - Hints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="egress.html">Egress Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
 </ul>
 
     </div>
@@ -294,9 +294,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -312,15 +310,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-topology">Initial Topology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -332,69 +321,21 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="quiz-hints">
 <h1>Quiz - Hints<a class="headerlink" href="#quiz-hints" title="Link to this heading">#</a></h1>
-<section id="initial-topology">
-<h2>Initial Topology<a class="headerlink" href="#initial-topology" title="Link to this heading">#</a></h2>
-<p>This is the current topology of a multicloud enterprise that has two Data Centers: the first one is connected to the transit GW in AWS, whereas the second one is connected to the transit GW in Azure. The connectivity across the three CSPs occurs through the Aviatrix Transit Core Backbone.</p>
-<figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/security-topology.png"><img alt="../_images/security-topology.png" src="../_images/security-topology.png" style="height: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Initial Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="hints">
-<h2>Hints<a class="headerlink" href="#hints" title="Link to this heading">#</a></h2>
+<p>Below are hints for select quiz questions, particularly those that require access to the “Cloud Perimeter Egress Security” Pod.</p>
 <p><span style='color:#479608'>Q1.</span> Which Aviatrix CoPilot feature can block IP traffic to/from IP addresses associated with particular geographic regions.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Check <strong>CoPilot &gt; Security</strong></p>
-</div>
-<p><span style='color:#479608'>Q2.</span> What encryption scheme is being used by the site-to-cloud connection with the Azure transit gateway?</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Check <strong>CoPilot &gt; Networking &gt; Connectivity</strong></p>
-</div>
-<p><span style='color:#479608'>Q3.</span> A major intrusion has occurred. From which instance was this detected? Mention Name</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Check <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Detected Intrusions</strong></p>
 </div>
 <p><span style='color:#479608'>Q4.</span> List if any region(s) are being blocked by GeoBlocking.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Check <strong>CoPilot &gt; Security</strong></p>
 </div>
-<p><span style='color:#479608'>Q5.</span> Spoke-aws-dev is isolated from 2 of the 6 spokes or onprem network domains.
-Which 2 spokes can it not communicate with due to the configured network segmentation?</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Check <strong>CoPilot &gt; Networking &gt; Network Segmentation</strong></p>
-</div>
-<p><span style='color:#479608'>Q6.</span> Traffic from the gcp-dev-vm instance (in spoke-gcp-dev, network domain: gcp-dev) cannot connect to the azure-prod-vm instance (in spoke-azure-all,
-network domain: azure-all) on port 443 despite the fact that the two network domains are connected. Why is this?</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Check <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong></p>
-</div>
 <p><span style='color:#479608'>Q7.</span> How many https egress domains are being explicitly allowed?</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Check <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong></p>
-</div>
-<p><span style='color:#479608'>Q8.</span> The azure-dev-vm cannot communicate with the azure-prod-vm despite being deployed to the same vnet. Why is this?</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Check <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong></p>
-</div>
-<p><span style='color:#479608'>Q9.</span> There are 3 VMs that have been automatically added to the SmartGroup named dev. Why were they added to this group?</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Check <strong>CoPilot &gt; Groups &gt; SmartGroups</strong></p>
-</div>
-<p><span style='color:#479608'>Q10.</span> Name the Aviatrix gateway where ThreatIQ has detected malicious inbound attacks.</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Check <strong>CoPilot &gt; Security &gt; ThreatIQ</strong></p>
 </div>
 <p><span style='color:#479608'>Q11.</span> Name 3 domains where Internet egress connectivity is being attempted, but denied.</p>
 <div class="admonition hint">
@@ -406,7 +347,6 @@ network domain: azure-all) on port 443 despite the fact that the two network dom
 <p class="admonition-title">Hint</p>
 <p>Check <strong>CoPilot &gt; Cloud Resources</strong></p>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -449,11 +389,11 @@ network domain: azure-all) on port 443 despite the fact that the two network dom
       </div>
     </a>
     <a class="right-next"
-       href="PDFs.html"
+       href="summary.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">PDFs</p>
+        <p class="prev-next-title">Summary</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -463,23 +403,6 @@ network domain: azure-all) on port 443 despite the fact that the two network dom
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-topology">Initial Topology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

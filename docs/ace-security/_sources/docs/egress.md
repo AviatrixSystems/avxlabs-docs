@@ -1,4 +1,4 @@
-# Egress Lab
+# Cloud Perimeter Security Egress Lab
 
 ## Scenario
 
