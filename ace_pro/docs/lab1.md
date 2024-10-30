@@ -124,7 +124,7 @@ Confirmation
 ```
 
 ```{note}
-It will take <ins>few minutes</ins> to see the four subnets (i.e 2x public subnets and 2x private subnets). <ins>Please, be patient!</ins>
+It will take <ins>few minutes</ins> to see all the four subnets (i.e 2x public subnets and 2x private subnets). <ins>Please, be patient!</ins>
 ```
 
 ## 3. AWS VPC
@@ -133,7 +133,7 @@ It will take <ins>few minutes</ins> to see the four subnets (i.e 2x public subne
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
-Verify once again whether the CIDR range `10.0.22.0/24` is overlapping with an existing cidr or not, as shown below.
+Verify once again whether the CIDR range `10.0.22.0/24` is overlapping with an existing CIDR or not, as shown below.
 
 ```{figure} images/lab1-newpic5.png
 ---
