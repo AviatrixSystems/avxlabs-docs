@@ -76,7 +76,7 @@ student
 Password:
 
 ```bash
-1012fw633#SYTY3
+1026zRt7#Y8B#GQ
 ```
 
 ## LAB Pre-Req
