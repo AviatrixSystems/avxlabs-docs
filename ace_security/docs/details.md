@@ -1,4 +1,4 @@
-# Shared Read only POD Details
+# Shared Read-Only POD Lab
 
 ## Topology
 
