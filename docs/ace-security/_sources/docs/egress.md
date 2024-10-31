@@ -1,4 +1,4 @@
-# Cloud Perimeter Security Egress Lab
+# Secure Cloud Egress Lab
 
 ## Scenario
 
@@ -53,28 +53,33 @@ Listen carefully. There will be quiz questions based on this 4 min video, also.
 
 ## LAB Access Details
 
-| **POD#** |                              **Copilot**                               |
-| :------: | :--------------------------------------------------------------------: |
-|    1     |  <a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD1</a>  |
-|    2     |  <a href="https://cplt.pod2.aviatrixlab.com" target="_blank">POD2</a>  |
-|    3     |  <a href="https://cplt.pod3.aviatrixlab.com" target="_blank">POD3</a>  |
-|    4     |  <a href="https://cplt.pod4.aviatrixlab.com" target="_blank">POD4</a>  |
-|    5     |  <a href="https://cplt.pod5.aviatrixlab.com" target="_blank">POD5</a>  |
-|    6     |  <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD6</a>  |
-|    7     |  <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD7</a>  |
-|    8     |  <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD8</a>  |
-|    9     |  <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD9</a>  |
-|    10    | <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a> |
-|    11    | <a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a> |
-|    12    | <a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a> |
-|    13    | <a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a> |
-|    14    | <a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a> |
-|    15    | <a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a> |
-|    16    | <a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a> |
-|    17    | <a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a> |
-|    18    | <a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a> |
-|    19    | <a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a> |
-|    20    | <a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a> |
+| **_FULL NAME_** | **_POD #_**                                                                |
+|-----------------|----------------------------------------------------------------------------|
+|                 | <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD6</a>       |
+|                 | <a href="https://cplt.pod7.aviatrixlab.com" target="_blank"><br>POD7</a>   |
+|                 | <a href="https://cplt.pod8.aviatrixlab.com" target="_blank"><br>POD8</a>   |
+|                 | <a href="https://cplt.pod9.aviatrixlab.com" target="_blank"><br>POD9</a>   |
+|                 | <a href="https://cplt.pod10.aviatrixlab.com" target="_blank"><br>POD10</a> |
+|                 | <a href="https://cplt.pod11.aviatrixlab.com" target="_blank"><br>POD11</a> |
+|                 | <a href="https://cplt.pod12.aviatrixlab.com" target="_blank"><br>POD12</a> |
+|                 | <a href="https://cplt.pod13.aviatrixlab.com" target="_blank"><br>POD13</a> |
+|                 | <a href="https://cplt.pod14.aviatrixlab.com" target="_blank"><br>POD14</a> |
+|                 | <a href="https://cplt.pod15.aviatrixlab.com" target="_blank"><br>POD15</a> |
+|                 | <a href="https://cplt.pod16.aviatrixlab.com" target="_blank"><br>POD16</a> |
+|                 | <a href="https://cplt.pod17.aviatrixlab.com" target="_blank"><br>POD17</a> |
+|                 | <a href="https://cplt.pod18.aviatrixlab.com" target="_blank"><br>POD18</a> |
+|                 | <a href="https://cplt.pod19.aviatrixlab.com" target="_blank"><br>POD19</a> |
+|                 | <a href="https://cplt.pod20.aviatrixlab.com" target="_blank"><br>POD20</a> |
+|                 |                                                                            |
+|                 |                                                                            |
+|                 |                                                                            |
+|                 |                                                                            |
+|                 |                                                                            |
+|                 |                                                                            |
+|                 |                                                                            |
+|                 |                                                                            |
+|                 |                                                                            |
+|                 |                                                                            |
 
 ## Access credentials
 
