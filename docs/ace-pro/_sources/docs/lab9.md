@@ -411,6 +411,14 @@ align: center
 Enable CostIQ
 ```
 
+```{figure} images/lab9-costiq001.png
+---
+height: 150px
+align: center
+---
+Enable CostIQ
+```
+
 Now click on `"+ Cost Center"` and create the **AWS** Cost Center aforementioned.
 
 ```{figure} images/lab9-costiq02.png
@@ -473,7 +481,7 @@ align: center
 CIDR
 ```
 
-Let's move on the Shared Service tab and click on `"+ Shared Service"`.
+Let's move on the **Shared Service** tab and click on `"+ Shared Service"`.
 
 ```{figure} images/lab9-costiq12.png
 ---

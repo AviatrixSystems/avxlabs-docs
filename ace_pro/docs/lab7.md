@@ -260,7 +260,7 @@ align: center
 Ping ok
 ```
 
-Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, <ins>scroll down through all the **Properties**</ins>, click on the `Tools` button and then click on `Gateway Diagnostics`.
+Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, click on the `Tools` button and then click on `Gateway Diagnostics`.
 
 ```{figure} images/lab8-diag.png
 ---

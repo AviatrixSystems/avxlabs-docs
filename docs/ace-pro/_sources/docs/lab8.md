@@ -91,7 +91,7 @@ BGP ASN
 
 Now it's time to establish the attachment! 
 
-Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `"Manage Transit Gateway Attachment"` button, on the right-hand side of the screen.
+Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Transit Gateway Attachment"` button, on the right-hand side of the screen.
 
 ```{figure} images/lab8-edge9.png
 ---
@@ -361,7 +361,7 @@ BGP ASN
 
 Now you are ready to proceed with the rest of the configuration on the Edge section!
 
-Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `"Manage Transit Gateway Attachment"` button, on the right-hand side of the screen.
+Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Transit Gateway Attachment"` button, on the right-hand side of the screen.
 
 ```{figure} images/lab8-edgedouble2.png
 ---
@@ -586,7 +586,7 @@ The traceroute is still showing the Transit peering between AWS and GCP as the p
 
 There is another option that needs to be enabled in order to complete this lab. 
 
-Go to **CoPilot > Cloud Fabric > Edge > Gateways** and click on the `Edge` device.
+Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `Edge` device.
 
 ```{figure} images/lab8-almostdone02.png
 ---
