@@ -60,7 +60,7 @@ Go to **CoPilot > Networking > Network Segmentation > Network Domains > + Networ
 ---
 align: center
 ---
-Network Domain creation
+Network Domain Creation
 ```
 
 Create **two** network domains (Green and Blue) and associate them to their respective Spokes as follows:
