@@ -64,38 +64,116 @@ Password:
 
 ## LAB Pre-Req
 
-Before starting the lab, change the following timers to their lowest value
+Before starting building your backbone infrastructure, change the following **Fetch Timers** to their lowest value.
 
-![Task Server](images/egress_timers.png)
-
-```{warning}
-DO NOT ATTEMPT TO CHANGE THESE TIMES IN PRE-PROD or PROD SETUP. THIS WOULD CAUSE SERIOUS ISSUES.
+```{hint}
+Go to **CoPilot > Settings > Resources > Task Server**
 ```
 
-It should look like the following:
+Ensure `Fetch GW Routes` and `Fetch VPC Routes` intervals are set to **“1 Second”** each and then click on **SAVE**.
 
-![Task Server](images/egress_timers_updated.png)
+```{figure} images/backbone-tasks.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
 
-Do not change these times in the production setup
+Do not forget to click on the **COMMIT** button!
 
-- Aviatrix Spoke GW must be deployed in Region us-east-1 in the “egress-vpc”
-- GW Instance Size should be t3a.small
+## Task #1: Create an AWS TGW using the CoPilot
 
-## Successful Completion of LAB
+The Copilot provides an `AWS TGW (Transit Gateway) Network Orchestration` service, that allows to deploy the AWS TGW avoiding to use the AWS Console.
 
-After completing the lab, your screen should look more or less like the following. The IP addresses and UUIDs could be different.
+```{figure} images/backbone-tgw01.png
+---
+height: 400px
+align: center
+---
+AWS TGW - initial topology for task#1
+```
 
-![Topology](images/egress_topology.png)
+Go to **CoPilot > Networking > Connectivity > AWS TGW** and click on the `"+ AWS TGW"` button.
 
-![Gateway](images/egress_spoke.png)
+```{figure} images/backbone-tgw02.png
+---
+height: 400px
+align: center
+---
+AWS TGW section on the CoPilot
+```
 
-![Monitor](images/egress_monitor.png)
+Ensure these parameters are entered in the pop-up window `"Create AWS TGW"`.
 
-![Filter](images/egress_monitor_filter.png)
+- **Name:** <span style='color:#479608'>AWS-NVirginia-TGW</span>
+- **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
+- **Account:** <span style='color:#479608'>aws-account </span>
+- **Region:** <span style='color:#479608'>us-east-1 (N. Virginia)</span>
+- **AWS Side SAS Number:** <span style='color:#479608'>64512</span>
 
-![Routes](images/egress_vpc_routes.png)
+```{figure} images/backbone-tgw03.png
+---
+height: 400px
+align: center
+---
+AWS TGW template
+```
 
-## Lab Hints
+Do not forget to click on **SAVE**.
+
+```{caution}
+It will take roughly **2 minutes** for the Aviatrix Controller to completing the deployment of the AWS TGW.
+```
+
+```{figure} images/backbone-tgw04.png
+---
+height: 400px
+align: center
+---
+Final Deployment outcome
+```
+
+## Task #2: Attach VPC to AWS TGW
+
+Now that you have an AWS TGW, you need also to attach it to the existing **spoke-vpc**.
+
+Click on the `AWS-NVirginia-TGW` element, select the **VPC** tab and then click on the `"Attach VPC"` button.
+
+```{figure} images/backbone-tgw05.png
+---
+height: 400px
+align: center
+---
+AWS NVirginia-TGW
+```
+
+Ensure these parameters are entered in the pop-up window `"Attach VPC to AWS TGW"`.
+
+- **VPC:** <span style='color:#479608'>spoke-aws</span>
+- **Network Domain:** <span style='color:#479608'>Default_Domain</span>
+
+```{figure} images/backbone-tgw06.png
+---
+height: 400px
+align: center
+---
+AWS NVirginia-TGW
+```
+
+Do not forget to click on **SAVE**.
+
+```{caution}
+It will take roughly **2 minutes** for the Aviatrix Controller to completing the attachment.
+```
+
+```{figure} images/backbone-tgw07.png
+---
+height: 400px
+align: center
+---
+Attachment
+``
 
 ### Create Secure Egress DCF Rules
 
