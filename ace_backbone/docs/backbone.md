@@ -128,7 +128,6 @@ It will take roughly **2 minutes** for the Aviatrix Controller to completing the
 
 ```{figure} images/backbone-tgw04.png
 ---
-height: 400px
 align: center
 ---
 Final Deployment outcome
@@ -142,7 +141,6 @@ Click on the `AWS-NVirginia-TGW` element, select the **VPC** tab and then click 
 
 ```{figure} images/backbone-tgw05.png
 ---
-height: 400px
 align: center
 ---
 AWS NVirginia-TGW
@@ -169,34 +167,70 @@ It will take roughly **2 minutes** for the Aviatrix Controller to completing the
 
 ```{figure} images/backbone-tgw07.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Attachment
-``
+```
 
-### Create Secure Egress DCF Rules
+## Task #3: Create an Aviatrix Transit VPC
 
-- Create three rules
-- The last DCF rule is a zero-trust rule
-- Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the `allowed-internet-https` web group
-- Rule 0 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the `allowed-internet-http` web group
+Let's continue building the cloud backbone, now you are asked to create the `Transit VPC`.
 
-![DCF](images/egress_dcf_rules.png)
+```{figure} images/backbone-tgw08.png
+---
+align: center
+---
+Initial Topology for Task#3
 
-### Create rfc1918 SmartGroup
+Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and click on the `"+ VPC/VNet"` button.
 
-![Group](images/egress_groups.png)
+```{figure} images/backbone-tgw09.png
+---
+align: center
+---
+Transit VPC
+```
 
-![rfc1918](images/egress_rfc1918.png)
+Ensure these parameters are entered in the pop-up window `"Create VPC/VNet"`.
 
-### Create WebGroup to Define FQDN Allowed to Access Internet
+- **Name:** <span style='color:#479608'>transit-aws</span>
+- **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
+- **Account:** <span style='color:#479608'>aws-account</span>
+- **Region:** <span style='color:#479608'>us-east-1 (N. Virginia)</span>
+- **VPC CIDR:** <span style='color:#479608'>10.10.0.0/16</span>
+- **VPC Function:** <span style='color:#479608'>Transit + FireNet</span>
 
-![WebGroup](images/egress_create_group.png)
+```{figure} images/backbone-tgw010.png
+---
+align: center
+---
+VPC Template
+```
 
-![Edit Group](images/egress_edit_group.png)
+```{note}
+Wait few minutes for the completion of the task. Check the hourglass icon on the right-hand side of your Copilot.
+```
 
-![Polling](images/egress_polling.png)
+## Task #4: Create both the Transit Gateways and the peering
+
+Now it's time to deploy a pair of **`Transit GWs`** inside the VPC created on the previous task. In addition to this, you have also to establish the peering between the Transit GWs in Azure and the Transit GWs in AWS.
+
+```{figure} images/backbone-tgw011.png
+---
+align: center
+---
+Inital Topology for Task #4
+```
+
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the `"+ Transit Gateway"` button.
+
+```{figure} images/backbone-tgw12.png
+---
+align: center
+---
+Transit Gateways section
+```
 
 ### Deploy Aviatrix Spoke GW
 
