@@ -372,6 +372,7 @@ Let's now attach the **Secure Edge Gateway** to the **Transit Gateways**.
 
 ```{figure} images/backbone-tgw022.png
 ---
+height: 400px
 align: center
 ---
 The Hybrid Cloud through the Aviatrix Backbone
@@ -441,6 +442,7 @@ Now search for the subnet **`10.1.2.0`** in AWS. You will notice the presence of
 
 ```{figure} images/backbone-tgw028.png
 ---
+height: 400px
 align: center
 ---
 8x IPSec tunnels towards AWS
@@ -450,6 +452,7 @@ Now search for the subnet **`10.2.2.0`** in Azure. You will notice again 4x IPSe
 
 ```{figure} images/backbone-tgw029.png
 ---
+height: 400px
 align: center
 ---
 8x IPSec tunnels towards Azure
