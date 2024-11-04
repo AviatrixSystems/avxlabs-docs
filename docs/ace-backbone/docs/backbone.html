@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Handson Lab &#8212; ACE Cloud Backbone &amp; Hybrid Connectivity</title>
+    <title>Backbone Lab &#8212; ACE Cloud Backbone &amp; Hybrid Connectivity</title>
   
   
   
@@ -64,6 +64,8 @@
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Shared Read-Only POD Lab" href="details.html" />
+    <link rel="prev" title="Welcome to ACE Cloud Backbone" href="home.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -114,8 +116,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -169,7 +169,8 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Backbone Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="details.html">Shared Read-Only POD Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quiz.html">Quiz and Survey</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab.html">Quiz - Hints</a></li>
@@ -306,7 +307,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Handson Lab</h1>
+    <h1>Backbone Lab</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -317,14 +318,8 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expensive-and-limited-csp-native-nat-gateway">Expensive and Limited CSP Native NAT Gateway</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-charges-reference">Data Charges Reference</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#damaged-reputation-and-employee-fired">Damaged Reputation and Employee Fired</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-the-newly-hired-cloud-networking-architect">You are the Newly Hired Cloud Networking Architect</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">LAB Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-to-the-following-recording">Listen to the following recording</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">Lab Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-set-up">Initial Set-up</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-access-details">LAB Access Details</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-credentials">Access credentials</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req">LAB Pre-Req</a></li>
@@ -349,62 +344,36 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="handson-lab">
-<h1>Handson Lab<a class="headerlink" href="#handson-lab" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="backbone-lab">
+<h1>Backbone Lab<a class="headerlink" href="#backbone-lab" title="Link to this heading">#</a></h1>
 <section id="scenario">
 <h2>Scenario<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
-<p>ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the AWS cloud environment. For their internet egress traffic, they rely on AWS NAT Gateway. While AWS NAT Gateway serves well for IP address translation, it’s not designed to be a robust security solution. This lack of dedicated security has raised concerns about data privacy and HIPAA compliance among ABC Healthcare’s management.</p>
-</section>
-<section id="expensive-and-limited-csp-native-nat-gateway">
-<h2>Expensive and Limited CSP Native NAT Gateway<a class="headerlink" href="#expensive-and-limited-csp-native-nat-gateway" title="Link to this heading">#</a></h2>
-<p>The current AWS NAT Gateway doesn’t provide the necessary visibility and logging capabilities, and it’s also very expensive due to 2 cents per GB egress data processing charges. ABC Healthcare’s average monthly egress traffic is around 500 TB.
-The native solution also lacks visibility, is cost-prohibitive, and doesn’t support zero trust architecture—putting sensitive patient data and the healthcare provider’s reputation at risk.</p>
-<section id="data-charges-reference">
-<h3>Data Charges Reference<a class="headerlink" href="#data-charges-reference" title="Link to this heading">#</a></h3>
-<p><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/identify-and-optimize-public-ipv4-address-usage-on-aws" target="_blank">Networking and content delivery</a></p>
-<p><a href="https://aws.amazon.com/blogs/apn/aws-data-transfer-charges-for-server-and-serverless-architectures" target="_blank">Data transfer</a></p>
-<p><a href="https://www.cloudzero.com/blog/aws-egress-costs/#:~:text=Data%20transfers%20out%20of%20AWS,$0.0900%20and%20$0.0500%20per%20GB" target="_blank">Egress cost</a></p>
-</section>
-</section>
-<section id="damaged-reputation-and-employee-fired">
-<h2>Damaged Reputation and Employee Fired<a class="headerlink" href="#damaged-reputation-and-employee-fired" title="Link to this heading">#</a></h2>
-<p>To further complicate matters, ABC Healthcare recently suffered a data exfiltration attack, which led to significant disruptions, reputational damage, and a negative impact on its stock value. This incident resulted in the dismissal of the previous cloud network architects.</p>
-</section>
-<section id="you-are-the-newly-hired-cloud-networking-architect">
-<h2>You are the Newly Hired Cloud Networking Architect<a class="headerlink" href="#you-are-the-newly-hired-cloud-networking-architect" title="Link to this heading">#</a></h2>
-<p>You, the newly appointed architect, have been tasked with securing this traffic using the Aviatrix Secure Egress solution. Your mission is to implement a solution that enhances visibility, provides detailed logging, and complies with regulatory mandates while being cost-effective and efficient.</p>
+<p>ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the <strong>Azure</strong> cloud environment. The company decided expaning their cloud infrastructure also within AWS, however, they are facing cloud skills gap, because they do not have experties in AWS yet. Moreover, the company is heavily using the native CSP transit solutions (e.g. Azure Route Server).</p>
 </section>
 <section id="lab-objective">
-<h2>LAB Objective<a class="headerlink" href="#lab-objective" title="Link to this heading">#</a></h2>
-<p>It is your job to do a POC/POV in your lab and demonstrate how your company can leverage Aviatrix Cloud Perimeter Solution to solve this pain point. You need to deploy the Aviatrix Secure Egress solution using Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than the AWS NAT Gateway.
-The Zero Trust policy should only allow the following domains and block all other FQDNs.
-The lab intentionally only provides some of the steps for you to complete this lab. You should leverage <a href="https://docs.aviatrix.com" target="_blank">docs.aviatrix.com</a> if you are stuck.</p>
+<h2>Lab Objective<a class="headerlink" href="#lab-objective" title="Link to this heading">#</a></h2>
+<p>You, the newly appointed solutions architect, have been assigned the following task:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">allowed-internet-http</span></code> domains</p>
-<ul>
-<li><p>*.ubuntu.com</p></li>
+<li><p>Create a <strong><em>multicloud backbone architecture</em></strong> that works in every cloud.</p></li>
+<li><p>The solution should also provide <strong><em>hybrid connectivity</em></strong> towards the Data Center.</p></li>
 </ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code> domains</p>
-<ul>
-<li><p>*.alibabacloud.com</p></li>
-<li><p><a class="reference external" href="http://azure.microsoft.com">azure.microsoft.com</a></p></li>
-<li><p><a class="reference external" href="http://aws.amazon.com">aws.amazon.com</a></p></li>
-<li><p>*.amazonaws.com</p></li>
-<li><p>*.aviatrix.com</p></li>
-<li><p><a class="reference external" href="http://aviatrix.com">aviatrix.com</a></p></li>
-<li><p><a class="reference external" href="http://cloud.google.com">cloud.google.com</a></p></li>
-<li><p>*.docker.com</p></li>
-<li><p>*.docker.io</p></li>
-<li><p><a class="reference external" href="http://www.oracle.com">www.oracle.com</a></p></li>
-</ul>
-</li>
-</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Azure Route Server</strong> does not natively sypport connectivity to other Cloud Providers.</p>
+<p>Aviatrix supports <code class="docutils literal notranslate"><span class="pre">Multicloud</span> <span class="pre">Transit</span></code>.</p>
+</div>
 </section>
-<section id="listen-to-the-following-recording">
-<h2>Listen to the following recording<a class="headerlink" href="#listen-to-the-following-recording" title="Link to this heading">#</a></h2>
-<p>Listen carefully. There will be quiz questions based on this 4 min video, also.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cNx51ZJhxek?si=V83b5ledWF08f1lx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<section id="initial-set-up">
+<h2>Initial Set-up<a class="headerlink" href="#initial-set-up" title="Link to this heading">#</a></h2>
+<p>1- You have already deployed both the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Controller</span></code> and the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">CoPilot</span></code>, inside AWS.</p>
+<p>2- You have also deployed a pair of <code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">Gateways</span></code> in Azure and attached them to the existing Azure Route Server.</p>
+<p>3- You have also deployed an <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Secure</span> <span class="pre">Edge</span></code> inside the on-prem Data Center.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/backbone-initial-topology.png"><img alt="../_images/backbone-initial-topology.png" src="../_images/backbone-initial-topology.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Initial Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="lab-access-details">
 <h2>LAB Access Details<a class="headerlink" href="#lab-access-details" title="Link to this heading">#</a></h2>
@@ -444,36 +413,6 @@ The lab intentionally only provides some of the steps for you to complete this l
 </tr>
 <tr class="row-odd"><td class="text-center"><p>10</p></td>
 <td class="text-center"><p><a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>11</p></td>
-<td class="text-center"><p><a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>12</p></td>
-<td class="text-center"><p><a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>13</p></td>
-<td class="text-center"><p><a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>14</p></td>
-<td class="text-center"><p><a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>15</p></td>
-<td class="text-center"><p><a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>16</p></td>
-<td class="text-center"><p><a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>17</p></td>
-<td class="text-center"><p><a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>18</p></td>
-<td class="text-center"><p><a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>19</p></td>
-<td class="text-center"><p><a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>20</p></td>
-<td class="text-center"><p><a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -601,6 +540,24 @@ Remember, Aviatrix Secure Egress is your go-to for a secure, cost-effective solu
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="home.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to ACE Cloud Backbone</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="details.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Shared Read-Only POD Lab</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -619,14 +576,8 @@ Remember, Aviatrix Secure Egress is your go-to for a secure, cost-effective solu
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expensive-and-limited-csp-native-nat-gateway">Expensive and Limited CSP Native NAT Gateway</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-charges-reference">Data Charges Reference</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#damaged-reputation-and-employee-fired">Damaged Reputation and Employee Fired</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-the-newly-hired-cloud-networking-architect">You are the Newly Hired Cloud Networking Architect</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">LAB Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-to-the-following-recording">Listen to the following recording</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">Lab Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-set-up">Initial Set-up</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-access-details">LAB Access Details</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-credentials">Access credentials</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req">LAB Pre-Req</a></li>

@@ -1,55 +1,37 @@
-# Handson Lab
+# Backbone Lab
 
 ## Scenario
 
-ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the AWS cloud environment. For their internet egress traffic, they rely on AWS NAT Gateway. While AWS NAT Gateway serves well for IP address translation, it’s not designed to be a robust security solution. This lack of dedicated security has raised concerns about data privacy and HIPAA compliance among ABC Healthcare’s management.
+ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the **Azure** cloud environment. The company decided expaning their cloud infrastructure also within AWS, however, they are facing cloud skills gap, because they do not have experties in AWS yet. Moreover, the company is heavily using the native CSP transit solutions (e.g. Azure Route Server).
 
-## Expensive and Limited CSP Native NAT Gateway
+## Lab Objective
 
-The current AWS NAT Gateway doesn’t provide the necessary visibility and logging capabilities, and it’s also very expensive due to 2 cents per GB egress data processing charges. ABC Healthcare’s average monthly egress traffic is around 500 TB.
-The native solution also lacks visibility, is cost-prohibitive, and doesn’t support zero trust architecture—putting sensitive patient data and the healthcare provider’s reputation at risk.
+You, the newly appointed solutions architect, have been assigned the following task:
 
-### Data Charges Reference
+- Create a **_multicloud backbone architecture_** that works in every cloud.
+- The solution should also provide **_hybrid connectivity_** towards the Data Center.
 
-<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/identify-and-optimize-public-ipv4-address-usage-on-aws" target="_blank">Networking and content delivery</a>
+```{important}
+**Azure Route Server** does not natively sypport connectivity to other Cloud Providers.
 
-<a href="https://aws.amazon.com/blogs/apn/aws-data-transfer-charges-for-server-and-serverless-architectures" target="_blank">Data transfer</a>
+Aviatrix supports `Multicloud Transit`.
+```
 
-<a href="https://www.cloudzero.com/blog/aws-egress-costs/#:~:text=Data%20transfers%20out%20of%20AWS,$0.0900%20and%20$0.0500%20per%20GB" target="_blank">Egress cost</a>
+## Initial Set-up
 
-## Damaged Reputation and Employee Fired
+1- You have already deployed both the `Aviatrix Controller` and the `Aviatrix CoPilot`, inside AWS.
 
-To further complicate matters, ABC Healthcare recently suffered a data exfiltration attack, which led to significant disruptions, reputational damage, and a negative impact on its stock value. This incident resulted in the dismissal of the previous cloud network architects.
+2- You have also deployed a pair of `Transit Gateways` in Azure and attached them to the existing Azure Route Server.
 
-## You are the Newly Hired Cloud Networking Architect
+3- You have also deployed an `Aviatrix Secure Edge` inside the on-prem Data Center.
 
-You, the newly appointed architect, have been tasked with securing this traffic using the Aviatrix Secure Egress solution. Your mission is to implement a solution that enhances visibility, provides detailed logging, and complies with regulatory mandates while being cost-effective and efficient.
-
-## LAB Objective
-
-It is your job to do a POC/POV in your lab and demonstrate how your company can leverage Aviatrix Cloud Perimeter Solution to solve this pain point. You need to deploy the Aviatrix Secure Egress solution using Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than the AWS NAT Gateway.
-The Zero Trust policy should only allow the following domains and block all other FQDNs.
-The lab intentionally only provides some of the steps for you to complete this lab. You should leverage <a href="https://docs.aviatrix.com" target="_blank">docs.aviatrix.com</a> if you are stuck.
-
-- `allowed-internet-http` domains
-  - *.ubuntu.com
-- `allowed-internet-https` domains
-  - *.alibabacloud.com
-  - azure.microsoft.com
-  - aws.amazon.com
-  - *.amazonaws.com
-  - *.aviatrix.com
-  - aviatrix.com
-  - cloud.google.com
-  - *.docker.com
-  - *.docker.io
-  - www.oracle.com
-
-## Listen to the following recording
-
-Listen carefully. There will be quiz questions based on this 4 min video, also.
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cNx51ZJhxek?si=V83b5ledWF08f1lx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+```{figure} images/backbone-initial-topology.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
 
 ## LAB Access Details
 
@@ -65,16 +47,6 @@ Listen carefully. There will be quiz questions based on this 4 min video, also.
 |      8     |       <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD8</a>      |
 |      9     |       <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD9</a>     |
 |      10     |       <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a>      |
-|      11     |       <a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a>      |
-|      12     |       <a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a>      |
-|      13     |       <a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a>     |
-|      14     |       <a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a>      |
-|      15     |       <a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a>      |
-|      16     |       <a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a>      |
-|      17     |       <a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a>     |
-|      18     |       <a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a>      |
-|      19     |       <a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a>      |
-|      20     |       <a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a>      |
 
 ## Access credentials
 
