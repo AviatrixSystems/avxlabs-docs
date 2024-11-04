@@ -452,7 +452,19 @@ align: center
 8x IPSec tunnels towards Azure
 ```
 
-## Conclusion
+You have successfully extended the Aviatrix solution to the on-prem Data Center, leversaging the **`High Performance Encryption`** service.
 
-By bringing Aviatrix Secure Egress into play, our healthcare provider shored up their defenses, dropped the high costs, and eliminated the visibility black hole courtesy of the AWS NAT Gateway. Sensitive patient data is safe, and the provider’s reputation will be secured.
-Remember, Aviatrix Secure Egress is your go-to for a secure, cost-effective solution for managing internet-bound traffic. Need more help? Our support team’s got your back.
+## Connectivity Test
+
+Go to **CoPilot > Cloud Resources > Cloud Assets** and search for the **aws-instance** on the Search field, then retrieve its Public IP address!
+
+```{figure} images/backbone-tgw030.png
+---
+align: center
+---
+aws-instance
+```
+
+Open an **SSH client** and establish a session towards the aws-instance.
+
+
