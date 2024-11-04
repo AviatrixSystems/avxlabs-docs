@@ -38,7 +38,6 @@ Initial Topology
 | **POD#** | **Copilot** |
 |:----------:|:---------------:|
 |      1     |       <a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD##</a>     |
-    |
 
 ## Access credentials
 
