@@ -1,4 +1,4 @@
-# POD Details
+# Shared Read-Only POD Lab
 
 
 ## URL

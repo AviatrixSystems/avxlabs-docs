@@ -1,4 +1,4 @@
-# Lab - Hints
+# Quiz - Hints
 
 ## 1 - Initial Topology
 
