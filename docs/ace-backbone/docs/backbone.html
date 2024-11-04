@@ -648,7 +648,7 @@ Go to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Tasks</strong> and ex
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">transit-aws</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;“Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section and insert the AS number <strong>64582</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">&quot;“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
+<p>Go to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">“Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section and insert the AS number <strong>64582</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">&quot;“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id22">
 <img alt="../_images/backbone-tgw020.png" src="../_images/backbone-tgw020.png" />
 <figcaption>
@@ -713,6 +713,27 @@ Go to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Tasks</strong> and ex
 <img alt="../_images/backbone-tgw026.png" src="../_images/backbone-tgw026.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 28 </span><span class="caption-text">Template for azure</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now go to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud</strong> and click on the <strong>aviarix-edge-1</strong> instance.</p>
+<figure class="align-center" id="id29">
+<img alt="../_images/backbone-tgw027.png" src="../_images/backbone-tgw027.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">aviatrix-edge-1</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.1.2.0</span></code></strong> in AWS. You will notice the presence of 4x IPSec tunnels towards the First Transit Gateway, likewise other 4x IPSec tunnels towards the Second Transit Gateway.</p>
+<figure class="align-center" id="id30">
+<img alt="../_images/backbone-tgw028.png" src="../_images/backbone-tgw028.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">8x IPSec tunnels towards AWS</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.2.2.0</span></code></strong> in Azure. You will notice again 4x IPSec tunnels per each Transit Gateway!</p>
+<figure class="align-center" id="id31">
+<img alt="../_images/backbone-tgw029.png" src="../_images/backbone-tgw029.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">8x IPSec tunnels towards Azure</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

@@ -345,7 +345,7 @@ align: center
 transit-aws
 ```
 
-Go to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64582** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
+Go to `"Settings"` tab and expand the `“Border Gateway Protocol (BGP)”` section and insert the AS number **64582** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
 
 ```{figure} images/backbone-tgw020.png
 ---
@@ -423,6 +423,33 @@ Now you can click on the **SAVE** button.
 align: center
 ---
 Template for azure
+```
+
+Now go to **CoPilot > Cloud Fabric > Hybrid Cloud** and click on the **aviarix-edge-1** instance.
+
+```{figure} images/backbone-tgw027.png
+---
+align: center
+---
+aviatrix-edge-1
+```
+
+Now search for the subnet **`10.1.2.0`** in AWS. You will notice the presence of 4x IPSec tunnels towards the First Transit Gateway, likewise other 4x IPSec tunnels towards the Second Transit Gateway.
+
+```{figure} images/backbone-tgw028.png
+---
+align: center
+---
+8x IPSec tunnels towards AWS
+```
+
+Now search for the subnet **`10.2.2.0`** in Azure. You will notice again 4x IPSec tunnels per each Transit Gateway!
+
+```{figure} images/backbone-tgw029.png
+---
+align: center
+---
+8x IPSec tunnels towards Azure
 ```
 
 ## Conclusion
