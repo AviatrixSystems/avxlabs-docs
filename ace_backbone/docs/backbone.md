@@ -73,6 +73,10 @@ Initial Topology
 
 Do not forget to click on the **COMMIT** button!
 
+```{caution}
+These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!
+```
+
 ## Task #1: Create an AWS TGW using the CoPilot
 
 The Copilot provides an `AWS TGW (Transit Gateway) Network Orchestration` service, that allows to deploy the AWS TGW avoiding to use the AWS Console.
@@ -466,4 +470,4 @@ aws-instance
 
 Open an **SSH client** and establish a session towards the aws-instance.
 
-
+## Conclusion
