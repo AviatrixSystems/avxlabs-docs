@@ -159,7 +159,7 @@ It will take roughly **2 minutes** for the Aviatrix Controller to completing the
 
 ```{figure} images/backbone-tgw07.png
 ---
-height: 600px
+height: 200px
 align: center
 ---
 Attachment
@@ -290,7 +290,7 @@ Dynamic Topology
 
 You will notice the presence of the newly created **peering**.
 
-## Task #5: Attach Transit Gateway to aws-tgw
+## Task #5: Attach Transit Gateways to aws-tgw
 
 Now Let's attach the Transit GWs in AWS to the AWS TGW.
 
@@ -328,7 +328,51 @@ Do not forget to click on **SAVE**.
 it will take roughly **3 minutes** for the Aviatrix Controller for completing this task, therefore, be patient!
 ```
 
-## Task #6: Attach Transit Gateway to aws-tgw
+## Task #6: Configure BGP ASN
+
+Now that you have established the peering between the two CSPs, you have achieved the **`Aviatrix Cloud Backbone`**.
+
+Let's carry on with the final deployment of the connectivity to the on-prem DC.
+
+Before configuring the attachments between the Secure Edge Gateway and the Transit Gateways, you have to esnure thta the Transit Gateways cluster earlier deployed in AWS is configured with a **`BGP AS number`**. <ins>This is a prerequisite for completing the Edge's deployment</ins>!
+
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **transit-aws** cluster!
+
+```{figure} images/backbone-tgw019.png
+---
+align: center
+---
+transit-aws
+```
+
+Go to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64582** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
+
+```{figure} images/backbone-tgw020.png
+---
+align: center
+---
+BGP ASN
+```
+
+After this task, this is how the overall topology would look like.
+
+```{figure} images/backbone-tgw021.png
+---
+align: center
+---
+Topology after task #6
+```
+
+## Task #7: Edge to Transits
+
+Let's not attach the Secure Edge Gateway to the Transit Gateways.
+
+```{figure} images/backbone-tgw022.png
+---
+align: center
+---
+The Hybrid Cloud through the Aviatrix Backbone
+```
 
 ## Conclusion
 
