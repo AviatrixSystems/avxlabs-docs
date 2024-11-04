@@ -37,16 +37,8 @@ Initial Topology
 
 | **POD#** | **Copilot** |
 |:----------:|:---------------:|
-|      1     |       <a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD1</a>     |
-|      2     |       <a href="https://cplt.pod2.aviatrixlab.com" target="_blank">POD2</a>      |
-|      3     |       <a href="https://cplt.pod3.aviatrixlab.com" target="_blank">POD3</a>      |
-|      4     |       <a href="https://cplt.pod4.aviatrixlab.com" target="_blank">POD4</a>      |
-|      5     |       <a href="https://cplt.pod5.aviatrixlab.com" target="_blank">POD5</a>     |
-|      6     |       <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD6</a>      |
-|      7     |       <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD7</a>      |
-|      8     |       <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD8</a>      |
-|      9     |       <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD9</a>     |
-|      10     |       <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a>      |
+|      1     |       <a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD##</a>     |
+    |
 
 ## Access credentials
 
@@ -59,7 +51,7 @@ student
 Password:
 
 ```bash
-1012fw633#SYTY3
+#############
 ```
 
 ## LAB Pre-Req
@@ -167,7 +159,7 @@ It will take roughly **2 minutes** for the Aviatrix Controller to completing the
 
 ```{figure} images/backbone-tgw07.png
 ---
-height: 250px
+height: 600px
 align: center
 ---
 Attachment
@@ -179,6 +171,7 @@ Let's continue building the cloud backbone, now you are asked to create the `Tra
 
 ```{figure} images/backbone-tgw08.png
 ---
+height: 400px
 align: center
 ---
 Initial Topology for Task#3
@@ -218,6 +211,7 @@ Now it's time to deploy a pair of **`Transit GWs`** inside the VPC created on th
 
 ```{figure} images/backbone-tgw011.png
 ---
+height: 400px
 align: center
 ---
 Inital Topology for Task #4
@@ -227,39 +221,114 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the 
 
 ```{figure} images/backbone-tgw12.png
 ---
+height: 400px
 align: center
 ---
 Transit Gateways section
 ```
 
-### Deploy Aviatrix Spoke GW
+Ensure these parameters are entered in the pop-up window `"Create Transit Gateway"`.
 
-- The public IP address will be different (Public EIP automatically allocated by CSP)
-- The Subnet CIDR could be different (automatically picked up by Aviatrix Controller)
-- Region: us-east-1
+- **Name:** <span style='color:#479608'>transit-aws</span>
+- **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
+- **Account:** <span style='color:#479608'>aws-account</span>
+- **Region:** <span style='color:#479608'>us-east-1 (N. Virginia)</span>
+- **VPC/VNet:** <span style='color:#479608'>transit-aws</span>
+- **Instance Size:** <span style='color:#479608'>c6in.large</span>
+- **High Performance Encryption:** <span style='color:#479608'>**ON**</span>
+- **Peer To Transit Gateways:** <span style='color:#479608'>transit-azure</span>
 
-![Spoke](images/egress_spoke_gw.png)
+then click on the `"+ Instance"` button!
 
-Check the Egress setting. The Egress traffic is going through the AWS NAT GW.
+**Instance-1**:
+- **Attach to Subnet:** <span style='color:#479608'>us-east-1a</span>
 
-![Egress](images/egress_egress.png)
+**Instance-2**:
+- **Attach to Subnet:** <span style='color:#479608'>us-east-1b</span>
 
-### Enable spoke GW to become the Egress GW
+```{figure} images/backbone-tgw013.png
+---
+align: center
+---
+Transit GW Template
+```
 
-1. Click +Local Egress on VPC/VNets.
-2. In the Add Local Egress on VPC/VNets dialog, select the VPC/VNets on which to enable Local Egress.
-3. Click Add.
+Do not forget to click on **SAVE**.
 
-[Read more at Aviatrix Documentation](https://docs.aviatrix.com/copilot/latest/network-security/index.html)
+```{note}
+The Aviatrix Controller will deploy two Transit Gateways and, at the same time, it will establish the peering with the predeployed Transit Gateways in Azure.
+```
 
-![Local](images/egress_add_local.png)
+```{caution}
+The Aviatrix Controller will deploy two Transit Gateways and, at the same time, it will establish the peering with the predeployed Transit Gateways in Azure.
+```
 
-Add Local Egress on VPC/VNets
-Adding Egress Control on VPC/VNet changes the default route on VPC/VNet to point to the Spoke Gateway and enables SNAT. Egress Control also requires additional resources on the Spoke Gateway.VPC/VNets
+You can monitor the progress of the task!
+Go to **CoPilot > Monitor > Notifications > Tasks** and expand the task named `"Create transit gateway: transit-aws"`.
 
-Now the diagram should look like the following:
+```{figure} images/backbone-tgw014.png
+---
+height: 400px
+align: center
+---
+Task in progress
+```
 
-![Vpc](images/egress_vpc.png)
+```{caution}
+it will take roughly **10 minutes** for the Aviatrix Controller for completing this task, therefore, be patient!
+```
+
+Now go to **CoPilot > Cloud Fabric > Topology**, click on `"Managed"` for hiding all the unmanaged VPCs (i.e. VPCs without an Aviatrix GW) and then click on the `"Collapse all VPC/VNets"` button.
+
+```{figure} images/backbone-tgw015.png
+---
+height: 400px
+align: center
+---
+Dynamic Topology
+```
+
+You will notice the presence of the newly created **peering**.
+
+## Task #5: Attach Transit Gateway to aws-tgw
+
+Now Let's attach the Transit GWs in AWS to the AWS TGW.
+
+```{figure} images/backbone-tgw016.png
+---
+height: 400px
+align: center
+---
+Initial Topology for task #5
+```
+
+Go to **CoPilot > Networking > Connectivity > AWS TGW** and click on the `"Attach Transit Gateway"` button.
+
+```{figure} images/backbone-tgw017.png
+---
+align: center
+---
+"Attach Transit GW" button
+```
+
+Ensure this parameter is entered in the pop-up window `"Attach Transigt Gateway to AWS-NVirginia-TGW"`.
+
+- **Transit Gateway:** <span style='color:#479608'>transit-aws</span>
+
+```{figure} images/backbone-tgw018.png
+---
+align: center
+---
+Attachment Template
+```
+
+Do not forget to click on **SAVE**.
+
+```{caution}
+it will take roughly **3 minutes** for the Aviatrix Controller for completing this task, therefore, be patient!
+```
+
+## Task #6: Attach Transit Gateway to aws-tgw
 
 ## Conclusion
 

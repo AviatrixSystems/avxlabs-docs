@@ -326,11 +326,9 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-create-an-aws-tgw-using-the-copilot">Task #1: Create an AWS TGW using the CoPilot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-attach-vpc-to-aws-tgw">Task #2: Attach VPC to AWS TGW</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-3-create-an-aviatrix-transit-vpc">Task #3: Create an Aviatrix Transit VPC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-create-both-the-transit-gateways-and-the-peering">Task #4: Create both the Transit Gateways and the peering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">Deploy Aviatrix Spoke GW</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-spoke-gw-to-become-the-egress-gw">Enable spoke GW to become the Egress GW</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-create-both-the-transit-gateways-and-the-peering">Task #4: Create both the Transit Gateways and the peering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-attach-transit-gateway-to-aws-tgw">Task #5: Attach Transit Gateway to aws-tgw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-attach-transit-gateway-to-aws-tgw">Task #6: Attach Transit Gateway to aws-tgw</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
@@ -384,37 +382,13 @@
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-center"><p>1</p></td>
-<td class="text-center"><p><a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD1</a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>2</p></td>
-<td class="text-center"><p><a href="https://cplt.pod2.aviatrixlab.com" target="_blank">POD2</a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>3</p></td>
-<td class="text-center"><p><a href="https://cplt.pod3.aviatrixlab.com" target="_blank">POD3</a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>4</p></td>
-<td class="text-center"><p><a href="https://cplt.pod4.aviatrixlab.com" target="_blank">POD4</a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>5</p></td>
-<td class="text-center"><p><a href="https://cplt.pod5.aviatrixlab.com" target="_blank">POD5</a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>6</p></td>
-<td class="text-center"><p><a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD6</a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>7</p></td>
-<td class="text-center"><p><a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD7</a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>8</p></td>
-<td class="text-center"><p><a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD8</a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>9</p></td>
-<td class="text-center"><p><a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD9</a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>10</p></td>
-<td class="text-center"><p><a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a></p></td>
+<td class="text-center"><p><a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD##</a></p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>|
+</pre></div>
 </div>
 </section>
 <section id="access-credentials">
@@ -424,7 +398,7 @@
 </pre></div>
 </div>
 <p>Password:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>1012fw633#SYTY3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#############</span>
 </pre></div>
 </div>
 </section>
@@ -513,7 +487,7 @@
 <p>It will take roughly <strong>2 minutes</strong> for the Aviatrix Controller to completing the attachment.</p>
 </div>
 <figure class="align-center" id="id9">
-<a class="reference internal image-reference" href="../_images/backbone-tgw07.png"><img alt="../_images/backbone-tgw07.png" src="../_images/backbone-tgw07.png" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/backbone-tgw07.png"><img alt="../_images/backbone-tgw07.png" src="../_images/backbone-tgw07.png" style="height: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">Attachment</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
@@ -523,7 +497,7 @@
 <h2>Task #3: Create an Aviatrix Transit VPC<a class="headerlink" href="#task-3-create-an-aviatrix-transit-vpc" title="Link to this heading">#</a></h2>
 <p>Let’s continue building the cloud backbone, now you are asked to create the <code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">VPC</span></code>.</p>
 <figure class="align-center" id="id10">
-<img alt="../_images/backbone-tgw08.png" src="../_images/backbone-tgw08.png" />
+<a class="reference internal image-reference" href="../_images/backbone-tgw08.png"><img alt="../_images/backbone-tgw08.png" src="../_images/backbone-tgw08.png" style="height: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">Initial Topology for Task#3</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 <div class="legend">
@@ -561,43 +535,108 @@
 <h2>Task #4: Create both the Transit Gateways and the peering<a class="headerlink" href="#task-4-create-both-the-transit-gateways-and-the-peering" title="Link to this heading">#</a></h2>
 <p>Now it’s time to deploy a pair of <strong><code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">GWs</span></code></strong> inside the VPC created on the previous task. In addition to this, you have also to establish the peering between the Transit GWs in Azure and the Transit GWs in AWS.</p>
 <figure class="align-center" id="id13">
-<img alt="../_images/backbone-tgw011.png" src="../_images/backbone-tgw011.png" />
+<a class="reference internal image-reference" href="../_images/backbone-tgw011.png"><img alt="../_images/backbone-tgw011.png" src="../_images/backbone-tgw011.png" style="height: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Inital Topology for Task #4</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code> button.</p>
 <figure class="align-center" id="id14">
-<img alt="../_images/backbone-tgw12.png" src="../_images/backbone-tgw12.png" />
+<a class="reference internal image-reference" href="../_images/backbone-tgw12.png"><img alt="../_images/backbone-tgw12.png" src="../_images/backbone-tgw12.png" style="height: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Transit Gateways section</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="deploy-aviatrix-spoke-gw">
-<h3>Deploy Aviatrix Spoke GW<a class="headerlink" href="#deploy-aviatrix-spoke-gw" title="Link to this heading">#</a></h3>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code>.</p>
 <ul class="simple">
-<li><p>The public IP address will be different (Public EIP automatically allocated by CSP)</p></li>
-<li><p>The Subnet CIDR could be different (automatically picked up by Aviatrix Controller)</p></li>
-<li><p>Region: us-east-1</p></li>
+<li><p><strong>Name:</strong> <span style='color:#479608'>transit-aws</span></p></li>
+<li><p><strong>Cloud:</strong> <span style='color:#479608'>AWS (Standard)</span></p></li>
+<li><p><strong>Account:</strong> <span style='color:#479608'>aws-account</span></p></li>
+<li><p><strong>Region:</strong> <span style='color:#479608'>us-east-1 (N. Virginia)</span></p></li>
+<li><p><strong>VPC/VNet:</strong> <span style='color:#479608'>transit-aws</span></p></li>
+<li><p><strong>Instance Size:</strong> <span style='color:#479608'>c6in.large</span></p></li>
+<li><p><strong>High Performance Encryption:</strong> <span style='color:#479608'><strong>ON</strong></span></p></li>
+<li><p><strong>Peer To Transit Gateways:</strong> <span style='color:#479608'>transit-azure</span></p></li>
 </ul>
-<p><img alt="Spoke" src="docs/images/egress_spoke_gw.png" /></p>
-<p>Check the Egress setting. The Egress traffic is going through the AWS NAT GW.</p>
-<p><img alt="Egress" src="docs/images/egress_egress.png" /></p>
+<p>then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Instance&quot;</span></code> button!</p>
+<p><strong>Instance-1</strong>:</p>
+<ul class="simple">
+<li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>us-east-1a</span></p></li>
+</ul>
+<p><strong>Instance-2</strong>:</p>
+<ul class="simple">
+<li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>us-east-1b</span></p></li>
+</ul>
+<figure class="align-center" id="id15">
+<img alt="../_images/backbone-tgw013.png" src="../_images/backbone-tgw013.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Transit GW Template</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>SAVE</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Aviatrix Controller will deploy two Transit Gateways and, at the same time, it will establish the peering with the predeployed Transit Gateways in Azure.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The Aviatrix Controller will deploy two Transit Gateways and, at the same time, it will establish the peering with the predeployed Transit Gateways in Azure.</p>
+</div>
+<p>You can monitor the progress of the task!
+Go to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Tasks</strong> and expand the task named <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">transit</span> <span class="pre">gateway:</span> <span class="pre">transit-aws&quot;</span></code>.</p>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../_images/backbone-tgw014.png"><img alt="../_images/backbone-tgw014.png" src="../_images/backbone-tgw014.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Task in progress</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>it will take roughly <strong>10 minutes</strong> for the Aviatrix Controller for completing this task, therefore, be patient!</p>
+</div>
+<p>Now go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong>, click on <code class="docutils literal notranslate"><span class="pre">&quot;Managed&quot;</span></code> for hiding all the unmanaged VPCs (i.e. VPCs without an Aviatrix GW) and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Collapse</span> <span class="pre">all</span> <span class="pre">VPC/VNets&quot;</span></code> button.</p>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="../_images/backbone-tgw015.png"><img alt="../_images/backbone-tgw015.png" src="../_images/backbone-tgw015.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Dynamic Topology</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will notice the presence of the newly created <strong>peering</strong>.</p>
 </section>
-<section id="enable-spoke-gw-to-become-the-egress-gw">
-<h3>Enable spoke GW to become the Egress GW<a class="headerlink" href="#enable-spoke-gw-to-become-the-egress-gw" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>Click +Local Egress on VPC/VNets.</p></li>
-<li><p>In the Add Local Egress on VPC/VNets dialog, select the VPC/VNets on which to enable Local Egress.</p></li>
-<li><p>Click Add.</p></li>
-</ol>
-<p><a class="reference external" href="https://docs.aviatrix.com/copilot/latest/network-security/index.html">Read more at Aviatrix Documentation</a></p>
-<p><img alt="Local" src="docs/images/egress_add_local.png" /></p>
-<p>Add Local Egress on VPC/VNets
-Adding Egress Control on VPC/VNet changes the default route on VPC/VNet to point to the Spoke Gateway and enables SNAT. Egress Control also requires additional resources on the Spoke Gateway.VPC/VNets</p>
-<p>Now the diagram should look like the following:</p>
-<p><img alt="Vpc" src="docs/images/egress_vpc.png" /></p>
+<section id="task-5-attach-transit-gateway-to-aws-tgw">
+<h2>Task #5: Attach Transit Gateway to aws-tgw<a class="headerlink" href="#task-5-attach-transit-gateway-to-aws-tgw" title="Link to this heading">#</a></h2>
+<p>Now Let’s attach the Transit GWs in AWS to the AWS TGW.</p>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/backbone-tgw016.png"><img alt="../_images/backbone-tgw016.png" src="../_images/backbone-tgw016.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Initial Topology for task #5</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; AWS TGW</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code> button.</p>
+<figure class="align-center" id="id19">
+<img alt="../_images/backbone-tgw017.png" src="../_images/backbone-tgw017.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">“Attach Transit GW” button</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure this parameter is entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">Transigt</span> <span class="pre">Gateway</span> <span class="pre">to</span> <span class="pre">AWS-NVirginia-TGW&quot;</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Transit Gateway:</strong> <span style='color:#479608'>transit-aws</span></p></li>
+</ul>
+<figure class="align-center" id="id20">
+<img alt="../_images/backbone-tgw018.png" src="../_images/backbone-tgw018.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Attachment Template</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>SAVE</strong>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>it will take roughly <strong>3 minutes</strong> for the Aviatrix Controller for completing this task, therefore, be patient!</p>
+</div>
 </section>
+<section id="task-6-attach-transit-gateway-to-aws-tgw">
+<h2>Task #6: Attach Transit Gateway to aws-tgw<a class="headerlink" href="#task-6-attach-transit-gateway-to-aws-tgw" title="Link to this heading">#</a></h2>
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
@@ -680,11 +719,9 @@ Remember, Aviatrix Secure Egress is your go-to for a secure, cost-effective solu
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-create-an-aws-tgw-using-the-copilot">Task #1: Create an AWS TGW using the CoPilot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-attach-vpc-to-aws-tgw">Task #2: Attach VPC to AWS TGW</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-3-create-an-aviatrix-transit-vpc">Task #3: Create an Aviatrix Transit VPC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-create-both-the-transit-gateways-and-the-peering">Task #4: Create both the Transit Gateways and the peering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">Deploy Aviatrix Spoke GW</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-spoke-gw-to-become-the-egress-gw">Enable spoke GW to become the Egress GW</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-create-both-the-transit-gateways-and-the-peering">Task #4: Create both the Transit Gateways and the peering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-attach-transit-gateway-to-aws-tgw">Task #5: Attach Transit Gateway to aws-tgw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-attach-transit-gateway-to-aws-tgw">Task #6: Attach Transit Gateway to aws-tgw</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
