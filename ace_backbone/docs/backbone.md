@@ -460,7 +460,7 @@ align: center
 8x IPSec tunnels towards Azure
 ```
 
-You have successfully extended the Aviatrix solution to the on-prem Data Center, leversaging the **`High Performance Encryption`** service.
+You have successfully extended the Aviatrix solution to the on-prem Data Center, harnessing the **`High Performance Encryption`** service.
 
 ## Connectivity Test
 
