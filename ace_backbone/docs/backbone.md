@@ -337,12 +337,13 @@ Now that you have established the peering between the two CSPs, you have achieve
 
 Let's carry on with the final deployment of the connectivity to the on-prem DC.
 
-Before configuring the attachments between the Secure Edge Gateway and the Transit Gateways, you have to esnure thta the Transit Gateways cluster earlier deployed in AWS is configured with a **`BGP AS number`**. <ins>This is a prerequisite for completing the Edge's deployment</ins>!
+Before configuring the attachments between the Secure Edge Gateway and the Transit Gateways, you have to ensure thta the Transit Gateways cluster earlier deployed in AWS is configured with a **`BGP AS number`**. <ins>This is a prerequisite for completing the Edge's deployment</ins>!
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **transit-aws** cluster!
 
 ```{figure} images/backbone-tgw019.png
 ---
+height: 400px
 align: center
 ---
 transit-aws
@@ -361,6 +362,7 @@ After this task, this is how the overall topology would look like.
 
 ```{figure} images/backbone-tgw021.png
 ---
+height: 400px
 align: center
 ---
 Topology after task #6
