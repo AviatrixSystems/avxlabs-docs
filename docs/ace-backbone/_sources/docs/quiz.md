@@ -24,11 +24,10 @@ Portal
 After logged in, click on **"ACE Cloud Backbone Connectivity Quiz"**.
 ```
 
-- To complete the quiz, you must use the Aviatrix ACE-Backbone POD
-- Read-only access is provided
-- You have **24** hours to complete the quiz
-- After 24 hours lab pod will be shutdown
-- You have a total of **4** maximum attempts!
+- For some of the questions in the quiz, you need to use the Aviatrix ACE-Backbone POD
+- You have **12** hours to complete the quiz
+- After 12 hours lab pod will be shutdown
+- You have a total of **3** maximum attempts!
 
 ```{figure} images/survey.png
 ---
