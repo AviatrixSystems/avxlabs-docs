@@ -464,15 +464,51 @@ You have successfully extended the Aviatrix solution to the on-prem Data Center,
 
 ## Connectivity Test
 
-Go to **CoPilot > Cloud Resources > Cloud Assets** and search for the **aws-instance** on the Search field, then retrieve its Public IP address!
+Let's now verify the connectivity between Azuere, AWS and the on-prem DC.
+
+Go to **CoPilot > Cloud Resources > Cloud Assets** and search for the **aws-instance** on the Search field, then retrieve its **Public** IP address!
 
 ```{figure} images/backbone-tgw030.png
 ---
 align: center
 ---
-aws-instance
+aws-instance on the Cloud Assets
 ```
 
-Open an **SSH client** and establish a session towards the aws-instance.
+Now open an **SSH client** and establish a session towards the <ins>aws-instance</ins>.
 
-## Conclusion
+```{figure} images/backbone-tgw031.png
+---
+align: center
+---
+SSH
+```
+
+Now let's ping the **Private** IP address of the <ins>azure-instance</ins>
+
+```{figure} images/backbone-tgw032.png
+---
+height: 400px
+align: center
+---
+azure-instance
+```
+
+Issue the following command to verify the connectivity with the **_azure-instance_**:
+
+```bash
+ping 10.2.2.40 
+```
+
+```{tip}
+Keep the ping running recursively!
+```
+
+```{figure} images/backbone-tgw033.png
+---
+height: 400px
+align: center
+---
+ping towards azure-instance
+```
+

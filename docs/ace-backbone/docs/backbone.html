@@ -330,7 +330,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-configure-bgp-asn">Task #6: Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-7-edge-to-transits">Task #7: Edge to Transits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">Connectivity Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -741,17 +740,42 @@ Go to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Tasks</strong> and ex
 </section>
 <section id="connectivity-test">
 <h2>Connectivity Test<a class="headerlink" href="#connectivity-test" title="Link to this heading">#</a></h2>
-<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong> and search for the <strong>aws-instance</strong> on the Search field, then retrieve its Public IP address!</p>
+<p>Let’s now verify the connectivity between Azuere, AWS and the on-prem DC.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong> and search for the <strong>aws-instance</strong> on the Search field, then retrieve its <strong>Public</strong> IP address!</p>
 <figure class="align-center" id="id32">
 <img alt="../_images/backbone-tgw030.png" src="../_images/backbone-tgw030.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">aws-instance</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">aws-instance on the Cloud Assets</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Open an <strong>SSH client</strong> and establish a session towards the aws-instance.</p>
-</section>
-<section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Now open an <strong>SSH client</strong> and establish a session towards the <ins>aws-instance</ins>.</p>
+<figure class="align-center" id="id33">
+<img alt="../_images/backbone-tgw031.png" src="../_images/backbone-tgw031.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now let’s ping the <strong>Private</strong> IP address of the <ins>azure-instance</ins></p>
+<figure class="align-center" id="id34">
+<a class="reference internal image-reference" href="../_images/backbone-tgw032.png"><img alt="../_images/backbone-tgw032.png" src="../_images/backbone-tgw032.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">azure-instance</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Issue the following command to verify the connectivity with the <strong><em>azure-instance</em></strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">10</span>.2.2.40<span class="w"> </span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Keep the ping running recursively!</p>
+</div>
+<figure class="align-center" id="id35">
+<a class="reference internal image-reference" href="../_images/backbone-tgw033.png"><img alt="../_images/backbone-tgw033.png" src="../_images/backbone-tgw033.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">ping towards azure-instance</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
@@ -834,7 +858,6 @@ Go to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Tasks</strong> and ex
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-configure-bgp-asn">Task #6: Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-7-edge-to-transits">Task #7: Edge to Transits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">Connectivity Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 
