@@ -8,8 +8,8 @@ ABC Healthcare (a fictitious company), a leading healthcare provider, operates s
 
 You, the newly appointed solutions architect, have been assigned the following task:
 
-- Create a **_multicloud backbone architecture_** that works in every cloud.
-- The solution should also provide **_hybrid connectivity_** towards the Data Center.
+- Create a **_`multicloud backbone architecture`_** that works in every cloud.
+- The solution should also provide **_`hybrid connectivity`_** towards the Data Center.
 
 ```{important}
 **Azure Route Server** does not natively sypport connectivity to other Cloud Providers.
