@@ -553,7 +553,7 @@ ping towards the test-vm inside the DC
 
 You have successfully verified the connectivity between the two CSPs and the on-prem DC by means of the Aviatrix Cloud Backbone.
 
-Wait for 4-5 minutes and then go to **CoPilot > Monitor > FlowIQ** and on the `"Filters"` field click on thew **+** button and create the following condition:
+Wait for 4-5 minutes and then go to **CoPilot > Monitor > FlowIQ** and on the `"Filters"` field click on the **+** button and create the following condition:
 
 ```bash
 Destination IP Address is 10.2.2.40
@@ -561,7 +561,7 @@ Destination IP Address is 10.2.2.40
 
 ```{figure} images/backbone-tgw036.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 FlowIQ
@@ -569,7 +569,7 @@ FlowIQ
 
 ```{figure} images/backbone-tgw037.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Condition
