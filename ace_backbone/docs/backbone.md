@@ -551,6 +551,44 @@ align: center
 ping towards the test-vm inside the DC
 ```
 
+You have successfully verified the connectivity between the two CSPs and the on-prem DC by means of the Aviatrix Cloud Backbone.
+
+Wait for 4-5 minutes and then go to **CoPilot > Monitor > FlowIQ** and on the `"Filters"` field click on thew **+** button and create the following condition:
+
+```bash
+Destination IP Address is 10.2.2.40
+```
+
+```{figure} images/backbone-tgw036.png
+---
+height: 400px
+align: center
+---
+FlowIQ
+```
+
+```{figure} images/backbone-tgw037.png
+---
+height: 400px
+align: center
+---
+Condition
+```
+
+```{important}
+`FlowIQ` provides a very interesting service that helps you gaining a very rich and deep visibility into your Traffic Flows.
+
+For all network traffic moving across your Aviatrix-managed network, Aviatrix gateways capture `metadata` for all traffic traversing their links. 
+```
+
+```{figure} images/backbone-tgw038.png
+---
+height: 400px
+align: center
+---
+FlowIQ outcome
+```
+
 ## Conclusion
 
 In this lab, you successfully designed and implemented a multi-cloud backbone architecture for ABC Healthcare, extending their cloud infrastructure across both Azure and AWS. Despite initial challenges, such as the lack of native connectivity between Azure Route Server and other cloud providers, you leveraged Aviatrix's multicloud transit capabilities to create an efficient and robust solution. Through sequential tasks, you deployed key infrastructure components, including AWS Transit Gateway, Aviatrix Transit VPCs, and Aviatrix Transit Gateways. As a result, ABC Healthcare now possesses a `scalable and high-performance multi-cloud network backbone`, poised to support its growing cloud initiatives with enhanced inter-cloud and hybrid connectivity.
