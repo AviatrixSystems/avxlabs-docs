@@ -488,6 +488,7 @@ Go to **CoPilot > Cloud Resources > Cloud Assets** and search for the **aws-inst
 
 ```{figure} images/backbone-tgw030.png
 ---
+height: 250px
 align: center
 ---
 aws-instance on the Cloud Assets
@@ -512,21 +513,44 @@ align: center
 azure-instance
 ```
 
-Issue the following command to verify the connectivity with the **_azure-instance_**:
+Issue the following command to verify the connectivity towards the **_azure-instance_**:
 
 ```bash
 ping 10.2.2.40 
 ```
 
-```{tip}
-Keep the ping running recursively!
-```
-
 ```{figure} images/backbone-tgw033.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 ping towards azure-instance
 ```
 
+Stop the command and try to ping also the **test-vm** inside the on-prem DC.
+
+```{figure} images/backbone-tgw034.png
+---
+height: 400px
+align: center
+---
+ping towards the test-vm inside the DC
+```
+
+Issue the following command to verify the connectivity towards the **_test-vm_**:
+
+```bash
+ping 10.40.251.29
+```
+
+```{figure} images/backbone-tgw035.png
+---
+height: 400px
+align: center
+---
+ping towards the test-vm inside the DC
+```
+
+## Conclusion
+
+In this lab, you successfully designed and implemented a multi-cloud backbone architecture for ABC Healthcare, extending their cloud infrastructure across both Azure and AWS. Despite initial challenges, such as the lack of native connectivity between Azure Route Server and other cloud providers, you leveraged Aviatrix's multicloud transit capabilities to create an efficient and robust solution. Through sequential tasks, you deployed key infrastructure components, including AWS Transit Gateway, Aviatrix Transit VPCs, and Aviatrix Transit Gateways. As a result, ABC Healthcare now possesses a `scalable and high-performance multi-cloud network backbone`, poised to support its growing cloud initiatives with enhanced inter-cloud and hybrid connectivity.
