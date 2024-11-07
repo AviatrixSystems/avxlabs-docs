@@ -37,29 +37,29 @@ Initial Topology
 
 | **POD#** | **Copilot** |
 |:----------:|:---------------:|
-|      6     |       <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD##</a>     |
-|      7     |       <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD##</a>     |
-|      8     |       <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD##</a>     |
-|      9     |       <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD##</a>     |
-|      10     |       <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD##</a>     |
-|      11     |       <a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD##</a>     |
-|      12     |       <a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD##</a>     |
-|      13     |       <a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD##</a>     |
-|      14     |       <a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD##</a>     |
-|      15     |       <a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD##</a>     |
-|      16     |       <a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD##</a>     |
-|      17     |       <a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD##</a>     |
-|      18     |       <a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD##</a>     |
-|      19     |       <a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD##</a>     |
-|      20     |       <a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD##</a>     |
-|      21     |       <a href="https://cplt.pod21.aviatrixlab.com" target="_blank">POD##</a>     |
-|      22     |       <a href="https://cplt.pod22.aviatrixlab.com" target="_blank">POD##</a>     |
-|      23     |       <a href="https://cplt.pod23.aviatrixlab.com" target="_blank">POD##</a>     |
-|      24     |       <a href="https://cplt.pod24.aviatrixlab.com" target="_blank">POD##</a>     |
-|      25     |       <a href="https://cplt.pod25.aviatrixlab.com" target="_blank">POD##</a>     |
-|      26     |       <a href="https://cplt.pod26.aviatrixlab.com" target="_blank">POD##</a>     |
-|      27     |       <a href="https://cplt.pod27.aviatrixlab.com" target="_blank">POD##</a>     |
-|      28     |       <a href="https://cplt.pod28.aviatrixlab.com" target="_blank">POD##</a>     |
+|      6     |       <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD06</a>     |
+|      7     |       <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD07</a>     |
+|      8     |       <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD08</a>     |
+|      9     |       <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD09</a>     |
+|      10     |       <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a>     |
+|      11     |       <a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a>     |
+|      12     |       <a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a>     |
+|      13     |       <a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a>     |
+|      14     |       <a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a>     |
+|      15     |       <a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a>     |
+|      16     |       <a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a>     |
+|      17     |       <a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a>     |
+|      18     |       <a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a>     |
+|      19     |       <a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a>     |
+|      20     |       <a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a>     |
+|      21     |       <a href="https://cplt.pod21.aviatrixlab.com" target="_blank">POD21</a>     |
+|      22     |       <a href="https://cplt.pod22.aviatrixlab.com" target="_blank">POD22</a>     |
+|      23     |       <a href="https://cplt.pod23.aviatrixlab.com" target="_blank">POD23</a>     |
+|      24     |       <a href="https://cplt.pod24.aviatrixlab.com" target="_blank">POD24</a>     |
+|      25     |       <a href="https://cplt.pod25.aviatrixlab.com" target="_blank">POD25</a>     |
+|      26     |       <a href="https://cplt.pod26.aviatrixlab.com" target="_blank">POD26</a>     |
+|      27     |       <a href="https://cplt.pod27.aviatrixlab.com" target="_blank">POD27</a>     |
+|      28     |       <a href="https://cplt.pod28.aviatrixlab.com" target="_blank">POD28</a>     |
 
 ## Access credentials
 
