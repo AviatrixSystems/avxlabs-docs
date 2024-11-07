@@ -19,11 +19,11 @@ Aviatrix supports `Multicloud Transit`.
 
 ## Initial Set-up
 
-1- You have already deployed both the `Aviatrix Controller` and the `Aviatrix CoPilot`, inside AWS.
+1- Both the `Aviatrix Controller` and the `Aviatrix CoPilot` got already deployed in AWS, inside a dedicated MGMT VPC.
 
-2- You have also deployed a pair of `Transit Gateways` in Azure and attached them to the existing Azure Route Server.
+2- A pair of `Transit Gateways` got also deployed in Azure and attached to the existing **Azure Route Server**.
 
-3- You have also deployed an `Aviatrix Secure Edge` inside the on-prem Data Center.
+3- An `Aviatrix Secure Edge` got already deployed inside the on-prem Data Center.
 
 ```{figure} images/backbone-initial-topology.png
 ---
@@ -101,7 +101,7 @@ These are very aggressive settings. In a Production environment, you should not 
 
 ## Task #1: Create an AWS TGW using the CoPilot
 
-The Copilot provides an `AWS TGW (Transit Gateway) Network Orchestration` service, that allows to deploy the AWS TGW avoiding to use the AWS Console.
+The Copilot provides an `AWS TGW (Transit Gateway) Network Orchestration` service, that allows to deploy the AWS TGW, avoiding to use the AWS Console.
 
 ```{figure} images/backbone-tgw01.png
 ---
@@ -184,7 +184,7 @@ It will take roughly **2 minutes** for the Aviatrix Controller to completing the
 
 ```{figure} images/backbone-tgw07.png
 ---
-height: 200px
+height: 350px
 align: center
 ---
 Attachment
@@ -192,7 +192,7 @@ Attachment
 
 ## Task #3: Create an Aviatrix Transit VPC
 
-Let's continue building the cloud backbone, now you are asked to create the `Transit VPC`.
+Let's continue building up the cloud backbone, now you are asked to create a `Transit VPC`.
 
 ```{figure} images/backbone-tgw08.png
 ---
@@ -200,6 +200,7 @@ height: 400px
 align: center
 ---
 Initial Topology for Task#3
+```
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and click on the `"+ VPC/VNet"` button.
 
@@ -232,7 +233,7 @@ Wait few minutes for the completion of the task. Check the hourglass icon on the
 
 ## Task #4: Create both the Transit Gateways and the peering
 
-Now it's time to deploy a pair of **`Transit GWs`** inside the VPC created on the previous task. In addition to this, you have also to establish the peering between the Transit GWs in Azure and the Transit GWs in AWS.
+Now it's time to deploy a pair of **`Transit GWs`** inside the VPC created on the previous task. In addition to this, you have also to establish the `peering` between the Transit GWs in Azure and the Transit GWs in AWS.
 
 ```{figure} images/backbone-tgw011.png
 ---
@@ -284,12 +285,7 @@ Do not forget to click on **SAVE**.
 The Aviatrix Controller will deploy two Transit Gateways and, at the same time, it will establish the peering with the predeployed Transit Gateways in Azure.
 ```
 
-```{caution}
-The Aviatrix Controller will deploy two Transit Gateways and, at the same time, it will establish the peering with the predeployed Transit Gateways in Azure.
-```
-
-You can monitor the progress of the task!
-Go to **CoPilot > Monitor > Notifications > Tasks** and expand the task named `"Create transit gateway: transit-aws"`.
+You can monitor the progress of the task going to **CoPilot > Monitor > Notifications > Tasks** and expanding the corresponding task, named `"Create transit gateway: transit-aws"`.
 
 ```{figure} images/backbone-tgw014.png
 ---
@@ -303,7 +299,7 @@ Task in progress
 it will take roughly **10 minutes** for the Aviatrix Controller for completing this task, therefore, be patient!
 ```
 
-Now go to **CoPilot > Cloud Fabric > Topology**, click on `"Managed"` for hiding all the unmanaged VPCs (i.e. VPCs without an Aviatrix GW) and then click on the `"Collapse all VPC/VNets"` button.
+Now go to **CoPilot > Cloud Fabric > Topology**, click on the `"Managed"` button for hiding all the unmanaged VPCs (i.e. VPCs without an Aviatrix GW) and then click on the `"Collapse all VPC/VNets"` button.
 
 ```{figure} images/backbone-tgw015.png
 ---
@@ -317,7 +313,7 @@ You will notice the presence of the newly created **peering**.
 
 ## Task #5: Attach Transit Gateways to aws-tgw
 
-Now Let's attach the Transit GWs in AWS to the AWS TGW.
+Now let's attach the Transit GWs in AWS to the AWS TGW.
 
 ```{figure} images/backbone-tgw016.png
 ---
@@ -336,7 +332,7 @@ align: center
 "Attach Transit GW" button
 ```
 
-Ensure this parameter is entered in the pop-up window `"Attach Transigt Gateway to AWS-NVirginia-TGW"`.
+Ensure this parameter is entered in the pop-up window `"Attach Transit Gateway to AWS-NVirginia-TGW"`.
 
 - **Transit Gateway:** <span style='color:#479608'>transit-aws</span>
 
@@ -359,13 +355,13 @@ Now that you have established the peering between the two CSPs, you have achieve
 
 Let's carry on with the final deployment of the connectivity to the on-prem DC.
 
-Before configuring the attachments between the Secure Edge Gateway and the Transit Gateways, you have to ensure thta the Transit Gateways cluster earlier deployed in AWS is configured with a **`BGP AS number`**. <ins>This is a prerequisite for completing the Edge's deployment</ins>!
+Before configuring the attachments between the Secure Edge Gateway and the Transit Gateways, you have to ensure that the Transit Gateways's cluster earlier deployed in AWS is configured with a **`BGP AS number`**. <ins>This is a prerequisite for completing the Edge's deployment</ins>!
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **transit-aws** cluster!
 
 ```{figure} images/backbone-tgw019.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 transit-aws
@@ -482,7 +478,7 @@ align: center
 8x IPSec tunnels towards Azure
 ```
 
-You have successfully extended the Aviatrix solution to the on-prem Data Center, harnessing the **`High Performance Encryption`** service.
+You have successfully extended the Aviatrix solution to the on-prem Data Center, harnessing the **`High Performance Encryption`** functionality.
 
 ## Connectivity Test
 
