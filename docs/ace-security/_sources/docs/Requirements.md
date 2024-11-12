@@ -1,6 +1,6 @@
 # Requirements
 
-```{figure} images/quiz-4.png
+```{figure} images/security-quiz.png
 ---
 align: center
 ---
