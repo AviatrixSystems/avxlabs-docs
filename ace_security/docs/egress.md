@@ -52,17 +52,32 @@ Listen carefully. There will be quiz questions based on this 4 min video, also.
 
 
 ## LAB Access Details
-| **_FULL NAME_** | **_POD #_**                                                                |
-|-----------------|----------------------------------------------------------------------------|
-| Andrea          | <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD6</a>       |
-| Ashwini         | <a href="https://cplt.pod7.aviatrixlab.com" target="_blank"><br>POD7</a>   |
-| Borja           | <a href="https://cplt.pod8.aviatrixlab.com" target="_blank"><br>POD8</a>   |
-| Devarsh         | <a href="https://cplt.pod9.aviatrixlab.com" target="_blank"><br>POD9</a>   |
-| Hermes          | <a href="https://cplt.pod10.aviatrixlab.com" target="_blank"><br>POD10</a> |
-| Jesus           | <a href="https://cplt.pod11.aviatrixlab.com" target="_blank"><br>POD11</a> |
-| Ramchander      | <a href="https://cplt.pod12.aviatrixlab.com" target="_blank"><br>POD12</a> |
-| Vinay           | <a href="https://cplt.pod13.aviatrixlab.com" target="_blank"><br>POD13</a> |
-
+| **POD#** | **Copilot** |
+|:----------:|:---------------:|
+|      1     |       <a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD01</a>     |
+|      2     |       <a href="https://cplt.pod2.aviatrixlab.com" target="_blank">POD02</a>     |
+|      3     |       <a href="https://cplt.pod3.aviatrixlab.com" target="_blank">POD03</a>     |
+|      4     |       <a href="https://cplt.pod4.aviatrixlab.com" target="_blank">POD04</a>     |
+|      5     |       <a href="https://cplt.pod5.aviatrixlab.com" target="_blank">POD05</a>     |
+|      6     |       <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD06</a>     |
+|      7     |       <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD07</a>     |
+|      8     |       <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD08</a>     |
+|      9     |       <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD09</a>     |
+|      10     |       <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a>     |
+|      11     |       <a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a>     |
+|      12     |       <a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a>     |
+|      13     |       <a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a>     |
+|      14     |       <a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a>     |
+|      15     |       <a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a>     |
+|      16     |       <a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a>     |
+|      17     |       <a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a>     |
+|      18     |       <a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a>     |
+|      19     |       <a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a>     |
+|      20     |       <a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a>     |
+|      21     |       <a href="https://cplt.pod21.aviatrixlab.com" target="_blank">POD21</a>     |
+|      22     |       <a href="https://cplt.pod22.aviatrixlab.com" target="_blank">POD22</a>     |
+|      23     |       <a href="https://cplt.pod23.aviatrixlab.com" target="_blank">POD23</a>     |
+|      24     |       <a href="https://cplt.pod24.aviatrixlab.com" target="_blank">POD24</a>     |
 
 
 ## Access credentials
@@ -76,7 +91,7 @@ student
 Password:
 
 ```bash
-1026zRt7#Y8B#GQ
+119T7YB!v8KKaL
 ```
 
 ## LAB Pre-Req
