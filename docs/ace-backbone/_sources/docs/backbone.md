@@ -39,8 +39,6 @@ Initial Topology
 |:----------:|:---------------:|
 |      #     |       <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD0#</a>     |
 
-
-
 ## Access credentials
 
 Username:
