@@ -1,13 +1,12 @@
-# Lab 1
+# Lab 1 - Getting Started
 
 ## Lab Overview - What's in the lab?
+
 Lab time: ~15 minutes
 
-You have been tasked with building connectivity and security for an application in the cloud. It just so happens that the different tiers of the application are spread out across different VPCs and VNets in Azure and AWS.
+In this lab, we are going to explore our lab environment. The diagram below shows the current state of the lab environment. You will extend this environment during the exercises. The instructor will briefly explain the lab setup in the diagram. You can find a more complete and detailed diagram here.
 
-The application components are already deployed in each of the VPCs/VNets, all you have to do is build out the connectivity. The app is only available via private IP address, which you can access using a web-based RDP server, which is available on-prem.
-
-```{figure} images/lab1-topology.png
+```{figure} images/lab-before2.png
 ---
 height: 400px
 align: center
@@ -15,58 +14,59 @@ align: center
 Lab Overview
 ```
 
-## Lab 1.1 - Aviatrix CoPilot
-The **Aviatrix CoPilot** is deployed in a *Shared Services VPC* in AWS, with the Aviatrix Controller. 
+## Lab 1.1 - CoPilot
+
 ### Description
-Log in to the Aviatrix CoPilot
+
+Along with the Aviatrix Controller, CoPilot is also deployed. CoPilot will be your best buddy for configuring, visualizing and operating the Multicloud environment.
+
 ### Validate
-1. Open your browser and navigate to <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
-2. Take note of the `username` and `password` for Aviatrix CoPilot.
-3. Click on the **Open CoPilot** button
 
-Alternatively, you can access the Aviatrix CoPilot using the information below:
+Log in to CoPilot using the following details:
 
-**URL:** cplt.pod**X**.aviatrixlab.com  
+**URL:**  ```https://cplt.pod[#].aviatrixlab.com```  
+**Username:**  ```student```  
+**Password:** <span style="color:orange">***Please refer to your portal registration page for the password.***</span>  
+
+* _Remember to replace <span style="color:orange">**[#]**</span> with your pod ID_
 
 ```{note}
-Replace X in the **URL** with the pod number assigned to you. 
->Username: ```student```   
->Password: ```refer to ACE Associate Lab Portal```
-```
+CoPilot details are available on your personal POD Portal!
 
-### Expected Results
-You should be successfully logged into CoPilot and visualize the Dashboard section.
-
-```{figure} images/lab1-dashboard.png
+You can access to your **CoPilot** directly clicking on the `"Open Copilot"` button!
+```{figure} images/lab1-portal.png
 ---
-height: 400px
 align: center
 ---
-Dashboard
+Personal POD Portal
 ```
 
-From the Navigation panel on the left-hand side, select **Cloud Fabric > Topology**. 
+You can familiarize yourself with the different functions in CoPilot and after each lab, we will verify the results in CoPilot.
+**Please note that it can take a minute for CoPilot to reflect changes on the network.**
 
-The initial topology should look similar to the following screenshot.  Throughout the labs, refresh the CoPilot Topology to show the connectivity, and latency of the links. 
+The `Dashboard` tab provides a global overview of your Multicloud network, the status, how much traffic is flowing, locations deployed, etc.  
 
-You will notice that the CoPilot is showing both the **Managed** VPCs and the **Unmanaged** VPCs.
+Take a look into `Cloud Fabric-->Topology` which visualizes the connectivity of the Multicloud environment. Topology will show you latency between links when you enable it on the top right hand corner in the latency pane. The topology view also allows you to initiate some troubleshooting commands directly from the map. Expand `azure-transit` in the middle of the screen, by clicking on it. Now you should see and be able to select the `azure-transit` gateway on the outside edge of the diagram. On the bottom right, you should see a diagnostics button. Click that and explore the diagnostics capabilities.
+
+### Expected Results
+
+You should be able to log in to CoPilot. You should be able to view Topology by clicking `Cloud Fabric` -> `Topology` and see the current Multicloud Network topology. Topology should look similar to this:  
 
 ```{figure} images/lab1-copilot-topology.png
 ---
 height: 400px
 align: center
 ---
-CoPilot Topology
+Initial Topology
 ```
 
-Click on the `"Managed"` button on the right-hand side of the screen, for hiding the Unmanaged VPCs.
+Click on the `"Managed"` button on the right-hand side of the screen, for hiding the **Unmanaged VPCs**.
 
-```{figure} images/lab1-copilot-managedvpc.png
+```{figure} images/lab1-managed.png
 ---
-height: 400px
 align: center
 ---
-Managed VPCs button
+Filters
 ```
 
 ```{note}
@@ -75,91 +75,149 @@ Managed VPCs button
 **Unmanaged VPC** = Indicates no Aviatrix gateways exist in the VPC/VNet.
 ```
 
-After this action this is how your Topology should look like.
-
-```{figure} images/lab1-copilot-managedtopo.png
+```{figure} images/lab1-nounmanagaed.png
 ---
 height: 400px
 align: center
 ---
-Managed VPCs button
+Initial Topology without the Unmanaged VPCs
 ```
 
-## Lab 1.2 - Remote Access Server
-To access the cloud environment, you have been provided a **clientless** Remote Access Server, which is running in your “Data Center”. This conveniently offers a *web-based* HTML5 based RDP experience, so there should be no need to install any client.
+As you can see, we have the azure-transit gateway in the middle, with **azure-build**, **azure-dmz** and **azure-prod** spokes connected to it. The AWS VPC's are not yet connected to any transit.
 
-### Description
-Log in to the Remote Access Server.
+After selecting the Transit Gateway icon, scroll down through all its **Properties** on the right-hand side and click on the **Tools** button, then select the `Gateway Diagnostics`. 
 
-### Validate
-1. Open your browser and navigate to <a href="https://associate-portal.ace.aviatrixlab.com" target="_blank">ACE Associate Lab Portal</a>
-2. Take note of the `username` and `password` for Remote Access Server.
-3. Click on the **Open Server** button
+Have a look around at the troubleshooting tools here.
 
-Alternatively, you can access the Remote Access Server using the details below:
-
-**URL:** client.pod**X**.aviatrixlab.com  
-
-```{note}
-Replace X in the **URL** with the pod number assigned to you. 
-> **Username:** ```student```   
-> **Password:** ```refer to ACE Associate Lab Portal```
+```{figure} images/lab1-copilot-diagnostics.png
+---
+height: 400px
+align: center
+---
+Gateway Diagnostics
 ```
 
-```{figure} images/ras-login.png
+```{figure} images/lab1-copilot-diagnostics-pane.png
 ---
 align: center
 ---
-Sample Remote Access Server Login
+CoPilot Diagnostics Pane
 ```
 
-### Expected Results
-Once you log in, you will see:
-- An icon labeled `LX Terminal`. Use this for performing Pings from the Remote Access Server.
-- An icon for `Firefox` web browser. Use this to perform other connectivity tests in Lab 2.
+Close the diagnostics pane.
 
-```{figure} images/ras-desktop.png
+## Lab 1.2 - Access Accounts
+
+### Description
+
+In order for the controller to be able to access the different CSP environments, we need to provide it with accounts with the correct privileges.
+
+### Validate
+
+Take a look at the access accounts already set up. You can see them in Copilot under **_Cloud Resources -> Cloud Account_**.
+
+### Expected Results
+
+Accounts in AWS and Azure have already been onboarded and you should see these accounts in the list. The accounts should also have an audit status equal to **_pass_**, meaning the permissions in the accounts are correctly configured.
+
+```{figure} images/lab1-accounts.png
 ---
+height: 200px
 align: center
 ---
-Sample Remote Access Server Desktop
+Cloud Accounts onboarded
+```
+
+## Lab 1.3 - Connectivity Check
+
+### Description
+
+Each Spoke VPC / VNet contains one or multiple Linux VM's to test connectivity. There is a web server running on each of the instances which you can use to test the connectivity. The purpose of this exercise is to verify the connectivity between Linux VMs in the Spoke VPCs / VNets in the different clouds as well as the Office network. To make life a little easier, we have created 2 dashboards to show the status of all connectivity.
+
+### Validate
+
+In order to view the connectivity dashboards, a Remote Access Server is placed in the office.  We need to log on to the Remote Access Server we have deployed throughout the lab which can be accessed here:
+
+**URL:** ```https://client.pod[#].aviatrixlab.com```  
+**User:** ```student```  
+**Password:** <span style="color:orange">***Please refer to your portal registration page for the password.***</span>  
+
+* _Remember to replace <span style="color:orange">**[#]**</span> with your pod ID_
+* _If you want to use copy/paste in this Guacamole web console, use CTRL+ALT+SHIFT on a Windows device or CTRL+CMD+SHIFT on a MacOS device._
+
+```{figure} images/lab1-remote-access.png
+---
+height: 400px
+align: center
+---
+Remote Access Server
 ```
 
 ```{note}
-If you are experiencing sluggishness with the web-based RDP experience, you can use any RDP client. 
-
-The username will be `podX`, where **X** is the pod number assigned to you.
+You can also access the Remote Access Server on port `3389` using the RDP client of your choice using the same credentials as above.
 ```
 
-## Lab 1.3 - Servers
-The application tiers have been pre-deployed and are available under the following FQDNs and Ports:
+* Once logged in, launch the **Min Web Browser** and browse to the office connectivity dashboard ```http://localhost```
 
-| App Tier  | FQDN  | TCP Port  |
-|:---------:|:-----:|:---------:|
-| Web       | web.pod**X**.aviatrixlab.com  | 80  |
-| App       | app.pod**X**.aviatrixlab.com  | 8080  |
-| Database  | db.pod**X**.aviatrixlab.com | 443 |
-
-### Description
-Test connectivity between App tiers
-### Validate
-Throughout the labs, using the RDP Session, open Firefox and navigate to:
-
-**URL:** web.pod**X**.aviatrixlab.com
-
-You can also try to ping the different app tiers using the Terminal icon on the Desktop of the Remote Access Server:
-
-```bash
-ping web.podX.aviatrixlab.com
-ping app.podX.aviatrixlab.com
-ping db.podX.aviatrixlab.com
+```{figure} images/lab1-minibrowser.png
+---
+height: 200px
+align: center
+---
+Remote Access Server
 ```
 
-```{hint}
-Replace **X** in the **URLs** with the pod number assigned to you. 
+```{figure} images/lab1-minibrowse2.png
+---
+height: 300px
+align: center
+---
+Remote Access Server
+```
 
-You can view the pod number by accessing the **ACE Associate Lab Portal**
+Now that we have validated the office connectivity, lets check the public web application that is already deployed in Azure.
+
+* Open a new tab from the same browser and browse to the Web App connectivity dashboard ```http://azure-lb.pod[#].aviatrixlab.com/test```
+
+```{tip}
+_Remember to replace <span style="color:orange">**[#]**</span> with your pod ID_
+```
+
+```{figure} images/lab1-newtab.png
+---
+align: center
+---
+New Tab
+```
+
+```{figure} images/lab1-newtab2.png
+---
+height: 200px
+align: center
+---
+Type the new URL
 ```
 
 ### Expected Results
-The connectivity is not yet built, so none of the tests should work!
+
+* None of the connections from the office will be successful. Look at the Diagram in the Lab 1 Overview and you will see that the office is not connected yet.
+
+```{figure} images/lab1-connectivity-from-office.png
+---
+align: center
+---
+Office connectivity
+```
+
+* Connectivity to the appgw, web, app and db servers should be working, proving that the already deployed application in Azure is up.
+
+```{figure} images/lab1-connectivity-3tier-app.png
+---
+align: center
+---
+Web app connectivity
+```
+
+## End of lab 1
+
+Ok, that's the end of Lab 1. Great job!
