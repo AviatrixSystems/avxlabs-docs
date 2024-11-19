@@ -47,7 +47,9 @@ Dashboard
 
 From the Navigation panel on the left-hand side, select **Cloud Fabric > Topology**. 
 
-The initial topology should look similar to the following screenshot.  Throughout the labs, refresh the CoPilot Topology to show the connectivity, and latency of the links.  
+The initial topology should look similar to the following screenshot.  Throughout the labs, refresh the CoPilot Topology to show the connectivity, and latency of the links. 
+
+You will notice that the CoPilot is showing both the **Managed** VPCs and the **Unmanaged** VPCs.
 
 ```{figure} images/lab1-copilot-topology.png
 ---
@@ -55,6 +57,32 @@ height: 400px
 align: center
 ---
 CoPilot Topology
+```
+
+Click on the `"Managed"` button on the right-hand side of the screen, for hiding the Unmanaged VPCs.
+
+```{figure} images/lab1-copilot-managedvpc.png
+---
+height: 400px
+align: center
+---
+Managed VPCs button
+```
+
+```{note}
+**Managed VPC** = Indicates an Aviatrix gateway is running in the VPC/VNet.
+
+**Unmanaged VPC** = Indicates no Aviatrix gateways exist in the VPC/VNet.
+```
+
+After this action this is how your Topology should look like.
+
+```{figure} images/lab1-copilot-managedtopo.png
+---
+height: 400px
+align: center
+---
+Managed VPCs button
 ```
 
 ## Lab 1.2 - Remote Access Server
