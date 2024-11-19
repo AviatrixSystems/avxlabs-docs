@@ -1,13 +1,18 @@
-# Welcome to ACE Associate instructor-led training!  
+![Lab Overview](../../docs/_logos/flightschool.png)
 
-This Lab Guide will guide you through the different parts of the **Aviatrix Associate** class.
+# Welcome to Aviatrix Flight School!  
 
-During these hands-on labs, you will:
+This Lab Guide will guide you through the different parts of Aviatrix Flight School.
 
-* Experience how easy it is to build and orchestrate an intelligent cloud network.
-* Experience advanced network operations.
-* Visualize and troubleshoot application issues.
+During this hands on deep dive session, you will gain knowledge and experience in these areas:
 
-**When registering for a POD, be sure to spell your name exactly as you would like it to appear on your ACE Associate certificate!**
+* Experience how easy it is to build and orchestrate networking in the cloud
+* Experience advanced network operations with CoPilot
+* Segment, secure, and automate routing within your cloud environment
+* Technical deep dive: Aviatrix deployment with Terraform
 
-![ACE](../../docs/_logos/ace_associate_banner.png)
+## Scenario
+
+You are a newly hired cloud engineer for FS Corp. You have been tasked with taking over responsibility for the network from the previous administrator. FS Corp. is already using Aviatrix for connectivity in their primary cloud, Azure. During this workshop you will be extending this deployment to a newly adopted cloud and their office. The newly hired CISO is also imposing some new security requirements on the cloud. After extending the connectivity, you will implement capabilities to meet their security requirements.
+
+Buckle up, we are taking off!
