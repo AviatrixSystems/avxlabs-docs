@@ -39,6 +39,7 @@ You should be successfully logged into CoPilot and visualize the Dashboard secti
 
 ```{figure} images/lab1-dashboard.png
 ---
+height: 400px
 align: center
 ---
 Dashboard
@@ -50,6 +51,7 @@ The initial topology should look similar to the following screenshot.  Throughou
 
 ```{figure} images/lab1-copilot-topology.png
 ---
+height: 400px
 align: center
 ---
 CoPilot Topology
