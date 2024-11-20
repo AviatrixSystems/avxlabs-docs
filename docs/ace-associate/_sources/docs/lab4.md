@@ -15,25 +15,17 @@ Because of the connection policy between the DMZ and prod, the Azure AppGW is cu
 We have prepared and installed a **microsegmentation** policy already. Lets review and modify it.
 
 * Browse to **_Security -> Distributed Cloud Firewall -> Rules_**
-* Look at the policy to get an understanding of which rules are set up
-* Edit the last policy **_DefaultAllowAll_** and set enforcement to off and hit **Save In Draft**.
+* Look at the policies to get an understanding of which rules are set up
 
-```{caution}
-If you see this message, please click on the `"Enable Distributed Cloud Firewall"` button.
-```{figure} images/lab4-dcf.png
+```{figure} images/lab4-ruleslist.png
 ---
+height: 400px
 align: center
 ---
-Enable dcf
+Rules List
 ```
 
-```{figure} images/lab4-edit.png
----
-height: 200px
-align: center
----
-Edit the dcf rule
-```
+* Edit the penultimate policy **_DefaultAllowAll_**, clicking on the **pencil icon** and set enforcement to off and hit **Save In Draft**.
 
 ```{figure} images/lab4-disable-allow-all.png
 ---
@@ -44,7 +36,7 @@ Unenforcement
 
 You should now see that the rule is modified (highlighted in amber).
 
-* Commit the change by clicking the commit button
+* Commit the change by clicking the `Commit` button
 
 ```{figure} images/lab4-commit.png
 ---
@@ -291,7 +283,7 @@ Associate existing firewall
 align: center
 ---
 Existing firewall configuration
-``` 
+```
 
 * Click **Associate**.
 
