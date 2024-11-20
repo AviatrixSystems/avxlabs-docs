@@ -1,6 +1,6 @@
 # Lab 3 - Expanding to multi-cloud
 
-Lab time: ~30 minutes
+Lab time: **~30** minutes
 
 **_Scenario_**:  The business has decided to go multicloud! Some apps simply run better in other clouds, and why put all eggs in one basket? During this exercise we will deploy in AWS an Aviatrix Transit VPC, Transit Gateway and attach the existing spoke gateways to the aws transit. We will also peer Azure and AWS and test out the connectivity.
 
@@ -50,7 +50,7 @@ Set up the topology builder
 ```
 
 * Hit **Save** to start the configuration session.
-* Click The "+" sign next to transit, to add a new transit.
+* Click The `"+"` sign next to Transit, to add a new transit.
 
 ```{figure} images/lab3-transit.png
 ---
@@ -153,14 +153,25 @@ Deploy
 
 > **Important:** By default, routes are not propagated between spokes attached to the transit gateway. We have to enable a setting on our transit gateway to allow this to happen.  
 
+```{important}
+Please wait for some minutes for the aws-transit GW deployment completion!
+```
+
+```{figure} images/lab3-deploycompleted.png
+---
+align: center
+---
+Deployment completed
+```
+
 * Go to **_Cloud Fabric -> Gateways -> Transit Gateways_** and click on **_aws-transit_**.
-* Open the settings pane and enable and save **Connected Transit** under the General settings.
+* Open the settings pane and enable and save **Connected Transit** under the `General` settings.
 
 ```{figure} images/lab3-connected-transit.png
 ---
 align: center
 ---
-Enable connected transit
+Enable Connected Transit
 ```
 
 ### Expected Results
@@ -222,7 +233,7 @@ align: center
 CoPilot Topology with Attached Spokes
 ```
 
-* If your topology does not show the connection to the spokes, refresh the page after a minute or so.
+* If your topology does not show the connection to the spokes, <ins>refresh the page</ins> after a minute or so.
 
 ## Lab 3.4 - Enable network segmentation on the AWS transit
 
@@ -278,7 +289,7 @@ After adding the network domains and associations, you should see the following 
 ---
 align: center
 ---
-Add network domains
+Add Network Domains
 ```
 
 ## Lab 3.6 - Create a connection policy
