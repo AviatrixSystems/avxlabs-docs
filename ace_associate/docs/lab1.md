@@ -2,7 +2,7 @@
 
 ## Lab Overview - What's in the lab?
 
-Lab time: ~15 minutes
+Lab time: **~15** minutes
 
 In this lab, we are going to explore our lab environment. The diagram below shows the current state of the lab environment. You will extend this environment during the exercises. The instructor will briefly explain the lab setup in the diagram. You can find a more complete and detailed diagram here.
 
@@ -85,7 +85,7 @@ Initial Topology without the Unmanaged VPCs
 
 As you can see, we have the azure-transit gateway in the middle, with **azure-build**, **azure-dmz** and **azure-prod** spokes connected to it. The AWS VPC's are not yet connected to any transit.
 
-After selecting the Transit Gateway icon, scroll down through all its **Properties** on the right-hand side and click on the **Tools** button, then select the `Gateway Diagnostics`. 
+After selecting the Transit Gateway icon, click on the **Tools** button, then select the `Gateway Diagnostics`. 
 
 Have a look around at the troubleshooting tools here.
 
@@ -114,7 +114,7 @@ In order for the controller to be able to access the different CSP environments,
 
 ### Validate
 
-Take a look at the access accounts already set up. You can see them in Copilot under **_Cloud Resources -> Cloud Account_**.
+Take a look at the access accounts already set up. You can see them in Copilot under **_`Cloud Resources -> Cloud Account`_**.
 
 ### Expected Results
 
