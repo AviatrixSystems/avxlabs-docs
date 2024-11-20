@@ -1,8 +1,8 @@
-![Lab Overview](../../docs/_logos/flightschool.png)
+![Lab Overview](../../docs/_logos/ace_associate_banner.png)
 
-# Welcome to Aviatrix Flight School!  
+# Welcome to ACE Associate Lab  
 
-This Lab Guide will guide you through the different parts of Aviatrix Flight School.
+This Lab Guide will guide you through the different parts of the Aviatrix Associate training.
 
 During this hands on deep dive session, you will gain knowledge and experience in these areas:
 
@@ -15,4 +15,4 @@ During this hands on deep dive session, you will gain knowledge and experience i
 
 You are a newly hired cloud engineer for FS Corp. You have been tasked with taking over responsibility for the network from the previous administrator. FS Corp. is already using Aviatrix for connectivity in their primary cloud, Azure. During this workshop you will be extending this deployment to a newly adopted cloud and their office. The newly hired CISO is also imposing some new security requirements on the cloud. After extending the connectivity, you will implement capabilities to meet their security requirements.
 
-Buckle up, we are taking off!
+Let's get started with the lab #1.
