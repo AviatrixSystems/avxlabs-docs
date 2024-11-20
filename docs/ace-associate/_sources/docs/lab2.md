@@ -394,10 +394,9 @@ Add Network domain connection
 
 ```{figure} images/lab2-network-domain-overview.png
 ---
-height: 300px
 align: center
 ---
-Network domain overview
+Logical View
 ```
 
 ## Lab 2.10 - Check office connectivity
