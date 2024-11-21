@@ -12,7 +12,16 @@ https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs
 We have prepared some Terraform code for you, which you will explore and deploy.
 
 * Open the Remote Access Server by navigating and logging in to `https://client.pod[#].aviatrixlab.com`
-* Double-click on **RDP - Client**
+
+```{note}
+Youn can access the **Remote Access Server** also clicking on the `"Oper Server"` button, inside your personal POD Portal!
+```{figure} images/lab6-portalpod.png
+---
+align: center
+---
+Open Server
+```
+
 * Open the **Visual Studio Code** located on the Desktop
 
 ```{figure} images/lab6-vs-code-open-folder.png
