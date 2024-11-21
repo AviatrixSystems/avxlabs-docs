@@ -35,9 +35,36 @@ Initial Topology
 
 ## LAB Access Details
 
-| **POD#** | **Copilot** |
-|:----------:|:---------------:|
-|      #     |       <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD0#</a>     |
+|         **_FULL NAME_**         |                             **_COPILOT #_**                            |
+|:-------------------------------:|:----------------------------------------------------------------------:|
+| Nick Iliopoulos                 | <a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD01</a>  |
+| Ashwini S                       | <a href="https://cplt.pod2.aviatrixlab.com" target="_blank">POD02</a>  |
+| Jahem Leon Henry Ofosu N'Guetta | <a href="https://cplt.pod3.aviatrixlab.com" target="_blank">POD03</a>  |
+| Himanshu Gupta                  | <a href="https://cplt.pod4.aviatrixlab.com" target="_blank">POD04</a>  |
+| Zdenko Timulak                  | <a href="https://cplt.pod5.aviatrixlab.com" target="_blank">POD05</a>  |
+| Chandra Thimmadasaiah           | <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD06</a>  |
+| Muhammad Abdul Mujeeb           | <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD07</a>  |
+| Tim Luz                         | <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD08</a>  |
+| Ygal Kemgne                     | <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD09</a>  |
+| Zahid Muhammad                  | <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a> |
+| Baris Ozay                      | <a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a> |
+| Mushtaq Ahmed                   | <a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a> |
+| Carlo Pio Luigi Ciciriello      | <a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a> |
+| andrea proietti                 | <a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a> |
+| Fabio Binetti                   | <a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a> |
+| Tony Xu                         | <a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a> |
+| Chen Shixian                    | <a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a> |
+| Abhilasha Kumari                | <a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a> |
+| Heman Dinesh Vora               | <a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a> |
+| Adrián Huertas Ortega           | <a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a> |
+| Ed Baichtal                     | <a href="https://cplt.pod21.aviatrixlab.com" target="_blank">POD22</a> |
+| Navneet Verma                   | <a href="https://cplt.pod22.aviatrixlab.com" target="_blank">POD22</a> |
+| Simhadri Podala                 | <a href="https://cplt.pod23.aviatrixlab.com" target="_blank">POD23</a> |
+| Mayoro NIANG                    | <a href="https://cplt.pod24.aviatrixlab.com" target="_blank">POD24</a> |
+| Luca Lionetti                   | <a href="https://cplt.pod25.aviatrixlab.com" target="_blank">POD25</a> |
+| Rohit Chandna                   | <a href="https://cplt.pod26.aviatrixlab.com" target="_blank">POD26</a> |
+| Ravi Teja                       | <a href="https://cplt.pod27.aviatrixlab.com" target="_blank">POD27</a> |
+| Joana Manzano                   | <a href="https://cplt.pod28.aviatrixlab.com" target="_blank">POD28</a> |
 
 ## Access credentials
 
@@ -50,7 +77,7 @@ student
 Password:
 
 ```bash
-############
+1116964Q!5FZLfG
 ```
 
 ## LAB Pre-Req
