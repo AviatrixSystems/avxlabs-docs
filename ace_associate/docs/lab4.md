@@ -1,6 +1,6 @@
 # Lab 4 - Beefing up security
 
-Lab time: ~60 minutes
+Lab time: **~60** minutes
 
 **_Scenario_**:  FS Corp has just hired a new CISO. They appreciate all the connectivity and guardrails that you have put in place with network segmentation, but their security requirements are more stringent! In this lab, you're going to beef up the security level using Aviatrix' security capabilities.
 
