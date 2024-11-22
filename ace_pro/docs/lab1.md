@@ -124,7 +124,7 @@ Confirmation
 ```
 
 ```{note}
-It will take <ins>few minutes</ins> to see all the four subnets (i.e 2x public subnets and 2x private subnets). <ins>Please, be patient!</ins>
+It will take <ins>few additional minutes</ins> to see all the four subnets (i.e 2x public subnets and 2x private subnets). <ins>Please, be patient!</ins>
 ```
 
 ## 3. AWS VPC
