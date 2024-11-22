@@ -85,7 +85,7 @@ Retrieve the private IP
 Now let's enable the egress within the VPC that is hosting the **_aws-us-east-2-spoke1-test2_** instance.
 
 ```{note}
-Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"+ Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
+Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"Enable Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
 ```
 
 ```{figure} images/lab6-egress.png
@@ -112,8 +112,7 @@ Enabling Single IP SNAT on VPC Spoke Gateway: Source Network Address Translation
 
 At this point, the Aviatrix  performs the same functions as the CSP NAT Gateway.
 
-- 
-  Verify its presence in any Private RTBs inside the **_aws-us-east-2-spoke1_** VPC.
+- Verify its presence in any Private RTBs inside the **_aws-us-east-2-spoke1_** VPC.
 
 ```{tip}
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any Private RTBs from the **Route Table** field.
@@ -198,7 +197,9 @@ align: center
 Begin
 ```
 
-After having enabled the DCF, the `Greendfield-Rule` gets generated automatically. 
+After having enabled the DCF, two Rules gets generated automatically:
+- `Greendfield-Rule`
+- `DefaultDenyAll` = EXPLICIT DENY
 
 This rule essentially allows all kind of traffic.
 
@@ -207,7 +208,7 @@ This rule essentially allows all kind of traffic.
 height: 150px
 align: center
 ---
-Greenfield-Rule
+Automatic rules injected by the Controller
 ```
 
 ### 4.3 Create the Discovery-Rule
