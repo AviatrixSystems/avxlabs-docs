@@ -441,7 +441,7 @@
 <p>Now let’s enable the egress within the VPC that is hosting the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code>, then select the <strong><em>aws-us-east-2-spoke1</em></strong> VPC and click on <strong>Add</strong>.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code>, then select the <strong><em>aws-us-east-2-spoke1</em></strong> VPC and click on <strong>Add</strong>.</p>
 </div>
 <figure class="align-center" id="id8">
 <img alt="../_images/lab6-egress.png" src="../_images/lab6-egress.png" />
@@ -539,12 +539,16 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p><span class="caption-number">Fig. 159 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>After having enabled the DCF, the <code class="docutils literal notranslate"><span class="pre">Greendfield-Rule</span></code> gets generated automatically.</p>
+<p>After having enabled the DCF, two Rules gets generated automatically:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Greendfield-Rule</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> = EXPLICIT DENY</p></li>
+</ul>
 <p>This rule essentially allows all kind of traffic.</p>
 <figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="../_images/lab6-greenfield.png"><img alt="../_images/lab6-greenfield.png" src="../_images/lab6-greenfield.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Automatic rules injected by the Controller</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
