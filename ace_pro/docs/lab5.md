@@ -201,7 +201,7 @@ After having enabled the DCF, two Rules gets generated automatically:
 - `Greendfield-Rule`
 - `DefaultDenyAll` = EXPLICIT DENY
 
-This rule essentially allows all kind of traffic.
+The first rule essentially allows all kind of traffic.
 
 ```{figure} images/lab6-greenfield.png
 ---
@@ -212,6 +212,71 @@ Automatic rules injected by the Controller
 ```
 
 ### 4.3 Create the Discovery-Rule
+
+Let's create  Discovery-Rule, without modifying the greenfield-Rule.
+
+#### 4.3.1 Identify the subnet where the private workload resides
+
+First and foremost you have to identify the **subnet** where the **_aws-us-east-2-spoke1-test2_** instance resides.
+
+```{figure} images/lab6-greenfieldneww.png
+---
+height: 400px
+align: center
+---
+Private Subnet
+```
+
+Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance on the search field on the right-hand side:
+From the outcome you have to pinpoint the `Availability Zone`.
+
+```{figure} images/lab6-greenfieldneww2.png
+---
+height: 400px
+align: center
+---
+Private Subnet
+```
+
+Now that you know in what `Availability Zone` the private workload resides, you need to select the `VPC/VNets & Subnets` TAB and filter out based on the **_aws-us-east-2-spoke1_** VPC.
+Identify the `Private Subnet` that belongs to the `us-east-2a` AZ and copy the corresponding **_`IP Address CIDR`_** value!
+
+```{figure} images/lab6-greenfieldneww3.png
+---
+height: 400px
+align: center
+---
+Private Subnet
+```
+
+#### 4.3.2 Create an ad-hoc SmartGroup
+
+Go to **CoPilot > Groups**, click on arrow inside the `"+ SmartGroup"` button and select `"IP / CIDRs"`.
+
+```{figure} images/lab6-greenfieldneww4.png
+---
+height: 400px
+align: center
+---
+Private Subnet
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>us-east-2-private-subnet</span>
+- **IPs / CIDRs**: <span style='color:#479608'>10.0.1.0/27</span>
+
+Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
+
+```{figure} images/lab6-greenfieldneww4.png
+---
+height: 400px
+align: center
+---
+Private Subnet
+```
+
+#### 4.3.3 Create the DCF rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -225,7 +290,7 @@ New Rule
 Insert the following parameters
 
 - **Name**: <span style='color:#479608'>Discovery-Rule</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Source Smartgroups**: <span style='color:#479608'>us-east-2-private-subnet</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>**All-Web**</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
@@ -347,7 +412,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on t
 Create a new **_DCF rule_** with the following parameters:
 
 - **Name**: <span style='color:#479608'>allow-domains</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Source Smartgroups**: <span style='color:#479608'>us-east-2-private-subnet</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>two-domains</span>
 - **Logging**: <span style='color:#479608'>On</span>
@@ -371,7 +436,7 @@ New Rule
 - **Publlic Internet** = NON-RFC1918 routes
 ```
 
-Before committing, click once again on the `"+ Rule"` button.
+Before committing, delete
 
 ```{figure} images/lab6-beforecommitting.png
 ---
