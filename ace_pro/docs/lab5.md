@@ -217,7 +217,7 @@ Let's create  Discovery-Rule, without modifying the greenfield-Rule.
 
 #### 4.3.1 Identify the subnet where the private workload resides
 
-First and foremost you have to identify the **subnet** where the **_aws-us-east-2-spoke1-test2_** instance resides.
+First and foremost, you have to identify the **subnet** where the **_aws-us-east-2-spoke1-test2_** instance resides.
 
 ```{figure} images/lab6-greenfieldneww.png
 ---
@@ -232,7 +232,7 @@ From the outcome you have to pinpoint the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Private Subnet
@@ -243,7 +243,7 @@ Identify the `Private Subnet` that belongs to the `us-east-2a` AZ and copy the c
 
 ```{figure} images/lab6-greenfieldneww3.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Private Subnet
@@ -251,7 +251,9 @@ Private Subnet
 
 #### 4.3.2 Create an ad-hoc SmartGroup
 
-Go to **CoPilot > Groups**, click on arrow inside the `"+ SmartGroup"` button and select `"IP / CIDRs"`.
+Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
+
+Afterwards, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
 
 ```{figure} images/lab6-greenfieldneww4.png
 ---
@@ -268,12 +270,12 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
 
-```{figure} images/lab6-greenfieldneww4.png
+```{figure} images/lab6-greenfieldneww45.png
 ---
 height: 400px
 align: center
 ---
-Private Subnet
+New SG
 ```
 
 #### 4.3.3 Create the DCF rule
@@ -436,7 +438,7 @@ New Rule
 - **Publlic Internet** = NON-RFC1918 routes
 ```
 
-Before committing, delete
+Before committing, delete both the `Discover-Rule` and the `Greenfield-Rule` such that the **ZTNA** approach gets activated. Click on the three dots icon and select the `"Delete Rule"` option from the drop-down window.
 
 ```{figure} images/lab6-beforecommitting.png
 ---
@@ -446,33 +448,12 @@ align: center
 Before Commit
 ```
 
-Create an `Explicit Deny Rule` that will allow to see the logs for the `"Denied"` actions.
-
-- **Name**: <span style='color:#479608'>Explicit-Deny-Rule</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Deny**</span>
-- **Place Rule**: <span style='color:#479608'>Below</span>
-  - - **Existing Rule**: <span style='color:#479608'>allow-domains</span>
-
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab6-explicitdeny.png
----
-align: center
----
-Explicit-Deny-Rule
-```
-
-- Now you can proceed and click on the `"Commit"` button.
-
-```{figure} images/lab6-newcommit.png
+```{figure} images/lab6-beforecommitting2.png
 ---
 height: 250px
 align: center
 ---
-Commit
+ZTNA
 ```
 
 Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east-2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
@@ -511,7 +492,7 @@ align: center
 Curl commands
 ```
 
-go to You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and immediately dropped.
+You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and immediately dropped.
 
 ```{figure} images/lab6-liveview.png
 ---
