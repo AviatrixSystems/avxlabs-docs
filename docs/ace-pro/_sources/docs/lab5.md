@@ -85,7 +85,7 @@ Retrieve the private IP
 Now let's enable the egress within the VPC that is hosting the **_aws-us-east-2-spoke1-test2_** instance.
 
 ```{note}
-Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"Enable Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
+Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"+ Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
 ```
 
 ```{figure} images/lab6-egress.png
@@ -106,7 +106,7 @@ Choose the correct VPC
 
 Upon enabling Local Egress on the specified VPC, the Aviatrix Controller will immediately execute two actions on the specified VPC:
 
-Injecting a Default Route: This route is added exclusively to the Private Route Tables (RTBs). Public Route Tables (RTBs) remain unaffected and will continue to have their default route pointing towards the native Cloud Service Provider (CSP) Internet Gateway (IGW).
+Injecting a **Default Route**: this route is added exclusively to the Private Route Tables (RTBs). Public Route Tables (RTBs) remain unaffected and will continue to have their default route pointing towards the native Cloud Service Provider (CSP) Internet Gateway (**IGW**).
 
 Enabling Single IP SNAT on VPC Spoke Gateway: Source Network Address Translation (SNAT) will be enabled on the VPC spoke gateway using a single IP address.
 
@@ -256,6 +256,14 @@ Private Subnet
 #### 4.3.2 Create an ad-hoc SmartGroup
 
 Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
+
+```{figure} images/lab6-newsg.png
+---
+height: 400px
+align: center
+---
+SmartGroup
+```
 
 Afterwards, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
 
