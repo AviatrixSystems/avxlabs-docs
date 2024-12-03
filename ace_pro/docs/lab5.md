@@ -197,7 +197,7 @@ align: center
 Begin
 ```
 
-After having enabled the DCF, two Rules gets generated automatically:
+After having enabled the DCF, two Rules will get generated, automatically:
 - `Greendfield-Rule`
 - `DefaultDenyAll` = EXPLICIT DENY
 
@@ -211,11 +211,9 @@ align: center
 Automatic rules injected by the Controller
 ```
 
-### 4.3 Create the Discovery-Rule
 
-Let's create  Discovery-Rule, without modifying the greenfield-Rule.
 
-#### 4.3.1 Identify the subnet where the private workload resides
+#### 4.4.1 Identify the subnet where the private workload resides
 
 First and foremost, you have to identify the **subnet** where the **_aws-us-east-2-spoke1-test2_** instance resides.
 
@@ -253,7 +251,7 @@ align: center
 Private Subnet
 ```
 
-#### 4.3.2 Create an ad-hoc SmartGroup
+#### 4.4.2 Create an Ad-Hoc SmartGroup
 
 Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
 
@@ -290,7 +288,7 @@ align: center
 New SG
 ```
 
-#### 4.3.3 Create the DCF rule
+#### 4.4.3 Create a new Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -303,7 +301,7 @@ New Rule
 
 Insert the following parameters
 
-- **Name**: <span style='color:#479608'>Discovery-Rule</span>
+- **Name**: <span style='color:#479608'>Egress-Rule</span>
 - **Source Smartgroups**: <span style='color:#479608'>us-east-2-private-subnet</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>**All-Web**</span>
@@ -318,10 +316,10 @@ Do not forget to click on **Save In Drafts**.
 ---
 align: center
 ---
-Committing the Discovery-Rule
+Committing the new Rule
 ```
 
-Click on the **Commit** button and the rule previously created will work in watch/test mode due to the fact that the `enforcement` was turn off.
+Click on the **Commit** button and the rule previously created will work in **_watch/test_** mode due to the fact that the `enforcement` was turn off.
 
 ```{important}
 If the **Enforcement** slider is **On** (the default), the rule is enforced in the data plane. If the Enforcement slider is **Off**, the packets are only watched. This allows you to observe if the traffic impacted by this rule causes any inadvertent issues (such as traffic being dropped).
@@ -332,8 +330,35 @@ If the **Enforcement** slider is **On** (the default), the rule is enforced in t
 height: 150px
 align: center
 ---
-Discovery-Rule
+Egress-Rule
 ```
+
+Now delete the **Greenfield-Rule**: 
+
+- click on the **three dots** icon on the right-hand side of the Greenfield-Rule entry and then choose the `"Delete Rule"` option.
+
+Do not forget to click on **Commit**.
+
+```{caution}
+The deletion of the Greenfield-Rule will also cause the deletion of the DefaultDenyAll, because the Egress-Rule was not enforced on the data path, which in turn means that there will be an `Invisible Deny Rule` installed on the bottom.
+```
+
+```{figure} images/lab6-newruledelete.png
+---
+height: 150px
+align: center
+---
+Deletion of the Greenfield-Rule
+```
+
+```{figure} images/lab6-newruledeleted.png
+---
+height: 150px
+align: center
+---
+Egress-Rule solely
+```
+
 
 - Launch again the following curl commands from the instance **_aws-us-east-2-spoke1-test2_**.
 
@@ -350,19 +375,31 @@ curl www.espn.com
 curl www.football.com
 ```
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and you will see the corresponding **four logs**.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and you will see the corresponding **logs**.
 
 ```{figure} images/lab6-monitorpermit.png
 ---
 height: 200px
 align: center
 ---
-Monitor: 4 logs
+Monitor
+```
+
+```{important}
+However, on the SSH client, yiou will not see any outputs, this is because the Rule was not enforced in the Data Path, therefore the traffic is dropped.
+```
+
+```{figure} images/lab6-monitorpermit22.png
+---
+height: 200px
+align: center
+---
+SSH client output
 ```
 
 Go to **CoPilot > Security > Egress > Overview (default)**
 
-Now you have finally the egress observability with a full list of domains hit by the EC2 instance inside that private subnet.
+Now you have finally the  **egress observability** with a full list of domains hit by the EC2 instance inside that private subnet.
 
 ```{figure} images/lab6-newrul12.png
 ---
@@ -387,7 +424,7 @@ You will get a granular Layer 7 visibility that allows you to get a good underst
 ## 5. ZTNA - Zero Trust Network Architecture
 ### 5.1 Create a New WebGroup
 
-Let's move towards a posture where only the allowed egress domains are in place.
+Let's move towards a posture where only specific egress domains are in place.
 
 Go to **CoPilot > Groups > WebGroups** and click on `"+ WebGroup"` button.
 
@@ -415,34 +452,31 @@ WebGroup creation
 ```
 
 ```{important}
-The purpose of this **WebGroup** is to authorize traffic only towards both the Domains *www.aviatix.com* and *www.wikipedia.com*, therefore the curl commands issued towards other Domains will be blocked.
+The purpose of this **WebGroup** is to authorize traffic only towards both the Domains *`www.aviatrix.com`* and *`www.wikipedia.com`*, therefore the curl commands issued towards other Domains will be blocked.
 ```
 
-## 5.2 New DCF Rule 
+## 5.2 Edit the Egress-Rule 
 ### 5.2.1 Create a new rule
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
 
-Create a new **_DCF rule_** with the following parameters:
+- Now remove the WebGroup `"All-Web"` and then select the WebGroup `"two-domains"`.
+- Turn on the `Enforcement` knob.
 
-- **Name**: <span style='color:#479608'>allow-domains</span>
-- **Source Smartgroups**: <span style='color:#479608'>us-east-2-private-subnet</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
-- **WebGroups**: <span style='color:#479608'>two-domains</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>Permit</span>
+Do not forget to click on **Save In Drafts** and then **Commit** your changes!
 
-Do not forget to click on **Save In Drafts**.
-
-```{warning}
-Keep the other parameters with their default values!
-```
-
-```{figure} images/lab6-newrule.png
+```{figure} images/lab6-webgroup234.png
 ---
 align: center
 ---
-New Rule
+Editing the Egress-Rule
+```
+
+```{figure} images/lab6-webgroup2345.png
+---
+align: center
+---
+Commit the changes
 ```
 
 ```{important}
@@ -450,25 +484,20 @@ New Rule
 - **Publlic Internet** = NON-RFC1918 routes
 ```
 
-Before committing, delete both the `Discover-Rule` and the `Greenfield-Rule` such that the **ZTNA** approach gets activated. 
+Now you have effectively activated the **ZTNA** approach.
 
-Click on the three dots icon and select the `"Delete Rule"` option from the drop-down window.
-
-```{figure} images/lab6-beforecommitting.png
----
-height: 250px
-align: center
----
-Before Commit
+```{note}
+After committing the changes, the Egress-Rule will be applied to the data path and moreover, the `DefaultDenyAll` rule will show up at the bottom.
 ```
 
-```{figure} images/lab6-beforecommitting2.png
+```{figure} images/lab6-webgroup23456.png
 ---
-height: 250px
 align: center
 ---
 ZTNA
 ```
+
+### 5.2.2 Test the new rule
 
 Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east-2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
 
@@ -480,7 +509,7 @@ align: center
 Select the VPC
 ```
 
-### 5.2.2 Test the new rule
+
 
 - Now launch again the following curl commands from the instance **_aws-us-east2-spoke1-test2_**.
 
@@ -497,7 +526,7 @@ curl www.espn.com
 curl www.football.com
 ```
 
-Only the first two curl commands will be successful.
+Only the first two curl commands will be successful!
 
 ```{figure} images/lab6-newpic.png
 ---
@@ -506,14 +535,14 @@ align: center
 Curl commands
 ```
 
-You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"Explicit Deny Rule"`, therefore it will be denied and immediately dropped.
+You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"DefaultDenyAll"` rule, therefore towards traffic the last two domains will be immediately dropped.
 
 ```{figure} images/lab6-liveview.png
 ---
 height: 250px
 align: center
 ---
-Denied
+Permit
 ```
 
 ## 5.3 IDS
@@ -658,7 +687,7 @@ Additional insights
 ```
 
 ```{note}
-The indicator is showing clearly that we tried reaching out to Google DNS and then querying for a **TOR** domain!
+The indicator is showing clearly that you tried reaching out to Google DNS and then querying for a **TOR** domain!
 ```
 
 After this lab, this is how the overall topology would look like:
@@ -670,5 +699,3 @@ align: center
 ---
 Final Topology for Lab 5
 ```
-
-
