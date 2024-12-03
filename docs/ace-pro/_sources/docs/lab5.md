@@ -227,18 +227,22 @@ align: center
 Private Subnet
 ```
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance on the search field on the right-hand side:
+Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance on the search field on the right-hand side.
+
+
 From the outcome you have to pinpoint the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
-height: 200px
+height: 150px
 align: center
 ---
 Private Subnet
 ```
 
 Now that you know in what `Availability Zone` the private workload resides, you need to select the `VPC/VNets & Subnets` TAB and filter out based on the **_aws-us-east-2-spoke1_** VPC.
+
+
 Identify the `Private Subnet` that belongs to the `us-east-2a` AZ and copy the corresponding **_`IP Address CIDR`_** value!
 
 ```{figure} images/lab6-greenfieldneww3.png
@@ -342,7 +346,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and you will
 
 ```{figure} images/lab6-monitorpermit.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Monitor: 4 logs
@@ -438,7 +442,9 @@ New Rule
 - **Publlic Internet** = NON-RFC1918 routes
 ```
 
-Before committing, delete both the `Discover-Rule` and the `Greenfield-Rule` such that the **ZTNA** approach gets activated. Click on the three dots icon and select the `"Delete Rule"` option from the drop-down window.
+Before committing, delete both the `Discover-Rule` and the `Greenfield-Rule` such that the **ZTNA** approach gets activated. 
+
+Click on the three dots icon and select the `"Delete Rule"` option from the drop-down window.
 
 ```{figure} images/lab6-beforecommitting.png
 ---
