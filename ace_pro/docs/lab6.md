@@ -371,6 +371,7 @@ Insert the following parameters
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -383,7 +384,7 @@ align: center
 Greenfield-Rule
 ```
 
-- Once again do not forget to **Commit** your rule.
+Once again do not forget to **Commit** your rule.
 
 ```{figure} images/lab7-newone2.png
 ---
