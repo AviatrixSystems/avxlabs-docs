@@ -4,7 +4,7 @@
 
 The objective of this lab is to learn how to deploy **Palo Alto** Networks (aka PAN) VM-series firewalls in the Transit VNet and inspect traffic between the two Spoke VNets using firewall policies.
  
-## 2. FireNet Overview (Firewall Nework)
+## 2. FireNet Overview (Firewall Network)
 
 Aviatrix Firewall Network (aka *`FireNet`*) is a turnkey solution to deploy and manage firewall instances in the cloud, as shown in the topology below. Firewall Network significantly simplifies virtual firewall deployment and allows the firewall to inspect VPC/VNet/VCN to VPC/VNet/VCN (East West) traffic, VPC/VNet/VCN to Internet (Egress) traffic, and VPC/VNet/VCN to on-prem including partners and branches (North South) traffic.
 
@@ -344,7 +344,7 @@ Before launching any connectivity tests, <ins>you need to move the **_Greenfield
 
 ```{figure} images/lab7-dcfrule.png
 ---
-height: 150px
+height: 250px
 align: center
 ---
 DCF rules
@@ -358,7 +358,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** 
 
 ```{figure} images/lab7-top.png
 ---
-height: 150px
+height: 250px
 align: center
 ---
 New Rule
@@ -370,6 +370,7 @@ Insert the following parameters
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
+- **Enforcement**: <span style='color:#479608'>**On**</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -382,35 +383,14 @@ align: center
 Greenfield-Rule
 ```
 
-- Apply the "Logging" option to the Greenfield-Rule
-
-```{tip}
-Click on the pencil icon beside the Greenfield-Rule row, then turn on the toggle for Logging and click on **Save in Drafts**.
-
-Once again do not forget to click on **Commit**.
-```
+- Once again do not forget to **Commit** your rule.
 
 ```{figure} images/lab7-newone2.png
 ---
 height: 300px
 align: center
 ---
-Edit the Greenfield-Rule
-```
-
-```{figure} images/lab7-newone3.png
----
-align: center
----
-Editing the Greenfield-Rule
-```
-
-```{figure} images/lab7-newone4.png
----
-height: 300px
-align: center
----
-Commit
+Commit the Greenfield-Rule
 ```
 
 ### 5.1.1 Launch connectivity test
@@ -425,7 +405,7 @@ Ping is successful
 ```
 
 ```{note}
-Pings are passing because the **`Allow-all`** rule on the Firewall is permitting traffic from any zone to any zone to pass.
+Pings are passing because the **`Allow-all`** rule on the **PAN Firewall** is permitting traffic from any zone to any zone to pass.
 ```
 
 Back on the PAN firewall, click on the `Monitor` tab. Then paste this string in the filter bar and hit **Enter**, which will apply the filter:
@@ -486,27 +466,6 @@ height: 400px
 align: center
 ---
 Final Topology for Lab 6
-```
-
-- Explore the logs on the Monitor section of the Distributed Cloud Firewall. Filter out based on protocol **ICMP**.
-
-```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
-```
-
-```{figure} images/lab7-newlog.png
----
-align: center
----
-Filter based on ICMP
-```
-
-```{figure} images/lab7-last.png
----
-height: 150px
-align: center
----
-Logs on DCF Monitor section
 ```
 
 ```{important}
