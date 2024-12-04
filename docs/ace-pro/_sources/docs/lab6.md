@@ -337,7 +337,7 @@ Lab 7 Final Topology
 ```
 
 ```{warning}
-On Lab 6 (Egress), the DCF functionality was enabled. The current permitted rules are the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53, and the `"allow-domains"` , that is only allowing http/https traffic towards two domains. Any other kind of traffic is denied because of the presence of the `"Explicit-Deny-Rule"`. 
+On Lab 6 (Egress), the DCF functionality was enabled. The current permitted rules are the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53, and the `"Egress-Rule"` , that is only allowing http/https traffic towards two domains. Any other kind of traffic is denied because of the presence of the `"DefaultDenyAll"`. 
 
 Before launching any connectivity tests, <ins>you need to move the **_Greenfield-Rule_**  on the top of the list of the DCF rules!
 ```
@@ -350,11 +350,10 @@ align: center
 DCF rules
 ```
 
-- Modify the **Greenfield-Rule's Priority**
+- Create the **Greenfield-Rule**
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the **Greenfield-Rule** and choose *`"Move Rule"`* at the very **Top**.
-Then click on **Save in Draft**.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 ```
 
 ```{figure} images/lab7-top.png
@@ -362,17 +361,25 @@ Then click on **Save in Draft**.
 height: 150px
 align: center
 ---
-Move at the Top
+New Rule
 ```
 
-Do not forget to click on **Commit**.
+Insert the following parameters
+
+- **Name**: <span style='color:#479608'>Greenfield-Rule</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**.
 
 ```{figure} images/lab7-edit.png
 ---
 height: 300px
 align: center
 ---
-Commit your changes
+Greenfield-Rule
 ```
 
 - Apply the "Logging" option to the Greenfield-Rule
