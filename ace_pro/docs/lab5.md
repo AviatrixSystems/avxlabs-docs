@@ -386,7 +386,7 @@ Monitor
 ```
 
 ```{important}
-However, on the SSH client, yiou will not see any outputs, this is because the Rule was not enforced in the Data Path, therefore the traffic is dropped.
+However, on the SSH client, you will not see any outputs, this is because the Rule was not enforced on the Data Path, therefore the traffic is dropped.
 ```
 
 ```{figure} images/lab6-monitorpermit22.png
@@ -455,8 +455,8 @@ WebGroup creation
 The purpose of this **WebGroup** is to authorize traffic only towards both the Domains *`www.aviatrix.com`* and *`www.wikipedia.com`*, therefore the curl commands issued towards other Domains will be blocked.
 ```
 
-## 5.2 Edit the Egress-Rule 
-### 5.2.1 Create a new rule
+## 6. Edit the Egress-Rule 
+### 6.1 Create a new rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
 
@@ -474,6 +474,7 @@ Editing the Egress-Rule
 
 ```{figure} images/lab6-webgroup2345.png
 ---
+height: 250px
 align: center
 ---
 Commit the changes
@@ -492,12 +493,13 @@ After committing the changes, the Egress-Rule will be applied to the data path a
 
 ```{figure} images/lab6-webgroup23456.png
 ---
+height: 250px
 align: center
 ---
 ZTNA
 ```
 
-### 5.2.2 Test the new rule
+### 6.1.1 Test the new rule
 
 Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east-2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
 
@@ -535,7 +537,7 @@ align: center
 Curl commands
 ```
 
-You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will match the new `"DefaultDenyAll"` rule, therefore towards traffic the last two domains will be immediately dropped.
+You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will be immediately dropped.
 
 ```{figure} images/lab6-liveview.png
 ---
@@ -545,8 +547,8 @@ align: center
 Permit
 ```
 
-## 5.3 IDS
-### 5.3.1 Create a New Rule
+## 7. IDS
+### 7.1 Create a New Rule
 
 Let's now test the **_IDS_** feature (i.e. Intrusion Detection System). 
 
@@ -581,7 +583,7 @@ align: center
 Commit
 ```
 
-### 5.3.2 Prepare the simulator
+### 7.2 Prepare the simulator
 
 - From the **_aws-us-east-2-spoke1-test2_** instance, launch the following **two** commands.
 
@@ -619,7 +621,7 @@ align: center
 Simulator
 ```
 
-### 5.3.2 Test the New Rule and the IDS feature
+### 7.3 Test the New Rule and the IDS feature
 
 - Before launching the attack, edit the new DCF rule, clicking on the pencil icon beside the **_Inspect-DNS_** rule.
 
