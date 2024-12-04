@@ -56,7 +56,7 @@ align: center
 Edit Spoke US-East-1
 ```
 
-Select the Transit Gateway **aws-us-east1-transit** from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
+Select the Transit Gateway **aws-us-east-1-transit** from the drop-down window `"Attach To Transit Gateway"`, and then click on **Save**.
 
 ```{figure} images/lab5-editspoke2.png
 ---
