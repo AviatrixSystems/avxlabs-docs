@@ -463,9 +463,11 @@
 <section id="inspect-the-private-rtb">
 <h3>4.2 Inspect the Private RTB<a class="headerlink" href="#inspect-the-private-rtb" title="Link to this heading">#</a></h3>
 <p>Upon enabling Local Egress on the specified VPC, the Aviatrix Controller will immediately execute two actions on the specified VPC:</p>
-<p>Injecting a <strong>Default Route</strong>: this route is added exclusively to the Private Route Tables (RTBs). Public Route Tables (RTBs) remain unaffected and will continue to have their default route pointing towards the native Cloud Service Provider (CSP) Internet Gateway (<strong>IGW</strong>).</p>
-<p>Enabling Single IP SNAT on VPC Spoke Gateway: Source Network Address Translation (SNAT) will be enabled on the VPC spoke gateway using a single IP address.</p>
-<p>At this point, the Aviatrix  performs the same functions as the CSP NAT Gateway.</p>
+<ul class="simple">
+<li><p>Injecting a <strong>Default Route</strong>: this route is added exclusively to the Private Route Tables (RTBs). Public Route Tables (RTBs) remain unaffected and will continue to have their default route pointing towards the native Cloud Service Provider (CSP) Internet Gateway (<strong>IGW</strong>).</p></li>
+<li><p>Enabling <strong>Single IP SNAT</strong> on VPC Spoke Gateway: Source Network Address Translation (SNAT) will be enabled on the VPC spoke gateway using a single IP address.</p></li>
+</ul>
+<p>At this point, the Aviatrix  performs the same functions as the <strong>CSP NAT Gateway</strong>.</p>
 <ul class="simple">
 <li><p>Verify its presence in any Private RTBs inside the <strong><em>aws-us-east-2-spoke1</em></strong> VPC.</p></li>
 </ul>
