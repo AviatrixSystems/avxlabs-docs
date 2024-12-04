@@ -101,9 +101,9 @@ Marketplace contact under loading
 - **Username**: <span style='color:#479608'>avxadmin [**Note**: username *admin* is not permitted in Azure]</span>
 - **Password**: <span style='color:#479608'>[choose a **strong password** and remember it]</span>
 - **Bootstrap Configuration**: <span style='color:#479608'>turn **ON** the knob</span>
-- **Storage**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
-- **Storage Access Key**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
-- **File-Shared Folder**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab7 section)</ins></span>
+- **Storage**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab6 section)</ins></span>
+- **Storage Access Key**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab6 section)</ins></span>
+- **File-Shared Folder**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab6 section)</ins></span>
 
 Then click on **Deploy**.
 
