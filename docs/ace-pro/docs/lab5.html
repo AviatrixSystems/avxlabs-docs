@@ -343,15 +343,15 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">5.1 Create a New WebGroup</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-egress-rule">5.2 Edit the Egress-Rule</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2.1 Create a new rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule">5.2.2 Test the new rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-egress-rule">6. Edit the Egress-Rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.1 Create a new rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule">6.1.1 Test the new rule</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">5.3 IDS</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.3.1 Create a New Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">5.3.2 Prepare the simulator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">5.3.2 Test the New Rule and the IDS feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">7. IDS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1 Create a New Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">7.2 Prepare the simulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">7.3 Test the New Rule and the IDS feature</a></li>
 </ul>
 </li>
 </ul>
@@ -693,7 +693,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>However, on the SSH client, yiou will not see any outputs, this is because the Rule was not enforced in the Data Path, therefore the traffic is dropped.</p>
+<p>However, on the SSH client, you will not see any outputs, this is because the Rule was not enforced on the Data Path, therefore the traffic is dropped.</p>
 </div>
 <figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab6-monitorpermit22.png"><img alt="../_images/lab6-monitorpermit22.png" src="../_images/lab6-monitorpermit22.png" style="height: 200px;" /></a>
@@ -753,9 +753,9 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </section>
 </section>
 <section id="edit-the-egress-rule">
-<h2>5.2 Edit the Egress-Rule<a class="headerlink" href="#edit-the-egress-rule" title="Link to this heading">#</a></h2>
+<h2>6. Edit the Egress-Rule<a class="headerlink" href="#edit-the-egress-rule" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h3>5.2.1 Create a new rule<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>6.1 Create a new rule<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong>, click on the <strong>pencil</strong> button on the right-hand side of the <code class="docutils literal notranslate"><span class="pre">Egress-Rule</span></code>.</p>
 <ul class="simple">
 <li><p>Now remove the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;All-Web&quot;</span></code> and then select the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;two-domains&quot;</span></code>.</p></li>
@@ -769,7 +769,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figcaption>
 </figure>
 <figure class="align-center" id="id36">
-<img alt="../_images/lab6-webgroup2345.png" src="../_images/lab6-webgroup2345.png" />
+<a class="reference internal image-reference" href="../_images/lab6-webgroup2345.png"><img alt="../_images/lab6-webgroup2345.png" src="../_images/lab6-webgroup2345.png" style="height: 250px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 179 </span><span class="caption-text">Commit the changes</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
@@ -787,14 +787,14 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p>After committing the changes, the Egress-Rule will be applied to the data path and moreover, the <code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> rule will show up at the bottom.</p>
 </div>
 <figure class="align-center" id="id37">
-<img alt="../_images/lab6-webgroup23456.png" src="../_images/lab6-webgroup23456.png" />
+<a class="reference internal image-reference" href="../_images/lab6-webgroup23456.png"><img alt="../_images/lab6-webgroup23456.png" src="../_images/lab6-webgroup23456.png" style="height: 250px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 180 </span><span class="caption-text">ZTNA</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="test-the-new-rule">
-<h3>5.2.2 Test the new rule<a class="headerlink" href="#test-the-new-rule" title="Link to this heading">#</a></h3>
+<h3>6.1.1 Test the new rule<a class="headerlink" href="#test-the-new-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the <strong><em>Live View</em></strong> from the <code class="docutils literal notranslate"><span class="pre">&quot;Time</span> <span class="pre">Period&quot;</span></code> field, then select the <strong><em>aws-us-east-2-spoke1</em></strong> VPC from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window.</p>
 <figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab6-newview.png"><img alt="../_images/lab6-newview.png" src="../_images/lab6-newview.png" style="height: 400px;" /></a>
@@ -824,7 +824,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p><span class="caption-number">Fig. 182 </span><span class="caption-text">Curl commands</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will notice almost instanteously that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong> will match the new <code class="docutils literal notranslate"><span class="pre">&quot;DefaultDenyAll&quot;</span></code> rule, therefore towards traffic the last two domains will be immediately dropped.</p>
+<p>You will notice almost instanteously that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong> will be immediately dropped.</p>
 <figure class="align-center" id="id40">
 <a class="reference internal image-reference" href="../_images/lab6-liveview.png"><img alt="../_images/lab6-liveview.png" src="../_images/lab6-liveview.png" style="height: 250px;" /></a>
 <figcaption>
@@ -834,9 +834,9 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </section>
 </section>
 <section id="ids">
-<h2>5.3 IDS<a class="headerlink" href="#ids" title="Link to this heading">#</a></h2>
+<h2>7. IDS<a class="headerlink" href="#ids" title="Link to this heading">#</a></h2>
 <section id="id2">
-<h3>5.3.1 Create a New Rule<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>7.1 Create a New Rule<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Let’s now test the <strong><em>IDS</em></strong> feature (i.e. Intrusion Detection System).</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <p>Create a new DCF Rule with the following parameters:</p>
@@ -865,7 +865,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figure>
 </section>
 <section id="prepare-the-simulator">
-<h3>5.3.2 Prepare the simulator<a class="headerlink" href="#prepare-the-simulator" title="Link to this heading">#</a></h3>
+<h3>7.2 Prepare the simulator<a class="headerlink" href="#prepare-the-simulator" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>From the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance, launch the following <strong>two</strong> commands.</p></li>
 </ul>
@@ -900,7 +900,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figure>
 </section>
 <section id="test-the-new-rule-and-the-ids-feature">
-<h3>5.3.2 Test the New Rule and the IDS feature<a class="headerlink" href="#test-the-new-rule-and-the-ids-feature" title="Link to this heading">#</a></h3>
+<h3>7.3 Test the New Rule and the IDS feature<a class="headerlink" href="#test-the-new-rule-and-the-ids-feature" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Before launching the attack, edit the new DCF rule, clicking on the pencil icon beside the <strong><em>Inspect-DNS</em></strong> rule.</p></li>
 </ul>
@@ -1052,15 +1052,15 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">5.1 Create a New WebGroup</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-egress-rule">5.2 Edit the Egress-Rule</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2.1 Create a new rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule">5.2.2 Test the new rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-egress-rule">6. Edit the Egress-Rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.1 Create a new rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule">6.1.1 Test the new rule</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">5.3 IDS</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.3.1 Create a New Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">5.3.2 Prepare the simulator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">5.3.2 Test the New Rule and the IDS feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">7. IDS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1 Create a New Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">7.2 Prepare the simulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">7.3 Test the New Rule and the IDS feature</a></li>
 </ul>
 </li>
 </ul>
