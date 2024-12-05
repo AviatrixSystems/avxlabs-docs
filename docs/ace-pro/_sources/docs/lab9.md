@@ -4,9 +4,9 @@
 
 This lab will demonstrate how `CostIQ` works.
 
-## 6. CostIQ
+## 2. CostIQ
 
-Before completing this lab, let's enable `CostIQ` and define the following **Cost Centers** and **Shared Service**.
+- Define the following **Cost Centers** and **Shared Service**:
 
 **<span style='color:orange'>COST CENTERS</span>**:
 
@@ -26,12 +26,13 @@ Before completing this lab, let's enable `CostIQ` and define the following **Cos
 **NEW YORK DC**:
 - workstation client "edge"
 
+### 2.1 Enable CostIQ
 
 Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` button.
 
 ```{figure} images/lab9-costiq.png
 ---
-height: 150px
+height: 250px
 align: center
 ---
 Enable CostIQ
@@ -39,7 +40,7 @@ Enable CostIQ
 
 ```{figure} images/lab9-costiq001.png
 ---
-height: 150px
+height: 300px
 align: center
 ---
 Enable CostIQ
@@ -87,6 +88,8 @@ align: center
 Cost Centers Overview
 ```
 
+## 3. New York DC is the Shared Services
+
 Now let's discover the **CIDRs** of **New York DC**:
 
 - Go to **CoPilot > Diagnostics > Cloud Routes > BGP Info**, then click on the three dots icon and select the `"Show BGP Learned Routes"`.
@@ -107,7 +110,7 @@ align: center
 CIDR
 ```
 
-Let's move on the **Shared Service** tab and click on `"+ Shared Service"`.
+Let's move on the **Shared Services** tab and click on `"+ Shared Service"`.
 
 ```{figure} images/lab9-costiq12.png
 ---
