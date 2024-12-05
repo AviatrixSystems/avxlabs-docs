@@ -337,9 +337,9 @@ Lab 7 Final Topology
 ```
 
 ```{warning}
-On Lab 6 (Egress), the DCF functionality was enabled. The current permitted rules are the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53, and the `"Egress-Rule"` , that is only allowing http/https traffic towards two domains. Any other kind of traffic is denied because of the presence of the `"DefaultDenyAll"`. 
+On Lab 5 (Egress), the DCF functionality was enabled. The current permitted rules are the `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53, and the `"Egress-Rule"` , that is only allowing http/https traffic towards two domains. Any other kind of traffic is denied because of the presence of the `"DefaultDenyAll"`. 
 
-Before launching any connectivity tests, <ins>you need to move the **_Greenfield-Rule_**  on the top of the list of the DCF rules!
+Before launching any connectivity tests, <ins>you need to recreate the **_Greenfield-Rule_**  on the top of the DCF Rules list!
 ```
 
 ```{figure} images/lab7-dcfrule.png
