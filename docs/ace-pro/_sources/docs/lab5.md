@@ -576,7 +576,7 @@ Proceed clicking on the **Commit** button.
 height: 250px
 align: center
 ---
-Commit
+New DCF List
 ```
 
 ### 7.2 Prepare the simulator
@@ -696,4 +696,8 @@ height: 400px
 align: center
 ---
 Final Topology for Lab 5
+```
+
+```{caution}
+At the end of this lab, <ins>the **East-West traffic** is blocked</ins>, due to the configuration of the Distributed Cloud Firewall!
 ```
