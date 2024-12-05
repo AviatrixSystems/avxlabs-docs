@@ -895,32 +895,22 @@
 </figure>
 <p>Let’s investigate the logs once again.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Remove the previous filter!</p>
 <figure class="align-center" id="id46">
-<img alt="../_images/lab10-removefilter2.png" src="../_images/lab10-removefilter2.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 369 </span><span class="caption-text">Remove the current applied filter</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</div>
-<figure class="align-center" id="id47">
 <a class="reference internal image-reference" href="../_images/lab10-bu2monitor.png"><img alt="../_images/lab10-bu2monitor.png" src="../_images/lab10-bu2monitor.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 370 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 369 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The logs above confirm that the ICMP protocol is permitted within the Smart Group bu2.</p>
+<p>The logs above confirm that the <strong>ICMP</strong> protocol is permitted within the Smart Group bu2.</p>
 </section>
 <section id="inter-rule-from-bu2-to-bu1">
 <h3>5.6. Inter-rule from bu2 to bu1<a class="headerlink" href="#inter-rule-from-bu2-to-bu1" title="Link to this heading">#</a></h3>
 <p>Create a new rule that allows ICMP FROM bu2 TO bu1.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id47">
 <img alt="../_images/lab10-newrule4.png" src="../_images/lab10-newrule4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 371 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 370 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -938,17 +928,17 @@
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id49">
+<figure class="align-center" id="id48">
 <img alt="../_images/lab10-interssh.png" src="../_images/lab10-interssh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 372 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 371 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Enforce the this new rule in the data plane clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> button.</p>
-<figure class="align-center" id="id50">
+<p>Enforce this new rule into the Data Plane clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> button.</p>
+<figure class="align-center" id="id49">
 <a class="reference internal image-reference" href="../_images/lab10-newcommit2.png"><img alt="../_images/lab10-newcommit2.png" src="../_images/lab10-newcommit2.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 373 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 372 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>SSH to the Public IP of the instance <strong><em>azure-west-us-spoke<span style='color:#479608'>2</span>-<span style='color:#479608'>test1</span></em></strong>.</p>
@@ -960,43 +950,37 @@
 <li><p><strong>azure-west-us-spoke1-test1</strong> in Azure</p></li>
 </ul>
 <p>Thit time all pings will be successful, thanks to the inter-rule applied between bu2 and bu1.</p>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id50">
 <img alt="../_images/lab10-pingallok.png" src="../_images/lab10-pingallok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 374 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 373 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s investigate the logs once again.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
-<p>Set a new filter based on the parameters showed in the screenshot below:</p>
-<figure class="align-center" id="id52">
-<img alt="../_images/lab10-newfilter3.png" src="../_images/lab10-newfilter3.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 375 </span><span class="caption-text">Rule = inter-icmp-bu2-bu1</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id53">
+<p>Filter out based on the <strong>inter-icmp-bu2-bu1</strong> Rule!</p>
+<figure class="align-center" id="id51">
 <a class="reference internal image-reference" href="../_images/lab10-monitorfresh.png"><img alt="../_images/lab10-monitorfresh.png" src="../_images/lab10-monitorfresh.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 376 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 374 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu2 to bu1.</p>
 <p>After the creation of the previous inter-rule, this is how the topology with all the permitted protocols should look like.</p>
-<figure class="align-center" id="id54">
+<figure class="align-center" id="id52">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing2.png"><img alt="../_images/lab10-lastdrawing2.png" src="../_images/lab10-lastdrawing2.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 377 </span><span class="caption-text">New Topology with the DCF rules</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 375 </span><span class="caption-text">New Topology with the DCF rules</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The last inter-rule works smoothly only because the ICMP traffic is generated from the bu2, however, if you SSH to any instances in the Smart Group bu1, the ICMP traffic towards bu2 will fail due to the direction of the inter-rule that was created before: <strong>FROM</strong> bu2 <strong>TO</strong> bu1 (please note the direction of the arrow in the drawing).</p>
 </div>
-<figure class="align-center" id="id55">
+<figure class="align-center" id="id53">
 <img alt="../_images/lab10-direction.png" src="../_images/lab10-direction.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 378 </span><span class="caption-text">From-To</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 376 </span><span class="caption-text">From-To</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.</p>
@@ -1008,10 +992,10 @@
 <h3>6.1 Activation of the MTT<a class="headerlink" href="#activation-of-the-mtt" title="Link to this heading">#</a></h3>
 <p>Let’s now also involve the AWS region <strong>US-EAST-1</strong>.</p>
 <p>This time, you have to allow the ICMP traffic between the Smart Group <strong>bu2</strong> and the ec2 instance <strong><em>aws-us-east-1-spoke1-test2</em></strong>, solely.</p>
-<figure class="align-center" id="id56">
+<figure class="align-center" id="id54">
 <a class="reference internal image-reference" href="../_images/lab10-newtopology3.png"><img alt="../_images/lab10-newtopology3.png" src="../_images/lab10-newtopology3.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 379 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 377 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>SSH to the Public IP of the instance <strong><em>azure-west-us-spoke2-test1</em></strong>.</p>
@@ -1019,31 +1003,31 @@
 <ul class="simple">
 <li><p><strong>aws-us-east-1-spoke1-test2</strong> in AWS</p></li>
 </ul>
-<figure class="align-center" id="id57">
+<figure class="align-center" id="id55">
 <img alt="../_images/lab10-pingfails10.png" src="../_images/lab10-pingfails10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 380 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 378 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The ping fails, therefore, let’s check the routing table of the Spoke Gateway <strong><em>azure-west-us-spoke2</em></strong>.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the gateway <strong><em>azure-west-us-spoke2</em></strong></p>
-<figure class="align-center" id="id58">
+<figure class="align-center" id="id56">
 <img alt="../_images/lab10-spoke2azure.png" src="../_images/lab10-spoke2azure.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 381 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 379 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab and check whether the destination route is present in the routing table or not.</p>
-<figure class="align-center" id="id59">
+<figure class="align-center" id="id57">
 <img alt="../_images/lab10-gatewayroutes.png" src="../_images/lab10-gatewayroutes.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 382 </span><span class="caption-text">Gateway Routes</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 380 </span><span class="caption-text">Gateway Routes</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id60">
+<figure class="align-center" id="id58">
 <a class="reference internal image-reference" href="../_images/lab10-newjoe20.png"><img alt="../_images/lab10-newjoe20.png" src="../_images/lab10-newjoe20.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 383 </span><span class="caption-text">10.0.12.0</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 381 </span><span class="caption-text">10.0.12.0</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1058,27 +1042,27 @@
 </ul>
 <p>Let’s enable the <strong>MTT</strong> feature, to see its beahvior in action!</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the Transit Gateway <strong><em>aws-us-east-1-transit</em></strong>.</p>
-<figure class="align-center" id="id61">
+<figure class="align-center" id="id59">
 <img alt="../_images/lab10-mtt.png" src="../_images/lab10-mtt.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 384 </span><span class="caption-text">aws-us-east-1-transit</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 382 </span><span class="caption-text">aws-us-east-1-transit</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;“Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section and insert the AS number <strong>64512</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">&quot;“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id62">
+<figure class="align-center" id="id60">
 <a class="reference internal image-reference" href="../_images/lab10-mtt2.png"><img alt="../_images/lab10-mtt2.png" src="../_images/lab10-mtt2.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 385 </span><span class="caption-text">Border Gateway Protocol (BGP)</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 383 </span><span class="caption-text">Border Gateway Protocol (BGP)</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Repeat the previous action for the last Transit Gateway still without BGP ASN:</p>
 <ul class="simple">
 <li><p><strong>azure-west-us-transit</strong>: <span style='color:#479608'>ASN <strong>64515</strong></span></p></li>
 </ul>
-<figure class="align-center" id="id63">
+<figure class="align-center" id="id61">
 <img alt="../_images/lab10-newlab.png" src="../_images/lab10-newlab.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 386 </span><span class="caption-text">azure-west-us-transit</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 384 </span><span class="caption-text">azure-west-us-transit</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1086,33 +1070,33 @@
 <p>Both the <strong>aws-us-east-2-transit</strong> and the the <strong>gcp-us-central1-transit</strong> got already configured with their ASNs during the Lab 8!</p>
 </div>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong>.</p>
-<figure class="align-center" id="id64">
+<figure class="align-center" id="id62">
 <img alt="../_images/lab10-mtt3.png" src="../_images/lab10-mtt3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 387 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 385 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;General&quot;</span></code> section and activate the <code class="docutils literal notranslate"><span class="pre">&quot;Multi-Tier</span> <span class="pre">Transit&quot;</span></code>, turning on the corresponding knob.</p>
 <p>Then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id65">
+<figure class="align-center" id="id63">
 <img alt="../_images/lab10-mtt4.png" src="../_images/lab10-mtt4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 388 </span><span class="caption-text">Multi-Tier Transit</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 386 </span><span class="caption-text">Multi-Tier Transit</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s verify once again the routing table of the Spoke Gateway in <strong><em>azure-west-us-spoke2</em></strong>.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the relevant gateway <strong><em>azure-west-us-spoke2</em></strong></p>
-<figure class="align-center" id="id66">
+<figure class="align-center" id="id64">
 <img alt="../_images/lab10-mtt5.png" src="../_images/lab10-mtt5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 389 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 387 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time if you click on the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab, you will be able to see the destination route, <strong>10.0.12.0/24</strong>, in <strong>aws-us-east1-spoke1</strong> VPC.</p>
-<figure class="align-center" id="id67">
+<figure class="align-center" id="id65">
 <a class="reference internal image-reference" href="../_images/lab10-mtt6.png"><img alt="../_images/lab10-mtt6.png" src="../_images/lab10-mtt6.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 390 </span><span class="caption-text">10.0.12.0/24</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 388 </span><span class="caption-text">10.0.12.0/24</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1122,10 +1106,10 @@
 <ul class="simple">
 <li><p><strong>aws-us-east-1-spoke1-test2</strong> in AWS (refer to your personal POD portal for the private IP).</p></li>
 </ul>
-<figure class="align-center" id="id68">
+<figure class="align-center" id="id66">
 <img alt="../_images/lab10-mtt7.png" src="../_images/lab10-mtt7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 391 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 389 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Although this time there is a valid route to the destination, thanks to the <strong>MTT</strong> feature, the pings still fails.</p>
@@ -1138,10 +1122,10 @@
 <h3>6.2 Smart Group “east1”<a class="headerlink" href="#smart-group-east1" title="Link to this heading">#</a></h3>
 <p>Let’s create another Smart Group for the test instance <strong><em>aws-us-east-1-spoke1-test2</em></strong> in US-EAST-1 region in AWS.</p>
 <p>Go to <strong>Copilot &gt; Groups &gt; SmartGroups</strong> and click on  <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id69">
+<figure class="align-center" id="id67">
 <img alt="../_images/lab10-mttnew.png" src="../_images/lab10-mttnew.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 392 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 390 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -1150,10 +1134,10 @@
 <li><p><strong>CSP Tag Key</strong>: <span style='color:#479608'>Name</span></p></li>
 <li><p><strong>CSP Tag Value</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span></p></li>
 </ul>
-<figure class="align-center" id="id70">
+<figure class="align-center" id="id68">
 <img alt="../_images/lab10-mtt9.png" src="../_images/lab10-mtt9.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 393 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 391 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there is just one single instance that matches the condition:</p>
@@ -1165,10 +1149,10 @@
 <section id="create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">
 <h3>6.3 Create an inter-rule that allows ICMP from bu2 towards east1<a class="headerlink" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id71">
+<figure class="align-center" id="id69">
 <img alt="../_images/lab10-mtt8.png" src="../_images/lab10-mtt8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 394 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 392 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -1186,17 +1170,17 @@
 <p>Please note the direction of this new inter-rule:</p>
 <p><strong>FROM</strong> bu2 <strong>TO</strong> east1</p>
 </div>
-<figure class="align-center" id="id72">
+<figure class="align-center" id="id70">
 <img alt="../_images/lab10-lastrule.png" src="../_images/lab10-lastrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 395 </span><span class="caption-text">The Last Rule…</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 393 </span><span class="caption-text">The Last Rule…</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you can carry on with the last <strong>commit</strong>!</p>
-<figure class="align-center" id="id73">
+<figure class="align-center" id="id71">
 <a class="reference internal image-reference" href="../_images/lab10-lastcommit.png"><img alt="../_images/lab10-lastcommit.png" src="../_images/lab10-lastcommit.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 396 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 394 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1205,10 +1189,10 @@
 <ul class="simple">
 <li><p>SSH to the Public IP of the instance <strong><em>azure-west-us-spoke2-test1</em></strong> and ping the private IP of the ec2-instance <strong><em>aws-us-east-1-spoke1-test2</em></strong></p></li>
 </ul>
-<figure class="align-center" id="id74">
+<figure class="align-center" id="id72">
 <img alt="../_images/lab10-lastping.png" src="../_images/lab10-lastping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 397 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 395 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time the ping will be successful!</p>
@@ -1217,24 +1201,24 @@
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Set a new filter!</p>
-<figure class="align-center" id="id75">
+<figure class="align-center" id="id73">
 <img alt="../_images/lab10-removefilter4.png" src="../_images/lab10-removefilter4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 398 </span><span class="caption-text">New filter applied</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 396 </span><span class="caption-text">New filter applied</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
-<figure class="align-center" id="id76">
+<figure class="align-center" id="id74">
 <a class="reference internal image-reference" href="../_images/lab10-reallylast.png"><img alt="../_images/lab10-reallylast.png" src="../_images/lab10-reallylast.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 399 </span><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 397 </span><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After the creation of both the previous inter-rule and the additional Smart Group, this is how the topology with all the permitted protocols should look like.</p>
-<figure class="align-center" id="id77">
+<figure class="align-center" id="id75">
 <a class="reference internal image-reference" href="../_images/lab10-newjoe.png"><img alt="../_images/lab10-newjoe.png" src="../_images/lab10-newjoe.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 400 </span><span class="caption-text">Final Topology</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 398 </span><span class="caption-text">Final Topology</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1242,40 +1226,40 @@
 <section id="spoke-to-spoke-attachment">
 <h2>7. Spoke to Spoke Attachment<a class="headerlink" href="#spoke-to-spoke-attachment" title="Link to this heading">#</a></h2>
 <p>Now that you have enabled the Distributed Cloud Firewall, the owner of the <strong><em>azure-west-us-spoke2-test1</em></strong> VM would like to communicate directly with the nearby <strong><em>azure-west-us-spoke1-test1</em></strong> VM, avoding that the traffic generated from the VNet is sent to the NGFW, first.</p>
-<figure class="align-center" id="id78">
+<figure class="align-center" id="id76">
 <img alt="../_images/lab10-spoke2spoke01.png" src="../_images/lab10-spoke2spoke01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 401 </span><span class="caption-text">No More NGFW</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 399 </span><span class="caption-text">No More NGFW</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="creating-a-spoke-to-spoke-attachment">
 <h3>7.1 Creating a Spoke to Spoke Attachment<a class="headerlink" href="#creating-a-spoke-to-spoke-attachment" title="Link to this heading">#</a></h3>
 <p>Go to <strong>Copilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong>, locate the <strong><em>azure-west-us-spoke2</em></strong> GW and click on the <strong><code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">Gateway</span> <span class="pre">Attachments</span></code></strong> icon on the right-hand side.</p>
-<figure class="align-center" id="id79">
+<figure class="align-center" id="id77">
 <a class="reference internal image-reference" href="../_images/lab10-spoke2spoke02.png"><img alt="../_images/lab10-spoke2spoke02.png" src="../_images/lab10-spoke2spoke02.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 402 </span><span class="caption-text">Manage Gateway Attachments</span><a class="headerlink" href="#id79" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 400 </span><span class="caption-text">Manage Gateway Attachments</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <strong>Spoke Gateway</strong> tab, click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Attachment&quot;</span></code> button and then choose the <strong>azure-west-us-spoke1</strong> GW from the drop-down window.</p>
-<figure class="align-center" id="id80">
+<figure class="align-center" id="id78">
 <img alt="../_images/lab10-spoke2spoke03.png" src="../_images/lab10-spoke2spoke03.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 403 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id80" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 401 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id81">
+<figure class="align-center" id="id79">
 <img alt="../_images/lab10-newspokeatt.png" src="../_images/lab10-newspokeatt.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 404 </span><span class="caption-text">Save</span><a class="headerlink" href="#id81" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 402 </span><span class="caption-text">Save</span><a class="headerlink" href="#id79" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <p>Now go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong> and check the new attachment between the two Spoke Gateways in Azure.</p>
-<figure class="align-center" id="id82">
+<figure class="align-center" id="id80">
 <img alt="../_images/lab10-spoke2spoke04.png" src="../_images/lab10-spoke2spoke04.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 405 </span><span class="caption-text">Spoke to Spoke Attachment</span><a class="headerlink" href="#id82" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 403 </span><span class="caption-text">Spoke to Spoke Attachment</span><a class="headerlink" href="#id80" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1284,17 +1268,17 @@
 </div>
 <p>Let’s check the <strong>Routing Table</strong> of the <strong><em>Spoke2</em></strong> in Azure.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways</strong>, select the <strong>azure-west-us-spoke2</strong>, then select the <strong>Gateways Routes</strong> tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">192.168.1.0</span></code></strong> on the right-hand side.</p>
-<figure class="align-center" id="id83">
+<figure class="align-center" id="id81">
 <img alt="../_images/lab10-spoke2spoke05.png" src="../_images/lab10-spoke2spoke05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 406 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id83" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 404 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id81" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice that the destination is now reachable with a <strong>lower</strong> metric (50)!</p>
-<figure class="align-center" id="id84">
+<figure class="align-center" id="id82">
 <a class="reference internal image-reference" href="../_images/lab10-spoke2spoke06.png"><img alt="../_images/lab10-spoke2spoke06.png" src="../_images/lab10-spoke2spoke06.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 407 </span><span class="caption-text">Metric 50</span><a class="headerlink" href="#id84" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 405 </span><span class="caption-text">Metric 50</span><a class="headerlink" href="#id82" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The traffic generated from the <strong><em>azure-west-us-spoke2-test1</em></strong> VM will now prefer going through the Spoke-to-Spoke Attachment, for the communication with the Spoke1 VNet.</p>
@@ -1302,17 +1286,17 @@
 <p class="admonition-title">Important</p>
 <p>The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a Hub and Spoke Topology!</p>
 </div>
-<figure class="align-center" id="id85">
+<figure class="align-center" id="id83">
 <img alt="../_images/lab10-spoke2spoke07.png" src="../_images/lab10-spoke2spoke07.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 408 </span><span class="caption-text">Spoke to Spoke</span><a class="headerlink" href="#id85" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 406 </span><span class="caption-text">Spoke to Spoke</span><a class="headerlink" href="#id83" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id86">
+<figure class="align-center" id="id84">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing.png"><img alt="../_images/lab10-lastdrawing.png" src="../_images/lab10-lastdrawing.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 409 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id86" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 407 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id84" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
