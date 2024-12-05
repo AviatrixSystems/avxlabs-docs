@@ -367,9 +367,9 @@ align: center
 intra-icmp-bu2
 ```
 
-At this point, you will have one new rule marked as `New`, therefore you can proceed and click on the **Commit** button.
+Now proceed and click on the **Commit** button.
 
-```{figure} images/lab10-rule5.png
+```{figure} images/0
 ---
 height: 300px
 align: center
@@ -422,20 +422,12 @@ Let's investigate the logs:
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{tip}
-Turn on the **Auto Refresh** knob. Moreover, refresh the web page to trigger the logs. You can also filter out based on the protocol **ICMP**.
+Filter out based on the protocol **ICMP**.
 ```{figure} images/lab10-monitor.png
 ---
 align: center
 ---
-Auto Refresh and Filter
-```
-
-```{figure} images/lab10-monitor99.png
----
-height: 150px
-align: center
----
-Monitor
+Filter
 ```
 
 Now, let's try to ping the instance **aws-us-east-2-spoke1-test2** from **aws-us-east-2-spoke1-test1**. 
@@ -526,7 +518,7 @@ align: center
 Create rule
 ```
 
-Click on `"Commit"` to enforce the new rule in the **Data Plane**.
+Click on `"Commit"` to enforce the new rule into the **Data Plane**.
 
 ```{figure} images/lab10-commitsshbu1.png
 ---
@@ -549,25 +541,7 @@ SSH ok
 
 Let's investigate the logs once again.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
-
-```{caution}
-Remove the previous filter!
-```{figure} images/lab10-removefilter.png
----
-align: center
----
-Remove the current applied filter
-```
-
-Now set a new filter based on the parameters showed in the screenshot below:
-
-```{figure} images/lab10-newfilter.png
----
-align: center
----
-Source Group = bu1
-```
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and search for the **intra-ssh-bu1** Rule!
 
 ```{figure} images/lab10-logsshbu1.png
 ---
