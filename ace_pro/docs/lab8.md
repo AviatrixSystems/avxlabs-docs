@@ -175,7 +175,9 @@ align: center
 Attachment established!
 ```
 
-The Edge devices allows to extend all the Aviatrix functionalities to the remote DC!
+```{important}
+The **Edge** device allows to extend all the Aviatrix functionalities to the remote DC!
+```
 
 ## 2. Network Domain Association
 
