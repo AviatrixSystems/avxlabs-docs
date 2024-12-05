@@ -1,9 +1,9 @@
-# Lab 9 - THREATIQ & COSTIQ
+# Lab 9 - COSTIQ
 
 ## 1. Objective
 
 This lab will demonstrate how `CostIQ` works.
- 
+
 ## 6. CostIQ
 
 Before completing this lab, let's enable `CostIQ` and define the following **Cost Centers** and **Shared Service**.
