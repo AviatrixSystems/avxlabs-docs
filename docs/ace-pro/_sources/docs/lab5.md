@@ -211,11 +211,9 @@ align: center
 Automatic rules injected by the Controller
 ```
 
-
-
 #### 4.4.1 Identify the subnet where the private workload resides
 
-First and foremost, you have to identify the **subnet** where the **_aws-us-east-2-spoke1-test2_** instance resides.
+First and foremost, you have to identify the **public subnet** where the **_aws-us-east-2-spoke1-test2_** instance resides.
 
 ```{figure} images/lab6-greenfieldneww.png
 ---
@@ -227,7 +225,6 @@ Private Subnet
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance on the search field on the right-hand side.
 
-
 From the outcome you have to pinpoint the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
@@ -235,11 +232,10 @@ From the outcome you have to pinpoint the `Availability Zone`.
 height: 150px
 align: center
 ---
-Private Subnet
+AZ
 ```
 
 Now that you know in what `Availability Zone` the private workload resides, you need to select the `VPC/VNets & Subnets` TAB and filter out based on the **_aws-us-east-2-spoke1_** VPC.
-
 
 Identify the `Private Subnet` that belongs to the `us-east-2a` AZ and copy the corresponding **_`IP Address CIDR`_** value!
 
