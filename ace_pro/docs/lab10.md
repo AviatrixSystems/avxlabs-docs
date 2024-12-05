@@ -596,15 +596,6 @@ Let's investigate the logs once again.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
-```{caution}
-Remove the previous filter!
-```{figure} images/lab10-removefilter2.png
----
-align: center
----
-Remove the current applied filter
-```
-
 ```{figure} images/lab10-bu2monitor.png
 ---
 height: 150px
@@ -613,7 +604,7 @@ align: center
 Monitor
 ```
 
-The logs above confirm that the ICMP protocol is permitted within the Smart Group bu2.
+The logs above confirm that the **ICMP** protocol is permitted within the Smart Group bu2.
 
 ### 5.6. Inter-rule from bu2 to bu1
 
@@ -648,7 +639,7 @@ align: center
 Create Rule
 ```
 
-Enforce the this new rule in the data plane clicking on the `"Commit"` button.
+Enforce this new rule into the Data Plane clicking on the `"Commit"` button.
 
 ```{figure} images/lab10-newcommit2.png
 ---
@@ -680,14 +671,7 @@ Let's investigate the logs once again.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
-Set a new filter based on the parameters showed in the screenshot below:
-
-```{figure} images/lab10-newfilter3.png
----
-align: center
----
-Rule = inter-icmp-bu2-bu1
-```
+Filter out based on the **inter-icmp-bu2-bu1** Rule!
 
 ```{figure} images/lab10-monitorfresh.png
 ---
