@@ -794,7 +794,7 @@ align: center
 Border Gateway Protocol (BGP)
 ```
 
-Repeat the previous action for the last Transit Gateway still without BGP ASN:
+Repeat the previous action for the last Transit Gateway still without a BGP ASN configured properly:
 
 - **azure-west-us-transit**: <span style='color:#479608'>ASN **64515**</span>
 
@@ -840,14 +840,14 @@ align: center
 azure-west-us-spoke2
 ```
 
-This time if you click on the `"Gateway Routes"` tab, you will be able to see the destination route, **10.0.12.0/24**, in **aws-us-east1-spoke1** VPC.
+This time if you click on the `"Gateway Routes"` tab, you will be able to see the destination route, **10.0.12.0/23**, in **aws-us-east1-spoke1** VPC.
 
 ```{figure} images/lab10-mtt6.png
 ---
 height: 300px
 align: center
 ---
-10.0.12.0/24
+10.0.12.0/23
 ```
 
 - SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
@@ -963,15 +963,6 @@ Check the logs once again.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
-```{caution}
-Set a new filter!
-```{figure} images/lab10-removefilter4.png
----
-align: center
----
-New filter applied
-```
-
 ```{figure} images/lab10-reallylast.png
 ---
 height: 200px
@@ -1041,7 +1032,7 @@ Spoke to Spoke Attachment
 ```
 
 ```{caution}
-It will take approximately **2** minutes to reflect into the Topology.
+It will take approximately **2** minutes to reflect into the Dynamic Topology.
 ```
 
 Let's check the **Routing Table** of the **_Spoke2_** in Azure.
