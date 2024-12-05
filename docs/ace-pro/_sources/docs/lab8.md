@@ -297,7 +297,7 @@ FlowIQ Filter
 ```
 
 ```{caution}
-It may take about **5** minutes for flow data to appear in the CoPilot UI, therefore please wait for a bit
+It may take about <ins>**5** minutes</ins> for flow data to show up on the CoPilot UI, therefore please wait for a bit
 and then click on the **`"Refresh Data"`** button!
 ```{figure} images/lab8-refresh2.png
 ---
