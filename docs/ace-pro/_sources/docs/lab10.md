@@ -245,14 +245,52 @@ align: center
 Delete the Greenfield-Rule
 ```
 
-- Repeat the same action for both, the `"Inspection-Rule"` and the `"Egress-Rule"`:
+- Repeat the same action for the `"Inspection-Rule"` .
 
 ```{figure} images/lab10-commit.png
 ---
 height: 300px
 align: center
 ---
-Commit
+Delete the Inspection-Rule
+```
+
+```{note}
+The **Egress-Rule** is configured with the enforcement=off, therefore it will nto affecvt the Data Path!
+```
+
+- Now click on `"+ Rule"` and create an ad-hoc **Explicit-Deny-Rule**, with the following parameters:
+
+Insert the following parameters
+
+- **Name**: <span style='color:#479608'>Explicit-Deny-Rule</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Enforcement**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab6-new.png
+---
+align: center
+---
+Saving the new Rule
+```
+
+Now click on **Commit**.
+
+```{figure} images/lab6-new234.png
+---
+align: center
+---
+Committing the new Rule
+```
+
+```{important}
+The ad-hoc `Explicit-Deny-Rule` can be configured with Logging=**On**!
 ```
 
 ```{warning}
@@ -287,8 +325,6 @@ align: center
 ---
 Create Rule
 ```
-
-At this point, there should be just one uncommitted rule at the very top, as depicted below.
 
 Click on **Commit**.
 
