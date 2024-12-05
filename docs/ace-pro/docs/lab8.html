@@ -325,14 +325,14 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-objectives">1. General Objectives</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">6.1. Attachment between Edge and the Transit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">6.2. Network Domain Association</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity-test">6.3. Edge: Connectivity Test</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-flowiq">6.3. Edge: FlowIQ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">6.4. Edge: “It’s more than a Spoke GW””</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-path-prepend">6.4.1 Edge: As-Path Prepend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">1.1. Attachment between Edge and the Transit</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">2. Network Domain Association</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity-test">3. Edge: Connectivity Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-flowiq">4. Edge: FlowIQ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">5. Edge: “It’s more than a Spoke GW””</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-path-prepend">5.1 Edge: As-Path Prepend</a></li>
 </ul>
 </li>
 </ul>
@@ -390,7 +390,7 @@
 </figcaption>
 </figure>
 <section id="attachment-between-edge-and-the-transit">
-<h3>6.1. Attachment between Edge and the Transit<a class="headerlink" href="#attachment-between-edge-and-the-transit" title="Link to this heading">#</a></h3>
+<h3>1.1. Attachment between Edge and the Transit<a class="headerlink" href="#attachment-between-edge-and-the-transit" title="Link to this heading">#</a></h3>
 <p>Let’s establish a peering between the Aviatrix Edge device and the Transit Gateway in <strong>US-EAST-2</strong>.</p>
 <p>In the Topology depicted below, you will notice that there is a workstation named “edge” attached to the LAN router. Once the attachment has been established, you will launch your ping from that client, for the connectivity verification!</p>
 <figure class="align-center" id="id6">
@@ -481,8 +481,9 @@
 </figure>
 <p>The Edge devices allows to extend all the Aviatrix functionalities to the remote DC!</p>
 </section>
+</section>
 <section id="network-domain-association">
-<h3>6.2. Network Domain Association<a class="headerlink" href="#network-domain-association" title="Link to this heading">#</a></h3>
+<h2>2. Network Domain Association<a class="headerlink" href="#network-domain-association" title="Link to this heading">#</a></h2>
 <p>Let’s assocciate the Edge connection to any of the existing Network Domains.</p>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong> and edit, for instance, the <strong>Green</strong> domain. Select the <strong><code class="docutils literal notranslate"><span class="pre">on-prem-edge</span></code></strong> connection and do not forget to click on <strong>Save</strong>!</p>
 <figure class="align-center" id="id17">
@@ -512,7 +513,7 @@
 </figure>
 </section>
 <section id="edge-connectivity-test">
-<h3>6.3. Edge: Connectivity Test<a class="headerlink" href="#edge-connectivity-test" title="Link to this heading">#</a></h3>
+<h2>3. Edge: Connectivity Test<a class="headerlink" href="#edge-connectivity-test" title="Link to this heading">#</a></h2>
 <p>Let’s launch a connectivity test, from the Workstation “Edge” inside the DC in New York.</p>
 <figure class="align-center" id="id20">
 <img alt="../_images/lab8-newjoe2.png" src="../_images/lab8-newjoe2.png" />
@@ -557,7 +558,7 @@
 </figure>
 </section>
 <section id="edge-flowiq">
-<h3>6.3. Edge: FlowIQ<a class="headerlink" href="#edge-flowiq" title="Link to this heading">#</a></h3>
+<h2>4. Edge: FlowIQ<a class="headerlink" href="#edge-flowiq" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Use <span style='color:#FF0000'><strong>FlowIQ</strong></span> from the Aviatrix CoPilot, <ins> for inspecting the NetFlow Data.</p></li>
 </ul>
@@ -608,7 +609,7 @@ and then click on the <strong><code class="docutils literal notranslate"><span c
 </div>
 </section>
 <section id="edge-it-s-more-than-a-spoke-gw">
-<h3>6.4. Edge: “It’s more than a Spoke GW””<a class="headerlink" href="#edge-it-s-more-than-a-spoke-gw" title="Link to this heading">#</a></h3>
+<h2>5. Edge: “It’s more than a Spoke GW””<a class="headerlink" href="#edge-it-s-more-than-a-spoke-gw" title="Link to this heading">#</a></h2>
 <p>The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus <ins>the Edge device is regarded much more than a classic Spoke gateway</ins>.</p>
 <p>Let’s connect the Edge device also to the Transit Gateway in <strong>US-Central-1</strong> in <strong>GCP</strong>.</p>
 <figure class="align-center" id="id31">
@@ -678,7 +679,7 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 </figcaption>
 </figure>
 <section id="edge-as-path-prepend">
-<h4>6.4.1 Edge: As-Path Prepend<a class="headerlink" href="#edge-as-path-prepend" title="Link to this heading">#</a></h4>
+<h3>5.1 Edge: As-Path Prepend<a class="headerlink" href="#edge-as-path-prepend" title="Link to this heading">#</a></h3>
 <p>Now, let’s <strong>SSH</strong> on the EC2 <em><strong>aws-us-east-2-spoke1-test1</strong></em>  and then launch the command <em>traceroute</em> towards the VM <em><strong>gcp-us-central1-spoke1-test1</strong></em> in GCP</p>
 <figure class="align-center" id="id39">
 <img alt="../_images/lab8-edgedouble21.png" src="../_images/lab8-edgedouble21.png" />
@@ -853,7 +854,6 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 </section>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -921,14 +921,14 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-objectives">1. General Objectives</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">6.1. Attachment between Edge and the Transit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">6.2. Network Domain Association</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity-test">6.3. Edge: Connectivity Test</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-flowiq">6.3. Edge: FlowIQ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">6.4. Edge: “It’s more than a Spoke GW””</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-path-prepend">6.4.1 Edge: As-Path Prepend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">1.1. Attachment between Edge and the Transit</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">2. Network Domain Association</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity-test">3. Edge: Connectivity Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-flowiq">4. Edge: FlowIQ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-it-s-more-than-a-spoke-gw">5. Edge: “It’s more than a Spoke GW””</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-path-prepend">5.1 Edge: As-Path Prepend</a></li>
 </ul>
 </li>
 </ul>
