@@ -155,13 +155,15 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Attachments"` tab and then click on `"Transit-Edge Peering"`. You will notice this additional tab that confirms the presence of an attachment between the Transit GW in the cloud and the Edge running in the DC!
+Select the `"Attachments"` tab and then click on `"Transit-Spoke Peering"`. 
+
+You will notice the presence of an attachment between the Transit GW in the cloud and the **Edge** running in the DC!
 
 ```{figure} images/lab8-edge17.png
 ---
 align: center
 ---
-Transit-Edge Peering
+Transit-Spoke Peering
 ```
 
 This is how the Topology would look like after the creation of the attachment.
