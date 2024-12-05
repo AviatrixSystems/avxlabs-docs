@@ -699,5 +699,5 @@ Final Topology for Lab 5
 ```
 
 ```{caution}
-At the end of this lab, <ins>the **East-West traffic** is blocked</ins>, due to the configuration of the Distributed Cloud Firewall!
+At the end of this lab <ins>the **East-West traffic** wll be blocked</ins>, due to the current configuration of the Distributed Cloud Firewall!
 ```
