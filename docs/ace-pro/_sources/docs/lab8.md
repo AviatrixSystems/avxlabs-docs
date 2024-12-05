@@ -56,7 +56,7 @@ align: center
 No routes advertised by the Edge yet
 ```
 
-### 6.1. Attachment between Edge and the Transit
+### 1.1. Attachment between Edge and the Transit
 
 Let's establish a peering between the Aviatrix Edge device and the Transit Gateway in **US-EAST-2**. 
 
@@ -175,7 +175,7 @@ Attachment established!
 
 The Edge devices allows to extend all the Aviatrix functionalities to the remote DC!
 
-### 6.2. Network Domain Association
+## 2. Network Domain Association
 
 Let's assocciate the Edge connection to any of the existing Network Domains.
 
@@ -200,7 +200,6 @@ The DC is now another VPC
 
 Let's explore again the Cloud Routes section!
 
-
 Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Advertised Routes` option.
 
 ```{important}
@@ -214,7 +213,7 @@ align: center
 BGP Advertised Routes
 ```
 
-### 6.3. Edge: Connectivity Test
+## 3. Edge: Connectivity Test
 
 Let's launch a connectivity test, from the Workstation "Edge" inside the DC in New York. 
 
@@ -271,7 +270,7 @@ align: center
 Ping
 ```
 
-### 6.3. Edge: FlowIQ
+## 4. Edge: FlowIQ
 
 * Use <span style='color:#FF0000'>**FlowIQ**</span> from the Aviatrix CoPilot, <ins> for inspecting the NetFlow Data.
 
@@ -326,7 +325,7 @@ Aviatrix Gateway
 On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
-### 6.4. Edge: "It's more than a Spoke GW""
+## 5. Edge: "It's more than a Spoke GW""
 
 The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus <ins>the Edge device is regarded much more than a classic Spoke gateway</ins>.
 
@@ -417,7 +416,7 @@ align: center
 Topology
 ```
 
-#### 6.4.1 Edge: As-Path Prepend
+### 5.1 Edge: As-Path Prepend
 
 Now, let's **SSH** on the EC2 _**aws-us-east-2-spoke1-test1**_  and then launch the command _traceroute_ towards the VM _**gcp-us-central1-spoke1-test1**_ in GCP
 
