@@ -229,12 +229,12 @@ The previous outcomes confirm undoubtetly that the connectivity is working smoot
 ## 4. DCF Rules Creation
 ### 4.1. Build a Zero Trust  Network Architecture
 
-First and foremost, let's move the `Explicit-Deny-Rule` at the very top of the list of your DCF rules.
+First and foremost, let's delete the `Greenfield-Rule` at the very top of the list of your DCF rules.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the `Explicit-Deny-Rule` and choose *`"Move Rule"`* at the very **Top**. 
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the `Greenfield-Rule` and choose *`"Delete Rule"`*. 
 
-Then click on **Save in Draft**.
+Then click on **Commit**.
 ```
 
 ```{figure} images/lab10-newedit.png
@@ -242,10 +242,10 @@ Then click on **Save in Draft**.
 height: 150px
 align: center
 ---
-Move the rule
+Delete the Greenfield-Rule
 ```
 
-Then **Commit** your change!
+- Repeat the same action for both, the `"Inspection-Rule"` and the `"Egress-Rule"`:
 
 ```{figure} images/lab10-commit.png
 ---
