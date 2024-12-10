@@ -91,7 +91,7 @@ VPC Functions:
 **2) Transit + FireNet** 
 ```
 
-It will take about **3-4** minutes for the creation of the VNet. You can periodically check the status of the task, clicking on the top right-hand side, on the *hourglass icon*. Click on the refresh button. Once the task gets colored in green, you can finally assume that the VNet was successfully created.
+It will take about **4-5** minutes for the creation of the VNet. You can periodically check the status of the task, clicking on the top right-hand side, on the *hourglass icon*. Click on the refresh button. Once the task gets colored in green, you can finally assume that the VNet was successfully created.
 
 ```{important}
 **Clean up the SEARCH FIELD to restore the navigation panel view.**
@@ -124,7 +124,11 @@ Confirmation
 ```
 
 ```{note}
-It will take <ins>few additional minutes</ins> to see all the four subnets (i.e 2x public subnets and 2x private subnets). <ins>Please, be patient!</ins>
+It will take <ins>**10** additional minutes</ins> to see all the four subnets (i.e 2x public subnets and 2x private subnets). 
+
+Please, be patient! 
+
+<ins>Continue with the subsequent tasks and afterwards verify that all the underlay constructs got deployed, successfully.</ins>
 ```
 
 ## 3. AWS VPC
@@ -212,7 +216,7 @@ align: center
 AWS console
 ```
 
-Change the region to `Oregon (us-west-2)` in the top-right corner and invoke the **VPC** service. 
+Change the region to `Oregon (us-west-2)` in the top-right corner and invoke the **VPC** service.
 
 ```{figure} images/lab1-newpic6.png
 ---
@@ -330,5 +334,5 @@ Expand the **GCP VPC** if you want to see the subnet **"gcp-us-west2-spoke1-sub1
 ```
 
 ```{caution}
-The VPCs and VNet created in this lab will not be used in the subsequent labs.
+The VPCs and VNet created in this lab will **NOT** be used in the subsequent labs.
 ```
