@@ -436,7 +436,7 @@ align: center
 Temporary disruption with **FAST** keepalive!
 ```
 
-**Bonus Step**: `Restart` the Gateway from the AWS console and reverify the traffic flow. This time you will not notice any disruption: the traffic flow fill switch back to the aviatrix-aws-us-east-1-spoke1 GW.
+**Bonus Step**: `Restart` the Gateway from the AWS console and reverify the traffic flow. This time you will notice any kind of disruption: the traffic flow fill switch back to the aviatrix-aws-us-east-1-spoke1 GW.
 
 ```{figure} images/lab5-restart.png
 ---
@@ -514,7 +514,9 @@ FlightPath Report PDF
 Experiment with <a href="https://docs.aviatrix.com/previous/documentation/latest/building-your-network/gateway-keepalives.html" target="_blank">GATEWAY TO CONTROLLER COMMUNICATION</a> and retest convergence times when bringing down a spoke gateway.
 
 ```{tip}
-You can modify the <ins>Gateway to Controller Communication timer</ins> directly from the CoPilot. Go to **CoPilot > Cloud Fabric > Gateways > Settings > Gateway to Controller Communication** and change the `Keep Alive Speed` from **_medium_** (default) to **_fast_**. Then repeat the experiment carried out earlier.
+You can modify the <ins>Gateway to Controller Communication timer</ins> directly from the CoPilot. Go to **CoPilot > Cloud Fabric > Gateways > Settings > Gateway to Controller Communication** and change the `Keep Alive Speed` from **_medium_** (default) to **_fast_**. 
+
+Then <ins>repeat</ins> the experiment carried out earlier!
 ```
 
 ```{figure} images/lab5-keepalive.png
