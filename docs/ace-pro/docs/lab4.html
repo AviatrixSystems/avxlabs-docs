@@ -666,68 +666,85 @@
 <p class="admonition-title">Important</p>
 <p>Please keep <strong>both</strong> the ping sessions running recursively on your SSH client! Don’t interrupt the ping.</p>
 </div>
-<p>To demonstrate ActiveMesh capability, you will shut down temporarily one of the spoke gateways and notice traffic converging to the other gateway.</p>
-<p>Login to <strong>AWS console</strong></a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 149</ins>).</p>
+<p>To demonstrate the <code class="docutils literal notranslate"><span class="pre">Active</span> <span class="pre">Mesh</span></code> capability, you will shut down <em>temporarily</em> one of the spoke gateways and notice traffic converging to the other gateway.</p>
+<p>Before proceeding with the actions that you need to carry out on the AWS console, let’s turn off the <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Single</span> <span class="pre">AZ</span> <span class="pre">HA</span></code> functionality.</p>
+<ul class="simple">
+<li><p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-1-spoke1</em></strong> cluster! Now select the <strong>Settings</strong> tab, then expand the <strong>General</strong> section and last but not least, turn off the <em>Gateway Single AZ HA</em> knob! Do not forget to click on <strong>Save</strong>.</p></li>
+</ul>
 <figure class="align-center" id="id27">
-<img alt="../_images/lab5-newone.png" src="../_images/lab5-newone.png" />
+<img alt="../_images/lab5-activemeshha.png" src="../_images/lab5-activemeshha.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 133 </span><span class="caption-text">AWS URL and credentials</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 133 </span><span class="caption-text">Disable “Gateway Single AZ HA
+“</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Single</span> <span class="pre">AZ</span> <span class="pre">HA</span></code> feature enables the <strong>Aviatrix Controller</strong> to monitor the health of the gateway instance and restart the gateway instance if it becomes unreachable.</p>
+<p>Gateway Single AZ HA is enabled by default.</p>
+<p>When Gateway Single AZ HA status is <strong>On</strong>, the Aviatrix Controller attempts to restart the gateway instance. When status is <strong>Off</strong>, Controller does <strong>NOT</strong> attempt to restart the gateway instance.</p>
+</div>
+<p>Login to <strong>AWS console</strong></a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 149</ins>).</p>
 <figure class="align-center" id="id28">
+<img alt="../_images/lab5-newone.png" src="../_images/lab5-newone.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 134 </span><span class="caption-text">AWS URL and credentials</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id29">
 <img alt="../_images/lab5-awsconsole.png" src="../_images/lab5-awsconsole.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 134 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 135 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Change the region to <strong>N. Virginia</strong> and invoke <strong>EC2</strong> service.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab5-region.png"><img alt="../_images/lab5-region.png" src="../_images/lab5-region.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 135 </span><span class="caption-text">Change the region</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 136 </span><span class="caption-text">Change the Region</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Instances (running)</strong>:</p>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <img alt="../_images/lab5-running.png" src="../_images/lab5-running.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 136 </span><span class="caption-text">Instances running</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Instances running</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Search for <strong><em>aviatrix-aws-us-east-1-spoke1</em></strong> and then select <strong>Instance state &gt; Stop instance</strong></p>
-<figure class="align-center" id="id31">
+<p>Search for <strong><em>aviatrix-aws-us-east-1-spoke1</em></strong>, select the instance and then choose <strong>Instance state &gt; Stop instance</strong></p>
+<figure class="align-center" id="id32">
 <a class="reference internal image-reference" href="../_images/lab5-stop.png"><img alt="../_images/lab5-stop.png" src="../_images/lab5-stop.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Stop the Instance</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 138 </span><span class="caption-text">Stop the Instance</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Confirm by clicking on <strong>Stop</strong> one more time.</p>
-<figure class="align-center" id="id32">
+<p>Confirm by clicking on <strong>Stop</strong>, one more time.</p>
+<figure class="align-center" id="id33">
 <img alt="../_images/lab5-stop2.png" src="../_images/lab5-stop2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 138 </span><span class="caption-text">Confirm the stop</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 139 </span><span class="caption-text">Confirm the stop</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice ping drops solely from <strong><em>aws-us-east-1-spoke1-test1</em></strong>. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.</p>
 <p>This shows how the Aviatrix Controller intelligently auto-heals the VPC routing.</p>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id34">
 <img alt="../_images/lab5-drop.png" src="../_images/lab5-drop.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 139 </span><span class="caption-text">Temporary disruption with FAST keepalive!</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 140 </span><span class="caption-text">Temporary disruption with <strong>FAST</strong> keepalive!</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Bonus Step</strong>: <code class="docutils literal notranslate"><span class="pre">Restart</span></code> the Gateway from the AWS console and reverify the traffic flow. This time you will not notice any disruption: the traffic flow fill switch back to the aviatrix-aws-us-east-1-spoke1 GW.</p>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab5-restart.png"><img alt="../_images/lab5-restart.png" src="../_images/lab5-restart.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 140 </span><span class="caption-text">Restart</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 141 </span><span class="caption-text">Restart</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab5-finaltopo.png"><img alt="../_images/lab5-finaltopo.png" src="../_images/lab5-finaltopo.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 141 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 142 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -742,10 +759,10 @@
 <li><p><strong>Port</strong>: <span style='color:#479608'>443</span></p></li>
 <li><p><strong>Interface</strong>: <span style='color:#479608'>Private</span></p></li>
 </ul>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab5-flightpath.png"><img alt="../_images/lab5-flightpath.png" src="../_images/lab5-flightpath.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 142 </span><span class="caption-text">FlightPath config</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 143 </span><span class="caption-text">FlightPath config</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This will provide an AppIQ report of how <strong><em>aws-us-east-1-spoke1-test1</em></strong> is connected with <strong><em>aws-us-east-2-spoke1-test1</em></strong> and display the path along with end-to-end latency.</p>
@@ -753,10 +770,10 @@
 <p class="admonition-title">Note</p>
 <p>You might see some links still depicted in <span style='color:red'><strong>red</strong></span>, after having restarted the Spoke Gateway. Be patient and relaunch the report and you will get the same outcome as depicted below.</p>
 </div>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab5-flight2.png"><img alt="../_images/lab5-flight2.png" src="../_images/lab5-flight2.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 143 </span><span class="caption-text">FlightPath Report</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 144 </span><span class="caption-text">FlightPath Report</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Scroll down to get more details about:</p>
@@ -769,10 +786,10 @@
 <li><p>Routing tables</p></li>
 </ul>
 <p>You can also download the entire report in pdf format by clicking the <strong>PDF icon</strong> at the top right corner:</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id39">
 <img alt="../_images/lab5-download.png" src="../_images/lab5-download.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 144 </span><span class="caption-text">FlightPath Report PDF</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 145 </span><span class="caption-text">FlightPath Report PDF</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -785,10 +802,10 @@
 <p class="admonition-title">Tip</p>
 <p>You can modify the <ins>Gateway to Controller Communication timer</ins> directly from the CoPilot. Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Settings &gt; Gateway to Controller Communication</strong> and change the <code class="docutils literal notranslate"><span class="pre">Keep</span> <span class="pre">Alive</span> <span class="pre">Speed</span></code> from <strong><em>medium</em></strong> (default) to <strong><em>fast</em></strong>. Then repeat the experiment carried out earlier.</p>
 </div>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id40">
 <a class="reference internal image-reference" href="../_images/lab5-keepalive.png"><img alt="../_images/lab5-keepalive.png" src="../_images/lab5-keepalive.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Keep Alive Speed</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 146 </span><span class="caption-text">Keep Alive Speed</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
