@@ -349,7 +349,27 @@ ping from aws-us-east-1-spoke1-test2
 Please keep **both** the ping sessions running recursively on your SSH client! Don't interrupt the ping.
 ```
 
-To demonstrate ActiveMesh capability, you will shut down temporarily one of the spoke gateways and notice traffic converging to the other gateway.
+To demonstrate the `Active Mesh` capability, you will shut down _temporarily_ one of the spoke gateways and notice traffic converging to the other gateway.
+
+Before proceeding with the actions that you need to carry out on the AWS console, let's turn off the `Gateway Single AZ HA` functionality.
+
+- Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-1-spoke1_** cluster! Now select the **Settings** tab, then expand the **General** section and last but not least, turn off the _Gateway Single AZ HA_ knob! Do not forget to click on **Save**.
+
+```{figure} images/lab5-activemeshha.png
+---
+align: center
+---
+Disable "Gateway Single AZ HA
+"
+```
+
+```{caution}
+The `Gateway Single AZ HA` feature enables the **Aviatrix Controller** to monitor the health of the gateway instance and restart the gateway instance if it becomes unreachable. 
+
+Gateway Single AZ HA is enabled by default.
+
+When Gateway Single AZ HA status is **On**, the Aviatrix Controller attempts to restart the gateway instance. When status is **Off**, Controller does **NOT** attempt to restart the gateway instance.
+```
 
 Login to **AWS console**</a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 149</ins>).
 
@@ -374,7 +394,7 @@ Change the region to **N. Virginia** and invoke **EC2** service.
 height: 300px
 align: center
 ---
-Change the region
+Change the Region
 ```
 
 Click on **Instances (running)**:
@@ -386,7 +406,7 @@ align: center
 Instances running
 ```
 
-Search for **_aviatrix-aws-us-east-1-spoke1_** and then select **Instance state > Stop instance**
+Search for **_aviatrix-aws-us-east-1-spoke1_**, select the instance and then choose **Instance state > Stop instance**
 
 ```{figure} images/lab5-stop.png
 ---
@@ -396,7 +416,7 @@ align: center
 Stop the Instance
 ```
 
-Confirm by clicking on **Stop** one more time.
+Confirm by clicking on **Stop**, one more time.
 
 ```{figure} images/lab5-stop2.png
 ---
@@ -413,7 +433,7 @@ This shows how the Aviatrix Controller intelligently auto-heals the VPC routing.
 ---
 align: center
 ---
-Temporary disruption with FAST keepalive!
+Temporary disruption with **FAST** keepalive!
 ```
 
 **Bonus Step**: `Restart` the Gateway from the AWS console and reverify the traffic flow. This time you will not notice any disruption: the traffic flow fill switch back to the aviatrix-aws-us-east-1-spoke1 GW.
