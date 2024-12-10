@@ -85,7 +85,7 @@ Retrieve the private IP
 Now let's enable the egress within the VPC that is hosting the **_aws-us-east-2-spoke1-test2_** instance.
 
 ```{note}
-Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"+ Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
+Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"Enable Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
 ```
 
 ```{figure} images/lab6-egress.png
@@ -225,7 +225,7 @@ Private Subnet
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance on the search field on the right-hand side.
 
-From the outcome you have to pinpoint the `Availability Zone`.
+From the outcom you have to pinpoint the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
@@ -312,7 +312,7 @@ Do not forget to click on **Save In Drafts**.
 ---
 align: center
 ---
-Committing the new Rule
+Saving the new Rule
 ```
 
 Click on the **Commit** button and the rule previously created will work in **_watch/test_** mode due to the fact that the `enforcement` was turn off.
@@ -382,7 +382,7 @@ Monitor
 ```
 
 ```{important}
-However, on the SSH client, you will not see any outputs, this is because the Rule was not enforced on the Data Path, therefore the traffic is dropped.
+However, on the SSH client, you will **NOT** see any outputs, this is because the Rule <ins>was not enforced on the Data Path</ins>, therefore the traffic is dropped.
 ```
 
 ```{figure} images/lab6-monitorpermit22.png
@@ -457,7 +457,7 @@ The purpose of this **WebGroup** is to authorize traffic only towards both the D
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
 
 - Now remove the WebGroup `"All-Web"` and then select the WebGroup `"two-domains"`.
-- Turn on the `Enforcement` knob.
+- Turn **ON** the `Enforcement` knob.
 
 Do not forget to click on **Save In Drafts** and then **Commit** your changes!
 
@@ -484,7 +484,7 @@ Commit the changes
 Now you have effectively activated the **ZTNA** approach.
 
 ```{note}
-After committing the changes, the Egress-Rule will be applied to the data path and moreover, the `DefaultDenyAll` rule will show up at the bottom.
+After committing the changes, the Egress-Rule will be applied to the data path and moreover, the `DefaultDenyAll` rule will show up again at the very bottom.
 ```
 
 ```{figure} images/lab6-webgroup23456.png

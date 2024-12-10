@@ -445,7 +445,7 @@
 <p>Now let’s enable the egress within the VPC that is hosting the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code>, then select the <strong><em>aws-us-east-2-spoke1</em></strong> VPC and click on <strong>Add</strong>.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code>, then select the <strong><em>aws-us-east-2-spoke1</em></strong> VPC and click on <strong>Add</strong>.</p>
 </div>
 <figure class="align-center" id="id9">
 <img alt="../_images/lab6-egress.png" src="../_images/lab6-egress.png" />
@@ -567,7 +567,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance on the search field on the right-hand side.</p>
-<p>From the outcome you have to pinpoint the <code class="docutils literal notranslate"><span class="pre">Availability</span> <span class="pre">Zone</span></code>.</p>
+<p>From the outcom you have to pinpoint the <code class="docutils literal notranslate"><span class="pre">Availability</span> <span class="pre">Zone</span></code>.</p>
 <figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww2.png"><img alt="../_images/lab6-greenfieldneww2.png" src="../_images/lab6-greenfieldneww2.png" style="height: 150px;" /></a>
 <figcaption>
@@ -636,7 +636,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <figure class="align-center" id="id25">
 <img alt="../_images/lab6-new.png" src="../_images/lab6-new.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Committing the new Rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the <strong>Commit</strong> button and the rule previously created will work in <strong><em>watch/test</em></strong> mode due to the fact that the <code class="docutils literal notranslate"><span class="pre">enforcement</span></code> was turn off.</p>
@@ -695,7 +695,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>However, on the SSH client, you will not see any outputs, this is because the Rule was not enforced on the Data Path, therefore the traffic is dropped.</p>
+<p>However, on the SSH client, you will <strong>NOT</strong> see any outputs, this is because the Rule <ins>was not enforced on the Data Path</ins>, therefore the traffic is dropped.</p>
 </div>
 <figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab6-monitorpermit22.png"><img alt="../_images/lab6-monitorpermit22.png" src="../_images/lab6-monitorpermit22.png" style="height: 200px;" /></a>
@@ -761,7 +761,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong>, click on the <strong>pencil</strong> button on the right-hand side of the <code class="docutils literal notranslate"><span class="pre">Egress-Rule</span></code>.</p>
 <ul class="simple">
 <li><p>Now remove the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;All-Web&quot;</span></code> and then select the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;two-domains&quot;</span></code>.</p></li>
-<li><p>Turn on the <code class="docutils literal notranslate"><span class="pre">Enforcement</span></code> knob.</p></li>
+<li><p>Turn <strong>ON</strong> the <code class="docutils literal notranslate"><span class="pre">Enforcement</span></code> knob.</p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong> and then <strong>Commit</strong> your changes!</p>
 <figure class="align-center" id="id35">
@@ -786,7 +786,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p>Now you have effectively activated the <strong>ZTNA</strong> approach.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>After committing the changes, the Egress-Rule will be applied to the data path and moreover, the <code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> rule will show up at the bottom.</p>
+<p>After committing the changes, the Egress-Rule will be applied to the data path and moreover, the <code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> rule will show up again at the very bottom.</p>
 </div>
 <figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab6-webgroup23456.png"><img alt="../_images/lab6-webgroup23456.png" src="../_images/lab6-webgroup23456.png" style="height: 250px;" /></a>
