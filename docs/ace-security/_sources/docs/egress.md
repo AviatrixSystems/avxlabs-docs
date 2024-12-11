@@ -54,30 +54,23 @@ Listen carefully. There will be quiz questions based on this 4 min video, also.
 ## LAB Access Details
 | **POD#** | **Copilot** |
 |:----------:|:---------------:|
-|      1     |       <a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD01</a>     |
-|      2     |       <a href="https://cplt.pod2.aviatrixlab.com" target="_blank">POD02</a>     |
-|      3     |       <a href="https://cplt.pod3.aviatrixlab.com" target="_blank">POD03</a>     |
-|      4     |       <a href="https://cplt.pod4.aviatrixlab.com" target="_blank">POD04</a>     |
-|      5     |       <a href="https://cplt.pod5.aviatrixlab.com" target="_blank">POD05</a>     |
-|      6     |       <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD06</a>     |
-|      7     |       <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD07</a>     |
-|      8     |       <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD08</a>     |
-|      9     |       <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD09</a>     |
-|      10     |       <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a>     |
-|      11     |       <a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a>     |
-|      12     |       <a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a>     |
-|      13     |       <a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a>     |
-|      14     |       <a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a>     |
-|      15     |       <a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a>     |
-|      16     |       <a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a>     |
-|      17     |       <a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a>     |
-|      18     |       <a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a>     |
-|      19     |       <a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a>     |
-|      20     |       <a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a>     |
-|      21     |       <a href="https://cplt.pod21.aviatrixlab.com" target="_blank">POD21</a>     |
-|      22     |       <a href="https://cplt.pod22.aviatrixlab.com" target="_blank">POD22</a>     |
-|      23     |       <a href="https://cplt.pod23.aviatrixlab.com" target="_blank">POD23</a>     |
-|      24     |       <a href="https://cplt.pod24.aviatrixlab.com" target="_blank">POD24</a>     |
+|      32     |       <a href="https://cplt.pod32.aviatrixlab.com" target="_blank">POD32</a>     |
+|      33     |       <a href="https://cplt.pod33.aviatrixlab.com" target="_blank">POD33</a>     |
+|      34     |       <a href="https://cplt.pod34.aviatrixlab.com" target="_blank">POD34</a>     |
+|      35     |       <a href="https://cplt.pod35.aviatrixlab.com" target="_blank">POD35</a>     |
+|      36     |       <a href="https://cplt.pod36.aviatrixlab.com" target="_blank">POD36</a>     |
+|      37     |       <a href="https://cplt.pod37.aviatrixlab.com" target="_blank">POD37</a>     |
+|      38     |       <a href="https://cplt.pod38.aviatrixlab.com" target="_blank">POD38</a>     |
+|      39     |       <a href="https://cplt.pod39.aviatrixlab.com" target="_blank">POD39</a>     |
+|      40     |       <a href="https://cplt.pod40.aviatrixlab.com" target="_blank">POD40</a>     |
+|      41     |       <a href="https://cplt.pod41.aviatrixlab.com" target="_blank">POD41</a>     |
+|      42     |       <a href="https://cplt.pod42.aviatrixlab.com" target="_blank">POD42</a>     |
+|      43     |       <a href="https://cplt.pod43.aviatrixlab.com" target="_blank">POD43</a>     |
+|      44     |       <a href="https://cplt.pod44.aviatrixlab.com" target="_blank">POD44</a>     |
+|      45     |       <a href="https://cplt.pod45.aviatrixlab.com" target="_blank">POD45</a>     |
+|      46     |       <a href="https://cplt.pod46.aviatrixlab.com" target="_blank">POD46</a>     |
+|      47     |       <a href="https://cplt.pod47.aviatrixlab.com" target="_blank">POD47</a>     |
+|      48     |       <a href="https://cplt.pod48.aviatrixlab.com" target="_blank">POD48</a>     |
 
 
 ## Access credentials
@@ -91,7 +84,7 @@ student
 Password:
 
 ```bash
-119T7YB!v8KKaL
+127#rdpn8K4GBJ
 ```
 
 ## LAB Pre-Req
