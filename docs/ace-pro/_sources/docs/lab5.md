@@ -382,7 +382,7 @@ Monitor
 ```
 
 ```{important}
-However, on the SSH client, you will **NOT** see any outputs, this is because the Rule <ins>was not enforced on the Data Path</ins>, therefore the traffic is dropped.
+However, on the SSH client, you will **NOT** see any outputs, this is because the Rule <ins>was not enforced in the Data Path</ins>, therefore the traffic is dropped.
 ```
 
 ```{figure} images/lab6-monitorpermit22.png
@@ -470,7 +470,7 @@ Editing the Egress-Rule
 
 ```{figure} images/lab6-webgroup2345.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Commit the changes
