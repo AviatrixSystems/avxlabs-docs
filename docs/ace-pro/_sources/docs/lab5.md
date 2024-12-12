@@ -198,8 +198,8 @@ Begin
 ```
 
 After having enabled the DCF, two Rules will get generated, automatically:
-- `Greendfield-Rule`
-- `DefaultDenyAll` = EXPLICIT DENY
+- `Greendfield-Rule` = ALLOW EVERYTHING
+- `DefaultDenyAll` = it's an EXPLICIT deny
 
 The first rule essentially allows all kind of traffic.
 
@@ -452,7 +452,7 @@ The purpose of this **WebGroup** is to authorize traffic only towards both the D
 ```
 
 ## 6. Edit the Egress-Rule 
-### 6.1 Create a new rule
+### 6.1 Apply a change on an existing rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
 
@@ -477,8 +477,8 @@ Commit the changes
 ```
 
 ```{important}
-- **Anywhere (0.0.0.0/0)** = Default Route 
-- **Publlic Internet** = NON-RFC1918 routes
+- **Anywhere (0.0.0.0/0)** = Represents all CIDR ranges or IP addresses. 
+- **Publlic Internet** = Represents non-RFC 1918 IP ranges, or the public Internet
 ```
 
 Now you have effectively activated the **ZTNA** approach.
@@ -495,7 +495,7 @@ align: center
 ZTNA
 ```
 
-### 6.1.1 Test the new rule
+### 6.1.1 Test the modified rule
 
 Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east-2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
 
