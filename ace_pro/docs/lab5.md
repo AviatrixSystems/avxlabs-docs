@@ -451,8 +451,8 @@ WebGroup creation
 The purpose of this **WebGroup** is to authorize traffic only towards both the Domains *`www.aviatrix.com`* and *`www.wikipedia.com`*, therefore the curl commands issued towards other Domains will be blocked.
 ```
 
-## 6. Edit the Egress-Rule 
-### 6.1 Apply a change on an existing rule
+## 6. Create an _"editable"_ Explicit -Deny-Rule 
+### 6.1 Edit the Egree-Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
 
@@ -479,6 +479,61 @@ Commit the changes
 ```{important}
 - **Anywhere (0.0.0.0/0)** = Represents all CIDR ranges or IP addresses. 
 - **Publlic Internet** = Represents non-RFC 1918 IP ranges, or the public Internet
+```
+
+After having enforced the Egress-Rule you will notice that automatically ther Controller has applied at the very bottom, the `DefaultDenyAll` rule. 
+
+```{figure} images/lab6-webgroup23456.png
+---
+height: 200px
+align: center
+---
+Egress-Rule + DefaultDenyAll
+```
+
+However, this rule is NOT editable, therefore any matches against the DefaultDenyRule will not generate any logs.
+
+```{figure} images/lab6-defaultdenyall01.png
+---
+height: 200px
+align: center
+---
+Not editable
+```
+
+### 6.1 Create an ad-hoc Explicit-Deny-Rule
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+
+```{figure} images/lab6-defaultdenyall02.png
+---
+height: 200px
+align: center
+---
+Not editable
+```
+
+Insert the following parameters
+
+- **Name**: <span style='color:#479608'>Explicit-Deny-Rule</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Enforcement**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+- **Rule Priority**:
+  - **Place Rule**: <span style='color:#479608'>**Below**</span>
+  - **Existing Rulee**: <span style='color:#479608'>**Egress-Rule**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab6-defaultdenyall03.png
+---
+height: 200px
+align: center
+---
+Not editable
 ```
 
 Now you have effectively activated the **ZTNA** approach.
