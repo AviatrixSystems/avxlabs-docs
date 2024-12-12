@@ -323,7 +323,7 @@ If the **Enforcement** slider is **On** (the default), the rule is enforced in t
 
 ```{figure} images/lab6-newrule11.png
 ---
-height: 150px
+height: 250px
 align: center
 ---
 Egress-Rule
@@ -341,7 +341,7 @@ The deletion of the Greenfield-Rule will also cause the deletion of the DefaultD
 
 ```{figure} images/lab6-newruledelete.png
 ---
-height: 150px
+height: 250px
 align: center
 ---
 Deletion of the Greenfield-Rule
@@ -593,8 +593,8 @@ align: center
 Permit
 ```
 
-## 7. IDS
-### 7.1 Create a New Rule
+## 6. IDS
+### 6.1 Create a New Rule
 
 Let's now test the **_IDS_** feature (i.e. Intrusion Detection System). 
 
@@ -629,7 +629,7 @@ align: center
 New DCF List
 ```
 
-### 7.2 Prepare the simulator
+### 6.2 Prepare the simulator
 
 - From the **_aws-us-east-2-spoke1-test2_** instance, launch the following **two** commands.
 
@@ -667,7 +667,7 @@ align: center
 Simulator
 ```
 
-### 7.3 Test the New Rule and the IDS feature
+### 6.3 Test the New Rule and the IDS feature
 
 - Before launching the attack, edit the new DCF rule, clicking on the pencil icon beside the **_Inspect-DNS_** rule.
 
