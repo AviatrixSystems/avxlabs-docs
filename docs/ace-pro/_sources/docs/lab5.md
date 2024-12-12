@@ -501,7 +501,7 @@ align: center
 Not editable
 ```
 
-### 6.1 Create an ad-hoc Explicit-Deny-Rule
+### 6.1 Create an _ad-hoc_ Explicit-Deny-Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -550,7 +550,13 @@ align: center
 ZTNA
 ```
 
-### 6.1.1 Test the modified rule
+### 6.1.2 Create an ad-hoc Explicit-Deny-Rule
+
+Let's create an _"editable"_ Explicit-Deny-Rule:
+
+
+
+### 6.1.2 Test the modified rule
 
 Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east-2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
 
@@ -561,8 +567,6 @@ align: center
 ---
 Select the VPC
 ```
-
-
 
 - Now launch again the following curl commands from the instance **_aws-us-east2-spoke1-test2_**.
 
@@ -597,6 +601,10 @@ align: center
 ---
 Permit
 ```
+
+### 6.1.3 check the DCF Monitor
+
+Now go to CoPilot > Security > Distributed Cloud Firewall > Monitor
 
 ## 7. IDS
 ### 7.1 Create a New Rule
