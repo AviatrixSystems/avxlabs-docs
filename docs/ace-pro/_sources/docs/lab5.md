@@ -382,7 +382,7 @@ Monitor
 ```
 
 ```{important}
-However, on the SSH client, you will **NOT** see any outputs, this is because the Rule <ins>was not enforced in the Data Path</ins>, therefore the traffic is dropped.
+However, on the SSH client, you will **NOT** see any outputs, this is because the Rule <ins>was not enforced in the Data Path</ins>, therefore the traffic is simply dropped.
 ```
 
 ```{figure} images/lab6-monitorpermit22.png
@@ -547,34 +547,16 @@ Commit your changes
 
 Now you have effectively activated the **ZTNA** approach.
 
-```{note}
-After committing the changes, the Egress-Rule will be applied to the data path and moreover, the `DefaultDenyAll` rule will show up again at the very bottom.
-```
+### 5.2.3 Test the modified rule
 
-```{figure} images/lab6-webgroup23456.png
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and turn on the toggle **_Auto Refresh_**.
+
+```{figure} images/lab6-defaultdenyall06.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
-ZTNA
-```
-
-### 6.1.2 Create an ad-hoc Explicit-Deny-Rule
-
-Let's create an _"editable"_ Explicit-Deny-Rule:
-
-
-
-### 6.1.2 Test the modified rule
-
-Go to **CoPilot > Security > Egress > Monitor** and select the **_Live View_** from the `"Time Period"` field, then select the **_aws-us-east-2-spoke1_** VPC from the `"VPC/VNets"` drop-down window.
-
-```{figure} images/lab6-newview.png
----
-height: 400px
-align: center
----
-Select the VPC
+Auto Refresh
 ```
 
 - Now launch again the following curl commands from the instance **_aws-us-east2-spoke1-test2_**.
@@ -610,10 +592,6 @@ align: center
 ---
 Permit
 ```
-
-### 6.1.3 check the DCF Monitor
-
-Now go to CoPilot > Security > Distributed Cloud Firewall > Monitor
 
 ## 7. IDS
 ### 7.1 Create a New Rule
