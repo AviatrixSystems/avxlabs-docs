@@ -347,10 +347,10 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-modified-rule">5.2.3 Test the modified rule</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">7. IDS</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.1 Create a New Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">7.2 Prepare the simulator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">7.3 Test the New Rule and the IDS feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">6. IDS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.1 Create a New Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">6.2 Prepare the simulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">6.3 Test the New Rule and the IDS feature</a></li>
 </ul>
 </li>
 </ul>
@@ -644,7 +644,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p>If the <strong>Enforcement</strong> slider is <strong>On</strong> (the default), the rule is enforced in the data plane. If the Enforcement slider is <strong>Off</strong>, the packets are only watched. This allows you to observe if the traffic impacted by this rule causes any inadvertent issues (such as traffic being dropped).</p>
 </div>
 <figure class="align-center" id="id25">
-<a class="reference internal image-reference" href="../_images/lab6-newrule11.png"><img alt="../_images/lab6-newrule11.png" src="../_images/lab6-newrule11.png" style="height: 150px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab6-newrule11.png"><img alt="../_images/lab6-newrule11.png" src="../_images/lab6-newrule11.png" style="height: 250px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 170 </span><span class="caption-text">Egress-Rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
@@ -659,7 +659,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p>The deletion of the Greenfield-Rule will also cause the deletion of the DefaultDenyAll, because the Egress-Rule was not enforced on the data path, which in turn means that there will be an <code class="docutils literal notranslate"><span class="pre">Invisible</span> <span class="pre">Deny</span> <span class="pre">Rule</span></code> installed on the bottom.</p>
 </div>
 <figure class="align-center" id="id26">
-<a class="reference internal image-reference" href="../_images/lab6-newruledelete.png"><img alt="../_images/lab6-newruledelete.png" src="../_images/lab6-newruledelete.png" style="height: 150px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab6-newruledelete.png"><img alt="../_images/lab6-newruledelete.png" src="../_images/lab6-newruledelete.png" style="height: 250px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 171 </span><span class="caption-text">Deletion of the Greenfield-Rule</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
@@ -879,9 +879,9 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </section>
 </section>
 <section id="ids">
-<h2>7. IDS<a class="headerlink" href="#ids" title="Link to this heading">#</a></h2>
+<h2>6. IDS<a class="headerlink" href="#ids" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h3>7.1 Create a New Rule<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>6.1 Create a New Rule<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Let’s now test the <strong><em>IDS</em></strong> feature (i.e. Intrusion Detection System).</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <p>Create a new DCF Rule with the following parameters:</p>
@@ -910,7 +910,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figure>
 </section>
 <section id="prepare-the-simulator">
-<h3>7.2 Prepare the simulator<a class="headerlink" href="#prepare-the-simulator" title="Link to this heading">#</a></h3>
+<h3>6.2 Prepare the simulator<a class="headerlink" href="#prepare-the-simulator" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>From the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance, launch the following <strong>two</strong> commands.</p></li>
 </ul>
@@ -945,7 +945,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figure>
 </section>
 <section id="test-the-new-rule-and-the-ids-feature">
-<h3>7.3 Test the New Rule and the IDS feature<a class="headerlink" href="#test-the-new-rule-and-the-ids-feature" title="Link to this heading">#</a></h3>
+<h3>6.3 Test the New Rule and the IDS feature<a class="headerlink" href="#test-the-new-rule-and-the-ids-feature" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Before launching the attack, edit the new DCF rule, clicking on the pencil icon beside the <strong><em>Inspect-DNS</em></strong> rule.</p></li>
 </ul>
@@ -1105,10 +1105,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-modified-rule">5.2.3 Test the modified rule</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">7. IDS</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.1 Create a New Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">7.2 Prepare the simulator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">7.3 Test the New Rule and the IDS feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">6. IDS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.1 Create a New Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">6.2 Prepare the simulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">6.3 Test the New Rule and the IDS feature</a></li>
 </ul>
 </li>
 </ul>
