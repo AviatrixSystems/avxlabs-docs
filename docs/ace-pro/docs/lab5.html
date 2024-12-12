@@ -341,11 +341,9 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ztna-zero-trust-network-architecture">5. ZTNA - Zero Trust Network Architecture</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">5.1 Create a New WebGroup</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicit-deny-rule">6. Create an <em>“editable”</em> Explicit -Deny-Rule</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-egree-rule">6.1 Edit the Egree-Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-ad-hoc-explicit-deny-rule">6.1 Create an <em>ad-hoc</em> Explicit-Deny-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicit-deny-rule">5.2 Create an <em>“editable”</em> Explicit -Deny-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enforce-the-egree-rule">5.2.1 Enforce the Egree-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-ad-hoc-explicit-deny-rule">5.2.2 Create an <em>ad-hoc</em> Explicit-Deny-Rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.1.2 Create an ad-hoc Explicit-Deny-Rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-modified-rule">6.1.2 Test the modified rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-dcf-monitor">6.1.3 check the DCF Monitor</a></li>
@@ -756,11 +754,11 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p>The purpose of this <strong>WebGroup</strong> is to authorize traffic only towards both the Domains <em><code class="docutils literal notranslate"><span class="pre">www.aviatrix.com</span></code></em> and <em><code class="docutils literal notranslate"><span class="pre">www.wikipedia.com</span></code></em>, therefore the curl commands issued towards other Domains will be blocked.</p>
 </div>
 </section>
-</section>
 <section id="create-an-editable-explicit-deny-rule">
-<h2>6. Create an <em>“editable”</em> Explicit -Deny-Rule<a class="headerlink" href="#create-an-editable-explicit-deny-rule" title="Link to this heading">#</a></h2>
-<section id="edit-the-egree-rule">
-<h3>6.1 Edit the Egree-Rule<a class="headerlink" href="#edit-the-egree-rule" title="Link to this heading">#</a></h3>
+<h3>5.2 Create an <em>“editable”</em> Explicit -Deny-Rule<a class="headerlink" href="#create-an-editable-explicit-deny-rule" title="Link to this heading">#</a></h3>
+</section>
+<section id="enforce-the-egree-rule">
+<h3>5.2.1 Enforce the Egree-Rule<a class="headerlink" href="#enforce-the-egree-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong>, click on the <strong>pencil</strong> button on the right-hand side of the <code class="docutils literal notranslate"><span class="pre">Egress-Rule</span></code>.</p>
 <ul class="simple">
 <li><p>Now remove the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;All-Web&quot;</span></code> and then select the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;two-domains&quot;</span></code>.</p></li>
@@ -793,7 +791,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p><span class="caption-number">Fig. 181 </span><span class="caption-text">Egress-Rule + DefaultDenyAll</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>However, this rule is NOT editable, therefore any matches against the DefaultDenyRule will not generate any logs.</p>
+<p>However, <ins>this rule is NOT editable</ins>, therefore any matches against the DefaultDenyRule will not generate any logs.</p>
 <figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab6-defaultdenyall01.png"><img alt="../_images/lab6-defaultdenyall01.png" src="../_images/lab6-defaultdenyall01.png" style="height: 200px;" /></a>
 <figcaption>
@@ -802,7 +800,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figure>
 </section>
 <section id="create-an-ad-hoc-explicit-deny-rule">
-<h3>6.1 Create an <em>ad-hoc</em> Explicit-Deny-Rule<a class="headerlink" href="#create-an-ad-hoc-explicit-deny-rule" title="Link to this heading">#</a></h3>
+<h3>5.2.2 Create an <em>ad-hoc</em> Explicit-Deny-Rule<a class="headerlink" href="#create-an-ad-hoc-explicit-deny-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id39">
 <a class="reference internal image-reference" href="../_images/lab6-defaultdenyall02.png"><img alt="../_images/lab6-defaultdenyall02.png" src="../_images/lab6-defaultdenyall02.png" style="height: 200px;" /></a>
@@ -828,9 +826,16 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
 <figure class="align-center" id="id40">
-<a class="reference internal image-reference" href="../_images/lab6-defaultdenyall03.png"><img alt="../_images/lab6-defaultdenyall03.png" src="../_images/lab6-defaultdenyall03.png" style="height: 200px;" /></a>
+<img alt="../_images/lab6-defaultdenyall03.png" src="../_images/lab6-defaultdenyall03.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 184 </span><span class="caption-text">Not editable</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 184 </span><span class="caption-text"><em>Editable</em> Explicit-Deny-Rule</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>Commit</strong>.</p>
+<figure class="align-center" id="id41">
+<a class="reference internal image-reference" href="../_images/lab6-defaultdenyall04.png"><img alt="../_images/lab6-defaultdenyall04.png" src="../_images/lab6-defaultdenyall04.png" style="height: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 185 </span><span class="caption-text">Commit your changes</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you have effectively activated the <strong>ZTNA</strong> approach.</p>
@@ -838,10 +843,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p class="admonition-title">Note</p>
 <p>After committing the changes, the Egress-Rule will be applied to the data path and moreover, the <code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> rule will show up again at the very bottom.</p>
 </div>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id42">
 <a class="reference internal image-reference" href="../_images/lab6-webgroup23456.png"><img alt="../_images/lab6-webgroup23456.png" src="../_images/lab6-webgroup23456.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 185 </span><span class="caption-text">ZTNA</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 186 </span><span class="caption-text">ZTNA</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -852,10 +857,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <section id="test-the-modified-rule">
 <h3>6.1.2 Test the modified rule<a class="headerlink" href="#test-the-modified-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the <strong><em>Live View</em></strong> from the <code class="docutils literal notranslate"><span class="pre">&quot;Time</span> <span class="pre">Period&quot;</span></code> field, then select the <strong><em>aws-us-east-2-spoke1</em></strong> VPC from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window.</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id43">
 <a class="reference internal image-reference" href="../_images/lab6-newview.png"><img alt="../_images/lab6-newview.png" src="../_images/lab6-newview.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 186 </span><span class="caption-text">Select the VPC</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 187 </span><span class="caption-text">Select the VPC</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -874,17 +879,17 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 <p>Only the first two curl commands will be successful!</p>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id44">
 <img alt="../_images/lab6-newpic.png" src="../_images/lab6-newpic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 187 </span><span class="caption-text">Curl commands</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 188 </span><span class="caption-text">Curl commands</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice almost instanteously that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong> will be immediately dropped.</p>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id45">
 <a class="reference internal image-reference" href="../_images/lab6-liveview.png"><img alt="../_images/lab6-liveview.png" src="../_images/lab6-liveview.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 188 </span><span class="caption-text">Permit</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Permit</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -910,17 +915,17 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li><p><strong>Intrusion Detection (IDS)</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id45">
+<figure class="align-center" id="id46">
 <img alt="../_images/lab6-ids.png" src="../_images/lab6-ids.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Inspect-DNS</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 190 </span><span class="caption-text">Inspect-DNS</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Proceed clicking on the <strong>Commit</strong> button.</p>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id47">
 <a class="reference internal image-reference" href="../_images/lab6-idscommit.png"><img alt="../_images/lab6-idscommit.png" src="../_images/lab6-idscommit.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 190 </span><span class="caption-text">New DCF List</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 191 </span><span class="caption-text">New DCF List</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -935,27 +940,27 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You will be asked to type again the student password!</p>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id48">
 <img alt="../_images/lab6-password.png" src="../_images/lab6-password.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 191 </span><span class="caption-text">Root PWD</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 192 </span><span class="caption-text">Root PWD</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/0xtf/testmynids.org/master/tmNIDS<span class="w"> </span>-o<span class="w"> </span>/tmp/tmNIDS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/tmp/tmNIDS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>/tmp/tmNIDS
 </pre></div>
 </div>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id49">
 <img alt="../_images/lab6-sudo.png" src="../_images/lab6-sudo.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 192 </span><span class="caption-text">Commands issued</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Commands issued</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The last command will show up a <strong><em>simulator</em></strong> from whom you will be able to launch an attack for testing the <code class="docutils literal notranslate"><span class="pre">&quot;Suricata</span> <span class="pre">IDS&quot;</span></code>.</p>
-<figure class="align-center" id="id49">
+<figure class="align-center" id="id50">
 <img alt="../_images/lab6-suricata.png" src="../_images/lab6-suricata.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Simulator</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Simulator</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -964,10 +969,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <ul class="simple">
 <li><p>Before launching the attack, edit the new DCF rule, clicking on the pencil icon beside the <strong><em>Inspect-DNS</em></strong> rule.</p></li>
 </ul>
-<figure class="align-center" id="id50">
+<figure class="align-center" id="id51">
 <a class="reference internal image-reference" href="../_images/lab6-suricataedit.png"><img alt="../_images/lab6-suricataedit.png" src="../_images/lab6-suricataedit.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Edit existing rule</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Edit existing rule</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters and do not forget to click on <strong>Save In Drafts</strong>:</p>
@@ -975,24 +980,24 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>UDP</span></p></li>
 <li><p><strong>Port</strong>: <span style='color:#479608'>53</span></p></li>
 </ul>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id52">
 <img alt="../_images/lab6-dns.png" src="../_images/lab6-dns.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Modify the rule</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 196 </span><span class="caption-text">Modify the rule</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now click on the <strong>Commit</strong> button.</p>
-<figure class="align-center" id="id52">
+<figure class="align-center" id="id53">
 <a class="reference internal image-reference" href="../_images/lab6-commit3.png"><img alt="../_images/lab6-commit3.png" src="../_images/lab6-commit3.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 196 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 197 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the EC2 instance <strong><em>aws-us-east-2-spoke1-test2</em></strong>, type <strong>5</strong> and click enter for launching a malicious attack, specifically the attack will try to establish a connection towards a TOR server.</p>
-<figure class="align-center" id="id53">
+<figure class="align-center" id="id54">
 <img alt="../_images/lab6-5.png" src="../_images/lab6-5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 197 </span><span class="caption-text">Malicious known attack</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 198 </span><span class="caption-text">Malicious known attack</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Detected Intrusions</strong>, and you will be able to find indicators that detected that attempt to contact a TOR server, through a DNS request.</p>
@@ -1000,17 +1005,17 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p class="admonition-title">Tip</p>
 <p>If you do not see the logs immediately, click on the <strong>refresh</strong> button</p>
 </div>
-<figure class="align-center" id="id54">
+<figure class="align-center" id="id55">
 <a class="reference internal image-reference" href="../_images/lab6-refresh.png"><img alt="../_images/lab6-refresh.png" src="../_images/lab6-refresh.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 198 </span><span class="caption-text">Detected Intrusions</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Detected Intrusions</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on any <strong>Timestamps</strong> to get additional insight on that specific attack.</p>
-<figure class="align-center" id="id55">
+<figure class="align-center" id="id56">
 <a class="reference internal image-reference" href="../_images/lab6-final.png"><img alt="../_images/lab6-final.png" src="../_images/lab6-final.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Additional insights</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 200 </span><span class="caption-text">Additional insights</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1018,10 +1023,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p>The indicator is showing clearly that you tried reaching out to Google DNS and then querying for a <strong>TOR</strong> domain!</p>
 </div>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id56">
+<figure class="align-center" id="id57">
 <a class="reference internal image-reference" href="../_images/lab6-finaltopo.png"><img alt="../_images/lab6-finaltopo.png" src="../_images/lab6-finaltopo.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 200 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 201 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1114,11 +1119,9 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ztna-zero-trust-network-architecture">5. ZTNA - Zero Trust Network Architecture</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">5.1 Create a New WebGroup</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicit-deny-rule">6. Create an <em>“editable”</em> Explicit -Deny-Rule</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-egree-rule">6.1 Edit the Egree-Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-ad-hoc-explicit-deny-rule">6.1 Create an <em>ad-hoc</em> Explicit-Deny-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicit-deny-rule">5.2 Create an <em>“editable”</em> Explicit -Deny-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enforce-the-egree-rule">5.2.1 Enforce the Egree-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-ad-hoc-explicit-deny-rule">5.2.2 Create an <em>ad-hoc</em> Explicit-Deny-Rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.1.2 Create an ad-hoc Explicit-Deny-Rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-modified-rule">6.1.2 Test the modified rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-dcf-monitor">6.1.3 check the DCF Monitor</a></li>
