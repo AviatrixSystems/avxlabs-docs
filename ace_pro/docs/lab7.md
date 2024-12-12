@@ -59,7 +59,9 @@ align: center
 S2C between Partner and GCP
 ```
 
-Click on the `"+ External Connection"` button and let's create a new connection from scratch:
+Click on the `"+ External Connection to"` button and let's create a new connection from scratch. 
+
+Select the `"External Device"` option from the drop-down window!
 
 ```{figure} images/lab8-s2c.png
 ---
@@ -71,7 +73,8 @@ S2C creation
 Create a connection from Cloud (GCP) to an on-prem Partner site, using the following settings on the `"Add External Connection"` window:
 
 - **Name**: <span style='color:#479608'>GCP-to-OnPremPartner</span>
-- **External Device**: <span style='color:#479608'>Static Route-Based (Mapped)</span>
+- **Connecting Using**: <span style='color:#479608'>Static Route-Based</span>
+- **Type**: <span style='color:#479608'>**Mapped**</span>
 - **Local Gateway**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
 - **Real Local Subnet CIDR(s)**: <span style='color:#479608'>172.16.1.0/24</span>
 - **Virtual Local Subnet CIDR(s)**: <span style='color:#479608'>192.168.200.0/24</span>
