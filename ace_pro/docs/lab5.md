@@ -451,8 +451,8 @@ WebGroup creation
 The purpose of this **WebGroup** is to authorize traffic only towards both the Domains *`www.aviatrix.com`* and *`www.wikipedia.com`*, therefore the curl commands issued towards other Domains will be blocked.
 ```
 
-## 6. Create an _"editable"_ Explicit -Deny-Rule 
-### 6.1 Edit the Egree-Rule
+### 5.2 Create an _"editable"_ Explicit -Deny-Rule 
+### 5.2.1 Enforce the Egree-Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
 
@@ -491,7 +491,7 @@ align: center
 Egress-Rule + DefaultDenyAll
 ```
 
-However, this rule is NOT editable, therefore any matches against the DefaultDenyRule will not generate any logs.
+However, <ins>this rule is NOT editable</ins>, therefore any matches against the DefaultDenyRule will not generate any logs.
 
 ```{figure} images/lab6-defaultdenyall01.png
 ---
@@ -501,7 +501,7 @@ align: center
 Not editable
 ```
 
-### 6.1 Create an _ad-hoc_ Explicit-Deny-Rule
+### 5.2.2 Create an _ad-hoc_ Explicit-Deny-Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -530,10 +530,19 @@ Do not forget to click on **Save In Drafts**.
 
 ```{figure} images/lab6-defaultdenyall03.png
 ---
+align: center
+---
+_Editable_ Explicit-Deny-Rule
+```
+
+Do not forget to click on **Commit**.
+
+```{figure} images/lab6-defaultdenyall04.png
+---
 height: 200px
 align: center
 ---
-Not editable
+Commit your changes
 ```
 
 Now you have effectively activated the **ZTNA** approach.
