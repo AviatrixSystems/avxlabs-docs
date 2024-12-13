@@ -164,7 +164,6 @@ Go to **CoPilot > Groups > SmartGroups** and then click on the `"+ SmartGroup"` 
 
 ```{figure} images/lab9-smart001.png
 ---
-height: 150px
 align: center
 ---
 New SmartGroup
@@ -178,7 +177,6 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 ```{figure} images/lab9-smart002.png
 ---
-height: 150px
 align: center
 ---
 aws-us-east-1-spoke1-test1 SmartGroup
@@ -188,7 +186,6 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab9-smart003.png
 ---
-height: 150px
 align: center
 ---
 SmartGroups List
@@ -228,7 +225,6 @@ Click on the **Commit** button!
 
 ```{figure} images/lab96-newrule11.png
 ---
-height: 150px
 align: center
 ---
 PSF-Rule
@@ -240,11 +236,12 @@ The **`Default ThreatGroup`** can be used in DCF rules to ensure that traffic me
 The Default ThreatGroup is regularly updated with data from the Proofpoint Global Threat Database.
 ```
 
-- Explore the content of the `Default ThreatGroup`: go to **CoPilot > Groups > ThreatGroups** and click on Default ThreatGroup and look at the ProofPoint Malicious IP addresses DB!
+Explore the content of the `Default ThreatGroup`: 
+
+- Go to **CoPilot > Groups > ThreatGroups** and click on Default ThreatGroup and look at the ProofPoint Malicious IP addresses DB!
 
 ```{figure} images/lab96-newrule12.png
 ---
-height: 150px
 align: center
 ---
 PSF-Rule
@@ -260,7 +257,6 @@ Do not forget to click on **Commit**.
 
 ```{figure} images/lab66-newruledelete.png
 ---
-height: 150px
 align: center
 ---
 Deletion of the Greenfield-Rule
@@ -268,31 +264,127 @@ Deletion of the Greenfield-Rule
 
 ```{figure} images/lab66-newruledeleted.png
 ---
-height: 150px
 align: center
 ---
 DCF Rules List
 ```
 
-Wait for the instructor to provide a malicious IP. Let's call it `<malicious-IP>`. 
+The previous PSF-Rule will DENY traffic towards the list of the Malicious IP address! 
 
-```{important}
-<ins>Note down this IP address!</ins>
-```
+The `aws-us-east-1-spoke1-test1` instance should only be able to reach the following domains:
 
-SSH to the EC2 instance **_aws-us-east1-spoke1-test1_**
+1) www.google.com
+2) www.microsoft.com
+3) www.aws.com
 
-- Now test `ThreatIQ` by first issuing this command (make sure to enter **HTTPS**):
+### 8.1 Create a new WebGroup
 
-```bash
-curl https://<malicious-IP>
-```
+Go to **CoPilot > Groups > WebGroups** and then click on the `"+ WebGroup"` button.
 
-```{figure} images/lab9-instancetest.png
+```{figure} images/lab9-smart100.png
 ---
 align: center
 ---
-Curl towards the malicious IP
+New WebGroup
+```
+
+Create the new **_WebGroup_** with the following parameters:
+
+- **Name**: <span style='color:#479608'>Allowed-Public-Domains</span>
+- **Type**: <span style='color:#479608'>Domains</span>
+- **Domains/URLs**: <span style='color:#479608'>www.google.com</span>
+- **Domains/URLs**: <span style='color:#479608'>www.microsoft.com</span>
+- **Domains/URLs**: <span style='color:#479608'>www.aws.com</span>
+
+Do not forget to click on **Save**.
+
+```{figure} images/lab6-webgroup200.png
+---
+align: center
+---
+WebGroup creation
+```
+
+### 8.2 Create a DCF rule that will allow traffic towards the three domains!
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+
+```{figure} images/lab9-newrule100.png
+---
+align: center
+---
+New Rule
+```
+
+Insert the following parameters
+
+- **Name**: <span style='color:#479608'>PSF-Rule-Permit</span>
+- **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
+- **Destination Groups**: <span style='color:#479608'>Public Internet</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Enforcement**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab911-new100.png
+---
+align: center
+---
+Saving the new Rule
+```
+
+Click on the **Commit** button!
+
+```{figure} images/lab96-newrule201.png
+---
+align: center
+---
+New DCF Rules List
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
