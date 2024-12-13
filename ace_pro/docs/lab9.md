@@ -14,7 +14,7 @@ ThreatIQ protect all the Aviatrix Gateways and it relies on a well-known databas
 
 ## 3. Topology
 
-In this lab, we will deploy a `“PSF"` gateway in AWS **US-EAST-1** region, to protect the public subnet.
+In this lab, we will deploy a `“PSF"` gateway in AWS **US-EAST-1** region, to protect SOLELY the public subnet where the test1 instance resides.
 
 ```{figure} images/lab9-initialtopology.png
 ---
@@ -30,7 +30,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Specialty Gateways**, then click on 
 
 ```{figure} images/lab9-psf.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 PSF
@@ -100,9 +100,58 @@ align: center
 aws-us-east1-spoke1-rtb-public-a
 ```
 
-## 5. A new SmartGroup for the Public Subnet
+## 5.0 Generate traffic towards a Malicious IP
 
-First and foremost, you have to identify the **subnet** where the **_aws-us-east-1-spoke1-test1_** instance resides.
+Now that there is a PSF Gateway on defending the Public Subnet, let's generate some traffic towards an IP with Bad Reputation.
+
+### 5.1 SSH to aws-us-east1-spoke1-test1
+
+Retrieve the Public IP address of **_aws-us-east-1-spoke1-test1_** instance:
+
+- Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, search for `aws-us-east-1-spoke1-test1` and then copy the **Public** IPv4 address!
+
+```{figure} images/lab9-newsg010.png
+---
+align: center
+---
+Public IP address
+```
+
+```{figure} images/lab9-newsg011.png
+---
+align: center
+---
+SSH session
+```
+
+Wait for the instructor to provide a malicious IP. Let's call it `<malicious-IP>`. 
+
+```{important}
+<ins>Note down this IP address!</ins>
+```
+
+- Issue this command (make sure to enter **HTTPS**):
+
+```bash
+curl https://<malicious-IP>
+```
+
+```{figure} images/lab9-instancetest.png
+---
+align: center
+---
+Curl towards the malicious IP
+```
+
+The traffic will be permitted... Let's now enforce the `ThreatIQ mechanism`!
+
+```{note}
+The IP shown in these screenshots  might not be deemed a threat when you read this. Please use the malicious IP provided by the instructor.
+```
+
+## 6.0 Create a new SmartGroup 
+
+Let's create another SmartGroup that can identify the **_aws-us-east-1-spoke1-test1_** instance that resides in the **US-EAST-1** region.
 
 ```{figure} images/lab9-routetablepsf234.png
 ---
@@ -111,69 +160,41 @@ align: center
 aws-us-east-1-spoke1-Public-1-us-east-1a
 ```
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-1-spoke1-test1_** instance on the search field, on the right-hand side.
+Go to **CoPilot > Groups > SmartGroups** and then click on the `"+ SmartGroup"` button.
 
-From the outcome you have to pinpoint the `Availability Zone`.
-
-```{figure} images/lab9-greenfieldneww2.png
+```{figure} images/lab9-smart001.png
 ---
 height: 150px
 align: center
 ---
-AZ
-```
-
-Now that you know in what `Availability Zone` the public workload resides, you need to select the `VPC/VNets & Subnets` TAB and filter out based on the **_aws-us-east-1-spoke1_** VPC.
-
-Identify the `Public Subnet` that belongs to the `us-east-1a` AZ and copy the corresponding **_`IP Address CIDR`_** value!
-
-```{figure} images/lab9-greenfieldneww3.png
----
-height: 300px
-align: center
----
-Public Subnet
-```
-
-### 5.1 Create an Ad-Hoc SmartGroup
-
-Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
-
-```{figure} images/lab9-newsg.png
----
-height: 400px
-align: center
----
-SmartGroup
-```
-
-Afterwards, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
-
-```{figure} images/lab9-greenfieldneww4.png
----
-height: 400px
-align: center
----
-Public Subnet
+New SmartGroup
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
-- **Name**: <span style='color:#479608'>aws-us-east-1-spoke1-Public-1-us-east-1a</span>
-- **IPs / CIDRs**: <span style='color:#479608'>10.0.12.32/28
-</span>
+- **Name**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
+- **CSP Tag Key**: <span style='color:#479608'>Name</span>
+- **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 
-Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
-
-```{figure} images/lab9-greenfieldneww45.png
+```{figure} images/lab9-smart002.png
 ---
-height: 400px
+height: 150px
 align: center
 ---
-New SG
+aws-us-east-1-spoke1-test1 SmartGroup
 ```
 
-### 5.2 Create a new Rule
+Do not forget to click on **Save**.
+
+```{figure} images/lab9-smart003.png
+---
+height: 150px
+align: center
+---
+SmartGroups List
+```
+
+## 7.0 Create a new DCF rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -187,13 +208,12 @@ New Rule
 Insert the following parameters
 
 - **Name**: <span style='color:#479608'>PSF-Rule</span>
-- **Source Smartgroups**: <span style='color:#479608'>aws-us-east-1-spoke1-Public-1-us-east-1</span>
-- **Destination Smartgroups**: <span style='color:#479608'>DeafultThreatGroup</span>
-- **WebGroups**: <span style='color:#479608'>**All-Web**</span>
+- **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
+- **Destination Groups**: <span style='color:#479608'>DeafultThreatGroup</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
 - **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
 
 Do not forget to click on **Save In Drafts**.
 
@@ -220,11 +240,21 @@ The **`Default ThreatGroup`** can be used in DCF rules to ensure that traffic me
 The Default ThreatGroup is regularly updated with data from the Proofpoint Global Threat Database.
 ```
 
-### 5.2 Generate traffic towards the "Bad Guy"
+- Explore the content of the `Default ThreatGroup`: go to **CoPilot > Groups > ThreatGroups** and click on Default ThreatGroup and look at the ProofPoint Malicious IP addresses DB!
+
+```{figure} images/lab96-newrule12.png
+---
+height: 150px
+align: center
+---
+PSF-Rule
+```
+
+## 8.0 Generate again traffic towards the "Bad Guy"
 
 Now delete the **Greenfield-Rule**: 
 
-- click on the **three dots** icon on the right-hand side of the Greenfield-Rule entry and then choose the `"Delete Rule"` option.
+- Click on the **three dots** icon on the right-hand side of the Greenfield-Rule entry and then choose the `"Delete Rule"` option.
 
 Do not forget to click on **Commit**.
 
