@@ -292,9 +292,9 @@ Create the new **_WebGroup_** with the following parameters:
 
 - **Name**: <span style='color:#479608'>Allowed-Public-Domains</span>
 - **Type**: <span style='color:#479608'>Domains</span>
-- **Domains/URLs**: <span style='color:#479608'>www.google.com</span>
-- **Domains/URLs**: <span style='color:#479608'>www.microsoft.com</span>
-- **Domains/URLs**: <span style='color:#479608'>www.aws.com</span>
+- **Domains/URLs**: <span style='color:#479608'>www.nginx.com</span>
+- **Domains/URLs**: <span style='color:#479608'>www.ubuntu.com</span>
+- **Domains/URLs**: <span style='color:#479608'>www.aviatrix.com</span>
 
 Do not forget to click on **Save**.
 
@@ -321,6 +321,7 @@ Insert the following parameters
 - **Name**: <span style='color:#479608'>PSF-Rule-Permit</span>
 - **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 - **Destination Groups**: <span style='color:#479608'>Public Internet</span>
+- **WebGroups**: <span style='color:#479608'>Allowed-Public-Domains</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
 - **Logging**: <span style='color:#479608'>On</span>
@@ -344,12 +345,39 @@ align: center
 New DCF Rules List
 ```
 
+Now from your SSH client, issue the following commands:
 
+```bash
+curl https://www.nginx.com
+```
 
+```bash
+curl https://www.ubuntu.com
+```
 
+```bash
+curl https://www.aviatrix.com
+```
 
+```{figure} images/lab96-newrule301.png
+---
+align: center
+---
+Outcomes from the curl commands
+```
 
+Now issue again the curl command towards the malicious IP address provided by the Trainer!
 
+```bash
+curl https://<malicious-IP>
+```
+
+```{figure} images/lab96-newrule302.png
+---
+align: center
+---
+Towards the Malicious IP
+```
 
 
 

@@ -633,9 +633,9 @@
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>Allowed-Public-Domains</span></p></li>
 <li><p><strong>Type</strong>: <span style='color:#479608'>Domains</span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.google.com">www.google.com</a></span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.microsoft.com">www.microsoft.com</a></span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.aws.com">www.aws.com</a></span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.nginx.com">www.nginx.com</a></span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.ubuntu.com">www.ubuntu.com</a></span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id23">
@@ -659,6 +659,7 @@
 <li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Rule-Permit</span></p></li>
 <li><p><strong>Source Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
 <li><p><strong>Destination Groups</strong>: <span style='color:#479608'>Public Internet</span></p></li>
+<li><p><strong>WebGroups</strong>: <span style='color:#479608'>Allowed-Public-Domains</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
 <li><p><strong>Enforcement</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
@@ -676,6 +677,32 @@
 <img alt="../_images/lab96-newrule201.png" src="../_images/lab96-newrule201.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 341 </span><span class="caption-text">New DCF Rules List</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now from your SSH client, issue the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.nginx.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.ubuntu.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
+</pre></div>
+</div>
+<figure class="align-center" id="id27">
+<img alt="../_images/lab96-newrule301.png" src="../_images/lab96-newrule301.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 342 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now issue again the curl command towards the malicious IP address provided by the Trainer!</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
+</pre></div>
+</div>
+<figure class="align-center" id="id28">
+<img alt="docs/images/lab96-newrule302.png" src="docs/images/lab96-newrule302.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 343 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -715,49 +742,49 @@
 <section id="enable-costiq">
 <h3>2.1 Enable CostIQ<a class="headerlink" href="#enable-costiq" title="Link to this heading">#</a></h3>
 <p>Go to <strong>Copilot &gt; Billing &amp; Cost &gt; CostIQ</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">CostIQ&quot;</span></code> button.</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab9-costiq.png"><img alt="../_images/lab9-costiq.png" src="../_images/lab9-costiq.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 342 </span><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id28">
-<a class="reference internal image-reference" href="../_images/lab9-costiq001.png"><img alt="../_images/lab9-costiq001.png" src="../_images/lab9-costiq001.png" style="height: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 343 </span><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Now click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Cost</span> <span class="pre">Center&quot;</span></code> and create the <strong>AWS</strong> Cost Center aforementioned.</p>
-<figure class="align-center" id="id29">
-<img alt="../_images/lab9-costiq02.png" src="../_images/lab9-costiq02.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 344 </span><span class="caption-text">“+ Cost Center”</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 344 </span><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id30">
-<img alt="../_images/lab9-costiq03.png" src="../_images/lab9-costiq03.png" />
+<a class="reference internal image-reference" href="../_images/lab9-costiq001.png"><img alt="../_images/lab9-costiq001.png" src="../_images/lab9-costiq001.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 345 </span><span class="caption-text">AWS</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 345 </span><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Repeat the action creating the remaining two Cost Centers: <strong>GCP</strong> and <strong>Azure</strong>, associating the corresponing Application VPCs/VNets.</p>
+<p>Now click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Cost</span> <span class="pre">Center&quot;</span></code> and create the <strong>AWS</strong> Cost Center aforementioned.</p>
 <figure class="align-center" id="id31">
-<img alt="../_images/lab9-costiq04.png" src="../_images/lab9-costiq04.png" />
+<img alt="../_images/lab9-costiq02.png" src="../_images/lab9-costiq02.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 346 </span><span class="caption-text">GCP</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 346 </span><span class="caption-text">“+ Cost Center”</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id32">
+<img alt="../_images/lab9-costiq03.png" src="../_images/lab9-costiq03.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 347 </span><span class="caption-text">AWS</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Repeat the action creating the remaining two Cost Centers: <strong>GCP</strong> and <strong>Azure</strong>, associating the corresponing Application VPCs/VNets.</p>
+<figure class="align-center" id="id33">
+<img alt="../_images/lab9-costiq04.png" src="../_images/lab9-costiq04.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 348 </span><span class="caption-text">GCP</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id34">
 <img alt="../_images/lab9-costiq05.png" src="../_images/lab9-costiq05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 347 </span><span class="caption-text">AZURE</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 349 </span><span class="caption-text">AZURE</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You should immediately get insights on how they have been utilized.</p>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab9-costiq06.png"><img alt="../_images/lab9-costiq06.png" src="../_images/lab9-costiq06.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 348 </span><span class="caption-text">Cost Centers Overview</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 350 </span><span class="caption-text">Cost Centers Overview</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -768,51 +795,51 @@
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP Info</strong>, then click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code>.</p></li>
 </ul>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id36">
 <img alt="../_images/lab9-costiq10.png" src="../_images/lab9-costiq10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 349 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 351 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will find out that all the local subnets advertised by the DC belong to the cidr <strong>10.40.0.0/16</strong>.</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id37">
 <img alt="../_images/lab9-cidr.png" src="../_images/lab9-cidr.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 350 </span><span class="caption-text">CIDR</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 352 </span><span class="caption-text">CIDR</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s move on the <strong>Shared Services</strong> tab and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Shared</span> <span class="pre">Service&quot;</span></code>.</p>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id38">
 <img alt="../_images/lab9-costiq12.png" src="../_images/lab9-costiq12.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 351 </span><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 353 </span><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create the <strong>Shared Service</strong> based on the aforementioned requirements.</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id39">
 <img alt="../_images/lab9-costiq13.png" src="../_images/lab9-costiq13.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 352 </span><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 354 </span><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If you kept running the ping on the Workstation Edge’s terminal, then you should see both the relative traffic and the absolute one from any Cost Centers towards the Shared Service.</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id40">
 <img alt="../_images/lab9-ping.png" src="../_images/lab9-ping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 353 </span><span class="caption-text">Ping from the Wortkstation “Edge”</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 355 </span><span class="caption-text">Ping from the Wortkstation “Edge”</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id41">
 <a class="reference internal image-reference" href="../_images/lab9-counter.png"><img alt="../_images/lab9-counter.png" src="../_images/lab9-counter.png" style="height: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 354 </span><span class="caption-text">From the Cost Center towards the Shared Service</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 356 </span><span class="caption-text">From the Cost Center towards the Shared Service</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id42">
 <a class="reference internal image-reference" href="../_images/lab9-final.png"><img alt="../_images/lab9-final.png" src="../_images/lab9-final.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 355 </span><span class="caption-text">Final topology for Lab 9</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 357 </span><span class="caption-text">Final topology for Lab 9</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
