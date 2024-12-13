@@ -383,7 +383,6 @@ Do not forget to click on **Save In Drafts**.
 
 ```{figure} images/lab7-edit.png
 ---
-height: 300px
 align: center
 ---
 Greenfield-Rule
@@ -452,7 +451,7 @@ align: center
 Ping GCP
 ```
 
-This still matches the **`Allow-all`** firewall rule. Moreover, it works because of the Connection Policy we had configured in the **Network Segmentation** Lab.
+This still matches the **`Allow-all`** firewall rule. Moreover, it works because of the `Connection Policy` we had configured in the **Network Segmentation** Lab.
 
 Back on the PAN firewall, click the **refresh** button in the top-right corner to see the log entries for pinging the GCP spoke test VM.
 
@@ -464,6 +463,34 @@ align: center
 Monitoring traffic towards GCP
 ```
 
+Now, let's check the `DCF Monitor` section:
+
+- Go to **CoPilot > Security > Distributed Cloud Firewall** and filter out based on **ICMP**.
+
+```{figure} images/lab7-finalmonitor00.png
+---
+height: 300px
+align: center
+---
+Filter
+```
+
+You will immediately notice the logs that have successfully matched the Greenfield-Rule.
+
+```{figure} images/lab7-finalmonitor01.png
+---
+height: 300px
+align: center
+---
+Logs
+```
+
+```{important}
+The same policy is present on both the PaloAlto firewall and on the Spoke Gateway...
+
+Maybe it's time to finally embrace the full-blown **`"Distributed Cloud Firewall"`** solution, and getting rid of the expensive NGFW!
+```
+
 After completing this Lab, the overall topology would look like this:
 
 ```{figure} images/lab7-finaltopology2.png
@@ -472,10 +499,4 @@ height: 400px
 align: center
 ---
 Final Topology for Lab 6
-```
-
-```{important}
-The same policy is present on both the PaloAlto firewall and on the Spoke Gateway...
-
-Maybe it's time to finally embrace the full-blown **`"Distributed Cloud Firewall"`** solution, and getting rid of the NGFW!
 ```

@@ -91,14 +91,14 @@ BGP ASN
 
 Now it's time to establish the attachment! 
 
-Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Transit Gateway Attachment"` button, on the right-hand side of the screen.
+Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachment"` button, on the right-hand side of the screen.
 
 ```{figure} images/lab8-edge9.png
 ---
 height: 200px
 align: center
 ---
-Manage Transit Gateway Attachment
+Manage Gateway Attachment
 ```
 
 Click on the `"+Attachment"` button.
@@ -155,7 +155,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Attachments"` tab and then click on `"Transit-Spoke Peering"`. 
+Select the `"Attachments"` tab and then click on `"Transit-Edge Peering"`. 
 
 You will notice the presence of an attachment between the Transit GW in the cloud and the **Edge** running in the DC!
 
@@ -163,7 +163,7 @@ You will notice the presence of an attachment between the Transit GW in the clou
 ---
 align: center
 ---
-Transit-Spoke Peering
+Transit-Edge Peering
 ```
 
 This is how the Topology would look like after the creation of the attachment.
@@ -364,14 +364,14 @@ BGP ASN
 
 Now you are ready to proceed with the rest of the configuration on the Edge section!
 
-Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Transit Gateway Attachment"` button, on the right-hand side of the screen.
+Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachment"` button, on the right-hand side of the screen.
 
 ```{figure} images/lab8-edgedouble2.png
 ---
 height: 200px
 align: center
 ---
-Manage Transit Gateway Attachment
+Manage Gateway Attachment
 ```
 
 Now click on the `"+ Attachment"` button.
@@ -389,7 +389,10 @@ Fill in the attachment template using the following settings:
 - **Transit Gateway**: <span style='color:#479608'>gcp-us-central1-transit</span>
 - **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
 - **Attach over**: <span style='color:#479608'>**Public Network**</span>
-- **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
+
+```{caution}
+The **High Performance Encryption** option is not visible in this case, because the  Aviatrix Controller is aware that the GCP Transit is already configured with _HPE=off_
+```
 
 Do not forget to click on **Save**.
 
@@ -400,7 +403,9 @@ align: center
 Edge Attachment Template
 ```
 
-Wait for 1 minute for the Aviatrix Controller to establish the attachment between the Edge and the GCP Transit Gateway. Once the operation is completed you will be notified!
+Wait for **1 minute** for the Aviatrix Controller to establish the attachment between the Edge and the GCP Transit Gateway. 
+
+Once the operation is completed you will be notified!
 
 ```{figure} images/lab8-edgedouble9.png
 ---

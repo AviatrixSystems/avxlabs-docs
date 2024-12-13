@@ -547,7 +547,7 @@ Commit your changes
 
 Now you have effectively activated the **ZTNA** approach.
 
-### 5.2.3 Test the modified rule
+## 5.3 Test the modified rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and turn on the toggle **_Auto Refresh_**.
 
