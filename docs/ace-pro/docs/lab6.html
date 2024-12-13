@@ -676,7 +676,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
 <figure class="align-center" id="id28">
-<a class="reference internal image-reference" href="../_images/lab7-edit.png"><img alt="../_images/lab7-edit.png" src="../_images/lab7-edit.png" style="height: 300px;" /></a>
+<img alt="../_images/lab7-edit.png" src="../_images/lab7-edit.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 228 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
@@ -733,7 +733,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p><span class="caption-number">Fig. 233 </span><span class="caption-text">Ping GCP</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This still matches the <strong><code class="docutils literal notranslate"><span class="pre">Allow-all</span></code></strong> firewall rule. Moreover, it works because of the Connection Policy we had configured in the <strong>Network Segmentation</strong> Lab.</p>
+<p>This still matches the <strong><code class="docutils literal notranslate"><span class="pre">Allow-all</span></code></strong> firewall rule. Moreover, it works because of the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code> we had configured in the <strong>Network Segmentation</strong> Lab.</p>
 <p>Back on the PAN firewall, click the <strong>refresh</strong> button in the top-right corner to see the log entries for pinging the GCP spoke test VM.</p>
 <figure class="align-center" id="id34">
 <a class="reference internal image-reference" href="../_images/lab7-finalmonitor.png"><img alt="../_images/lab7-finalmonitor.png" src="../_images/lab7-finalmonitor.png" style="height: 300px;" /></a>
@@ -741,18 +741,35 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p><span class="caption-number">Fig. 234 </span><span class="caption-text">Monitoring traffic towards GCP</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>After completing this Lab, the overall topology would look like this:</p>
+<p>Now, let’s check the <code class="docutils literal notranslate"><span class="pre">DCF</span> <span class="pre">Monitor</span></code> section:</p>
+<ul class="simple">
+<li><p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and filter out based on <strong>ICMP</strong>.</p></li>
+</ul>
 <figure class="align-center" id="id35">
-<a class="reference internal image-reference" href="../_images/lab7-finaltopology2.png"><img alt="../_images/lab7-finaltopology2.png" src="../_images/lab7-finaltopology2.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab7-finalmonitor00.png"><img alt="../_images/lab7-finalmonitor00.png" src="../_images/lab7-finalmonitor00.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Final Topology for Lab 6</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will immediately notice the logs that have successfully matched the Greenfield-Rule.</p>
+<figure class="align-center" id="id36">
+<a class="reference internal image-reference" href="../_images/lab7-finalmonitor01.png"><img alt="../_images/lab7-finalmonitor01.png" src="../_images/lab7-finalmonitor01.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>The same policy is present on both the PaloAlto firewall and on the Spoke Gateway…</p>
-<p>Maybe it’s time to finally embrace the full-blown <strong><code class="docutils literal notranslate"><span class="pre">&quot;Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code></strong> solution, and getting rid of the NGFW!</p>
+<p>Maybe it’s time to finally embrace the full-blown <strong><code class="docutils literal notranslate"><span class="pre">&quot;Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code></strong> solution, and getting rid of the expensive NGFW!</p>
 </div>
+<p>After completing this Lab, the overall topology would look like this:</p>
+<figure class="align-center" id="id37">
+<a class="reference internal image-reference" href="../_images/lab7-finaltopology2.png"><img alt="../_images/lab7-finaltopology2.png" src="../_images/lab7-finaltopology2.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Final Topology for Lab 6</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
