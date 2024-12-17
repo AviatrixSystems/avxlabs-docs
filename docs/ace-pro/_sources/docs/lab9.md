@@ -228,10 +228,6 @@ Saving the new Rule
 
 Now before committing, create another DCF rule for blocking also the traffic sourced from **any Malicious IP addresses** towards the **aws-us-east-1-spoke1-test1** instance.
 
-```{important}
-These two rules will protect the `bi-directional communication`: traffic will be blocked if **aws-us-east-1-spoke1-test1** will try to reach any **Malcious IPs** (by _ProofPoint's DB_), and likewise traffic will be blocked if any **Malicious IPs** (by _ProofPoint's DB_) will try to reach the **aws-us-east-1-spoke1-test1** instance.
-```
-
 Create a new rule clicking on the `"+ Rule"` button:
 
 ```{figure} images/lab911-new33.png
@@ -268,6 +264,10 @@ height: 350px
 align: center
 ---
 Commit the new rules
+```
+
+```{important}
+These two rules will protect the `bi-directional communication`: traffic will be blocked if **aws-us-east-1-spoke1-test1** will try to reach any **Malcious IPs** (by _ProofPoint's DB_), and likewise traffic will be blocked if any **Malicious IPs** (by _ProofPoint's DB_) will try to reach the **aws-us-east-1-spoke1-test1** instance.
 ```
 
 Explore the content of the `Default ThreatGroup`: 
@@ -316,7 +316,7 @@ DCF Rules List
 
 ### 8.1 Create a new SmartGroup
 
-Let's create another rule that will allow the `aws-us-east-1-spoke1-test1` instance to reach solely the following three domains:
+Let's create another **WebGroup** that will exactly match three domains:
 
 1) www.nginx.com
 2) www.ubuntu.com
@@ -326,6 +326,7 @@ Go to **CoPilot > Groups > WebGroups** and then click on the `"+ WebGroup"` butt
 
 ```{figure} images/lab9-smart100.png
 ---
+height: 400px
 align: center
 ---
 New WebGroup
@@ -389,6 +390,8 @@ align: center
 Commit
 ```
 
+## 9. Connectivity Tests
+
 Now from your SSH client, issue the following commands:
 
 ```bash
@@ -410,7 +413,7 @@ align: center
 Outcomes from the curl commands
 ```
 
-Now issue again the curl command towards the malicious IP address provided by the Trainer!
+Now issue again the curl command towards the **malicious IP** address that was earlier provided by the Trainer!
 
 ```bash
 curl https://<malicious-IP>
