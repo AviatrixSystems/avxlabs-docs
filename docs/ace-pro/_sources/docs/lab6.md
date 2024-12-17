@@ -457,7 +457,7 @@ Back on the PAN firewall, click the **refresh** button in the top-right corner t
 
 ```{figure} images/lab7-finalmonitor.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Monitoring traffic towards GCP
@@ -479,7 +479,7 @@ You will immediately notice the logs that have successfully matched the Greenfie
 
 ```{figure} images/lab7-finalmonitor01.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Logs
