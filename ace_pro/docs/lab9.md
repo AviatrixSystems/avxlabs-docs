@@ -198,7 +198,7 @@ align: center
 SmartGroups List
 ```
 
-## 7.0 Create a new DCF rule
+## 7.0 Create two new DCF rules
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -209,7 +209,7 @@ align: center
 New Rule
 ```
 
-Insert the following parameters
+Insert the following parameters:
 
 - **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-aws-us-east-1-spoke1-test1</span>
 - **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
@@ -228,10 +228,10 @@ align: center
 Saving the new Rule
 ```
 
-Now before committing, create another DCF rule for blocking also the traffic sourced from any Malicious IP addresses towards 
+Now before committing, create another DCF rule for blocking also the traffic sourced from **any Malicious IP addresses** towards the **aws-us-east-1-spoke1-test1** instance.
 
 ```{important}
-These two rules will protect the `bi-directional communication`: traffic will be blocked if **aws-us-east-1-spoke1-test1** will try to reach any **M**alcious IPs** (by _ProfPoint's DB_), and likewise traffic will be blocked if any **Malicious IPs** (by _ProfPoint's DB_) will try to reach the **aws-us-east-1-spoke1-test1**.
+These two rules will protect the `bi-directional communication`: traffic will be blocked if **aws-us-east-1-spoke1-test1** will try to reach any **Malcious IPs** (by _ProfPoint's DB_), and likewise traffic will be blocked if any **Malicious IPs** (by _ProfPoint's DB_) will try to reach the **aws-us-east-1-spoke1-test1** instance.
 ```
 
 Create a new rule clicking on the `"+ Rule"` button:
@@ -243,7 +243,7 @@ align: center
 New Rule
 ```
 
-Insert the following parameters
+Insert the following parameters:
 
 - **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-malicious-ips</span>
 - **Source Groups**: <span style='color:#479608'>DeafultThreatGroup</span>
