@@ -112,8 +112,10 @@ Retrieve the Public IP address of **_aws-us-east-1-spoke1-test1_** instance:
 
 ```{figure} images/lab9-newsg010.png
 ---
+height: 250px
 align: center
 ---
+
 Public IP address
 ```
 
@@ -124,7 +126,9 @@ align: center
 SSH session
 ```
 
-Wait for the instructor to provide a malicious IP. Let's call it `<malicious-IP>`. 
+Wait for the instructor to provide a malicious IP. 
+
+Let's call it `<malicious-IP>`. 
 
 ```{important}
 <ins>Note down this IP address!</ins>
@@ -146,7 +150,9 @@ Curl towards the malicious IP
 The traffic will be permitted... Let's now enforce the `ThreatIQ mechanism`!
 
 ```{note}
-The IP shown in these screenshots  might not be deemed a threat when you read this. Please use the malicious IP provided by the instructor.
+The IP shown in these screenshots  might not be deemed a threat when you read this. 
+
+<ins>Please use the malicious IP provided by the instructor</ins>.
 ```
 
 ## 6.0 Create a new SmartGroup 
@@ -186,12 +192,13 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab9-smart003.png
 ---
+height: 200px
 align: center
 ---
 SmartGroups List
 ```
 
-## 7.0 Create a new DCF rule
+## 7.0 Create two new DCF rules
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -202,9 +209,9 @@ align: center
 New Rule
 ```
 
-Insert the following parameters
+Insert the following parameters:
 
-- **Name**: <span style='color:#479608'>PSF-Rule</span>
+- **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-aws-us-east-1-spoke1-test1</span>
 - **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 - **Destination Groups**: <span style='color:#479608'>DeafultThreatGroup</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
@@ -221,13 +228,47 @@ align: center
 Saving the new Rule
 ```
 
-Click on the **Commit** button!
+Now before committing, create another DCF rule for blocking also the traffic sourced from **any Malicious IP addresses** towards the **aws-us-east-1-spoke1-test1** instance.
 
-```{figure} images/lab96-newrule11.png
+```{important}
+These two rules will protect the `bi-directional communication`: traffic will be blocked if **aws-us-east-1-spoke1-test1** will try to reach any **Malcious IPs** (by _ProfPoint's DB_), and likewise traffic will be blocked if any **Malicious IPs** (by _ProfPoint's DB_) will try to reach the **aws-us-east-1-spoke1-test1** instance.
+```
+
+Create a new rule clicking on the `"+ Rule"` button:
+
+```{figure} images/lab911-new33.png
 ---
 align: center
 ---
-PSF-Rule
+New Rule
+```
+
+Insert the following parameters:
+
+- **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-malicious-ips</span>
+- **Source Groups**: <span style='color:#479608'>DeafultThreatGroup</span>
+- **Destination Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Enforcement**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+
+Do not forget to click on **Save In Drafts**. 
+
+```{figure} images/lab96-newrule44.png
+---
+align: center
+---
+PSF-Deny-Rule-from-malicious-ips
+```
+
+Do not forget now to **Commit** your new rules!
+
+```{figure} images/lab96-newrule-commit.png
+---
+align: center
+---
+Commit the new rules
 ```
 
 ```{important}

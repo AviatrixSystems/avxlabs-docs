@@ -344,7 +344,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">6.0 Create a new SmartGroup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-dcf-rule">7.0 Create a new DCF rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">7.0 Create two new DCF rules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">8.0 Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">8.1 Create a new WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-will-allow-traffic-towards-the-three-domains">8.2 Create a DCF rule that will allow traffic towards the three domains!</a></li>
@@ -479,7 +479,7 @@
 <li><p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, search for <code class="docutils literal notranslate"><span class="pre">aws-us-east-1-spoke1-test1</span></code> and then copy the <strong>Public</strong> IPv4 address!</p></li>
 </ul>
 <figure class="align-center" id="id9">
-<img alt="../_images/lab9-newsg010.png" src="../_images/lab9-newsg010.png" />
+<a class="reference internal image-reference" href="../_images/lab9-newsg010.png"><img alt="../_images/lab9-newsg010.png" src="../_images/lab9-newsg010.png" style="height: 250px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 324 </span><span class="caption-text">Public IP address</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
@@ -490,7 +490,8 @@
 <p><span class="caption-number">Fig. 325 </span><span class="caption-text">SSH session</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Wait for the instructor to provide a malicious IP. Let’s call it <code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>.</p>
+<p>Wait for the instructor to provide a malicious IP.</p>
+<p>Let’s call it <code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p><ins>Note down this IP address!</ins></p>
@@ -510,7 +511,8 @@
 <p>The traffic will be permitted… Let’s now enforce the <code class="docutils literal notranslate"><span class="pre">ThreatIQ</span> <span class="pre">mechanism</span></code>!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The IP shown in these screenshots  might not be deemed a threat when you read this. Please use the malicious IP provided by the instructor.</p>
+<p>The IP shown in these screenshots  might not be deemed a threat when you read this.</p>
+<p><ins>Please use the malicious IP provided by the instructor</ins>.</p>
 </div>
 </section>
 </section>
@@ -544,14 +546,14 @@
 </figure>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id15">
-<img alt="../_images/lab9-smart003.png" src="../_images/lab9-smart003.png" />
+<a class="reference internal image-reference" href="../_images/lab9-smart003.png"><img alt="../_images/lab9-smart003.png" src="../_images/lab9-smart003.png" style="height: 200px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 330 </span><span class="caption-text">SmartGroups List</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="create-a-new-dcf-rule">
-<h2>7.0 Create a new DCF rule<a class="headerlink" href="#create-a-new-dcf-rule" title="Link to this heading">#</a></h2>
+<section id="create-two-new-dcf-rules">
+<h2>7.0 Create two new DCF rules<a class="headerlink" href="#create-two-new-dcf-rules" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id16">
 <img alt="../_images/lab9-newrule10.png" src="../_images/lab9-newrule10.png" />
@@ -559,9 +561,9 @@
 <p><span class="caption-number">Fig. 331 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Insert the following parameters</p>
+<p>Insert the following parameters:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Rule</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Deny-Rule-from-aws-us-east-1-spoke1-test1</span></p></li>
 <li><p><strong>Source Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
 <li><p><strong>Destination Groups</strong>: <span style='color:#479608'>DeafultThreatGroup</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
@@ -576,11 +578,40 @@
 <p><span class="caption-number">Fig. 332 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Click on the <strong>Commit</strong> button!</p>
+<p>Now before committing, create another DCF rule for blocking also the traffic sourced from <strong>any Malicious IP addresses</strong> towards the <strong>aws-us-east-1-spoke1-test1</strong> instance.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>These two rules will protect the <code class="docutils literal notranslate"><span class="pre">bi-directional</span> <span class="pre">communication</span></code>: traffic will be blocked if <strong>aws-us-east-1-spoke1-test1</strong> will try to reach any <strong>Malcious IPs</strong> (by <em>ProfPoint’s DB</em>), and likewise traffic will be blocked if any <strong>Malicious IPs</strong> (by <em>ProfPoint’s DB</em>) will try to reach the <strong>aws-us-east-1-spoke1-test1</strong> instance.</p>
+</div>
+<p>Create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button:</p>
 <figure class="align-center" id="id18">
-<img alt="../_images/lab96-newrule11.png" src="../_images/lab96-newrule11.png" />
+<img alt="../_images/lab911-new33.png" src="../_images/lab911-new33.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 333 </span><span class="caption-text">PSF-Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 333 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Insert the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Deny-Rule-from-malicious-ips</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>DeafultThreatGroup</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
+<li><p><strong>Enforcement</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab96-newrule44.png" src="../_images/lab96-newrule44.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 334 </span><span class="caption-text">PSF-Deny-Rule-from-malicious-ips</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget now to <strong>Commit</strong> your new rules!</p>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab96-newrule-commit.png" src="../_images/lab96-newrule-commit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 335 </span><span class="caption-text">Commit the new rules</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -592,10 +623,10 @@
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Groups &gt; ThreatGroups</strong> and click on Default ThreatGroup and look at the ProofPoint Malicious IP addresses DB!</p></li>
 </ul>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab96-newrule12.png" src="../_images/lab96-newrule12.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 334 </span><span class="caption-text">PSF-Rule</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 336 </span><span class="caption-text">PSF-Rule</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -606,16 +637,16 @@
 <li><p>Click on the <strong>three dots</strong> icon on the right-hand side of the Greenfield-Rule entry and then choose the <code class="docutils literal notranslate"><span class="pre">&quot;Delete</span> <span class="pre">Rule&quot;</span></code> option.</p></li>
 </ul>
 <p>Do not forget to click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab66-newruledelete.png" src="../_images/lab66-newruledelete.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 335 </span><span class="caption-text">Deletion of the Greenfield-Rule</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 337 </span><span class="caption-text">Deletion of the Greenfield-Rule</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab66-newruledeleted.png" src="../_images/lab66-newruledeleted.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 336 </span><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 338 </span><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The previous PSF-Rule will DENY traffic towards the list of the Malicious IP address!</p>
@@ -628,10 +659,10 @@
 <section id="create-a-new-webgroup">
 <h3>8.1 Create a new WebGroup<a class="headerlink" href="#create-a-new-webgroup" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab9-smart100.png" src="../_images/lab9-smart100.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 337 </span><span class="caption-text">New WebGroup</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 339 </span><span class="caption-text">New WebGroup</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create the new <strong><em>WebGroup</em></strong> with the following parameters:</p>
@@ -643,20 +674,20 @@
 <li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id25">
 <img alt="../_images/lab6-webgroup200.png" src="../_images/lab6-webgroup200.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 338 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 340 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="create-a-dcf-rule-that-will-allow-traffic-towards-the-three-domains">
 <h3>8.2 Create a DCF rule that will allow traffic towards the three domains!<a class="headerlink" href="#create-a-dcf-rule-that-will-allow-traffic-towards-the-three-domains" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab9-newrule100.png" src="../_images/lab9-newrule100.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 339 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 341 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters</p>
@@ -671,17 +702,17 @@
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id27">
 <img alt="../_images/lab911-new100.png" src="../_images/lab911-new100.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 340 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 342 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the <strong>Commit</strong> button!</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id28">
 <img alt="../_images/lab96-newrule201.png" src="../_images/lab96-newrule201.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 341 </span><span class="caption-text">New DCF Rules List</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 343 </span><span class="caption-text">New DCF Rules List</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now from your SSH client, issue the following commands:</p>
@@ -694,20 +725,20 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
 </pre></div>
 </div>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab96-newrule301.png" src="../_images/lab96-newrule301.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 342 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 344 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now issue again the curl command towards the malicious IP address provided by the Trainer!</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
 </pre></div>
 </div>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id30">
 <img alt="docs/images/lab96-newrule302.png" src="docs/images/lab96-newrule302.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 343 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 345 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -747,49 +778,49 @@
 <section id="enable-costiq">
 <h3>2.1 Enable CostIQ<a class="headerlink" href="#enable-costiq" title="Link to this heading">#</a></h3>
 <p>Go to <strong>Copilot &gt; Billing &amp; Cost &gt; CostIQ</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">CostIQ&quot;</span></code> button.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab9-costiq.png"><img alt="../_images/lab9-costiq.png" src="../_images/lab9-costiq.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 344 </span><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id30">
-<a class="reference internal image-reference" href="../_images/lab9-costiq001.png"><img alt="../_images/lab9-costiq001.png" src="../_images/lab9-costiq001.png" style="height: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 345 </span><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Now click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Cost</span> <span class="pre">Center&quot;</span></code> and create the <strong>AWS</strong> Cost Center aforementioned.</p>
-<figure class="align-center" id="id31">
-<img alt="../_images/lab9-costiq02.png" src="../_images/lab9-costiq02.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 346 </span><span class="caption-text">“+ Cost Center”</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 346 </span><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id32">
-<img alt="../_images/lab9-costiq03.png" src="../_images/lab9-costiq03.png" />
+<a class="reference internal image-reference" href="../_images/lab9-costiq001.png"><img alt="../_images/lab9-costiq001.png" src="../_images/lab9-costiq001.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 347 </span><span class="caption-text">AWS</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 347 </span><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Repeat the action creating the remaining two Cost Centers: <strong>GCP</strong> and <strong>Azure</strong>, associating the corresponing Application VPCs/VNets.</p>
+<p>Now click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Cost</span> <span class="pre">Center&quot;</span></code> and create the <strong>AWS</strong> Cost Center aforementioned.</p>
 <figure class="align-center" id="id33">
-<img alt="../_images/lab9-costiq04.png" src="../_images/lab9-costiq04.png" />
+<img alt="../_images/lab9-costiq02.png" src="../_images/lab9-costiq02.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 348 </span><span class="caption-text">GCP</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 348 </span><span class="caption-text">“+ Cost Center”</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id34">
+<img alt="../_images/lab9-costiq03.png" src="../_images/lab9-costiq03.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 349 </span><span class="caption-text">AWS</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Repeat the action creating the remaining two Cost Centers: <strong>GCP</strong> and <strong>Azure</strong>, associating the corresponing Application VPCs/VNets.</p>
+<figure class="align-center" id="id35">
+<img alt="../_images/lab9-costiq04.png" src="../_images/lab9-costiq04.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 350 </span><span class="caption-text">GCP</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id36">
 <img alt="../_images/lab9-costiq05.png" src="../_images/lab9-costiq05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 349 </span><span class="caption-text">AZURE</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 351 </span><span class="caption-text">AZURE</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You should immediately get insights on how they have been utilized.</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab9-costiq06.png"><img alt="../_images/lab9-costiq06.png" src="../_images/lab9-costiq06.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 350 </span><span class="caption-text">Cost Centers Overview</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 352 </span><span class="caption-text">Cost Centers Overview</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -800,51 +831,51 @@
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP Info</strong>, then click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code>.</p></li>
 </ul>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id38">
 <img alt="../_images/lab9-costiq10.png" src="../_images/lab9-costiq10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 351 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 353 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will find out that all the local subnets advertised by the DC belong to the cidr <strong>10.40.0.0/16</strong>.</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id39">
 <img alt="../_images/lab9-cidr.png" src="../_images/lab9-cidr.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 352 </span><span class="caption-text">CIDR</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 354 </span><span class="caption-text">CIDR</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s move on the <strong>Shared Services</strong> tab and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Shared</span> <span class="pre">Service&quot;</span></code>.</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id40">
 <img alt="../_images/lab9-costiq12.png" src="../_images/lab9-costiq12.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 353 </span><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 355 </span><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create the <strong>Shared Service</strong> based on the aforementioned requirements.</p>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id41">
 <img alt="../_images/lab9-costiq13.png" src="../_images/lab9-costiq13.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 354 </span><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 356 </span><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If you kept running the ping on the Workstation Edge’s terminal, then you should see both the relative traffic and the absolute one from any Cost Centers towards the Shared Service.</p>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id42">
 <img alt="../_images/lab9-ping.png" src="../_images/lab9-ping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 355 </span><span class="caption-text">Ping from the Wortkstation “Edge”</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 357 </span><span class="caption-text">Ping from the Wortkstation “Edge”</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id43">
 <a class="reference internal image-reference" href="../_images/lab9-counter.png"><img alt="../_images/lab9-counter.png" src="../_images/lab9-counter.png" style="height: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 356 </span><span class="caption-text">From the Cost Center towards the Shared Service</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 358 </span><span class="caption-text">From the Cost Center towards the Shared Service</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id44">
 <a class="reference internal image-reference" href="../_images/lab9-final.png"><img alt="../_images/lab9-final.png" src="../_images/lab9-final.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 357 </span><span class="caption-text">Final topology for Lab 9</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 359 </span><span class="caption-text">Final topology for Lab 9</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -929,7 +960,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">6.0 Create a new SmartGroup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-dcf-rule">7.0 Create a new DCF rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">7.0 Create two new DCF rules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">8.0 Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">8.1 Create a new WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-will-allow-traffic-towards-the-three-domains">8.2 Create a DCF rule that will allow traffic towards the three domains!</a></li>

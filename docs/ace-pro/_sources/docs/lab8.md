@@ -256,7 +256,7 @@ align: center
 LX Terminal
 ```
 
-Now execute the ping command towards the private IP address of the **aws-us-east-2-spoke1-test1** instance.
+Now execute the ping command towards the private IP address of the **aws-us-east-2-spoke1-test1** instance (**i.e. 10.0.1.100**).
 
 ```{figure} images/lab8-edge22.png
 ---
