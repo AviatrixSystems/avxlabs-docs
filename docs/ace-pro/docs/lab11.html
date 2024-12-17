@@ -491,9 +491,8 @@
 <p><span class="caption-number">Fig. 373 </span><span class="caption-text">Resources that match the condition</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>At this point, you have only created logical containers that do not affect the existing routing domain.</p>
-<p>It’s time to define DCF rules that can govern the <strong>East-West</strong> traffic.</p>
-<p>At the moment this is the current list of your DCF Rules:</p>
+<p>At this point, you have only created <em>logical containers</em> that do not affect the existing routing domain (thanks to the <code class="docutils literal notranslate"><span class="pre">Connetion</span> <span class="pre">Policy</span></code> applied on <strong>Lab3</strong>). It’s time to define DCF rules that can govern the <strong>East-West</strong> traffic, thoroughly.</p>
+<p>This is the current list of your DCF Rules within the <strong>Distributed Cloud Firewall</strong> section on your CoPilot:</p>
 <figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/lab10-newone2.png"><img alt="../_images/lab10-newone2.png" src="../_images/lab10-newone2.png" style="height: 300px;" /></a>
 <figcaption>
@@ -503,7 +502,7 @@
 </section>
 <section id="connectivity-verification-icmp">
 <h3>3.3. Connectivity verification (ICMP)<a class="headerlink" href="#connectivity-verification-icmp" title="Link to this heading">#</a></h3>
-<p>Open a terminal window and SSH to the public IP of the instance <strong>aws-us-east-2-spoke1-<span style='color:red'>test1</span></strong> (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity is indeed broken!</p>
+<p>Open a terminal window and SSH to the public IP of the instance <strong>aws-us-east-2-spoke1-<span style='color:red'>test1</span></strong> (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity is indeed <strong>broken</strong>!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Refer to your POD for the private IPs.</p>
@@ -521,15 +520,20 @@
 </figcaption>
 </figure>
 <figure class="align-center" id="id11">
-<img alt="../_images/lab10-newjoe10.png" src="../_images/lab10-newjoe10.png" />
+<img alt="../_images/lab10-newone43.png" src="../_images/lab10-newone43.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 377 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>From the outcomes above you can see that only <strong>aws-us-east-2-spoke1-<span style='color:red'>test2</span></strong> instance is pingable, this is because the ICMP traffic from the <strong><em>aws-us-east-2-spoke1-test1</em></strong> towards the <strong><em>aws-us-east-2-spoke1-test2</em></strong> is <strong>NOT</strong> traversing the Spoke Gateway.</p>
+<p>The Traffic is leveraging the normal behaviour of the intra-vpc communication</p>
+</div>
 </section>
 <section id="connectivity-verification-ssh">
 <h3>3.4.  Connectivity verification (SSH)<a class="headerlink" href="#connectivity-verification-ssh" title="Link to this heading">#</a></h3>
-<p>Verify also from the instance <strong>aws-us-east-2-spoke1-test1</strong> that you <em>can’t</em> SSH to any other instances, except to the <strong>aws-us-east-2-spoke1-test2</strong>, due to the fact that the SSH connection in this case, is established within the VPC, <ins>bypassing the Spoke Gateway (i.e. the DCF Enforcement Point)</ins>!</p>
+<p>Verify also from the instance <strong>aws-us-east-2-spoke1-test1</strong> that you <strong><em>can’t</em></strong> SSH to any other instances, except to the <strong>aws-us-east-2-spoke1-test2</strong>, due to the fact that the SSH connection in this case, is established once again within the VPC, <ins>bypassing the Spoke Gateway (i.e. the DCF Enforcement Point)</ins>!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Refer to your POD for the private IPs.</p>
