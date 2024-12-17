@@ -390,7 +390,7 @@ However, on the SSH client, you will **NOT** see any outputs, this is because th
 height: 200px
 align: center
 ---
-SSH client output
+SSH client outputs
 ```
 
 Go to **CoPilot > Security > Egress > Overview (default)**
@@ -452,7 +452,7 @@ The purpose of this **WebGroup** is to authorize traffic only towards both the D
 ```
 
 ### 5.2 Create an _"editable"_ Explicit -Deny-Rule 
-### 5.2.1 Enforce the Egree-Rule
+#### 5.2.1 Enforce the Egress-Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
 
@@ -481,7 +481,7 @@ Commit the changes
 - **Publlic Internet** = Represents non-RFC 1918 IP ranges, or the public Internet
 ```
 
-After having enforced the Egress-Rule you will notice that automatically ther Controller has applied at the very bottom, the `DefaultDenyAll` rule. 
+After having successfully enforced the **Egress-Rule** you will notice that automatically ther Controller has applied at the very bottom, the `DefaultDenyAll` rule. 
 
 ```{figure} images/lab6-webgroup23456.png
 ---
@@ -501,7 +501,7 @@ align: center
 Not editable
 ```
 
-### 5.2.2 Create an _ad-hoc_ Explicit-Deny-Rule
+#### 5.2.2 Create an _ad-hoc_ Explicit-Deny-Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -596,14 +596,14 @@ Permit
 ## 6. IDS
 ### 6.1 Create a New Rule
 
-Let's now test the **_IDS_** feature (i.e. Intrusion Detection System). 
+Let's now test the **_IDS_** feature (i.e. Intrusion Detection System), from the **aws-us-east-2spoke1-test2** instance.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
 Create a new DCF Rule with the following parameters:
 
 - **Name**: <span style='color:#479608'>Inspect-DNS</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Source Smartgroups**: <span style='color:#479608'>us-east-2-private-subnet</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Logging**: <span style='color:#479608'>On</span>

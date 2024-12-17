@@ -366,7 +366,7 @@ Disable "Gateway Single AZ HA
 ```{caution}
 The `Gateway Single AZ HA` feature enables the **Aviatrix Controller** to monitor the health of the gateway instance and restart the gateway instance if it becomes unreachable. 
 
-Gateway Single AZ HA is enabled by default.
+<ins>Gateway Single AZ HA is enabled by default</ins>.
 
 When Gateway Single AZ HA status is **On**, the Aviatrix Controller attempts to restart the gateway instance. When status is **Off**, Controller does **NOT** attempt to restart the gateway instance.
 ```

@@ -682,7 +682,7 @@ Please pay close attention that the following pending elements will be completed
 
 ## 5. Verification
  
-### 5.1. Verification of Transit Peerings on CoPilot(Cloud Fabric)
+### 5.1. Verification of Transit Peerings on CoPilot (Cloud Fabric)
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `Attachments"` tab and finally select the `"Transit-Transit Peering"` tab: you will see **one** connection per each peering, that correspond to the `two IPSec tunnels`.
 
