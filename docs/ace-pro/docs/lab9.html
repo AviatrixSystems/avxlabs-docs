@@ -703,7 +703,19 @@
 </section>
 <section id="connectivity-tests">
 <h2>9. Connectivity Tests<a class="headerlink" href="#connectivity-tests" title="Link to this heading">#</a></h2>
-<p>Now from your SSH client, issue the following commands:</p>
+<p>Now before launching the connectivity test, those three rules related to the PSF must be enforced on the PSF gateway itself.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">PSF</span></code> Gateway is a <strong><em>standalone Gateway</em></strong>: it is neither a Spoke nor a Transit.</p>
+</div>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and enable the <code class="docutils literal notranslate"><span class="pre">&quot;Enforcemente</span> <span class="pre">on</span> <span class="pre">PSF</span> <span class="pre">Gateweays&quot;</span></code> functionality.</p>
+<figure class="align-center" id="id30">
+<a class="reference internal image-reference" href="../_images/lab96-newrule333.png"><img alt="../_images/lab96-newrule333.png" src="../_images/lab96-newrule333.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 345 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From your <strong>SSH</strong> client, issue the following commands from the <strong>aws-us-east1-spoke1-test1</strong> instance:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.nginx.com
 </pre></div>
 </div>
@@ -713,20 +725,55 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
 </pre></div>
 </div>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <img alt="../_images/lab96-newrule301.png" src="../_images/lab96-newrule301.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 345 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 346 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now issue again the curl command towards the <strong>malicious IP</strong> address that was earlier provided by the Trainer!</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
 </pre></div>
 </div>
-<figure class="align-center" id="id31">
-<img alt="docs/images/lab96-newrule302.png" src="docs/images/lab96-newrule302.png" />
+<figure class="align-center" id="id32">
+<img alt="../_images/lab96-newrule302.png" src="../_images/lab96-newrule302.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 346 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 347 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will notice that the traffic towards the <strong>IP with Bad Reputation</strong> has been blocked at the very first SYN and SYN-ACK packets!</p>
+<p>No go to <strong>CoPilot &gt; Security &gt; ThreatIQ</strong> scroll down through the whole <strong>Overview</strong> section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either Source or Destination!</p>
+<figure class="align-center" id="id33">
+<img alt="../_images/lab96-newrule308.png" src="../_images/lab96-newrule308.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 348 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id34">
+<img alt="../_images/lab96-newrule309.png" src="../_images/lab96-newrule309.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 349 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now click on the VIEW link on the right-hand side of the entry:</p>
+<figure class="align-center" id="id35">
+<img alt="../_images/lab96-newrule310.png" src="../_images/lab96-newrule310.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 350 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Last but not least, explore the <code class="docutils literal notranslate"><span class="pre">Threat</span> <span class="pre">Summary</span></code> tab to find out hiow ProofPoint classified that IP address!</p>
+<figure class="align-center" id="id36">
+<img alt="../_images/lab96-newrule311.png" src="../_images/lab96-newrule311.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 351 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After this lab, this is how the overall topology would look like:</p>
+<figure class="align-center" id="id37">
+<a class="reference internal image-reference" href="../_images/lab9-finaltopologyy.png"><img alt="../_images/lab9-finaltopologyy.png" src="../_images/lab9-finaltopologyy.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 352 </span><span class="caption-text">Final Topology for Lab 9</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

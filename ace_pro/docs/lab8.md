@@ -642,7 +642,6 @@ align: center
 As path length = 2
 ```
 
-
 After this lab, this is how the overall topology would look like:
 
 ```{figure} images/lab8-edge25.png
