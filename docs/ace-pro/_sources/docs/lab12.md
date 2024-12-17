@@ -1,4 +1,4 @@
-# Lab 11 - IAC & NETWORK INSIGHTS API
+# Lab 12 - IAC & NETWORK INSIGHTS API
 
 ## 1. Create VPCs, Transit GW, Spoke GW and Attachment through Terraform
 

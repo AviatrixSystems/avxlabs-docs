@@ -182,8 +182,8 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 9 - THREAT DETECTION</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - COSTIQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab12.html">Lab 11 - IAC &amp; NETWORK INSIGHTS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab12.html">Lab 12 - IAC &amp; NETWORK INSIGHTS API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
 </ul>
@@ -332,7 +332,7 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 9 - THREAT DETECTION</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatiq-overview">2. ThreatIQ Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatgroup-overview">2. ThreatGroup Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
@@ -375,13 +375,13 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-9-threat-detection">
 <h1>Lab 9 - THREAT DETECTION<a class="headerlink" href="#lab-9-threat-detection" title="Link to this heading">#</a></h1>
-<p>This lab will demonstrate how <code class="docutils literal notranslate"><span class="pre">ThreatIQ</span></code> and <code class="docutils literal notranslate"><span class="pre">CostIQ</span></code> work.</p>
-<section id="threatiq-overview">
-<h2>2. ThreatIQ Overview<a class="headerlink" href="#threatiq-overview" title="Link to this heading">#</a></h2>
-<p>Aviatrix Gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. <strong>FlowIQ</strong> is one. <strong>ThreatIQ</strong> is another. ThreatIQ alerts you on Malicious IPs with bad reputations, but then can also apply an enforcement. These IPs are reported in the ThreatIQ database that CoPilot maintains.</p>
+<p>This lab will demonstrate how the <code class="docutils literal notranslate"><span class="pre">DCF</span> <span class="pre">ThreatGroup</span></code> is capable to prevent traffic from being sent to, or from, a set of <strong>threat IPs</strong>.</p>
+<section id="threatgroup-overview">
+<h2>2. ThreatGroup Overview<a class="headerlink" href="#threatgroup-overview" title="Link to this heading">#</a></h2>
+<p>The <strong>Default ThreatGroup</strong> can be used in DCF rules to ensure that traffic meeting the ThreatGroup criteria is blocked.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>ThreatIQ protect all the Aviatrix Gateways and it relies on a well-known database, provided by <strong><code class="docutils literal notranslate"><span class="pre">Proofpoint</span></code></strong>.</p>
+<p>The Default ThreatGroup is regularly updated with data from the <strong><code class="docutils literal notranslate"><span class="pre">Proofpoint</span> <span class="pre">Global</span> <span class="pre">Threat</span> <span class="pre">Database</span></code></strong>.</p>
 </div>
 </section>
 <section id="topology">
@@ -950,7 +950,7 @@
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 9 - THREAT DETECTION</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatiq-overview">2. ThreatIQ Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatgroup-overview">2. ThreatGroup Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
