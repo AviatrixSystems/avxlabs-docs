@@ -141,7 +141,7 @@ Complete DCF Rules List
 
 ### 3.3. Connectivity verification (ICMP)
 
-Open a terminal window and SSH to the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity has not been modified.
+Open a terminal window and SSH to the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity is indeed broken!
 
 ```{note}
 Refer to your POD for the private IPs.
@@ -169,16 +169,9 @@ align: center
 Ping
 ```
 
-```{figure} images/lab10-newjoe11.png
----
-align: center
----
-Ping
-```
-
 ### 3.4.  Connectivity verification (SSH)
 
-Verify also from the instance **aws-us-east-2-spoke1-test1** that you can SSH to the private instance in AWS (us-east-2), to the instance in GCP, to the instances in AWS (us-east-2) and likewise to the other two instances in Azure.
+Verify also from the instance **aws-us-east-2-spoke1-test1** that you _can't_ SSH to any other instances, except to the **aws-us-east-2-spoke1-test2**, due to the fact that the SSH connection in this case, is established within the VPC, <ins>bypassing the Spoke Gateway (i.e. the DCF Enforcement Point)</ins>!
 
 ```{note}
 Refer to your POD for the private IPs.
@@ -188,45 +181,17 @@ Refer to your POD for the private IPs.
 ---
 align: center
 ---
-SSH to test2 in AWS US-East-2
-```
-
-```{figure} images/lab10-sshtogcp.png
----
-align: center
----
-SSH to test1 in GCP US-Central1
-```
-
-```{figure} images/lab10-sshtoazure1.png
----
-align: center
----
-SSH to test1 in Azure West-US
-```
-
-```{figure} images/lab10-sshtoazure2.png
----
-align: center
----
-SSH to test2 in Azure West-US
-```
-
-```{figure} images/lab10-sshnew.png
----
-align: center
----
-SSH to test1 in AWS US-East1 
+SSH to test2 in AWS US-East-2--> OK
 ```
 
 ```{figure} images/lab10-sshnew2.png
 ---
 align: center
 ---
-SSH to test2 in AWS US-East1
+SSH fails towards the other instances
 ```
 
-The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.
+The previous outcomes confirm undoubtetly that the connectivity is broken. Only the `intra-vpc traffic` is permitted.
 
 ## 4. DCF Rules Creation
 ### 4.1. Build a Zero Trust  Network Architecture
