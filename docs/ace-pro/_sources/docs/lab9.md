@@ -266,6 +266,7 @@ Do not forget now to **Commit** your new rules!
 
 ```{figure} images/lab96-newrule-commit.png
 ---
+height: 250px
 align: center
 ---
 Commit the new rules
@@ -274,7 +275,7 @@ Commit the new rules
 ```{important}
 The **`Default ThreatGroup`** can be used in DCF rules to ensure that traffic meeting the ThreatGroup criteria is blocked. When traffic triggers that rule, its DCF rule references are shown on the **Groups > ThreatGroups** tab.
 
-The Default ThreatGroup is regularly updated with data from the Proofpoint Global Threat Database.
+The Default ThreatGroup is regularly updated with data from the `Proofpoint Global Threat Database`.
 ```
 
 Explore the content of the `Default ThreatGroup`: 
@@ -283,6 +284,7 @@ Explore the content of the `Default ThreatGroup`:
 
 ```{figure} images/lab96-newrule12.png
 ---
+height: 400px
 align: center
 ---
 PSF-Rule
@@ -290,7 +292,7 @@ PSF-Rule
 
 ## 8.0 Generate again traffic towards the "Bad Guy"
 
-Now delete the **Greenfield-Rule**: 
+Now let's delete the **Greenfield-Rule**, such that the **ZTNA** can be restored in the Data PAth!
 
 - Click on the **three dots** icon on the right-hand side of the Greenfield-Rule entry and then choose the `"Delete Rule"` option.
 
@@ -298,6 +300,7 @@ Do not forget to click on **Commit**.
 
 ```{figure} images/lab66-newruledelete.png
 ---
+height: 400px
 align: center
 ---
 Deletion of the Greenfield-Rule
@@ -305,6 +308,15 @@ Deletion of the Greenfield-Rule
 
 ```{figure} images/lab66-newruledeleted.png
 ---
+height: 400px
+align: center
+---
+Commit
+```
+
+```{figure} images/lab66-newruledeleted00.png
+---
+height: 400px
 align: center
 ---
 DCF Rules List
@@ -318,7 +330,7 @@ The `aws-us-east-1-spoke1-test1` instance should only be able to reach the follo
 2) www.microsoft.com
 3) www.aws.com
 
-### 8.1 Create a new WebGroup
+### 8.1 Create a PSF-Allow-Rule
 
 Go to **CoPilot > Groups > WebGroups** and then click on the `"+ WebGroup"` button.
 
