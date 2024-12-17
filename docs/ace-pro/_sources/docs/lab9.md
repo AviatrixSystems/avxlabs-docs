@@ -392,7 +392,23 @@ Commit
 
 ## 9. Connectivity Tests
 
-Now from your SSH client, issue the following commands:
+Now before launching the connectivity test, those three rules related to the PSF must be enforced on the PSF gateway itself.
+
+```{caution}
+The `PSF` Gateway is a **_standalone Gateway_**: it is neither a Spoke nor a Transit.
+```
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and enable the `"Enforcemente on PSF Gateweays"` functionality.
+
+```{figure} images/lab96-newrule333.png
+---
+height: 400px
+align: center
+---
+Commit
+```
+
+From your **SSH** client, issue the following commands from the **aws-us-east1-spoke1-test1** instance:
 
 ```bash
 curl https://www.nginx.com
@@ -424,4 +440,50 @@ curl https://<malicious-IP>
 align: center
 ---
 Towards the Malicious IP
+```
+
+You will notice that the traffic towards the **IP with Bad Reputation** has been blocked at the very first SYN and SYN-ACK packets!
+
+No go to **CoPilot > Security > ThreatIQ** scroll down through the whole **Overview** section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either Source or Destination!
+
+```{figure} images/lab96-newrule308.png
+---
+align: center
+---
+Filter
+```
+
+```{figure} images/lab96-newrule309.png
+---
+align: center
+---
+Condition
+```
+
+Now click on the VIEW link on the right-hand side of the entry:
+
+```{figure} images/lab96-newrule310.png
+---
+align: center
+---
+Condition
+```
+
+Last but not least, explore the `Threat Summary` tab to find out hiow ProofPoint classified that IP address!
+
+```{figure} images/lab96-newrule311.png
+---
+align: center
+---
+Condition
+```
+
+After this lab, this is how the overall topology would look like:
+
+```{figure} images/lab9-finaltopologyy.png
+---
+height: 400px
+align: center
+---
+Final Topology for Lab 9
 ```
