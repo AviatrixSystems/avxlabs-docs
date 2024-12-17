@@ -448,7 +448,7 @@ Towards the Malicious IP
 
 You will notice that the traffic towards the **IP with Bad Reputation** was blocked at the very first **SYN** and **SYN-ACK** packets!
 
-No go to **CoPilot > Security > ThreatIQ** scroll down through the whole **Overview** section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either Source or Destination!
+Now go to **CoPilot > Security > ThreatIQ**  section, then scroll down through the whole **Overview** section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either **_Source_** or **_Destination_**!
 
 ```{figure} images/lab96-newrule308.png
 ---
@@ -465,7 +465,7 @@ align: center
 Condition
 ```
 
-Now click on the VIEW link on the right-hand side of the entry:
+Now click on the **VIEW** link on the right-hand side of the entry:
 
 ```{figure} images/lab96-newrule310.png
 ---
