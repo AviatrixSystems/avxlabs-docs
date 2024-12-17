@@ -363,7 +363,6 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** 
 
 ```{figure} images/lab7-top.png
 ---
-height: 250px
 align: center
 ---
 New Rule
@@ -421,7 +420,7 @@ Back on the PAN firewall, click on the `Monitor` tab. Then paste this string in 
 
 ```{figure} images/lab7-monitor2.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Monitor on the PaloAlto
@@ -457,7 +456,7 @@ Back on the PAN firewall, click the **refresh** button in the top-right corner t
 
 ```{figure} images/lab7-finalmonitor.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 Monitoring traffic towards GCP
@@ -479,7 +478,7 @@ You will immediately notice the logs that have successfully matched the Greenfie
 
 ```{figure} images/lab7-finalmonitor01.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Logs
