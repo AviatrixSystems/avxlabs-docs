@@ -1,4 +1,4 @@
-# Lab 10 - DISTRIBUTED CLOUD FIREWALL
+# Lab 11 - DISTRIBUTED CLOUD FIREWALL
 
 ## 1. Objective
 
@@ -38,7 +38,7 @@ In this lab you are asked to achieve the following requirements among the instan
 height: 400px
 align: center
 ---
-Initial Topology Lab 10
+Initial Topology Lab 11
 ```
 
 ## 3. Smart Groups Creation
