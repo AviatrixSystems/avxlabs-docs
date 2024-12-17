@@ -279,7 +279,11 @@ Explore the content of the `Default ThreatGroup`:
 height: 400px
 align: center
 ---
-PSF-Rule
+Default ThreatGroup
+```
+
+```{note}
+`ProofPoint` sends its new malicious IP addresses DB to the CoPilot every **30 minutes**. 
 ```
 
 ## 8.0 Generate again traffic towards the "Bad Guy"
@@ -442,12 +446,13 @@ align: center
 Towards the Malicious IP
 ```
 
-You will notice that the traffic towards the **IP with Bad Reputation** has been blocked at the very first SYN and SYN-ACK packets!
+You will notice that the traffic towards the **IP with Bad Reputation** was blocked at the very first **SYN** and **SYN-ACK** packets!
 
 No go to **CoPilot > Security > ThreatIQ** scroll down through the whole **Overview** section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either Source or Destination!
 
 ```{figure} images/lab96-newrule308.png
 ---
+height: 400px
 align: center
 ---
 Filter
@@ -464,12 +469,13 @@ Now click on the VIEW link on the right-hand side of the entry:
 
 ```{figure} images/lab96-newrule310.png
 ---
+height: 400px
 align: center
 ---
-Condition
+View link
 ```
 
-Last but not least, explore the `Threat Summary` tab to find out hiow ProofPoint classified that IP address!
+Last but not least, explore the `Threat Summary` tab to find out how ProofPoint classified that IP address!
 
 ```{figure} images/lab96-newrule311.png
 ---
