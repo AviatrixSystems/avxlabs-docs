@@ -124,7 +124,7 @@ align: center
 SSH session
 ```
 
-Wait for the instructor to provide a malicious IP. 
+<ins>`Wait for the instructor to provide a malicious IP`</ins>. 
 
 Let's call it `<malicious-IP>`. 
 
@@ -145,7 +145,7 @@ align: center
 Curl towards the malicious IP
 ```
 
-The traffic will be permitted... Let's now enforce the `ThreatIQ mechanism`!
+The traffic will be permitted... Let's now enforce the `Threats detection mechanism`!
 
 ```{note}
 The IP shown in these screenshots  might not be deemed a threat when you read this. 
@@ -190,7 +190,7 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab9-smart003.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 SmartGroups List
@@ -229,7 +229,7 @@ Saving the new Rule
 Now before committing, create another DCF rule for blocking also the traffic sourced from **any Malicious IP addresses** towards the **aws-us-east-1-spoke1-test1** instance.
 
 ```{important}
-These two rules will protect the `bi-directional communication`: traffic will be blocked if **aws-us-east-1-spoke1-test1** will try to reach any **Malcious IPs** (by _ProfPoint's DB_), and likewise traffic will be blocked if any **Malicious IPs** (by _ProfPoint's DB_) will try to reach the **aws-us-east-1-spoke1-test1** instance.
+These two rules will protect the `bi-directional communication`: traffic will be blocked if **aws-us-east-1-spoke1-test1** will try to reach any **Malcious IPs** (by _ProofPoint's DB_), and likewise traffic will be blocked if any **Malicious IPs** (by _ProofPoint's DB_) will try to reach the **aws-us-east-1-spoke1-test1** instance.
 ```
 
 Create a new rule clicking on the `"+ Rule"` button:
@@ -264,21 +264,15 @@ Do not forget now to **Commit** your new rules!
 
 ```{figure} images/lab96-newrule-commit.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 Commit the new rules
 ```
 
-```{important}
-The **`Default ThreatGroup`** can be used in DCF rules to ensure that traffic meeting the ThreatGroup criteria is blocked. When traffic triggers that rule, its DCF rule references are shown on the **Groups > ThreatGroups** tab.
-
-The Default ThreatGroup is regularly updated with data from the `Proofpoint Global Threat Database`.
-```
-
 Explore the content of the `Default ThreatGroup`: 
 
-- Go to **CoPilot > Groups > ThreatGroups** and click on Default ThreatGroup and look at the ProofPoint Malicious IP addresses DB!
+- Go to **CoPilot > Groups > ThreatGroups** and click on **Default ThreatGroup** and look at the ProofPoint Malicious IP addresses DB!
 
 ```{figure} images/lab96-newrule12.png
 ---
@@ -290,7 +284,7 @@ PSF-Rule
 
 ## 8.0 Generate again traffic towards the "Bad Guy"
 
-Now let's delete the **Greenfield-Rule**, such that the **ZTNA** can be restored in the Data PAth!
+Now let's delete the **Greenfield-Rule**, such that the **ZTNA** can be restored in the Data Path!
 
 - Click on the **three dots** icon on the right-hand side of the Greenfield-Rule entry and then choose the `"Delete Rule"` option.
 
@@ -298,7 +292,7 @@ Do not forget to click on **Commit**.
 
 ```{figure} images/lab66-newruledelete.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 Deletion of the Greenfield-Rule
@@ -320,15 +314,13 @@ align: center
 DCF Rules List
 ```
 
-The previous PSF-Rule will DENY traffic towards the list of the Malicious IP address! 
+### 8.1 Create a new SmartGroup
 
-The `aws-us-east-1-spoke1-test1` instance should only be able to reach the following domains:
+Let's create another rule that will allow the `aws-us-east-1-spoke1-test1` instance to reach solely the following three domains:
 
-1) www.google.com
-2) www.microsoft.com
-3) www.aws.com
-
-### 8.1 Create a PSF-Allow-Rule
+1) www.nginx.com
+2) www.ubuntu.com
+3) www.aviatrix.com
 
 Go to **CoPilot > Groups > WebGroups** and then click on the `"+ WebGroup"` button.
 
@@ -356,7 +348,7 @@ align: center
 WebGroup creation
 ```
 
-### 8.2 Create a DCF rule that will allow traffic towards the three domains!
+### 8.2 Create a PSF-Allow-Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -369,7 +361,7 @@ New Rule
 
 Insert the following parameters
 
-- **Name**: <span style='color:#479608'>PSF-Rule-Permit</span>
+- **Name**: <span style='color:#479608'>PSF-Allow-Rule</span>
 - **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 - **Destination Groups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>Allowed-Public-Domains</span>
@@ -391,9 +383,10 @@ Click on the **Commit** button!
 
 ```{figure} images/lab96-newrule201.png
 ---
+height: 400px
 align: center
 ---
-New DCF Rules List
+Commit
 ```
 
 Now from your SSH client, issue the following commands:
@@ -429,221 +422,3 @@ align: center
 ---
 Towards the Malicious IP
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Lab 9 - COSTIQ
-
-## 1. Objective
-
-This lab will demonstrate how `CostIQ` works.
-
-## 2. CostIQ
-
-- Define the following **Cost Centers** and **Shared Service**:
-
-**<span style='color:orange'>COST CENTERS</span>**:
-
-**AWS**:
-- aws-us-east-1-spoke1
-- aws-us-east-1-spoke2
-
-**GCP**:
-- gcp-us-central1-spoke1
-
-**AZURE**:
-- azure-west-us-spoke1
-- azure-west-us-spoke2
-
-**<span style='color:green'>SHARED SERVICE</span>**:
-
-**NEW YORK DC**:
-- workstation client "edge"
-
-### 2.1 Enable CostIQ
-
-Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` button.
-
-```{figure} images/lab9-costiq.png
----
-height: 250px
-align: center
----
-Enable CostIQ
-```
-
-```{figure} images/lab9-costiq001.png
----
-height: 300px
-align: center
----
-Enable CostIQ
-```
-
-Now click on `"+ Cost Center"` and create the **AWS** Cost Center aforementioned.
-
-```{figure} images/lab9-costiq02.png
----
-align: center
----
-"+ Cost Center"
-```
-
-```{figure} images/lab9-costiq03.png
----
-align: center
----
-AWS
-```
-
-Repeat the action creating the remaining two Cost Centers: **GCP** and **Azure**, associating the corresponing Application VPCs/VNets.
-
-```{figure} images/lab9-costiq04.png
----
-align: center
----
-GCP
-```
-
-```{figure} images/lab9-costiq05.png
----
-align: center
----
-AZURE
-```
-
-You should immediately get insights on how they have been utilized.
-
-```{figure} images/lab9-costiq06.png
----
-height: 150px
-align: center
----
-Cost Centers Overview
-```
-
-## 3. New York DC is the Shared Services
-
-Now let's discover the **CIDRs** of **New York DC**:
-
-- Go to **CoPilot > Diagnostics > Cloud Routes > BGP Info**, then click on the three dots icon and select the `"Show BGP Learned Routes"`.
-
-```{figure} images/lab9-costiq10.png
----
-align: center
----
-Show BGP Learned Routes
-```
-
-You will find out that all the local subnets advertised by the DC belong to the cidr **10.40.0.0/16**.
-
-```{figure} images/lab9-cidr.png
----
-align: center
----
-CIDR
-```
-
-Let's move on the **Shared Services** tab and click on `"+ Shared Service"`.
-
-```{figure} images/lab9-costiq12.png
----
-align: center
----
-"+ Shared Service"
-```
-
-Create the **Shared Service** based on the aforementioned requirements.
-
-```{figure} images/lab9-costiq13.png
----
-align: center
----
-"+ Shared Service"
-```
-
-If you kept running the ping on the Workstation Edge's terminal, then you should see both the relative traffic and the absolute one from any Cost Centers towards the Shared Service.
-
-```{figure} images/lab9-ping.png
----
-align: center
----
-Ping from the Wortkstation "Edge"
-```
-
-```{figure} images/lab9-counter.png
----
-height: 350px
-align: center
----
-From the Cost Center towards the Shared Service
-```
-
-After this lab, this is how the overall topology would look like:
-
-```{figure} images/lab9-final.png
----
-height: 400px
-align: center
----
-Final topology for Lab 9
-```
-
