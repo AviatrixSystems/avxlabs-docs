@@ -127,14 +127,16 @@ Resources that match the condition
 
 At this point, you have only created logical containers that do not affect the existing routing domain.
 
-Let's verify that everything has been kept unchanged! Bear in mind that there is the `Greenfield-Rule` at the very top of your DCF rules list, whereby all kind of traffic will be permitted.
+It's time to define DCF rules that can govern the **East-West** traffic.
+
+At the moment this is the current list of your DCF Rules:
 
 ```{figure} images/lab10-newone2.png
 ---
 height: 300px
 align: center
 ---
-Greenfield-Rule in action
+Complete DCF Rules List
 ```
 
 ### 3.3. Connectivity verification (ICMP)
