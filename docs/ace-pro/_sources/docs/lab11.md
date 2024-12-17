@@ -125,11 +125,9 @@ align: center
 Resources that match the condition
 ```
 
-At this point, you have only created logical containers that do not affect the existing routing domain.
+At this point, you have only created _logical containers_ that do not affect the existing routing domain (thanks to the `Connetion Policy` applied on **Lab3**). It's time to define DCF rules that can govern the **East-West** traffic, thoroughly.
 
-It's time to define DCF rules that can govern the **East-West** traffic.
-
-At the moment this is the current list of your DCF Rules:
+This is the current list of your DCF Rules within the **Distributed Cloud Firewall** section on your CoPilot:
 
 ```{figure} images/lab10-newone2.png
 ---
@@ -141,7 +139,7 @@ Complete DCF Rules List
 
 ### 3.3. Connectivity verification (ICMP)
 
-Open a terminal window and SSH to the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity is indeed broken!
+Open a terminal window and SSH to the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity is indeed **broken**!
 
 ```{note}
 Refer to your POD for the private IPs.
@@ -162,16 +160,22 @@ align: center
 Ping
 ```
 
-```{figure} images/lab10-newjoe10.png
+```{figure} images/lab10-newone43.png
 ---
 align: center
 ---
 Ping
 ```
 
+```{note}
+From the outcomes above you can see that only **aws-us-east-2-spoke1-<span style='color:red'>test2</span>** instance is pingable, this is because the ICMP traffic from the **_aws-us-east-2-spoke1-test1_** towards the **_aws-us-east-2-spoke1-test2_** is **NOT** traversing the Spoke Gateway. 
+
+The Traffic is leveraging the normal behaviour of the intra-vpc communication
+```
+
 ### 3.4.  Connectivity verification (SSH)
 
-Verify also from the instance **aws-us-east-2-spoke1-test1** that you _can't_ SSH to any other instances, except to the **aws-us-east-2-spoke1-test2**, due to the fact that the SSH connection in this case, is established within the VPC, <ins>bypassing the Spoke Gateway (i.e. the DCF Enforcement Point)</ins>!
+Verify also from the instance **aws-us-east-2-spoke1-test1** that you **_can't_** SSH to any other instances, except to the **aws-us-east-2-spoke1-test2**, due to the fact that the SSH connection in this case, is established once again within the VPC, <ins>bypassing the Spoke Gateway (i.e. the DCF Enforcement Point)</ins>!
 
 ```{note}
 Refer to your POD for the private IPs.
