@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lab 9 - THREATIQ &amp; COSTIQ &#8212; ACE Operations Lab</title>
+    <title>Lab 11 - IAC &amp; NETWORK INSIGHTS API &#8212; ACE Operations Lab</title>
   
   
   
@@ -64,6 +64,8 @@
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LOGOS-ICONS" href="logos-icons.html" />
+    <link rel="prev" title="Lab 10 - DISTRIBUTED CLOUD FIREWALL" href="lab11.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -114,8 +116,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -169,7 +169,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets CREATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
@@ -179,10 +179,11 @@
 <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - FIRENET</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - SITE2CLOUD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SECURE HIGH-PERFORMANCE DATACENTER EDGE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREATIQ &amp; COSTIQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREAT DETECTION</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - IAC &amp; NETWORK INSIGHTS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - COSTIQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 11 - IAC &amp; NETWORK INSIGHTS API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
 </ul>
@@ -320,7 +321,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 9 - THREATIQ & COSTIQ</h1>
+    <h1>Lab 11 - IAC & NETWORK INSIGHTS API</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -330,26 +331,23 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatiq-overview">2. ThreatIQ Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">4.2 RTB verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vpcs-transit-gw-spoke-gw-and-attachment-through-terraform">1. Create VPCs, Transit GW, Spoke GW and Attachment through Terraform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">2. Validate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-new-smartgroup-for-the-public-subnet">5. A new SmartGroup for the Public Subnet</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-ad-hoc-smartgroup">5.1 Create an Ad-Hoc SmartGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-rule">5.2 Create a new Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-the-bad-guy">5.2 Generate traffic towards the “Bad Guy”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1 Generate traffic towards the “Bad Guy”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-transit-peering">3. Create Transit Peering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enforcement">5. Enforcement</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-enforcement-force-drop">5.1. Automatic enforcement: “force-drop”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iac-summary">4. IAC Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-insights-api">5. - Network Insights API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Validate</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#costiq">6. CostIQ</a></li>
 </ul>
             </nav>
         </div>
@@ -361,588 +359,299 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-9-threatiq-costiq">
-<h1>Lab 9 - THREATIQ &amp; COSTIQ<a class="headerlink" href="#lab-9-threatiq-costiq" title="Link to this heading">#</a></h1>
-<section id="objective">
-<h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
-<p>This lab will demonstrate how <code class="docutils literal notranslate"><span class="pre">ThreatIQ</span></code> works.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-11-iac-network-insights-api">
+<h1>Lab 11 - IAC &amp; NETWORK INSIGHTS API<a class="headerlink" href="#lab-11-iac-network-insights-api" title="Link to this heading">#</a></h1>
+<section id="create-vpcs-transit-gw-spoke-gw-and-attachment-through-terraform">
+<h2>1. Create VPCs, Transit GW, Spoke GW and Attachment through Terraform<a class="headerlink" href="#create-vpcs-transit-gw-spoke-gw-and-attachment-through-terraform" title="Link to this heading">#</a></h2>
+<p>All the elements you have created through the UI, can also be created through the API or the official <strong>Aviatrix Terraform provider</strong>.</p>
+<p>You can find more information on these here:
+<a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs</a></p>
 </section>
-<section id="threatiq-overview">
-<h2>2. ThreatIQ Overview<a class="headerlink" href="#threatiq-overview" title="Link to this heading">#</a></h2>
-<p>Aviatrix Gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. <strong>FlowIQ</strong> is one. <strong>ThreatIQ</strong> is another. ThreatIQ alerts you on Malicious IPs with bad reputations, but then can also apply an enforcement. These IPs are reported in the ThreatIQ database that CoPilot maintains.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>ThreatIQ protect all the Aviatrix Gateways and it relies on a well-known database, provided by <strong><code class="docutils literal notranslate"><span class="pre">Proofpoint</span></code></strong>.</p>
-</div>
-</section>
-<section id="topology">
-<h2>3. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
-<p>In this lab, we will deploy a <code class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in AWS <strong>US-EAST-1</strong> region, to protect the public subnet.</p>
-<figure class="align-center" id="id2">
-<img alt="../_images/lab9-initialtopology.png" src="../_images/lab9-initialtopology.png" />
-<figcaption>
-<p><span class="caption-text">Lab 9 Initial Topology</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="psf">
-<h2>4. PSF<a class="headerlink" href="#psf" title="Link to this heading">#</a></h2>
-<section id="deploy-the-psf">
-<h3>4.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">“+Gateway&quot;</span></code> button and then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
-<figure class="align-center" id="id3">
-<a class="reference internal image-reference" href="../_images/lab9-psf.png"><img alt="../_images/lab9-psf.png" src="../_images/lab9-psf.png" style="height: 400px;" /></a>
-<figcaption>
-<p><span class="caption-text">PSF</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Insert the following parameters:</p>
-<ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>aws-us-east-1-psf</span></p></li>
-<li><p><strong>Account</strong>: <span style='color:#479608'>aws-account</span></p></li>
-<li><p><strong>Region</strong>: <span style='color:#479608'>us-east-1 (N. Virginia)</span></p></li>
-<li><p><strong>VPC</strong>: <span style='color:#479608'>aws-us-east1-spoke1</span></p></li>
-<li><p><strong>Instance Size</strong>: <span style='color:#479608'>t2.medium</span></p></li>
-<li><p><strong>Attach to Unused Subnet</strong>: <span style='color:#479608'>us-east-1a</span></p></li>
-<li><p><strong>Route Table</strong>: <span style='color:#479608'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span></p></li>
-</ul>
-<p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id4">
-<img alt="../_images/lab9-new.png" src="../_images/lab9-new.png" />
-<figcaption>
-<p><span class="caption-text">PSF template</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Wait for about <strong>8</strong> minutes for the completion of the PSF deployment.</p>
-</div>
+<section id="validate">
+<h2>2. Validate<a class="headerlink" href="#validate" title="Link to this heading">#</a></h2>
+<p>We have prepared some Terraform code for you, which you will explore and deploy.</p>
+<p>Go to your personal POD Portal, identify the <strong><em>Lab11</em></strong> section and click on the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Workstation</span></code> button.</p>
 <figure class="align-center" id="id5">
-<a class="reference internal image-reference" href="../_images/lab9-psfinprogress.png"><img alt="../_images/lab9-psfinprogress.png" src="../_images/lab9-psfinprogress.png" style="height: 200px;" /></a>
+<img alt="../_images/lab11-edge.png" src="../_images/lab11-edge.png" />
 <figcaption>
-<p><span class="caption-text">PSF deployment in progress</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 458 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
-<section id="rtb-verification">
-<h3>4.2 RTB verification<a class="headerlink" href="#rtb-verification" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Click on the <strong>PSF</strong> gateway, select the <strong>VPC/VNet Route Tables</strong> and then inspect the <strong><em>aviatrix-Aviatrix-Filter-Gateway</em></strong> Route Table</p></li>
-</ul>
+<p>Insert the corresponding credentials, available on the POD Portal, to log in to the remote “edge” Workstation.</p>
 <figure class="align-center" id="id6">
-<a class="reference internal image-reference" href="../_images/lab9-psfclick.png"><img alt="../_images/lab9-psfclick.png" src="../_images/lab9-psfclick.png" style="height: 150px;" /></a>
+<img alt="../_images/lab11-edge2.png" src="../_images/lab11-edge2.png" />
 <figcaption>
-<p><span class="caption-text">PSF deployed</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 459 </span><span class="caption-text">Edge Workstation credentials</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id7">
-<img alt="../_images/lab9-routetablepsf.png" src="../_images/lab9-routetablepsf.png" />
-<figcaption>
-<p><span class="caption-text">PSF rtb</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>The subnet with the PSF gateway is a <strong>Public</strong> Subnet with 0/0 pointing to IGW.</p>
-<p><strong>No workload instances should be deployed in this subnet</strong>.</p>
-</div>
 <ul class="simple">
-<li><p>Verify one more routing table that we selected while deploying the PSF Gateway: <strong><em>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</em></strong>. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).</p></li>
+<li><p>Open the <strong>Visual Studio Code</strong> located on the Desktop</p></li>
+</ul>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/lab11-edge3.png"><img alt="../_images/lab11-edge3.png" src="../_images/lab11-edge3.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 460 </span><span class="caption-text">VS Studio</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Click on the <strong>Home</strong> icon and then select the folder <code class="docutils literal notranslate"><span class="pre">terraform-lab</span></code> and click <strong>Open</strong></p>
+<ul>
+<li><p><em>When prompted to trust the authors of the files in this folder, select Yes</em></p></li>
+</ul>
+</li>
 </ul>
 <figure class="align-center" id="id8">
-<img alt="../_images/lab9-routetablepsf2.png" src="../_images/lab9-routetablepsf2.png" />
+<img alt="../_images/lab11-edge4.png" src="../_images/lab11-edge4.png" />
 <figcaption>
-<p><span class="caption-text">aws-us-east1-spoke1-rtb-public-a</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 461 </span><span class="caption-text">terraform-lab folder</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
-</section>
-<section id="a-new-smartgroup-for-the-public-subnet">
-<h2>5. A new SmartGroup for the Public Subnet<a class="headerlink" href="#a-new-smartgroup-for-the-public-subnet" title="Link to this heading">#</a></h2>
-<p>First and foremost, you have to identify the <strong>subnet</strong> where the <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance resides.</p>
 <figure class="align-center" id="id9">
-<img alt="../_images/lab9-routetablepsf234.png" src="../_images/lab9-routetablepsf234.png" />
+<img alt="../_images/lab11-newedge2.png" src="../_images/lab11-newedge2.png" />
 <figcaption>
-<p><span class="caption-text">aws-us-east-1-spoke1-Public-1-us-east-1a</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 462 </span><span class="caption-text">Click “Open”</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for the <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance on the search field, on the right-hand side.</p>
-<p>From the outcome you have to pinpoint the <code class="docutils literal notranslate"><span class="pre">Availability</span> <span class="pre">Zone</span></code>.</p>
 <figure class="align-center" id="id10">
-<a class="reference internal image-reference" href="../_images/lab9-greenfieldneww2.png"><img alt="../_images/lab9-greenfieldneww2.png" src="../_images/lab9-greenfieldneww2.png" style="height: 150px;" /></a>
+<img alt="../_images/lab11-newedge.png" src="../_images/lab11-newedge.png" />
 <figcaption>
-<p><span class="caption-text">AZ</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 463 </span><span class="caption-text">Yes, I trust the authors</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now that you know in what <code class="docutils literal notranslate"><span class="pre">Availability</span> <span class="pre">Zone</span></code> the public workload resides, you need to select the <code class="docutils literal notranslate"><span class="pre">VPC/VNets</span> <span class="pre">&amp;</span> <span class="pre">Subnets</span></code> TAB and filter out based on the <strong><em>aws-us-east-1-spoke1</em></strong> VPC.</p>
-<p>Identify the <code class="docutils literal notranslate"><span class="pre">Public</span> <span class="pre">Subnet</span></code> that belongs to the <code class="docutils literal notranslate"><span class="pre">us-east-1a</span></code> AZ and copy the corresponding <strong><em><code class="docutils literal notranslate"><span class="pre">IP</span> <span class="pre">Address</span> <span class="pre">CIDR</span></code></em></strong> value!</p>
+<ul class="simple">
+<li><p>Let’s explore the Terraform files in this directory:</p>
+<ul>
+<li><p>Explore the file contents of <strong><a class="reference external" href="http://main.tf">main.tf</a>, <a class="reference external" href="http://variables.tf">variables.tf</a>, <a class="reference external" href="http://providers.tf">providers.tf</a></strong> and <strong>terraform.tfvars</strong></p></li>
+</ul>
+</li>
+</ul>
 <figure class="align-center" id="id11">
-<a class="reference internal image-reference" href="../_images/lab9-greenfieldneww3.png"><img alt="../_images/lab9-greenfieldneww3.png" src="../_images/lab9-greenfieldneww3.png" style="height: 300px;" /></a>
+<img alt="../_images/lab11-terraform2.png" src="../_images/lab11-terraform2.png" />
 <figcaption>
-<p><span class="caption-text">Public Subnet</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 464 </span><span class="caption-text">Manifest</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="create-an-ad-hoc-smartgroup">
-<h3>5.1 Create an Ad-Hoc SmartGroup<a class="headerlink" href="#create-an-ad-hoc-smartgroup" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Groups</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
+<blockquote>
+<div><p>What do you expect will be created when we run this Terraform code?</p>
+</div></blockquote>
+<p>In this lab, we are using Terraform modules, provided by Aviatrix. These allow you to quickly build out your environment, based on larger building blocks, rather than individual resources. You can find more available modules here:</p>
+<p><a class="reference external" href="https://registry.terraform.io/namespaces/terraform-aviatrix-modules">https://registry.terraform.io/namespaces/terraform-aviatrix-modules</a></p>
+<p>Let’s run this code.</p>
+<ul class="simple">
+<li><p>Open the <strong>LXTerminal</strong> App on the Desktop</p></li>
+<li><p>Move over to the directory where the Terraform files are located:</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">terraform-lab</span></code></p>
+<ul class="simple">
+<li><p>First thing we need to do is to <strong>initialize</strong> Terraform. This allows for the required providers and modules to be downloaded.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code></p>
 <figure class="align-center" id="id12">
-<a class="reference internal image-reference" href="../_images/lab9-newsg.png"><img alt="../_images/lab9-newsg.png" src="../_images/lab9-newsg.png" style="height: 400px;" /></a>
+<img alt="../_images/lab11-terraform.png" src="../_images/lab11-terraform.png" />
 <figcaption>
-<p><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 465 </span><span class="caption-text">Visual Studio Code</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Afterwards, click on the arrow icon  inside the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Resource</span> <span class="pre">Type&quot;</span></code> button and select <code class="docutils literal notranslate"><span class="pre">&quot;IP</span> <span class="pre">/</span> <span class="pre">CIDRs&quot;</span></code>.</p>
+<ul class="simple">
+<li><p>Next we will execute a “plan”. This means that Terraform will compare the live environment with the desired state we declared in our Terraform files.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">plan</span></code></p>
+<ul class="simple">
+<li><p>Investigate the proposed changes by Terraform. Now we will apply them to the live environment:</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span> <span class="pre">--auto-approve</span></code></p>
+<p>Once Terraform is finished, have a look at the newly created <strong>terraform.tfstate</strong> file. This contains information of all infrastructure created through Terraform. This is referred to as <strong>“the state”</strong>. Losing it can cause a lot of trouble, but that is for another (Terraform) lesson.</p>
+<section id="expected-results">
+<h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">#</a></h3>
+<p>By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about <strong>6 minutes</strong>, you should see the new transit and spoke in CoPilot Topology.</p>
 <figure class="align-center" id="id13">
-<a class="reference internal image-reference" href="../_images/lab9-greenfieldneww4.png"><img alt="../_images/lab9-greenfieldneww4.png" src="../_images/lab9-greenfieldneww4.png" style="height: 400px;" /></a>
+<img alt="../_images/lab11-terraform-topology.png" src="../_images/lab11-terraform-topology.png" />
 <figcaption>
-<p><span class="caption-text">Public Subnet</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 466 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+</section>
+</section>
+<section id="create-transit-peering">
+<h2>3. Create Transit Peering<a class="headerlink" href="#create-transit-peering" title="Link to this heading">#</a></h2>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h3>
+<p>In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let’s see how we can use Infrastructure as Code to build a full mesh of the Transits.</p>
+</section>
+<section id="id1">
+<h3>Validate<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-Public-1-us-east-1a</span></p></li>
-<li><p><strong>IPs / CIDRs</strong>: <span style='color:#479608'>10.0.12.32/28
-</span></p></li>
+<li><p>Using the same <strong>Visual Studio Code</strong> session, let’s create the <code class="docutils literal notranslate"><span class="pre">peering.tf</span></code> file.</p></li>
+<li><p>We will be using the following module:  <code class="docutils literal notranslate"><span class="pre">https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest</span></code></p></li>
+<li><p>Go back to the <strong>Visual Studio Code</strong> session and create a new file. Name it <code class="docutils literal notranslate"><span class="pre">peering.tf</span></code>.</p></li>
 </ul>
-<p>Before clicking on <strong>SAVE</strong>, delete the empty <code class="docutils literal notranslate"><span class="pre">&quot;Virtual</span> <span class="pre">Machines&quot;</span></code> additional condition.</p>
 <figure class="align-center" id="id14">
-<a class="reference internal image-reference" href="../_images/lab9-greenfieldneww45.png"><img alt="../_images/lab9-greenfieldneww45.png" src="../_images/lab9-greenfieldneww45.png" style="height: 400px;" /></a>
+<img alt="../_images/lab11-newfile.png" src="../_images/lab11-newfile.png" />
 <figcaption>
-<p><span class="caption-text">New SG</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 467 </span><span class="caption-text">New File</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
-<section id="create-a-new-rule">
-<h3>5.2 Create a new Rule<a class="headerlink" href="#create-a-new-rule" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id15">
-<img alt="../_images/lab9-newrule10.png" src="../_images/lab9-newrule10.png" />
+<img alt="../_images/lab11-peering.png" src="../_images/lab11-peering.png" />
 <figcaption>
-<p><span class="caption-text">New Rule</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 468 </span><span class="caption-text"><a class="reference external" href="http://peering.tf">peering.tf</a></span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Insert the following parameters</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Rule</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-Public-1-us-east-1</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>DeafultThreatGroup</span></p></li>
-<li><p><strong>WebGroups</strong>: <span style='color:#479608'><strong>All-Web</strong></span></p></li>
-<li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
-<li><p><strong>Enforcement</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
-<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
+<li><p>Now copy the following statements and paste them inside the file previously created:</p></li>
 </ul>
-<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id16">
-<img alt="../_images/lab911-new.png" src="../_images/lab911-new.png" />
-<figcaption>
-<p><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Click on the <strong>Commit</strong> button!</p>
-<figure class="align-center" id="id17">
-<a class="reference internal image-reference" href="../_images/lab96-newrule11.png"><img alt="../_images/lab96-newrule11.png" src="../_images/lab96-newrule11.png" style="height: 150px;" /></a>
-<figcaption>
-<p><span class="caption-text">PSF-Rule</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The <strong><code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">ThreatGroup</span></code></strong> can be used in DCF rules to ensure that traffic meeting the ThreatGroup criteria is blocked. When traffic triggers that rule, its DCF rule references are shown on the <strong>Groups &gt; ThreatGroups</strong> tab.</p>
-<p>The Default ThreatGroup is regularly updated with data from the Proofpoint Global Threat Database.</p>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;transit-peering&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit-peering/aviatrix&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.9&quot;</span>
+
+<span class="w">  </span><span class="na">transit_gateways</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;aws-us-west-2-transit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;aws-us-east-2-transit&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span><span class="w"> </span>
+</pre></div>
 </div>
-</section>
-<section id="generate-traffic-towards-the-bad-guy">
-<h3>5.2 Generate traffic towards the “Bad Guy”<a class="headerlink" href="#generate-traffic-towards-the-bad-guy" title="Link to this heading">#</a></h3>
-<p>Now delete the <strong>Greenfield-Rule</strong>:</p>
-<ul class="simple">
-<li><p>click on the <strong>three dots</strong> icon on the right-hand side of the Greenfield-Rule entry and then choose the <code class="docutils literal notranslate"><span class="pre">&quot;Delete</span> <span class="pre">Rule&quot;</span></code> option.</p></li>
-</ul>
-<p>Do not forget to click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id18">
-<a class="reference internal image-reference" href="../_images/lab66-newruledelete.png"><img alt="../_images/lab66-newruledelete.png" src="../_images/lab66-newruledelete.png" style="height: 150px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Copy and Paste</em> does not work directly from the host machine towards the Workstation “Edge”, therefore activate the <strong>Hidden Menu</strong>, that is a sidebar that is maintained hidden until explicitly enabled. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing <strong>Ctrl+Alt+Shift</strong> on Windows machine (<strong>Control+Shift+Command</strong> on Mac).</p>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab11-clip1.png" src="../_images/lab11-clip1.png" />
 <figcaption>
-<p><span class="caption-text">Deletion of the Greenfield-Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 469 </span><span class="caption-text">Hidden Clipboard</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab11-clip2.png" src="../_images/lab11-clip2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 470 </span><span class="caption-text">Copy the statemets from the Lab Guides and paste them</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab11-clip3.png" src="../_images/lab11-clip3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 471 </span><span class="caption-text">Copy from the hidden clipboard and paste them inside the <a class="reference external" href="http://peering.tf">peering.tf</a></span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id19">
-<a class="reference internal image-reference" href="../_images/lab66-newruledeleted.png"><img alt="../_images/lab66-newruledeleted.png" src="../_images/lab66-newruledeleted.png" style="height: 150px;" /></a>
+<img alt="../_images/lab11-clip4.png" src="../_images/lab11-clip4.png" />
 <figcaption>
-<p><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 472 </span><span class="caption-text">Close the Clipboard and save!</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Wait for the instructor to provide a malicious IP. Let’s call it <code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><ins>Note down this IP address!</ins></p>
-</div>
-<p>SSH to the EC2 instance <strong><em>aws-us-east1-spoke1-test1</em></strong></p>
 <ul class="simple">
-<li><p>Now test <code class="docutils literal notranslate"><span class="pre">ThreatIQ</span></code> by first issuing this command (make sure to enter <strong>HTTPS</strong>):</p></li>
+<li><p><strong>SAVE</strong> the file in Visual Studio Code.</p></li>
+<li><p>Go back to the <strong>LXTerminal</strong> and run <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">init</span></code> again to download the <code class="docutils literal notranslate"><span class="pre">mc-transit-peering</span></code> module</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
-</pre></div>
-</div>
 <figure class="align-center" id="id20">
-<img alt="../_images/lab9-instancetest.png" src="../_images/lab9-instancetest.png" />
+<a class="reference internal image-reference" href="../_images/lab11-clip5.png"><img alt="../_images/lab11-clip5.png" src="../_images/lab11-clip5.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text">Curl towards the malicious IP</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 473 </span><span class="caption-text">Once again “terraform init”</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Navigate to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
-<p>Click on <strong>Send Alert</strong>:</p>
+<ul class="simple">
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">plan</span></code> to assess the changes</p></li>
+</ul>
 <figure class="align-center" id="id21">
-<img alt="../_images/lab9-sendalert.png" src="../_images/lab9-sendalert.png" />
+<a class="reference internal image-reference" href="../_images/lab11-clip6.png"><img alt="../_images/lab11-clip6.png" src="../_images/lab11-clip6.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text">Enable ThreatIQ</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 474 </span><span class="caption-text">Once again “terraform plan”</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Then click on <strong>Notification Settings</strong>.</p>
+<ul class="simple">
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span> <span class="pre">--auto-approve</span></code></p></li>
+</ul>
 <figure class="align-center" id="id22">
-<img alt="../_images/lab9-notification.png" src="../_images/lab9-notification.png" />
+<a class="reference internal image-reference" href="../_images/lab11-clip7.png"><img alt="../_images/lab11-clip7.png" src="../_images/lab11-clip7.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text">Notification Settings</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Now click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Email</span> <span class="pre">Address&quot;</span></code> button.</p>
-<figure class="align-center" id="id23">
-<img alt="../_images/lab9-email.png" src="../_images/lab9-email.png" />
-<figcaption>
-<p><span class="caption-text">Email</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Choose an <strong>alias</strong>, insert your <strong>personal email</strong> and then click on <strong>Save</strong>:</p>
-<figure class="align-center" id="id24">
-<img alt="../_images/lab9-email2.png" src="../_images/lab9-email2.png" />
-<figcaption>
-<p><span class="caption-text">Alias and Personal Email</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Navigate back to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
-<p>Click again on <strong>Send Alert</strong>:</p>
-<figure class="align-center" id="id25">
-<a class="reference internal image-reference" href="../_images/lab9-sendalert2.png"><img alt="../_images/lab9-sendalert2.png" src="../_images/lab9-sendalert2.png" style="height: 300px;" /></a>
-<figcaption>
-<p><span class="caption-text">Send Alert Settings</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Select the alias that was previously created from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;recipients&quot;</span></code> and then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id26">
-<img alt="../_images/lab9-addrecipient.png" src="../_images/lab9-addrecipient.png" />
-<figcaption>
-<p><span class="caption-text">Add Recipient(s)</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>From this point onwards, if you enter a valid email address, you will receive email notifications about <strong>ThreatIQ</strong> alerts.</p>
-<p>Before enabling the blocking,  ensure that the <strong>ThreatGuard firewall rules order</strong> is set to <code class="docutils literal notranslate"><span class="pre">Prepend</span></code> on the right-hand side.</p>
-<figure class="align-center" id="id27">
-<img alt="../_images/lab9-advanced.png" src="../_images/lab9-advanced.png" />
-<figcaption>
-<p><span class="caption-text">Prepend</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 475 </span><span class="caption-text">Once again “terraform apply”</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="id1">
-<h3>5.1 Generate traffic towards the “Bad Guy”<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Wait for the instructor to provide a malicious IP. Let’s call it <code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>.</p>
+<section id="id2">
+<h3>Expected Results<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>After a few minutes, a new peering will be established between the <strong>aws-us-east-2-transit</strong> GW and the <strong>aws-us-west-2-transit</strong> GW. You can go to CoPilot and have a look at the new topology.</p>
+<figure class="align-center" id="id23">
+<img alt="../_images/lab11-topoloy-transit-peerings.png" src="../_images/lab11-topoloy-transit-peerings.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 476 </span><span class="caption-text">New Peering</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">Congratulations,</span> <span class="pre">you</span> <span class="pre">have</span> <span class="pre">deployed</span> <span class="pre">the</span> <span class="pre">full-blown</span> <span class="pre">Aviatrix</span> <span class="pre">solution!</span></code></p>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="../_images/lab11-lastdrawing.png"><img alt="../_images/lab11-lastdrawing.png" src="../_images/lab11-lastdrawing.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 477 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="iac-summary">
+<h2>4. IAC Summary<a class="headerlink" href="#iac-summary" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>You deployed an Aviatrix Transit and Spoke using Terraform</p></li>
+<li><p>You added the new Transit to the Global Multicloud Transit Network with a few lines of code</p></li>
+<li><p>Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution</p></li>
+<li><p>In minutes, you can create the network, security and connectivity needed</p></li>
+</ul>
+</section>
+<section id="network-insights-api">
+<h2>5. - Network Insights API<a class="headerlink" href="#network-insights-api" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>Description<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Network</span> <span class="pre">Insights</span> <span class="pre">API</span></code> simplifies the process of navigating network interface statistics and micro-gateway status data. By integrating this API with your visualization platforms (with vendors you already know and love!), you can easily make data-driven decisions.</p>
+</section>
+<section id="id4">
+<h3>Validate<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Go to your personal POD Portal, identify the <strong><em>Lab11</em></strong> section and click on the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Grafana</span></code> button.</p></li>
+</ul>
+<figure class="align-center" id="id25">
+<img alt="../_images/lab11-edge10.png" src="../_images/lab11-edge10.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 478 </span><span class="caption-text">Lab 11 section on the POD Portal</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><ins>Note down this IP address!</ins></p>
+<p>The API Key was generated at the lunch of all PODs and was applied on the Prometheus/Grafana server!</p>
 </div>
-<p>SSH to the EC2 instance <strong><em>aws-us-east1-spoke1-test1</em></strong></p>
-<ul class="simple">
-<li><p>Now test <code class="docutils literal notranslate"><span class="pre">ThreatIQ</span></code> by first issuing this command (make sure to enter <strong>HTTPS</strong>):</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
-</pre></div>
-</div>
-<figure class="align-center" id="id28">
-<img alt="../_images/lab9-instancetest.png" src="../_images/lab9-instancetest.png" />
+<p>Enter the required credentials that are available on the POD Portal and then click on <strong>Log in</strong>.</p>
+<figure class="align-center" id="id26">
+<img alt="../_images/lab11-edge20.png" src="../_images/lab11-edge20.png" />
 <figcaption>
-<p><span class="caption-text">Curl towards the malicious IP</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 479 </span><span class="caption-text">Grafana Login Page</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Navigate back to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Overview</strong></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Wait for about 4-5 minutes</strong>, before proceeding with the next action.</p>
-<p>Set the <strong>Time Period</strong> to <code class="docutils literal notranslate"><span class="pre">&quot;Last</span> <span class="pre">24</span> <span class="pre">Hours&quot;</span></code> and click on <strong>Apply</strong>.</p>
-</div>
-<figure class="align-center" id="id29">
-<img alt="../_images/lab9-custom.png" src="../_images/lab9-custom.png" />
+<p>You will immediately notice the Receive Rate and Transmit Rate stats!</p>
+<figure class="align-center" id="id27">
+<img alt="../_images/lab11-edge30.png" src="../_images/lab11-edge30.png" />
 <figcaption>
-<p><span class="caption-text">Overview</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 480 </span><span class="caption-text">Receive Rate and Transmit Rate</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You should see the IP in the table at the bottom. You can filter based on the destination IP address (insert the malicious IP address):</p>
-<figure class="align-center" id="id30">
-<img alt="../_images/lab9-threat.png" src="../_images/lab9-threat.png" />
-<figcaption>
-<p><span class="caption-text">Threats</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id31">
-<img alt="../_images/lab9-threat2.png" src="../_images/lab9-threat2.png" />
-<figcaption>
-<p><span class="caption-text">Filter</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you do not get any outcomes, kindly change the Time Period to <code class="docutils literal notranslate"><span class="pre">&quot;Last</span> <span class="pre">60</span> <span class="pre">Minutes&quot;</span></code>.</p>
-<figure class="align-center" id="id32">
-<img alt="../_images/lab9-trigger.png" src="../_images/lab9-trigger.png" />
-<figcaption>
-<p><span class="caption-text">Trigger the outcome</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</div>
-<p>Afterwards, click on <strong>VIEW</strong> on the right-hand side of the Timestamp.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The IP shown in these screenshots  might not be deemed a threat when you read this. Please use the malicious IP provided by the instructor.</p>
-</div>
-<figure class="align-center" id="id33">
-<a class="reference internal image-reference" href="../_images/lab9-view.png"><img alt="../_images/lab9-view.png" src="../_images/lab9-view.png" style="height: 150px;" /></a>
-<figcaption>
-<p><span class="caption-text">View</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Then select <strong>Threat Summary</strong> and pinpoint the metadata “tag” to determine how ThreatIQ has classified this IP.</p>
-<figure class="align-center" id="id34">
-<img alt="../_images/lab9-tor.png" src="../_images/lab9-tor.png" />
-<figcaption>
-<p><span class="caption-text">“tag”</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-<section id="enforcement">
-<h2>5. Enforcement<a class="headerlink" href="#enforcement" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Enable <strong>Block Threats</strong></p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong>, click on the arrow to show the hidden section and then turn on the toggle <code class="docutils literal notranslate"><span class="pre">&quot;Block</span> <span class="pre">Threats&quot;</span></code>.</p>
-</div>
-<figure class="align-center" id="id35">
-<a class="reference internal image-reference" href="../_images/lab9-hiddenview.png"><img alt="../_images/lab9-hiddenview.png" src="../_images/lab9-hiddenview.png" style="height: 150px;" /></a>
-<figcaption>
-<p><span class="caption-text">Click on the arrow!</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id36">
-<img alt="../_images/lab9-threatguard.png" src="../_images/lab9-threatguard.png" />
-<figcaption>
-<p><span class="caption-text">ThreatIQ - Automatic Enforcement</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>By default, <ins><strong>all</strong> VPCs are enabled for ThreatIQ</ins>, therefore click on <strong>Save</strong> to continue.</p>
-<figure class="align-center" id="id37">
-<img alt="../_images/lab9-vpc.png" src="../_images/lab9-vpc.png" />
-<figcaption>
-<p><span class="caption-text">Select VPC</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Then, click <strong>CONFIRM</strong>.</p>
-<figure class="align-center" id="id38">
-<img alt="../_images/lab9-confirm.png" src="../_images/lab9-confirm.png" />
-<figcaption>
-<p><span class="caption-text">Confirm</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<section id="automatic-enforcement-force-drop">
-<h3>5.1. Automatic enforcement: “force-drop”<a class="headerlink" href="#automatic-enforcement-force-drop" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Now wait for about <ins>8 minutes</ins>!</p></li>
-<li><p>Then issue the same curl command once again, from the test instance <strong><em>aws-us-east-1-spoke1-test1</em></strong></p></li>
-</ul>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>Do not issue the curl command immediately! Wait for 8 minutes as suggested above.</p>
+<p>Go to <strong>CoPilot &gt; Settings &gt; Configuration</strong> and then identify the <code class="docutils literal notranslate"><span class="pre">&quot;Network</span> <span class="pre">Insights</span> <span class="pre">API&quot;</span></code> widget.</p>
+<p>You will find the <strong>API Key</strong> generated on the CoPilot and then used on Prometheus/Grafana!</p>
 </div>
-<figure class="align-center" id="id39">
-<img alt="../_images/lab9-failed.png" src="../_images/lab9-failed.png" />
+<figure class="align-center" id="id28">
+<a class="reference internal image-reference" href="../_images/lab11-networkinsight1.png"><img alt="../_images/lab11-networkinsight1.png" src="../_images/lab11-networkinsight1.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text">Curl fails</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 481 </span><span class="caption-text">Network Insight API section</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Navigate to  <strong>CoPilot &gt; Security &gt; ThreatIQ &gt; Configuration</strong></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The CoPilot UI frequently changes, and what you see below may differ from your experience.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Download the API Key and explore the content of the file!</p>
 </div>
-<ul class="simple">
-<li><p>Click on the <strong>refresh</strong> button under.</p></li>
-</ul>
-<figure class="align-center" id="id40">
-<a class="reference internal image-reference" href="../_images/lab9-refresh.png"><img alt="../_images/lab9-refresh.png" src="../_images/lab9-refresh.png" style="height: 150px;" /></a>
+<figure class="align-center" id="id29">
+<img alt="../_images/lab11-networkinsight2.png" src="../_images/lab11-networkinsight2.png" />
 <figcaption>
-<p><span class="caption-text">Refresh button</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Click on <strong>VIEW</strong> under the column View Rules, on the <strong><em>aws-us-east-1-psf</em></strong> row:</p></li>
-</ul>
-<figure class="align-center" id="id41">
-<a class="reference internal image-reference" href="../_images/lab9-viewrules.png"><img alt="../_images/lab9-viewrules.png" src="../_images/lab9-viewrules.png" style="height: 150px;" /></a>
-<figcaption>
-<p><span class="caption-text">View Rules</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Filter based on the malicious IP (choose the <strong>Source IP</strong> as parameter): you will find out that ThreatIQ applied the enforcement <code class="docutils literal notranslate"><span class="pre">&quot;force-drop&quot;</span></code>.</p>
-<figure class="align-center" id="id42">
-<a class="reference internal image-reference" href="../_images/lab9-force.png"><img alt="../_images/lab9-force.png" src="../_images/lab9-force.png" style="height: 150px;" /></a>
-<figcaption>
-<p><span class="caption-text">Filter on Source IP</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p><strong>ThreatIQ</strong> has successfully blocked the malicious IP!</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Before ending this lab, remove your email from the notification list!</p>
-</div>
-<p>Navigate to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Alerts Configuration</strong></p>
-<p>Click on the pencil icon for editing the configured alert named <code class="docutils literal notranslate"><span class="pre">&quot;ThreatIQ</span> <span class="pre">Alert&quot;</span></code>:</p>
-<figure class="align-center" id="id43">
-<a class="reference internal image-reference" href="../_images/lab9-notification2.png"><img alt="../_images/lab9-notification2.png" src="../_images/lab9-notification2.png" style="height: 300px;" /></a>
-<figcaption>
-<p><span class="caption-text">Edit ThreatIQ Alert</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Remove the recipient that is identified based on the alias that you chose before, then click on <strong>Save</strong>.</p></li>
-</ul>
-<p>ThreatIQ will immediately stop sending the alerts to your personal email:</p>
-<figure class="align-center" id="id44">
-<img alt="../_images/lab9-joe.png" src="../_images/lab9-joe.png" />
-<figcaption>
-<p><span class="caption-text">Stop alerts</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 482 </span><span class="caption-text">API key</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-</section>
-<section id="costiq">
-<h2>6. CostIQ<a class="headerlink" href="#costiq" title="Link to this heading">#</a></h2>
-<p>Before completing this lab, let’s enable <code class="docutils literal notranslate"><span class="pre">CostIQ</span></code> and define the following <strong>Cost Centers</strong> and <strong>Shared Service</strong>.</p>
-<p><strong><span style='color:orange'>COST CENTERS</span></strong>:</p>
-<p><strong>AWS</strong>:</p>
-<ul class="simple">
-<li><p>aws-us-east-1-spoke1</p></li>
-<li><p>aws-us-east-1-spoke2</p></li>
-</ul>
-<p><strong>GCP</strong>:</p>
-<ul class="simple">
-<li><p>gcp-us-central1-spoke1</p></li>
-</ul>
-<p><strong>AZURE</strong>:</p>
-<ul class="simple">
-<li><p>azure-west-us-spoke1</p></li>
-<li><p>azure-west-us-spoke2</p></li>
-</ul>
-<p><strong><span style='color:green'>SHARED SERVICE</span></strong>:</p>
-<p><strong>NEW YORK DC</strong>:</p>
-<ul class="simple">
-<li><p>workstation client “edge”</p></li>
-</ul>
-<p>Go to <strong>Copilot &gt; Billing &amp; Cost &gt; CostIQ</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">CostIQ&quot;</span></code> button.</p>
-<figure class="align-center" id="id45">
-<a class="reference internal image-reference" href="../_images/lab9-costiq.png"><img alt="../_images/lab9-costiq.png" src="../_images/lab9-costiq.png" style="height: 150px;" /></a>
-<figcaption>
-<p><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id46">
-<a class="reference internal image-reference" href="../_images/lab9-costiq001.png"><img alt="../_images/lab9-costiq001.png" src="../_images/lab9-costiq001.png" style="height: 150px;" /></a>
-<figcaption>
-<p><span class="caption-text">Enable CostIQ</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Now click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Cost</span> <span class="pre">Center&quot;</span></code> and create the <strong>AWS</strong> Cost Center aforementioned.</p>
-<figure class="align-center" id="id47">
-<img alt="../_images/lab9-costiq02.png" src="../_images/lab9-costiq02.png" />
-<figcaption>
-<p><span class="caption-text">“+ Cost Center”</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id48">
-<img alt="../_images/lab9-costiq03.png" src="../_images/lab9-costiq03.png" />
-<figcaption>
-<p><span class="caption-text">AWS</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Repeat the action creating the remaining two Cost Centers: <strong>GCP</strong> and <strong>Azure</strong>, associating the corresponing Application VPCs/VNets.</p>
-<figure class="align-center" id="id49">
-<img alt="../_images/lab9-costiq04.png" src="../_images/lab9-costiq04.png" />
-<figcaption>
-<p><span class="caption-text">GCP</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id50">
-<img alt="../_images/lab9-costiq05.png" src="../_images/lab9-costiq05.png" />
-<figcaption>
-<p><span class="caption-text">AZURE</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>You should immediately get insights on how they have been utilized.</p>
-<figure class="align-center" id="id51">
-<a class="reference internal image-reference" href="../_images/lab9-costiq06.png"><img alt="../_images/lab9-costiq06.png" src="../_images/lab9-costiq06.png" style="height: 150px;" /></a>
-<figcaption>
-<p><span class="caption-text">Cost Centers Overview</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Now let’s discover the <strong>CIDRs</strong> of <strong>New York DC</strong>:</p>
-<ul class="simple">
-<li><p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP Info</strong>, then click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code>.</p></li>
-</ul>
-<figure class="align-center" id="id52">
-<img alt="../_images/lab9-costiq10.png" src="../_images/lab9-costiq10.png" />
-<figcaption>
-<p><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>You will find out that all the local subnets advertised by the DC belong to the cidr <strong>10.40.0.0/16</strong>.</p>
-<figure class="align-center" id="id53">
-<img alt="../_images/lab9-cidr.png" src="../_images/lab9-cidr.png" />
-<figcaption>
-<p><span class="caption-text">CIDR</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Let’s move on the <strong>Shared Service</strong> tab and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Shared</span> <span class="pre">Service&quot;</span></code>.</p>
-<figure class="align-center" id="id54">
-<img alt="../_images/lab9-costiq12.png" src="../_images/lab9-costiq12.png" />
-<figcaption>
-<p><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Create the <strong>Shared Service</strong> based on the aforementioned requirements.</p>
-<figure class="align-center" id="id55">
-<img alt="../_images/lab9-costiq13.png" src="../_images/lab9-costiq13.png" />
-<figcaption>
-<p><span class="caption-text">“+ Shared Service”</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>If you kept running the ping on the Workstation Edge’s terminal, then you should see both the relative traffic and the absolute one from any Cost Centers towards the Shared Service.</p>
-<figure class="align-center" id="id56">
-<img alt="../_images/lab9-ping.png" src="../_images/lab9-ping.png" />
-<figcaption>
-<p><span class="caption-text">Ping from the Wortkstation “Edge”</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id57">
-<a class="reference internal image-reference" href="../_images/lab9-counter.png"><img alt="../_images/lab9-counter.png" src="../_images/lab9-counter.png" style="height: 350px;" /></a>
-<figcaption>
-<p><span class="caption-text">From the Cost Center towards the Shared Service</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id58">
-<a class="reference internal image-reference" href="../_images/lab9-final.png"><img alt="../_images/lab9-final.png" src="../_images/lab9-final.png" style="height: 400px;" /></a>
-<figcaption>
-<p><span class="caption-text">Final topology for Lab 9</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 </section>
 </section>
 
@@ -976,6 +685,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lab11.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 10 - DISTRIBUTED CLOUD FIREWALL</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="logos-icons.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LOGOS-ICONS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -993,26 +720,23 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatiq-overview">2. ThreatIQ Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">4.2 RTB verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vpcs-transit-gw-spoke-gw-and-attachment-through-terraform">1. Create VPCs, Transit GW, Spoke GW and Attachment through Terraform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate">2. Validate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-new-smartgroup-for-the-public-subnet">5. A new SmartGroup for the Public Subnet</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-ad-hoc-smartgroup">5.1 Create an Ad-Hoc SmartGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-rule">5.2 Create a new Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-the-bad-guy">5.2 Generate traffic towards the “Bad Guy”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1 Generate traffic towards the “Bad Guy”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-transit-peering">3. Create Transit Peering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Validate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Expected Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enforcement">5. Enforcement</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-enforcement-force-drop">5.1. Automatic enforcement: “force-drop”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iac-summary">4. IAC Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-insights-api">5. - Network Insights API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Validate</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#costiq">6. CostIQ</a></li>
 </ul>
   </nav></div>
 

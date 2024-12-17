@@ -1,314 +1,1080 @@
-# Lab 11 - IAC & NETWORK INSIGHTS API
+# Lab 10 - DISTRIBUTED CLOUD FIREWALL
 
-## 1. Create VPCs, Transit GW, Spoke GW and Attachment through Terraform
+## 1. Objective
 
-All the elements you have created through the UI, can also be created through the API or the official **Aviatrix Terraform provider**. 
+This lab will demonstrate how the `Distributed Cloud Firewall` works.
 
-You can find more information on these here:
-https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs
+## 2. Distributed Cloud Firewall Overview
 
-## 2. Validate
+The Distributed Cloud Firewall functionality encompases several services, such as Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata IDS/IPS and Advanced NAT capabilities.
 
-We have prepared some Terraform code for you, which you will explore and deploy.
+In this lab you will create additional logical containers, called `Smart Groups`, that group instances that present similarities inside a VPC/VNet/VCN, and then you will enforce rules among these Smart Groups (aka **_Distributed Cloud Firewalling Rules_**):
 
-Go to your personal POD Portal, identify the **_Lab11_** section and click on the `Open Workstation` button.
+1) `intra-rule` = Rule applied within a Smart Group
 
-```{figure} images/lab11-edge.png
----
-align: center
----
-Lab 11 section on the POD Portal
+2) `inter-rule` = Rule applied among Smart Groups
+
+```{note}
+At this point in the lab, there is a unique routing domain (i.e. a **_Flat Routing Domain_**), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.
 ```
 
-Insert the corresponding credentials, available on the POD Portal, to log in to the remote "edge" Workstation.
+All the Test instances have been deployed with the typical <ins>CSP tags</ins>. 
 
-```{figure} images/lab11-edge2.png
----
-align: center
----
-Edge Workstation credentials
+```{important}
+The **CSP tagging** is the recommended method for defining the SmartGroups.
 ```
 
-* Open the **Visual Studio Code** located on the Desktop
+In this lab you are asked to achieve the following requirements among the instances deployed across the three CSPs:
 
-```{figure} images/lab11-edge3.png
+- Create a Smart Group with the name `"bu1"` leveraging the tag `"environment"`.
+- Create a Smart Group with the name `"bu2"` leveraging the tag `"environment"`.
+- Create an `intra-rule` that allows ICMP traffic within bu1.
+- Create an `intra-rule` that allows ICMP traffic within bu2.
+- Create an `intra-rule` that allows SSH traffic within bu1.
+- Create an `inter-rule` that allows ICMP traffic only <ins>from</ins> bu2 <ins>to</ins> bu1.
+
+```{figure} images/lab10-initial.png
 ---
 height: 400px
 align: center
 ---
-VS Studio
+Initial Topology Lab 10
 ```
 
-* Click on the **Home** icon and then select the folder `terraform-lab` and click **Open**
-  * _When prompted to trust the authors of the files in this folder, select Yes_
+## 3. Smart Groups Creation
 
-```{figure} images/lab11-edge4.png
+Create two Smart Groups and classify each Smart Group, leveraging the CSP tag `"environment"`:
+
+- Assign the name `"bu1"` to the Smart Group **#1**.
+- Assign the name `"bu2"` to the Smart Group **#2**.
+
+### 3.1. Smart Group “bu1”
+
+Go to **CoPilot > Groups > SmartGroups** and click on `"+ SmartGroup"`.
+
+```{figure} images/lab10-smart2.png
 ---
 align: center
 ---
-terraform-lab folder
+SmartGroup
 ```
 
-```{figure} images/lab11-newedge2.png
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>bu1</span>
+- **CSP Tag Key**: <span style='color:#479608'>environment</span>
+- **CSP Tag Value**: <span style='color:#479608'>bu1</span>
+
+Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
+
+```{figure} images/lab10-smart3.png
 ---
 align: center
 ---
-Click "Open"
+Resource Selection
 ```
 
-```{figure} images/lab11-newedge.png
+The CoPilot shows that there are two instances that perfectly match the condition:
+
+- **aws-us-east2-spoke1-test1** in AWS
+- **azure-us-west-spoke1-test1** in Azure
+
+```{figure} images/lab10-smart4.png
 ---
 align: center
 ---
-Yes, I trust the authors
+Resources that match the condition
 ```
 
-* Let’s explore the Terraform files in this directory:
-  * Explore the file contents of **main.tf, variables.tf, providers.tf** and **terraform.tfvars**
+### 3.2. Smart Group “bu2”
 
-```{figure} images/lab11-terraform2.png
+Create another Smart Group clicking on the `"+ SmartGroup"` button.
+
+```{figure} images/lab10-smart5.png
 ---
 align: center
 ---
-Manifest
+New Smart Group
 ```
 
-> What do you expect will be created when we run this Terraform code?
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
-In this lab, we are using Terraform modules, provided by Aviatrix. These allow you to quickly build out your environment, based on larger building blocks, rather than individual resources. You can find more available modules here:  
+- **Name**: <span style='color:#479608'>bu2</span>
+- **CSP Tag Key**: <span style='color:#479608'>environment</span>
+- **CSP Tag Value**: <span style='color:#479608'>bu2</span>
 
-https://registry.terraform.io/namespaces/terraform-aviatrix-modules  
+Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
-Let's run this code.
-
-* Open the **LXTerminal** App on the Desktop
-* Move over to the directory where the Terraform files are located:
-
-`cd terraform-lab`
-
-* First thing we need to do is to **initialize** Terraform. This allows for the required providers and modules to be downloaded.  
-
-`terraform init`
-
-```{figure} images/lab11-terraform.png
+```{figure} images/lab10-smart6.png
 ---
 align: center
 ---
-Visual Studio Code
+Resource Selection
 ```
 
-* Next we will execute a “plan”. This means that Terraform will compare the live environment with the desired state we declared in our Terraform files.
+The CoPilot shows that there are three instances that match the condition:
 
-`terraform plan`
+- **aws-us-east2-spoke1-test2** in AWS
+- **azure-us-west-spoke2-test1** in Azure
+- **gcp-us-central1-spoke1-test1** in GCP
 
-* Investigate the proposed changes by Terraform. Now we will apply them to the live environment:
-
-`terraform apply --auto-approve`
-
-Once Terraform is finished, have a look at the newly created **terraform.tfstate** file. This contains information of all infrastructure created through Terraform. This is referred to as **“the state”**. Losing it can cause a lot of trouble, but that is for another (Terraform) lesson.
-
-### Expected Results
-
-By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about **6 minutes**, you should see the new transit and spoke in CoPilot Topology.  
-
-```{figure} images/lab11-terraform-topology.png
+```{figure} images/lab10-smart7.png
 ---
 align: center
 ---
-Topology
+Resources that match the condition
 ```
 
-## 3. Create Transit Peering
+At this point, you have only created logical containers that do not affect the existing routing domain.
 
-### Description
+Let's verify that everything has been kept unchanged! Bear in mind that there is the `Greenfield-Rule` at the very top of your DCF rules list, whereby all kind of traffic will be permitted.
 
-In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let's see how we can use Infrastructure as Code to build a full mesh of the Transits.
+```{figure} images/lab10-newone2.png
+---
+height: 300px
+align: center
+---
+Greenfield-Rule in action
+```
 
-### Validate
+### 3.3. Connectivity verification (ICMP)
 
-* Using the same **Visual Studio Code** session, let's create the `peering.tf` file.
-* We will be using the following module:  `https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest`
-* Go back to the **Visual Studio Code** session and create a new file. Name it `peering.tf`.
+Open a terminal window and SSH to the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity has not been modified.
 
-```{figure} images/lab11-newfile.png
+```{note}
+Refer to your POD for the private IPs.
+```
+
+```{figure} images/lab10-newone.png
+---
+height: 400px
+align: center
+---
+SSH
+```
+
+```{figure} images/lab10-newone3.png
 ---
 align: center
 ---
-New File
+Ping
 ```
 
-```{figure} images/lab11-peering.png
+```{figure} images/lab10-newjoe10.png
 ---
 align: center
 ---
-peering.tf
+Ping
 ```
 
-* Now copy the following statements and paste them inside the file previously created:
+```{figure} images/lab10-newjoe11.png
+---
+align: center
+---
+Ping
+```
 
-```terraform
-module "transit-peering" {
-  source  = "terraform-aviatrix-modules/mc-transit-peering/aviatrix"
-  version = "1.0.9"
+### 3.4.  Connectivity verification (SSH)
 
-  transit_gateways = [
-    "aws-us-west-2-transit",
-    "aws-us-east-2-transit"
-  ]
-} 
+Verify also from the instance **aws-us-east-2-spoke1-test1** that you can SSH to the private instance in AWS (us-east-2), to the instance in GCP, to the instances in AWS (us-east-2) and likewise to the other two instances in Azure.
+
+```{note}
+Refer to your POD for the private IPs.
+```
+
+```{figure} images/lab10-sshtoaws.png
+---
+align: center
+---
+SSH to test2 in AWS US-East-2
+```
+
+```{figure} images/lab10-sshtogcp.png
+---
+align: center
+---
+SSH to test1 in GCP US-Central1
+```
+
+```{figure} images/lab10-sshtoazure1.png
+---
+align: center
+---
+SSH to test1 in Azure West-US
+```
+
+```{figure} images/lab10-sshtoazure2.png
+---
+align: center
+---
+SSH to test2 in Azure West-US
+```
+
+```{figure} images/lab10-sshnew.png
+---
+align: center
+---
+SSH to test1 in AWS US-East1 
+```
+
+```{figure} images/lab10-sshnew2.png
+---
+align: center
+---
+SSH to test2 in AWS US-East1
+```
+
+The previous outcomes confirm undoubtetly that the connectivity is working smoothly, despite the creation of those two new Smart Groups.
+
+## 4. DCF Rules Creation
+### 4.1. Build a Zero Trust  Network Architecture
+
+First and foremost, let's delete the `Greenfield-Rule` at the very top of the list of your DCF rules.
+
+```{tip}
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the `Greenfield-Rule` and choose *`"Delete Rule"`*. 
+
+Then click on **Commit**.
+```
+
+```{figure} images/lab10-newedit.png
+---
+height: 150px
+align: center
+---
+Delete the Greenfield-Rule
+```
+
+- Repeat the same action for the `"Inspection-Rule"` .
+
+```{figure} images/lab10-commit.png
+---
+height: 300px
+align: center
+---
+Delete the Inspection-Rule
 ```
 
 ```{note}
-*Copy and Paste* does not work directly from the host machine towards the Workstation "Edge", therefore activate the **Hidden Menu**, that is a sidebar that is maintained hidden until explicitly enabled. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing **Ctrl+Alt+Shift** on Windows machine (**Control+Shift+Command** on Mac).
+The **Egress-Rule** is configured with the **enforcement=off**, therefore it will NOT affect the Data Path!
 ```
 
-```{figure} images/lab11-clip1.png
+- Now click on `"+ Rule"` and create an ad-hoc **Explicit-Deny-Rule**, with the following parameters:
+
+Insert the following parameters
+
+- **Name**: <span style='color:#479608'>Explicit-Deny-Rule</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Enforcement**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab6-new.png
 ---
 align: center
 ---
-Hidden Clipboard
+Saving the new Rule
 ```
 
-```{figure} images/lab11-clip2.png
+Now click on **Commit**.
+
+```{figure} images/lab6-new234.png
 ---
 align: center
 ---
-Copy the statemets from the Lab Guides and paste them
+Committing the new Rule
 ```
 
-```{figure} images/lab11-clip3.png
+```{important}
+The ad-hoc `Explicit-Deny-Rule` can be configured with Logging=**On**!
+```
+
+```{warning}
+Zero Trust architecture is "Never trust, always verify", a critical component to enterprise cloud adoption success!
+```
+
+### 4.2. Create an intra-rule that allows ICMP inside bu1
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+
+```{figure} images/lab10-newrule.png
 ---
 align: center
 ---
-Copy from the hidden clipboard and paste them inside the peering.tf
+New Rule
 ```
 
-```{figure} images/lab11-clip4.png
+Insert the following parameters:
+
+- **Name**: <span style='color:#479608'>intra-icmp-bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab10-rule1.png
 ---
 align: center
 ---
-Close the Clipboard and save!
+Create Rule
 ```
 
-* **SAVE** the file in Visual Studio Code.
-* Go back to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
+Click on **Commit**.
+
+```{figure} images/lab10-rule2.png
+---
+height: 300px
+align: center
+---
+Current list of rules
+```
+
+### 4.2. Create an intra-rule that allows ICMP inside bu2
+
+Create another rule clicking on the `"+ Rule"` button.
+
+```{figure} images/lab10-rule3.png
+---
+align: center
+---
+New rule
+```
+
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+
+- **Name**: <span style='color:#479608'>intra-icmp-bu2</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>intra-icmp-bu1</span>
   
-```{figure} images/lab11-clip5.png
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab10-intrabu2.png
+---
+align: center
+---
+intra-icmp-bu2
+```
+
+Now proceed and click on the **Commit** button.
+
+```{figure} images/lab10-intrabu2345.png
+---
+height: 300px
+align: center
+---
+Commit
+```
+
+## 5. Verification
+
+Afte the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols should look like:
+
+```{figure} images/lab10-topology2.png
 ---
 height: 400px
 align: center
 ---
-Once again "terraform init"
+New Topology
 ```
 
-* Run the command `terraform plan` to assess the changes
+### 5.1. Verify SSH traffic from your laptop to bu1
 
-```{figure} images/lab11-clip6.png
+SSH to the Public IP of the instance **aws-us-east-2-spoke1-test1**.
+
+```{figure} images/lab10-sshpod.png
+---
+align: center
+---
+SSH from your laptop
+```
+
+### 5.2. Verify ICMP within bu1 and from bu1 towards bu2
+
+Ping the following instances from **aws-us-east-2-spoke1-test1**:
+
+- **gcp-us-central1-spoke1-test1** in GCP
+- **azure-west-us-spoke1-test1** in Azure
+- **azure-west-us-spoke2-test1** in Azure
+
+According to the rules created before, only the ping towards the **azure-us-west-spoke1-test1** will work, because this instance belongs to the same Smart Group bu1 as the instance from where you generated ICMP traffic.
+
+```{figure} images/lab10-pingcheck.png
+---
+align: center
+---
+Ping
+```
+
+Let's investigate the logs:
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+
+```{tip}
+Filter out based on the protocol **ICMP**.
+```{figure} images/lab10-monitor.png
+---
+align: center
+---
+Filter
+```
+
+Now, let's try to ping the instance **aws-us-east-2-spoke1-test2** from **aws-us-east-2-spoke1-test1**. 
+
+```{warning}
+The instance **aws-us-east-2-spoke1-test1** is in the same VPC. Although these two instances have been deployed in two distinct and separate Smart Groups, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka _intra-vpc separation_).
+```
+
+```{figure} images/lab10-pingtotest2.png
+---
+align: center
+---
+Ping
+```
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button, inside the `"Security Group (SG) Orchestration"` field.
+
+```{figure} images/lab10-orchestration.png
+---
+height: 300px
+align: center
+---
+SG Orchestration
+```
+
+Enable the **_SG orchestration_** feature on the **_aws-us-east-2-spoke1_** VPC, flag the checkbox  `"I understand the network impact of the changes"` and then click on **Save**.
+
+```{figure} images/lab10-orchestration2.png
+---
+align: center
+---
+Manage SG Orchestration
+```
+
+Relaunch the ping from **aws-us-east-2-spoke1-<span style='color:#479608'>test1</span>** towards **aws-us-east-2-spoke1-<span style='color:red'>test2</span>**. 
+
+```{figure} images/lab10-pingtotest2fail.png
+---
+align: center
+---
+Ping fails
+```
+
+```{important}
+This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2, thanks to the Security Group Orchestration carried out by the **Aviatrix Controller**.
+```
+
+### 5.3. Verify SSH within bu1
+
+SSH to the Private IP of the instance **_azure-west-us-spoke1-test1_** in Azure. Despite the fact that the instance is within the same Smart Group "bu1", the SSH will fail due to the absence of a rule that would permit SSH traffic within the Smart Group.
+
+```{figure} images/lab10-sshfail.png
+---
+align: center
+---
+SSH fails
+```
+
+### 5.4. Add a rule that allows SSH in bu1
+
+Create another rule clicking on the `"+ Rule"` button.
+
+```{figure} images/lab10-newrule2.png
+---
+align: center
+---
+New rule
+```
+
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+
+- **Name**: <span style='color:#479608'>intra-ssh-bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>22</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>intra-icmp-bu2</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab10-sshbu1.png
+---
+align: center
+---
+Create rule
+```
+
+Click on `"Commit"` to enforce the new rule into the **Data Plane**.
+
+```{figure} images/lab10-commitsshbu1.png
+---
+height: 300px
+align: center
+---
+Commit
+```
+
+- Try once again to SSH to the Private IP of the instance **_azure-west-us-spoke1-<span style='color:red'>test1</span>_** in Azure in BU1.
+
+This time the connection will be established, thanks to the new intra-rule.
+
+```{figure} images/lab10-sshbu1ok.png
+---
+align: center
+---
+SSH ok
+```
+
+Let's investigate the logs once again.
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and search for the **intra-ssh-bu1** Rule!
+
+```{figure} images/lab10-logsshbu1.png
+---
+height: 150px
+align: center
+---
+Logs 
+```
+
+From the log above is quite evident that the `"intra-ssh-bu1`" rule is permitting SSH traffic within the Smart Group bu1, successfully.
+
+After the creation of the previous intra-rule, this is how the topology with the permitted protocols should look like:
+
+```{figure} images/lab10-topologynew.png
 ---
 height: 400px
 align: center
 ---
-Once again "terraform plan"
+New Topology
 ```
 
-* Run the command `terraform apply --auto-approve`
+### 5.4. SSH to VM in bu2
 
-```{figure} images/lab11-clip7.png
+SSH to the Public IP of the instance **_gcp-us-central1-spoke1-test1_**:
+
+```{figure} images/lab10-sshtocentral.png
+---
+align: center
+---
+SSH to gcp-us-central1-spoke1-test1
+```
+
+### 5.5. Verify ICMP traffic within bu2
+
+Ping the following instances:
+
+- **aws-us-east-2-spoke1-test1** in AWS
+- **aws-us-east-2-spoke1-test2** in AWS
+- **azure-west-us-spoke1-test1** in Azure
+- **azure-west-us-spoke2-test1** in Azure
+
+According to the rules created before, only the ping towards the **azure-west-us-spoke2-test1** and **aws-us-east-2-spoke1-test2** will work, because these two instance belongs to the same Smart Group **bu2** as the instance from where you executed the ICMP traffic.
+
+```{figure} images/lab10-pingtestgcp.png
+---
+align: center
+---
+Ping
+```
+
+Let's investigate the logs once again.
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+
+```{figure} images/lab10-bu2monitor.png
+---
+height: 150px
+align: center
+---
+Monitor
+```
+
+The logs above confirm that the **ICMP** protocol is permitted within the Smart Group bu2.
+
+### 5.6. Inter-rule from bu2 to bu1
+
+Create a new rule that allows ICMP FROM bu2 TO bu1.
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+
+```{figure} images/lab10-newrule4.png
+---
+align: center
+---
+New Rule
+```
+
+Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+
+- **Name**: <span style='color:#479608'>inter-icmp-bu2-bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>intra-ssh-bu1</span>
+  
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab10-interssh.png
+---
+align: center
+---
+Create Rule
+```
+
+Enforce this new rule into the Data Plane clicking on the `"Commit"` button.
+
+```{figure} images/lab10-newcommit2.png
+---
+height: 300px
+align: center
+---
+Commit
+```
+
+SSH to the Public IP of the instance **_azure-west-us-spoke<span style='color:#479608'>2</span>-<span style='color:#479608'>test1</span>_**.
+
+Ping the following instances:
+- **aws-us-east-2-spoke1-test1** in AWS
+- **aws-us-east-2-spoke1-test2** in AWS
+- **gcp-us-central1-spoke1-test1** in GCP
+- **azure-west-us-spoke1-test1** in Azure
+
+Thit time all pings will be successful, thanks to the inter-rule applied between bu2 and bu1.
+
+```{figure} images/lab10-pingallok.png
+---
+
+align: center
+---
+Ping ok
+```
+
+Let's investigate the logs once again.
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+
+Filter out based on the **inter-icmp-bu2-bu1** Rule!
+
+```{figure} images/lab10-monitorfresh.png
+---
+height: 150px
+align: center
+---
+Monitor
+```
+
+The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu2 to bu1.
+
+After the creation of the previous inter-rule, this is how the topology with all the permitted protocols should look like.
+
+```{figure} images/lab10-lastdrawing2.png
 ---
 height: 400px
 align: center
 ---
-Once again "terraform apply"
+New Topology with the DCF rules
 ```
 
-### Expected Results
+```{note}
+The last inter-rule works smoothly only because the ICMP traffic is generated from the bu2, however, if you SSH to any instances in the Smart Group bu1, the ICMP traffic towards bu2 will fail due to the direction of the inter-rule that was created before: **FROM** bu2 **TO** bu1 (please note the direction of the arrow in the drawing).
+```
 
-After a few minutes, a new peering will be established between the **aws-us-east-2-transit** GW and the **aws-us-west-2-transit** GW. You can go to CoPilot and have a look at the new topology.
-
-```{figure} images/lab11-topoloy-transit-peerings.png
+```{figure} images/lab10-direction.png
 ---
 align: center
 ---
-New Peering
+From-To
 ```
 
-`Congratulations, you have deployed the full-blown Aviatrix solution!`
+The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.
+ 
+## 6. East-1 and the Multi-Tier Transit
 
-```{figure} images/lab11-lastdrawing.png
+### 6.1 Activation of the MTT
+
+Let’s now also involve the AWS region **US-EAST-1**.
+
+This time, you have to allow the ICMP traffic between the Smart Group **bu2** and the ec2 instance **_aws-us-east-1-spoke1-test2_**, solely.
+
+```{figure} images/lab10-newtopology3.png
+---
+height: 400px
+align: center
+---
+New Topology
+```
+
+SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
+
+Ping the following instance:
+
+- **aws-us-east-1-spoke1-test2** in AWS
+
+```{figure} images/lab10-pingfails10.png
+---
+align: center
+---
+Ping
+```
+
+The ping fails, therefore, let’s check the routing table of the Spoke Gateway **_azure-west-us-spoke2_**.
+
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the gateway **_azure-west-us-spoke2_**
+
+```{figure} images/lab10-spoke2azure.png
+---
+align: center
+---
+azure-west-us-spoke2
+```
+
+Then click on the `"Gateway Routes"` tab and check whether the destination route is present in the routing table or not.
+
+```{figure} images/lab10-gatewayroutes.png
+---
+align: center
+---
+Gateway Routes
+```
+
+```{figure} images/lab10-newjoe20.png
+---
+height: 300px
+align: center
+---
+10.0.12.0
+```
+
+```{note}
+The destination route is **not** inside the routing table, due to the fact that the Transit Gateway in AWS US-EAST-1 region has only <ins>one peering</ins> with the Transit Gateway in AWS US-EAST-2 region, therefore the Controller will install the routes that belong to US-EAST-1 only inside the routing tables of the Gateways in AWS US-EAST-2, excluding the rest of the Gateways of the MCNA. If you want to distribute the routes from AWS US-EAST-1 region in the whole MCNA, you have <ins>two possibilities</ins>:
+```
+
+- Enabling `"Full-Mesh"` on the Transit Gateways in **_aws-us-east1-transit_** VPC
+
+    **OR**
+
+- Enabling `"Multi-Tier Transit"`
+
+Let’s enable the **MTT** feature, to see its beahvior in action!
+
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-1-transit_**.
+
+```{figure} images/lab10-mtt.png
+---
+align: center
+---
+aws-us-east-1-transit
+```
+
+Go to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
+
+```{figure} images/lab10-mtt2.png
+---
+height: 300px
+align: center
+---
+Border Gateway Protocol (BGP)
+```
+
+Repeat the previous action for the last Transit Gateway still without a BGP ASN configured properly:
+
+- **azure-west-us-transit**: <span style='color:#479608'>ASN **64515**</span>
+
+```{figure} images/lab10-newlab.png
+---
+align: center
+---
+azure-west-us-transit
+```
+
+```{note}
+Both the **aws-us-east-2-transit** and the the **gcp-us-central1-transit** got already configured with their ASNs during the Lab 8!
+```
+
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
+
+```{figure} images/lab10-mtt3.png
+---
+align: center
+---
+aws-us-east-2-transit
+```
+
+Go to `"Settings"` tab and expand the `"General"` section and activate the `"Multi-Tier Transit"`, turning on the corresponding knob. 
+
+Then click on **Save**.
+
+```{figure} images/lab10-mtt4.png
+---
+align: center
+---
+Multi-Tier Transit
+```
+
+Let’s verify once again the routing table of the Spoke Gateway in **_azure-west-us-spoke2_**.
+
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the relevant gateway **_azure-west-us-spoke2_**
+
+```{figure} images/lab10-mtt5.png
+---
+align: center
+---
+azure-west-us-spoke2
+```
+
+This time if you click on the `"Gateway Routes"` tab, you will be able to see the destination route, **10.0.12.0/23**, in **aws-us-east1-spoke1** VPC.
+
+```{figure} images/lab10-mtt6.png
+---
+height: 300px
+align: center
+---
+10.0.12.0/23
+```
+
+- SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
+
+Ping the following instance:
+
+- **aws-us-east-1-spoke1-test2** in AWS (refer to your personal POD portal for the private IP).
+
+```{figure} images/lab10-mtt7.png
+---
+align: center
+---
+Ping
+```
+
+Although this time there is a valid route to the destination, thanks to the **MTT** feature, the pings still fails. 
+
+```{warning}
+The reason is that the ec2-instance  **aws-us-east-1-spoke1-test2** is not allocated to any Smart Groups yet!
+```
+
+### 6.2 Smart Group “east1”
+
+Let’s create another Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in US-EAST-1 region in AWS.
+
+Go to **Copilot > Groups > SmartGroups** and click on  `"+ SmartGroup"` button.
+
+```{figure} images/lab10-mttnew.png
+---
+align: center
+---
+New Smart Group
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>east1</span>
+- **CSP Tag Key**: <span style='color:#479608'>Name</span>
+- **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span>
+
+```{figure} images/lab10-mtt9.png
+---
+align: center
+---
+Resource Selection
+```
+
+The CoPilot shows that there is just one single instance that matches the condition:
+
+- **aws-us-east-1-spoke1-test2** in AWS
+
+Do not forget to click on **Save**.
+
+### 6.3 Create an inter-rule that allows ICMP from bu2 towards east1
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create another rule clicking on the `"+ Rule"` button.
+
+```{figure} images/lab10-mtt8.png
+---
+align: center
+---
+New Rule
+```
+
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+
+- **Name**: <span style='color:#479608'>inter-icmp-bu2-east1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#479608'>east1</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+
+Then click on **Save In Drafts**.
+
+```{caution}
+Please note the direction of this new inter-rule: 
+
+**FROM** bu2 **TO** east1
+```
+
+```{figure} images/lab10-lastrule.png
+---
+align: center
+---
+The Last Rule...
+```
+
+Now you can carry on with the last **commit**!
+
+```{figure} images/lab10-lastcommit.png
+---
+height: 300px
+align: center
+---
+Commit
+```
+
+### 6.4 Verify connectivity between bu2 and east1
+
+- SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_** and ping the private IP of the ec2-instance **_aws-us-east-1-spoke1-test2_**
+
+```{figure} images/lab10-lastping.png
+---
+align: center
+---
+Ping
+```
+
+This time the ping will be successful!
+
+Check the logs once again.
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+
+```{figure} images/lab10-reallylast.png
+---
+height: 200px
+align: center
+---
+inter-icmp-bu2-east1 Logs
+```
+
+After the creation of both the previous inter-rule and the additional Smart Group, this is how the topology with all the permitted protocols should look like.
+
+```{figure} images/lab10-newjoe.png
+---
+height: 400px
+align: center
+---
+Final Topology
+```
+
+## 7. Spoke to Spoke Attachment
+
+Now that you have enabled the Distributed Cloud Firewall, the owner of the **_azure-west-us-spoke2-test1_** VM would like to communicate directly with the nearby **_azure-west-us-spoke1-test1_** VM, avoding that the traffic generated from the VNet is sent to the NGFW, first.
+
+```{figure} images/lab10-spoke2spoke01.png
+---
+align: center
+---
+No More NGFW
+```
+
+### 7.1 Creating a Spoke to Spoke Attachment
+
+Go to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** GW and click on the **`Manage Gateway Attachments`** icon on the right-hand side.
+
+```{figure} images/lab10-spoke2spoke02.png
+---
+height: 200px
+align: center
+---
+Manage Gateway Attachments
+```
+
+Select the **Spoke Gateway** tab, click on the `"+ Attachment"` button and then choose the **azure-west-us-spoke1** GW from the drop-down window.
+
+```{figure} images/lab10-spoke2spoke03.png
+---
+align: center
+---
+azure-west-us-spoke2
+```
+
+```{figure} images/lab10-newspokeatt.png
+---
+align: center
+---
+Save
+```
+
+Do not forget to click on **Save**.
+
+Now go to **CoPilot > Cloud Fabric > Topology** and check the new attachment between the two Spoke Gateways in Azure.
+
+```{figure} images/lab10-spoke2spoke04.png
+---
+align: center
+---
+Spoke to Spoke Attachment
+```
+
+```{caution}
+It will take approximately **2** minutes to reflect into the Dynamic Topology.
+```
+
+Let's check the **Routing Table** of the **_Spoke2_** in Azure.
+
+Go to **CoPilot > Cloud Fabric > Gateways**, select the **azure-west-us-spoke2**, then select the **Gateways Routes** tab and search for the subnet **`192.168.1.0`** on the right-hand side.
+
+```{figure} images/lab10-spoke2spoke05.png
+---
+align: center
+---
+azure-west-us-spoke2
+```
+
+You will notice that the destination is now reachable with a **lower** metric (50)!
+
+```{figure} images/lab10-spoke2spoke06.png
+---
+height: 300px
+align: center
+---
+Metric 50
+```
+
+The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now prefer going through the Spoke-to-Spoke Attachment, for the communication with the Spoke1 VNet.
+
+```{important}
+The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a Hub and Spoke Topology!
+```
+
+```{figure} images/lab10-spoke2spoke07.png
+---
+align: center
+---
+Spoke to Spoke
+```
+
+After this lab, this is how the overall topology would look like:
+
+```{figure} images/lab10-lastdrawing.png
 ---
 height: 400px
 align: center
 ---
 Full-Blown Aviatrix Solution
-```
-
-## 4. IAC Summary
-
-* You deployed an Aviatrix Transit and Spoke using Terraform
-* You added the new Transit to the Global Multicloud Transit Network with a few lines of code
-* Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution
-* In minutes, you can create the network, security and connectivity needed
-
-## 5. - Network Insights API
-
-### Description
-
-The `Aviatrix Network Insights API` simplifies the process of navigating network interface statistics and micro-gateway status data. By integrating this API with your visualization platforms (with vendors you already know and love!), you can easily make data-driven decisions.
-
-### Validate
-
-* Go to your personal POD Portal, identify the **_Lab11_** section and click on the `Open Grafana` button.
-
-```{figure} images/lab11-edge10.png
----
-align: center
----
-Lab 11 section on the POD Portal
-```
-
-```{important}
-The API Key was generated at the lunch of all PODs and was applied on the Prometheus/Grafana server!
-```
-
-Enter the required credentials that are available on the POD Portal and then click on **Log in**.
-
-```{figure} images/lab11-edge20.png
----
-align: center
----
-Grafana Login Page
-```
-
-You will immediately notice the Receive Rate and Transmit Rate stats!
-
-```{figure} images/lab11-edge30.png
----
-align: center
----
-Receive Rate and Transmit Rate
-```
-
-```{caution}
-Go to **CoPilot > Settings > Configuration** and then identify the `"Network Insights API"` widget.
-
-You will find the **API Key** generated on the CoPilot and then used on Prometheus/Grafana!
-```
-
-```{figure} images/lab11-networkinsight1.png
----
-height: 400px
-align: center
----
-Network Insight API section
-```
-
-```{tip}
-Download the API Key and explore the content of the file!
-```
-
-```{figure} images/lab11-networkinsight2.png
----
-align: center
----
-API key 
 ```
