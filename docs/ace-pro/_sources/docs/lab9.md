@@ -1,6 +1,4 @@
-# Lab 9 - THREATIQ & COSTIQ
-
-## 1. Objective
+# Lab 9 - THREAT DETECTION
 
 This lab will demonstrate how `ThreatIQ` and `CostIQ` work.
  
