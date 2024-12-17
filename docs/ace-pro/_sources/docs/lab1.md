@@ -20,6 +20,12 @@ align: center
 POD portal
 ```
 
+```{caution}
+You will get only access to the **AWS** Console!
+
+Access to both the _Azure_ console and the _GCP_ console are not granted.
+```
+
 ## 2. Azure VNet
 ### 2.1. Create Azure VNet
 
