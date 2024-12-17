@@ -64,7 +64,7 @@
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lab 10 - DISTRIBUTED CLOUD FIREWALL" href="lab11.html" />
+    <link rel="next" title="Lab 11 - DISTRIBUTED CLOUD FIREWALL" href="lab11.html" />
     <link rel="prev" title="Lab 9 - THREAT DETECTION" href="lab9.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,8 +182,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREAT DETECTION</a></li>
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 10 - COSTIQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 10 - DISTRIBUTED CLOUD FIREWALL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab12.html">Lab 11 - IAC &amp; NETWORK INSIGHTS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab12.html">Lab 12 - IAC &amp; NETWORK INSIGHTS API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
 </ul>
@@ -332,11 +332,12 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#costiq">2. CostIQ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-costiq">2.1 Enable CostIQ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#costiq-overview">2. CostIQ Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-costiq">3. Implement CostIQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-costiq">3.1 Enable CostIQ</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-york-dc-is-the-shared-services">3. New York DC is the Shared Services</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-york-dc-is-the-shared-services">4. New York DC is the Shared Services</a></li>
 </ul>
             </nav>
         </div>
@@ -354,8 +355,12 @@
 <h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
 <p>This lab will demonstrate how <code class="docutils literal notranslate"><span class="pre">CostIQ</span></code> works.</p>
 </section>
-<section id="costiq">
-<h2>2. CostIQ<a class="headerlink" href="#costiq" title="Link to this heading">#</a></h2>
+<section id="costiq-overview">
+<h2>2. CostIQ Overview<a class="headerlink" href="#costiq-overview" title="Link to this heading">#</a></h2>
+<p>The CostIQ feature provides detailed traffic distribution analysis for your cost centers, including traffic flowing to shared-service resource hosts by Cloud Account, by Cost Center, by VPC/VNet, and by Gateway.</p>
+</section>
+<section id="implement-costiq">
+<h2>3. Implement CostIQ<a class="headerlink" href="#implement-costiq" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Define the following <strong>Cost Centers</strong> and <strong>Shared Service</strong>:</p></li>
 </ul>
@@ -380,7 +385,7 @@
 <li><p>workstation client “edge”</p></li>
 </ul>
 <section id="enable-costiq">
-<h3>2.1 Enable CostIQ<a class="headerlink" href="#enable-costiq" title="Link to this heading">#</a></h3>
+<h3>3.1 Enable CostIQ<a class="headerlink" href="#enable-costiq" title="Link to this heading">#</a></h3>
 <p>Go to <strong>Copilot &gt; Billing &amp; Cost &gt; CostIQ</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">CostIQ&quot;</span></code> button.</p>
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/lab9-costiq.png"><img alt="../_images/lab9-costiq.png" src="../_images/lab9-costiq.png" style="height: 250px;" /></a>
@@ -430,7 +435,7 @@
 </section>
 </section>
 <section id="new-york-dc-is-the-shared-services">
-<h2>3. New York DC is the Shared Services<a class="headerlink" href="#new-york-dc-is-the-shared-services" title="Link to this heading">#</a></h2>
+<h2>4. New York DC is the Shared Services<a class="headerlink" href="#new-york-dc-is-the-shared-services" title="Link to this heading">#</a></h2>
 <p>Now let’s discover the <strong>CIDRs</strong> of <strong>New York DC</strong>:</p>
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP Info</strong>, then click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code>.</p></li>
@@ -479,7 +484,7 @@
 <figure class="align-center" id="id14">
 <a class="reference internal image-reference" href="../_images/lab9-final.png"><img alt="../_images/lab9-final.png" src="../_images/lab9-final.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 374 </span><span class="caption-text">Final topology for Lab 9</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 374 </span><span class="caption-text">Final topology for Lab 10</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -529,7 +534,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lab 10 - DISTRIBUTED CLOUD FIREWALL</p>
+        <p class="prev-next-title">Lab 11 - DISTRIBUTED CLOUD FIREWALL</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -551,11 +556,12 @@
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#costiq">2. CostIQ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-costiq">2.1 Enable CostIQ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#costiq-overview">2. CostIQ Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-costiq">3. Implement CostIQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-costiq">3.1 Enable CostIQ</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-york-dc-is-the-shared-services">3. New York DC is the Shared Services</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-york-dc-is-the-shared-services">4. New York DC is the Shared Services</a></li>
 </ul>
   </nav></div>
 

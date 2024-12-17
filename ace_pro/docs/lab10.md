@@ -4,7 +4,11 @@
 
 This lab will demonstrate how `CostIQ` works.
 
-## 2. CostIQ
+## 2. CostIQ Overview
+
+The CostIQ feature provides detailed traffic distribution analysis for your cost centers, including traffic flowing to shared-service resource hosts by Cloud Account, by Cost Center, by VPC/VNet, and by Gateway.
+
+## 3. Implement CostIQ
 
 - Define the following **Cost Centers** and **Shared Service**:
 
@@ -26,7 +30,7 @@ This lab will demonstrate how `CostIQ` works.
 **NEW YORK DC**:
 - workstation client "edge"
 
-### 2.1 Enable CostIQ
+### 3.1 Enable CostIQ
 
 Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` button.
 
@@ -88,7 +92,7 @@ align: center
 Cost Centers Overview
 ```
 
-## 3. New York DC is the Shared Services
+## 4. New York DC is the Shared Services
 
 Now let's discover the **CIDRs** of **New York DC**:
 
@@ -152,6 +156,6 @@ After this lab, this is how the overall topology would look like:
 height: 400px
 align: center
 ---
-Final topology for Lab 9
+Final topology for Lab 10
 ```
 

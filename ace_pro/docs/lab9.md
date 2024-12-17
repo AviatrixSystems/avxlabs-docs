@@ -1,13 +1,13 @@
 # Lab 9 - THREAT DETECTION
 
-This lab will demonstrate how `ThreatIQ` and `CostIQ` work.
- 
-## 2. ThreatIQ Overview
+This lab will demonstrate how the `DCF ThreatGroup` is capable to prevent traffic from being sent to, or from, a set of **threat IPs**.
 
-Aviatrix Gateways send NetFlow data to CoPilot. CoPilot uses this data in many ways. **FlowIQ** is one. **ThreatIQ** is another. ThreatIQ alerts you on Malicious IPs with bad reputations, but then can also apply an enforcement. These IPs are reported in the ThreatIQ database that CoPilot maintains.
+## 2. ThreatGroup Overview
+
+The **Default ThreatGroup** can be used in DCF rules to ensure that traffic meeting the ThreatGroup criteria is blocked.
 
 ```{important}
-ThreatIQ protect all the Aviatrix Gateways and it relies on a well-known database, provided by **`Proofpoint`**.
+The Default ThreatGroup is regularly updated with data from the **`Proofpoint Global Threat Database`**.
 ```
 
 ## 3. Topology
