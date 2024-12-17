@@ -114,6 +114,7 @@ Retrieve the Public IP address of **_aws-us-east-1-spoke1-test1_** instance:
 ---
 align: center
 ---
+height: 250px
 Public IP address
 ```
 
@@ -146,7 +147,9 @@ Curl towards the malicious IP
 The traffic will be permitted... Let's now enforce the `ThreatIQ mechanism`!
 
 ```{note}
-The IP shown in these screenshots  might not be deemed a threat when you read this. Please use the malicious IP provided by the instructor.
+The IP shown in these screenshots  might not be deemed a threat when you read this. 
+
+<ins>Please use the malicious IP provided by the instructor</ins>.
 ```
 
 ## 6.0 Create a new SmartGroup 
@@ -186,6 +189,7 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab9-smart003.png
 ---
+height: 250px
 align: center
 ---
 SmartGroups List
@@ -204,7 +208,7 @@ New Rule
 
 Insert the following parameters
 
-- **Name**: <span style='color:#479608'>PSF-Rule</span>
+- **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-aws-us-east-1-spoke1-test1</span>
 - **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 - **Destination Groups**: <span style='color:#479608'>DeafultThreatGroup</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
@@ -221,13 +225,47 @@ align: center
 Saving the new Rule
 ```
 
-Click on the **Commit** button!
+Now before committing, create another DCF rule for blocking also the traffic sourced from any Malicious IP addresses towards 
 
-```{figure} images/lab96-newrule11.png
+```{important}
+These two rules will protect the `bi-directional communication`: traffic will be blocked if **aws-us-east-1-spoke1-test1** will try to reach any **M**alcious IPs** (by _ProfPoint's DB_), and likewise traffic will be blocked if any **Malicious IPs** (by _ProfPoint's DB_) will try to reach the **aws-us-east-1-spoke1-test1**.
+```
+
+Create a new rule clicking on the `"+ Rule"` button:
+
+```{figure} images/lab911-new33.png
 ---
 align: center
 ---
-PSF-Rule
+New Rule
+```
+
+Insert the following parameters
+
+- **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-malicious-ips</span>
+- **Source Groups**: <span style='color:#479608'>DeafultThreatGroup</span>
+- **Destination Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Enforcement**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+
+Do not forget to click on **Save In Drafts**. 
+
+```{figure} images/lab96-newrule44.png
+---
+align: center
+---
+PSF-Deny-Rule-from-malicious-ips
+```
+
+Do not forget now to **Commit** your new rules!
+
+```{figure} images/lab96-newrule-commit.png
+---
+align: center
+---
+Commit the new rules
 ```
 
 ```{important}
