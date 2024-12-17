@@ -112,9 +112,10 @@ Retrieve the Public IP address of **_aws-us-east-1-spoke1-test1_** instance:
 
 ```{figure} images/lab9-newsg010.png
 ---
+height: 250px
 align: center
 ---
-height: 250px
+
 Public IP address
 ```
 
@@ -125,7 +126,9 @@ align: center
 SSH session
 ```
 
-Wait for the instructor to provide a malicious IP. Let's call it `<malicious-IP>`. 
+Wait for the instructor to provide a malicious IP. 
+
+Let's call it `<malicious-IP>`. 
 
 ```{important}
 <ins>Note down this IP address!</ins>
@@ -189,7 +192,7 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab9-smart003.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 SmartGroups List
