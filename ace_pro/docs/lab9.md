@@ -1,4 +1,4 @@
-# Lab 9 - THREAT DETECTION
+# Lab 9 - THREAT PREVENTION
 
 This lab will demonstrate how the `DCF ThreatGroup` is capable to prevent traffic from being sent to, or from, a set of **threat IPs**.
 
