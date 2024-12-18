@@ -305,6 +305,10 @@ align: center
 SSH from your laptop
 ```
 
+```{caution}
+The SSH session from your laptop to the **_aws-us-east-2-spoke1-test1_** instance is not affected by any DCF rules, because the connection is established directly through the **AWS IGW**. 
+```
+
 ### 5.2. Verify ICMP within bu1 and from bu1 towards bu2
 
 Ping the following instances from **aws-us-east-2-spoke1-test1**:
@@ -324,21 +328,28 @@ Ping
 
 Let's investigate the logs:
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and then click on the filter icon and filter out based on the rule `"intra-icmp-bu1"`.
 
 ```{tip}
 Filter out based on the protocol **ICMP**.
-```{figure} images/lab10-monitor.png
+```{figure} images/lab10-monitor100.png
 ---
 align: center
 ---
 Filter
 ```
 
+```{figure} images/lab10-monitor.png
+---
+align: center
+---
+Outcomes
+```
+
 Now, let's try to ping the instance **aws-us-east-2-spoke1-test2** from **aws-us-east-2-spoke1-test1**. 
 
 ```{warning}
-The instance **aws-us-east-2-spoke1-test1** is in the same VPC. Although these two instances have been deployed in two distinct and separate Smart Groups, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka _intra-vpc separation_).
+The instance **aws-us-east-2-spoke1-test1** is in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka **_intra-vpc separation_**).
 ```
 
 ```{figure} images/lab10-pingtotest2.png
@@ -377,12 +388,12 @@ Ping fails
 ```
 
 ```{important}
-This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2, thanks to the Security Group Orchestration carried out by the **Aviatrix Controller**.
+This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2 region, thanks to the Security Group Orchestration carried out by the **Aviatrix Controller**.
 ```
 
 ### 5.3. Verify SSH within bu1
 
-SSH to the Private IP of the instance **_azure-west-us-spoke1-test1_** in Azure. Despite the fact that the instance is within the same Smart Group "bu1", the SSH will fail due to the absence of a rule that would permit SSH traffic within the Smart Group.
+SSH to the Private IP of the instance **_azure-west-us-spoke1-test1_** in Azure. Despite the fact that the instance is within the same Smart Group "bu1", the SSH will fail due to the absence of a dedicated rule that would permit SSH traffic within the Smart Group.
 
 ```{figure} images/lab10-sshfail.png
 ---
@@ -446,7 +457,7 @@ SSH ok
 
 Let's investigate the logs once again.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and search for the **intra-ssh-bu1** Rule!
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on the **intra-ssh-bu1** Rule!
 
 ```{figure} images/lab10-logsshbu1.png
 ---
