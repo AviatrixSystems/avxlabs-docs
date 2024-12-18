@@ -168,9 +168,9 @@ Ping
 ```
 
 ```{note}
-From the outcomes above you can see that only **aws-us-east-2-spoke1-<span style='color:red'>test2</span>** instance is pingable, this is because the ICMP traffic from the **_aws-us-east-2-spoke1-test1_** towards the **_aws-us-east-2-spoke1-test2_** is **NOT** traversing the Spoke Gateway. 
+From the outcomes above you can figure out that only **aws-us-east-2-spoke1-<span style='color:red'>test2</span>** instance is pingable, this is because the ICMP traffic from the **_aws-us-east-2-spoke1-test1_** towards the **_aws-us-east-2-spoke1-test2_** is **NOT** traversing the Spoke Gateway. 
 
-The Traffic is leveraging the normal behaviour of the intra-vpc communication
+The Traffic is leveraging the normal behaviour of the intra-vpc communication.
 ```
 
 ### 3.4.  Connectivity verification (SSH)
@@ -195,80 +195,14 @@ align: center
 SSH fails towards the other instances
 ```
 
-The previous outcomes confirm undoubtetly that the connectivity is broken. Only the `intra-vpc traffic` is permitted.
+The previous outcomes confirm undoubtedly that the connectivity is broken. Only the `intra-vpc traffic` is permitted.
 
 ## 4. DCF Rules Creation
-### 4.1. Build a Zero Trust  Network Architecture
-
-First and foremost, let's delete the `Greenfield-Rule` at the very top of the list of your DCF rules.
-
-```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default)**, click on the the `"two arrows"` icon on the righ-hand side of the `Greenfield-Rule` and choose *`"Delete Rule"`*. 
-
-Then click on **Commit**.
-```
-
-```{figure} images/lab10-newedit.png
----
-height: 150px
-align: center
----
-Delete the Greenfield-Rule
-```
-
-- Repeat the same action for the `"Inspection-Rule"` .
-
-```{figure} images/lab10-commit.png
----
-height: 300px
-align: center
----
-Delete the Inspection-Rule
-```
-
-```{note}
-The **Egress-Rule** is configured with the **enforcement=off**, therefore it will NOT affect the Data Path!
-```
-
-- Now click on `"+ Rule"` and create an ad-hoc **Explicit-Deny-Rule**, with the following parameters:
-
-Insert the following parameters
-
-- **Name**: <span style='color:#479608'>Explicit-Deny-Rule</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
-- **Protocol**: <span style='color:#479608'>Any</span>
-- **Enforcement**: <span style='color:#479608'>**On**</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Deny**</span>
-
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab6-new.png
----
-align: center
----
-Saving the new Rule
-```
-
-Now click on **Commit**.
-
-```{figure} images/lab6-new234.png
----
-align: center
----
-Committing the new Rule
-```
-
-```{important}
-The ad-hoc `Explicit-Deny-Rule` can be configured with Logging=**On**!
-```
+### 4.1. Create an intra-rule that allows ICMP inside bu1
 
 ```{warning}
 Zero Trust architecture is "Never trust, always verify", a critical component to enterprise cloud adoption success!
 ```
-
-### 4.2. Create an intra-rule that allows ICMP inside bu1
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
