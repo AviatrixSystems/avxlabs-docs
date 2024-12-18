@@ -170,7 +170,7 @@ Ping
 ```{note}
 From the outcomes above you can figure out that only **aws-us-east-2-spoke1-<span style='color:red'>test2</span>** instance is pingable, this is because the ICMP traffic from the **_aws-us-east-2-spoke1-test1_** towards the **_aws-us-east-2-spoke1-test2_** is **NOT** traversing the Spoke Gateway. 
 
-The Traffic is leveraging the normal behaviour of the intra-vpc communication.
+The ICMP traffic is leveraging the normal behaviour of the intra-vpc communication.
 ```
 
 ### 3.4.  Connectivity verification (SSH)
@@ -284,7 +284,7 @@ Commit
 
 ## 5. Verification
 
-Afte the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols should look like:
+After the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols should look like:
 
 ```{figure} images/lab10-topology2.png
 ---
