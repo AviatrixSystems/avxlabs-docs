@@ -2,7 +2,7 @@
 
 This lab will demonstrate how the `DCF ThreatGroup` is capable to prevent traffic from being sent to, or from, a set of **threat IPs**.
 
-## 2. ThreatGroup Overview
+## 1. ThreatGroup Overview
 
 The **Default ThreatGroup** can be used in DCF rules to ensure that traffic meeting the ThreatGroup criteria is blocked.
 
@@ -10,7 +10,7 @@ The **Default ThreatGroup** can be used in DCF rules to ensure that traffic meet
 The Default ThreatGroup is regularly updated with data from the **`Proofpoint Global Threat Database`**.
 ```
 
-## 3. Topology
+## 2. Topology
 
 In this lab, we will deploy a `“PSF"` gateway in AWS **US-EAST-1** region, to protect SOLELY the public subnet where the test1 instance resides.
 
@@ -21,8 +21,8 @@ align: center
 Lab 9 Initial Topology
 ```
 
-## 4. PSF
-### 4.1 Deploy the PSF
+## 3. PSF
+### 3.1 Deploy the PSF
 
 Go to **CoPilot > Cloud Fabric > Gateways > Specialty Gateways**, then click on the `“+ Gateway"` button and then choose the **Public Subnet Filtering Gateway**.
 
@@ -64,7 +64,7 @@ align: center
 PSF deployment in progress
 ```
 
-### 4.2 RTB verification
+### 3.2 RTB verification
 
 - Click on the **PSF** gateway, select the **VPC/VNet Route Tables** and then inspect the **_aviatrix-Aviatrix-Filter-Gateway_** Route Table
 
@@ -98,11 +98,11 @@ align: center
 aws-us-east1-spoke1-rtb-public-a
 ```
 
-## 5.0 Generate traffic towards a Malicious IP
+## 4.0 Generate traffic towards a Malicious IP
 
 Now that there is a PSF Gateway on defending the Public Subnet, let's generate some traffic towards an IP with Bad Reputation.
 
-### 5.1 SSH to aws-us-east1-spoke1-test1
+### 4.1 SSH to aws-us-east1-spoke1-test1
 
 Retrieve the Public IP address of **_aws-us-east-1-spoke1-test1_** instance:
 
@@ -153,7 +153,7 @@ The IP shown in these screenshots  might not be deemed a threat when you read th
 <ins>Please use the malicious IP provided by the instructor</ins>.
 ```
 
-## 6.0 Create a new SmartGroup 
+## 5.0 Create a new SmartGroup 
 
 Let's create another SmartGroup that can identify the **_aws-us-east-1-spoke1-test1_** instance that resides in the **US-EAST-1** region.
 
@@ -196,7 +196,7 @@ align: center
 SmartGroups List
 ```
 
-## 7.0 Create two new DCF rules
+## 6.0 Create two new DCF rules
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -286,7 +286,7 @@ Default ThreatGroup
 `ProofPoint` sends its new malicious IP addresses DB to the CoPilot every **30 minutes**. 
 ```
 
-## 8.0 Generate again traffic towards the "Bad Guy"
+## 7.0 Generate again traffic towards the "Bad Guy"
 
 Now let's delete the **Greenfield-Rule**, such that the **ZTNA** can be restored in the Data Path!
 
@@ -318,7 +318,7 @@ align: center
 DCF Rules List
 ```
 
-### 8.1 Create a new SmartGroup
+### 7.1 Create a new SmartGroup
 
 Let's create another **WebGroup** that will exactly match three domains:
 
@@ -353,7 +353,7 @@ align: center
 WebGroup creation
 ```
 
-### 8.2 Create a PSF-Allow-Rule
+### 7.2 Create a PSF-Allow-Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -394,7 +394,7 @@ align: center
 Commit
 ```
 
-## 9. Connectivity Tests
+## 8. Connectivity Tests
 
 Now before launching the connectivity test, those three rules related to the PSF must be enforced on the PSF gateway itself.
 

@@ -330,25 +330,25 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatgroup-overview">2. ThreatGroup Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">4.2 RTB verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatgroup-overview">1. ThreatGroup Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">2. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">3. PSF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">3.1 Deploy the PSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">3.2 RTB verification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-a-malicious-ip">5.0 Generate traffic towards a Malicious IP</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-aws-us-east1-spoke1-test1">5.1 SSH to aws-us-east1-spoke1-test1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-a-malicious-ip">4.0 Generate traffic towards a Malicious IP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-aws-us-east1-spoke1-test1">4.1 SSH to aws-us-east1-spoke1-test1</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">6.0 Create a new SmartGroup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">7.0 Create two new DCF rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">8.0 Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1 Create a new SmartGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">8.2 Create a PSF-Allow-Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5.0 Create a new SmartGroup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6.0 Create two new DCF rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7.0 Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.1 Create a new SmartGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.2 Create a PSF-Allow-Rule</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests">9. Connectivity Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests">8. Connectivity Tests</a></li>
 </ul>
             </nav>
         </div>
@@ -364,7 +364,7 @@
 <h1>Lab 9 - THREAT PREVENTION<a class="headerlink" href="#lab-9-threat-prevention" title="Link to this heading">#</a></h1>
 <p>This lab will demonstrate how the <code class="docutils literal notranslate"><span class="pre">DCF</span> <span class="pre">ThreatGroup</span></code> is capable to prevent traffic from being sent to, or from, a set of <strong>threat IPs</strong>.</p>
 <section id="threatgroup-overview">
-<h2>2. ThreatGroup Overview<a class="headerlink" href="#threatgroup-overview" title="Link to this heading">#</a></h2>
+<h2>1. ThreatGroup Overview<a class="headerlink" href="#threatgroup-overview" title="Link to this heading">#</a></h2>
 <p>The <strong>Default ThreatGroup</strong> can be used in DCF rules to ensure that traffic meeting the ThreatGroup criteria is blocked.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -372,7 +372,7 @@
 </div>
 </section>
 <section id="topology">
-<h2>3. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
+<h2>2. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
 <p>In this lab, we will deploy a <code class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in AWS <strong>US-EAST-1</strong> region, to protect SOLELY the public subnet where the test1 instance resides.</p>
 <figure class="align-center" id="id2">
 <img alt="../_images/lab9-initialtopology.png" src="../_images/lab9-initialtopology.png" />
@@ -382,9 +382,9 @@
 </figure>
 </section>
 <section id="psf">
-<h2>4. PSF<a class="headerlink" href="#psf" title="Link to this heading">#</a></h2>
+<h2>3. PSF<a class="headerlink" href="#psf" title="Link to this heading">#</a></h2>
 <section id="deploy-the-psf">
-<h3>4.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf" title="Link to this heading">#</a></h3>
+<h3>3.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">Gateway&quot;</span></code> button and then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
 <figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/lab9-psf.png"><img alt="../_images/lab9-psf.png" src="../_images/lab9-psf.png" style="height: 300px;" /></a>
@@ -421,7 +421,7 @@
 </figure>
 </section>
 <section id="rtb-verification">
-<h3>4.2 RTB verification<a class="headerlink" href="#rtb-verification" title="Link to this heading">#</a></h3>
+<h3>3.2 RTB verification<a class="headerlink" href="#rtb-verification" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Click on the <strong>PSF</strong> gateway, select the <strong>VPC/VNet Route Tables</strong> and then inspect the <strong><em>aviatrix-Aviatrix-Filter-Gateway</em></strong> Route Table</p></li>
 </ul>
@@ -454,10 +454,10 @@
 </section>
 </section>
 <section id="generate-traffic-towards-a-malicious-ip">
-<h2>5.0 Generate traffic towards a Malicious IP<a class="headerlink" href="#generate-traffic-towards-a-malicious-ip" title="Link to this heading">#</a></h2>
+<h2>4.0 Generate traffic towards a Malicious IP<a class="headerlink" href="#generate-traffic-towards-a-malicious-ip" title="Link to this heading">#</a></h2>
 <p>Now that there is a PSF Gateway on defending the Public Subnet, let’s generate some traffic towards an IP with Bad Reputation.</p>
 <section id="ssh-to-aws-us-east1-spoke1-test1">
-<h3>5.1 SSH to aws-us-east1-spoke1-test1<a class="headerlink" href="#ssh-to-aws-us-east1-spoke1-test1" title="Link to this heading">#</a></h3>
+<h3>4.1 SSH to aws-us-east1-spoke1-test1<a class="headerlink" href="#ssh-to-aws-us-east1-spoke1-test1" title="Link to this heading">#</a></h3>
 <p>Retrieve the Public IP address of <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance:</p>
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, search for <code class="docutils literal notranslate"><span class="pre">aws-us-east-1-spoke1-test1</span></code> and then copy the <strong>Public</strong> IPv4 address!</p></li>
@@ -501,7 +501,7 @@
 </section>
 </section>
 <section id="create-a-new-smartgroup">
-<h2>6.0 Create a new SmartGroup<a class="headerlink" href="#create-a-new-smartgroup" title="Link to this heading">#</a></h2>
+<h2>5.0 Create a new SmartGroup<a class="headerlink" href="#create-a-new-smartgroup" title="Link to this heading">#</a></h2>
 <p>Let’s create another SmartGroup that can identify the <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance that resides in the <strong>US-EAST-1</strong> region.</p>
 <figure class="align-center" id="id12">
 <img alt="../_images/lab9-routetablepsf234.png" src="../_images/lab9-routetablepsf234.png" />
@@ -537,7 +537,7 @@
 </figure>
 </section>
 <section id="create-two-new-dcf-rules">
-<h2>7.0 Create two new DCF rules<a class="headerlink" href="#create-two-new-dcf-rules" title="Link to this heading">#</a></h2>
+<h2>6.0 Create two new DCF rules<a class="headerlink" href="#create-two-new-dcf-rules" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id16">
 <img alt="../_images/lab9-newrule10.png" src="../_images/lab9-newrule10.png" />
@@ -614,7 +614,7 @@
 </div>
 </section>
 <section id="generate-again-traffic-towards-the-bad-guy">
-<h2>8.0 Generate again traffic towards the “Bad Guy”<a class="headerlink" href="#generate-again-traffic-towards-the-bad-guy" title="Link to this heading">#</a></h2>
+<h2>7.0 Generate again traffic towards the “Bad Guy”<a class="headerlink" href="#generate-again-traffic-towards-the-bad-guy" title="Link to this heading">#</a></h2>
 <p>Now let’s delete the <strong>Greenfield-Rule</strong>, such that the <strong>ZTNA</strong> can be restored in the Data Path!</p>
 <ul class="simple">
 <li><p>Click on the <strong>three dots</strong> icon on the right-hand side of the Greenfield-Rule entry and then choose the <code class="docutils literal notranslate"><span class="pre">&quot;Delete</span> <span class="pre">Rule&quot;</span></code> option.</p></li>
@@ -639,7 +639,7 @@
 </figcaption>
 </figure>
 <section id="id1">
-<h3>8.1 Create a new SmartGroup<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>7.1 Create a new SmartGroup<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Let’s create another <strong>WebGroup</strong> that will exactly match three domains:</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="http://www.nginx.com">www.nginx.com</a></p></li>
@@ -670,7 +670,7 @@
 </figure>
 </section>
 <section id="create-a-psf-allow-rule">
-<h3>8.2 Create a PSF-Allow-Rule<a class="headerlink" href="#create-a-psf-allow-rule" title="Link to this heading">#</a></h3>
+<h3>7.2 Create a PSF-Allow-Rule<a class="headerlink" href="#create-a-psf-allow-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id27">
 <img alt="../_images/lab9-newrule100.png" src="../_images/lab9-newrule100.png" />
@@ -706,7 +706,7 @@
 </section>
 </section>
 <section id="connectivity-tests">
-<h2>9. Connectivity Tests<a class="headerlink" href="#connectivity-tests" title="Link to this heading">#</a></h2>
+<h2>8. Connectivity Tests<a class="headerlink" href="#connectivity-tests" title="Link to this heading">#</a></h2>
 <p>Now before launching the connectivity test, those three rules related to the PSF must be enforced on the PSF gateway itself.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
@@ -848,25 +848,25 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatgroup-overview">2. ThreatGroup Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">4. PSF</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">4.1 Deploy the PSF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">4.2 RTB verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatgroup-overview">1. ThreatGroup Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">2. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">3. PSF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">3.1 Deploy the PSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">3.2 RTB verification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-a-malicious-ip">5.0 Generate traffic towards a Malicious IP</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-aws-us-east1-spoke1-test1">5.1 SSH to aws-us-east1-spoke1-test1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-a-malicious-ip">4.0 Generate traffic towards a Malicious IP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-aws-us-east1-spoke1-test1">4.1 SSH to aws-us-east1-spoke1-test1</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">6.0 Create a new SmartGroup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">7.0 Create two new DCF rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">8.0 Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1 Create a new SmartGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">8.2 Create a PSF-Allow-Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5.0 Create a new SmartGroup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6.0 Create two new DCF rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7.0 Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.1 Create a new SmartGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.2 Create a PSF-Allow-Rule</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests">9. Connectivity Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests">8. Connectivity Tests</a></li>
 </ul>
   </nav></div>
 
