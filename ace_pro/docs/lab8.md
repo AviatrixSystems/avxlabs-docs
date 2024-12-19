@@ -1,10 +1,13 @@
 # Lab 8 - SECURE HIGH-PERFORMANCE DATACENTER EDGE
+This lab will demonstrate how securely govern the `Egress traffic`.
+
+## 1. General Objectives
 
 You are  asked to interconnect the on-prem DC in New York to your MCNA. An **Aviatrix Edge** device has already been provisioned and it got already registered to the existing **Aviatrix Controller**.
 
 Aviatrix Secure High-Performance Datacenter Edge solution gives power back to the network administrators to deliver cloud connectivity without compromise.  The solution delivers encrypted, line-rate performance with single region, multi region, or multi cloud redundancy options and full visibility and troubleshooting capabilities end to end.
 
-## 1. General Objectives
+## 2. Initial set-up
 
 Now let's connect the `Aviatrix Edge` to the existing MCNA. 
 
@@ -56,7 +59,7 @@ align: center
 No routes advertised by the Edge yet
 ```
 
-### 1.1. Attachment between Edge and the Transit
+### 2.1. Attachment between Edge and the Transit
 
 Let's establish a peering between the Aviatrix Edge device and the Transit Gateway in **US-EAST-2**. 
 
@@ -179,7 +182,7 @@ Attachment established!
 The **Edge** device allows to extend all the Aviatrix functionalities to the remote DC!
 ```
 
-## 2. Network Domain Association
+## 3. Network Domain Association
 
 Let's assocciate the Edge connection to any of the existing Network Domains.
 
@@ -217,7 +220,7 @@ align: center
 BGP Advertised Routes
 ```
 
-## 3. Edge: Connectivity Test
+## 4. Edge: Connectivity Test
 
 Let's launch a connectivity test, from the Workstation "Edge" inside the DC in New York. 
 
@@ -274,7 +277,7 @@ align: center
 Ping
 ```
 
-## 4. Edge: FlowIQ
+## 5. Edge: FlowIQ
 
 * Use <span style='color:#FF0000'>**FlowIQ**</span> from the Aviatrix CoPilot, <ins> for inspecting the NetFlow Data.
 
@@ -329,7 +332,7 @@ Aviatrix Gateway
 On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
-## 5. Edge: "It's more than a Spoke GW""
+## 6. Edge: "It's more than a Spoke GW""
 
 The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus <ins>the Edge device is regarded much more than a classic Spoke gateway</ins>.
 
@@ -425,7 +428,7 @@ align: center
 Topology
 ```
 
-### 5.1 Edge: As-Path Prepend
+### 6.1 Edge: As-Path Prepend
 
 Now, let's **SSH** on the EC2 _**aws-us-east-2-spoke1-test1**_  and then launch the command _traceroute_ towards the VM _**gcp-us-central1-spoke1-test1**_ in GCP
 
@@ -611,6 +614,8 @@ align: center
 ---
 edge
 ```
+
+## 7. Final verification
 
 Let's relaunch the traceroute towards 172.16.1.100 from the **_aws-us-east-2-spoke1-test1_**.
 
