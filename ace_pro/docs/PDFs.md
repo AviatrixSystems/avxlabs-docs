@@ -24,7 +24,7 @@ Click this link to {Download}`ACE Prof Mod09 - Site2Cloud & Edge <files/ACE Prof
 
 Click this link to {Download}`ACE Prof Mod10 - User VPN <files/ACE Prof Mod10 - User VPN.pdf>`
 
-Click this link to {Download}`ACE Prof Mod11 - ThreatIQ and CostIQ <files/ACE Prof Mod11 - ThreatIQ and CostIQ.pdf>`
+Click this link to {Download}`ACE Prof Mod11 - Threat Prevention and CostIQ <files/ACE Prof Mod11 - Threat Prevention and CostIQ.pdf>`
 
 Click this link to {Download}`ACE Prof Mod12 - Distributed Cloud Firewall <files/ACE Prof Mod12 - Distributed Cloud Firewall.pdf>`
 
