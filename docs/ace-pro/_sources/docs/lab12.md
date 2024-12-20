@@ -7,7 +7,7 @@ All the elements you have created through the UI, can also be created through th
 You can find more information on these here:
 https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs
 
-## 2. Validate
+## 2. Provision through Terraform
 
 We have prepared some Terraform code for you, which you will explore and deploy.
 
@@ -107,7 +107,7 @@ Visual Studio Code
 
 Once Terraform is finished, have a look at the newly created **terraform.tfstate** file. This contains information of all infrastructure created through Terraform. This is referred to as **“the state”**. Losing it can cause a lot of trouble, but that is for another (Terraform) lesson.
 
-### Expected Results
+### 2.1 Expected Results
 
 By running the above commands, you should see how simple it can be to automate your infrastructure deployments using Terraform.  With a few lines of code and after about **6 minutes**, you should see the new transit and spoke in CoPilot Topology.  
 
@@ -120,11 +120,11 @@ Topology
 
 ## 3. Create Transit Peering
 
-### Description
+### 3.1 Description
 
 In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gateway, a Spoke VPC, and an Aviatrix Spoke Gateway.  This new deployment is more or less an island, but let's see how we can use Infrastructure as Code to build a full mesh of the Transits.
 
-### Validate
+### 3.2 Provision through Terraform
 
 * Using the same **Visual Studio Code** session, let's create the `peering.tf` file.
 * We will be using the following module:  `https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest`
@@ -221,7 +221,7 @@ align: center
 Once again "terraform apply"
 ```
 
-### Expected Results
+### 3.3 Expected Results
 
 After a few minutes, a new peering will be established between the **aws-us-east-2-transit** GW and the **aws-us-west-2-transit** GW. You can go to CoPilot and have a look at the new topology.
 
@@ -251,11 +251,11 @@ Full-Blown Aviatrix Solution
 
 ## 5. - Network Insights API
 
-### Description
+### 5.1 Description
 
 The `Aviatrix Network Insights API` simplifies the process of navigating network interface statistics and micro-gateway status data. By integrating this API with your visualization platforms (with vendors you already know and love!), you can easily make data-driven decisions.
 
-### Validate
+### 5.2 Validate
 
 * Go to your personal POD Portal, identify the **_Lab11_** section and click on the `Open Grafana` button.
 
