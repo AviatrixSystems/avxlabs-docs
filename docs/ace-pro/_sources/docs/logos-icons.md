@@ -8,5 +8,6 @@ Includes:
 - **Controller**
 - **CoPilot**
 - **Gateway**
+- **Edge**
 
 Click this link to {Download}`Aviatrix Logos and Icons<files/Aviatrix Logos and Icons.pptx>`.
