@@ -57,7 +57,7 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 - FireNet
 - Site2Cloud with Overlapping IPs
 - Edge
-- ThreatIQ
+- Threat Prevention with the special ThreatGroup
 - CostIQ
 - Distributed Cloud Firewall
 - Network Insights API
