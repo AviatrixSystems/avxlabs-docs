@@ -1,18 +1,38 @@
 ![Lab Overview](../../docs/_logos/ace_security_banner.png)
 
-# ACE Security Specialty  
+# ACE Hybrid Cloud  
 
 Welcome to the `Aviatrix Certified Engineer Hybrid Cloud` training.
 
 During this session, you will gain knowledge and experience in these areas:
 
-- Learn how cloud security is different than on-premises security
-- Understand native security in the major cloud service providers (CSPs) – AWS and Azure
-- Learn trends in security and why the model of embedded security is the key
-- Understand the types of traffic patterns from applications and user perspectives that are possible in the cloud
-- Build Zero Trust Network Architecture (aka ZTA or ZTN) for public cloud using [NIST SP 800-207 approach](https://www.nist.gov/publications/zero-trust-architecture)
-- Understand the concepts of dynamic policy, secure cloud egress filtering, network-segmentation, micro-segmentation and how to implement it in your cloud network design
-- Implement secure cloud networking designs while reducing the cost
-- Apply security controls to block reputation and signature based attacks
-- Provide deeper visibility for security, operational excellence
-- Cover Audit, InfoSec, governance, and compliance requirements
+Creating secure and high-performance hybrid cloud solutions for different environments, including:
+
+Secure and High-Performance Hybrid Cloud using Aviatrix Edge for Datacenter/Colocation
+Secure and High-Performance Hybrid Cloud using Aviatrix Edge for Equinix
+Secure and High-Performance Hybrid Cloud using Aviatrix Edge for Megaport
+Secure Hybrid Cloud using 3rd party devices in on-prem data centers and colocations.
+
+## COURSE OBJECTIVE
+
+This course addresses critical pain points in hybrid cloud networking, including:
+
+Lagging Network Security: Traditional datacenter-to-cloud connections often compromise performance and protection.
+
+Visibility Challenges: Lack of centralized visibility across multiple clouds can result in bottlenecks and security risks.
+
+Deployment Delays: Inconsistent configurations can disrupt operations and hinder performance across hybrid networks.
+
+## COURSE BENEFITS
+
+By completing the ACE Hybrid Cloud Specialty course, IT professionals will be equipped to execute fast, consistent configurations with advanced routing and segmentation, ensuring only authorized traffic flows through the system and therefore significantly enhancing both security and performance.
+
+## Key benefits of the Aviatrix solution include:
+
+Programmatic Deployment: Seamless integration with existing environments.
+Low-latency Connectivity: Direct connections to global cloud providers.
+Fully Encrypted Traffic: Line-rate encryption that meets stringent compliance standards.
+Advanced Security Capabilities: Enhanced access control and regulatory compliance.
+Operational Consistency: Uniform operations across on-prem and cloud networks.
+CUSTOMIZATION AND FLEXIBILITY:Customers can choose Aviatrix on-prem edge devices as virtual or hardware appliances, or they can use third-party routers or firewalls in on-premise locations, allowing for flexibility tailored to their specific network requirements.
+
