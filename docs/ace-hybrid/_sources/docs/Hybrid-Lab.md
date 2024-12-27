@@ -1,4 +1,4 @@
-# Lab 8 - SECURE HIGH-PERFORMANCE DATACENTER EDGE
+# Lab  SECURE HIGH-PERFORMANCE DATACENTER EDGE
 This lab will demonstrate how securely govern the `Egress traffic`.
 
 ## 1. General Objectives
