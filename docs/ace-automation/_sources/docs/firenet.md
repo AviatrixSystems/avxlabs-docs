@@ -101,4 +101,4 @@ The `enable_firenet` variable also modified the `mcna` module, setting `firenet 
 - Configured vendor integration, specific to Palo, with Aviatrix.
 - Marked the two connections to the AWS transit, the spoke attachment and transit peering, for inspection (forward to the firewall).
 
-Next, we'll demonstrate network segmentation. Use the navigation below when you're ready to move onto the next section.
+Use the navigation below when you're ready to move onto the next section.
