@@ -58,6 +58,18 @@ A jumpbox instance has been deployed to act as an execution environment with Ter
 
 ![Jumpbox](images/start_portal_jumpbox.png)
 
+```{note}
+*Copy and Paste* does not work directly from the jumpbox machine. Activate the **Guacamole Menu**, that is a sidebar which is hidden until explicitly shown. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing **Ctrl+Alt+Shift** on Windows machine or **Control+Shift+Command** on Mac.
+```
+
+```{figure} images/start-guacamoleterminal.png
+---
+height: 400px
+align: center
+---
+Guacamole Menu
+```
+
 ## Code
 
 The Terraform code we'll be executing for these labs has been pre-installed on the jumpbox in the student home directory, but is also available on GitHub should you prefer to run on your own workstation.

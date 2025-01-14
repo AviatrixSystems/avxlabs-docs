@@ -23,7 +23,7 @@ In addition to the explicit infrastructure deployed via Terraform, the Aviatrix 
 
 A reminder of the initial topology of the lab environment:
 
-![Initial Topology](images/start_initial_topology.png)
+![Initial Topology](images/start_topology.png)
 
 Also note, the Azure and AWS connectivity sections in your gatus dashboards are `red`.
 
@@ -118,4 +118,4 @@ The local mcna module itself consisted of 2 aviatrix modules:
 
 This collection of Aviatrix-supported modules make it very easy to deploy and connect networks across all major cloud providers.
 
-Next, we'll demonstrate inserting a 3rd-party firewall into the east-west data path. Use the navigation below when you're ready to move onto the next section.
+Use the navigation below when you're ready to move onto the next section.
