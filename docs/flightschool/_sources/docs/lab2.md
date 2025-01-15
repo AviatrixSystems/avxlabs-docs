@@ -24,19 +24,20 @@ Your on-prem Network team has already configured an IPSec tunnel on the office r
 
 In order to connect your Multicloud environment to the office, we will create an **_External Connection_**. This allows you to create a secure connectivity between the Cloud and the office with dynamic routing (BGP).
 
-Now let’s add the office connection. In Copilot, navigate to **_Networking --> Connectivity --> External Connections (S2C)_**. Click the **`+ External Connection`** button to add a new connection.
+Now let’s add the office connection. In Copilot, navigate to **_Networking --> Connectivity --> External Connections (S2C)_**. Click the **`+ External Connection`** button and select `External Device` to add a new connection.
 
-|                             |                                                                                                                                                                                                                    |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Name**         | azure-to-office                                                                                                                                                                                                    |
-| **Connect Public Cloud to** | External Device, BGP over IPsec                                                                                                                                                                                    |
-| **Local Gateway**           | azure-transit                                                                                                                                                                                                      |
-| **Local ASN**               | 65pod[#] _For Pods 1-9, double pad the pod# with an additional 0 (ie. 65004). For Pods 10-99 single pad (ie. 65010). For Pods > 100, no padding is needed (ie. 65100)_                                             |
-| **Remote ASN**              | 65000                                                                                                                                                                                                              |
-| **Remote Gateway IP**       | <ip-address> _Please open a terminal session from your own pc and resolve the following FQDN to its IP address `onprem.pod[#].aviatrixlab.com`. Do NOT enter the FQDN on this field. Instead enter the IP address_ |
-| **Pre-shared Key**          | mapleleafs                                                                                                                                                                                                         |
-| **Local Tunnel IP**         | 169.254.100.2/30                                                                                                                                                                                                   |
-| **Remote Tunnel IP**        | 169.254.100.1/30                                                                                                                                                                                              |
+|                       |                                                                                                                                                                                                                    |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Name**              | azure-to-office                                                                                                                                                                                                    |
+| **Connect Using**     | BGP                                                                                                                                                                                                                |
+| **Type**              | IPSec                                                                                                                                                                                                              |
+| **Local Gateway**     | azure-transit                                                                                                                                                                                                      |
+| **Local ASN**         | 65pod[#] _For Pods 1-9, double pad the pod# with an additional 0 (ie. 65004). For Pods 10-99 single pad (ie. 65010). For Pods > 100, no padding is needed (ie. 65100)_                                             |
+| **Remote Gateway IP** | <ip-address> _Please open a terminal session from your own pc and resolve the following FQDN to its IP address `onprem.pod[#].aviatrixlab.com`. Do NOT enter the FQDN on this field. Instead enter the IP address_ |
+| **Remote ASN**        | 65000                                                                                                                                                                                                              |
+| **Local Tunnel IP**   | 169.254.100.2/30                                                                                                                                                                                                   |
+| **Remote Tunnel IP**  | 169.254.100.1/30                                                                                                                                                                                                   |
+| **Pre-shared Key**    | mapleleafs                                                                                                                                                                                                         |
 
 It should look something like the example below. Make sure to put in your own remote gateway IP and AS number.
 
