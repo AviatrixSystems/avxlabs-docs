@@ -30,20 +30,20 @@ To do so, we'll use Aviatrix terraform resources and modules.
 
 ### Transit
 
-In this exercise we will use the individual resources in our Terraform provider to [create a VPC](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_vpc) as well as an [Aviatrix transit gateway](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_transit_gateway). Use the settings below and use the resource documentation to code the resources in the `student.tf` file. If you get stuck, `spoiler code` is available at the end of this document in the `Code` section.
+In this exercise we will use the individual resources in our Terraform provider to [create a VPC](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_vpc) as well as an [Aviatrix transit gateway](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_transit_gateway). Use the settings below and use the resource documentation in the links provided to code the resources in the `student.tf` file. If you get stuck, `spoiler code` is available at the end of this document in the `Code` section.
 
 | Argument      | Value         |
 | ------------- | ------------- |
 | Name          | transit-gcp   |
 | Region        | us-central1   |
-| Region AZ     | us-central1-a |
+| Region Zone   | us-central1-a |
 | Subnet-1 CIDR | 10.3.0.0/28   |
 | Subnet-2 CIDR | 10.3.0.16/28  |
 | Account       | gcp-account   |
 | Instance Size | n1-standard-1 |
 
 ```{hint}
-Use Region for the vpc resource and Region AZ for the gateway resource.
+Use Region for the vpc resource and Region Zone for the gateway resource. Use the examples in the documentation for GCP. Omit any ha attributes.
 ```
 
 Once you have the code you feel will create the vpc and transit gateway, run a `terraform apply` to execute the changes. Review the plan and then type yes to confirm and execute the changes.
@@ -83,28 +83,34 @@ In CoPilot, navigate to `Topology` and view the updated map. You should now see 
 ```{code-cell} terraform
 :tags: [hide-cell]
 resource "aviatrix_vpc" "gcp_vpc" {
-    cloud_type           = 4
-    account_name         = "gcp-account"
-    name                 = "transit-gcp"
-    subnets {
-      name   = "subnet-1"
-      region = "us-central1"
-      cidr   = "10.3.0.0/28"
-    }
+  # GCP is cloud_type 4
+  cloud_type           = 4
+  account_name         = "gcp-account"
+  name                 = "transit-gcp"
+  # At least 1 subnet required for a transit gateway
+  subnets {
+    name   = "subnet-1"
+    region = "us-central1"
+    cidr   = "10.3.0.0/28"
+  }
 
-    subnets {
-      name   = "subnet-2"
-      region = "us-central1"
-      cidr   = "10.3.0.16/28"
-    }
+  subnets {
+    name   = "subnet-2"
+    region = "us-central1"
+    cidr   = "10.3.0.16/28"
+  }
 }
 
 resource "aviatrix_transit_gateway" "test_transit_gateway_gcp" {
+  # GCP is cloud_type 4
   cloud_type   = 4
+  # Account_name matches the account name as onboarded to Aviatrix
   account_name = "gcp-account"
   gw_name      = "transit-gcp"
+  # Accessing the vpc_id programatically from the aviatrix_vpc resource
   vpc_id       = aviatrix_vpc.gcp_vpc.vpc_id
-  vpc_reg      = "us-central1"
+  # Note the region in this case includes the zone suffix as well. "-a" in this example
+  vpc_reg      = "us-central1-a"
   gw_size      = "n1-standard-1"
   subnet       = "10.3.0.0/28"
 }
@@ -115,15 +121,17 @@ resource "aviatrix_transit_gateway" "test_transit_gateway_gcp" {
 ```{code-cell} terraform
 :tags: [hide-cell]
 module "gcp_dev" {
+  # The "mc" in the module name denotes multicloud. The same module can be used to deploy gateways to any supported cloud
   source  = "terraform-aviatrix-modules/mc-spoke/aviatrix"
   version = "1.7.1"
-
+  # Note that when using the Aviatrix modules, the Aviatrix cloud_type is normalized to cloud name
   cloud            = "gcp"
   name             = "gcp-spoke"
   cidr             = "10.3.2.0/24"
   region           = "us-central1"
   account          = "gcp-account"
   ha_gw            = false
+  # Accessing the transit_gw name programatically from the aviatrix_transit_gateway resource
   transit_gw       = aviatrix_transit_gateway.test_transit_gateway_gcp.gw_name
 }
 ```
@@ -133,6 +141,8 @@ module "gcp_dev" {
 ```{code-cell} terraform
 :tags: [hide-cell]
 resource "aviatrix_transit_gateway_peering" "gcp_azure" {
+  # Transit gateway names could be hard-coded. Deriving them programmatically is a best practice and allow terraform
+  # to map dependencies -- waiting for the transit gateway to be created before trying to create the peering
   transit_gateway_name1 = aviatrix_transit_gateway.test_transit_gateway_gcp.gw_name
   transit_gateway_name2 = module.mcna[0].transit_azure.transit_gateway.gw_name
 }

@@ -367,7 +367,7 @@
 <h2>Configure and apply<a class="headerlink" href="#configure-and-apply" title="Link to this heading">#</a></h2>
 <section id="transit">
 <h3>Transit<a class="headerlink" href="#transit" title="Link to this heading">#</a></h3>
-<p>In this exercise we will use the individual resources in our Terraform provider to <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_vpc">create a VPC</a> as well as an <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_transit_gateway">Aviatrix transit gateway</a>. Use the settings below and use the resource documentation to code the resources in the <code class="docutils literal notranslate"><span class="pre">student.tf</span></code> file. If you get stuck, <code class="docutils literal notranslate"><span class="pre">spoiler</span> <span class="pre">code</span></code> is available at the end of this document in the <code class="docutils literal notranslate"><span class="pre">Code</span></code> section.</p>
+<p>In this exercise we will use the individual resources in our Terraform provider to <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_vpc">create a VPC</a> as well as an <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_transit_gateway">Aviatrix transit gateway</a>. Use the settings below and use the resource documentation in the links provided to code the resources in the <code class="docutils literal notranslate"><span class="pre">student.tf</span></code> file. If you get stuck, <code class="docutils literal notranslate"><span class="pre">spoiler</span> <span class="pre">code</span></code> is available at the end of this document in the <code class="docutils literal notranslate"><span class="pre">Code</span></code> section.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Argument</p></th>
@@ -381,7 +381,7 @@
 <tr class="row-odd"><td><p>Region</p></td>
 <td><p>us-central1</p></td>
 </tr>
-<tr class="row-even"><td><p>Region AZ</p></td>
+<tr class="row-even"><td><p>Region Zone</p></td>
 <td><p>us-central1-a</p></td>
 </tr>
 <tr class="row-odd"><td><p>Subnet-1 CIDR</p></td>
@@ -401,7 +401,7 @@
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>Use Region for the vpc resource and Region AZ for the gateway resource.</p>
+<p>Use Region for the vpc resource and Region Zone for the gateway resource. Use the examples in the documentation for GCP. Omit any ha attributes.</p>
 </div>
 <p>Once you have the code you feel will create the vpc and transit gateway, run a <code class="docutils literal notranslate"><span class="pre">terraform</span> <span class="pre">apply</span></code> to execute the changes. Review the plan and then type yes to confirm and execute the changes.</p>
 <p>As you can see, we can deploy these building blocks through the Terraform resources of the Aviatrix provider. However, we still had to link some things together, figure out specific details, like <code class="docutils literal notranslate"><span class="pre">cloud_type</span></code>. When deploying a more advanced transit with HA or Firenet, we have a whole lot more things to do. This is why for these common patterns, we have off the shelf building blocks, called modules. For the next exercise we will use one of those.</p>
@@ -459,28 +459,34 @@
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;gcp_vpc&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">cloud_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">4</span>
-<span class="w">    </span><span class="na">account_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-account&quot;</span>
-<span class="w">    </span><span class="na">name</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transit-gcp&quot;</span>
-<span class="w">    </span><span class="nb">subnets</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;subnet-1&quot;</span>
-<span class="w">      </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-central1&quot;</span>
-<span class="w">      </span><span class="na">cidr</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.3.0.0/28&quot;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="c1">  # GCP is cloud_type 4</span>
+<span class="w">  </span><span class="na">cloud_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">4</span>
+<span class="w">  </span><span class="na">account_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-account&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transit-gcp&quot;</span>
+<span class="c1">  # At least 1 subnet required for a transit gateway</span>
+<span class="w">  </span><span class="nb">subnets</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;subnet-1&quot;</span>
+<span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-central1&quot;</span>
+<span class="w">    </span><span class="na">cidr</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.3.0.0/28&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nb">subnets</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;subnet-2&quot;</span>
-<span class="w">      </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-central1&quot;</span>
-<span class="w">      </span><span class="na">cidr</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.3.0.16/28&quot;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="nb">subnets</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;subnet-2&quot;</span>
+<span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-central1&quot;</span>
+<span class="w">    </span><span class="na">cidr</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.3.0.16/28&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway&quot;</span><span class="w"> </span><span class="nv">&quot;test_transit_gateway_gcp&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">  # GCP is cloud_type 4</span>
 <span class="w">  </span><span class="na">cloud_type</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">4</span>
+<span class="c1">  # Account_name matches the account name as onboarded to Aviatrix</span>
 <span class="w">  </span><span class="na">account_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-account&quot;</span>
 <span class="w">  </span><span class="na">gw_name</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transit-gcp&quot;</span>
+<span class="c1">  # Accessing the vpc_id programatically from the aviatrix_vpc resource</span>
 <span class="w">  </span><span class="na">vpc_id</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_vpc.gcp_vpc.vpc_id</span>
-<span class="w">  </span><span class="na">vpc_reg</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-central1&quot;</span>
+<span class="c1">  # Note the region in this case includes the zone suffix as well. &quot;-a&quot; in this example</span>
+<span class="w">  </span><span class="na">vpc_reg</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-central1-a&quot;</span>
 <span class="w">  </span><span class="na">gw_size</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;n1-standard-1&quot;</span>
 <span class="w">  </span><span class="na">subnet</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.3.0.0/28&quot;</span>
 <span class="p">}</span>
@@ -500,15 +506,17 @@
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;gcp_dev&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">  # The &quot;mc&quot; in the module name denotes multicloud. The same module can be used to deploy gateways to any supported cloud</span>
 <span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.7.1&quot;</span>
-
+<span class="c1">  # Note that when using the Aviatrix modules, the Aviatrix cloud_type is normalized to cloud name</span>
 <span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp&quot;</span>
 <span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-spoke&quot;</span>
 <span class="w">  </span><span class="na">cidr</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.3.2.0/24&quot;</span>
 <span class="w">  </span><span class="na">region</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-central1&quot;</span>
 <span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-account&quot;</span>
 <span class="w">  </span><span class="na">ha_gw</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<span class="c1">  # Accessing the transit_gw name programatically from the aviatrix_transit_gateway resource</span>
 <span class="w">  </span><span class="na">transit_gw</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_transit_gateway.test_transit_gateway_gcp.gw_name</span>
 <span class="p">}</span>
 </pre></div>
@@ -527,6 +535,8 @@
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway_peering&quot;</span><span class="w"> </span><span class="nv">&quot;gcp_azure&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">  # Transit gateway names could be hard-coded. Deriving them programmatically is a best practice and allow terraform</span>
+<span class="c1">  # to map dependencies -- waiting for the transit gateway to be created before trying to create the peering</span>
 <span class="w">  </span><span class="na">transit_gateway_name1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_transit_gateway.test_transit_gateway_gcp.gw_name</span>
 <span class="w">  </span><span class="na">transit_gateway_name2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.mcna[0].transit_azure.transit_gateway.gw_name</span>
 <span class="p">}</span>
