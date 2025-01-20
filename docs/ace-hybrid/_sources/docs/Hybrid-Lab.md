@@ -9,6 +9,23 @@ Aviatrix Secure High-Performance Datacenter Edge solution gives power back to th
 
 ## 2. Initial set-up
 
+Here is a view of the initial topology:
+```{figure} images/hybrid-initial.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
+All applications in AWS and GCP have only **Private** IP’s
+
+These are the CIDR blocks per each CSP:
+
+- AWS = 10.0.1.0/24
+- GCP = 172.16.1.0/24
+
+aws-instance and gcp-instance have HTTP/HTTPS running (i.e. curl command can be issued).
+
 Now let's connect the `Aviatrix Edge` to the existing MCNA. 
 
 First and foremost let's explore the **BGP Map** that describes the connectivity established through the BGPoverLAN.
