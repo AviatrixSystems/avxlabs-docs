@@ -516,56 +516,62 @@
 <figure class="align-center" id="id14">
 <img alt="../_images/lab2-euwest.png" src="../_images/lab2-euwest.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">AWS</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Regions selection</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id15">
+<img alt="../_images/lab2-invoke.png" src="../_images/lab2-invoke.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Invoke the EC2 service</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id16">
 <img alt="../_images/lab2-instance.png" src="../_images/lab2-instance.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Instances (running)</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Instances (running)</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Search for <strong><em>ace-aws-eu-west-1-spoke2-bu2-mobile-app</em></strong>, select the instance and choose the tab <code class="docutils literal notranslate"><span class="pre">&quot;Security&quot;</span></code> below and then click on the security group identificator with a long string.</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab2-sg.png" src="../_images/lab2-sg.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Select the Security Group</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Select the Security Group</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Explore the inbound rules and you will find out the absence of a rule that should permit the incoming traffic on port <strong>tcp/80</strong>.</p>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id18">
 <a class="reference internal image-reference" href="../_images/lab2-sg2.png"><img alt="../_images/lab2-sg2.png" src="../_images/lab2-sg2.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">The Security Group attached to the Mobile App</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">The Security Group attached to the Mobile App</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Edit</span> <span class="pre">inbound</span> <span class="pre">rules&quot;</span></code>.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../_images/lab2-sg3.png"><img alt="../_images/lab2-sg3.png" src="../_images/lab2-sg3.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Edit the SG</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Edit the SG</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Add</span> <span class="pre">rule&quot;</span></code>.</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab2-sg4.png"><img alt="../_images/lab2-sg4.png" src="../_images/lab2-sg4.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Add a new rule</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Add a new rule</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create the required inbound rule (i.e. <em>“allow <strong>http</strong> traffic from anywhere”</em>) as depicted below and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Save</span> <span class="pre">rules&quot;</span></code> button.</p>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../_images/lab2-sg5.png"><img alt="../_images/lab2-sg5.png" src="../_images/lab2-sg5.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 49 </span><span class="caption-text">New inbound rule: allow port 80</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">New inbound rule: allow port 80</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now relaunch the <strong>curl</strong> command from the <strong><em>BU1 Frontend</em></strong> instance towards the private IP of the <strong><em>BU2 Mobile App</em></strong>.</p>
 <p>Curl command will work this time.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab2-last.png" src="../_images/lab2-last.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Curl is ok!</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Curl is ok!</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

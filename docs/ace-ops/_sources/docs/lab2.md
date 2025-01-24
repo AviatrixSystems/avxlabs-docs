@@ -190,7 +190,14 @@ Change the region to `Ireland (eu-west-1)` in the top-right corner and invoke th
 ---
 align: center
 ---
-AWS 
+Regions selection 
+```
+
+```{figure} images/lab2-invoke.png
+---
+align: center
+---
+Invoke the EC2 service
 ```
 
 ```{figure} images/lab2-instance.png
