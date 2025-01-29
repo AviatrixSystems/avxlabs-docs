@@ -175,6 +175,16 @@ align: center
 Instance Properties
 ```
 
+```{tip}
+If you want to see the full hostnames of each node, select `"Show Labels"` from the bottom left sidebar.
+```{figure} images/lab1-showlabels.png
+---
+height: 400px
+align: center
+---
+Show Labels
+```
+
 - **Cloud Assets**:
 
 Go to **CoPilot > Cloud resources > Cloud Assets > Virtual Machines** and from here you can search for any instances and retrieve their IP addresses!
@@ -227,7 +237,7 @@ Ping and SSH commands should not work this time, due to the separation between t
 ```{important}
 Once again refer always to your personal POD for the IP addresses. 
 
-The screenshots are used as examples and might indicate different IP addresses from those shown on your personal POD portal!
+The screenshots are used as examples and might indicate **different IP addresses** from those shown on your personal POD portal!
 ```
 
 ```{figure} images/lab1-pingfails.png
@@ -351,6 +361,12 @@ Originator = eth0
 Go to **CoPilot > Diagnostics > Cloud Routes** and search the subnet **10.0.0.0/24** on the *search field*. 
 
 <ins>Remove any previous filters</ins>!
+```{figure} images/lab1-removefilter.png
+---
+height: 300px
+align: center
+---
+Remove filter
 ```
 
 This time you need to proceed with a <ins>recursive lookup</ins>: from any Spoke GWs check the **NEXT HOP GATEWAY** column and try to find the originator of 10.0.0.0/24.
