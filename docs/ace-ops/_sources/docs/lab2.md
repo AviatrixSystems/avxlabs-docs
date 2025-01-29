@@ -195,6 +195,7 @@ Regions selection
 
 ```{figure} images/lab2-invoke.png
 ---
+height: 200px
 align: center
 ---
 Invoke the EC2 service
@@ -202,6 +203,7 @@ Invoke the EC2 service
 
 ```{figure} images/lab2-instance.png
 ---
+height: 200px
 align: center
 ---
 Instances (running)
