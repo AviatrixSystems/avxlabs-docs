@@ -52,12 +52,20 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_a
 
 - "**Next Hop Gateway** *contains* **gcp**"
 
-```{figure} images/lab5-nexthop.png
+```{figure} images/lab5-nexthop200.png
 ---
 height: 350px
 align: center
 ---
 Next Hop
+```
+
+```{figure} images/lab5-nexthop.png
+---
+height: 350px
+align: center
+---
+Malicious Route
 ```
 
 You will notice that the Spoke1 in GCP is advertising a **bogus/malicious** route (i.e. `40.40.40.0/24`), whereas the legit route **172.16.211.0/24** has been withdrawn!
@@ -74,6 +82,14 @@ height: 350px
 align: center
 ---
 Customize Spoke Advertised VPC/VNet CIDRs
+```
+
+```{figure} images/lab5-customize100.png
+---
+height: 350px
+align: center
+---
+Delete the malicious route
 ```
 
 - Relaunch the ping from **BU1 Frontend** towards **BU1 Analytics**.
@@ -198,6 +214,14 @@ height: 350px
 align: center
 ---
 Show BGP Learned Routes
+```
+
+```{figure} images/lab5-bgpinfo100.png
+---
+height: 350px
+align: center
+---
+10.0.211.0/24
 ```
 
 You are asked to maintain visible this route (therefore fully installed in the routing tables) on all the Spoke gateways, <ins>except the Azure Spoke2 GW!</ins>
