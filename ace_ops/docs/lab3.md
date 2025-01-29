@@ -272,9 +272,9 @@ Relaunch also the traceroute from **BU1 Frontend** towards **BU2 Mobile App**.
 ---
 align: center
 ---
-Ping is ok!
+New Traceroute outcome
 ```
 
 ```{important}
-This time the traceroute outcome shows twice the IP address of the Transit FireNet GW (i.e. **.134** as shown in the screenshot above) along the path, due to the fact that the traffic is now diverted towards the Firewall that, after the completion of the Deep Packet Inspection, sends the permitted traffic back to the Transit FireNet GW.
+This time the traceroute outcome shows twice the IP address of the Transit FireNet GW (i.e. **.143** as shown in the screenshot above) along the path, due to the fact that the traffic is now diverted towards the Firewall that, after the completion of the Deep Packet Inspection, sends the permitted traffic back to the Transit FireNet GW.
 ```
