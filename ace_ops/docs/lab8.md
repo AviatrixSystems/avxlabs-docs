@@ -53,7 +53,7 @@ SSH fails within BU1
   Do not forget to enable **“Logging”**, for auditing purposes.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**.
+Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **"+ Rule"**.
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
@@ -93,7 +93,7 @@ align: center
 Intra-SSH BU1
 ```
 
-- Check the Logs generated after the action carried out before.
+- Check the **Logs** generated after the action carried out before.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
@@ -129,7 +129,7 @@ Monitor: Denied ICMP
 - Create another intra-rule that allows ICMP **within** BU1 and then verify that ICMP is permitted among BU1’s instances. Do not forget to enable **“Logging”**, for auditing purposes.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**.
+Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **"+ Rule"**.
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
@@ -160,7 +160,7 @@ align: center
 Ping will be ok!
 ```
 
-- Once again, inspect the Monitor section to see immediately the corresponding *logs* of the action carried out before.
+- Once again, inspect the **Monitor** section to find out immediately the corresponding *logs* of the action carried out before.
 
 ```{figure} images/lab8-pingpermitted.png
 ---

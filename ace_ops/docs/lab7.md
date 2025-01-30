@@ -204,7 +204,7 @@ and
 sudo apt-get upgrade -y
 ```
 
-When you see this pop-up messages, just click on the **Enter** button on your keyboard!
+When you see these pop-up messages, just click on the **Enter** button on your keyboard!
 
 ```{figure} images/lab7-enter.png
 ---
@@ -623,6 +623,22 @@ sudo apt-get update -y
 and
 ```bash
 sudo apt-get upgrade -y
+```
+
+Once again, if you see these pop-up messages, just click on the **Enter** button on your keyboard!
+
+```{figure} images/lab7-enter.png
+---
+align: center
+---
+Press Enter
+```
+
+```{figure} images/lab7-enter2.png
+---
+align: center
+---
+Press Enter again
 ```
 
 - Now check the logs within the **Egress** section!
