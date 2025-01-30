@@ -25,7 +25,7 @@ Lab 7 Scenario Topology
 - Enable the Egress on the VNet where the BU2 DB resides.
 
 ```{tip}
-Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"+ Local Egress on VPC/VNets"` button.
+Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
 
 Select the **_ace-azure-east-us-spoke2_** VPC.
 
@@ -48,24 +48,43 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_a
 ---
 align: center
 ---
-ace-azure-east-us-spoke2
+Default Route injected by the AVX Controller
 ```
 
 - Enable the **Distributed Cloud Firewall** feature.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall** and then click on the `"Enable Distributed Cloud Firewall"` button, and then to the subsequent `"Begin Using Distributed Cloud Firewall"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall** and then click on the `"Enable Distributed Cloud Firewall"` button, then to the subsequent `"Begin Using Distributed Cloud Firewall"` button, and last but not least to the `"Begin"` button
+```
+
+```{figure} images/lab7-enabledcf01.png
+---
+align: center
+---
+Enable DCF message
+```
+
+```{figure} images/lab7-enabledcf02.png
+---
+align: center
+---
+Begin using DCF message
+```
+
+```{figure} images/lab7-enabledcf03.png
+---
+align: center
+---
+Greenfield Rule message
 ```
 
 You will immediately notice a pop-up message, informing you that the `Greenfield Rule` will be created for allowing all kind of traffic.
 
-Click on **Begin**.
-
-```{figure} images/lab7-greenfield.png
+```{figure} images/lab7-enabledcf04.png
 ---
 align: center
 ---
-Greenfield Rule
+Default Rules
 ```
 
 - Enable the `"Logging"` on the Greenfield-Rule.
