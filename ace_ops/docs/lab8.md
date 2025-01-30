@@ -241,7 +241,7 @@ SSH from BU2 to BU1 will fail
 - Create another inter-rule that allows SSH **from** BU2 **towards** BU1. Do not forget to enable **“Logging”**, for auditing purposes.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **+Rule**.
+Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **"+ Rule"**.
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
@@ -283,7 +283,9 @@ Inter-SSH BU2 to BU1
 
 ## 3. CHANGE REQUEST
 
-- Now before completing the lab, remove the `Inspection Policy` from the Transit GW in AWS. The Aviatrix Distributed Cloud Firewall has been enabled across the whole multicloud infrastructure, therefore we can get rid of the bolted Firewall in AWS.
+- Now before completing the lab, remove the `Inspection Policy` from the Transit GW in AWS. 
+
+The Aviatrix Distributed Cloud Firewall has been enabled across the whole multicloud infrastructure, therefore we can get rid of the bolted Firewall in AWS.
 
 ```{tip}
 Go to **CoPilot > Security > FireNet > FireNet Gateways** and click on the **_ace-aws-eu-west-1-transit1_** GW, then click on `Policy`, select the two Spoke VPCs in AWS and choose the `Remove` action.
