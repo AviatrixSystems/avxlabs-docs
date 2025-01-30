@@ -362,6 +362,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
 
 ```{figure} images/lab7-deleterulee2356.png
 ---
+height: 200px
 align: center
 ---
 Commit
@@ -377,6 +378,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the 
 
 ```{figure} images/lab7-deleterulee.png
 ---
+height: 200px
 align: center
 ---
 Delete Rule
@@ -384,12 +386,13 @@ Delete Rule
 
 ```{figure} images/lab7-deleterulee2.png
 ---
+height: 200px
 align: center
 ---
 Commit
 ```
 
-As soon as the Explicit-Deny-Rule is deployed on the top of the Rules list, the SSH session with the BU2 DB will be terminated. 
+As soon as the **Explicit-Deny-Rule (editable)** is deployed on the top of the Rules list, the SSH session with the BU2 DB will be terminated. 
 
 You will have to reestablish the SSH session with BU2 DB!
 
@@ -491,7 +494,6 @@ Then click on `"+ Add condition"` button and select the following additonal para
 
 ```{figure} images/lab7-bus50.png
 ---
-height: 150px
 align: center
 ---
 +Add condition
@@ -578,7 +580,6 @@ inter-ubuntu-bu2db-internet
 
 ```{figure} images/lab7-lastcommit.png
 ---
-height: 150px
 align: center
 ---
 DCF rules list
@@ -594,6 +595,14 @@ curl www.wikipedia.com
 ```
 ```bash
 curl www.espn.com
+```
+
+```{figure} images/lab7-explicitdeny101.png
+---
+height: 150px
+align: center
+---
+Explicit Deny Rule matching
 ```
 
 You will notice three **Drop** entries within the **Monitor** section that have matched the `Explicit-Deny-Rule`, successfully.
@@ -619,7 +628,7 @@ sudo apt-get upgrade -y
 - Now check the logs within the **Egress** section!
 
 ```{tip}
-Go to **CoPilot > Security > Egress > Monitor** and select the **ace-azure-east-us-spoke2** VNet
+Go to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the **ace-azure-east-us-spoke2** VNet
 ```
 
 ```{figure} images/lab7-last.png
