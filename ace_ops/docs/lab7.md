@@ -130,18 +130,26 @@ Spoke1 VNet1 as test VNet
   - Enable the Egress on the **_Spoke1 VNet_** too.
 
 ```{tip}
-Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"+ Local Egress on VPC/VNets"` button.
+Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
 
 Select the **_ace-azure-east-us-spoke1_** VPC.
 
 Do not forget to click on **Add**.
+
+```{figure} images/lab7-test20.png
+---
+height: 400px
+align: center
+---
+Enable Local Egress 
+```
 
 ```{figure} images/lab7-test2.png
 ---
 height: 400px
 align: center
 ---
-Enable Egress on Spoke1 VNet
+ace-azure-east-us-spoke1
 ```
 
 - SSH to the **BU1 DB** (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU1 DB).
@@ -177,7 +185,7 @@ align: center
 All-Web
 ```
 
-Do not forget to **commit** your changes into the Data Path.
+Do not forget to **Commit** your changes into the Data Path.
 
 ```{figure} images/lab7-test6.png
 ---
