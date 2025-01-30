@@ -115,10 +115,8 @@ Configure the new S2C connection based on the schema below.
 
 - **Name**: <span style='color:#479608'>S2C-PARTNER</span>
 
-- **Connect Using:**
-  -  <span style='color:#479608'>Static-Route Based</span>
-- **Type:**
-  -  <span style='color:#479608'>Mapped</span>
+- **Connect Using:**: <span style='color:#479608'>Static-Route Based</span>
+- **Type:**: <span style='color:#479608'>Mapped</span>
 
 - **Local Gateway**: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span>
 
@@ -181,7 +179,7 @@ align: center
 External Connection Configuration
 ```
 
-Wait some seconds for the completion of the S2C. The new connection will show up with a red ball symbol.
+Please wait a few seconds for the completion of the S2C. The new connection will appear as down (indicated by a red arrow symbol).
 
 ```{figure} images/lab6-notdone.png
 ---
@@ -202,7 +200,7 @@ align: center
 S2C is finally UP
 ```
 
-- SSH to the **OnPrem partner** router and issue the following command, to confirm that the Tunnel is up/up:
+- **SSH** to the **OnPrem partner** router and issue the following command, to confirm that the Tunnel is up/up:
 
 ```bash
 show ip int brief
@@ -235,7 +233,7 @@ Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, selec
 
 Click on **Run** and almost simultaneously issue once again the ping command from the CSR router.
 
-Filter based on the `"ICMP"` keyword.
+Filter based on the `"icmp"` keyword.
 ```
 
 ```{figure} images/lab6-final.png
