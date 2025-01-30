@@ -189,7 +189,6 @@ Do not forget to **Commit** your changes into the Data Path.
 
 ```{figure} images/lab7-test6.png
 ---
-height: 150px
 align: center
 ---
 Commit
@@ -209,7 +208,6 @@ When you see this pop-up messages, just click on the **Enter** button on your ke
 
 ```{figure} images/lab7-enter.png
 ---
-height: 150px
 align: center
 ---
 Press Enter
@@ -217,7 +215,6 @@ Press Enter
 
 ```{figure} images/lab7-enter2.png
 ---
-height: 150px
 align: center
 ---
 Press Enter again
@@ -267,14 +264,14 @@ align: center
 ---
 Press Enter again
 ```
-
 </details>
 
+### 2.1 Detach the WebGroup
 
 - Detach the **_All-Web_** Webgroup from the Greenfield-Rule.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the pencil icon on the righ-hand side of thr Greenfield-Rul eentry.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the pencil icon on the righ-hand side of the Greenfield-Rule entry.
 
 Clear the `WebGroups` field and then click on **Save In Drafts**. 
 
@@ -334,30 +331,65 @@ curl www.espn.com
 
 All commands will be successful, however, this is not what the request asked you to configure...
 
-- Enable the `ZTNA Model` (i.e.  **Zero Trust Network Architecture Model**), creating an **Explicit Deny Rule** first.
+- Enable the `ZTNA Model` (i.e.  **Zero Trust Network Architecture Model**), removing the **Greenfield-Rule**, but first let's isnert an Explicit-Deny Rule that is <ins>editable</ins>.
 
-```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+Rule"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+
+```{figure} images/lab7-deleterulee23.png
+---
+align: center
+---
++Rule
 ```
 
-Create an `Explicit Deny Rule`:
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 - **Name**: <span style='color:#479608'>Explicit-Deny-Rule</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
-- **Logging**: <span style='color:#479608'>On</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
 
-Do not forget once again to click on **Save In Drafts** and then click on **Commit**.
-
-```{figure} images/lab6-egressrule.png
+```{figure} images/lab7-deleterulee235.png
 ---
 align: center
 ---
 Explicit-Deny-Rule
 ```
 
-As soon as the Explicit-Deny-Rule is deployed the SSH session with the BU2 DB will be terminated. 
+Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
+
+```{figure} images/lab7-deleterulee2356.png
+---
+align: center
+---
+Commit
+```
+
+### 2.2 ZTNA
+
+Now you can proceed in deleting the Greenfield-Rule!
+
+```{tip}
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the `"three dots"` icon, on the right-hand side of the Greenfiled-Rule and then click on `"Delete Rule"`.
+```
+
+```{figure} images/lab7-deleterulee.png
+---
+align: center
+---
+Delete Rule
+```
+
+```{figure} images/lab7-deleterulee2.png
+---
+align: center
+---
+Commit
+```
+
+As soon as the Explicit-Deny-Rule is deployed on the top of the Rules list, the SSH session with the BU2 DB will be terminated. 
 
 You will have to reestablish the SSH session with BU2 DB!
 
