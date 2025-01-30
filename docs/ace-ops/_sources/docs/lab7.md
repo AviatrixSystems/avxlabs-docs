@@ -82,7 +82,7 @@ You will immediately notice a pop-up message, informing you that the `Greenfield
 
 ```{figure} images/lab7-enabledcf04.png
 ---
-align: center
+height: 150px
 ---
 Default Rules
 ```
@@ -96,7 +96,6 @@ Click on the pencil icon on the right-hand side of the entry **Greenfield-Rule**
 ```{figure} images/lab7-editgreen.png
 ---
 height: 150px
-align: center
 ---
 Edit the Greenfield-Rule
 ```
@@ -151,6 +150,7 @@ align: center
 ---
 ace-azure-east-us-spoke1
 ```
+align: center
 
 - SSH to the **BU1 DB** (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU1 DB).
 
@@ -228,9 +228,10 @@ Go to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the *ac
 
 ```{figure} images/lab7-test7.png
 ---
+height: 150px
 align: center
 ---
-Monitor
+FQDN Monitor
 ```
 
 ```{warning}
@@ -331,7 +332,7 @@ curl www.espn.com
 
 All commands will be successful, however, this is not what the request asked you to configure...
 
-- Enable the `ZTNA Model` (i.e.  **Zero Trust Network Architecture Model**), removing the **Greenfield-Rule**, but first let's isnert an Explicit-Deny Rule that is <ins>editable</ins>.
+- Enable the `ZTNA Model` (i.e.  **Zero Trust Network Architecture Model**), removing the **Greenfield-Rule**, but first let's insert an Explicit-Deny Rule that is <ins>editable</ins>.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
@@ -362,6 +363,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
 
 ```{figure} images/lab7-deleterulee2356.png
 ---
+height: 150px
 align: center
 ---
 Commit
@@ -377,6 +379,7 @@ Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the 
 
 ```{figure} images/lab7-deleterulee.png
 ---
+height: 150px
 align: center
 ---
 Delete Rule
@@ -384,6 +387,7 @@ Delete Rule
 
 ```{figure} images/lab7-deleterulee2.png
 ---
+height: 150px
 align: center
 ---
 Commit
