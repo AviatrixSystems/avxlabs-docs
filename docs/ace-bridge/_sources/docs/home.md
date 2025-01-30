@@ -42,7 +42,7 @@ A few notes on the scenario are here:
 If you succeed in fixing all the problems, this how the Wordpress app page would look like.
 ```
 
-```{figure} images/final-wordpress.png
+```{figure} images/final-wordpress1.png
 ---
 align: center
 ---
