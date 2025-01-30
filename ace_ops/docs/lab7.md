@@ -444,6 +444,13 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
+```{figure} images/lab7-deleterulee23567.png
+---
+align: center
+---
+inter-ssh-bu1-bu2
+```
+
 Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
 
 ```{figure} images/lab7-bus3new.png
@@ -477,18 +484,22 @@ Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>BU2-DB</span>
-- **CSP Tag Key**: <span style='color:#479608'>environment</span>
-  --> **CSP Tag Value**: <span style='color:#479608'>bu2</span>
-- **CSP Tag Key**: <span style='color:#479608'>Region</span>
-  --> **CSP Tag Value**: <span style='color:#479608'>eastus</span>
+- **Matches all conditions (AND)**: <span style='color:#479608'>environment</span>
+  --> **Cloud Tag Values**: <span style='color:#479608'>bu2</span>
 
-```{figure} images/lab7-anothercondition.png
+Then click on `"+ Add condition"` button and select the following additonal parameters:
+
+```{figure} images/lab7-bus50.png
 ---
-height: 300px
+height: 150px
 align: center
 ---
 +Add condition
 ```
+
+- **Matches all conditions (AND)**: <span style='color:#479608'>Region</span>
+  --> **Cloud Tag Values**: <span style='color:#479608'>eastus</span>
+
 
 Do not forget to click on **Save**.
 
@@ -507,6 +518,11 @@ BU2 DB SmartGroup
 
 ```{tip}
 Go to **CoPilot > Groups > WebGroups** and then click on `"+ WebGroup"`.
+```{figure} images/lab7-webgroupp.png
+---
+align: center
+---
+BU2 DB SmartGroup
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create WebGroup"`:
