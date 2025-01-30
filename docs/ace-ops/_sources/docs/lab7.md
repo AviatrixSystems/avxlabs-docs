@@ -229,6 +229,13 @@ Press Enter again
 Go to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the *ace-azure-east-us-spoke**1*** on the `"VPC/VNets"` field.
 ```
 
+```{figure} images/lab7-test7.png
+---
+align: center
+---
+Monitor
+```
+
 ```{warning}
 <ins>Identify all the necessary domains for successfully executing the apt-get commands by exclusively examining the entire list of logs. 
 
@@ -238,7 +245,7 @@ Any other domains should be disregarded.</ins>
 The required domains are **five**!
 
 <details>
-  <summary>Click here for discovering the <span style='color:#33ECFF'>domains</span></summary>
+  <summary>Click here for discovering the <span style='color:#33ECFF'>allowed domains</span></summary>
   
 - motd.ubuntu.com
 - azure.archive.ubuntu.com
@@ -247,13 +254,22 @@ The required domains are **five**!
 - esm.ubuntu.com
 </details>
 
-```{figure} images/lab7-test7.png
+<details>
+  <summary>Click here for discovering the <span style='color:#33ECFF'>prohibited domains</span></summary>
+  
+- storage.azure.net
+- windows.net
+
+```{figure} images/lab7-prohibited.png
 ---
-height: 200px
+height: 150px
 align: center
 ---
-Monitor
+Press Enter again
 ```
+
+</details>
+
 
 - Detach the **_All-Web_** Webgroup from the Greenfield-Rule.
 
