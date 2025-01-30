@@ -92,7 +92,7 @@ Lab 6 Scenario#2: Topology
 - Create a new **S2C** connection.
 
 ```{tip}
-Go to **CoPilot > Networking >  Connectivity > External Connection (S2C) >** then click on the  `"+External Connection"` button.
+Go to **CoPilot > Networking >  Connectivity > External Connection (S2C) >** then click on the  `"+External Connection"` button, then select `"External Device"`.
 ```
 
 ```{figure} images/lab6-s2c.png
@@ -103,13 +103,22 @@ align: center
 New S2C
 ```
 
+```{figure} images/lab6-s2c100.png
+---
+height: 200px
+align: center
+---
+External Device
+```
+
 Configure the new S2C connection based on the schema below.
 
 - **Name**: <span style='color:#479608'>S2C-PARTNER</span>
 
-- **Connect Public Cloud to:**
-  -  <span style='color:#479608'>External Device</span>
-  -  <span style='color:#479608'>Static Route-Based (Mapped)</span>
+- **Connect Using:**
+  -  <span style='color:#479608'>Static-Route Based</span>
+- **Type:**
+  -  <span style='color:#479608'>Mapped</span>
 
 - **Local Gateway**: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span>
 
@@ -123,11 +132,11 @@ Configure the new S2C connection based on the schema below.
 
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.2.0/24</span>
 
-- **Advanced Settings:**
-  -  **IkEv2**: <span style='color:#479608'>On</span>
+- **Authentication Method**: <span style='color:#479608'>PSK</span>
 
-- **Connection:**
-  -  **Remote Gateway IP**: <span style='color:tomato'>follow the Note below</span>
+- **IKEv2**: <span style='color:#479608'>ON</span>
+
+- **Remote Gateway IP**:  <span style='color:tomato'>follow the Note below</span>
 
 ```{note}
 Use the “**dig partner-csr-public.pod#.aviatrixlab.com +short**” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem-Partner CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
