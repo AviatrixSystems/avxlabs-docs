@@ -437,16 +437,8 @@ connection between the GCP Spoke GW and the OnPrem Partner router and also for r
 <p>Configure the new S2C connection based on the schema below.</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>S2C-PARTNER</span></p></li>
-<li><p><strong>Connect Using:</strong></p>
-<ul>
-<li><p><span style='color:#479608'>Static-Route Based</span></p></li>
-</ul>
-</li>
-<li><p><strong>Type:</strong></p>
-<ul>
-<li><p><span style='color:#479608'>Mapped</span></p></li>
-</ul>
-</li>
+<li><p><strong>Connect Using:</strong>: <span style='color:#479608'>Static-Route Based</span></p></li>
+<li><p><strong>Type:</strong>: <span style='color:#479608'>Mapped</span></p></li>
 <li><p><strong>Local Gateway</strong>: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span></p></li>
 <li><p><strong>Real Local Subnet CIDR(s)</strong>: <span style='color:#479608'>172.16.211.0/24</span></p></li>
 <li><p><strong>Virtual Local Subnet CIDR(s)</strong>: <span style='color:#479608'>192.168.1.0/24</span></p></li>
@@ -496,7 +488,7 @@ connection between the GCP Spoke GW and the OnPrem Partner router and also for r
 <p><span class="caption-number">Fig. 123 </span><span class="caption-text">External Connection Configuration</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Wait some seconds for the completion of the S2C. The new connection will show up with a red ball symbol.</p>
+<p>Please wait a few seconds for the completion of the S2C. The new connection will appear as down (indicated by a red arrow symbol).</p>
 <figure class="align-center" id="id13">
 <a class="reference internal image-reference" href="../_images/lab6-notdone.png"><img alt="../_images/lab6-notdone.png" src="../_images/lab6-notdone.png" style="height: 250px;" /></a>
 <figcaption>
@@ -512,7 +504,7 @@ button to see the status changing from red to green.</p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>SSH to the <strong>OnPrem partner</strong> router and issue the following command, to confirm that the Tunnel is up/up:</p></li>
+<li><p><strong>SSH</strong> to the <strong>OnPrem partner</strong> router and issue the following command, to confirm that the Tunnel is up/up:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>show<span class="w"> </span>ip<span class="w"> </span>int<span class="w"> </span>brief
 </pre></div>
@@ -540,7 +532,7 @@ button to see the status changing from red to green.</p>
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools &gt; Gateway Diagnostics</strong>, select the <strong><em>ace-gcp-us-east1-spoke1</em></strong> GW and then select the <strong>Active Sessions</strong> tool.</p>
 <p>Click on <strong>Run</strong> and almost simultaneously issue once again the ping command from the CSR router.</p>
-<p>Filter based on the <code class="docutils literal notranslate"><span class="pre">&quot;ICMP&quot;</span></code> keyword.</p>
+<p>Filter based on the <code class="docutils literal notranslate"><span class="pre">&quot;icmp&quot;</span></code> keyword.</p>
 </div>
 <figure class="align-center" id="id17">
 <a class="reference internal image-reference" href="../_images/lab6-final.png"><img alt="../_images/lab6-final.png" src="../_images/lab6-final.png" style="height: 300px;" /></a>
