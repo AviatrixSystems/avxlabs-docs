@@ -735,11 +735,17 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
-<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> this new rule!</p>
 <figure class="align-center" id="id33">
+<img alt="../_images/lab7-deleterulee23567.png" src="../_images/lab7-deleterulee23567.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 161 </span><span class="caption-text">inter-ssh-bu1-bu2</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> this new rule!</p>
+<figure class="align-center" id="id34">
 <a class="reference internal image-reference" href="../_images/lab7-bus3new.png"><img alt="../_images/lab7-bus3new.png" src="../_images/lab7-bus3new.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 161 </span><span class="caption-text">Three Rules</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 162 </span><span class="caption-text">Three Rules</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -749,10 +755,10 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
 </div>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab7-bus5.png"><img alt="../_images/lab7-bus5.png" src="../_images/lab7-bus5.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 162 </span><span class="caption-text">SSH logs</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 163 </span><span class="caption-text">SSH logs</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -765,26 +771,29 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>BU2-DB</span></p></li>
-<li><p><strong>CSP Tag Key</strong>: <span style='color:#479608'>environment</span>
-–&gt; <strong>CSP Tag Value</strong>: <span style='color:#479608'>bu2</span></p></li>
-<li><p><strong>CSP Tag Key</strong>: <span style='color:#479608'>Region</span>
-–&gt; <strong>CSP Tag Value</strong>: <span style='color:#479608'>eastus</span></p></li>
+<li><p><strong>Matches all conditions (AND)</strong>: <span style='color:#479608'>environment</span>
+–&gt; <strong>Cloud Tag Values</strong>: <span style='color:#479608'>bu2</span></p></li>
 </ul>
-<figure class="align-center" id="id35">
-<a class="reference internal image-reference" href="../_images/lab7-anothercondition.png"><img alt="../_images/lab7-anothercondition.png" src="../_images/lab7-anothercondition.png" style="height: 300px;" /></a>
+<p>Then click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Add</span> <span class="pre">condition&quot;</span></code> button and select the following additonal parameters:</p>
+<figure class="align-center" id="id36">
+<a class="reference internal image-reference" href="../_images/lab7-bus50.png"><img alt="../_images/lab7-bus50.png" src="../_images/lab7-bus50.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 163 </span><span class="caption-text">+Add condition</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 164 </span><span class="caption-text">+Add condition</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<ul class="simple">
+<li><p><strong>Matches all conditions (AND)</strong>: <span style='color:#479608'>Region</span>
+–&gt; <strong>Cloud Tag Values</strong>: <span style='color:#479608'>eastus</span></p></li>
+</ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The SmartGroup can match <strong>multiple tags</strong> simultaneously, harnessing the boolean expressions!</p>
 </div>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id37">
 <img alt="../_images/lab7-bu2db.png" src="../_images/lab7-bu2db.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 164 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 165 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -793,6 +802,12 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and then click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code>.</p>
+<figure class="align-center" id="id38">
+<img alt="../_images/lab7-webgroupp.png" src="../_images/lab7-webgroupp.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 166 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">WebGroup&quot;</span></code>:</p>
 <ul class="simple">
@@ -811,10 +826,10 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <li><p>The FQDN <code class="docutils literal notranslate"><span class="pre">*.archive.ubuntu.com</span></code> is using a second-level wilcard, that allows to create a subdivision within <em><a class="reference external" href="http://archive.ubuntu.com">archive.ubuntu.com</a></em>.</p></li>
 </ul>
 </div>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id39">
 <a class="reference internal image-reference" href="../_images/lab7-webgroup.png"><img alt="../_images/lab7-webgroup.png" src="../_images/lab7-webgroup.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 165 </span><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 167 </span><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -835,16 +850,16 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule once again!</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id40">
 <img alt="../_images/lab7-lastrule.png" src="../_images/lab7-lastrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 166 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 168 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id41">
 <a class="reference internal image-reference" href="../_images/lab7-lastcommit.png"><img alt="../_images/lab7-lastcommit.png" src="../_images/lab7-lastcommit.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 167 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 169 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -860,10 +875,10 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 </pre></div>
 </div>
 <p>You will notice three <strong>Drop</strong> entries within the <strong>Monitor</strong> section that have matched the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code>, successfully.</p>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id42">
 <a class="reference internal image-reference" href="../_images/lab7-explicitdeny.png"><img alt="../_images/lab7-explicitdeny.png" src="../_images/lab7-explicitdeny.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 168 </span><span class="caption-text">Explicit Deny Rule matching</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 170 </span><span class="caption-text">Explicit Deny Rule matching</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -883,16 +898,16 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and select the <strong>ace-azure-east-us-spoke2</strong> VNet</p>
 </div>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id43">
 <a class="reference internal image-reference" href="../_images/lab7-last.png"><img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 169 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 171 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id44">
 <a class="reference internal image-reference" href="../_images/lab7-lastlog.png"><img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 170 </span><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 172 </span><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You have successfully applied the Secure Egress Control, leveraging both the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature and the <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> rules!</p>
