@@ -205,14 +205,34 @@ and
 sudo apt-get upgrade -y
 ```
 
+When you see this pop-up messages, just click on the **Enter** button on your keyboard!
+
+```{figure} images/lab7-enter.png
+---
+height: 150px
+align: center
+---
+Press Enter
+```
+
+```{figure} images/lab7-enter2.png
+---
+height: 150px
+align: center
+---
+Press Enter again
+```
+
 - Check the domains hit by the *apt-get* commands
 
 ```{tip}
-Go to **CoPilot > Security > Egress > Monitor** and select the *ace-azure-east-us-spoke1* on the `"VPC/VNets"` field.
+Go to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the *ace-azure-east-us-spoke**1*** on the `"VPC/VNets"` field.
 ```
 
 ```{warning}
-<ins>Identify all the required domains for launching successfully the *apt-get* commands, inspecting **solely** the whole list of logs.</ins>
+<ins>Identify all the necessary domains for successfully executing the apt-get commands by exclusively examining the entire list of logs. 
+
+Any other domains should be disregarded.</ins>
 ```
 
 The required domains are **five**!
@@ -238,7 +258,7 @@ Monitor
 - Detach the **_All-Web_** Webgroup from the Greenfield-Rule.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the pencil icon on the righ-hand side.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the pencil icon on the righ-hand side of thr Greenfield-Rul eentry.
 
 Clear the `WebGroups` field and then click on **Save In Drafts**. 
 
