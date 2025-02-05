@@ -1,4 +1,4 @@
-![Lab Overview](../../docs/_logos/ace_security_banner.png)
+![Lab Overview](../../docs/_logos/ace_hybrid_banner.png)
 
 # ACE Hybrid Cloud  
 
