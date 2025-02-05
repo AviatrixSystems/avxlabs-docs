@@ -1,5 +1,7 @@
 # Welcome to ACE Cloud Backbone
 
+![ACE](../../docs/_logos/ace_backbone_banner.png)
+
 This Lab Guide will guide you through the different scenarios of how to build and manage multicloud backbone and hybrid connectivity.
 
 During this hands-on lab, you will experience the following:
@@ -9,5 +11,3 @@ During this hands-on lab, you will experience the following:
 * Verification of Aviatrix Edge deployment
 * Verification of secure backbone deployment and operation
 * Troubleshooting and Visibility
-
-![ACE](../../docs/_logos/ace_backbone_banner.png)
