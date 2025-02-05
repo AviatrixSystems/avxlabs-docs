@@ -24,8 +24,17 @@ These are the CIDR blocks per each CSP:
 - AWS = 10.0.1.0/24
 - GCP = 172.16.1.0/24
 
-aws-instance and gcp-instance have HTTP/HTTPS running (i.e. curl command can be issued).
+The AWS instance and GCP instance are running several services on the following ports: 1433, 1521, 443, 5000, and 50100.
 
+During the initial setup, MCNA was deployed. Both AWS and GCP environments are connected using the Aviatrix backbone.
+
+## Gatus Dashboards
+
+All of the pre-deployed instances are running [Gatus](https://gatus.io/) and attempting to connect to each other on various ports. There are two gatus dashboard(s), deployed to `aws-gatus` https://aws.pod#.aviatrixlab.com/ and `gcp-gatus`, https://gcp.pod#.aviatrixlab.com/ visualize this connectivity continuously and in real-time. `Green` means a tcp connection was successful and `red` means it was unsuccessful.
+
+```{note}
+Above on url replace the **pod#**, with your assigned pod# e.g for **pod97** `aws-gatus` will become https://aws.pod97.aviatrixlab.com/
+```
 Now let's connect the `Aviatrix Edge` to the existing MCNA. 
 
 First and foremost let's explore the **BGP Map** that describes the connectivity established through the BGPoverLAN.
