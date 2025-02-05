@@ -28,13 +28,19 @@ The AWS instance and GCP instance are running several services on the following 
 
 During the initial setup, MCNA was deployed. Both AWS and GCP environments are connected using the Aviatrix backbone.
 
-## Gatus Dashboards
+## 3. Gatus Dashboards
 
 All of the pre-deployed instances are running [Gatus](https://gatus.io/) and attempting to connect to each other on various ports. There are two gatus dashboard(s), deployed to `aws-gatus` https://aws.pod#.aviatrixlab.com/ and `gcp-gatus`, https://gcp.pod#.aviatrixlab.com/ visualize this connectivity continuously and in real-time. `Green` means a tcp connection was successful and `red` means it was unsuccessful.
 
 ```{note}
 Above on url replace the **pod#**, with your assigned pod# e.g for **pod97** `aws-gatus` will become https://aws.pod97.aviatrixlab.com/
 ```
+With pre-deployment and initial setup below is the gatus initial sample look
+![Gatus cloud](images/aws-gatus-initial.png)
+
+Note that the AWS/GCP and Edge connectivity sections are all `red`. These networks are not connected.
+While AWS and GCP connectivity section are all `Green`. As These networks are already connected.
+
 Now let's connect the `Aviatrix Edge` to the existing MCNA. 
 
 First and foremost let's explore the **BGP Map** that describes the connectivity established through the BGPoverLAN.
