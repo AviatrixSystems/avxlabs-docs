@@ -41,61 +41,16 @@ With pre-deployment and initial setup below is the gatus initial sample look
 Note that the AWS/GCP and Edge connectivity sections are all `red`. These networks are not connected.
 While AWS and GCP connectivity section are all `Green`. As These networks are already connected.
 
-Now let's connect the `Aviatrix Edge` to the existing MCNA. 
+## 3. Edge Connectivity
 
-First and foremost let's explore the **BGP Map** that describes the connectivity established through the BGPoverLAN.
+Edge gateway is already deployed as shown in below topology.
+![Edge Gateway](images/init-edge-gateway.png)
 
-Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Map"` option.
+### 3.1. Attachment between Edge and the Transit
 
-```{figure} images/lab8-edge3.png
----
-height: 200px
-align: center
----
-CoPilot BGP Map
-```
+Let's establish a peering between the Aviatrix Edge device and the AWS Transit Gateway in **US-WEST-2**. 
 
-You can notice both the AS numbers of each side of the connection and the **/30** subnet used in the underlay.
-
-```{figure} images/lab8-edge4.png
----
-align: center
----
-BGPoverLAN inside the On-Prem DC
-```
-
-Close the BGP Map and then click again on the threee dots icon and this time select the `"Show BGP Learned Routes"`.
-
-```{figure} images/lab8-edge5.png
----
-align: center
----
-Show BGP Learned Routes
-```
-
-The LAN router is advertising **225** routes to the Aviatrix Edge.
-
-```{figure} images/lab8-edge6.png
----
-align: center
----
-225 Routes
-```
-
-If you check also the `"Show BGP Advertised Routes"` outcome, you will notice that the Aviatrix Edge is not advertising any routes, because it is not connected to the MCNA yet!
-
-```{figure} images/lab8-edge7.png
----
-align: center
----
-No routes advertised by the Edge yet
-```
-
-### 2.1. Attachment between Edge and the Transit
-
-Let's establish a peering between the Aviatrix Edge device and the Transit Gateway in **US-EAST-2**. 
-
-In the Topology depicted below, you will notice that there is a workstation named "edge" attached to the LAN router. Once the attachment has been established, you will launch your ping from that client, for the connectivity verification!
+In the Topology depicted above, you will notice that there is a workstation named "Workstation edge" attached to the LAN router. Once the attachment has been established, you will launch your ping from that client, for the connectivity verification!
 
 ```{figure} images/lab8-edge8.png
 ---
