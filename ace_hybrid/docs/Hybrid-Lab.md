@@ -50,71 +50,30 @@ Edge gateway is already deployed as shown in below topology.
 
 Let's establish a peering between the Aviatrix Edge device and the AWS Transit Gateway in **US-WEST-2**. 
 
-In the Topology depicted above, you will notice that there is a workstation named "Workstation edge" attached to the LAN router. Once the attachment has been established, you will launch your ping from that client, for the connectivity verification!
+In the topology shown below, there is a workstation named "Workstation Edge" connected to the LAN router. Once this connection is made, indicated by the grey links, initiate a ping from the workstation to verify connectivity.In the topology shown above, there is a workstation named "Workstation Edge" connected to the LAN router. Once this connection is made, indicated by the grey links, initiate a ping from the workstation to verify connectivity.
 
-```{figure} images/lab8-edge8.png
----
-align: center
----
-Peerings not established yet!
-```
+![Edge Init](images/edge-init-connect.png)
 
-First and foremost, you have to configure a **BGP ASN** on the **_aws-us-east-2-transit_** GW!
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_**.
-
-```{figure} images/lab8-edge12.png
----
-align: center
----
-aws-us-east-2-transit
-```
-
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section and insert the AS number **64513** on the empty field related to the `“Local AS Number”`, then click on **Save**.
-
-```{figure} images/lab8-edge13.png
----
-align: center
----
-BGP ASN
-```
-
-Now it's time to establish the attachment! 
+Now it's time to establish Edge Gateway to AWS Cloud attachment! 
 
 Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachment"` button, on the right-hand side of the screen.
+![Edge Attach](images/edge-manage-attach.png)
 
-```{figure} images/lab8-edge9.png
----
-height: 200px
-align: center
----
-Manage Gateway Attachment
-```
 
 Click on the `"+Attachment"` button.
 
-```{figure} images/lab8-edge10.png
----
-align: center
----
-Transit Gateway Attachment
-```
+![Edge Attach1](images/edge-attach.png)
 
 Fill in the attachment template using the following settings:
 
-- **Transit Gateway**: <span style='color:#479608'>aws-us-east-2-transit</span>
+- **Transit Gateway**: <span style='color:#479608'>aws-us-west-transit</span>
 - **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
 - **Attach over**: <span style='color:#479608'>**Public Network**</span>
-- **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
 
 Do not forget to click on **Save**.
 
-```{figure} images/lab8-edge11.png
----
-align: center
----
-Attachment creation template
-```
+![Edge aws](images/edge-aws-attach.png)
 
 Wait for a bunch of seconds for the Aviatrix Controller to establish the attachment and then a message will pop up confirming that the operation has been accomplished, successfully!
 
