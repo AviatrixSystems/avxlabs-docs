@@ -5,11 +5,11 @@ You can view your Team POD portal by clicking on the picture below.
 
 | **TEAM #** | **Access Code** |
 |:----------:|:---------------:|
-|      1     |       OO8W      |
-|      2     |       OO8W      |
-|      3     |       OO8W      |
-|      4     |       OO8W      |
-|      5     |       OO8W      |
+|      1     |       NTF5      |
+|      2     |       NTF5      |
+|      3     |       NTF5      |
+|      4     |       NTF5      |
+
 
 <a href="https://bridge-portal.ace.aviatrixlab.com/" target="_blank">
 
