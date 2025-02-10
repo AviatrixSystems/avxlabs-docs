@@ -322,7 +322,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-set-up">2. Initial set-up</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gatus-dashboards">3. Gatus Dashboards</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity">4. Edge Connectivity</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">3.1. Attachment between Edge and the Transit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">4.1. Attachment between Edge and the Transit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-local-lan-router">4.2. Attachment between Edge and the Local Lan Router</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">3. Network Domain Association</a></li>
@@ -387,7 +388,7 @@ While AWS and GCP connectivity section are all <code class="docutils literal not
 <p>Edge gateway is already deployed as shown in below topology.
 <img alt="Edge Gateway" src="../_images/init-edge-gateway.png" /></p>
 <section id="attachment-between-edge-and-the-transit">
-<h3>3.1. Attachment between Edge and the Transit<a class="headerlink" href="#attachment-between-edge-and-the-transit" title="Link to this heading">#</a></h3>
+<h3>4.1. Attachment between Edge and the Transit<a class="headerlink" href="#attachment-between-edge-and-the-transit" title="Link to this heading">#</a></h3>
 <p>Let’s establish a peering between the Aviatrix Edge device and the AWS Transit Gateway in <strong>US-WEST-2</strong>.</p>
 <p>In the topology shown below, there is a workstation named “Workstation Edge” connected to the LAN router. Once this connection is made, indicated by the grey links, initiate a ping from the workstation to verify connectivity. In the topology shown above, there is a workstation named “Workstation Edge” connected to the LAN router. Once this connection is made, indicated by the grey links, initiate a ping from the workstation to verify connectivity.</p>
 <p><img alt="Edge Init" src="../_images/edge-init-connect.png" /></p>
@@ -409,9 +410,30 @@ While AWS and GCP connectivity section are all <code class="docutils literal not
 <p>Let’s verify the presence of the attachment previously created on the Topology.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
 <p><img alt="Edge Attach aws" src="../_images/edge-attach-aws.png" /></p>
+</section>
+<section id="attachment-between-edge-and-the-local-lan-router">
+<h3>4.2. Attachment between Edge and the Local Lan Router<a class="headerlink" href="#attachment-between-edge-and-the-local-lan-router" title="Link to this heading">#</a></h3>
+<p>Now it’s time to establish Edge Gateway to Local Lan Network</p>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connections(S2C)</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+External</span> <span class="pre">Connection</span> <span class="pre">To&quot;</span></code> and select <code class="docutils literal notranslate"><span class="pre">&quot;External</span> <span class="pre">Device&quot;</span></code>
+<img alt="Edge Lan" src="../_images/edge-lan-ini.png" /></p>
+<p>Fill in the External Connectivity template using the following settings:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>Edge-Onprem-Lan</span></p></li>
+<li><p><strong>Connect Using</strong>: <span style='color:#479608'>BGP</span></p></li>
+<li><p><strong>Type</strong>: <span style='color:#479608'>LAN</span></p></li>
+<li><p><strong>Local Gateway</strong>: <span style='color:#479608'>avx-equinix-edge-1</span></p></li>
+<li><p><strong>Remote ASN</strong>: <span style='color:#479608'>64900</span></p></li>
+<li><p><strong>Remote LAN IP</strong>: <span style='color:#479608'>10.40.251.1</span></p></li>
+<li><p><strong>Local LAN IP</strong>: <span style='color:#479608'>10.40.251.2</span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save</strong>.
+Wait a few seconds for the Aviatrix Controller to establish the attachment.
+Let’s verify the presence of the LAN attachment previously created on the Topology.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
+<p><img alt="Edge Attach Lan" src="../_images/edge-lan-attach.png" /></p>
 <p>This is how the Topology would look like after the creation of the attachment.</p>
 <figure class="align-center" id="id2">
-<img alt="docs/images/lab8-edge18.png" src="docs/images/lab8-edge18.png" />
+<img alt="../_images/edge-lan-ini.png" src="../_images/edge-lan-ini.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">Attachment established!</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
@@ -871,7 +893,8 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-set-up">2. Initial set-up</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gatus-dashboards">3. Gatus Dashboards</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-connectivity">4. Edge Connectivity</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">3.1. Attachment between Edge and the Transit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-transit">4.1. Attachment between Edge and the Transit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-local-lan-router">4.2. Attachment between Edge and the Local Lan Router</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-domain-association">3. Network Domain Association</a></li>
