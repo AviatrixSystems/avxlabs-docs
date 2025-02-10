@@ -46,7 +46,7 @@ While AWS and GCP connectivity section are all `Green`. As These networks are al
 Edge gateway is already deployed as shown in below topology.
 ![Edge Gateway](images/init-edge-gateway.png)
 
-### 3.1. Attachment between Edge and the Transit
+### 4.1. Attachment between Edge and the Transit
 
 Let's establish a peering between the Aviatrix Edge device and the AWS Transit Gateway in **US-WEST-2**. 
 
@@ -84,9 +84,34 @@ Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
 ![Edge Attach aws](images/edge-attach-aws.png)
 
+### 4.2. Attachment between Edge and the Local Lan Router
+
+Now it's time to establish Edge Gateway to Local Lan Network 
+
+Go to **CoPilot > Networking > Connectivity > External Connections(S2C)** and click on the `"+External Connection To"` and select `"External Device"`
+![Edge Lan](images/edge-lan-ini.png)
+
+Fill in the External Connectivity template using the following settings:
+
+- **Name**: <span style='color:#479608'>Edge-Onprem-Lan</span>
+- **Connect Using**: <span style='color:#479608'>BGP</span>
+- **Type**: <span style='color:#479608'>LAN</span>
+- **Local Gateway**: <span style='color:#479608'>avx-equinix-edge-1</span>
+- **Remote ASN**: <span style='color:#479608'>64900</span>
+- **Remote LAN IP**: <span style='color:#479608'>10.40.251.1</span>
+- **Local LAN IP**: <span style='color:#479608'>10.40.251.2</span>
+
+Do not forget to click on **Save**.
+Wait a few seconds for the Aviatrix Controller to establish the attachment.
+Let's verify the presence of the LAN attachment previously created on the Topology. 
+
+Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
+
+![Edge Attach Lan](images/edge-lan-attach.png)
+
 This is how the Topology would look like after the creation of the attachment.
 
-```{figure} images/lab8-edge18.png
+```{figure} images/edge-lan-ini.png
 ---
 align: center
 ---
