@@ -41,7 +41,7 @@ With pre-deployment and initial setup below is the gatus initial sample look
 Note that the AWS/GCP and Edge connectivity sections are all `red`. These networks are not connected.
 While AWS and GCP connectivity section are all `Green`. As These networks are already connected.
 
-## 3. Edge Connectivity
+## 4. Edge Connectivity
 
 Edge gateway is already deployed as shown in below topology.
 ![Edge Gateway](images/init-edge-gateway.png)
@@ -50,10 +50,9 @@ Edge gateway is already deployed as shown in below topology.
 
 Let's establish a peering between the Aviatrix Edge device and the AWS Transit Gateway in **US-WEST-2**. 
 
-In the topology shown below, there is a workstation named "Workstation Edge" connected to the LAN router. Once this connection is made, indicated by the grey links, initiate a ping from the workstation to verify connectivity.In the topology shown above, there is a workstation named "Workstation Edge" connected to the LAN router. Once this connection is made, indicated by the grey links, initiate a ping from the workstation to verify connectivity.
+In the topology shown below, there is a workstation named "Workstation Edge" connected to the LAN router. Once this connection is made, indicated by the grey links, initiate a ping from the workstation to verify connectivity. In the topology shown above, there is a workstation named "Workstation Edge" connected to the LAN router. Once this connection is made, indicated by the grey links, initiate a ping from the workstation to verify connectivity.
 
 ![Edge Init](images/edge-init-connect.png)
-
 
 Now it's time to establish Edge Gateway to AWS Cloud attachment! 
 
@@ -75,45 +74,15 @@ Do not forget to click on **Save**.
 
 ![Edge aws](images/edge-aws-attach.png)
 
-Wait for a bunch of seconds for the Aviatrix Controller to establish the attachment and then a message will pop up confirming that the operation has been accomplished, successfully!
+Wait a few seconds for the Aviatrix Controller to establish the attachment. You will then see a confirmation message like below, indicating that the operation has been successfully completed.
 
-```{figure} images/lab8-edge14.png
----
-align: center
----
-Peering created
-```
+![Edge confirm](../../ace_pro/docs/images/lab8-edge14.png)
 
 Let's verify the presence of the attachment previously created on the Topology. 
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
-```{figure} images/lab8-edge15.png
----
-align: center
----
-New attachment
-```
-
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** cluster.
-
-```{figure} images/lab8-edge16.png
----
-align: center
----
-aws-us-east-2-transit
-```
-
-Select the `"Attachments"` tab and then click on `"Transit-Edge Peering"`. 
-
-You will notice the presence of an attachment between the Transit GW in the cloud and the **Edge** running in the DC!
-
-```{figure} images/lab8-edge17.png
----
-align: center
----
-Transit-Edge Peering
-```
+![Edge Attach aws](images/edge-attach-aws.png)
 
 This is how the Topology would look like after the creation of the attachment.
 
