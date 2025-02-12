@@ -231,6 +231,13 @@ align: center
 Oregon region
 ```
 
+```{figure} images/lab1-newpic61.png
+---
+align: center
+---
+Invoke VPC service
+```
+
 You can see the `VPC` created with the assigned CIDR block.
 
 ```{figure} images/lab1-new3.png
