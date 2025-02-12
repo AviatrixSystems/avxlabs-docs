@@ -550,36 +550,43 @@
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Invoke VPC service</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You can see the <code class="docutils literal notranslate"><span class="pre">VPC</span></code> created with the assigned CIDR block.</p>
+<p>Now click on the VPCs link, as depicted below:</p>
 <figure class="align-center" id="id19">
-<a class="reference internal image-reference" href="../_images/lab1-new3.png"><img alt="../_images/lab1-new3.png" src="../_images/lab1-new3.png" style="height: 150px;" /></a>
+<img alt="../_images/lab1-newpic611.png" src="../_images/lab1-newpic611.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">VPC</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">VPCs</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>From there, navigate to <code class="docutils literal notranslate"><span class="pre">Subnets</span></code>.</p>
-<p>As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet per Availability Zone. Since us-west-2 has 4 AZs, therefore <strong>eight</strong> subnets are created.</p>
+<p>You can see the <code class="docutils literal notranslate"><span class="pre">VPC</span></code> created with the assigned CIDR block.</p>
 <figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="../_images/lab1-new3.png"><img alt="../_images/lab1-new3.png" src="../_images/lab1-new3.png" style="height: 150px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">VPC</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From there, navigate to <code class="docutils literal notranslate"><span class="pre">Subnets</span></code> in the navigation panel, on the left-handf side.</p>
+<p>As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet per Availability Zone. Since us-west-2 has 4 AZs, therefore <strong>eight</strong> subnets are created.</p>
+<figure class="align-center" id="id21">
 <img alt="../_images/lab1-newpic7.png" src="../_images/lab1-newpic7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Subnets created by the Aviatrix Controller</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Subnets created by the Aviatrix Controller</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From there, navigate to <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Tables</span></code>.</p>
 <p>Here, also, you can see the <strong>eight</strong> route tables that the Aviatrix Controller created. They are mapped to each subnet. The Public Routing Tables have a 0/0 route pointing to the Internet Gateway, that the Controller also deployed.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab1-rt.png" src="../_images/lab1-rt.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Routing Tables created by the Aviatrix Controller</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Routing Tables created by the Aviatrix Controller</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From there, navigate to <code class="docutils literal notranslate"><span class="pre">Internet</span> <span class="pre">gateways</span></code>.</p>
 <p>Here, also, you can see the <strong>IGW</strong> created by the Aviatrix Controller.
 You can notice that the IGW has the same name of the VPC that you defined, moreover it is also attached to this VPC.</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../_images/lab1-igw.png"><img alt="../_images/lab1-igw.png" src="../_images/lab1-igw.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">IGW created by the Aviatrix Controller</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">IGW created by the Aviatrix Controller</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -590,17 +597,17 @@ You can notice that the IGW has the same name of the VPC that you defined, moreo
 <h3>4.1. Create GCP VPC<a class="headerlink" href="#create-gcp-vpc" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong>.</p>
 <p>Before starting the deployment of the VPC in GCP, verify once again whether the CIDR range <code class="docutils literal notranslate"><span class="pre">172.16.22.0/24</span></code> is overlapping with an existing cidr or not, as shown below.</p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab1-newpic8.png"><img alt="../_images/lab1-newpic8.png" src="../_images/lab1-newpic8.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time let’s create an <strong>Application/Spoke</strong> VPC. Click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id25">
 <img alt="../_images/lab1-gcp1.png" src="../_images/lab1-gcp1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following values:</p>
@@ -617,18 +624,18 @@ You can notice that the IGW has the same name of the VPC that you defined, moreo
 <p class="admonition-title">Note</p>
 <p>Make sure there are no white spaces at the beginning or end of the VPC name.</p>
 </div>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab1-gcp2.png" src="../_images/lab1-gcp2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">VPC template</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">VPC template</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wait for some minutes and then verify the completion of the VPC creation in the VPC list, as soon as you see the confirmation pop-up message. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).</p>
 <p>You can filter by CIDR <code class="docutils literal notranslate"><span class="pre">172.16.22.0/24</span></code>.</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab1-gcp3.png"><img alt="../_images/lab1-gcp3.png" src="../_images/lab1-gcp3.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
