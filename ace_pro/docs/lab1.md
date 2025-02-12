@@ -233,12 +233,13 @@ Oregon region
 
 ```{figure} images/lab1-newpic61.png
 ---
+height: 300px
 align: center
 ---
 Invoke VPC service
 ```
 
-Now click on the VPCs link, as depicted below:
+Now click on the `VPCs` link, as depicted below:
 
 ```{figure} images/lab1-newpic611.png
 ---
@@ -274,6 +275,7 @@ Here, also, you can see the **eight** route tables that the Aviatrix Controller 
 
 ```{figure} images/lab1-rt.png
 ---
+height: 300px
 align: center
 ---
 Routing Tables created by the Aviatrix Controller
@@ -286,7 +288,7 @@ You can notice that the IGW has the same name of the VPC that you defined, moreo
 
 ```{figure} images/lab1-igw.png
 ---
-height: 150px
+height: 300px
 align: center
 ---
 IGW created by the Aviatrix Controller
