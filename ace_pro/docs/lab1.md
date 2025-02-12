@@ -238,6 +238,15 @@ align: center
 Invoke VPC service
 ```
 
+Now click on the VPCs link, as depicted below:
+
+```{figure} images/lab1-newpic611.png
+---
+align: center
+---
+VPCs
+```
+
 You can see the `VPC` created with the assigned CIDR block.
 
 ```{figure} images/lab1-new3.png
@@ -248,7 +257,7 @@ align: center
 VPC
 ```
 
-From there, navigate to `Subnets`.
+From there, navigate to `Subnets` in the navigation panel, on the left-handf side.
 
 As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet per Availability Zone. Since us-west-2 has 4 AZs, therefore **eight** subnets are created.
 
