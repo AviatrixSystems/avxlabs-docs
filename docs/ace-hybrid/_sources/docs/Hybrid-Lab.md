@@ -109,6 +109,13 @@ Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
 ![Edge Attach Lan](images/edge-lan-attach.png)
 
+The On-Prem Edge device is now connected to both the local LAN and the cloud.
+By default, the Edge device advertises all cloud routes to the LAN router and all LAN routes learned from the LAN router to the cloud.
+This configuration establishes a path from on-premises to both AWS and GCP.
+Connectivity is confirmed on both the GCP and AWS gatus dashboards
+
+![Edge Attach Lan](images/aws-dash-full.png)
+
 This is how the Topology would look like after the creation of the attachment.
 
 ```{figure} images/edge-lan-ini.png
