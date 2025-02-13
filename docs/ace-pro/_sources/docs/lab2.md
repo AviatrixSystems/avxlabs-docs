@@ -116,9 +116,33 @@ align: center
 DNS name
 ```
 
-Now open your SSH client and issue the command for accessing the EC2 istance using the credentials!
+Now, open your SSH client and enter the command to access the EC2 instance using your credentials!
+
+```bash
+ssh student@...
+```
 
 ```{figure} images/lab2-gatus07.png
+---
+height: 400px
+align: center
+---
+SSH client
+```
+
+You can also access your instances using their Public IP addresses! You can retrieve them through your CoPilot!
+
+- Go to **CoPilot > Cloud Resources > Cloud Assets** and filer based on the keyword `"test"`.
+
+```{figure} images/lab2-sshclient10.png
+---
+height: 400px
+align: center
+---
+Search the test instances
+```
+
+```{figure} images/lab2-sshclient00.png
 ---
 height: 400px
 align: center
