@@ -106,7 +106,7 @@ Explore the Gatus App status for the remaining instances as well.
 
 Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.
 
-- Go to your POD Portal and search for the widget assigned to the **_aws-us-east-2-spoke1-test1 _**instance within the LAB2 and LAB3 sections. Then copy on the clipboard the symbolic public DNS name of the istance!
+- Go to your POD Portal and search for the widget assigned to the **_aws-us-east-2-spoke1-test1_** instance within the LAB2 and LAB3 sections. Then copy on the clipboard the <ins>symbolic public DNS name</ins> of the istance!
 
 ```{figure} images/lab2-gatus06.png
 ---
@@ -130,9 +130,12 @@ align: center
 SSH client
 ```
 
-You can also access your instances using their Public IP addresses! You can retrieve them through your CoPilot!
+You can also access your instances using also their **Public IP addresses**! You can retrieve them through your CoPilot!
+
+### 3.2.1 Cloud Assets
 
 - Go to **CoPilot > Cloud Resources > Cloud Assets** and filer based on the keyword `"test"`.
+- Identify the instance **_aws-us-east-2-spoke1-test1_** and copy its public ip address and use it with your SSH client
 
 ```{figure} images/lab2-sshclient10.png
 ---
@@ -141,6 +144,26 @@ align: center
 ---
 Search the test instances
 ```
+
+```{figure} images/lab2-sshclient11.png
+---
+height: 400px
+align: center
+---
+Public IP address
+```
+
+Now access the EC2 instance using its public IP address:
+
+```{figure} images/lab2-sshclient20.png
+---
+height: 400px
+align: center
+---
+SSH with public IP address
+```
+
+Now that you have logged in to the **_aws-us-east-2-spoke1-test1_** successfully, you can issue your ping commands towards the private IP address of the other instances!
 
 ```{figure} images/lab2-sshclient00.png
 ---
