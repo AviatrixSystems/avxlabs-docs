@@ -263,6 +263,7 @@ As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet 
 
 ```{figure} images/lab1-newpic7.png
 ---
+height: 400px
 align: center
 ---
 Subnets created by the Aviatrix Controller
@@ -286,7 +287,6 @@ You can notice that the IGW has the same name of the VPC that you defined, moreo
 
 ```{figure} images/lab1-igw.png
 ---
-height: 150px
 align: center
 ---
 IGW created by the Aviatrix Controller
