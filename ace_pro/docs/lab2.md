@@ -138,9 +138,7 @@ These are Clusters of GWs
 
 This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to the number of **_clusters_**, per each type of gateway.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and expand the three drop-down lists. 
-
-You can find out that there are a total of **Three** Transit Gateways (Public IPs may differ):
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and you will find out that there are a total of **Three** Transit Gateways (Public IPs may differ):
 
 ```{figure} images/lab2-clustertransit.png
 ---
@@ -154,7 +152,7 @@ Transit GWs Clusters
 You can deploy up to maximum **two** Transit Gateways per each Transit VPC/VNet/VCN.
 ```
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and expand the unique drop-down list. You can find out that there are a total of **three** Spoke Gateways (once again, the Public IPs may differ):
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and explore the list of the available Spoke gateways. You can find out that there are a total of **three** Spoke Gateways (once again, the Public IPs may differ):
 
 ```{figure} images/lab2-clusterspoke.png
 ---
@@ -188,7 +186,7 @@ Please pay close attention to each step, as a misconfiguration could result in *
 
 ```{figure} images/lab2-transitbutton.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 +Transit Gateway
@@ -261,7 +259,7 @@ This is **CoPilot > Cloud Fabric > Gateways > Spoke Gateways > + Spoke Gateway**
 
 ```{figure} images/lab2-spokecreate.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 +Spoke Gateway
@@ -282,7 +280,7 @@ Only one Spoke Gateway will be deployed in VPC **aws-us-east2-spoke1**.
 - **VPC ID:** <span style='color:#479608'>aws-us-east-2-spoke1 (Make sure you don't select aws-us-east-2-**transit** VPC)</span>
 - **Instance Size:** <span style='color:#479608'>t2.medium</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
-- **Attach to Subnet:** <span style='color:#479608'>aws-us-east-2-spoke1-Public-1-us-east-2a</span>
+- **Attach to Subnet:** <span style='color:#479608'>10.0.1.96/27 - aws-us-east-2-spoke1-Public-1-us-east-2a</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
 Click **SAVE**.
@@ -311,7 +309,7 @@ Only one Spoke Gateway will be deployed in VNet **azure-west-us-spoke1**.
 - **VNet:** <span style='color:#479608'>azure-west-us-spoke1 (Make sure you don't select azure-west-us-**spoke2** VPC)</span>
 - **Instance Size:** <span style='color:#479608'>Standard_B2ms</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
-- **Attach to Subnet:** <span style='color:#479608'>azure-west-us-spoke1-Public-gateway-subnet-1</span>
+- **Attach to Subnet:** <span style='color:#479608'>192.168.1.0/28 - azure-west-us-spoke1-Public-gateway-subnet-1</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
 ```{warning}
@@ -351,7 +349,7 @@ Only one Spoke Gateway will be deployed in VPC **gcp-us-central1-spoke1**.
 - **Instance Size:** <span style='color:#479608'>n1-standard-1</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
 - **Attach to Subnet:** <span style='color:#479608'>gcp-us-central1-spoke1-sub1</span>
-- **Zone:** <span style='color:#479608'>us-central1-a</span>
+- **Zone:** <span style='color:#479608'>172.16.1.0/24 - us-central1-a</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
 Click **SAVE**.
@@ -740,7 +738,7 @@ align: center
 Route DB
 ```
 
-## 5.4. Connectivity
+## 5.4. Connectivity tests through Gatus
 
 Verify each test instance can ping each other.
 
