@@ -32,7 +32,7 @@ align: center
 Initial pre-provisioned topology
 ```
 
-### 3.1. Preliminary monitoring check on Gatus.
+### 3.1. Preliminary Monitoring Check Using the Gatus APP
 
 All of the pre-deployed instances are running [Gatus](https://gatus.io/) and attempting to connect to each other on various ports (e.g. icmp and tcp:80/443). 
 
@@ -96,6 +96,34 @@ height: 400px
 align: center
 ---
 SSH
+```
+
+```{important}
+Explore the Gatus App status for the remaining instances as well.
+```
+
+### 3.2. Preliminary Monitoring Check Using an SSH Client
+
+Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.
+
+- Go to your POD Portal and search for the widget assigned to the **_aws-us-east-2-spoke1-test1 _**instance within the LAB2 and LAB3 sections. Then copy on the clipboard the symbolic public DNS name of the istance!
+
+```{figure} images/lab2-gatus06.png
+---
+height: 400px
+align: center
+---
+DNS name
+```
+
+Now open your SSH client and issue the command for accessing the EC2 istance using the credentials!
+
+```{figure} images/lab2-gatus07.png
+---
+height: 400px
+align: center
+---
+SSH client
 ```
 
 ## 4. Aviatrix CoPilot
