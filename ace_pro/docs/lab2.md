@@ -24,6 +24,14 @@ In this lab, as shown in the topology below, we will configure the grey Aviatrix
 
 The rest of the topology has been preprovisioned to save time, including the test instances/VMs and the **Edge** inside the on-prem DC.
 
+```{figure} images/lab2-topology.png
+---
+height: 400px
+align: center
+---
+Initial pre-provisioned topology
+```
+
 ### 3.1. Preliminary monitoring check on Gatus.
 
 All of the pre-deployed instances are running [Gatus](https://gatus.io/) and attempting to connect to each other on various ports (e.g. icmp and tcp:80/443). 
@@ -40,14 +48,22 @@ Gatus from the POD Portal
 
 You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the MCN.
 
-- Select the EC2 instance "**_aws-us-east-2-spoke1-test1_**' and then enter the credentials to access the Gatus App!
+- Select the EC2 instance "**_aws-us-east-2-spoke1-test1_**" and then enter the credentials to access the Gatus App!
 
 ```{figure} images/lab2-gatus01.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
-aws-us-east-2-spoke1-test1
+aws-us-east-2-spoke1-test1 
+```
+
+```{figure} images/lab2-gatus022.png
+---
+height: 350px
+align: center
+---
+aws-us-east-2-spoke1-test1 on the logical Topology
 ```
 
 Insert the credentials available on your POD Portal and then click on **"Sign in"**.
@@ -60,17 +76,28 @@ align: center
 Credentials
 ```
 
-After signing into the Gatus App, you'll observe that two protocols are currently in use: ICMP and SSH.
+After signing into the Gatus App, you'll observe that two protocols are currently in use: `ICMP` and `SSH`.
 
-The only item showing a green status is aws-us-east-2-spoke1-test2. Both ICMP and SSH are functioning perfectly here. This success is attributed to the fact that this communication occurs within the same VPC (**`intra-VPC traffic`**), meaning it does not traverse other VPCs, regions, or cloud service providers!
+The only item showing a green status is `aws-us-east-2-spoke1-test2`. 
 
-```{figure} images/lab2-topology.png
+Both ICMP and SSH are functioning perfectly here. This success is attributed to the fact that this communication occurs within the same VPC (**`intra-VPC traffic`**), meaning it does not traverse other VPCs, regions, or cloud service providers!
+
+```{figure} images/lab2-gatus03.png
 ---
 height: 400px
 align: center
 ---
-Initial pre-provisioned topology
+ICMP
 ```
+
+```{figure} images/lab2-gatus04.png
+---
+height: 400px
+align: center
+---
+SSH
+```
+
 
 ```{note}
 The test VPCs/VNet you created in Lab 1 will not be used in other labs.
