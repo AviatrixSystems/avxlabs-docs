@@ -46,7 +46,7 @@ align: center
 Gatus from the POD Portal
 ```
 
-You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the MCN.
+You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the MCNA.
 
 - Select the EC2 instance "**_aws-us-east-2-spoke1-test1_**" and then enter the credentials to access the Gatus App!
 
@@ -58,7 +58,7 @@ align: center
 aws-us-east-2-spoke1-test1 
 ```
 
-```{figure} images/lab2-gatus022.png
+```{figure} images/lab2-gatus02.png
 ---
 height: 350px
 align: center
@@ -68,7 +68,7 @@ aws-us-east-2-spoke1-test1 on the logical Topology
 
 Insert the credentials available on your POD Portal and then click on **"Sign in"**.
 
-```{figure} images/lab2-gatus02.png
+```{figure} images/lab2-gatus03.png
 ---
 height: 400px
 align: center
@@ -82,7 +82,7 @@ The only item showing a green status is `aws-us-east-2-spoke1-test2`.
 
 Both ICMP and SSH are functioning perfectly here. This success is attributed to the fact that this communication occurs within the same VPC (**`intra-VPC traffic`**), meaning it does not traverse other VPCs, regions, or cloud service providers!
 
-```{figure} images/lab2-gatus03.png
+```{figure} images/lab2-gatus04.png
 ---
 height: 400px
 align: center
@@ -90,7 +90,7 @@ align: center
 ICMP
 ```
 
-```{figure} images/lab2-gatus04.png
+```{figure} images/lab2-gatus05.png
 ---
 height: 400px
 align: center
@@ -98,9 +98,30 @@ align: center
 SSH
 ```
 
+## 4. Aviatrix CoPilot
+
+Now let's access the Aviatrix Centralized Management Node, the CoPilot.
+
+Go to your POD portal, click on the `"Open Copilot"` button and insert the credentials!
+
+```{figure} images/lab2-gatus06.png
+---
+height: 400px
+align: center
+---
+POD Portal
+```
+
+```{figure} images/lab2-gatus07.png
+---
+height: 400px
+align: center
+---
+CoPilot UI
+```
 
 ```{note}
-The test VPCs/VNet you created in Lab 1 will not be used in other labs.
+The test VPCs/VNet you created in **Lab 1** will not be used in other labs.
 
 For sake of semplicity, in this lab, the Transits will NOT be deployed in pairs. As a best practice, Aviatrix recommends always to deploy two Transits to ensure High Availability.
 ```
