@@ -362,7 +362,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#route-info-db">5.3. Route Info DB</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity">5.4. Connectivity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests-through-gatus">5.4. Connectivity tests through Gatus</a></li>
 </ul>
             </nav>
         </div>
@@ -491,8 +491,7 @@
 </figcaption>
 </figure>
 <p>This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to the number of <strong><em>clusters</em></strong>, per each type of gateway.</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and expand the three drop-down lists.</p>
-<p>You can find out that there are a total of <strong>Three</strong> Transit Gateways (Public IPs may differ):</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and you will find out that there are a total of <strong>Three</strong> Transit Gateways (Public IPs may differ):</p>
 <figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/lab2-clustertransit.png"><img alt="../_images/lab2-clustertransit.png" src="../_images/lab2-clustertransit.png" style="height: 300px;" /></a>
 <figcaption>
@@ -503,7 +502,7 @@
 <p class="admonition-title">Note</p>
 <p>You can deploy up to maximum <strong>two</strong> Transit Gateways per each Transit VPC/VNet/VCN.</p>
 </div>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and expand the unique drop-down list. You can find out that there are a total of <strong>three</strong> Spoke Gateways (once again, the Public IPs may differ):</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and explore the list of the available Spoke gateways. You can find out that there are a total of <strong>three</strong> Spoke Gateways (once again, the Public IPs may differ):</p>
 <figure class="align-center" id="id12">
 <a class="reference internal image-reference" href="../_images/lab2-clusterspoke.png"><img alt="../_images/lab2-clusterspoke.png" src="../_images/lab2-clusterspoke.png" style="height: 250px;" /></a>
 <figcaption>
@@ -532,7 +531,7 @@
 <li><p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt; + Transit Gateway</strong></p></li>
 </ul>
 <figure class="align-center" id="id13">
-<a class="reference internal image-reference" href="../_images/lab2-transitbutton.png"><img alt="../_images/lab2-transitbutton.png" src="../_images/lab2-transitbutton.png" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab2-transitbutton.png"><img alt="../_images/lab2-transitbutton.png" src="../_images/lab2-transitbutton.png" style="height: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 42 </span><span class="caption-text">+Transit Gateway</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
@@ -593,7 +592,7 @@
 <p>Navigate to the tab immediately to the right, which is <code class="docutils literal notranslate"><span class="pre">Spoke</span> <span class="pre">Gateways</span></code>.</p>
 <p>This is <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt; + Spoke Gateway</strong>.</p>
 <figure class="align-center" id="id17">
-<a class="reference internal image-reference" href="../_images/lab2-spokecreate.png"><img alt="../_images/lab2-spokecreate.png" src="../_images/lab2-spokecreate.png" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab2-spokecreate.png"><img alt="../_images/lab2-spokecreate.png" src="../_images/lab2-spokecreate.png" style="height: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 46 </span><span class="caption-text">+Spoke Gateway</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
@@ -614,7 +613,7 @@
 <li><p><strong>VPC ID:</strong> <span style='color:#479608'>aws-us-east-2-spoke1 (Make sure you don’t select aws-us-east-2-<strong>transit</strong> VPC)</span></p></li>
 <li><p><strong>Instance Size:</strong> <span style='color:#479608'>t2.medium</span></p></li>
 <li><p><strong>High Performance Encryption:</strong> <span style='color:#479608'><strong>Off</strong></span></p></li>
-<li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>aws-us-east-2-spoke1-Public-1-us-east-2a</span></p></li>
+<li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>10.0.1.96/27 - aws-us-east-2-spoke1-Public-1-us-east-2a</span></p></li>
 <li><p><strong>Public IP:</strong> <span style='color:#479608'>Allocate New Static Public IP</span></p></li>
 </ul>
 <p>Click <strong>SAVE</strong>.</p>
@@ -641,7 +640,7 @@
 <li><p><strong>VNet:</strong> <span style='color:#479608'>azure-west-us-spoke1 (Make sure you don’t select azure-west-us-<strong>spoke2</strong> VPC)</span></p></li>
 <li><p><strong>Instance Size:</strong> <span style='color:#479608'>Standard_B2ms</span></p></li>
 <li><p><strong>High Performance Encryption:</strong> <span style='color:#479608'><strong>Off</strong></span></p></li>
-<li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>azure-west-us-spoke1-Public-gateway-subnet-1</span></p></li>
+<li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>192.168.1.0/28 - azure-west-us-spoke1-Public-gateway-subnet-1</span></p></li>
 <li><p><strong>Public IP:</strong> <span style='color:#479608'>Allocate New Static Public IP</span></p></li>
 </ul>
 <div class="admonition warning">
@@ -678,7 +677,7 @@
 <li><p><strong>Instance Size:</strong> <span style='color:#479608'>n1-standard-1</span></p></li>
 <li><p><strong>High Performance Encryption:</strong> <span style='color:#479608'><strong>Off</strong></span></p></li>
 <li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>gcp-us-central1-spoke1-sub1</span></p></li>
-<li><p><strong>Zone:</strong> <span style='color:#479608'>us-central1-a</span></p></li>
+<li><p><strong>Zone:</strong> <span style='color:#479608'>172.16.1.0/24 - us-central1-a</span></p></li>
 <li><p><strong>Public IP:</strong> <span style='color:#479608'>Allocate New Static Public IP</span></p></li>
 </ul>
 <p>Click <strong>SAVE</strong>.</p>
@@ -1008,8 +1007,8 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 </figure>
 </section>
 </section>
-<section id="connectivity">
-<h2>5.4. Connectivity<a class="headerlink" href="#connectivity" title="Link to this heading">#</a></h2>
+<section id="connectivity-tests-through-gatus">
+<h2>5.4. Connectivity tests through Gatus<a class="headerlink" href="#connectivity-tests-through-gatus" title="Link to this heading">#</a></h2>
 <p>Verify each test instance can ping each other.</p>
 <p>Open three terminal windows to SSH to the <strong>public IPs</strong> of the 3 spoke <strong>test instances/VMs</strong> in each cloud.</p>
 <p>Then ping the <strong>private</strong> IPs of each other VMs to test the Multi-Cloud connectivity.</p>
@@ -1177,7 +1176,7 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#route-info-db">5.3. Route Info DB</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity">5.4. Connectivity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests-through-gatus">5.4. Connectivity tests through Gatus</a></li>
 </ul>
   </nav></div>
 
