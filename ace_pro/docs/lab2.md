@@ -962,7 +962,9 @@ Verify that each test instance can ping each other.
 
 ### 6.1 Connectivity Test Using the Gatus App
 
-Navigate to your POD Portal, locate the Gatus widget, and select **_aws-us-east-2-spoke1-test1_** as an example. Then, sign in to the Gatus app.
+Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example. 
+
+Then, sign in to the Gatus app.
 
 ```{figure} images/lab2-gastusfinal00.png
 ---
@@ -1007,7 +1009,7 @@ Refresh the web page, to see the changes reflected into your CoPilot's topology!
 ```{note}
 **`POD PORTAL`**:
 
-Please note that both the public DNS names and private IP addresses of the **test** instances can be retrieved from your personal portal.
+Please note that both the public DNS names and private IP addresses of the **test** instances can be retrieved from your personal POD portal.
 ```{figure} images/lab2-newpic.png
 ---
 align: center
@@ -1030,7 +1032,7 @@ Test Instance Properties
 ```
 
 ```{note}
-Do not select the instance with the Aviatrix logo!
+Do not select the instance with the **Aviatrix logo**!
 
 <ins>You can't SSH to any Aviatrix GWs !</ins>
 
