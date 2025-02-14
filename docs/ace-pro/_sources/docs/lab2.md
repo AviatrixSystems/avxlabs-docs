@@ -98,11 +98,19 @@ align: center
 SSH
 ```
 
+```{figure} images/lab2-intravpc.png
+---
+height: 400px
+align: center
+---
+normal intra-vpc traffic 
+```
+
 ```{important}
 Explore the Gatus App status for the remaining instances as well.
 ```
 
-### 3.2. Preliminary Monitoring Check Using an SSH Client
+### 3.2. Preliminary Monitoring Check Using an SSH Client (BONUS)
 
 Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.
 
