@@ -143,7 +143,7 @@ You can also access your instances using also their **Public IP addresses**! You
 1) `Cloud Assets`
 2) `Topology`
 
-### 3.2.1 Cloud Assets (to retrieve IP addresses)
+#### 3.2.1 Cloud Assets (to retrieve IP addresses)
 
 - Go to **CoPilot > Cloud Resources > Cloud Assets** and filer based on the keyword `"test"`.
 - Identify the instance **_aws-us-east-2-spoke1-test1_** and copy its public ip address and use it with your SSH client.
@@ -178,7 +178,7 @@ align: center
 SSH with public IP address
 ```
 
-### 3.2.2 Topology (to retrieve IP addresses)
+#### 3.2.2 Topology (to retrieve IP addresses)
 
 - Navigate to **CoPilot > Topology > Overview (Default Tab)** and enter **_aws-us-east-2-spoke1-test1_** in the search field located on the right-hand side.
 
@@ -204,7 +204,9 @@ Topology
 In the Properties window under the Topology section of your CoPilot, you can also access the **Private IP addresses** for EAST-WEST traffic.
 ```
 
-Now that you have logged in to the **_aws-us-east-2-spoke1-test1_** successfully, you can issue your ping commands towards the private IP address of the other instances!
+## 3.3 Verification Using Uour SSH Client 
+
+Now that you have logged in to the **_aws-us-east-2-spoke1-test1_** successfully, you can issue your ping commands towards the **Private IP address** of the other instances!
 
 ```{figure} images/lab2-sshclient00.png
 ---
@@ -213,7 +215,18 @@ align: center
 ---
 SSH client
 ```
-</details>
+
+```{figure} images/lab2-pingfails.png
+---
+height: 400px
+align: center
+---
+Ping outcomes
+```
+
+```{tip}
+Verify also the **SSH** protocol
+```
 
 ## 4. Aviatrix CoPilot
 
