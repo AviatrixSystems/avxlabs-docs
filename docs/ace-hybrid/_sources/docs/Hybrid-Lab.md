@@ -46,7 +46,7 @@ While AWS and GCP connectivity section are all `Green`. As These networks are al
 Edge gateway is already deployed as shown in below topology.
 ![Edge Gateway](images/init-edge-gateway.png)
 
-### 4.1. Attachment between Edge and the Transit
+### 4.1. Attachment between Edge and the AWS Transit
 
 Let's establish a peering between the Aviatrix Edge device and the AWS Transit Gateway in **US-WEST-2**. 
 
@@ -117,167 +117,43 @@ Connectivity is confirmed on both the GCP and AWS gatus dashboards
 ![Edge Attach Lan](images/aws-dash-full.png)
 
 This is how the Topology would look like after the creation of the attachment.
+![Edge Attach Lan](images/hybrid-aws-complete.png)
 
-```{figure} images/edge-lan-ini.png
----
-align: center
----
-Attachment established!
-```
-
-```{important}
 The **Edge** device allows to extend all the Aviatrix functionalities to the remote DC!
-```
 
-## 3. Network Domain Association
+### 4.3. Attachment between Edge and the GCP Transit
 
-Let's assocciate the Edge connection to any of the existing Network Domains.
+Let's establish a peering between the Aviatrix Edge device and the GCP Transit Gateway in **us-central-1**. 
 
-Go to **CoPilot > Networking > Network Segmentation > Network Domains** and edit, for instance, the **Green** domain. Select the **`on-prem-edge`** connection and do not forget to click on **Save**!
+![Edge Attach Lan](images/gcp-initial.png)
 
-```{figure} images/lab8-edge19.png
----
-height: 400px
-align: center
----
-Network Domain Association
-```
+Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachment"` button, on the right-hand side of the screen.
+![Edge Attach](images/edge-manage-attach.png)
 
-You have successfully extended the `Network Segmentation` on top of the DC.
+Click on the `"+Attachment"` button.
 
-```{figure} images/lab8-newjoe.png
----
-align: center
----
-The DC is now another VPC
-```
+![Edge Attach1](images/gcp-attach.png)
 
-Let's explore again the Cloud Routes section!
+Fill in the attachment template using the following settings:
 
-Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Advertised Routes` option.
+- **Transit Gateway**: <span style='color:#479608'>gcp-central-us-transit</span>
+- **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
+- **Attach over**: <span style='color:#479608'>**Public Network**</span>
 
-```{important}
-This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge device by the **Aviatrix Controller**, after the attachemnt got established!
-```
+Do not forget to click on **Save**.
 
-```{figure} images/lab8-edge20.png
----
-align: center
----
-BGP Advertised Routes
-```
+![Edge aws](images/gcp-attach-complete.png)
 
-## 4. Edge: Connectivity Test
+Wait a few seconds for the Aviatrix Controller to establish the attachment. You will then see a confirmation message like below, indicating that the operation has been successfully completed.
 
-Let's launch a connectivity test, from the Workstation "Edge" inside the DC in New York. 
+![Edge confirm](images/gcp-attach-success.png)
 
-```{figure} images/lab8-newjoe2.png
----
-align: center
----
-BGP Advertised Routes
-```
+Let's verify the presence of the attachment previously created on the Topology. 
 
-Go to your personal POD portal, scroll down untill your reach the **Lab 8** section and click on the `"Open Workstation"` button.
+Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
-```{figure} images/lab8-edgenew.png
----
-height: 250px
-align: center
----
-Workstation Edge access from the POD Portal
-```
+![Edge Attach aws](images/edge-attach-aws.png)
 
-Subsequently, insert the credentials available from the POD Portal.
-
-```{figure} images/lab8-newjoe3.png
----
-align: center
----
-Workstation Edge credentials
-```
-
-You will land on the Desktop of the Workstation Edge and from here launch the `LX Terminal`.
-
-```{figure} images/lab8-newjoe4.png
----
-align: center
----
-LX Terminal
-```
-
-Now execute the ping command towards the private IP address of the **aws-us-east-2-spoke1-test1** instance (**i.e. 10.0.1.100**).
-
-```{figure} images/lab8-edge22.png
----
-align: center
----
-Target for the connectivity test
-```
-
-The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered as just an additional VPC!
-
-```{figure} images/lab8-edge30.png
----
-align: center
----
-Ping
-```
-
-## 5. Edge: FlowIQ
-
-* Use <span style='color:#FF0000'>**FlowIQ**</span> from the Aviatrix CoPilot, <ins> for inspecting the NetFlow Data.
-
-```{tip}
-Go to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based  on the `"Destination IP Address"` **10.0.1.100** (i.e. **_aws-us-east-2-spoke1-test1_**).
-
-Do not forget to click on **Apply**.
-```
-
-```{figure} images/lab8-plus.png
----
-align: center
----
-Create the filter
-```
-
-```{figure} images/lab8-edge24.png
----
-height: 200px
-align: center
----
-FlowIQ Filter
-```
-
-```{caution}
-It may take about <ins>**5** minutes</ins> for flow data to show up on the CoPilot UI, therefore please wait for a bit
-and then click on the **`"Refresh Data"`** button!
-```{figure} images/lab8-refresh2.png
----
-align: center
----
-Refresh
-```
-
-Then scroll a little bit and check the `"Flow Exporters"` widget, then from the drop-down menu select the **`"Aviatrix Gateway"`** widget: you will see the list of all the Aviatrix Gateways involved along the path.
-
-```{figure} images/lab8-newjoe6.png
----
-align: center
----
-Widget
-```
-
-```{figure} images/lab8-flowiq.png
----
-align: center
----
-Aviatrix Gateway
-```
-
-```{note}
-On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
-```
 
 ## 6. Edge: "It's more than a Spoke GW""
 
