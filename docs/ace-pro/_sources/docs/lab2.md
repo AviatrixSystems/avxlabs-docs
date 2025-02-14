@@ -107,7 +107,7 @@ Normal intra-vpc traffic
 ```
 
 ```{important}
-Explore the Gatus App status for the remaining instances as well.
+Check the **Gatus App** status for the remaining instances as well.
 ```
 
 ### 3.2. Preliminary Monitoring Check Using an SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
@@ -204,7 +204,7 @@ Topology
 In the Properties window under the Topology section of your CoPilot, you can also access the **Private IP addresses** for EAST-WEST traffic.
 ```
 
-## 3.3 Verification Using Uour SSH Client 
+### 3.3 Verification Using Your SSH Client 
 
 Now that you have logged in to the **_aws-us-east-2-spoke1-test1_** successfully, you can issue your ping commands towards the **Private IP address** of the other instances!
 
@@ -956,15 +956,49 @@ align: center
 Route DB
 ```
 
-## 5.4. Connectivity tests through Gatus
+## 6. Final Connectivity Testing
 
-Verify each test instance can ping each other.
+Verify that each test instance can ping each other.
 
-Open three terminal windows to SSH to the **public IPs** of the 3 spoke **test instances/VMs** in each cloud.
+### 6.1 Connectivity Test Using the Gatus App
+
+Navigate to your POD Portal, locate the Gatus widget, and select **_aws-us-east-2-spoke1-test1_** as an example. Then, sign in to the Gatus app.
+
+```{figure} images/lab2-gastusfinal00.png
+---
+align: center
+---
+ICMP
+```
+
+```{figure} images/lab2-gastusfinal01.png
+---
+align: center
+---
+SSH
+```
+
+You will observe that both ICMP and SSH tests have successfully completed for all three instances:
+
+1) **_aws-us-east-2-spoke1-test2_** (enabled by the normal `intra-VPC traffic`)
+
+2) **_gcp-us-central1-spoke1-test1 _**(enabled by the `Aviatrix MCNA`)
+
+3) **_azure-west-us-spoke1-test1_** (enabled by the `Aviatrix MCNA`)
+
+```{important}
+Review the Gatus App status for the other instances in Azure and GCP.
+```
+
+### 6.1 Connectivity Test Using the SSH Client
+
+If you're not satisfied with the Gatus dashboard, you can also use your personal `SSH client` to perform the connectivity tests!
+
+- Open three terminal windows to SSH to the **public IPs** of the 3 spoke **test instances/VMs** in each cloud.
 
 Then ping the **private** IPs of each other VMs to test the Multi-Cloud connectivity. 
 
-<ins>Refer to your pod portal for the public/private IPs or retrieve them from the topology</ins>.
+<ins>Refer to your pod portal for the public/private IPs or retrieve them from the **_Cloud Assets/Topology_**</ins>.
 
 ```{important}
 Refresh the web page, to see the changes reflected into your CoPilot's topology!
@@ -973,7 +1007,7 @@ Refresh the web page, to see the changes reflected into your CoPilot's topology!
 ```{note}
 **`POD PORTAL`**:
 
-Both public DNS names and private IP addresses of the **test** instances are retrievable from your personal portal.
+Please note that both the public DNS names and private IP addresses of the **test** instances can be retrieved from your personal portal.
 ```{figure} images/lab2-newpic.png
 ---
 align: center

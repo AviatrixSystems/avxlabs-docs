@@ -339,9 +339,9 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#topology-to-retrieve-ip-addresses">3.2.2 Topology (to retrieve IP addresses)</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-your-ssh-client">3.3 Verification Using Your SSH Client</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-uour-ssh-client">3.3 Verification Using Uour SSH Client</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-copilot">4. Aviatrix CoPilot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-configuration">4. Initial configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-transit-gateways">4.1. Aviatrix Transit Gateways</a></li>
@@ -372,7 +372,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#route-info-db">5.3. Route Info DB</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests-through-gatus">5.4. Connectivity tests through Gatus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-connectivity-testing">6. Final Connectivity Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-gatus-app">6.1 Connectivity Test Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-ssh-client">6.1 Connectivity Test Using the SSH Client</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -468,7 +472,7 @@
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Explore the Gatus App status for the remaining instances as well.</p>
+<p>Check the <strong>Gatus App</strong> status for the remaining instances as well.</p>
 </div>
 </section>
 <section id="preliminary-monitoring-check-using-an-ssh-client-bonus">
@@ -552,9 +556,8 @@
 </div>
 </section>
 </section>
-</section>
-<section id="verification-using-uour-ssh-client">
-<h2>3.3 Verification Using Uour SSH Client<a class="headerlink" href="#verification-using-uour-ssh-client" title="Link to this heading">#</a></h2>
+<section id="verification-using-your-ssh-client">
+<h3>3.3 Verification Using Your SSH Client<a class="headerlink" href="#verification-using-your-ssh-client" title="Link to this heading">#</a></h3>
 <p>Now that you have logged in to the <strong><em>aws-us-east-2-spoke1-test1</em></strong> successfully, you can issue your ping commands towards the <strong>Private IP address</strong> of the other instances!</p>
 <figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="../_images/lab2-sshclient00.png"><img alt="../_images/lab2-sshclient00.png" src="../_images/lab2-sshclient00.png" style="height: 400px;" /></a>
@@ -572,6 +575,7 @@
 <p class="admonition-title">Tip</p>
 <p>Verify also the <strong>SSH</strong> protocol</p>
 </div>
+</section>
 </section>
 <section id="aviatrix-copilot">
 <h2>4. Aviatrix CoPilot<a class="headerlink" href="#aviatrix-copilot" title="Link to this heading">#</a></h2>
@@ -1194,12 +1198,43 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 </figure>
 </section>
 </section>
-<section id="connectivity-tests-through-gatus">
-<h2>5.4. Connectivity tests through Gatus<a class="headerlink" href="#connectivity-tests-through-gatus" title="Link to this heading">#</a></h2>
-<p>Verify each test instance can ping each other.</p>
-<p>Open three terminal windows to SSH to the <strong>public IPs</strong> of the 3 spoke <strong>test instances/VMs</strong> in each cloud.</p>
+<section id="final-connectivity-testing">
+<h2>6. Final Connectivity Testing<a class="headerlink" href="#final-connectivity-testing" title="Link to this heading">#</a></h2>
+<p>Verify that each test instance can ping each other.</p>
+<section id="connectivity-test-using-the-gatus-app">
+<h3>6.1 Connectivity Test Using the Gatus App<a class="headerlink" href="#connectivity-test-using-the-gatus-app" title="Link to this heading">#</a></h3>
+<p>Navigate to your POD Portal, locate the Gatus widget, and select <strong><em>aws-us-east-2-spoke1-test1</em></strong> as an example. Then, sign in to the Gatus app.</p>
+<figure class="align-center" id="id70">
+<img alt="../_images/lab2-gastusfinal00.png" src="../_images/lab2-gastusfinal00.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">ICMP</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id71">
+<img alt="../_images/lab2-gastusfinal01.png" src="../_images/lab2-gastusfinal01.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will observe that both ICMP and SSH tests have successfully completed for all three instances:</p>
+<ol class="arabic simple">
+<li><p><strong><em>aws-us-east-2-spoke1-test2</em></strong> (enabled by the normal <code class="docutils literal notranslate"><span class="pre">intra-VPC</span> <span class="pre">traffic</span></code>)</p></li>
+<li><p><strong>_gcp-us-central1-spoke1-test1 _</strong>(enabled by the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">MCNA</span></code>)</p></li>
+<li><p><strong><em>azure-west-us-spoke1-test1</em></strong> (enabled by the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">MCNA</span></code>)</p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Review the Gatus App status for the other instances in Azure and GCP.</p>
+</div>
+</section>
+<section id="connectivity-test-using-the-ssh-client">
+<h3>6.1 Connectivity Test Using the SSH Client<a class="headerlink" href="#connectivity-test-using-the-ssh-client" title="Link to this heading">#</a></h3>
+<p>If you’re not satisfied with the Gatus dashboard, you can also use your personal <code class="docutils literal notranslate"><span class="pre">SSH</span> <span class="pre">client</span></code> to perform the connectivity tests!</p>
+<ul class="simple">
+<li><p>Open three terminal windows to SSH to the <strong>public IPs</strong> of the 3 spoke <strong>test instances/VMs</strong> in each cloud.</p></li>
+</ul>
 <p>Then ping the <strong>private</strong> IPs of each other VMs to test the Multi-Cloud connectivity.</p>
-<p><ins>Refer to your pod portal for the public/private IPs or retrieve them from the topology</ins>.</p>
+<p><ins>Refer to your pod portal for the public/private IPs or retrieve them from the <strong><em>Cloud Assets/Topology</em></strong></ins>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Refresh the web page, to see the changes reflected into your CoPilot’s topology!</p>
@@ -1207,11 +1242,11 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">POD</span> <span class="pre">PORTAL</span></code></strong>:</p>
-<p>Both public DNS names and private IP addresses of the <strong>test</strong> instances are retrievable from your personal portal.</p>
-<figure class="align-center" id="id70">
+<p>Please note that both the public DNS names and private IP addresses of the <strong>test</strong> instances can be retrieved from your personal portal.</p>
+<figure class="align-center" id="id72">
 <img alt="../_images/lab2-newpic.png" src="../_images/lab2-newpic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 99 </span><span class="caption-text">POD Portal info</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">POD Portal info</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -1219,10 +1254,10 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <p class="admonition-title">Note</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">TOPOLOGY</span> <span class="pre">(CoPilot</span> <span class="pre">&gt;</span> <span class="pre">Cloud</span> <span class="pre">Fabric</span> <span class="pre">&gt;</span> <span class="pre">Topology)</span></code></strong>:</p>
 <p>Explore the <strong><em>aws-us-east-2-spoke1</em></strong> VPC and select the instance <strong><em>aws-us-east-2-spoke1-test1</em></strong> with the <strong>EC2 instance logo</strong>, then check its properties: you will be able to fetch both Public and Private IP addresses.</p>
-<figure class="align-center" id="id71">
+<figure class="align-center" id="id73">
 <a class="reference internal image-reference" href="../_images/lab2-newpic3.png"><img alt="../_images/lab2-newpic3.png" src="../_images/lab2-newpic3.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Test Instance Properties</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Test Instance Properties</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -1230,10 +1265,10 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <p class="admonition-title">Note</p>
 <p>Do not select the instance with the Aviatrix logo!</p>
 <p><ins>You can’t SSH to any Aviatrix GWs !</ins></p>
-<figure class="align-center" id="id72">
+<figure class="align-center" id="id74">
 <img alt="../_images/lab2-newpic2.png" src="../_images/lab2-newpic2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 101 </span><span class="caption-text">Different Logos</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">Different Logos</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -1243,26 +1278,27 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <li><p>SSH into gcp-us-central1-spoke1-<span style='color:red'>test1</span> (ssh student&#64;public_ip)</p></li>
 </ul>
 <p>Run ping from the AWS instance to verify connectivity to Azure and GCP:</p>
-<figure class="align-center" id="id73">
+<figure class="align-center" id="id75">
 <img alt="../_images/lab2-pingfromaws.png" src="../_images/lab2-pingfromaws.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Ping from AWS</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Ping from AWS</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Run ping from Azure VM to verify connectivity to AWS and GCP:</p>
-<figure class="align-center" id="id74">
+<figure class="align-center" id="id76">
 <img alt="../_images/lab2-pingfromazure.png" src="../_images/lab2-pingfromazure.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 103 </span><span class="caption-text">Ping from Azure</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Ping from Azure</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Run ping from GCP VM to verify connectivity to Azure and AWS:</p>
-<figure class="align-center" id="id75">
+<figure class="align-center" id="id77">
 <img alt="../_images/lab2-pingfromgcp.png" src="../_images/lab2-pingfromgcp.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Ping from GCP</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text">Ping from GCP</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 </section>
 </section>
 
@@ -1340,9 +1376,9 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#topology-to-retrieve-ip-addresses">3.2.2 Topology (to retrieve IP addresses)</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-your-ssh-client">3.3 Verification Using Your SSH Client</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-uour-ssh-client">3.3 Verification Using Uour SSH Client</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-copilot">4. Aviatrix CoPilot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-configuration">4. Initial configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-transit-gateways">4.1. Aviatrix Transit Gateways</a></li>
@@ -1373,7 +1409,11 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#route-info-db">5.3. Route Info DB</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests-through-gatus">5.4. Connectivity tests through Gatus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-connectivity-testing">6. Final Connectivity Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-gatus-app">6.1 Connectivity Test Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-ssh-client">6.1 Connectivity Test Using the SSH Client</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
