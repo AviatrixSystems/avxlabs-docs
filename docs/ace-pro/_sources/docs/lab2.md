@@ -992,7 +992,7 @@ You will observe that both ICMP and SSH tests have successfully completed for al
 Review the Gatus App status for the other instances in Azure and GCP.
 ```
 
-### 6.1 Connectivity Test Using the SSH Client
+### 6.1 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 If you're not satisfied with the Gatus dashboard, you can also use your personal `SSH client` to perform the connectivity tests!
 
