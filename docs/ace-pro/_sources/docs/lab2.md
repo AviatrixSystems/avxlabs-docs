@@ -103,13 +103,15 @@ SSH
 height: 400px
 align: center
 ---
-normal intra-vpc traffic 
+Normal intra-vpc traffic 
 ```
 
 ```{important}
 Explore the Gatus App status for the remaining instances as well.
 ```
 
+<details>
+  <summary>### 3.2. Preliminary Monitoring Check Using an SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 ### 3.2. Preliminary Monitoring Check Using an SSH Client (BONUS)
 
 Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.
@@ -180,6 +182,7 @@ align: center
 ---
 SSH client
 ```
+</details>
 
 ## 4. Aviatrix CoPilot
 
