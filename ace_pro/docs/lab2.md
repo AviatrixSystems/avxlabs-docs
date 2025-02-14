@@ -111,8 +111,7 @@ Explore the Gatus App status for the remaining instances as well.
 ```
 
 <details>
-  <summary>### 3.2. Preliminary Monitoring Check Using an SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
-### 3.2. Preliminary Monitoring Check Using an SSH Client (BONUS)
+  <summary>3.2. Preliminary Monitoring Check Using an SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.
 
