@@ -325,7 +325,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-aws-transit">4.1. Attachment between Edge and the AWS Transit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-local-lan-router">4.2. Attachment between Edge and the Local Lan Router</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-gcp-transit">4.3. Attachment between Edge and the GCP Transit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-path-prepend">6.1 Edge: As-Path Prepend</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-dcf">5. Edge as DCF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-from-on-prem-network-workstation-to-cloud">5.1 Connectivity from on Prem Network Workstation to Cloud .</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementiong-dcf-rules">5.2 Implementiong DCF rules</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-verification">7. Final verification</a></li>
@@ -458,13 +462,63 @@ Connectivity is confirmed on both the GCP and AWS gatus dashboards</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
 <p><img alt="Edge Attach aws" src="../_images/hybrid-final-topo.png" /></p>
 </section>
-<section id="edge-as-path-prepend">
-<h3>6.1 Edge: As-Path Prepend<a class="headerlink" href="#edge-as-path-prepend" title="Link to this heading">#</a></h3>
-<p>Now, let’s <strong>SSH</strong> on the EC2 <em><strong>aws-us-east-2-spoke1-test1</strong></em>  and then launch the command <em>traceroute</em> towards the VM <em><strong>gcp-us-central1-spoke1-test1</strong></em> in GCP</p>
+</section>
+<section id="edge-as-dcf">
+<h2>5. Edge as DCF<a class="headerlink" href="#edge-as-dcf" title="Link to this heading">#</a></h2>
+<p>The rapid adoption of cloud services has transformed how organizations operate, offering scalability, flexibility, and reduced costs. However, it also introduces new security challenges. Traditional firewalls and security measures struggle to keep up with the dynamic nature of cloud environments. This is where Aviatrix Edge Gateway, functioning as a Distributed Cloud Firewall, makes a significant impact.</p>
+<p>Edge Gateway as DCF provide
+<strong>Enhanced Security:</strong> Comprehensive protection across multi-cloud and hybrid cloud environments.
+<strong>Simplified Management:</strong> Centralized control with a unified security framework.
+<strong>Scalability:</strong> Seamless scalability to meet the expanding needs of your cloud infrastructure.
+<strong>Operational Efficiency:</strong> Reduced complexity leading to improved agility and reduced operational overhead.</p>
+<section id="connectivity-from-on-prem-network-workstation-to-cloud">
+<h3>5.1 Connectivity from on Prem Network Workstation to Cloud .<a class="headerlink" href="#connectivity-from-on-prem-network-workstation-to-cloud" title="Link to this heading">#</a></h3>
+<p>Previously, we successfully established connectivity between our On-Prem Network and both AWS and GCP Cloud environments. The topology is as follows:</p>
+<p><img alt="Edge Attach aws" src="../_images/hybrid-final.png" /></p>
+<p>Let’s launch a connectivity test, from the Workstation “Edge” inside the on-prem network.
+You can access the  <code class="docutils literal notranslate"><span class="pre">workstation</span> <span class="pre">Edge</span></code> <a class="reference external" href="https://edge.pod#.aviatrixlab.com">https://edge.pod#.aviatrixlab.com</a> , simply replace the <strong>#</strong> with your assigned pod number.
+and login with username as <code class="docutils literal notranslate"><span class="pre">student</span></code>.</p>
+<p>You will land on the Desktop of the Workstation Edge and from here launch the <code class="docutils literal notranslate"><span class="pre">LX</span> <span class="pre">Terminal</span></code>.</p>
 <figure class="align-center" id="id2">
+<img alt="../_images/lab8-newjoe4.png" src="../_images/lab8-newjoe4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">LX Terminal</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now execute the <strong>curl</strong> command towards the private IP address of the <strong>aws-instance</strong> instance (<strong>i.e. 10.0.1.10</strong>) and <strong>gcp-instance</strong> instance (<strong>i.e. 172.16.1.10</strong>) on following ports
+1433, 1521, 5000, 50100
+You will get output similar like below.</p>
+<p><img alt="Edge Attach aws" src="../_images/hybrid-work-1.png" /></p>
+<p>Also execute <strong>curl</strong> for https like below</p>
+<p><img alt="Edge Attach aws" src="../_images/hybrid-workstation-2.png" /></p>
+</section>
+<section id="implementiong-dcf-rules">
+<h3>5.2 Implementiong DCF rules<a class="headerlink" href="#implementiong-dcf-rules" title="Link to this heading">#</a></h3>
+<p>There is a new security requirement stating that on-premises network workstations must not be able to communicate with the cloud over HTTPS or port 1521.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Security &gt; Distributed Cloud Firewall</strong> and click on the <code class="docutils literal notranslate"><span class="pre">+Rule</span></code> button.</p>
+<p><img alt="Edge Attach" src="../_images/hybrid-dcf1.png" /></p>
+<p>Fill in the Create Rule template using the following settings:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>On-Prem-to-Cloud-block-1521-443</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>On-Prem-network</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>rfc1918</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
+<li><p><strong>Ports</strong>: <span style='color:#479608'>1521, 443</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'>Deny</span></p></li>
+</ul>
+<p>Make sure to <strong>Logging</strong> toggle on
+Do not forget to click on <strong>Save in Drafts</strong>.</p>
+<p><img alt="Edge Attach" src="../_images/hybrid-dcf2.png" /></p>
+<p><img alt="Edge Attach" src="../_images/hybrid-dcf3.png" />
+With pre-deployment and initial setup below is the gatus initial sample look
+<img alt="Gatus cloud" src="../_images/aws-gatus-initial.png" /></p>
+<p>Note that the AWS/GCP and Edge connectivity sections are all <code class="docutils literal notranslate"><span class="pre">red</span></code>. These networks are not connected.
+While AWS and GCP connectivity section are all <code class="docutils literal notranslate"><span class="pre">Green</span></code>. As These networks are already connected.</p>
+<p>Now, let’s <strong>SSH</strong> on the EC2 <em><strong>aws-us-east-2-spoke1-test1</strong></em>  and then launch the command <em>traceroute</em> towards the VM <em><strong>gcp-us-central1-spoke1-test1</strong></em> in GCP</p>
+<figure class="align-center" id="id3">
 <img alt="docs/images/lab8-edgedouble21.png" src="docs/images/lab8-edgedouble21.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">aws-us-east-2-spoke1-test1</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">aws-us-east-2-spoke1-test1</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -477,34 +531,34 @@ Connectivity is confirmed on both the GCP and AWS gatus dashboards</p>
 <p class="admonition-title">Caution</p>
 <p>You will be asked to type the student’s password!</p>
 </div>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id4">
 <img alt="docs/images/lab8-edgedouble22.png" src="docs/images/lab8-edgedouble22.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">inetutils-traceroute</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">inetutils-traceroute</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>When you see this pop-up message, just click on the <strong>Enter</strong> button on your keyboard!</p>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id5">
 <img alt="docs/images/lab8-popup.png" src="docs/images/lab8-popup.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">confirm</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">confirm</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now type the traceroute command towards the test VM in GCP:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>traceroute<span class="w"> </span><span class="m">172</span>.16.1.100
 </pre></div>
 </div>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id6">
 <img alt="docs/images/lab8-edgedouble23.png" src="docs/images/lab8-edgedouble23.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Traceroute</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Traceroute</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The traceroute will reveal that the destination is exactly <strong>5</strong> hops away.</p>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id7">
 <img alt="docs/images/lab8-edgedouble25.png" src="docs/images/lab8-edgedouble25.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">5 hops</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">5 hops</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s harness the <strong>as-path prepend</strong> feature for manipulating the traffic.</p>
@@ -513,93 +567,93 @@ Connectivity is confirmed on both the GCP and AWS gatus dashboards</p>
 <p>The routes exchanged between transit gateways are considered <code class="docutils literal notranslate"><span class="pre">BGP-like</span> <span class="pre">routes</span></code>! This is because the Aviatrix Controller orchestrating the SD routing, also has to use a mechanism for the routing decision, and therefore these routes seem BGP routes, indeed they have some attributes similar to the attributes used with BGP routes. For instance, each Transit has its own <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">PATH</span></code>, and this is used for the best path selection process. Nevertheless, bear in mind that the control plane within the MCNA is based on <code class="docutils literal notranslate"><span class="pre">SDN</span></code> (Software Defined Networking).</p>
 </div>
 <p>The objective of this task is to define a <strong>Primary</strong> path through the Edge device, whereas the path between the Transit gateways will be used as a <strong>Backup</strong> path.</p>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id8">
 <img alt="docs/images/lab8-primary.png" src="docs/images/lab8-primary.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Primary and Backup</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Primary and Backup</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s first check the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">DB</span></code> of the <strong><em>aws-us-east-2-transit</em></strong> GW.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and select the <strong><em>aws-us-east-2-transit</em></strong> Gateway.</p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id9">
 <img alt="docs/images/lab8-primary01.png" src="docs/images/lab8-primary01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab, then on right-hand side  type <strong>172.16.1.0</strong> on the Search field.</p>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="docs/images/lab8-primary03.png"><img alt="docs/images/lab8-primary03.png" src="docs/images/lab8-primary03.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Route DB</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Route DB</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id11">
 <img alt="docs/images/lab8-primary02.png" src="docs/images/lab8-primary02.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">1 AS Path length</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">1 AS Path length</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the <strong><em>aws-us-east-2-transit</em></strong> perspective, the destination route <code class="docutils literal notranslate"><span class="pre">172.16.1.0</span></code> is far just one single AS (i.e. 64514)</p>
 <p>Now let’s apply the route manipulation. Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW.</p>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id12">
 <img alt="docs/images/lab8-edgedouble30.png" src="docs/images/lab8-edgedouble30.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section, then under the <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">Path</span> <span class="pre">Prepend</span></code> widget,  select the <code class="docutils literal notranslate"><span class="pre">gcp-us-central1-transit-peering</span></code> connection and type <strong>two times</strong> the AS number 64513.</p>
 <p>Of course, then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id13">
 <img alt="docs/images/lab8-edgedouble31.png" src="docs/images/lab8-edgedouble31.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">as-path prepend</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">as-path prepend</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s repeat the same kind of configuration on the <strong>GCP</strong> Transit GW.</p>
 <p>Go to <strong>CoPilot &gt; Cloud fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>gcp-us-central1-transit</em></strong> GW.</p>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id14">
 <img alt="docs/images/lab8-edgedouble32.png" src="docs/images/lab8-edgedouble32.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">gcp-us-central1-transit</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">gcp-us-central1-transit</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)&quot;</span></code> section, then under the <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">Path</span> <span class="pre">Prepend</span></code> widget select the <code class="docutils literal notranslate"><span class="pre">aws-us-east-2-transit-peering</span></code> connection and type <strong>two times</strong> the AS number 64514.</p>
 <p>Click on <strong>Save</strong> to apply the change!</p>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id15">
 <img alt="docs/images/lab8-edgedouble33.png" src="docs/images/lab8-edgedouble33.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">as-path prepend</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">as-path prepend</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab and then once again, on the right-hand side, type <strong>172.16.1.0/24</strong> inside the Search field. This time the AS Path Length will turn out being equal to 3, due to to the route manipulation that harnessed the <code class="docutils literal notranslate"><span class="pre">as-path</span> <span class="pre">prepend</span></code> feature.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="docs/images/lab8-path.png"><img alt="docs/images/lab8-path.png" src="docs/images/lab8-path.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">As path length = 3</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">As path length = 3</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, let’s launch again the traceroute towards 172.16.1.100 from the <strong><em>aws-us-east-2-spoke1-test1</em></strong>.</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id17">
 <img alt="docs/images/lab8-almostdone.png" src="docs/images/lab8-almostdone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">traceroute</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">traceroute</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The traceroute is still showing the Transit peering between AWS and GCP as the preferred path, although the <code class="docutils literal notranslate"><span class="pre">as-path</span> <span class="pre">prepend</span></code> was correctly applied earlier.</p>
 <p>There is another option that needs to be enabled in order to complete this lab.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud &gt; Edge Gateways</strong> and click on the <code class="docutils literal notranslate"><span class="pre">Edge</span></code> device.</p>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id18">
 <img alt="docs/images/lab8-almostdone02.png" src="docs/images/lab8-almostdone02.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Edge</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Edge</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> Tab and then expand the <code class="docutils literal notranslate"><span class="pre">&quot;Routing&quot;</span></code> section, afterwards turn on the knob <code class="docutils literal notranslate"><span class="pre">Transitive</span> <span class="pre">Routing</span></code> and do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id19">
 <img alt="docs/images/lab8-almostdone03.png" src="docs/images/lab8-almostdone03.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">edge</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">edge</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -607,32 +661,32 @@ Connectivity is confirmed on both the GCP and AWS gatus dashboards</p>
 <section id="final-verification">
 <h2>7. Final verification<a class="headerlink" href="#final-verification" title="Link to this heading">#</a></h2>
 <p>Let’s relaunch the traceroute towards 172.16.1.100 from the <strong><em>aws-us-east-2-spoke1-test1</em></strong>.</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <img alt="docs/images/lab8-almostdone04.png" src="docs/images/lab8-almostdone04.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">traceroute</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">traceroute</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id21">
 <img alt="docs/images/lab8-almostdone05.png" src="docs/images/lab8-almostdone05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">6 Hops</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">6 Hops</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now go back to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab and then once again, on the right-hand side, type <code class="docutils literal notranslate"><span class="pre">172.16.1.0</span></code> inside the Search field.</p>
 <p>This time the AS Path Length will turn out being equal to <strong>2</strong>.</p>
 <p><ins>The best path is via the Edge!</ins></p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="docs/images/lab8-2path.png"><img alt="docs/images/lab8-2path.png" src="docs/images/lab8-2path.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">As path length = 2</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">As path length = 2</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="docs/images/lab8-edge25.png"><img alt="docs/images/lab8-edge25.png" src="docs/images/lab8-edge25.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Final Topology for Lab 8</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -710,7 +764,11 @@ Connectivity is confirmed on both the GCP and AWS gatus dashboards</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-aws-transit">4.1. Attachment between Edge and the AWS Transit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-local-lan-router">4.2. Attachment between Edge and the Local Lan Router</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attachment-between-edge-and-the-gcp-transit">4.3. Attachment between Edge and the GCP Transit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-path-prepend">6.1 Edge: As-Path Prepend</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-as-dcf">5. Edge as DCF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-from-on-prem-network-workstation-to-cloud">5.1 Connectivity from on Prem Network Workstation to Cloud .</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementiong-dcf-rules">5.2 Implementiong DCF rules</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-verification">7. Final verification</a></li>
