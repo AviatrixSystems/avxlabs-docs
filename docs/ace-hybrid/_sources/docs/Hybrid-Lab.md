@@ -122,6 +122,7 @@ This is how the Topology would look like after the creation of the attachment.
 The **Edge** device allows to extend all the Aviatrix functionalities to the remote DC!
 
 ### 4.3. Attachment between Edge and the GCP Transit
+The Aviatrix Edge device is capable to be connected to multiple Transit Gateway.
 
 Let's establish a peering between the Aviatrix Edge device and the GCP Transit Gateway in **us-central-1**. 
 
@@ -148,108 +149,12 @@ Wait a few seconds for the Aviatrix Controller to establish the attachment. You 
 
 ![Edge confirm](images/gcp-attach-success.png)
 
-Let's verify the presence of the attachment previously created on the Topology. 
+Let's verify the presence of the attachment created on the Topology. 
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
-![Edge Attach aws](images/edge-attach-aws.png)
+![Edge Attach aws](images/hybrid-final-topo.png)
 
-
-## 6. Edge: "It's more than a Spoke GW""
-
-The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus <ins>the Edge device is regarded much more than a classic Spoke gateway</ins>.
-
-Let's connect the Edge device also to the Transit Gateway in **US-Central-1** in **GCP**.
-
-```{figure} images/lab8-edgedouble.png
----
-align: center
----
-New Attachment towards GCP
-```
-
-Once again, you have to configure a **BGP ASN** on the **_gcp-us-central1-transit_** GW first, before deploying any new attachments.
-
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_**.
-
-```{figure} images/lab8-edgedouble5.png
----
-align: center
----
-gcp-us-central1-transit
-```
-
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section and insert the AS number **64514** on the empty field related to the `“Local AS Number”`, then click on **Save**.
-
-```{figure} images/lab8-edgedouble6.png
----
-align: center
----
-BGP ASN
-```
-
-Now you are ready to proceed with the rest of the configuration on the Edge section!
-
-Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachment"` button, on the right-hand side of the screen.
-
-```{figure} images/lab8-edgedouble2.png
----
-height: 200px
-align: center
----
-Manage Gateway Attachment
-```
-
-Now click on the `"+ Attachment"` button.
-You will notice the existing attachment (grayedout) with the Transit Gateway in AWS US-East-2.
-
-```{figure} images/lab8-edgedouble3.png
----
-align: center
----
-New Attachment
-```
-
-Fill in the attachment template using the following settings:
-
-- **Transit Gateway**: <span style='color:#479608'>gcp-us-central1-transit</span>
-- **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
-- **Attach over**: <span style='color:#479608'>**Public Network**</span>
-
-```{caution}
-The **High Performance Encryption** option is not visible in this case, because the  Aviatrix Controller is aware that the GCP Transit is already configured with _HPE=off_
-```
-
-Do not forget to click on **Save**.
-
-```{figure} images/lab8-attachment01.png
----
-align: center
----
-Edge Attachment Template
-```
-
-Wait for **1 minute** for the Aviatrix Controller to establish the attachment between the Edge and the GCP Transit Gateway. 
-
-Once the operation is completed you will be notified!
-
-```{figure} images/lab8-edgedouble9.png
----
-align: center
----
-Notification
-```
-
-Let's verify the presence of the new attachment previously created on the Topology. 
-
-Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
-
-```{figure} images/lab8-edgedouble10.png
----
-align: center
----
-Topology
-```
 
 ### 6.1 Edge: As-Path Prepend
 
