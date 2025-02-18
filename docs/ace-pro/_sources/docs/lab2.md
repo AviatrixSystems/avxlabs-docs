@@ -234,7 +234,7 @@ Now let's access the Aviatrix Centralized Management Node, the CoPilot.
 
 Go to your POD portal, click on the `"Open Copilot"` button and insert the credentials!
 
-```{figure} images/lab2-gatus06.png
+```{figure} images/lab2-gatus0600.png
 ---
 height: 400px
 align: center
@@ -242,7 +242,7 @@ align: center
 POD Portal
 ```
 
-```{figure} images/lab2-gatus07.png
+```{figure} images/lab2-gatus0601.png
 ---
 height: 400px
 align: center
