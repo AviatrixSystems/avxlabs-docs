@@ -346,7 +346,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-secure-high-performance-datacenter-edge">
 <h1>Lab  SECURE HIGH-PERFORMANCE DATACENTER EDGE<a class="headerlink" href="#lab-secure-high-performance-datacenter-edge" title="Link to this heading">#</a></h1>
-<p>This lab will demonstrate how securely govern the <code class="docutils literal notranslate"><span class="pre">Egress</span> <span class="pre">traffic</span></code>.</p>
+<p>This lab will demonstrate how securely connect on-prem  and Colo locations to CSP.</p>
 <section id="general-objectives">
 <h2>1. General Objectives<a class="headerlink" href="#general-objectives" title="Link to this heading">#</a></h2>
 <p>You are  asked to interconnect the on-prem DC in New York to your MCNA. An <strong>Aviatrix Edge</strong> device has already been provisioned and it got already registered to the existing <strong>Aviatrix Controller</strong>.</p>
@@ -434,20 +434,20 @@ Let’s verify the presence of the LAN attachment previously created on the Topo
 By default, the Edge device advertises all cloud routes to the LAN router and all LAN routes learned from the LAN router to the cloud.
 This configuration establishes a path from on-premises to both AWS and GCP.
 Connectivity is confirmed on both the GCP and AWS gatus dashboards</p>
-<p><img alt="Edge Attach Lan" src="../_images/aws-dash-full.png" /></p>
+<p><img alt="Edge Attach Verify" src="../_images/aws-dash-full.png" /></p>
 <p>This is how the Topology would look like after the creation of the attachment.
-<img alt="Edge Attach Lan" src="../_images/hybrid-aws-complete.png" /></p>
+<img alt="Edge Attach AWS Complete" src="../_images/hybrid-aws-complete.png" /></p>
 <p>The <strong>Edge</strong> device allows to extend all the Aviatrix functionalities to the remote DC!</p>
 </section>
 <section id="attachment-between-edge-and-the-gcp-transit">
 <h3>4.3. Attachment between Edge and the GCP Transit<a class="headerlink" href="#attachment-between-edge-and-the-gcp-transit" title="Link to this heading">#</a></h3>
 <p>The Aviatrix Edge device is capable to be connected to multiple Transit Gateway.</p>
 <p>Let’s establish a peering between the Aviatrix Edge device and the GCP Transit Gateway in <strong>us-central-1</strong>.</p>
-<p><img alt="Edge Attach Lan" src="../_images/gcp-initial.png" /></p>
+<p><img alt="Edge Attach GCP" src="../_images/gcp-initial.png" /></p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud &gt; Edge Gateways</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code> button, on the right-hand side of the screen.
-<img alt="Edge Attach" src="../_images/edge-manage-attach.png" /></p>
+<img alt="Edge Manage Attach" src="../_images/edge-manage-attach.png" /></p>
 <p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;+Attachment&quot;</span></code> button.</p>
-<p><img alt="Edge Attach1" src="../_images/gcp-attach.png" /></p>
+<p><img alt="Edge GCP Attach1" src="../_images/gcp-attach.png" /></p>
 <p>Fill in the attachment template using the following settings:</p>
 <ul class="simple">
 <li><p><strong>Transit Gateway</strong>: <span style='color:#479608'>gcp-central-us-transit</span></p></li>
@@ -455,12 +455,12 @@ Connectivity is confirmed on both the GCP and AWS gatus dashboards</p>
 <li><p><strong>Attach over</strong>: <span style='color:#479608'><strong>Public Network</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<p><img alt="Edge aws" src="../_images/gcp-attach-complete.png" /></p>
+<p><img alt="Edge GCP Complete" src="../_images/gcp-attach-complete.png" /></p>
 <p>Wait a few seconds for the Aviatrix Controller to establish the attachment. You will then see a confirmation message like below, indicating that the operation has been successfully completed.</p>
 <p><img alt="Edge confirm" src="../_images/gcp-attach-success.png" /></p>
 <p>Let’s verify the presence of the attachment created on the Topology.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
-<p><img alt="Edge Attach aws" src="../_images/hybrid-final-topo.png" /></p>
+<p><img alt="Edge Topo Final" src="../_images/hybrid-final-topo.png" /></p>
 </section>
 </section>
 <section id="edge-as-dcf">
@@ -474,7 +474,7 @@ Connectivity is confirmed on both the GCP and AWS gatus dashboards</p>
 <section id="connectivity-from-on-prem-network-workstation-to-cloud">
 <h3>5.1 Connectivity from on Prem Network Workstation to Cloud .<a class="headerlink" href="#connectivity-from-on-prem-network-workstation-to-cloud" title="Link to this heading">#</a></h3>
 <p>Previously, we successfully established connectivity between our On-Prem Network and both AWS and GCP Cloud environments. The topology is as follows:</p>
-<p><img alt="Edge Attach aws" src="../_images/hybrid-final.png" /></p>
+<p><img alt="Edge Hybrid1" src="../_images/hybrid-final.png" /></p>
 <p>Let’s launch a connectivity test, from the Workstation “Edge” inside the on-prem network.
 You can access the  <code class="docutils literal notranslate"><span class="pre">workstation</span> <span class="pre">Edge</span></code> <a class="reference external" href="https://edge.pod#.aviatrixlab.com">https://edge.pod#.aviatrixlab.com</a> , simply replace the <strong>#</strong> with your assigned pod number.
 and login with username as <code class="docutils literal notranslate"><span class="pre">student</span></code>.</p>
@@ -488,9 +488,9 @@ and login with username as <code class="docutils literal notranslate"><span clas
 <p>Now execute the <strong>curl</strong> command towards the private IP address of the <strong>aws-instance</strong> instance (<strong>i.e. 10.0.1.10</strong>) and <strong>gcp-instance</strong> instance (<strong>i.e. 172.16.1.10</strong>) on following ports
 1433, 1521, 5000, 50100
 You will get output similar like below.</p>
-<p><img alt="Edge Attach aws1" src="../_images/hybrid-work-1.png" /></p>
+<p><img alt="Edge Hybrid2" src="../_images/hybrid-work-1.png" /></p>
 <p>Also execute <strong>curl</strong> for https like below</p>
-<p><img alt="Edge Attach Work2" src="../_images/hybrid-workstation-2.png" /></p>
+<p><img alt="Edge Hybrid Work2" src="../_images/hybrid-workstation-2.png" /></p>
 </section>
 <section id="implementiong-dcf-rules">
 <h3>5.2 Implementiong DCF rules<a class="headerlink" href="#implementiong-dcf-rules" title="Link to this heading">#</a></h3>
@@ -513,7 +513,10 @@ Do not forget to click on <strong>Save in Drafts</strong>.</p>
 <img alt="Hybrid DCF3" src="../_images/hybrid-dcf3.png" /></p>
 <p>Execute the previously run curl commands which we confirmed earlier that the applications hosted on the cloud are accessible from the On-Prem network.</p>
 <p>Next, execute the same curl commands on ports 1521 and 443, where we have deployed the deny rule in Aviatrix DCF.</p>
+<p>Observe that the connections from the On-Prem network to the CSP are now timing out.</p>
 <p><img alt="Hybrid DCF6" src="../_images/hybrid-dcf6.png" /></p>
+<p>Connections to CSP on other applications running on ports 1433, 5000, and 50100 remain accessible as before.</p>
+<p><img alt="Hybrid DCF7" src="../_images/hybrid-dcf7.png" /></p>
 <p>Note that the AWS/GCP and Edge connectivity sections are all <code class="docutils literal notranslate"><span class="pre">red</span></code>. These networks are not connected.
 While AWS and GCP connectivity section are all <code class="docutils literal notranslate"><span class="pre">Green</span></code>. As These networks are already connected.</p>
 <p>Now, let’s <strong>SSH</strong> on the EC2 <em><strong>aws-us-east-2-spoke1-test1</strong></em>  and then launch the command <em>traceroute</em> towards the VM <em><strong>gcp-us-central1-spoke1-test1</strong></em> in GCP</p>
