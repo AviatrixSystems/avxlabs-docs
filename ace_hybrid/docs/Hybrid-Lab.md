@@ -1,5 +1,5 @@
 # Lab  SECURE HIGH-PERFORMANCE DATACENTER EDGE
-This lab will demonstrate how securely govern the `Egress traffic`.
+This lab will demonstrate how securely connect on-prem  and Colo locations to CSP.
 
 ## 1. General Objectives
 
@@ -114,10 +114,10 @@ By default, the Edge device advertises all cloud routes to the LAN router and al
 This configuration establishes a path from on-premises to both AWS and GCP.
 Connectivity is confirmed on both the GCP and AWS gatus dashboards
 
-![Edge Attach Lan](images/aws-dash-full.png)
+![Edge Attach Verify](images/aws-dash-full.png)
 
 This is how the Topology would look like after the creation of the attachment.
-![Edge Attach Lan](images/hybrid-aws-complete.png)
+![Edge Attach AWS Complete](images/hybrid-aws-complete.png)
 
 The **Edge** device allows to extend all the Aviatrix functionalities to the remote DC!
 
@@ -126,14 +126,14 @@ The Aviatrix Edge device is capable to be connected to multiple Transit Gateway.
 
 Let's establish a peering between the Aviatrix Edge device and the GCP Transit Gateway in **us-central-1**. 
 
-![Edge Attach Lan](images/gcp-initial.png)
+![Edge Attach GCP](images/gcp-initial.png)
 
 Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachment"` button, on the right-hand side of the screen.
-![Edge Attach](images/edge-manage-attach.png)
+![Edge Manage Attach](images/edge-manage-attach.png)
 
 Click on the `"+Attachment"` button.
 
-![Edge Attach1](images/gcp-attach.png)
+![Edge GCP Attach1](images/gcp-attach.png)
 
 Fill in the attachment template using the following settings:
 
@@ -143,7 +143,7 @@ Fill in the attachment template using the following settings:
 
 Do not forget to click on **Save**.
 
-![Edge aws](images/gcp-attach-complete.png)
+![Edge GCP Complete](images/gcp-attach-complete.png)
 
 Wait a few seconds for the Aviatrix Controller to establish the attachment. You will then see a confirmation message like below, indicating that the operation has been successfully completed.
 
@@ -153,7 +153,7 @@ Let's verify the presence of the attachment created on the Topology.
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
-![Edge Attach aws](images/hybrid-final-topo.png)
+![Edge Topo Final](images/hybrid-final-topo.png)
 
 ## 5. Edge as DCF 
 The rapid adoption of cloud services has transformed how organizations operate, offering scalability, flexibility, and reduced costs. However, it also introduces new security challenges. Traditional firewalls and security measures struggle to keep up with the dynamic nature of cloud environments. This is where Aviatrix Edge Gateway, functioning as a Distributed Cloud Firewall, makes a significant impact.
@@ -167,7 +167,7 @@ Edge Gateway as DCF provide
 ### 5.1 Connectivity from on Prem Network Workstation to Cloud .
 Previously, we successfully established connectivity between our On-Prem Network and both AWS and GCP Cloud environments. The topology is as follows:
 
-![Edge Attach aws](images/hybrid-final.png)
+![Edge Hybrid1](images/hybrid-final.png)
 
 Let’s launch a connectivity test, from the Workstation “Edge” inside the on-prem network.
 You can access the  `workstation Edge` https://edge.pod#.aviatrixlab.com , simply replace the **#** with your assigned pod number.
@@ -186,11 +186,11 @@ Now execute the **curl** command towards the private IP address of the **aws-ins
 1433, 1521, 5000, 50100
 You will get output similar like below.
 
-![Edge Attach aws1](images/hybrid-work-1.png)
+![Edge Hybrid2](images/hybrid-work-1.png)
 
 Also execute **curl** for https like below
 
-![Edge Attach Work2](images/hybrid-workstation-2.png)
+![Edge Hybrid Work2](images/hybrid-workstation-2.png)
 
 ### 5.2 Implementiong DCF rules
 
@@ -221,9 +221,13 @@ Execute the previously run curl commands which we confirmed earlier that the app
 
 Next, execute the same curl commands on ports 1521 and 443, where we have deployed the deny rule in Aviatrix DCF.
 
+Observe that the connections from the On-Prem network to the CSP are now timing out.
+
 ![Hybrid DCF6](images/hybrid-dcf6.png)
 
+Connections to CSP on other applications running on ports 1433, 5000, and 50100 remain accessible as before.
 
+![Hybrid DCF7](images/hybrid-dcf7.png)
 
 Note that the AWS/GCP and Edge connectivity sections are all `red`. These networks are not connected.
 While AWS and GCP connectivity section are all `Green`. As These networks are already connected.
