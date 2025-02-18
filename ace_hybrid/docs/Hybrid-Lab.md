@@ -186,11 +186,11 @@ Now execute the **curl** command towards the private IP address of the **aws-ins
 1433, 1521, 5000, 50100
 You will get output similar like below.
 
-![Edge Attach aws](images/hybrid-work-1.png)
+![Edge Attach aws1](images/hybrid-work-1.png)
 
 Also execute **curl** for https like below
 
-![Edge Attach aws](images/hybrid-workstation-2.png)
+![Edge Attach Work2](images/hybrid-workstation-2.png)
 
 ### 5.2 Implementiong DCF rules
 
@@ -198,7 +198,7 @@ There is a new security requirement stating that on-premises network workstation
 
 Go to **CoPilot > Cloud Fabric > Security > Distributed Cloud Firewall** and click on the `+Rule` button.
 
-![Edge Attach](images/hybrid-dcf1.png)
+![Hybrid DCF1](images/hybrid-dcf1.png)
 
 Fill in the Create Rule template using the following settings:
 
@@ -212,11 +212,18 @@ Fill in the Create Rule template using the following settings:
 Make sure to **Logging** toggle on
 Do not forget to click on **Save in Drafts**.
 
-![Edge Attach](images/hybrid-dcf2.png)
+![Hybrid DCF2](images/hybrid-dcf2.png)
 
-![Edge Attach](images/hybrid-dcf3.png)
-With pre-deployment and initial setup below is the gatus initial sample look
-![Gatus cloud](images/aws-gatus-initial.png)
+Do not forget to click on **Commit**.
+![Hybrid DCF3](images/hybrid-dcf3.png)
+
+Execute the previously run curl commands which we confirmed earlier that the applications hosted on the cloud are accessible from the On-Prem network.
+
+Next, execute the same curl commands on ports 1521 and 443, where we have deployed the deny rule in Aviatrix DCF.
+
+![Hybrid DCF6](images/hybrid-dcf6.png)
+
+
 
 Note that the AWS/GCP and Edge connectivity sections are all `red`. These networks are not connected.
 While AWS and GCP connectivity section are all `Green`. As These networks are already connected.
