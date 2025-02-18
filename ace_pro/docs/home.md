@@ -10,8 +10,10 @@ Unless otherwise mentioned, the lab PODs will be available until **Friday aftern
 
 ## 2. Prerequisites
 
-- You must have an `SSH client` installed on your PC and be comfortable using it.
-- If you cannot SSH from your corporate laptop/desktop, <ins>please use a personal laptop/desktop that does not have security outboud restrictions (e.g. port 22 should be permitted)</ins>.
+- The `ACE Associate` certificate is a mandatory prerequisite. 
+- Public cloud experience of 1+ year and an expert-level understanding of VPC, TGW, IGW, VGW, etc. in AWS and similar concepts in Azure is required.
+- (optional for bonus tasks) You must have an `SSH client` installed on your PC and be comfortable using it.
+- (optional for bouns tasks) If you cannot SSH from your corporate laptop/desktop, <ins>please use a personal laptop/desktop that does not have security outboud restrictions (e.g. port 22 should be permitted)</ins>.
 - You may be asked to share your desktop on the Zoom call, so please be prepared.
 
 ## 3. Getting Started with the labs
