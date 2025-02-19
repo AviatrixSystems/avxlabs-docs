@@ -366,7 +366,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failover">11. Failover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failover">11. Failover</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">7. FlightPath</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-questions">Bonus questions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-keepalive-templates">Gateway Keepalive Templates</a></li>
@@ -398,10 +402,10 @@
 <section id="topology">
 <h2>3. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
 <p>In this lab we will configure the pending attachment between the Spoke Gateways in <em>aws-us-east-1-spoke1</em> and the Transit Gateway in <em>aws-us-east-1-transit</em>, and the peering between the Transit Gateway <em>aws-us-east-1-transit</em> and the Transit Gateway in <em>aws-us-east-2-transit</em>. The Gateway in AWS region us-east-1 is pre-configured with HPE (High Performance Encryption, also known as <code class="docutils literal notranslate"><span class="pre">Insane</span> <span class="pre">Mode</span></code>) and AWS us-east-2 region was configured in Lab 3.</p>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/lab5-topology.png"><img alt="../_images/lab5-topology.png" src="../_images/lab5-topology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 132 </span><span class="caption-text">Lab 5 Topology</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 132 </span><span class="caption-text">Lab 5 Topology</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -418,27 +422,27 @@
 <p class="admonition-title">Important</p>
 <p>Verify that <strong>AWS US-EAST-1</strong> region has a Transit gateway and a Spoke gateway that are not connected yet.</p>
 </div>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id6">
 <a class="reference internal image-reference" href="../_images/lab5-topologycopilot.png"><img alt="../_images/lab5-topologycopilot.png" src="../_images/lab5-topologycopilot.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 133 </span><span class="caption-text">CoPilot view</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 133 </span><span class="caption-text">CoPilot view</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="transit-spoke-attachment">
 <h3>4.2. Transit-Spoke Attachment<a class="headerlink" href="#transit-spoke-attachment" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and edit the Spoke Gateway <strong>aws-us-east-1-spoke1</strong> clicking on the pencil icon:</p>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="../_images/lab5-editspoke.png"><img alt="../_images/lab5-editspoke.png" src="../_images/lab5-editspoke.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 134 </span><span class="caption-text">Edit Spoke US-East-1</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 134 </span><span class="caption-text">Edit Spoke US-East-1</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the Transit Gateway <strong>aws-us-east-1-transit</strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code>, and then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id8">
 <img alt="../_images/lab5-editspoke2.png" src="../_images/lab5-editspoke2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 135 </span><span class="caption-text">Attachment</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 135 </span><span class="caption-text">Attachment</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -450,10 +454,10 @@
 <p class="admonition-title">Tip</p>
 <p>Wait a handful of minutes and then refresh the web page, in order to see the changes applied on the topology!</p>
 </div>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id9">
 <img alt="../_images/lab5-copilotview.png" src="../_images/lab5-copilotview.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 136 </span><span class="caption-text">Attachment on the CoPilot</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 136 </span><span class="caption-text">Attachment on the CoPilot</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -471,17 +475,17 @@
 <li><p><strong>aws-us-east-1-transit</strong> to <strong>aws-us-east-2-transit</strong></p></li>
 </ul>
 <p>Edit the Transit Gateway <strong>aws-us-east-1-transit</strong>, clicking on the pencil icon:</p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/lab5-peering.png"><img alt="../_images/lab5-peering.png" src="../_images/lab5-peering.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Edit Transit in US-EAST-1</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Edit Transit in US-EAST-1</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong> from the drop-down window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code>, and then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id11">
 <img alt="../_images/lab5-peering2.png" src="../_images/lab5-peering2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 138 </span><span class="caption-text">Peering</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 138 </span><span class="caption-text">Peering</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="transit-peerings-verification">
@@ -492,10 +496,10 @@
 <p>It may take a minute or two to reflect here.</p>
 </div>
 <p>You will find out that the route 10.0.1.0/24 is reachable through <strong>nine</strong> connections with the <strong><em>aws-us-east-2-transit</em></strong>.</p>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab5-hpe.png" src="../_images/lab5-hpe.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 139 </span><span class="caption-text">HPE in action</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 139 </span><span class="caption-text">HPE in action</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -503,17 +507,17 @@
 <p>The number of additional connections depend on the <strong><em>size</em></strong> of the Aviatrix Gateway.</p>
 </div>
 <p>At this point, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id13">
 <a class="reference internal image-reference" href="../_images/lab5-topologyview.png"><img alt="../_images/lab5-topologyview.png" src="../_images/lab5-topologyview.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 140 </span><span class="caption-text">Logical Topology View</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 140 </span><span class="caption-text">Logical Topology View</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is the topology view from CoPilot at this stage:</p>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id14">
 <img alt="../_images/lab5-peeringdrawing.png" src="../_images/lab5-peeringdrawing.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 141 </span><span class="caption-text">CoPilot Topology View</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 141 </span><span class="caption-text">CoPilot Topology View</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -528,17 +532,17 @@
 <h3>6.1. CoPilot Verification of the VPC Peerings(Transit-Transit and Spoke-Transit)<a class="headerlink" href="#copilot-verification-of-the-vpc-peerings-transit-transit-and-spoke-transit" title="Link to this heading">#</a></h3>
 <p>HPE automatically creates an underlying <strong>VPC Peering attachment</strong> within AWS. Verify it on the CoPilot.</p>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; Native Peering</strong></p>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id15">
 <a class="reference internal image-reference" href="../_images/lab5-native0.png"><img alt="../_images/lab5-native0.png" src="../_images/lab5-native0.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 142 </span><span class="caption-text">Native Peerings</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 142 </span><span class="caption-text">Native Peerings</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on any VPC peerings to expand its properties on the right side.</p>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="../_images/lab5-native.png"><img alt="../_images/lab5-native.png" src="../_images/lab5-native.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 143 </span><span class="caption-text">Native Peerings Properties</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 143 </span><span class="caption-text">Native Peerings Properties</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -546,10 +550,10 @@
 <h3>6.2. CoPilot Verification of HPE<a class="headerlink" href="#copilot-verification-of-hpe" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east-1-transit</em></strong>, select the <code class="docutils literal notranslate"><span class="pre">&quot;Interfaces&quot;</span></code> tab and check the huge number of tunnel interfaces that HPE has instantiated.</p>
 <p>These tunnels are used with the Spoke Gateway <em>aws-us-east-1-spoke1</em> and the Transit Gateway <em>aws-us-east-2-transit</em>, because HPE is also enabled on these gateways:</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab5-ipip.png" src="../_images/lab5-ipip.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 144 </span><span class="caption-text">Interface Stats</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 144 </span><span class="caption-text">Interface Stats</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -564,16 +568,16 @@
 <p class="admonition-title">Note</p>
 <p>The RFC 1918 summary routes points to the Aviatrix Spoke gateway for this routing table programmed by the Aviatrix Controller:</p>
 </div>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab5-filter.png" src="../_images/lab5-filter.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab5-summary.png" src="../_images/lab5-summary.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 146 </span><span class="caption-text">RFC1918 routes pointing towards the First Spoke GW</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 146 </span><span class="caption-text">RFC1918 routes pointing towards the First Spoke GW</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now remove the previous filter and select <strong><em>aws-us-east-1-spoke1-Public-2-us-east-1b-rtb</em></strong>.</p>
@@ -581,26 +585,26 @@
 <p class="admonition-title">Note</p>
 <p>This time the RFC 1918 summary routes points to the Aviatrix <strong>Second</strong> Spoke gateway for this routing table programmed by once again the Aviatrix Controller:</p>
 </div>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab5-filter2.png" src="../_images/lab5-filter2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 147 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 147 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab5-summary2.png" src="../_images/lab5-summary2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 148 </span><span class="caption-text">RFC1918 routes pointing towards the Second Spoke GW</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 148 </span><span class="caption-text">RFC1918 routes pointing towards the Second Spoke GW</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As you can see, Active/Active is achieved within a VPC as well. Each gateway is active on the Availability Zone where it resides.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Do not forget to remove the filter previously applied!</p>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab4-removefilter.png"><img alt="../_images/lab4-removefilter.png" src="../_images/lab4-removefilter.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Remove the filter</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Remove the filter</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -613,25 +617,25 @@
 <h3>8.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#connectivity-testing-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>First and foremost, navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select both <strong><em>aws-us-east-1-spoke1-test1</em></strong> and <strong><em>aws-us-east-1-spoke1-test2</em></strong>.</p>
 <p>Insert the credentials available on your POD Portal and then click on <strong>“Sign in”</strong>.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../_images/lab4-gatus200.png"><img alt="../_images/lab4-gatus200.png" src="../_images/lab4-gatus200.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Open up the Gatus app from your Portal</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Open up the Gatus app from your Portal</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Now check if these two instances in the <strong><em>aws-us-east-1-spoke1</em></strong> VPC have <code class="docutils literal notranslate"><span class="pre">ICMP</span></code> reachability to the instance <strong><em>aws-us-east-2-spoke1-test1</em></strong> in the <strong>US-EAST-2</strong> region.</p></li>
 </ul>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab4-gatus201.png"><img alt="../_images/lab4-gatus201.png" src="../_images/lab4-gatus201.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 151 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 151 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab4-gatus202.png"><img alt="../_images/lab4-gatus202.png" src="../_images/lab4-gatus202.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the outcome above, you can conclude that the <ins>connectivity is broken</ins>!</p>
@@ -643,22 +647,22 @@
 <li><p>SSH into <strong>both</strong> EC2 test instances in the <strong><em>aws-us-east-1-spoke1</em></strong> VPC (refer to your POD assignment).</p></li>
 </ul>
 <p>Ping the EC2 test instance (10.0.1.100) in <strong><em>aws-us-east-1-spoke1</em></strong> VPC.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab5-new8.png" src="../_images/lab5-new8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 153 </span><span class="caption-text">From US-EAST-1 to US-EAST-2</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 153 </span><span class="caption-text">From US-EAST-1 to US-EAST-2</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab4-gatus203.png"><img alt="../_images/lab4-gatus203.png" src="../_images/lab4-gatus203.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Ping fails from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Ping fails from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab4-gatus204.png"><img alt="../_images/lab4-gatus204.png" src="../_images/lab4-gatus204.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Ping fails from aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Ping fails from aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -671,27 +675,27 @@
 <h2>9. Enable Segmentation<a class="headerlink" href="#enable-segmentation" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains &gt; Transit Gateways</strong></p>
 <p>Enable Segmentation on <strong><em>aws-us-east-1-transit</em></strong>:</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab5-enable.png" src="../_images/lab5-enable.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Enable Segmentation</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Enable Segmentation</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="associate-aviatrix-spoke-to-the-network-domain">
 <h3>9.2. Associate Aviatrix Spoke to the Network Domain<a class="headerlink" href="#associate-aviatrix-spoke-to-the-network-domain" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong></p>
 <p>Associate <strong><em>aws-us-east-1-spoke1</em></strong> with its transit in the <span style='color:lightgreen'>Green</span> network domain:</p>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id30">
 <img alt="../_images/lab5-green.png" src="../_images/lab5-green.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Association</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Association</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>At this point, this is how the overall topology will look:</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab5-topologyview22.png"><img alt="../_images/lab5-topologyview22.png" src="../_images/lab5-topologyview22.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 158 </span><span class="caption-text">New Logical Topology View</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 158 </span><span class="caption-text">New Logical Topology View</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -705,16 +709,16 @@
 <ul class="simple">
 <li><p>Verify if these two instances in the <strong><em>aws-us-east-1-spoke1</em></strong> VPC have <code class="docutils literal notranslate"><span class="pre">ICMP</span></code> reachability to the instance <strong><em>aws-us-east-2-spoke1-test1</em></strong> in the <strong>US-EAST-2</strong> region.</p></li>
 </ul>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id32">
 <a class="reference internal image-reference" href="../_images/lab4-gatus301.png"><img alt="../_images/lab4-gatus301.png" src="../_images/lab4-gatus301.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 159 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 159 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab4-gatus302.png"><img alt="../_images/lab4-gatus302.png" src="../_images/lab4-gatus302.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now the connectivity to the <strong>EAST2</strong> region is fine, thanks to the Network Segmentation!</p>
@@ -722,29 +726,29 @@
 <section id="id2">
 <h3>10.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Launch your SSH session to the <strong><em>aws-us-east-1-spoke1-test1</em></strong> in AWS US-East 1, and then carry out the ping command to the <strong><em>aws-us-east-2-spoke1-test1</em></strong> in AWS US-East 2.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id34">
 <img alt="../_images/lab5-new.png" src="../_images/lab5-new.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 161 </span><span class="caption-text">Instances are now in the same Segment!</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id33">
-<img alt="../_images/lab5-ping1.png" src="../_images/lab5-ping1.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 162 </span><span class="caption-text">ping from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Repeat the ping from the <strong><em>aws-us-east-1-spoke1-test2</em></strong> in AWS US-East1 towards <strong><em>aws-us-east-2-spoke1-test1</em></strong> in AWS US-<strong>East2</strong>.</p>
-<figure class="align-center" id="id34">
-<img alt="../_images/lab5-new2.png" src="../_images/lab5-new2.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 163 </span><span class="caption-text">Second ping</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 161 </span><span class="caption-text">Instances are now in the same Segment!</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id35">
+<img alt="../_images/lab5-ping1.png" src="../_images/lab5-ping1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 162 </span><span class="caption-text">ping from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Repeat the ping from the <strong><em>aws-us-east-1-spoke1-test2</em></strong> in AWS US-East1 towards <strong><em>aws-us-east-2-spoke1-test1</em></strong> in AWS US-<strong>East2</strong>.</p>
+<figure class="align-center" id="id36">
+<img alt="../_images/lab5-new2.png" src="../_images/lab5-new2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 163 </span><span class="caption-text">Second ping</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id37">
 <img alt="../_images/lab5-ping2.png" src="../_images/lab5-ping2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 164 </span><span class="caption-text">ping from aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 164 </span><span class="caption-text">ping from aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -765,11 +769,11 @@
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-1-spoke1</em></strong> cluster! Now select the <strong>Settings</strong> tab, then expand the <strong>General</strong> section and last but not least, turn off the <em>Gateway Single AZ HA</em> knob! Do not forget to click on <strong>Save</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id38">
 <img alt="../_images/lab5-activemeshha.png" src="../_images/lab5-activemeshha.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 165 </span><span class="caption-text">Disable “Gateway Single AZ HA
-“</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+“</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -778,51 +782,53 @@
 <p><ins>Gateway Single AZ HA is enabled by default</ins>.</p>
 <p>When Gateway Single AZ HA status is <strong>On</strong>, the Aviatrix Controller attempts to restart the gateway instance. When status is <strong>Off</strong>, Controller does <strong>NOT</strong> attempt to restart the gateway instance.</p>
 </div>
+<section id="id3">
+<h3>11.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Login to <strong>AWS console</strong></a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 149</ins>).</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id39">
 <img alt="../_images/lab5-newone.png" src="../_images/lab5-newone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 166 </span><span class="caption-text">AWS URL and credentials</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id38">
-<img alt="../_images/lab5-awsconsole.png" src="../_images/lab5-awsconsole.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 167 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Change the region to <strong>N. Virginia</strong> and invoke <strong>EC2</strong> service.</p>
-<figure class="align-center" id="id39">
-<a class="reference internal image-reference" href="../_images/lab5-region.png"><img alt="../_images/lab5-region.png" src="../_images/lab5-region.png" style="height: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 168 </span><span class="caption-text">Change the Region</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 166 </span><span class="caption-text">AWS URL and credentials</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id40">
+<img alt="../_images/lab5-awsconsole.png" src="../_images/lab5-awsconsole.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 167 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Change the region to <strong>N. Virginia</strong> and invoke <strong>EC2</strong> service.</p>
+<figure class="align-center" id="id41">
+<a class="reference internal image-reference" href="../_images/lab5-region.png"><img alt="../_images/lab5-region.png" src="../_images/lab5-region.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 168 </span><span class="caption-text">Change the Region</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id42">
 <a class="reference internal image-reference" href="../_images/lab5-region00.png"><img alt="../_images/lab5-region00.png" src="../_images/lab5-region00.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Invoke the EC2 service</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Invoke the EC2 service</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Instances (running)</strong>.</p>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id43">
 <img alt="../_images/lab5-running.png" src="../_images/lab5-running.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 170 </span><span class="caption-text">Instances running</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 170 </span><span class="caption-text">Instances running</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Search for <strong><em>aviatrix-aws-us-east-1-spoke1</em></strong>, select the instance and then choose <strong>Instance state &gt; Stop instance</strong></p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id44">
 <a class="reference internal image-reference" href="../_images/lab5-stop.png"><img alt="../_images/lab5-stop.png" src="../_images/lab5-stop.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 171 </span><span class="caption-text">Stop the Instance</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 171 </span><span class="caption-text">Stop the Instance</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Confirm by clicking on <strong>Stop</strong>, one more time.</p>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id45">
 <img alt="../_images/lab5-stop2.png" src="../_images/lab5-stop2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 172 </span><span class="caption-text">Confirm the stop</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 172 </span><span class="caption-text">Confirm the stop</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, check the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">Dashboard</span></code> for the instance <strong><em>aws-us-east-1-spoke1-test1</em></strong> from your personal POD portal:</p>
@@ -830,40 +836,74 @@
 <p class="admonition-title">Tip</p>
 <p>Diminish the ICMP timeout to <strong>10</strong> seconds to see the ICMP results that will be unsuccessful in real time.</p>
 </div>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id46">
 <a class="reference internal image-reference" href="../_images/lab4-gatus401.png"><img alt="../_images/lab4-gatus401.png" src="../_images/lab4-gatus401.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 173 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 173 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id45">
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The reconvergence will occur in approximately 1 minute and 30 seconds to 2 minutes. Please be patient!</p>
+</div>
+<figure class="align-center" id="id47">
 <a class="reference internal image-reference" href="../_images/lab4-gatus402.png"><img alt="../_images/lab4-gatus402.png" src="../_images/lab4-gatus402.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 174 </span><span class="caption-text">Reconvergence</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 174 </span><span class="caption-text">Reconvergence in action</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>The ICMP test launched from the <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance will be completely fine because Spoke Gateway 2 is up and running.</p>
+<figure class="align-center" id="id48">
+<a class="reference internal image-reference" href="../_images/lab4-gatus405.png"><img alt="../_images/lab4-gatus405.png" src="../_images/lab4-gatus405.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 175 </span><span class="caption-text">aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now restart the <strong>Spoke Gateway #1</strong>.</p></li>
+</ul>
+<p>Go to the AWS Console, select the <strong><em>aviatrix-aws-us-east-1-spoke1</em></strong> Spoke Gateway, then click on the “Instance state” button and choose <code class="docutils literal notranslate"><span class="pre">&quot;Start</span> <span class="pre">instance&quot;</span></code>.</p>
+<figure class="align-center" id="id49">
+<a class="reference internal image-reference" href="../_images/lab4-gatus406.png"><img alt="../_images/lab4-gatus406.png" src="../_images/lab4-gatus406.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 176 </span><span class="caption-text">AWS Console</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The traffic will be diverted back to Spoke Gateway #2; however, on the Gatus Dashboard, you will not notice any packet loss.</p>
+<p>The preemption is seamless!</p>
+<figure class="align-center" id="id50">
+<a class="reference internal image-reference" href="../_images/lab4-gatus420.png"><img alt="../_images/lab4-gatus420.png" src="../_images/lab4-gatus420.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 177 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h3>11.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>If you wish, you can also verify the failover mechanism using the SSH Client.</p>
 <p>You will notice ping drops solely from <strong><em>aws-us-east-1-spoke1-test1</em></strong>. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.</p>
 <p>This shows how the Aviatrix Controller intelligently auto-heals the VPC routing.</p>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id51">
 <img alt="../_images/lab5-drop.png" src="../_images/lab5-drop.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 175 </span><span class="caption-text">Temporary disruption with <strong>FAST</strong> keepalive!</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Temporary disruption with <strong>FAST</strong> keepalive!</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Bonus Step</strong>: <code class="docutils literal notranslate"><span class="pre">Restart</span></code> the Gateway from the AWS console and reverify the traffic flow. This time you will notice any kind of disruption: the traffic flow fill switch back to the aviatrix-aws-us-east-1-spoke1 GW.</p>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id52">
 <a class="reference internal image-reference" href="../_images/lab5-restart.png"><img alt="../_images/lab5-restart.png" src="../_images/lab5-restart.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 176 </span><span class="caption-text">Restart</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 179 </span><span class="caption-text">Restart</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id53">
 <a class="reference internal image-reference" href="../_images/lab5-finaltopo.png"><img alt="../_images/lab5-finaltopo.png" src="../_images/lab5-finaltopo.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 177 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 180 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 </section>
 <section id="flightpath">
 <h2>7. FlightPath<a class="headerlink" href="#flightpath" title="Link to this heading">#</a></h2>
@@ -876,10 +916,10 @@
 <li><p><strong>Port</strong>: <span style='color:#479608'>443</span></p></li>
 <li><p><strong>Interface</strong>: <span style='color:#479608'>Private</span></p></li>
 </ul>
-<figure class="align-center" id="id49">
+<figure class="align-center" id="id54">
 <a class="reference internal image-reference" href="../_images/lab5-flightpath.png"><img alt="../_images/lab5-flightpath.png" src="../_images/lab5-flightpath.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 178 </span><span class="caption-text">FlightPath config</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 181 </span><span class="caption-text">FlightPath config</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This will provide an AppIQ report of how <strong><em>aws-us-east-1-spoke1-test1</em></strong> is connected with <strong><em>aws-us-east-2-spoke1-test1</em></strong> and display the path along with end-to-end latency.</p>
@@ -887,10 +927,10 @@
 <p class="admonition-title">Note</p>
 <p>You might see some links still depicted in <span style='color:red'><strong>red</strong></span>, after having restarted the Spoke Gateway. Be patient and relaunch the report and you will get the same outcome as depicted below.</p>
 </div>
-<figure class="align-center" id="id50">
+<figure class="align-center" id="id55">
 <a class="reference internal image-reference" href="../_images/lab5-flight2.png"><img alt="../_images/lab5-flight2.png" src="../_images/lab5-flight2.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 179 </span><span class="caption-text">FlightPath Report</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 182 </span><span class="caption-text">FlightPath Report</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Scroll down to get more details about:</p>
@@ -903,10 +943,10 @@
 <li><p>Routing tables</p></li>
 </ul>
 <p>You can also download the entire report in pdf format by clicking the <strong>PDF icon</strong> at the top right corner:</p>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id56">
 <img alt="../_images/lab5-download.png" src="../_images/lab5-download.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 180 </span><span class="caption-text">FlightPath Report PDF</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 183 </span><span class="caption-text">FlightPath Report PDF</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -920,10 +960,10 @@
 <p>You can modify the <ins>Gateway to Controller Communication timer</ins> directly from the CoPilot. Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Settings &gt; Gateway to Controller Communication</strong> and change the <code class="docutils literal notranslate"><span class="pre">Keep</span> <span class="pre">Alive</span> <span class="pre">Speed</span></code> from <strong><em>medium</em></strong> (default) to <strong><em>fast</em></strong>.</p>
 <p>Then <ins>repeat</ins> the experiment carried out earlier!</p>
 </div>
-<figure class="align-center" id="id52">
+<figure class="align-center" id="id57">
 <a class="reference internal image-reference" href="../_images/lab5-keepalive.png"><img alt="../_images/lab5-keepalive.png" src="../_images/lab5-keepalive.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 181 </span><span class="caption-text">Keep Alive Speed</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 184 </span><span class="caption-text">Keep Alive Speed</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1043,7 +1083,11 @@ What would be needed to make those routes visible?</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failover">11. Failover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failover">11. Failover</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">7. FlightPath</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-questions">Bonus questions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-keepalive-templates">Gateway Keepalive Templates</a></li>

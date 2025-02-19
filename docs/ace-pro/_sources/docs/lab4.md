@@ -461,6 +461,8 @@ The `Gateway Single AZ HA` feature enables the **Aviatrix Controller** to monito
 When Gateway Single AZ HA status is **On**, the Aviatrix Controller attempts to restart the gateway instance. When status is **Off**, Controller does **NOT** attempt to restart the gateway instance.
 ```
 
+### 11.1 Connectivity Testing Using the Gatus App
+
 Login to **AWS console**</a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 149</ins>).
 
 ```{figure} images/lab5-newone.png
@@ -537,13 +539,56 @@ align: center
 Gatus from aws-us-east-1-spoke1-test1
 ```
 
+```{tip}
+The reconvergence will occur in approximately 1 minute and 30 seconds to 2 minutes. Please be patient!
+```
+
 ```{figure} images/lab4-gatus402.png
 ---
 height: 400px
 align: center
 ---
-Reconvergence
+Reconvergence in action
 ```
+
+The ICMP test launched from the **_aws-us-east-1-spoke1-test1_** instance will be completely fine because Spoke Gateway 2 is up and running.
+
+```{figure} images/lab4-gatus405.png
+---
+height: 400px
+align: center
+---
+aws-us-east-1-spoke1-test1
+```
+
+- Now restart the **Spoke Gateway #1**.
+
+Go to the AWS Console, select the **_aviatrix-aws-us-east-1-spoke1_** Spoke Gateway, then click on the "Instance state" button and choose `"Start instance"`.
+
+```{figure} images/lab4-gatus406.png
+---
+height: 400px
+align: center
+---
+AWS Console
+```
+
+The traffic will be diverted back to Spoke Gateway #2; however, on the Gatus Dashboard, you will not notice any packet loss. 
+
+The preemption is seamless!
+
+```{figure} images/lab4-gatus420.png
+---
+height: 400px
+align: center
+---
+Gatus from aws-us-east-1-spoke1-test1
+```
+
+### 11.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+If you wish, you can also verify the failover mechanism using the SSH Client.
+
 
 You will notice ping drops solely from **_aws-us-east-1-spoke1-test1_**. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.
 
