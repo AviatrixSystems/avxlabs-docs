@@ -256,9 +256,43 @@ align: center
 Remove the filter
 ```
 
-## 6.2. Connectivity test of ActiveMesh (Pt.1)
+## 8. Connectivity Testing of ActiveMesh (Pt.1)
 
-Test that the EC2 instances in two subnets are pointing to two different routing tables. If one gateway goes down, the controller will switch the **ENI** of the available gateway in the routing table.
+Test that the EC2 instances in the two subnets deployed in the same VPC, **_aws-us-east-1-spoke1_**, are pointing to two different routing tables. If one gateway goes down, the controller will switch the **ENI** (_Elastic Network interface_) to the available gateway in the routing table.
+
+### 8.1 Connectivity Testing Using the Gatus App
+
+Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_**. 
+
+Insert the credentials available on your POD Portal and then click on **"Sign in"**.
+
+```{figure} images/lab4-gatus200.png
+---
+height: 400px
+align: center
+---
+Open up the Gatus app from your Portal
+```
+
+
+Now check if these two instances in the **_aws-us-east-1-spoke1_** VPC have ICMP reachability towards the instance **_aws-us-east-2spoke1-test1_**
+
+
+```{figure} images/lab4-gatus201.png
+---
+height: 400px
+align: center
+---
+Gatus from aws-us-east-1-spoke1-test1
+```
+
+```{figure} images/lab4-gatus202.png
+---
+height: 400px
+align: center
+---
+Gatus from aws-us-east-1-spoke1-test2
+```
 
 SSH into **both** EC2 test instances in **_aws-us-east-1-spoke1_** VPC (refer to your Pod assignment). 
 

@@ -151,7 +151,7 @@ Logical View
 
 Verify that you have applied the separation between the two segments.
 
-### 6.1 Connectivity Test Using the Gatus App
+### 6.1 Connectivity Testing Using the Gatus App
 
 Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example. 
 
@@ -181,7 +181,7 @@ align: center
 ICMP timeout
 ```
 
-### 6.2 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 6.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Open **three** terminal windows and SSH to the test instances/VMs in each cloud and ping the **private** IPs of each other to test the Multicloud connectivity (Refer to pod info).
 
@@ -264,7 +264,7 @@ Logical View with the connection policy
 
 Verify that you have successfully **merged** both Network Domains. Retest the connectivity; you should now have end-to-end connectivity across the multicloud environment.
 
-### 8.1 Connectivity Test Using the Gatus App
+### 8.1 Connectivity Testing Using the Gatus App
 
 Once again, navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example. 
 
@@ -277,7 +277,7 @@ align: center
 Gatus
 ```
 
-### 6.1 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 6.1 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 If you're not satisfied with the Gatus dashboard, you can also use your personal `SSH client` to perform the connectivity tests!
 
