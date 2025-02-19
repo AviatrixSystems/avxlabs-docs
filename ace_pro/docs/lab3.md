@@ -52,7 +52,7 @@ align: center
 Enable Segmentation on the relevant Transit GWs
 ```
 
-## 4.2 Network Domains
+### 4.2 Network Domains
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains > + Network Domain**
 
