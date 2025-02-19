@@ -147,7 +147,11 @@ align: center
 Logical View
 ```
 
-## 6. Connectivity Test Using the Gatus App
+## 6. Connectivity Testing after Applying the Network Segmentation
+
+Verify that each test instance can ping each other.
+
+### 6.1 Connectivity Test Using the Gatus App
 
 Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example. 
 
@@ -162,7 +166,7 @@ Eventually, the ICMP check will begin to fail gradually.
 height: 400px
 align: center
 ---
-gcp-us-central1-spoke1-test1 
+ICMP Test towards gcp-us-central1-spoke1-test1 fails 
 ```
 
 ```{important}
@@ -174,8 +178,10 @@ The ICMP traffic is set by default to 5 minutes. Reduce the timer if you want a 
 height: 400px
 align: center
 ---
-gcp-us-central1-spoke1-test1 
+ICMP timeout
 ```
+
+### 6.2 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Open **three** terminal windows and SSH to the test instances/VMs in each cloud and ping the **private** IPs of each other to test the Multicloud connectivity (Refer to pod info).
 
@@ -214,7 +220,7 @@ align: center
 Ping test from GCP
 ```
 
-## 6. Connection Policy
+## 7. Connection Policy
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains**
 
@@ -241,7 +247,7 @@ align: center
 Apply the Connection Policy
 ```
 
-### 6.1. Verification of Connection Policy
+### 7.1. Verification of Connection Policy
 
 Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**
 
@@ -254,7 +260,19 @@ align: center
 Logical View with the connection policy
 ```
 
-Retest the connectivity; now you will have end-to-end connectivity across the multicloud environment.
+## 8. Final Connectivity Testing after Applying the Connection Policy
+
+Verify that you have successfully **merged** both Network Domains. Retest the connectivity; you should now have end-to-end connectivity across the multicloud environment.
+
+### 8.1 Connectivity Test Using the Gatus App
+
+Once again, navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example. 
+
+Eventually, the ICMP check will begin to fail gradually.
+
+### 6.1 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+If you're not satisfied with the Gatus dashboard, you can also use your personal `SSH client` to perform the connectivity tests!
 
 **AWS**:
 
