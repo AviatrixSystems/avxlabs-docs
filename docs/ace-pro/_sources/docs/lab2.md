@@ -52,7 +52,7 @@ You can select any instances from the three CSP environments, and you will find 
 
 ```{figure} images/lab2-gatus01.png
 ---
-height: 350px
+height: 400px
 align: center
 ---
 aws-us-east-2-spoke1-test1 
@@ -118,7 +118,7 @@ Alternatively, if you want an additional verification, you can also access all t
 
 ```{figure} images/lab2-gatus06.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 DNS name
@@ -132,7 +132,7 @@ ssh student@...
 
 ```{figure} images/lab2-gatus07.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 SSH client
@@ -150,7 +150,7 @@ You can also access your instances using also their **Public IP addresses**! You
 
 ```{figure} images/lab2-sshclient10.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Search the test instances
@@ -172,7 +172,7 @@ Now access the EC2 instance using its public IP address:
 
 ```{figure} images/lab2-sshclient20.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 SSH with public IP address
@@ -210,7 +210,7 @@ Now that you have logged in to the **_aws-us-east-2-spoke1-test1_** successfully
 
 ```{figure} images/lab2-sshclient00.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 SSH client
@@ -236,7 +236,7 @@ Go to your POD portal, click on the `"Open Copilot"` button and insert the crede
 
 ```{figure} images/lab2-gatus0600.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 POD Portal
