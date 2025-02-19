@@ -404,7 +404,7 @@ Please pay close attention to each step, as a misconfiguration could result in *
 
 ```{figure} images/lab2-transitbutton.png
 ---
-height: 350px
+height: 300px
 align: center
 ---
 +Transit Gateway
@@ -477,7 +477,7 @@ This is **CoPilot > Cloud Fabric > Gateways > Spoke Gateways > + Spoke Gateway**
 
 ```{figure} images/lab2-spokecreate.png
 ---
-height: 350px
+height: 300px
 align: center
 ---
 +Spoke Gateway
