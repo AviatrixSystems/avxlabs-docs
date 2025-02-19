@@ -159,7 +159,7 @@ Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-eas
 You should already be signed in to the **Gatus** app.
 ```
 
-Eventually, the ICMP check will begin to fail gradually.
+Eventually, the ICMP check will begin to fail gradually, towards the instance **_gcp-us-central1-spoke1-test1_**.
 
 ```{figure} images/lab3-gatus00.png
 ---
@@ -268,7 +268,14 @@ Verify that you have successfully **merged** both Network Domains. Retest the co
 
 Once again, navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example. 
 
-Eventually, the ICMP check will begin to fail gradually.
+The ICMP test towards the instance **_gcp-us-central1-spoke1-test1_** should work this time.
+
+```{figure} images/lab3-gatus100.png
+---
+align: center
+---
+Gatus
+```
 
 ### 6.1 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
