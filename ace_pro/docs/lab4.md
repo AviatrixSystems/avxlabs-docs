@@ -573,9 +573,9 @@ align: center
 AWS Console
 ```
 
-The traffic will be diverted back to Spoke Gateway #2; however, on the Gatus Dashboard, you will not notice any packet loss. 
+The traffic will be diverted back to Spoke Gateway **#1**; however, you will not notice any packet loss on the Gatus Dashboard.
 
-The preemption is seamless!
+The <ins>preemption</ins> is seamless!
 
 ```{figure} images/lab4-gatus420.png
 ---
