@@ -311,7 +311,7 @@ From US-EAST-1 to US-EAST-2
 
 ```{figure} images/lab4-gatus203.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Ping fails from aws-us-east-1-spoke1-test1
@@ -319,7 +319,7 @@ Ping fails from aws-us-east-1-spoke1-test1
 
 ```{figure} images/lab4-gatus204.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Ping fails from aws-us-east-1-spoke1-test2
@@ -329,14 +329,10 @@ Ping fails from aws-us-east-1-spoke1-test2
 It will fail. Why? Because we didn’t enable segmentation on **aws-us-east-1-transit** and associate **aws-us-east-1-spoke1** with the transit gateway in the appropriate network domain.
 ```
 
-
 These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
 
 
-
-It will fail. **WHY?** Because we didn’t enable segmentation on **_aws-us-east-1-transit_** and associate **_aws-us-east-1-spoke1_** with the transit gateway in the appropriate network domain.
- 
-### 6.2.1 Enable Segmentation
+## 9. Enable Segmentation
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains > Transit Gateways**
 
@@ -349,7 +345,7 @@ align: center
 Enable Segmentation
 ```
 
-### 6.2.2. Associate Aviatrix Spoke to the Network Domain
+### 9.2. Associate Aviatrix Spoke to the Network Domain
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains**
 
@@ -362,7 +358,7 @@ align: center
 Association
 ```
 
-At this point, this is how the overall topology would look like:
+At this point, this is how the overall topology will look:
 
 ```{figure} images/lab5-topologyview22.png
 ---

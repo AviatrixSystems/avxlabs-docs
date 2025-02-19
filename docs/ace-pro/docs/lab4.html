@@ -355,8 +355,10 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-of-activemesh-pt-1">8. Connectivity Testing of ActiveMesh (Pt.1)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-gatus-app">8.1 Connectivity Testing Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-ssh-client-bonus">8.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-segmentation">6.2.1 Enable Segmentation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-aviatrix-spoke-to-the-network-domain">6.2.2. Associate Aviatrix Spoke to the Network Domain</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-segmentation">9. Enable Segmentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-aviatrix-spoke-to-the-network-domain">9.2. Associate Aviatrix Spoke to the Network Domain</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-of-activemesh-pt-2">6.3. Connectivity test of ActiveMesh (Pt.2)</a></li>
@@ -643,13 +645,13 @@
 </figcaption>
 </figure>
 <figure class="align-center" id="id23">
-<a class="reference internal image-reference" href="../_images/lab4-gatus203.png"><img alt="../_images/lab4-gatus203.png" src="../_images/lab4-gatus203.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab4-gatus203.png"><img alt="../_images/lab4-gatus203.png" src="../_images/lab4-gatus203.png" style="height: 300px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 154 </span><span class="caption-text">Ping fails from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id24">
-<a class="reference internal image-reference" href="../_images/lab4-gatus204.png"><img alt="../_images/lab4-gatus204.png" src="../_images/lab4-gatus204.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab4-gatus204.png"><img alt="../_images/lab4-gatus204.png" src="../_images/lab4-gatus204.png" style="height: 300px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 155 </span><span class="caption-text">Ping fails from aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
@@ -659,10 +661,10 @@
 <p>It will fail. Why? Because we didn’t enable segmentation on <strong>aws-us-east-1-transit</strong> and associate <strong>aws-us-east-1-spoke1</strong> with the transit gateway in the appropriate network domain.</p>
 </div>
 <p>These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.</p>
-<p>It will fail. <strong>WHY?</strong> Because we didn’t enable segmentation on <strong><em>aws-us-east-1-transit</em></strong> and associate <strong><em>aws-us-east-1-spoke1</em></strong> with the transit gateway in the appropriate network domain.</p>
+</section>
 </section>
 <section id="enable-segmentation">
-<h3>6.2.1 Enable Segmentation<a class="headerlink" href="#enable-segmentation" title="Link to this heading">#</a></h3>
+<h2>9. Enable Segmentation<a class="headerlink" href="#enable-segmentation" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains &gt; Transit Gateways</strong></p>
 <p>Enable Segmentation on <strong><em>aws-us-east-1-transit</em></strong>:</p>
 <figure class="align-center" id="id25">
@@ -671,9 +673,8 @@
 <p><span class="caption-number">Fig. 156 </span><span class="caption-text">Enable Segmentation</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
 <section id="associate-aviatrix-spoke-to-the-network-domain">
-<h3>6.2.2. Associate Aviatrix Spoke to the Network Domain<a class="headerlink" href="#associate-aviatrix-spoke-to-the-network-domain" title="Link to this heading">#</a></h3>
+<h3>9.2. Associate Aviatrix Spoke to the Network Domain<a class="headerlink" href="#associate-aviatrix-spoke-to-the-network-domain" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong></p>
 <p>Associate <strong><em>aws-us-east-1-spoke1</em></strong> with its transit in the <span style='color:lightgreen'>Green</span> network domain:</p>
 <figure class="align-center" id="id26">
@@ -682,7 +683,7 @@
 <p><span class="caption-number">Fig. 157 </span><span class="caption-text">Association</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>At this point, this is how the overall topology would look like:</p>
+<p>At this point, this is how the overall topology will look:</p>
 <figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab5-topologyview22.png"><img alt="../_images/lab5-topologyview22.png" src="../_images/lab5-topologyview22.png" style="height: 400px;" /></a>
 <figcaption>
@@ -972,8 +973,10 @@ What would be needed to make those routes visible?</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-of-activemesh-pt-1">8. Connectivity Testing of ActiveMesh (Pt.1)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-gatus-app">8.1 Connectivity Testing Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-ssh-client-bonus">8.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-segmentation">6.2.1 Enable Segmentation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-aviatrix-spoke-to-the-network-domain">6.2.2. Associate Aviatrix Spoke to the Network Domain</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-segmentation">9. Enable Segmentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-aviatrix-spoke-to-the-network-domain">9.2. Associate Aviatrix Spoke to the Network Domain</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-of-activemesh-pt-2">6.3. Connectivity test of ActiveMesh (Pt.2)</a></li>
