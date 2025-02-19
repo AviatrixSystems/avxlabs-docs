@@ -361,7 +361,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-aviatrix-spoke-to-the-network-domain">9.2. Associate Aviatrix Spoke to the Network Domain</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tesing-of-activemesh-pt-2">10. Connectivity Tesing of ActiveMesh (Pt.2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-of-activemesh-pt-2">10. Connectivity Testing of ActiveMesh (Pt.2)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.1 Connectivity Testing Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
@@ -371,8 +371,8 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">7. FlightPath</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-questions">Bonus questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">12. FlightPath</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-questions">13. Bonus questions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-keepalive-templates">Gateway Keepalive Templates</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transitive-routing">Transitive Routing</a></li>
 </ul>
@@ -700,8 +700,8 @@
 </figure>
 </section>
 </section>
-<section id="connectivity-tesing-of-activemesh-pt-2">
-<h2>10. Connectivity Tesing of ActiveMesh (Pt.2)<a class="headerlink" href="#connectivity-tesing-of-activemesh-pt-2" title="Link to this heading">#</a></h2>
+<section id="connectivity-testing-of-activemesh-pt-2">
+<h2>10. Connectivity Testing of ActiveMesh (Pt.2)<a class="headerlink" href="#connectivity-testing-of-activemesh-pt-2" title="Link to this heading">#</a></h2>
 <p>Verify that both EAST-1 region and EAST-2 region have perfect connectivity.</p>
 <section id="id1">
 <h3>10.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
@@ -881,32 +881,54 @@
 <section id="id4">
 <h3>11.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>If you wish, you can also verify the failover mechanism using the SSH Client.</p>
+<p>Go back to the <strong>AWS console</strong></a>, search for <strong><em>aviatrix-aws-us-east-1-spoke1</em></strong>, select the instance and then choose <strong>Instance state &gt; Stop instance</strong>.</p>
+<figure class="align-center" id="id51">
+<a class="reference internal image-reference" href="../_images/lab5-stop.png"><img alt="../_images/lab5-stop.png" src="../_images/lab5-stop.png" style="height: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Stop the Instance</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Confirm by clicking on <strong>Stop</strong>, one more time.</p>
+<figure class="align-center" id="id52">
+<img alt="../_images/lab5-stop2.png" src="../_images/lab5-stop2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 179 </span><span class="caption-text">Confirm the stop</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>You will notice ping drops solely from <strong><em>aws-us-east-1-spoke1-test1</em></strong>. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.</p>
 <p>This shows how the Aviatrix Controller intelligently auto-heals the VPC routing.</p>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id53">
 <img alt="../_images/lab5-drop.png" src="../_images/lab5-drop.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Temporary disruption with <strong>FAST</strong> keepalive!</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 180 </span><span class="caption-text">Temporary disruption with <strong>FAST</strong> keepalive!</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p><strong>Bonus Step</strong>: <code class="docutils literal notranslate"><span class="pre">Restart</span></code> the Gateway from the AWS console and reverify the traffic flow. This time you will notice any kind of disruption: the traffic flow fill switch back to the aviatrix-aws-us-east-1-spoke1 GW.</p>
-<figure class="align-center" id="id52">
+<figure class="align-center" id="id54">
+<img alt="../_images/lab5-drop00.png" src="../_images/lab5-drop00.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 181 </span><span class="caption-text">No Packets drop from the aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Restart</span></code> the Gateway from the AWS console and reverify the traffic flow. This time you will notice any kind of disruption: the traffic flow fill switch back to the <strong>aviatrix-aws-us-east-1-spoke1</strong> GW.</p></li>
+</ul>
+<figure class="align-center" id="id55">
 <a class="reference internal image-reference" href="../_images/lab5-restart.png"><img alt="../_images/lab5-restart.png" src="../_images/lab5-restart.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 179 </span><span class="caption-text">Restart</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 182 </span><span class="caption-text">Restart</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id53">
+<p>After this lab, this is how the overall topology will look:</p>
+<figure class="align-center" id="id56">
 <a class="reference internal image-reference" href="../_images/lab5-finaltopo.png"><img alt="../_images/lab5-finaltopo.png" src="../_images/lab5-finaltopo.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 180 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 183 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="flightpath">
-<h2>7. FlightPath<a class="headerlink" href="#flightpath" title="Link to this heading">#</a></h2>
+<h2>12. FlightPath<a class="headerlink" href="#flightpath" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Diagnostics &gt; AppIQ &gt; FlightPath</strong></p>
 <p>Use the following inputs:</p>
 <ul class="simple">
@@ -916,21 +938,21 @@
 <li><p><strong>Port</strong>: <span style='color:#479608'>443</span></p></li>
 <li><p><strong>Interface</strong>: <span style='color:#479608'>Private</span></p></li>
 </ul>
-<figure class="align-center" id="id54">
+<figure class="align-center" id="id57">
 <a class="reference internal image-reference" href="../_images/lab5-flightpath.png"><img alt="../_images/lab5-flightpath.png" src="../_images/lab5-flightpath.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 181 </span><span class="caption-text">FlightPath config</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 184 </span><span class="caption-text">FlightPath config</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This will provide an AppIQ report of how <strong><em>aws-us-east-1-spoke1-test1</em></strong> is connected with <strong><em>aws-us-east-2-spoke1-test1</em></strong> and display the path along with end-to-end latency.</p>
+<p>This will provide a <code class="docutils literal notranslate"><span class="pre">FlightPath</span></code> report showing how <strong><em>aws-us-east-1-spoke1-test1</em></strong> is connected with <strong><em>aws-us-east-2-spoke1-test1</em></strong>, displaying the path along with end-to-end latency.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You might see some links still depicted in <span style='color:red'><strong>red</strong></span>, after having restarted the Spoke Gateway. Be patient and relaunch the report and you will get the same outcome as depicted below.</p>
 </div>
-<figure class="align-center" id="id55">
+<figure class="align-center" id="id58">
 <a class="reference internal image-reference" href="../_images/lab5-flight2.png"><img alt="../_images/lab5-flight2.png" src="../_images/lab5-flight2.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 182 </span><span class="caption-text">FlightPath Report</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 185 </span><span class="caption-text">FlightPath Report</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Scroll down to get more details about:</p>
@@ -943,15 +965,15 @@
 <li><p>Routing tables</p></li>
 </ul>
 <p>You can also download the entire report in pdf format by clicking the <strong>PDF icon</strong> at the top right corner:</p>
-<figure class="align-center" id="id56">
+<figure class="align-center" id="id59">
 <img alt="../_images/lab5-download.png" src="../_images/lab5-download.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 183 </span><span class="caption-text">FlightPath Report PDF</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 186 </span><span class="caption-text">FlightPath Report PDF</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="bonus-questions">
-<h2>Bonus questions<a class="headerlink" href="#bonus-questions" title="Link to this heading">#</a></h2>
+<h2>13. Bonus questions<a class="headerlink" href="#bonus-questions" title="Link to this heading">#</a></h2>
 <section id="gateway-keepalive-templates">
 <h3>Gateway Keepalive Templates<a class="headerlink" href="#gateway-keepalive-templates" title="Link to this heading">#</a></h3>
 <p>Experiment with <a href="https://docs.aviatrix.com/previous/documentation/latest/building-your-network/gateway-keepalives.html" target="_blank">GATEWAY TO CONTROLLER COMMUNICATION</a> and retest convergence times when bringing down a spoke gateway.</p>
@@ -960,10 +982,10 @@
 <p>You can modify the <ins>Gateway to Controller Communication timer</ins> directly from the CoPilot. Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Settings &gt; Gateway to Controller Communication</strong> and change the <code class="docutils literal notranslate"><span class="pre">Keep</span> <span class="pre">Alive</span> <span class="pre">Speed</span></code> from <strong><em>medium</em></strong> (default) to <strong><em>fast</em></strong>.</p>
 <p>Then <ins>repeat</ins> the experiment carried out earlier!</p>
 </div>
-<figure class="align-center" id="id57">
+<figure class="align-center" id="id60">
 <a class="reference internal image-reference" href="../_images/lab5-keepalive.png"><img alt="../_images/lab5-keepalive.png" src="../_images/lab5-keepalive.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 184 </span><span class="caption-text">Keep Alive Speed</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 187 </span><span class="caption-text">Keep Alive Speed</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1078,7 +1100,7 @@ What would be needed to make those routes visible?</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-aviatrix-spoke-to-the-network-domain">9.2. Associate Aviatrix Spoke to the Network Domain</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tesing-of-activemesh-pt-2">10. Connectivity Tesing of ActiveMesh (Pt.2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-of-activemesh-pt-2">10. Connectivity Testing of ActiveMesh (Pt.2)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.1 Connectivity Testing Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
@@ -1088,8 +1110,8 @@ What would be needed to make those routes visible?</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">7. FlightPath</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-questions">Bonus questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">12. FlightPath</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-questions">13. Bonus questions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-keepalive-templates">Gateway Keepalive Templates</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transitive-routing">Transitive Routing</a></li>
 </ul>
