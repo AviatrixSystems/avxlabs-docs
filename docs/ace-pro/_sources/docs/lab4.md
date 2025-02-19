@@ -262,7 +262,7 @@ Test that the EC2 instances in the two subnets deployed in the same VPC, **_aws-
 
 ### 8.1 Connectivity Testing Using the Gatus App
 
-Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_**. 
+First and foremost, navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_**. 
 
 Insert the credentials available on your POD Portal and then click on **"Sign in"**.
 
@@ -274,9 +274,7 @@ align: center
 Open up the Gatus app from your Portal
 ```
 
-
-Now check if these two instances in the **_aws-us-east-1-spoke1_** VPC have ICMP reachability towards the instance **_aws-us-east-2spoke1-test1_**
-
+- Now check if these two instances in the **_aws-us-east-1-spoke1_** VPC have `ICMP` reachability to the instance **_aws-us-east-2-spoke1-test1_** in the **US-EAST-2** region.
 
 ```{figure} images/lab4-gatus201.png
 ---
@@ -294,11 +292,15 @@ align: center
 Gatus from aws-us-east-1-spoke1-test2
 ```
 
-SSH into **both** EC2 test instances in **_aws-us-east-1-spoke1_** VPC (refer to your Pod assignment). 
+From the outcome above, you can conclude that the <ins>connectivity is broken</ins>!
 
-These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
+### 8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-Ping the EC2 test instance (10.0.1.100) in aws-us-east-2-spoke1 VPC.
+If you wish, you can also check the ICMP test using your SSH client.
+
+- SSH into **both** EC2 test instances in the **_aws-us-east-1-spoke1_** VPC (refer to your POD assignment).
+
+Ping the EC2 test instance (10.0.1.100) in **_aws-us-east-1-spoke1_** VPC.
 
 ```{figure} images/lab5-new8.png
 ---
@@ -306,6 +308,31 @@ align: center
 ---
 From US-EAST-1 to US-EAST-2
 ```
+
+```{figure} images/lab4-gatus203.png
+---
+height: 400px
+align: center
+---
+Ping fails from aws-us-east-1-spoke1-test1
+```
+
+```{figure} images/lab4-gatus204.png
+---
+height: 400px
+align: center
+---
+Ping fails from aws-us-east-1-spoke1-test2
+```
+
+```{caution}
+It will fail. Why? Because we didn’t enable segmentation on **aws-us-east-1-transit** and associate **aws-us-east-1-spoke1** with the transit gateway in the appropriate network domain.
+```
+
+
+These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
+
+
 
 It will fail. **WHY?** Because we didn’t enable segmentation on **_aws-us-east-1-transit_** and associate **_aws-us-east-1-spoke1_** with the transit gateway in the appropriate network domain.
  
