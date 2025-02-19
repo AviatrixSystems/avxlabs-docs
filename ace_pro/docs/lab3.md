@@ -149,7 +149,7 @@ Logical View
 
 ## 6. Connectivity Testing after Applying the Network Segmentation
 
-Verify that each test instance can ping each other.
+Verify that you have applied the separation between the two segments.
 
 ### 6.1 Connectivity Test Using the Gatus App
 
