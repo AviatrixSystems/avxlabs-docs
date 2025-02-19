@@ -65,7 +65,7 @@ align: center
 Attachment
 ```
 
-## 4.3. CoPilot View after Transit-Spoke Attachment
+### 4.3. CoPilot View after Transit-Spoke Attachment
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
@@ -88,7 +88,7 @@ Solid line = HPE connection
 Dashed line = Non-HPE connection
 ```
 
-## 4.4. Transit Peerings Configuration
+## 5. Transit Peerings Configuration
 
 Here you will configure Transit Peering between **aws-us-east-1** and **aws-us-east-2** regions.
 
@@ -115,7 +115,7 @@ align: center
 Peering
 ```
 
-### 4.4.1. Transit Peerings Verification
+### 5.1. Transit Peerings Verification
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Gateway Routes"` tab and check the route **10.0.1.0/24** for instance.
 
@@ -159,9 +159,9 @@ CoPilot Topology View
 The actual configuration of **`High Performance Encryption`**  on both the **_aws-us-east-1-transit_** and the **_aws-us-east-1-spoke1_** was done when the gateways were created before this lab.
 ```
 
-## 5. High Performance Encryption Verification
+## 6. High Performance Encryption Verification
 
-### 5.1. CoPilot Verification of the VPC Peerings(Transit-Transit and Spoke-Transit)
+### 6.1. CoPilot Verification of the VPC Peerings(Transit-Transit and Spoke-Transit)
 
 HPE automatically creates an underlying **VPC Peering attachment** within AWS. Verify it on the CoPilot.
 
@@ -185,7 +185,7 @@ align: center
 Native Peerings Properties
 ```
 
-## 5.2. CoPilot Verification of HPE
+### 6.2. CoPilot Verification of HPE
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. 
 
@@ -198,9 +198,9 @@ align: center
 Interface Stats
 ```
 
-## 6. ActiveMesh
+## 7. ActiveMesh
 
-### 6.1. CoPilot Verification of ActiveMesh
+### 7.1. CoPilot Verification of ActiveMesh
 
 Go to **CoPilot > Diagnostics > Cloud Routes > VPC/VNet Routes**
 
