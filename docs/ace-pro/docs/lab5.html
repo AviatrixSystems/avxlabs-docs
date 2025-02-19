@@ -388,12 +388,13 @@
 </figcaption>
 </figure>
 <p>The VPC <strong>aws-us-east-2-spoke1</strong> has a private subnet in its environment, whereby the Egress Control can be activated in this specific VPC.</p>
+<p>At the moment, this private subnet is leveraging the <strong>AWS NAT Gateway</strong> to reach the Internet Public Zone.</p>
 <ul class="simple">
 <li><p>Explore the Private Routing Tables inside the VPC <strong>aws-us-east-2-spoke1</strong></p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-2-spoke1 GW</em></strong>, then click on the <strong>VPC/VNet Route Tables</strong> tab, then select any of the Private RTBs from the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Table</span></code> field.</p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-2-spoke1 GW</em></strong>, then click on the <strong>VPC/VNet Route Tables</strong> tab, then select the following Private RTB from the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Table</span></code> field: <strong>aws-us-east-2-spoke1-Private-1-us-east-2a-rtb</strong></p>
 </div>
 <figure class="align-center" id="id3">
 <img alt="../_images/lab6-spokegw.png" src="../_images/lab6-spokegw.png" />
@@ -407,8 +408,8 @@
 <p><span class="caption-number">Fig. 190 </span><span class="caption-text">Check the private RTB</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will notice that any private RTBs has its own <strong>CIDR</strong> pointing to local and the three <strong>RFC1918</strong> routes pointing to the Aviatrix Spoke Gateway.</p>
-<p>With this scenario, the EC2 instance can’t reach the <em>Internet Public Zone</em>, due to the absence of a <ins>default route</ins>.</p>
+<p>You will notice that this private RTB has its own <strong>CIDR</strong> pointing to local, the three <strong>RFC1918</strong> routes pointing to the Aviatrix Spoke Gateway (injected by the Aviatrix Controller) and a default route pointing to the AWS NAT Gateway.</p>
+<p>With this scenario, the EC2 instance can reach the <strong>Internet Public Zone</strong>; however, the AWS NAT Gateway is limited and provided by the logs and flows, which might not be adequate in an Enterprise scenario. Moreover, it doesn’t provide any visibility.</p>
 </section>
 <section id="ssh-to-the-ec2-instance-in-the-private-subnet">
 <h2>3. SSH to the EC2 instance in the Private Subnet<a class="headerlink" href="#ssh-to-the-ec2-instance-in-the-private-subnet" title="Link to this heading">#</a></h2>
