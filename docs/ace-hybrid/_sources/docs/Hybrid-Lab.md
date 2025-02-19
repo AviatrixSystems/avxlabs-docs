@@ -238,8 +238,8 @@ Now We can view the Distributed Cloud Firewall (DCF) Monitoring logs by followin
 
 ![Hybrid DCF4](images/hybrid-dcf4.png)
 
-In the search field, type 'on-prem' to filter all the logs that match the DCF rule name 'On-Prem-to-Cloud-block-1521-443'.
+In the search field, type `on-prem` to filter all the logs that match the DCF rule name `On-Prem-to-Cloud-block-1521-443`.
 
 ![Hybrid DCF5](images/hybrid-dcf5.png)
 
-The DCF monitor logs indicate that on-premises to cloud traffic is being blocked in accordance with the DCF rule 'On-Prem-to-Cloud-block-1521-443'. This rule is implemented on the Edge Gateway, which is deployed within the on-premises network.
+The DCF monitor logs indicate that on-premises to cloud traffic is being blocked in accordance with the DCF rule `On-Prem-to-Cloud-block-1521-443`. This rule is implemented on the Edge Gateway, which is deployed within the on-premises network.

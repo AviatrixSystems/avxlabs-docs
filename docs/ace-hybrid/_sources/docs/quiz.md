@@ -5,7 +5,7 @@ You can access both the **Quiz** and the **Survey** Portal clicking on the pictu
 
 <a href="https://ace.aviatrix.com/ace-hybrid-cloud-specialty-quiz" target="_blank">
 
-![My image](images/ACE_Hybrid Cloud Logo.png)
+![My image](images/ACE-Hybrid-Logo.png)
 
 </a>
 
