@@ -258,7 +258,7 @@ Remove the filter
 
 ## 8. Connectivity Testing of ActiveMesh (Pt.1)
 
-Test that the EC2 instances in the two subnets deployed in the same VPC, **_aws-us-east-1-spoke1_**, are pointing to two different routing tables. If one gateway goes down, the controller will switch the **ENI** (_Elastic Network interface_) to the available gateway in the routing table.
+Verify that both the **EAST-1** region and **EAST-2** region in AWS have connectivity after applying the attachments.
 
 ### 8.1 Connectivity Testing Using the Gatus App
 
@@ -367,9 +367,9 @@ align: center
 New Logical Topology View
 ```
 
-## 10. Connectivity test of ActiveMesh (Pt.2)
+## 10. Connectivity Tesing of ActiveMesh (Pt.2)
 
-Verify that both EAST-1 region and EAST-2 regione have perfecrt connectivity.
+Verify that both EAST-1 region and EAST-2 region have perfect connectivity.
 
 ### 10.1 Connectivity Testing Using the Gatus App
 
@@ -435,6 +435,8 @@ Please keep **both** the ping sessions running recursively on your SSH client! D
 
 ## 11. Failover
 
+Test that the EC2 instances in the two subnets deployed in the same VPC, **_aws-us-east-1-spoke1_**, are pointing to two different routing tables. If one gateway goes down, the controller will switch the **ENI** (_Elastic Network interface_) to the available gateway in the routing table.
+
 To demonstrate the `Active Mesh` capability, you will shut down _temporarily_ one of the spoke gateways and notice traffic converging to the other gateway.
 
 Before proceeding with the actions that you need to carry out on the AWS console, let's turn off the `Gateway Single AZ HA` functionality.
@@ -483,7 +485,15 @@ align: center
 Change the Region
 ```
 
-Click on **Instances (running)**:
+```{figure} images/lab5-region00.png
+---
+height: 300px
+align: center
+---
+Invoke the EC2 service
+```
+
+Click on **Instances (running)**.
 
 ```{figure} images/lab5-running.png
 ---
