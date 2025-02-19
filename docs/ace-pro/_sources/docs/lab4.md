@@ -106,7 +106,7 @@ align: center
 Edit Transit in US-EAST-1
 ```
 
-Select the Transit Gateway **_aws-us-east-2-transit_** from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
+Select the Transit Gateway **_aws-us-east-2-transit_** from the drop-down window `"Attach To Transit Gateways"`, and then click on **Save**.
 
 ```{figure} images/lab5-peering2.png
 ---
