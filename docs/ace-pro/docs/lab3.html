@@ -343,8 +343,8 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-after-applying-the-network-segmentation">6. Connectivity Testing after Applying the Network Segmentation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-gatus-app">6.1 Connectivity Test Using the Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-ssh-client-bonus">6.2 Connectivity Test Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-gatus-app">6.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-ssh-client-bonus">6.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-policy">7. Connection Policy</a><ul class="nav section-nav flex-column">
@@ -352,8 +352,8 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-connectivity-testing-after-applying-the-connection-policy">8. Final Connectivity Testing after Applying the Connection Policy</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1 Connectivity Test Using the Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1 Connectivity Test Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 </ul>
@@ -495,8 +495,8 @@
 <section id="connectivity-testing-after-applying-the-network-segmentation">
 <h2>6. Connectivity Testing after Applying the Network Segmentation<a class="headerlink" href="#connectivity-testing-after-applying-the-network-segmentation" title="Link to this heading">#</a></h2>
 <p>Verify that you have applied the separation between the two segments.</p>
-<section id="connectivity-test-using-the-gatus-app">
-<h3>6.1 Connectivity Test Using the Gatus App<a class="headerlink" href="#connectivity-test-using-the-gatus-app" title="Link to this heading">#</a></h3>
+<section id="connectivity-testing-using-the-gatus-app">
+<h3>6.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#connectivity-testing-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select <strong><em>aws-us-east-2-spoke1-test1</em></strong> as an example.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -520,8 +520,8 @@
 </figcaption>
 </figure>
 </section>
-<section id="connectivity-test-using-the-ssh-client-bonus">
-<h3>6.2 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-test-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<section id="connectivity-testing-using-the-ssh-client-bonus">
+<h3>6.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-testing-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>Open <strong>three</strong> terminal windows and SSH to the test instances/VMs in each cloud and ping the <strong>private</strong> IPs of each other to test the Multicloud connectivity (Refer to pod info).</p>
 <p>Azure and AWS resources will ping each other, but neither will be able to access GCP VM, since GCP spoke is in a different segment (Blue).</p>
 <p><strong>AWS</strong>:</p>
@@ -587,7 +587,7 @@
 <h2>8. Final Connectivity Testing after Applying the Connection Policy<a class="headerlink" href="#final-connectivity-testing-after-applying-the-connection-policy" title="Link to this heading">#</a></h2>
 <p>Verify that you have successfully <strong>merged</strong> both Network Domains. Retest the connectivity; you should now have end-to-end connectivity across the multicloud environment.</p>
 <section id="id1">
-<h3>8.1 Connectivity Test Using the Gatus App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>8.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Once again, navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select <strong><em>aws-us-east-2-spoke1-test1</em></strong> as an example.</p>
 <p>The ICMP test towards the instance <strong><em>gcp-us-central1-spoke1-test1</em></strong> should work this time.</p>
 <figure class="align-center" id="id23">
@@ -598,7 +598,7 @@
 </figure>
 </section>
 <section id="id2">
-<h3>6.1 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>6.1 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>If you’re not satisfied with the Gatus dashboard, you can also use your personal <code class="docutils literal notranslate"><span class="pre">SSH</span> <span class="pre">client</span></code> to perform the connectivity tests!</p>
 <p><strong>AWS</strong>:</p>
 <p>SSH into <strong><em>aws-us-east-2-spoke1-test1</em></strong> (ssh student&#64;public_ip)</p>
@@ -713,8 +713,8 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-after-applying-the-network-segmentation">6. Connectivity Testing after Applying the Network Segmentation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-gatus-app">6.1 Connectivity Test Using the Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-ssh-client-bonus">6.2 Connectivity Test Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-gatus-app">6.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-ssh-client-bonus">6.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-policy">7. Connection Policy</a><ul class="nav section-nav flex-column">
@@ -722,8 +722,8 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-connectivity-testing-after-applying-the-connection-policy">8. Final Connectivity Testing after Applying the Connection Policy</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1 Connectivity Test Using the Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1 Connectivity Test Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 </ul>
