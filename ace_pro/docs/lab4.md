@@ -365,7 +365,7 @@ align: center
 New Logical Topology View
 ```
 
-## 10. Connectivity Tesing of ActiveMesh (Pt.2)
+## 10. Connectivity Testing of ActiveMesh (Pt.2)
 
 Verify that both EAST-1 region and EAST-2 region have perfect connectivity.
 
@@ -589,6 +589,25 @@ Gatus from aws-us-east-1-spoke1-test1
 
 If you wish, you can also verify the failover mechanism using the SSH Client.
 
+Go back to the **AWS console**</a>, search for **_aviatrix-aws-us-east-1-spoke1_**, select the instance and then choose **Instance state > Stop instance**.
+
+```{figure} images/lab5-stop.png
+---
+height: 200px
+align: center
+---
+Stop the Instance
+```
+
+Confirm by clicking on **Stop**, one more time.
+
+```{figure} images/lab5-stop2.png
+---
+align: center
+---
+Confirm the stop
+```
+
 
 You will notice ping drops solely from **_aws-us-east-1-spoke1-test1_**. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.
 
@@ -601,7 +620,14 @@ align: center
 Temporary disruption with **FAST** keepalive!
 ```
 
-**Bonus Step**: `Restart` the Gateway from the AWS console and reverify the traffic flow. This time you will notice any kind of disruption: the traffic flow fill switch back to the aviatrix-aws-us-east-1-spoke1 GW.
+```{figure} images/lab5-drop00.png
+---
+align: center
+---
+No Packets drop from the aws-us-east-1-spoke1-test2
+```
+
+- `Restart` the Gateway from the AWS console and reverify the traffic flow. This time you will notice any kind of disruption: the traffic flow fill switch back to the **aviatrix-aws-us-east-1-spoke1** GW.
 
 ```{figure} images/lab5-restart.png
 ---
@@ -611,7 +637,7 @@ align: center
 Restart
 ```
 
-After this lab, this is how the overall topology would look like:
+After this lab, this is how the overall topology will look:
 
 ```{figure} images/lab5-finaltopo.png
 ---
@@ -621,7 +647,7 @@ align: center
 Final Topology for Lab 5
 ```
 
-## 7. FlightPath
+## 12. FlightPath
 
  Go to **CoPilot > Diagnostics > AppIQ > FlightPath**
 
@@ -641,7 +667,7 @@ align: center
 FlightPath config
 ```
 
-This will provide an AppIQ report of how **_aws-us-east-1-spoke1-test1_** is connected with **_aws-us-east-2-spoke1-test1_** and display the path along with end-to-end latency.
+This will provide a `FlightPath` report showing how **_aws-us-east-1-spoke1-test1_** is connected with **_aws-us-east-2-spoke1-test1_**, displaying the path along with end-to-end latency.
 
 ```{note}
 You might see some links still depicted in <span style='color:red'>**red**</span>, after having restarted the Spoke Gateway. Be patient and relaunch the report and you will get the same outcome as depicted below.
@@ -673,7 +699,7 @@ align: center
 FlightPath Report PDF
 ```
 
-## Bonus questions
+## 13. Bonus questions
 ### Gateway Keepalive Templates
 
 Experiment with <a href="https://docs.aviatrix.com/previous/documentation/latest/building-your-network/gateway-keepalives.html" target="_blank">GATEWAY TO CONTROLLER COMMUNICATION</a> and retest convergence times when bringing down a spoke gateway.
