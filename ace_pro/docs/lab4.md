@@ -331,7 +331,6 @@ It will fail. Why? Because we didn’t enable segmentation on **aws-us-east-1-tr
 
 These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
 
-
 ## 9. Enable Segmentation
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains > Transit Gateways**
@@ -368,9 +367,37 @@ align: center
 New Logical Topology View
 ```
 
-## 6.3. Connectivity test of ActiveMesh (Pt.2)
+## 10. Connectivity test of ActiveMesh (Pt.2)
 
-Now from to the **_aws-us-east-1-spoke1-test1_** in AWS US-East1, launch the ping command towards the **_aws-us-east-2-spoke1-test1_** in AWS US-**East2**.
+Verify that both EAST-1 region and EAST-2 regione have perfecrt connectivity.
+
+### 10.1 Connectivity Testing Using the Gatus App
+
+Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_**. 
+
+- Verify if these two instances in the **_aws-us-east-1-spoke1_** VPC have `ICMP` reachability to the instance **_aws-us-east-2-spoke1-test1_** in the **US-EAST-2** region.
+
+```{figure} images/lab4-gatus301.png
+---
+height: 400px
+align: center
+---
+Gatus from aws-us-east-1-spoke1-test1
+```
+
+```{figure} images/lab4-gatus302.png
+---
+height: 400px
+align: center
+---
+Gatus from aws-us-east-1-spoke1-test2
+```
+
+Now the connectivity to the **EAST2** region is fine, thanks to the Network Segmentation!
+
+### 10.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+Launch your SSH session to the **_aws-us-east-1-spoke1-test1_** in AWS US-East 1, and then carry out the ping command to the **_aws-us-east-2-spoke1-test1_** in AWS US-East 2.
 
 ```{figure} images/lab5-new.png
 ---
@@ -405,6 +432,8 @@ ping from aws-us-east-1-spoke1-test2
 ```{important}
 Please keep **both** the ping sessions running recursively on your SSH client! Don't interrupt the ping.
 ```
+
+## 11. Failover
 
 To demonstrate the `Active Mesh` capability, you will shut down _temporarily_ one of the spoke gateways and notice traffic converging to the other gateway.
 
