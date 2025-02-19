@@ -147,6 +147,36 @@ align: center
 Logical View
 ```
 
+## 6. Connectivity Test Using the Gatus App
+
+Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example. 
+
+```{important}
+You should already be signed in to the **Gatus** app.
+```
+
+Eventually, the ICMP check will begin to fail gradually.
+
+```{figure} images/lab3-gatus00.png
+---
+height: 400px
+align: center
+---
+gcp-us-central1-spoke1-test1 
+```
+
+```{important}
+The ICMP traffic is set by default to 5 minutes. Reduce the timer if you want a quicker result!
+```
+
+```{figure} images/lab3-gatus01.png
+---
+height: 400px
+align: center
+---
+gcp-us-central1-spoke1-test1 
+```
+
 Open **three** terminal windows and SSH to the test instances/VMs in each cloud and ping the **private** IPs of each other to test the Multicloud connectivity (Refer to pod info).
 
 Azure and AWS resources will ping each other, but neither will be able to access GCP VM, since GCP spoke is in a different segment (Blue).
