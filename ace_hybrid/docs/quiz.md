@@ -3,9 +3,9 @@
 ## Link
 You can access both the **Quiz** and the **Survey** Portal clicking on the picture below. 
 
-<a href="https://ace.aviatrix.com/ace-multicloud-network-security-quiz" target="_blank">
+<a href="https://ace.aviatrix.com/ace-hybrid-cloud-specialty-quiz" target="_blank">
 
-![My image](images/quiz.png)
+![My image](images/ACE_Hybrid Cloud Logo.png)
 
 </a>
 
@@ -21,12 +21,10 @@ Portal
 ```
 
 ```{important}
-After logged in, click on **"ACE Multicloud Network Security Quiz"**.
+After logged in, click on **"ACE Hybrid Cloud Speciality Quiz"**.
 ```
 
-- In order to address certain quiz questions effectively, it is necessary to  "Cloud Perimeter Egress Security" Pod Access.
 - You have **8** hours to complete the quiz
-- After 8 hours lab pod will be shutdown
 - You have a total of **3** maximum attempts!
 
 ```{figure} images/survey.png
