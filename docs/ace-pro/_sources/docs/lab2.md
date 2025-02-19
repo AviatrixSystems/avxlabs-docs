@@ -218,7 +218,7 @@ SSH client
 
 ```{figure} images/lab2-pingfails.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 Ping outcomes
@@ -984,7 +984,7 @@ You will observe that both ICMP and SSH tests have successfully completed for al
 
 1) **_aws-us-east-2-spoke1-test2_** (enabled by the normal `intra-VPC traffic`)
 
-2) **_gcp-us-central1-spoke1-test1 _**(enabled by the `Aviatrix MCNA`)
+2) **_gcp-us-central1-spoke1-test1_**(enabled by the `Aviatrix MCNA`)
 
 3) **_azure-west-us-spoke1-test1_** (enabled by the `Aviatrix MCNA`)
 
