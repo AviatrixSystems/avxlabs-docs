@@ -328,7 +328,7 @@ Commit
 These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!
 ```
 
-## 4. Initial configuration
+## 5. Initial configuration
 
 Go to **CoPilot > Dashboard** and check the `Gateways Health` either of the Spoke GW Clusters or the Transit GW Clusters. 
 
@@ -386,7 +386,7 @@ You can notice that the cluster in AWS comprises two Spoke Gateways, whereas in 
 You can deploy up to maximum **fifteen** Spoke Gateways per each Spoke VPC/VNet/VCN.
 ```
 
-### 4.1. Aviatrix Transit Gateways
+### 5.1. Aviatrix Transit Gateways
 
 In this section, you will experience the power and simplicity of the Aviatrix platform by deploying (i.e. creating) 4 gateways:
 
@@ -412,7 +412,7 @@ align: center
 
 Deploy Aviatrix Transit Gateways in AWS **_East-2_** region. To save time, Aviatrix Transit Gateways in Azure, GCP and AWS east-1 region have already been pre-deployed in pairs for this lab.
 
-### 4.1.1.Transit Gateway in AWS US-EAST-2
+#### 5.1.1.Transit Gateway in AWS US-EAST-2
 
 Ensure these parameters are entered in the pop-up window `"Create Transit Gateway"`.
 
@@ -469,7 +469,7 @@ This action will instantiate the Transit Gateway with the following name:
 
 Meanwhile the deployment is happening, you may proceed to the next section of this lab guide to deploy your Spoke gateways.
 
-### 4.2. Aviatrix Spoke Gateways
+### 5.2. Aviatrix Spoke Gateways
 
 Navigate to the tab immediately to the right, which is `Spoke Gateways`.
 
@@ -483,7 +483,7 @@ align: center
 +Spoke Gateway
 ```
 
-### 4.2.1. Spoke Gateway in AWS
+#### 5.2.1. Spoke Gateway in AWS
 
 Ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"`.
 
@@ -512,7 +512,7 @@ Create Spoke Gateway in AWS
 
 While the gateway is being created, you may proceed to the next section.
 
-### 4.2.2. Spoke Gateway in Azure
+#### 5.2.2. Spoke Gateway in Azure
 
 Repeat the previous steps for Azure, click on the button `"+ Spoke Gateway"` and ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"`.
 
@@ -552,7 +552,7 @@ Spoke GW in Azure
 
 While the gateway is being created, you may proceed to the next section.
 
-### 4.2.3. Spoke Gateway in GCP
+#### 5.2.3. Spoke Gateway in GCP
 
 Repeat the previous steps for GCP. Ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"`.
 
@@ -611,7 +611,7 @@ align: center
 Overview of the new topology
 ```
 
-## 4.3. Explore the Cloud Fabric
+## 6.. Explore the Cloud Fabric
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on  the `"Managed"` button to only showing the Managed VPCs!
 
@@ -654,11 +654,11 @@ The inner circle represents the Transit Gateway VPCs, whereas the outer one repr
 
 In addition, you can explore the components of any of the gateways in terms of subnets and Virtual Machines that reside within the VPC/VNet.
  
-## 4.4 Aviatrix Spoke to Transit Gateways Attachments
+## 7. Aviatrix Spoke to Transit Gateways Attachments
 
 In this section you are going to attach the Aviatrix Spoke Gateways created above in each cloud, to their corresponding Aviatrix Transit Gateways.
  
-### 4.4.1. Spoke to Transit Attachment in AWS
+### 7.1. Spoke to Transit Attachment in AWS
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_aws-us-east-2-spoke1_**, clicking on the pencil icon:
 
@@ -688,7 +688,7 @@ align: center
 Update in progress
 ```
 
-### 4.4.2 Spoke to Transit Attachment in Azure
+### 7.2 Spoke to Transit Attachment in Azure
 
 - **azure-west-us-spoke1** to **azure-west-us-transit**
 
@@ -711,7 +711,7 @@ align: center
 Attachment in Azure
 ```
 
-### 4.4.3. Spoke to Transit Attachment in GCP
+### 7.3. Spoke to Transit Attachment in GCP
 
 - **gcp-us-central1-spoke1** to **gcp-us-central1-transit**
 
@@ -757,7 +757,7 @@ New state of the Dynamic Topology
 The Spoke Gateway azure-west-us-**spoke2** will be attached to its Transit Gateway in a subsequent lab, likewise the Spoke Gateways in AWS **us-east-1** will be attached to the Transit Gateway in the same region only in a subsequent lab.
 ```
 
-## 4.5. CoPilot Verification of Spoke-Transit Attachments
+## 8. CoPilot Verification of Spoke-Transit Attachments
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
@@ -796,7 +796,7 @@ align: center
 Legend
 ```
 
-## 4.6. Multicloud Transit Peerings
+## 9. Multicloud Transit Peerings
 
 In this section you are going to establish the peerings among the Aviatrix Transit Gateways.
 
@@ -808,7 +808,7 @@ You do not need to configure peering in the opposite direction.
 
 Go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
  
-### 4.6.1. AWS and Azure
+### 9.1. AWS and Azure
 
 - **aws-us-east-2-transit** to **azure-west-us-transit**
 
@@ -822,7 +822,7 @@ align: center
 Edit Transit in AWS
 ```
 
-Select the Transit Gateway **_azure-west-us-transit_** from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
+Select the Transit Gateway **_azure-west-us-transit_** from the drop-down window `"Attach To Transit Gateways"`, and then click on **Save**.
 
 ```{figure} images/lab2-peeringawsazure.png
 ---
@@ -831,7 +831,7 @@ align: center
 Peering AWS-Azure
 ```
 
-### 4.6.2 Azure and GCP
+### 9.2 Azure and GCP
 
 - **azure-west-us-transit** to **gcp-us-central1-transit**
 
@@ -845,7 +845,7 @@ align: center
 Edit Transit in Azure
 ```
 
-Select the Transit Gateway **_gcp-us-central1-transit_** from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
+Select the Transit Gateway **_gcp-us-central1-transit_** from the drop-down window `"Attach To Transit Gateways"`, and then click on **Save**.
 
 ```{figure} images/lab2-peeringazuregcp.png
 ---
@@ -854,7 +854,7 @@ align: center
 Peering Azure-GCP
 ```
 
-### 4.6.3. GCP and AWS
+### 9.3. GCP and AWS
 
 - **gcp-us-central1-transit** to **aws-us-east-2-transit**
 
@@ -868,7 +868,7 @@ align: center
 Edit Transit in GCP
 ```
 
-Select the Transit Gateway **_aws-us-east-2-transit_** (<ins>not the east-1 !</ins>) from the drop-down window `"Peer To Transit Gateways"`, and then click on **Save**.
+Select the Transit Gateway **_aws-us-east-2-transit_** (<ins>not the east-1 !</ins>) from the drop-down window `"Attach To Transit Gateways"`, and then click on **Save**.
 
 ```{figure} images/lab2-peeringgcpaws.png
 ---
@@ -896,9 +896,9 @@ Please pay close attention that the following pending elements will be completed
 - Attachment between **aws-us-east-2-transit** and **on-prem-dc-edge**
 ```
 
-## 5. Verification
+## 10. Verification
  
-### 5.1. Verification of Transit Peerings on CoPilot (Cloud Fabric)
+### 10.1. Verification of Transit Peerings on CoPilot (Cloud Fabric)
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `Attachments"` tab and finally select the `"Transit-Transit Peering"` tab: you will see **one** connection per each peering, that correspond to the `two IPSec tunnels`.
 
@@ -909,7 +909,7 @@ align: center
 Verification
 ```
 
-### 5.2. Verification of Transit Peerings on CoPilot (Topology)
+### 10.2. Verification of Transit Peerings on CoPilot (Topology)
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
@@ -933,7 +933,7 @@ align: center
 Expanded Topology
 ```
 
-### 5.3. Route Info DB
+### 10.3. Route Info DB
 
 Route Info DB is akin to the *Routing Information Base (RIB)*. It will provide the overall routing information of a Transit Gateway known by the CoPilot.
 
@@ -956,11 +956,11 @@ align: center
 Route DB
 ```
 
-## 6. Final Connectivity Testing
+## 11. Final Connectivity Testing
 
 Verify that each test instance can ping each other.
 
-### 6.1 Connectivity Test Using the Gatus App
+### 11.1 Connectivity Test Using the Gatus App
 
 Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example. 
 
@@ -992,7 +992,7 @@ You will observe that both ICMP and SSH tests have successfully completed for al
 Review the Gatus App status for the other instances in Azure and GCP.
 ```
 
-### 6.1 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 10.2 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 If you're not satisfied with the Gatus dashboard, you can also use your personal `SSH client` to perform the connectivity tests!
 
