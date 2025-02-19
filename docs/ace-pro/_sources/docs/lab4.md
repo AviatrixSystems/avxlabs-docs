@@ -329,8 +329,6 @@ Ping fails from aws-us-east-1-spoke1-test2
 It will fail. Why? Because we didn’t enable segmentation on **aws-us-east-1-transit** and associate **aws-us-east-1-spoke1** with the transit gateway in the appropriate network domain.
 ```
 
-These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
-
 ## 9. Enable Segmentation
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains > Transit Gateways**
@@ -439,6 +437,10 @@ Test that the EC2 instances in the two subnets deployed in the same VPC, **_aws-
 
 To demonstrate the `Active Mesh` capability, you will shut down _temporarily_ one of the spoke gateways and notice traffic converging to the other gateway.
 
+```{caution}
+These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
+```
+
 Before proceeding with the actions that you need to carry out on the AWS console, let's turn off the `Gateway Single AZ HA` functionality.
 
 - Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-1-spoke1_** cluster! Now select the **Settings** tab, then expand the **General** section and last but not least, turn off the _Gateway Single AZ HA_ knob! Do not forget to click on **Save**.
@@ -519,6 +521,28 @@ Confirm by clicking on **Stop**, one more time.
 align: center
 ---
 Confirm the stop
+```
+
+Now, check the `Gatus Dashboard` for the instance **_aws-us-east-1-spoke1-test1_** from your personal POD portal:
+
+```{tip}
+Diminish the ICMP timeout to **10** seconds to see the ICMP results that will be unsuccessful in real time.
+```
+
+```{figure} images/lab4-gatus401.png
+---
+height: 400px
+align: center
+---
+Gatus from aws-us-east-1-spoke1-test1
+```
+
+```{figure} images/lab4-gatus402.png
+---
+height: 400px
+align: center
+---
+Reconvergence
 ```
 
 You will notice ping drops solely from **_aws-us-east-1-spoke1-test1_**. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.
