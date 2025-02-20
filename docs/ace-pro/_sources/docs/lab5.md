@@ -6,7 +6,7 @@ In this lab, we will demonstrate how to enable the `Cloud Perimeter Security` (*
 
 ## 2. Topology
 
-Let's pinpoint the right candidate VPC where would be possible to enable the Egress Control.
+Let’s pinpoint the right candidate VPC where it would be possible to enable **Egress Control**.
 
 ```{figure} images/lab6-initialtopology.png
 ---
@@ -20,10 +20,17 @@ The VPC **aws-us-east-2-spoke1** has a private subnet in its environment, whereb
 
 At the moment, this private subnet is leveraging the **AWS NAT Gateway** to reach the Internet Public Zone.
 
-- Explore the Private Routing Tables inside the VPC **aws-us-east-2-spoke1**
+```{figure} images/lab6-privateaws.png
+---
+align: center
+---
+Private Subnet and AWS NAT GW
+```
+
+- Explore the **Routing Table** to see the private subnet where the **test2** instance resides.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select the following Private RTB from the `Route Table` field: **aws-us-east-2-spoke1-Private-1-us-east-2a-rtb**
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1_** GW. Then, click on the **VPC/VNet Route Tables** tab and select the following Private RTB from the `Route Table` field: **aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb**.
 ```
 
 ```{figure} images/lab6-spokegw.png
@@ -43,6 +50,34 @@ Check the private RTB
 You will notice that this private RTB has its own **CIDR** pointing to local, the three **RFC1918** routes pointing to the Aviatrix Spoke Gateway (injected by the Aviatrix Controller) and a default route pointing to the AWS NAT Gateway. 
 
 With this scenario, the EC2 instance can reach the **Internet Public Zone**; however, the AWS NAT Gateway is limited and provided by the logs and flows, which might not be adequate in an Enterprise scenario. Moreover, it doesn't provide any visibility.
+
+## 3. Connectivity Testing of ActiveMesh (Pt.2)
+
+Let's verify what traffic the instance in the private subnet is generating!
+
+### 3.1 Preliminary Connectivity Testing Using the Gatus App
+
+Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-us-east-2-spoke1-test2_**. 
+
+```{figure} images/lab6-gatus500.png
+---
+align: center
+---
+aws-us-east-2-spoke1-test2
+```
+
+The private workload is genersting traffic towardds 4 domains:
+1) www.aviatrix.com
+2) www.espn.com
+3) www.football.com
+4) www.wikipedia.com
+
+```{figure} images/lab6-gatus501.png
+---
+align: center
+---
+Egress traffic through the AWS NAT GW
+```
 
 ## 3. SSH to the EC2 instance in the Private Subnet
 
