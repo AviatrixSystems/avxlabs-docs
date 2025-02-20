@@ -42,6 +42,7 @@ Select the Spoke GW in US-EAST-2
 
 ```{figure} images/lab6-vpc.png
 ---
+height: 400px
 align: center
 ---
 Check the private RTB
@@ -51,7 +52,7 @@ You will notice that this private RTB has its own **CIDR** pointing to local, th
 
 With this scenario, the EC2 instance can reach the **Internet Public Zone**; however, the AWS NAT Gateway is limited and provided by the logs and flows, which might not be adequate in an Enterprise scenario. Moreover, it doesn't provide any visibility.
 
-## 3. Connectivity Testing of ActiveMesh (Pt.2)
+## 3. Preliminary Connectivity Testing
 
 Let's verify what traffic the instance in the private subnet is generating!
 
@@ -61,6 +62,7 @@ Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-u
 
 ```{figure} images/lab6-gatus500.png
 ---
+height: 400px
 align: center
 ---
 aws-us-east-2-spoke1-test2
@@ -74,12 +76,13 @@ The private workload is genersting traffic towardds 4 domains:
 
 ```{figure} images/lab6-gatus501.png
 ---
+height: 400px
 align: center
 ---
 Egress traffic through the AWS NAT GW
 ```
 
-## 3. SSH to the EC2 instance in the Private Subnet
+### 3.2 Preliminary Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH to the **_aws-us-east-2-spoke1-test1_** instance from your laptop. Refer to your POD portal or alternatively, you can retrieve the Public IP from the CoPilot's Topology.
 
@@ -101,7 +104,7 @@ From test1 to test2
 ```
 
 ```{note}
-The **_aws-us-east-2-spoke1-test2_** instance resides within a private subnet! 
+Once again, the **_aws-us-east-2-spoke1-test2_** instance resides within a private subnet; therefore, you first need to SSH into a public workload that will be used as a jumphost.
 ```
 
 ```{tip}
@@ -114,6 +117,29 @@ height: 400px
 align: center
 ---
 Retrieve the private IP
+```
+
+Now, launch the following curl commands:
+
+```bash
+curl www.aviatrix.com
+```
+```bash
+curl www.wikipedia.com
+```
+```bash
+curl www.espn.com
+```
+```bash
+curl www.football.com
+```
+
+```{figure} images/lab6-curl.png
+---
+height: 400px
+align: center
+---
+curl commands
 ```
 
 ## 4. Egress Control
@@ -152,7 +178,7 @@ At this point, the Aviatrix  performs the same functions as the **CSP NAT Gatewa
 - Verify its presence in any Private RTBs inside the **_aws-us-east-2-spoke1_** VPC.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab, then select any Private RTBs from the **Route Table** field.
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab and then select the following Private RTB from the `Route Table` field: **aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb**.
 ```
 
 ```{figure} images/lab6-defaultroute.png
@@ -163,48 +189,12 @@ Default route has been injected
 ```
 
 ```{important}
-Now, thanks to the default route, the instance **_aws-us-east-2-spoke1-test2_** will be able to generate traffic towards the internet public zone.
+The `Default Rout`e is now pointing to the AViatrix Spoke Gateway.
 ```
 
-### 4.3 Generate Traffic
+### 4.3 Enable DCF
 
-From the **_aws-us-east-2-spoke1-test2_** instance, try to curl the following websites:
-
-```bash
-curl www.aviatrix.com
-```
-```bash
-curl www.wikipedia.com
-```
-```bash
-curl www.espn.com
-```
-```bash
-curl www.football.com
-```
-
-```{figure} images/lab6-generatetraffic.png
----
-align: center
----
-Generate traffic
-```
-
-Let's now check whether the Spoke Gateway could gather **NetFlow** data after generating the aforementioned *curl* commands, or not.
-
-Go to **CoPilot > Security > Egress > Overview (default)**
-
-```{figure} images/lab6-nodatafound.png
----
-height: 400px
-align: center
----
-No Data Found
-```
-
-You will notice the Message `"No Data Found"`. You have successfully activated your egress control without disrupting anything that is sitting on the private subnet, nevertheless, if you want to get the NetFlow information, you need to apply a `Distributed Cloud Firewall RULE`, such that you can start evaluate the behaviour of the Private Subnet and get a good understanding of what domains have been reached out from the private subnet.
-
-### 4.4 Enable DCF
+You have successfully activated your `local egress control` without disrupting anything that is sitting on the private subnet, nevertheless, if you want to get the NetFlow information, you need to apply a `Distributed Cloud Firewall RULE`, such that you can start evaluate the behaviour of the Private Subnet and get a good understanding of what domains have been reached out from the private subnet.
 
 - Enable the Distributed Cloud Firewall.
 
@@ -234,7 +224,7 @@ align: center
 Begin
 ```
 
-After having enabled the DCF, two Rules will get generated, automatically:
+After having enabled the DCF, two Rules will be generated automatically:
 - `Greendfield-Rule` = ALLOW EVERYTHING
 - `DefaultDenyAll` = it's an EXPLICIT deny
 
@@ -248,7 +238,11 @@ align: center
 Automatic rules injected by the Controller
 ```
 
-#### 4.4.1 Identify the subnet where the private workload resides
+## 5. Define the SmartGroup that identifies test2 instance
+
+At this point, you can use the SmartGroup feature to identify the test2 instance.
+
+### 5.1 Identify the subnet where the private workload resides
 
 First and foremost, you have to identify the **public subnet** where the **_aws-us-east-2-spoke1-test2_** instance resides.
 
@@ -260,9 +254,9 @@ align: center
 Private Subnet
 ```
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance on the search field on the right-hand side.
+Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance in the search field on the right-hand side.
 
-From the outcom you have to pinpoint the `Availability Zone`.
+From the results, you need to identify the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
@@ -272,7 +266,7 @@ align: center
 AZ
 ```
 
-Now that you know in what `Availability Zone` the private workload resides, you need to select the `VPC/VNets & Subnets` TAB and filter out based on the **_aws-us-east-2-spoke1_** VPC.
+Now that you know in which `Availability Zone` the private workload resides, you need to select the `VPC/VNets & Subnets` tab and filter based on the **_aws-us-east-2-spoke1_** VPC.
 
 Identify the `Private Subnet` that belongs to the `us-east-2a` AZ and copy the corresponding **_`IP Address CIDR`_** value!
 
@@ -284,7 +278,7 @@ align: center
 Private Subnet
 ```
 
-#### 4.4.2 Create an Ad-Hoc SmartGroup
+### 5.2 Create an ad-hoc SmartGroup
 
 Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
 
@@ -321,7 +315,7 @@ align: center
 New SG
 ```
 
-#### 4.4.3 Create a new Rule
+## 6. Create a new DCF Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -352,7 +346,13 @@ align: center
 Saving the new Rule
 ```
 
-Click on the **Commit** button and the rule previously created will work in **_watch/test_** mode due to the fact that the `enforcement` was turn off.
+```{important}
+`All-Web` _WebGroup_ = this is an "allow-all" WebGroup that you must select in a Distributed Cloud Firewall rule if you do not want to limit the Internet-bound traffic for that rule, but you still want to log the FQDNs that are being accessed.
+
+Ultimately , this Webgroup will limit Internet traffic solely for **HTTP** and **HTTPS** protocols.
+```
+
+Click on the **Commit** button, and the rule previously created will work in **_watch/test_** mode because `enforcement` was turn off.
 
 ```{important}
 If the **Enforcement** slider is **On** (the default), the rule is enforced in the data plane. If the Enforcement slider is **Off**, the packets are only watched. This allows you to observe if the traffic impacted by this rule causes any inadvertent issues (such as traffic being dropped).
@@ -377,6 +377,14 @@ The deletion of the Greenfield-Rule will also cause the deletion of the DefaultD
 ```
 
 ```{figure} images/lab6-newruledelete.png
+---
+height: 250px
+align: center
+---
+Commit your change
+```
+
+```{figure} images/lab6-newruledelete101.png
 ---
 height: 250px
 align: center
