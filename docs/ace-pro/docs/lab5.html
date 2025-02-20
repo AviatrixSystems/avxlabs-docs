@@ -332,6 +332,10 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">2. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-of-activemesh-pt-2">3. Connectivity Testing of ActiveMesh (Pt.2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-connectivity-testing-using-the-gatus-app">3.1 Preliminary Connectivity Testing Using the Gatus App</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-the-ec2-instance-in-the-private-subnet">3. SSH to the EC2 instance in the Private Subnet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#egress-control">4. Egress Control</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-egress-control">4.1 Enable the Egress Control</a></li>
@@ -380,7 +384,7 @@
 </section>
 <section id="topology">
 <h2>2. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
-<p>Let’s pinpoint the right candidate VPC where would be possible to enable the Egress Control.</p>
+<p>Let’s pinpoint the right candidate VPC where it would be possible to enable <strong>Egress Control</strong>.</p>
 <figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/lab6-initialtopology.png"><img alt="../_images/lab6-initialtopology.png" src="../_images/lab6-initialtopology.png" style="height: 400px;" /></a>
 <figcaption>
@@ -389,46 +393,79 @@
 </figure>
 <p>The VPC <strong>aws-us-east-2-spoke1</strong> has a private subnet in its environment, whereby the Egress Control can be activated in this specific VPC.</p>
 <p>At the moment, this private subnet is leveraging the <strong>AWS NAT Gateway</strong> to reach the Internet Public Zone.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab6-privateaws.png" src="../_images/lab6-privateaws.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Private Subnet and AWS NAT GW</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
-<li><p>Explore the Private Routing Tables inside the VPC <strong>aws-us-east-2-spoke1</strong></p></li>
+<li><p>Explore the <strong>Routing Table</strong> to see the private subnet where the <strong>test2</strong> instance resides.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-2-spoke1 GW</em></strong>, then click on the <strong>VPC/VNet Route Tables</strong> tab, then select the following Private RTB from the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Table</span></code> field: <strong>aws-us-east-2-spoke1-Private-1-us-east-2a-rtb</strong></p>
+<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-2-spoke1</em></strong> GW. Then, click on the <strong>VPC/VNet Route Tables</strong> tab and select the following Private RTB from the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Table</span></code> field: <strong>aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb</strong>.</p>
 </div>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id4">
 <img alt="../_images/lab6-spokegw.png" src="../_images/lab6-spokegw.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Select the Spoke GW in US-EAST-2</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 190 </span><span class="caption-text">Select the Spoke GW in US-EAST-2</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id5">
 <img alt="../_images/lab6-vpc.png" src="../_images/lab6-vpc.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 190 </span><span class="caption-text">Check the private RTB</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 191 </span><span class="caption-text">Check the private RTB</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice that this private RTB has its own <strong>CIDR</strong> pointing to local, the three <strong>RFC1918</strong> routes pointing to the Aviatrix Spoke Gateway (injected by the Aviatrix Controller) and a default route pointing to the AWS NAT Gateway.</p>
 <p>With this scenario, the EC2 instance can reach the <strong>Internet Public Zone</strong>; however, the AWS NAT Gateway is limited and provided by the logs and flows, which might not be adequate in an Enterprise scenario. Moreover, it doesn’t provide any visibility.</p>
+</section>
+<section id="connectivity-testing-of-activemesh-pt-2">
+<h2>3. Connectivity Testing of ActiveMesh (Pt.2)<a class="headerlink" href="#connectivity-testing-of-activemesh-pt-2" title="Link to this heading">#</a></h2>
+<p>Let’s verify what traffic the instance in the private subnet is generating!</p>
+<section id="preliminary-connectivity-testing-using-the-gatus-app">
+<h3>3.1 Preliminary Connectivity Testing Using the Gatus App<a class="headerlink" href="#preliminary-connectivity-testing-using-the-gatus-app" title="Link to this heading">#</a></h3>
+<p>Navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select both <strong><em>aws-us-east-2-spoke1-test2</em></strong>.</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab6-gatus500.png" src="../_images/lab6-gatus500.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 192 </span><span class="caption-text">aws-us-east-2-spoke1-test2</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The private workload is genersting traffic towardds 4 domains:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></p></li>
+<li><p><a class="reference external" href="http://www.espn.com">www.espn.com</a></p></li>
+<li><p><a class="reference external" href="http://www.football.com">www.football.com</a></p></li>
+<li><p><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></p></li>
+</ol>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab6-gatus501.png" src="../_images/lab6-gatus501.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Egress traffic through the AWS NAT GW</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 <section id="ssh-to-the-ec2-instance-in-the-private-subnet">
 <h2>3. SSH to the EC2 instance in the Private Subnet<a class="headerlink" href="#ssh-to-the-ec2-instance-in-the-private-subnet" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>SSH to the <strong><em>aws-us-east-2-spoke1-test1</em></strong> instance from your laptop. Refer to your POD portal or alternatively, you can retrieve the Public IP from the CoPilot’s Topology.</p></li>
 </ul>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/lab6-publicip.png"><img alt="../_images/lab6-publicip.png" src="../_images/lab6-publicip.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 191 </span><span class="caption-text">SSH to aws-us-east-2-spoke1-test1</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 194 </span><span class="caption-text">SSH to aws-us-east-2-spoke1-test1</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Then from the <strong><em>aws-us-east-2-spoke1-test1</em></strong> instance SSH to the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance.</p></li>
 </ul>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id9">
 <img alt="../_images/lab6-ssh.png" src="../_images/lab6-ssh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 192 </span><span class="caption-text">From test1 to test2</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 195 </span><span class="caption-text">From test1 to test2</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -439,10 +476,10 @@
 <p class="admonition-title">Tip</p>
 <p>Retrieve the Private IP of the <strong><em>aws-us-east-2-spoke1-test2</em></strong> from the Topology</p>
 </div>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/lab6-retrieve.png"><img alt="../_images/lab6-retrieve.png" src="../_images/lab6-retrieve.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Retrieve the private IP</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 196 </span><span class="caption-text">Retrieve the private IP</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -455,16 +492,16 @@
 <p class="admonition-title">Note</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code>, then select the <strong><em>aws-us-east-2-spoke1</em></strong> VPC and click on <strong>Add</strong>.</p>
 </div>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id11">
 <img alt="../_images/lab6-egress.png" src="../_images/lab6-egress.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Enable Local Egress</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 197 </span><span class="caption-text">Enable Local Egress</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab6-vpcegress.png" src="../_images/lab6-vpcegress.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Choose the correct VPC</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 198 </span><span class="caption-text">Choose the correct VPC</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -483,10 +520,10 @@
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-2-spoke1 GW</em></strong>, then click on the <strong>VPC/VNet Route Tables</strong> tab, then select any Private RTBs from the <strong>Route Table</strong> field.</p>
 </div>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab6-defaultroute.png" src="../_images/lab6-defaultroute.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 196 </span><span class="caption-text">Default route has been injected</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Default route has been injected</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -509,18 +546,18 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.football.com
 </pre></div>
 </div>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id14">
 <img alt="../_images/lab6-generatetraffic.png" src="../_images/lab6-generatetraffic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 197 </span><span class="caption-text">Generate traffic</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 200 </span><span class="caption-text">Generate traffic</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s now check whether the Spoke Gateway could gather <strong>NetFlow</strong> data after generating the aforementioned <em>curl</em> commands, or not.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Overview (default)</strong></p>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id15">
 <a class="reference internal image-reference" href="../_images/lab6-nodatafound.png"><img alt="../_images/lab6-nodatafound.png" src="../_images/lab6-nodatafound.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 198 </span><span class="caption-text">No Data Found</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 201 </span><span class="caption-text">No Data Found</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice the Message <code class="docutils literal notranslate"><span class="pre">&quot;No</span> <span class="pre">Data</span> <span class="pre">Found&quot;</span></code>. You have successfully activated your egress control without disrupting anything that is sitting on the private subnet, nevertheless, if you want to get the NetFlow information, you need to apply a <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span> <span class="pre">RULE</span></code>, such that you can start evaluate the behaviour of the Private Subnet and get a good understanding of what domains have been reached out from the private subnet.</p>
@@ -535,22 +572,22 @@
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>.
 Afterwards click on <code class="docutils literal notranslate"><span class="pre">&quot;Begin</span> <span class="pre">using</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>, then click on <code class="docutils literal notranslate"><span class="pre">&quot;Begin&quot;</span></code>.</p>
 </div>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab6-activate.png" src="../_images/lab6-activate.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Enable Distributed Cloud Firewall</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 202 </span><span class="caption-text">Enable Distributed Cloud Firewall</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab6-newjoe.png" src="../_images/lab6-newjoe.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 200 </span><span class="caption-text">Begin using Distributed Cloud Firewall</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 203 </span><span class="caption-text">Begin using Distributed Cloud Firewall</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab6-newjoe2.png" src="../_images/lab6-newjoe2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 201 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 204 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After having enabled the DCF, two Rules will get generated, automatically:</p>
@@ -559,52 +596,52 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li><p><code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> = it’s an EXPLICIT deny</p></li>
 </ul>
 <p>The first rule essentially allows all kind of traffic.</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../_images/lab6-greenfield.png"><img alt="../_images/lab6-greenfield.png" src="../_images/lab6-greenfield.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 202 </span><span class="caption-text">Automatic rules injected by the Controller</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 205 </span><span class="caption-text">Automatic rules injected by the Controller</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="identify-the-subnet-where-the-private-workload-resides">
 <h4>4.4.1 Identify the subnet where the private workload resides<a class="headerlink" href="#identify-the-subnet-where-the-private-workload-resides" title="Link to this heading">#</a></h4>
 <p>First and foremost, you have to identify the <strong>public subnet</strong> where the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance resides.</p>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww.png"><img alt="../_images/lab6-greenfieldneww.png" src="../_images/lab6-greenfieldneww.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 203 </span><span class="caption-text">Private Subnet</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 206 </span><span class="caption-text">Private Subnet</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance on the search field on the right-hand side.</p>
 <p>From the outcom you have to pinpoint the <code class="docutils literal notranslate"><span class="pre">Availability</span> <span class="pre">Zone</span></code>.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww2.png"><img alt="../_images/lab6-greenfieldneww2.png" src="../_images/lab6-greenfieldneww2.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 204 </span><span class="caption-text">AZ</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 207 </span><span class="caption-text">AZ</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now that you know in what <code class="docutils literal notranslate"><span class="pre">Availability</span> <span class="pre">Zone</span></code> the private workload resides, you need to select the <code class="docutils literal notranslate"><span class="pre">VPC/VNets</span> <span class="pre">&amp;</span> <span class="pre">Subnets</span></code> TAB and filter out based on the <strong><em>aws-us-east-2-spoke1</em></strong> VPC.</p>
 <p>Identify the <code class="docutils literal notranslate"><span class="pre">Private</span> <span class="pre">Subnet</span></code> that belongs to the <code class="docutils literal notranslate"><span class="pre">us-east-2a</span></code> AZ and copy the corresponding <strong><em><code class="docutils literal notranslate"><span class="pre">IP</span> <span class="pre">Address</span> <span class="pre">CIDR</span></code></em></strong> value!</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww3.png"><img alt="../_images/lab6-greenfieldneww3.png" src="../_images/lab6-greenfieldneww3.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 205 </span><span class="caption-text">Private Subnet</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 208 </span><span class="caption-text">Private Subnet</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="create-an-ad-hoc-smartgroup">
 <h4>4.4.2 Create an Ad-Hoc SmartGroup<a class="headerlink" href="#create-an-ad-hoc-smartgroup" title="Link to this heading">#</a></h4>
 <p>Go to <strong>CoPilot &gt; Groups</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../_images/lab6-newsg.png"><img alt="../_images/lab6-newsg.png" src="../_images/lab6-newsg.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 206 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 209 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Afterwards, click on the arrow icon  inside the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Resource</span> <span class="pre">Type&quot;</span></code> button and select <code class="docutils literal notranslate"><span class="pre">&quot;IP</span> <span class="pre">/</span> <span class="pre">CIDRs&quot;</span></code>.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww4.png"><img alt="../_images/lab6-greenfieldneww4.png" src="../_images/lab6-greenfieldneww4.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 207 </span><span class="caption-text">Private Subnet</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 210 </span><span class="caption-text">Private Subnet</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -613,20 +650,20 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li><p><strong>IPs / CIDRs</strong>: <span style='color:#479608'>10.0.1.0/27</span></p></li>
 </ul>
 <p>Before clicking on <strong>SAVE</strong>, delete the empty <code class="docutils literal notranslate"><span class="pre">&quot;Virtual</span> <span class="pre">Machines&quot;</span></code> additional condition.</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww45.png"><img alt="../_images/lab6-greenfieldneww45.png" src="../_images/lab6-greenfieldneww45.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 208 </span><span class="caption-text">New SG</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 211 </span><span class="caption-text">New SG</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="create-a-new-rule">
 <h4>4.4.3 Create a new Rule<a class="headerlink" href="#create-a-new-rule" title="Link to this heading">#</a></h4>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab6-newrule10.png" src="../_images/lab6-newrule10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 209 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 212 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters</p>
@@ -641,10 +678,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id27">
 <img alt="../_images/lab6-new.png" src="../_images/lab6-new.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 210 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 213 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the <strong>Commit</strong> button and the rule previously created will work in <strong><em>watch/test</em></strong> mode due to the fact that the <code class="docutils literal notranslate"><span class="pre">enforcement</span></code> was turn off.</p>
@@ -652,10 +689,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p class="admonition-title">Important</p>
 <p>If the <strong>Enforcement</strong> slider is <strong>On</strong> (the default), the rule is enforced in the data plane. If the Enforcement slider is <strong>Off</strong>, the packets are only watched. This allows you to observe if the traffic impacted by this rule causes any inadvertent issues (such as traffic being dropped).</p>
 </div>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab6-newrule11.png"><img alt="../_images/lab6-newrule11.png" src="../_images/lab6-newrule11.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 211 </span><span class="caption-text">Egress-Rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 214 </span><span class="caption-text">Egress-Rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now delete the <strong>Greenfield-Rule</strong>:</p>
@@ -667,16 +704,16 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p class="admonition-title">Caution</p>
 <p>The deletion of the Greenfield-Rule will also cause the deletion of the DefaultDenyAll, because the Egress-Rule was not enforced on the data path, which in turn means that there will be an <code class="docutils literal notranslate"><span class="pre">Invisible</span> <span class="pre">Deny</span> <span class="pre">Rule</span></code> installed on the bottom.</p>
 </div>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab6-newruledelete.png"><img alt="../_images/lab6-newruledelete.png" src="../_images/lab6-newruledelete.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 212 </span><span class="caption-text">Deletion of the Greenfield-Rule</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 215 </span><span class="caption-text">Deletion of the Greenfield-Rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab6-newruledeleted.png"><img alt="../_images/lab6-newruledeleted.png" src="../_images/lab6-newruledeleted.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 213 </span><span class="caption-text">Egress-Rule solely</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 216 </span><span class="caption-text">Egress-Rule solely</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -695,35 +732,35 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and you will see the corresponding <strong>logs</strong>.</p>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab6-monitorpermit.png"><img alt="../_images/lab6-monitorpermit.png" src="../_images/lab6-monitorpermit.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 214 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 217 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>However, on the SSH client, you will <strong>NOT</strong> see any outputs, this is because the Rule <ins>was not enforced in the Data Path</ins>, therefore the traffic is simply dropped.</p>
 </div>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id32">
 <a class="reference internal image-reference" href="../_images/lab6-monitorpermit22.png"><img alt="../_images/lab6-monitorpermit22.png" src="../_images/lab6-monitorpermit22.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 215 </span><span class="caption-text">SSH client outputs</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 218 </span><span class="caption-text">SSH client outputs</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Overview (default)</strong></p>
 <p>Now you have finally the  <strong>egress observability</strong> with a full list of domains hit by the EC2 instance inside that private subnet.</p>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab6-newrul12.png"><img alt="../_images/lab6-newrul12.png" src="../_images/lab6-newrul12.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 216 </span><span class="caption-text">Overview</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 219 </span><span class="caption-text">Overview</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Furthermore, go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window, select the <strong><em>aws-us-east-2-spoke1 VPC</em></strong>.</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id34">
 <a class="reference internal image-reference" href="../_images/lab6-monitor.png"><img alt="../_images/lab6-monitor.png" src="../_images/lab6-monitor.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 217 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will get a granular Layer 7 visibility that allows you to get a good understanding of how the egress traffic has been consumed and also allows you to help make decisions on how to potentially optimize that.</p>
@@ -736,10 +773,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <h3>5.1 Create a New WebGroup<a class="headerlink" href="#create-a-new-webgroup" title="Link to this heading">#</a></h3>
 <p>Let’s move towards a posture where only specific egress domains are in place.</p>
 <p>Go to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id35">
 <img alt="../_images/lab6-webgroup.png" src="../_images/lab6-webgroup.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 218 </span><span class="caption-text">+WebGroup</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 221 </span><span class="caption-text">+WebGroup</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create a <strong><em>WebGroup</em></strong> with the following parameters:</p>
@@ -750,10 +787,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id36">
 <img alt="../_images/lab6-webgroup2.png" src="../_images/lab6-webgroup2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 219 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 222 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -771,16 +808,16 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li><p>Turn <strong>ON</strong> the <code class="docutils literal notranslate"><span class="pre">Enforcement</span></code> knob.</p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong> and then <strong>Commit</strong> your changes!</p>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id37">
 <img alt="../_images/lab6-webgroup234.png" src="../_images/lab6-webgroup234.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Editing the Egress-Rule</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 223 </span><span class="caption-text">Editing the Egress-Rule</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab6-webgroup2345.png"><img alt="../_images/lab6-webgroup2345.png" src="../_images/lab6-webgroup2345.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 221 </span><span class="caption-text">Commit the changes</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Commit the changes</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -791,27 +828,27 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </ul>
 </div>
 <p>After having successfully enforced the <strong>Egress-Rule</strong> you will notice that automatically ther Controller has applied at the very bottom, the <code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> rule.</p>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id39">
 <a class="reference internal image-reference" href="../_images/lab6-webgroup23456.png"><img alt="../_images/lab6-webgroup23456.png" src="../_images/lab6-webgroup23456.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 222 </span><span class="caption-text">Egress-Rule + DefaultDenyAll</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 225 </span><span class="caption-text">Egress-Rule + DefaultDenyAll</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>However, <ins>this rule is NOT editable</ins>, therefore any matches against the DefaultDenyRule will not generate any logs.</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id40">
 <a class="reference internal image-reference" href="../_images/lab6-defaultdenyall01.png"><img alt="../_images/lab6-defaultdenyall01.png" src="../_images/lab6-defaultdenyall01.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 223 </span><span class="caption-text">Not editable</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 226 </span><span class="caption-text">Not editable</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="create-an-ad-hoc-explicit-deny-rule">
 <h4>5.2.2 Create an <em>ad-hoc</em> Explicit-Deny-Rule<a class="headerlink" href="#create-an-ad-hoc-explicit-deny-rule" title="Link to this heading">#</a></h4>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id41">
 <a class="reference internal image-reference" href="../_images/lab6-defaultdenyall02.png"><img alt="../_images/lab6-defaultdenyall02.png" src="../_images/lab6-defaultdenyall02.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Not editable</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 227 </span><span class="caption-text">Not editable</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters</p>
@@ -831,17 +868,17 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id42">
 <img alt="../_images/lab6-defaultdenyall03.png" src="../_images/lab6-defaultdenyall03.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 225 </span><span class="caption-text"><em>Editable</em> Explicit-Deny-Rule</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 228 </span><span class="caption-text"><em>Editable</em> Explicit-Deny-Rule</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id43">
 <a class="reference internal image-reference" href="../_images/lab6-defaultdenyall04.png"><img alt="../_images/lab6-defaultdenyall04.png" src="../_images/lab6-defaultdenyall04.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 226 </span><span class="caption-text">Commit your changes</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Commit your changes</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you have effectively activated the <strong>ZTNA</strong> approach.</p>
@@ -851,10 +888,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <section id="test-the-modified-rule">
 <h2>5.3 Test the modified rule<a class="headerlink" href="#test-the-modified-rule" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and turn on the toggle <strong><em>Auto Refresh</em></strong>.</p>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id44">
 <a class="reference internal image-reference" href="../_images/lab6-defaultdenyall06.png"><img alt="../_images/lab6-defaultdenyall06.png" src="../_images/lab6-defaultdenyall06.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 227 </span><span class="caption-text">Auto Refresh</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Auto Refresh</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -873,17 +910,17 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 <p>Only the first two curl commands will be successful!</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id45">
 <img alt="../_images/lab6-newpic.png" src="../_images/lab6-newpic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 228 </span><span class="caption-text">Curl commands</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Curl commands</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice almost instanteously that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong> will be immediately dropped.</p>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id46">
 <a class="reference internal image-reference" href="../_images/lab6-liveview.png"><img alt="../_images/lab6-liveview.png" src="../_images/lab6-liveview.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Permit</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 232 </span><span class="caption-text">Permit</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -904,17 +941,17 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li><p><strong>Intrusion Detection (IDS)</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id47">
 <img alt="../_images/lab6-ids.png" src="../_images/lab6-ids.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Inspect-DNS</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Inspect-DNS</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Proceed clicking on the <strong>Commit</strong> button.</p>
-<figure class="align-center" id="id45">
+<figure class="align-center" id="id48">
 <a class="reference internal image-reference" href="../_images/lab6-idscommit.png"><img alt="../_images/lab6-idscommit.png" src="../_images/lab6-idscommit.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 231 </span><span class="caption-text">New DCF List</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 234 </span><span class="caption-text">New DCF List</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -929,27 +966,27 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You will be asked to type again the student password!</p>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id49">
 <img alt="../_images/lab6-password.png" src="../_images/lab6-password.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 232 </span><span class="caption-text">Root PWD</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Root PWD</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/0xtf/testmynids.org/master/tmNIDS<span class="w"> </span>-o<span class="w"> </span>/tmp/tmNIDS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/tmp/tmNIDS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>/tmp/tmNIDS
 </pre></div>
 </div>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id50">
 <img alt="../_images/lab6-sudo.png" src="../_images/lab6-sudo.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Commands issued</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Commands issued</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The last command will show up a <strong><em>simulator</em></strong> from whom you will be able to launch an attack for testing the <code class="docutils literal notranslate"><span class="pre">&quot;Suricata</span> <span class="pre">IDS&quot;</span></code>.</p>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id51">
 <img alt="../_images/lab6-suricata.png" src="../_images/lab6-suricata.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Simulator</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Simulator</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -958,10 +995,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <ul class="simple">
 <li><p>Before launching the attack, edit the new DCF rule, clicking on the pencil icon beside the <strong><em>Inspect-DNS</em></strong> rule.</p></li>
 </ul>
-<figure class="align-center" id="id49">
+<figure class="align-center" id="id52">
 <a class="reference internal image-reference" href="../_images/lab6-suricataedit.png"><img alt="../_images/lab6-suricataedit.png" src="../_images/lab6-suricataedit.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Edit existing rule</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 238 </span><span class="caption-text">Edit existing rule</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters and do not forget to click on <strong>Save In Drafts</strong>:</p>
@@ -969,24 +1006,24 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>UDP</span></p></li>
 <li><p><strong>Port</strong>: <span style='color:#479608'>53</span></p></li>
 </ul>
-<figure class="align-center" id="id50">
+<figure class="align-center" id="id53">
 <img alt="../_images/lab6-dns.png" src="../_images/lab6-dns.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Modify the rule</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 239 </span><span class="caption-text">Modify the rule</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now click on the <strong>Commit</strong> button.</p>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id54">
 <a class="reference internal image-reference" href="../_images/lab6-commit3.png"><img alt="../_images/lab6-commit3.png" src="../_images/lab6-commit3.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 240 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the EC2 instance <strong><em>aws-us-east-2-spoke1-test2</em></strong>, type <strong>5</strong> and click enter for launching a malicious attack, specifically the attack will try to establish a connection towards a TOR server.</p>
-<figure class="align-center" id="id52">
+<figure class="align-center" id="id55">
 <img alt="../_images/lab6-5.png" src="../_images/lab6-5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 238 </span><span class="caption-text">Malicious known attack</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 241 </span><span class="caption-text">Malicious known attack</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Detected Intrusions</strong>, and you will be able to find indicators that detected that attempt to contact a TOR server, through a DNS request.</p>
@@ -994,17 +1031,17 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p class="admonition-title">Tip</p>
 <p>If you do not see the logs immediately, click on the <strong>refresh</strong> button</p>
 </div>
-<figure class="align-center" id="id53">
+<figure class="align-center" id="id56">
 <a class="reference internal image-reference" href="../_images/lab6-refresh.png"><img alt="../_images/lab6-refresh.png" src="../_images/lab6-refresh.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 239 </span><span class="caption-text">Detected Intrusions</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 242 </span><span class="caption-text">Detected Intrusions</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on any <strong>Timestamps</strong> to get additional insight on that specific attack.</p>
-<figure class="align-center" id="id54">
+<figure class="align-center" id="id57">
 <a class="reference internal image-reference" href="../_images/lab6-final.png"><img alt="../_images/lab6-final.png" src="../_images/lab6-final.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 240 </span><span class="caption-text">Additional insights</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 243 </span><span class="caption-text">Additional insights</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1012,10 +1049,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p>The indicator is showing clearly that you tried reaching out to Google DNS and then querying for a <strong>TOR</strong> domain!</p>
 </div>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id55">
+<figure class="align-center" id="id58">
 <a class="reference internal image-reference" href="../_images/lab6-finaltopo.png"><img alt="../_images/lab6-finaltopo.png" src="../_images/lab6-finaltopo.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 241 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 244 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1093,6 +1130,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">1. Objective</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">2. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-of-activemesh-pt-2">3. Connectivity Testing of ActiveMesh (Pt.2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-connectivity-testing-using-the-gatus-app">3.1 Preliminary Connectivity Testing Using the Gatus App</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-the-ec2-instance-in-the-private-subnet">3. SSH to the EC2 instance in the Private Subnet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#egress-control">4. Egress Control</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-egress-control">4.1 Enable the Egress Control</a></li>
