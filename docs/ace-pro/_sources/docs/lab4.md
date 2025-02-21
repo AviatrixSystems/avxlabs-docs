@@ -27,8 +27,8 @@ Please keep in mind that the Spoke Gateway in **azure-west-us-spoke2** VPC will 
 ```
 
 ## 4. High Performance Encryption Configuration
- 
-### 4.1. CoPilot View before starting
+
+### 4.1 CoPilot View before starting
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
@@ -44,7 +44,7 @@ align: center
 CoPilot view
 ```
 
-### 4.2. Transit-Spoke Attachment
+### 4.2 Transit-Spoke Attachment
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **aws-us-east-1-spoke1** clicking on the pencil icon:
 
@@ -65,7 +65,7 @@ align: center
 Attachment
 ```
 
-### 4.3. CoPilot View after Transit-Spoke Attachment
+### 4.3 CoPilot View after Transit-Spoke Attachment
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
@@ -115,7 +115,7 @@ align: center
 Peering
 ```
 
-### 5.1. Transit Peerings Verification
+### 5.1 Transit Peerings Verification
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Gateway Routes"` tab and check the route **10.0.1.0/24** for instance.
 
@@ -161,7 +161,7 @@ The actual configuration of **`High Performance Encryption`**  on both the **_aw
 
 ## 6. High Performance Encryption Verification
 
-### 6.1. CoPilot Verification of the VPC Peerings(Transit-Transit and Spoke-Transit)
+### 6.1 CoPilot Verification of the VPC Peerings(Transit-Transit and Spoke-Transit)
 
 HPE automatically creates an underlying **VPC Peering attachment** within AWS. Verify it on the CoPilot.
 
@@ -185,7 +185,7 @@ align: center
 Native Peerings Properties
 ```
 
-### 6.2. CoPilot Verification of HPE
+### 6.2 CoPilot Verification of HPE
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. 
 
@@ -200,7 +200,7 @@ Interface Stats
 
 ## 7. ActiveMesh
 
-### 7.1. CoPilot Verification of ActiveMesh
+### 7.1 CoPilot Verification of ActiveMesh
 
 Go to **CoPilot > Diagnostics > Cloud Routes > VPC/VNet Routes**
 
@@ -342,7 +342,7 @@ align: center
 Enable Segmentation
 ```
 
-### 9.2. Associate Aviatrix Spoke to the Network Domain
+### 9.2 Associate Aviatrix Spoke to the Network Domain
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains**
 
@@ -699,8 +699,9 @@ align: center
 FlightPath Report PDF
 ```
 
-## 13. Bonus questions
-### Gateway Keepalive Templates
+## 13. Bonus Question
+
+### 13.1 Gateway Keepalive Templates
 
 Experiment with <a href="https://docs.aviatrix.com/previous/documentation/latest/building-your-network/gateway-keepalives.html" target="_blank">GATEWAY TO CONTROLLER COMMUNICATION</a> and retest convergence times when bringing down a spoke gateway.
 
@@ -718,7 +719,7 @@ align: center
 Keep Alive Speed
 ```
 
-### Transitive Routing
+### 13.2 Transitive Routing
 
 ```{warning}
 The test instances in **_aws-us-east-1-spoke1_** are not able to communicate with the test instances in GCP or in Azure.

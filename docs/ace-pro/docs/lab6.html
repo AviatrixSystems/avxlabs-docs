@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -65,10 +62,9 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 7 - SITE2CLOUD" href="lab7.html" />
-    <link rel="prev" title="Lab 5 - CLOUD PERIMETER SECURITY (Secure Cloud Egress)" href="lab5.html" />
+    <link rel="prev" title="Lab 5 - AVIATRIX CLOUD FIREWALL" href="lab5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +80,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -93,6 +100,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +108,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,8 +125,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -148,17 +155,21 @@
     
     
     <img src="../_static/aviatrix-logo.png" class="logo__image only-light" alt="ACE Operations Lab - Home"/>
-    <img src="../_static/aviatrix-logo.png" class="logo__image only-dark pst-js-only" alt="ACE Operations Lab - Home"/>
+    <script>document.write(`<img src="../_static/aviatrix-logo.png" class="logo__image only-dark" alt="ACE Operations Lab - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -175,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - TRANSIT NETWORKING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - HPE WITH ACTIVE MESH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - CLOUD PERIMETER SECURITY (Secure Cloud Egress)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - AVIATRIX CLOUD FIREWALL</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 6 - FIRENET</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - SITE2CLOUD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SECURE HIGH-PERFORMANCE DATACENTER EDGE</a></li>
@@ -193,14 +204,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -297,16 +303,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -377,7 +391,7 @@
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/lab7-topology.png"><img alt="../_images/lab7-topology.png" src="../_images/lab7-topology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 245 </span><span class="caption-text">Lab 7 Initial Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 247 </span><span class="caption-text">Lab 7 Initial Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -390,7 +404,7 @@
 <figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/lab7-spoke.png"><img alt="../_images/lab7-spoke.png" src="../_images/lab7-spoke.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 246 </span><span class="caption-text">Edit Spoke GW</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 248 </span><span class="caption-text">Edit Spoke GW</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Attach <strong><em>azure-west-us-spoke2</em></strong> (pre-configured VNet) to <strong><em>azure-west-us-transit</em></strong> as shown below.
@@ -398,7 +412,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id3">
 <img alt="../_images/lab7-attachment.png" src="../_images/lab7-attachment.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 247 </span><span class="caption-text">Attachment</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 249 </span><span class="caption-text">Attachment</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -421,7 +435,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id4">
 <img alt="../_images/lab7-firenetbutton.png" src="../_images/lab7-firenetbutton.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 248 </span><span class="caption-text">FireNet</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 250 </span><span class="caption-text">FireNet</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Deploy a Firewall by entering these settings within the <code class="docutils literal notranslate"><span class="pre">Deploy</span> <span class="pre">Firewall</span></code> window:</p>
@@ -437,7 +451,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id5">
 <img alt="../_images/lab7-marketplace.png" src="../_images/lab7-marketplace.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 249 </span><span class="caption-text">Marketplace contact under loading</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Marketplace contact under loading</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -457,13 +471,13 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id6">
 <img alt="../_images/lab7-newone.png" src="../_images/lab7-newone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 250 </span><span class="caption-text">POD Portal: lab 7 section</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 252 </span><span class="caption-text">POD Portal: lab 7 section</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id7">
 <img alt="../_images/lab7-firenetcfg.png" src="../_images/lab7-firenetcfg.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Firenet Deployment Template</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Firenet Deployment Template</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -473,7 +487,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id8">
 <img alt="../_images/lab7-inprogress.png" src="../_images/lab7-inprogress.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 252 </span><span class="caption-text">Deployment in progress</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Deployment in progress</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>At this time, the interface mapping, security policy configuration, and RFC1918 static route creation are all being handled. The <strong><em>Aviatrix Controller</em></strong> does a lot of magic in orchestrating and manipulating route tables.</p>
@@ -481,7 +495,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/lab7-url.png"><img alt="../_images/lab7-url.png" src="../_images/lab7-url.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Deployment completed</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Deployment completed</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Even after that message, it doesn’t mean you can access the firewall (i.e. <strong>URL</strong>). Within <strong>5-10 minutes</strong> after you receive confirmation about the firewall being created, you should be able to access it.</p>
@@ -494,7 +508,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id10">
 <img alt="../_images/lab7-paloalto.png" src="../_images/lab7-paloalto.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 254 </span><span class="caption-text">PaloAlto Welcome page</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 256 </span><span class="caption-text">PaloAlto Welcome page</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Dismiss the Welcome splash screen. This is an indication that the firewall is ready.</p>
@@ -506,7 +520,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/lab7-vendor.png"><img alt="../_images/lab7-vendor.png" src="../_images/lab7-vendor.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Vendor Integration</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Vendor Integration</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following paramenters in the <code class="docutils literal notranslate"><span class="pre">&quot;Vendor</span> <span class="pre">Integration&quot;</span></code> pop-up window.</p>
@@ -520,7 +534,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id12">
 <img alt="../_images/lab7-vendor2.png" src="../_images/lab7-vendor2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Vendor Integration template</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 258 </span><span class="caption-text">Vendor Integration template</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -530,28 +544,28 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id13">
 <img alt="../_images/lab7-message.png" src="../_images/lab7-message.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Possible error message</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Possible error message</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
 <figure class="align-center" id="id14">
 <img alt="../_images/lab7-vendor3.png" src="../_images/lab7-vendor3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 258 </span><span class="caption-text">Vendor Integration accomplished successfully</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Vendor Integration accomplished successfully</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; Firewall</strong> and click on the <strong><em>azure-west-us-pan</em></strong> firewall</p>
 <figure class="align-center" id="id15">
 <a class="reference internal image-reference" href="../_images/lab7-vendor4.png"><img alt="../_images/lab7-vendor4.png" src="../_images/lab7-vendor4.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Click on the Firewall</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 261 </span><span class="caption-text">Click on the Firewall</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will see the RFC 1918 routes that the Controller automatically programmed on the Firewall, through the <code class="docutils literal notranslate"><span class="pre">&quot;Vendor</span> <span class="pre">Integration&quot;</span></code>. Notice how each RFC1918 route has a prefix of <code class="docutils literal notranslate"><span class="pre">&quot;AVX-&quot;</span></code> to show that it is programmed by Aviatrix.</p>
 <figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="../_images/lab7-vendor5.png"><img alt="../_images/lab7-vendor5.png" src="../_images/lab7-vendor5.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Vendor Integration outcome</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Vendor Integration outcome</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -566,14 +580,14 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id17">
 <img alt="../_images/lab7-palo1.png" src="../_images/lab7-palo1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 261 </span><span class="caption-text">PaloAlto dashboard</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 263 </span><span class="caption-text">PaloAlto dashboard</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Static</span> <span class="pre">Routes&quot;</span></code> tab. You should be able to see the same RFC 1918 routes with <code class="docutils literal notranslate"><span class="pre">&quot;AVX-&quot;</span></code> prefixes that were programmed by the Aviatrix Controller.</p>
 <figure class="align-center" id="id18">
 <img alt="../_images/lab7-palo2.png" src="../_images/lab7-palo2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Static Routes (RFC1918 routes)</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 264 </span><span class="caption-text">Static Routes (RFC1918 routes)</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -587,20 +601,20 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id19">
 <img alt="../_images/lab7-inspection2.png" src="../_images/lab7-inspection2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 263 </span><span class="caption-text">Policy tab</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Policy tab</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then select each Azure spoke gateway one by one, click on <code class="docutils literal notranslate"><span class="pre">&quot;Actions&quot;</span></code> and choose <code class="docutils literal notranslate"><span class="pre">&quot;Add&quot;</span></code> in order to add a specific VPC inside the <strong>Inspection Policy</strong>.</p>
 <figure class="align-center" id="id20">
 <img alt="../_images/lab7-inspection3.png" src="../_images/lab7-inspection3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 264 </span><span class="caption-text">Inspection Policy assignment</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Inspection Policy assignment</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id21">
 <img alt="../_images/lab7-inspection4.png" src="../_images/lab7-inspection4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Inspection Policy accomplished</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Inspection Policy accomplished</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -610,7 +624,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab7-topology2.png"><img alt="../_images/lab7-topology2.png" src="../_images/lab7-topology2.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Lab 7 Topology with FW deployed and the Inspection Policy applied!</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 268 </span><span class="caption-text">Lab 7 Topology with FW deployed and the Inspection Policy applied!</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -622,7 +636,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../_images/lab7-editnd.png"><img alt="../_images/lab7-editnd.png" src="../_images/lab7-editnd.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Edit Green</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 269 </span><span class="caption-text">Edit Green</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the gateway <strong><em>azure-west-us-spoke2</em></strong> from the drop-down window, selecting the <code class="docutils literal notranslate"><span class="pre">&quot;Associations&quot;</span></code> field.</p>
@@ -630,14 +644,14 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id24">
 <img alt="../_images/lab7-nd2.png" src="../_images/lab7-nd2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 268 </span><span class="caption-text">Association</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Association</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this step, this is how the topology should look like:</p>
 <figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab7-finaltopology.png"><img alt="../_images/lab7-finaltopology.png" src="../_images/lab7-finaltopology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 269 </span><span class="caption-text">Lab 7 Final Topology</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 271 </span><span class="caption-text">Lab 7 Final Topology</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -654,7 +668,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id26">
 <a class="reference internal image-reference" href="../_images/lab7-dcfrule.png"><img alt="../_images/lab7-dcfrule.png" src="../_images/lab7-dcfrule.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 270 </span><span class="caption-text">DCF rules</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 272 </span><span class="caption-text">DCF rules</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -667,7 +681,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id27">
 <img alt="../_images/lab7-top.png" src="../_images/lab7-top.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 271 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 273 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters</p>
@@ -684,14 +698,14 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id28">
 <img alt="../_images/lab7-edit.png" src="../_images/lab7-edit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 272 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Once again do not forget to <strong>Commit</strong> your rule.</p>
 <figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab7-newone2.png"><img alt="../_images/lab7-newone2.png" src="../_images/lab7-newone2.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 273 </span><span class="caption-text">Commit the Greenfield-Rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Commit the Greenfield-Rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="launch-connectivity-test">
@@ -700,7 +714,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id30">
 <img alt="../_images/lab7-ping.png" src="../_images/lab7-ping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Ping is successful</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Ping is successful</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -714,7 +728,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab7-monitor2.png"><img alt="../_images/lab7-monitor2.png" src="../_images/lab7-monitor2.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Monitor on the PaloAlto</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Monitor on the PaloAlto</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Traffic is passing through firewall because <strong><em>azure-west-us-spoke1</em></strong> and <strong><em>azure-west-us-spoke2</em></strong> both are in the <strong>Inspection Policy</strong>.</p>
@@ -725,7 +739,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id32">
 <img alt="../_images/lab7-smallrefresh.png" src="../_images/lab7-smallrefresh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Ping GCP</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">Ping GCP</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -736,7 +750,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id33">
 <img alt="../_images/lab7-pinggcp.png" src="../_images/lab7-pinggcp.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Ping GCP</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Ping GCP</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This still matches the <strong><code class="docutils literal notranslate"><span class="pre">Allow-all</span></code></strong> firewall rule. Moreover, it works because of the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code> we had configured in the <strong>Network Segmentation</strong> Lab.</p>
@@ -744,7 +758,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id34">
 <a class="reference internal image-reference" href="../_images/lab7-finalmonitor.png"><img alt="../_images/lab7-finalmonitor.png" src="../_images/lab7-finalmonitor.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 278 </span><span class="caption-text">Monitoring traffic towards GCP</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Monitoring traffic towards GCP</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, let’s check the <code class="docutils literal notranslate"><span class="pre">DCF</span> <span class="pre">Monitor</span></code> section:</p>
@@ -754,14 +768,14 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab7-finalmonitor00.png"><img alt="../_images/lab7-finalmonitor00.png" src="../_images/lab7-finalmonitor00.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will immediately notice the logs that have successfully matched the Greenfield-Rule.</p>
 <figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab7-finalmonitor01.png"><img alt="../_images/lab7-finalmonitor01.png" src="../_images/lab7-finalmonitor01.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -773,7 +787,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab7-finaltopology2.png"><img alt="../_images/lab7-finaltopology2.png" src="../_images/lab7-finaltopology2.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Final Topology for Lab 6</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">Final Topology for Lab 6</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -815,7 +829,7 @@ Do not forget to click on <strong>Save</strong>.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lab 5 - CLOUD PERIMETER SECURITY (Secure Cloud Egress)</p>
+        <p class="prev-next-title">Lab 5 - AVIATRIX CLOUD FIREWALL</p>
       </div>
     </a>
     <a class="right-next"
@@ -834,8 +848,7 @@ Do not forget to click on <strong>Save</strong>.</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -910,8 +923,8 @@ By Aviatrix ACE
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
