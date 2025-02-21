@@ -32,7 +32,7 @@ Topology for Lab 3
 
 ## 4. Configuration
 
-### 4.1. Aviatrix Transit Gateways
+### 4.1 Aviatrix Transit Gateways
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains > Transit Gateways**:
 
@@ -97,7 +97,7 @@ Topology with Network Domains
 
 ## 5. Verification of Segment Attachments
 
-### 5.1. CoPilot Verification
+### 5.1 CoPilot Verification
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains**
 
@@ -247,7 +247,7 @@ align: center
 Apply the Connection Policy
 ```
 
-### 7.1. Verification of Connection Policy
+### 7.1 Verification of Connection Policy
 
 Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**
 
@@ -277,7 +277,7 @@ align: center
 Gatus
 ```
 
-### 6.1 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 If you're not satisfied with the Gatus dashboard, you can also use your personal `SSH client` to perform the connectivity tests!
 

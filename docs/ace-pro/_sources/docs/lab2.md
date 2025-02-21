@@ -32,7 +32,7 @@ align: center
 Initial pre-provisioned topology
 ```
 
-### 3.1. Preliminary Monitoring Check Using the Gatus APP
+### 3.1 Preliminary Monitoring Check Using the Gatus APP
 
 All of the pre-deployed instances are running [Gatus](https://gatus.io/) and attempting to connect to each other on various ports (e.g. icmp and tcp:80/443). 
 
@@ -386,7 +386,7 @@ You can notice that the cluster in AWS comprises two Spoke Gateways, whereas in 
 You can deploy up to maximum **fifteen** Spoke Gateways per each Spoke VPC/VNet/VCN.
 ```
 
-### 5.1. Aviatrix Transit Gateways
+### 5.1 Aviatrix Transit Gateways
 
 In this section, you will experience the power and simplicity of the Aviatrix platform by deploying (i.e. creating) 4 gateways:
 
@@ -412,7 +412,7 @@ align: center
 
 Deploy Aviatrix Transit Gateways in AWS **_East-2_** region. To save time, Aviatrix Transit Gateways in Azure, GCP and AWS east-1 region have already been pre-deployed in pairs for this lab.
 
-#### 5.1.1.Transit Gateway in AWS US-EAST-2
+#### 5.1.1 Transit Gateway in AWS US-EAST-2
 
 Ensure these parameters are entered in the pop-up window `"Create Transit Gateway"`.
 
@@ -469,7 +469,7 @@ This action will instantiate the Transit Gateway with the following name:
 
 Meanwhile the deployment is happening, you may proceed to the next section of this lab guide to deploy your Spoke gateways.
 
-### 5.2. Aviatrix Spoke Gateways
+### 5.2 Aviatrix Spoke Gateways
 
 Navigate to the tab immediately to the right, which is `Spoke Gateways`.
 
@@ -483,7 +483,7 @@ align: center
 +Spoke Gateway
 ```
 
-#### 5.2.1. Spoke Gateway in AWS
+#### 5.2.1 Spoke Gateway in AWS
 
 Ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"`.
 
@@ -512,7 +512,7 @@ Create Spoke Gateway in AWS
 
 While the gateway is being created, you may proceed to the next section.
 
-#### 5.2.2. Spoke Gateway in Azure
+#### 5.2.2 Spoke Gateway in Azure
 
 Repeat the previous steps for Azure, click on the button `"+ Spoke Gateway"` and ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"`.
 
@@ -552,7 +552,7 @@ Spoke GW in Azure
 
 While the gateway is being created, you may proceed to the next section.
 
-#### 5.2.3. Spoke Gateway in GCP
+#### 5.2.3 Spoke Gateway in GCP
 
 Repeat the previous steps for GCP. Ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"`.
 
@@ -611,7 +611,7 @@ align: center
 Overview of the new topology
 ```
 
-## 6.. Explore the Cloud Fabric
+## 6. Explore the Cloud Fabric
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on  the `"Managed"` button to only showing the Managed VPCs!
 
@@ -658,7 +658,7 @@ In addition, you can explore the components of any of the gateways in terms of s
 
 In this section you are going to attach the Aviatrix Spoke Gateways created above in each cloud, to their corresponding Aviatrix Transit Gateways.
  
-### 7.1. Spoke to Transit Attachment in AWS
+### 7.1 Spoke to Transit Attachment in AWS
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_aws-us-east-2-spoke1_**, clicking on the pencil icon:
 
@@ -711,7 +711,7 @@ align: center
 Attachment in Azure
 ```
 
-### 7.3. Spoke to Transit Attachment in GCP
+### 7.3 Spoke to Transit Attachment in GCP
 
 - **gcp-us-central1-spoke1** to **gcp-us-central1-transit**
 
@@ -854,7 +854,7 @@ align: center
 Peering Azure-GCP
 ```
 
-### 9.3. GCP and AWS
+### 9.3 GCP and AWS
 
 - **gcp-us-central1-transit** to **aws-us-east-2-transit**
 
@@ -909,7 +909,7 @@ align: center
 Verification
 ```
 
-### 10.2. Verification of Transit Peerings on CoPilot (Topology)
+### 10.2 Verification of Transit Peerings on CoPilot (Topology)
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview**
 
@@ -933,7 +933,7 @@ align: center
 Expanded Topology
 ```
 
-### 10.3. Route Info DB
+### 10.3 Route Info DB
 
 Route Info DB is akin to the *Routing Information Base (RIB)*. It will provide the overall routing information of a Transit Gateway known by the CoPilot.
 
