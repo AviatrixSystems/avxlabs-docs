@@ -374,12 +374,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-modified-rule">8.3 Test the modified rule</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">6. IDS</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-rule">6.1 Create a New Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">6.2 Prepare the simulator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">6.3 Test the New Rule and the IDS feature</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -922,137 +916,11 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p><span class="caption-number">Fig. 230 </span><span class="caption-text">Permit</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
-</section>
-<section id="ids">
-<h2>6. IDS<a class="headerlink" href="#ids" title="Link to this heading">#</a></h2>
-<section id="create-a-new-rule">
-<h3>6.1 Create a New Rule<a class="headerlink" href="#create-a-new-rule" title="Link to this heading">#</a></h3>
-<p>Let’s now test the <strong><em>IDS</em></strong> feature (i.e. Intrusion Detection System), from the <strong>aws-us-east-2spoke1-test2</strong> instance.</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<p>Create a new DCF Rule with the following parameters:</p>
-<ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>Inspect-DNS</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>us-east-2-private-subnet</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Public Internet</span></p></li>
-<li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
-<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
-<li><p><strong>Intrusion Detection (IDS)</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
-</ul>
-<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id44">
-<img alt="../_images/lab6-ids.png" src="../_images/lab6-ids.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Inspect-DNS</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Proceed clicking on the <strong>Commit</strong> button.</p>
-<figure class="align-center" id="id45">
-<a class="reference internal image-reference" href="../_images/lab6-idscommit.png"><img alt="../_images/lab6-idscommit.png" src="../_images/lab6-idscommit.png" style="height: 250px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 232 </span><span class="caption-text">New DCF List</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="prepare-the-simulator">
-<h3>6.2 Prepare the simulator<a class="headerlink" href="#prepare-the-simulator" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>From the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance, launch the following <strong>two</strong> commands.</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>su<span class="w"> </span>-
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You will be asked to type again the student password!</p>
-<figure class="align-center" id="id46">
-<img alt="../_images/lab6-password.png" src="../_images/lab6-password.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Root PWD</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/0xtf/testmynids.org/master/tmNIDS<span class="w"> </span>-o<span class="w"> </span>/tmp/tmNIDS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/tmp/tmNIDS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>/tmp/tmNIDS
-</pre></div>
-</div>
-<figure class="align-center" id="id47">
-<img alt="../_images/lab6-sudo.png" src="../_images/lab6-sudo.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Commands issued</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The last command will show up a <strong><em>simulator</em></strong> from whom you will be able to launch an attack for testing the <code class="docutils literal notranslate"><span class="pre">&quot;Suricata</span> <span class="pre">IDS&quot;</span></code>.</p>
-<figure class="align-center" id="id48">
-<img alt="../_images/lab6-suricata.png" src="../_images/lab6-suricata.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Simulator</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="test-the-new-rule-and-the-ids-feature">
-<h3>6.3 Test the New Rule and the IDS feature<a class="headerlink" href="#test-the-new-rule-and-the-ids-feature" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Before launching the attack, edit the new DCF rule, clicking on the pencil icon beside the <strong><em>Inspect-DNS</em></strong> rule.</p></li>
-</ul>
-<figure class="align-center" id="id49">
-<a class="reference internal image-reference" href="../_images/lab6-suricataedit.png"><img alt="../_images/lab6-suricataedit.png" src="../_images/lab6-suricataedit.png" style="height: 250px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Edit existing rule</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Insert the following parameters and do not forget to click on <strong>Save In Drafts</strong>:</p>
-<ul class="simple">
-<li><p><strong>Protocol</strong>: <span style='color:#479608'>UDP</span></p></li>
-<li><p><strong>Port</strong>: <span style='color:#479608'>53</span></p></li>
-</ul>
-<figure class="align-center" id="id50">
-<img alt="../_images/lab6-dns.png" src="../_images/lab6-dns.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Modify the rule</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Now click on the <strong>Commit</strong> button.</p>
-<figure class="align-center" id="id51">
-<a class="reference internal image-reference" href="../_images/lab6-commit3.png"><img alt="../_images/lab6-commit3.png" src="../_images/lab6-commit3.png" style="height: 250px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 238 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>From the EC2 instance <strong><em>aws-us-east-2-spoke1-test2</em></strong>, type <strong>5</strong> and click enter for launching a malicious attack, specifically the attack will try to establish a connection towards a TOR server.</p>
-<figure class="align-center" id="id52">
-<img alt="../_images/lab6-5.png" src="../_images/lab6-5.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 239 </span><span class="caption-text">Malicious known attack</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Now go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Detected Intrusions</strong>, and you will be able to find indicators that detected that attempt to contact a TOR server, through a DNS request.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you do not see the logs immediately, click on the <strong>refresh</strong> button</p>
-</div>
-<figure class="align-center" id="id53">
-<a class="reference internal image-reference" href="../_images/lab6-refresh.png"><img alt="../_images/lab6-refresh.png" src="../_images/lab6-refresh.png" style="height: 150px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 240 </span><span class="caption-text">Detected Intrusions</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Click on any <strong>Timestamps</strong> to get additional insight on that specific attack.</p>
-<figure class="align-center" id="id54">
-<a class="reference internal image-reference" href="../_images/lab6-final.png"><img alt="../_images/lab6-final.png" src="../_images/lab6-final.png" style="height: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 241 </span><span class="caption-text">Additional insights</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The indicator is showing clearly that you tried reaching out to Google DNS and then querying for a <strong>TOR</strong> domain!</p>
-</div>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id55">
+<figure class="align-center" id="id44">
 <a class="reference internal image-reference" href="../_images/lab6-finaltopo.png"><img alt="../_images/lab6-finaltopo.png" src="../_images/lab6-finaltopo.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 242 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1155,12 +1023,6 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">8.1 Create a New WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-egress-rule">8.2 Edit the Egress-Rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-modified-rule">8.3 Test the modified rule</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ids">6. IDS</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-rule">6.1 Create a New Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-simulator">6.2 Prepare the simulator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-new-rule-and-the-ids-feature">6.3 Test the New Rule and the IDS feature</a></li>
 </ul>
 </li>
 </ul>

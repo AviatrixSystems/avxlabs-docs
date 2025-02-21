@@ -699,7 +699,7 @@ align: center
 FlightPath Report PDF
 ```
 
-## 13. Bonus Question
+## 13. Final Tasks
 
 ### 13.1 Gateway Keepalive Templates
 
@@ -719,7 +719,7 @@ align: center
 Keep Alive Speed
 ```
 
-### 13.2 Transitive Routing
+### 13.2 Transitive Routing Question
 
 ```{warning}
 The test instances in **_aws-us-east-1-spoke1_** are not able to communicate with the test instances in GCP or in Azure.
