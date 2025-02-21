@@ -337,7 +337,6 @@ Insert the following parameters
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>**All-Web**</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Enforcement**: <span style='color:#479608'>**Off**</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
@@ -356,11 +355,7 @@ Saving the new Rule
 Ultimately , this Webgroup will limit Internet traffic solely for **HTTP** and **HTTPS** protocols.
 ```
 
-Click on the **Commit** button, and the rule previously created will work in **_watch/test_** mode because `enforcement` was turn off.
-
-```{important}
-If the **Enforcement** slider is **On** (the default), the rule is enforced in the data plane. If the Enforcement slider is **Off**, the packets are only watched. This allows you to observe if the traffic impacted by this rule causes any inadvertent issues (such as traffic being dropped).
-```
+Click on the **Commit** button, and the rule previously created will be enfored in to the `Data Path`..
 
 ```{figure} images/lab6-newrule11.png
 ---
@@ -370,39 +365,58 @@ align: center
 Egress-Rule
 ```
 
-Now delete the **Greenfield-Rule**: 
+```{important}
+The `DefaultDenyAll` rule injected by the Aviatrix Controller is y default not editable
+```
 
-- click on the **three dots** icon on the right-hand side of the Greenfield-Rule entry and then choose the `"Delete Rule"` option.
+```{figure} images/lab6-new010.png
+---
+align: center
+---
+Not Editable
+```
+
+Now Create an Explicit Deny rule that is **editable**:
+
+Click on the `"+ Rule"` button.
+
+```{figure} images/lab6-newrule100.png
+---
+align: center
+---
+New Rule
+```
+
+Insert the following parameters
+
+- **Name**: <span style='color:#479608'>ExplicitDenyAll</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>Egress-Rule</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab6-newrule1001.png
+---
+align: center
+---
+ExplicitDenyAll
+```
 
 Do not forget to click on **Commit**.
 
-```{caution}
-The deletion of the Greenfield-Rule will also cause the deletion of the DefaultDenyAll, because the Egress-Rule was not enforced on the data path, which in turn means that there will be an `Invisible Deny Rule` installed on the bottom.
-```
-
-```{figure} images/lab6-newruledelete.png
+```{figure} images/lab6-newrule10011.png
 ---
-height: 250px
 align: center
 ---
-Commit your change
+ExplicitDenyAll
 ```
 
-```{figure} images/lab6-newruledelete101.png
----
-height: 250px
-align: center
----
-Deletion of the Greenfield-Rule
-```
 
-```{figure} images/lab6-newruledeleted.png
----
-height: 150px
-align: center
----
-Egress-Rule solely
-```
 
 ## 7. Connectivity Testing after enabling ther Aviatrix Cloud Firewall
 
@@ -420,7 +434,7 @@ align: center
 aws-us-east-2-spoke1-test2
 ```
 
-The private workload is still generating traffic to those four domains; however, you will gradually notice that each TCP connection will start to fail.
+The private workload is still generating traffic to those four domains.
 
 ```{tip}
 If you want to expedite the results on the Gatus dashboard, feel free to adjust the timeout to **10 seconds** in the bottom left-hand corner.
@@ -431,7 +445,7 @@ If you want to expedite the results on the Gatus dashboard, feel free to adjust 
 height: 400px
 align: center
 ---
-Egress traffic is now going through the Aviatrix Cloud Firewall embedded the Spoke GW
+Egress traffic is now going through the Aviatrix Cloud Firewall embedded on the Spoke GW
 ```
 
 ### 7.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
@@ -451,19 +465,15 @@ curl www.espn.com
 curl www.football.com
 ```
 
-```{figure} images/lab6-monitorpermit22.png
+```{figure} images/lab6-curl.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
-SSH client outputs
+curl commands
 ```
 
-```{important}
-However, on the SSH client, you will **NOT** see any outputs, this is because the Rule <ins>was not enforced in the Data Path</ins>, therefore the traffic is simply dropped.
-```
-
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and you will see the corresponding **logs**.
+Go to **CoPilot > Security > Egress > Overview**, and you will see the visibility of the domain hits.
 
 ```{figure} images/lab6-monitorpermit.png
 ---
