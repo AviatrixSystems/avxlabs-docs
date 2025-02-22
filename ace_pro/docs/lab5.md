@@ -73,10 +73,10 @@ aws-us-east-2-spoke1-test2
 ```
 
 The private workload is generating traffic to **four** domains:
-1) www.aviatrix.com
+1) aviatrix.com
 2) www.espn.com
 3) www.football.com
-4) www.wikipedia.com
+4) www.wikipedia.org
 
 ```{figure} images/lab6-gatus501.png
 ---
@@ -126,16 +126,16 @@ Retrieve the private IP
 Now, launch the following curl commands:
 
 ```bash
-curl www.aviatrix.com
+curl -I https://aviatrix.com
 ```
 ```bash
-curl www.wikipedia.com
+curl -I https://www.espn.com
 ```
 ```bash
-curl www.espn.com
+curl -I https://www.football.com
 ```
 ```bash
-curl www.football.com
+curl -I https://www.wikipedia.org
 ```
 
 ```{figure} images/lab6-curl.png
@@ -143,7 +143,31 @@ curl www.football.com
 height: 400px
 align: center
 ---
-curl commands
+curl command-01
+```
+
+```{figure} images/lab6-curl02.png
+---
+height: 400px
+align: center
+---
+curl command-02
+```
+
+```{figure} images/lab6-curl03.png
+---
+height: 400px
+align: center
+---
+curl command-03
+```
+
+```{figure} images/lab6-curl04.png
+---
+height: 400px
+align: center
+---
+curl command-04
 ```
 
 ## 4. Aviatrix Cloud Firewall
