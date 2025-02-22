@@ -660,7 +660,7 @@ curl -I https://www.wikipedia.org
 
 ```{figure} images/lab6-curl.png
 ---
-height: 200px
+height: 450px
 align: center
 ---
 curl command-01
@@ -668,7 +668,7 @@ curl command-01
 
 ```{figure} images/lab6-curl021.png
 ---
-height: 200px
+height: 450px
 align: center
 ---
 curl command-02
@@ -735,7 +735,7 @@ Now click on the `NAT Gateways` section in the Navigation Panel on the right-han
 
 ```{figure} images/lab5-region012.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 NAT gateways section

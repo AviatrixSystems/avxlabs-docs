@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-The objective of this lab is to learn how to deploy **Palo Alto** Networks (aka PAN) VM-series firewalls in the Transit VNet and inspect traffic between the two Spoke VNets using firewall policies.
+The objective of this lab is to learn how to deploy **Palo Alto** Networks (aka PAN) VM-series firewalls in the **Transit VNet** and inspect traffic between the two Spoke VNets using firewall policies.
  
 ## 2. FireNet Overview (Firewall Network)
 
