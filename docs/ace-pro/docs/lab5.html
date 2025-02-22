@@ -378,6 +378,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.3.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remotion-of-the-aws-nat-gateway">9. Remotion of the AWS NAT Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-console">9.1 AWS Console</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -957,13 +961,13 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 <figure class="align-center" id="id52">
-<a class="reference internal image-reference" href="../_images/lab6-curl.png"><img alt="../_images/lab6-curl.png" src="../_images/lab6-curl.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab6-curl.png"><img alt="../_images/lab6-curl.png" src="../_images/lab6-curl.png" style="height: 200px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 237 </span><span class="caption-text">curl command-01</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id53">
-<a class="reference internal image-reference" href="../_images/lab6-curl021.png"><img alt="../_images/lab6-curl021.png" src="../_images/lab6-curl021.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab6-curl021.png"><img alt="../_images/lab6-curl021.png" src="../_images/lab6-curl021.png" style="height: 200px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 238 </span><span class="caption-text">curl command-02</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
@@ -980,47 +984,72 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p><span class="caption-number">Fig. 240 </span><span class="caption-text">curl command-04</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and turn on the toggle <strong><em>Auto Refresh</em></strong>.</p>
+</section>
+</section>
+<section id="remotion-of-the-aws-nat-gateway">
+<h2>9. Remotion of the AWS NAT Gateway<a class="headerlink" href="#remotion-of-the-aws-nat-gateway" title="Link to this heading">#</a></h2>
+<p>Now that you have successfully enabled the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code>, you can get rid of the AWS NAT Gateway.</p>
+<section id="aws-console">
+<h3>9.1 AWS Console<a class="headerlink" href="#aws-console" title="Link to this heading">#</a></h3>
+<p>Login to <strong>AWS console</strong></a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 149</ins>).</p>
 <figure class="align-center" id="id56">
-<a class="reference internal image-reference" href="../_images/lab6-defaultdenyall06.png"><img alt="../_images/lab6-defaultdenyall06.png" src="../_images/lab6-defaultdenyall06.png" style="height: 200px;" /></a>
+<img alt="../_images/lab5-newone.png" src="../_images/lab5-newone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 241 </span><span class="caption-text">Auto Refresh</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 241 </span><span class="caption-text">AWS URL and credentials</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id57">
+<img alt="../_images/lab5-awsconsole.png" src="../_images/lab5-awsconsole.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 242 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Change the region to <strong>Ohio</strong> and invoke <strong>VPC</strong> service.</p>
+<figure class="align-center" id="id58">
+<a class="reference internal image-reference" href="../_images/lab5-region22.png"><img alt="../_images/lab5-region22.png" src="../_images/lab5-region22.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 243 </span><span class="caption-text">Change the Region</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id59">
+<a class="reference internal image-reference" href="../_images/lab5-region01.png"><img alt="../_images/lab5-region01.png" src="../_images/lab5-region01.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 244 </span><span class="caption-text">Invoke the VPC service</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now click on the <code class="docutils literal notranslate"><span class="pre">NAT</span> <span class="pre">Gateways</span></code> section in the Navigation Panel on the right-hand side.</p>
+<figure class="align-center" id="id60">
+<a class="reference internal image-reference" href="../_images/lab5-region012.png"><img alt="../_images/lab5-region012.png" src="../_images/lab5-region012.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 245 </span><span class="caption-text">NAT gateways section</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now launch again the following curl commands from the instance <strong><em>aws-us-east2-spoke1-test2</em></strong>.</p></li>
+<li><p>Select the <strong><em>aws-region-2-spoke1-nat</em></strong> NAT Gateway, then click on thwe <code class="docutils literal notranslate"><span class="pre">&quot;Actions&quot;</span></code> button on the right-hand side and choose the option <code class="docutils literal notranslate"><span class="pre">&quot;Delete</span> <span class="pre">NAT</span> <span class="pre">gateway&quot;</span></code>. Afterwards, type <code class="docutils literal notranslate"><span class="pre">&quot;delete&quot;</span></code> to confirm the deletion of the AWS NAT Gateway and click on <strong>Delete</strong>.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.aviatrix.com
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.football.com
-</pre></div>
-</div>
-<p>Only the first two curl commands will be successful!</p>
-<figure class="align-center" id="id57">
-<img alt="../_images/lab6-newpic.png" src="../_images/lab6-newpic.png" />
+<figure class="align-center" id="id61">
+<a class="reference internal image-reference" href="../_images/lab5-region99.png"><img alt="../_images/lab5-region99.png" src="../_images/lab5-region99.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 242 </span><span class="caption-text">Curl commands</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 246 </span><span class="caption-text">Selection of the AWS NAT GW</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will notice almost instanteously that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong> will be immediately dropped.</p>
-<figure class="align-center" id="id58">
-<a class="reference internal image-reference" href="../_images/lab6-liveview.png"><img alt="../_images/lab6-liveview.png" src="../_images/lab6-liveview.png" style="height: 250px;" /></a>
+<figure class="align-center" id="id62">
+<a class="reference internal image-reference" href="../_images/lab5-region999.png"><img alt="../_images/lab5-region999.png" src="../_images/lab5-region999.png" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 243 </span><span class="caption-text">Permit</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 247 </span><span class="caption-text">Actions</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id63">
+<a class="reference internal image-reference" href="../_images/lab5-region999.png"><img alt="../_images/lab5-region999.png" src="../_images/lab5-region999.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 248 </span><span class="caption-text">Deletion of the AWS NAT GW</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology will look like:</p>
-<figure class="align-center" id="id59">
+<figure class="align-center" id="id64">
 <a class="reference internal image-reference" href="../_images/lab6-finaltopo.png"><img alt="../_images/lab6-finaltopo.png" src="../_images/lab6-finaltopo.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 244 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 249 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1127,6 +1156,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.3.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remotion-of-the-aws-nat-gateway">9. Remotion of the AWS NAT Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-console">9.1 AWS Console</a></li>
 </ul>
 </li>
 </ul>
