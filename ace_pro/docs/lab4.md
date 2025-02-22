@@ -567,7 +567,7 @@ Go to the AWS Console, select the **_aviatrix-aws-us-east-1-spoke1_** Spoke Gate
 
 ```{figure} images/lab4-gatus406.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 AWS Console
@@ -644,7 +644,7 @@ After this lab, this is how the overall topology will look:
 height: 400px
 align: center
 ---
-Final Topology for Lab 5
+Final Topology for Lab 4
 ```
 
 ## 12. FlightPath
@@ -661,7 +661,7 @@ Use the following inputs:
 
 ```{figure} images/lab5-flightpath.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 FlightPath config
@@ -725,7 +725,15 @@ Keep Alive Speed
 The test instances in **_aws-us-east-1-spoke1_** are not able to communicate with the test instances in GCP or in Azure.
 ```
 
-You can verify this with the Gateway routing table on the **CoPilot > Diagnostics > Cloud Routes > Gateway Routes > aws-us-east-1-transit**. You will not see the GCP Spoke routes of **_172.16.1.0/24_**., for instance.
+You can verify this in the Gateway Routing Table under **CoPilot > Diagnostics > Cloud Routes > Gateway Routes > aws-us-east-1-transit**. You will not see the GCP Spoke route of **_172.16.1.0/24_**, nor will you see the routes from Azure.
+
+```{figure} images/lab5-keepalive100.png
+---
+height: 250px
+align: center
+---
+aws-us-east-1-transit's rtb
+```
 
 - Why is that?
 What would be needed to make those routes visible?

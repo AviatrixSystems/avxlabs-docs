@@ -110,7 +110,7 @@ Normal intra-vpc traffic
 Check the **Gatus App** status for the remaining instances as well.
 ```
 
-### 3.2. Preliminary Monitoring Check Using an SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 3.2 Preliminary Monitoring Check Using an SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.
 
@@ -158,7 +158,7 @@ Search the test instances
 
 ```{figure} images/lab2-sshclient11.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Public IP address
@@ -404,7 +404,7 @@ Please pay close attention to each step, as a misconfiguration could result in *
 
 ```{figure} images/lab2-transitbutton.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 +Transit Gateway
@@ -477,7 +477,7 @@ This is **CoPilot > Cloud Fabric > Gateways > Spoke Gateways > + Spoke Gateway**
 
 ```{figure} images/lab2-spokecreate.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 +Spoke Gateway
