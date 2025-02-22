@@ -660,7 +660,7 @@ curl -I https://www.wikipedia.org
 
 ```{figure} images/lab6-curl.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 curl command-01
@@ -668,7 +668,7 @@ curl command-01
 
 ```{figure} images/lab6-curl021.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 curl command-02
@@ -682,6 +682,7 @@ align: center
 curl command-03
 ```
 
+
 ```{figure} images/lab6-curl04.png
 ---
 height: 400px
@@ -690,48 +691,80 @@ align: center
 curl command-04
 ```
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and turn on the toggle **_Auto Refresh_**.
+## 9. Remotion of the AWS NAT Gateway
 
-```{figure} images/lab6-defaultdenyall06.png
----
-height: 200px
-align: center
----
-Auto Refresh
-```
+Now that you have successfully enabled the `Aviatrix Cloud Firewall`, you can get rid of the AWS NAT Gateway.
 
-- Now launch again the following curl commands from the instance **_aws-us-east2-spoke1-test2_**.
+### 9.1 AWS Console
 
-```bash
-curl www.aviatrix.com
-```
-```bash
-curl www.wikipedia.com
-```
-```bash
-curl www.espn.com
-```
-```bash
-curl www.football.com
-```
+Login to **AWS console**</a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 149</ins>).
 
-Only the first two curl commands will be successful!
-
-```{figure} images/lab6-newpic.png
+```{figure} images/lab5-newone.png
 ---
 align: center
 ---
-Curl commands
+AWS URL and credentials
 ```
 
-You will notice almost instanteously that only **_www.aviatrix.com_** and **_www.wikipedia.com_** are allowed. Traffic towards **_www.espn.com_** and **_www.football.com_** will be immediately dropped.
-
-```{figure} images/lab6-liveview.png
+```{figure} images/lab5-awsconsole.png
 ---
-height: 250px
 align: center
 ---
-Permit
+AWS console
+```
+
+Change the region to **Ohio** and invoke **VPC** service.
+
+```{figure} images/lab5-region22.png
+---
+height: 300px
+align: center
+---
+Change the Region
+```
+
+```{figure} images/lab5-region01.png
+---
+height: 300px
+align: center
+---
+Invoke the VPC service
+```
+
+Now click on the `NAT Gateways` section in the Navigation Panel on the right-hand side.
+
+```{figure} images/lab5-region012.png
+---
+height: 300px
+align: center
+---
+NAT gateways section
+```
+
+- Select the **_aws-region-2-spoke1-nat_** NAT Gateway, then click on thwe `"Actions"` button on the right-hand side and choose the option `"Delete NAT gateway"`. Afterwards, type `"delete"` to confirm the deletion of the AWS NAT Gateway and click on **Delete**.
+
+```{figure} images/lab5-region99.png
+---
+height: 300px
+align: center
+---
+Selection of the AWS NAT GW
+```
+
+```{figure} images/lab5-region999.png
+---
+height: 300px
+align: center
+---
+Actions
+```
+
+```{figure} images/lab5-region999.png
+---
+height: 300px
+align: center
+---
+Deletion of the AWS NAT GW
 ```
 
 After this lab, this is how the overall topology will look like:
