@@ -615,7 +615,80 @@ Commit the changes
 - **Publlic Internet** = Represents non-RFC 1918 IP ranges, or the public Internet
 ```
 
-### 8.3 Test the modified rule
+### 8.3 Connectivity Testing after enabling the Aviatrix Cloud Firewall
+
+Let's verify if the Egress Rule is now effectively dropping the traffic to both **_www.espn.com_** and **_www.football.com_**.
+
+#### 8.3.1 Connectivity Testing Using the Gatus App
+
+Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-us-east-2-spoke1-test2_**. 
+
+```{figure} images/lab6-gatus500.png
+---
+height: 400px
+align: center
+---
+aws-us-east-2-spoke1-test2
+```
+
+You will gradually notice that the TCP traffic to **_www.espn.com_** and **_www.football.com_** will start being blocked, which will cause it to turn red.
+
+```{figure} images/lab6-gatus555.png
+---
+height: 400px
+align: center
+---
+aws-us-east-2-spoke1-test2
+```
+
+### 8.3.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+- Re-launch the following curl commands from the SSH session opened with the **_aws-us-east-2-spoke1-test1_** instance:
+
+```bash
+curl -I https://aviatrix.com
+```
+```bash
+curl -I https://www.espn.com
+```
+```bash
+curl -I https://www.football.com
+```
+```bash
+curl -I https://www.wikipedia.org
+```
+
+```{figure} images/lab6-curl.png
+---
+height: 400px
+align: center
+---
+curl command-01
+```
+
+```{figure} images/lab6-curl021.png
+---
+height: 400px
+align: center
+---
+curl command-02
+```
+
+```{figure} images/lab6-curl031.png
+---
+height: 400px
+align: center
+---
+curl command-03
+```
+
+```{figure} images/lab6-curl04.png
+---
+height: 400px
+align: center
+---
+curl command-04
+```
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and turn on the toggle **_Auto Refresh_**.
 
@@ -661,7 +734,7 @@ align: center
 Permit
 ```
 
-After this lab, this is how the overall topology would look like:
+After this lab, this is how the overall topology will look like:
 
 ```{figure} images/lab6-finaltopo.png
 ---
