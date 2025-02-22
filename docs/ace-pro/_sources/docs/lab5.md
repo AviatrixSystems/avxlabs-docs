@@ -217,7 +217,7 @@ Default route has been injected
 ```
 
 ```{important}
-The `Default Rout`e is now pointing to the AViatrix Spoke Gateway.
+The `Default Route` is now pointing to the Aviatrix Spoke Gateway.
 ```
 
 ### 4.3 Enable DCF
@@ -390,7 +390,7 @@ Egress-Rule
 ```
 
 ```{important}
-The `DefaultDenyAll` rule injected by the Aviatrix Controller is y default not editable
+The `DefaultDenyAll` rule injected by the Aviatrix Controller is by default not editable
 ```
 
 ```{figure} images/lab6-new010.png
@@ -475,16 +475,16 @@ Egress traffic is now going through the Aviatrix Cloud Firewall embedded on the 
 - From your SSH client opened on the **_aws-us-east-2-spoke1-test1_** instance, launch again the following curl commands:
 
 ```bash
-curl www.aviatrix.com
+curl -I https://aviatrix.com
 ```
 ```bash
-curl www.wikipedia.com
+curl -I https://www.espn.com
 ```
 ```bash
-curl www.espn.com
+curl -I https://www.football.com
 ```
 ```bash
-curl www.football.com
+curl -I https://www.wikipedia.org
 ```
 
 ```{figure} images/lab6-curl.png
@@ -492,7 +492,31 @@ curl www.football.com
 height: 400px
 align: center
 ---
-curl commands
+curl command-01
+```
+
+```{figure} images/lab6-curl02.png
+---
+height: 400px
+align: center
+---
+curl command-02
+```
+
+```{figure} images/lab6-curl03.png
+---
+height: 400px
+align: center
+---
+curl command-03
+```
+
+```{figure} images/lab6-curl04.png
+---
+height: 400px
+align: center
+---
+curl command-04
 ```
 
 Go to **CoPilot > Security > Egress > Overview**, and you will see the visibility of the domain hits.
@@ -540,8 +564,8 @@ Create a **_WebGroup_** with the following parameters:
 
 - **Name**: <span style='color:#479608'>two-domains</span>
 - **Type**: <span style='color:#479608'>Domains</span>
-- **Domains/URLs**: <span style='color:#479608'>www.aviatrix.com</span>
-- **Domains/URLs**: <span style='color:#479608'>www.wikipedia.com</span>
+- **Domains/URLs**: <span style='color:#479608'>aviatrix.com</span>
+- **Domains/URLs**: <span style='color:#479608'>www.wikipedia.org</span>
 
 Do not forget to click on **Save**.
 
@@ -553,7 +577,7 @@ WebGroup creation
 ```
 
 ```{important}
-The purpose of this **WebGroup** is to authorize traffic only to the domains *`www.aviatrix.com`* and *`www.wikipedia.com.`* Therefore, curl commands issued to other domains will be blocked.
+The purpose of this **WebGroup** is to authorize traffic only to the domains *`aviatrix.com`* and *`www.wikipedia.org`*. Therefore, curl commands issued to other domains will be blocked.
 ```
 
 ### 8.2 Edit the Egress-Rule 
