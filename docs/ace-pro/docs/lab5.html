@@ -576,7 +576,7 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Rout</span></code>e is now pointing to the AViatrix Spoke Gateway.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Route</span></code> is now pointing to the Aviatrix Spoke Gateway.</p>
 </div>
 </section>
 <section id="enable-dcf">
@@ -721,7 +721,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> rule injected by the Aviatrix Controller is y default not editable</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> rule injected by the Aviatrix Controller is by default not editable</p>
 </div>
 <figure class="align-center" id="id30">
 <img alt="../_images/lab6-new010.png" src="../_images/lab6-new010.png" />
@@ -795,37 +795,55 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <ul class="simple">
 <li><p>From your SSH client opened on the <strong><em>aws-us-east-2-spoke1-test1</em></strong> instance, launch again the following curl commands:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.aviatrix.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-I<span class="w"> </span>https://aviatrix.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-I<span class="w"> </span>https://www.espn.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-I<span class="w"> </span>https://www.football.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.football.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-I<span class="w"> </span>https://www.wikipedia.org
 </pre></div>
 </div>
 <figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab6-curl.png"><img alt="../_images/lab6-curl.png" src="../_images/lab6-curl.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 224 </span><span class="caption-text">curl commands</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 224 </span><span class="caption-text">curl command-01</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id37">
+<a class="reference internal image-reference" href="../_images/lab6-curl02.png"><img alt="../_images/lab6-curl02.png" src="../_images/lab6-curl02.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 225 </span><span class="caption-text">curl command-02</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id38">
+<a class="reference internal image-reference" href="../_images/lab6-curl03.png"><img alt="../_images/lab6-curl03.png" src="../_images/lab6-curl03.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 226 </span><span class="caption-text">curl command-03</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id39">
+<a class="reference internal image-reference" href="../_images/lab6-curl04.png"><img alt="../_images/lab6-curl04.png" src="../_images/lab6-curl04.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 227 </span><span class="caption-text">curl command-04</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Overview</strong>, and you will see the visibility of the domain hits.</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id40">
 <a class="reference internal image-reference" href="../_images/lab6-newrul12.png"><img alt="../_images/lab6-newrul12.png" src="../_images/lab6-newrul12.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 225 </span><span class="caption-text">Overview</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 228 </span><span class="caption-text">Overview</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you have finally the  <strong>Egress observability</strong> with a full list of domains hit by the EC2 instance inside that private subnet.</p>
 <p>Furthermore, go to <strong>CoPilot &gt; Security &gt; Egress &gt; Monitor</strong> and from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window, select the <strong><em>aws-us-east-2-spoke1 VPC</em></strong>.</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id41">
 <a class="reference internal image-reference" href="../_images/lab6-monitor.png"><img alt="../_images/lab6-monitor.png" src="../_images/lab6-monitor.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 226 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will get a granular Layer 7 visibility that allows you to get a good understanding of how the egress traffic has been consumed and also allows you to help make decisions on how to potentially optimize that.</p>
@@ -838,54 +856,54 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <h3>8.1 Create a New WebGroup<a class="headerlink" href="#create-a-new-webgroup" title="Link to this heading">#</a></h3>
 <p>Let’s move towards a posture where only specific egress domains are in place.</p>
 <p>Go to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id42">
 <img alt="../_images/lab6-webgroup.png" src="../_images/lab6-webgroup.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 227 </span><span class="caption-text">+WebGroup</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 230 </span><span class="caption-text">+WebGroup</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create a <strong><em>WebGroup</em></strong> with the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>two-domains</span></p></li>
 <li><p><strong>Type</strong>: <span style='color:#479608'>Domains</span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'>aviatrix.com</span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.wikipedia.org">www.wikipedia.org</a></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id43">
 <img alt="../_images/lab6-webgroup2.png" src="../_images/lab6-webgroup2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 228 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 231 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The purpose of this <strong>WebGroup</strong> is to authorize traffic only to the domains <em><code class="docutils literal notranslate"><span class="pre">www.aviatrix.com</span></code></em> and <em><code class="docutils literal notranslate"><span class="pre">www.wikipedia.com.</span></code></em> Therefore, curl commands issued to other domains will be blocked.</p>
+<p>The purpose of this <strong>WebGroup</strong> is to authorize traffic only to the domains <em><code class="docutils literal notranslate"><span class="pre">aviatrix.com</span></code></em> and <em><code class="docutils literal notranslate"><span class="pre">www.wikipedia.org</span></code></em>. Therefore, curl commands issued to other domains will be blocked.</p>
 </div>
 </section>
 <section id="edit-the-egress-rule">
 <h3>8.2 Edit the Egress-Rule<a class="headerlink" href="#edit-the-egress-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong>, click on the <strong>pencil</strong> button on the right-hand side of the <code class="docutils literal notranslate"><span class="pre">Egress-Rule</span></code>.</p>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id44">
 <img alt="../_images/lab6-webgroup2346.png" src="../_images/lab6-webgroup2346.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Pencil icon</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 232 </span><span class="caption-text">Pencil icon</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Now remove the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;All-Web&quot;</span></code> and then select the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;two-domains&quot;</span></code>.</p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong> and then <strong>Commit</strong> your changes!</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id45">
 <img alt="../_images/lab6-webgroup234.png" src="../_images/lab6-webgroup234.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Editing the Egress-Rule</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Editing the Egress-Rule</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id46">
 <a class="reference internal image-reference" href="../_images/lab6-webgroup2345.png"><img alt="../_images/lab6-webgroup2345.png" src="../_images/lab6-webgroup2345.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Commit the changes</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Commit the changes</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -899,10 +917,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <section id="test-the-modified-rule">
 <h3>8.3 Test the modified rule<a class="headerlink" href="#test-the-modified-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and turn on the toggle <strong><em>Auto Refresh</em></strong>.</p>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id47">
 <a class="reference internal image-reference" href="../_images/lab6-defaultdenyall06.png"><img alt="../_images/lab6-defaultdenyall06.png" src="../_images/lab6-defaultdenyall06.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 232 </span><span class="caption-text">Auto Refresh</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Auto Refresh</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -921,24 +939,24 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 <p>Only the first two curl commands will be successful!</p>
-<figure class="align-center" id="id45">
+<figure class="align-center" id="id48">
 <img alt="../_images/lab6-newpic.png" src="../_images/lab6-newpic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Curl commands</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Curl commands</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice almost instanteously that only <strong><em><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.wikipedia.com">www.wikipedia.com</a></em></strong> are allowed. Traffic towards <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong> will be immediately dropped.</p>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id49">
 <a class="reference internal image-reference" href="../_images/lab6-liveview.png"><img alt="../_images/lab6-liveview.png" src="../_images/lab6-liveview.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Permit</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Permit</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id50">
 <a class="reference internal image-reference" href="../_images/lab6-finaltopo.png"><img alt="../_images/lab6-finaltopo.png" src="../_images/lab6-finaltopo.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 238 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
