@@ -27,7 +27,7 @@ Access to both the _Azure_ console and the _GCP_ console are not granted.
 ```
 
 ## 2. Azure VNet
-### 2.1. Create Azure VNet
+### 2.1 Create Azure VNet
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
@@ -139,8 +139,8 @@ Please, be patient!
 
 ## 3. AWS VPC
 
-### 3.1. Create AWS VPC
-
+### 3.1  Create AWS VPC
+ 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
 Verify once again whether the CIDR range `10.0.22.0/24` is overlapping with an existing CIDR or not, as shown below.
@@ -204,7 +204,7 @@ align: center
 Verification
 ```
 
-### 3.2. Verify from AWS Console
+### 3.2 Verify from AWS Console
 
 Log in to the **AWS console**. Refer to your pod info for login information (this screenshot is for **Pod 2**).
 
@@ -294,7 +294,7 @@ IGW created by the Aviatrix Controller
 
 ## 4. GCP VPC
 
-### 4.1. Create GCP VPC
+### 4.1 Create GCP VPC
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
