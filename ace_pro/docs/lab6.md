@@ -630,7 +630,7 @@ align: center
 Diagnostics Tools
 ```
 
-let's analize the outcome from the Traceroute command: 
+Let's analyze the outcome from the `Traceroute` command:
 
 ```{figure} images/lab6-diag01.png
 ---
@@ -647,7 +647,7 @@ Traceroute
 5) The **fifth** hop is the final destination: **_azure-west-us-spoke2-test2_**
 
 ```{note}
-In this scenario, the Health Check mechanism it's the Aviatrix Controller that is pinging every 5 seconds the **_management_** interface of the PaloAlto Firewall.
+"In this scenario, the `Health Check` mechanism involves the Aviatrix Controller pinging the **_management interface_** of the Palo Alto Firewall every **5** seconds.
 ```
 
 ## 10. Final Considerations
