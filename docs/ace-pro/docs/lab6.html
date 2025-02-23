@@ -372,7 +372,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-ssh-client-bonus">7.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-considerations">8. Final Considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fw-path-verification">8. FW Path Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-considerations">9. Final Considerations</a></li>
 </ul>
             </nav>
         </div>
@@ -833,23 +834,64 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p><span class="caption-number">Fig. 292 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The same policy is present on both the PaloAlto firewall and on the Spoke Gateway…</p>
+</section>
+</section>
+<section id="fw-path-verification">
+<h2>8. FW Path Verification<a class="headerlink" href="#fw-path-verification" title="Link to this heading">#</a></h2>
+<p>Let’s verify that the traffic generated from both VNets is indeed diverted to the firewall.</p>
+<figure class="align-center" id="id44">
+<a class="reference internal image-reference" href="../_images/lab6-verification.png"><img alt="../_images/lab6-verification.png" src="../_images/lab6-verification.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 293 </span><span class="caption-text">The inspected VNets</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s retrieve the <strong>Private IP address</strong> of the VM in  the <strong><em>azure-west-us-spoke2</em></strong> VNet.</p>
+<ul class="simple">
+<li><p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for the <strong><em>azure-west-us-spoke2-test<span style='color:#33ECFF'>2</span></summary></em></strong> instance. Identify its Private IP address and copy it.</p></li>
+</ul>
+<figure class="align-center" id="id45">
+<a class="reference internal image-reference" href="../_images/lab6-searchfor.png"><img alt="../_images/lab6-searchfor.png" src="../_images/lab6-searchfor.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 294 </span><span class="caption-text">Search for azure-west-us-spoke2-test2</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now navigate to CoPilot &gt; Diagnostics &gt; Diagnostics Tools &gt;, select the <strong><em>azure-west-us-spoke<span style='color:#33ECFF'>1</span></summary></em></strong> Gateway, then select the <strong>Traceroute</strong> command. Paste the IP address previously copied from the <strong>Cloud Assets</strong> section into the <code class="docutils literal notranslate"><span class="pre">Destination</span> <span class="pre">(IP</span> <span class="pre">/</span> <span class="pre">Hostname)</span></code> field, and then click on <strong>Run</strong>.</p>
+<figure class="align-center" id="id46">
+<a class="reference internal image-reference" href="../_images/lab6-diag00.png"><img alt="../_images/lab6-diag00.png" src="../_images/lab6-diag00.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 295 </span><span class="caption-text">Diagnostics Tools</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>let’s analize the outcome from the Traceroute command:</p>
+<figure class="align-center" id="id47">
+<a class="reference internal image-reference" href="../_images/lab6-diag01.png"><img alt="../_images/lab6-diag01.png" src="../_images/lab6-diag01.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 296 </span><span class="caption-text">Traceroute</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>The <strong>first</strong> hop represents the Transit Firenet Gateway.</p></li>
+<li><p>The <strong>second</strong> hop is actually ther Fw, that didn’t not respond to the UDP packet, becauce the ICMP traffic is not enabled inbound on the LAN Interface of the FW.</p></li>
+<li><p>The <strong>third</strong> hop is again the Transit FireNet Gateway.</p></li>
+<li><p>The <strong>forth</strong> hop is the Spoke  GW azure-west-us-spoke2</p></li>
+<li><p>The <strong>fifth</strong> hop is the final destination: <strong><em>azure-west-us-spoke2-test2</em></strong></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this scenario, the Health Check mechanism it’s the Aviatrix Controller that is pinging every 5 seconds the <strong><em>management</em></strong> interface of the PaloAlto Firewall.</p>
 </div>
 </section>
-</section>
 <section id="final-considerations">
-<h2>8. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
+<h2>9. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Maybe it’s time to finally embrace the full-blown <strong><code class="docutils literal notranslate"><span class="pre">&quot;Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code></strong> solution and get rid of the expensive NGFW!</p>
 </div>
 <p>After completing this lab, the overall topology will appear as follows:</p>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id48">
 <a class="reference internal image-reference" href="../_images/lab7-finaltopology2.png"><img alt="../_images/lab7-finaltopology2.png" src="../_images/lab7-finaltopology2.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 293 </span><span class="caption-text">Final Topology for Lab 6</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 297 </span><span class="caption-text">Final Topology for Lab 6</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -947,7 +989,8 @@ Do not forget to click on <strong>Save</strong>.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-ssh-client-bonus">7.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-considerations">8. Final Considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fw-path-verification">8. FW Path Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-considerations">9. Final Considerations</a></li>
 </ul>
   </nav></div>
 
