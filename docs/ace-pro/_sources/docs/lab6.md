@@ -439,12 +439,11 @@ align: center
 Commit
 ```
 
-You have re-established the Deny-List model!
+You have successfully re-established the Deny-List model!
 
 ```{important}
 Deny-List Model (formerly known as _blacklist_) = basic access control mechanism that allows through all elements except those explicitly mentioned on a “deny” list.
 ```
-
 
 ## 7. Connectivity Testing
 
@@ -461,6 +460,32 @@ align: center
 ---
 Gatus
 ```
+
+```{figure} images/lab6-gatus90.png
+---
+height: 400px
+align: center
+---
+azure-west-us-spoke1-test1
+```
+
+```{figure} images/lab6-gatus91.png
+---
+height: 400px
+align: center
+---
+azure-west-us-spoke2-test1
+```
+
+```{figure} images/lab6-gatus92.png
+---
+height: 400px
+align: center
+---
+gcp-us-central1-spoke1-test1
+```
+
+All three instances can reach each other!
 
 ### 7.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
