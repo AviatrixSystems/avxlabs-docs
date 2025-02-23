@@ -3,7 +3,7 @@
 ## 1. Objective
 
 The objective of this lab is to learn how to deploy **Palo Alto** Networks (aka PAN) VM-series firewalls in the **Transit VNet** and inspect traffic between the two Spoke VNets using firewall policies.
- 
+
 ## 2. FireNet Overview (Firewall Network)
 
 Aviatrix Firewall Network (aka *`FireNet`*) is a turnkey solution to deploy and manage firewall instances in the cloud, as shown in the topology below. Firewall Network significantly simplifies virtual firewall deployment and allows the firewall to inspect VPC/VNet/VCN to VPC/VNet/VCN (East West) traffic, VPC/VNet/VCN to Internet (Egress) traffic, and VPC/VNet/VCN to on-prem including partners and branches (North South) traffic.
@@ -400,38 +400,14 @@ align: center
 Allow-All
 ```
 
-## 6. Verification
+## 6. DCF Rules
 
-Verify the traffic flows within Azure and from Azure to GCP as shown below, by following steps 5.1 - 5.2:
+In Lab 5 (_Aviatrix Cloud Firewall_), the DCF functionality was enabled. The currently permitted rules are:
 
-```{figure} images/lab7-topology2.png
----
-height: 400px
-align: center
----
-Lab 7 Topology with FW deployed and the Inspection Policy applied!
-```
-
-After this step, this is how the topology should look like:
-
-```{figure} images/lab7-finaltopology.png
----
-height: 400px
-align: center
----
-Lab 7 Final Topology
-```
-
-```{warning}
-On Lab 5 (Egress), the DCF functionality was enabled. The current permitted rules are:
-
-1) The `"Inspect-DNS"`, that is only allowing traffic towards UDP port 53.
-2) The `"Egress-Rule"` , that is only allowing http/https traffic towards two domains. 
-3) The `"Explicit-Deny-Rule"` with _Logging_=on
+1) The `"Egress-Rule"` , that is only allowing http/https traffic towards two defined domains. 
+2) The `"ExplicitDenyAll"` with _Logging_=on
+3) The `"Greenfield-Rule"`
 4) The `"DefaultDenyAll"`, at the very bottom.
-
-Before launching any connectivity tests, <ins>you need to recreate the **_Greenfield-Rule_**  on the top of the DCF Rules list!
-```
 
 ```{figure} images/lab7-dcfrule.png
 ---
@@ -441,47 +417,33 @@ align: center
 DCF rules
 ```
 
-- Create the **Greenfield-Rule**
+### 6.1 Move the Greenfield-Rule
 
-```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
-```
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules**, then click on Move button on the Greenfield-Rule entry and, choose `Top`. Do not forget to click `"Save Draft"`.
 
-```{figure} images/lab7-top.png
----
-align: center
----
-New Rule
-```
-
-Insert the following parameters
-
-- **Name**: <span style='color:#479608'>Greenfield-Rule</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
-- **Protocol**: <span style='color:#479608'>Any</span>
-- **Enforcement**: <span style='color:#479608'>**On**</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
-
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab7-edit.png
----
-align: center
----
-Greenfield-Rule
-```
-
-Once again do not forget to **Commit** your rule.
-
-```{figure} images/lab7-newone2.png
+```{figure} images/lab6-new101.png
 ---
 height: 300px
 align: center
 ---
-Commit the Greenfield-Rule
+Move
 ```
+
+Now click on the **Commit** button.
+
+```{figure} images/lab6-new102.png
+---
+height: 250px
+align: center
+---
+Commit
+```
+
+## 7. Connectivity Testing
+
+Verify that each test instance can ping each other.
+
+### 7.1 Connectivity Test Using the Gatus App
 
 ### 5.1.1 Launch connectivity test
 
