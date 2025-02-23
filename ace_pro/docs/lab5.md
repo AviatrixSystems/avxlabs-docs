@@ -543,7 +543,7 @@ Monitor
 
 You will get a granular Layer 7 visibility that allows you to get a good understanding of how the egress traffic has been consumed and also allows you to help make decisions on how to potentially optimize that.
 
-## 8. ZTNA - Zero Trust Network Architecture
+## 8. ZTNA - Zero Trust Network Access
 
 Now we have enabled the `Zero Trust Network Access` approach, denying everything at the very bottom of the DCF rules list.
 
