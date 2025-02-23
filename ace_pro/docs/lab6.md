@@ -542,11 +542,61 @@ align: center
 Logs
 ```
 
-```{important}
-The same policy is present on both the PaloAlto firewall and on the Spoke Gateway...
+## 8. FW Path Verification
+
+Let's verify that the traffic generated from both VNets is indeed diverted to the firewall.
+
+```{figure} images/lab6-verification.png
+---
+height: 400px
+align: center
+---
+The inspected VNets
 ```
 
-## 8. Final Considerations
+Let's retrieve the **Private IP address** of the VM in  the **_azure-west-us-spoke2_** VNet.
+
+- Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_azure-west-us-spoke2-test<span style='color:#33ECFF'>2</span></summary>_** instance. Identify its Private IP address and copy it.
+
+```{figure} images/lab6-searchfor.png
+---
+height: 400px
+align: center
+---
+Search for azure-west-us-spoke2-test2
+```
+
+Now navigate to CoPilot > Diagnostics > Diagnostics Tools >, select the **_azure-west-us-spoke<span style='color:#33ECFF'>1</span></summary>_** Gateway, then select the **Traceroute** command. Paste the IP address previously copied from the **Cloud Assets** section into the `Destination (IP / Hostname)` field, and then click on **Run**.
+
+```{figure} images/lab6-diag00.png
+---
+height: 400px
+align: center
+---
+Diagnostics Tools
+```
+
+let's analize the outcome from the Traceroute command: 
+
+```{figure} images/lab6-diag01.png
+---
+height: 400px
+align: center
+---
+Traceroute
+```
+
+1) The **first** hop represents the Transit Firenet Gateway.
+2) The **second** hop is actually ther Fw, that didn't not respond to the UDP packet, becauce the ICMP traffic is not enabled inbound on the LAN Interface of the FW.
+3) The **third** hop is again the Transit FireNet Gateway.
+4) The **forth** hop is the Spoke  GW azure-west-us-spoke2
+5) The **fifth** hop is the final destination: **_azure-west-us-spoke2-test2_**
+
+```{note}
+In this scenario, the Health Check mechanism it's the Aviatrix Controller that is pinging every 5 seconds the **_management_** interface of the PaloAlto Firewall.
+```
+
+## 9. Final Considerations
 
 ```{important}
 Maybe it's time to finally embrace the full-blown **`"Distributed Cloud Firewall"`** solution and get rid of the expensive NGFW!
