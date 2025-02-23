@@ -262,7 +262,7 @@ Verify that both the **EAST-1** region and **EAST-2** region in AWS have connect
 
 ### 8.1 Connectivity Testing Using the Gatus App
 
-First and foremost, navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_**. 
+First and foremost, navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_**.
 
 Insert the credentials available on your POD Portal and then click on **"Sign in"**.
 
