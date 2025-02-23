@@ -89,6 +89,14 @@ align: center
 Association
 ```
 
+```{figure} images/lab6-finalsegmentation.png
+---
+height: 400px
+align: center
+---
+Topology
+```
+
 ### 4.3 Firenet Workflow
 
 ```{figure} images/lab7-workflow.png
@@ -305,6 +313,14 @@ align: center
 Inspection Policy accomplished
 ```
 
+```{figure} images/lab6-inspectionpolicy.png
+---
+height: 400px
+align: center
+---
+Inspection Policy accomplished
+```
+
 ## 5. Firewall Configuration Verification <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Once you have deployed the firewall, applied both the Vendor Integration and the Inspection Policy, you can optionally decide to log in to the firewall.
@@ -372,10 +388,13 @@ align: center
 Static Routes (RFC1918 routes)
 ```
 
+### 5.2 Verify Firewall Policy
+
 Continue to explore the configuration of the PaloAlto FW. Navigate to `Policies` tab to find out that the firewall was pre-configured with a simple **Allow-All** policy.
 
 ```{figure} images/lab6-paloalto.png
 ---
+height: 400px
 align: center
 ---
 Allow-All
