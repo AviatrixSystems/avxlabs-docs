@@ -64,7 +64,7 @@ The **_azure-west-us-transit_** is already enabled for **FireNet** functionality
 
 ### 4.2 Network Segmentation Configuration
 
-Before proceeding with the FireNet impmementationy, we need to associate **_azure-west-s-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
+Before proceeding with the FireNet implementation, we need to associate **_azure-west-s-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains**
 
@@ -167,7 +167,7 @@ Firenet Deployment Template
 ```
 
 ```{warning}
-Please be patient - firewall deployment can take a long time, **_up to 20 minutes_**, due to the slow responsiveness of Azure API calls to prepare the firewall. Even after the firewall is created and is assigned a Public IP address, it doesn't mean it can be accessed immediately. If you try accessing it too early, your experience may vary.
+Please be patient - firewall deployment can take a long time, **_up to 20 minutes_**, due to the slow responsiveness of Azure API calls to prepare the firewall. Even after the firewall is created and is assigned a Public IP address, it doesn't mean it can be accessed immediately. 
 ```
 
 ```{figure} images/lab7-inprogress.png
@@ -189,7 +189,25 @@ align: center
 Deployment completed
 ```
 
-Even after that message, it doesn't mean you can access the firewall (i.e. **URL**). Within **5-10 minutes** after you receive confirmation about the firewall being created, you should be able to access it.
+```{figure} images/lab7-url.png
+---
+height: 150px
+align: center
+---
+Deployment completed
+```
+
+Check the Notification section on your CoPilot, during the deployment process.
+
+  Go to **CoPilot > Monitor > Notifications > Tasks**
+
+```{figure} images/lab6-firenettaskalert.png
+---
+height: 150px
+align: center
+---
+Notification Panel
+```
 
 #### 4.3.2 Firewall Vendor Integration
 
@@ -205,7 +223,7 @@ align: center
 Vendor Integration
 ```
 
-Insert the following paramenters in the `"Vendor Integration"` pop-up window.
+Insert the following parameters in the `"Vendor Integration"` pop-up window.
 
 - **Management IP Address**: <span style='color:#479608'>**Auto populated**</span>
 - **Vendor**: <span style='color:#479608'>Palo Alto Networks VM-Series</span>
@@ -371,33 +389,6 @@ height: 400px
 align: center
 ---
 Lab 7 Topology with FW deployed and the Inspection Policy applied!
-```
-
-## 5.1. Inside Azure
-
-Before we can verify connectivity, we need to associate **_azure-west-us-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
-
-Go to **CoPilot > Networking > Network Segmentation > Network Domains**
-
-Click the *pencil icon* to edit the Green network domain.
-
-```{figure} images/lab7-editnd.png
----
-height: 150px
-align: center
----
-Edit Green
-```
-
-Select the gateway **_azure-west-us-spoke2_** from the drop-down window, selecting the `"Associations"` field.
-
-Then click **Save**:
-
-```{figure} images/lab7-nd2.png
----
-align: center
----
-Association
 ```
 
 After this step, this is how the topology should look like:
