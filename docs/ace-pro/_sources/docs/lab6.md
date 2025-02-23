@@ -452,7 +452,7 @@ Navigate to your POD Portal, locate the `Gatus widget`, and select both **_azure
 height: 250px
 align: center
 ---
-Commit
+Gatus
 ```
 
 ### 7.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
@@ -544,11 +544,15 @@ Logs
 
 ```{important}
 The same policy is present on both the PaloAlto firewall and on the Spoke Gateway...
-
-Maybe it's time to finally embrace the full-blown **`"Distributed Cloud Firewall"`** solution, and getting rid of the expensive NGFW!
 ```
 
-After completing this Lab, the overall topology would look like this:
+## 8. Final Considerations
+
+```{important}
+Maybe it's time to finally embrace the full-blown **`"Distributed Cloud Firewall"`** solution and get rid of the expensive NGFW!
+```
+
+After completing this lab, the overall topology will appear as follows:
 
 ```{figure} images/lab7-finaltopology2.png
 ---
