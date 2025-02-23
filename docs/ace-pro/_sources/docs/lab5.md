@@ -668,7 +668,6 @@ curl command-01
 
 ```{figure} images/lab6-curl021.png
 ---
-height: 450px
 align: center
 ---
 curl command-02
@@ -676,7 +675,6 @@ curl command-02
 
 ```{figure} images/lab6-curl031.png
 ---
-height: 400px
 align: center
 ---
 curl command-03
@@ -751,7 +749,7 @@ align: center
 Selection of the AWS NAT GW
 ```
 
-```{figure} images/lab5-region999.png
+```{figure} images/lab5-region9991.png
 ---
 height: 300px
 align: center
