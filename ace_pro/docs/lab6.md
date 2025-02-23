@@ -189,17 +189,9 @@ align: center
 Deployment completed
 ```
 
-```{figure} images/lab7-url.png
----
-height: 150px
-align: center
----
-Deployment completed
-```
+Check the `Notifications` section on your CoPilot, during the deployment process.
 
-Check the Notification section on your CoPilot, during the deployment process.
-
-  Go to **CoPilot > Monitor > Notifications > Tasks**
+- Go to **CoPilot > Monitor > Notifications > Tasks**
 
 ```{figure} images/lab6-firenettaskalert.png
 ---
@@ -210,6 +202,10 @@ Notification Panel
 ```
 
 #### 4.3.2 Firewall Vendor Integration
+
+```{important}
+Before proceeding with the Vendor Integration, please wait for the confirmation of the firewall's deployment.
+```
 
 The `Vendor Integration` allows inserting the Summary Routes into the the Firewall's Routing Table.
 
@@ -309,9 +305,22 @@ align: center
 Inspection Policy accomplished
 ```
 
-Now try to click on the *hyperlink* of the firewall. You should be able to see the page where entering the credentials (refer to you POD portal).
-
 ## 5. Firewall Configuration Verification <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+Once you have deployed the firewall, applied both the Vendor Integration and the Inspection Policy, you can optionally decide to log in to the firewall.
+
+```{important}
+Please bear in mind that you will have to accept a self-signed certificate. If you are using a corporate laptop, please ignore this verification and skim through this section to understand the purpose of this task.
+```
+
+ Try to click on the *hyperlink* of the firewall. You should be able to see the page where entering the credentials (refer to you POD portal).
+
+ ```{figure} images/lab6-mgmtfw.png
+---
+align: center
+---
+URL
+```
 
 Once you access the firewall in your web browser via **HTTPS**, you might get a warning about an invalid certification based on your browser settings. This is just because it has a **_self-signed certificate_**. Navigate past that to get to the login prompt. Sign in as `avxadmin` as the username and the password you entered earlier.
 
