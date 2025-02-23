@@ -349,9 +349,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-configuration">4. FireNet Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-transit-to-spoke-peering">4.1 Azure Transit to Spoke Peering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pan-firewall-deployment">4.2 PAN Firewall Deployment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-vendor-integration">4.3 Firewall Vendor Integration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-policy">4.4 FireNet Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-workflow">4.2 Firenet Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pan-firewall-deployment">4.2.1 PAN Firewall Deployment</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-vendor-integration">4.2.2 Firewall Vendor Integration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-policy">4.2.3 FireNet Policy</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-configuration-verification-bonus">5. Firewall Configuration Verification <span style="color:#33ECFF">(BONUS)</span></a><ul class="nav section-nav flex-column">
@@ -394,7 +397,7 @@ document.write(`
 <figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/lab7-topology.png"><img alt="../_images/lab7-topology.png" src="../_images/lab7-topology.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 250 </span><span class="caption-text">Lab 7 Initial Topology</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 250 </span><span class="caption-text">Lab 6 Initial Topology</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -429,8 +432,10 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p>The <strong><em>azure-west-us-transit</em></strong> is already enabled for <strong>FireNet</strong> functionality.</p>
 </div>
 </section>
+<section id="firenet-workflow">
+<h3>4.2 Firenet Workflow<a class="headerlink" href="#firenet-workflow" title="Link to this heading">#</a></h3>
 <section id="pan-firewall-deployment">
-<h3>4.2 PAN Firewall Deployment<a class="headerlink" href="#pan-firewall-deployment" title="Link to this heading">#</a></h3>
+<h4>4.2.1 PAN Firewall Deployment<a class="headerlink" href="#pan-firewall-deployment" title="Link to this heading">#</a></h4>
 <p>In this step you will be deploying a PAN firewall from the Aviatrix CoPilot with a <code class="docutils literal notranslate"><span class="pre">Bootstrap</span> <span class="pre">package</span></code>.</p>
 <p>The bootstrap package will take care of the following pre-provisioning on the Firewall:</p>
 <ul class="simple">
@@ -510,7 +515,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p>Even after that message, it doesn’t mean you can access the firewall (i.e. <strong>URL</strong>). Within <strong>5-10 minutes</strong> after you receive confirmation about the firewall being created, you should be able to access it.</p>
 </section>
 <section id="firewall-vendor-integration">
-<h3>4.3 Firewall Vendor Integration<a class="headerlink" href="#firewall-vendor-integration" title="Link to this heading">#</a></h3>
+<h4>4.2.2 Firewall Vendor Integration<a class="headerlink" href="#firewall-vendor-integration" title="Link to this heading">#</a></h4>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;three</span> <span class="pre">dots&quot;</span></code> symbol on the right-hand side of the <strong><em>azure-west-us-transit</em></strong> row, and then click on <code class="docutils literal notranslate"><span class="pre">Vendor</span> <span class="pre">Integration</span></code>.</p>
 <figure class="align-center" id="id12">
 <a class="reference internal image-reference" href="../_images/lab7-vendor.png"><img alt="../_images/lab7-vendor.png" src="../_images/lab7-vendor.png" style="height: 150px;" /></a>
@@ -569,7 +574,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 </div>
 </section>
 <section id="firenet-policy">
-<h3>4.4 FireNet Policy<a class="headerlink" href="#firenet-policy" title="Link to this heading">#</a></h3>
+<h4>4.2.3 FireNet Policy<a class="headerlink" href="#firenet-policy" title="Link to this heading">#</a></h4>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <strong><em>azure-west-us-transit</em></strong> Transit FireNet GW and then choose the <code class="docutils literal notranslate"><span class="pre">&quot;Policy&quot;</span></code> tab.</p>
 <figure class="align-center" id="id18">
 <img alt="../_images/lab7-inspection2.png" src="../_images/lab7-inspection2.png" />
@@ -591,6 +596,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 </figcaption>
 </figure>
 <p>Now try to click on the <em>hyperlink</em> of the firewall. You should be able to see the page where entering the credentials (refer to you POD portal).</p>
+</section>
 </section>
 </section>
 <section id="firewall-configuration-verification-bonus">
@@ -894,9 +900,12 @@ Do not forget to click on <strong>Save</strong>.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3. Topology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-configuration">4. FireNet Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-transit-to-spoke-peering">4.1 Azure Transit to Spoke Peering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pan-firewall-deployment">4.2 PAN Firewall Deployment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-vendor-integration">4.3 Firewall Vendor Integration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-policy">4.4 FireNet Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-workflow">4.2 Firenet Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pan-firewall-deployment">4.2.1 PAN Firewall Deployment</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-vendor-integration">4.2.2 Firewall Vendor Integration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-policy">4.2.3 FireNet Policy</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-configuration-verification-bonus">5. Firewall Configuration Verification <span style="color:#33ECFF">(BONUS)</span></a><ul class="nav section-nav flex-column">
