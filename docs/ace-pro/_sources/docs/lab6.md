@@ -62,9 +62,43 @@ Attachment
 The **_azure-west-us-transit_** is already enabled for **FireNet** functionality.
 ```
 
-### 4.2 Firenet Workflow
+### 4.2 Network Segmentation Configuration
 
-#### 4.2.1 PAN Firewall Deployment
+Before proceeding with the FireNet impmementationy, we need to associate **_azure-west-s-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
+
+Go to **CoPilot > Networking > Network Segmentation > Network Domains**
+
+Click the *pencil icon* to edit the Green network domain.
+
+```{figure} images/lab7-editnd.png
+---
+height: 150px
+align: center
+---
+Edit Green
+```
+
+Select the gateway **_azure-west-us-spoke2_** from the drop-down window, selecting the `"Associations"` field.
+
+Then click **Save**:
+
+```{figure} images/lab7-nd2.png
+---
+align: center
+---
+Association
+```
+
+### 4.3 Firenet Workflow
+
+```{figure} images/lab7-workflow.png
+---
+align: center
+---
+Workflow
+```
+
+#### 4.3.1 PAN Firewall Deployment
 
 In this step you will be deploying a PAN firewall from the Aviatrix CoPilot with a `Bootstrap package`. 
 
@@ -157,7 +191,9 @@ Deployment completed
 
 Even after that message, it doesn't mean you can access the firewall (i.e. **URL**). Within **5-10 minutes** after you receive confirmation about the firewall being created, you should be able to access it.
 
-#### 4.2.2 Firewall Vendor Integration
+#### 4.3.2 Firewall Vendor Integration
+
+The `Vendor Integration` allows inserting the Summary Routes into the the Firewall's Routing Table.
 
 Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three dots"` symbol on the right-hand side of the **_azure-west-us-transit_** row, and then click on `Vendor Integration`.
 
