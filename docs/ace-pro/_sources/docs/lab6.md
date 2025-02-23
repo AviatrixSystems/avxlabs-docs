@@ -212,7 +212,7 @@ Notification Panel
 #### 4.3.2 Firewall Vendor Integration
 
 ```{important}
-Before proceeding with the Vendor Integration, please wait for the confirmation of the firewall's deployment.
+Before proceeding with the vendor integration, please wait for confirmation that the firewall's deployment was successful.
 ```
 
 The `Vendor Integration` allows inserting the Summary Routes into the the Firewall's Routing Table.
@@ -272,7 +272,7 @@ align: center
 Click on the Firewall
 ```
 
-You will see the RFC 1918 routes that the Controller automatically programmed on the Firewall, through the `"Vendor Integration"`. Notice how each RFC1918 route has a prefix of `"AVX-"` to show that it is programmed by Aviatrix.
+You will see the RFC1918 routes that the Controller automatically programmed on the Firewall, through the `"Vendor Integration"`. Notice how each RFC1918 route has a prefix of `"AVX-"` to show that it is programmed by Aviatrix.
 
 ```{figure} images/lab7-vendor5.png
 ---
@@ -286,7 +286,7 @@ Vendor Integration outcome
 IP address **168.63.129.16** is a virtual public IP address that is used to facilitate a communication channel to Azure platform resources. Customers can define any address space for their private virtual network in Azure. Therefore, the Azure platform resources must be presented as a unique public IP address.
 ```
 
-#### 4.2.3 FireNet Policy
+#### 4.3.3 FireNet Policy
 
 Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_azure-west-us-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
 
@@ -326,7 +326,7 @@ Inspection Policy accomplished
 Once you have deployed the firewall, applied both the Vendor Integration and the Inspection Policy, you can optionally decide to log in to the firewall.
 
 ```{important}
-Please bear in mind that you will have to accept a **_self-signed certificate_**. If you are using a corporate laptop, please ignore this verification and skim through this section to understand the purpose of this task.
+Please bear in mind that you will have to accept a **_self-signed certificate_**. <ins>If you are using a corporate laptop, please ignore this verification and skim through this section to understand the purpose of this task</ins>.
 ```
 
  Try to click on the *hyperlink* of the firewall. You should be able to see the page where entering the credentials (refer to you POD portal).
@@ -438,6 +438,13 @@ align: center
 ---
 Commit
 ```
+
+You have re-established the Deny-List model!
+
+```{important}
+Deny-List Model (formerly known as _blacklist_) = basic access control mechanism that allows through all elements except those explicitly mentioned on a “deny” list.
+```
+
 
 ## 7. Connectivity Testing
 

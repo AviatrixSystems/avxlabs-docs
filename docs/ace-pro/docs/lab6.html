@@ -353,7 +353,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-workflow">4.3 Firenet Workflow</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pan-firewall-deployment">4.3.1 PAN Firewall Deployment</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-vendor-integration">4.3.2 Firewall Vendor Integration</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-policy">4.2.3 FireNet Policy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-policy">4.3.3 FireNet Policy</a></li>
 </ul>
 </li>
 </ul>
@@ -565,7 +565,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <h4>4.3.2 Firewall Vendor Integration<a class="headerlink" href="#firewall-vendor-integration" title="Link to this heading">#</a></h4>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Before proceeding with the Vendor Integration, please wait for the confirmation of the firewall’s deployment.</p>
+<p>Before proceeding with the vendor integration, please wait for confirmation that the firewall’s deployment was successful.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">Vendor</span> <span class="pre">Integration</span></code> allows inserting the Summary Routes into the the Firewall’s Routing Table.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;three</span> <span class="pre">dots&quot;</span></code> symbol on the right-hand side of the <strong><em>azure-west-us-transit</em></strong> row, and then click on <code class="docutils literal notranslate"><span class="pre">Vendor</span> <span class="pre">Integration</span></code>.</p>
@@ -613,7 +613,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p><span class="caption-number">Fig. 269 </span><span class="caption-text">Click on the Firewall</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will see the RFC 1918 routes that the Controller automatically programmed on the Firewall, through the <code class="docutils literal notranslate"><span class="pre">&quot;Vendor</span> <span class="pre">Integration&quot;</span></code>. Notice how each RFC1918 route has a prefix of <code class="docutils literal notranslate"><span class="pre">&quot;AVX-&quot;</span></code> to show that it is programmed by Aviatrix.</p>
+<p>You will see the RFC1918 routes that the Controller automatically programmed on the Firewall, through the <code class="docutils literal notranslate"><span class="pre">&quot;Vendor</span> <span class="pre">Integration&quot;</span></code>. Notice how each RFC1918 route has a prefix of <code class="docutils literal notranslate"><span class="pre">&quot;AVX-&quot;</span></code> to show that it is programmed by Aviatrix.</p>
 <figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../_images/lab7-vendor5.png"><img alt="../_images/lab7-vendor5.png" src="../_images/lab7-vendor5.png" style="height: 400px;" /></a>
 <figcaption>
@@ -626,7 +626,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 </div>
 </section>
 <section id="firenet-policy">
-<h4>4.2.3 FireNet Policy<a class="headerlink" href="#firenet-policy" title="Link to this heading">#</a></h4>
+<h4>4.3.3 FireNet Policy<a class="headerlink" href="#firenet-policy" title="Link to this heading">#</a></h4>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <strong><em>azure-west-us-transit</em></strong> Transit FireNet GW and then choose the <code class="docutils literal notranslate"><span class="pre">&quot;Policy&quot;</span></code> tab.</p>
 <figure class="align-center" id="id22">
 <img alt="../_images/lab7-inspection2.png" src="../_images/lab7-inspection2.png" />
@@ -661,7 +661,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p>Once you have deployed the firewall, applied both the Vendor Integration and the Inspection Policy, you can optionally decide to log in to the firewall.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Please bear in mind that you will have to accept a <strong><em>self-signed certificate</em></strong>. If you are using a corporate laptop, please ignore this verification and skim through this section to understand the purpose of this task.</p>
+<p>Please bear in mind that you will have to accept a <strong><em>self-signed certificate</em></strong>. <ins>If you are using a corporate laptop, please ignore this verification and skim through this section to understand the purpose of this task</ins>.</p>
 </div>
 <p>Try to click on the <em>hyperlink</em> of the firewall. You should be able to see the page where entering the credentials (refer to you POD portal).</p>
 <figure class="align-center" id="id26">
@@ -752,6 +752,11 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p><span class="caption-number">Fig. 284 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>You have re-established the Deny-List model!</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Deny-List Model (formerly known as <em>blacklist</em>) = basic access control mechanism that allows through all elements except those explicitly mentioned on a “deny” list.</p>
+</div>
 </section>
 </section>
 <section id="connectivity-testing">
@@ -970,7 +975,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-workflow">4.3 Firenet Workflow</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pan-firewall-deployment">4.3.1 PAN Firewall Deployment</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall-vendor-integration">4.3.2 Firewall Vendor Integration</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-policy">4.2.3 FireNet Policy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-policy">4.3.3 FireNet Policy</a></li>
 </ul>
 </li>
 </ul>
