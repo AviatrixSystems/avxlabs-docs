@@ -445,6 +445,26 @@ You have successfully re-established the Deny-List model!
 Deny-List Model (formerly known as _blacklist_) = basic access control mechanism that allows through all elements except those explicitly mentioned on a “deny” list.
 ```
 
+Moreover, continue editing the **Greenfield-Rule**: click on the three-dot icon beside the Greenfield-Rule entry and select the option `"Turn On Logging"`.
+
+```{figure} images/lab6-new105.png
+---
+height: 400px
+align: center
+---
+Loggingh ON
+```
+
+**Commit** your final change again.
+
+```{figure} images/lab6-new106.png
+---
+height: 400px
+align: center
+---
+Commit
+```
+
 ## 7. Connectivity Testing
 
 Verify if there is connectivity between the instances deployed in Azure and between those instances and the instance deployed in GCP.
