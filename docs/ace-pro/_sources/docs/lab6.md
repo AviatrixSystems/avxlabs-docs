@@ -21,7 +21,7 @@ This lab will introduce finally **_azure-west-us-spoke2_** GW, that is a gateway
 height: 400px
 align: center
 ---
-Lab 7 Initial Topology
+Lab 6 Initial Topology
 ```
 
 ## 4. FireNet Configuration
@@ -62,7 +62,9 @@ Attachment
 The **_azure-west-us-transit_** is already enabled for **FireNet** functionality.
 ```
 
-### 4.2 PAN Firewall Deployment
+### 4.2 Firenet Workflow
+
+#### 4.2.1 PAN Firewall Deployment
 
 In this step you will be deploying a PAN firewall from the Aviatrix CoPilot with a `Bootstrap package`. 
 
@@ -155,7 +157,7 @@ Deployment completed
 
 Even after that message, it doesn't mean you can access the firewall (i.e. **URL**). Within **5-10 minutes** after you receive confirmation about the firewall being created, you should be able to access it.
 
-### 4.3 Firewall Vendor Integration
+#### 4.2.2 Firewall Vendor Integration
 
 Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three dots"` symbol on the right-hand side of the **_azure-west-us-transit_** row, and then click on `Vendor Integration`.
 
@@ -226,7 +228,7 @@ Vendor Integration outcome
 IP address **168.63.129.16** is a virtual public IP address that is used to facilitate a communication channel to Azure platform resources. Customers can define any address space for their private virtual network in Azure. Therefore, the Azure platform resources must be presented as a unique public IP address.
 ```
 
-### 4.4 FireNet Policy
+#### 4.2.3 FireNet Policy
 
 Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_azure-west-us-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
 
