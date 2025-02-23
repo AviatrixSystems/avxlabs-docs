@@ -310,16 +310,33 @@ Inspection Policy accomplished
 Once you have deployed the firewall, applied both the Vendor Integration and the Inspection Policy, you can optionally decide to log in to the firewall.
 
 ```{important}
-Please bear in mind that you will have to accept a self-signed certificate. If you are using a corporate laptop, please ignore this verification and skim through this section to understand the purpose of this task.
+Please bear in mind that you will have to accept a **_self-signed certificate_**. If you are using a corporate laptop, please ignore this verification and skim through this section to understand the purpose of this task.
 ```
 
  Try to click on the *hyperlink* of the firewall. You should be able to see the page where entering the credentials (refer to you POD portal).
 
  ```{figure} images/lab6-mgmtfw.png
 ---
+height: 400px
 align: center
 ---
 URL
+```
+
+ ```{figure} images/lab6-firefox.png
+---
+height: 400px
+align: center
+---
+Firefox
+```
+
+ ```{figure} images/lab6-edge.png
+---
+height: 400px
+align: center
+---
+Edge
 ```
 
 Once you access the firewall in your web browser via **HTTPS**, you might get a warning about an invalid certification based on your browser settings. This is just because it has a **_self-signed certificate_**. Navigate past that to get to the login prompt. Sign in as `avxadmin` as the username and the password you entered earlier.
@@ -333,13 +350,11 @@ PaloAlto Welcome page
 
 Dismiss the Welcome splash screen. This is an indication that the firewall is ready.
 
-Do not end the firewall's HTTPS session yet. You will return to this web interface later.
-
 ### 5.1 Verify Routes Installed on Firewall
 
-Verify the same RFC 1918 routes exist on the PAN Firewall.
+Verify the same RFC1918 routes exist on the PAN Firewall.
 
-Back on the **PAN Firewall**, navigate to **Network tab > Virtual Routers >** click on **default**.
+Navigate to **Network tab > Virtual Routers >** click on **default**.
 
 ```{figure} images/lab7-palo1.png
 ---
@@ -348,7 +363,7 @@ align: center
 PaloAlto dashboard
 ```
 
-Click on `"Static Routes"` tab. You should be able to see the same RFC 1918 routes with `"AVX-"` prefixes that were programmed by the Aviatrix Controller.
+Click on `"Static Routes"` tab. You should be able to see the same **RFC1918** routes with `"AVX-"` prefixes that were programmed by the Aviatrix Controller.
 
 ```{figure} images/lab7-palo2.png
 ---
@@ -357,38 +372,16 @@ align: center
 Static Routes (RFC1918 routes)
 ```
 
-```{caution}
-Do not end the firewall's HTTPS session yet. You will return to this web interface later. 
-```
+Continue to explore the configuration of the PaloAlto FW. Navigate to `Policies` tab to find out that the firewall was pre-configured with a simple **Allow-All** policy.
 
-## 4.6. FireNet Policy
-
-Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_azure-west-us-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
-
-```{figure} images/lab7-inspection2.png
+```{figure} images/lab6-paloalto.png
 ---
 align: center
 ---
-Policy tab
+Allow-All
 ```
 
-Then select each Azure spoke gateway one by one, click on `"Actions"` and choose `"Add"` in order to add a specific VPC inside the **Inspection Policy**.
-
-```{figure} images/lab7-inspection3.png
----
-align: center
----
-Inspection Policy assignment
-```
-
-```{figure} images/lab7-inspection4.png
----
-align: center
----
-Inspection Policy accomplished
-```
-
-## 5. Verification
+## 6. Verification
 
 Verify the traffic flows within Azure and from Azure to GCP as shown below, by following steps 5.1 - 5.2:
 
