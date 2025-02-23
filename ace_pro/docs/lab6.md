@@ -441,11 +441,23 @@ Commit
 
 ## 7. Connectivity Testing
 
-Verify that each test instance can ping each other.
+Verify if there is connectivity between the instances deployed in Azure and between those instances and the instance deployed in GCP.
 
 ### 7.1 Connectivity Test Using the Gatus App
 
-### 5.1.1 Launch connectivity test
+Navigate to your POD Portal, locate the `Gatus widget`, and select both **_azure-west-us-spoke1-test1_**, **_azure-west-us-spoke1-test2_** and **_gcp-us-central1-spoke1-test1_**
+
+```{figure} images/lab6-new888.png
+---
+height: 250px
+align: center
+---
+Commit
+```
+
+### 7.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+If you wish, you can also check the ICMP test using your SSH client.
 
 **SSH** into **_azure-west-us-spoke<span style='color:#479608'>1</span>-test1_** and from there, ping **_azure-west-us-spoke<span style='color:#bb05b9'>2</span>-test1_** on its private IP.
 
@@ -486,8 +498,6 @@ align: center
 ---
 Ping GCP
 ```
-
-## 5.2. Azure to GCP
 
 While on **_azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1_**, ping **_gcp-us-central1-spoke1-test1_**.
 
