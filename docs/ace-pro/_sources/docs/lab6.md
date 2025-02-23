@@ -24,10 +24,19 @@ align: center
 Lab 7 Initial Topology
 ```
 
-## 4. Configuration
-### 4.1. Azure Transit to Spoke Peering
+## 4. FireNet Configuration
+
+### 4.1 Azure Transit to Spoke Peering
 
 First, you will need to configure the grey Aviatrix Spoke-Transit connection in the topology between **_azure-west-us-spoke2_** and **_azure-west-us-transit_**.
+
+```{figure} images/lab7-spoketopology.png
+---
+height: 350px
+align: center
+---
+Topology in Azure
+```
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_azure-west-us-spoke2_**, clicking on the pencil icon:
 
@@ -53,7 +62,7 @@ Attachment
 The **_azure-west-us-transit_** is already enabled for **FireNet** functionality.
 ```
 
-### 4.2. PAN Firewall Deployment
+### 4.2 PAN Firewall Deployment
 
 In this step you will be deploying a PAN firewall from the Aviatrix CoPilot with a `Bootstrap package`. 
 
@@ -111,7 +120,7 @@ Then click on **Deploy**.
 ---
 align: center
 ---
-POD Portal: lab 7 section 
+POD Portal: lab 6 section 
 ```
 
 ```{figure} images/lab7-firenetcfg.png
@@ -134,7 +143,7 @@ Deployment in progress
 
 At this time, the interface mapping, security policy configuration, and RFC1918 static route creation are all being handled. The **_Aviatrix Controller_** does a lot of magic in orchestrating and manipulating route tables.
 
-You will know the Firewall is created when you see the corresponding entry like this (refresh the page after roughly 10-15 minutes):
+You will know the Firewall is created when you see the corresponding entry like this (refresh the page after roughly **10-15** minutes):
 
 ```{figure} images/lab7-url.png
 ---
@@ -145,6 +154,77 @@ Deployment completed
 ```
 
 Even after that message, it doesn't mean you can access the firewall (i.e. **URL**). Within **5-10 minutes** after you receive confirmation about the firewall being created, you should be able to access it.
+
+## 4.3 Firewall Vendor Integration
+
+Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three dots"` symbol on the right-hand side of the **_azure-west-us-transit_** row, and then click on `Vendor Integration`.
+
+```{figure} images/lab7-vendor.png
+---
+height: 150px
+align: center
+---
+Vendor Integration
+```
+
+Insert the following paramenters in the `"Vendor Integration"` pop-up window.
+
+- **Management IP Address**: <span style='color:#479608'>**Auto populated**</span>
+- **Vendor**: <span style='color:#479608'>Palo Alto Networks VM-Series</span>
+- **Username**: <span style='color:#479608'>avxadmin</span>
+- **Password**: <span style='color:#479608'>[the password you entered earlier]</span>
+
+Then click on **Save**.
+
+```{figure} images/lab7-vendor2.png
+---
+
+align: center
+---
+Vendor Integration template
+```
+
+```{note}
+Wait for some seconds for the Vendor Integration to complete.
+
+If you see an error message related to the *ethernet1/2*, wait some additional minutes before clicking again on **Save**.
+```{figure} images/lab7-message.png
+---
+align: center
+---
+Possible error message
+```
+
+```{figure} images/lab7-vendor3.png
+---
+align: center
+---
+Vendor Integration accomplished successfully
+```
+
+Go to **CoPilot > Security > FireNet > Firewall** and click on the **_azure-west-us-pan_** firewall
+
+```{figure} images/lab7-vendor4.png
+---
+height: 150px
+align: center
+---
+Click on the Firewall
+```
+
+You will see the RFC 1918 routes that the Controller automatically programmed on the Firewall, through the `"Vendor Integration"`. Notice how each RFC1918 route has a prefix of `"AVX-"` to show that it is programmed by Aviatrix.
+
+```{figure} images/lab7-vendor5.png
+---
+height: 400px
+align: center
+---
+Vendor Integration outcome
+```
+
+```{caution}
+IP address **168.63.129.16** is a virtual public IP address that is used to facilitate a communication channel to Azure platform resources. Customers can define any address space for their private virtual network in Azure. Therefore, the Azure platform resources must be presented as a unique public IP address.
+```
 
 Now try to click on the *hyperlink* of the firewall. You should be able to see the page where entering the credentials (refer to you POD portal).
 
