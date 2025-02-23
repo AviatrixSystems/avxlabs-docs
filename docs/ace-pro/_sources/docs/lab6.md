@@ -439,7 +439,7 @@ align: center
 Commit
 ```
 
-You have successfully re-established the Deny-List model!
+You have successfully re-established the `Deny-List` model!
 
 ```{important}
 Deny-List Model (formerly known as _blacklist_) = basic access control mechanism that allows through all elements except those explicitly mentioned on a “deny” list.
@@ -572,6 +572,8 @@ align: center
 Monitoring traffic towards GCP
 ```
 
+## 8. DCF Verification
+
 Now, let's check the `DCF Monitor` section:
 
 - Go to **CoPilot > Security > Distributed Cloud Firewall** and filter out based on **ICMP**.
@@ -584,7 +586,7 @@ align: center
 Filter
 ```
 
-You will immediately notice the logs that have successfully matched the Greenfield-Rule.
+You will immediately notice the logs that successfully matched the Greenfield-Rule!
 
 ```{figure} images/lab7-finalmonitor01.png
 ---
@@ -594,7 +596,7 @@ align: center
 Logs
 ```
 
-## 8. FW Path Verification
+## 9. FW Path Verification
 
 Let's verify that the traffic generated from both VNets is indeed diverted to the firewall.
 
@@ -648,7 +650,7 @@ Traceroute
 In this scenario, the Health Check mechanism it's the Aviatrix Controller that is pinging every 5 seconds the **_management_** interface of the PaloAlto Firewall.
 ```
 
-## 9. Final Considerations
+## 10. Final Considerations
 
 ```{important}
 Maybe it's time to finally embrace the full-blown **`"Distributed Cloud Firewall"`** solution and get rid of the expensive NGFW!
