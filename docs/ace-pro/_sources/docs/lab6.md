@@ -101,7 +101,7 @@ Topology
 
 ```{figure} images/lab7-workflow.png
 ---
-height: 700px
+height: 850px
 align: center
 ---
 Workflow
