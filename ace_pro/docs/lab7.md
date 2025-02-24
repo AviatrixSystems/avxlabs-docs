@@ -2,8 +2,8 @@
 
 ## 1. General Objectives
 
-The objective of this lab is to resolve an IP address overlap between an on-premises partner and the cloud. You will be using the **Site2Cloud Mapped NAT** feature to achieve this. 
- 
+The objective of this lab is to resolve an IP address overlap between an on-premises partner and the cloud. You will be using the **`Site2Cloud Mapped NAT`** feature to achieve this. 
+
 ## 2. Site2Cloud Overview
 
 Let's start with the deployment of the S2C.
@@ -14,9 +14,9 @@ On one end of the tunnel is an Aviatrix Gateway; on the other could be an on-pre
  
 ## 3. Topology
 
-In this lab, you will first achieve Site2Cloud connectivity to a `StrongSwan Router`, emulating an on-premises branch router.
+In this lab, you will first establish Site-to-Cloud (S2C) connectivity to a `StrongSwan Router`, emulating an on-premises branch router.
 
-In this lab, you will work with a typical overlapping IP addresses scenario depicted in the drawing below:
+Moreover, you will work with a typical scenario involving **overlapping IP addresses**, as depicted in the drawing below:
 
 ```{figure} images/lab8-topology.png
 ---
@@ -70,7 +70,7 @@ align: center
 S2C creation
 ```
 
-Create a connection from Cloud (GCP) to an on-prem Partner site, using the following settings on the `"Add External Connection"` window:
+Create a connection from the Cloud (GCP) to an on-premises partner site using the following settings in the `"Add External Connection"` window:
 
 - **Name**: <span style='color:#479608'>GCP-to-OnPremPartner</span>
 - **Connecting Using**: <span style='color:#479608'>Static Route-Based</span>
@@ -132,12 +132,12 @@ align: center
 S2C template
 ```
 
-```{caution}
-The configuration template will grey out after clicking on **Save**. 
+```{important}
+The configuration template will be grayed out after clicking on **Save**.
 
-Be patient and wait for the **_Aviatrix Controller_** to complete the deployment. <ins>This will create the first side of the connection, on the GCP Spoke GW</ins>.
+Please be patient and wait for the **_Aviatrix Controller_** to complete the deployment. <ins>This will establish the first side of the connection on the GCP Spoke Gateway</ins>.
 
-The StrongSwan router was already preconfigured at the launch of each POD!
+The StrongSwan router was preconfigured at the launch of each POD!
 ```
 
 Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.
@@ -148,11 +148,50 @@ Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatr
 
 For example, gcp-us-central1-test1 (172.16.1.100) will be reached at 192.168.200.100 due to 1:1 NAT.
 
-### 4.2 Site2Cloud Connection - StrongSwan's configuration
-
+### 4.2 StrongSwan's Configuration 
 Now you have to complete the IPSec configuration of the **StrongSwan** router.
 
-SSH to the StrongSwan router. You can either use the public IP address that you retrieved before using the dig/nslookup command or you can use its dns name available on your personal POD portal.
+```{caution}
+If you are using a corporate laptop that does not allow the use of any SSH client and also blocks port 22, please proceed with task 4.2.1. However, keep in mind that you may experience some slowness in the response of the commands sent to the Guacamole Server (jumphost), so please be patient during the configuration. 
+
+If you have a laptop without these restrictions, please refer to task 4.2.2 and complete the configuration using your personal SSH client.
+```
+
+#### 4.2.1  <span style='color:#33ECFF'>Configuration through the Apache Guacamole Client (Jumphost)</span></summary>
+
+Go to your personal POD portal, identify the section labeled `"Lab 7 and 8"`, then click on the `"Open Workstation"` button to log in to the **Workstation Edge** (a Guacamole clientless remote desktop gateway).
+
+```{figure} images/lab8-podportal00.png
+---
+height: 400px
+align: center
+---
+POD Portal - Sec. 7-8
+```
+
+```{figure} images/lab8-podportal01.png
+---
+height: 400px
+align: center
+---
+POD Portal - Sec. 7-8
+```
+
+
+Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and then identify the GCP Spoke Gateway and **copy** its Public IP address.
+
+```{figure} images/lab8-gcppublic.png
+---
+align: center
+---
+Public IP address
+```
+
+#### 4.2.2  <span style='color:#33ECFF'>Configuration through the SSH Client</span></summary>
+
+Alternatively, if you are NOT using a corporate laptop, you can SSH into the StrongSwan router and apply the configuration using your SSH client.
+
+ You can either use the public IP address that you retrieved before using the host/nslookup command or you can use its dns name available on your personal POD portal.
 
 ```{figure} images/lab8-personalpod.png
 ---
