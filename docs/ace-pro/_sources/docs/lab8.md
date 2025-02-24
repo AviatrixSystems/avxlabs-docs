@@ -309,7 +309,7 @@ Create the filter
 
 ```{figure} images/lab8-edge24.png
 ---
-height: 200px
+height: 500px
 align: center
 ---
 FlowIQ Filter
@@ -487,7 +487,7 @@ Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-
 
 ```{figure} images/lab8-podportal113.png
 ---
-height: 250px
+height: 500px
 align: center
 ---
 Traceroute
@@ -676,7 +676,7 @@ Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-sp
 
 ```{figure} images/lab8-podportal113.png
 ---
-height: 250px
+height: 500px
 align: center
 ---
 Traceroute
@@ -756,7 +756,7 @@ align: center
 6 Hops
 ```
 
-### 9.3 Final Considerations
+## 10. Final Considerations
 
 Now go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type `172.16.1.0` inside the Search field.
 
@@ -766,7 +766,7 @@ This time the AS Path Length will turn out being equal to **2**.
 
 ```{figure} images/lab8-2path.png
 ---
-height: 300px
+height: 450px
 align: center
 ---
 As path length = 2
