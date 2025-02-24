@@ -1,5 +1,9 @@
 # Lab 8 - SECURE HIGH-PERFORMANCE DATACENTER EDGE
-This lab will demonstrate how securely govern the `Egress traffic`.
+This lab will demonstrate the functionalities of the `Edge Gateway`.
+
+```{important}
+Edge Gateway = An Aviatrix gateway that enables connectivity to edge locations such as data centers, co-locations, remote sites, provider locations, branch offices, and retail stores.
+```
 
 ## 1. General Objectives
 
@@ -32,7 +36,7 @@ align: center
 BGPoverLAN inside the On-Prem DC
 ```
 
-Close the BGP Map and then click again on the threee dots icon and this time select the `"Show BGP Learned Routes"`.
+Close the BGP Map and then click again on the "three-dot" icon and this time select the `"Show BGP Learned Routes"`.
 
 ```{figure} images/lab8-edge5.png
 ---
@@ -94,7 +98,7 @@ BGP ASN
 
 Now it's time to establish the attachment! 
 
-Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachment"` button, on the right-hand side of the screen.
+Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachments"` button, on the right-hand side of the screen.
 
 ```{figure} images/lab8-edge9.png
 ---
@@ -169,7 +173,7 @@ align: center
 Transit-Edge Peering
 ```
 
-This is how the Topology would look like after the creation of the attachment.
+This is how the Topology will look like after the creation of the attachment.
 
 ```{figure} images/lab8-edge18.png
 ---
@@ -270,6 +274,15 @@ Target for the connectivity test
 
 The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered as just an additional VPC!
 
+```{note}
+Do not forget to exit from the previous session used to log in to the on-prem-partner1 router (i.e. Lab 7)
+```{figure} images/lab8-edge67.png
+---
+align: center
+---
+exit
+```
+
 ```{figure} images/lab8-edge30.png
 ---
 align: center
@@ -367,7 +380,7 @@ BGP ASN
 
 Now you are ready to proceed with the rest of the configuration on the Edge section!
 
-Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachment"` button, on the right-hand side of the screen.
+Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachments"` button, on the right-hand side of the screen.
 
 ```{figure} images/lab8-edgedouble2.png
 ---

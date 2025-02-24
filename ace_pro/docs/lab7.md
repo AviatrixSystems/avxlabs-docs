@@ -268,7 +268,7 @@ Use the Clipboard window for typing your commands and then copying them into the
 
 ```{figure} images/lab8-podportal08.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 Bash cmd
@@ -435,7 +435,7 @@ Ping ok
 
 ## 7. Gateway Diagnostics
 
-Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, click on the `Tools` button and then click on `Gateway Diagnostics`.
+Go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, click on the `Tools` button and then click on `Gateway Diagnostics`.
 
 ```{figure} images/lab8-diag.png
 ---
