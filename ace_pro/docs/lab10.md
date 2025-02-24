@@ -130,6 +130,30 @@ align: center
 "+ Shared Service"
 ```
 
+## 4. Verification
+
+### 4.1 Connectivity Testing Using Gatus App
+
+Navigate to your POD Portal, locate the `Gatus widget`, and select **_onprem-pod<span style='color:#33ECFF'>##</span></summary>-edge_**.
+
+```{figure} images/lab10-podportal110.png
+---
+height: 400px
+align: center
+---
+Gatus
+```
+
+```{figure} images/lab10-podportal111.png
+---
+height: 400px
+align: center
+---
+aws-us-east-2-spoke1-test1
+```
+
+### 4.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
 If you kept running the ping on the Workstation Edge's terminal, then you should see both the relative traffic and the absolute one from any Cost Centers towards the Shared Service.
 
 ```{figure} images/lab9-ping.png
