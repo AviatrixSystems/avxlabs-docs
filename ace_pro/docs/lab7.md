@@ -177,6 +177,41 @@ align: center
 POD Portal - Sec. 7-8
 ```
 
+Open the **LX terminal** from the remote desktop.
+
+```{figure} images/lab8-podportal02.png
+---
+height: 400px
+align: center
+---
+LX terminal
+```
+
+```{note}
+Please bear in mind that if you decide to use the Jumpbox, copy and paste do not work directly from the host machine. Therefore, activate the **Guacamole Menu**, which is a sidebar that is hidden until explicitly shown. On a laptop or other device with a hardware keyboard, you can display this menu by pressing **_Ctrl+Alt+Shift_** on a Windows machine (**_Control+Shift+Command_** on a Mac).
+```
+
+Type the SSH command to log in to the StrongSwan router (**on-prem-partner1**). Then copy the command and paste it insid ethe LX terminal.
+
+```{tip}
+You can retrieve its DNS name from your personal POD Portal.
+```
+
+```{figure} images/lab8-podportal03.png
+---
+height: 400px
+align: center
+---
+Type the command
+```
+
+```{figure} images/lab8-podportal04.png
+---
+height: 400px
+align: center
+---
+Copy the command
+```
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and then identify the GCP Spoke Gateway and **copy** its Public IP address.
 

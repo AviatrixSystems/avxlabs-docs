@@ -133,7 +133,7 @@ Apache Guacamole Portal
 ```
 
 ```{note}
-Please bear in mind that if you decide to use the Jumpbox, *Copy and Paste* does not work directly from the host machine, therefore activate the **Guacamole Menu**, that is a sidebar which is hidden until explicitly shown. On a desktop or other device which has a hardware keyboard, you can show this menu by pressing **Ctrl+Alt+Shift** on Windows machine (**Control+Shift+Command** on Mac).
+Please bear in mind that if you decide to use the Jumpbox, copy and paste do not work directly from the host machine. Therefore, activate the **Guacamole Menu**, which is a sidebar that is hidden until explicitly shown. On a desktop or other device with a hardware keyboard, you can display this menu by pressing **_Ctrl+Alt+Shift_** on a Windows machine (**_Control+Shift+Command_** on a Mac).
 ```
 
 ```{figure} images/lab1-guacamoleterminal.png
