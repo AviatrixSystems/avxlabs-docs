@@ -449,7 +449,7 @@ The Aviatrix Edge Spoke Gateway can be attached to multiple Transit Gateways!
 
 Now let's verify the connectivity beetween  **aws-us-east-2-spoke1-test1** in AWS  and **gcp-us-central1-spoke1-test1** in GCP
 
-#### 6.1.1 Connectivity Testing Using the Gatus App
+#### 6.1.1 Connectivity Testing Using the Diagnostics Tools
 
 Navigate to your POD Portal, locate the `Gatus widget`, and select **_gcp-us-central1-spoke1-test1_**.
 
@@ -487,7 +487,7 @@ Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-
 
 ```{figure} images/lab8-podportal113.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Traceroute
@@ -676,7 +676,7 @@ Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-sp
 
 ```{figure} images/lab8-podportal113.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Traceroute
@@ -692,6 +692,8 @@ align: center
 ---
 traceroute
 ```
+
+### 8.3 Transitive Routing
 
 The traceroute is still showing the Transit peering between AWS and GCP as the preferred path, although the `as-path prepend` was correctly applied earlier. 
 
@@ -715,7 +717,28 @@ align: center
 edge
 ```
 
-## 7. Final verification
+## 9. Verification of the Transitive Routing
+
+### 9.1 Connectivity Testing Using the Diagnostics Tools
+
+Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_**
+
+```{figure} images/lab8-podportal123.png
+---
+height: 250px
+align: center
+---
+Traceroute
+```
+
+```{figure} images/lab8-almostdone055.png
+---
+align: center
+---
+5 Hops 
+```
+
+### 9.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Let's relaunch the traceroute towards 172.16.1.100 from the **_aws-us-east-2-spoke1-test1_**.
 
@@ -733,6 +756,8 @@ align: center
 6 Hops
 ```
 
+### 9.3 Final Considerations
+
 Now go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type `172.16.1.0` inside the Search field.
 
 This time the AS Path Length will turn out being equal to **2**. 
@@ -747,7 +772,7 @@ align: center
 As path length = 2
 ```
 
-After this lab, this is how the overall topology would look like:
+After this lab, this is how the overall topology will look like:
 
 ```{figure} images/lab8-edge25.png
 ---
