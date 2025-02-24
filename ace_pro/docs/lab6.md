@@ -42,7 +42,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke 
 
 ```{figure} images/lab7-spoke.png
 ---
-height: 150px
+height: 300px
 align: center
 ---
 Edit Spoke GW
@@ -101,6 +101,7 @@ Topology
 
 ```{figure} images/lab7-workflow.png
 ---
+height: 500px
 align: center
 ---
 Workflow
@@ -217,7 +218,7 @@ Before proceeding with the vendor integration, please wait for confirmation that
 
 The `Vendor Integration` allows inserting the Summary Routes into the the Firewall's Routing Table.
 
-Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three dots"` symbol on the right-hand side of the **_azure-west-us-transit_** row, and then click on `Vendor Integration`.
+Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three-dot"` symbol on the right-hand side of the **_azure-west-us-transit_** row, and then click on `Vendor Integration`.
 
 ```{figure} images/lab7-vendor.png
 ---
@@ -286,7 +287,9 @@ Vendor Integration outcome
 IP address **168.63.129.16** is a virtual public IP address that is used to facilitate a communication channel to Azure platform resources. Customers can define any address space for their private virtual network in Azure. Therefore, the Azure platform resources must be presented as a unique public IP address.
 ```
 
-#### 4.3.3 FireNet Policy
+#### 4.3.3 Inspection Policy
+
+Now it is time to select the VPC/VNet that will be involved in the _FireNet inspection_.
 
 Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_azure-west-us-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
 
@@ -333,7 +336,7 @@ Please bear in mind that you will have to accept a **_self-signed certificate_**
 
  ```{figure} images/lab6-mgmtfw.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 URL
@@ -394,7 +397,7 @@ Continue to explore the configuration of the PaloAlto FW. Navigate to `Policies`
 
 ```{figure} images/lab6-paloalto.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 Allow-All
@@ -449,7 +452,7 @@ Moreover, continue editing the **Greenfield-Rule**: click on the three-dot icon 
 
 ```{figure} images/lab6-new105.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Loggingh ON
@@ -459,7 +462,7 @@ Loggingh ON
 
 ```{figure} images/lab6-new106.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Commit
@@ -590,7 +593,7 @@ You will immediately notice the logs that successfully matched the Greenfield-Ru
 
 ```{figure} images/lab7-finalmonitor01.png
 ---
-height: 250px
+height: 300px
 align: center
 ---
 Logs
@@ -614,13 +617,13 @@ Let's retrieve the **Private IP address** of the VM in  the **_azure-west-us-spo
 
 ```{figure} images/lab6-searchfor.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Search for azure-west-us-spoke2-test2
 ```
 
-Now navigate to CoPilot > Diagnostics > Diagnostics Tools >, select the **_azure-west-us-spoke<span style='color:#33ECFF'>1</span></summary>_** Gateway, then select the **Traceroute** command. Paste the IP address previously copied from the **Cloud Assets** section into the `Destination (IP / Hostname)` field, and then click on **Run**.
+Now navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_azure-west-us-spoke<span style='color:#33ECFF'>1</span></summary>_** Gateway, then select the **Traceroute** command. Paste the IP address previously copied from the **Cloud Assets** section into the `Destination (IP / Hostname)` field, and then click on **Run**.
 
 ```{figure} images/lab6-diag00.png
 ---
@@ -634,20 +637,28 @@ Let's analyze the outcome from the `Traceroute` command:
 
 ```{figure} images/lab6-diag01.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 Traceroute
 ```
 
 1) The **first** hop represents the Transit Firenet Gateway.
-2) The **second** hop is actually ther Fw, that didn't not respond to the UDP packet, becauce the ICMP traffic is not enabled inbound on the LAN Interface of the FW.
+2) The **second** hop is actually the FW, which did not respond to the UDP packet because ICMP traffic is not enabled inbound on the LAN interface of the FW.
 3) The **third** hop is again the Transit FireNet Gateway.
 4) The **forth** hop is the Spoke  GW azure-west-us-spoke2
 5) The **fifth** hop is the final destination: **_azure-west-us-spoke2-test2_**
 
+```{figure} images/lab6-diag018.png
+---
+height: 350px
+align: center
+---
+Hop by Hop
+```
+
 ```{note}
-"In this scenario, the `Health Check` mechanism involves the Aviatrix Controller pinging the **_management interface_** of the Palo Alto Firewall every **5** seconds.
+In this scenario, the `Health Check` mechanism involves the Aviatrix Controller pinging the **_management interface_** of the Palo Alto Firewall every **5** seconds.
 ```
 
 ## 10. Final Considerations
