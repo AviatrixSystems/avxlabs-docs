@@ -171,7 +171,7 @@ align: center
 From the Cost Center towards the Shared Service
 ```
 
-After this lab, this is how the overall topology would look like:
+After this lab, this is how the overall topology will look like:
 
 ```{figure} images/lab9-final.png
 ---
