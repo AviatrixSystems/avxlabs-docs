@@ -441,7 +441,74 @@ align: center
 Topology
 ```
 
-### 6.1 Edge: As-Path Prepend
+```{caution}
+The Aviatrix Edge Spoke Gateway can be attached to multiple Transit Gateways!
+```
+
+### 6.1 Connectivity Testing
+
+Now let's verify the connectivity beetween  **aws-us-east-2-spoke1-test1** in AWS  and **gcp-us-central1-spoke1-test1** in GCP
+
+#### 6.1.1 Connectivity Testing Using the Gatus App
+
+Navigate to your POD Portal, locate the `Gatus widget`, and select **_gcp-us-central1-spoke1-test1_**.
+
+```{figure} images/lab8-podportal110.png
+---
+height: 400px
+align: center
+---
+Gatus
+```
+
+```{figure} images/lab8-podportal111.png
+---
+height: 400px
+align: center
+---
+aws-us-east-2-spoke1-test1
+```
+
+```{figure} images/lab8-podportal112.png
+---
+height: 400px
+align: center
+---
+gcp-us-central1-spoke1-test1
+```
+
+The two instances can communicate without any issues.
+
+```{caution}
+If the two instances are unable to communicate, check the DCF section, the Network Segmentation section, and the Hybrid Cloud section, where you might have forgotten some configurations.
+```
+
+Now go to CoPilot > Diagnostics > Diagnostics Tools, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_**
+
+```{figure} images/lab8-podportal113.png
+---
+height: 400px
+align: center
+---
+Traceroute
+```
+
+The traffic is indeed predictable:
+
+1) **First hop**: Transit Gateway in AWS US-EAST-2
+2) **Second hop**: Transit Gateway in GCP US-CENTRAL-1
+3) **Third hop**: Spoke GAteway in GCP US-CENTRAL-1
+4) **Forth hop**: gcp-us-central1-spoke1-test1 VM
+
+```{figure} images/lab8-podportal114.png
+---
+height: 400px
+align: center
+---
+Hop by Hop
+```
+
+#### 6.1.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Now, let's **SSH** on the EC2 _**aws-us-east-2-spoke1-test1**_  and then launch the command _traceroute_ towards the VM _**gcp-us-central1-spoke1-test1**_ in GCP
 
@@ -499,6 +566,8 @@ align: center
 ---
 5 hops
 ```
+
+## 7. AS-PATH Prepend
 
 Let's harness the **as-path prepend** feature for manipulating the traffic. 
 
