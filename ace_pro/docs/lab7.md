@@ -213,6 +213,34 @@ align: center
 Copy the command
 ```
 
+```{figure} images/lab8-podportal05.png
+---
+height: 400px
+align: center
+---
+Paste the command
+```
+
+Now, before issuing the command, copy the password for logging into the StrongSwan router from the **Clipboard** window on the left-hand side, then close the Clipboard using the aforementioned commands (**_Ctrl+Alt+Shift_** on a Windows machine **_Control+Shift+Command_** on a Mac).
+
+```{figure} images/lab8-podportal06.png
+---
+height: 400px
+align: center
+---
+Copy the pwd and close the Clipboard window
+```
+
+```{figure} images/lab8-podportal07.png
+---
+height: 400px
+align: center
+---
+Paste the pwd
+```
+
+Now you need to retrieve the **Public IP address** assigned to the GCP Spoke Gateway.
+
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and then identify the GCP Spoke Gateway and **copy** its Public IP address.
 
 ```{figure} images/lab8-gcppublic.png
@@ -220,6 +248,30 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and then identify t
 align: center
 ---
 Public IP address
+```
+
+Now, go back to the **Guacamole Client LX Terminal** session and issue the following **_bash script_** to automatically update the content of the configuration file!
+
+- Run  the following bash script:
+
+```{tip}
+Below replace the string **<REPLACE_WITH_SPOKE_GW_PUBLIC_IP>** with GCP Spoke gateway public IP of your POD.
+```
+
+```bash
+sudo ./update_swanctl.sh <REPLACE_WITH_SPOKE_GW_PUBLIC_IP>
+```
+
+```{tip}
+Use the Clipboard window for typing your commands and then copying them into the LX Terminal from your machine.
+```
+
+```{figure} images/lab8-podportal08.png
+---
+height: 400px
+align: center
+---
+Bash cmd
 ```
 
 #### 4.2.2  <span style='color:#33ECFF'>Configuration through the SSH Client</span></summary>
