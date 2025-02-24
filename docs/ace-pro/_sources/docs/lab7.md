@@ -274,6 +274,14 @@ align: center
 Bash cmd
 ```
 
+```{figure} images/lab8-podportal09.png
+---
+height: 400px
+align: center
+---
+Bash script issued successfully
+```
+
 #### 4.2.2  <span style='color:#33ECFF'>Configuration through the SSH Client</span></summary>
 
 Alternatively, if you are NOT using a corporate laptop, you can SSH into the StrongSwan router and apply the configuration using your SSH client.
@@ -372,7 +380,43 @@ align: center
 OnPrem-Partner site
 ```
 
-Now go back to your SSH terminal, and from the on-premises router’s console (i.e. StrongSwan), issue the following command to verify the connectivity with the **_gcp-us-central1-spoke1-test1_**:
+## 6. Connectivity Testing
+
+Verify that ther VM in GCP can ping successfully the on-prem-partner1 router, pinging its `Virtual Remote IP`.
+
+### 6.1 Connectivity Testing Using the Gatus App
+
+First and foremost, navigate to your POD Portal, locate the `Gatus widget`, and select **_gcp-us-central1-spoke1-test1_**.
+
+```{figure} images/lab8-podportal10.png
+---
+height: 400px
+align: center
+---
+Gatus
+```
+
+Go back to your Guacamole Client (i.e. Workstation Edge) and issue the following command:
+
+```bash
+ping 192.168.200.100 
+```
+
+```{tip}
+Do not stop the ping command
+```
+
+```{figure} images/lab8-podportal11.png
+---
+height: 400px
+align: center
+---
+ping
+```
+
+### 6.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+Go back to your SSH terminal, and from the on-premises router’s console (i.e. StrongSwan), issue the following command to verify the connectivity with the **_gcp-us-central1-spoke1-test1_**:
 
 ```bash
 ping 192.168.200.100 
@@ -389,6 +433,8 @@ align: center
 Ping ok
 ```
 
+## 7. Gateway Diagnostics
+
 Then go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, click on the `Tools` button and then click on `Gateway Diagnostics`.
 
 ```{figure} images/lab8-diag.png
@@ -399,7 +445,9 @@ align: center
 Gateway Diagnostics
 ```
 
-Choose the `“Active Sessions”` option and in the Search field type `“icmp”` and then click on **Run**. You will notice the subnets involved (i.e. real and virtual subnets) in the Mapped NAT.
+Choose the `“Active Sessions”` option, click on **Run**. After you receive the result, type `“icmp”` in the **Search** field.
+
+You will notice the subnets involved (i.e. real and virtual subnets) in the Mapped NAT.
 
 ```{figure} images/lab8-active2.png
 ---
@@ -408,7 +456,7 @@ align: center
 Active Sessions
 ```
 
-After completing the S2C connection, this is what the overall lab topology would look like:
+After completing the S2C connection, this is what the overall lab topology will look like:
 
 ```{figure} images/lab8-finaltopology.png
 ---
