@@ -146,7 +146,7 @@ Gatus
 
 ```{figure} images/lab10-podportal111.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 aws-us-east-2-spoke1-test1
