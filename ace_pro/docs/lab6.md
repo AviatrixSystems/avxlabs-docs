@@ -101,7 +101,7 @@ Topology
 
 ```{figure} images/lab7-workflow.png
 ---
-height: 500px
+height: 700px
 align: center
 ---
 Workflow
@@ -569,7 +569,7 @@ Back on the PAN firewall, click the **refresh** button in the top-right corner t
 
 ```{figure} images/lab7-finalmonitor.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Monitoring traffic towards GCP
@@ -617,7 +617,7 @@ Let's retrieve the **Private IP address** of the VM in  the **_azure-west-us-spo
 
 ```{figure} images/lab6-searchfor.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Search for azure-west-us-spoke2-test2
