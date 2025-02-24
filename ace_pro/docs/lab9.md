@@ -22,6 +22,8 @@ Lab 9 Initial Topology
 ```
 
 ## 3. PSF
+**Public Subnet Filtering** Gateway = An Aviatrix gateway that provides ingress and egress security for AWS public subnets where instances have public IP addresses.
+
 ### 3.1 Deploy the PSF
 
 Go to **CoPilot > Cloud Fabric > Gateways > Specialty Gateways**, then click on the `“+ Gateway"` button and then choose the **Public Subnet Filtering Gateway**.
@@ -100,7 +102,7 @@ aws-us-east1-spoke1-rtb-public-a
 
 ## 4.0 Generate traffic towards a Malicious IP
 
-Now that there is a PSF Gateway on defending the Public Subnet, let's generate some traffic towards an IP with Bad Reputation.
+Now that there is a PSF Gateway on defending the Public Subnet, let's generate some traffic towards an IP with **Bad Reputation**.
 
 ### 4.1 SSH to aws-us-east1-spoke1-test1
 
