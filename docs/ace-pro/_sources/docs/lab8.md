@@ -483,7 +483,7 @@ The two instances can communicate without any issues.
 If the two instances are unable to communicate, check the DCF section, the Network Segmentation section, and the Hybrid Cloud section, where you might have forgotten some configurations.
 ```
 
-Now go to CoPilot > Diagnostics > Diagnostics Tools, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_**
+Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_**
 
 ```{figure} images/lab8-podportal113.png
 ---
@@ -666,7 +666,25 @@ align: center
 As path length = 3
 ```
 
-Now, let's launch again the traceroute towards 172.16.1.100 from the **_aws-us-east-2-spoke1-test1_**.
+## 8. Final Verification
+
+Now, let's launch again the traceroute towards 172.16.1.100
+
+### 8.1 Traceroute through the Spoke Gateway
+
+Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_**
+
+```{figure} images/lab8-podportal113.png
+---
+height: 400px
+align: center
+---
+Traceroute
+```
+
+### 8.2 Traceroute through the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+Launch the traceroute again to **_gcp-us-central1-spoke1-test1_**.
 
 ```{figure} images/lab8-almostdone.png
 ---
