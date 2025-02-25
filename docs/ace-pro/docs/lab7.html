@@ -350,15 +350,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-cloud-to-on-prem">4.1. Site2Cloud Connection (Cloud to On-Prem)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strongswan-s-configuration">4.2 StrongSwan’s Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-through-the-apache-guacamole-client-jumphost">4.2.1  <span style="color:#33ECFF">Configuration through the Apache Guacamole Client (Jumphost)</span></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-through-the-ssh-client">4.2.2  <span style="color:#33ECFF">Configuration through the SSH Client</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-using-the-apache-guacamole-client-jumphost">4.2.1  Configuration Using the Apache Guacamole Client (Jumphost)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configuratiom-using-the-ssh-client-bonus">4.2.2  Configuratiom Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s2c-verification">5. S2C - Verification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing">6. Connectivity Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-gatus-app">6.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-apache-guacamole-client-jumphost">6.1 Connectivity Testing Using the Apache Guacamole Client (Jumphost)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-ssh-client-bonus">6.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
@@ -404,7 +404,8 @@ document.write(`
 <p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong>. Here you will immediately notice the presence of an existing S2C connection.</p>
 <p>This is the connection established between an <strong>Aviatrix Edge</strong> device deployed in the remote DC in New York and a LAN Router.</p>
 <figure class="align-center" id="id2">
-<a class="reference internal image-reference" href="../_images/lab8-edge1.png"><img alt="../_images/lab8-edge1.png" src="../_images/lab8-edge1.png" style="height: 150px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-edge1.png"><img alt="../_images/lab8-edge1.png" src="../_images/lab8-edge1.png" style="height: 150px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 305 </span><span class="caption-text">Existing S2C connection</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
@@ -506,24 +507,27 @@ document.write(`
 <p>If you are using a corporate laptop that does not allow the use of any SSH client and also blocks port 22, please proceed with task 4.2.1. However, keep in mind that you may experience some slowness in the response of the commands sent to the Guacamole Server (jumphost), so please be patient during the configuration.</p>
 <p>If you have a laptop without these restrictions, please refer to task 4.2.2 and complete the configuration using your personal SSH client.</p>
 </div>
-<section id="configuration-through-the-apache-guacamole-client-jumphost">
-<h4>4.2.1  <span style='color:#33ECFF'>Configuration through the Apache Guacamole Client (Jumphost)</span></summary><a class="headerlink" href="#configuration-through-the-apache-guacamole-client-jumphost" title="Link to this heading">#</a></h4>
+<section id="configuration-using-the-apache-guacamole-client-jumphost">
+<h4>4.2.1  Configuration Using the Apache Guacamole Client (Jumphost)<a class="headerlink" href="#configuration-using-the-apache-guacamole-client-jumphost" title="Link to this heading">#</a></h4>
 <p>Go to your personal POD portal, identify the section labeled <code class="docutils literal notranslate"><span class="pre">&quot;Lab</span> <span class="pre">7</span> <span class="pre">and</span> <span class="pre">8&quot;</span></code>, then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Open</span> <span class="pre">Workstation&quot;</span></code> button to log in to the <strong>Workstation Edge</strong> (a Guacamole clientless remote desktop gateway).</p>
 <figure class="align-center" id="id10">
-<a class="reference internal image-reference" href="../_images/lab8-podportal00.png"><img alt="../_images/lab8-podportal00.png" src="../_images/lab8-podportal00.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-podportal00.png"><img alt="../_images/lab8-podportal00.png" src="../_images/lab8-podportal00.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 313 </span><span class="caption-text">POD Portal - Sec. 7-8</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id11">
-<a class="reference internal image-reference" href="../_images/lab8-podportal01.png"><img alt="../_images/lab8-podportal01.png" src="../_images/lab8-podportal01.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-podportal01.png"><img alt="../_images/lab8-podportal01.png" src="../_images/lab8-podportal01.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 314 </span><span class="caption-text">POD Portal - Sec. 7-8</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Open the <strong>LX terminal</strong> from the remote desktop.</p>
 <figure class="align-center" id="id12">
-<a class="reference internal image-reference" href="../_images/lab8-podportal02.png"><img alt="../_images/lab8-podportal02.png" src="../_images/lab8-podportal02.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-podportal02.png"><img alt="../_images/lab8-podportal02.png" src="../_images/lab8-podportal02.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 315 </span><span class="caption-text">LX terminal</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
@@ -538,32 +542,37 @@ document.write(`
 <p>You can retrieve its DNS name from your personal POD Portal.</p>
 </div>
 <figure class="align-center" id="id13">
-<a class="reference internal image-reference" href="../_images/lab8-podportal03.png"><img alt="../_images/lab8-podportal03.png" src="../_images/lab8-podportal03.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-podportal03.png"><img alt="../_images/lab8-podportal03.png" src="../_images/lab8-podportal03.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 316 </span><span class="caption-text">Type the command</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id14">
-<a class="reference internal image-reference" href="../_images/lab8-podportal04.png"><img alt="../_images/lab8-podportal04.png" src="../_images/lab8-podportal04.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-podportal04.png"><img alt="../_images/lab8-podportal04.png" src="../_images/lab8-podportal04.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 317 </span><span class="caption-text">Copy the command</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id15">
-<a class="reference internal image-reference" href="../_images/lab8-podportal05.png"><img alt="../_images/lab8-podportal05.png" src="../_images/lab8-podportal05.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-podportal05.png"><img alt="../_images/lab8-podportal05.png" src="../_images/lab8-podportal05.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 318 </span><span class="caption-text">Paste the command</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, before issuing the command, copy the password for logging into the StrongSwan router from the <strong>Clipboard</strong> window on the left-hand side, then close the Clipboard using the aforementioned commands (<strong><em>Ctrl+Alt+Shift</em></strong> on a Windows machine <strong><em>Control+Shift+Command</em></strong> on a Mac).</p>
 <figure class="align-center" id="id16">
-<a class="reference internal image-reference" href="../_images/lab8-podportal06.png"><img alt="../_images/lab8-podportal06.png" src="../_images/lab8-podportal06.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-podportal06.png"><img alt="../_images/lab8-podportal06.png" src="../_images/lab8-podportal06.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 319 </span><span class="caption-text">Copy the pwd and close the Clipboard window</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id17">
-<a class="reference internal image-reference" href="../_images/lab8-podportal07.png"><img alt="../_images/lab8-podportal07.png" src="../_images/lab8-podportal07.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-podportal07.png"><img alt="../_images/lab8-podportal07.png" src="../_images/lab8-podportal07.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 320 </span><span class="caption-text">Paste the pwd</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
@@ -592,20 +601,22 @@ document.write(`
 <p>Use the Clipboard window for typing your commands and then copying them into the LX Terminal from your machine.</p>
 </div>
 <figure class="align-center" id="id19">
-<a class="reference internal image-reference" href="../_images/lab8-podportal08.png"><img alt="../_images/lab8-podportal08.png" src="../_images/lab8-podportal08.png" style="height: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-podportal08.png"><img alt="../_images/lab8-podportal08.png" src="../_images/lab8-podportal08.png" style="height: 500px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 322 </span><span class="caption-text">Bash cmd</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id20">
-<a class="reference internal image-reference" href="../_images/lab8-podportal09.png"><img alt="../_images/lab8-podportal09.png" src="../_images/lab8-podportal09.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-podportal09.png"><img alt="../_images/lab8-podportal09.png" src="../_images/lab8-podportal09.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 323 </span><span class="caption-text">Bash script issued successfully</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="configuration-through-the-ssh-client">
-<h4>4.2.2  <span style='color:#33ECFF'>Configuration through the SSH Client</span></summary><a class="headerlink" href="#configuration-through-the-ssh-client" title="Link to this heading">#</a></h4>
+<section id="configuratiom-using-the-ssh-client-bonus">
+<h4>4.2.2  Configuratiom Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#configuratiom-using-the-ssh-client-bonus" title="Link to this heading">#</a></h4>
 <p>Alternatively, if you are NOT using a corporate laptop, you can SSH into the StrongSwan router and apply the configuration using your SSH client.</p>
 <p>You can either use the public IP address that you retrieved before using the host/nslookup command or you can use its dns name available on your personal POD portal.</p>
 <figure class="align-center" id="id21">
@@ -672,7 +683,8 @@ Check the content of the following file: <code class="docutils literal notransla
 <p>The status will be reflected on the screen in about <strong>1 minute</strong>.</p>
 </div>
 <figure class="align-center" id="id26">
-<a class="reference internal image-reference" href="../_images/lab8-refresh.png"><img alt="../_images/lab8-refresh.png" src="../_images/lab8-refresh.png" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-refresh.png"><img alt="../_images/lab8-refresh.png" src="../_images/lab8-refresh.png" style="height: 250px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 329 </span><span class="caption-text">Connection is up</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
@@ -680,7 +692,8 @@ Check the content of the following file: <code class="docutils literal notransla
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong></p>
 <p>Filter out based on the <strong>GCP</strong> Cloud, expand all the VPCs and you will see the new S2C connection with the remote OnPrem-Partner site!</p>
 <figure class="align-center" id="id27">
-<a class="reference internal image-reference" href="../_images/lab8-onprem.png"><img alt="../_images/lab8-onprem.png" src="../_images/lab8-onprem.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-onprem.png"><img alt="../_images/lab8-onprem.png" src="../_images/lab8-onprem.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 330 </span><span class="caption-text">OnPrem-Partner site</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
@@ -689,25 +702,29 @@ Check the content of the following file: <code class="docutils literal notransla
 <section id="connectivity-testing">
 <h2>6. Connectivity Testing<a class="headerlink" href="#connectivity-testing" title="Link to this heading">#</a></h2>
 <p>Verify that ther VM in GCP can ping successfully the on-prem-partner1 router, pinging its <code class="docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Remote</span> <span class="pre">IP</span></code>.</p>
-<section id="connectivity-testing-using-the-gatus-app">
-<h3>6.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#connectivity-testing-using-the-gatus-app" title="Link to this heading">#</a></h3>
-<p>First and foremost, navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select <strong><em>gcp-us-central1-spoke1-test1</em></strong>.</p>
+<section id="connectivity-testing-using-the-apache-guacamole-client-jumphost">
+<h3>6.1 Connectivity Testing Using the Apache Guacamole Client (Jumphost)</span></summary><a class="headerlink" href="#connectivity-testing-using-the-apache-guacamole-client-jumphost" title="Link to this heading">#</a></h3>
+<p>Go back to your <strong>Workstation Edge</strong> (i.e. the Guacamole Client).</p>
 <figure class="align-center" id="id28">
-<a class="reference internal image-reference" href="../_images/lab8-podportal10.png"><img alt="../_images/lab8-podportal10.png" src="../_images/lab8-podportal10.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab7-guacamole10.png"><img alt="../_images/lab7-guacamole10.png" src="../_images/lab7-guacamole10.png" style="height: 400px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 331 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 331 </span><span class="caption-text">Guacamole Client</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go back to your Guacamole Client (i.e. Workstation Edge) and issue the following command:</p>
+<ul class="simple">
+<li><p>Now, execute the following command in the SSH session that is already connected to the StrongSwan router.</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">192</span>.168.200.100<span class="w"> </span>
 </pre></div>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Do not stop the ping command</p>
+<p>Do not stop the ping command!</p>
 </div>
 <figure class="align-center" id="id29">
-<a class="reference internal image-reference" href="../_images/lab8-podportal11.png"><img alt="../_images/lab8-podportal11.png" src="../_images/lab8-podportal11.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="docs/images/lab7-guacamoleq1.png"><img alt="docs/images/lab7-guacamoleq1.png" src="docs/images/lab7-guacamoleq1.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 332 </span><span class="caption-text">ping</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
@@ -735,7 +752,8 @@ Check the content of the following file: <code class="docutils literal notransla
 <h2>7. Gateway Diagnostics<a class="headerlink" href="#gateway-diagnostics" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong> and click on the icon of the Spoke Gateway <strong><em>gcp-us-central1-spoke1</em></strong>, click on the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> button and then click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Diagnostics</span></code>.</p>
 <figure class="align-center" id="id31">
-<a class="reference internal image-reference" href="../_images/lab8-diag.png"><img alt="../_images/lab8-diag.png" src="../_images/lab8-diag.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-diag.png"><img alt="../_images/lab8-diag.png" src="../_images/lab8-diag.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 334 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
@@ -750,7 +768,8 @@ Check the content of the following file: <code class="docutils literal notransla
 </figure>
 <p>After completing the S2C connection, this is what the overall lab topology will look like:</p>
 <figure class="align-center" id="id33">
-<a class="reference internal image-reference" href="../_images/lab8-finaltopology.png"><img alt="../_images/lab8-finaltopology.png" src="../_images/lab8-finaltopology.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lab8-finaltopology.png"><img alt="../_images/lab8-finaltopology.png" src="../_images/lab8-finaltopology.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 336 </span><span class="caption-text">The Topology with the new S2C connection</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
@@ -828,15 +847,15 @@ Check the content of the following file: <code class="docutils literal notransla
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4. Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site2cloud-connection-cloud-to-on-prem">4.1. Site2Cloud Connection (Cloud to On-Prem)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strongswan-s-configuration">4.2 StrongSwan’s Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-through-the-apache-guacamole-client-jumphost">4.2.1  <span style="color:#33ECFF">Configuration through the Apache Guacamole Client (Jumphost)</span></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-through-the-ssh-client">4.2.2  <span style="color:#33ECFF">Configuration through the SSH Client</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-using-the-apache-guacamole-client-jumphost">4.2.1  Configuration Using the Apache Guacamole Client (Jumphost)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configuratiom-using-the-ssh-client-bonus">4.2.2  Configuratiom Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s2c-verification">5. S2C - Verification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing">6. Connectivity Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-gatus-app">6.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-apache-guacamole-client-jumphost">6.1 Connectivity Testing Using the Apache Guacamole Client (Jumphost)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-ssh-client-bonus">6.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
