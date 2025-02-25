@@ -157,7 +157,7 @@ If you are using a corporate laptop that does not allow the use of any SSH clien
 If you have a laptop without these restrictions, please refer to task 4.2.2 and complete the configuration using your personal SSH client.
 ```
 
-#### 4.2.1  <span style='color:#33ECFF'>Configuration through the Apache Guacamole Client (Jumphost)</span></summary>
+#### 4.2.1  Configuration Using the Apache Guacamole Client (Jumphost)
 
 Go to your personal POD portal, identify the section labeled `"Lab 7 and 8"`, then click on the `"Open Workstation"` button to log in to the **Workstation Edge** (a Guacamole clientless remote desktop gateway).
 
@@ -282,7 +282,7 @@ align: center
 Bash script issued successfully
 ```
 
-#### 4.2.2  <span style='color:#33ECFF'>Configuration through the SSH Client</span></summary>
+#### 4.2.2  Configuratiom Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Alternatively, if you are NOT using a corporate laptop, you can SSH into the StrongSwan router and apply the configuration using your SSH client.
 
@@ -384,29 +384,29 @@ OnPrem-Partner site
 
 Verify that ther VM in GCP can ping successfully the on-prem-partner1 router, pinging its `Virtual Remote IP`.
 
-### 6.1 Connectivity Testing Using the Gatus App
+### 6.1 Connectivity Testing Using the Apache Guacamole Client (Jumphost)</span></summary>
 
-First and foremost, navigate to your POD Portal, locate the `Gatus widget`, and select **_gcp-us-central1-spoke1-test1_**.
+Go back to your **Workstation Edge** (i.e. the Guacamole Client).
 
-```{figure} images/lab8-podportal10.png
+```{figure} images/lab7-guacamole10.png
 ---
 height: 400px
 align: center
 ---
-Gatus
+Guacamole Client
 ```
 
-Go back to your Guacamole Client (i.e. Workstation Edge) and issue the following command:
+- Now, execute the following command in the SSH session that is already connected to the StrongSwan router.
 
 ```bash
 ping 192.168.200.100 
 ```
 
 ```{tip}
-Do not stop the ping command
+Do not stop the ping command!
 ```
 
-```{figure} images/lab8-podportal11.png
+```{figure} images/lab7-guacamoleq1.png
 ---
 height: 400px
 align: center

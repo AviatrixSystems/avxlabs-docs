@@ -390,7 +390,7 @@ Egress-Rule
 ```
 
 ```{important}
-The `DefaultDenyAll` rule injected by the Aviatrix Controller is by default not editable
+The `DefaultDenyAll` rule injected by the Aviatrix Controller is by default not editable.
 ```
 
 ```{figure} images/lab6-new010.png
@@ -641,7 +641,7 @@ align: center
 aws-us-east-2-spoke1-test2
 ```
 
-### 8.3.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 8.3.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Re-launch the following curl commands from the SSH session opened with the **_aws-us-east-2-spoke1-test1_** instance:
 
