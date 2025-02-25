@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-In this lab, we will demonstrate Active/Active communication between the resources utilizing high performance encryption (*aka `Insane Mode`* - **large number of A/A tunnels**) between Aviatrix Gateways (Spoke-to-Transit & Transit-to-Transit).
+In this lab, we will demonstrate Active/Active communication between the resources utilizing **High-Performance Encryption** (*aka `Insane Mode`* - **large number of A/A tunnels**) between Aviatrix Gateways.
 
 ## 2. High Performance Encryption and ActiveMesh
 

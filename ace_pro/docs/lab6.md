@@ -42,7 +42,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke 
 
 ```{figure} images/lab7-spoke.png
 ---
-height: 300px
+height: 500px
 align: center
 ---
 Edit Spoke GW
@@ -246,7 +246,7 @@ Vendor Integration template
 ```
 
 ```{note}
-Wait for some seconds for the Vendor Integration to complete.
+Wait for some seconds for the **Vendor Integration** to complete.
 
 If you see an error message related to the *ethernet1/2*, wait some additional minutes before clicking again on **Save**.
 ```{figure} images/lab7-message.png
@@ -452,10 +452,10 @@ Moreover, continue editing the **Greenfield-Rule**: click on the three-dot icon 
 
 ```{figure} images/lab6-new105.png
 ---
-height: 300px
+height: 500px
 align: center
 ---
-Loggingh ON
+Logging ON
 ```
 
 **Commit** your final change again.
@@ -593,7 +593,7 @@ You will immediately notice the logs that successfully matched the Greenfield-Ru
 
 ```{figure} images/lab7-finalmonitor01.png
 ---
-height: 300px
+height: 500px
 align: center
 ---
 Logs
@@ -641,6 +641,10 @@ height: 350px
 align: center
 ---
 Traceroute
+```
+
+```{important}
+The second hop (i.e. the fireall) is not responding because the LAN interface of the Palo Alto firewall is not configured to accept inbound UDP packets.
 ```
 
 1) The **first** hop represents the Transit Firenet Gateway.
