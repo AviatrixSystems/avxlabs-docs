@@ -104,7 +104,29 @@ aws-us-east1-spoke1-rtb-public-a
 
 Now that there is a PSF Gateway on defending the Public Subnet, let's generate some traffic towards an IP with **Bad Reputation**.
 
-### 4.1 SSH to aws-us-east1-spoke1-test1
+### 4.1 Connectivity Testing Using the Gatus App
+
+Go to your personal POD Portal, identify the status widget and then click on **_aws-us-east1-spoke1-test1_**.
+
+```{figure} images/lab9-gatus010.png
+---
+height: 250px
+align: center
+---
+Gatus
+```
+
+```{figure} images/lab9-gatus011.png
+---
+height: 250px
+align: center
+---
+Malicious IP
+```
+
+The EC2 instance is already generating traffic towards a malicious IP address.
+
+### 4.2 SSH to aws-us-east1-spoke1-test1 <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Retrieve the Public IP address of **_aws-us-east-1-spoke1-test1_** instance:
 
@@ -115,7 +137,6 @@ Retrieve the Public IP address of **_aws-us-east-1-spoke1-test1_** instance:
 height: 250px
 align: center
 ---
-
 Public IP address
 ```
 
@@ -147,15 +168,15 @@ align: center
 Curl towards the malicious IP
 ```
 
-The traffic will be permitted... Let's now enforce the `Threats detection mechanism`!
+## 5.0 Create a new SmartGroup
+
+The traffic tpwards the malicious IP is permitted... Let's now enforce the `Threats Detection mechanism`!
 
 ```{note}
 The IP shown in these screenshots  might not be deemed a threat when you read this. 
 
 <ins>Please use the malicious IP provided by the instructor</ins>.
 ```
-
-## 5.0 Create a new SmartGroup 
 
 Let's create another SmartGroup that can identify the **_aws-us-east-1-spoke1-test1_** instance that resides in the **US-EAST-1** region.
 

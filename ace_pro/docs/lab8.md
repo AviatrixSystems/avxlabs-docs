@@ -487,7 +487,7 @@ Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-
 
 ```{figure} images/lab8-podportal113.png
 ---
-height: 500px
+height: 200px
 align: center
 ---
 Traceroute
@@ -676,7 +676,7 @@ Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-sp
 
 ```{figure} images/lab8-podportal113.png
 ---
-height: 500px
+height: 200px
 align: center
 ---
 Traceroute
@@ -766,7 +766,7 @@ This time the AS Path Length will turn out being equal to **2**.
 
 ```{figure} images/lab8-2path.png
 ---
-height: 450px
+height: 250px
 align: center
 ---
 As path length = 2
