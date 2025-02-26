@@ -48,7 +48,7 @@ align: center
 BGPoverLAN
 ```
 
-The S2C connection with Edge will be configured on the subsequent task.
+The S2C connection with Edge will be configured on the subsequent lab (i.e. **Lab 8**).
 
 Now let's configure the **S2C** connection with the Partner site!
 
@@ -163,7 +163,7 @@ Go to your personal POD portal, identify the section labeled `"Lab 7 and 8"`, th
 
 ```{figure} images/lab8-podportal00.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 POD Portal - Sec. 7-8
@@ -268,7 +268,7 @@ Use the Clipboard window for typing your commands and then copying them into the
 
 ```{figure} images/lab8-podportal08.png
 ---
-height: 500px
+height: 350px
 align: center
 ---
 Bash cmd
@@ -386,11 +386,15 @@ Verify that ther VM in GCP can ping successfully the on-prem-partner1 router, pi
 
 ### 6.1 Connectivity Testing Using the Apache Guacamole Client (Jumphost)</span></summary>
 
+```{caution}
+Please complete this task only if you are using a corporate laptop. If you are using your personal laptop, please proceed with **Task 6.2**.
+```
+
 Go back to your **Workstation Edge** (i.e. the Guacamole Client).
 
 ```{figure} images/lab7-guacamole10.png
 ---
-height: 2000px
+height: 350px
 align: center
 ---
 Guacamole Client
