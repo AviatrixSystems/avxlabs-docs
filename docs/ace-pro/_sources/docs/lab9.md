@@ -170,7 +170,7 @@ Curl towards the malicious IP
 
 ## 5.0 Create a new SmartGroup
 
-The traffic tpwards the malicious IP is permitted... Let's now enforce the `Threats Detection mechanism`!
+The traffic towards the malicious IP is permitted... Let's now enforce the `Threats Detection mechanism`!
 
 ```{note}
 The IP shown in these screenshots  might not be deemed a threat when you read this. 

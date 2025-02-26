@@ -390,7 +390,7 @@ Go back to your **Workstation Edge** (i.e. the Guacamole Client).
 
 ```{figure} images/lab7-guacamole10.png
 ---
-height: 400px
+height: 2000px
 align: center
 ---
 Guacamole Client
@@ -406,7 +406,7 @@ ping 192.168.200.100
 Do not stop the ping command!
 ```
 
-```{figure} images/lab7-guacamoleq1.png
+```{figure} images/lab7-guacamole11.png
 ---
 height: 400px
 align: center
