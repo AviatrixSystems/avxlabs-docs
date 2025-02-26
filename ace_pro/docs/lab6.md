@@ -613,14 +613,14 @@ The inspected VNets
 
 Let's retrieve the **Private IP address** of the VM in  the **_azure-west-us-spoke2_** VNet.
 
-- Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_azure-west-us-spoke2-test<span style='color:#33ECFF'>2</span></summary>_** instance. Identify its Private IP address and copy it.
+- Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_azure-west-us-spoke2-test<span style='color:#33ECFF'>1</span></summary>_** instance. Identify its Private IP address and copy it.
 
 ```{figure} images/lab6-searchfor.png
 ---
 height: 200px
 align: center
 ---
-Search for azure-west-us-spoke2-test2
+Search for azure-west-us-spoke2-test1
 ```
 
 Now navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_azure-west-us-spoke<span style='color:#33ECFF'>1</span></summary>_** Gateway, then select the **Traceroute** command. Paste the IP address previously copied from the **Cloud Assets** section into the `Destination (IP / Hostname)` field, and then click on **Run**.
