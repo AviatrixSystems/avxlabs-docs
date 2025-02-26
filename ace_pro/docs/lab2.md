@@ -63,7 +63,7 @@ aws-us-east-2-spoke1-test1
 height: 350px
 align: center
 ---
-aws-us-east-2-spoke1-test1 on the logical Topology
+aws-us-east-2-spoke1-test1 on the Dynamic Topology
 ```
 
 Insert the credentials available on your POD Portal and then click on **"Sign in"**.
