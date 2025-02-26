@@ -359,7 +359,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5.0 Create a new SmartGroup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6.0 Create two new DCF rules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7.0 Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.1 Create a new SmartGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.1 Create a new WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.2 Create a PSF-Allow-Rule</a></li>
 </ul>
 </li>
@@ -389,10 +389,10 @@ document.write(`
 <section id="topology">
 <h2>2. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
 <p>In this lab, we will deploy a <code class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in AWS <strong>US-EAST-1</strong> region, to protect SOLELY the public subnet where the test1 instance resides.</p>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id1">
 <img alt="../_images/lab9-initialtopology.png" src="../_images/lab9-initialtopology.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 405 </span><span class="caption-text">Lab 9 Initial Topology</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 405 </span><span class="caption-text">Lab 9 Initial Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -402,11 +402,11 @@ document.write(`
 <section id="deploy-the-psf">
 <h3>3.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">Gateway&quot;</span></code> button and then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/lab9-psf.png"><img alt="../_images/lab9-psf.png" src="../_images/lab9-psf.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 406 </span><span class="caption-text">PSF</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 406 </span><span class="caption-text">PSF</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -420,21 +420,21 @@ document.write(`
 <li><p><strong>Route Table</strong>: <span style='color:#479608'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id3">
 <img alt="../_images/lab9-new.png" src="../_images/lab9-new.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 407 </span><span class="caption-text">PSF template</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 407 </span><span class="caption-text">PSF template</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Wait for about <strong>8</strong> minutes for the completion of the PSF deployment.</p>
 </div>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/lab9-psfinprogress.png"><img alt="../_images/lab9-psfinprogress.png" src="../_images/lab9-psfinprogress.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 408 </span><span class="caption-text">PSF deployment in progress</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 408 </span><span class="caption-text">PSF deployment in progress</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -443,17 +443,17 @@ document.write(`
 <ul class="simple">
 <li><p>Click on the <strong>PSF</strong> gateway, select the <strong>VPC/VNet Route Tables</strong> and then inspect the <strong><em>aviatrix-Aviatrix-Filter-Gateway</em></strong> Route Table</p></li>
 </ul>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/lab9-psfclick.png"><img alt="../_images/lab9-psfclick.png" src="../_images/lab9-psfclick.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 409 </span><span class="caption-text">PSF deployed</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 409 </span><span class="caption-text">PSF deployed</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id6">
 <img alt="../_images/lab9-routetablepsf.png" src="../_images/lab9-routetablepsf.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 410 </span><span class="caption-text">PSF rtb</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 410 </span><span class="caption-text">PSF rtb</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -464,10 +464,10 @@ document.write(`
 <ul class="simple">
 <li><p>Verify one more routing table that we selected while deploying the PSF Gateway: <strong><em>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</em></strong>. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).</p></li>
 </ul>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id7">
 <img alt="../_images/lab9-routetablepsf2.png" src="../_images/lab9-routetablepsf2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 411 </span><span class="caption-text">aws-us-east1-spoke1-rtb-public-a</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 411 </span><span class="caption-text">aws-us-east1-spoke1-rtb-public-a</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -478,18 +478,18 @@ document.write(`
 <section id="connectivity-testing-using-the-gatus-app">
 <h3>4.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#connectivity-testing-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Go to your personal POD Portal, identify the status widget and then click on <strong><em>aws-us-east1-spoke1-test1</em></strong>.</p>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/lab9-gatus010.png"><img alt="../_images/lab9-gatus010.png" src="../_images/lab9-gatus010.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 412 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 412 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/lab9-gatus011.png"><img alt="../_images/lab9-gatus011.png" src="../_images/lab9-gatus011.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 413 </span><span class="caption-text">Malicious IP</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 413 </span><span class="caption-text">Malicious IP</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The EC2 instance is already generating traffic towards a malicious IP address.</p>
@@ -500,17 +500,17 @@ document.write(`
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, search for <code class="docutils literal notranslate"><span class="pre">aws-us-east-1-spoke1-test1</span></code> and then copy the <strong>Public</strong> IPv4 address!</p></li>
 </ul>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/lab9-newsg010.png"><img alt="../_images/lab9-newsg010.png" src="../_images/lab9-newsg010.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 414 </span><span class="caption-text">Public IP address</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 414 </span><span class="caption-text">Public IP address</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id11">
 <img alt="../_images/lab9-newsg011.png" src="../_images/lab9-newsg011.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 415 </span><span class="caption-text">SSH session</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 415 </span><span class="caption-text">SSH session</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><ins><code class="docutils literal notranslate"><span class="pre">Wait</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">instructor</span> <span class="pre">to</span> <span class="pre">provide</span> <span class="pre">a</span> <span class="pre">malicious</span> <span class="pre">IP</span></code></ins>.</p>
@@ -525,10 +525,10 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
 </pre></div>
 </div>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab9-instancetest.png" src="../_images/lab9-instancetest.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 416 </span><span class="caption-text">Curl towards the malicious IP</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 416 </span><span class="caption-text">Curl towards the malicious IP</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -542,17 +542,17 @@ document.write(`
 <p><ins>Please use the malicious IP provided by the instructor</ins>.</p>
 </div>
 <p>Let’s create another SmartGroup that can identify the <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance that resides in the <strong>US-EAST-1</strong> region.</p>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab9-routetablepsf234.png" src="../_images/lab9-routetablepsf234.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 417 </span><span class="caption-text">aws-us-east-1-spoke1-Public-1-us-east-1a</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 417 </span><span class="caption-text">aws-us-east-1-spoke1-Public-1-us-east-1a</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id14">
 <img alt="../_images/lab9-smart001.png" src="../_images/lab9-smart001.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 418 </span><span class="caption-text">New SmartGroup</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 418 </span><span class="caption-text">New SmartGroup</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -561,28 +561,28 @@ document.write(`
 <li><p><strong>CSP Tag Key</strong>: <span style='color:#479608'>Name</span></p></li>
 <li><p><strong>CSP Tag Value</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
 </ul>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab9-smart002.png" src="../_images/lab9-smart002.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 419 </span><span class="caption-text">aws-us-east-1-spoke1-test1 SmartGroup</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 419 </span><span class="caption-text">aws-us-east-1-spoke1-test1 SmartGroup</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="../_images/lab9-smart003.png"><img alt="../_images/lab9-smart003.png" src="../_images/lab9-smart003.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 420 </span><span class="caption-text">SmartGroups List</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 420 </span><span class="caption-text">SmartGroups List</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="create-two-new-dcf-rules">
 <h2>6.0 Create two new DCF rules<a class="headerlink" href="#create-two-new-dcf-rules" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab9-newrule10.png" src="../_images/lab9-newrule10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 421 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 421 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -596,18 +596,18 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab911-new.png" src="../_images/lab911-new.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 422 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 422 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now before committing, create another DCF rule for blocking also the traffic sourced from <strong>any Malicious IP addresses</strong> towards the <strong>aws-us-east-1-spoke1-test1</strong> instance.</p>
 <p>Create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button:</p>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab911-new33.png" src="../_images/lab911-new33.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 423 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 423 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -621,18 +621,18 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab96-newrule44.png" src="../_images/lab96-newrule44.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 424 </span><span class="caption-text">PSF-Deny-Rule-from-malicious-ips</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 424 </span><span class="caption-text">PSF-Deny-Rule-from-malicious-ips</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget now to <strong>Commit</strong> your new rules!</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../_images/lab96-newrule-commit.png"><img alt="../_images/lab96-newrule-commit.png" src="../_images/lab96-newrule-commit.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 425 </span><span class="caption-text">Commit the new rules</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 425 </span><span class="caption-text">Commit the new rules</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -643,11 +643,11 @@ document.write(`
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Groups &gt; ThreatGroups</strong> and click on <strong>Default ThreatGroup</strong> and look at the ProofPoint Malicious IP addresses DB!</p></li>
 </ul>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab96-newrule12.png"><img alt="../_images/lab96-newrule12.png" src="../_images/lab96-newrule12.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 426 </span><span class="caption-text">Default ThreatGroup</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 426 </span><span class="caption-text">Default ThreatGroup</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -662,29 +662,29 @@ document.write(`
 <li><p>Click on the <strong>three dots</strong> icon on the right-hand side of the Greenfield-Rule entry and then choose the <code class="docutils literal notranslate"><span class="pre">&quot;Delete</span> <span class="pre">Rule&quot;</span></code> option.</p></li>
 </ul>
 <p>Do not forget to click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../_images/lab66-newruledelete.png"><img alt="../_images/lab66-newruledelete.png" src="../_images/lab66-newruledelete.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 427 </span><span class="caption-text">Deletion of the Greenfield-Rule</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 427 </span><span class="caption-text">Deletion of the Greenfield-Rule</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab66-newruledeleted.png"><img alt="../_images/lab66-newruledeleted.png" src="../_images/lab66-newruledeleted.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 428 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 428 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab66-newruledeleted00.png"><img alt="../_images/lab66-newruledeleted00.png" src="../_images/lab66-newruledeleted00.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 429 </span><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 429 </span><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="id1">
-<h3>7.1 Create a new SmartGroup<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="create-a-new-webgroup">
+<h3>7.1 Create a new WebGroup<a class="headerlink" href="#create-a-new-webgroup" title="Link to this heading">#</a></h3>
 <p>Let’s create another <strong>WebGroup</strong> that will exactly match three domains:</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="http://www.nginx.com">www.nginx.com</a></p></li>
@@ -692,11 +692,11 @@ document.write(`
 <li><p><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></p></li>
 </ol>
 <p>Go to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id26">
 <a class="reference internal image-reference" href="../_images/lab9-smart100.png"><img alt="../_images/lab9-smart100.png" src="../_images/lab9-smart100.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 430 </span><span class="caption-text">New WebGroup</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 430 </span><span class="caption-text">New WebGroup</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create the new <strong><em>WebGroup</em></strong> with the following parameters:</p>
@@ -708,20 +708,20 @@ document.write(`
 <li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id27">
 <img alt="../_images/lab6-webgroup200.png" src="../_images/lab6-webgroup200.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 431 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 431 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="create-a-psf-allow-rule">
 <h3>7.2 Create a PSF-Allow-Rule<a class="headerlink" href="#create-a-psf-allow-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id28">
 <img alt="../_images/lab9-newrule100.png" src="../_images/lab9-newrule100.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 432 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 432 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters</p>
@@ -736,35 +736,35 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab911-new100.png" src="../_images/lab911-new100.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 433 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 433 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the <strong>Commit</strong> button!</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab96-newrule201.png"><img alt="../_images/lab96-newrule201.png" src="../_images/lab96-newrule201.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 434 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 434 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="connectivity-tests">
 <h2>8. Connectivity Tests<a class="headerlink" href="#connectivity-tests" title="Link to this heading">#</a></h2>
-<p>Now before launching the connectivity test, those three rules related to the PSF must be enforced on the PSF gateway itself.</p>
+<p>Before launching the connectivity test, the three rules related to the PSF must be enforced on the PSF gateway itself.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">PSF</span></code> Gateway is a <strong><em>standalone Gateway</em></strong>: it is neither a Spoke nor a Transit.</p>
 </div>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and enable the <code class="docutils literal notranslate"><span class="pre">&quot;Enforcemente</span> <span class="pre">on</span> <span class="pre">PSF</span> <span class="pre">Gateweays&quot;</span></code> functionality.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab96-newrule333.png"><img alt="../_images/lab96-newrule333.png" src="../_images/lab96-newrule333.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 435 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 435 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From your <strong>SSH</strong> client, issue the following commands from the <strong>aws-us-east1-spoke1-test1</strong> instance:</p>
@@ -777,58 +777,58 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
 </pre></div>
 </div>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id32">
 <img alt="../_images/lab96-newrule301.png" src="../_images/lab96-newrule301.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 436 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 436 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now issue again the curl command towards the <strong>malicious IP</strong> address that was earlier provided by the Trainer!</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
 </pre></div>
 </div>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id33">
 <img alt="../_images/lab96-newrule302.png" src="../_images/lab96-newrule302.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 437 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 437 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice that the traffic towards the <strong>IP with Bad Reputation</strong> was blocked at the very first <strong>SYN</strong> and <strong>SYN-ACK</strong> packets!</p>
 <p>Now go to <strong>CoPilot &gt; Security &gt; ThreatIQ</strong>  section, then scroll down through the whole <strong>Overview</strong> section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either <strong><em>Source</em></strong> or <strong><em>Destination</em></strong>!</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id34">
 <a class="reference internal image-reference" href="../_images/lab96-newrule308.png"><img alt="../_images/lab96-newrule308.png" src="../_images/lab96-newrule308.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 438 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 438 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id35">
 <img alt="../_images/lab96-newrule309.png" src="../_images/lab96-newrule309.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 439 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 439 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now click on the <strong>VIEW</strong> link on the right-hand side of the entry:</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab96-newrule310.png"><img alt="../_images/lab96-newrule310.png" src="../_images/lab96-newrule310.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 440 </span><span class="caption-text">View link</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 440 </span><span class="caption-text">View link</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Last but not least, explore the <code class="docutils literal notranslate"><span class="pre">Threat</span> <span class="pre">Summary</span></code> tab to find out how ProofPoint classified that IP address!</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id37">
 <img alt="../_images/lab96-newrule311.png" src="../_images/lab96-newrule311.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 441 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 441 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>After this lab, this is how the overall topology would look like:</p>
-<figure class="align-center" id="id39">
+<p>After this lab, this is how the overall topology will look like:</p>
+<figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab9-finaltopologyy.png"><img alt="../_images/lab9-finaltopologyy.png" src="../_images/lab9-finaltopologyy.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 442 </span><span class="caption-text">Final Topology for Lab 9</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 442 </span><span class="caption-text">Final Topology for Lab 9</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -913,7 +913,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5.0 Create a new SmartGroup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6.0 Create two new DCF rules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7.0 Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.1 Create a new SmartGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.1 Create a new WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.2 Create a PSF-Allow-Rule</a></li>
 </ul>
 </li>
