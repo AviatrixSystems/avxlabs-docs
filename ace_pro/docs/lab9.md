@@ -425,17 +425,77 @@ Before launching the connectivity test, the three rules related to the PSF must 
 The `PSF` Gateway is a **_standalone Gateway_**: it is neither a Spoke nor a Transit.
 ```
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and enable the `"Enforcemente on PSF Gateweays"` functionality.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and enable the `"Enforcement on PSF Gateweays"` functionality.
 
 ```{figure} images/lab96-newrule333.png
 ---
 height: 400px
 align: center
 ---
-Commit
+Enforcement
 ```
 
-From your **SSH** client, issue the following commands from the **aws-us-east1-spoke1-test1** instance:
+### 8.1 Connectivity Testing Using the Gatus App
+
+Go to your personal POD portal and click again on the click on **_aws-us-east-1-spoke1-test1_** instance.
+
+```{figure} images/lab9-gatus010.png
+---
+height: 250px
+align: center
+---
+Gatus
+```
+
+```{figure} images/lab9-gatus011.png
+---
+height: 250px
+align: center
+---
+Malicious IP
+```
+
+The traffic is blocked now.
+
+### 8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+```{important}
+The phrase you provided is mostly clear, but there are a few minor grammatical adjustments that can improve its readability:
+
+Before proceeding with the verification from your SSH client, you need to re-establish the SSH connection with **_aws-us-east-1-spoke1-test1_**. After applying the previous DCF rules, the SSH session will be dropped. Although the SSH session will be established through the IGW, it will then span the Spoke GW, which will enforce the Distributed Cloud Firewall rules!
+```
+
+```{figure} images/lab9-igw.png
+---
+height: 250px
+align: center
+---
+IGW and Spoke GW
+```
+
+#### 8.2.1 SSH to aws-us-east1-spoke1-test1
+
+Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, then search for **aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary>**, retrieve its Public IP address and SSH in to the EC2 instance.
+
+```{figure} images/lab9-igw04.png
+---
+height: 250px
+align: center
+---
+SSH in to aws-us-east-1-spoke1-test2
+```
+
+- SSH from aws-us-east-1-spoke1-test2 tp aws-us-east-1-spoke1-test1, using this time the Priavet IP address of the test1 instance.
+
+```{figure} images/lab9-igw05.png
+---
+height: 250px
+align: center
+---
+SSH in to test1 from test2
+```
+
+- Execute now the following commands:
 
 ```bash
 curl https://www.nginx.com
@@ -470,6 +530,8 @@ Towards the Malicious IP
 ```
 
 You will notice that the traffic towards the **IP with Bad Reputation** was blocked at the very first **SYN** and **SYN-ACK** packets!
+
+## 9. Final Considerations
 
 Now go to **CoPilot > Security > ThreatIQ**  section, then scroll down through the whole **Overview** section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either **_Source_** or **_Destination_**!
 
