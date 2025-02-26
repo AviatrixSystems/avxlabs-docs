@@ -341,7 +341,7 @@ align: center
 DCF Rules List
 ```
 
-### 7.1 Create a new SmartGroup
+### 7.1 Create a new WebGroup
 
 Let's create another **WebGroup** that will exactly match three domains:
 
@@ -419,7 +419,7 @@ Commit
 
 ## 8. Connectivity Tests
 
-Now before launching the connectivity test, those three rules related to the PSF must be enforced on the PSF gateway itself.
+Before launching the connectivity test, the three rules related to the PSF must be enforced on the PSF gateway itself.
 
 ```{caution}
 The `PSF` Gateway is a **_standalone Gateway_**: it is neither a Spoke nor a Transit.
@@ -507,7 +507,7 @@ align: center
 Condition
 ```
 
-After this lab, this is how the overall topology would look like:
+After this lab, this is how the overall topology will look like:
 
 ```{figure} images/lab9-finaltopologyy.png
 ---
