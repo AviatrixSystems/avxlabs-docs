@@ -644,7 +644,7 @@ Traceroute
 ```
 
 ```{important}
-The second hop (i.e. the fireall) is not responding because the LAN interface of the Palo Alto firewall is not configured to accept inbound UDP packets.
+The second hop (i.e. the firewall) is not responding because the LAN interface of the Palo Alto firewall is not configured to accept inbound UDP packets.
 ```
 
 1) The **first** hop represents the Transit Firenet Gateway.

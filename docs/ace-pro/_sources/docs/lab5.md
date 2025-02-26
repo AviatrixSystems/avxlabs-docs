@@ -695,7 +695,14 @@ Now that you have successfully enabled the `Aviatrix Cloud Firewall`, you can ge
 
 ### 9.1 AWS Console
 
-Login to **AWS console**</a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 149</ins>).
+Login to **AWS console**</a>. Refer to your pod info for login information (<ins>Please always refer to your personal POD Portal</ins>).
+
+```{figure} images/lab5-deleteaws.png
+---
+align: center
+---
+AWS NAT GW
+```
 
 ```{figure} images/lab5-newone.png
 ---
