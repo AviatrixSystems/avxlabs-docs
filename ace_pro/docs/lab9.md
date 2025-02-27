@@ -147,13 +147,9 @@ align: center
 SSH session
 ```
 
-<ins>`Wait for the instructor to provide a malicious IP`</ins>. 
+`<malicious-IP>`: **_109.107.35.154_**
 
-Let's call it `<malicious-IP>`. 
 
-```{important}
-<ins>Note down this IP address!</ins>
-```
 
 - Issue this command (make sure to enter **HTTPS**):
 
@@ -171,12 +167,6 @@ Curl towards the malicious IP
 ## 5.0 Create a new SmartGroup
 
 The traffic towards the malicious IP is permitted... Let's now enforce the `Threats Detection mechanism`!
-
-```{note}
-The IP shown in these screenshots  might not be deemed a threat when you read this. 
-
-<ins>Please use the malicious IP provided by the instructor</ins>.
-```
 
 Let's create another SmartGroup that can identify the **_aws-us-east-1-spoke1-test1_** instance that resides in the **US-EAST-1** region.
 
@@ -447,21 +437,11 @@ align: center
 Gatus
 ```
 
-```{figure} images/lab9-gatus011.png
----
-height: 250px
-align: center
----
-Malicious IP
-```
-
 The traffic is blocked now.
 
 ### 8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 ```{important}
-The phrase you provided is mostly clear, but there are a few minor grammatical adjustments that can improve its readability:
-
 Before proceeding with the verification from your SSH client, you need to re-establish the SSH connection with **_aws-us-east-1-spoke1-test1_**. After applying the previous DCF rules, the SSH session will be dropped. Although the SSH session will be established through the IGW, it will then span the Spoke GW, which will enforce the Distributed Cloud Firewall rules!
 ```
 
@@ -485,7 +465,7 @@ align: center
 SSH in to aws-us-east-1-spoke1-test2
 ```
 
-- SSH from aws-us-east-1-spoke1-test2 tp aws-us-east-1-spoke1-test1, using this time the Priavet IP address of the test1 instance.
+- SSH from **_aws-us-east-1-spoke1-test2_** to **_aws-us-east-1-spoke1-test1_**, using this time the Private IP address of the test1 instance.
 
 ```{figure} images/lab9-igw05.png
 ---
@@ -493,6 +473,10 @@ height: 250px
 align: center
 ---
 SSH in to test1 from test2
+```
+
+```{important}
+Is there a way to directly SSH into **_aws-us-east-1-spoke1-test1_** without first SSHing into test2?
 ```
 
 - Execute now the following commands:
@@ -537,7 +521,7 @@ Now go to **CoPilot > Security > ThreatIQ**  section, then scroll down through t
 
 ```{figure} images/lab96-newrule308.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Filter
