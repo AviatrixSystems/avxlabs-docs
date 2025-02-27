@@ -476,7 +476,7 @@ SSH in to test1 from test2
 ```
 
 ```{important}
-Is it possible to directly SSH into **_aws-us-east-1-spoke1-test1_** without first connecting to test2
+Is it possible to directly SSH into **_aws-us-east-1-spoke1-test1_** without first connecting to test2?
 ```
 
 - Execute now the following commands:

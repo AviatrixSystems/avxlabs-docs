@@ -139,7 +139,7 @@ Complete DCF Rules List
 
 ### 3.3 Connectivity Verification (ICMP) Using Gatus App
 
-Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-us-east-2-spoke1-test1_**.
+Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_**.
 
 Insert the credentials available on your POD Portal and then click on **"Sign in"**.
 
@@ -331,9 +331,9 @@ SSH from your laptop
 The SSH session from your laptop to the **_aws-us-east-2-spoke1-test1_** instance is not affected by any DCF rules, because the connection is established directly through the **AWS IGW**. 
 ```
 
-### 5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App
+### 5.2 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App
 
-Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the SSH section.
+Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the ICMP Traffic.
 
 ```{figure} images/lab10-gatus80.png
 ---
@@ -346,7 +346,7 @@ Gatus
 
 However, **_aws-us-east-2-spoke1-test1_** is also capable of pinging **_aws-us-east-2-spoke1-test2_**, although the latter belongs to "bu2". Once again, this behaviour stems from the fact that the two instances reside in the same VPC.
 
-### 5.2 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Ping the following instances from **aws-us-east-2-spoke1-test1**:
 
@@ -371,8 +371,10 @@ align: center
 ---
 Ping
 ```
+**aws-us-east-2-spoke1-test2** can successfully ping **aws-us-east-2-spoke1-test1**, because the communication occurs inside th VPC, without involving the Spoke Gateway.
 
-### 5.3 SG Orchestration
+
+### 5.4 SG Orchestration
 
 Let's investigate the logs:
 
@@ -419,7 +421,7 @@ Manage SG Orchestration
 
 ### 5.5 SG Orchestration Verification Using the Gatus App
 
-Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the SSH section.
+Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the connectivity with **_aws-us-east-2-spoke1-test2_**.
 
 ```{figure} images/lab10-gatus81.png
 ---
@@ -445,7 +447,20 @@ Ping fails
 This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2 region, thanks to the Security Group Orchestration carried out by the **Aviatrix Controller**.
 ```
 
-### 5.7 Verify SSH within bu1
+### 5.7 Verify SSH within bu1 Using the Gatus App
+
+Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the SSH Traffic.
+
+```{figure} images/lab10-gatus88.png
+---
+align: center
+---
+Gatus
+```
+
+**_aws-us-east-2-spoke1-test1_** can't SSH to any other instances inside bu1.
+
+### 5.8 Verify SSH within bu1 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 SSH to the Private IP of the instance **_azure-west-us-spoke1-test1_** in Azure. Despite the fact that the instance is within the same Smart Group "bu1", the SSH will fail due to the absence of a dedicated rule that would permit SSH traffic within the Smart Group.
 
@@ -456,7 +471,7 @@ align: center
 SSH fails
 ```
 
-### 5.4. Add a rule that allows SSH in bu1
+### 5.9 Add a rule that allows SSH in bu1
 
 Create another rule clicking on the `"+ Rule"` button.
 
@@ -498,6 +513,23 @@ align: center
 Commit
 ```
 
+## 6. Verification after the intra-rule 
+
+### 6.1 Verify SSH within bu1 Using the Gatus App
+
+Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the SSH Traffic.
+
+```{figure} images/lab10-gatus97.png
+---
+align: center
+---
+Gatus
+```
+
+**_aws-us-east-2-spoke1-test1_** can now SSH to **_azure-west-us-spoke1-test1_**
+
+### 6.2 Verify SSH within bu1 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
 - Try once again to SSH to the Private IP of the instance **_azure-west-us-spoke1-<span style='color:red'>test1</span>_** in Azure in BU1.
 
 This time the connection will be established, thanks to the new intra-rule.
@@ -508,6 +540,8 @@ align: center
 ---
 SSH ok
 ```
+
+## 7. Logs
 
 Let's investigate the logs once again.
 
@@ -533,7 +567,9 @@ align: center
 New Topology
 ```
 
-### 5.4. SSH to VM in bu2
+## 8.  Verification inside bu2
+
+### 8.1 SSH to VM in bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 SSH to the Public IP of the instance **_gcp-us-central1-spoke1-test1_**:
 
@@ -544,7 +580,20 @@ align: center
 SSH to gcp-us-central1-spoke1-test1
 ```
 
-### 5.5. Verify ICMP traffic within bu2
+### 8.2 Verify ICMP traffic within bu2 Using Gatus App
+
+Open the Gatus App on **_gcp-us-central1-spoke1-test1_** and verify the ICMP Traffic.
+
+```{figure} images/lab10-gatus34.png
+---
+align: center
+---
+Gatus
+```
+
+Ping towards the **_azure-west-us-spoke2-test1_** and **_aws-us-east-2-spoke1-test2_** will work, because these two instance belongs to the same Smart Group bu2!
+
+### 8.3 Verify ICMP traffic within bu2 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Ping the following instances:
 
@@ -576,7 +625,7 @@ Monitor
 
 The logs above confirm that the **ICMP** protocol is permitted within the Smart Group bu2.
 
-### 5.6. Inter-rule from bu2 to bu1
+### 9. Inter-rule from bu2 to bu1
 
 Create a new rule that allows ICMP FROM bu2 TO bu1.
 
