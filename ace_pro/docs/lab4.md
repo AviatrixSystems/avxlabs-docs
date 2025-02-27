@@ -271,7 +271,7 @@ Insert the credentials available on your POD Portal and then click on **"Sign in
 height: 400px
 align: center
 ---
-Open up the Gatus app from your Portal
+Istances
 ```
 
 - Now check if these two instances in the **_aws-us-east-1-spoke1_** VPC have `ICMP` reachability to the instance **_aws-us-east-2-spoke1-test1_** in the **US-EAST-2** region.

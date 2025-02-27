@@ -476,7 +476,7 @@ SSH in to test1 from test2
 ```
 
 ```{important}
-Is there a way to directly SSH into **_aws-us-east-1-spoke1-test1_** without first SSHing into test2?
+Is it possible to directly SSH into **_aws-us-east-1-spoke1-test1_** without first connecting to test2
 ```
 
 - Execute now the following commands:
@@ -529,6 +529,7 @@ Filter
 
 ```{figure} images/lab96-newrule309.png
 ---
+height: 200px
 align: center
 ---
 Condition
@@ -538,7 +539,7 @@ Now click on the **VIEW** link on the right-hand side of the entry:
 
 ```{figure} images/lab96-newrule310.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 View link

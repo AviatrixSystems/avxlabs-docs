@@ -6,7 +6,7 @@ This lab will demonstrate how the `Distributed Cloud Firewall` works.
 
 ## 2. Distributed Cloud Firewall Overview
 
-The Distributed Cloud Firewall functionality encompases several services, such as Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata IDS/IPS and Advanced NAT capabilities.
+The Distributed Cloud Firewall is a feature of `Aviatrix Cloud Firewall` It provides Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata IDS/IPS, Advanced NAT capabilities and Micro-Segmentation.
 
 In this lab you will create additional logical containers, called `Smart Groups`, that group instances that present similarities inside a VPC/VNet/VCN, and then you will enforce rules among these Smart Groups (aka **_Distributed Cloud Firewalling Rules_**):
 
@@ -48,7 +48,7 @@ Create two Smart Groups and classify each Smart Group, leveraging the CSP tag `"
 - Assign the name `"bu1"` to the Smart Group **#1**.
 - Assign the name `"bu2"` to the Smart Group **#2**.
 
-### 3.1. Smart Group “bu1”
+### 3.1 Smart Group “bu1”
 
 Go to **CoPilot > Groups > SmartGroups** and click on `"+ SmartGroup"`.
 
@@ -86,7 +86,7 @@ align: center
 Resources that match the condition
 ```
 
-### 3.2. Smart Group “bu2”
+### 3.2 Smart Group “bu2”
 
 Create another Smart Group clicking on the `"+ SmartGroup"` button.
 
@@ -137,9 +137,33 @@ align: center
 Complete DCF Rules List
 ```
 
-### 3.3. Connectivity verification (ICMP)
+### 3.3 Connectivity Verification (ICMP) Using Gatus App
 
-Open a terminal window and SSH to the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (NOT test2), and from there ping the private IPs of each other instances to verify that the connectivity is indeed **broken**!
+Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-us-east-2-spoke1-test1_**.
+
+Insert the credentials available on your POD Portal and then click on **"Sign in"**.
+
+```{figure} images/lab10-gatus00.png
+---
+height: 400px
+align: center
+---
+Gatus
+```
+
+```{figure} images/lab10-gatus01.png
+---
+height: 400px
+align: center
+---
+aws-us-east-2-spoke1-test1
+```
+
+The **East-West** traffic is disrupted. The instance **_aws-us-east-2-spoke1-test1_** can only reach **test2** due to intra-VPC traffic, which bypasses the Aviatrix Spoke Gateway (i.e., the **Enforcement Security Point**).
+
+### 3.4 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+Open a terminal window and SSH into the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (_NOT test2_). From there, ping the private IPs of each other instances to verify that the connectivity is indeed **broken**!
 
 ```{note}
 Refer to your POD for the private IPs.
@@ -173,7 +197,21 @@ From the outcomes above you can figure out that only **aws-us-east-2-spoke1-<spa
 The ICMP traffic is leveraging the normal behaviour of the intra-vpc communication.
 ```
 
-### 3.4.  Connectivity verification (SSH)
+### 3.5 Connectivity Verification (SSH) Using Gatus App
+
+From the Gatus App open on **_aws-us-east-2-spoke1-test1_**, verify the SSH section.
+
+```{figure} images/lab10-gatus02.png
+---
+height: 400px
+align: center
+---
+aws-us-east-2-spoke1-test1
+```
+
+The SSH test is only successful against **_aws-us-east-2-spoke1-test2_** due to intra-VPC traffic.
+
+### 3.6  Connectivity Verification (SSH) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Verify also from the instance **aws-us-east-2-spoke1-test1** that you **_can't_** SSH to any other instances, except to the **aws-us-east-2-spoke1-test2**, due to the fact that the SSH connection in this case, is established once again within the VPC, <ins>bypassing the Spoke Gateway (i.e. the DCF Enforcement Point)</ins>!
 
@@ -233,14 +271,6 @@ Create Rule
 
 Click on **Commit**.
 
-```{figure} images/lab10-rule2.png
----
-height: 300px
-align: center
----
-Current list of rules
-```
-
 ### 4.2. Create an intra-rule that allows ICMP inside bu2
 
 Create another rule clicking on the `"+ Rule"` button.
@@ -274,17 +304,9 @@ intra-icmp-bu2
 
 Now proceed and click on the **Commit** button.
 
-```{figure} images/lab10-intrabu2345.png
----
-height: 300px
-align: center
----
-Commit
-```
-
 ## 5. Verification
 
-After the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols should look like:
+After the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols will look like:
 
 ```{figure} images/lab10-topology2.png
 ---
@@ -294,7 +316,7 @@ align: center
 New Topology
 ```
 
-### 5.1. Verify SSH traffic from your laptop to bu1
+### 5.1 Verify SSH traffic from your laptop to bu1 Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 SSH to the Public IP of the instance **aws-us-east-2-spoke1-test1**.
 
@@ -309,7 +331,22 @@ SSH from your laptop
 The SSH session from your laptop to the **_aws-us-east-2-spoke1-test1_** instance is not affected by any DCF rules, because the connection is established directly through the **AWS IGW**. 
 ```
 
-### 5.2. Verify ICMP within bu1 and from bu1 towards bu2
+### 5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App
+
+Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the SSH section.
+
+```{figure} images/lab10-gatus80.png
+---
+align: center
+---
+Gatus
+```
+
+**_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke1-test1_** can ping each other due to the intra-rule applied to the SmartGroup "bu1".
+
+However, **_aws-us-east-2-spoke1-test1_** is also capable of pinging **_aws-us-east-2-spoke1-test2_**, although the latter belongs to "bu2". Once again, this behaviour stems from the fact that the two instances reside in the same VPC.
+
+### 5.2 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Ping the following instances from **aws-us-east-2-spoke1-test1**:
 
@@ -325,6 +362,17 @@ align: center
 ---
 Ping
 ```
+
+Now, let's try to ping the instance **aws-us-east-2-spoke1-test2** from **aws-us-east-2-spoke1-test1**. 
+
+```{figure} images/lab10-pingtotest2.png
+---
+align: center
+---
+Ping
+```
+
+### 5.3 SG Orchestration
 
 Let's investigate the logs:
 
@@ -346,17 +394,8 @@ align: center
 Outcomes
 ```
 
-Now, let's try to ping the instance **aws-us-east-2-spoke1-test2** from **aws-us-east-2-spoke1-test1**. 
-
 ```{warning}
 The instance **aws-us-east-2-spoke1-test1** is in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka **_intra-vpc separation_**).
-```
-
-```{figure} images/lab10-pingtotest2.png
----
-align: center
----
-Ping
 ```
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button, inside the `"Security Group (SG) Orchestration"` field.
@@ -378,6 +417,21 @@ align: center
 Manage SG Orchestration
 ```
 
+### 5.5 SG Orchestration Verification Using the Gatus App
+
+Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the SSH section.
+
+```{figure} images/lab10-gatus81.png
+---
+align: center
+---
+Gatus
+```
+
+The ping to test2 will gradually fail!
+
+### 5.6 SG Orchestration Verification Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
 Relaunch the ping from **aws-us-east-2-spoke1-<span style='color:#479608'>test1</span>** towards **aws-us-east-2-spoke1-<span style='color:red'>test2</span>**. 
 
 ```{figure} images/lab10-pingtotest2fail.png
@@ -391,7 +445,7 @@ Ping fails
 This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2 region, thanks to the Security Group Orchestration carried out by the **Aviatrix Controller**.
 ```
 
-### 5.3. Verify SSH within bu1
+### 5.7 Verify SSH within bu1
 
 SSH to the Private IP of the instance **_azure-west-us-spoke1-test1_** in Azure. Despite the fact that the instance is within the same Smart Group "bu1", the SSH will fail due to the absence of a dedicated rule that would permit SSH traffic within the Smart Group.
 
