@@ -668,6 +668,21 @@ align: center
 Commit
 ```
 
+### 10.1 Verify ICMP traffic within bu2 Using the Gatus App
+
+Open the Gatus App on **_azure-west-us-spoke_** and verify the ICMP Traffic.
+
+```{figure} images/lab10-gatus38.png
+---
+align: center
+---
+Gatus
+```
+
+All pings will be successful thanks to the **EAST-1** region, as there is no full-mesh topology affecting connectivity.
+
+### 10.2 Verify ICMP traffic within bu2 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
+
 SSH to the Public IP of the instance **_azure-west-us-spoke<span style='color:#479608'>2</span>-<span style='color:#479608'>test1</span>_**.
 
 Ping the following instances:
@@ -685,6 +700,8 @@ align: center
 ---
 Ping ok
 ```
+
+## 11. Logs Monitor
 
 Let's investigate the logs once again.
 
@@ -723,11 +740,11 @@ align: center
 From-To
 ```
 
-The inter-rule is Stateful in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.
+The inter-rule is **Stateful** in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.
  
-## 6. East-1 and the Multi-Tier Transit
+## 12. East-1 and the Multi-Tier Transit
 
-### 6.1 Activation of the MTT
+### 12.1 Activation of the MTT
 
 Let’s now also involve the AWS region **US-EAST-1**.
 
@@ -740,6 +757,21 @@ align: center
 ---
 New Topology
 ```
+
+### 12.2 Verification of ICMP traffic between Azure and AWS Using Gatus App
+
+Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
+
+```{figure} images/lab10-gatus334.png
+---
+align: center
+---
+Gatus
+```
+
+Ping towards the **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** will NOT work.
+
+### 12.3 Verification ICMP between Azure and AWS Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
 
 SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
 
@@ -754,7 +786,11 @@ align: center
 Ping
 ```
 
-The ping fails, therefore, let’s check the routing table of the Spoke Gateway **_azure-west-us-spoke2_**.
+The ping fails! 
+
+## 13. Verification
+
+Let’s check the routing table of the Spoke Gateway **_azure-west-us-spoke2_**.
 
 Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the gateway **_azure-west-us-spoke2_**
 
