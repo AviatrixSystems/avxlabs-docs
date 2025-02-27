@@ -521,7 +521,7 @@ Now go to **CoPilot > Security > ThreatIQ**  section, then scroll down through t
 
 ```{figure} images/lab96-newrule308.png
 ---
-height: 250px
+height: 300px
 align: center
 ---
 Filter
@@ -529,7 +529,7 @@ Filter
 
 ```{figure} images/lab96-newrule309.png
 ---
-height: 200px
+height: 300px
 align: center
 ---
 Condition
