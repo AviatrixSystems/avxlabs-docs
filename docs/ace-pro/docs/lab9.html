@@ -521,12 +521,7 @@ document.write(`
 <p><span class="caption-number">Fig. 416 </span><span class="caption-text">SSH session</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p><ins><code class="docutils literal notranslate"><span class="pre">Wait</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">instructor</span> <span class="pre">to</span> <span class="pre">provide</span> <span class="pre">a</span> <span class="pre">malicious</span> <span class="pre">IP</span></code></ins>.</p>
-<p>Let’s call it <code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><ins>Note down this IP address!</ins></p>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>: <strong><em>109.107.35.154</em></strong></p>
 <ul class="simple">
 <li><p>Issue this command (make sure to enter <strong>HTTPS</strong>):</p></li>
 </ul>
@@ -544,11 +539,6 @@ document.write(`
 <section id="create-a-new-smartgroup">
 <h2>5.0 Create a new SmartGroup<a class="headerlink" href="#create-a-new-smartgroup" title="Link to this heading">#</a></h2>
 <p>The traffic towards the malicious IP is permitted… Let’s now enforce the <code class="docutils literal notranslate"><span class="pre">Threats</span> <span class="pre">Detection</span> <span class="pre">mechanism</span></code>!</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The IP shown in these screenshots  might not be deemed a threat when you read this.</p>
-<p><ins>Please use the malicious IP provided by the instructor</ins>.</p>
-</div>
 <p>Let’s create another SmartGroup that can identify the <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance that resides in the <strong>US-EAST-1</strong> region.</p>
 <figure class="align-center" id="id14">
 <img alt="../_images/lab9-routetablepsf234.png" src="../_images/lab9-routetablepsf234.png" />
@@ -785,49 +775,45 @@ document.write(`
 <p><span class="caption-number">Fig. 437 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id34">
-<a class="reference internal image-reference" href="../_images/lab9-gatus011.png"><img alt="../_images/lab9-gatus011.png" src="../_images/lab9-gatus011.png" style="height: 250px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 438 </span><span class="caption-text">Malicious IP</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 <p>The traffic is blocked now.</p>
 </section>
 <section id="connectivity-testing-using-the-ssh-client-bonus">
 <h3>8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-testing-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The phrase you provided is mostly clear, but there are a few minor grammatical adjustments that can improve its readability:</p>
 <p>Before proceeding with the verification from your SSH client, you need to re-establish the SSH connection with <strong><em>aws-us-east-1-spoke1-test1</em></strong>. After applying the previous DCF rules, the SSH session will be dropped. Although the SSH session will be established through the IGW, it will then span the Spoke GW, which will enforce the Distributed Cloud Firewall rules!</p>
 </div>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id34">
 <a class="reference internal image-reference" href="../_images/lab9-igw.png"><img alt="../_images/lab9-igw.png" src="../_images/lab9-igw.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 439 </span><span class="caption-text">IGW and Spoke GW</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 438 </span><span class="caption-text">IGW and Spoke GW</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="ssh-to-aws-us-east1-spoke1-test1">
 <h4>8.2.1 SSH to aws-us-east1-spoke1-test1<a class="headerlink" href="#ssh-to-aws-us-east1-spoke1-test1" title="Link to this heading">#</a></h4>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, then search for <strong>aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary></strong>, retrieve its Public IP address and SSH in to the EC2 instance.</p>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab9-igw04.png"><img alt="../_images/lab9-igw04.png" src="../_images/lab9-igw04.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 440 </span><span class="caption-text">SSH in to aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 439 </span><span class="caption-text">SSH in to aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>SSH from aws-us-east-1-spoke1-test2 tp aws-us-east-1-spoke1-test1, using this time the Priavet IP address of the test1 instance.</p></li>
+<li><p>SSH from <strong><em>aws-us-east-1-spoke1-test2</em></strong> to <strong><em>aws-us-east-1-spoke1-test1</em></strong>, using this time the Private IP address of the test1 instance.</p></li>
 </ul>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab9-igw05.png"><img alt="../_images/lab9-igw05.png" src="../_images/lab9-igw05.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 441 </span><span class="caption-text">SSH in to test1 from test2</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 440 </span><span class="caption-text">SSH in to test1 from test2</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Is there a way to directly SSH into <strong><em>aws-us-east-1-spoke1-test1</em></strong> without first SSHing into test2?</p>
+</div>
 <ul class="simple">
 <li><p>Execute now the following commands:</p></li>
 </ul>
@@ -840,20 +826,20 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
 </pre></div>
 </div>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id37">
 <img alt="../_images/lab96-newrule301.png" src="../_images/lab96-newrule301.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 442 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 441 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now issue again the curl command towards the <strong>malicious IP</strong> address that was earlier provided by the Trainer!</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
 </pre></div>
 </div>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id38">
 <img alt="../_images/lab96-newrule302.png" src="../_images/lab96-newrule302.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 443 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 442 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice that the traffic towards the <strong>IP with Bad Reputation</strong> was blocked at the very first <strong>SYN</strong> and <strong>SYN-ACK</strong> packets!</p>
@@ -863,40 +849,40 @@ document.write(`
 <section id="final-considerations">
 <h2>9. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
 <p>Now go to <strong>CoPilot &gt; Security &gt; ThreatIQ</strong>  section, then scroll down through the whole <strong>Overview</strong> section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either <strong><em>Source</em></strong> or <strong><em>Destination</em></strong>!</p>
-<figure class="align-center" id="id40">
-<a class="reference internal image-reference" href="../_images/lab96-newrule308.png"><img alt="../_images/lab96-newrule308.png" src="../_images/lab96-newrule308.png" style="height: 400px;" />
+<figure class="align-center" id="id39">
+<a class="reference internal image-reference" href="../_images/lab96-newrule308.png"><img alt="../_images/lab96-newrule308.png" src="../_images/lab96-newrule308.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 443 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id40">
 <img alt="../_images/lab96-newrule309.png" src="../_images/lab96-newrule309.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 445 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now click on the <strong>VIEW</strong> link on the right-hand side of the entry:</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id41">
 <a class="reference internal image-reference" href="../_images/lab96-newrule310.png"><img alt="../_images/lab96-newrule310.png" src="../_images/lab96-newrule310.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 446 </span><span class="caption-text">View link</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 445 </span><span class="caption-text">View link</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Last but not least, explore the <code class="docutils literal notranslate"><span class="pre">Threat</span> <span class="pre">Summary</span></code> tab to find out how ProofPoint classified that IP address!</p>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id42">
 <img alt="../_images/lab96-newrule311.png" src="../_images/lab96-newrule311.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 447 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 446 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology will look like:</p>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id43">
 <a class="reference internal image-reference" href="../_images/lab9-finaltopologyy.png"><img alt="../_images/lab9-finaltopologyy.png" src="../_images/lab9-finaltopologyy.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 448 </span><span class="caption-text">Final Topology for Lab 9</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 447 </span><span class="caption-text">Final Topology for Lab 9</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
