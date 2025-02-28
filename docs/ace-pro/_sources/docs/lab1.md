@@ -83,7 +83,7 @@ From the CoPilot search bar, type `“task”` and then click the search result 
 
 ```{figure} images/lab1-vnet5.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Notification
@@ -103,6 +103,7 @@ It will take about **4-5** minutes for the creation of the VNet. You can periodi
 **Clean up the SEARCH FIELD to restore the navigation panel view.**
 ```{figure} images/lab1-cleanup.png
 ---
+height: 250px
 align: center
 ---
 Clean up the Search Field
@@ -110,6 +111,7 @@ Clean up the Search Field
 
 ```{figure} images/lab1-new.png
 ---
+height: 300px
 align: center
 ---
 Hourglass icon
@@ -184,7 +186,7 @@ Monitor the progress of the VPC creation through the **hourglass** icon.
 
 ```{figure} images/lab1-vpc3.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Hourglass icon
@@ -198,7 +200,7 @@ You can filter by CIDR `10.0.22.0/24`.
 
 ```{figure} images/lab1-vpc4.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Verification
@@ -302,7 +304,7 @@ Before starting the deployment of the VPC in GCP, verify once again whether the 
 
 ```{figure} images/lab1-newpic8.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Verification
@@ -345,7 +347,7 @@ You can filter by CIDR `172.16.22.0/24`.
 
 ```{figure} images/lab1-gcp3.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Verification
