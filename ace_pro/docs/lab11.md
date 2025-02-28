@@ -905,6 +905,23 @@ align: center
 10.0.12.0/23
 ```
 
+## 14. New Rule
+
+### 14.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabled MTT
+
+Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
+
+```{figure} images/lab10-gatus334.png
+---
+align: center
+---
+Gatus
+```
+
+Ping towards the **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** will NOT work.
+
+### 14.2 ICMP Verification between Azure and AWS Using SSH Client after enabled MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
+
 - SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
 
 Ping the following instance:
@@ -918,13 +935,15 @@ align: center
 Ping
 ```
 
+## 15. Considerations 
+
 Although this time there is a valid route to the destination, thanks to the **MTT** feature, the pings still fails. 
 
 ```{warning}
 The reason is that the ec2-instance  **aws-us-east-1-spoke1-test2** is not allocated to any Smart Groups yet!
 ```
 
-### 6.2 Smart Group “east1”
+### 15.1 Smart Group “east1”
 
 Let’s create another Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in US-EAST-1 region in AWS.
 
@@ -956,7 +975,7 @@ The CoPilot shows that there is just one single instance that matches the condit
 
 Do not forget to click on **Save**.
 
-### 6.3 Create an inter-rule that allows ICMP from bu2 towards east1
+### 15.2 Create an inter-rule that allows ICMP from bu2 towards east1
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create another rule clicking on the `"+ Rule"` button.
 
@@ -1001,7 +1020,22 @@ align: center
 Commit
 ```
 
-### 6.4 Verify connectivity between bu2 and east1
+### 15.3 Verify connectivity between bu2 and east1
+
+#### 15.3.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabled MTT
+
+Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
+
+```{figure} images/lab10-gatus334.png
+---
+align: center
+---
+Gatus
+```
+
+Ping towards the **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** will NOT work.
+
+#### 15.3.2 ICMP Verification between Azure and AWS Using SSH Client after enabled MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_** and ping the private IP of the ec2-instance **_aws-us-east-1-spoke1-test2_**
 
