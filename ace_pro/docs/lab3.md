@@ -232,7 +232,7 @@ The connection policy is always bidirectional!
 
 ```{figure} images/lab3-editnd.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 Edit Blue
@@ -263,6 +263,16 @@ Logical View with the connection policy
 ## 8. Final Connectivity Testing after Applying the Connection Policy
 
 Verify that you have successfully **merged** both Network Domains. Retest the connectivity; you should now have end-to-end connectivity across the multicloud environment.
+
+```{caution}
+AWS **US-EAST-1** and Azure **WEST-US Spoke 2** are not yet attached!
+```{figure} images/lab3-unattached.png
+---
+height: 400px
+align: center
+---
+Gatus
+```
 
 ### 8.1 Connectivity Testing Using the Gatus App
 
@@ -314,7 +324,7 @@ align: center
 New Test from GCP
 ```
 
-After this lab, this is how the overall topology would look like:
+After this lab, this is how the overall topology will look like:
 
 ```{figure} images/lab3-finaltopology.png
 ---

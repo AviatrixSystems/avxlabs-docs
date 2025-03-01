@@ -21,9 +21,7 @@ POD portal
 ```
 
 ```{caution}
-You will get only access to the **AWS** Console!
-
-Access to both the _Azure_ console and the _GCP_ console are not granted.
+You will only have access to the **AWS** Console. Access to both the _Azure_ Console and the _GCP_ Console is not included.
 ```
 
 ## 2. Azure VNet
