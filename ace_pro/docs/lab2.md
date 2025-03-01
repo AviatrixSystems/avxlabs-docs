@@ -34,7 +34,7 @@ Initial pre-provisioned topology
 
 ### 3.1 Preliminary Monitoring Check Using the Gatus APP
 
-All of the pre-deployed instances are running [Gatus](https://gatus.io/) and attempting to connect to each other on various ports (e.g. icmp and tcp:80/443). 
+All pre-deployed instances are running [Gatus](https://gatus.io/) and are attempting to connect to each other on various protocols, such as ICMP and TCP ports 80 and 443.
 
 You can access the Gatus' dashboard directly from your POD Portal.
 
@@ -46,7 +46,7 @@ align: center
 Gatus from the POD Portal
 ```
 
-You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the MCNA.
+You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the `MCNA` (i.e. MultiCloud Network Architecture).
 
 - Select the EC2 instance "**_aws-us-east-2-spoke1-test1_**" and then enter the credentials to access the Gatus App!
 
@@ -66,7 +66,7 @@ align: center
 aws-us-east-2-spoke1-test1 on the Dynamic Topology
 ```
 
-Insert the credentials available on your POD Portal and then click on **"Sign in"**.
+The credentials can be retrieved from your personal POD Portal. Once you have entered the credentials, click on **"Sign In"**.
 
 ```{figure} images/lab2-gatus03.png
 ---
@@ -169,7 +169,7 @@ Public IP address
 ```
 
 ```{important}
-Within the Cloud Assets, you can also retrieve the **Private IP addresses** for the classi EAST-WEST and NORTH-SOUTH traffic.
+Within the Cloud Assets, you can also retrieve the **Private IP addresses** for the classic EAST-WEST and NORTH-SOUTH traffic.
 ```
 
 Now access the EC2 instance using its public IP address:
@@ -194,7 +194,7 @@ align: center
 Topology
 ```
 
-Now, navigate to the Properties window, locate the Public IP address of the instance, and copy it to your clipboard!
+Now, navigate to the **Properties** window, locate the Public IP address of the instance, and copy it to your clipboard!
 
 ```{figure} images/lab02-searchfield00.png
 ---
@@ -257,7 +257,7 @@ CoPilot UI
 ```{note}
 The test VPCs/VNet you created in **Lab 1** will not be used in other labs.
 
-For sake of semplicity, in this lab, the Transits will NOT be deployed in pairs. As a best practice, Aviatrix recommends always to deploy two Transits to ensure High Availability.
+For the sake of simplicity, the Transits will NOT be deployed in pairs in this lab. As a best practice, Aviatrix recommends deploying **two** Transits to ensure high availability.
 ```
 
 The CoPilot *Dashboard* should look something like this:
@@ -584,9 +584,9 @@ Spoke GW in GCP
 ```
 
 ```{caution}
-You can see the progress of gateway deployment at any time by expanding the task icon in the top right corner of the CoPilot.
+You can monitor the progress of the gateway deployment at any time by expanding the **Task icon** in the top right corner of CoPilot. 
 
-<ins>Bear in mind that the gateways' creation process can take several minutes to complete, therefore please be patient!</ins>
+<ins>Please keep in mind that the gateway creation process may take several minutes to complete, so your patience is appreciated!</ins>
 ```
 
 ```{figure} images/lab2-inprogress2.png
@@ -651,9 +651,9 @@ VPC circles
 ```
 
 ```{important}
-The inner circle represents the Transit Gateway VPCs, whereas the outer one represents the Spoke Gateway VPCs. 
+The inner circle represents the Transit Gateway VPCs, while the outer circle represents the Spoke Gateway VPCs. 
 
-<ins>It is clearly shown at this stage that the spokes are not connected to the transits yet</ins>. 
+At this stage, it is clear that the spokes are not yet connected to the transits 
 ```
 
 In addition, you can explore the components of any of the gateways in terms of subnets and Virtual Machines that reside within the VPC/VNet.
@@ -668,7 +668,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke 
 
 ```{figure} images/lab2-spokeinawstotransit.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Attachment for AWS
@@ -700,7 +700,7 @@ Edit the Spoke Gateway **_azure-west-us-spoke1_** (not the **spoke2**), clicking
 
 ```{figure} images/lab2-editspokeinazure.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Edit spoke in Azure
@@ -723,7 +723,7 @@ Edit the Spoke Gateway **_gcp-us-central-spoke1_**, clicking on the pencil icon:
 
 ```{figure} images/lab2-editspokeingcp.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Edit spoke in GCP
@@ -747,7 +747,7 @@ align: center
 Confirmations
 ```
 
-At this point, after **attaching** Spoke Gateways to their respective Transit Gateways, this is what the overall topology would look like.
+At this point, after **attaching** the Spoke Gateways to their respective Transit Gateways, the overall topology will look like this.
 
 ```{figure} images/lab2-topologywithattachments.png
 ---
@@ -820,7 +820,7 @@ Edit the Transit Gateway **_aws-us-east-2-transit_**, clicking on the pencil ico
 
 ```{figure} images/lab2-edittransitinaws.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Edit Transit in AWS
@@ -843,7 +843,7 @@ Edit the Transit Gateway **_azure-west-us-transit_**, clicking on the pencil ico
 
 ```{figure} images/lab2-edittransitinazure.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Edit Transit in Azure
@@ -866,7 +866,7 @@ Edit the Transit Gateway **_gcp-us-central1-transit_**, clicking on the pencil i
 
 ```{figure} images/lab2-editgcp2.png
 ---
-height: 300px
+height: 250px
 align: center
 ---
 Edit Transit in GCP
@@ -881,7 +881,7 @@ align: center
 Peering GCP-AWS
 ```
 
-At this point, this is what the overall topology would look like:
+s point, the overall topology will look like this:
 
 ```{figure} images/lab2-peeringtopology.png
 ---
@@ -892,7 +892,7 @@ New Topopology state after Peerings deployment
 ```
 
 ```{note}
-Please pay close attention that the following pending elements will be completed only in a subsequent lab:
+Please note that the following pending elements will be completed in a subsequent lab:
 
 - Attachment between **aws-us-east-1-spoke1** and **aws-us-east-1-transit**
 - Peering between **aws-us-east-1-transit** and **aws-us-east-2-transit**
