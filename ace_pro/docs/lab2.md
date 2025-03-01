@@ -52,7 +52,7 @@ You can select any instances from the three CSP environments, and you will find 
 
 ```{figure} images/lab2-gatus01.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 aws-us-east-2-spoke1-test1 
@@ -112,13 +112,17 @@ Check the **Gatus App** status for the remaining instances as well.
 
 ### 3.2 Preliminary Monitoring Check Using an SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
+```{caution}
+**BONUS** sections should be completed if you do not have a coporate laptop and you want more control using your personal SSH Client.
+```
+
 Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.
 
 - Go to your POD Portal and search for the widget assigned to the **_aws-us-east-2-spoke1-test1_** instance within the LAB2 and LAB3 sections. Then copy on the clipboard the <ins>symbolic public DNS name</ins> of the istance!
 
 ```{figure} images/lab2-gatus06.png
 ---
-height: 350px
+height: 250px
 align: center
 ---
 DNS name
@@ -165,7 +169,7 @@ Public IP address
 ```
 
 ```{important}
-Within the Cloud Assets, you can also retrieve the **Private IP addresses** for EAST-WEST traffic.
+Within the Cloud Assets, you can also retrieve the **Private IP addresses** for the classi EAST-WEST and NORTH-SOUTH traffic.
 ```
 
 Now access the EC2 instance using its public IP address:
@@ -201,7 +205,7 @@ Topology
 ```
 
 ```{important}
-In the Properties window under the Topology section of your CoPilot, you can also access the **Private IP addresses** for EAST-WEST traffic.
+In the **Properties** window under the Topology section of your CoPilot, you can also access the **Private IP addresses** for EAST-WEST traffic.
 ```
 
 ### 3.3 Verification Using Your SSH Client 
