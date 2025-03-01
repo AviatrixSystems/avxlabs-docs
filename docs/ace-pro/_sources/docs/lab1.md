@@ -103,7 +103,7 @@ It will take about **4-5** minutes for the creation of the VNet. You can periodi
 **Clean up the SEARCH FIELD to restore the navigation panel view.**
 ```{figure} images/lab1-cleanup.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 Clean up the Search Field
@@ -111,7 +111,7 @@ Clean up the Search Field
 
 ```{figure} images/lab1-new.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Hourglass icon
