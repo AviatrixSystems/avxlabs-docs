@@ -271,7 +271,7 @@ AWS **US-EAST-1** and Azure **WEST-US Spoke 2** are not yet attached!
 height: 400px
 align: center
 ---
-Gatus
+Unattached
 ```
 
 ### 8.1 Connectivity Testing Using the Gatus App

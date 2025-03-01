@@ -2,11 +2,11 @@
 
 ## 1. Objective
 
-In this lab, we will demonstrate Active/Active communication between the resources utilizing **High-Performance Encryption** (*aka `Insane Mode`* - **large number of A/A tunnels**) between Aviatrix Gateways.
+In this lab, we will demonstrate Active/Active communication between resources using **High-Performance Encryption** (also known as `Insane Mode` — which involves a **large number of Active/Active tunnels**) between Aviatrix Gateways.
 
 ## 2. High Performance Encryption and ActiveMesh
 
-Encryption in Cloud could be a compliance, security or business requirement. Hybrid cloud connectivity and in the cloud communication is untrusted. Aviatrix **`HPE`** provides high performance end-end encryption from on-prem (private/public connections) to the cloud walled-gardens, between the regions and clouds. It can also help overcome native constructs routing scalability challenges.
+Encryption in the cloud can be a compliance, security, or business requirement. Hybrid cloud connectivity and in-cloud communication are considered untrusted. Aviatrix **`HPE`** provides high-performance encryption from on-premises (private/public connections) to cloud walled gardens, as well as between regions and clouds. It also helps address routing scalability challenges associated with native constructs.
 
 Aviatrix **`ActiveMesh`** technology provides network resiliency, better convergence and high performance. Both Aviatrix gateways in transit and spoke VPC/VNet/VCNs forward traffic simultaneously. It helps enterprises in traffic engineering and provides deterministic next hop based on path-selection algorithm.
 
@@ -83,9 +83,9 @@ Attachment on the CoPilot
 ```
 
 ```{important}
-Solid line = HPE connection
+**Solid** line = HPE connection
 
-Dashed line = Non-HPE connection
+**Dashed** line = Non-HPE connection
 ```
 
 ## 5. Transit Peerings Configuration
@@ -136,7 +136,7 @@ HPE in action
 The number of additional connections depend on the **_size_** of the Aviatrix Gateway.
 ```
 
-At this point, this is how the overall topology would look like:
+At this point, this is how the overall topology will look like:
 
 ```{figure} images/lab5-topologyview.png
 ---
@@ -227,7 +227,7 @@ RFC1918 routes pointing towards the First Spoke GW
 Now remove the previous filter and select **_aws-us-east-1-spoke1-Public-2-us-east-1b-rtb_**. 
 
 ```{note}
-This time the RFC 1918 summary routes points to the Aviatrix **Second** Spoke gateway for this routing table programmed by once again the Aviatrix Controller:
+This time, the RFC 1918 summary routes point to the Aviatrix **Second** Spoke Gateway for this routing table, programmed once again by the Aviatrix Controller:
 ```
 
 ```{figure} images/lab5-filter2.png
@@ -244,10 +244,10 @@ align: center
 RFC1918 routes pointing towards the Second Spoke GW
 ```
 
-As you can see, Active/Active is achieved within a VPC as well. Each gateway is active on the Availability Zone where it resides.
+As you can see, Active/Active configuration is also achieved within a VPC. Each gateway is active in the Availability Zone where it resides.
 
 ```{important}
-Do not forget to remove the filter previously applied!
+Don't forget to remove the previously applied filter!
 ```{figure} images/lab4-removefilter.png
 ---
 height: 250px
@@ -267,6 +267,14 @@ First and foremost, navigate to your POD Portal, locate the `Gatus widget`, and 
 Insert the credentials available on your POD Portal and then click on **"Sign in"**.
 
 ```{figure} images/lab4-gatus200.png
+---
+height: 400px
+align: center
+---
+Istances
+```
+
+```{figure} images/lab4-gatusnew00.png
 ---
 height: 400px
 align: center
@@ -326,7 +334,7 @@ Ping fails from aws-us-east-1-spoke1-test2
 ```
 
 ```{caution}
-It will fail. Why? Because we didn’t enable segmentation on **aws-us-east-1-transit** and associate **aws-us-east-1-spoke1** with the transit gateway in the appropriate network domain.
+It will fail. Why? Because we didn’t enable segmentation on **aws-us-east-1-transit** and associate **aws-us-east-1-spoke1** with the transit gateway in the correct network domain.
 ```
 
 ## 9. Enable Segmentation
@@ -355,7 +363,7 @@ align: center
 Association
 ```
 
-At this point, this is how the overall topology will look:
+At this point, the overall topology will look like this:
 
 ```{figure} images/lab5-topologyview22.png
 ---
@@ -367,7 +375,7 @@ New Logical Topology View
 
 ## 10. Connectivity Testing of ActiveMesh (Pt.2)
 
-Verify that both EAST-1 region and EAST-2 region have perfect connectivity.
+Verify that both **EAST-1** region and **EAST-2** region have perfect connectivity.
 
 ### 10.1 Connectivity Testing Using the Gatus App
 
@@ -463,7 +471,7 @@ When Gateway Single AZ HA status is **On**, the Aviatrix Controller attempts to 
 
 ### 11.1 Connectivity Testing Using the Gatus App
 
-Login to **AWS console**</a>. Refer to your pod info for login information (<ins>this screenshot is for Pod 149</ins>).
+Login to **AWS console**</a>. Refer to your pod info for login information.
 
 ```{figure} images/lab5-newone.png
 ---
@@ -540,7 +548,7 @@ Gatus from aws-us-east-1-spoke1-test1
 ```
 
 ```{tip}
-The reconvergence will occur in approximately 1 minute and 30 seconds to 2 minutes. Please be patient!
+The **Health Check** mechanism will be successful after approximately 1 minute and 30 seconds to 2 minutes. Please be patient!
 ```
 
 ```{figure} images/lab4-gatus402.png
@@ -551,7 +559,7 @@ align: center
 Reconvergence in action
 ```
 
-The ICMP test launched from the **_aws-us-east-1-spoke1-test1_** instance will be completely fine because Spoke Gateway 2 is up and running.
+The ICMP test launched from the **_aws-us-east-1-spoke1-test2_** instance will be successful because Spoke Gateway 2 has not been stopped.
 
 ```{figure} images/lab4-gatus405.png
 ---
@@ -573,7 +581,7 @@ align: center
 AWS Console
 ```
 
-The traffic will be diverted back to Spoke Gateway **#1**; however, you will not notice any packet loss on the Gatus Dashboard.
+The traffic will be diverted back to Spoke Gateway **#1**; however, you will not experience any packet loss on the Gatus Dashboard.
 
 The <ins>preemption</ins> is seamless!
 
@@ -637,7 +645,7 @@ align: center
 Restart
 ```
 
-After this lab, this is how the overall topology will look:
+After this lab, the overall topology will look like this
 
 ```{figure} images/lab5-finaltopo.png
 ---
@@ -725,7 +733,7 @@ Keep Alive Speed
 The test instances in **_aws-us-east-1-spoke1_** are not able to communicate with the test instances in GCP or in Azure.
 ```
 
-You can verify this in the Gateway Routing Table under **CoPilot > Diagnostics > Cloud Routes > Gateway Routes > aws-us-east-1-transit**. You will not see the GCP Spoke route of **_172.16.1.0/24_**, nor will you see the routes from Azure.
+You can verify this in the Gateway Routing Table under **CoPilot > Diagnostics > Cloud Routes > Gateway Routes > aws-us-east-1-transit**. You will not see the GCP Spoke route of **_172.16.1.0/24_**, nor will you see any routes from Azure.
 
 ```{figure} images/lab5-keepalive100.png
 ---
