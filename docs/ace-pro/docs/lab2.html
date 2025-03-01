@@ -437,7 +437,7 @@ document.write(`
 </figure>
 <section id="preliminary-monitoring-check-using-the-gatus-app">
 <h3>3.1 Preliminary Monitoring Check Using the Gatus APP<a class="headerlink" href="#preliminary-monitoring-check-using-the-gatus-app" title="Link to this heading">#</a></h3>
-<p>All of the pre-deployed instances are running <a class="reference external" href="https://gatus.io/">Gatus</a> and attempting to connect to each other on various ports (e.g. icmp and tcp:80/443).</p>
+<p>All pre-deployed instances are running <a class="reference external" href="https://gatus.io/">Gatus</a> and are attempting to connect to each other on various protocols, such as ICMP and TCP ports 80 and 443.</p>
 <p>You can access the Gatus’ dashboard directly from your POD Portal.</p>
 <figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/lab2-gatus00.png"><img alt="../_images/lab2-gatus00.png" src="../_images/lab2-gatus00.png" style="height: 400px;" />
@@ -446,7 +446,7 @@ document.write(`
 <p><span class="caption-number">Fig. 31 </span><span class="caption-text">Gatus from the POD Portal</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the MCNA.</p>
+<p>You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the <code class="docutils literal notranslate"><span class="pre">MCNA</span></code> (i.e. MultiCloud Network Architecture).</p>
 <ul class="simple">
 <li><p>Select the EC2 instance “<strong><em>aws-us-east-2-spoke1-test1</em></strong>” and then enter the credentials to access the Gatus App!</p></li>
 </ul>
@@ -464,7 +464,7 @@ document.write(`
 <p><span class="caption-number">Fig. 33 </span><span class="caption-text">aws-us-east-2-spoke1-test1 on the Dynamic Topology</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Insert the credentials available on your POD Portal and then click on <strong>“Sign in”</strong>.</p>
+<p>The credentials can be retrieved from your personal POD Portal. Once you have entered the credentials, click on <strong>“Sign In”</strong>.</p>
 <figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/lab2-gatus03.png"><img alt="../_images/lab2-gatus03.png" src="../_images/lab2-gatus03.png" style="height: 400px;" />
 </a>
@@ -556,7 +556,7 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Within the Cloud Assets, you can also retrieve the <strong>Private IP addresses</strong> for the classi EAST-WEST and NORTH-SOUTH traffic.</p>
+<p>Within the Cloud Assets, you can also retrieve the <strong>Private IP addresses</strong> for the classic EAST-WEST and NORTH-SOUTH traffic.</p>
 </div>
 <p>Now access the EC2 instance using its public IP address:</p>
 <figure class="align-center" id="id13">
@@ -579,7 +579,7 @@ document.write(`
 <p><span class="caption-number">Fig. 43 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now, navigate to the Properties window, locate the Public IP address of the instance, and copy it to your clipboard!</p>
+<p>Now, navigate to the <strong>Properties</strong> window, locate the Public IP address of the instance, and copy it to your clipboard!</p>
 <figure class="align-center" id="id15">
 <a class="reference internal image-reference" href="../_images/lab02-searchfield00.png"><img alt="../_images/lab02-searchfield00.png" src="../_images/lab02-searchfield00.png" style="height: 400px;" />
 </a>
@@ -637,7 +637,7 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The test VPCs/VNet you created in <strong>Lab 1</strong> will not be used in other labs.</p>
-<p>For sake of semplicity, in this lab, the Transits will NOT be deployed in pairs. As a best practice, Aviatrix recommends always to deploy two Transits to ensure High Availability.</p>
+<p>For the sake of simplicity, the Transits will NOT be deployed in pairs in this lab. As a best practice, Aviatrix recommends deploying <strong>two</strong> Transits to ensure high availability.</p>
 </div>
 <p>The CoPilot <em>Dashboard</em> should look something like this:</p>
 <figure class="align-center" id="id20">
@@ -927,8 +927,8 @@ document.write(`
 </figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>You can see the progress of gateway deployment at any time by expanding the task icon in the top right corner of the CoPilot.</p>
-<p><ins>Bear in mind that the gateways’ creation process can take several minutes to complete, therefore please be patient!</ins></p>
+<p>You can monitor the progress of the gateway deployment at any time by expanding the <strong>Task icon</strong> in the top right corner of CoPilot.</p>
+<p><ins>Please keep in mind that the gateway creation process may take several minutes to complete, so your patience is appreciated!</ins></p>
 </div>
 <figure class="align-center" id="id40">
 <img alt="../_images/lab2-inprogress2.png" src="../_images/lab2-inprogress2.png" />
@@ -985,8 +985,8 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The inner circle represents the Transit Gateway VPCs, whereas the outer one represents the Spoke Gateway VPCs.</p>
-<p><ins>It is clearly shown at this stage that the spokes are not connected to the transits yet</ins>.</p>
+<p>The inner circle represents the Transit Gateway VPCs, while the outer circle represents the Spoke Gateway VPCs.</p>
+<p>At this stage, it is clear that the spokes are not yet connected to the transits</p>
 </div>
 <p>In addition, you can explore the components of any of the gateways in terms of subnets and Virtual Machines that reside within the VPC/VNet.</p>
 </section>
@@ -997,7 +997,7 @@ document.write(`
 <h3>7.1 Spoke to Transit Attachment in AWS<a class="headerlink" href="#spoke-to-transit-attachment-in-aws" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and edit the Spoke Gateway <strong><em>aws-us-east-2-spoke1</em></strong>, clicking on the pencil icon:</p>
 <figure class="align-center" id="id46">
-<a class="reference internal image-reference" href="../_images/lab2-spokeinawstotransit.png"><img alt="../_images/lab2-spokeinawstotransit.png" src="../_images/lab2-spokeinawstotransit.png" style="height: 300px;" />
+<a class="reference internal image-reference" href="../_images/lab2-spokeinawstotransit.png"><img alt="../_images/lab2-spokeinawstotransit.png" src="../_images/lab2-spokeinawstotransit.png" style="height: 250px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 75 </span><span class="caption-text">Attachment for AWS</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
@@ -1025,7 +1025,7 @@ document.write(`
 </ul>
 <p>Edit the Spoke Gateway <strong><em>azure-west-us-spoke1</em></strong> (not the <strong>spoke2</strong>), clicking on the pencil icon.</p>
 <figure class="align-center" id="id49">
-<a class="reference internal image-reference" href="../_images/lab2-editspokeinazure.png"><img alt="../_images/lab2-editspokeinazure.png" src="../_images/lab2-editspokeinazure.png" style="height: 300px;" />
+<a class="reference internal image-reference" href="../_images/lab2-editspokeinazure.png"><img alt="../_images/lab2-editspokeinazure.png" src="../_images/lab2-editspokeinazure.png" style="height: 250px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 78 </span><span class="caption-text">Edit spoke in Azure</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
@@ -1046,7 +1046,7 @@ document.write(`
 </ul>
 <p>Edit the Spoke Gateway <strong><em>gcp-us-central-spoke1</em></strong>, clicking on the pencil icon:</p>
 <figure class="align-center" id="id51">
-<a class="reference internal image-reference" href="../_images/lab2-editspokeingcp.png"><img alt="../_images/lab2-editspokeingcp.png" src="../_images/lab2-editspokeingcp.png" style="height: 300px;" />
+<a class="reference internal image-reference" href="../_images/lab2-editspokeingcp.png"><img alt="../_images/lab2-editspokeingcp.png" src="../_images/lab2-editspokeingcp.png" style="height: 250px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 80 </span><span class="caption-text">Edit spoke in GCP</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
@@ -1066,7 +1066,7 @@ document.write(`
 <p><span class="caption-number">Fig. 82 </span><span class="caption-text">Confirmations</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>At this point, after <strong>attaching</strong> Spoke Gateways to their respective Transit Gateways, this is what the overall topology would look like.</p>
+<p>At this point, after <strong>attaching</strong> the Spoke Gateways to their respective Transit Gateways, the overall topology will look like this.</p>
 <figure class="align-center" id="id54">
 <a class="reference internal image-reference" href="../_images/lab2-topologywithattachments.png"><img alt="../_images/lab2-topologywithattachments.png" src="../_images/lab2-topologywithattachments.png" style="height: 400px;" />
 </a>
@@ -1129,7 +1129,7 @@ document.write(`
 </ul>
 <p>Edit the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong>, clicking on the pencil icon:</p>
 <figure class="align-center" id="id58">
-<a class="reference internal image-reference" href="../_images/lab2-edittransitinaws.png"><img alt="../_images/lab2-edittransitinaws.png" src="../_images/lab2-edittransitinaws.png" style="height: 300px;" />
+<a class="reference internal image-reference" href="../_images/lab2-edittransitinaws.png"><img alt="../_images/lab2-edittransitinaws.png" src="../_images/lab2-edittransitinaws.png" style="height: 250px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 87 </span><span class="caption-text">Edit Transit in AWS</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
@@ -1150,7 +1150,7 @@ document.write(`
 </ul>
 <p>Edit the Transit Gateway <strong><em>azure-west-us-transit</em></strong>, clicking on the pencil icon:</p>
 <figure class="align-center" id="id60">
-<a class="reference internal image-reference" href="../_images/lab2-edittransitinazure.png"><img alt="../_images/lab2-edittransitinazure.png" src="../_images/lab2-edittransitinazure.png" style="height: 300px;" />
+<a class="reference internal image-reference" href="../_images/lab2-edittransitinazure.png"><img alt="../_images/lab2-edittransitinazure.png" src="../_images/lab2-edittransitinazure.png" style="height: 250px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 89 </span><span class="caption-text">Edit Transit in Azure</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
@@ -1171,7 +1171,7 @@ document.write(`
 </ul>
 <p>Edit the Transit Gateway <strong><em>gcp-us-central1-transit</em></strong>, clicking on the pencil icon:</p>
 <figure class="align-center" id="id62">
-<a class="reference internal image-reference" href="../_images/lab2-editgcp2.png"><img alt="../_images/lab2-editgcp2.png" src="../_images/lab2-editgcp2.png" style="height: 300px;" />
+<a class="reference internal image-reference" href="../_images/lab2-editgcp2.png"><img alt="../_images/lab2-editgcp2.png" src="../_images/lab2-editgcp2.png" style="height: 250px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 91 </span><span class="caption-text">Edit Transit in GCP</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
@@ -1184,7 +1184,7 @@ document.write(`
 <p><span class="caption-number">Fig. 92 </span><span class="caption-text">Peering GCP-AWS</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>At this point, this is what the overall topology would look like:</p>
+<p>s point, the overall topology will look like this:</p>
 <figure class="align-center" id="id64">
 <a class="reference internal image-reference" href="../_images/lab2-peeringtopology.png"><img alt="../_images/lab2-peeringtopology.png" src="../_images/lab2-peeringtopology.png" style="height: 400px;" />
 </a>
@@ -1194,7 +1194,7 @@ document.write(`
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Please pay close attention that the following pending elements will be completed only in a subsequent lab:</p>
+<p>Please note that the following pending elements will be completed in a subsequent lab:</p>
 <ul class="simple">
 <li><p>Attachment between <strong>aws-us-east-1-spoke1</strong> and <strong>aws-us-east-1-transit</strong></p></li>
 <li><p>Peering between <strong>aws-us-east-1-transit</strong> and <strong>aws-us-east-2-transit</strong></p></li>
