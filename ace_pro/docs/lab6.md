@@ -520,6 +520,10 @@ gcp-us-central1-spoke1-test1
 
 All three instances can reach each other!
 
+```{important}
+AWS US-EAST is not reachable from either Azure or GCP due to the requirement for a **Full-Mesh** configuration.
+```
+
 ### 7.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 If you wish, you can also check the ICMP test using your SSH client.
@@ -603,7 +607,7 @@ You will immediately notice the logs that successfully matched the Greenfield-Ru
 
 ```{figure} images/lab7-finalmonitor01.png
 ---
-height: 500px
+height: 250px
 align: center
 ---
 Logs
