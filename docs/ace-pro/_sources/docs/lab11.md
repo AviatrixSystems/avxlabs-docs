@@ -1070,7 +1070,7 @@ align: center
 Final Topology
 ```
 
-## 7. Spoke to Spoke Attachment
+## 16. Spoke to Spoke Attachment
 
 Now that you have enabled the Distributed Cloud Firewall, the owner of the **_azure-west-us-spoke2-test1_** VM would like to communicate directly with the nearby **_azure-west-us-spoke1-test1_** VM, avoding that the traffic generated from the VNet is sent to the NGFW, first.
 

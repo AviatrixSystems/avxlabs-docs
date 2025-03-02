@@ -351,14 +351,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">3.2 RTB verification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-a-malicious-ip">4.0 Generate traffic towards a Malicious IP</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-a-malicious-ip">4. Generate traffic towards a Malicious IP</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-gatus-app">4.1 Connectivity Testing Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-aws-us-east1-spoke1-test1-bonus">4.2 SSH to aws-us-east1-spoke1-test1 <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5.0 Create a new SmartGroup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6.0 Create two new DCF rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7.0 Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5. Create a new SmartGroup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6. Create two new DCF rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7. Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.1 Create a new WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.2 Create a PSF-Allow-Rule</a></li>
 </ul>
@@ -481,7 +481,7 @@ document.write(`
 </section>
 </section>
 <section id="generate-traffic-towards-a-malicious-ip">
-<h2>4.0 Generate traffic towards a Malicious IP<a class="headerlink" href="#generate-traffic-towards-a-malicious-ip" title="Link to this heading">#</a></h2>
+<h2>4. Generate traffic towards a Malicious IP<a class="headerlink" href="#generate-traffic-towards-a-malicious-ip" title="Link to this heading">#</a></h2>
 <p>Now that there is a PSF Gateway on defending the Public Subnet, let’s generate some traffic towards an IP with <strong>Bad Reputation</strong>.</p>
 <section id="connectivity-testing-using-the-gatus-app">
 <h3>4.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#connectivity-testing-using-the-gatus-app" title="Link to this heading">#</a></h3>
@@ -521,13 +521,13 @@ document.write(`
 <p><span class="caption-number">Fig. 419 </span><span class="caption-text">SSH session</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>: <strong><em>109.107.35.154</em></strong></p>
 <ul class="simple">
 <li><p>Issue this command (make sure to enter <strong>HTTPS</strong>):</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
 </pre></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>: <strong>_178.17.174.164 _</strong></p>
 <figure class="align-center" id="id13">
 <img alt="../_images/lab9-instancetest.png" src="../_images/lab9-instancetest.png" />
 <figcaption>
@@ -537,7 +537,7 @@ document.write(`
 </section>
 </section>
 <section id="create-a-new-smartgroup">
-<h2>5.0 Create a new SmartGroup<a class="headerlink" href="#create-a-new-smartgroup" title="Link to this heading">#</a></h2>
+<h2>5. Create a new SmartGroup<a class="headerlink" href="#create-a-new-smartgroup" title="Link to this heading">#</a></h2>
 <p>The traffic towards the malicious IP is permitted… Let’s now enforce the <code class="docutils literal notranslate"><span class="pre">Threats</span> <span class="pre">Detection</span> <span class="pre">mechanism</span></code>!</p>
 <p>Let’s create another SmartGroup that can identify the <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance that resides in the <strong>US-EAST-1</strong> region.</p>
 <figure class="align-center" id="id14">
@@ -575,7 +575,7 @@ document.write(`
 </figure>
 </section>
 <section id="create-two-new-dcf-rules">
-<h2>6.0 Create two new DCF rules<a class="headerlink" href="#create-two-new-dcf-rules" title="Link to this heading">#</a></h2>
+<h2>6. Create two new DCF rules<a class="headerlink" href="#create-two-new-dcf-rules" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id18">
 <img alt="../_images/lab9-newrule10.png" src="../_images/lab9-newrule10.png" />
@@ -654,14 +654,14 @@ document.write(`
 </div>
 </section>
 <section id="generate-again-traffic-towards-the-bad-guy">
-<h2>7.0 Generate again traffic towards the “Bad Guy”<a class="headerlink" href="#generate-again-traffic-towards-the-bad-guy" title="Link to this heading">#</a></h2>
+<h2>7. Generate again traffic towards the “Bad Guy”<a class="headerlink" href="#generate-again-traffic-towards-the-bad-guy" title="Link to this heading">#</a></h2>
 <p>Now let’s delete the <strong>Greenfield-Rule</strong>, such that the <strong>ZTNA</strong> can be restored in the Data Path!</p>
 <ul class="simple">
 <li><p>Click on the <strong>three dots</strong> icon on the right-hand side of the Greenfield-Rule entry and then choose the <code class="docutils literal notranslate"><span class="pre">&quot;Delete</span> <span class="pre">Rule&quot;</span></code> option.</p></li>
 </ul>
 <p>Do not forget to click on <strong>Commit</strong>.</p>
 <figure class="align-center" id="id24">
-<a class="reference internal image-reference" href="../_images/lab66-newruledelete.png"><img alt="../_images/lab66-newruledelete.png" src="../_images/lab66-newruledelete.png" style="height: 350px;" />
+<a class="reference internal image-reference" href="../_images/lab66-newruledelete.png"><img alt="../_images/lab66-newruledelete.png" src="../_images/lab66-newruledelete.png" style="height: 250px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 431 </span><span class="caption-text">Deletion of the Greenfield-Rule</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
@@ -775,7 +775,14 @@ document.write(`
 <p><span class="caption-number">Fig. 440 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The traffic is blocked now.</p>
+<p>The traffic to the Malicious IP will gradually fail.</p>
+<figure class="align-center" id="id34">
+<a class="reference internal image-reference" href="../_images/lab9-gatus678.png"><img alt="../_images/lab9-gatus678.png" src="../_images/lab9-gatus678.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 441 </span><span class="caption-text">Malicious ip</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="connectivity-testing-using-the-ssh-client-bonus">
 <h3>8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-testing-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
@@ -783,31 +790,31 @@ document.write(`
 <p class="admonition-title">Important</p>
 <p>Before proceeding with the verification from your SSH client, you need to re-establish the SSH connection with <strong><em>aws-us-east-1-spoke1-test1</em></strong>. After applying the previous DCF rules, the SSH session will be dropped. Although the SSH session will be established through the IGW, it will then span the Spoke GW, which will enforce the Distributed Cloud Firewall rules!</p>
 </div>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab9-igw.png"><img alt="../_images/lab9-igw.png" src="../_images/lab9-igw.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 441 </span><span class="caption-text">IGW and Spoke GW</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 442 </span><span class="caption-text">IGW and Spoke GW</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="ssh-to-aws-us-east1-spoke1-test1">
 <h4>8.2.1 SSH to aws-us-east1-spoke1-test1<a class="headerlink" href="#ssh-to-aws-us-east1-spoke1-test1" title="Link to this heading">#</a></h4>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, then search for <strong>aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary></strong>, retrieve its Public IP address and SSH in to the EC2 instance.</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab9-igw04.png"><img alt="../_images/lab9-igw04.png" src="../_images/lab9-igw04.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 442 </span><span class="caption-text">SSH in to aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 443 </span><span class="caption-text">SSH in to aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>SSH from <strong><em>aws-us-east-1-spoke1-test2</em></strong> to <strong><em>aws-us-east-1-spoke1-test1</em></strong>, using this time the Private IP address of the test1 instance.</p></li>
 </ul>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab9-igw05.png"><img alt="../_images/lab9-igw05.png" src="../_images/lab9-igw05.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 443 </span><span class="caption-text">SSH in to test1 from test2</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 444 </span><span class="caption-text">SSH in to test1 from test2</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -826,20 +833,20 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
 </pre></div>
 </div>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id38">
 <img alt="../_images/lab96-newrule301.png" src="../_images/lab96-newrule301.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 445 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now issue again the curl command towards the <strong>malicious IP</strong> address that was earlier provided by the Trainer!</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
 </pre></div>
 </div>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id39">
 <img alt="../_images/lab96-newrule302.png" src="../_images/lab96-newrule302.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 445 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 446 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice that the traffic towards the <strong>IP with Bad Reputation</strong> was blocked at the very first <strong>SYN</strong> and <strong>SYN-ACK</strong> packets!</p>
@@ -849,41 +856,39 @@ document.write(`
 <section id="final-considerations">
 <h2>9. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
 <p>Now go to <strong>CoPilot &gt; Security &gt; ThreatIQ</strong>  section, then scroll down through the whole <strong>Overview</strong> section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either <strong><em>Source</em></strong> or <strong><em>Destination</em></strong>!</p>
-<figure class="align-center" id="id39">
-<a class="reference internal image-reference" href="../_images/lab96-newrule308.png"><img alt="../_images/lab96-newrule308.png" src="../_images/lab96-newrule308.png" style="height: 300px;" />
-</a>
+<figure class="align-center" id="id40">
+<img alt="../_images/lab96-newrule308.png" src="../_images/lab96-newrule308.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 446 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 447 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id40">
-<a class="reference internal image-reference" href="../_images/lab96-newrule309.png"><img alt="../_images/lab96-newrule309.png" src="../_images/lab96-newrule309.png" style="height: 300px;" />
-</a>
+<figure class="align-center" id="id41">
+<img alt="../_images/lab96-newrule309.png" src="../_images/lab96-newrule309.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 447 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 448 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now click on the <strong>VIEW</strong> link on the right-hand side of the entry:</p>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id42">
 <a class="reference internal image-reference" href="../_images/lab96-newrule310.png"><img alt="../_images/lab96-newrule310.png" src="../_images/lab96-newrule310.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 448 </span><span class="caption-text">View link</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 449 </span><span class="caption-text">View link</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Last but not least, explore the <code class="docutils literal notranslate"><span class="pre">Threat</span> <span class="pre">Summary</span></code> tab to find out how ProofPoint classified that IP address!</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id43">
 <img alt="../_images/lab96-newrule311.png" src="../_images/lab96-newrule311.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 449 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 450 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After this lab, this is how the overall topology will look like:</p>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id44">
 <a class="reference internal image-reference" href="../_images/lab9-finaltopologyy.png"><img alt="../_images/lab9-finaltopologyy.png" src="../_images/lab9-finaltopologyy.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 450 </span><span class="caption-text">Final Topology for Lab 9</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 451 </span><span class="caption-text">Final Topology for Lab 9</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -960,14 +965,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">3.2 RTB verification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-a-malicious-ip">4.0 Generate traffic towards a Malicious IP</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-a-malicious-ip">4. Generate traffic towards a Malicious IP</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-gatus-app">4.1 Connectivity Testing Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-aws-us-east1-spoke1-test1-bonus">4.2 SSH to aws-us-east1-spoke1-test1 <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5.0 Create a new SmartGroup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6.0 Create two new DCF rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7.0 Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5. Create a new SmartGroup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6. Create two new DCF rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7. Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.1 Create a new WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.2 Create a PSF-Allow-Rule</a></li>
 </ul>
