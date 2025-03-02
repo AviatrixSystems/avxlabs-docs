@@ -309,7 +309,7 @@ Create the filter
 
 ```{figure} images/lab8-edge24.png
 ---
-height: 500px
+height: 200px
 align: center
 ---
 FlowIQ Filter
@@ -483,7 +483,7 @@ The two instances can communicate without any issues.
 If the two instances are unable to communicate, check the DCF section, the Network Segmentation section, and the Hybrid Cloud section, where you might have forgotten some configurations.
 ```
 
-Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_**
+Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the **_aws-us-east-2-spoke1_**, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_**
 
 ```{figure} images/lab8-podportal113.png
 ---
@@ -623,7 +623,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget,  select the `gcp-us-central1-transit-peering` connection and type **two times** the AS number 64513. 
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget,  select the `gcp-us-central1-transit-peering` connection and type **two times** the AS number **64513**.
 
 Of course, then click on **Save**.
 
@@ -645,7 +645,7 @@ align: center
 gcp-us-central1-transit
 ```
 
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget select the `aws-us-east-2-transit-peering` connection and type **two times** the AS number 64514. 
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget select the `aws-us-east-2-transit-peering` connection and type **two times** the AS number **64514**.
 
 Click on **Save** to apply the change!
 
