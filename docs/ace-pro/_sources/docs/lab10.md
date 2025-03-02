@@ -130,11 +130,107 @@ align: center
 "+ Shared Service"
 ```
 
-## 4. Verification
+## 4. DCF Configuration
 
-### 4.1 Connectivity Testing Using Gatus App
+- Create a rule that permits ICMP traffic from the **Workstation Edge** to the **_aws-us-east-2-spoke1-test1_**.
+
+### 4.1 Create a new SmartGroup for the WorkstationEdge
+
+Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
+
+```{figure} images/lab10-newsg.png
+---
+height: 400px
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>WorkstationEdge</span>
+- **Virtual Machines**:
+  - **Properties/Name**: <span style='color:#479608'>onprem-pod##-host-vm</span>
+
+```{warning}
+Do not select the value that ends with "vm-1".
+```
+
+```{figure} images/lab10-newsg01.png
+---
+height: 400px
+align: center
+---
+WorkstationEdge SG
+```
+
+Do not forget to click on **Save**.
+
+### 4.2 Create a new SmartGroup for aws-us-east-2-spoke1-test1
+
+Click again on the `"+ SmartGroup"` button.
+
+```{figure} images/lab10-newsg090.png
+---
+height: 400px
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
+- **Virtual Machines/Name**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
+
+```{figure} images/lab10-newsg0133.png
+---
+height: 400px
+align: center
+---
+aws-us-east-2-spoke1-test1 SG
+```
+
+Do not forget to click on **Save**.
+
+### 4.3 Create a new DCF rule
+
+Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+
+```{figure} images/lab10-newnew00.png
+---
+align: center
+---
+New Rule
+```
+
+Insert the following parameters:
+
+- **Name**: <span style='color:#479608'>inter-icmp-edge-us-east2-test1</span>
+- **Source Smartgroups**: <span style='color:#479608'>WorkstationEdge</span>
+- **Destination Smartgroups**: <span style='color:#479608'>lab10-newnew00.png</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab10-newnew02.png
+---
+align: center
+---
+Create Rule
+```
+
+Click then on **Commit**.
+
+## 5. Verification
+
+### 5.1 Connectivity Testing Using Gatus App
 
 Navigate to your POD Portal, locate the `Gatus widget`, and select **_onprem-pod<span style='color:#33ECFF'>##</span></summary>-edge_**.
+
+The traffic generated from the Workstation Edge will gradually turn green!
 
 ```{figure} images/lab10-podportal110.png
 ---
@@ -149,10 +245,10 @@ Gatus
 height: 300px
 align: center
 ---
-aws-us-east-2-spoke1-test1
+WorkstationEdge
 ```
 
-### 4.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 5.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 If you kept running the ping on the Workstation Edge's terminal, then you should see both the relative traffic and the absolute one from any Cost Centers towards the Shared Service.
 
