@@ -462,7 +462,7 @@ Moreover, continue editing the **Greenfield-Rule**: click on the three-dot icon 
 
 ```{figure} images/lab6-new105.png
 ---
-height: 500px
+height: 250px
 align: center
 ---
 Logging ON
