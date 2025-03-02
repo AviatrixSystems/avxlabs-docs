@@ -252,7 +252,7 @@ align: center
 Begin
 ```
 
-After having enabled the DCF, two Rules will be generated automatically:
+After enabling the DCF, two rules will be generated automatically:
 - `Greendfield-Rule` = ALLOW EVERYTHING
 - `DefaultDenyAll` = it's an EXPLICIT deny
 

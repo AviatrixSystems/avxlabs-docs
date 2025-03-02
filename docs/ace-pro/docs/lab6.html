@@ -423,7 +423,7 @@ document.write(`
 </figure>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and edit the Spoke Gateway <strong><em>azure-west-us-spoke2</em></strong>, clicking on the pencil icon:</p>
 <figure class="align-center" id="id3">
-<a class="reference internal image-reference" href="../_images/lab7-spoke.png"><img alt="../_images/lab7-spoke.png" src="../_images/lab7-spoke.png" style="height: 500px;" />
+<a class="reference internal image-reference" href="../_images/lab7-spoke.png"><img alt="../_images/lab7-spoke.png" src="../_images/lab7-spoke.png" style="height: 250px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 255 </span><span class="caption-text">Edit Spoke GW</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
@@ -517,72 +517,84 @@ Do not forget to click on <strong>Save</strong>.</p>
 <li><p><strong>Firewall Image Version</strong>: <span style='color:#479608'>9.1.0</span></p></li>
 <li><p><strong>Firewall instance Size</strong>: <span style='color:#479608'>Standard_D3_v2</span></p></li>
 <li><p><strong>Management Interface Subnet</strong>: <span style='color:#479608'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-<strong>1</strong> [<strong>Note</strong>: Make sure you do not select the subnets that begin with <em>az-1, az-2, or az-3</em>]</span></p></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Pay close attention to select the right subnet: <strong><em>azure-west-us-transit-Public-gateway-and-firewall-mgmt-1</em></strong></p>
+<figure class="align-center" id="id11">
+<img alt="docs/images/lab7-firenetsubnet.png" src="docs/images/lab7-firenetsubnet.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 263 </span><span class="caption-text">Management Interface Subnet</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<ul class="simple">
 <li><p><strong>Egress Interface Subnet</strong>: <span style='color:#479608'>azure-west-us-transit-Public-FW-ingress-egress-<strong>1</strong> [<strong>Note</strong>: Make sure you do not select the subnets that begin with <em>az-1, az-2, or az-3</em>]</span></p></li>
 <li><p><strong>Authentication</strong>: <span style='color:#479608'>Password</span></p></li>
 <li><p><strong>Username</strong>: <span style='color:#479608'>avxadmin [<strong>Note</strong>: username <em>admin</em> is not permitted in Azure]</span></p></li>
-<li><p><strong>Password</strong>: <span style='color:#479608'>[choose a <strong>strong password</strong> and remember it]</span></p></li>
+<li><p><strong>Password</strong>: <span style='color:#479608'>Aviatrix123#</span></p></li>
 <li><p><strong>Bootstrap Configuration</strong>: <span style='color:#479608'>turn <strong>ON</strong> the knob</span></p></li>
 <li><p><strong>Storage</strong>: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab6 section)</ins></span></p></li>
 <li><p><strong>Storage Access Key</strong>: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab6 section)</ins></span></p></li>
 <li><p><strong>File-Shared Folder</strong>: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab6 section)</ins></span></p></li>
 </ul>
 <p>Then click on <strong>Deploy</strong>.</p>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab7-newone.png" src="../_images/lab7-newone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 263 </span><span class="caption-text">POD Portal: lab 6 section</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 264 </span><span class="caption-text">POD Portal: lab 6 section</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab7-firenetcfg.png" src="../_images/lab7-firenetcfg.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 264 </span><span class="caption-text">Firenet Deployment Template</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Firenet Deployment Template</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Please be patient - firewall deployment can take a long time, <strong><em>up to 20 minutes</em></strong>, due to the slow responsiveness of Azure API calls to prepare the firewall. Even after the firewall is created and is assigned a Public IP address, it doesn’t mean it can be accessed immediately.</p>
 </div>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id14">
 <img alt="../_images/lab7-inprogress.png" src="../_images/lab7-inprogress.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Deployment in progress</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Deployment in progress</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>At this time, the interface mapping, security policy configuration, and RFC1918 static route creation are all being handled. The <strong><em>Aviatrix Controller</em></strong> does a lot of magic in orchestrating and manipulating route tables.</p>
+<p>At this time, the interface mapping, and security policy configuration are all being handled. The <strong><em>Aviatrix Controller</em></strong> does a lot of magic in orchestrating and manipulating route tables.</p>
 <p>You will know the Firewall is created when you see the corresponding entry like this (refresh the page after roughly <strong>10-15</strong> minutes):</p>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id15">
 <a class="reference internal image-reference" href="../_images/lab7-url.png"><img alt="../_images/lab7-url.png" src="../_images/lab7-url.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Deployment completed</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Deployment completed</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Check the <code class="docutils literal notranslate"><span class="pre">Notifications</span></code> section on your CoPilot, during the deployment process.</p>
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Tasks</strong></p></li>
 </ul>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="../_images/lab6-firenettaskalert.png"><img alt="../_images/lab6-firenettaskalert.png" src="../_images/lab6-firenettaskalert.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Notification Panel</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 268 </span><span class="caption-text">Notification Panel</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Before proceeding with the next task, please wait <strong>20</strong> minutes!</p>
+</div>
 </section>
 <section id="firewall-vendor-integration">
 <h4>4.3.2 Firewall Vendor Integration<a class="headerlink" href="#firewall-vendor-integration" title="Link to this heading">#</a></h4>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Before proceeding with the vendor integration, please wait for confirmation that the firewall’s deployment was successful.</p>
-</div>
 <p>The <code class="docutils literal notranslate"><span class="pre">Vendor</span> <span class="pre">Integration</span></code> allows inserting the Summary Routes into the the Firewall’s Routing Table.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;three-dot&quot;</span></code> symbol on the right-hand side of the <strong><em>azure-west-us-transit</em></strong> row, and then click on <code class="docutils literal notranslate"><span class="pre">Vendor</span> <span class="pre">Integration</span></code>.</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id17">
 <a class="reference internal image-reference" href="../_images/lab7-vendor.png"><img alt="../_images/lab7-vendor.png" src="../_images/lab7-vendor.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 268 </span><span class="caption-text">Vendor Integration</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 269 </span><span class="caption-text">Vendor Integration</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters in the <code class="docutils literal notranslate"><span class="pre">&quot;Vendor</span> <span class="pre">Integration&quot;</span></code> pop-up window.</p>
@@ -593,43 +605,43 @@ Do not forget to click on <strong>Save</strong>.</p>
 <li><p><strong>Password</strong>: <span style='color:#479608'>[the password you entered earlier]</span></p></li>
 </ul>
 <p>Then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab7-vendor2.png" src="../_images/lab7-vendor2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 269 </span><span class="caption-text">Vendor Integration template</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Vendor Integration template</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Wait for some seconds for the <strong>Vendor Integration</strong> to complete.</p>
 <p>If you see an error message related to the <em>ethernet1/2</em>, wait some additional minutes before clicking again on <strong>Save</strong>.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab7-message.png" src="../_images/lab7-message.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Possible error message</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 271 </span><span class="caption-text">Possible error message</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab7-vendor3.png" src="../_images/lab7-vendor3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 271 </span><span class="caption-text">Vendor Integration accomplished successfully</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 272 </span><span class="caption-text">Vendor Integration accomplished successfully</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; Firewall</strong> and click on the <strong><em>azure-west-us-pan</em></strong> firewall</p>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../_images/lab7-vendor4.png"><img alt="../_images/lab7-vendor4.png" src="../_images/lab7-vendor4.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 272 </span><span class="caption-text">Click on the Firewall</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 273 </span><span class="caption-text">Click on the Firewall</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will see the RFC1918 routes that the Controller automatically programmed on the Firewall, through the <code class="docutils literal notranslate"><span class="pre">&quot;Vendor</span> <span class="pre">Integration&quot;</span></code>. Notice how each RFC1918 route has a prefix of <code class="docutils literal notranslate"><span class="pre">&quot;AVX-&quot;</span></code> to show that it is programmed by Aviatrix.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab7-vendor5.png"><img alt="../_images/lab7-vendor5.png" src="../_images/lab7-vendor5.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 273 </span><span class="caption-text">Vendor Integration outcome</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Vendor Integration outcome</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -641,30 +653,30 @@ Do not forget to click on <strong>Save</strong>.</p>
 <h4>4.3.3 Inspection Policy<a class="headerlink" href="#inspection-policy" title="Link to this heading">#</a></h4>
 <p>Now it is time to select the VPC/VNet that will be involved in the <em>FireNet inspection</em>.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <strong><em>azure-west-us-transit</em></strong> Transit FireNet GW and then choose the <code class="docutils literal notranslate"><span class="pre">&quot;Policy&quot;</span></code> tab.</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab7-inspection2.png" src="../_images/lab7-inspection2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Policy tab</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Policy tab</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then select each Azure spoke gateway one by one, click on <code class="docutils literal notranslate"><span class="pre">&quot;Actions&quot;</span></code> and choose <code class="docutils literal notranslate"><span class="pre">&quot;Add&quot;</span></code> in order to add a specific VPC inside the <strong>Inspection Policy</strong>.</p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab7-inspection3.png" src="../_images/lab7-inspection3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Inspection Policy assignment</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id24">
-<img alt="../_images/lab7-inspection4.png" src="../_images/lab7-inspection4.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Inspection Policy accomplished</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Inspection Policy assignment</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id25">
+<img alt="../_images/lab7-inspection4.png" src="../_images/lab7-inspection4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Inspection Policy accomplished</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id26">
 <a class="reference internal image-reference" href="../_images/lab6-inspectionpolicy.png"><img alt="../_images/lab6-inspectionpolicy.png" src="../_images/lab6-inspectionpolicy.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Inspection Policy accomplished</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">Inspection Policy accomplished</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -678,32 +690,32 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p>Please bear in mind that you will have to accept a <strong><em>self-signed certificate</em></strong>. <ins>If you are using a corporate laptop, please ignore this verification and skim through this section to understand the purpose of this task</ins>.</p>
 </div>
 <p>Try to click on the <em>hyperlink</em> of the firewall. You should be able to see the page where entering the credentials (refer to you POD portal).</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab6-mgmtfw.png"><img alt="../_images/lab6-mgmtfw.png" src="../_images/lab6-mgmtfw.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 278 </span><span class="caption-text">URL</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id27">
-<a class="reference internal image-reference" href="../_images/lab6-firefox.png"><img alt="../_images/lab6-firefox.png" src="../_images/lab6-firefox.png" style="height: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Firefox</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">URL</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id28">
+<a class="reference internal image-reference" href="../_images/lab6-firefox.png"><img alt="../_images/lab6-firefox.png" src="../_images/lab6-firefox.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Firefox</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab6-edge.png"><img alt="../_images/lab6-edge.png" src="../_images/lab6-edge.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Edge</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Edge</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Once you access the firewall in your web browser via <strong>HTTPS</strong>, you might get a warning about an invalid certification based on your browser settings. This is just because it has a <strong><em>self-signed certificate</em></strong>. Navigate past that to get to the login prompt. Sign in as <code class="docutils literal notranslate"><span class="pre">avxadmin</span></code> as the username and the password you entered earlier.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id30">
 <img alt="../_images/lab7-paloalto.png" src="../_images/lab7-paloalto.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 281 </span><span class="caption-text">PaloAlto Welcome page</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">PaloAlto Welcome page</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Dismiss the Welcome splash screen. This is an indication that the firewall is ready.</p>
@@ -711,28 +723,28 @@ Do not forget to click on <strong>Save</strong>.</p>
 <h3>5.1 Verify Routes Installed on Firewall<a class="headerlink" href="#verify-routes-installed-on-firewall" title="Link to this heading">#</a></h3>
 <p>Verify the same RFC1918 routes exist on the PAN Firewall.</p>
 <p>Navigate to <strong>Network tab &gt; Virtual Routers &gt;</strong> click on <strong>default</strong>.</p>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <img alt="../_images/lab7-palo1.png" src="../_images/lab7-palo1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 282 </span><span class="caption-text">PaloAlto dashboard</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">PaloAlto dashboard</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Static</span> <span class="pre">Routes&quot;</span></code> tab. You should be able to see the same <strong>RFC1918</strong> routes with <code class="docutils literal notranslate"><span class="pre">&quot;AVX-&quot;</span></code> prefixes that were programmed by the Aviatrix Controller.</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id32">
 <img alt="../_images/lab7-palo2.png" src="../_images/lab7-palo2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 283 </span><span class="caption-text">Static Routes (RFC1918 routes)</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Static Routes (RFC1918 routes)</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="verify-firewall-policy">
 <h3>5.2 Verify Firewall Policy<a class="headerlink" href="#verify-firewall-policy" title="Link to this heading">#</a></h3>
 <p>Continue to explore the configuration of the PaloAlto FW. Navigate to <code class="docutils literal notranslate"><span class="pre">Policies</span></code> tab to find out that the firewall was pre-configured with a simple <strong>Allow-All</strong> policy.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab6-paloalto.png"><img alt="../_images/lab6-paloalto.png" src="../_images/lab6-paloalto.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Allow-All</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">Allow-All</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -746,11 +758,11 @@ Do not forget to click on <strong>Save</strong>.</p>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;Greenfield-Rule&quot;</span></code></p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;DefaultDenyAll&quot;</span></code>, at the very bottom.</p></li>
 </ol>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id34">
 <a class="reference internal image-reference" href="../_images/lab7-dcfrule.png"><img alt="../_images/lab7-dcfrule.png" src="../_images/lab7-dcfrule.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 285 </span><span class="caption-text">DCF rules</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 286 </span><span class="caption-text">DCF rules</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="move-the-greenfield-rule">
@@ -758,19 +770,19 @@ Do not forget to click on <strong>Save</strong>.</p>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong>, then click on Move button on the Greenfield-Rule entry and, choose <code class="docutils literal notranslate"><span class="pre">Top</span></code>. Do not forget to click <code class="docutils literal notranslate"><span class="pre">&quot;Save</span> <span class="pre">Draft&quot;</span></code>.</p></li>
 </ul>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab6-new101.png"><img alt="../_images/lab6-new101.png" src="../_images/lab6-new101.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 286 </span><span class="caption-text">Move</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 287 </span><span class="caption-text">Move</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now click on the <strong>Commit</strong> button.</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab6-new102.png"><img alt="../_images/lab6-new102.png" src="../_images/lab6-new102.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 287 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 288 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You have successfully re-established the <code class="docutils literal notranslate"><span class="pre">Deny-List</span></code> model!</p>
@@ -779,19 +791,19 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p>Deny-List Model (formerly known as <em>blacklist</em>) = basic access control mechanism that allows through all elements except those explicitly mentioned on a “deny” list.</p>
 </div>
 <p>Moreover, continue editing the <strong>Greenfield-Rule</strong>: click on the three-dot icon beside the Greenfield-Rule entry and select the option <code class="docutils literal notranslate"><span class="pre">&quot;Turn</span> <span class="pre">On</span> <span class="pre">Logging&quot;</span></code>.</p>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab6-new105.png"><img alt="../_images/lab6-new105.png" src="../_images/lab6-new105.png" style="height: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 288 </span><span class="caption-text">Logging ON</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 289 </span><span class="caption-text">Logging ON</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Commit</strong> your final change again.</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab6-new106.png"><img alt="../_images/lab6-new106.png" src="../_images/lab6-new106.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 289 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 290 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -802,32 +814,32 @@ Do not forget to click on <strong>Save</strong>.</p>
 <section id="connectivity-test-using-the-gatus-app">
 <h3>7.1 Connectivity Test Using the Gatus App<a class="headerlink" href="#connectivity-test-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select both <strong><em>azure-west-us-spoke1-test1</em></strong>, <strong><em>azure-west-us-spoke1-test2</em></strong> and <strong><em>gcp-us-central1-spoke1-test1</em></strong></p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id39">
 <a class="reference internal image-reference" href="../_images/lab6-new888.png"><img alt="../_images/lab6-new888.png" src="../_images/lab6-new888.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 290 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id39">
-<a class="reference internal image-reference" href="../_images/lab6-gatus90.png"><img alt="../_images/lab6-gatus90.png" src="../_images/lab6-gatus90.png" style="height: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 291 </span><span class="caption-text">azure-west-us-spoke1-test1</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 291 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id40">
-<a class="reference internal image-reference" href="../_images/lab6-gatus91.png"><img alt="../_images/lab6-gatus91.png" src="../_images/lab6-gatus91.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab6-gatus90.png"><img alt="../_images/lab6-gatus90.png" src="../_images/lab6-gatus90.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 292 </span><span class="caption-text">azure-west-us-spoke2-test1</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 292 </span><span class="caption-text">azure-west-us-spoke1-test1</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id41">
+<a class="reference internal image-reference" href="../_images/lab6-gatus91.png"><img alt="../_images/lab6-gatus91.png" src="../_images/lab6-gatus91.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 293 </span><span class="caption-text">azure-west-us-spoke2-test1</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id42">
 <a class="reference internal image-reference" href="../_images/lab6-gatus92.png"><img alt="../_images/lab6-gatus92.png" src="../_images/lab6-gatus92.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 293 </span><span class="caption-text">gcp-us-central1-spoke1-test1</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 294 </span><span class="caption-text">gcp-us-central1-spoke1-test1</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>All three instances can reach each other!</p>
@@ -836,10 +848,10 @@ Do not forget to click on <strong>Save</strong>.</p>
 <h3>7.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-testing-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>If you wish, you can also check the ICMP test using your SSH client.</p>
 <p><strong>SSH</strong> into <strong><em>azure-west-us-spoke<span style='color:#479608'>1</span>-test1</em></strong> and from there, ping <strong><em>azure-west-us-spoke<span style='color:#bb05b9'>2</span>-test1</em></strong> on its private IP.</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id43">
 <img alt="../_images/lab7-ping.png" src="../_images/lab7-ping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 294 </span><span class="caption-text">Ping is successful</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 295 </span><span class="caption-text">Ping is successful</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -850,11 +862,11 @@ Do not forget to click on <strong>Save</strong>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>addr<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">192</span>.168.1.10<span class="o">)</span>
 </pre></div>
 </div>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id44">
 <a class="reference internal image-reference" href="../_images/lab7-monitor2.png"><img alt="../_images/lab7-monitor2.png" src="../_images/lab7-monitor2.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 295 </span><span class="caption-text">Monitor on the PaloAlto</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 296 </span><span class="caption-text">Monitor on the PaloAlto</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Traffic is passing through firewall because <strong><em>azure-west-us-spoke1</em></strong> and <strong><em>azure-west-us-spoke2</em></strong> both are in the <strong>Inspection Policy</strong>.</p>
@@ -862,26 +874,26 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p class="admonition-title">Tip</p>
 <p>Click on the <strong>refresh</strong> button to see the logs almost in continuous stream.</p>
 </div>
-<figure class="align-center" id="id44">
-<img alt="../_images/lab7-smallrefresh.png" src="../_images/lab7-smallrefresh.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 296 </span><span class="caption-text">Ping GCP</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>While on <strong><em>azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1</em></strong>, ping <strong><em>gcp-us-central1-spoke1-test1</em></strong>.</p>
 <figure class="align-center" id="id45">
-<img alt="../_images/lab7-pinggcp.png" src="../_images/lab7-pinggcp.png" />
+<img alt="../_images/lab7-smallrefresh.png" src="../_images/lab7-smallrefresh.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 297 </span><span class="caption-text">Ping GCP</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>While on <strong><em>azure-west-us-spoke<span style='color:#33ECFF'>1</span>-test1</em></strong>, ping <strong><em>gcp-us-central1-spoke1-test1</em></strong>.</p>
+<figure class="align-center" id="id46">
+<img alt="../_images/lab7-pinggcp.png" src="../_images/lab7-pinggcp.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 298 </span><span class="caption-text">Ping GCP</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>This still matches the <strong><code class="docutils literal notranslate"><span class="pre">Allow-all</span></code></strong> firewall rule. Moreover, it works because of the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code> we had configured in the <strong>Network Segmentation</strong> Lab.</p>
 <p>Back on the PAN firewall, click the <strong>refresh</strong> button in the top-right corner to see the log entries for pinging the GCP spoke test VM.</p>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id47">
 <a class="reference internal image-reference" href="../_images/lab7-finalmonitor.png"><img alt="../_images/lab7-finalmonitor.png" src="../_images/lab7-finalmonitor.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 298 </span><span class="caption-text">Monitoring traffic towards GCP</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 299 </span><span class="caption-text">Monitoring traffic towards GCP</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -892,57 +904,57 @@ Do not forget to click on <strong>Save</strong>.</p>
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and filter out based on <strong>ICMP</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id48">
 <a class="reference internal image-reference" href="../_images/lab7-finalmonitor00.png"><img alt="../_images/lab7-finalmonitor00.png" src="../_images/lab7-finalmonitor00.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 299 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 300 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will immediately notice the logs that successfully matched the Greenfield-Rule!</p>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id49">
 <a class="reference internal image-reference" href="../_images/lab7-finalmonitor01.png"><img alt="../_images/lab7-finalmonitor01.png" src="../_images/lab7-finalmonitor01.png" style="height: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 300 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 301 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="fw-path-verification">
 <h2>9. FW Path Verification<a class="headerlink" href="#fw-path-verification" title="Link to this heading">#</a></h2>
 <p>Let’s verify that the traffic generated from both VNets is indeed diverted to the firewall.</p>
-<figure class="align-center" id="id49">
+<figure class="align-center" id="id50">
 <a class="reference internal image-reference" href="../_images/lab6-verification.png"><img alt="../_images/lab6-verification.png" src="../_images/lab6-verification.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 301 </span><span class="caption-text">The inspected VNets</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 302 </span><span class="caption-text">The inspected VNets</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s retrieve the <strong>Private IP address</strong> of the VM in  the <strong><em>azure-west-us-spoke2</em></strong> VNet.</p>
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for the <strong><em>azure-west-us-spoke2-test<span style='color:#33ECFF'>1</span></summary></em></strong> instance. Identify its Private IP address and copy it.</p></li>
 </ul>
-<figure class="align-center" id="id50">
+<figure class="align-center" id="id51">
 <a class="reference internal image-reference" href="../_images/lab6-searchfor.png"><img alt="../_images/lab6-searchfor.png" src="../_images/lab6-searchfor.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 302 </span><span class="caption-text">Search for azure-west-us-spoke2-test1</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 303 </span><span class="caption-text">Search for azure-west-us-spoke2-test1</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools &gt; Gateway Diagnostics</strong>, select the <strong><em>azure-west-us-spoke<span style='color:#33ECFF'>1</span></summary></em></strong> Gateway, then select the <strong>Traceroute</strong> command. Paste the IP address previously copied from the <strong>Cloud Assets</strong> section into the <code class="docutils literal notranslate"><span class="pre">Destination</span> <span class="pre">(IP</span> <span class="pre">/</span> <span class="pre">Hostname)</span></code> field, and then click on <strong>Run</strong>.</p>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id52">
 <a class="reference internal image-reference" href="../_images/lab6-diag00.png"><img alt="../_images/lab6-diag00.png" src="../_images/lab6-diag00.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 303 </span><span class="caption-text">Diagnostics Tools</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 304 </span><span class="caption-text">Diagnostics Tools</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s analyze the outcome from the <code class="docutils literal notranslate"><span class="pre">Traceroute</span></code> command:</p>
-<figure class="align-center" id="id52">
+<figure class="align-center" id="id53">
 <a class="reference internal image-reference" href="../_images/lab6-diag01.png"><img alt="../_images/lab6-diag01.png" src="../_images/lab6-diag01.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 304 </span><span class="caption-text">Traceroute</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 305 </span><span class="caption-text">Traceroute</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -956,11 +968,11 @@ Do not forget to click on <strong>Save</strong>.</p>
 <li><p>The <strong>forth</strong> hop is the Spoke  GW azure-west-us-spoke2</p></li>
 <li><p>The <strong>fifth</strong> hop is the final destination: <strong><em>azure-west-us-spoke2-test2</em></strong></p></li>
 </ol>
-<figure class="align-center" id="id53">
+<figure class="align-center" id="id54">
 <a class="reference internal image-reference" href="../_images/lab6-diag018.png"><img alt="../_images/lab6-diag018.png" src="../_images/lab6-diag018.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 305 </span><span class="caption-text">Hop by Hop</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 306 </span><span class="caption-text">Hop by Hop</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -975,11 +987,11 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p>Maybe it’s time to finally embrace the full-blown <strong><code class="docutils literal notranslate"><span class="pre">&quot;Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code></strong> solution and get rid of the expensive NGFW!</p>
 </div>
 <p>After completing this lab, the overall topology will appear as follows:</p>
-<figure class="align-center" id="id54">
+<figure class="align-center" id="id55">
 <a class="reference internal image-reference" href="../_images/lab7-finaltopology2.png"><img alt="../_images/lab7-finaltopology2.png" src="../_images/lab7-finaltopology2.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 306 </span><span class="caption-text">Final Topology for Lab 6</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 307 </span><span class="caption-text">Final Topology for Lab 6</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

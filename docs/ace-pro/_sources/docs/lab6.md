@@ -42,7 +42,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke 
 
 ```{figure} images/lab7-spoke.png
 ---
-height: 500px
+height: 250px
 align: center
 ---
 Edit Spoke GW
@@ -150,10 +150,20 @@ Marketplace contact under loading
 - **Firewall Image Version**: <span style='color:#479608'>9.1.0</span>
 - **Firewall instance Size**: <span style='color:#479608'>Standard_D3_v2</span>
 - **Management Interface Subnet**: <span style='color:#479608'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-**1** [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
+
+```{caution}
+Pay close attention to select the right subnet: **_azure-west-us-transit-Public-gateway-and-firewall-mgmt-1_**
+```{figure} images/lab7-firenetsubnet.png
+---
+align: center
+---
+Management Interface Subnet
+```
+
 - **Egress Interface Subnet**: <span style='color:#479608'>azure-west-us-transit-Public-FW-ingress-egress-**1** [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
 - **Authentication**: <span style='color:#479608'>Password</span>
 - **Username**: <span style='color:#479608'>avxadmin [**Note**: username *admin* is not permitted in Azure]</span>
-- **Password**: <span style='color:#479608'>[choose a **strong password** and remember it]</span>
+- **Password**: <span style='color:#479608'>Aviatrix123#</span>
 - **Bootstrap Configuration**: <span style='color:#479608'>turn **ON** the knob</span>
 - **Storage**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab6 section)</ins></span>
 - **Storage Access Key**: <span style='color:#479608'>Retrieve this from your <ins>pod info (Lab6 section)</ins></span>
@@ -186,7 +196,7 @@ align: center
 Deployment in progress
 ```
 
-At this time, the interface mapping, security policy configuration, and RFC1918 static route creation are all being handled. The **_Aviatrix Controller_** does a lot of magic in orchestrating and manipulating route tables.
+At this time, the interface mapping, and security policy configuration are all being handled. The **_Aviatrix Controller_** does a lot of magic in orchestrating and manipulating route tables.
 
 You will know the Firewall is created when you see the corresponding entry like this (refresh the page after roughly **10-15** minutes):
 
@@ -210,11 +220,11 @@ align: center
 Notification Panel
 ```
 
-#### 4.3.2 Firewall Vendor Integration
-
-```{important}
-Before proceeding with the vendor integration, please wait for confirmation that the firewall's deployment was successful.
+```{caution}
+Before proceeding with the next task, please wait **20** minutes!
 ```
+
+#### 4.3.2 Firewall Vendor Integration
 
 The `Vendor Integration` allows inserting the Summary Routes into the the Firewall's Routing Table.
 
