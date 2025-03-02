@@ -48,7 +48,9 @@ align: center
 BGPoverLAN
 ```
 
-The S2C connection with Edge will be configured on the subsequent lab (i.e. **Lab 8**).
+```{caution}
+The Aviatrix Spoke Edge will be configured on the subsequent lab (i.e. **Lab 8**).
+```
 
 Now let's configure the **S2C** connection with the Partner site!
 
@@ -382,7 +384,7 @@ OnPrem-Partner site
 
 ## 6. Connectivity Testing
 
-Verify that ther VM in GCP can ping successfully the on-prem-partner1 router, pinging its `Virtual Remote IP`.
+Verify that the VM in GCP can ping successfully the on-prem-partner1 router, pinging its `Virtual Remote IP`.
 
 ### 6.1 Connectivity Testing Using the Apache Guacamole Client (Jumphost)</span></summary>
 
