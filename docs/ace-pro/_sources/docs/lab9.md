@@ -100,7 +100,7 @@ align: center
 aws-us-east1-spoke1-rtb-public-a
 ```
 
-## 4.0 Generate traffic towards a Malicious IP
+## 4. Generate traffic towards a Malicious IP
 
 Now that there is a PSF Gateway on defending the Public Subnet, let's generate some traffic towards an IP with **Bad Reputation**.
 
@@ -147,15 +147,13 @@ align: center
 SSH session
 ```
 
-`<malicious-IP>`: **_109.107.35.154_**
-
-
-
 - Issue this command (make sure to enter **HTTPS**):
 
 ```bash
 curl https://<malicious-IP>
 ```
+
+`<malicious-IP>`: **_178.17.174.164 _**
 
 ```{figure} images/lab9-instancetest.png
 ---
@@ -164,7 +162,7 @@ align: center
 Curl towards the malicious IP
 ```
 
-## 5.0 Create a new SmartGroup
+## 5. Create a new SmartGroup
 
 The traffic towards the malicious IP is permitted... Let's now enforce the `Threats Detection mechanism`!
 
@@ -209,7 +207,7 @@ align: center
 SmartGroups List
 ```
 
-## 6.0 Create two new DCF rules
+## 6. Create two new DCF rules
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -299,7 +297,7 @@ Default ThreatGroup
 `ProofPoint` sends its new malicious IP addresses DB to the CoPilot every **30 minutes**. 
 ```
 
-## 7.0 Generate again traffic towards the "Bad Guy"
+## 7. Generate again traffic towards the "Bad Guy"
 
 Now let's delete the **Greenfield-Rule**, such that the **ZTNA** can be restored in the Data Path!
 
@@ -309,7 +307,7 @@ Do not forget to click on **Commit**.
 
 ```{figure} images/lab66-newruledelete.png
 ---
-height: 350px
+height: 250px
 align: center
 ---
 Deletion of the Greenfield-Rule
@@ -437,7 +435,15 @@ align: center
 Gatus
 ```
 
-The traffic is blocked now.
+The traffic to the Malicious IP will gradually fail.
+
+```{figure} images/lab9-gatus678.png
+---
+height: 400px
+align: center
+---
+Malicious ip
+```
 
 ### 8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -521,7 +527,6 @@ Now go to **CoPilot > Security > ThreatIQ**  section, then scroll down through t
 
 ```{figure} images/lab96-newrule308.png
 ---
-height: 300px
 align: center
 ---
 Filter
@@ -529,7 +534,6 @@ Filter
 
 ```{figure} images/lab96-newrule309.png
 ---
-height: 300px
 align: center
 ---
 Condition
