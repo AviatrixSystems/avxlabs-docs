@@ -184,14 +184,14 @@ SSH with public IP address
 
 #### 3.2.2 Topology (to retrieve IP addresses)
 
-- Navigate to **CoPilot > Topology > Overview (Default Tab)** and enter **_aws-us-east-2-spoke1-test1_** in the search field located on the right-hand side.
+- Navigate to **CoPilot > Topology > Overview (Default Tab)** and enter **_aws-us-east-1-spoke1-test1_** in the search field located on the right-hand side.
 
 ```{figure} images/lab02-searchfield.png
 ---
 height: 400px
 align: center
 ---
-Topology
+Search for any instances within the topology
 ```
 
 Now, navigate to the **Properties** window, locate the Public IP address of the instance, and copy it to your clipboard!
@@ -201,7 +201,7 @@ Now, navigate to the **Properties** window, locate the Public IP address of the 
 height: 400px
 align: center
 ---
-Topology
+Properties
 ```
 
 ```{important}
