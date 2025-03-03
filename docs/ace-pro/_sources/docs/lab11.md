@@ -98,7 +98,7 @@ New Smart Group
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
-- **Name**: <span style='color:#479608'>bu1</span>
+- **Name**: <span style='color:#479608'>bu2</span>
 - **Virtual Machines/environment**: <span style='color:#479608'>bu2</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
@@ -555,7 +555,7 @@ Logs
 
 From the log above is quite evident that the `"intra-ssh-bu1`" rule is permitting SSH traffic within the Smart Group bu1, successfully.
 
-After the creation of the previous intra-rule, this is how the topology with the permitted protocols should look like:
+After the creation of the previous intra-rule, this is how the topology with the permitted protocols will look like:
 
 ```{figure} images/lab10-topologynew.png
 ---
@@ -717,7 +717,7 @@ Monitor
 
 The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu2 to bu1.
 
-After the creation of the previous inter-rule, this is how the topology with all the permitted protocols should look like.
+After the creation of the previous inter-rule, this is how the topology with all the permitted protocols will look like.
 
 ```{figure} images/lab10-lastdrawing2.png
 ---
