@@ -20,7 +20,7 @@ align: center
 Lab 11 section on the POD Portal
 ```
 
-Insert the corresponding credentials, available on the POD Portal, to log in to the remote "edge" Workstation.
+Insert the corresponding credentials, available on the POD Portal, to log in to the remote "Workstation Edge".
 
 ```{figure} images/lab11-edge2.png
 ---
@@ -29,7 +29,7 @@ align: center
 Edge Workstation credentials
 ```
 
-* Open the **Visual Studio Code** located on the Desktop
+* Open the **Visual Studio Code** located on the Desktop and thn click on the `Explorer` button.
 
 ```{figure} images/lab11-edge3.png
 ---
@@ -39,8 +39,16 @@ align: center
 VS Studio
 ```
 
-* Click on the **Home** icon and then select the folder `terraform-lab` and click **Open**
-  * _When prompted to trust the authors of the files in this folder, select Yes_
+```{figure} images/lab11-edge32.png
+---
+height: 400px
+align: center
+---
+VS Studio
+```
+
+* Click on the **Open Folder** button, select the folder `terraform-lab` and click **Open**
+  * _When prompted to trust the authors of the files in this folder, select **Yes, I trust the authors**_
 
 ```{figure} images/lab11-edge4.png
 ---
@@ -267,7 +275,7 @@ Lab 11 section on the POD Portal
 ```
 
 ```{important}
-The API Key was generated at the lunch of all PODs and was applied on the Prometheus/Grafana server!
+The API Key was generated at the launch of all PODs and applied to the Prometheus/Grafana server!
 ```
 
 Enter the required credentials that are available on the POD Portal and then click on **Log in**.

@@ -957,8 +957,7 @@ New Smart Group
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>east1</span>
-- **CSP Tag Key**: <span style='color:#479608'>Name</span>
-- **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span>
+- **Virtual Machines/Name**: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span>
 
 ```{figure} images/lab10-mtt9.png
 ---
@@ -1022,7 +1021,7 @@ Commit
 
 #### 15.3.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabled MTT
 
-Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
+Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic to **_aws-us-east-1-spoke1-test2_**
 
 ```{figure} images/lab10-gatus334.png
 ---
@@ -1031,7 +1030,7 @@ align: center
 Gatus
 ```
 
-Ping towards the **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** will NOT work.
+The ICMP traffic test will gradually turn green!
 
 #### 15.3.2 ICMP Verification between Azure and AWS Using SSH Client after enabled MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -1044,7 +1043,9 @@ align: center
 Ping
 ```
 
-This time the ping will be successful!
+This time, the ping will be successful!
+
+#### 15.3.3 Logs
 
 Check the logs once again.
 
@@ -1058,7 +1059,7 @@ align: center
 inter-icmp-bu2-east1 Logs
 ```
 
-After the creation of both the previous inter-rule and the additional Smart Group, this is how the topology with all the permitted protocols should look like.
+After creating both the previous inter-rule and the additional Smart Groups, this is how the topology with all the permitted protocols will look:
 
 ```{figure} images/lab10-newjoe.png
 ---
@@ -1079,9 +1080,9 @@ align: center
 No More NGFW
 ```
 
-### 7.1 Creating a Spoke to Spoke Attachment
+### 16.1 Creating a Spoke to Spoke Attachment
 
-Go to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** GW and click on the **`Manage Gateway Attachments`** icon on the right-hand side.
+Go to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** gateway and click on the **`Manage Gateway Attachments`** icon on the right-hand side.
 
 ```{figure} images/lab10-spoke2spoke02.png
 ---
@@ -1143,10 +1144,10 @@ align: center
 Metric 50
 ```
 
-The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now prefer going through the Spoke-to-Spoke Attachment, for the communication with the Spoke1 VNet.
+The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now prefer going through the Spoke-to-Spoke Attachment for communication with the Spoke1 VNet.
 
 ```{important}
-The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a Hub and Spoke Topology!
+The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a _Hub and Spoke_ Topology!
 ```
 
 ```{figure} images/lab10-spoke2spoke07.png
@@ -1156,7 +1157,7 @@ align: center
 Spoke to Spoke
 ```
 
-After this lab, this is how the overall topology would look like:
+After this lab, the overall topology will look like this:
 
 ```{figure} images/lab10-lastdrawing.png
 ---
