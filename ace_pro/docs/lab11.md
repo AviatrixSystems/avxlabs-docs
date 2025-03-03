@@ -62,8 +62,7 @@ SmartGroup
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>bu1</span>
-- **CSP Tag Key**: <span style='color:#479608'>environment</span>
-- **CSP Tag Value**: <span style='color:#479608'>bu1</span>
+- **Virtual Machines/environment**: <span style='color:#479608'>bu1</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
@@ -99,9 +98,8 @@ New Smart Group
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
-- **Name**: <span style='color:#479608'>bu2</span>
-- **CSP Tag Key**: <span style='color:#479608'>environment</span>
-- **CSP Tag Value**: <span style='color:#479608'>bu2</span>
+- **Name**: <span style='color:#479608'>bu1</span>
+- **Virtual Machines/environment**: <span style='color:#479608'>bu2</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
@@ -371,8 +369,8 @@ align: center
 ---
 Ping
 ```
-**aws-us-east-2-spoke1-test2** can successfully ping **aws-us-east-2-spoke1-test1**, because the communication occurs inside th VPC, without involving the Spoke Gateway.
 
+**aws-us-east-2-spoke1-test2** can successfully ping **aws-us-east-2-spoke1-test1**, because the communication occurs inside th VPC, without involving the Spoke Gateway.
 
 ### 5.4 SG Orchestration
 

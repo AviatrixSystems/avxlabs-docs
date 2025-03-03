@@ -236,8 +236,6 @@ Click then on **Commit**.
 
 Navigate to your POD Portal, locate the `Gatus widget`, and select **_onprem-pod<span style='color:#33ECFF'>##</span></summary>-edge_**.
 
-The traffic generated from the Workstation Edge will gradually turn green!
-
 ```{figure} images/lab10-podportal110.png
 ---
 height: 400px
@@ -245,6 +243,8 @@ align: center
 ---
 Gatus
 ```
+
+The traffic generated from the Workstation Edge will gradually turn green!
 
 ```{figure} images/lab10-podportal111.png
 ---
@@ -264,6 +264,10 @@ align: center
 ---
 Ping from the Wortkstation "Edge"
 ```
+
+### 5.3 Cost Center and Shared Service
+
+Go to **CoPilot > Billing & Cost > CostIQ > Shared Services** and click on **NEW YORK DC** to expand the visibility of the percentage of traffic between the Shared Services and the Cost Center AWS. This traffic is permitted thanks to the DCF rule previously created.
 
 ```{figure} images/lab9-counter.png
 ---
