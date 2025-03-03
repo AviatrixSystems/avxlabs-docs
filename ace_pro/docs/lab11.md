@@ -916,7 +916,7 @@ align: center
 Gatus
 ```
 
-Ping towards the **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** will NOT work.
+Pinging **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** is still not working.
 
 ### 14.2 ICMP Verification between Azure and AWS Using SSH Client after enabled MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
 
