@@ -1023,7 +1023,7 @@ Commit
 
 Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic to **_aws-us-east-1-spoke1-test2_**
 
-```{figure} images/lab10-gatus334.png
+```{figure} images/lab10-gatus345.png
 ---
 align: center
 ---
