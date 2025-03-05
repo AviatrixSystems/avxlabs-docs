@@ -784,9 +784,9 @@ align: center
 Ping
 ```
 
-The ping fails! 
+The ping fails!
 
-## 13. Verification
+## 13. Verification of the MTT
 
 Let’s check the routing table of the Spoke Gateway **_azure-west-us-spoke2_**.
 
@@ -903,7 +903,7 @@ align: center
 10.0.12.0/23
 ```
 
-## 14. New Rule
+## 14. The last DCF rule
 
 ### 14.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabled MTT
 
@@ -933,7 +933,7 @@ align: center
 Ping
 ```
 
-## 15. Considerations 
+## 15. Final Considerations
 
 Although this time there is a valid route to the destination, thanks to the **MTT** feature, the pings still fails. 
 
