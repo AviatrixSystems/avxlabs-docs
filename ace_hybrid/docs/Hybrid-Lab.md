@@ -192,11 +192,11 @@ Also execute **curl** for https like below
 
 ![Edge Hybrid Work2](images/hybrid-workstation-2.png)
 
-### 5.2 Implementiong DCF rules
+### 5.2 Implementing DCF rules
 
 There is a new security requirement stating that on-premises network workstations must not be able to communicate with the cloud over HTTPS or port 1521.
 
-Go to **CoPilot > Cloud Fabric > Security > Distributed Cloud Firewall** and click on the `+Rule` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall** and click on the `+Rule` button.
 
 ![Hybrid DCF1](images/hybrid-dcf1.png)
 
@@ -231,7 +231,7 @@ Connections to CSP on other applications running on ports 1433, 5000, and 50100 
 
 Now We can view the Distributed Cloud Firewall (DCF) Monitoring logs by following these steps:
 
-1. Navigate to **CoPilot > Cloud Fabric > Security > Distributed Cloud Firewall**
+1. Navigate to **CoPilot > Security > Distributed Cloud Firewall**
 2. Go to  **Monitor** tab.
 3. Click on the `Columns` icon
 4. Select `gateway` to include in the displayed columns.
