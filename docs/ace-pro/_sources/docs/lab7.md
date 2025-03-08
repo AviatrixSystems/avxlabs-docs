@@ -11,7 +11,7 @@ Let's start with the deployment of the S2C.
 Site2Cloud builds an encrypted connection between two sites over the Internet in an easy-to-use and template-driven manner. Its workflow is similar to any CSP’s virtual private network workflow.
 
 On one end of the tunnel is an Aviatrix Gateway; on the other could be an on-premises router, firewall or another public cloud VPC/VNet that Aviatrix Controller does not manage.
- 
+
 ## 3. Topology
 
 In this lab, you will first establish Site-to-Cloud (S2C) connectivity to a `StrongSwan Router`, emulating an on-premises branch router.
@@ -84,12 +84,16 @@ Create a connection from the Cloud (GCP) to an on-premises partner site using th
 - **Real Remote Subnet CIDR(s)**: <span style='color:#479608'>172.16.1.0/24</span>
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.100.0/24</span>
 - **Authetication Method**: <span style='color:#479608'>PSK</span>
-- **Pre-Shared Key**: <span style='color:#479608'>[**Refer to your Pod assignment for the StrongSwan PSK - Lab8 section**]</span>
+- **Pre-Shared Key**: <span style='color:#479608'>[**Refer to your Pod assignment for the StrongSwan PSK - Lab7/8 section**]</span>
 - **IKEv2**: <span style='color:#479608'>**ON**</span>
-- **Remote Gateway IP**: <span style='color:#479608'>[**Refer to your Pod assignment for the **on-prem-partner1**'s Public IP - Lab7 section** - You will need to use the dig/host/nslookup command]</span>
+- **Remote Gateway IP**: <span style='color:#479608'>[**Refer to your Pod assignment for the **on-prem-partner1**'s Public IP - Lab7/8 section** - You will need to use the dig/host/nslookup command]</span>
 - **Local Gateway Instance**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
 
 Then click on **Save**.
+
+```{caution}
+StrongSwan Router = on-prem-partner1
+```
 
 ```{figure} images/lab8-newone.png
 ---
