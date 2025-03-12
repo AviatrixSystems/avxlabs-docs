@@ -519,6 +519,8 @@ align: center
 curl command-04
 ```
 
+### 7.3 Egress Overview
+
 Go to **CoPilot > Security > Egress > Overview**, and you will see the visibility of the domain hits.
 
 ```{figure} images/lab6-newrul12.png
@@ -529,9 +531,9 @@ align: center
 Overview
 ```
 
-Now you have finally the  **Egress observability** with a full list of domains hit by the EC2 instance inside that private subnet.
+You now have complete **Egress observability**, along with a full list of domains accessed by the EC2 instance within that private subnet.
 
-Furthermore, go to **CoPilot > Security > Egress > Monitor** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east-2-spoke1 VPC_**.
+Furthermore, go to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east-2-spoke1 VPC_**.
 
 ```{figure} images/lab6-monitor.png
 ---
