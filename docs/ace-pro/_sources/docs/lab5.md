@@ -774,7 +774,7 @@ align: center
 Deletion of the AWS NAT GW
 ```
 
-After this lab, this is how the overall topology will look like:
+After completing this lab, the overall topology will appear as follows:
 
 ```{figure} images/lab6-finaltopo.png
 ---
