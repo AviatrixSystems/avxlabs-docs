@@ -575,7 +575,7 @@ Go to the AWS Console, select the **_aviatrix-aws-us-east-1-spoke1_** Spoke Gate
 
 ```{figure} images/lab4-gatus406.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 AWS Console
@@ -645,7 +645,7 @@ align: center
 Restart
 ```
 
-After this lab, the overall topology will look like this
+Upon completing this lab, the overall topology will be as follows:
 
 ```{figure} images/lab5-finaltopo.png
 ---
@@ -678,7 +678,7 @@ FlightPath config
 This will provide a `FlightPath` report showing how **_aws-us-east-1-spoke1-test1_** is connected with **_aws-us-east-2-spoke1-test1_**, displaying the path along with end-to-end latency.
 
 ```{note}
-You might see some links still depicted in <span style='color:red'>**red**</span>, after having restarted the Spoke Gateway. Be patient and relaunch the report and you will get the same outcome as depicted below.
+After restarting the Spoke Gateway, you may notice some links still displayed in <span style='color:red'>**red**</span>. Please be patient and relaunch the report to see the same outcome as shown below.
 ```
 
 ```{figure} images/lab5-flight2.png
