@@ -169,7 +169,7 @@ Go to **CoPilot > Networking > Connectivity > Native Peering**
 
 ```{figure} images/lab5-native0.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 Native Peerings
@@ -363,7 +363,7 @@ align: center
 Association
 ```
 
-At this point, the overall topology will look like this:
+At this point, the overall topology will be as follows:
 
 ```{figure} images/lab5-topologyview22.png
 ---
@@ -436,7 +436,7 @@ ping from aws-us-east-1-spoke1-test2
 ```
 
 ```{important}
-Please keep **both** the ping sessions running recursively on your SSH client! Don't interrupt the ping.
+Please keep **both** ping sessions running continuously in your SSH client! Do not interrupt the pings.
 ```
 
 ## 11. Failover
@@ -559,7 +559,7 @@ align: center
 Reconvergence in action
 ```
 
-The ICMP test launched from the **_aws-us-east-1-spoke1-test2_** instance will be successful because Spoke Gateway 2 has not been stopped.
+The ICMP test initiated from the **_aws-us-east-1-spoke1-test2_** instance will be successful because Spoke Gateway 2 is still operational, and traffic is continuously flowing through it.
 
 ```{figure} images/lab4-gatus405.png
 ---

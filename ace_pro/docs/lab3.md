@@ -159,7 +159,7 @@ Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-eas
 You should already be signed in to the **Gatus** app.
 ```
 
-Eventually, the ICMP check will begin to fail gradually, towards the instance **_gcp-us-central1-spoke1-test1_**.
+Eventually, both the ICMP check and the SSSH check will begin to fail gradually, towards the instance **_gcp-us-central1-spoke1-test1_**.
 
 ```{figure} images/lab3-gatus00.png
 ---
@@ -169,8 +169,16 @@ align: center
 ICMP Test towards gcp-us-central1-spoke1-test1 fails 
 ```
 
+```{figure} images/lab3-gatus456.png
+---
+height: 400px
+align: center
+---
+SSH Test towards gcp-us-central1-spoke1-test1 fails 
+```
+
 ```{important}
-The ICMP traffic is set by default to 5 minutes. Reduce the timer if you want a quicker result!
+The connectivity tests are both set to 5 minutes. If you prefer quicker results, you can reduce the timer to **10** seconds!
 ```
 
 ```{figure} images/lab3-gatus01.png
@@ -276,15 +284,22 @@ Unattached
 
 ### 8.1 Connectivity Testing Using the Gatus App
 
-Once again, navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example. 
+Once again, navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example.
 
-The ICMP test towards the instance **_gcp-us-central1-spoke1-test1_** should work this time.
+The ICMP test and the SSH test for the instance **_gcp-us-central1-spoke1-test1 _**should work this time.
 
 ```{figure} images/lab3-gatus100.png
 ---
 align: center
 ---
-Gatus
+ICMP test
+```
+
+```{figure} images/lab3-gatus188.png
+---
+align: center
+---
+SSH test
 ```
 
 ### 8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
@@ -324,7 +339,7 @@ align: center
 New Test from GCP
 ```
 
-After this lab, this is how the overall topology will look like:
+After this lab, the overall topology will appear as follows:
 
 ```{figure} images/lab3-finaltopology.png
 ---

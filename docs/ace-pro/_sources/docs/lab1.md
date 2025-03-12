@@ -115,7 +115,7 @@ align: center
 Hourglass icon
 ```
 
-Go back to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and type the name of the VNet previously created, **`azure-us-central-spoke1`**, inside the search field, then expand the VNet to explore the additional subnets created by the Aviatrix Controller.
+Navigate to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets**. In the search field, enter the name of the previously created VNet, **`azure-us-central-spoke1`**. Then, expand the VNet to explore the additional subnets created by the Aviatrix Controller."
 
 ```{tip}
 **Click on the refresh button!**
@@ -130,11 +130,11 @@ Confirmation
 ```
 
 ```{note}
-It will take <ins>**10** additional minutes</ins> to see all the four subnets (i.e 2x public subnets and 2x private subnets). 
+It will take an additional 10 minutes to see all four subnets (i.e., 2 public subnets and 2 private subnets). 
 
-Please, be patient! 
+Thank you for your patience! 
 
-<ins>Continue with the subsequent tasks and afterwards verify that all the underlay constructs got deployed, successfully.</ins>
+<ins>Please proceed with the subsequent tasks, and once completed, verify that all underlay constructs have been successfully deployed.</ins>
 ```
 
 ## 3. AWS VPC
@@ -198,7 +198,7 @@ You can filter by CIDR `10.0.22.0/24`.
 
 ```{figure} images/lab1-vpc4.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 Verification
