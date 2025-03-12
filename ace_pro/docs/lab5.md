@@ -537,7 +537,7 @@ Furthermore, go to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and f
 
 ```{figure} images/lab6-monitor.png
 ---
-height: 250px
+height: 400px
 align: center
 ---
 Monitor
@@ -682,7 +682,6 @@ align: center
 curl command-03
 ```
 
-
 ```{figure} images/lab6-curl04.png
 ---
 height: 400px
@@ -691,11 +690,25 @@ align: center
 curl command-04
 ```
 
-## 9. Remotion of the AWS NAT Gateway
+## 9. Monitor
+
+Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east-2-spoke1 VPC_**.
+
+Type "denied" inside the `Search` field to identify the domains that got blocked after attaching the WebGropup `"two-domains"` to the rule named `"Egress-Rule"`.
+
+```{figure} images/lab6-monitor989.png
+---
+height: 400px
+align: center
+---
+Action Denied
+```
+
+## 10. Remotion of the AWS NAT Gateway
 
 Now that you have successfully enabled the `Aviatrix Cloud Firewall`, you can get rid of the AWS NAT Gateway.
 
-### 9.1 AWS Console
+### 10.1 AWS Console
 
 Login to **AWS console**</a>. Refer to your pod info for login information (<ins>Please always refer to your personal POD Portal</ins>).
 
