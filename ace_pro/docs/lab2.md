@@ -34,9 +34,9 @@ Initial pre-provisioned topology
 
 ### 3.1 Preliminary Monitoring Check Using the Gatus APP
 
-All pre-deployed instances are running [Gatus](https://gatus.io/) and are attempting to connect to each other on various protocols, such as ICMP and TCP ports 80 and 443.
+All pre-deployed instances are running [Gatus](https://gatus.io/) and are attempting to connect with each other using various protocols, including **ICMP** and **TCP** on ports 80 and 443.
 
-You can access the Gatus' dashboard directly from your POD Portal.
+You can access the Gatus dashboard directly from your POD Portal.
 
 ```{figure} images/lab2-gatus00.png
 ---
