@@ -582,6 +582,10 @@ WebGroup creation
 The purpose of this **WebGroup** is to authorize traffic only to the domains *`aviatrix.com`* and *`www.wikipedia.org`*. Therefore, curl commands issued to other domains will be blocked.
 ```
 
+```{note}
+The **DCF WebGroup** contains one or more domain names or URLs that assists in filtering (and providing security to) Internet-bound traffic.
+```
+
 ### 8.2 Edit the Egress-Rule 
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
@@ -694,7 +698,7 @@ curl command-04
 
 Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east-2-spoke1 VPC_**.
 
-Type "denied" inside the `Search` field to identify the domains that got blocked after attaching the WebGropup `"two-domains"` to the rule named `"Egress-Rule"`.
+Enter the word **"denied"** in the `Search` field to identify the domains that were blocked after attaching the WebGroup `two-domains` to the rule named `Egress-Rule`.
 
 ```{figure} images/lab6-monitor989.png
 ---
@@ -703,6 +707,8 @@ align: center
 ---
 Action Denied
 ```
+
+The outcome of the filtering will display those domains that were blocked because they were not included in the WebGroup `"two-domains"`.
 
 ## 10. Remotion of the AWS NAT Gateway
 

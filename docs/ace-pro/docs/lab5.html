@@ -919,6 +919,10 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p class="admonition-title">Important</p>
 <p>The purpose of this <strong>WebGroup</strong> is to authorize traffic only to the domains <em><code class="docutils literal notranslate"><span class="pre">aviatrix.com</span></code></em> and <em><code class="docutils literal notranslate"><span class="pre">www.wikipedia.org</span></code></em>. Therefore, curl commands issued to other domains will be blocked.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong>DCF WebGroup</strong> contains one or more domain names or URLs that assists in filtering (and providing security to) Internet-bound traffic.</p>
+</div>
 </section>
 <section id="edit-the-egress-rule">
 <h3>8.2 Edit the Egress-Rule<a class="headerlink" href="#edit-the-egress-rule" title="Link to this heading">#</a></h3>
@@ -1025,7 +1029,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <section id="monitor">
 <h2>9. Monitor<a class="headerlink" href="#monitor" title="Link to this heading">#</a></h2>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong> and from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window, select the <strong><em>aws-us-east-2-spoke1 VPC</em></strong>.</p>
-<p>Type “denied” inside the <code class="docutils literal notranslate"><span class="pre">Search</span></code> field to identify the domains that got blocked after attaching the WebGropup <code class="docutils literal notranslate"><span class="pre">&quot;two-domains&quot;</span></code> to the rule named <code class="docutils literal notranslate"><span class="pre">&quot;Egress-Rule&quot;</span></code>.</p>
+<p>Enter the word <strong>“denied”</strong> in the <code class="docutils literal notranslate"><span class="pre">Search</span></code> field to identify the domains that were blocked after attaching the WebGroup <code class="docutils literal notranslate"><span class="pre">two-domains</span></code> to the rule named <code class="docutils literal notranslate"><span class="pre">Egress-Rule</span></code>.</p>
 <figure class="align-center" id="id56">
 <a class="reference internal image-reference" href="../_images/lab6-monitor989.png"><img alt="../_images/lab6-monitor989.png" src="../_images/lab6-monitor989.png" style="height: 400px;" />
 </a>
@@ -1033,6 +1037,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <p><span class="caption-number">Fig. 245 </span><span class="caption-text">Action Denied</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>The outcome of the filtering will display those domains that were blocked because they were not included in the WebGroup <code class="docutils literal notranslate"><span class="pre">&quot;two-domains&quot;</span></code>.</p>
 </section>
 <section id="remotion-of-the-aws-nat-gateway">
 <h2>10. Remotion of the AWS NAT Gateway<a class="headerlink" href="#remotion-of-the-aws-nat-gateway" title="Link to this heading">#</a></h2>
