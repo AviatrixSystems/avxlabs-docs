@@ -704,8 +704,6 @@ align: center
 Action Denied
 ```
 
-The outcome of the filtering will display those domains that were blocked because they were not included in the WebGroup `"two-domains"`.
-
 ## 10. Remotion of the AWS NAT Gateway
 
 Now that you have successfully enabled the `Aviatrix Cloud Firewall`, you can get rid of the AWS NAT Gateway.
