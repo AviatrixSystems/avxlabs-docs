@@ -579,14 +579,10 @@ WebGroup creation
 ```
 
 ```{important}
-The purpose of this **WebGroup** is to authorize traffic only to the domains *`aviatrix.com`* and *`www.wikipedia.org`*. Therefore, curl commands issued to other domains will be blocked.
+The purpose of this **WebGroup** is to permit traffic exclusively to the domains *`aviatrix.com`* and *`www.wikipedia.org`*.org. Consequently, any curl commands directed at other domains will be blocked."
 ```
 
-```{note}
-The **DCF WebGroup** contains one or more domain names or URLs that assists in filtering (and providing security to) Internet-bound traffic.
-```
-
-### 8.2 Edit the Egress-Rule 
+### 8.2 Edit the Egress-Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
 
