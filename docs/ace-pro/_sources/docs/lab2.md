@@ -80,7 +80,7 @@ After signing into the Gatus App, you'll observe that two protocols are currentl
 
 The only item showing a green status is `aws-us-east-2-spoke1-test2`. 
 
-Both ICMP and SSH are functioning perfectly here. This success is attributed to the fact that this communication occurs within the same VPC (**`intra-VPC traffic`**), meaning it does not traverse other VPCs, regions, or cloud service providers!
+Both **ICMP** and **SSH** are functioning perfectly here. This success is attributed to the fact that this communication occurs within the same VPC (**`intra-VPC traffic`**), meaning it does not traverse other VPCs, regions, or cloud service providers. As a result, the Spoke Gateway is not involved in this scenario.
 
 ```{figure} images/lab2-gatus04.png
 ---
@@ -128,7 +128,7 @@ align: center
 DNS name
 ```
 
-Now, open your SSH client and enter the command to access the EC2 instance using your credentials!
+Now, open your **SSH client** and enter the command to access the EC2 instance using your credentials!
 
 ```bash
 ssh student@...
@@ -149,15 +149,14 @@ You can also access your instances using also their **Public IP addresses**! You
 
 #### 3.2.1 Cloud Assets (to retrieve IP addresses)
 
-- Go to **CoPilot > Cloud Resources > Cloud Assets** and filer based on the keyword `"test"`.
-- Identify the instance **_aws-us-east-2-spoke1-test1_** and copy its public ip address and use it with your SSH client.
+- Go to **CoPilot > Cloud Resources > Cloud Assets** and filer based on the keyword `"aws-us-east-2-spoke1-test1"`.
+- Copy its **public** ip address and use it with your SSH client.
 
 ```{figure} images/lab2-sshclient10.png
 ---
-height: 300px
 align: center
 ---
-Search the test instances
+Search the test instance
 ```
 
 ```{figure} images/lab2-sshclient11.png
@@ -208,7 +207,7 @@ Properties
 In the **Properties** window under the Topology section of your CoPilot, you can also access the **Private IP addresses** for EAST-WEST traffic.
 ```
 
-### 3.3 Verification Using Your SSH Client 
+### 3.3 Verification Using Your SSH Client
 
 Now that you have logged in to the **_aws-us-east-2-spoke1-test1_** successfully, you can issue your ping commands towards the **Private IP address** of the other instances!
 
@@ -229,7 +228,7 @@ Ping outcomes
 ```
 
 ```{tip}
-Verify also the **SSH** protocol
+Also, please verify whether the **SSH** protocol is functioning correctly with the other instances.
 ```
 
 ## 4. Aviatrix CoPilot
@@ -318,7 +317,7 @@ align: center
 Fetch VPC
 ```
 
-Afterwards, click on **Commit**.
+Afterward, click on **Commit**.
 
 ```{figure} images/lab2-commit.png
 ---
@@ -811,8 +810,8 @@ You do not need to configure peering in the opposite direction.
 ```
 
 Go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
- 
-### 9.1. AWS and Azure
+
+### 9.1 AWS and Azure
 
 - **aws-us-east-2-transit** to **azure-west-us-transit**
 
@@ -881,7 +880,7 @@ align: center
 Peering GCP-AWS
 ```
 
-s point, the overall topology will look like this:
+After this lab, the overall topology will appear as follows:
 
 ```{figure} images/lab2-peeringtopology.png
 ---
@@ -902,7 +901,7 @@ Please note that the following pending elements will be completed in a subsequen
 
 ## 10. Verification
  
-### 10.1. Verification of Transit Peerings on CoPilot (Cloud Fabric)
+### 10.1 Verification of Transit Peerings on CoPilot (Cloud Fabric)
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `Attachments"` tab and finally select the `"Transit-Transit Peering"` tab: you will see **one** connection per each peering, that correspond to the `two IPSec tunnels`.
 
@@ -984,7 +983,7 @@ align: center
 SSH
 ```
 
-You will observe that both ICMP and SSH tests have successfully completed for all three instances:
+You will observe that both **ICMP** and **SSH** tests have successfully completed for all three instances:
 
 1) **_aws-us-east-2-spoke1-test2_** (enabled by the normal `intra-VPC traffic`)
 

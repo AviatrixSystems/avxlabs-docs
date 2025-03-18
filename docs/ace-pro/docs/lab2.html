@@ -379,13 +379,13 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification-of-spoke-transit-attachments">8. CoPilot Verification of Spoke-Transit Attachments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multicloud-transit-peerings">9. Multicloud Transit Peerings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-and-azure">9.1. AWS and Azure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-and-azure">9.1 AWS and Azure</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-and-gcp">9.2 Azure and GCP</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gcp-and-aws">9.3 GCP and AWS</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">10. Verification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-transit-peerings-on-copilot-cloud-fabric">10.1. Verification of Transit Peerings on CoPilot (Cloud Fabric)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-transit-peerings-on-copilot-cloud-fabric">10.1 Verification of Transit Peerings on CoPilot (Cloud Fabric)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-transit-peerings-on-copilot-topology">10.2 Verification of Transit Peerings on CoPilot (Topology)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#route-info-db">10.3 Route Info DB</a></li>
 </ul>
@@ -474,7 +474,7 @@ document.write(`
 </figure>
 <p>After signing into the Gatus App, you’ll observe that two protocols are currently in use: <code class="docutils literal notranslate"><span class="pre">ICMP</span></code> and <code class="docutils literal notranslate"><span class="pre">SSH</span></code>.</p>
 <p>The only item showing a green status is <code class="docutils literal notranslate"><span class="pre">aws-us-east-2-spoke1-test2</span></code>.</p>
-<p>Both ICMP and SSH are functioning perfectly here. This success is attributed to the fact that this communication occurs within the same VPC (<strong><code class="docutils literal notranslate"><span class="pre">intra-VPC</span> <span class="pre">traffic</span></code></strong>), meaning it does not traverse other VPCs, regions, or cloud service providers!</p>
+<p>Both <strong>ICMP</strong> and <strong>SSH</strong> are functioning perfectly here. This success is attributed to the fact that this communication occurs within the same VPC (<strong><code class="docutils literal notranslate"><span class="pre">intra-VPC</span> <span class="pre">traffic</span></code></strong>), meaning it does not traverse other VPCs, regions, or cloud service providers. As a result, the Spoke Gateway is not involved in this scenario.</p>
 <figure class="align-center" id="id6">
 <a class="reference internal image-reference" href="../_images/lab2-gatus04.png"><img alt="../_images/lab2-gatus04.png" src="../_images/lab2-gatus04.png" style="height: 400px;" />
 </a>
@@ -518,7 +518,7 @@ document.write(`
 <p><span class="caption-number">Fig. 38 </span><span class="caption-text">DNS name</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now, open your SSH client and enter the command to access the EC2 instance using your credentials!</p>
+<p>Now, open your <strong>SSH client</strong> and enter the command to access the EC2 instance using your credentials!</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>student@...
 </pre></div>
 </div>
@@ -537,14 +537,13 @@ document.write(`
 <section id="cloud-assets-to-retrieve-ip-addresses">
 <h4>3.2.1 Cloud Assets (to retrieve IP addresses)<a class="headerlink" href="#cloud-assets-to-retrieve-ip-addresses" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong> and filer based on the keyword <code class="docutils literal notranslate"><span class="pre">&quot;test&quot;</span></code>.</p></li>
-<li><p>Identify the instance <strong><em>aws-us-east-2-spoke1-test1</em></strong> and copy its public ip address and use it with your SSH client.</p></li>
+<li><p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong> and filer based on the keyword <code class="docutils literal notranslate"><span class="pre">&quot;aws-us-east-2-spoke1-test1&quot;</span></code>.</p></li>
+<li><p>Copy its <strong>public</strong> ip address and use it with your SSH client.</p></li>
 </ul>
 <figure class="align-center" id="id11">
-<a class="reference internal image-reference" href="../_images/lab2-sshclient10.png"><img alt="../_images/lab2-sshclient10.png" src="../_images/lab2-sshclient10.png" style="height: 300px;" />
-</a>
+<img alt="../_images/lab2-sshclient10.png" src="../_images/lab2-sshclient10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Search the test instances</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Search the test instance</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id12">
@@ -612,7 +611,7 @@ document.write(`
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Verify also the <strong>SSH</strong> protocol</p>
+<p>Also, please verify whether the <strong>SSH</strong> protocol is functioning correctly with the other instances.</p>
 </div>
 </section>
 </section>
@@ -690,7 +689,7 @@ document.write(`
 <p><span class="caption-number">Fig. 54 </span><span class="caption-text">Fetch VPC</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Afterwards, click on <strong>Commit</strong>.</p>
+<p>Afterward, click on <strong>Commit</strong>.</p>
 <figure class="align-center" id="id26">
 <a class="reference internal image-reference" href="../_images/lab2-commit.png"><img alt="../_images/lab2-commit.png" src="../_images/lab2-commit.png" style="height: 400px;" />
 </a>
@@ -1123,7 +1122,7 @@ document.write(`
 </div>
 <p>Go back to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong></p>
 <section id="aws-and-azure">
-<h3>9.1. AWS and Azure<a class="headerlink" href="#aws-and-azure" title="Link to this heading">#</a></h3>
+<h3>9.1 AWS and Azure<a class="headerlink" href="#aws-and-azure" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>aws-us-east-2-transit</strong> to <strong>azure-west-us-transit</strong></p></li>
 </ul>
@@ -1184,7 +1183,7 @@ document.write(`
 <p><span class="caption-number">Fig. 92 </span><span class="caption-text">Peering GCP-AWS</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>s point, the overall topology will look like this:</p>
+<p>After this lab, the overall topology will appear as follows:</p>
 <figure class="align-center" id="id64">
 <a class="reference internal image-reference" href="../_images/lab2-peeringtopology.png"><img alt="../_images/lab2-peeringtopology.png" src="../_images/lab2-peeringtopology.png" style="height: 400px;" />
 </a>
@@ -1207,7 +1206,7 @@ document.write(`
 <section id="verification">
 <h2>10. Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
 <section id="verification-of-transit-peerings-on-copilot-cloud-fabric">
-<h3>10.1. Verification of Transit Peerings on CoPilot (Cloud Fabric)<a class="headerlink" href="#verification-of-transit-peerings-on-copilot-cloud-fabric" title="Link to this heading">#</a></h3>
+<h3>10.1 Verification of Transit Peerings on CoPilot (Cloud Fabric)<a class="headerlink" href="#verification-of-transit-peerings-on-copilot-cloud-fabric" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong>, then select the <code class="docutils literal notranslate"><span class="pre">Attachments&quot;</span></code> tab and finally select the <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Transit</span> <span class="pre">Peering&quot;</span></code> tab: you will see <strong>one</strong> connection per each peering, that correspond to the <code class="docutils literal notranslate"><span class="pre">two</span> <span class="pre">IPSec</span> <span class="pre">tunnels</span></code>.</p>
 <figure class="align-center" id="id65">
 <img alt="../_images/lab2-verification.png" src="../_images/lab2-verification.png" />
@@ -1276,7 +1275,7 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <p><span class="caption-number">Fig. 100 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will observe that both ICMP and SSH tests have successfully completed for all three instances:</p>
+<p>You will observe that both <strong>ICMP</strong> and <strong>SSH</strong> tests have successfully completed for all three instances:</p>
 <ol class="arabic simple">
 <li><p><strong><em>aws-us-east-2-spoke1-test2</em></strong> (enabled by the normal <code class="docutils literal notranslate"><span class="pre">intra-VPC</span> <span class="pre">traffic</span></code>)</p></li>
 <li><p><strong><em>gcp-us-central1-spoke1-test1</em></strong>(enabled by the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">MCNA</span></code>)</p></li>
@@ -1462,13 +1461,13 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-verification-of-spoke-transit-attachments">8. CoPilot Verification of Spoke-Transit Attachments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multicloud-transit-peerings">9. Multicloud Transit Peerings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-and-azure">9.1. AWS and Azure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-and-azure">9.1 AWS and Azure</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#azure-and-gcp">9.2 Azure and GCP</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gcp-and-aws">9.3 GCP and AWS</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">10. Verification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-transit-peerings-on-copilot-cloud-fabric">10.1. Verification of Transit Peerings on CoPilot (Cloud Fabric)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-transit-peerings-on-copilot-cloud-fabric">10.1 Verification of Transit Peerings on CoPilot (Cloud Fabric)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-transit-peerings-on-copilot-topology">10.2 Verification of Transit Peerings on CoPilot (Topology)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#route-info-db">10.3 Route Info DB</a></li>
 </ul>

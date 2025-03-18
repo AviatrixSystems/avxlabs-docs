@@ -159,7 +159,7 @@ Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-eas
 You should already be signed in to the **Gatus** app.
 ```
 
-Eventually, both the ICMP check and the SSSH check will begin to fail gradually, towards the instance **_gcp-us-central1-spoke1-test1_**.
+Eventually, both the **ICMP** check and the **SSH** check will begin to fail gradually, towards the instance **_gcp-us-central1-spoke1-test1_**.
 
 ```{figure} images/lab3-gatus00.png
 ---
@@ -240,7 +240,6 @@ The connection policy is always bidirectional!
 
 ```{figure} images/lab3-editnd.png
 ---
-height: 250px
 align: center
 ---
 Edit Blue
