@@ -130,7 +130,7 @@ Confirmation
 ```
 
 ```{note}
-It will take an additional 10 minutes to see all four subnets (i.e., 2 public subnets and 2 private subnets). 
+It will take an additional **10** minutes to see all four subnets (i.e., 2 public subnets and 2 private subnets). 
 
 Thank you for your patience! 
 
@@ -238,7 +238,7 @@ align: center
 Invoke VPC service
 ```
 
-Now click on the VPCs link, as depicted below:
+Now click on the **VPCs** link, as depicted below:
 
 ```{figure} images/lab1-newpic611.png
 ---
@@ -263,7 +263,6 @@ As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet 
 
 ```{figure} images/lab1-newpic7.png
 ---
-height: 400px
 align: center
 ---
 Subnets created by the Aviatrix Controller
