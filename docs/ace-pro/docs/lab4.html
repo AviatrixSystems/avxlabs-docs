@@ -1056,9 +1056,8 @@ What would be needed to make those routes visible?</p></li>
 <details>
   <summary>Click here for a logical explanation: <span style='color:#33ECFF'>Hint!</span></summary>
 <ul class="simple">
-<li><p>Logical Explanation</p></li>
+<li><p>Only AWS US East <span style='color:red'><strong>2</strong></span> Transit, GCP US Central 1 Transit, and Azure West US Transit are connected in a <strong>FULL-MESH</strong> configuration.</p></li>
 </ul>
-<p>Only AWS US East <span style='color:red'><strong>2</strong></span> Transit, GCP US Central 1 Transit, and Azure West US Transit are connected in a <strong>FULL-MESH</strong> configuration.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p><strong>FULL-MESH</strong>:
@@ -1085,6 +1084,15 @@ A type of networking design in which each node in the system has a circuit that 
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 195 </span><span class="caption-text">Single peering</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Aviatrix Controller will not install a route to a Transit Gateway that is not directly peering with the originating Transit Gateway. Therefore, each Transit Gateway must learn about networks from its originating Transit Gateway.</p>
+<p>To avoid the limitations of full-mesh peering, which is not very scalable, you can utilize the <a class="reference external" href="https://docs.aviatrix.com/documentation/latest/getting-started/platform-overview/aviatrix-glossary.html#multi-tier-transit">multi-tier transit</a> feature.</p>
+<figure class="align-center" id="id66">
+<a class="reference internal image-reference" href="../_images/lab4-fullmesh04.png"><img alt="../_images/lab4-fullmesh04.png" src="../_images/lab4-fullmesh04.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 196 </span><span class="caption-text">Intransitive behviour without Full-Mesh config.</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details>
