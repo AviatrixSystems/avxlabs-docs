@@ -352,7 +352,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-cloud-firewall">4. Aviatrix Cloud Firewall</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-egress-control">4.1 Enable the Egress Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-secure-local-egress-control">4.1 Enable the Secure Local Egress Control</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-private-rtb">4.2 Inspect the Private RTB</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-dcf">4.3 Enable DCF</a></li>
 </ul>
@@ -451,8 +451,7 @@ document.write(`
 <h3>3.1 Preliminary Connectivity Testing Using the Gatus App<a class="headerlink" href="#preliminary-connectivity-testing-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select both <strong><em>aws-us-east-2-spoke1-test2</em></strong>.</p>
 <figure class="align-center" id="id8">
-<a class="reference internal image-reference" href="../_images/lab6-gatus500.png"><img alt="../_images/lab6-gatus500.png" src="../_images/lab6-gatus500.png" style="height: 400px;" />
-</a>
+<img alt="../_images/lab6-gatus500.png" src="../_images/lab6-gatus500.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 200 </span><span class="caption-text">aws-us-east-2-spoke1-test2</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
@@ -553,8 +552,8 @@ document.write(`
 </section>
 <section id="aviatrix-cloud-firewall">
 <h2>4. Aviatrix Cloud Firewall<a class="headerlink" href="#aviatrix-cloud-firewall" title="Link to this heading">#</a></h2>
-<section id="enable-the-egress-control">
-<h3>4.1 Enable the Egress Control<a class="headerlink" href="#enable-the-egress-control" title="Link to this heading">#</a></h3>
+<section id="enable-the-secure-local-egress-control">
+<h3>4.1 Enable the Secure Local Egress Control<a class="headerlink" href="#enable-the-secure-local-egress-control" title="Link to this heading">#</a></h3>
 <p>Now let’s enable the egress within the VPC that is hosting the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -601,9 +600,9 @@ document.write(`
 </section>
 <section id="enable-dcf">
 <h3>4.3 Enable DCF<a class="headerlink" href="#enable-dcf" title="Link to this heading">#</a></h3>
-<p>You have successfully activated your <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> without disrupting anything that is sitting on the private subnet, nevertheless, if you want to get the NetFlow information, you need to apply a <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span> <span class="pre">RULE</span></code>, such that you can start evaluate the behaviour of the Private Subnet and get a good understanding of what domains have been reached out from the private subnet.</p>
+<p>You have successfully activated your <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> without disrupting any resources on the private subnet. However, to obtain NetFlow information, you need to apply a <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span> <span class="pre">Rule</span></code>. This will allow you to evaluate the behavior of the private subnet and gain insights into which domains have been accessed from it.</p>
 <ul class="simple">
-<li><p>Enable the Distributed Cloud Firewall.</p></li>
+<li><p>Enable the <strong>Distributed Cloud Firewall</strong>.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -645,7 +644,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </section>
 <section id="define-a-new-smartgroup">
 <h2>5. Define a new SmartGroup<a class="headerlink" href="#define-a-new-smartgroup" title="Link to this heading">#</a></h2>
-<p>At this point, you can use the SmartGroup feature to identify the test2 instance.</p>
+<p>At this point, you can use the <strong>SmartGroup</strong> feature to identify the test2 instance.</p>
 <section id="identify-the-subnet-where-the-private-workload-resides">
 <h3>5.1 Identify the subnet where the private workload resides<a class="headerlink" href="#identify-the-subnet-where-the-private-workload-resides" title="Link to this heading">#</a></h3>
 <p>First and foremost, you have to identify the <strong>public subnet</strong> where the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance resides.</p>
@@ -724,8 +723,8 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Public Internet</span></p></li>
 <li><p><strong>WebGroups</strong>: <span style='color:#479608'><strong>All-Web</strong></span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
-<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
 <figure class="align-center" id="id31">
@@ -749,7 +748,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> rule injected by the Aviatrix Controller is by default not editable.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> rule injected by the Aviatrix Controller is by default <ins>not editable</ins>.</p>
 </div>
 <figure class="align-center" id="id33">
 <img alt="../_images/lab6-new010.png" src="../_images/lab6-new010.png" />
@@ -1193,7 +1192,7 @@ Afterwards click on <code class="docutils literal notranslate"><span class="pre"
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-cloud-firewall">4. Aviatrix Cloud Firewall</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-egress-control">4.1 Enable the Egress Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-secure-local-egress-control">4.1 Enable the Secure Local Egress Control</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-private-rtb">4.2 Inspect the Private RTB</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-dcf">4.3 Enable DCF</a></li>
 </ul>
