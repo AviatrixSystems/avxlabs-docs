@@ -483,7 +483,7 @@ The two instances can communicate without any issues.
 If the two instances are unable to communicate, check the DCF section, the Network Segmentation section, and the Hybrid Cloud section, where you might have forgotten some configurations.
 ```
 
-Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the **_aws-us-east-2-spoke1_**, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_**
+Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the **_aws-us-east-2-spoke1_**, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e. `172.16.1.100`)
 
 ```{figure} images/lab8-podportal113.png
 ---
@@ -772,7 +772,7 @@ align: center
 As path length = 2
 ```
 
-After this lab, this is how the overall topology will look like:
+After completing this lab, here's what the overall topology will look like:
 
 ```{figure} images/lab8-edge25.png
 ---
