@@ -295,6 +295,12 @@ Vendor Integration outcome
 
 ```{caution}
 IP address **168.63.129.16** is a virtual public IP address that is used to facilitate a communication channel to Azure platform resources. Customers can define any address space for their private virtual network in Azure. Therefore, the Azure platform resources must be presented as a unique public IP address.
+```{figure} images/lab7-vendor51.png
+---
+height: 400px
+align: center
+---
+Vendor Integration outcome
 ```
 
 #### 4.3.3 Inspection Policy
@@ -379,7 +385,7 @@ PaloAlto Welcome page
 
 Dismiss the Welcome splash screen. This is an indication that the firewall is ready.
 
-### 5.1 Verify Routes Installed on Firewall
+### 5.1 Verify Routes Installed on Firewall <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Verify the same RFC1918 routes exist on the PAN Firewall.
 
@@ -401,7 +407,7 @@ align: center
 Static Routes (RFC1918 routes)
 ```
 
-### 5.2 Verify Firewall Policy
+### 5.2 Verify Firewall Policy <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Continue to explore the configuration of the PaloAlto FW. Navigate to `Policies` tab to find out that the firewall was pre-configured with a simple **Allow-All** policy.
 
@@ -521,7 +527,7 @@ gcp-us-central1-spoke1-test1
 All three instances can reach each other!
 
 ```{important}
-AWS US-EAST is not reachable from either Azure or GCP due to the requirement for a **Full-Mesh** configuration.
+AWS US-EAST-<span style='color:red'>1</span></summary> is not reachable from either Azure or GCP due to the requirement for a **Full-Mesh** configuration.
 ```
 
 ### 7.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>

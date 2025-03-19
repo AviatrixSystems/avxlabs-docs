@@ -29,9 +29,11 @@ Lab 8 Initial Topology
 
 ### 4.1. Site2Cloud Connection (Cloud to On-Prem)
 
-Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**. Here you will immediately notice the presence of an existing S2C connection. 
+Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**.
 
-This is the connection established between an **Aviatrix Edge** device deployed in the remote DC in New York and a LAN Router.
+Here you will immediately notice the presence of an existing S2C connection. 
+
+This is an established connection between an **Aviatrix Edge** device deployed in the remote data center in New York and a LAN router. This S2C connection was pre-deployed at the launch of the POD!
 
 ```{figure} images/lab8-edge1.png
 ---
@@ -52,7 +54,7 @@ BGPoverLAN
 The Aviatrix Spoke Edge will be configured on the subsequent lab (i.e. **Lab 8**).
 ```
 
-Now let's configure the **S2C** connection with the Partner site!
+Now let's configure the **S2C** connection with the **Partner site**!
 
 ```{figure} images/lab8-partner.png
 ---
@@ -114,7 +116,7 @@ The example is referring to POD #100 (<ins>please issue the command based on you
 ---
 align: center
 ---
-Dig command in action
+"host" command in action
 ```
 
 ```{tip}
@@ -388,7 +390,7 @@ OnPrem-Partner site
 
 ## 6. Connectivity Testing
 
-Verify that the VM in GCP can ping successfully the on-prem-partner1 router, pinging its `Virtual Remote IP`.
+Verify that the the **on-prem-partner1** (i.e. the StrongSwan router) router can reach successfully the VM in GCP, pinging its `Virtual Local IP` address.
 
 ### 6.1 Connectivity Testing Using the Apache Guacamole Client (Jumphost)</span></summary>
 
@@ -457,7 +459,7 @@ Gateway Diagnostics
 
 Choose the `“Active Sessions”` option, click on **Run**. After you receive the result, type `“icmp”` in the **Search** field.
 
-You will notice the subnets involved (i.e. real and virtual subnets) in the Mapped NAT.
+You will notice the subnets involved (i.e. **real** and **virtual** subnets) in the Mapped NAT.
 
 ```{figure} images/lab8-active2.png
 ---
