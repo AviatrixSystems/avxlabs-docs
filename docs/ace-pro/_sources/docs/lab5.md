@@ -66,7 +66,6 @@ Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-u
 
 ```{figure} images/lab6-gatus500.png
 ---
-height: 400px
 align: center
 ---
 aws-us-east-2-spoke1-test2
@@ -171,7 +170,7 @@ curl command-04
 ```
 
 ## 4. Aviatrix Cloud Firewall
-### 4.1 Enable the Egress Control
+### 4.1 Enable the Secure Local Egress Control
 
 Now let's enable the egress within the VPC that is hosting the **_aws-us-east-2-spoke1-test2_** instance.
 
@@ -222,9 +221,9 @@ The `Default Route` is now pointing to the Aviatrix Spoke Gateway.
 
 ### 4.3 Enable DCF
 
-You have successfully activated your `Aviatrix Cloud Firewall` without disrupting anything that is sitting on the private subnet, nevertheless, if you want to get the NetFlow information, you need to apply a `Distributed Cloud Firewall RULE`, such that you can start evaluate the behaviour of the Private Subnet and get a good understanding of what domains have been reached out from the private subnet.
+You have successfully activated your `Aviatrix Cloud Firewall` without disrupting any resources on the private subnet. However, to obtain NetFlow information, you need to apply a `Distributed Cloud Firewall Rule`. This will allow you to evaluate the behavior of the private subnet and gain insights into which domains have been accessed from it.
 
-- Enable the Distributed Cloud Firewall.
+- Enable the **Distributed Cloud Firewall**.
 
 ```{tip}
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Enable Distributed Cloud Firewall"`.
@@ -268,7 +267,7 @@ Automatic rules injected by the Controller
 
 ## 5. Define a new SmartGroup 
 
-At this point, you can use the SmartGroup feature to identify the test2 instance.
+At this point, you can use the **SmartGroup** feature to identify the test2 instance.
 
 ### 5.1 Identify the subnet where the private workload resides
 
@@ -361,8 +360,8 @@ Insert the following parameters
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>**All-Web**</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
 
@@ -390,7 +389,7 @@ Egress-Rule
 ```
 
 ```{important}
-The `DefaultDenyAll` rule injected by the Aviatrix Controller is by default not editable.
+The `DefaultDenyAll` rule injected by the Aviatrix Controller is by default <ins>not editable</ins>.
 ```
 
 ```{figure} images/lab6-new010.png
