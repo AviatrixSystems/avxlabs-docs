@@ -744,9 +744,7 @@ What would be needed to make those routes visible?
 <details>
   <summary>Click here for a logical explanation: <span style='color:#33ECFF'>Hint!</span></summary>
 
-- Logical Explanation
-
-Only AWS US East <span style='color:red'>**2**</span> Transit, GCP US Central 1 Transit, and Azure West US Transit are connected in a **FULL-MESH** configuration.
+- Only AWS US East <span style='color:red'>**2**</span> Transit, GCP US Central 1 Transit, and Azure West US Transit are connected in a **FULL-MESH** configuration.
 
 ```{important}
 **FULL-MESH**:
@@ -781,5 +779,16 @@ align: center
 Single peering
 ```
 
+The Aviatrix Controller will not install a route to a Transit Gateway that is not directly peering with the originating Transit Gateway. Therefore, each Transit Gateway must learn about networks from its originating Transit Gateway.
+
+To avoid the limitations of full-mesh peering, which is not very scalable, you can utilize the [multi-tier transit](https://docs.aviatrix.com/documentation/latest/getting-started/platform-overview/aviatrix-glossary.html#multi-tier-transit) feature.
+
+```{figure} images/lab4-fullmesh04.png
+---
+height: 400px
+align: center
+---
+Intransitive behviour without Full-Mesh config.
+```
 
 </details>
