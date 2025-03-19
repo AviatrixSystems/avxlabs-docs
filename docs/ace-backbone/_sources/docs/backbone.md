@@ -37,34 +37,40 @@ Initial Topology
 
 |         **_FULL NAME_**         |                             **_COPILOT #_**                            |
 |:-------------------------------:|:----------------------------------------------------------------------:|
-| Nick Iliopoulos                 | <a href="https://cplt.pod1.aviatrixlab.com" target="_blank">POD01</a>  |
-| Ashwini S                       | <a href="https://cplt.pod2.aviatrixlab.com" target="_blank">POD02</a>  |
-| Jahem Leon Henry Ofosu N'Guetta | <a href="https://cplt.pod3.aviatrixlab.com" target="_blank">POD03</a>  |
-| Himanshu Gupta                  | <a href="https://cplt.pod4.aviatrixlab.com" target="_blank">POD04</a>  |
-| Zdenko Timulak                  | <a href="https://cplt.pod5.aviatrixlab.com" target="_blank">POD05</a>  |
-| Chandra Thimmadasaiah           | <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD06</a>  |
-| Muhammad Abdul Mujeeb           | <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD07</a>  |
-| Tim Luz                         | <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD08</a>  |
-| Ygal Kemgne                     | <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD09</a>  |
-| Zahid Muhammad                  | <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a> |
-| Baris Ozay                      | <a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a> |
-| Mushtaq Ahmed                   | <a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a> |
-| Carlo Pio Luigi Ciciriello      | <a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a> |
-| andrea proietti                 | <a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a> |
-| Fabio Binetti                   | <a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a> |
-| Tony Xu                         | <a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a> |
-| Chen Shixian                    | <a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a> |
-| Abhilasha Kumari                | <a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a> |
-| Heman Dinesh Vora               | <a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a> |
-| Adrián Huertas Ortega           | <a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a> |
-| Ed Baichtal                     | <a href="https://cplt.pod21.aviatrixlab.com" target="_blank">POD22</a> |
-| Navneet Verma                   | <a href="https://cplt.pod22.aviatrixlab.com" target="_blank">POD22</a> |
-| Simhadri Podala                 | <a href="https://cplt.pod23.aviatrixlab.com" target="_blank">POD23</a> |
-| Mayoro NIANG                    | <a href="https://cplt.pod24.aviatrixlab.com" target="_blank">POD24</a> |
-| Luca Lionetti                   | <a href="https://cplt.pod25.aviatrixlab.com" target="_blank">POD25</a> |
-| Rohit Chandna                   | <a href="https://cplt.pod26.aviatrixlab.com" target="_blank">POD26</a> |
-| Ravi Teja                       | <a href="https://cplt.pod27.aviatrixlab.com" target="_blank">POD27</a> |
-| Joana Manzano                   | <a href="https://cplt.pod28.aviatrixlab.com" target="_blank">POD28</a> |
+| Adnan Nasir                       | <a href="https://cplt.pod2.aviatrixlab.com" target="_blank">POD02</a>  |
+| Arvind Thevendriya             | <a href="https://cplt.pod3.aviatrixlab.com" target="_blank">POD03</a>  |
+| Avinash Shankarpalli                | <a href="https://cplt.pod4.aviatrixlab.com" target="_blank">POD04</a>  |
+| David Hanington                | <a href="https://cplt.pod5.aviatrixlab.com" target="_blank">POD05</a>  |
+| Deepak Kumar                  | <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD06</a>  |
+| Ed Baichtal                   | <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD07</a>  |
+| Emmanuel Etim                  | <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD08</a>  |
+| Gaurav Mehta                   | <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD09</a>  |
+| Georgios Charisiadis            | <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a> |
+| Hari babu Tirumani              | <a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a> |
+| Jacob Matthews                  | <a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a> |
+| Jefferey Hancock                | <a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a> |
+| Jeremy Thomas                 | <a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a> |
+| Kanishka Shakya---              | <a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a> |
+| Kenneth Ho                     | <a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a> |
+| Luke Woodhead                    | <a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a> |
+| Mariselvam R                  | <a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a> |
+| Michel Jammes                | <a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a> |
+| Navneet Verma                | <a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a> |
+| Nitin Sharma                     | <a href="https://cplt.pod21.aviatrixlab.com" target="_blank">POD22</a> |
+| Noel Baccay                   | <a href="https://cplt.pod22.aviatrixlab.com" target="_blank">POD22</a> |
+| Ramesh Pendela                 | <a href="https://cplt.pod23.aviatrixlab.com" target="_blank">POD23</a> |
+| Ridwan Palash                    | <a href="https://cplt.pod24.aviatrixlab.com" target="_blank">POD24</a> |
+| Rudy Romero                   | <a href="https://cplt.pod25.aviatrixlab.com" target="_blank">POD25</a> |
+| Ryan Bartusek                   | <a href="https://cplt.pod26.aviatrixlab.com" target="_blank">POD26</a> |
+| Ryan Pestka                       | <a href="https://cplt.pod27.aviatrixlab.com" target="_blank">POD27</a> |
+| Sanjeev Wije                   | <a href="https://cplt.pod28.aviatrixlab.com" target="_blank">POD28</a> |
+| Satyanarayana Chalavadi         | <a href="https://cplt.pod29.aviatrixlab.com" target="_blank">POD29</a> |
+| Sheldon Whyte                  | <a href="https://cplt.pod30.aviatrixlab.com" target="_blank">POD30</a> |
+| Srini P                         | <a href="https://cplt.pod31.aviatrixlab.com" target="_blank">POD31</a> |
+| Tinku Goyal                      | <a href="https://cplt.pod32.aviatrixlab.com" target="_blank">POD32</a> |
+| Tzahi Ben David                  | <a href="https://cplt.pod33.aviatrixlab.com" target="_blank">POD33</a> |
+| Vaibhav Sharma                  | <a href="https://cplt.pod34.aviatrixlab.com" target="_blank">POD34</a> |
+| Ygal Kemgne                      | <a href="https://cplt.pod35.aviatrixlab.com" target="_blank">POD35</a> |
 
 ## Access credentials
 
@@ -77,7 +83,7 @@ student
 Password:
 
 ```bash
-1116964Q!5FZLfG
+3159FmtaZX6P!36
 ```
 
 ## LAB Pre-Req
