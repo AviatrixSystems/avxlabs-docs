@@ -522,7 +522,7 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The number of additional connections depend on the <strong><em>size</em></strong> of the Aviatrix Gateway.</p>
+<p>The number of additional connections depends on the <strong><em>size</em></strong> of the Aviatrix Gateway.</p>
 </div>
 <p>At this point, this is how the overall topology will look like:</p>
 <figure class="align-center" id="id13">
@@ -532,7 +532,7 @@ document.write(`
 <p><span class="caption-number">Fig. 143 </span><span class="caption-text">Logical Topology View</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This is the topology view from CoPilot at this stage:</p>
+<p>This is the current topology view from CoPilot:</p>
 <figure class="align-center" id="id14">
 <img alt="../_images/lab5-peeringdrawing.png" src="../_images/lab5-peeringdrawing.png" />
 <figcaption>
@@ -552,8 +552,7 @@ document.write(`
 <p>HPE automatically creates an underlying <strong>VPC Peering attachment</strong> within AWS. Verify it on the CoPilot.</p>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; Native Peering</strong></p>
 <figure class="align-center" id="id15">
-<a class="reference internal image-reference" href="../_images/lab5-native0.png"><img alt="../_images/lab5-native0.png" src="../_images/lab5-native0.png" style="height: 250px;" />
-</a>
+<img alt="../_images/lab5-native0.png" src="../_images/lab5-native0.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 145 </span><span class="caption-text">Native Peerings</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
@@ -587,7 +586,7 @@ document.write(`
 <p>Click the filter button, select <code class="docutils literal notranslate"><span class="pre">“Name”</span></code> and enter <strong><em>aws-us-east-1-spoke1-Public-1-us-east-1a-rtb</em></strong> to filter by just that route table.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The RFC 1918 summary routes points to the Aviatrix Spoke gateway for this routing table programmed by the Aviatrix Controller:</p>
+<p>The <strong>RFC 1918</strong> summary routes points to the Aviatrix Spoke gateway for this routing table programmed by the Aviatrix Controller:</p>
 </div>
 <figure class="align-center" id="id18">
 <img alt="../_images/lab5-filter.png" src="../_images/lab5-filter.png" />
@@ -798,10 +797,6 @@ document.write(`
 <h2>11. Failover<a class="headerlink" href="#failover" title="Link to this heading">#</a></h2>
 <p>Test that the EC2 instances in the two subnets deployed in the same VPC, <strong><em>aws-us-east-1-spoke1</em></strong>, are pointing to two different routing tables. If one gateway goes down, the controller will switch the <strong>ENI</strong> (<em>Elastic Network interface</em>) to the available gateway in the routing table.</p>
 <p>To demonstrate the <code class="docutils literal notranslate"><span class="pre">Active</span> <span class="pre">Mesh</span></code> capability, you will shut down <em>temporarily</em> one of the spoke gateways and notice traffic converging to the other gateway.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.</p>
-</div>
 <p>Before proceeding with the actions that you need to carry out on the AWS console, let’s turn off the <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Single</span> <span class="pre">AZ</span> <span class="pre">HA</span></code> functionality.</p>
 <ul class="simple">
 <li><p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-1-spoke1</em></strong> cluster! Now select the <strong>Settings</strong> tab, then expand the <strong>General</strong> section and last but not least, turn off the <em>Gateway Single AZ HA</em> knob! Do not forget to click on <strong>Save</strong>.</p></li>
@@ -1058,6 +1053,41 @@ document.write(`
 <li><p>Why is that?
 What would be needed to make those routes visible?</p></li>
 </ul>
+<details>
+  <summary>Click here for a logical explanation: <span style='color:#33ECFF'>Hint!</span></summary>
+<ul class="simple">
+<li><p>Logical Explanation</p></li>
+</ul>
+<p>Only AWS US East <span style='color:red'><strong>2</strong></span> Transit, GCP US Central 1 Transit, and Azure West US Transit are connected in a <strong>FULL-MESH</strong> configuration.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>FULL-MESH</strong>:
+A type of networking design in which each node in the system has a circuit that connects it to every other node. While full mesh does make multiple redundant connections, this design keeps traffic going even if one node fails.</p>
+<p>Full-mesh design is useful in systems which are intransitive: A connects to B and B connects to C, but A cannot interact with C.</p>
+</div>
+<figure class="align-center" id="id63">
+<a class="reference internal image-reference" href="../_images/lab4-fullmesh01.png"><img alt="../_images/lab4-fullmesh01.png" src="../_images/lab4-fullmesh01.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Full-mesh: physical</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id64">
+<a class="reference internal image-reference" href="../_images/lab4-fullmesh02.png"><img alt="../_images/lab4-fullmesh02.png" src="../_images/lab4-fullmesh02.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Full-mesh: logical</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Gateway in the <strong>AWS US-EAST-1</strong> region is exclusively peering with the Gateway in <strong>AWS US-EAST-2</strong>.</p>
+<figure class="align-center" id="id65">
+<a class="reference internal image-reference" href="../_images/lab4-fullmesh03.png"><img alt="../_images/lab4-fullmesh03.png" src="../_images/lab4-fullmesh03.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Single peering</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</details>
 </section>
 </section>
 </section>
