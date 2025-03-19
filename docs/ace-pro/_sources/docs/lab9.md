@@ -546,7 +546,7 @@ align: center
 Filter
 ```
 
-```{figure} images/lab96-newrule309.png
+```{figure} images/lab96-newrule323.png
 ---
 align: center
 ---
@@ -555,7 +555,7 @@ Condition
 
 Now click on the **VIEW** link on the right-hand side of the entry:
 
-```{figure} images/lab96-newrule310.png
+```{figure} images/lab96-newrule309.png
 ---
 align: center
 ---
