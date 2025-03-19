@@ -122,7 +122,8 @@ Fill in the attachment template using the following settings:
 - **Transit Gateway**: <span style='color:#479608'>aws-us-east-2-transit</span>
 - **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
 - **Attach over**: <span style='color:#479608'>**Public Network**</span>
-- **High Performance Encryption**: <span style='color:#479608'>**OFF**</span>
+- **Number of Tunnels**: <span style='color:#479608'>**Custom:**</span>
+  - <span style='color:#479608'>**4**</span>
 
 Do not forget to click on **Save**.
 
@@ -162,7 +163,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Attachments"` tab and then click on `"Transit-Edge Peering"`. 
+Select the `"Attachments"` tab and then click on `"Transit-Spoke Peering"`. 
 
 You will notice the presence of an attachment between the Transit GW in the cloud and the **Edge** running in the DC!
 
@@ -170,7 +171,7 @@ You will notice the presence of an attachment between the Transit GW in the clou
 ---
 align: center
 ---
-Transit-Edge Peering
+Transit-Spoke Edge Peering
 ```
 
 This is how the Topology will look like after the creation of the attachment.
@@ -235,7 +236,7 @@ align: center
 BGP Advertised Routes
 ```
 
-Go to your personal POD portal, scroll down untill your reach the **Lab 8** section and click on the `"Open Workstation"` button.
+Go to your personal POD portal, scroll down untill your reach the **Lab 7 and 8** section and click on the `"Open Workstation"` button.
 
 ```{figure} images/lab8-edgenew.png
 ---
@@ -275,7 +276,7 @@ Target for the connectivity test
 The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered as just an additional VPC!
 
 ```{note}
-Do not forget to exit from the previous session used to log in to the on-prem-partner1 router (i.e. Lab 7)
+Do NOT forget to exit from the previous session used to log in to the on-prem-partner1 router (i.e. Lab 7)
 ```{figure} images/lab8-edge67.png
 ---
 align: center
@@ -309,7 +310,6 @@ Create the filter
 
 ```{figure} images/lab8-edge24.png
 ---
-height: 200px
 align: center
 ---
 FlowIQ Filter
