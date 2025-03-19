@@ -10,6 +10,3 @@ You can view your personal POD portal by clicking on the picture below:
 ![My image](images/pod.png)
 
 </a>
-
-
-
