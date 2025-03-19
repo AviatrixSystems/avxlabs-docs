@@ -133,7 +133,7 @@ HPE in action
 ```
 
 ```{important}
-The number of additional connections depend on the **_size_** of the Aviatrix Gateway.
+The number of additional connections depends on the **_size_** of the Aviatrix Gateway.
 ```
 
 At this point, this is how the overall topology will look like:
@@ -146,7 +146,7 @@ align: center
 Logical Topology View
 ```
 
-This is the topology view from CoPilot at this stage:
+This is the current topology view from CoPilot:
 
 ```{figure} images/lab5-peeringdrawing.png
 ---
@@ -169,7 +169,6 @@ Go to **CoPilot > Networking > Connectivity > Native Peering**
 
 ```{figure} images/lab5-native0.png
 ---
-height: 250px
 align: center
 ---
 Native Peerings
@@ -207,7 +206,7 @@ Go to **CoPilot > Diagnostics > Cloud Routes > VPC/VNet Routes**
 Click the filter button, select `“Name”` and enter **_aws-us-east-1-spoke1-Public-1-us-east-1a-rtb_** to filter by just that route table.
 
 ```{note}
-The RFC 1918 summary routes points to the Aviatrix Spoke gateway for this routing table programmed by the Aviatrix Controller:
+The **RFC 1918** summary routes points to the Aviatrix Spoke gateway for this routing table programmed by the Aviatrix Controller:
 ```
 
 ```{figure} images/lab5-filter.png
@@ -444,10 +443,6 @@ Please keep **both** ping sessions running continuously in your SSH client! Do n
 Test that the EC2 instances in the two subnets deployed in the same VPC, **_aws-us-east-1-spoke1_**, are pointing to two different routing tables. If one gateway goes down, the controller will switch the **ENI** (_Elastic Network interface_) to the available gateway in the routing table.
 
 To demonstrate the `Active Mesh` capability, you will shut down _temporarily_ one of the spoke gateways and notice traffic converging to the other gateway.
-
-```{caution}
-These test instances are in separate AZs and their default gateways are two different Aviatrix Spoke gateways in their respective AZs.
-```
 
 Before proceeding with the actions that you need to carry out on the AWS console, let's turn off the `Gateway Single AZ HA` functionality.
 
@@ -745,3 +740,46 @@ aws-us-east-1-transit's rtb
 
 - Why is that?
 What would be needed to make those routes visible?
+
+<details>
+  <summary>Click here for a logical explanation: <span style='color:#33ECFF'>Hint!</span></summary>
+
+- Logical Explanation
+
+Only AWS US East <span style='color:red'>**2**</span> Transit, GCP US Central 1 Transit, and Azure West US Transit are connected in a **FULL-MESH** configuration.
+
+```{important}
+**FULL-MESH**:
+A type of networking design in which each node in the system has a circuit that connects it to every other node. While full mesh does make multiple redundant connections, this design keeps traffic going even if one node fails.
+
+Full-mesh design is useful in systems which are intransitive: A connects to B and B connects to C, but A cannot interact with C.
+```
+
+```{figure} images/lab4-fullmesh01.png
+---
+height: 400px
+align: center
+---
+Full-mesh: physical
+```
+
+```{figure} images/lab4-fullmesh02.png
+---
+height: 400px
+align: center
+---
+Full-mesh: logical
+```
+
+The Gateway in the **AWS US-EAST-1** region is exclusively peering with the Gateway in **AWS US-EAST-2**.
+
+```{figure} images/lab4-fullmesh03.png
+---
+height: 400px
+align: center
+---
+Single peering
+```
+
+
+</details>
