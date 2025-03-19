@@ -83,7 +83,7 @@ student
 Password:
 
 ```bash
-3159FmtaZX6P!36
+3159FmtaZX6P!
 ```
 
 ## LAB Pre-Req
