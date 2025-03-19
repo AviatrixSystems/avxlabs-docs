@@ -30,25 +30,22 @@ The CostIQ feature provides detailed traffic distribution analysis for your cost
 
 ### 2.1 Enable CostIQ
 
-Go to **Copilot > Billing & Cost > CostIQ** and click on the `"Enable CostIQ"` button.
+Go to **Copilot > Settings > Configuration > License**, identify the CostIQ Add-on Feature and click on the `"Enable"` button.
 
-```{figure} images/lab9-costiq.png
+```{figure} images/lab9-costiq123.png
 ---
-height: 250px
 align: center
 ---
 Enable CostIQ
 ```
 
-```{figure} images/lab9-costiq001.png
----
-height: 300px
-align: center
----
-Enable CostIQ
+Go to **Copilot > Administration > Billing > CostIQ** and click on the `"Enable CostIQ"` button.
+
+```{warning}
+Refresh the web page, before proceeding with the next task!
 ```
 
-Now click on `"+ Cost Center"` and create the **AWS** Cost Center aforementioned.
+Go to **Copilot > Monitor > CostIQ** and click on `"+ Cost Center"` and create the **AWS** Cost Center.
 
 ```{figure} images/lab9-costiq02.png
 ---
@@ -112,7 +109,7 @@ align: center
 CIDR
 ```
 
-Let's move on the **Shared Services** tab and click on `"+ Shared Service"`.
+Go back to **CoPilot > Monitor > CostIQ > Shared Services** and click on the `"+ Shared Service"` button.
 
 ```{figure} images/lab9-costiq12.png
 ---
@@ -132,7 +129,7 @@ align: center
 
 ## 4. DCF Configuration
 
-- Create a rule that permits ICMP traffic from the **Workstation Edge** to the **_aws-us-east-2-spoke1-test1_**.
+- Create a rule that permits **ICMP** traffic from the **Workstation Edge** to the **_aws-us-east-2-spoke1-test1_**.
 
 ### 4.1 Create a new SmartGroup for the WorkstationEdge
 
@@ -150,7 +147,15 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>WorkstationEdge</span>
 - **Virtual Machines**:
-  - **Properties/Name**: <span style='color:#479608'>onprem-pod##-host-vm</span>
+  - **Matches all conditions (AND)/Name**: <span style='color:#479608'>onprem-pod##-host-vm</span>
+
+```{figure} images/lab10-newsg854.png
+---
+height: 400px
+align: center
+---
+New SmartGroup
+```
 
 ```{warning}
 Do not select the value that ends with **"vm-1"**.
@@ -187,7 +192,7 @@ SmartGroup
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
-- **Virtual Machines/Name**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
+- **Matches all conditions (AND)/Name**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
 
 ```{figure} images/lab10-newsg0133.png
 ---
@@ -214,12 +219,19 @@ Insert the following parameters:
 
 - **Name**: <span style='color:#479608'>inter-icmp-edge-us-east2-test1</span>
 - **Source Smartgroups**: <span style='color:#479608'>WorkstationEdge</span>
-- **Destination Smartgroups**: <span style='color:#479608'>lab10-newnew00.png</span>
+- **Destination Smartgroups**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab10-newnew0233.png
+---
+align: center
+---
+Destination SG
+```
 
 ```{figure} images/lab10-newnew02.png
 ---
