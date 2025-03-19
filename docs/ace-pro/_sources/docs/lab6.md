@@ -137,7 +137,7 @@ Deploy a Firewall by entering these settings within the `Deploy Firewall` window
 - **Firewall Image**: <span style='color:#479608'>Palo Alto Networks VM-Series Next-Generation Firewall Bundle 1</span>
 
 ```{warning}
-When you click on the **Firewall Image** drop-down window, you will see a `"Loading"` message. The message means that the Controller is in the middle of contacting the Marketplace through the API calls, therefore, be patient and wait for about <span style='color:#479608'>**_3 minutes!_**</span>
+When you click on the **Firewall Image** drop-down, you will see a `"Loading"` message. This indicates that the Controller is contacting the Marketplace via API calls. Please be patient and wait for about <span style='color:#479608'>**_3 minutes!_**</span>.
 ```
 
 ```{figure} images/lab7-marketplace.png
@@ -221,7 +221,7 @@ Notification Panel
 ```
 
 ```{caution}
-Before proceeding with the next task, please wait **20** minutes!
+Hold your horses! Before diving into the next task, take a chill pill and wait **20** minutes! Go grab a snack — just enjoy that extra break!
 ```
 
 #### 4.3.2 Firewall Vendor Integration
