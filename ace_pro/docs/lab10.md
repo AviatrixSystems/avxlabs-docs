@@ -30,7 +30,7 @@ The CostIQ feature provides detailed traffic distribution analysis for your cost
 
 ### 2.1 Enable CostIQ
 
-Go to **Copilot > Settings > Configuration > License**, identify the CostIQ Add-on Feature and click on the `"Enable"` button.
+Go to **Copilot > Settings > Configuration > License**, identify the **CostIQ** _Add-on Feature_ and click on the `"Enable"` link.
 
 ```{figure} images/lab9-costiq123.png
 ---
@@ -279,7 +279,9 @@ Ping from the Wortkstation "Edge"
 
 ### 5.3 Cost Center and Shared Service
 
-Go to **CoPilot > Billing & Cost > CostIQ > Shared Services** and click on **NEW YORK DC** to expand the visibility of the percentage of traffic between the Shared Services and the Cost Center AWS. This traffic is permitted thanks to the DCF rule previously created.
+Go to **CoPilot > Monitor > CostIQ > Shared Services** and click on **NEW YORK DC** to expand the visibility of the percentage of traffic between the Shared Services and the Cost Center AWS. 
+
+This traffic is permitted thanks to the DCF rule previously created.
 
 ```{figure} images/lab9-counter.png
 ---

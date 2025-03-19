@@ -557,7 +557,6 @@ Now click on the **VIEW** link on the right-hand side of the entry:
 
 ```{figure} images/lab96-newrule310.png
 ---
-height: 200px
 align: center
 ---
 View link
