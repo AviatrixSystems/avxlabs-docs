@@ -788,7 +788,11 @@ To avoid the limitations of full-mesh peering, which is not very scalable, you c
 height: 400px
 align: center
 ---
-Intransitive behviour without Full-Mesh config.
+Intransitive behaviour without Full-Mesh config.
+```
+
+```{caution}
+The Multi-Tier feature will be activated on **Lab 11**.
 ```
 
 </details>
