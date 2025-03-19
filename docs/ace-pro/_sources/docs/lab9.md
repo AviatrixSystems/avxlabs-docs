@@ -47,6 +47,10 @@ Insert the following parameters:
 
 Do not forget to click on **Save**.
 
+```{caution}
+Please pay close attention to select the routing table **1a-rtb**!
+```
+
 ```{figure} images/lab9-new.png
 ---
 align: center
@@ -153,7 +157,7 @@ SSH session
 curl https://<malicious-IP>
 ```
 
-`<malicious-IP>`: **_178.17.174.164 _**
+`<malicious-IP>`: **178.17.174.164**
 
 ```{figure} images/lab9-instancetest.png
 ---
@@ -445,6 +449,16 @@ align: center
 Malicious ip
 ```
 
+However, you will gradually start to notice that traffic to **US EAST-2** will begin to fail.
+
+```{figure} images/lab9-gatus622.png
+---
+height: 400px
+align: center
+---
+US EAST-2
+```
+
 ### 8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 ```{important}
@@ -509,7 +523,7 @@ Outcomes from the curl commands
 Now issue again the curl command towards the **malicious IP** address that was earlier provided by the Trainer!
 
 ```bash
-curl https://<malicious-IP>
+curl https://178.17.174.164
 ```
 
 ```{figure} images/lab96-newrule302.png
@@ -558,7 +572,7 @@ align: center
 Condition
 ```
 
-After this lab, this is how the overall topology will look like:
+After this lab, the overall topology will look like this:"
 
 ```{figure} images/lab9-finaltopologyy.png
 ---
