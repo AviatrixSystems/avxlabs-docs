@@ -391,7 +391,7 @@ align: center
 Ping
 ```
 
-**aws-us-east-2-spoke1-test2** can successfully ping **aws-us-east-2-spoke1-test1**, because the communication occurs inside th VPC, without involving the Spoke Gateway.
+**aws-us-east-2-spoke1-test1** can successfully ping **aws-us-east-2-spoke1-test<span style='color:red'>2</span></summary>** because the communication occurs within the VPC, bypassing the Spoke Gateway.
 
 ### 5.4 SG Orchestration
 
@@ -415,8 +415,10 @@ align: center
 Outcomes
 ```
 
+Based on the outcome above, you will not see 10.0.1.10 (aws-us-east-2-spoke1-test2) because test2 belongs to bu2, resulting in no match with the _intra-icmp-bu1_ rule.
+
 ```{warning}
-The instance **aws-us-east-2-spoke1-test1** is in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka **_intra-vpc separation_**).
+The instances **aws-us-east-2-spoke1-test1** and **aws-us-east-2-spoke1-test2** are in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka **_intra-vpc separation_**).
 ```
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button, inside the `"Security Group (SG) Orchestration"` field.
@@ -451,6 +453,10 @@ Gatus
 
 The ping to test2 will gradually fail!
 
+```{note}
+SSH traffic will also fail!
+```
+
 ### 5.6 SG Orchestration Verification Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Relaunch the ping from **aws-us-east-2-spoke1-<span style='color:#479608'>test1</span>** towards **aws-us-east-2-spoke1-<span style='color:red'>test2</span>**. 
@@ -464,6 +470,10 @@ Ping fails
 
 ```{important}
 This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2 region, thanks to the Security Group Orchestration carried out by the **Aviatrix Controller**.
+```
+
+```{note}
+SSH traffic will also fail!
 ```
 
 ### 5.7 Verify SSH within bu1 Using the Gatus App

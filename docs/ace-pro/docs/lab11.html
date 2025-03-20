@@ -777,7 +777,7 @@ document.write(`
 <p><span class="caption-number">Fig. 512 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p><strong>aws-us-east-2-spoke1-test2</strong> can successfully ping <strong>aws-us-east-2-spoke1-test1</strong>, because the communication occurs inside th VPC, without involving the Spoke Gateway.</p>
+<p><strong>aws-us-east-2-spoke1-test1</strong> can successfully ping <strong>aws-us-east-2-spoke1-test<span style='color:red'>2</span></summary></strong> because the communication occurs within the VPC, bypassing the Spoke Gateway.</p>
 </section>
 <section id="sg-orchestration">
 <h3>5.4 SG Orchestration<a class="headerlink" href="#sg-orchestration" title="Link to this heading">#</a></h3>
@@ -799,9 +799,10 @@ document.write(`
 <p><span class="caption-number">Fig. 514 </span><span class="caption-text">Outcomes</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Based on the outcome above, you will not see 10.0.1.10 (aws-us-east-2-spoke1-test2) because test2 belongs to bu2, resulting in no match with the <em>intra-icmp-bu1</em> rule.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The instance <strong>aws-us-east-2-spoke1-test1</strong> is in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don’t enable the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group(SG)</span> <span class="pre">Orchestration&quot;</span></code> (aka <strong><em>intra-vpc separation</em></strong>).</p>
+<p>The instances <strong>aws-us-east-2-spoke1-test1</strong> and <strong>aws-us-east-2-spoke1-test2</strong> are in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don’t enable the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group(SG)</span> <span class="pre">Orchestration&quot;</span></code> (aka <strong><em>intra-vpc separation</em></strong>).</p>
 </div>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage&quot;</span></code> button, inside the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group</span> <span class="pre">(SG)</span> <span class="pre">Orchestration&quot;</span></code> field.</p>
 <figure class="align-center" id="id37">
@@ -829,6 +830,10 @@ document.write(`
 </figcaption>
 </figure>
 <p>The ping to test2 will gradually fail!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SSH traffic will also fail!</p>
+</div>
 </section>
 <section id="sg-orchestration-verification-using-the-ssh-client-bonus">
 <h3>5.6 SG Orchestration Verification Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#sg-orchestration-verification-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
@@ -842,6 +847,10 @@ document.write(`
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2 region, thanks to the Security Group Orchestration carried out by the <strong>Aviatrix Controller</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SSH traffic will also fail!</p>
 </div>
 </section>
 <section id="verify-ssh-within-bu1-using-the-gatus-app">
