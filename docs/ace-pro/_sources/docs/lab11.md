@@ -43,7 +43,7 @@ Initial Topology Lab 11
 
 ## 3. Smart Groups Creation
 
-Create two Smart Groups and classify each Smart Group, leveraging the CSP tag `"environment"`:
+Create two Smart Groups and classify each one using the CSP tag `"environment"`: 
 
 - Assign the name `"bu1"` to the Smart Group **#1**.
 - Assign the name `"bu2"` to the Smart Group **#2**.
@@ -62,7 +62,7 @@ SmartGroup
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>bu1</span>
-- **Virtual Machines/environment**: <span style='color:#479608'>bu1</span>
+- **Matches all conditions (AND)/environment**: <span style='color:#479608'>bu1</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
@@ -99,7 +99,7 @@ New Smart Group
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>bu2</span>
-- **Virtual Machines/environment**: <span style='color:#479608'>bu2</span>
+- **Matches all conditions (AND)/environment**: <span style='color:#479608'>bu2</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
@@ -157,7 +157,7 @@ align: center
 aws-us-east-2-spoke1-test1
 ```
 
-The **East-West** traffic is disrupted. The instance **_aws-us-east-2-spoke1-test1_** can only reach **test2** due to intra-VPC traffic, which bypasses the Aviatrix Spoke Gateway (i.e., the **Enforcement Security Point**).
+The **East-West** traffic is disrupted. The instance **_aws-us-east-2-spoke1-test1_** can only reach **test2** due to intra-VPC traffic, which bypasses the Aviatrix Spoke Gateway (i.e. the **Enforcement Security Point**).
 
 ### 3.4 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -190,9 +190,9 @@ Ping
 ```
 
 ```{note}
-From the outcomes above you can figure out that only **aws-us-east-2-spoke1-<span style='color:red'>test2</span>** instance is pingable, this is because the ICMP traffic from the **_aws-us-east-2-spoke1-test1_** towards the **_aws-us-east-2-spoke1-test2_** is **NOT** traversing the Spoke Gateway. 
+From the outcomes above, you can see that only the **aws-us-east-2-spoke1-<span style='color:red'>test2</span>** instance is pingable. This is because the ICMP traffic from aws-us-east-2-spoke1-test1 to aws-us-east-2-spoke1-test2 is NOT passing through the Spoke Gateway.
 
-The ICMP traffic is leveraging the normal behaviour of the intra-vpc communication.
+The ICMP traffic is utilizing the standard behavior of intra-VPC communication.
 ```
 
 ### 3.5 Connectivity Verification (SSH) Using Gatus App
@@ -269,6 +269,13 @@ Create Rule
 
 Click on **Commit**.
 
+```{figure} images/lab10-rulecommitted00.png
+---
+align: center
+---
+Rule committed
+```
+
 ### 4.2. Create an intra-rule that allows ICMP inside bu2
 
 Create another rule clicking on the `"+ Rule"` button.
@@ -302,6 +309,13 @@ intra-icmp-bu2
 
 Now proceed and click on the **Commit** button.
 
+```{figure} images/lab10-rulecommitted01.png
+---
+align: center
+---
+Rule committed
+```
+
 ## 5. Verification
 
 After the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols will look like:
@@ -326,7 +340,14 @@ SSH from your laptop
 ```
 
 ```{caution}
-The SSH session from your laptop to the **_aws-us-east-2-spoke1-test1_** instance is not affected by any DCF rules, because the connection is established directly through the **AWS IGW**. 
+The SSH session from your laptop to the **_aws-us-east-2-spoke1-test1_** instance is not affected by any DCF rules, because the connection is established directly through the **AWS IGW**.
+```
+
+```{figure} images/lab10-laptop.png
+---
+align: center
+---
+SSH from your laptop - logical diagram
 ```
 
 ### 5.2 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App
@@ -342,7 +363,7 @@ Gatus
 
 **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke1-test1_** can ping each other due to the intra-rule applied to the SmartGroup "bu1".
 
-However, **_aws-us-east-2-spoke1-test1_** is also capable of pinging **_aws-us-east-2-spoke1-test2_**, although the latter belongs to "bu2". Once again, this behaviour stems from the fact that the two instances reside in the same VPC.
+However, **_aws-us-east-2-spoke1-test1_** is also capable of pinging **_aws-us-east-2-spoke1-test<span style='color:red'>2</span></summary>_**, although the latter belongs to "bu2". Once again, this behaviour stems from the fact that the two instances reside in the same VPC.
 
 ### 5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
