@@ -268,7 +268,7 @@ WorkstationEdge
 
 ### 5.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-If you continue to run the ping from the Workstation Edge's terminal, you should observe both relative and absolute traffic from the Cost Centers in AWS. The other two (in GCP and Azure) will show 0% because there is no traffic directed toward the Shared Service in the NY DC.
+If you continue to run the ping from the Workstation Edge's terminal, you should observe both relative and absolute traffic from the Cost Center in AWS. The other two (in GCP and Azure) will show 0% because there is no traffic directed toward the Shared Service in the NY DC.
 
 ```{figure} images/lab9-ping.png
 ---
