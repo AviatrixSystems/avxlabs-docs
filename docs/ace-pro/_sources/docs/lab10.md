@@ -268,7 +268,7 @@ WorkstationEdge
 
 ### 5.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-If you kept running the ping on the Workstation Edge's terminal, then you should see both the relative traffic and the absolute one from any Cost Centers towards the Shared Service.
+If you continue to run the ping from the Workstation Edge's terminal, you should observe both relative and absolute traffic from the Cost Centers in AWS. The other two (in GCP and Azure) will show 0% because there is no traffic directed toward the Shared Service in the NY DC.
 
 ```{figure} images/lab9-ping.png
 ---
@@ -279,16 +279,16 @@ Ping from the Wortkstation "Edge"
 
 ### 5.3 Cost Center and Shared Service
 
-Go to **CoPilot > Monitor > CostIQ > Shared Services** and click on **NEW YORK DC** to expand the visibility of the percentage of traffic between the Shared Services and the Cost Center AWS. 
+Go to **CoPilot > Monitor > CostIQ > Shared Services** and click on **NEW YORK DC** to expand the visibility of the percentage of traffic between the **Cost Center** in AWS and the **Shared Services** in NY DC.
 
 This traffic is permitted thanks to the DCF rule previously created.
 
-```{figure} images/lab9-counter.png
+```{figure} images/lab9-percentage.png
 ---
 height: 350px
 align: center
 ---
-From the Cost Center towards the Shared Service
+From the Cost Center in AWS to the Shared Service
 ```
 
 After this lab, this is how the overall topology will look like:
