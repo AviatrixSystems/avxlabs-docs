@@ -487,7 +487,7 @@ align: center
 Gatus
 ```
 
-**_aws-us-east-2-spoke1-test1_** can't SSH to any other instances inside bu1.
+**_aws-us-east-2-spoke1-test1_**  is unable to SSH into any other instances within bu1, as well as those in bu2.
 
 ### 5.8 Verify SSH within bu1 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -576,6 +576,14 @@ Let's investigate the logs once again.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on the **intra-ssh-bu1** Rule!
 
+```{figure} images/lab10-logsshbu187.png
+---
+height: 150px
+align: center
+---
+Logs 
+```
+
 ```{figure} images/lab10-logsshbu1.png
 ---
 height: 150px
@@ -642,7 +650,15 @@ Ping
 
 Let's investigate the logs once again.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter based on the _intra-icmp-bu2_ rule.
+
+```{figure} images/lab10-bu23monitor.png
+---
+height: 150px
+align: center
+---
+intra-icmp-bu2
+```
 
 ```{figure} images/lab10-bu2monitor.png
 ---
@@ -697,9 +713,9 @@ align: center
 Commit
 ```
 
-### 10.1 Verify ICMP traffic within bu2 Using the Gatus App
+### 10.1 Verify ICMP traffic from bu2 to bu1 Using the Gatus App
 
-Open the Gatus App on **_azure-west-us-spoke_** and verify the ICMP Traffic.
+Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
 
 ```{figure} images/lab10-gatus38.png
 ---
@@ -708,9 +724,9 @@ align: center
 Gatus
 ```
 
-All pings will be successful thanks to the **EAST-1** region, as there is no full-mesh topology affecting connectivity.
+All pings will be successful excewpt those to the **aws EAST-1** region, as the lack of a **full-mesh** topology impacts connectivity.
 
-### 10.2 Verify ICMP traffic within bu2 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
+### 10.2 Verify ICMP traffic from bu2 to bu1 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
 
 SSH to the Public IP of the instance **_azure-west-us-spoke<span style='color:#479608'>2</span>-<span style='color:#479608'>test1</span>_**.
 
@@ -728,6 +744,15 @@ Thit time all pings will be successful, thanks to the inter-rule applied between
 align: center
 ---
 Ping ok
+```
+
+**AWS US-EAST-1** region is not reachable!
+
+```{figure} images/lab10-pingallokk.png
+---
+align: center
+---
+Ping fails
 ```
 
 ## 11. Logs Monitor
