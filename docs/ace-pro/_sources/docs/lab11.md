@@ -328,7 +328,22 @@ align: center
 New Topology
 ```
 
-### 5.1 Verify SSH traffic from your laptop to bu1 Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App
+
+Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the ICMP Traffic.
+
+```{figure} images/lab10-gatus80.png
+---
+align: center
+---
+Gatus
+```
+
+**_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke1-test1_** can ping each other due to the intra-rule applied to the SmartGroup "bu1".
+
+However, **_aws-us-east-2-spoke1-test1_** is also capable of pinging **_aws-us-east-2-spoke1-test<span style='color:red'>2</span></summary>_**, although the latter belongs to "bu2". Once again, this behaviour stems from the fact that the two instances reside in the same VPC.
+
+### 5.2 Verify SSH traffic from your laptop to bu1 Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 SSH to the Public IP of the instance **aws-us-east-2-spoke1-test1**.
 
@@ -349,21 +364,6 @@ align: center
 ---
 SSH from your laptop - logical diagram
 ```
-
-### 5.2 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App
-
-Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the ICMP Traffic.
-
-```{figure} images/lab10-gatus80.png
----
-align: center
----
-Gatus
-```
-
-**_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke1-test1_** can ping each other due to the intra-rule applied to the SmartGroup "bu1".
-
-However, **_aws-us-east-2-spoke1-test1_** is also capable of pinging **_aws-us-east-2-spoke1-test<span style='color:red'>2</span></summary>_**, although the latter belongs to "bu2". Once again, this behaviour stems from the fact that the two instances reside in the same VPC.
 
 ### 5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -670,7 +670,7 @@ Monitor
 
 The logs above confirm that the **ICMP** protocol is permitted within the Smart Group bu2.
 
-### 9. Inter-rule from bu2 to bu1
+## 9. Inter-rule from bu2 to bu1
 
 Create a new rule that allows ICMP FROM bu2 TO bu1.
 
@@ -713,7 +713,7 @@ align: center
 Commit
 ```
 
-### 10.1 Verify ICMP traffic from bu2 to bu1 Using the Gatus App
+### 9.1 Verify ICMP traffic from bu2 to bu1 Using the Gatus App
 
 Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
 
@@ -724,9 +724,9 @@ align: center
 Gatus
 ```
 
-All pings will be successful excewpt those to the **aws EAST-1** region, as the lack of a **full-mesh** topology impacts connectivity.
+All pings will be successful except those to the **aws EAST-1** region, as the lack of a **full-mesh** topology impacts connectivity.
 
-### 10.2 Verify ICMP traffic from bu2 to bu1 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
+### 9.2 Verify ICMP traffic from bu2 to bu1 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
 
 SSH to the Public IP of the instance **_azure-west-us-spoke<span style='color:#479608'>2</span>-<span style='color:#479608'>test1</span>_**.
 
@@ -746,7 +746,7 @@ align: center
 Ping ok
 ```
 
-**AWS US-EAST-1** region is not reachable!
+**AWS US-EAST-1** region is not reachable yet!
 
 ```{figure} images/lab10-pingallokk.png
 ---
@@ -755,7 +755,7 @@ align: center
 Ping fails
 ```
 
-## 11. Logs Monitor
+## 10. Logs Monitor
 
 Let's investigate the logs once again.
 
@@ -795,10 +795,10 @@ From-To
 ```
 
 The inter-rule is **Stateful** in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.
- 
-## 12. East-1 and the Multi-Tier Transit
 
-### 12.1 Activation of the MTT
+## 11. East-1 and the Multi-Tier Transit
+
+### 11.1 Activation of the MTT
 
 Let’s now also involve the AWS region **US-EAST-1**.
 
@@ -812,7 +812,7 @@ align: center
 New Topology
 ```
 
-### 12.2 Verification of ICMP traffic between Azure and AWS Using Gatus App
+### 11.2 Verification of ICMP traffic between Azure and AWS Using Gatus App
 
 Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
 
@@ -825,7 +825,7 @@ Gatus
 
 Ping towards the **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** will NOT work.
 
-### 12.3 Verification ICMP between Azure and AWS Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
+### 11.3 Verification ICMP between Azure and AWS Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
 
 SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
 
@@ -842,7 +842,7 @@ Ping
 
 The ping fails!
 
-## 13. Verification of the MTT
+## 12. Verification of the MTT
 
 Let’s check the routing table of the Spoke Gateway **_azure-west-us-spoke2_**.
 
@@ -959,9 +959,9 @@ align: center
 10.0.12.0/23
 ```
 
-## 14. The last DCF rule
+## 13. The last DCF rule
 
-### 14.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabled MTT
+### 13.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabled MTT
 
 Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
 
@@ -974,7 +974,7 @@ Gatus
 
 Pinging **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** is still not working.
 
-### 14.2 ICMP Verification between Azure and AWS Using SSH Client after enabled MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
+### 13.2 ICMP Verification between Azure and AWS Using SSH Client after enabled MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
 
@@ -989,7 +989,7 @@ align: center
 Ping
 ```
 
-## 15. Final Considerations
+## 14. Final Considerations
 
 Although this time there is a valid route to the destination, thanks to the **MTT** feature, the pings still fails. 
 
@@ -997,7 +997,7 @@ Although this time there is a valid route to the destination, thanks to the **MT
 The reason is that the ec2-instance  **aws-us-east-1-spoke1-test2** is not allocated to any Smart Groups yet!
 ```
 
-### 15.1 Smart Group “east1”
+### 14.1 Smart Group “east1”
 
 Let’s create another Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in US-EAST-1 region in AWS.
 
@@ -1028,7 +1028,7 @@ The CoPilot shows that there is just one single instance that matches the condit
 
 Do not forget to click on **Save**.
 
-### 15.2 Create an inter-rule that allows ICMP from bu2 towards east1
+### 14.2 Create an inter-rule that allows ICMP from bu2 towards east1
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create another rule clicking on the `"+ Rule"` button.
 
@@ -1073,9 +1073,9 @@ align: center
 Commit
 ```
 
-### 15.3 Verify connectivity between bu2 and east1
+### 14.3 Verify connectivity between bu2 and east1
 
-#### 15.3.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabled MTT
+#### 14.3.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabled MTT
 
 Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic to **_aws-us-east-1-spoke1-test2_**
 
@@ -1088,7 +1088,7 @@ Gatus
 
 The ICMP traffic test will gradually turn green!
 
-#### 15.3.2 ICMP Verification between Azure and AWS Using SSH Client after enabled MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 14.3.2 ICMP Verification between Azure and AWS Using SSH Client after enabled MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_** and ping the private IP of the ec2-instance **_aws-us-east-1-spoke1-test2_**
 
@@ -1101,7 +1101,7 @@ Ping
 
 This time, the ping will be successful!
 
-#### 15.3.3 Logs
+#### 14.3.3 Logs
 
 Check the logs once again.
 
@@ -1125,7 +1125,7 @@ align: center
 Final Topology
 ```
 
-## 16. Spoke to Spoke Attachment
+## 15. Spoke to Spoke Attachment
 
 Now that you have enabled the Distributed Cloud Firewall, the owner of the **_azure-west-us-spoke2-test1_** VM would like to communicate directly with the nearby **_azure-west-us-spoke1-test1_** VM, avoding that the traffic generated from the VNet is sent to the NGFW, first.
 
@@ -1136,7 +1136,7 @@ align: center
 No More NGFW
 ```
 
-### 16.1 Creating a Spoke to Spoke Attachment
+### 15.1 Creating a Spoke to Spoke Attachment
 
 Go to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** gateway and click on the **`Manage Gateway Attachments`** icon on the right-hand side.
 
