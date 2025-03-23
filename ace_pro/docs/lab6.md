@@ -222,6 +222,11 @@ Notification Panel
 
 ```{caution}
 Hold your horses! Before diving into the next task, take a chill pill and wait **20** minutes! Go grab a snack — just enjoy that extra break!
+```{figure} images/lab6-20minute.png
+---
+align: center
+---
+Bonus Break!
 ```
 
 #### 4.3.2 Firewall Vendor Integration
