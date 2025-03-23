@@ -1,4 +1,4 @@
-![ACE](../../docs/_logos/ace_professiona_banner_new.png)
+![ACE](../../docs/_logos/ace_professional_banner_new.png)
 
 # Welcome to ACE Professional Lab
 
