@@ -728,6 +728,44 @@ eth0
 
 The eth0 interface corresponds to the _Elastic Network Interface_ (**ENI**). Please identify the ENIs for Spoke Gateway 1 and Spoke Gateway 2.
 
+Now, duplicate the tab in your web browser and then click on **Instances** in the left-hand navigation panel!
+
+```{figure} images/lab5-reprogram04.png
+---
+height: 400px
+align: center
+---
+Duplicate tab
+```
+
+```{figure} images/lab5-reprogram05.png
+---
+height: 400px
+align: center
+---
+Instances
+```
+
+Select the `"test1"` instance, then select the **Networking** tab and then click on the **Subnet ID**!
+
+```{figure} images/lab5-reprogram06.png
+---
+height: 400px
+align: center
+---
+Subnet id
+```
+
+Scroll to the right until you identify the **Route Table** associated with the subnet you selected.
+
+```{figure} images/lab5-reprogram08.png
+---
+height: 400px
+align: center
+---
+rtb
+```
+
 ```{figure} images/lab5-reprogram03.png
 ---
 height: 400px
