@@ -283,7 +283,7 @@ Istances
 
 - Now check if these two instances in the **_aws-us-east-1-spoke1_** VPC have `ICMP` reachability to the instance **_aws-us-east-2-spoke1-test1_** in the **US-EAST-2** region.
 
-```{figure} images/lab4-gatus201.png
+```{figure} images/lab4-gatus202.png
 ---
 height: 400px
 align: center
@@ -291,7 +291,7 @@ align: center
 Gatus from aws-us-east-1-spoke1-test1
 ```
 
-```{figure} images/lab4-gatus202.png
+```{figure} images/lab4-gatus201.png
 ---
 height: 400px
 align: center
@@ -590,9 +590,52 @@ Gatus from aws-us-east-1-spoke1-test1
 
 ### 11.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-If you wish, you can also verify the failover mechanism using the SSH Client.
+If you wish, you can also verify the failover mechanism using the **SSH** Client.
 
-Go back to the **AWS console**</a>, search for **_aviatrix-aws-us-east-1-spoke1_**, select the instance and then choose **Instance state > Stop instance**.
+Go back to your **AWS console**</a>. Refer to your pod info for login information.
+
+```{figure} images/lab5-newone.png
+---
+align: center
+---
+AWS URL and credentials
+```
+
+```{figure} images/lab5-awsconsole.png
+---
+align: center
+---
+AWS console
+```
+
+Change the region to **N. Virginia** and invoke **EC2** service.
+
+```{figure} images/lab5-region.png
+---
+height: 300px
+align: center
+---
+Change the Region
+```
+
+```{figure} images/lab5-region00.png
+---
+height: 300px
+align: center
+---
+Invoke the EC2 service
+```
+
+Click on **Instances (running)**.
+
+```{figure} images/lab5-running.png
+---
+align: center
+---
+Instances running
+```
+
+Search for **_aviatrix-aws-us-east-1-spoke1_**, select the instance and then choose **Instance state > Stop instance**
 
 ```{figure} images/lab5-stop.png
 ---
