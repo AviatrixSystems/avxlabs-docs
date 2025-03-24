@@ -696,7 +696,7 @@ Final Topology for Lab 4
 
 If you want to see how the **Aviatrix Controller** reprograms the routing of VPC Router behind the scenes, you can redo the previous test by following these steps:
 
-    Return to the **AWS Console**, invoke the **EC2** service, and ensure that you are still in the **us-east-1** region (i.e., N. Virginia).
+- Return to the **AWS Console**, invoke the **EC2** service, and ensure that you are still in the **us-east-1** region (i.e., N. Virginia).
 
 ```{figure} images/lab5-reprogram00.png
 ---
@@ -740,6 +740,10 @@ eth0
 
 Now, duplicate the tab in your web browser and then click on **Instances** in the left-hand navigation panel!
 
+```{caution}
+Do not close the first tab!
+```
+
 ```{figure} images/lab5-reprogram104.png
 ---
 height: 400px
@@ -766,14 +770,119 @@ align: center
 Subnet id
 ```
 
-Scroll to the right until you identify the **Route Table** associated with the subnet you selected.
+Scroll to the right until you find the **Route Table** associated with the subnet you selected, and click on its link.
 
 ```{figure} images/lab5-reprogram108.png
 ---
 height: 400px
 align: center
 ---
-rtb
+Route Table
+```
+
+Now, click on the **Route Table ID** link shown below:
+
+```{figure} images/lab5-reprogram109.png
+---
+height: 400px
+align: center
+---
+Route Table ID
+```
+
+ou will finally see the contents of the routing table for the VPC Router. Here, you will notice the three RFC1918 routes injected by the Aviatrix Controller, all pointing to the ENI of Spoke Gateway 1.
+
+- Please compare the displayed ENI with that of Spoke Gateway 1.
+
+```{figure} images/lab5-reprogram110.png
+---
+height: 400px
+align: center
+---
+RFC1918
+```
+
+```{figure} images/lab5-reprogram111.png
+---
+height: 400px
+align: center
+---
+ENI
+```
+
+Now, duplicate the current tab and open the **EC2** service.
+
+```{figure} images/lab5-reprogram112.png
+---
+height: 400px
+align: center
+---
+Duplicate Tab
+```
+
+```{figure} images/lab5-reprogram113.png
+---
+height: 400px
+align: center
+---
+EC2
+```
+
+Click on Instances (running).
+
+```{figure} images/lab5-reprogram114.png
+---
+height: 400px
+align: center
+---
+instances (running)
+```
+
+Search for **_aviatrix-aws-us-east-1-spoke1_**, select the instance and then choose **Instance state > Stop instance**
+
+```{figure} images/lab5-stop.png
+---
+height: 200px
+align: center
+---
+Stop the Instance
+```
+
+Confirm by clicking on **Stop**, one more time.
+
+```{figure} images/lab5-stop2.png
+---
+align: center
+---
+Confirm the stop
+```
+
+Now, return to the tab for the **éVPC Router's routing table** and keep refreshing the webpage!
+
+```{figure} images/lab5-reprogram115.png
+---
+align: center
+---
+ENI of the Spoke Gateway 1
+```
+
+After approximately one minute, the RFC1918 routes will point to the ENI of Spoke Gateway **2**!
+
+```{figure} images/lab5-reprogram116.png
+---
+align: center
+---
+ENI of the Spoke Gateway 2
+```
+
+- Don’t forget to `Restart` Gateway **1** from the AWS Console after completing this test!
+
+```{figure} images/lab5-restart.png
+---
+height: 200px
+align: center
+---
+Restart
 ```
 
 ## 13. FlightPath
