@@ -385,10 +385,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">12. FlightPath</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-tasks">13. Final Tasks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-keepalive-templates">13.1 Gateway Keepalive Templates</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transitive-routing-question">13.2 Transitive Routing Question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reprogramming-of-the-vpc-router-s-routing-table-bonus">12. Reprogramming of the VPC Router’s Routing Table <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">13. FlightPath</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-tasks">14. Final Tasks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-keepalive-templates">14.1 Gateway Keepalive Templates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transitive-routing-question">14.2 Transitive Routing Question</a></li>
 </ul>
 </li>
 </ul>
@@ -971,8 +972,8 @@ document.write(`
 <p><span class="caption-number">Fig. 188 </span><span class="caption-text">Confirm the stop</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will notice ping drops solely from <strong><em>aws-us-east-1-spoke1-test1</em></strong>. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.</p>
-<p>This shows how the Aviatrix Controller intelligently auto-heals the VPC routing.</p>
+<p>You will observe ping drops exclusively from <strong><em>aws-us-east-1-spoke1-test1</em></strong>. The traffic will reconverge to the spoke gateway in the other availability zone within approximately <ins>1 minute and 30 seconds to 2 minutes</ins>.</p>
+<p>This shows how the <strong>Aviatrix Controller</strong> intelligently auto-heals the VPC routing, <code class="docutils literal notranslate"><span class="pre">reprogramming</span></code> the Routing Table of the VPC Router!</p>
 <figure class="align-center" id="id59">
 <img alt="../_images/lab5-drop.png" src="../_images/lab5-drop.png" />
 <figcaption>
@@ -1005,8 +1006,11 @@ document.write(`
 </figure>
 </section>
 </section>
+<section id="reprogramming-of-the-vpc-router-s-routing-table-bonus">
+<h2>12. Reprogramming of the VPC Router’s Routing Table <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#reprogramming-of-the-vpc-router-s-routing-table-bonus" title="Link to this heading">#</a></h2>
+</section>
 <section id="flightpath">
-<h2>12. FlightPath<a class="headerlink" href="#flightpath" title="Link to this heading">#</a></h2>
+<h2>13. FlightPath<a class="headerlink" href="#flightpath" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Diagnostics &gt; AppIQ &gt; FlightPath</strong></p>
 <p>Use the following inputs:</p>
 <ul class="simple">
@@ -1053,9 +1057,9 @@ document.write(`
 </figure>
 </section>
 <section id="final-tasks">
-<h2>13. Final Tasks<a class="headerlink" href="#final-tasks" title="Link to this heading">#</a></h2>
+<h2>14. Final Tasks<a class="headerlink" href="#final-tasks" title="Link to this heading">#</a></h2>
 <section id="gateway-keepalive-templates">
-<h3>13.1 Gateway Keepalive Templates<a class="headerlink" href="#gateway-keepalive-templates" title="Link to this heading">#</a></h3>
+<h3>14.1 Gateway Keepalive Templates<a class="headerlink" href="#gateway-keepalive-templates" title="Link to this heading">#</a></h3>
 <p>Experiment with <a href="https://docs.aviatrix.com/previous/documentation/latest/building-your-network/gateway-keepalives.html" target="_blank">GATEWAY TO CONTROLLER COMMUNICATION</a> and retest convergence times when bringing down a spoke gateway.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1071,7 +1075,7 @@ document.write(`
 </figure>
 </section>
 <section id="transitive-routing-question">
-<h3>13.2 Transitive Routing Question<a class="headerlink" href="#transitive-routing-question" title="Link to this heading">#</a></h3>
+<h3>14.2 Transitive Routing Question<a class="headerlink" href="#transitive-routing-question" title="Link to this heading">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The test instances in <strong><em>aws-us-east-1-spoke1</em></strong> are not able to communicate with the test instances in GCP or in Azure.</p>
@@ -1244,10 +1248,11 @@ A type of networking design in which each node in the system has a circuit that 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">12. FlightPath</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-tasks">13. Final Tasks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-keepalive-templates">13.1 Gateway Keepalive Templates</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transitive-routing-question">13.2 Transitive Routing Question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reprogramming-of-the-vpc-router-s-routing-table-bonus">12. Reprogramming of the VPC Router’s Routing Table <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">13. FlightPath</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-tasks">14. Final Tasks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-keepalive-templates">14.1 Gateway Keepalive Templates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transitive-routing-question">14.2 Transitive Routing Question</a></li>
 </ul>
 </li>
 </ul>

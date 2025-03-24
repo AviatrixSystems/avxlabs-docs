@@ -654,10 +654,9 @@ align: center
 Confirm the stop
 ```
 
+You will observe ping drops exclusively from **_aws-us-east-1-spoke1-test1_**. The traffic will reconverge to the spoke gateway in the other availability zone within approximately <ins>1 minute and 30 seconds to 2 minutes</ins>.
 
-You will notice ping drops solely from **_aws-us-east-1-spoke1-test1_**. The traffic will reconverge to the spoke gateway in the other AZ, in about <ins>1 minute and 30 seconds to 2 minutes</ins>.
-
-This shows how the Aviatrix Controller intelligently auto-heals the VPC routing.
+This shows how the **Aviatrix Controller** intelligently auto-heals the VPC routing, `reprogramming` the Routing Table of the VPC Router!
 
 ```{figure} images/lab5-drop.png
 ---
@@ -693,7 +692,10 @@ align: center
 Final Topology for Lab 4
 ```
 
-## 12. FlightPath
+## 12. Reprogramming of the VPC Router's Routing Table <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+
+## 13. FlightPath
 
  Go to **CoPilot > Diagnostics > AppIQ > FlightPath**
 
@@ -745,9 +747,9 @@ align: center
 FlightPath Report PDF
 ```
 
-## 13. Final Tasks
+## 14. Final Tasks
 
-### 13.1 Gateway Keepalive Templates
+### 14.1 Gateway Keepalive Templates
 
 Experiment with <a href="https://docs.aviatrix.com/previous/documentation/latest/building-your-network/gateway-keepalives.html" target="_blank">GATEWAY TO CONTROLLER COMMUNICATION</a> and retest convergence times when bringing down a spoke gateway.
 
@@ -765,7 +767,7 @@ align: center
 Keep Alive Speed
 ```
 
-### 13.2 Transitive Routing Question
+### 14.2 Transitive Routing Question
 
 ```{warning}
 The test instances in **_aws-us-east-1-spoke1_** are not able to communicate with the test instances in GCP or in Azure.
