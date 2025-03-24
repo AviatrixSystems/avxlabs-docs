@@ -30,7 +30,7 @@ The CostIQ feature provides detailed traffic distribution analysis for your cost
 
 ### 2.1 Enable CostIQ
 
-Go to **Copilot > Settings > Configuration > License**, identify the **CostIQ** _Add-on Feature_ and click on the `"Enable"` link.
+Navigate to **Copilot > Settings > Configuration > General**. Locate the widget named _Features_ and enable the `"CostIQ"` option. Remember to click **Save** to apply your changes.
 
 ```{figure} images/lab9-costiq123.png
 ---
