@@ -694,6 +694,38 @@ Final Topology for Lab 4
 
 ## 12. Reprogramming of the VPC Router's Routing Table <span style='color:#33ECFF'>(BONUS)</span></summary>
 
+If you want to see how the **Aviatrix Controller** reprograms the routing of VPC Route0 behind the scenes, you can redo the previous test by following these steps:
+
+
+    Return to the AWS Console, invoke the EC2 service, and ensure that you are still in the us-east-1 region (i.e., N. Virginia).
+
+```{figure} images/lab5-reprogram00.png
+---
+height: 400px
+align: center
+---
+EC2 and N. Virginia
+```
+
+Now, scroll down through the navigation panel on the left-hand side and click on the **Network Interfaces** section!
+
+```{figure} images/lab5-reprogram01.png
+---
+height: 400px
+align: center
+---
+Network Interfaces
+```
+
+Click on the arrow icon to arrange the items in chronological order, and then identify the eth0 interface for both Spoke Gateway 1 and Spoke Gateway 2 (i.e., '-1').
+
+```{figure} images/lab5-reprogram02.png
+---
+height: 400px
+align: center
+---
+ENI
+```
 
 ## 13. FlightPath
 
