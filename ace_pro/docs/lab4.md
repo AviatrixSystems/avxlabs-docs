@@ -819,7 +819,43 @@ RFC1918
 height: 400px
 align: center
 ---
-ENI of the Spoke Gateway 1
+RFC1918
+```
+
+Duplicate the current tab that you are in and then invoke the **EC2 service**.
+```{figure} images/lab5-reprogram211.png
+---
+height: 400px
+align: center
+---
+Duplicate TAB
+```
+
+```{figure} images/lab5-reprogram213.png
+---
+height: 400px
+align: center
+---
+Instances (running)
+```
+
+Search for **_aviatrix-aws-us-east-1-spoke1_**, select the instance and then choose **Instance state > Stop instance**
+
+```{figure} images/lab5-stop.png
+---
+height: 200px
+align: center
+---
+Stop the Instance
+```
+
+Confirm by clicking on **Stop**, one more time.
+
+```{figure} images/lab5-stop2.png
+---
+align: center
+---
+Confirm the stop
 ```
 
 ## 13. FlightPath
