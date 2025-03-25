@@ -706,7 +706,7 @@ Final Topology for Lab 4
 
 If you want to see how the **Aviatrix Controller** reprograms the routing of VPC Router behind the scenes, you can redo the previous test by following these steps:
 
-    Return to the **AWS Console**, invoke the **EC2** service, and ensure that you are still in the **us-east-1** region (i.e., N. Virginia).
+- Return to the **AWS Console**, invoke the **EC2** service, and ensure that you are still in the **us-east-1** region (i.e., N. Virginia).
 
 ```{figure} images/lab5-reprogram00.png
 ---
@@ -796,30 +796,22 @@ align: center
 Route Table ID
 ```
 
-Now check the VPC Router's Routing Table and identify the next hop (i.e. target) for the three RFC1918 routes injected by the **Aviatrix Controller**
+Now check the VPC Router's Routing Table and identify the next hop (i.e. target) for the three RFC1918 routes injected by the **Aviatrix Controller** and compare it with the ENI of the Spoke Gateway 1
 
 ```{figure} images/lab5-reprogram209.png
 ---
 height: 400px
 align: center
 ---
-Route Table ID
+RFC1918
 ```
 
-```{figure} images/lab5-reprogram210.png
+```{figure} images/lab5-reprogram311.png
 ---
 height: 400px
 align: center
 ---
-RFC1918
-```
-
-```{figure} images/lab5-reprogram211.png
----
-height: 400px
-align: center
----
-RFC1918
+ENI
 ```
 
 Duplicate the current tab that you are in and then invoke the **EC2 service**.
