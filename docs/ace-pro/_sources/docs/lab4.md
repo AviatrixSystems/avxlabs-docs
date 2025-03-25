@@ -588,6 +588,16 @@ align: center
 Gatus from aws-us-east-1-spoke1-test1
 ```
 
+Upon completing this lab, the overall topology will be as follows:
+
+```{figure} images/lab5-finaltopo.png
+---
+height: 400px
+align: center
+---
+Final Topology for Lab 4
+```
+
 ### 11.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 If you wish, you can also verify the failover mechanism using the **SSH** Client.

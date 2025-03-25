@@ -918,90 +918,98 @@ document.write(`
 <p><span class="caption-number">Fig. 181 </span><span class="caption-text">Gatus from aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Upon completing this lab, the overall topology will be as follows:</p>
+<figure class="align-center" id="id52">
+<a class="reference internal image-reference" href="../_images/lab5-finaltopo.png"><img alt="../_images/lab5-finaltopo.png" src="../_images/lab5-finaltopo.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 182 </span><span class="caption-text">Final Topology for Lab 4</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id4">
 <h3>11.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>If you wish, you can also verify the failover mechanism using the <strong>SSH</strong> Client.</p>
 <p>Go back to your <strong>AWS console</strong></a>. Refer to your pod info for login information.</p>
-<figure class="align-center" id="id52">
+<figure class="align-center" id="id53">
 <img alt="../_images/lab5-newone.png" src="../_images/lab5-newone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 182 </span><span class="caption-text">AWS URL and credentials</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 183 </span><span class="caption-text">AWS URL and credentials</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id53">
+<figure class="align-center" id="id54">
 <img alt="../_images/lab5-awsconsole.png" src="../_images/lab5-awsconsole.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 183 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 184 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Change the region to <strong>N. Virginia</strong> and invoke <strong>EC2</strong> service.</p>
-<figure class="align-center" id="id54">
+<figure class="align-center" id="id55">
 <a class="reference internal image-reference" href="../_images/lab5-region.png"><img alt="../_images/lab5-region.png" src="../_images/lab5-region.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 184 </span><span class="caption-text">Change the Region</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 185 </span><span class="caption-text">Change the Region</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id55">
+<figure class="align-center" id="id56">
 <a class="reference internal image-reference" href="../_images/lab5-region00.png"><img alt="../_images/lab5-region00.png" src="../_images/lab5-region00.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 185 </span><span class="caption-text">Invoke the EC2 service</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 186 </span><span class="caption-text">Invoke the EC2 service</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Instances (running)</strong>.</p>
-<figure class="align-center" id="id56">
+<figure class="align-center" id="id57">
 <img alt="../_images/lab5-running.png" src="../_images/lab5-running.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 186 </span><span class="caption-text">Instances running</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 187 </span><span class="caption-text">Instances running</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Search for <strong><em>aviatrix-aws-us-east-1-spoke1</em></strong>, select the instance and then choose <strong>Instance state &gt; Stop instance</strong></p>
-<figure class="align-center" id="id57">
+<figure class="align-center" id="id58">
 <a class="reference internal image-reference" href="../_images/lab5-stop.png"><img alt="../_images/lab5-stop.png" src="../_images/lab5-stop.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 187 </span><span class="caption-text">Stop the Instance</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 188 </span><span class="caption-text">Stop the Instance</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Confirm by clicking on <strong>Stop</strong>, one more time.</p>
-<figure class="align-center" id="id58">
+<figure class="align-center" id="id59">
 <img alt="../_images/lab5-stop2.png" src="../_images/lab5-stop2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 188 </span><span class="caption-text">Confirm the stop</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Confirm the stop</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will observe ping drops exclusively from <strong><em>aws-us-east-1-spoke1-test1</em></strong>. The traffic will reconverge to the spoke gateway in the other availability zone within approximately <ins>1 minute and 30 seconds to 2 minutes</ins>.</p>
 <p>This shows how the <strong>Aviatrix Controller</strong> intelligently auto-heals the VPC routing, <code class="docutils literal notranslate"><span class="pre">reprogramming</span></code> the Routing Table of the VPC Router!</p>
-<figure class="align-center" id="id59">
+<figure class="align-center" id="id60">
 <img alt="../_images/lab5-drop.png" src="../_images/lab5-drop.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Temporary disruption with <strong>FAST</strong> keepalive!</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 190 </span><span class="caption-text">Temporary disruption with <strong>FAST</strong> keepalive!</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id60">
+<figure class="align-center" id="id61">
 <img alt="../_images/lab5-drop00.png" src="../_images/lab5-drop00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 190 </span><span class="caption-text">No Packets drop from the aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 191 </span><span class="caption-text">No Packets drop from the aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Restart</span></code> the Gateway from the AWS console and reverify the traffic flow. This time you will notice any kind of disruption: the traffic flow fill switch back to the <strong>aviatrix-aws-us-east-1-spoke1</strong> GW.</p></li>
 </ul>
-<figure class="align-center" id="id61">
+<figure class="align-center" id="id62">
 <a class="reference internal image-reference" href="../_images/lab5-restart.png"><img alt="../_images/lab5-restart.png" src="../_images/lab5-restart.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 191 </span><span class="caption-text">Restart</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 192 </span><span class="caption-text">Restart</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Upon completing this lab, the overall topology will be as follows:</p>
-<figure class="align-center" id="id62">
+<figure class="align-center" id="id63">
 <a class="reference internal image-reference" href="../_images/lab5-finaltopo.png"><img alt="../_images/lab5-finaltopo.png" src="../_images/lab5-finaltopo.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 192 </span><span class="caption-text">Final Topology for Lab 4</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Final Topology for Lab 4</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1012,69 +1020,69 @@ document.write(`
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Return to the **AWS Console**, invoke the **EC2** service, and ensure that you are still in the **us-east-1** region (i.e., N. Virginia).
 </pre></div>
 </div>
-<figure class="align-center" id="id63">
+<figure class="align-center" id="id64">
 <a class="reference internal image-reference" href="../_images/lab5-reprogram00.png"><img alt="../_images/lab5-reprogram00.png" src="../_images/lab5-reprogram00.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 193 </span><span class="caption-text">EC2 and N. Virginia</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 194 </span><span class="caption-text">EC2 and N. Virginia</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, scroll down through the navigation panel on the left-hand side and click on the <strong>Network Interfaces</strong> section!</p>
-<figure class="align-center" id="id64">
+<figure class="align-center" id="id65">
 <a class="reference internal image-reference" href="../_images/lab5-reprogram80.png"><img alt="../_images/lab5-reprogram80.png" src="../_images/lab5-reprogram80.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Network Interfaces</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Network Interfaces</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the arrow icon to arrange the items in chronological order, and then identify the <em>eth0</em> interface for both Spoke Gateway 1 and Spoke Gateway 2 (i.e., <strong>‘-1’</strong>).</p>
-<figure class="align-center" id="id65">
+<figure class="align-center" id="id66">
 <a class="reference internal image-reference" href="../_images/lab5-reprogram02.png"><img alt="../_images/lab5-reprogram02.png" src="../_images/lab5-reprogram02.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 195 </span><span class="caption-text">eth0</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 196 </span><span class="caption-text">eth0</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The eth0 interface corresponds to the <em>Elastic Network Interface</em> (<strong>ENI</strong>).</p>
 <ul class="simple">
 <li><p>Please identify the <strong>ENIs</strong> for Spoke Gateway 1 and Spoke Gateway 2.</p></li>
 </ul>
-<figure class="align-center" id="id66">
+<figure class="align-center" id="id67">
 <a class="reference internal image-reference" href="../_images/lab5-reprogram102.png"><img alt="../_images/lab5-reprogram102.png" src="../_images/lab5-reprogram102.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 196 </span><span class="caption-text">eth0</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 197 </span><span class="caption-text">eth0</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, duplicate the tab in your web browser and then click on <strong>Instances</strong> in the left-hand navigation panel!</p>
-<figure class="align-center" id="id67">
+<figure class="align-center" id="id68">
 <a class="reference internal image-reference" href="../_images/lab5-reprogram104.png"><img alt="../_images/lab5-reprogram104.png" src="../_images/lab5-reprogram104.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 197 </span><span class="caption-text">Duplicate tab</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 198 </span><span class="caption-text">Duplicate tab</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id68">
+<figure class="align-center" id="id69">
 <a class="reference internal image-reference" href="../_images/lab5-reprogram105.png"><img alt="../_images/lab5-reprogram105.png" src="../_images/lab5-reprogram105.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 198 </span><span class="caption-text">Instances</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Instances</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;test1&quot;</span></code> instance, then select the <strong>Networking</strong> tab and then click on the <strong>Subnet ID</strong>!</p>
-<figure class="align-center" id="id69">
+<figure class="align-center" id="id70">
 <a class="reference internal image-reference" href="../_images/lab5-reprogram106.png"><img alt="../_images/lab5-reprogram106.png" src="../_images/lab5-reprogram106.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Subnet id</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 200 </span><span class="caption-text">Subnet id</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Scroll to the right until you identify the <strong>Route Table</strong> associated with the subnet you selected.</p>
-<figure class="align-center" id="id70">
+<figure class="align-center" id="id71">
 <a class="reference internal image-reference" href="../_images/lab5-reprogram108.png"><img alt="../_images/lab5-reprogram108.png" src="../_images/lab5-reprogram108.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 200 </span><span class="caption-text">rtb</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 201 </span><span class="caption-text">rtb</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1089,11 +1097,11 @@ document.write(`
 <li><p><strong>Port</strong>: <span style='color:#479608'>443</span></p></li>
 <li><p><strong>Interface</strong>: <span style='color:#479608'>Private</span></p></li>
 </ul>
-<figure class="align-center" id="id71">
+<figure class="align-center" id="id72">
 <a class="reference internal image-reference" href="../_images/lab5-flightpath.png"><img alt="../_images/lab5-flightpath.png" src="../_images/lab5-flightpath.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 201 </span><span class="caption-text">FlightPath config</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 202 </span><span class="caption-text">FlightPath config</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This will provide a <code class="docutils literal notranslate"><span class="pre">FlightPath</span></code> report showing how <strong><em>aws-us-east-1-spoke1-test1</em></strong> is connected with <strong><em>aws-us-east-2-spoke1-test1</em></strong>, displaying the path along with end-to-end latency.</p>
@@ -1101,11 +1109,11 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>After restarting the Spoke Gateway, you may notice some links still displayed in <span style='color:red'><strong>red</strong></span>. Please be patient and relaunch the report to see the same outcome as shown below.</p>
 </div>
-<figure class="align-center" id="id72">
+<figure class="align-center" id="id73">
 <a class="reference internal image-reference" href="../_images/lab5-flight2.png"><img alt="../_images/lab5-flight2.png" src="../_images/lab5-flight2.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 202 </span><span class="caption-text">FlightPath Report</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 203 </span><span class="caption-text">FlightPath Report</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Scroll down to get more details about:</p>
@@ -1118,10 +1126,10 @@ document.write(`
 <li><p>Routing tables</p></li>
 </ul>
 <p>You can also download the entire report in pdf format by clicking the <strong>PDF icon</strong> at the top right corner:</p>
-<figure class="align-center" id="id73">
+<figure class="align-center" id="id74">
 <img alt="../_images/lab5-download.png" src="../_images/lab5-download.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 203 </span><span class="caption-text">FlightPath Report PDF</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 204 </span><span class="caption-text">FlightPath Report PDF</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1135,11 +1143,11 @@ document.write(`
 <p>You can modify the <ins>Gateway to Controller Communication timer</ins> directly from the CoPilot. Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Settings &gt; Gateway to Controller Communication</strong> and change the <code class="docutils literal notranslate"><span class="pre">Keep</span> <span class="pre">Alive</span> <span class="pre">Speed</span></code> from <strong><em>medium</em></strong> (default) to <strong><em>fast</em></strong>.</p>
 <p>Then <ins>repeat</ins> the experiment carried out earlier!</p>
 </div>
-<figure class="align-center" id="id74">
+<figure class="align-center" id="id75">
 <a class="reference internal image-reference" href="../_images/lab5-keepalive.png"><img alt="../_images/lab5-keepalive.png" src="../_images/lab5-keepalive.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 204 </span><span class="caption-text">Keep Alive Speed</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 205 </span><span class="caption-text">Keep Alive Speed</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1150,11 +1158,11 @@ document.write(`
 <p>The test instances in <strong><em>aws-us-east-1-spoke1</em></strong> are not able to communicate with the test instances in GCP or in Azure.</p>
 </div>
 <p>You can verify this in the Gateway Routing Table under <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; Gateway Routes &gt; aws-us-east-1-transit</strong>. You will not see the GCP Spoke route of <strong><em>172.16.1.0/24</em></strong>, nor will you see any routes from Azure.</p>
-<figure class="align-center" id="id75">
+<figure class="align-center" id="id76">
 <a class="reference internal image-reference" href="../_images/lab5-keepalive100.png"><img alt="../_images/lab5-keepalive100.png" src="../_images/lab5-keepalive100.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 205 </span><span class="caption-text">aws-us-east-1-transit’s rtb</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 206 </span><span class="caption-text">aws-us-east-1-transit’s rtb</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1172,35 +1180,35 @@ What would be needed to make those routes visible?</p></li>
 A type of networking design in which each node in the system has a circuit that connects it to every other node. While full mesh does make multiple redundant connections, this design keeps traffic going even if one node fails.</p>
 <p>Full-mesh design is useful in systems which are intransitive: A connects to B and B connects to C, but A cannot interact with C.</p>
 </div>
-<figure class="align-center" id="id76">
+<figure class="align-center" id="id77">
 <a class="reference internal image-reference" href="../_images/lab4-fullmesh01.png"><img alt="../_images/lab4-fullmesh01.png" src="../_images/lab4-fullmesh01.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 206 </span><span class="caption-text">Full-mesh: physical</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 207 </span><span class="caption-text">Full-mesh: physical</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id77">
+<figure class="align-center" id="id78">
 <a class="reference internal image-reference" href="../_images/lab4-fullmesh02.png"><img alt="../_images/lab4-fullmesh02.png" src="../_images/lab4-fullmesh02.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 207 </span><span class="caption-text">Full-mesh: logical</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 208 </span><span class="caption-text">Full-mesh: logical</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The Gateway in the <strong>AWS US-EAST-1</strong> region is exclusively peering with the Gateway in <strong>AWS US-EAST-2</strong>.</p>
-<figure class="align-center" id="id78">
+<figure class="align-center" id="id79">
 <a class="reference internal image-reference" href="../_images/lab4-fullmesh03.png"><img alt="../_images/lab4-fullmesh03.png" src="../_images/lab4-fullmesh03.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 208 </span><span class="caption-text">Single peering</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 209 </span><span class="caption-text">Single peering</span><a class="headerlink" href="#id79" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The Aviatrix Controller will not install a route to a Transit Gateway that is not directly peering with the originating Transit Gateway. Therefore, each Transit Gateway must learn about networks from its originating Transit Gateway.</p>
 <p>To avoid the limitations of full-mesh peering, which is not very scalable, you can utilize the <a class="reference external" href="https://docs.aviatrix.com/documentation/latest/getting-started/platform-overview/aviatrix-glossary.html#multi-tier-transit">multi-tier transit</a> feature.</p>
-<figure class="align-center" id="id79">
+<figure class="align-center" id="id80">
 <a class="reference internal image-reference" href="../_images/lab4-fullmesh04.png"><img alt="../_images/lab4-fullmesh04.png" src="../_images/lab4-fullmesh04.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 209 </span><span class="caption-text">Intransitive behaviour without Full-Mesh config.</span><a class="headerlink" href="#id79" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 210 </span><span class="caption-text">Intransitive behaviour without Full-Mesh config.</span><a class="headerlink" href="#id80" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
