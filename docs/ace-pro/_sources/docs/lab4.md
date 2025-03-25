@@ -786,6 +786,42 @@ align: center
 rtb
 ```
 
+Now click on the **Route Table ID**
+
+```{figure} images/lab5-reprogram208.png
+---
+height: 400px
+align: center
+---
+Route Table ID
+```
+
+Now check the VPC Router's Routing Table and identify the next hop (i.e. target) for the three RFC1918 routes injected by the **Aviatrix Controller**
+
+```{figure} images/lab5-reprogram209.png
+---
+height: 400px
+align: center
+---
+Route Table ID
+```
+
+```{figure} images/lab5-reprogram210.png
+---
+height: 400px
+align: center
+---
+RFC1918
+```
+
+```{figure} images/lab5-reprogram211.png
+---
+height: 400px
+align: center
+---
+ENI of the Spoke Gateway 1
+```
+
 ## 13. FlightPath
 
  Go to **CoPilot > Diagnostics > AppIQ > FlightPath**
