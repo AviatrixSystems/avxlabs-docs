@@ -20,6 +20,6 @@ Click this link to {Download}`ACE Prof Mod07 - Security <files/ACE Prof Mod07 - 
 
 Click this link to {Download}`ACE Prof Mod08 - Firewall Networks <files/ACE Prof Mod08 - Firewall Networks.pdf>`
 
-Click this link to {Download}`ACE Prof Mod09 - Site2Cloud & Edge <files/ACE Prof Mod09 - Site2Cloud & Edg.pdf>`
+Click this link to {Download}`ACE Prof Mod09 - Site2Cloud & Edge <files/ACE Prof Mod09 - Site2Cloud & Edge.pdf>`
 
 Click this link to {Download}`ACE Prof Mod10 - User VPN <files/ACE Prof Mod10 - User VPN.pdf>`
