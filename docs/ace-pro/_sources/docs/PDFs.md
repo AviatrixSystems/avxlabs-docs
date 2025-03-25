@@ -29,3 +29,5 @@ Click this link to {Download}`ACE Prof Mod12 - Distributed Cloud Firewall <files
 Click this link to {Download}`ACE Prof Mod13 - Iac and Network Insights API <files/ACE Prof Mod13 - Iac and Network Insights API.pdf>`
 
 Click this link to {Download}`ACE Prof Mod14 - RBAC <files/ACE Prof Mod14 - RBAC.pdf>`
+
+Click this link to {Download}`ACE Prof Mod15 - Lets Design Together <files/ACE Prof Mod15 - Lets Design Together.pdf>`
