@@ -23,3 +23,9 @@ Click this link to {Download}`ACE Prof Mod08 - Firewall Networks <files/ACE Prof
 Click this link to {Download}`ACE Prof Mod09 - Site2Cloud & Edge <files/ACE Prof Mod09 - Site2Cloud & Edge.pdf>`
 
 Click this link to {Download}`ACE Prof Mod10 - User VPN <files/ACE Prof Mod10 - User VPN.pdf>`
+
+Click this link to {Download}`ACE Prof Mod12 - Distributed Cloud Firewall <files/ACE Prof Mod12 - Distributed Cloud Firewall.pdf>`
+
+Click this link to {Download}`ACE Prof Mod13 - Iac and Network Insights API <files/ACE Prof Mod13 - Iac and Network Insights API.pdf>`
+
+Click this link to {Download}`ACE Prof Mod14 - RBAC <files/ACE Prof Mod14 - RBAC.pdf>`
