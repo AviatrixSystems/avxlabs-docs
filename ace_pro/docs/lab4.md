@@ -796,7 +796,7 @@ align: center
 Route Table ID
 ```
 
-Now check the VPC Router's Routing Table and identify the next hop (i.e. Target) for the three RFC1918 routes injected by the **Aviatrix Controller** and compare it with the ENI of the Spoke Gateway 1.
+Now check the VPC Router's Routing Table and identify the next hop (i.e. **Target**) for the three RFC1918 routes injected by the **Aviatrix Controller** and compare it with the ENI of the Spoke Gateway 1.
 
 ```{figure} images/lab5-reprogram209.png
 ---
@@ -814,7 +814,8 @@ align: center
 ENI
 ```
 
-Duplicate the current tab that you are in and then invoke the **EC2 service**.
+Duplicate the current tab and then open the **EC2** service.
+
 ```{figure} images/lab5-reprogram211.png
 ---
 height: 400px
@@ -848,6 +849,26 @@ Confirm by clicking on **Stop**, one more time.
 align: center
 ---
 Confirm the stop
+```
+
+Go back to the VPC Router's Routing Table page and keep refreshing the page. The Target will change from the ENI of the Spoke Gateway 1 to the ENI of the Spoke Gateway 2.
+
+```{figure} images/lab5-reprogram511.png
+---
+height: 400px
+align: center
+---
+ENI of the Spoke Gateway 1
+```
+
+After approximately _one minute_, the current ENI will switch to the ENI of the Spoke Gateway 2.
+
+```{figure} images/lab5-reprogram512.png
+---
+height: 400px
+align: center
+---
+ENI of the Spoke Gateway 2
 ```
 
 ## 13. FlightPath
