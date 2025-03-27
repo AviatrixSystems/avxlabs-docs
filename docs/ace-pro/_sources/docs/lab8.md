@@ -125,8 +125,19 @@ Fill in the attachment template using the following settings:
 - **Number of Tunnels**: <span style='color:#479608'>**Custom:**</span>
   - <span style='color:#479608'>**4**</span>
 
+Do not forget to click on **Save**.
+
+```{figure} images/lab8-edgeveryverynew02.png
+---
+align: center
+---
+Manage Gateway Attachment
+```
+
 ```{caution}
-Please make sure to select `"Attach over: Public Network.` .If you accidentally choose "Attach over: Private Network", the connection will not be established!
+Please make sure to select `"Attach over: Public Network`. 
+
+If you accidentally choose "_Attach over: Private Network_", the connection will not be established!
 ```{figure} images/lab8-edgeveryverynew.png
 ---
 align: center
