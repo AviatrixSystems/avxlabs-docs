@@ -125,6 +125,15 @@ Fill in the attachment template using the following settings:
 - **Number of Tunnels**: <span style='color:#479608'>**Custom:**</span>
   - <span style='color:#479608'>**4**</span>
 
+```{caution}
+Please make sure to select `"Attach over: Public Network.` .If you accidentally choose "Attach over: Private Network", the connection will not be established!
+```{figure} images/lab8-edgeveryverynew.png
+---
+align: center
+---
+Attach over PUBLIC Network
+```
+
 Do not forget to click on **Save**.
 
 ```{figure} images/lab8-edge11.png
