@@ -135,7 +135,7 @@ Manage Gateway Attachment
 ```
 
 ```{caution}
-Please make sure to select `"Attach over: Public Network`. 
+Please make sure to select `"Attach over: Public Network"`. 
 
 If you accidentally choose "_Attach over: Private Network_", the connection will not be established!
 ```{figure} images/lab8-edgeveryverynew.png
@@ -143,15 +143,6 @@ If you accidentally choose "_Attach over: Private Network_", the connection will
 align: center
 ---
 Attach over PUBLIC Network
-```
-
-Do not forget to click on **Save**.
-
-```{figure} images/lab8-edge11.png
----
-align: center
----
-Attachment creation template
 ```
 
 Wait for a bunch of seconds for the Aviatrix Controller to establish the attachment and then a message will pop up confirming that the operation has been accomplished, successfully!
