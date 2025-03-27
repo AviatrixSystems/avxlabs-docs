@@ -39,8 +39,6 @@ align: center
 Enable CostIQ
 ```
 
-Go to **Copilot > Administration > Billing > CostIQ** and click on the `"Enable CostIQ"` button.
-
 ```{warning}
 Refresh the web page, before proceeding with the next task!
 ```
