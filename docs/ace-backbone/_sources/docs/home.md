@@ -1,6 +1,6 @@
 # Welcome to ACE Cloud Backbone
 
-![ACE](../../docs/_logos/ace_backbone_banner.png)
+![ACE](../../docs/_logos/ace_backbone_banner.new.png)
 
 This Lab Guide will guide you through the different scenarios of how to build and manage multicloud backbone and hybrid connectivity.
 
