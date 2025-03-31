@@ -1,72 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
-    <meta name="robots" content="noindex, nofollow" />
-    <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviatrix</title>
+    <link rel="shortcut icon" href="./_logos/aviatrix-favicon-16.png">
+    <!-- Add prefers-color-scheme media query for theme detection -->
+    <style>
+        :root {
+            /* Light theme variables */
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #f5f7fa;
+            --border-color: #ddd;
+            --dev-color: #3498db;
+            --prod-color: #2ecc71;
+            --kubernetes-blue: #326CE5;
+            --text-color: #333;
+            --text-secondary: #666;
+            --background-color: #f5f7fa;
+            --card-background: #fff;
+            --section-header-bg: #f8f9fa;
+            --header-bg: #2c3e50;
+            --header-text: #fff;
+            --footer-bg: #fff;
+            --footer-text: #666;
+        }
 
-    <!-- Replace with your own title and description. -->
-    <title>avxlabs-docs</title>
-    <meta property="og:title" content="Aviatrix Labs Docs" />
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            line-height: 1.5;
+            font-size: 14px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-    <meta name="description" content="Aviatrix Labs Documentation">
-    <meta property="og:url" content="https://aviatrix.com" />
-    <link rel="icon" type="image/png" sizes="16x16" href="_logos/aviatrix-favicon-16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="_logos/aviatrix-favicon-32.png">
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-    <!-- Theme: Simple (light + dark) -->
-    <link rel="stylesheet" media="(prefers-color-scheme: dark)"
-        href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
-    <link rel="stylesheet" media="(prefers-color-scheme: light)"
-        href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-themeable/style.min.css"
-        type="text/css">
-    <!-- Custom theme styles -->
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 12px 0;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .left-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .right-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 132px;
+            margin-right: 12px;
+        }
+
+        .ace-logo {
+            height: 232px;
+            filter: brightness(1);
+            transition: filter 0.3s ease;
+        }
+
+        /* .badge-placeholder {
+            height: 18px;
+            width: 100%;
+            max-width: 160px;
+            background-color: var(--border-color);
+            border-radius: 3px;
+            margin: 0 auto;
+            animation: pulse 1.5s infinite;
+            transition: background-color 0.3s ease;
+        } */
+
+        /* @keyframes pulse {
+            0% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        } */
+
+        footer {
+            background-color: var(--footer-bg);
+            padding: 12px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--footer-text);
+            font-size: 0.8rem;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+
+            .logo-section {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .right-logo {
+                margin-top: 8px;
+            }
+
+            .controls-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .actions-container {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .refresh-info-container {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 5px;
+            }
+
+            .theme-toggle-label {
+                width: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div id="app"></div>
+    <header>
+        <div class="container header-content">
+            <div class="logo-section">
+                <div class="left-logo">
+                    <a href="https://aviatrix.com">
+                        <img src="./_logos/aviatrix-logo.png" alt="Aviatrix Logo" class="logo-image">
+                    </a>
+                </div>
+                <div class="right-logo">
+                    <a href="https://aviatrix.com/ace">
+                        <img src="./_logos/ace.png" alt="ACE Logo" class="ace-logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <script>
-        // Docsify Configuration (see https://docsify.js.org/#/configuration)
-        window.$docsify = {
-            // name: 'avxlabs-docs',
-            homepage: 'home.md',
-            // logo: './images/aviatrix-logo.svg',
-            // Sidebar Configuration
-            auto2top: true,
-            loadSidebar: false,
-            hideSidebar: true,
-            // maxLevel: 0,
-            // // Set subMaxLevel to 0 to remove automatic display of page table of contents (TOC) in Sidebar
-            // subMaxLevel: 2,
-
-            // Search Plugin Configuration
-            //   search: {
-            //     placeholder: 'Type to search',
-            //     noData: 'No matches found.',
-            //     // Headline depth, 1 - 6
-            //     depth: 2,
-            //   },
-        };
-    </script>
-    <!-- Required -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-
-    <!-- docsify-themeable -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
-
-    <!-- Recommended -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
-
-    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-markdown.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-nginx.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-    </script>
+    <footer>
+        <div class="container">
+            <p>Avxlabs Documentation | Aviatrix Systems, Inc</p>
+        </div>
+    </footer>
 </body>
 
 </html>
