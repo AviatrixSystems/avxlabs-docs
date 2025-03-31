@@ -1,4 +1,4 @@
-![ACE](../../docs/_logos/ace_operations_banner.png)
+![ACE](../../docs/_logos/ace_operations_banner.new.png)
 # Welcome to ACE Operations Lab
 
 ## 1. LAB TOPOLOGY
