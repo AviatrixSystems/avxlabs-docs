@@ -13,3 +13,9 @@ Click this link to {Download}`ACE-Cloud-Ops - 03 - FireNet PDF<files/ACE-Cloud-O
 Click this link to {Download}`ACE-Cloud-Ops - 04 - Routes Manipulation and NAT PDF<files/ACE-Cloud-Ops - 04 - Routes Manipulation and NAT.pdf>`
 
 Click this link to {Download}`ACE-Cloud-Ops - 05 - Site2Cloud PDF<files/ACE-Cloud-Ops - 05 - Site2Cloud.pdf>`
+
+Click this link to {Download}`ACE-Cloud-Ops - 06 - Aviatrix Cloud Firewall PDF<files/ACE-Cloud-Ops - 06 - Aviatrix Cloud Firewall.pdf>`
+
+Click this link to {Download}`ACE-Cloud-Ops - 07 - Distributed Cloud Firewall PDF<files/ACE-Cloud-Ops - 07 - Distributed Cloud Firewall.pdf>`
+
+Click this link to {Download}`ACE-Cloud-Ops - 08 - Operational Best Practices PDF<files/ACE-Cloud-Ops - 08 - Operational Best Practices.pdf>`
