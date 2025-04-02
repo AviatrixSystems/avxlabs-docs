@@ -258,6 +258,10 @@ align: center
 New inbound rule: allow port 80
 ```
 
+```{caution}
+Please use the specific CIDR 10.0.0.0/8 instead of 0.0.0.0/0 to ensure precision in the Security Group rule!
+```
+
 Now relaunch the **curl** command from the **_BU1 Frontend_** instance towards the private IP of the **_BU2 Mobile App_**.
 
 Curl command will work this time.
