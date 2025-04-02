@@ -248,7 +248,7 @@ align: center
 Add a new rule
 ```
 
-Create the required inbound rule (i.e. _"allow **http** traffic from anywhere"_) as depicted below and then click on the `"Save rules"` button.
+Create the required inbound rule (i.e. _"allow **http** traffic from 10.0.0.0/8"_) as depicted below and then click on the `"Save rules"` button.
 
 ```{figure} images/lab2-sg5.png
 ---
