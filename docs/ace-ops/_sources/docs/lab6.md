@@ -200,7 +200,16 @@ align: center
 S2C is finally UP
 ```
 
-- **SSH** to the **OnPrem partner** router and issue the following command, to confirm that the Tunnel is up/up:
+- **SSH** to the **OnPrem partner** router and issue the following command, to confirm that the Tunnel is up/up.
+
+```{tip}
+Access your personal POD Portal, locate the `"SSH widget for Cisco CSR"`, and use the provided credentials to connect to the CSR router as an On-Prem Partner.
+```{figure} images/lab6-csrrouter.png
+---
+align: center
+---
+Cisco Router
+```
 
 ```bash
 show ip int brief
