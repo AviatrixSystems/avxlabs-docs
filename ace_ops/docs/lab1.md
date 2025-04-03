@@ -94,7 +94,7 @@ Managed VPCs only
 ```
 
 ```{caution}
-Refer **always** to your personal POD for the IP addresses. The IP addresses visible on the subsequent screenshots are just examples taken from a different POD, used for creating the lab guides!
+**Always** refer to your personal POD for the correct IP addresses. The IP addresses shown in the following screenshots <ins>are merely examples</ins> taken from a different POD and are used solely for the creation of the lab guides.
 ```
 
 There are **two** methods for SSH to any instances inside the multicloud infrastructure of this lab:
@@ -217,6 +217,16 @@ DNS Names
 - Verify connectivity between clients **within** the same BU:
     - SSH to the **BU1 Frontend** in AWS.
     - From BU1 Frontend ping the <ins>private IP address</ins> of the **BU1 Analytics** in GCP.
+
+```{important}
+The credentials for accessing the EC2 instances and VMs can be found on your personal POD Portal, within the dedicated widget labeled `"SSH for Test Instances"`.
+```{figure} images/lab1-widget.png
+---
+height: 400px
+align: center
+---
+SSH credentials
+```
 
 Ping and SSH will be successful **within** the same network domain!
 
