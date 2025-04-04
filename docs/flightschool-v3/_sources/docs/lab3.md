@@ -7,7 +7,6 @@ On-Prem to Cloud demands high throughput, and threats mandate securing the data 
 
 ```{figure} images-lab3/1.png
 ---
-height: 400px
 align: center
 ---
 Lab Overview
@@ -18,7 +17,6 @@ We will be focusing on the right side for this activity. This activity will incl
 
 ```{figure} images-lab3/2.png
 ---
-height: 400px
 align: center
 ---
 Topology View
@@ -28,7 +26,6 @@ Servers on these 3 sites are trying to establish connectivity between each other
 
 ```{figure} images-lab3/3.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -36,7 +33,6 @@ Edge Gatus Dashboard
 
 ```{figure} images-lab3/4.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard
@@ -44,7 +40,6 @@ Azure Gatus Dashboard
 
 ```{figure} images-lab3/5.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
@@ -57,7 +52,6 @@ Go to `Cloud Fabric -> Gateways -> Transit Gateways` and then choose either of t
 
 ```{figure} images-lab3/6.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Transit Gateway Section
@@ -68,7 +62,6 @@ Click `+Attachment` button.
 
 ```{figure} images-lab3/7.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Transit Gateway Connection
@@ -77,7 +70,6 @@ Choose the transit gateway that needs to be connected, and click Save
 
 ```{figure} images-lab3/8.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Transit Gateway Connection
@@ -86,7 +78,6 @@ Progress can be monitored in the notifications page.
 
 ```{figure} images-lab3/9.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Transit Gateway Connection Progress
@@ -97,7 +88,6 @@ Topology will start building the connection and once it’s completed it will mo
 
 ```{figure} images-lab3/10.png
 ---
-height: 400px
 align: center
 ---
 Topology View while building the connection
@@ -105,7 +95,6 @@ Topology View while building the connection
 
 ```{figure} images-lab3/11.png
 ---
-height: 400px
 align: center
 ---
 Topology View after the connection is built
@@ -115,7 +104,6 @@ After the connection is established and the routes are exchanged, the network wi
 
 ```{figure} images-lab3/12.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
@@ -124,7 +112,6 @@ AWS Gatus Dashboard
 
 ```{figure} images-lab3/13.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard
@@ -134,7 +121,6 @@ Route tables on the transit gateways can also be checked in `Cloud Fabric->Gatew
 
 ```{figure} images-lab3/14.png
 ---
-height: 400px
 align: center
 ---
 Transit Gateway Routing Tables
@@ -149,7 +135,6 @@ Go to `Cloud Fabric -> Hybrid Cloud -> Edge Gateways` and then choose the edge g
 
 ```{figure} images-lab3/15.png
 ---
-height: 400px
 align: center
 ---
 Edge Gateway Configuration
@@ -161,7 +146,6 @@ Choose the transit gateway that needs to be connected and click Save. Multiple c
 
 ```{figure} images-lab3/16.png
 ---
-height: 400px
 align: center
 ---
 Edge to Cloud Connectivity
@@ -171,7 +155,6 @@ Progress can be monitored in the notifications page.
 
 ```{figure} images-lab3/17.png
 ---
-height: 400px
 align: center
 ---
 Edge to Cloud Connectivity Progress
@@ -181,7 +164,6 @@ Topology will start building the connection and once it’s completed it will mo
 
 ```{figure} images-lab3/18.png
 ---
-height: 400px
 align: center
 ---
 Topology View
@@ -191,7 +173,6 @@ Route tables on the transit gateways can also be observed in `Cloud Fabric->Hybr
 
 ```{figure} images-lab3/19.png
 ---
-height: 400px
 align: center
 ---
 Edge Gateway Routes
@@ -201,7 +182,6 @@ After the connection is established and the routes are exchanged, the network wi
 
 ```{figure} images-lab3/20.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -209,7 +189,6 @@ Edge Gatus Dashboard
 
 ```{figure} images-lab3/21.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard
@@ -217,7 +196,6 @@ Azure Gatus Dashboard
 
 ```{figure} images-lab3/22.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
@@ -235,7 +213,6 @@ Go to `Cloud Fabric -> Hybrid Cloud -> Edge Gateways` and choose the attachment 
 
 ```{figure} images-lab3/23.png
 ---
-height: 400px
 align: center
 ---
 Edge Gateway Connections
@@ -245,7 +222,6 @@ Change can be observed from topology map, route table.
 
 ```{figure} images-lab3/24.png
 ---
-height: 400px
 align: center
 ---
 Topology View
@@ -253,7 +229,6 @@ Topology View
 
 ```{figure} images-lab3/25.png
 ---
-height: 400px
 align: center
 ---
 Edge Gateway Routes
@@ -264,7 +239,6 @@ And as the result, there won’t be a problem with the traffic, because now the 
 
 ```{figure} images-lab3/26.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -272,7 +246,6 @@ Edge Gatus Dashboard
 
 ```{figure} images-lab3/27.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard
@@ -280,7 +253,6 @@ Azure Gatus Dashboard
 
 ```{figure} images-lab3/28.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
@@ -290,7 +262,6 @@ Now recover the connectivity back and wait until the connectivity is established
 
 ```{figure} images-lab3/29.png
 ---
-height: 400px
 align: center
 ---
 Recovery of Edge Gateway Connection
@@ -305,7 +276,6 @@ Go to `Cloud Fabric -> Hybrid Cloud -> Edge Gateways` and choose the attachment 
 
 ```{figure} images-lab3/30.png
 ---
-height: 400px
 align: center
 ---
 Edge Gateway Connections
@@ -315,7 +285,6 @@ Change can be observed from topology map, route table.
 
 ```{figure} images-lab3/31.png
 ---
-height: 400px
 align: center
 ---
 Topology View
@@ -323,7 +292,6 @@ Topology View
 
 ```{figure} images-lab3/32.png
 ---
-height: 400px
 align: center
 ---
 Edge Gateway Routes
@@ -333,7 +301,6 @@ And as the result, there won’t be a problem with the traffic, because now the 
 
 ```{figure} images-lab3/33.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -341,7 +308,6 @@ Edge Gatus Dashboard
 
 ```{figure} images-lab3/34.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard
@@ -349,7 +315,6 @@ Azure Gatus Dashboard
 
 ```{figure} images-lab3/35.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
@@ -360,7 +325,6 @@ Now recover the connectivity back and wait until the connectivity is established
 
 ```{figure} images-lab3/36.png
 ---
-height: 400px
 align: center
 ---
 Recovery of Edge Gateway Connection
@@ -374,7 +338,6 @@ Go to `Cloud Fabric -> Gateways-> Transit Gateways` and choose the attachment an
 
 ```{figure} images-lab3/37.png
 ---
-height: 400px
 align: center
 ---
 Transit Gateway Connections
@@ -384,7 +347,6 @@ Change can be observed from topology map, route table.
 
 ```{figure} images-lab3/38.png
 ---
-height: 400px
 align: center
 ---
 Topology View
@@ -392,7 +354,6 @@ Topology View
 
 ```{figure} images-lab3/39.png
 ---
-height: 400px
 align: center
 ---
 Transit Gateway Routes
@@ -402,7 +363,6 @@ And as the result, there will be a problem with the traffic, because as that wil
 
 ```{figure} images-lab3/40.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
@@ -411,7 +371,6 @@ AWS Gatus Dashboard
 
 ```{figure} images-lab3/41.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard
@@ -419,7 +378,6 @@ Azure Gatus Dashboard
 
 ```{figure} images-lab3/42.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -431,7 +389,6 @@ Go to Cloud Fabric -> Hybrid Cloud-> Edge Gateways and select the gateway, then 
 
 ```{figure} images-lab3/43.png
 ---
-height: 400px
 align: center
 ---
 Enabling Transitive Routing on Edge Gateway
@@ -441,7 +398,6 @@ Once this option is enabled, the routing will re-converge and the traffic betwee
 
 ```{figure} images-lab3/44.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -449,7 +405,6 @@ Edge Gatus Dashboard
 
 ```{figure} images-lab3/45.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard
@@ -457,7 +412,6 @@ Azure Gatus Dashboard
 
 ```{figure} images-lab3/46.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
@@ -465,7 +419,6 @@ AWS Gatus Dashboard
 
 ```{figure} images-lab3/47.png
 ---
-height: 400px
 align: center
 ---
 Transit Gateway Routes
@@ -486,7 +439,6 @@ Go to `Cloud Fabric -> Hybrid Cloud -> Edge Gateways` and choose the attachment 
 
 ```{figure} images-lab3/48.png
 ---
-height: 400px
 align: center
 ---
 Edge Gateway Connection
@@ -497,7 +449,6 @@ Change can be observed from topology map, route table.
 
 ```{figure} images-lab3/49.png
 ---
-height: 400px
 align: center
 ---
 Topology View
@@ -505,7 +456,6 @@ Topology View
 
 ```{figure} images-lab3/50.png
 ---
-height: 400px
 align: center
 ---
 Edge Gateway Routes
@@ -515,7 +465,6 @@ And as the result, there won’t be a problem with the traffic, because now the 
 
 ```{figure} images-lab3/51.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -527,7 +476,6 @@ IP block can be found from the transit-aws gateway’s Gateway routes section, a
 
 ```{figure} images-lab3/52.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Transit Gateway routes
@@ -536,7 +484,6 @@ Now we will go ahead to the connection between the transit gateways and exclude 
 
 ```{figure} images-lab3/53.png
 ---
-height: 400px
 align: center
 ---
 IP Block Filtering
@@ -545,7 +492,6 @@ And as the result, Traffic between Edge and Azure will stop flowing while the tr
 
 ```{figure} images-lab3/54.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -553,7 +499,6 @@ Edge Gatus Dashboard
 
 ```{figure} images-lab3/55.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard
@@ -562,7 +507,6 @@ Azure Gatus Dashboard
 
 ```{figure} images-lab3/56.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
@@ -579,7 +523,6 @@ Go to `Networking->Network Segmentation->Network Domains`, then select `Transit 
 
 ```{figure} images-lab3/57.png
 ---
-height: 400px
 align: center
 ---
 Enabling Network Segmentation for Aviatrix Transit Gateways
@@ -604,7 +547,6 @@ For this deployment, we will create 3 network domains, and separate Azure, AWS, 
 
 ```{figure} images-lab3/58.png
 ---
-height: 400px
 align: center
 ---
 AWS Network Domain Creation and Association
@@ -612,7 +554,6 @@ AWS Network Domain Creation and Association
 
 ```{figure} images-lab3/59.png
 ---
-height: 400px
 align: center
 ---
 Edge Network Domain Creation and Association
@@ -620,7 +561,6 @@ Edge Network Domain Creation and Association
 
 ```{figure} images-lab3/60.png
 ---
-height: 400px
 align: center
 ---
 Azure Network Domain Creation and Association
@@ -630,7 +570,6 @@ After this step, all the communication between Servers will fail, as now we sepa
 
 ```{figure} images-lab3/61.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
@@ -638,7 +577,6 @@ AWS Gatus Dashboard
 
 ```{figure} images-lab3/62.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard
@@ -646,7 +584,6 @@ Azure Gatus Dashboard
 
 ```{figure} images-lab3/63.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -654,7 +591,6 @@ Edge Gatus Dashboard
 
 ```{figure} images-lab3/64.png
 ---
-height: 400px
 align: center
 ---
 Network Domains Topology
@@ -664,7 +600,6 @@ The newly created routing tables can be seen from the Gateway routes for each of
 
 ```{figure} images-lab3/65.png
 ---
-height: 400px
 align: center
 ---
 Network Domain Routing Tables on Aviatrix Transit Gateways
@@ -675,7 +610,6 @@ Now we are going to create connections Edge and Azure, and Edge and AWS, which s
 
 ```{figure} images-lab3/66.png
 ---
-height: 400px
 align: center
 ---
 Network Domain Connectivity
@@ -683,7 +617,6 @@ Network Domain Connectivity
 
 ```{figure} images-lab3/67.png
 ---
-height: 400px
 align: center
 ---
 Network Domain Connectivity Topology
@@ -693,7 +626,6 @@ Now the Edge Resources’ routes became visible and known to the Azure networkin
 
 ```{figure} images-lab3/68.png
 ---
-height: 400px
 align: center
 ---
 Gateway Routes in Network Domains on Aviatrix Transit Gateways
@@ -702,21 +634,18 @@ So, as you can see below, while Edge Resources can reach to both AWS and Azure r
 
 ```{figure} images-lab3/69.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
 ```
 ```{figure} images-lab3/70.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard
 ```
 ```{figure} images-lab3/71.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -730,7 +659,6 @@ Once you apply your selection, confirm the servers’ dashboards for communicati
 
 ```{figure} images-lab3/72.png
 ---
-height: 400px
 align: center
 ---
 Connectivity Recovered on Gatus Dashboards
@@ -763,7 +691,6 @@ We will define 3 SmartGroups for our test resources this time with another optio
 
 ```{figure} images-lab3/73.png
 ---
-height: 400px
 align: center
 ---
 SmartGroup Creation based on CIDRs for AWS-Resources
@@ -771,7 +698,6 @@ SmartGroup Creation based on CIDRs for AWS-Resources
 
 ```{figure} images-lab3/74.png
 ---
-height: 400px
 align: center
 ---
 SmartGroup Creation based on CIDRs for Azure-Resources
@@ -779,7 +705,6 @@ SmartGroup Creation based on CIDRs for Azure-Resources
 
 ```{figure} images-lab3/75.png
 ---
-height: 400px
 align: center
 ---
 SmartGroups are created for all 3 sites
@@ -792,7 +717,6 @@ We will now create the DCF rules to allow traffic flows shown below:
 
 ```{figure} images-lab3/76.png
 ---
-height: 400px
 align: center
 ---
 OnPrem to AWS Rules Creation
@@ -800,7 +724,6 @@ OnPrem to AWS Rules Creation
 
 ```{figure} images-lab3/77.png
 ---
-height: 400px
 align: center
 ---
 OnPrem to Azure Rules Creation
@@ -835,7 +758,6 @@ Below the results can be seen, while Edge can reach out to Azure and AWS resourc
 
 ```{figure} images-lab3/78.png
 ---
-height: 400px
 align: center
 ---
 DCF rules
@@ -843,7 +765,6 @@ DCF rules
 
 ```{figure} images-lab3/79.png
 ---
-height: 400px
 align: center
 ---
 Edge Gatus Dashboard
@@ -851,7 +772,6 @@ Edge Gatus Dashboard
 
 ```{figure} images-lab3/80.png
 ---
-height: 400px
 align: center
 ---
 AWS Gatus Dashboard
@@ -859,7 +779,6 @@ AWS Gatus Dashboard
 
 ```{figure} images-lab3/81.png
 ---
-height: 400px
 align: center
 ---
 Azure Gatus Dashboard

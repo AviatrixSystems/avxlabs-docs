@@ -8,7 +8,6 @@ In this lab, we are going to explore our lab environment. The diagram below show
 
 ```{figure} images-lab1/1.png
 ---
-height: 400px
 align: center
 ---
 Lab Overview
@@ -53,7 +52,6 @@ You should be able to log in to CoPilot. You should be able to view Topology by 
 
 ```{figure} images-lab1/3.png
 ---
-height: 400px
 align: center
 ---
 Topology View
@@ -63,7 +61,6 @@ Click on the `Managed` button on the right-hand side of the screen, for hiding t
 
 ```{figure} images-lab1/4.png
 ---
-height: 400px
 align: center
 ---
 Topology Filters
@@ -71,7 +68,6 @@ Topology Filters
 
 ```{figure} images-lab1/5.png
 ---
-height: 400px
 align: center
 ---
 Filter Descriptions
@@ -79,7 +75,6 @@ Filter Descriptions
 
 ```{figure} images-lab1/6.png
 ---
-height: 400px
 align: center
 ---
 Filtered Topology View
@@ -93,7 +88,6 @@ Have a look around at the troubleshooting tools here.
 
 ```{figure} images-lab1/7.png
 ---
-height: 400px
 align: center
 ---
 Diagnostic Tools
@@ -101,7 +95,6 @@ Diagnostic Tools
 
 ```{figure} images-lab1/8.png
 ---
-height: 400px
 align: center
 ---
 Diagnostic Tools
@@ -125,7 +118,6 @@ Accounts in AWS and Azure have already been onboarded, and you should see these 
 
 ```{figure} images-lab1/9.png
 ---
-height: 400px
 align: center
 ---
 Cloud Accounts
@@ -143,7 +135,6 @@ To view the connectivity dashboards, some Gatus servers are implemented in the s
 
 ```{figure} images-lab1/10.png
 ---
-height: 400px
 align: center
 ---
 Test Dashboard Access
@@ -151,7 +142,6 @@ Test Dashboard Access
 
 ```{figure} images-lab1/11.png
 ---
-height: 400px
 align: center
 ---
 Test Dashboard
@@ -159,7 +149,6 @@ Test Dashboard
 
 ```{figure} images-lab1/12.png
 ---
-height: 400px
 align: center
 ---
 Edge Test Dashboard
@@ -167,7 +156,6 @@ Edge Test Dashboard
 
 ```{figure} images-lab1/13.png
 ---
-height: 400px
 align: center
 ---
 Azure Test Dashboard
@@ -175,7 +163,6 @@ Azure Test Dashboard
 
 ```{figure} images-lab1/14.png
 ---
-height: 400px
 align: center
 ---
 AWS Test Dashboard
