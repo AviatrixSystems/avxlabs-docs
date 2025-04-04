@@ -12,7 +12,6 @@ Topology provides complete visibility to your cloud environment, including your 
 
 ```{figure} images-lab4/1.png
 ---
-height: 400px
 align: center
 ---
 Embedded Troubleshooting Tools
@@ -29,35 +28,30 @@ FlowIQ is the Aviatrix engine that processes the Netflow data and will enable yo
 
 ```{figure} images-lab4/2.png
 ---
-height: 400px
 align: center
 ---
 FlowIQ-Overview
 ```
 ```{figure} images-lab4/3.png
 ---
-height: 400px
 align: center
 ---
 FlowIQ-Trends
 ```
 ```{figure} images-lab4/4.png
 ---
-height: 400px
 align: center
 ---
 FlowIQ-Trends
 ```
 ```{figure} images-lab4/5.png
 ---
-height: 400px
 align: center
 ---
 FlowIQ-Records
 ```
 ```{figure} images-lab4/6.png
 ---
-height: 400px
 align: center
 ---
 FlowIQ-Flows
@@ -68,7 +62,6 @@ That section will help you to drill-down system performance data.
 
 ```{figure} images-lab4/7.png
 ---
-height: 400px
 align: center
 ---
 Performance Monitoring
@@ -80,7 +73,6 @@ Fun fact: It will take just couple of seconds to find out which resource is gene
 
 ```{figure} images-lab4/8.png
 ---
-height: 400px
 align: center
 ---
 Traffic Monitoring
@@ -88,7 +80,6 @@ Traffic Monitoring
 
 ```{figure} images-lab4/9.png
 ---
-height: 400px
 align: center
 ---
 Latency Monitoring
@@ -99,7 +90,6 @@ Here you can gather the system notifications, create custom alerts, export the d
 
 ```{figure} images-lab4/10.png
 ---
-height: 400px
 align: center
 ---
 System Alerts
@@ -110,7 +100,6 @@ Here, deep-dive views for the applications can be created as dashboard.
 
 ```{figure} images-lab4/11.png
 ---
-height: 400px
 align: center
 ---
 AppIQ
@@ -121,7 +110,6 @@ This is a very powerful troubleshooting tool, which will point-out exactly where
 
 ```{figure} images-lab4/12.png
 ---
-height: 400px
 align: center
 ---
 FlightPath
@@ -129,7 +117,6 @@ FlightPath
 
 ```{figure} images-lab4/13.png
 ---
-height: 400px
 align: center
 ---
 Troubleshooting the traffic path with FlightPath for denied traffic
@@ -140,7 +127,6 @@ But if you try for the same source and destination but with port TCP/80 which we
 
 ```{figure} images-lab4/14.png
 ---
-height: 400px
 align: center
 ---
 Troubleshooting the traffic path with FlightPath for allowed traffic
@@ -153,7 +139,6 @@ You can run networking diagnostic tools in every gateway, or you can dive into c
 
 ```{figure} images-lab4/15.png
 ---
-height: 400px
 align: center
 ---
 Diagnostic Tools
@@ -164,7 +149,6 @@ That section will allow you to check all routing tables, without having to go to
 
 ```{figure} images-lab4/16.png
 ---
-height: 400px
 align: center
 ---
 Cloud Routes
@@ -180,7 +164,6 @@ You can create upgrade plans, which system will apply automatically afterwards, 
 
 ```{figure} images-lab4/18.png
 ---
-height: 400px
 align: center
 ---
 Software Upgrade
@@ -192,7 +175,6 @@ That will help you to create views about the cloud resources’ usage and will e
 
 ```{figure} images-lab4/19.png
 ---
-height: 400px
 align: center
 ---
 CostIQ
@@ -203,7 +185,6 @@ This section will give detailed information and troubleshooting capabilities for
 
 ```{figure} images-lab4/20.png
 ---
-height: 400px
 align: center
 ---
 System Health
@@ -215,7 +196,6 @@ You will be able to upgrade and apply patches to controller and manage backup in
 
 ```{figure} images-lab4/21.png
 ---
-height: 400px
 align: center
 ---
 Controller Upgrade
@@ -227,7 +207,6 @@ You will be able to enable remote support, and upload log bundles directly from 
 
 ```{figure} images-lab4/22.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Support

@@ -16,7 +16,6 @@ First, we will go to Cloud Routes to find an IP Block. Search bar is very useful
 
 ```{figure} images-lab6/1.png
 ---
-height: 400px
 align: center
 ---
 Gateway Routes
@@ -35,7 +34,6 @@ Gateway Routes
 
 ```{figure} images-lab6/2.png
 ---
-height: 400px
 align: center
 ---
 VPC/VNET Creation via Aviatrix Platform
@@ -45,7 +43,6 @@ Once it’s created it will be reflected in the VPC/Vnets section.
 
 ```{figure} images-lab6/3.png
 ---
-height: 400px
 align: center
 ---
 Check the VPC/VNETs in the Aviatrix Platform
@@ -67,7 +64,6 @@ Now we will create a new transit gateway in this newly created VPC.
 
 ```{figure} images-lab6/4.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Transit Gateway Creation
@@ -77,7 +73,6 @@ This configuration will create the new transit gateway and will connect it to th
 
 ```{figure} images-lab6/5.png
 ---
-height: 400px
 align: center
 ---
 Topology view
@@ -89,7 +84,6 @@ Go to the `Cloud Fabric -> Gateways -> Transit Gateways` and choose the `transit
 
 ```{figure} images-lab6/6.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Spoke Gateway to Aviatrix Transit Gateway Connectivity
@@ -99,7 +93,6 @@ Here in the routing tables, you can see the `Egress-VPC1-GW` can reach out to re
 
 ```{figure} images-lab6/7.png
 ---
-height: 400px
 align: center
 ---
 Checking Gateway Routes 
@@ -151,7 +144,6 @@ We need to set 2 settings in here, first enabling Destination NAT for Mapped-NAT
 
 ```{figure} images-lab6/8.png
 ---
-height: 400px
 align: center
 ---
 Destination NAT Configuration for IP Overlapping Scenario
@@ -165,7 +157,6 @@ Now we need to apply a Source-NAT solution in here to translate the source IP to
 
 ```{figure} images-lab6/9.png
 ---
-height: 400px
 align: center
 ---
 Source NAT Configuration for IP Overlapping Scenario
@@ -179,7 +170,6 @@ We need to set 2 settings in here, first enabling Destination NAT for Mapped-NAT
 
 ```{figure} images-lab6/10.png
 ---
-height: 400px
 align: center
 ---
 Destination NAT Configuration for IP Overlapping Scenario
@@ -192,7 +182,6 @@ Now we need to apply a Source-NAT solution in here to translate the source IP to
 
 ```{figure} images-lab6/11.png
 ---
-height: 400px
 align: center
 ---
 Source NAT Configuration for IP Overlapping Scenario

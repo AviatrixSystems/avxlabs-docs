@@ -372,32 +372,28 @@ document.write(`
 <p>In this lab, we will focus on the Islands VPCs in the AWS deployment. Egress-VPC1 and Egress-VPC2. Egress-VPC3 will be excluded from this section, but we will re-visit in the last lab with infrastructure as a code coverage while discovering the terraform capabilities.</p>
 <p>The logical topology is shown as below, where we have 3 Island  VPCs with Gatus Servers which are reaching out to internet via NAT Gateway without any egress filtering with native capabilities.</p>
 <figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/15.png"><img alt="../_images/15.png" src="../_images/15.png" style="height: 400px;" />
-</a>
+<img alt="../_images/15.png" src="../_images/15.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">Lab Overview</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We will be working on the VPCs shown below in this hands-on lab.</p>
 <figure class="align-center" id="id2">
-<a class="reference internal image-reference" href="../_images/21.png"><img alt="../_images/21.png" src="../_images/21.png" style="height: 400px;" />
-</a>
+<img alt="../_images/21.png" src="../_images/21.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">VPC List</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The topology below will be visible after filtering with “unmanaged” button is toggled, as there are no Aviatrix gateways deployed in these VPCs, they are marked as unmanaged in the topology, once we start deploying the gateways they will be moved  to “managed” section.</p>
 <figure class="align-center" id="id3">
-<a class="reference internal image-reference" href="../_images/31.png"><img alt="../_images/31.png" src="../_images/31.png" style="height: 400px;" />
-</a>
+<img alt="../_images/31.png" src="../_images/31.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 17 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The VMs are the ones generating internet traffic, and our Aviatrix Nat Gateways  will control their egress traffic.</p>
 <figure class="align-center" id="id4">
-<a class="reference internal image-reference" href="../_images/41.png"><img alt="../_images/41.png" src="../_images/41.png" style="height: 400px;" />
-</a>
+<img alt="../_images/41.png" src="../_images/41.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Testing Virtual Machines</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
@@ -408,16 +404,14 @@ document.write(`
 <p>Now we will enable Aviatrix to replace CSP-native NAT  Gateways for egress and after that we will secure the Island VPC.
 Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric</span> <span class="pre">-&gt;</span> <span class="pre">Gateways</span></code> and select <code class="docutils literal notranslate"><span class="pre">Spoke</span> <span class="pre">Gateways</span></code>. As there are no Spoke Gateways deployed, that page will look empty.</p>
 <figure class="align-center" id="id5">
-<a class="reference internal image-reference" href="../_images/51.png"><img alt="../_images/51.png" src="../_images/51.png" style="height: 400px;" />
-</a>
+<img alt="../_images/51.png" src="../_images/51.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Aviatrix Spoke Gateway Configuration Page</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select <code class="docutils literal notranslate"><span class="pre">+Spoke</span> <span class="pre">Gateway</span></code> to deploy a new Aviatrix gateway. The required information to deploy the gateway can be collected from Cloud Assets section, as shown before. That already includes the Cloud, Region, and Availability Zone.</p>
 <figure class="align-center" id="id6">
-<a class="reference internal image-reference" href="../_images/61.png"><img alt="../_images/61.png" src="../_images/61.png" style="height: 400px;" />
-</a>
+<img alt="../_images/61.png" src="../_images/61.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Creating Aviatrix Spoke Gateway</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
@@ -455,47 +449,41 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 </div>
 <p>Aviatrix Spoke Gateway deployment progress can be monitored in the notifications section.</p>
 <figure class="align-center" id="id7">
-<a class="reference internal image-reference" href="../_images/71.png"><img alt="../_images/71.png" src="../_images/71.png" style="height: 400px;" />
-</a>
+<img alt="../_images/71.png" src="../_images/71.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">Aviatrix Gateway Creation Process</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After clicking <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">All</span> <span class="pre">Active</span> <span class="pre">Operations</span></code> button, it will load the                  	    <code class="docutils literal notranslate"><span class="pre">Monitor-&gt;Notifications-&gt;Tasks-&gt;Active</span> <span class="pre">Gateway</span> <span class="pre">Operations</span></code> page. After clicking the <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">Details</span></code> button page progress details can be seen.</p>
 <figure class="align-center" id="id8">
-<a class="reference internal image-reference" href="../_images/81.png"><img alt="../_images/81.png" src="../_images/81.png" style="height: 400px;" />
-</a>
+<img alt="../_images/81.png" src="../_images/81.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 22 </span><span class="caption-text">Aviatrix Gateway Creation Process</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Once the deployment is completed, it can be validated as shown below:</p>
 <figure class="align-center" id="id9">
-<a class="reference internal image-reference" href="../_images/91.png"><img alt="../_images/91.png" src="../_images/91.png" style="height: 400px;" />
-</a>
+<img alt="../_images/91.png" src="../_images/91.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 23 </span><span class="caption-text">Aviatrix Spoke Gateway</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>At this point we can also see the change occurred on Topology Map where our gateway in Egress-VPC-1 is visible, together with the Gatus-1 VM.</p>
 <figure class="align-center" id="id10">
-<a class="reference internal image-reference" href="../_images/101.png"><img alt="../_images/101.png" src="../_images/101.png" style="height: 400px;" />
-</a>
+<img alt="../_images/101.png" src="../_images/101.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">Topology View</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Even though the Aviatrix Spoke Gateway is deployed, it won’t automatically replace the existing deployment, so this will be a hitless and controlled deployment. As you can see below, the VPC Route Table for private table on Availability zone 2b is still forwarding the traffic to Nat Gateway</p>
 <figure class="align-center" id="id11">
-<a class="reference internal image-reference" href="../_images/111.png"><img alt="../_images/111.png" src="../_images/111.png" style="height: 400px;" />
-</a>
+<img alt="../_images/111.png" src="../_images/111.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 25 </span><span class="caption-text">Checking VPC Route Table with Aviatrix Spoke Gateway</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id12">
-<a class="reference internal image-reference" href="../_images/121.png"><img alt="../_images/121.png" src="../_images/121.png" style="height: 400px;" />
-</a>
+<img alt="../_images/121.png" src="../_images/121.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 26 </span><span class="caption-text">Checking VPC Route Table with AWS Console</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
@@ -533,16 +521,14 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 </table>
 </div>
 <figure class="align-center" id="id13">
-<a class="reference internal image-reference" href="../_images/12_1.png"><img alt="../_images/12_1.png" src="../_images/12_1.png" style="height: 400px;" />
-</a>
+<img alt="../_images/12_1.png" src="../_images/12_1.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 27 </span><span class="caption-text">Aviatrix Gateway Creation Process</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Once the Aviatrix Gateway deployment finishes, you can check the VPC/VNET route table and see the private route table points to CSP NAT Gateway.</p>
 <figure class="align-center" id="id14">
-<a class="reference internal image-reference" href="../_images/12_2.png"><img alt="../_images/12_2.png" src="../_images/12_2.png" style="height: 400px;" />
-</a>
+<img alt="../_images/12_2.png" src="../_images/12_2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 28 </span><span class="caption-text">Checking VPC Route Table with Aviatrix Spoke Gateway</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
@@ -561,24 +547,21 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 <h2>Lab 2.3.1 - Enable from the Gateway Settings<a class="headerlink" href="#lab-2-3-1-enable-from-the-gateway-settings" title="Link to this heading">#</a></h2>
 <p>Go to the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric</span> <span class="pre">-&gt;</span> <span class="pre">Gateways</span> <span class="pre">-&gt;</span> <span class="pre">Spoke</span> <span class="pre">Gateways</span></code> and choose the <code class="docutils literal notranslate"><span class="pre">Egress-VPC1-GW</span></code> from the list and click <code class="docutils literal notranslate"><span class="pre">Settings</span></code> of the <code class="docutils literal notranslate"><span class="pre">Spoke</span> <span class="pre">Gateway</span></code>. Then enable Network Address Translation <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Nat</span></code> and <code class="docutils literal notranslate"><span class="pre">Save</span></code>.</p>
 <figure class="align-center" id="id15">
-<a class="reference internal image-reference" href="../_images/131.png"><img alt="../_images/131.png" src="../_images/131.png" style="height: 400px;" />
-</a>
+<img alt="../_images/131.png" src="../_images/131.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 29 </span><span class="caption-text">Aviatrix Spoke Gateway Settings</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Route Table change can be validated directly from Aviatrix CoPilot as shown below. As shown below, the default route was showing the Nat gateway as next-hop, but now the next-hop is changed to Aviatrix Spoke Gateway.</p>
 <figure class="align-center" id="id16">
-<a class="reference internal image-reference" href="../_images/141.png"><img alt="../_images/141.png" src="../_images/141.png" style="height: 400px;" />
-</a>
+<img alt="../_images/141.png" src="../_images/141.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 30 </span><span class="caption-text">Checking VPC Route Table Change with Aviatrix Spoke Gateway</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>And as per the screenshot below, you can see the operation is hitless. This action was only achieved the NAT Gateway replacement, now you can basically remove the Nat Gateway from AWS for this VPC and start saving from upkeeping costs of CSP Nat Gateway.</p>
 <figure class="align-center" id="id17">
-<a class="reference internal image-reference" href="../_images/151.png"><img alt="../_images/151.png" src="../_images/151.png" style="height: 400px;" />
-</a>
+<img alt="../_images/151.png" src="../_images/151.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 31 </span><span class="caption-text">Egress-1 Test Dashboard</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
@@ -589,30 +572,26 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 <h2>Lab 2.3.2 - Enable from Security-&gt;Egress section<a class="headerlink" href="#lab-2-3-2-enable-from-security-egress-section" title="Link to this heading">#</a></h2>
 <p>When we go to Security-&gt;Egress-&gt;Egress VPC/VNET and click “Enable Local Egress on VPC/Vnets”, we can choose the VPC where we have deployed our gateway and save, Aviatrix copilot will enable the Source Nat on the relevant Aviatrix Gateway and will take over the traffic.</p>
 <figure class="align-center" id="id18">
-<a class="reference internal image-reference" href="../_images/15_1.png"><img alt="../_images/15_1.png" src="../_images/15_1.png" style="height: 400px;" />
-</a>
+<img alt="../_images/15_1.png" src="../_images/15_1.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 32 </span><span class="caption-text">Aviatrix Local Egress</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id19">
-<a class="reference internal image-reference" href="../_images/15_2.png"><img alt="../_images/15_2.png" src="../_images/15_2.png" style="height: 400px;" />
-</a>
+<img alt="../_images/15_2.png" src="../_images/15_2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 33 </span><span class="caption-text">Enabling Aviatrix Local Egress on the Aviatrix Spoke Gateway</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id20">
-<a class="reference internal image-reference" href="../_images/15_3.png"><img alt="../_images/15_3.png" src="../_images/15_3.png" style="height: 400px;" />
-</a>
+<img alt="../_images/15_3.png" src="../_images/15_3.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 34 </span><span class="caption-text">Confirm the Local Egress Enablement</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Once the Local egress is enabled , you can check the VPC/VNET route table and see the private route table points out to Aviatrix Spoke Gateway.</p>
 <figure class="align-center" id="id21">
-<a class="reference internal image-reference" href="../_images/15_4.png"><img alt="../_images/15_4.png" src="../_images/15_4.png" style="height: 400px;" />
-</a>
+<img alt="../_images/15_4.png" src="../_images/15_4.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 35 </span><span class="caption-text">Checking VPC Route Table Change with Aviatrix Spoke Gateway</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
@@ -627,23 +606,20 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 <p>Now we can continue embedding the egress security as the CSP Nat Gateways are replaced at this point.</p>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">Security-&gt;</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> and click begin button to start configuring firewall rules.</p>
 <figure class="align-center" id="id22">
-<a class="reference internal image-reference" href="../_images/16.png"><img alt="../_images/16.png" src="../_images/16.png" style="height: 400px;" />
-</a>
+<img alt="../_images/16.png" src="../_images/16.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 36 </span><span class="caption-text">Begin Using Distributed Cloud Firewall</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id23">
-<a class="reference internal image-reference" href="../_images/17.png"><img alt="../_images/17.png" src="../_images/17.png" style="height: 400px;" />
-</a>
+<img alt="../_images/17.png" src="../_images/17.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 37 </span><span class="caption-text">Monitoring traffic via Distributed Cloud Firewall</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>SmartGroups is a very flexible tool that will allow the systems to classify and group the resources for easy management. The Aviatrix platform can classify the resources based on multiple attributes  as shown below. For this lab, we will use CSP-tags.</p>
 <figure class="align-center" id="id24">
-<a class="reference internal image-reference" href="../_images/18.png"><img alt="../_images/18.png" src="../_images/18.png" style="height: 400px;" />
-</a>
+<img alt="../_images/18.png" src="../_images/18.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 38 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
@@ -651,8 +627,7 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 <p>Choose the Virtual Machine option and then tier and app tag. And click save that will create a Smart Group to group for the DCF.</p>
 <p>For the egress, aws-instance-1 and aws-instance-1b is sharing the same rules, so we can group them in a single SmartGroups.</p>
 <figure class="align-center" id="id25">
-<a class="reference internal image-reference" href="../_images/19.png"><img alt="../_images/19.png" src="../_images/19.png" style="height: 400px;" />
-</a>
+<img alt="../_images/19.png" src="../_images/19.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 39 </span><span class="caption-text">Test Virtual Machines</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
@@ -674,23 +649,20 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 </table>
 </div>
 <figure class="align-center" id="id26">
-<a class="reference internal image-reference" href="../_images/20.png"><img alt="../_images/20.png" src="../_images/20.png" style="height: 400px;" />
-</a>
+<img alt="../_images/20.png" src="../_images/20.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 40 </span><span class="caption-text">SmartGroup Creation</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After clicking the Preview button, all the included resources will be listed.</p>
 <figure class="align-center" id="id27">
-<a class="reference internal image-reference" href="../_images/211.png"><img alt="../_images/211.png" src="../_images/211.png" style="height: 400px;" />
-</a>
+<img alt="../_images/211.png" src="../_images/211.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 41 </span><span class="caption-text">SmartGroup Preview Resources</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id28">
-<a class="reference internal image-reference" href="../_images/22.png"><img alt="../_images/22.png" src="../_images/22.png" style="height: 400px;" />
-</a>
+<img alt="../_images/22.png" src="../_images/22.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 42 </span><span class="caption-text">SmartGroup Preview Resources</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
@@ -722,8 +694,7 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 </table>
 </div>
 <figure class="align-center" id="id29">
-<a class="reference internal image-reference" href="../_images/23.png"><img alt="../_images/23.png" src="../_images/23.png" style="height: 400px;" />
-</a>
+<img alt="../_images/23.png" src="../_images/23.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 43 </span><span class="caption-text">WebGroup Creation</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
@@ -767,56 +738,49 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 </table>
 </div>
 <figure class="align-center" id="id30">
-<a class="reference internal image-reference" href="../_images/24.png"><img alt="../_images/24.png" src="../_images/24.png" style="height: 400px;" />
-</a>
+<img alt="../_images/24.png" src="../_images/24.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 44 </span><span class="caption-text">Creating Egress Filtering Rule</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then click Commit to push the configuration to the system.</p>
 <figure class="align-center" id="id31">
-<a class="reference internal image-reference" href="../_images/25.png"><img alt="../_images/25.png" src="../_images/25.png" style="height: 400px;" />
-</a>
+<img alt="../_images/25.png" src="../_images/25.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 45 </span><span class="caption-text">Creating Egress Filtering Rule</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You might think, the system is not correctly blocking, that’s true, because to keep the environment controlled and safe, there is a Greenfield rule that allows the traffic. We will just go ahead and Turn Off the Enforcement for the Greenfield Rule, and commit.</p>
 <figure class="align-center" id="id32">
-<a class="reference internal image-reference" href="../_images/26.png"><img alt="../_images/26.png" src="../_images/26.png" style="height: 400px;" />
-</a>
+<img alt="../_images/26.png" src="../_images/26.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 46 </span><span class="caption-text">Disable Greenfield Rule</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now the rules will apply correctly, and the egress traffic will be limited to the selected domains only.</p>
 <figure class="align-center" id="id33">
-<a class="reference internal image-reference" href="../_images/27.png"><img alt="../_images/27.png" src="../_images/27.png" style="height: 400px;" />
-</a>
+<img alt="../_images/27.png" src="../_images/27.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 47 </span><span class="caption-text">Egress-1 Dashboard confirms egress filtering</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To troubleshoot issues or get more insights, you can also add a deny rule with low priority to see which traffic is denied.</p>
 <figure class="align-center" id="id34">
-<a class="reference internal image-reference" href="../_images/28.png"><img alt="../_images/28.png" src="../_images/28.png" style="height: 400px;" />
-</a>
+<img alt="../_images/28.png" src="../_images/28.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 48 </span><span class="caption-text">Adding an explicit Deny rule with logging enabled</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Below, you can see which traffic is allowed and which one is denied, that will match with the Gatus-1 dashboard reporting.</p>
 <figure class="align-center" id="id35">
-<a class="reference internal image-reference" href="../_images/29.png"><img alt="../_images/29.png" src="../_images/29.png" style="height: 400px;" />
-</a>
+<img alt="../_images/29.png" src="../_images/29.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 49 </span><span class="caption-text">Monitoring Explicit Deny rule in action</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The traffic can also be monitored from the FQDN Monitoring based on the VPC/Vnet selection as shown below.</p>
 <figure class="align-center" id="id36">
-<a class="reference internal image-reference" href="../_images/30.png"><img alt="../_images/30.png" src="../_images/30.png" style="height: 400px;" />
-</a>
+<img alt="../_images/30.png" src="../_images/30.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 50 </span><span class="caption-text">Monitoring via FQDN Monitoring section</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
@@ -824,15 +788,13 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 <p>For the next example, if we  want to keep the same domains reachable, we only need to add the new resources to the SmartGroups, and then the system will automatically apply the same rules to the traffic flow.</p>
 <p><code class="docutils literal notranslate"><span class="pre">aws-instance-2</span></code> resource has tag of <code class="docutils literal notranslate"><span class="pre">dev</span></code> as <code class="docutils literal notranslate"><span class="pre">environment</span></code>. Now we can just add one more resource type <code class="docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Machine</span></code>, and fill with required information, then in the preview, all included resources can be seen.</p>
 <figure class="align-center" id="id37">
-<a class="reference internal image-reference" href="../_images/37.png"><img alt="../_images/37.png" src="../_images/37.png" style="height: 400px;" />
-</a>
+<img alt="../_images/37.png" src="../_images/37.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 51 </span><span class="caption-text">Creating a new SmartGroup for Egress-2 instance</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id38">
-<a class="reference internal image-reference" href="../_images/38.png"><img alt="../_images/38.png" src="../_images/38.png" style="height: 400px;" />
-</a>
+<img alt="../_images/38.png" src="../_images/38.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 52 </span><span class="caption-text">Egress-2 Dashboard confirms egress filtering</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
@@ -843,8 +805,7 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 <p>In case you want to manage VM/Instance communication inside the same VPC/VNET, Aviatrix can help managing the security groups, that doesn’t require Source Nat to be enabled. As soon as the Aviatrix Gateway is deployed CoPilot can start orchestrating the SGs in the deployed VPC/Vnet.</p>
 <p>This feature first needs to be enabled in the required VPC/VNET. This feature requires planning, as all inbound traffic will be blocked, and Aviatrix DCF will be managing the rules in the SGs/NSGs.</p>
 <figure class="align-center" id="id39">
-<a class="reference internal image-reference" href="../_images/39.png"><img alt="../_images/39.png" src="../_images/39.png" style="height: 400px;" />
-</a>
+<img alt="../_images/39.png" src="../_images/39.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 53 </span><span class="caption-text">Enabling Security Group Orchestration for a selected VPC</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
@@ -888,15 +849,13 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 </table>
 </div>
 <figure class="align-center" id="id40">
-<a class="reference internal image-reference" href="../_images/40.png"><img alt="../_images/40.png" src="../_images/40.png" style="height: 400px;" />
-</a>
+<img alt="../_images/40.png" src="../_images/40.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 54 </span><span class="caption-text">SmartGroup Creation for Gatus-1 VM</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id41">
-<a class="reference internal image-reference" href="../_images/411.png"><img alt="../_images/411.png" src="../_images/411.png" style="height: 400px;" />
-</a>
+<img alt="../_images/411.png" src="../_images/411.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 55 </span><span class="caption-text">SmartGroup Creation for AWS-instances in Egress-1 VPC</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
@@ -978,8 +937,7 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 </table>
 </div>
 <figure class="align-center" id="id42">
-<a class="reference internal image-reference" href="../_images/42.png"><img alt="../_images/42.png" src="../_images/42.png" style="height: 400px;" />
-</a>
+<img alt="../_images/42.png" src="../_images/42.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 56 </span><span class="caption-text">Creating the DCF rules</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
@@ -987,8 +945,7 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 <p>Once both rules are created, commit the change and then you can see all the traffic will stop between these 2 instances other than TCP/80 traffic.</p>
 <p>This operation will be slower than the regular DCF operation as Aviatrix needs to push the changes through CSP APIs to deploy these rules.</p>
 <figure class="align-center" id="id43">
-<a class="reference internal image-reference" href="../_images/43.png"><img alt="../_images/43.png" src="../_images/43.png" style="height: 400px;" />
-</a>
+<img alt="../_images/43.png" src="../_images/43.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 57 </span><span class="caption-text">Egress-1 Dashboard confirms intra-vpc traffic filtering</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>

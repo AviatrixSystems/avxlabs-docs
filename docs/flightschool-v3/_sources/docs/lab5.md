@@ -9,7 +9,6 @@ Go to the Jumpbox and run Visual Studio Code. Click Open folder and select terra
 
 ```{figure} images-lab5/1.png
 ---
-height: 400px
 align: center
 ---
 Terraform Code 
@@ -19,7 +18,6 @@ Then click on the top right button to open terminal inside the application.
 
 ```{figure} images-lab5/2.png
 ---
-height: 400px
 align: center
 ---
 Opening Console in Visual Studio
@@ -42,7 +40,6 @@ This script only deploys the Aviatrix Spoke gateway to Egress-VPC-3, and doesnâ€
 
 ```{figure} images-lab5/3.png
 ---
-height: 400px
 align: center
 ---
 SmartGroup Creation for Egress-3 VPC
@@ -51,7 +48,6 @@ SmartGroup Creation for Egress-3 VPC
 
 ```{figure} images-lab5/4.png
 ---
-height: 400px
 align: center
 ---
 Confirming Egress filtering on egress-3 dashboard

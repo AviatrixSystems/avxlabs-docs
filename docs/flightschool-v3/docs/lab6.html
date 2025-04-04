@@ -375,8 +375,7 @@ Now we will look at the future and investigate what needs to be done to bring co
 <p>Our egress VPCs deployed in eu-west-2 region, so now we will create a new Transit VPC there so we can deploy a new Aviatrix Transit gateway for multi-region connectivity.</p>
 <p>First, we will go to Cloud Routes to find an IP Block. Search bar is very useful in this case.</p>
 <figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/116.png"><img alt="../_images/116.png" src="../_images/116.png" style="height: 400px;" />
-</a>
+<img alt="../_images/116.png" src="../_images/116.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 164 </span><span class="caption-text">Gateway Routes</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
@@ -405,16 +404,14 @@ Now we will look at the future and investigate what needs to be done to bring co
 </table>
 </div>
 <figure class="align-center" id="id2">
-<a class="reference internal image-reference" href="../_images/216.png"><img alt="../_images/216.png" src="../_images/216.png" style="height: 400px;" />
-</a>
+<img alt="../_images/216.png" src="../_images/216.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 165 </span><span class="caption-text">VPC/VNET Creation via Aviatrix Platform</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Once it’s created it will be reflected in the VPC/Vnets section.</p>
 <figure class="align-center" id="id3">
-<a class="reference internal image-reference" href="../_images/313.png"><img alt="../_images/313.png" src="../_images/313.png" style="height: 400px;" />
-</a>
+<img alt="../_images/313.png" src="../_images/313.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 166 </span><span class="caption-text">Check the VPC/VNETs in the Aviatrix Platform</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
@@ -458,16 +455,14 @@ Now we will look at the future and investigate what needs to be done to bring co
 </table>
 </div>
 <figure class="align-center" id="id4">
-<a class="reference internal image-reference" href="../_images/414.png"><img alt="../_images/414.png" src="../_images/414.png" style="height: 400px;" />
-</a>
+<img alt="../_images/414.png" src="../_images/414.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 167 </span><span class="caption-text">Aviatrix Transit Gateway Creation</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This configuration will create the new transit gateway and will connect it to the selected transit gateways, preparing the full mesh backbone deployment. Deploying Aviatrix Transit Gateway will take longer than the Aviatrix Spoke Gateways.</p>
 <figure class="align-center" id="id5">
-<a class="reference internal image-reference" href="../_images/512.png"><img alt="../_images/512.png" src="../_images/512.png" style="height: 400px;" />
-</a>
+<img alt="../_images/512.png" src="../_images/512.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 168 </span><span class="caption-text">Topology view</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
@@ -477,16 +472,14 @@ Now we will look at the future and investigate what needs to be done to bring co
 <h2>Lab 6.3 - Connecting Aviatrix Spoke Gateways to Aviatrix Transit Gateways<a class="headerlink" href="#lab-6-3-connecting-aviatrix-spoke-gateways-to-aviatrix-transit-gateways" title="Link to this heading">#</a></h2>
 <p>Go to the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric</span> <span class="pre">-&gt;</span> <span class="pre">Gateways</span> <span class="pre">-&gt;</span> <span class="pre">Transit</span> <span class="pre">Gateways</span></code> and choose the <code class="docutils literal notranslate"><span class="pre">transit-aws-egress</span></code>, then switch to Spoke Gateways connections section, and connect all 3 spoke gateways.</p>
 <figure class="align-center" id="id6">
-<a class="reference internal image-reference" href="../_images/612.png"><img alt="../_images/612.png" src="../_images/612.png" style="height: 400px;" />
-</a>
+<img alt="../_images/612.png" src="../_images/612.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 169 </span><span class="caption-text">Aviatrix Spoke Gateway to Aviatrix Transit Gateway Connectivity</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here in the routing tables, you can see the <code class="docutils literal notranslate"><span class="pre">Egress-VPC1-GW</span></code> can reach out to resources through Aviatrix Transit Gateway.</p>
 <figure class="align-center" id="id7">
-<a class="reference internal image-reference" href="../_images/712.png"><img alt="../_images/712.png" src="../_images/712.png" style="height: 400px;" />
-</a>
+<img alt="../_images/712.png" src="../_images/712.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 170 </span><span class="caption-text">Checking Gateway Routes</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
@@ -593,8 +586,7 @@ Now we will look at the future and investigate what needs to be done to bring co
 <p>Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric-&gt;Gateways-&gt;Spoke</span> <span class="pre">Gateways-&gt;Egress-VPC1-GW</span></code>, and select <code class="docutils literal notranslate"><span class="pre">Settings</span></code>.</p>
 <p>We need to set 2 settings in here, first enabling Destination NAT for Mapped-NAT feature to be activated, and second, we need to advertise the IP Block to the network while filtering the overlapping IP Block.</p>
 <figure class="align-center" id="id8">
-<a class="reference internal image-reference" href="../_images/84.png"><img alt="../_images/84.png" src="../_images/84.png" style="height: 400px;" />
-</a>
+<img alt="../_images/84.png" src="../_images/84.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 171 </span><span class="caption-text">Destination NAT Configuration for IP Overlapping Scenario</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
@@ -605,8 +597,7 @@ Now we will look at the future and investigate what needs to be done to bring co
 <h2><em>For traffic Aws-instance-1 and Aws-instance-1b in Egress-VPC-1 to Aws-instance in AWS-TGW</em><a class="headerlink" href="#for-traffic-aws-instance-1-and-aws-instance-1b-in-egress-vpc-1-to-aws-instance-in-aws-tgw" title="Link to this heading">#</a></h2>
 <p>Now we need to apply a Source-NAT solution in here to translate the source IP to the same IP Block, so the traffic can be translated on the Spoke Gateway and be delivered to the Aws-Instance in AWS-TGW.</p>
 <figure class="align-center" id="id9">
-<a class="reference internal image-reference" href="../_images/94.png"><img alt="../_images/94.png" src="../_images/94.png" style="height: 400px;" />
-</a>
+<img alt="../_images/94.png" src="../_images/94.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 172 </span><span class="caption-text">Source NAT Configuration for IP Overlapping Scenario</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
@@ -617,8 +608,7 @@ Now we will look at the future and investigate what needs to be done to bring co
 <p>Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric-&gt;Gateways-&gt;Spoke</span> <span class="pre">Gateways-&gt;Egress-VPC2-GW</span></code>, and select <code class="docutils literal notranslate"><span class="pre">Settings</span></code>.</p>
 <p>We need to set 2 settings in here, first enabling Destination NAT for Mapped-NAT feature to be activated, and second, we need to advertise the IP Block to the network while filtering the overlapping IP Block.</p>
 <figure class="align-center" id="id10">
-<a class="reference internal image-reference" href="../_images/104.png"><img alt="../_images/104.png" src="../_images/104.png" style="height: 400px;" />
-</a>
+<img alt="../_images/104.png" src="../_images/104.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 173 </span><span class="caption-text">Destination NAT Configuration for IP Overlapping Scenario</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
@@ -629,8 +619,7 @@ Now we will look at the future and investigate what needs to be done to bring co
 <h2><em>For traffic Aws-instance-2 in Egress-VPC-2 to Azure-instance in Azure-RS</em><a class="headerlink" href="#for-traffic-aws-instance-2-in-egress-vpc-2-to-azure-instance-in-azure-rs" title="Link to this heading">#</a></h2>
 <p>Now we need to apply a Source-NAT solution in here to translate the source IP to the same IP Block, so the traffic can be translated on the Spoke Gateway and be delivered to the <code class="docutils literal notranslate"><span class="pre">Aws-Instance</span></code> in <code class="docutils literal notranslate"><span class="pre">AWS-TGW</span></code>.</p>
 <figure class="align-center" id="id11">
-<a class="reference internal image-reference" href="../_images/117.png"><img alt="../_images/117.png" src="../_images/117.png" style="height: 400px;" />
-</a>
+<img alt="../_images/117.png" src="../_images/117.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 174 </span><span class="caption-text">Source NAT Configuration for IP Overlapping Scenario</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
