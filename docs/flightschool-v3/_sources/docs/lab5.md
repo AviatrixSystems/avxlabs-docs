@@ -37,6 +37,12 @@ To remove the Aviatrix gateway, issue the command below, and then the gateway wi
 
 This script only deploys the Aviatrix Spoke gateway to Egress-VPC-3, and doesn’t add any security, that’s why you can see the traffic is dropped to all egress domains. We can add the aws-instance-3 to the same SmartGroups as the others, and then the rules will automatically be applied. 
 
+We will edit the existing SmartGroup `SG-Egress-VPC-1-2` with the information as shown below in the table.
+
+| **Field** | **Value**           |
+| :-------- | :------------------ |
+| **Name**  | SG-Egress-VPC-1-2-3 |
+| **tier**  | db                  |
 
 ```{figure} images-lab5/3.png
 ---

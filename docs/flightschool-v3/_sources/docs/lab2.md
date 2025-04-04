@@ -368,6 +368,18 @@ Egress-1 Dashboard confirms egress filtering
 ```
 To troubleshoot issues or get more insights, you can also add a deny rule with low priority to see which traffic is denied. 
 
+| **Field**              | **Value**       |
+| :--------------------- | :-------------- |
+| **Name**               | DENY            |
+| **Source Groups**      | Anywhere        |
+| **Destination Groups** | Public Internet |
+| **WebGroups**          | All-Web         |
+| **Protocol**           | Any             |
+| **Action**             | Deny            |
+| **Enforcement**        | ON              |
+| **Logging**            | ON              |
+| **Priority**           | 50000           |
+
 ```{figure} images-lab2/28.png
 ---
 align: center
@@ -393,7 +405,12 @@ align: center
 Monitoring via FQDN Monitoring section
 ```
 
-For the next example, if we  want to keep the same domains reachable, we only need to add the new resources to the SmartGroups, and then the system will automatically apply the same rules to the traffic flow.
+For the next example, if we  want to keep the same domains reachable, we only need to add the new resources to the SmartGroups, and then the system will automatically apply the same rules to the traffic flow. We will edit the existing SmartGroup `SG-Egress-VPC-1` with the information as shown below in the table.
+
+| **Field**       | **Value**         |
+| :-------------- | :---------------- |
+| **Name**        | SG-Egress-VPC-1-2 |
+| **environment** | dev               |
 
 `aws-instance-2` resource has tag of `dev` as `environment`. Now we can just add one more resource type `Virtual Machine`, and fill with required information, then in the preview, all included resources can be seen. 
 
@@ -506,6 +523,8 @@ align: center
 ---
 Egress-1 Dashboard confirms intra-vpc traffic filtering
 ```
+
+`Turn on enforcement for Greenfield-Rule before proceeding to the next lab!`
 
 # End of Lab 2 
 
