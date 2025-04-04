@@ -56,7 +56,7 @@ Now we will create a new transit gateway in this newly created VPC.
 | **Name**                        | transit-aws-egress         |
 | **Account**                     | eu-west-2                  |
 | **Region**                      | 10.133.0.0/23              |
-| **VPC/Vnet**                    | Transit+Firenet            |
+| **VPC/Vnet**                    | transit-aws-egress         |
 | **Instance Size**               | c5n.xlarge                 |
 | **High Performance Encryption** | ON                         |
 | **Attach to Transit Gateways**  | transit-aws, transit-azure |
