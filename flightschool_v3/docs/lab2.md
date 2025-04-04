@@ -10,7 +10,6 @@ The logical topology is shown as below, where we have 3 Island  VPCs with Gatus 
 
 ```{figure} images-lab2/1.png
 ---
-height: 400px
 align: center
 ---
 Lab Overview
@@ -21,7 +20,6 @@ We will be working on the VPCs shown below in this hands-on lab.
 
 ```{figure} images-lab2/2.png
 ---
-height: 400px
 align: center
 ---
 VPC List
@@ -31,7 +29,6 @@ The topology below will be visible after filtering with “unmanaged” button i
 
 ```{figure} images-lab2/3.png
 ---
-height: 400px
 align: center
 ---
 Topology
@@ -41,7 +38,6 @@ The VMs are the ones generating internet traffic, and our Aviatrix Nat Gateways 
 
 ```{figure} images-lab2/4.png
 ---
-height: 400px
 align: center
 ---
 Testing Virtual Machines
@@ -54,7 +50,6 @@ Go to `Cloud Fabric -> Gateways` and select `Spoke Gateways`. As there are no Sp
 
 ```{figure} images-lab2/5.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Spoke Gateway Configuration Page
@@ -64,7 +59,6 @@ Select `+Spoke Gateway` to deploy a new Aviatrix gateway. The required informati
 
 ```{figure} images-lab2/6.png
 ---
-height: 400px
 align: center
 ---
 Creating Aviatrix Spoke Gateway
@@ -85,7 +79,6 @@ Aviatrix Spoke Gateway deployment progress can be monitored in the notifications
 
 ```{figure} images-lab2/7.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Gateway Creation Process
@@ -95,7 +88,6 @@ After clicking `Show All Active Operations` button, it will load the            
 
 ```{figure} images-lab2/8.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Gateway Creation Process
@@ -104,7 +96,6 @@ Once the deployment is completed, it can be validated as shown below:
 
 ```{figure} images-lab2/9.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Spoke Gateway
@@ -113,7 +104,6 @@ At this point we can also see the change occurred on Topology Map where our gate
 
 ```{figure} images-lab2/10.png
 ---
-height: 400px
 align: center
 ---
 Topology View
@@ -124,7 +114,6 @@ Even though the Aviatrix Spoke Gateway is deployed, it won’t automatically rep
 
 ```{figure} images-lab2/11.png
 ---
-height: 400px
 align: center
 ---
 Checking VPC Route Table with Aviatrix Spoke Gateway 
@@ -132,7 +121,6 @@ Checking VPC Route Table with Aviatrix Spoke Gateway
 
 ```{figure} images-lab2/12.png
 ---
-height: 400px
 align: center
 ---
 Checking VPC Route Table with AWS Console
@@ -152,7 +140,6 @@ Now repeat the same task above for deploying the second Aviatrix Spoke Gateway.
 
 ```{figure} images-lab2/12_1.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Gateway Creation Process
@@ -162,7 +149,6 @@ Once the Aviatrix Gateway deployment finishes, you can check the VPC/VNET route 
 
 ```{figure} images-lab2/12_2.png
 ---
-height: 400px
 align: center
 ---
 Checking VPC Route Table with Aviatrix Spoke Gateway 
@@ -182,7 +168,6 @@ Go to the `Cloud Fabric -> Gateways -> Spoke Gateways` and choose the `Egress-VP
 
 ```{figure} images-lab2/13.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Spoke Gateway Settings
@@ -192,7 +177,6 @@ Route Table change can be validated directly from Aviatrix CoPilot as shown belo
 
 ```{figure} images-lab2/14.png
 ---
-height: 400px
 align: center
 ---
 Checking VPC Route Table Change with Aviatrix Spoke Gateway 
@@ -202,7 +186,6 @@ And as per the screenshot below, you can see the operation is hitless. This acti
 
 ```{figure} images-lab2/15.png
 ---
-height: 400px
 align: center
 ---
 Egress-1 Test Dashboard
@@ -216,7 +199,6 @@ When we go to Security->Egress->Egress VPC/VNET and click “Enable Local Egress
 
 ```{figure} images-lab2/15_1.png
 ---
-height: 400px
 align: center
 ---
 Aviatrix Local Egress 
@@ -224,7 +206,6 @@ Aviatrix Local Egress
 
 ```{figure} images-lab2/15_2.png
 ---
-height: 400px
 align: center
 ---
 Enabling Aviatrix Local Egress on the Aviatrix Spoke Gateway
@@ -232,7 +213,6 @@ Enabling Aviatrix Local Egress on the Aviatrix Spoke Gateway
 
 ```{figure} images-lab2/15_3.png
 ---
-height: 400px
 align: center
 ---
 Confirm the Local Egress Enablement
@@ -242,7 +222,6 @@ Once the Local egress is enabled , you can check the VPC/VNET route table and se
 
 ```{figure} images-lab2/15_4.png
 ---
-height: 400px
 align: center
 ---
 Checking VPC Route Table Change with Aviatrix Spoke Gateway 
@@ -261,7 +240,6 @@ Go to `Security-> Distributed Cloud Firewall` and click begin button to start co
 
 ```{figure} images-lab2/16.png
 ---
-height: 400px
 align: center
 ---
 Begin Using Distributed Cloud Firewall
@@ -269,7 +247,6 @@ Begin Using Distributed Cloud Firewall
 
 ```{figure} images-lab2/17.png
 ---
-height: 400px
 align: center
 ---
 Monitoring traffic via Distributed Cloud Firewall
@@ -279,7 +256,6 @@ SmartGroups is a very flexible tool that will allow the systems to classify and 
 
 ```{figure} images-lab2/18.png
 ---
-height: 400px
 align: center
 ---
 SmartGroup
@@ -292,7 +268,6 @@ For the egress, aws-instance-1 and aws-instance-1b is sharing the same rules, so
 
 ```{figure} images-lab2/19.png
 ---
-height: 400px
 align: center
 ---
 Test Virtual Machines
@@ -305,7 +280,6 @@ Test Virtual Machines
 
 ```{figure} images-lab2/20.png
 ---
-height: 400px
 align: center
 ---
 SmartGroup Creation
@@ -315,7 +289,6 @@ After clicking the Preview button, all the included resources will be listed.
 
 ```{figure} images-lab2/21.png
 ---
-height: 400px
 align: center
 ---
 SmartGroup Preview Resources
@@ -323,7 +296,6 @@ SmartGroup Preview Resources
 
 ```{figure} images-lab2/22.png
 ---
-height: 400px
 align: center
 ---
 SmartGroup Preview Resources
@@ -341,7 +313,6 @@ Now we will go to WebGroups to define the domains that will be allowed to the re
 
 ```{figure} images-lab2/23.png
 ---
-height: 400px
 align: center
 ---
 WebGroup Creation
@@ -364,7 +335,6 @@ Here we will define the DCF rule to allow SG-Egress-VPC-1 resources to have spec
 
 ```{figure} images-lab2/24.png
 ---
-height: 400px
 align: center
 ---
 Creating Egress Filtering Rule
@@ -374,7 +344,6 @@ Then click Commit to push the configuration to the system.
 
 ```{figure} images-lab2/25.png
 ---
-height: 400px
 align: center
 ---
 Creating Egress Filtering Rule
@@ -384,7 +353,6 @@ You might think, the system is not correctly blocking, that’s true, because to
 
 ```{figure} images-lab2/26.png
 ---
-height: 400px
 align: center
 ---
 Disable Greenfield Rule
@@ -394,7 +362,6 @@ Now the rules will apply correctly, and the egress traffic will be limited to th
 
 ```{figure} images-lab2/27.png
 ---
-height: 400px
 align: center
 ---
 Egress-1 Dashboard confirms egress filtering
@@ -403,7 +370,6 @@ To troubleshoot issues or get more insights, you can also add a deny rule with l
 
 ```{figure} images-lab2/28.png
 ---
-height: 400px
 align: center
 ---
 Adding an explicit Deny rule with logging enabled 
@@ -413,7 +379,6 @@ Below, you can see which traffic is allowed and which one is denied, that will m
 
 ```{figure} images-lab2/29.png
 ---
-height: 400px
 align: center
 ---
 Monitoring Explicit Deny rule in action
@@ -423,7 +388,6 @@ The traffic can also be monitored from the FQDN Monitoring based on the VPC/Vnet
 
 ```{figure} images-lab2/30.png
 ---
-height: 400px
 align: center
 ---
 Monitoring via FQDN Monitoring section
@@ -435,7 +399,6 @@ For the next example, if we  want to keep the same domains reachable, we only ne
 
 ```{figure} images-lab2/37.png
 ---
-height: 400px
 align: center
 ---
 Creating a new SmartGroup for Egress-2 instance
@@ -443,7 +406,6 @@ Creating a new SmartGroup for Egress-2 instance
 
 ```{figure} images-lab2/38.png
 ---
-height: 400px
 align: center
 ---
 Egress-2 Dashboard confirms egress filtering
@@ -457,7 +419,6 @@ This feature first needs to be enabled in the required VPC/VNET. This feature re
 
 ```{figure} images-lab2/39.png
 ---
-height: 400px
 align: center
 ---
 Enabling Security Group Orchestration for a selected VPC
@@ -484,7 +445,6 @@ We need to create 2 new SmartGroups and 2 new DCF rules to demonstrate this lab.
 
 ```{figure} images-lab2/40.png
 ---
-height: 400px
 align: center
 ---
 SmartGroup Creation for Gatus-1 VM
@@ -492,7 +452,6 @@ SmartGroup Creation for Gatus-1 VM
 
 ```{figure} images-lab2/41.png
 ---
-height: 400px
 align: center
 ---
 SmartGroup Creation for AWS-instances in Egress-1 VPC
@@ -530,7 +489,6 @@ SmartGroup Creation for AWS-instances in Egress-1 VPC
 
 ```{figure} images-lab2/42.png
 ---
-height: 400px
 align: center
 ---
 Creating the DCF rules
@@ -544,7 +502,6 @@ This operation will be slower than the regular DCF operation as Aviatrix needs t
 
 ```{figure} images-lab2/43.png
 ---
-height: 400px
 align: center
 ---
 Egress-1 Dashboard confirms intra-vpc traffic filtering
