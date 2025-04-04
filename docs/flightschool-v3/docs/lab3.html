@@ -672,7 +672,7 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 </figcaption>
 </figure>
 <p>But that doesn’t mean Aviatrix is not coming up with a solution. In case of an urgent resolution requirement for this issue, edge gateway can provide connectivity to other cloud resources and relay the traffic with a small configuration change.
-Go to Cloud Fabric -&gt; Hybrid Cloud-&gt; Edge Gateways and select the gateway, then click to the settings and enable Transitive Routing.</p>
+Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric</span> <span class="pre">-&gt;</span> <span class="pre">Hybrid</span> <span class="pre">Cloud-&gt;</span> <span class="pre">Edge</span> <span class="pre">Gateways</span></code> and select the <code class="docutils literal notranslate"><span class="pre">aviatrix-edge-1</span></code> gateway, then click to the settings and enable <code class="docutils literal notranslate"><span class="pre">Transitive</span> <span class="pre">Routing</span></code>.</p>
 <figure class="align-center" id="id43">
 <img alt="../_images/431.png" src="../_images/431.png" />
 <figcaption>
@@ -711,7 +711,7 @@ Also remove the transitive routing configuration from the Edge Gateway.</p>
 <h2>Lab 3.4 - Route Filtering<a class="headerlink" href="#lab-3-4-route-filtering" title="Link to this heading">#</a></h2>
 <p>In case there is a business need to not allow routes to exchange in between Aviatrix Transit Gateways. For example, you have an on-prem site, but you want the on-prem to stay in a single region due to data protection law such as GDPR. Then this rule can be excluded on the link between the transits so the route can’t converge, and the traffic will stop flowing.</p>
 <p>For this example, we will destroy the connection between on-prem and Azure. But the aim is not to allow traffic to flow from Azure to On-Prem.</p>
-<p>Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric</span> <span class="pre">-&gt;</span> <span class="pre">Hybrid</span> <span class="pre">Cloud</span> <span class="pre">-&gt;</span> <span class="pre">Edge</span> <span class="pre">Gateways</span></code> and choose the attachment and delete the azure connection from the corner and save.</p>
+<p>Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric</span> <span class="pre">-&gt;</span> <span class="pre">Hybrid</span> <span class="pre">Cloud</span> <span class="pre">-&gt;</span> <span class="pre">Edge</span> <span class="pre">Gateways</span></code> and choose the attachment and delete the <code class="docutils literal notranslate"><span class="pre">azure</span> <span class="pre">connection</span></code> from the corner and save.</p>
 <figure class="align-center" id="id48">
 <img alt="../_images/48.png" src="../_images/48.png" />
 <figcaption>
@@ -739,7 +739,7 @@ Also remove the transitive routing configuration from the Edge Gateway.</p>
 </figcaption>
 </figure>
 <p>But this doesn’t allow us to achieve the traffic to drop. So now we will filter the on-prem IP-block on the link between transit gateways, then the traffic from On-Prem to Azure should fail.</p>
-<p>IP block can be found from the transit-aws gateway’s Gateway routes section, after filtering with edge as keyword. For this example, it’s 10.40.251.0/29 and 10.40.251.16/28.</p>
+<p>IP block can be found from the transit-aws gateway’s Gateway routes section, after filtering with edge as keyword. For this example, it’s <code class="docutils literal notranslate"><span class="pre">10.40.251.0/29</span></code> and <code class="docutils literal notranslate"><span class="pre">10.40.251.16/28</span></code>.</p>
 <figure class="align-center" id="id52">
 <img alt="../_images/521.png" src="../_images/521.png" />
 <figcaption>
@@ -1006,9 +1006,13 @@ Also remove the transitive routing configuration from the Edge Gateway.</p>
 </figcaption>
 </figure>
 <p>We will now create the DCF rules to allow traffic flows shown below:</p>
-<ul class="simple">
+<ul>
 <li><p>Edge-&gt;AWS port TCP:443</p></li>
 <li><p>Edge-&gt;Azure port TCP:5000</p></li>
+<li><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  Turn off enforcement on Greenfield-Rule
+</pre></div>
+</div>
+</li>
 </ul>
 <figure class="align-center" id="id76">
 <img alt="../_images/76.png" src="../_images/76.png" />

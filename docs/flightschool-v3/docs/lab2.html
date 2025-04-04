@@ -765,6 +765,43 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 </figcaption>
 </figure>
 <p>To troubleshoot issues or get more insights, you can also add a deny rule with low priority to see which traffic is denied.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><strong>Field</strong></p></th>
+<th class="head text-left"><p><strong>Value</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Name</strong></p></td>
+<td class="text-left"><p>DENY</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Source Groups</strong></p></td>
+<td class="text-left"><p>Anywhere</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Destination Groups</strong></p></td>
+<td class="text-left"><p>Public Internet</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>WebGroups</strong></p></td>
+<td class="text-left"><p>All-Web</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Protocol</strong></p></td>
+<td class="text-left"><p>Any</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Action</strong></p></td>
+<td class="text-left"><p>Deny</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Enforcement</strong></p></td>
+<td class="text-left"><p>ON</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Logging</strong></p></td>
+<td class="text-left"><p>ON</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Priority</strong></p></td>
+<td class="text-left"><p>50000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <figure class="align-center" id="id34">
 <img alt="../_images/28.png" src="../_images/28.png" />
 <figcaption>
@@ -785,7 +822,23 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 <p><span class="caption-number">Fig. 50 </span><span class="caption-text">Monitoring via FQDN Monitoring section</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>For the next example, if we  want to keep the same domains reachable, we only need to add the new resources to the SmartGroups, and then the system will automatically apply the same rules to the traffic flow.</p>
+<p>For the next example, if we  want to keep the same domains reachable, we only need to add the new resources to the SmartGroups, and then the system will automatically apply the same rules to the traffic flow. We will edit the existing SmartGroup <code class="docutils literal notranslate"><span class="pre">SG-Egress-VPC-1</span></code> with the information as shown below in the table.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><strong>Field</strong></p></th>
+<th class="head text-left"><p><strong>Value</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Name</strong></p></td>
+<td class="text-left"><p>SG-Egress-VPC-1-2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>environment</strong></p></td>
+<td class="text-left"><p>dev</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">aws-instance-2</span></code> resource has tag of <code class="docutils literal notranslate"><span class="pre">dev</span></code> as <code class="docutils literal notranslate"><span class="pre">environment</span></code>. Now we can just add one more resource type <code class="docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Machine</span></code>, and fill with required information, then in the preview, all included resources can be seen.</p>
 <figure class="align-center" id="id37">
 <img alt="../_images/37.png" src="../_images/37.png" />
@@ -950,6 +1003,7 @@ Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> 
 <p><span class="caption-number">Fig. 57 </span><span class="caption-text">Egress-1 Dashboard confirms intra-vpc traffic filtering</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p><code class="docutils literal notranslate"><span class="pre">Turn</span> <span class="pre">on</span> <span class="pre">enforcement</span> <span class="pre">for</span> <span class="pre">Greenfield-Rule</span> <span class="pre">before</span> <span class="pre">proceeding</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">next</span> <span class="pre">lab!</span></code></p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="end-of-lab-2">

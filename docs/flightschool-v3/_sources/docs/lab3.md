@@ -384,7 +384,7 @@ Edge Gatus Dashboard
 ```
 
 But that doesn’t mean Aviatrix is not coming up with a solution. In case of an urgent resolution requirement for this issue, edge gateway can provide connectivity to other cloud resources and relay the traffic with a small configuration change. 
-Go to Cloud Fabric -> Hybrid Cloud-> Edge Gateways and select the gateway, then click to the settings and enable Transitive Routing.
+Go to `Cloud Fabric -> Hybrid Cloud-> Edge Gateways` and select the `aviatrix-edge-1` gateway, then click to the settings and enable `Transitive Routing`.
 
 
 ```{figure} images-lab3/43.png
@@ -434,7 +434,7 @@ In case there is a business need to not allow routes to exchange in between Avia
 
 For this example, we will destroy the connection between on-prem and Azure. But the aim is not to allow traffic to flow from Azure to On-Prem. 
 
-Go to `Cloud Fabric -> Hybrid Cloud -> Edge Gateways` and choose the attachment and delete the azure connection from the corner and save.
+Go to `Cloud Fabric -> Hybrid Cloud -> Edge Gateways` and choose the attachment and delete the `azure connection` from the corner and save.
 
 
 ```{figure} images-lab3/48.png
@@ -472,7 +472,7 @@ Edge Gatus Dashboard
 
 But this doesn’t allow us to achieve the traffic to drop. So now we will filter the on-prem IP-block on the link between transit gateways, then the traffic from On-Prem to Azure should fail. 
 
-IP block can be found from the transit-aws gateway’s Gateway routes section, after filtering with edge as keyword. For this example, it’s 10.40.251.0/29 and 10.40.251.16/28. 
+IP block can be found from the transit-aws gateway’s Gateway routes section, after filtering with edge as keyword. For this example, it’s `10.40.251.0/29` and `10.40.251.16/28`. 
 
 ```{figure} images-lab3/52.png
 ---
@@ -714,6 +714,7 @@ SmartGroups are created for all 3 sites
 We will now create the DCF rules to allow traffic flows shown below:
 -	Edge->AWS port TCP:443
 -	Edge->Azure port TCP:5000
+-       Turn off enforcement on Greenfield-Rule
 
 ```{figure} images-lab3/76.png
 ---
