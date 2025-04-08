@@ -992,6 +992,16 @@ align: center
 SSH
 ```
 
+```{note}
+Reduce the polling timer from 5 minutes to **10 seconds** to expedite the visibility of the results.
+```{figure} images/lab2-gastusfinal01.png
+---
+height: 400px
+align: center
+---
+Timer
+```
+
 You will observe that both **ICMP** and **SSH** tests have successfully completed for all three instances:
 
 1) **_aws-us-east-2-spoke1-test2_** (enabled by the normal `intra-VPC traffic`)
