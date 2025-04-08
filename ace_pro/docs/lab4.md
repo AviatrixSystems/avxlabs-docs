@@ -836,6 +836,8 @@ align: center
 EC2 service
 ```
 
+Now click on **Instances (running)**.
+
 ```{figure} images/lab5-reprogram413.png
 ---
 height: 400px
