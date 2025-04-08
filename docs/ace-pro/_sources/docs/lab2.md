@@ -216,7 +216,7 @@ Properties
 In the **Properties** window under the Topology section of your CoPilot, you can also access the **Private IP addresses** for EAST-WEST traffic.
 ```
 
-### 3.3 Verification Using Your SSH Client
+#### 3.2.3 Verification Using Your SSH Client
 
 Now that you have logged in to the **_aws-us-east-2-spoke1-test1_** successfully, you can issue your ping commands towards the **Private IP address** of the other instances!
 
@@ -326,7 +326,7 @@ align: center
 Fetch VPC
 ```
 
-Afterward, click on **Commit**.
+After that, click on **Commit**.
 
 ```{figure} images/lab2-commit.png
 ---
