@@ -141,3 +141,27 @@ You can iterate and rebuild your content with the following command:
 ```bash
 jb clean --all [your_folder]/
 ```
+
+### Remove unreferenced images
+
+The following code, when run on macOS, will search through your images folder and remove any `png` files that aren't referenced in any markdown file. First, `cd` to the docs folder of your project.
+
+```bash
+cd ace_pro/docs
+```
+
+Then, execute the following:
+
+```bash
+#---------------------------------
+# Clean up unused images from docs
+#---------------------------------
+imagepaths=(images/*.png)
+for imagepath in $imagepaths; do
+    filename=$(basename -- $imagepath)
+    if ! grep -i -q -r --exclude-dir=".git" $filename .; then
+        echo $filename
+        rm images/$filename
+    fi
+done
+```
