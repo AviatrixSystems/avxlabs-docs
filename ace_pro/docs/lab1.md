@@ -29,7 +29,7 @@ You will only have access to the **AWS** Console. Access to both the _Azure_ Con
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
-Verify whether the CIDR range `192.168.12.0/24` is overlapping with an existing in used cidr or not, as shown below.
+Verify if the CIDR range `192.168.12.0/24` overlaps with any currently used **CIDR ranges**, as illustrated below.
 
 ```{figure} images/lab1-vnet1.png
 ---
@@ -39,7 +39,7 @@ align: center
 Searching for a subnet conflict
 ```
 
-Let’s create an **Application/Spoke** VNet. 
+- Great! Now that you have confirmed that the CIDR range 192.168.12.0/24 does not conflict with any existing CIDR ranges, please proceed to create an **Application/Spoke** Virtual Network (VNet) using the CoPilot
 
 Click on the button `“+ VPC/VNET”`.
 
@@ -50,7 +50,7 @@ align: center
 VNet creation
 ```
 
-Insert the following values:
+Please enter the following values:
 
  - **Name**: <span style='color:#479608'>azure-us-central-spoke1</span>
  - **Cloud**: <span style='color:#479608'>Azure Global</span>
@@ -68,7 +68,7 @@ align: center
 VNet template
 ```
 
-You will immediately notice a message on the top-right corner.
+You will see a message appear in the top-right corner right away!
 
 ```{figure} images/lab1-vnet4.png
 ---
@@ -77,7 +77,7 @@ align: center
 "In progress" message
 ```
 
-From the CoPilot search bar, type `“task”` and then click the search result `“Notifications / Tasks”`. Observe the VNet creation Task and wait for it to complete.
+From the CoPilot search bar, type `“task”` and then click the search result `“Notifications / Tasks”`. Keep an eye on the VNet creation task and wait for it to complete.
 
 ```{figure} images/lab1-vnet5.png
 ---
@@ -95,7 +95,7 @@ VPC Functions:
 **2) Transit + FireNet** 
 ```
 
-It will take about **4-5** minutes for the creation of the VNet. You can periodically check the status of the task, clicking on the top right-hand side, on the *hourglass icon*. Click on the refresh button. Once the task gets colored in green, you can finally assume that the VNet was successfully created.
+The creation of the VNet will take approximately **4 to 5 minutes**. You can periodically check the status of the task by clicking the hourglass icon in the top right corner. Be sure to click the refresh button as needed. Once the task turns green, you can confidently conclude that the VNet has been successfully created.
 
 ```{important}
 **Clean up the SEARCH FIELD to restore the navigation panel view.**
@@ -115,7 +115,7 @@ align: center
 Hourglass icon
 ```
 
-Navigate to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets**. In the search field, enter the name of the previously created VNet, **`azure-us-central-spoke1`**. Then, expand the VNet to explore the additional subnets created by the Aviatrix Controller."
+Navigate to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets**. In the search field, enter the name of the VNet you created earlier, **`azure-us-central-spoke1`**. Then, expand the VNet to view the additional subnets that were created by the **Aviatrix Controller**.
 
 ```{tip}
 **Click on the refresh button!**
@@ -130,20 +130,20 @@ Confirmation
 ```
 
 ```{note}
-It will take an additional **10** minutes to see all four subnets (i.e., 2 public subnets and 2 private subnets). 
+It will take an additional **10 minutes** for both the VNet and all the four subnets (two public and two private) to become visible.
 
-Thank you for your patience! 
+Thank you for your patience!
 
-<ins>Please proceed with the subsequent tasks, and once completed, verify that all underlay constructs have been successfully deployed.</ins>
+<ins>Please continue with the next tasks, and once they are completed, confirm that all underlay constructs have been successfully deployed</ins>.
 ```
 
 ## 3. AWS VPC
 
 ### 3.1  Create AWS VPC
- 
+
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
-Verify once again whether the CIDR range `10.0.22.0/24` is overlapping with an existing CIDR or not, as shown below.
+Please verify once more whether the CIDR range `10.0.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
 
 ```{figure} images/lab1-newpic5.png
 ---
@@ -153,7 +153,7 @@ align: center
 Searching for a subnet conflict
 ```
 
-This time let’s create an **Application/Spoke** VPC. Click on the button `“+ VPC/VNET”`.
+This time, let's create an **Application/Spoke** VPC. Click the `“+ VPC/VNET”` button to get started.
 
 ```{figure} images/lab1-vpc1.png
 ---
@@ -162,7 +162,7 @@ align: center
 VPC creation
 ```
 
-Insert the following values:
+Please enter the following values:
 
  - **Name**: <span style='color:#479608'>aws-us-west-2-spoke1</span>
  - **Cloud**: <span style='color:#479608'>AWS</span>
@@ -180,7 +180,7 @@ align: center
 VPC configuration
 ```
 
-Monitor the progress of the VPC creation through the **hourglass** icon.
+Keep an eye on the progress of the VPC creation by using the **hourglass** icon.
 
 ```{figure} images/lab1-vpc3.png
 ---
@@ -190,11 +190,11 @@ align: center
 Hourglass icon
 ```
 
-Verify the VPC creation in the VPC list. Hit the **Refresh icon** if you do not see the CIDR immediately (alternatively, <ins>refresh the web page for triggering the change</ins>). 
+Check the VPC list to verify the creation of your VPC. If the CIDR does not appear right away, click the **Refresh** icon or refresh the web page to trigger the update.
 
-It will take a little bit for reflecting into the "VPC/VNets & Subnets" section (almost **2-3** minutes).
+Please allow a few minutes (approximately **2-3** minutes) for the changes to reflect in the "VPC/VNets & Subnets" section.
 
-You can filter by CIDR `10.0.22.0/24`.
+You can also filter by the CIDR `10.0.22.0/24` for easier access.
 
 ```{figure} images/lab1-vpc4.png
 ---
@@ -206,13 +206,13 @@ Verification
 
 ### 3.2 Verify from AWS Console
 
-Log in to the **AWS console**. Refer to your pod info for login information (this screenshot is for **Pod 2**).
+Log in to the **AWS console** using the credentials provided in your pod information. (**_Note_**: This screenshot is for **Pod 2**.)
 
 ```{figure} images/lab1-newaws.png
 ---
 align: center
 ---
-AWS console
+AWS console credentials
 ```
 
 ```{figure} images/lab1-vpc5.png
@@ -222,7 +222,7 @@ align: center
 AWS console
 ```
 
-Change the region to `Oregon (us-west-2)` in the top-right corner and invoke the **VPC** service.
+Change the region to `Oregon (us-west-2)` in the top-right corner, then access the **VPC** service.
 
 ```{figure} images/lab1-newpic6.png
 ---
@@ -238,7 +238,7 @@ align: center
 Invoke VPC service
 ```
 
-Now click on the **VPCs** link, as depicted below:
+Now, click on the **VPCs** link shown below:
 
 ```{figure} images/lab1-newpic611.png
 ---
@@ -247,7 +247,7 @@ align: center
 VPCs
 ```
 
-You can see the `VPC` created with the assigned CIDR block.
+You should see the `VPC` that was created, along with its assigned CIDR block.
 
 ```{figure} images/lab1-new3.png
 ---
@@ -257,9 +257,9 @@ align: center
 VPC
 ```
 
-From there, navigate to `Subnets` in the navigation panel, on the left-handf side.
+In the VPC section, navigate to `Subnets` in the left-hand navigation panel.
 
-As you can see, the Controller has created 1 Public Subnet and 1 Private Subnet per Availability Zone. Since us-west-2 has 4 AZs, therefore **eight** subnets are created.
+As you can see, the Controller has created one Public Subnet and one Private Subnet for each Availability Zone. Since the us-west-2 region has four Availability Zones, a total of **eight** subnets have been created.
 
 ```{figure} images/lab1-newpic7.png
 ---
@@ -268,9 +268,9 @@ align: center
 Subnets created by the Aviatrix Controller
 ```
 
-From there, navigate to `Route Tables`.
+Navigate to `Route Tables`.
 
-Here, also, you can see the **eight** route tables that the Aviatrix Controller created. They are mapped to each subnet. The Public Routing Tables have a 0/0 route pointing to the Internet Gateway, that the Controller also deployed.
+Here, you will see the **eight** route tables created by the Aviatrix Controller, each mapped to a corresponding subnet. The Public Route Tables include a 0.0.0.0/0 route that points to the Internet Gateway, which has also been deployed by the Controller.
 
 ```{figure} images/lab1-rt.png
 ---
@@ -279,10 +279,9 @@ align: center
 Routing Tables created by the Aviatrix Controller
 ```
 
-From there, navigate to `Internet gateways`.
+Now, navigate to the `Internet gateways` section.
 
-Here, also, you can see the **IGW** created by the Aviatrix Controller.
-You can notice that the IGW has the same name of the VPC that you defined, moreover it is also attached to this VPC.
+Here, you will find the Internet Gateway created by the Aviatrix Controller. You’ll notice that the **IGW** shares the same name as the VPC you defined and is attached to it as well.
 
 ```{figure} images/lab1-igw.png
 ---
@@ -297,7 +296,7 @@ IGW created by the Aviatrix Controller
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
-Before starting the deployment of the VPC in GCP, verify once again whether the CIDR range `172.16.22.0/24` is overlapping with an existing cidr or not, as shown below.
+Before proceeding with the deployment of the VPC in GCP, please verify once more whether the CIDR range `172.16.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
 
 ```{figure} images/lab1-newpic8.png
 ---
@@ -307,7 +306,7 @@ align: center
 Verification
 ```
 
-This time let’s create an **Application/Spoke** VPC. Click on the button `“+ VPC/VNET”`.
+Create once again an **Application/Spoke** VPC. Click on the button `“+ VPC/VNET”`.
 
 ```{figure} images/lab1-gcp1.png
 ---
@@ -355,5 +354,5 @@ Expand the **GCP VPC** if you want to see the subnet **"gcp-us-west2-spoke1-sub1
 ```
 
 ```{caution}
-The VPCs and VNet created in this lab will **NOT** be used in the subsequent labs.
+The VPCs and VNets created in this lab will **NOT** be utilized in the subsequent labs.
 ```
