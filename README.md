@@ -31,7 +31,7 @@ git clone https://github.com/AviatrixSystems/avxlabs-docs.git
 2. Create a new branch for your work.
 
 ```bash
-git checkout -b new_branch_name
+git switch -c new_branch_name
 ```
 
 3. Create a new folder for the new guide using the naming convention `[ace || flightschool || build]_[version]`. Example: `ace_associate`
