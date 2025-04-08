@@ -34,7 +34,7 @@ Initial pre-provisioned topology
 
 ### 3.1 Preliminary Monitoring Check Using the Gatus APP
 
-All pre-deployed instances are running [Gatus](https://gatus.io/) and are attempting to connect with each other using various protocols, including **ICMP** and **TCP** on ports 80 and 443.
+All pre-deployed instances are running [Gatus](https://gatus.io/) and are attempting to connect with each other using various protocols, including **ICMP** and **TCP** on ports 80,443 and 22.
 
 You can access the Gatus dashboard directly from your POD Portal.
 
@@ -140,6 +140,15 @@ height: 300px
 align: center
 ---
 SSH client
+```
+
+```{important}
+If the SSH connection to the symbolic DNS name fails, as shown in the screenshot, please proceed with either **Task 3.2.1** or **Task 3.2.2**.
+```{figure} images/lab2-sshfails.png
+---
+align: center
+---
+DNS fails
 ```
 
 You can also access your instances using also their **Public IP addresses**! You can retrieve them through your CoPilot, specifically from two sections:
