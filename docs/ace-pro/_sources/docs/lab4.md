@@ -482,7 +482,7 @@ align: center
 AWS console
 ```
 
-Change the region to **N. Virginia** and invoke **EC2** service.
+Change the region to **N. Virginia** and access the **EC2** service.
 
 ```{figure} images/lab5-region.png
 ---
@@ -543,7 +543,7 @@ Gatus from aws-us-east-1-spoke1-test1
 ```
 
 ```{tip}
-The **Health Check** mechanism will be successful after approximately 1 minute and 30 seconds to 2 minutes. Please be patient!
+The **Health Check** mechanism will be successful after approximately **1 minute and 30 seconds to 2 minutes**. Please be patient!
 ```
 
 ```{figure} images/lab4-gatus402.png
@@ -618,7 +618,7 @@ align: center
 AWS console
 ```
 
-Change the region to **N. Virginia** and invoke **EC2** service.
+Change the region to **N. Virginia** and access the **EC2** service.
 
 ```{figure} images/lab5-region.png
 ---
@@ -748,6 +748,10 @@ align: center
 eth0
 ```
 
+```{important}
+The ENIs shown in the screenshot above refer to a different POD used as an example.
+```
+
 Now, duplicate the tab in your web browser and then click on **Instances** in the left-hand navigation panel!
 
 ```{figure} images/lab5-reprogram104.png
@@ -776,7 +780,7 @@ align: center
 Subnet id
 ```
 
-Scroll to the right until you identify the **Route Table** associated with the subnet you selected.
+Scroll to the right until you find the **Route Table** associated with the selected subnet, and then click on it.
 
 ```{figure} images/lab5-reprogram108.png
 ---
@@ -786,7 +790,7 @@ align: center
 rtb
 ```
 
-Now click on the **Route Table ID**
+Now click on the **Route Table ID**.
 
 ```{figure} images/lab5-reprogram208.png
 ---
@@ -796,7 +800,7 @@ align: center
 Route Table ID
 ```
 
-Now check the VPC Router's Routing Table and identify the next hop (i.e. **Target**) for the three RFC1918 routes injected by the **Aviatrix Controller** and compare it with the ENI of the Spoke Gateway 1.
+Now check the VPC Router's Routing Table and identify the next hop (i.e. **Target**) for the three RFC1918 routes injected by the **Aviatrix Controller** and compare it with the ENI of the Spoke Gateway 1 (refer to the tab you kept open earlier).
 
 ```{figure} images/lab5-reprogram209.png
 ---
@@ -822,6 +826,14 @@ height: 400px
 align: center
 ---
 Duplicate TAB
+```
+
+```{figure} images/lab5-reprogram876.png
+---
+height: 400px
+align: center
+---
+EC2 service
 ```
 
 ```{figure} images/lab5-reprogram413.png
