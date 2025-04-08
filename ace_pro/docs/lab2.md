@@ -994,7 +994,7 @@ SSH
 
 ```{note}
 Reduce the polling timer from 5 minutes to **10 seconds** to expedite the visibility of the results.
-```{figure} images/lab2-gastusfinal01.png
+```{figure} images/lab2-diminish.png
 ---
 height: 400px
 align: center
