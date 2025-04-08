@@ -1285,6 +1285,17 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <p><span class="caption-number">Fig. 101 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reduce the polling timer from 5 minutes to <strong>10 seconds</strong> to expedite the visibility of the results.</p>
+<figure class="align-center" id="id73">
+<a class="reference internal image-reference" href="../_images/lab2-gastusfinal01.png"><img alt="../_images/lab2-gastusfinal01.png" src="../_images/lab2-gastusfinal01.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Timer</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
 <p>You will observe that both <strong>ICMP</strong> and <strong>SSH</strong> tests have successfully completed for all three instances:</p>
 <ol class="arabic simple">
 <li><p><strong><em>aws-us-east-2-spoke1-test2</em></strong> (enabled by the normal <code class="docutils literal notranslate"><span class="pre">intra-VPC</span> <span class="pre">traffic</span></code>)</p></li>
@@ -1312,10 +1323,10 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <p class="admonition-title">Note</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">POD</span> <span class="pre">PORTAL</span></code></strong>:</p>
 <p>Please note that both the public DNS names and private IP addresses of the <strong>test</strong> instances can be retrieved from your personal POD portal.</p>
-<figure class="align-center" id="id73">
+<figure class="align-center" id="id74">
 <img alt="../_images/lab2-newpic.png" src="../_images/lab2-newpic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 102 </span><span class="caption-text">POD Portal info</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">POD Portal info</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -1323,11 +1334,11 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <p class="admonition-title">Note</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">TOPOLOGY</span> <span class="pre">(CoPilot</span> <span class="pre">&gt;</span> <span class="pre">Cloud</span> <span class="pre">Fabric</span> <span class="pre">&gt;</span> <span class="pre">Topology)</span></code></strong>:</p>
 <p>Explore the <strong><em>aws-us-east-2-spoke1</em></strong> VPC and select the instance <strong><em>aws-us-east-2-spoke1-test1</em></strong> with the <strong>EC2 instance logo</strong>, then check its properties: you will be able to fetch both Public and Private IP addresses.</p>
-<figure class="align-center" id="id74">
+<figure class="align-center" id="id75">
 <a class="reference internal image-reference" href="../_images/lab2-newpic3.png"><img alt="../_images/lab2-newpic3.png" src="../_images/lab2-newpic3.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 103 </span><span class="caption-text">Test Instance Properties</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Test Instance Properties</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -1335,10 +1346,10 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <p class="admonition-title">Note</p>
 <p>Do not select the instance with the <strong>Aviatrix logo</strong>!</p>
 <p><ins>You can’t SSH to any Aviatrix GWs !</ins></p>
-<figure class="align-center" id="id75">
+<figure class="align-center" id="id76">
 <img alt="../_images/lab2-newpic2.png" src="../_images/lab2-newpic2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Different Logos</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Different Logos</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -1348,24 +1359,24 @@ Pay special attention to <code class="docutils literal notranslate"><span class=
 <li><p>SSH into gcp-us-central1-spoke1-<span style='color:red'>test1</span> (ssh student&#64;public_ip)</p></li>
 </ul>
 <p>Run ping from the AWS instance to verify connectivity to Azure and GCP:</p>
-<figure class="align-center" id="id76">
+<figure class="align-center" id="id77">
 <img alt="../_images/lab2-pingfromaws.png" src="../_images/lab2-pingfromaws.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Ping from AWS</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text">Ping from AWS</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Run ping from Azure VM to verify connectivity to AWS and GCP:</p>
-<figure class="align-center" id="id77">
+<figure class="align-center" id="id78">
 <img alt="../_images/lab2-pingfromazure.png" src="../_images/lab2-pingfromazure.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 106 </span><span class="caption-text">Ping from Azure</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 107 </span><span class="caption-text">Ping from Azure</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Run ping from GCP VM to verify connectivity to Azure and AWS:</p>
-<figure class="align-center" id="id78">
+<figure class="align-center" id="id79">
 <img alt="../_images/lab2-pingfromgcp.png" src="../_images/lab2-pingfromgcp.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 107 </span><span class="caption-text">Ping from GCP</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text">Ping from GCP</span><a class="headerlink" href="#id79" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
