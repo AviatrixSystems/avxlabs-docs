@@ -399,7 +399,7 @@ align: center
 Not Editable
 ```
 
-Now Create an Explicit Deny rule that is **editable**:
+- Now Create an Explicit Deny rule that is **editable**:
 
 Click on the `"+ Rule"` button.
 
@@ -467,6 +467,16 @@ height: 400px
 align: center
 ---
 Egress traffic is now going through the Aviatrix Cloud Firewall embedded on the Spoke GW
+```
+
+On the other hand, the ICMP traffic tests will gradually start to fail, with the exception of the test directed towards **aws-us-east-2-spoke1-test1**. This exception is due to the intra-VPC traffic.
+
+```{figure} images/lab6-gatuslab501.png
+---
+height: 400px
+align: center
+---
+ICMP is ok only with aws-us-east-2-spoke1-test1
 ```
 
 ### 7.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
