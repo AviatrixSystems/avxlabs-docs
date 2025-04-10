@@ -600,7 +600,7 @@ Commit
 
 ```{figure} images/lab9-myip09.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 aws-us-east-1-spoke1-test1
@@ -614,7 +614,6 @@ ssh student@...
 
 ```{figure} images/lab9-myip10.png
 ---
-height: 400px
 align: center
 ---
 SSH to aws-us-east-1-spoke1-test1
