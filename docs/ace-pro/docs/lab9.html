@@ -858,34 +858,70 @@ document.write(`
 <p><span class="caption-number">Fig. 484 </span><span class="caption-text"><a class="reference external" href="http://whatismyipaddress.com">whatismyipaddress.com</a></span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<ul class="simple">
+<li><p>Go to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p></li>
+</ul>
 <figure class="align-center" id="id41">
-<a class="reference internal image-reference" href="../_images/lab4-fullmesh02.png"><img alt="../_images/lab4-fullmesh02.png" src="../_images/lab4-fullmesh02.png" style="height: 400px;" />
-</a>
+<img alt="../_images/lab9-myip03.png" src="../_images/lab9-myip03.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 485 </span><span class="caption-text">Full-mesh: logical</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 485 </span><span class="caption-text">New SmartGroup</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The Gateway in the <strong>AWS US-EAST-1</strong> region is exclusively peering with the Gateway in <strong>AWS US-EAST-2</strong>.</p>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>My-IP</span></p></li>
+<li><p>Then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Resource</span> <span class="pre">Type&quot;</span></code> button and choose IPs / CIDRs.</p></li>
+</ul>
 <figure class="align-center" id="id42">
-<a class="reference internal image-reference" href="../_images/lab4-fullmesh03.png"><img alt="../_images/lab4-fullmesh03.png" src="../_images/lab4-fullmesh03.png" style="height: 400px;" />
-</a>
+<img alt="../_images/lab9-myip04.png" src="../_images/lab9-myip04.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 486 </span><span class="caption-text">Single peering</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 486 </span><span class="caption-text">Resource Type: IP</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The Aviatrix Controller will not install a route to a Transit Gateway that is not directly peering with the originating Transit Gateway. Therefore, each Transit Gateway must learn about networks from its originating Transit Gateway.</p>
-<p>To avoid the limitations of full-mesh peering, which is not very scalable, you can utilize the <a class="reference external" href="https://docs.aviatrix.com/documentation/latest/getting-started/platform-overview/aviatrix-glossary.html#multi-tier-transit">multi-tier transit</a> feature.</p>
+<ul class="simple">
+<li><p>Now paste the public IP address that you copied from the website <em><a class="reference external" href="http://whatismyipaddress.com">whatismyipaddress.com</a></em>. Before clicking <strong>Save</strong>, make sure to remove the Virtual Machines condition as shown below.</p></li>
+</ul>
 <figure class="align-center" id="id43">
-<a class="reference internal image-reference" href="../_images/lab4-fullmesh04.png"><img alt="../_images/lab4-fullmesh04.png" src="../_images/lab4-fullmesh04.png" style="height: 400px;" />
-</a>
+<img alt="../_images/lab9-myip05.png" src="../_images/lab9-myip05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 487 </span><span class="caption-text">Intransitive behaviour without Full-Mesh config.</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 487 </span><span class="caption-text">Smart Group My-IP</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>The Multi-Tier feature will be activated on <strong>Lab 11</strong>.</p>
-</div>
+<ul class="simple">
+<li><p>Go to CoPilot &gt; Security &gt; Distributed Cloud Firewall and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button:</p></li>
+</ul>
+<figure class="align-center" id="id44">
+<img alt="../_images/lab9-myip06.png" src="../_images/lab9-myip06.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 488 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Insert the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>inter-myip-east1-test1-ssh</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>My-IPp</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#479608'>22</span></p></li>
+<li><p><strong>Enforcement</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id45">
+<img alt="../_images/lab9-myip07.png" src="../_images/lab9-myip07.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 489 </span><span class="caption-text">inter-myip-east1-test1-ssh</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on the <strong>Commit</strong> button!</p>
+<figure class="align-center" id="id46">
+<a class="reference internal image-reference" href="../_images/lab9-myip08.png"><img alt="../_images/lab9-myip08.png" src="../_images/lab9-myip08.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 490 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </details>
 <ul class="simple">
 <li><p>Execute now the following commands:</p></li>
@@ -899,20 +935,20 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.com
 </pre></div>
 </div>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id47">
 <img alt="../_images/lab96-newrule301.png" src="../_images/lab96-newrule301.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 488 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 491 </span><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now issue again the curl command towards the <strong>malicious IP</strong> address that was earlier provided by the Trainer!</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://178.17.174.164
 </pre></div>
 </div>
-<figure class="align-center" id="id45">
+<figure class="align-center" id="id48">
 <img alt="../_images/lab96-newrule302.png" src="../_images/lab96-newrule302.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 489 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 492 </span><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice that the traffic towards the <strong>IP with Bad Reputation</strong> was blocked at the very first <strong>SYN</strong> and <strong>SYN-ACK</strong> packets!</p>
@@ -922,38 +958,38 @@ document.write(`
 <section id="final-considerations">
 <h2>9. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
 <p>Now go to <strong>CoPilot &gt; Security &gt; ThreatIQ</strong>  section, then scroll down through the whole <strong>Overview</strong> section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either <strong><em>Source</em></strong> or <strong><em>Destination</em></strong>!</p>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id49">
 <img alt="../_images/lab96-newrule308.png" src="../_images/lab96-newrule308.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 490 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 493 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id50">
 <img alt="../_images/lab96-newrule323.png" src="../_images/lab96-newrule323.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 491 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 494 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now click on the <strong>VIEW</strong> link on the right-hand side of the entry:</p>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id51">
 <img alt="../_images/lab96-newrule309.png" src="../_images/lab96-newrule309.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 492 </span><span class="caption-text">View link</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 495 </span><span class="caption-text">View link</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Last but not least, explore the <code class="docutils literal notranslate"><span class="pre">Threat</span> <span class="pre">Summary</span></code> tab to find out how ProofPoint classified that IP address!</p>
-<figure class="align-center" id="id49">
+<figure class="align-center" id="id52">
 <img alt="../_images/lab96-newrule311.png" src="../_images/lab96-newrule311.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 493 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 496 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After completing this lab, the overall topology will be as follows:</p>
-<figure class="align-center" id="id50">
+<figure class="align-center" id="id53">
 <a class="reference internal image-reference" href="../_images/lab9-finaltopologyy.png"><img alt="../_images/lab9-finaltopologyy.png" src="../_images/lab9-finaltopologyy.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 494 </span><span class="caption-text">Final Topology for Lab 9</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 497 </span><span class="caption-text">Final Topology for Lab 9</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
