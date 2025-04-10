@@ -4,12 +4,12 @@ This lab will demonstrate the functionalities of the `Edge Gateway`.
 ```{important}
 Edge Gateway = An Aviatrix gateway that enables connectivity to edge locations such as data centers, co-locations, remote sites, provider locations, branch offices, and retail stores.
 ```
-
+s
 ## 1. General Objectives
 
-You are  asked to interconnect the on-prem DC in New York to your MCNA. An **Aviatrix Edge** device has already been provisioned and it got already registered to the existing **Aviatrix Controller**.
+You are tasked with connecting the on-premises data center in New York to your MCNA. An **Aviatrix Edge** device has already been provisioned and registered with the existing **Aviatrix Controller**.
 
-Aviatrix Secure High-Performance Datacenter Edge solution gives power back to the network administrators to deliver cloud connectivity without compromise.  The solution delivers encrypted, line-rate performance with single region, multi region, or multi cloud redundancy options and full visibility and troubleshooting capabilities end to end.
+The Aviatrix Secure High-Performance Datacenter Edge solution empowers network administrators to provide seamless cloud connectivity without compromise. This robust solution offers encrypted, line-rate performance and supports single-region, multi-region, or multi-cloud redundancy options. Additionally, it ensures comprehensive visibility and troubleshooting capabilities throughout the entire network.
 
 ## 2. Initial set-up
 
