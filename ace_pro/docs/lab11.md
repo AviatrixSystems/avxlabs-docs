@@ -419,6 +419,20 @@ Based on the outcome above, you will not see 10.0.1.10 (aws-us-east-2-spoke1-tes
 
 However, **aws-us-east-2-spoke1-test1** can ping **aws-us-east-2-spoke1-test2** due to intra-VPC communication, without needing to match any of the deployed DCF rules.
 
+```{figure} images/lab10-sgorch01.png
+---
+align: center
+---
+tes1 and test2 in AWS US-EAST-2
+```
+
+```{figure} images/lab10-sgorch02.png
+---
+align: center
+---
+tes1 and test2 in AWS US-EAST-2
+```
+
 ```{warning}
 The instances **aws-us-east-2-spoke1-test1** and **aws-us-east-2-spoke1-test2** are in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka **_intra-vpc separation_**).
 ```
