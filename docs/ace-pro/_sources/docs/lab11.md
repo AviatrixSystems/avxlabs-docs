@@ -881,7 +881,7 @@ align: center
 ```
 
 ```{note}
-The destination route is **not** inside the routing table, due to the fact that the Transit Gateway in AWS US-EAST-1 region has only <ins>one peering</ins> with the Transit Gateway in AWS US-EAST-2 region, therefore the Controller will install the routes that belong to US-EAST-1 only inside the routing tables of the Gateways in AWS US-EAST-2, excluding the rest of the Gateways of the MCNA. If you want to distribute the routes from AWS US-EAST-1 region in the whole MCNA, you have <ins>two possibilities</ins>:
+The destination route is **NOT** present in the routing table because the Transit Gateway in the AWS US-EAST-1 region has only one peering connection with the Transit Gateway in the AWS US-EAST-2 region. As a result, the Controller will only install the routes from US-EAST-1 into the routing tables of the Gateways in AWS US-EAST-2, excluding the other Gateways in the MCNA. If you want to distribute the routes from the AWS US-EAST-1 region throughout the entire MCNA, you have <ins>two options</ins>:
 ```
 
 - Enabling `"Full-Mesh"` on the Transit Gateways in **_aws-us-east1-transit_** VPC
@@ -890,7 +890,7 @@ The destination route is **not** inside the routing table, due to the fact that 
 
 - Enabling `"Multi-Tier Transit"`
 
-Let’s enable the **MTT** feature, to see its beahvior in action!
+Let’s enable the **MTT** feature and observe its behavior in action!
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-1-transit_**.
 
@@ -923,7 +923,7 @@ azure-west-us-transit
 ```
 
 ```{note}
-Both the **aws-us-east-2-transit** and the the **gcp-us-central1-transit** got already configured with their ASNs during the Lab 8!
+Both the **aws-us-east-2-transit** and **gcp-us-central1-transit** have already been configured with their ASNs during Lab 8!
 ```
 
 Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
@@ -935,7 +935,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Go to `"Settings"` tab and expand the `"General"` section and activate the `"Multi-Tier Transit"`, turning on the corresponding knob. 
+Navigate to the `"Settings"` tab, expand the `"General"` section, and activate `"Multi-Tier Transit"` by toggling the corresponding switch.
 
 Then click on **Save**.
 
@@ -967,9 +967,13 @@ align: center
 10.0.12.0/23
 ```
 
+```{hint}
+Click on `"+ 230 more"`
+```
+
 ## 13. The last DCF rule
 
-### 13.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabled MTT
+### 13.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabling MTT
 
 Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
 
@@ -982,7 +986,7 @@ Gatus
 
 Pinging **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** is still not working.
 
-### 13.2 ICMP Verification between Azure and AWS Using SSH Client after enabled MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
+### 13.2 ICMP Verification between Azure and AWS Using SSH Client after enabling MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**.
 
@@ -999,15 +1003,15 @@ Ping
 
 ## 14. Final Considerations
 
-Although this time there is a valid route to the destination, thanks to the **MTT** feature, the pings still fails. 
+Although there is now a valid route to the destination, thanks to the **MTT** feature, the pings are still failing.
 
 ```{warning}
-The reason is that the ec2-instance  **aws-us-east-1-spoke1-test2** is not allocated to any Smart Groups yet!
+The reason is that the EC2 instance **aws-us-east-1-spoke1-test2** has not been allocated to any Smart Groups yet.
 ```
 
 ### 14.1 Smart Group “east1”
 
-Let’s create another Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in US-EAST-1 region in AWS.
+Let’s create an additional Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in the US-EAST-1 region of AWS.
 
 Go to **Copilot > Groups > SmartGroups** and click on  `"+ SmartGroup"` button.
 
@@ -1030,11 +1034,11 @@ align: center
 Resource Selection
 ```
 
-The CoPilot shows that there is just one single instance that matches the condition:
+CoPilot indicates that there is only one instance that matches the condition:
 
-- **aws-us-east-1-spoke1-test2** in AWS
+- aws-us-east-1-spoke1-test2 in AWS
 
-Do not forget to click on **Save**.
+Make sure to click **Save** once you're done.
 
 ### 14.2 Create an inter-rule that allows ICMP from bu2 towards east1
 
@@ -1123,7 +1127,7 @@ align: center
 inter-icmp-bu2-east1 Logs
 ```
 
-After creating both the previous inter-rule and the additional Smart Groups, this is how the topology with all the permitted protocols will look:
+After creating both the previous inter-rule and the additional Smart Groups, the topology with all permitted protocols will appear as follows:
 
 ```{figure} images/lab10-newjoe.png
 ---
