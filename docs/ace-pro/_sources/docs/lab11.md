@@ -231,7 +231,7 @@ align: center
 SSH fails towards the other instances
 ```
 
-The previous outcomes confirm undoubtedly that the connectivity is broken. Only the `intra-vpc traffic` is permitted.
+The previous results clearly confirm that connectivity is disrupted, allowing only `intra-vpc traffic`.
 
 ## 4. DCF Rules Creation
 ### 4.1. Create an intra-rule that allows ICMP inside bu1
@@ -318,7 +318,7 @@ Rule committed
 
 ## 5. Verification
 
-After the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols will look like:
+Following the creation of the previous Smart Groups and Rules, the topology with the permitted protocols will appear as follows:
 
 ```{figure} images/lab10-topology2.png
 ---
@@ -415,7 +415,9 @@ align: center
 Outcomes
 ```
 
-Based on the outcome above, you will not see 10.0.1.10 (aws-us-east-2-spoke1-test2) because test2 belongs to bu2, resulting in no match with the _intra-icmp-bu1_ rule.
+Based on the outcome above, you will not see 10.0.1.10 (aws-us-east-2-spoke1-test2) because it belongs to bu2, which does not match the intra-icmp-bu1 rule. 
+
+However, **aws-us-east-2-spoke1-test1** can ping **aws-us-east-2-spoke1-test2** due to intra-VPC communication, without needing to match any of the deployed DCF rules.
 
 ```{warning}
 The instances **aws-us-east-2-spoke1-test1** and **aws-us-east-2-spoke1-test2** are in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka **_intra-vpc separation_**).

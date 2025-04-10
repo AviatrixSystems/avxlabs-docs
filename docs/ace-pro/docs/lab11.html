@@ -635,7 +635,7 @@ document.write(`
 <p><span class="caption-number">Fig. 530 </span><span class="caption-text">SSH fails towards the other instances</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The previous outcomes confirm undoubtedly that the connectivity is broken. Only the <code class="docutils literal notranslate"><span class="pre">intra-vpc</span> <span class="pre">traffic</span></code> is permitted.</p>
+<p>The previous results clearly confirm that connectivity is disrupted, allowing only <code class="docutils literal notranslate"><span class="pre">intra-vpc</span> <span class="pre">traffic</span></code>.</p>
 </section>
 </section>
 <section id="dcf-rules-creation">
@@ -718,7 +718,7 @@ document.write(`
 </section>
 <section id="verification">
 <h2>5. Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
-<p>After the creation of the previous Smart Groups and Rules, this is how the topology with the permitted protocols will look like:</p>
+<p>Following the creation of the previous Smart Groups and Rules, the topology with the permitted protocols will appear as follows:</p>
 <figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab10-topology2.png"><img alt="../_images/lab10-topology2.png" src="../_images/lab10-topology2.png" style="height: 400px;" />
 </a>
@@ -802,7 +802,8 @@ document.write(`
 <p><span class="caption-number">Fig. 544 </span><span class="caption-text">Outcomes</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Based on the outcome above, you will not see 10.0.1.10 (aws-us-east-2-spoke1-test2) because test2 belongs to bu2, resulting in no match with the <em>intra-icmp-bu1</em> rule.</p>
+<p>Based on the outcome above, you will not see 10.0.1.10 (aws-us-east-2-spoke1-test2) because it belongs to bu2, which does not match the intra-icmp-bu1 rule.</p>
+<p>However, <strong>aws-us-east-2-spoke1-test1</strong> can ping <strong>aws-us-east-2-spoke1-test2</strong> due to intra-VPC communication, without needing to match any of the deployed DCF rules.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The instances <strong>aws-us-east-2-spoke1-test1</strong> and <strong>aws-us-east-2-spoke1-test2</strong> are in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don’t enable the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group(SG)</span> <span class="pre">Orchestration&quot;</span></code> (aka <strong><em>intra-vpc separation</em></strong>).</p>
