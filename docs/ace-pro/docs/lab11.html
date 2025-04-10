@@ -380,9 +380,9 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logs">7. Logs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-inside-bu2">8.  Verification inside bu2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-vm-in-bu2-using-the-ssh-client-bonus">8.1 SSH to VM in bu2 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2-using-gatus-app">8.2 Verify ICMP traffic within bu2 Using Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2-using-ssh-client-bonus">8.3 Verify ICMP traffic within bu2 Using SSH Client<span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2-using-gatus-app">8.1 Verify ICMP traffic within bu2 Using Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2-using-ssh-client-bonus">8.2 Verify ICMP traffic within bu2 Using SSH Client<span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logs-verification">8.3 Logs Verification</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-from-bu2-to-bu1">9. Inter-rule from bu2 to bu1</a><ul class="nav section-nav flex-column">
@@ -976,8 +976,8 @@ document.write(`
 <p><span class="caption-number">Fig. 569 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>From the log above is quite evident that the <code class="docutils literal notranslate"><span class="pre">&quot;intra-ssh-bu1</span></code>” rule is permitting SSH traffic within the Smart Group bu1, successfully.</p>
-<p>After the creation of the previous intra-rule, this is how the topology with the permitted protocols will look like:</p>
+<p>The log above clearly indicates that the <code class="docutils literal notranslate"><span class="pre">&quot;intra-ssh-bu1&quot;</span></code> rule is successfully permitting SSH traffic within the Smart Group bu1.</p>
+<p>Following the creation of this intra-rule, the topology with the permitted protocols will appear as follows:</p>
 <figure class="align-center" id="id51">
 <a class="reference internal image-reference" href="../_images/lab10-topologynew.png"><img alt="../_images/lab10-topologynew.png" src="../_images/lab10-topologynew.png" style="height: 400px;" />
 </a>
@@ -988,29 +988,26 @@ document.write(`
 </section>
 <section id="verification-inside-bu2">
 <h2>8.  Verification inside bu2<a class="headerlink" href="#verification-inside-bu2" title="Link to this heading">#</a></h2>
-<section id="ssh-to-vm-in-bu2-using-the-ssh-client-bonus">
-<h3>8.1 SSH to VM in bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#ssh-to-vm-in-bu2-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
-<p>SSH to the Public IP of the instance <strong><em>gcp-us-central1-spoke1-test1</em></strong>:</p>
-<figure class="align-center" id="id52">
-<img alt="../_images/lab10-sshtocentral.png" src="../_images/lab10-sshtocentral.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 571 </span><span class="caption-text">SSH to gcp-us-central1-spoke1-test1</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
 <section id="verify-icmp-traffic-within-bu2-using-gatus-app">
-<h3>8.2 Verify ICMP traffic within bu2 Using Gatus App<a class="headerlink" href="#verify-icmp-traffic-within-bu2-using-gatus-app" title="Link to this heading">#</a></h3>
+<h3>8.1 Verify ICMP traffic within bu2 Using Gatus App<a class="headerlink" href="#verify-icmp-traffic-within-bu2-using-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>gcp-us-central1-spoke1-test1</em></strong> and verify the ICMP Traffic.</p>
-<figure class="align-center" id="id53">
+<figure class="align-center" id="id52">
 <img alt="../_images/lab10-gatus34.png" src="../_images/lab10-gatus34.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 572 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 571 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ping towards the <strong><em>azure-west-us-spoke2-test1</em></strong> and <strong><em>aws-us-east-2-spoke1-test2</em></strong> will work, because these two instance belongs to the same Smart Group bu2!</p>
 </section>
 <section id="verify-icmp-traffic-within-bu2-using-ssh-client-bonus">
-<h3>8.3 Verify ICMP traffic within bu2 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-icmp-traffic-within-bu2-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<h3>8.2 Verify ICMP traffic within bu2 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-icmp-traffic-within-bu2-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<p>SSH to the Public IP of the instance <strong><em>gcp-us-central1-spoke1-test1</em></strong>:</p>
+<figure class="align-center" id="id53">
+<img alt="../_images/lab10-sshtocentral.png" src="../_images/lab10-sshtocentral.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 572 </span><span class="caption-text">SSH to gcp-us-central1-spoke1-test1</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Ping the following instances:</p>
 <ul class="simple">
 <li><p><strong>aws-us-east-2-spoke1-test1</strong> in AWS</p></li>
@@ -1025,6 +1022,9 @@ document.write(`
 <p><span class="caption-number">Fig. 573 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="logs-verification">
+<h3>8.3 Logs Verification<a class="headerlink" href="#logs-verification" title="Link to this heading">#</a></h3>
 <p>Let’s investigate the logs once again.</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and filter based on the <em>intra-icmp-bu2</em> rule.</p>
 <figure class="align-center" id="id55">
@@ -1623,9 +1623,9 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logs">7. Logs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-inside-bu2">8.  Verification inside bu2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-vm-in-bu2-using-the-ssh-client-bonus">8.1 SSH to VM in bu2 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2-using-gatus-app">8.2 Verify ICMP traffic within bu2 Using Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2-using-ssh-client-bonus">8.3 Verify ICMP traffic within bu2 Using SSH Client<span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2-using-gatus-app">8.1 Verify ICMP traffic within bu2 Using Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-traffic-within-bu2-using-ssh-client-bonus">8.2 Verify ICMP traffic within bu2 Using SSH Client<span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logs-verification">8.3 Logs Verification</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-from-bu2-to-bu1">9. Inter-rule from bu2 to bu1</a><ul class="nav section-nav flex-column">

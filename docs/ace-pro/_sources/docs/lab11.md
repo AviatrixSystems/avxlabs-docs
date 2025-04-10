@@ -608,9 +608,9 @@ align: center
 Logs 
 ```
 
-From the log above is quite evident that the `"intra-ssh-bu1`" rule is permitting SSH traffic within the Smart Group bu1, successfully.
+The log above clearly indicates that the `"intra-ssh-bu1"` rule is successfully permitting SSH traffic within the Smart Group bu1.
 
-After the creation of the previous intra-rule, this is how the topology with the permitted protocols will look like:
+Following the creation of this intra-rule, the topology with the permitted protocols will appear as follows:
 
 ```{figure} images/lab10-topologynew.png
 ---
@@ -622,18 +622,7 @@ New Topology
 
 ## 8.  Verification inside bu2
 
-### 8.1 SSH to VM in bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
-
-SSH to the Public IP of the instance **_gcp-us-central1-spoke1-test1_**:
-
-```{figure} images/lab10-sshtocentral.png
----
-align: center
----
-SSH to gcp-us-central1-spoke1-test1
-```
-
-### 8.2 Verify ICMP traffic within bu2 Using Gatus App
+### 8.1 Verify ICMP traffic within bu2 Using Gatus App
 
 Open the Gatus App on **_gcp-us-central1-spoke1-test1_** and verify the ICMP Traffic.
 
@@ -646,7 +635,16 @@ Gatus
 
 Ping towards the **_azure-west-us-spoke2-test1_** and **_aws-us-east-2-spoke1-test2_** will work, because these two instance belongs to the same Smart Group bu2!
 
-### 8.3 Verify ICMP traffic within bu2 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
+### 8.2 Verify ICMP traffic within bu2 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
+
+SSH to the Public IP of the instance **_gcp-us-central1-spoke1-test1_**:
+
+```{figure} images/lab10-sshtocentral.png
+---
+align: center
+---
+SSH to gcp-us-central1-spoke1-test1
+```
 
 Ping the following instances:
 
@@ -663,6 +661,8 @@ align: center
 ---
 Ping
 ```
+
+### 8.3 Logs Verification
 
 Let's investigate the logs once again.
 
