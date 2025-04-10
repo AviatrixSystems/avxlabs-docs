@@ -98,7 +98,7 @@ align: center
 Show BGP Learned Routes
 ```
 
-You will find out that all the local subnets advertised by the DC belong to the cidr **10.40.0.0/16**.
+You will discover that all local subnets advertised by the data center fall within the CIDR range of **10.40.1.0/24**.
 
 ```{figure} images/lab9-cidr.png
 ---
@@ -240,6 +240,13 @@ Create Rule
 
 Click then on **Commit**.
 
+```{figure} images/lab10-newnew39.png
+---
+align: center
+---
+Commit
+```
+
 ## 5. Verification
 
 ### 5.1 Connectivity Testing Using Gatus App
@@ -266,7 +273,8 @@ WorkstationEdge
 
 ### 5.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-If you continue to run the ping from the Workstation Edge's terminal, you should observe both relative and absolute traffic from the Cost Center in AWS. The other two (in GCP and Azure) will show 0% because there is no traffic directed toward the Shared Service in the NY DC.
+If you continue to run the ping from the Workstation Edge terminal to the **aws-us-east-2-spoke1-test1** instance, you should observe both relative and absolute traffic from the Cost Center in AWS. The other two environments (GCP and Azure) will display 0% traffic, as there is no data directed toward the Shared Service in the New York data center.
+
 
 ```{figure} images/lab9-ping.png
 ---
@@ -289,7 +297,7 @@ align: center
 From the Cost Center in AWS to the Shared Service
 ```
 
-After this lab, this is how the overall topology will look like:
+Upon completing this lab, the overall topology will be represented as follows:
 
 ```{figure} images/lab9-final.png
 ---
