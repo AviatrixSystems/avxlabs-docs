@@ -501,6 +501,65 @@ SSH in to test1 from test2
 Is it possible to directly SSH into **_aws-us-east-1-spoke1-test1_** without first connecting to test2?
 ```
 
+<details>
+  <summary>Click here to reveal the answer to the previous question: <span style='color:#33ECFF'>Hint!</span></summary>
+
+If you want to SSH directly into the **aws-us-east-1-spoke1-test1** instance, you need to create an ad-hoc DCF rule that allows the public IP address of your laptop to access this instance.
+
+```{figure} images/lab9-myip01.png
+---
+height: 400px
+align: center
+---
+From your laptop to aws-us-east-1-spoke1-test1
+```
+
+- Go to this URL https://whatismyipaddress.com/ and copy your personal Public IP address.
+
+```{figure} images/lab9-myip02.png
+---
+height: 400px
+align: center
+---
+whatismyipaddress.com
+```
+
+```{figure} images/lab4-fullmesh02.png
+---
+height: 400px
+align: center
+---
+Full-mesh: logical
+```
+
+The Gateway in the **AWS US-EAST-1** region is exclusively peering with the Gateway in **AWS US-EAST-2**.
+
+```{figure} images/lab4-fullmesh03.png
+---
+height: 400px
+align: center
+---
+Single peering
+```
+
+The Aviatrix Controller will not install a route to a Transit Gateway that is not directly peering with the originating Transit Gateway. Therefore, each Transit Gateway must learn about networks from its originating Transit Gateway.
+
+To avoid the limitations of full-mesh peering, which is not very scalable, you can utilize the [multi-tier transit](https://docs.aviatrix.com/documentation/latest/getting-started/platform-overview/aviatrix-glossary.html#multi-tier-transit) feature.
+
+```{figure} images/lab4-fullmesh04.png
+---
+height: 400px
+align: center
+---
+Intransitive behaviour without Full-Mesh config.
+```
+
+```{caution}
+The Multi-Tier feature will be activated on **Lab 11**.
+```
+
+</details>
+
 - Execute now the following commands:
 
 ```bash
