@@ -555,7 +555,7 @@ align: center
 Smart Group My-IP
 ```
 
-- Go to CoPilot > Security > Distributed Cloud Firewall and create a new rule clicking on the `"+ Rule"` button:
+- Go to **CoPilot > Security > Distributed Cloud Firewall** and create a new rule clicking on the `"+ Rule"` button:
 
 ```{figure} images/lab9-myip06.png
 ---
@@ -594,9 +594,32 @@ align: center
 Commit
 ```
 
+- Now, retrieve the public IP address of the **aws-us-east-1-spoke1-test1** instance. Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for _aws-us-east-1-spoke1-test1_. Click on `"+ 1 more"` to reveal the public IP address, then copy it to your clipboard.
 
+
+
+```{figure} images/lab9-myip09.png
+---
+height: 400px
+align: center
+---
+aws-us-east-1-spoke1-test1
+```
+
+- Now, open your SSH client and carry out the following command, pasting the Public IP address previously copied, then use the password available on your personal POD portal
+
+```bash
+ssh student@...
+```
+
+```{figure} images/lab9-myip10.png
+---
+height: 400px
+align: center
+---
+SSH to aws-us-east-1-spoke1-test1
+```
 </details>
-
 
 - Execute now the following commands:
 
