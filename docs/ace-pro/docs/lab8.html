@@ -507,7 +507,7 @@ document.write(`
 </figcaption>
 </figure>
 </div>
-<p>Wait for a bunch of seconds for the Aviatrix Controller to establish the attachment and then a message will pop up confirming that the operation has been accomplished, successfully!</p>
+<p>Please wait a few moments for the Aviatrix Controller to establish the attachment. Once completed, a confirmation message will appear, indicating that the operation was successful!</p>
 <figure class="align-center" id="id15">
 <img alt="../_images/lab8-edge14.png" src="../_images/lab8-edge14.png" />
 <figcaption>
@@ -530,14 +530,14 @@ document.write(`
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">&quot;Attachments&quot;</span></code> tab and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Transit-Spoke</span> <span class="pre">Peering&quot;</span></code>.</p>
-<p>You will notice the presence of an attachment between the Transit GW in the cloud and the <strong>Edge</strong> running in the DC!</p>
+<p>You will observe an attachment established between the Transit Gateway in the cloud and the <strong>Edge</strong> device operating in the data center!</p>
 <figure class="align-center" id="id18">
 <img alt="../_images/lab8-edge17.png" src="../_images/lab8-edge17.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 392 </span><span class="caption-text">Transit-Spoke Edge Peering</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This is how the Topology will look like after the creation of the attachment.</p>
+<p>Here’s how the topology will appear following the establishment of the attachment.</p>
 <figure class="align-center" id="id19">
 <img alt="../_images/lab8-edge18.png" src="../_images/lab8-edge18.png" />
 <figcaption>
@@ -546,13 +546,13 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The <strong>Edge</strong> device allows to extend all the Aviatrix functionalities to the remote DC!</p>
+<p>Once again, the <strong>Edge</strong> device facilitates the extension of all Aviatrix functionalities to the remote data center!</p>
 </div>
 </section>
 </section>
 <section id="network-domain-association">
 <h2>3. Network Domain Association<a class="headerlink" href="#network-domain-association" title="Link to this heading">#</a></h2>
-<p>Let’s assocciate the Edge connection to any of the existing Network Domains.</p>
+<p>Let’s associate the Edge connection with one of the existing Network Domains.</p>
 <p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong> and edit, for instance, the <strong>Green</strong> domain. Select the <strong><code class="docutils literal notranslate"><span class="pre">on-prem-edge</span></code></strong> connection and do not forget to click on <strong>Save</strong>!</p>
 <figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab8-edge19.png"><img alt="../_images/lab8-edge19.png" src="../_images/lab8-edge19.png" style="height: 400px;" />
@@ -561,7 +561,7 @@ document.write(`
 <p><span class="caption-number">Fig. 394 </span><span class="caption-text">Network Domain Association</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You have successfully extended the <code class="docutils literal notranslate"><span class="pre">Network</span> <span class="pre">Segmentation</span></code> on top of the DC.</p>
+<p>You have successfully expanded <strong>Network Segmentation</strong> across the data center.</p>
 <figure class="align-center" id="id21">
 <img alt="../_images/lab8-newjoe.png" src="../_images/lab8-newjoe.png" />
 <figcaption>
@@ -598,7 +598,7 @@ document.write(`
 <p><span class="caption-number">Fig. 398 </span><span class="caption-text">Workstation Edge access from the POD Portal</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Subsequently, insert the credentials available from the POD Portal.</p>
+<p>Next, enter the credentials provided in the POD Portal.</p>
 <figure class="align-center" id="id25">
 <img alt="../_images/lab8-newjoe3.png" src="../_images/lab8-newjoe3.png" />
 <figcaption>
@@ -799,7 +799,7 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 <p class="admonition-title">Caution</p>
 <p>If the two instances are unable to communicate, check the DCF section, the Network Segmentation section, and the Hybrid Cloud section, where you might have forgotten some configurations.</p>
 </div>
-<p>Now go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>, select the <strong><em>aws-us-east-2-spoke1</em></strong>, choose the <code class="docutils literal notranslate"><span class="pre">Traceroute</span></code> command and insert the private IP address of <strong><em>gcp-us-central1-spoke1-test1</em></strong> (i.e. <code class="docutils literal notranslate"><span class="pre">172.16.1.100</span></code>)</p>
+<p>Now go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>, select the <strong><em>aws-us-east-2-spoke1</em></strong> Gateway, choose the <code class="docutils literal notranslate"><span class="pre">Traceroute</span></code> command and insert the private IP address of <strong><em>gcp-us-central1-spoke1-test1</em></strong> (i.e. <code class="docutils literal notranslate"><span class="pre">172.16.1.100</span></code>)</p>
 <figure class="align-center" id="id46">
 <a class="reference internal image-reference" href="../_images/lab8-podportal113.png"><img alt="../_images/lab8-podportal113.png" src="../_images/lab8-podportal113.png" style="height: 200px;" />
 </a>
@@ -956,7 +956,7 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 <p>Now, let’s launch again the traceroute towards 172.16.1.100</p>
 <section id="traceroute-through-the-spoke-gateway">
 <h3>8.1 Traceroute through the Spoke Gateway<a class="headerlink" href="#traceroute-through-the-spoke-gateway" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>, select the aws-us-east-2-spoke1, choose the <code class="docutils literal notranslate"><span class="pre">Traceroute</span></code> command and insert the private IP address of <strong><em>gcp-us-central1-spoke1-test1</em></strong></p>
+<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>, select the <strong>aws-us-east-2-spoke1</strong> Gateway, choose the <code class="docutils literal notranslate"><span class="pre">Traceroute</span></code> command and insert the private IP address of <strong><em>gcp-us-central1-spoke1-test1</em></strong> (i.e. 172.16.1.100).</p>
 <figure class="align-center" id="id62">
 <a class="reference internal image-reference" href="../_images/lab8-podportal113.png"><img alt="../_images/lab8-podportal113.png" src="../_images/lab8-podportal113.png" style="height: 200px;" />
 </a>
@@ -1033,7 +1033,7 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 </section>
 <section id="final-considerations">
 <h2>10. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
-<p>Now go back to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab and then once again, on the right-hand side, type <code class="docutils literal notranslate"><span class="pre">172.16.1.0</span></code> inside the Search field.</p>
+<p>Now go back to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> Gateway, then select the <code class="docutils literal notranslate"><span class="pre">&quot;Route</span> <span class="pre">DB&quot;</span></code> tab and then once again, on the right-hand side, type <code class="docutils literal notranslate"><span class="pre">172.16.1.0</span></code> inside the Search field.</p>
 <p>This time the AS Path Length will turn out being equal to <strong>2</strong>.</p>
 <p><ins>The best path is via the Edge!</ins></p>
 <figure class="align-center" id="id70">
