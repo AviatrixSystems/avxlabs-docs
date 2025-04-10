@@ -524,41 +524,79 @@ align: center
 whatismyipaddress.com
 ```
 
-```{figure} images/lab4-fullmesh02.png
+- Go to **CoPilot > Groups > SmartGroups** and then click on the `"+ SmartGroup"` button.
+
+```{figure} images/lab9-myip03.png
+---
+align: center
+---
+New SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>My-IP</span>
+
+- Then click on the `"+ Resource Type"` button and choose IPs / CIDRs.
+
+```{figure} images/lab9-myip04.png
+---
+align: center
+---
+Resource Type: IP
+```
+
+- Now paste the public IP address that you copied from the website _whatismyipaddress.com_. Before clicking **Save**, make sure to remove the Virtual Machines condition as shown below.
+
+```{figure} images/lab9-myip05.png
+---
+align: center
+---
+Smart Group My-IP
+```
+
+- Go to CoPilot > Security > Distributed Cloud Firewall and create a new rule clicking on the `"+ Rule"` button:
+
+```{figure} images/lab9-myip06.png
+---
+align: center
+---
+New Rule
+```
+
+Insert the following parameters:
+
+- **Name**: <span style='color:#479608'>inter-myip-east1-test1-ssh</span>
+- **Source Groups**: <span style='color:#479608'>My-IPp</span>
+- **Destination Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>22</span>
+- **Enforcement**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab9-myip07.png
+---
+align: center
+---
+inter-myip-east1-test1-ssh
+```
+
+Click on the **Commit** button!
+
+```{figure} images/lab9-myip08.png
 ---
 height: 400px
 align: center
 ---
-Full-mesh: logical
+Commit
 ```
 
-The Gateway in the **AWS US-EAST-1** region is exclusively peering with the Gateway in **AWS US-EAST-2**.
-
-```{figure} images/lab4-fullmesh03.png
----
-height: 400px
-align: center
----
-Single peering
-```
-
-The Aviatrix Controller will not install a route to a Transit Gateway that is not directly peering with the originating Transit Gateway. Therefore, each Transit Gateway must learn about networks from its originating Transit Gateway.
-
-To avoid the limitations of full-mesh peering, which is not very scalable, you can utilize the [multi-tier transit](https://docs.aviatrix.com/documentation/latest/getting-started/platform-overview/aviatrix-glossary.html#multi-tier-transit) feature.
-
-```{figure} images/lab4-fullmesh04.png
----
-height: 400px
-align: center
----
-Intransitive behaviour without Full-Mesh config.
-```
-
-```{caution}
-The Multi-Tier feature will be activated on **Lab 11**.
-```
 
 </details>
+
 
 - Execute now the following commands:
 
