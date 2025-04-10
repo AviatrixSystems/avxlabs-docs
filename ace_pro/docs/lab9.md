@@ -191,7 +191,7 @@ New SmartGroup
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
-- **CSP Tag Key**: <span style='color:#479608'>Name</span>
+- **Virtual Machines - Matches all conditions (AND)**: <span style='color:#479608'>Name</span>
 - **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 
 ```{figure} images/lab9-smart002.png
@@ -303,6 +303,8 @@ Default ThreatGroup
 
 ## 7. Generate again traffic towards the "Bad Guy"
 
+### 7.1 Deletion of the Greenfield-Rule = ZTNA
+
 Now let's delete the **Greenfield-Rule**, such that the **ZTNA** can be restored in the Data Path!
 
 - Click on the **three dots** icon on the right-hand side of the Greenfield-Rule entry and then choose the `"Delete Rule"` option.
@@ -333,7 +335,7 @@ align: center
 DCF Rules List
 ```
 
-### 7.1 Create a new WebGroup
+### 7.2 Create a new WebGroup
 
 Let's create another **WebGroup** that will exactly match three domains:
 
@@ -368,7 +370,7 @@ align: center
 WebGroup creation
 ```
 
-### 7.2 Create a PSF-Allow-Rule
+### 7.3 Create a PSF-Allow-Rule
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
