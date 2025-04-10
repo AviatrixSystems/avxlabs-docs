@@ -783,7 +783,7 @@ align: center
 As path length = 2
 ```
 
-After completing this lab, here's what the overall topology will look like:
+Upon completing this lab, here is the overall topology you can expect to see:
 
 ```{figure} images/lab8-edge25.png
 ---

@@ -573,7 +573,7 @@ align: center
 Condition
 ```
 
-After this lab, the overall topology will look like this:"
+After completing this lab, the overall topology will be as follows:
 
 ```{figure} images/lab9-finaltopologyy.png
 ---
