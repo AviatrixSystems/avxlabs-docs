@@ -6,9 +6,9 @@ This lab will demonstrate how the `Distributed Cloud Firewall` works.
 
 ## 2. Distributed Cloud Firewall Overview
 
-The Distributed Cloud Firewall is a feature of `Aviatrix Cloud Firewall` It provides Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata IDS/IPS, Advanced NAT capabilities and Micro-Segmentation.
+The Distributed Cloud Firewall is a powerful feature of the `Aviatrix Cloud Firewall`, designed to enhance security across your cloud infrastructure. It offers a comprehensive suite of capabilities, including Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata Intrusion Detection and Prevention Systems (IDS/IPS), Advanced Network Address Translation (NAT) capabilities, and Micro-Segmentation.
 
-In this lab you will create additional logical containers, called `Smart Groups`, that group instances that present similarities inside a VPC/VNet/VCN, and then you will enforce rules among these Smart Groups (aka **_Distributed Cloud Firewalling Rules_**):
+In this lab, you will have the opportunity to create additional logical containers known as `Smart Groups`. These Smart Groups are designed to categorize instances within a VPC/VNet/VCN that share similar characteristics. Once you have organized your instances into these groups, you will then enforce security policies among them through **Distributed Cloud Firewalling Rules**. This approach not only streamlines management but also enhances security by allowing for targeted rule enforcement based on the specific behaviors and attributes of the grouped instances.
 
 1) `intra-rule` = Rule applied within a Smart Group
 
@@ -18,7 +18,7 @@ In this lab you will create additional logical containers, called `Smart Groups`
 At this point in the lab, there is a unique routing domain (i.e. a **_Flat Routing Domain_**), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.
 ```
 
-All the Test instances have been deployed with the typical <ins>CSP tags</ins>. 
+All test instances have been deployed with the standard cloud service provider **(CSP) tags**.
 
 ```{important}
 The **CSP tagging** is the recommended method for defining the SmartGroups.
@@ -123,9 +123,9 @@ align: center
 Resources that match the condition
 ```
 
-At this point, you have only created _logical containers_ that do not affect the existing routing domain (thanks to the `Connetion Policy` applied on **Lab3**). It's time to define DCF rules that can govern the **East-West** traffic, thoroughly.
+At this stage, you have created logical containers that do not impact the existing routing domain, thanks to the `Connetion Policy` applied in **Lab 3**. Now, it’s time to thoroughly define Distributed Cloud Firewall (DCF) rules to govern **East-West** traffic.
 
-This is the current list of your DCF Rules within the **Distributed Cloud Firewall** section on your CoPilot:
+Below is the current list of your DCF Rules within the **Distributed Cloud Firewall** section of your CoPilot:
 
 ```{figure} images/lab10-newone2.png
 ---
