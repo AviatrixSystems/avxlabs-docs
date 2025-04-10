@@ -145,7 +145,7 @@ align: center
 Attach over PUBLIC Network
 ```
 
-Wait for a bunch of seconds for the Aviatrix Controller to establish the attachment and then a message will pop up confirming that the operation has been accomplished, successfully!
+Please wait a few moments for the Aviatrix Controller to establish the attachment. Once completed, a confirmation message will appear, indicating that the operation was successful!
 
 ```{figure} images/lab8-edge14.png
 ---
@@ -176,7 +176,7 @@ aws-us-east-2-transit
 
 Select the `"Attachments"` tab and then click on `"Transit-Spoke Peering"`. 
 
-You will notice the presence of an attachment between the Transit GW in the cloud and the **Edge** running in the DC!
+You will observe an attachment established between the Transit Gateway in the cloud and the **Edge** device operating in the data center!
 
 ```{figure} images/lab8-edge17.png
 ---
@@ -185,7 +185,7 @@ align: center
 Transit-Spoke Edge Peering
 ```
 
-This is how the Topology will look like after the creation of the attachment.
+Here’s how the topology will appear following the establishment of the attachment.
 
 ```{figure} images/lab8-edge18.png
 ---
@@ -195,12 +195,12 @@ Attachment established!
 ```
 
 ```{important}
-The **Edge** device allows to extend all the Aviatrix functionalities to the remote DC!
+Once again, the **Edge** device facilitates the extension of all Aviatrix functionalities to the remote data center!
 ```
 
 ## 3. Network Domain Association
 
-Let's assocciate the Edge connection to any of the existing Network Domains.
+Let's associate the Edge connection with one of the existing Network Domains.
 
 Go to **CoPilot > Networking > Network Segmentation > Network Domains** and edit, for instance, the **Green** domain. Select the **`on-prem-edge`** connection and do not forget to click on **Save**!
 
@@ -212,7 +212,7 @@ align: center
 Network Domain Association
 ```
 
-You have successfully extended the `Network Segmentation` on top of the DC.
+You have successfully expanded **Network Segmentation** across the data center.
 
 ```{figure} images/lab8-newjoe.png
 ---
@@ -257,7 +257,7 @@ align: center
 Workstation Edge access from the POD Portal
 ```
 
-Subsequently, insert the credentials available from the POD Portal.
+Next, enter the credentials provided in the POD Portal.
 
 ```{figure} images/lab8-newjoe3.png
 ---
@@ -494,7 +494,7 @@ The two instances can communicate without any issues.
 If the two instances are unable to communicate, check the DCF section, the Network Segmentation section, and the Hybrid Cloud section, where you might have forgotten some configurations.
 ```
 
-Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the **_aws-us-east-2-spoke1_**, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e. `172.16.1.100`)
+Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the **_aws-us-east-2-spoke1_** Gateway, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e. `172.16.1.100`)
 
 ```{figure} images/lab8-podportal113.png
 ---
@@ -683,7 +683,7 @@ Now, let's launch again the traceroute towards 172.16.1.100
 
 ### 8.1 Traceroute through the Spoke Gateway
 
-Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_**
+Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the **aws-us-east-2-spoke1** Gateway, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e. 172.16.1.100).
 
 ```{figure} images/lab8-podportal113.png
 ---
@@ -769,7 +769,7 @@ align: center
 
 ## 10. Final Considerations
 
-Now go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type `172.16.1.0` inside the Search field.
+Now go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** Gateway, then select the `"Route DB"` tab and then once again, on the right-hand side, type `172.16.1.0` inside the Search field.
 
 This time the AS Path Length will turn out being equal to **2**. 
 
