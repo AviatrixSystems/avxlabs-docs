@@ -360,8 +360,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5. Create a new SmartGroup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6. Create two new DCF rules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7. Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.1 Create a new WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.2 Create a PSF-Allow-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deletion-of-the-greenfield-rule-ztna">7.1 Deletion of the Greenfield-Rule = ZTNA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.2 Create a new WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.3 Create a PSF-Allow-Rule</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests">8. Connectivity Tests</a><ul class="nav section-nav flex-column">
@@ -561,7 +562,7 @@ document.write(`
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
-<li><p><strong>CSP Tag Key</strong>: <span style='color:#479608'>Name</span></p></li>
+<li><p><strong>Virtual Machines - Matches all conditions (AND)</strong>: <span style='color:#479608'>Name</span></p></li>
 <li><p><strong>CSP Tag Value</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
 </ul>
 <figure class="align-center" id="id16">
@@ -660,6 +661,8 @@ document.write(`
 </section>
 <section id="generate-again-traffic-towards-the-bad-guy">
 <h2>7. Generate again traffic towards the “Bad Guy”<a class="headerlink" href="#generate-again-traffic-towards-the-bad-guy" title="Link to this heading">#</a></h2>
+<section id="deletion-of-the-greenfield-rule-ztna">
+<h3>7.1 Deletion of the Greenfield-Rule = ZTNA<a class="headerlink" href="#deletion-of-the-greenfield-rule-ztna" title="Link to this heading">#</a></h3>
 <p>Now let’s delete the <strong>Greenfield-Rule</strong>, such that the <strong>ZTNA</strong> can be restored in the Data Path!</p>
 <ul class="simple">
 <li><p>Click on the <strong>three dots</strong> icon on the right-hand side of the Greenfield-Rule entry and then choose the <code class="docutils literal notranslate"><span class="pre">&quot;Delete</span> <span class="pre">Rule&quot;</span></code> option.</p></li>
@@ -686,8 +689,9 @@ document.write(`
 <p><span class="caption-number">Fig. 470 </span><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 <section id="create-a-new-webgroup">
-<h3>7.1 Create a new WebGroup<a class="headerlink" href="#create-a-new-webgroup" title="Link to this heading">#</a></h3>
+<h3>7.2 Create a new WebGroup<a class="headerlink" href="#create-a-new-webgroup" title="Link to this heading">#</a></h3>
 <p>Let’s create another <strong>WebGroup</strong> that will exactly match three domains:</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="http://www.nginx.com">www.nginx.com</a></p></li>
@@ -719,7 +723,7 @@ document.write(`
 </figure>
 </section>
 <section id="create-a-psf-allow-rule">
-<h3>7.2 Create a PSF-Allow-Rule<a class="headerlink" href="#create-a-psf-allow-rule" title="Link to this heading">#</a></h3>
+<h3>7.3 Create a PSF-Allow-Rule<a class="headerlink" href="#create-a-psf-allow-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id29">
 <img alt="../_images/lab9-newrule100.png" src="../_images/lab9-newrule100.png" />
@@ -985,8 +989,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5. Create a new SmartGroup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6. Create two new DCF rules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7. Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.1 Create a new WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.2 Create a PSF-Allow-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deletion-of-the-greenfield-rule-ztna">7.1 Deletion of the Greenfield-Rule = ZTNA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.2 Create a new WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.3 Create a PSF-Allow-Rule</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests">8. Connectivity Tests</a><ul class="nav section-nav flex-column">
