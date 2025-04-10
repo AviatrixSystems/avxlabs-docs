@@ -721,19 +721,11 @@ Create Rule
 
 Enforce this new rule into the Data Plane clicking on the `"Commit"` button.
 
-```{figure} images/lab10-newcommit2.png
----
-height: 300px
-align: center
----
-Commit
-```
-
 ### 9.1 Verify ICMP traffic from bu2 to bu1 Using the Gatus App
 
 Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
 
-```{figure} images/lab10-gatus38.png
+```{figure} images/lab10-newcommit2.png
 ---
 align: center
 ---
@@ -787,9 +779,9 @@ align: center
 Monitor
 ```
 
-The logs clearly demonstrate that the inter-rule is successfully permitting ICMP traffic from bu2 to bu1.
+The logs clearly show that the inter-rule is successfully allowing ICMP traffic from bu2 to bu1.
 
-After the creation of the previous inter-rule, this is how the topology with all the permitted protocols will look like.
+After establishing this inter-rule, the topology with all permitted protocols will be represented as follows:
 
 ```{figure} images/lab10-lastdrawing2.png
 ---
@@ -810,15 +802,15 @@ align: center
 From-To
 ```
 
-The inter-rule is **Stateful** in the sense that it will permit the echo-reply generated from the bu1 to reach the instance in bu2.
+The inter-rule is **Stateful**, meaning it allows the echo-reply generated from bu1 to reach the instance in bu2.
 
 ## 11. East-1 and the Multi-Tier Transit
 
 ### 11.1 Activation of the MTT
 
-Let’s now also involve the AWS region **US-EAST-1**.
+Let's now include the AWS region **US-EAST-1**.
 
-This time, you have to allow the ICMP traffic between the Smart Group **bu2** and the ec2 instance **_aws-us-east-1-spoke1-test2_**, solely.
+This time, you need to permit ICMP traffic exclusively between the Smart Group **bu2** and the EC2 instance **_aws-us-east-1-spoke1-test2_**.
 
 ```{figure} images/lab10-newtopology3.png
 ---
@@ -871,7 +863,7 @@ align: center
 azure-west-us-spoke2
 ```
 
-Then click on the `"Gateway Routes"` tab and check whether the destination route is present in the routing table or not.
+Then click on the `"Gateway Routes"` tab and check whether the destination route (i.e. **10.0.12.0/23**) is present in the routing table or not.
 
 ```{figure} images/lab10-gatewayroutes.png
 ---
