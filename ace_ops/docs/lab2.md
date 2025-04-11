@@ -44,7 +44,7 @@ BU1 editing
 ```{tip}
 Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**. 
 
-This time you can notice the network relationships successfully established between the two Network Domains.
+This time, you can observe the successful establishment of network relationships between the two Network Domains
 ```
 
 ```{figure} images/lab2-logicalview.png
