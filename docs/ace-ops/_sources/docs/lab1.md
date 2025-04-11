@@ -269,7 +269,7 @@ Ping and SSH will be successful **within** the same network domain!
 
 ```{figure} images/lab1-pingok.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 ICMP
@@ -412,7 +412,7 @@ The **Originator** has the egress interface that corresponds to the **eth0** int
 
 ```{figure} images/lab1-cloudroutes.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Originator = eth0
