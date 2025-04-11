@@ -2,9 +2,9 @@
 
 ## 1. SCENARIO
 
-Infrastructure <ins>was segmented</ins> recently into 2 network domains: **BU1** & **BU2**.
+The infrastructure has recently been divided into two network domains: **BU1** and **BU2**.
 
-You are requested to ascertain the segregation between the two network domains.
+ Please verify the segregation between these two domains.
 
 ```{figure} images/lab1-segmentation.png
 ---
@@ -16,8 +16,9 @@ Initial Topology
 
 ## 2. VALIDATION REQUEST
 
-* Go to **CoPilot > Settings > Resources > Task Server**
-  * Ensure that both **Fetch GW Routes** and **Fetch VPC Routes** intervals are set to <ins>“1 second”</ins> each and then click on **SAVE**.
+* Navigate to **CoPilot > Settings > Resources > Task Server**. 
+  * Ensure that both `Fetch GW Routes` and `Fetch VPC Routes` intervals are set to `1 second`. Then, click **Save** to apply the changes.
+
 
 ```{figure} images/lab1-task.png
 ---
@@ -41,7 +42,7 @@ align: center
 Fetch VPC Routes
 ```
 
-Afterwards, click on **Commit**.
+After that, click on **Commit**.
 
 ```{figure} images/lab1-commit.png
 ---
@@ -52,12 +53,12 @@ Commit
 ```
 
 ```{warning}
-These are very aggressive settings. In a Production environment, you should NOT set these intervals that frequently!
+These settings are quite aggressive. In a production environment, you should avoid setting these intervals to such frequent values!
 ```
 
-Go to **CoPilot > Cloud Fabric > Topology**  to explore your POD topology. 
+Navigate to **CoPilot > Cloud Fabric > Topology** to explore your POD topology.
 
-You will notice that the CoPilot is showing both the *Managed VPCs* and the *Unmanaged VPCs*.
+You'll see that CoPilot displays both *Managed* and *Unmanaged* VPCs.
 
 ```{figure} images/lab1-managedvpc.png
 ---
@@ -67,7 +68,7 @@ align: center
 Dynamic Topology
 ```
 
-Click on the `"Managed"` button on the right-hand side of the screen, for hiding the Unmanaged VPCs.
+Click the `"Managed"` button on the right side of the screen to hide the Unmanaged VPCs.
 
 ```{figure} images/lab1-managedvpc2.png
 ---
@@ -78,12 +79,12 @@ Properties of your Topology
 ```
 
 ```{note}
-**Managed VPC** = Indicates an Aviatrix gateway is running in the VPC/VNet.
+**Managed** VPC: Indicates that an Aviatrix gateway is operational within the VPC/VNet.
 
-**Unmanaged VPC** = Indicates no Aviatrix gateways exist in the VPC/VNet.
+**Unmanaged** VPC: Indicates that no Aviatrix gateways are present in the VPC/VNet.
 ```
 
-After this action this is how your Topology should look like.
+After completing this action, your Topology should appear as follows.
 
 ```{figure} images/lab1-managedvpc3.png
 ---
@@ -94,12 +95,12 @@ Managed VPCs only
 ```
 
 ```{caution}
-**Always** refer to your personal POD for the correct IP addresses. The IP addresses shown in the following screenshots <ins>are merely examples</ins> taken from a different POD and are used solely for the creation of the lab guides.
+**Always** refer to your personal POD for the accurate IP addresses. The IP addresses displayed in the following screenshots are only <ins>examples</ins> sourced from a different POD and are intended solely for the creation of the lab guides.
 ```
 
-There are **two** methods for SSH to any instances inside the multicloud infrastructure of this lab:
+There are **two** methods to SSH into any instances within the multicloud infrastructure of this lab:
 
-1. Using an <span style='color:orange'>**SSH client**</span> from your laptop (<ins>recommended method!</ins>).
+1. Use an <span style='color:orange'>**SSH client**</span> from your laptop (<ins>recommended method!</ins>).
 
 ```{figure} images/lab1-publicip.png
 ---
@@ -115,7 +116,7 @@ align: center
 DNS name
 ```
 
-2. Using the <span style='color:orange'>**Apache Jumpbox**</span> from the POD Portal, <ins>for example if you are within your corporate network and tipically an outbound restriction rule is blocking the port **22**</ins>.
+2. Use the <span style='color:orange'>**Apache Jumpbox**</span> from the POD Portal, particularly if you are on your corporate network and typically face outbound restrictions blocking **port 22**.
 
 ```{figure} images/lab1-jumpbox.png
 ---
@@ -133,7 +134,7 @@ Apache Guacamole Portal
 ```
 
 ```{note}
-Please bear in mind that if you decide to use the Jumpbox, copy and paste do not work directly from the host machine. Therefore, activate the **Guacamole Menu**, which is a sidebar that is hidden until explicitly shown. On a desktop or other device with a hardware keyboard, you can display this menu by pressing **_Ctrl+Alt+Shift_** on a Windows machine (**_Control+Shift+Command_** on a Mac).
+Please note that if you choose to use the Jumpbox, copy and paste functionality will not work directly from the host machine. To enable this feature, activate the **Guacamole Menu**, which is initially hidden. On a desktop or any device with a hardware keyboard, you can display this menu by pressing **_Ctrl+Alt+Shift_** on a Windows machine (**_Control+Shift+Command_** on a Mac).
 ```
 
 ```{figure} images/lab1-guacamoleterminal.png
@@ -145,10 +146,13 @@ Guacamole Menu
 ```
 
 ```{tip}
-The IP addresses can be easily retrieved using **3** different methods, as you like:
-1) From the **Properties** section of each Virtual Machine on the Topology.
-2) From the **Virtual Machines** Inventory.
-3) From your personal POD portal, where you can also use the **DNS symbolic names**.
+The IP addresses can be easily obtained using **three** different methods, according to your preference:
+
+1) From the **Properties** section of each Virtual Machine in the Topology.
+
+2) From the **Virtual Machines** Inventory*.
+
+3) From your **personal POD portal**, where you can also utilize DNS symbolic names.
 ```
 
 - **Dynamic Topology**:
@@ -156,7 +160,7 @@ The IP addresses can be easily retrieved using **3** different methods, as you l
 Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
 
 ```{caution}
-You can't connect to any Aviatrix Gateways using the **SSH** protocol. The port 22 is hardened!
+You **cannot** connect to any Aviatrix Gateways using the SSH protocol, <ins>as port 22 is secured</ins>!
 ```
 
 ```{figure} images/lab1-newpicture.png
@@ -176,7 +180,7 @@ Instance Properties
 ```
 
 ```{tip}
-If you want to see the full hostnames of each node, select `"Show Labels"` from the bottom left sidebar.
+To view the full hostnames of each node, select `"Show Labels"` from the bottom left sidebar.
 ```{figure} images/lab1-showlabels.png
 ---
 height: 400px
@@ -187,7 +191,7 @@ Show Labels
 
 - **Cloud Assets**:
 
-Go to **CoPilot > Cloud resources > Cloud Assets > Virtual Machines** and from here you can search for any instances and retrieve their IP addresses!
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, where you can search for any instances and retrieve their IP addresses!"
 
 ```{figure} images/lab1-assets.png
 ---
@@ -199,11 +203,12 @@ Inventory
 
 - **POD Portal**:
 
-Use your personal POD in order to retrieve the symbolic names of any test instances.
+Use your personal POD to retrieve the symbolic names of any test instances.
 
 ```{caution}
-- Use the symbolic name that contains the word `"public"` for logging to the instance from your laptop.
-- Use the symbolic name that contains the word `"private"` for the East-West traffic verification, once you have landed onto any test instances from your laptop. 
+- Use the symbolic name containing the word `"public"` to log into the instance from your laptop."
+
+- Use the symbolic name containing the word `"private"` for East-West traffic verification after accessing any test instance from your laptop.
 ```
 
 ```{figure} images/lab1-podred.png
@@ -215,11 +220,12 @@ DNS Names
 ```
 
 - Verify connectivity between clients **within** the same BU:
-    - SSH to the **BU1 Frontend** in AWS.
-    - From BU1 Frontend ping the <ins>private IP address</ins> of the **BU1 Analytics** in GCP.
-
+    - SSH into the **BU1 Frontend**  instancein AWS.
+    - From the BU1 Frontend instance, ping the <ins>private IP address</ins> of the **BU1 Analytics** instancein GCP.
+    - Confirm that **SSH** works from the BU1 Frontend instance to the BU1 Analytics instance.
+  
 ```{important}
-The credentials for accessing the EC2 instances and VMs can be found on your personal POD Portal, within the dedicated widget labeled `"SSH for Test Instances"`.
+The credentials for accessing the EC2 instances and VMs are available in your personal POD Portal, within the dedicated widget labeled `"SSH for Test Instances"`.
 ```{figure} images/lab1-widget.png
 ---
 height: 400px
@@ -281,10 +287,10 @@ align: center
 Network Domains
 ```
   
-* Check the different routing tables (*VRFs*) maintained by any of the Transit Gateways.
+* Examine the various routing tables (*VRFs*) managed by the Transit Gateways.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ace-aws-eu-west-1-transit** Gateway **> Gateway Routes** and filter out based on any Network Domains (i.e. either BU1 or BU2).
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select **_the ace-aws-eu-west-1-transit_** Gateway, then go to **Gateway Routes** and filter by any *Network Domains* (e.g., BU1 or BU2).
 ```
 
 ```{figure} images/lab1-bu1vrf.png
