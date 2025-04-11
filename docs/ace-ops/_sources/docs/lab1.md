@@ -232,11 +232,11 @@ align: center
 SSH credentials
 ```
 
-Let's use the Dynamic Topology for retrieving the Public IP address of the BU1 Frontend instance. Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default tab)** and search for `"frontend"`.
+Let's use the Dynamic Topology for retrieving the Public IP address of the BU1 Frontend instance. Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on **Filters** and search for `"frontend"`.
 
 ```{figure} images/lab1-assets20.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 BU1 frontend
@@ -246,7 +246,7 @@ Now, click on the EC2 instance icon in the topology and locate the Public IP add
 
 ```{figure} images/lab1-assets21.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 Properties
@@ -256,7 +256,7 @@ Open your SSH client and enter the SSH command to log in to the BU1 Frontend ins
 
 ```{figure} images/lab1-assets22.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 SSH
@@ -300,7 +300,15 @@ The screenshots are used as examples and might indicate **different IP addresses
 height: 400px
 align: center
 ---
-BU1 to BU2 fails
+BU1 to BU2: ICMP test fails
+```
+
+```{figure} images/lab1-sshfails01.png
+---
+height: 400px
+align: center
+---
+BU1 to BU2: SSH test fails
 ```
 
 * Check the **Network Segmentation** section on the CoPilot, and then look at the **Logical View**.
