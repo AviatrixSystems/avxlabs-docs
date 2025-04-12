@@ -1,4 +1,4 @@
-# Aviagtrix Cloud Firewall Lab
+# Aviatrix Cloud Firewall Lab
 
 ## Scenario
 
