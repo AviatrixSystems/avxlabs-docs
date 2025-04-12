@@ -17,7 +17,7 @@ https://ace.aviatrix.com/ace-associate
 **Discount code (100% free cost)**:
 
 - Ace associate training discount code: *acemulticloud*
-- Ace associate exam discount code: *GETACECERTIFIED*
+- Ace associate exam discount code: *acemulticloud*
 ```
 
 

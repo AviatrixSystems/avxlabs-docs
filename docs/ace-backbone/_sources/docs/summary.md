@@ -2,7 +2,7 @@
 
 **Congratulations!!!**  
 
-You have completed Aviatrix Cloud Backbone course!!
+You have completed the `Aviatrix Cloud Backbone` course!!
 
 Throughout the course, we developed a strong understanding of Aviatrix Cloud Backbone and Aviatrix Edge across multiple clouds without disrupting the existing native architecture.
 
