@@ -142,6 +142,19 @@ Go to `Cloud Fabric->Gateways->Spoke Gateways->Egress-VPC1-GW`, and select `Sett
 
 We need to set 2 settings in here, first enabling Destination NAT for Mapped-NAT feature to be activated, and second, we need to advertise the IP Block to the network while filtering the overlapping IP Block.
 
+| **Egress-VPC1-GW**  | **Destination Nat**             |
+| ----------- | ------------ |
+| **Dst CIDR** | 10.111.2.0/24 |
+|**Protocol**| all |
+|**Connection**|None|
+|**DNAT IPs**| 10.1.2.1-10.1.2.254|
+|**Apply Route Entry**|ON|
+
+| **Egress-VPC1-GW**  | **Routing**             |
+| ----------- | ------------ |
+| **Customize Spoke Advertised VPC/VNet CIDRs** | 10.111.2.0/24 |
+
+
 ```{figure} images-lab6/8.png
 ---
 align: center
@@ -154,6 +167,15 @@ When `AWS-instance` in `AWS-TGW` tries to reach to `AWS-Instance-1` and `1b` in 
 ## _For traffic Aws-instance-1 and Aws-instance-1b in Egress-VPC-1 to Aws-instance in AWS-TGW_
 
 Now we need to apply a Source-NAT solution in here to translate the source IP to the same IP Block, so the traffic can be translated on the Spoke Gateway and be delivered to the Aws-Instance in AWS-TGW.
+
+| **Egress-VPC1-GW**  | **Source Nat**             |
+| ----------- | ------------ |
+| **Src CIDR** | 10.1.2.0/24 |
+|**Protocol**| all |
+|**Connection**|None|
+|**SNAT IPs**| 10.111.2.1-10.111.2.254|
+|**Apply Route Entry**|ON|
+
 
 ```{figure} images-lab6/9.png
 ---
@@ -168,6 +190,19 @@ Go to `Cloud Fabric->Gateways->Spoke Gateways->Egress-VPC2-GW`, and select `Sett
 
 We need to set 2 settings in here, first enabling Destination NAT for Mapped-NAT feature to be activated, and second, we need to advertise the IP Block to the network while filtering the overlapping IP Block.
 
+| **Egress-VPC2-GW**  | **Destination Nat**             |
+| ----------- | ------------ |
+| **Dst CIDR** | 10.112.2.0/24 |
+|**Protocol**| all |
+|**Connection**|None|
+|**DNAT IPs**| 10.2.2.1-10.2.2.254|
+|**Apply Route Entry**|ON|
+
+| **Egress-VPC1-GW**  | **Routing**             |
+| ----------- | ------------ |
+| **Customize Spoke Advertised VPC/VNet CIDRs** | 10.112.2.0/24 |
+
+
 ```{figure} images-lab6/10.png
 ---
 align: center
@@ -179,6 +214,14 @@ When `Azure-instance` in `Azure-RS` tries to reach to `AWS-Instance-2` in `Egres
 
 ## _For traffic Aws-instance-2 in Egress-VPC-2 to Azure-instance in Azure-RS_
 Now we need to apply a Source-NAT solution in here to translate the source IP to the same IP Block, so the traffic can be translated on the Spoke Gateway and be delivered to the `Aws-Instance` in `AWS-TGW`.
+
+| **Egress-VPC2-GW**  | **Source Nat**             |
+| ----------- | ------------ |
+| **Src CIDR** | 10.2.2.0/24 |
+|**Protocol**| all |
+|**Connection**|None|
+|**SNAT IPs**| 10.112.2.1-10.112.2.254|
+|**Apply Route Entry**|ON|
 
 ```{figure} images-lab6/11.png
 ---
