@@ -455,7 +455,7 @@ We need to create 2 new SmartGroups and 2 new DCF rules to demonstrate this lab.
 
 | **Field** | **Value**       |
 | :-------- | :-------------- |
-| **Name**  | SG-Egress-VPC-1 |
+| **Name**  | SG-Egress-VPC-1-Resources |
 | **Name**  | aws-instance-1  |
 | **Name**  | aws-instance-1b |
 
