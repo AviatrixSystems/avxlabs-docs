@@ -586,6 +586,44 @@ Now we will look at the future and investigate what needs to be done to bring co
 <h2><em>For traffic Aws-instance in AWS-TGW to Aws-instance-1 and Aws-instance-1b in Egress-VPC-1</em><a class="headerlink" href="#for-traffic-aws-instance-in-aws-tgw-to-aws-instance-1-and-aws-instance-1b-in-egress-vpc-1" title="Link to this heading">#</a></h2>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric-&gt;Gateways-&gt;Spoke</span> <span class="pre">Gateways-&gt;Egress-VPC1-GW</span></code>, and select <code class="docutils literal notranslate"><span class="pre">Settings</span></code>.</p>
 <p>We need to set 2 settings in here, first enabling Destination NAT for Mapped-NAT feature to be activated, and second, we need to advertise the IP Block to the network while filtering the overlapping IP Block.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Egress-VPC1-GW</strong></p></th>
+<th class="head"><p><strong>Destination Nat</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Dst CIDR</strong></p></td>
+<td><p>10.111.2.0/24</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Protocol</strong></p></td>
+<td><p>all</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Connection</strong></p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>DNAT IPs</strong></p></td>
+<td><p>10.1.2.1-10.1.2.254</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Apply Route Entry</strong></p></td>
+<td><p>ON</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Egress-VPC1-GW</strong></p></th>
+<th class="head"><p><strong>Routing</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Customize Spoke Advertised VPC/VNet CIDRs</strong></p></td>
+<td><p>10.111.2.0/24</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <figure class="align-center" id="id8">
 <img alt="../_images/84.png" src="../_images/84.png" />
 <figcaption>
@@ -597,6 +635,31 @@ Now we will look at the future and investigate what needs to be done to bring co
 <section id="for-traffic-aws-instance-1-and-aws-instance-1b-in-egress-vpc-1-to-aws-instance-in-aws-tgw">
 <h2><em>For traffic Aws-instance-1 and Aws-instance-1b in Egress-VPC-1 to Aws-instance in AWS-TGW</em><a class="headerlink" href="#for-traffic-aws-instance-1-and-aws-instance-1b-in-egress-vpc-1-to-aws-instance-in-aws-tgw" title="Link to this heading">#</a></h2>
 <p>Now we need to apply a Source-NAT solution in here to translate the source IP to the same IP Block, so the traffic can be translated on the Spoke Gateway and be delivered to the Aws-Instance in AWS-TGW.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Egress-VPC1-GW</strong></p></th>
+<th class="head"><p><strong>Source Nat</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Src CIDR</strong></p></td>
+<td><p>10.1.2.0/24</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Protocol</strong></p></td>
+<td><p>all</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Connection</strong></p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SNAT IPs</strong></p></td>
+<td><p>10.111.2.1-10.111.2.254</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Apply Route Entry</strong></p></td>
+<td><p>ON</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <figure class="align-center" id="id9">
 <img alt="../_images/94.png" src="../_images/94.png" />
 <figcaption>
@@ -608,6 +671,44 @@ Now we will look at the future and investigate what needs to be done to bring co
 <h2><em>For traffic Azure-instance in Azure-RS to Aws-instance-2 in Egress-VPC-2</em><a class="headerlink" href="#for-traffic-azure-instance-in-azure-rs-to-aws-instance-2-in-egress-vpc-2" title="Link to this heading">#</a></h2>
 <p>Go to <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Fabric-&gt;Gateways-&gt;Spoke</span> <span class="pre">Gateways-&gt;Egress-VPC2-GW</span></code>, and select <code class="docutils literal notranslate"><span class="pre">Settings</span></code>.</p>
 <p>We need to set 2 settings in here, first enabling Destination NAT for Mapped-NAT feature to be activated, and second, we need to advertise the IP Block to the network while filtering the overlapping IP Block.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Egress-VPC2-GW</strong></p></th>
+<th class="head"><p><strong>Destination Nat</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Dst CIDR</strong></p></td>
+<td><p>10.112.2.0/24</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Protocol</strong></p></td>
+<td><p>all</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Connection</strong></p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>DNAT IPs</strong></p></td>
+<td><p>10.2.2.1-10.2.2.254</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Apply Route Entry</strong></p></td>
+<td><p>ON</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Egress-VPC1-GW</strong></p></th>
+<th class="head"><p><strong>Routing</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Customize Spoke Advertised VPC/VNet CIDRs</strong></p></td>
+<td><p>10.112.2.0/24</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <figure class="align-center" id="id10">
 <img alt="../_images/104.png" src="../_images/104.png" />
 <figcaption>
@@ -619,6 +720,31 @@ Now we will look at the future and investigate what needs to be done to bring co
 <section id="for-traffic-aws-instance-2-in-egress-vpc-2-to-azure-instance-in-azure-rs">
 <h2><em>For traffic Aws-instance-2 in Egress-VPC-2 to Azure-instance in Azure-RS</em><a class="headerlink" href="#for-traffic-aws-instance-2-in-egress-vpc-2-to-azure-instance-in-azure-rs" title="Link to this heading">#</a></h2>
 <p>Now we need to apply a Source-NAT solution in here to translate the source IP to the same IP Block, so the traffic can be translated on the Spoke Gateway and be delivered to the <code class="docutils literal notranslate"><span class="pre">Aws-Instance</span></code> in <code class="docutils literal notranslate"><span class="pre">AWS-TGW</span></code>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Egress-VPC2-GW</strong></p></th>
+<th class="head"><p><strong>Source Nat</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Src CIDR</strong></p></td>
+<td><p>10.2.2.0/24</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Protocol</strong></p></td>
+<td><p>all</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Connection</strong></p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SNAT IPs</strong></p></td>
+<td><p>10.112.2.1-10.112.2.254</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Apply Route Entry</strong></p></td>
+<td><p>ON</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <figure class="align-center" id="id11">
 <img alt="../_images/117.png" src="../_images/117.png" />
 <figcaption>
