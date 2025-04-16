@@ -366,26 +366,25 @@ document.write(`
 <h1>Backbone Lab<a class="headerlink" href="#backbone-lab" title="Link to this heading">#</a></h1>
 <section id="scenario">
 <h2>Scenario<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
-<p>ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the <strong>Azure</strong> cloud environment. The company decided expaning their cloud infrastructure also within AWS, however, they are facing cloud skills gap, because they do not have experties in AWS yet. Moreover, the company is heavily using the native CSP transit solutions (e.g. Azure Route Server).</p>
+<p>ABC Healthcare, a leading healthcare provider, operates exclusively within the <strong>Azure</strong> cloud environment. The company has decided to expand its cloud infrastructure to include AWS; however, it is facing a skills gap, as it lacks expertise in AWS. Additionally, ABC Healthcare heavily relies on native cloud service provider (CSP) transit solutions, such as Azure Route Server.</p>
 </section>
 <section id="lab-objective">
 <h2>Lab Objective<a class="headerlink" href="#lab-objective" title="Link to this heading">#</a></h2>
-<p>You, the newly appointed solutions architect, have been assigned the following task:</p>
+<p>As the newly appointed solutions architect, you have been assigned the following tasks:</p>
 <ul class="simple">
-<li><p>Create a <strong><em><code class="docutils literal notranslate"><span class="pre">multicloud</span> <span class="pre">backbone</span> <span class="pre">architecture</span></code></em></strong> that works in every cloud.</p></li>
-<li><p>The solution should also provide <strong><em><code class="docutils literal notranslate"><span class="pre">hybrid</span> <span class="pre">connectivity</span></code></em></strong> towards the Data Center.</p></li>
+<li><p>Design a <strong><em><code class="docutils literal notranslate"><span class="pre">multicloud</span> <span class="pre">backbone</span> <span class="pre">architecture</span></code></em></strong> that operates seamlessly across all cloud platforms.</p></li>
+<li><p>Ensure the solution provides <strong><em><code class="docutils literal notranslate"><span class="pre">hybrid</span> <span class="pre">connectivity</span></code></em></strong> to the data center.</p></li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><strong>Azure Route Server</strong> does not natively sypport connectivity to other Cloud Providers.</p>
-<p>Aviatrix supports <code class="docutils literal notranslate"><span class="pre">Multicloud</span> <span class="pre">Transit</span></code>.</p>
+<p><strong>Azure Route Server</strong> does not natively support connectivity to other cloud providers, whereas Aviatrix supports <code class="docutils literal notranslate"><span class="pre">Multicloud</span> <span class="pre">Transit</span></code>.</p>
 </div>
 </section>
 <section id="initial-set-up">
 <h2>Initial Set-up<a class="headerlink" href="#initial-set-up" title="Link to this heading">#</a></h2>
-<p>1- Both the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Controller</span></code> and the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">CoPilot</span></code> got already deployed in AWS, inside a dedicated MGMT VPC.</p>
-<p>2- A pair of <code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">Gateways</span></code> got also deployed in Azure and attached to the existing <strong>Azure Route Server</strong>.</p>
-<p>3- An <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Secure</span> <span class="pre">Edge</span></code> got already deployed inside the on-prem Data Center.</p>
+<p>1- Both the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Controller</span></code> and the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">CoPilot</span></code> have already been deployed in AWS, within a dedicated <em>management</em> VPC.</p>
+<p>2- A pair of <code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">Gateways</span></code> has also been deployed in Azure and connected to the existing <strong>Azure Route Server</strong>.</p>
+<p>3- An <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Secure</span> <span class="pre">Edge</span></code> has already been deployed in the on-premises data center.</p>
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/backbone-initial-topology.png"><img alt="../_images/backbone-initial-topology.png" src="../_images/backbone-initial-topology.png" style="height: 400px;" />
 </a>
@@ -522,12 +521,16 @@ document.write(`
 </section>
 <section id="lab-pre-req">
 <h2>LAB Pre-Req<a class="headerlink" href="#lab-pre-req" title="Link to this heading">#</a></h2>
-<p>Before starting building your backbone infrastructure, change the following <strong>Fetch Timers</strong> to their lowest value.</p>
+<p>Before building your backbone infrastructure, adjust the following <strong>Fetch Timers</strong> to their lowest values.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Go to <strong>CoPilot &gt; Settings &gt; Resources &gt; Task Server</strong></p>
 </div>
-<p>Ensure <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">GW</span> <span class="pre">Routes</span></code> and <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">VPC</span> <span class="pre">Routes</span></code> intervals are set to <strong>“1 Second”</strong> each and then click on <strong>SAVE</strong>.</p>
+<p>Ensure that the <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">GW</span> <span class="pre">Routes</span></code> and <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">VPC</span> <span class="pre">Routes</span></code> intervals are set to <strong>“1 Second”</strong> each, then click <strong>SAVE</strong>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Click the <em>pencil</em> icon to edit the timers.”</p>
+</div>
 <figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/backbone-tasks.png"><img alt="../_images/backbone-tasks.png" src="../_images/backbone-tasks.png" style="height: 400px;" />
 </a>
@@ -538,12 +541,12 @@ document.write(`
 <p>Do not forget to click on the <strong>COMMIT</strong> button!</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!</p>
+<p>These settings are quite aggressive. In a production environment, you should avoid setting these intervals so frequently!</p>
 </div>
 </section>
 <section id="task-1-create-an-aws-tgw-using-the-copilot">
 <h2>Task #1: Create an AWS TGW using the CoPilot<a class="headerlink" href="#task-1-create-an-aws-tgw-using-the-copilot" title="Link to this heading">#</a></h2>
-<p>The Copilot provides an <code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">TGW</span> <span class="pre">(Transit</span> <span class="pre">Gateway)</span> <span class="pre">Network</span> <span class="pre">Orchestration</span></code> service, that allows to deploy the AWS TGW, avoiding to use the AWS Console.</p>
+<p>The CoPilot offers an <code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">TGW</span> <span class="pre">(Transit</span> <span class="pre">Gateway)</span> <span class="pre">Network</span> <span class="pre">Orchestration</span></code> service that enables the deployment of AWS TGW without the need to use the AWS Console.</p>
 <figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/backbone-tgw01.png"><img alt="../_images/backbone-tgw01.png" src="../_images/backbone-tgw01.png" style="height: 400px;" />
 </a>
@@ -559,13 +562,13 @@ document.write(`
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">AWS TGW section on the CoPilot</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">AWS</span> <span class="pre">TGW&quot;</span></code>.</p>
+<p>Make sure to enter these parameters in the pop-up window titled <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">AWS</span> <span class="pre">TGW&quot;</span></code>.</p>
 <ul class="simple">
 <li><p><strong>Name:</strong> <span style='color:#479608'>AWS-NVirginia-TGW</span></p></li>
 <li><p><strong>Cloud:</strong> <span style='color:#479608'>AWS (Standard)</span></p></li>
 <li><p><strong>Account:</strong> <span style='color:#479608'>aws-account </span></p></li>
 <li><p><strong>Region:</strong> <span style='color:#479608'>us-east-1 (N. Virginia)</span></p></li>
-<li><p><strong>AWS Side SAS Number:</strong> <span style='color:#479608'>64512</span></p></li>
+<li><p><strong>AWS Side SAS Number:</strong> <span style='color:#479608'>64512 (<em>default value</em>)</span></p></li>
 </ul>
 <figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/backbone-tgw03.png"><img alt="../_images/backbone-tgw03.png" src="../_images/backbone-tgw03.png" style="height: 400px;" />
@@ -577,7 +580,7 @@ document.write(`
 <p>Do not forget to click on <strong>SAVE</strong>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>It will take roughly <strong>2 minutes</strong> for the Aviatrix Controller to completing the deployment of the AWS TGW.</p>
+<p>It will take approximately <strong>2 minutes</strong> for the Aviatrix Controller to complete the deployment of the AWS TGW.</p>
 </div>
 <figure class="align-center" id="id6">
 <img alt="../_images/backbone-tgw04.png" src="../_images/backbone-tgw04.png" />
@@ -599,7 +602,7 @@ document.write(`
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">VPC</span> <span class="pre">to</span> <span class="pre">AWS</span> <span class="pre">TGW&quot;</span></code>.</p>
 <ul class="simple">
 <li><p><strong>VPC:</strong> <span style='color:#479608'>spoke-aws</span></p></li>
-<li><p><strong>Network Domain:</strong> <span style='color:#479608'>Default_Domain</span></p></li>
+<li><p><strong>Network Domain:</strong> <span style='color:#479608'>Default_Domain (<em>default value</em>)</span></p></li>
 </ul>
 <figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/backbone-tgw06.png"><img alt="../_images/backbone-tgw06.png" src="../_images/backbone-tgw06.png" style="height: 400px;" />
@@ -611,10 +614,10 @@ document.write(`
 <p>Do not forget to click on <strong>SAVE</strong>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>It will take roughly <strong>2 minutes</strong> for the Aviatrix Controller to completing the attachment.</p>
+<p>It will take roughly <strong>2 minutes</strong> for the Aviatrix Controller to complete the attachment.</p>
 </div>
 <figure class="align-center" id="id9">
-<a class="reference internal image-reference" href="../_images/backbone-tgw07.png"><img alt="../_images/backbone-tgw07.png" src="../_images/backbone-tgw07.png" style="height: 350px;" />
+<a class="reference internal image-reference" href="../_images/backbone-tgw07.png"><img alt="../_images/backbone-tgw07.png" src="../_images/backbone-tgw07.png" style="height: 200px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">Attachment</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
@@ -623,7 +626,7 @@ document.write(`
 </section>
 <section id="task-3-create-an-aviatrix-transit-vpc">
 <h2>Task #3: Create an Aviatrix Transit VPC<a class="headerlink" href="#task-3-create-an-aviatrix-transit-vpc" title="Link to this heading">#</a></h2>
-<p>Let’s continue building up the cloud backbone, now you are asked to create a <code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">VPC</span></code>.</p>
+<p>Let’s continue strengthening the cloud backbone. You are now tasked with creating a <code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">VPC</span></code>.</p>
 <figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/backbone-tgw08.png"><img alt="../_images/backbone-tgw08.png" src="../_images/backbone-tgw08.png" style="height: 400px;" />
 </a>
@@ -631,14 +634,16 @@ document.write(`
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">Initial Topology for Task#3</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">VPC/VNet&quot;</span></code> button.</p>
+<ul class="simple">
+<li><p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">VPC/VNet&quot;</span></code> button.</p></li>
+</ul>
 <figure class="align-center" id="id11">
 <img alt="../_images/backbone-tgw09.png" src="../_images/backbone-tgw09.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 11 </span><span class="caption-text">Transit VPC</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">VPC/VNet&quot;</span></code>.</p>
+<p>Please make sure to enter these parameters in the <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">VPC/VNet&quot;</span></code>.</p>
 <ul class="simple">
 <li><p><strong>Name:</strong> <span style='color:#479608'>transit-aws</span></p></li>
 <li><p><strong>Cloud:</strong> <span style='color:#479608'>AWS (Standard)</span></p></li>
@@ -655,7 +660,7 @@ document.write(`
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Wait few minutes for the completion of the task. Check the hourglass icon on the right-hand side of your Copilot.</p>
+<p>Wait few minutes for the completion of the task. Check the <em>hourglass</em> icon on the right-hand side of your Copilot.</p>
 </div>
 </section>
 <section id="task-4-create-both-the-transit-gateways-and-the-peering">
