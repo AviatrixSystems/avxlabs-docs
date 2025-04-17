@@ -350,7 +350,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-transit-gateways-to-aws-tgw">8. Attach Transit Gateways to aws-tgw</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-bgp-asn">9. Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-to-transits">10. Edge to Transits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">Connectivity Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">11. Connectivity Test</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
@@ -849,7 +849,7 @@ document.write(`
 </figcaption>
 </figure>
 </div>
-<p>Before saving the template, click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Attachment&quot;</span></code> button and insert the following values in the second attachment template:</p>
+<p>Before saving the template, click the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Attachment&quot;</span></code> button and enter the following values in the second attachment template:</p>
 <ul class="simple">
 <li><p><strong>Transit Gateway</strong>: <span style='color:#479608'>azure-aws</span></p></li>
 <li><p><strong>Local Edge Gateway Interfaces</strong>: <span style='color:#479608'>WAN(etho)</span></p></li>
@@ -857,21 +857,21 @@ document.write(`
 <li><p><strong>High Performance Encryption</strong>: <span style='color:#479608'><strong>ON</strong></span></p></li>
 <li><p><strong>Number of Tunnels</strong>: <span style='color:#479608'><strong>4</strong></span></p></li>
 </ul>
-<p>Now you can click on the <strong>SAVE</strong> button.</p>
+<p>Once completed, click the <strong>Save</strong> button.</p>
 <figure class="align-center" id="id29">
 <img alt="../_images/backbone-tgw026.png" src="../_images/backbone-tgw026.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 29 </span><span class="caption-text">Template for azure</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now go to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud</strong> and click on the <strong>aviarix-edge-1</strong> instance.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud</strong> and select the <strong>aviarix-edge-1</strong> instance.</p>
 <figure class="align-center" id="id30">
 <img alt="../_images/backbone-tgw027.png" src="../_images/backbone-tgw027.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 30 </span><span class="caption-text">aviatrix-edge-1</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.1.2.0</span></code></strong> in AWS. You will notice the presence of 4x IPSec tunnels towards the First Transit Gateway, likewise other 4x IPSec tunnels towards the Second Transit Gateway.</p>
+<p>Navigate to the Gateway Routes tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.1.2.0</span></code></strong> in AWS. You should see four IPSec tunnels connected to the First Transit Gateway, along with another four IPSec tunnels connected to the Second Transit Gateway.</p>
 <figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/backbone-tgw028.png"><img alt="../_images/backbone-tgw028.png" src="../_images/backbone-tgw028.png" style="height: 400px;" />
 </a>
@@ -879,7 +879,7 @@ document.write(`
 <p><span class="caption-number">Fig. 31 </span><span class="caption-text">8x IPSec tunnels towards AWS</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.2.2.0</span></code></strong> in Azure. You will notice again 4x IPSec tunnels per each Transit Gateway!</p>
+<p>Now, search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.2.2.0</span></code></strong> in Azure. You will observe four IPSec tunnels for each Transit Gateway once again.</p>
 <figure class="align-center" id="id32">
 <a class="reference internal image-reference" href="../_images/backbone-tgw029.png"><img alt="../_images/backbone-tgw029.png" src="../_images/backbone-tgw029.png" style="height: 400px;" />
 </a>
@@ -887,10 +887,10 @@ document.write(`
 <p><span class="caption-number">Fig. 32 </span><span class="caption-text">8x IPSec tunnels towards Azure</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You have successfully extended the Aviatrix solution to the on-prem Data Center, harnessing the <strong><code class="docutils literal notranslate"><span class="pre">High</span> <span class="pre">Performance</span> <span class="pre">Encryption</span></code></strong> functionality.</p>
+<p>You have successfully extended the Aviatrix solution to the on-premises Data Center by leveraging the <strong><code class="docutils literal notranslate"><span class="pre">High</span> <span class="pre">Performance</span> <span class="pre">Encryption</span></code></strong>  feature.</p>
 </section>
 <section id="connectivity-test">
-<h2>Connectivity Test<a class="headerlink" href="#connectivity-test" title="Link to this heading">#</a></h2>
+<h2>11. Connectivity Test<a class="headerlink" href="#connectivity-test" title="Link to this heading">#</a></h2>
 <p>Let’s now verify the connectivity between Azuere, AWS and the on-prem DC.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong> and search for the <strong>aws-instance</strong> on the Search field, then retrieve its <strong>Public</strong> IP address!</p>
 <figure class="align-center" id="id33">
@@ -1062,7 +1062,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-transit-gateways-to-aws-tgw">8. Attach Transit Gateways to aws-tgw</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-bgp-asn">9. Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-to-transits">10. Edge to Transits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">Connectivity Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">11. Connectivity Test</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
