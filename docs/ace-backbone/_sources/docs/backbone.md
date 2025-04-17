@@ -364,13 +364,13 @@ It will take approximately **3 minutes** for the Aviatrix Controller to complete
 
 ## 9. Configure BGP ASN
 
-Now that you have established the peering between the two CSPs, you have achieved the **`Aviatrix Cloud Backbone`**.
+Now that you’ve established the peering between the two cloud service providers, you’ve successfully created the **`Aviatrix Cloud Backbone`**.
 
-Let's carry on with the final deployment of the connectivity to the on-prem DC.
+Let’s proceed with the final deployment of connectivity to the on-premises data center.
 
-Before configuring the attachments between the Secure Edge Gateway and the Transit Gateways, you have to ensure that the Transit Gateways's cluster earlier deployed in AWS is configured with a **`BGP AS number`**. <ins>This is a prerequisite for completing the Edge's deployment</ins>!
+Before configuring the attachments between the Secure Edge Gateway and the Transit Gateways, ensure that the Transit Gateway cluster previously deployed in AWS is configured with a **`BGP AS number`**. <ins>This is a prerequisite for completing the Edge deployment</ins>!
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **transit-aws** cluster!
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the `transit-aws` cluster!
 
 ```{figure} images/backbone-tgw019.png
 ---
@@ -380,7 +380,7 @@ align: center
 transit-aws
 ```
 
-Go to `"Settings"` tab and expand the `“Border Gateway Protocol (BGP)”` section and insert the AS number **64582** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
+Go to the `"Settings"` tab, expand the `“Border Gateway Protocol (BGP)”` section, and enter the AS number **64582** in the field labeled `"“Local AS Number”`. Then, click **Save**.
 
 ```{figure} images/backbone-tgw020.png
 ---
@@ -389,7 +389,7 @@ align: center
 BGP ASN
 ```
 
-After this task, this is how the overall topology would look like.
+After completing this task, here’s how the overall topology will appear.
 
 ```{figure} images/backbone-tgw021.png
 ---
@@ -399,7 +399,7 @@ align: center
 Topology after task #6
 ```
 
-## Task #7: Edge to Transits
+## 10. Edge to Transits
 
 Let's now attach the **Secure Edge Gateway** to the **Transit Gateways**.
 
