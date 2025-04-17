@@ -45,7 +45,7 @@ The lab intentionally only provides some of the steps for you to complete this l
   - *.docker.io
   - www.oracle.com
 
-## 4.1 Listen to the following recording
+### 4.1 Listen to the following recording
 
 Listen carefully. There will be quiz questions based on this 4 min video, also.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cNx51ZJhxek?si=V83b5ledWF08f1lx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
