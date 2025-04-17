@@ -506,9 +506,9 @@ You have successfully extended the Aviatrix solution to the on-premises Data Cen
 
 ## 11. Connectivity Test
 
-Let's now verify the connectivity between Azuere, AWS and the on-prem DC.
+Let's now verify the connectivity between Azure, AWS, and the on-premises Data Center.
 
-Go to **CoPilot > Cloud Resources > Cloud Assets** and search for the **aws-instance** on the Search field, then retrieve its **Public** IP address!
+Navigate to **CoPilot > Cloud Resources > Cloud Assets** and search for the **aws-instance** on the Search field, then retrieve its **Public** IP address!
 
 ```{figure} images/backbone-tgw030.png
 ---
@@ -518,7 +518,7 @@ align: center
 aws-instance on the Cloud Assets
 ```
 
-Now open an **SSH client** and establish a session towards the <ins>aws-instance</ins>.
+Open an **SSH client** and establish a session with the <ins>aws-instance</ins>.
 
 ```{figure} images/backbone-tgw031.png
 ---
@@ -537,7 +537,7 @@ align: center
 azure-instance
 ```
 
-Issue the following command to verify the connectivity towards the **_azure-instance_**:
+Run the following command to verify connectivity to the **_azure-instance_**:
 
 ```bash
 ping 10.2.2.40 
@@ -551,7 +551,7 @@ align: center
 ping towards azure-instance
 ```
 
-Stop the command and try to ping also the **test-vm** inside the on-prem DC.
+Stop the command, then attempt to ping the **test-vm** inside the on-premises Data Center.
 
 ```{figure} images/backbone-tgw034.png
 ---
@@ -561,7 +561,7 @@ align: center
 ping towards the test-vm inside the DC
 ```
 
-Issue the following command to verify the connectivity towards the **_test-vm_**:
+Run the following command to verify connectivity to the **_test-vm_**:
 
 ```bash
 ping 10.40.251.29
@@ -575,9 +575,9 @@ align: center
 ping towards the test-vm inside the DC
 ```
 
-You have successfully verified the connectivity between the two CSPs and the on-prem DC by means of the Aviatrix Cloud Backbone.
+You have successfully verified the connectivity between the two CSPs and the on-premises Data Center via the Aviatrix Cloud Backbone.
 
-Wait for 4-5 minutes and then go to **CoPilot > Monitor > FlowIQ** and on the `"Filters"` field click on the **+** button and create the following condition:
+Wait 4-5 minutes, then navigate to **CoPilot > Monitor > FlowIQ**. In the `"Filters"` field, click the **+** button to create the following condition:
 
 ```bash
 Destination IP Address is 10.2.2.40
@@ -613,6 +613,6 @@ align: center
 FlowIQ outcome
 ```
 
-## Conclusion
+## 12. Conclusion
 
-In this lab, you successfully designed and implemented a multi-cloud backbone architecture for ABC Healthcare, extending their cloud infrastructure across both Azure and AWS. Despite initial challenges, such as the lack of native connectivity between Azure Route Server and other cloud providers, you leveraged Aviatrix's multicloud transit capabilities to create an efficient and robust solution. Through sequential tasks, you deployed key infrastructure components, including AWS Transit Gateway, Aviatrix Transit VPCs, and Aviatrix Transit Gateways. As a result, ABC Healthcare now possesses a `scalable and high-performance multi-cloud network backbone`, poised to support its growing cloud initiatives with enhanced inter-cloud and hybrid connectivity.
+In this lab, you successfully designed and implemented a multi-cloud backbone architecture for ABC Healthcare, integrating their cloud infrastructure across Azure and AWS. Despite initial challenges, such as the absence of native connectivity between Azure Route Server and other cloud providers, you utilized Aviatrix’s multi-cloud transit capabilities to develop an efficient and resilient solution. Through a series of guided tasks, you deployed key infrastructure components, including AWS Transit Gateway, Aviatrix Transit VPCs, and Aviatrix Transit Gateways. As a result, ABC Healthcare now has a `scalable and high-performance multi-cloud network backbone`, well-equipped to support its expanding cloud initiatives with improved inter-cloud and hybrid connectivity.
