@@ -510,9 +510,17 @@ Let's now verify the connectivity between Azure, AWS, and the on-premises Data C
 
 Navigate to **CoPilot > Cloud Resources > Cloud Assets** and search for the **aws-instance** on the Search field, then retrieve its **Public** IP address!
 
+```{figure} images/backbone-tgw233.png
+---
+height: 400px
+align: center
+---
+click on +1 moew
+```
+
 ```{figure} images/backbone-tgw030.png
 ---
-height: 250px
+height: 400px
 align: center
 ---
 aws-instance on the Cloud Assets
