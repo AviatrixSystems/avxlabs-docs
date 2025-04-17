@@ -456,7 +456,7 @@ align: center
 Attach over PUBLIC Network
 ```
 
-Before saving the template, click on the `"+ Attachment"` button and insert the following values in the second attachment template:
+Before saving the template, click the `"+ Attachment"` button and enter the following values in the second attachment template:
 
 - **Transit Gateway**: <span style='color:#479608'>azure-aws</span>
 - **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
@@ -464,7 +464,7 @@ Before saving the template, click on the `"+ Attachment"` button and insert the 
 - **High Performance Encryption**: <span style='color:#479608'>**ON**</span>
 - **Number of Tunnels**: <span style='color:#479608'>**4**</span>
 
-Now you can click on the **SAVE** button.
+Once completed, click the **Save** button.
 
 ```{figure} images/backbone-tgw026.png
 ---
@@ -473,7 +473,7 @@ align: center
 Template for azure
 ```
 
-Now go to **CoPilot > Cloud Fabric > Hybrid Cloud** and click on the **aviarix-edge-1** instance.
+Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud** and select the **aviarix-edge-1** instance.
 
 ```{figure} images/backbone-tgw027.png
 ---
@@ -482,7 +482,7 @@ align: center
 aviatrix-edge-1
 ```
 
-Now search for the subnet **`10.1.2.0`** in AWS. You will notice the presence of 4x IPSec tunnels towards the First Transit Gateway, likewise other 4x IPSec tunnels towards the Second Transit Gateway.
+Navigate to the Gateway Routes tab and search for the subnet **`10.1.2.0`** in AWS. You should see four IPSec tunnels connected to the First Transit Gateway, along with another four IPSec tunnels connected to the Second Transit Gateway.
 
 ```{figure} images/backbone-tgw028.png
 ---
@@ -492,7 +492,7 @@ align: center
 8x IPSec tunnels towards AWS
 ```
 
-Now search for the subnet **`10.2.2.0`** in Azure. You will notice again 4x IPSec tunnels per each Transit Gateway!
+Now, search for the subnet **`10.2.2.0`** in Azure. You will observe four IPSec tunnels for each Transit Gateway once again.
 
 ```{figure} images/backbone-tgw029.png
 ---
@@ -502,9 +502,9 @@ align: center
 8x IPSec tunnels towards Azure
 ```
 
-You have successfully extended the Aviatrix solution to the on-prem Data Center, harnessing the **`High Performance Encryption`** functionality.
+You have successfully extended the Aviatrix solution to the on-premises Data Center by leveraging the **`High Performance Encryption`**  feature.
 
-## Connectivity Test
+## 11. Connectivity Test
 
 Let's now verify the connectivity between Azuere, AWS and the on-prem DC.
 
