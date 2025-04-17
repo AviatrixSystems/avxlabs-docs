@@ -336,15 +336,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">Lab Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-set-up">Initial Set-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. Scenario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">2. Lab Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-set-up">3. Initial Set-up</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-access-details">LAB Access Details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-credentials">Access credentials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req">LAB Pre-Req</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-create-an-aws-tgw-using-the-copilot">Task #1: Create an AWS TGW using the CoPilot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-attach-vpc-to-aws-tgw">Task #2: Attach VPC to AWS TGW</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-3-create-an-aviatrix-transit-vpc">Task #3: Create an Aviatrix Transit VPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-credentials">Access credentials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req">3.1 LAB Pre-Req</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aws-tgw-using-the-copilot">4. Create an AWS TGW using the CoPilot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-vpc-to-aws-tgw">5. Attach VPC to AWS TGW</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aviatrix-transit-vpc">5. Create an Aviatrix Transit VPC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-create-both-the-transit-gateways-and-the-peering">Task #4: Create both the Transit Gateways and the peering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-attach-transit-gateways-to-aws-tgw">Task #5: Attach Transit Gateways to aws-tgw</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-configure-bgp-asn">Task #6: Configure BGP ASN</a></li>
@@ -365,11 +367,11 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="backbone-lab">
 <h1>Backbone Lab<a class="headerlink" href="#backbone-lab" title="Link to this heading">#</a></h1>
 <section id="scenario">
-<h2>Scenario<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
+<h2>1. Scenario<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
 <p>ABC Healthcare, a leading healthcare provider, operates exclusively within the <strong>Azure</strong> cloud environment. The company has decided to expand its cloud infrastructure to include AWS; however, it is facing a skills gap, as it lacks expertise in AWS. Additionally, ABC Healthcare heavily relies on native cloud service provider (CSP) transit solutions, such as Azure Route Server.</p>
 </section>
 <section id="lab-objective">
-<h2>Lab Objective<a class="headerlink" href="#lab-objective" title="Link to this heading">#</a></h2>
+<h2>2. Lab Objective<a class="headerlink" href="#lab-objective" title="Link to this heading">#</a></h2>
 <p>As the newly appointed solutions architect, you have been assigned the following tasks:</p>
 <ul class="simple">
 <li><p>Design a <strong><em><code class="docutils literal notranslate"><span class="pre">multicloud</span> <span class="pre">backbone</span> <span class="pre">architecture</span></code></em></strong> that operates seamlessly across all cloud platforms.</p></li>
@@ -381,7 +383,7 @@ document.write(`
 </div>
 </section>
 <section id="initial-set-up">
-<h2>Initial Set-up<a class="headerlink" href="#initial-set-up" title="Link to this heading">#</a></h2>
+<h2>3. Initial Set-up<a class="headerlink" href="#initial-set-up" title="Link to this heading">#</a></h2>
 <p>1- Both the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Controller</span></code> and the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">CoPilot</span></code> have already been deployed in AWS, within a dedicated <em>management</em> VPC.</p>
 <p>2- A pair of <code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">Gateways</span></code> has also been deployed in Azure and connected to the existing <strong>Azure Route Server</strong>.</p>
 <p>3- An <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Secure</span> <span class="pre">Edge</span></code> has already been deployed in the on-premises data center.</p>
@@ -518,9 +520,8 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>3159FmtaZX6P!36
 </pre></div>
 </div>
-</section>
 <section id="lab-pre-req">
-<h2>LAB Pre-Req<a class="headerlink" href="#lab-pre-req" title="Link to this heading">#</a></h2>
+<h3>3.1 LAB Pre-Req<a class="headerlink" href="#lab-pre-req" title="Link to this heading">#</a></h3>
 <p>Before building your backbone infrastructure, adjust the following <strong>Fetch Timers</strong> to their lowest values.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -544,8 +545,9 @@ document.write(`
 <p>These settings are quite aggressive. In a production environment, you should avoid setting these intervals so frequently!</p>
 </div>
 </section>
-<section id="task-1-create-an-aws-tgw-using-the-copilot">
-<h2>Task #1: Create an AWS TGW using the CoPilot<a class="headerlink" href="#task-1-create-an-aws-tgw-using-the-copilot" title="Link to this heading">#</a></h2>
+</section>
+<section id="create-an-aws-tgw-using-the-copilot">
+<h2>4. Create an AWS TGW using the CoPilot<a class="headerlink" href="#create-an-aws-tgw-using-the-copilot" title="Link to this heading">#</a></h2>
 <p>The CoPilot offers an <code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">TGW</span> <span class="pre">(Transit</span> <span class="pre">Gateway)</span> <span class="pre">Network</span> <span class="pre">Orchestration</span></code> service that enables the deployment of AWS TGW without the need to use the AWS Console.</p>
 <figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/backbone-tgw01.png"><img alt="../_images/backbone-tgw01.png" src="../_images/backbone-tgw01.png" style="height: 400px;" />
@@ -589,8 +591,8 @@ document.write(`
 </figcaption>
 </figure>
 </section>
-<section id="task-2-attach-vpc-to-aws-tgw">
-<h2>Task #2: Attach VPC to AWS TGW<a class="headerlink" href="#task-2-attach-vpc-to-aws-tgw" title="Link to this heading">#</a></h2>
+<section id="attach-vpc-to-aws-tgw">
+<h2>5. Attach VPC to AWS TGW<a class="headerlink" href="#attach-vpc-to-aws-tgw" title="Link to this heading">#</a></h2>
 <p>Now that you have an AWS TGW, you need also to attach it to the existing <strong>spoke-vpc</strong>.</p>
 <p>Click on the <code class="docutils literal notranslate"><span class="pre">AWS-NVirginia-TGW</span></code> element, select the <strong>VPC</strong> tab and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">VPC&quot;</span></code> button.</p>
 <figure class="align-center" id="id7">
@@ -624,8 +626,8 @@ document.write(`
 </figcaption>
 </figure>
 </section>
-<section id="task-3-create-an-aviatrix-transit-vpc">
-<h2>Task #3: Create an Aviatrix Transit VPC<a class="headerlink" href="#task-3-create-an-aviatrix-transit-vpc" title="Link to this heading">#</a></h2>
+<section id="create-an-aviatrix-transit-vpc">
+<h2>5. Create an Aviatrix Transit VPC<a class="headerlink" href="#create-an-aviatrix-transit-vpc" title="Link to this heading">#</a></h2>
 <p>Let’s continue strengthening the cloud backbone. You are now tasked with creating a <code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">VPC</span></code>.</p>
 <figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/backbone-tgw08.png"><img alt="../_images/backbone-tgw08.png" src="../_images/backbone-tgw08.png" style="height: 400px;" />
@@ -1033,15 +1035,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">Lab Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-set-up">Initial Set-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. Scenario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">2. Lab Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-set-up">3. Initial Set-up</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-access-details">LAB Access Details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-credentials">Access credentials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req">LAB Pre-Req</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-create-an-aws-tgw-using-the-copilot">Task #1: Create an AWS TGW using the CoPilot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-attach-vpc-to-aws-tgw">Task #2: Attach VPC to AWS TGW</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-3-create-an-aviatrix-transit-vpc">Task #3: Create an Aviatrix Transit VPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-credentials">Access credentials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req">3.1 LAB Pre-Req</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aws-tgw-using-the-copilot">4. Create an AWS TGW using the CoPilot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-vpc-to-aws-tgw">5. Attach VPC to AWS TGW</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aviatrix-transit-vpc">5. Create an Aviatrix Transit VPC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-create-both-the-transit-gateways-and-the-peering">Task #4: Create both the Transit Gateways and the peering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-attach-transit-gateways-to-aws-tgw">Task #5: Attach Transit Gateways to aws-tgw</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-configure-bgp-asn">Task #6: Configure BGP ASN</a></li>
