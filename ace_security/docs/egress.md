@@ -1,15 +1,15 @@
 # Aviatrix Cloud Firewall Lab
 
-## Scenario
+## 1. Scenario
 
-ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the AWS cloud environment. For their internet egress traffic, they rely on AWS NAT Gateway. While AWS NAT Gateway serves well for IP address translation, it’s not designed to be a robust security solution. This lack of dedicated security has raised concerns about data privacy and HIPAA compliance among ABC Healthcare’s management.
+ABC Healthcare (a fictitious company), a leading healthcare provider, operates exclusively within the AWS cloud environment. For internet egress traffic, they utilize AWS NAT Gateway. While the NAT Gateway effectively handles IP address translation, it is not intended to serve as a comprehensive security solution. This limited security capability has raised concerns among ABC Healthcare’s management regarding data privacy and HIPAA compliance.
 
-## Expensive and Limited CSP Native NAT Gateway
+## 2. Expensive and Limited CSP Native NAT Gateway
 
 The current AWS NAT Gateway doesn’t provide the necessary visibility and logging capabilities, and it’s also very expensive due to 2 cents per GB egress data processing charges. ABC Healthcare’s average monthly egress traffic is around 500 TB.
 The native solution also lacks visibility, is cost-prohibitive, and doesn’t support zero trust architecture—putting sensitive patient data and the healthcare provider’s reputation at risk.
 
-### Data Charges Reference
+### 2.1 Data Charges Reference
 
 <a href="https://aws.amazon.com/blogs/networking-and-content-delivery/identify-and-optimize-public-ipv4-address-usage-on-aws" target="_blank">Networking and content delivery</a>
 
@@ -17,15 +17,15 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 
 <a href="https://www.cloudzero.com/blog/aws-egress-costs/#:~:text=Data%20transfers%20out%20of%20AWS,$0.0900%20and%20$0.0500%20per%20GB" target="_blank">Egress cost</a>
 
-## Damaged Reputation and Employee Fired
+## 3. Damaged Reputation and Employee Fired
 
 To further complicate matters, ABC Healthcare recently suffered a data exfiltration attack, which led to significant disruptions, reputational damage, and a negative impact on its stock value. This incident resulted in the dismissal of the previous cloud network architects.
 
-## You are the Newly Hired Cloud Networking Architect
+### 3.1 You are the Newly Hired Cloud Networking Architect
 
 You, the newly appointed architect, have been tasked with securing this traffic using the Aviatrix Secure Egress solution. Your mission is to implement a solution that enhances visibility, provides detailed logging, and complies with regulatory mandates while being cost-effective and efficient.
 
-## LAB Objective
+## 4. LAB Objective
 
 It is your job to do a POC/POV in your lab and demonstrate how your company can leverage Aviatrix Cloud Perimeter Solution to solve this pain point. You need to deploy the Aviatrix Secure Egress solution using Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than the AWS NAT Gateway.
 The Zero Trust policy should only allow the following domains and block all other FQDNs.
@@ -45,7 +45,7 @@ The lab intentionally only provides some of the steps for you to complete this l
   - *.docker.io
   - www.oracle.com
 
-## Listen to the following recording
+## 4.1 Listen to the following recording
 
 Listen carefully. There will be quiz questions based on this 4 min video, also.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cNx51ZJhxek?si=V83b5ledWF08f1lx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -87,7 +87,7 @@ Password:
 127#rdpn8K4GBJ
 ```
 
-## LAB Pre-Req
+## 5. LAB Pre-Req
 
 Before starting the lab, change the following timers to their lowest value
 
@@ -106,7 +106,7 @@ Do not change these times in the production setup
 - Aviatrix Spoke GW must be deployed in Region us-east-1 in the “egress-vpc”
 - GW Instance Size should be t3a.small
 
-## Successful Completion of LAB
+### 5.1 Successful Completion of LAB
 
 After completing the lab, your screen should look more or less like the following. The IP addresses and UUIDs could be different.
 
@@ -120,9 +120,9 @@ After completing the lab, your screen should look more or less like the followin
 
 ![Routes](images/egress_vpc_routes.png)
 
-## Lab Hints
+## 6. Lab Hints
 
-### Create Secure Egress DCF Rules
+### 6.1 Create Secure Egress DCF Rules
 
 - Create three rules
 - The last DCF rule is a zero-trust rule
@@ -131,13 +131,13 @@ After completing the lab, your screen should look more or less like the followin
 
 ![DCF](images/egress_dcf_rules.png)
 
-### Create rfc1918 SmartGroup
+### 6.2 Create rfc1918 SmartGroup
 
 ![Group](images/egress_groups.png)
 
 ![rfc1918](images/egress_rfc1918.png)
 
-### Create WebGroup to Define FQDN Allowed to Access Internet
+### 6.3 Create WebGroup to Define FQDN Allowed to Access Internet
 
 ![WebGroup](images/egress_create_group.png)
 
@@ -145,7 +145,7 @@ After completing the lab, your screen should look more or less like the followin
 
 ![Polling](images/egress_polling.png)
 
-### Deploy Aviatrix Spoke GW
+### 6.4 Deploy Aviatrix Spoke GW
 
 - The public IP address will be different (Public EIP automatically allocated by CSP)
 - The Subnet CIDR could be different (automatically picked up by Aviatrix Controller)
@@ -157,7 +157,7 @@ Check the Egress setting. The Egress traffic is going through the AWS NAT GW.
 
 ![Egress](images/egress_egress.png)
 
-### Enable spoke GW to become the Egress GW
+### 6.5 Enable spoke GW to become the Egress GW
 
 1. Click +Local Egress on VPC/VNets.
 2. In the Add Local Egress on VPC/VNets dialog, select the VPC/VNets on which to enable Local Egress.
@@ -174,7 +174,10 @@ Now the diagram should look like the following:
 
 ![Vpc](images/egress_vpc.png)
 
-## Conclusion
+## 7. Conclusion
 
-By bringing Aviatrix Secure Egress into play, our healthcare provider shored up their defenses, dropped the high costs, and eliminated the visibility black hole courtesy of the AWS NAT Gateway. Sensitive patient data is safe, and the provider’s reputation will be secured.
-Remember, Aviatrix Secure Egress is your go-to for a secure, cost-effective solution for managing internet-bound traffic. Need more help? Our support team’s got your back.
+Certainly! Here's a refined and polished version of your paragraph:
+
+
+By implementing Aviatrix Secure Egress, our healthcare provider strengthened their security posture, reduced costs, and eliminated the visibility gaps associated with AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is safeguarded.
+Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-effective management of internet-bound traffic. Need assistance? Our support team is here to help.
