@@ -593,7 +593,7 @@ Destination IP Address is 10.2.2.40
 
 ```{figure} images/backbone-tgw036.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 FlowIQ
@@ -601,7 +601,6 @@ FlowIQ
 
 ```{figure} images/backbone-tgw037.png
 ---
-height: 300px
 align: center
 ---
 Condition
