@@ -349,7 +349,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aviatrix-transit-vpc">6. Create an Aviatrix Transit VPC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-both-the-transit-gateways-and-the-peering">7. Create both the Transit Gateways and the peering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-transit-gateways-to-aws-tgw">8. Attach Transit Gateways to aws-tgw</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-configure-bgp-asn">Task #6: Configure BGP ASN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-bgp-asn">9. Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-7-edge-to-transits">Task #7: Edge to Transits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">Connectivity Test</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
@@ -733,11 +733,11 @@ document.write(`
 <p><span class="caption-number">Fig. 17 </span><span class="caption-text">Dynamic Topology</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will notice the presence of the newly created <strong>peering</strong>.</p>
+<p>You will see the newly created <strong>peering</strong>.</p>
 </section>
 <section id="attach-transit-gateways-to-aws-tgw">
 <h2>8. Attach Transit Gateways to aws-tgw<a class="headerlink" href="#attach-transit-gateways-to-aws-tgw" title="Link to this heading">#</a></h2>
-<p>Now let’s attach the Transit GWs in AWS to the AWS TGW.</p>
+<p>Now let’s attach the Transit Gateways in AWS to the AWS TGW.</p>
 <figure class="align-center" id="id18">
 <a class="reference internal image-reference" href="../_images/backbone-tgw016.png"><img alt="../_images/backbone-tgw016.png" src="../_images/backbone-tgw016.png" style="height: 400px;" />
 </a>
@@ -745,14 +745,14 @@ document.write(`
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Initial Topology for task #5</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; AWS TGW</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code> button.</p>
+<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; AWS TGW</strong>, select the <em>AWS-NVirginia-TGW</em> instance and then click the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">Transit</span> <span class="pre">Gateway&quot;</span></code> button.</p>
 <figure class="align-center" id="id19">
 <img alt="../_images/backbone-tgw017.png" src="../_images/backbone-tgw017.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">“Attach Transit GW” button</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Ensure this parameter is entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">to</span> <span class="pre">AWS-NVirginia-TGW&quot;</span></code>.</p>
+<p>Make sure to enter this parameter in the pop-up window titled <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">to</span> <span class="pre">AWS-NVirginia-TGW&quot;</span></code>.</p>
 <ul class="simple">
 <li><p><strong>Transit Gateway:</strong> <span style='color:#479608'>transit-aws</span></p></li>
 </ul>
@@ -762,14 +762,14 @@ document.write(`
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Attachment Template</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Do not forget to click on <strong>SAVE</strong>.</p>
+<p>Remember to click <strong>Save</strong>!</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>it will take roughly <strong>3 minutes</strong> for the Aviatrix Controller for completing this task, therefore, be patient!</p>
+<p>It will take approximately <strong>3 minutes</strong> for the Aviatrix Controller to complete this task, so please be patient!</p>
 </div>
 </section>
-<section id="task-6-configure-bgp-asn">
-<h2>Task #6: Configure BGP ASN<a class="headerlink" href="#task-6-configure-bgp-asn" title="Link to this heading">#</a></h2>
+<section id="configure-bgp-asn">
+<h2>9. Configure BGP ASN<a class="headerlink" href="#configure-bgp-asn" title="Link to this heading">#</a></h2>
 <p>Now that you have established the peering between the two CSPs, you have achieved the <strong><code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Backbone</span></code></strong>.</p>
 <p>Let’s carry on with the final deployment of the connectivity to the on-prem DC.</p>
 <p>Before configuring the attachments between the Secure Edge Gateway and the Transit Gateways, you have to ensure that the Transit Gateways’s cluster earlier deployed in AWS is configured with a <strong><code class="docutils literal notranslate"><span class="pre">BGP</span> <span class="pre">AS</span> <span class="pre">number</span></code></strong>. <ins>This is a prerequisite for completing the Edge’s deployment</ins>!</p>
@@ -1047,7 +1047,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aviatrix-transit-vpc">6. Create an Aviatrix Transit VPC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-both-the-transit-gateways-and-the-peering">7. Create both the Transit Gateways and the peering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-transit-gateways-to-aws-tgw">8. Attach Transit Gateways to aws-tgw</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-configure-bgp-asn">Task #6: Configure BGP ASN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-bgp-asn">9. Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-7-edge-to-transits">Task #7: Edge to Transits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">Connectivity Test</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>

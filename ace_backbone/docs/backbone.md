@@ -322,11 +322,11 @@ align: center
 Dynamic Topology
 ```
 
-You will notice the presence of the newly created **peering**.
+You will see the newly created **peering**.
 
 ## 8. Attach Transit Gateways to aws-tgw
 
-Now let's attach the Transit GWs in AWS to the AWS TGW.
+Now let's attach the Transit Gateways in AWS to the AWS TGW.
 
 ```{figure} images/backbone-tgw016.png
 ---
@@ -336,7 +336,7 @@ align: center
 Initial Topology for task #5
 ```
 
-Go to **CoPilot > Networking > Connectivity > AWS TGW** and click on the `"Attach Transit Gateway"` button.
+Go to **CoPilot > Networking > Connectivity > AWS TGW**, select the _AWS-NVirginia-TGW_ instance and then click the `"Attach Transit Gateway"` button.
 
 ```{figure} images/backbone-tgw017.png
 ---
@@ -345,7 +345,7 @@ align: center
 "Attach Transit GW" button
 ```
 
-Ensure this parameter is entered in the pop-up window `"Attach Transit Gateway to AWS-NVirginia-TGW"`.
+Make sure to enter this parameter in the pop-up window titled `"Attach Transit Gateway to AWS-NVirginia-TGW"`.
 
 - **Transit Gateway:** <span style='color:#479608'>transit-aws</span>
 
@@ -356,13 +356,13 @@ align: center
 Attachment Template
 ```
 
-Do not forget to click on **SAVE**.
+Remember to click **Save**!
 
 ```{caution}
-it will take roughly **3 minutes** for the Aviatrix Controller for completing this task, therefore, be patient!
+It will take approximately **3 minutes** for the Aviatrix Controller to complete this task, so please be patient!
 ```
 
-## Task #6: Configure BGP ASN
+## 9. Configure BGP ASN
 
 Now that you have established the peering between the two CSPs, you have achieved the **`Aviatrix Cloud Backbone`**.
 
