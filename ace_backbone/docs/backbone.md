@@ -1,10 +1,10 @@
 # Backbone Lab
 
-## Scenario
+## 1. Scenario
 
 ABC Healthcare, a leading healthcare provider, operates exclusively within the **Azure** cloud environment. The company has decided to expand its cloud infrastructure to include AWS; however, it is facing a skills gap, as it lacks expertise in AWS. Additionally, ABC Healthcare heavily relies on native cloud service provider (CSP) transit solutions, such as Azure Route Server.
 
-## Lab Objective
+## 2. Lab Objective
 
 As the newly appointed solutions architect, you have been assigned the following tasks:
 
@@ -16,7 +16,7 @@ As the newly appointed solutions architect, you have been assigned the following
 **Azure Route Server** does not natively support connectivity to other cloud providers, whereas Aviatrix supports `Multicloud Transit`.
 ```
 
-## Initial Set-up
+## 3. Initial Set-up
 
 1- Both the `Aviatrix Controller` and the `Aviatrix CoPilot` have already been deployed in AWS, within a dedicated _management_ VPC.
 
@@ -85,7 +85,7 @@ Password:
 3159FmtaZX6P!36
 ```
 
-## LAB Pre-Req
+### 3.1 LAB Pre-Req
 
 Before building your backbone infrastructure, adjust the following **Fetch Timers** to their lowest values.
 
@@ -113,7 +113,7 @@ Do not forget to click on the **COMMIT** button!
 These settings are quite aggressive. In a production environment, you should avoid setting these intervals so frequently!
 ```
 
-## Task #1: Create an AWS TGW using the CoPilot
+## 4. Create an AWS TGW using the CoPilot
 
 The CoPilot offers an `AWS TGW (Transit Gateway) Network Orchestration` service that enables the deployment of AWS TGW without the need to use the AWS Console.
 
@@ -164,7 +164,7 @@ align: center
 Final Deployment outcome
 ```
 
-## Task #2: Attach VPC to AWS TGW
+## 5. Attach VPC to AWS TGW
 
 Now that you have an AWS TGW, you need also to attach it to the existing **spoke-vpc**.
 
@@ -204,7 +204,7 @@ align: center
 Attachment
 ```
 
-## Task #3: Create an Aviatrix Transit VPC
+## 5. Create an Aviatrix Transit VPC
 
 Let’s continue strengthening the cloud backbone. You are now tasked with creating a `Transit VPC`.
 
