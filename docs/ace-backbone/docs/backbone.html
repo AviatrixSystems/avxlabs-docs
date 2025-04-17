@@ -351,7 +351,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-bgp-asn">9. Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-to-transits">10. Edge to Transits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">11. Connectivity Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -891,8 +891,8 @@ document.write(`
 </section>
 <section id="connectivity-test">
 <h2>11. Connectivity Test<a class="headerlink" href="#connectivity-test" title="Link to this heading">#</a></h2>
-<p>Let’s now verify the connectivity between Azuere, AWS and the on-prem DC.</p>
-<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong> and search for the <strong>aws-instance</strong> on the Search field, then retrieve its <strong>Public</strong> IP address!</p>
+<p>Let’s now verify the connectivity between Azure, AWS, and the on-premises Data Center.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong> and search for the <strong>aws-instance</strong> on the Search field, then retrieve its <strong>Public</strong> IP address!</p>
 <figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/backbone-tgw030.png"><img alt="../_images/backbone-tgw030.png" src="../_images/backbone-tgw030.png" style="height: 250px;" />
 </a>
@@ -900,7 +900,7 @@ document.write(`
 <p><span class="caption-number">Fig. 33 </span><span class="caption-text">aws-instance on the Cloud Assets</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now open an <strong>SSH client</strong> and establish a session towards the <ins>aws-instance</ins>.</p>
+<p>Open an <strong>SSH client</strong> and establish a session with the <ins>aws-instance</ins>.</p>
 <figure class="align-center" id="id34">
 <img alt="../_images/backbone-tgw031.png" src="../_images/backbone-tgw031.png" />
 <figcaption>
@@ -915,7 +915,7 @@ document.write(`
 <p><span class="caption-number">Fig. 35 </span><span class="caption-text">azure-instance</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Issue the following command to verify the connectivity towards the <strong><em>azure-instance</em></strong>:</p>
+<p>Run the following command to verify connectivity to the <strong><em>azure-instance</em></strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">10</span>.2.2.40<span class="w"> </span>
 </pre></div>
 </div>
@@ -926,7 +926,7 @@ document.write(`
 <p><span class="caption-number">Fig. 36 </span><span class="caption-text">ping towards azure-instance</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Stop the command and try to ping also the <strong>test-vm</strong> inside the on-prem DC.</p>
+<p>Stop the command, then attempt to ping the <strong>test-vm</strong> inside the on-premises Data Center.</p>
 <figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/backbone-tgw034.png"><img alt="../_images/backbone-tgw034.png" src="../_images/backbone-tgw034.png" style="height: 400px;" />
 </a>
@@ -934,7 +934,7 @@ document.write(`
 <p><span class="caption-number">Fig. 37 </span><span class="caption-text">ping towards the test-vm inside the DC</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Issue the following command to verify the connectivity towards the <strong><em>test-vm</em></strong>:</p>
+<p>Run the following command to verify connectivity to the <strong><em>test-vm</em></strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">10</span>.40.251.29
 </pre></div>
 </div>
@@ -945,8 +945,8 @@ document.write(`
 <p><span class="caption-number">Fig. 38 </span><span class="caption-text">ping towards the test-vm inside the DC</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You have successfully verified the connectivity between the two CSPs and the on-prem DC by means of the Aviatrix Cloud Backbone.</p>
-<p>Wait for 4-5 minutes and then go to <strong>CoPilot &gt; Monitor &gt; FlowIQ</strong> and on the <code class="docutils literal notranslate"><span class="pre">&quot;Filters&quot;</span></code> field click on the <strong>+</strong> button and create the following condition:</p>
+<p>You have successfully verified the connectivity between the two CSPs and the on-premises Data Center via the Aviatrix Cloud Backbone.</p>
+<p>Wait 4-5 minutes, then navigate to <strong>CoPilot &gt; Monitor &gt; FlowIQ</strong>. In the <code class="docutils literal notranslate"><span class="pre">&quot;Filters&quot;</span></code> field, click the <strong>+</strong> button to create the following condition:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Destination<span class="w"> </span>IP<span class="w"> </span>Address<span class="w"> </span>is<span class="w"> </span><span class="m">10</span>.2.2.40
 </pre></div>
 </div>
@@ -978,8 +978,8 @@ document.write(`
 </figure>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>In this lab, you successfully designed and implemented a multi-cloud backbone architecture for ABC Healthcare, extending their cloud infrastructure across both Azure and AWS. Despite initial challenges, such as the lack of native connectivity between Azure Route Server and other cloud providers, you leveraged Aviatrix’s multicloud transit capabilities to create an efficient and robust solution. Through sequential tasks, you deployed key infrastructure components, including AWS Transit Gateway, Aviatrix Transit VPCs, and Aviatrix Transit Gateways. As a result, ABC Healthcare now possesses a <code class="docutils literal notranslate"><span class="pre">scalable</span> <span class="pre">and</span> <span class="pre">high-performance</span> <span class="pre">multi-cloud</span> <span class="pre">network</span> <span class="pre">backbone</span></code>, poised to support its growing cloud initiatives with enhanced inter-cloud and hybrid connectivity.</p>
+<h2>12. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>In this lab, you successfully designed and implemented a multi-cloud backbone architecture for ABC Healthcare, integrating their cloud infrastructure across Azure and AWS. Despite initial challenges, such as the absence of native connectivity between Azure Route Server and other cloud providers, you utilized Aviatrix’s multi-cloud transit capabilities to develop an efficient and resilient solution. Through a series of guided tasks, you deployed key infrastructure components, including AWS Transit Gateway, Aviatrix Transit VPCs, and Aviatrix Transit Gateways. As a result, ABC Healthcare now has a <code class="docutils literal notranslate"><span class="pre">scalable</span> <span class="pre">and</span> <span class="pre">high-performance</span> <span class="pre">multi-cloud</span> <span class="pre">network</span> <span class="pre">backbone</span></code>, well-equipped to support its expanding cloud initiatives with improved inter-cloud and hybrid connectivity.</p>
 </section>
 </section>
 
@@ -1063,7 +1063,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-bgp-asn">9. Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-to-transits">10. Edge to Transits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">11. Connectivity Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12. Conclusion</a></li>
 </ul>
   </nav></div>
 
