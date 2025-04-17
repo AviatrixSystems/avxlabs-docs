@@ -204,7 +204,7 @@ align: center
 Attachment
 ```
 
-## 5. Create an Aviatrix Transit VPC
+## 6. Create an Aviatrix Transit VPC
 
 Let’s continue strengthening the cloud backbone. You are now tasked with creating a `Transit VPC`.
 
@@ -245,9 +245,9 @@ VPC Template
 Wait few minutes for the completion of the task. Check the _hourglass_ icon on the right-hand side of your Copilot.
 ```
 
-## Task #4: Create both the Transit Gateways and the peering
+## 7. Create both the Transit Gateways and the peering
 
-Now it's time to deploy a pair of **`Transit GWs`** inside the VPC created on the previous task. In addition to this, you have also to establish the `peering` between the Transit GWs in Azure and the Transit GWs in AWS.
+Now it’s time to deploy a pair of **`Transit Gateways`** within the VPC you created in the previous task. Additionally, you’ll need to establish `peering` between the Transit Gateways in Azure and those in AWS.
 
 ```{figure} images/backbone-tgw011.png
 ---
@@ -296,24 +296,23 @@ Transit GW Template
 Do not forget to click on **SAVE**.
 
 ```{note}
-The Aviatrix Controller will deploy two Transit Gateways and, at the same time, it will establish the peering with the predeployed Transit Gateways in Azure.
+The Aviatrix Controller will deploy two Transit Gateways while simultaneously establishing peering with the pre-deployed Transit Gateways in Azure.
 ```
 
-You can monitor the progress of the task going to **CoPilot > Monitor > Notifications > Tasks** and expanding the corresponding task, named `"Create transit gateway: transit-aws"`.
+You can monitor the progress of the task by navigating to **CoPilot > Monitor > Notifications > Tasks** and expanding the task labeled `"Create transit gateway: transit-aws"`.
 
 ```{figure} images/backbone-tgw014.png
 ---
-height: 400px
 align: center
 ---
 Task in progress
 ```
 
 ```{caution}
-it will take roughly **10 minutes** for the Aviatrix Controller for completing this task, therefore, be patient!
+It will take approximately **10 minutes** for the Aviatrix Controller to complete this task, so please be patient!
 ```
 
-Now go to **CoPilot > Cloud Fabric > Topology**, click on the `"Managed"` button for hiding all the unmanaged VPCs (i.e. VPCs without an Aviatrix GW) and then click on the `"Collapse all VPC/VNets"` button.
+Now, navigate to **CoPilot > Cloud Fabric > Topology**. Click the `"Managed"` button to hide all unmanaged VPCs (i.e., VPCs without an Aviatrix Gateway), and then click the `"Collapse all VPC/VNets"` button.
 
 ```{figure} images/backbone-tgw015.png
 ---
@@ -325,7 +324,7 @@ Dynamic Topology
 
 You will notice the presence of the newly created **peering**.
 
-## Task #5: Attach Transit Gateways to aws-tgw
+## 8. Attach Transit Gateways to aws-tgw
 
 Now let's attach the Transit GWs in AWS to the AWS TGW.
 
