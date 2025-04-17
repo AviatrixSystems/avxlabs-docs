@@ -2,28 +2,27 @@
 
 ## Scenario
 
-ABC Healthcare (a fictitious company), a leading healthcare provider, operates solely within the **Azure** cloud environment. The company decided expaning their cloud infrastructure also within AWS, however, they are facing cloud skills gap, because they do not have experties in AWS yet. Moreover, the company is heavily using the native CSP transit solutions (e.g. Azure Route Server).
+ABC Healthcare, a leading healthcare provider, operates exclusively within the **Azure** cloud environment. The company has decided to expand its cloud infrastructure to include AWS; however, it is facing a skills gap, as it lacks expertise in AWS. Additionally, ABC Healthcare heavily relies on native cloud service provider (CSP) transit solutions, such as Azure Route Server.
 
 ## Lab Objective
 
-You, the newly appointed solutions architect, have been assigned the following task:
+As the newly appointed solutions architect, you have been assigned the following tasks:
 
-- Create a **_`multicloud backbone architecture`_** that works in every cloud.
-- The solution should also provide **_`hybrid connectivity`_** towards the Data Center.
+- Design a **_`multicloud backbone architecture`_** that operates seamlessly across all cloud platforms.
+
+- Ensure the solution provides **_`hybrid connectivity`_** to the data center.
 
 ```{important}
-**Azure Route Server** does not natively sypport connectivity to other Cloud Providers.
-
-Aviatrix supports `Multicloud Transit`.
+**Azure Route Server** does not natively support connectivity to other cloud providers, whereas Aviatrix supports `Multicloud Transit`.
 ```
 
 ## Initial Set-up
 
-1- Both the `Aviatrix Controller` and the `Aviatrix CoPilot` got already deployed in AWS, inside a dedicated MGMT VPC.
+1- Both the `Aviatrix Controller` and the `Aviatrix CoPilot` have already been deployed in AWS, within a dedicated _management_ VPC.
 
-2- A pair of `Transit Gateways` got also deployed in Azure and attached to the existing **Azure Route Server**.
+2- A pair of `Transit Gateways` has also been deployed in Azure and connected to the existing **Azure Route Server**.
 
-3- An `Aviatrix Secure Edge` got already deployed inside the on-prem Data Center.
+3- An `Aviatrix Secure Edge` has already been deployed in the on-premises data center.
 
 ```{figure} images/backbone-initial-topology.png
 ---
@@ -88,13 +87,17 @@ Password:
 
 ## LAB Pre-Req
 
-Before starting building your backbone infrastructure, change the following **Fetch Timers** to their lowest value.
+Before building your backbone infrastructure, adjust the following **Fetch Timers** to their lowest values.
 
 ```{hint}
 Go to **CoPilot > Settings > Resources > Task Server**
 ```
 
-Ensure `Fetch GW Routes` and `Fetch VPC Routes` intervals are set to **“1 Second”** each and then click on **SAVE**.
+Ensure that the `Fetch GW Routes` and `Fetch VPC Routes` intervals are set to **“1 Second”** each, then click **SAVE**.
+
+```{hint}
+Click the _pencil_ icon to edit the timers."
+```
 
 ```{figure} images/backbone-tasks.png
 ---
@@ -107,12 +110,12 @@ Initial Topology
 Do not forget to click on the **COMMIT** button!
 
 ```{caution}
-These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!
+These settings are quite aggressive. In a production environment, you should avoid setting these intervals so frequently!
 ```
 
 ## Task #1: Create an AWS TGW using the CoPilot
 
-The Copilot provides an `AWS TGW (Transit Gateway) Network Orchestration` service, that allows to deploy the AWS TGW, avoiding to use the AWS Console.
+The CoPilot offers an `AWS TGW (Transit Gateway) Network Orchestration` service that enables the deployment of AWS TGW without the need to use the AWS Console.
 
 ```{figure} images/backbone-tgw01.png
 ---
@@ -132,13 +135,13 @@ align: center
 AWS TGW section on the CoPilot
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create AWS TGW"`.
+Make sure to enter these parameters in the pop-up window titled `"Create AWS TGW"`.
 
 - **Name:** <span style='color:#479608'>AWS-NVirginia-TGW</span>
 - **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
 - **Account:** <span style='color:#479608'>aws-account </span>
 - **Region:** <span style='color:#479608'>us-east-1 (N. Virginia)</span>
-- **AWS Side SAS Number:** <span style='color:#479608'>64512</span>
+- **AWS Side SAS Number:** <span style='color:#479608'>64512 (_default value_)</span>
 
 ```{figure} images/backbone-tgw03.png
 ---
@@ -151,7 +154,7 @@ AWS TGW template
 Do not forget to click on **SAVE**.
 
 ```{caution}
-It will take roughly **2 minutes** for the Aviatrix Controller to completing the deployment of the AWS TGW.
+It will take approximately **2 minutes** for the Aviatrix Controller to complete the deployment of the AWS TGW.
 ```
 
 ```{figure} images/backbone-tgw04.png
@@ -177,7 +180,7 @@ AWS NVirginia-TGW
 Ensure these parameters are entered in the pop-up window `"Attach VPC to AWS TGW"`.
 
 - **VPC:** <span style='color:#479608'>spoke-aws</span>
-- **Network Domain:** <span style='color:#479608'>Default_Domain</span>
+- **Network Domain:** <span style='color:#479608'>Default_Domain (_default value_)</span>
 
 ```{figure} images/backbone-tgw06.png
 ---
@@ -190,12 +193,12 @@ AWS NVirginia-TGW
 Do not forget to click on **SAVE**.
 
 ```{caution}
-It will take roughly **2 minutes** for the Aviatrix Controller to completing the attachment.
+It will take roughly **2 minutes** for the Aviatrix Controller to complete the attachment.
 ```
 
 ```{figure} images/backbone-tgw07.png
 ---
-height: 350px
+height: 200px
 align: center
 ---
 Attachment
@@ -203,7 +206,7 @@ Attachment
 
 ## Task #3: Create an Aviatrix Transit VPC
 
-Let's continue building up the cloud backbone, now you are asked to create a `Transit VPC`.
+Let’s continue strengthening the cloud backbone. You are now tasked with creating a `Transit VPC`.
 
 ```{figure} images/backbone-tgw08.png
 ---
@@ -213,7 +216,7 @@ align: center
 Initial Topology for Task#3
 ```
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and click on the `"+ VPC/VNet"` button.
+- Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and click on the `"+ VPC/VNet"` button.
 
 ```{figure} images/backbone-tgw09.png
 ---
@@ -222,7 +225,7 @@ align: center
 Transit VPC
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create VPC/VNet"`.
+Please make sure to enter these parameters in the `"Create VPC/VNet"`.
 
 - **Name:** <span style='color:#479608'>transit-aws</span>
 - **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
@@ -239,7 +242,7 @@ VPC Template
 ```
 
 ```{note}
-Wait few minutes for the completion of the task. Check the hourglass icon on the right-hand side of your Copilot.
+Wait few minutes for the completion of the task. Check the _hourglass_ icon on the right-hand side of your Copilot.
 ```
 
 ## Task #4: Create both the Transit Gateways and the peering
