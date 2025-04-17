@@ -401,7 +401,7 @@ Topology after task #6
 
 ## 10. Edge to Transits
 
-Let's now attach the **Secure Edge Gateway** to the **Transit Gateways**.
+Let's now connect the **Secure Edge Gateway** to the **Transit Gateways**.
 
 ```{figure} images/backbone-tgw022.png
 ---
@@ -411,7 +411,7 @@ align: center
 The Hybrid Cloud through the Aviatrix Backbone
 ```
 
-Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Transit Gateway Attachment"` button, on the right-hand side of the screen.
+Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Transit Gateway Attachment"` button located on the right side of the screen.
 
 ```{figure} images/backbone-tgw023.png
 ---
@@ -430,19 +430,30 @@ align: center
 +Attachment
 ```
 
-Fill in the attachment template using the following settings:
+Fill out the attachment template with the following settings:
 
 - **Transit Gateway**: <span style='color:#479608'>transit-aws</span>
 - **Local Edge Gateway Interfaces**: <span style='color:#479608'>WAN(etho)</span>
 - **Attach over**: <span style='color:#479608'>**Public Network**</span>
-- **High Performance Encryption**: <span style='color:#479608'>**ON**</span>
-- **Number of Tunnels**: <span style='color:#479608'>**4**</span>
+- **Number of Tunnels**: <span style='color:#479608'>**Custom**</span>
+  - 4
 
 ```{figure} images/backbone-tgw025.png
 ---
 align: center
 ---
 Template for aws
+```
+
+```{caution}
+Please make sure to select `"Attach over: Public Network"`. 
+
+If you accidentally choose "_Attach over: Private Network_", the connection will not be established!
+```{figure} images/edgeveryverynew.png
+---
+align: center
+---
+Attach over PUBLIC Network
 ```
 
 Before saving the template, click on the `"+ Attachment"` button and insert the following values in the second attachment template:
