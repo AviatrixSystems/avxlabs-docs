@@ -515,12 +515,12 @@ Navigate to **CoPilot > Cloud Resources > Cloud Assets** and search for the **aw
 height: 400px
 align: center
 ---
-click on +1 moew
+click on +1 more
 ```
 
 ```{figure} images/backbone-tgw030.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 aws-instance on the Cloud Assets
