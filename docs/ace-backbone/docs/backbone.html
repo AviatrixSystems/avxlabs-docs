@@ -346,9 +346,9 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aws-tgw-using-the-copilot">4. Create an AWS TGW using the CoPilot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-vpc-to-aws-tgw">5. Attach VPC to AWS TGW</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aviatrix-transit-vpc">5. Create an Aviatrix Transit VPC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-create-both-the-transit-gateways-and-the-peering">Task #4: Create both the Transit Gateways and the peering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-attach-transit-gateways-to-aws-tgw">Task #5: Attach Transit Gateways to aws-tgw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aviatrix-transit-vpc">6. Create an Aviatrix Transit VPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-both-the-transit-gateways-and-the-peering">7. Create both the Transit Gateways and the peering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-transit-gateways-to-aws-tgw">8. Attach Transit Gateways to aws-tgw</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-configure-bgp-asn">Task #6: Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-7-edge-to-transits">Task #7: Edge to Transits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">Connectivity Test</a></li>
@@ -627,7 +627,7 @@ document.write(`
 </figure>
 </section>
 <section id="create-an-aviatrix-transit-vpc">
-<h2>5. Create an Aviatrix Transit VPC<a class="headerlink" href="#create-an-aviatrix-transit-vpc" title="Link to this heading">#</a></h2>
+<h2>6. Create an Aviatrix Transit VPC<a class="headerlink" href="#create-an-aviatrix-transit-vpc" title="Link to this heading">#</a></h2>
 <p>Let’s continue strengthening the cloud backbone. You are now tasked with creating a <code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">VPC</span></code>.</p>
 <figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/backbone-tgw08.png"><img alt="../_images/backbone-tgw08.png" src="../_images/backbone-tgw08.png" style="height: 400px;" />
@@ -665,9 +665,9 @@ document.write(`
 <p>Wait few minutes for the completion of the task. Check the <em>hourglass</em> icon on the right-hand side of your Copilot.</p>
 </div>
 </section>
-<section id="task-4-create-both-the-transit-gateways-and-the-peering">
-<h2>Task #4: Create both the Transit Gateways and the peering<a class="headerlink" href="#task-4-create-both-the-transit-gateways-and-the-peering" title="Link to this heading">#</a></h2>
-<p>Now it’s time to deploy a pair of <strong><code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">GWs</span></code></strong> inside the VPC created on the previous task. In addition to this, you have also to establish the <code class="docutils literal notranslate"><span class="pre">peering</span></code> between the Transit GWs in Azure and the Transit GWs in AWS.</p>
+<section id="create-both-the-transit-gateways-and-the-peering">
+<h2>7. Create both the Transit Gateways and the peering<a class="headerlink" href="#create-both-the-transit-gateways-and-the-peering" title="Link to this heading">#</a></h2>
+<p>Now it’s time to deploy a pair of <strong><code class="docutils literal notranslate"><span class="pre">Transit</span> <span class="pre">Gateways</span></code></strong> within the VPC you created in the previous task. Additionally, you’ll need to establish <code class="docutils literal notranslate"><span class="pre">peering</span></code> between the Transit Gateways in Azure and those in AWS.</p>
 <figure class="align-center" id="id13">
 <a class="reference internal image-reference" href="../_images/backbone-tgw011.png"><img alt="../_images/backbone-tgw011.png" src="../_images/backbone-tgw011.png" style="height: 400px;" />
 </a>
@@ -712,21 +712,20 @@ document.write(`
 <p>Do not forget to click on <strong>SAVE</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Aviatrix Controller will deploy two Transit Gateways and, at the same time, it will establish the peering with the predeployed Transit Gateways in Azure.</p>
+<p>The Aviatrix Controller will deploy two Transit Gateways while simultaneously establishing peering with the pre-deployed Transit Gateways in Azure.</p>
 </div>
-<p>You can monitor the progress of the task going to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Tasks</strong> and expanding the corresponding task, named <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">transit</span> <span class="pre">gateway:</span> <span class="pre">transit-aws&quot;</span></code>.</p>
+<p>You can monitor the progress of the task by navigating to <strong>CoPilot &gt; Monitor &gt; Notifications &gt; Tasks</strong> and expanding the task labeled <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">transit</span> <span class="pre">gateway:</span> <span class="pre">transit-aws&quot;</span></code>.</p>
 <figure class="align-center" id="id16">
-<a class="reference internal image-reference" href="../_images/backbone-tgw014.png"><img alt="../_images/backbone-tgw014.png" src="../_images/backbone-tgw014.png" style="height: 400px;" />
-</a>
+<img alt="../_images/backbone-tgw014.png" src="../_images/backbone-tgw014.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Task in progress</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>it will take roughly <strong>10 minutes</strong> for the Aviatrix Controller for completing this task, therefore, be patient!</p>
+<p>It will take approximately <strong>10 minutes</strong> for the Aviatrix Controller to complete this task, so please be patient!</p>
 </div>
-<p>Now go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;Managed&quot;</span></code> button for hiding all the unmanaged VPCs (i.e. VPCs without an Aviatrix GW) and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Collapse</span> <span class="pre">all</span> <span class="pre">VPC/VNets&quot;</span></code> button.</p>
+<p>Now, navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong>. Click the <code class="docutils literal notranslate"><span class="pre">&quot;Managed&quot;</span></code> button to hide all unmanaged VPCs (i.e., VPCs without an Aviatrix Gateway), and then click the <code class="docutils literal notranslate"><span class="pre">&quot;Collapse</span> <span class="pre">all</span> <span class="pre">VPC/VNets&quot;</span></code> button.</p>
 <figure class="align-center" id="id17">
 <a class="reference internal image-reference" href="../_images/backbone-tgw015.png"><img alt="../_images/backbone-tgw015.png" src="../_images/backbone-tgw015.png" style="height: 400px;" />
 </a>
@@ -736,8 +735,8 @@ document.write(`
 </figure>
 <p>You will notice the presence of the newly created <strong>peering</strong>.</p>
 </section>
-<section id="task-5-attach-transit-gateways-to-aws-tgw">
-<h2>Task #5: Attach Transit Gateways to aws-tgw<a class="headerlink" href="#task-5-attach-transit-gateways-to-aws-tgw" title="Link to this heading">#</a></h2>
+<section id="attach-transit-gateways-to-aws-tgw">
+<h2>8. Attach Transit Gateways to aws-tgw<a class="headerlink" href="#attach-transit-gateways-to-aws-tgw" title="Link to this heading">#</a></h2>
 <p>Now let’s attach the Transit GWs in AWS to the AWS TGW.</p>
 <figure class="align-center" id="id18">
 <a class="reference internal image-reference" href="../_images/backbone-tgw016.png"><img alt="../_images/backbone-tgw016.png" src="../_images/backbone-tgw016.png" style="height: 400px;" />
@@ -1045,9 +1044,9 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aws-tgw-using-the-copilot">4. Create an AWS TGW using the CoPilot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-vpc-to-aws-tgw">5. Attach VPC to AWS TGW</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aviatrix-transit-vpc">5. Create an Aviatrix Transit VPC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-create-both-the-transit-gateways-and-the-peering">Task #4: Create both the Transit Gateways and the peering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-attach-transit-gateways-to-aws-tgw">Task #5: Attach Transit Gateways to aws-tgw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aviatrix-transit-vpc">6. Create an Aviatrix Transit VPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-both-the-transit-gateways-and-the-peering">7. Create both the Transit Gateways and the peering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-transit-gateways-to-aws-tgw">8. Attach Transit Gateways to aws-tgw</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-configure-bgp-asn">Task #6: Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-7-edge-to-transits">Task #7: Edge to Transits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">Connectivity Test</a></li>
