@@ -596,8 +596,6 @@ Commit
 
 - Now, retrieve the public IP address of the **aws-us-east-1-spoke1-test1** instance. Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for _aws-us-east-1-spoke1-test1_. Click on `"+ 1 more"` to reveal the public IP address, then copy it to your clipboard.
 
-
-
 ```{figure} images/lab9-myip09.png
 ---
 height: 200px
