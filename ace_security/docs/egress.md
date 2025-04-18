@@ -131,6 +131,10 @@ These are the requirements for this hands-on activity. Please follow each step c
 
 - The Spoke gateway must be attached to the **egress-vpc-public-us-east-1a** subnet
 
+```{important}
+Please note that within the egress-vpc, there is a pre-deployed EC2 instance named **aws-instance** that is actively generating traffic.
+```
+
 ### 5.2 Create the WebGroups
 
 - Create **two** WebGroups that match the domains listed on **_Section #3_**.
@@ -236,6 +240,16 @@ height: 400px
 align: center
 ---
 Managed VPCs
+```
+
+- The **aws-instance** was pre-provisioned at the launch of the POD and is automatically generating traffic.
+- 
+```{figure} images/lab-resegress80.png
+---
+height: 400px
+align: center
+---
+aws-instance
 ```
 
 ### Task 5.2 resolution
