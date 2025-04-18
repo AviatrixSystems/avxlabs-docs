@@ -317,7 +317,7 @@ align: center
 SmartGroup
 ```
 
-Afterwards, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
+Now, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
 
 ```{figure} images/lab6-greenfieldneww4.png
 ---
