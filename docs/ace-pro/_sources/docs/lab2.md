@@ -278,10 +278,10 @@ align: center
 Dashboard
 ```
 
-- Before starting building your multicloud infrastructure, adjust the **fetch timers** on the CoPilot.
+- Before you begin building your multicloud infrastructure, please adjust the **fetch timers** in CoPilot.
 
 ```{hint}
-Go to **CoPilot > Settings > Resources > Task Server**
+Navigate to **CoPilot > Settings > Resources > Task Server**
 ```
 
 Ensure that `Fetch Topology`, `Fetch Instances`, `Fetch GW Routes` and `Fetch VPC Routes` intervals are set to **“1 Second”** each and then click on **SAVE**.
