@@ -15,7 +15,7 @@ To add to the challenges, ABC Healthcare recently experienced a data exfiltratio
 
 ### 2.1 You are the Newly Hired Cloud Networking Architect
 
-As the newly appointed architect, your task is to secure this traffic using the Aviatrix Cloud Firewall service. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.
+As the newly appointed architect, your task is to secure this traffic using the `Aviatrix Cloud Firewall` service. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.
 
 ## 3. LAB Objective
 
@@ -188,3 +188,33 @@ Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-ef
 
 ## 7. Lab Resolution
 
+Certainly! Here's an improved version:
+
+The prerequisites require you to first create a Spoke Gateway.
+
+- Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateway**, then click on the `"+ Spoke Gateway"` button.
+
+Ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"`.
+
+```{note}
+You need to deploy one single instance!
+```
+
+- **Name:** <span style='color:#479608'>Choose your favorite name</span>
+- **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
+- **Account:** <span style='color:#479608'>aws-account</span>
+- **Region:** <span style='color:#479608'>us-east-2 (Ohio)</span>
+- **VPC ID:** <span style='color:#479608'>aws-us-east-2-spoke1 (Make sure you don't select aws-us-east-2-**transit** VPC)</span>
+- **Instance Size:** <span style='color:#479608'>t2.medium</span>
+- **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
+- **Attach to Subnet:** <span style='color:#479608'>10.0.1.96/27 - aws-us-east-2-spoke1-Public-1-us-east-2a</span>
+- **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
+
+Click **SAVE**.
+
+```{figure} images/lab-resegress01.png
+---
+align: center
+---
+Create Spoke Gateway in AWS
+```
