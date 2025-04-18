@@ -5,13 +5,14 @@ You can access both the **Quiz** and the **Survey** Portal clicking on the pictu
 
 <a href="https://ace.aviatrix.com/ace-multicloud-network-security-quiz" target="_blank">
 
-![My image](images/quiz.png)
-
-</a>
-
-```{caution}
-Kindly create a new account if you do not have it yet!
+```{figure} images/quiz.png
+---
+height: 300px
+align: center
+---
+POD Portal
 ```
+</a>
 
 ```{figure} images/new-account.png
 ---
@@ -66,5 +67,10 @@ Submit
 align: center
 ---
 Survey
+```
 
+```{important}
+Completion of the **hands-on activity**, **attendance of the course session**, **successful completion of the quiz**, and participation in the **survey** are all <ins>mandatory requirements to qualify for the final certification</ins>. 
+
+These components ensure a comprehensive understanding of the material and demonstrate your readiness for certification.
 ```
