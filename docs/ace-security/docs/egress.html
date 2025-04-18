@@ -506,6 +506,10 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <li><p>The Spoke Gateway instance size should be <strong>t3a.small</strong>.</p></li>
 <li><p>The Spoke gateway must be attached to the <strong>egress-vpc-public-us-east-1a</strong> subnet</p></li>
 </ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Please note that within the egress-vpc, there is a pre-deployed EC2 instance named <strong>aws-instance</strong> that is actively generating traffic.</p>
+</div>
 </section>
 <section id="create-the-webgroups">
 <h3>5.2 Create the WebGroups<a class="headerlink" href="#create-the-webgroups" title="Link to this heading">#</a></h3>
@@ -624,6 +628,17 @@ Topology</span><a class="headerlink" href="#id9" title="Link to this image">#</a
 </figcaption>
 </figure>
 </div>
+<ul class="simple">
+<li><p>The <strong>aws-instance</strong> was pre-provisioned at the launch of the POD and is automatically generating traffic.</p></li>
+<li></li>
+</ul>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/lab-resegress80.png"><img alt="../_images/lab-resegress80.png" src="../_images/lab-resegress80.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">aws-instance</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="task-5-2-resolution">
 <h3>Task 5.2 resolution<a class="headerlink" href="#task-5-2-resolution" title="Link to this heading">#</a></h3>
@@ -632,26 +647,26 @@ Topology</span><a class="headerlink" href="#id9" title="Link to this image">#</a
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>.
 Then, click on <code class="docutils literal notranslate"><span class="pre">&quot;Begin&quot;</span></code>.</p></li>
 </ul>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab-resegress04.png" src="../_images/lab-resegress04.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Begin using Distributed Cloud Firewall</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Begin using Distributed Cloud Firewall</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab-resegress05.png" src="../_images/lab-resegress05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id14">
 <a class="reference internal image-reference" href="../_images/lab-resegress06.png"><img alt="../_images/lab-resegress06.png" src="../_images/lab-resegress06.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -664,10 +679,10 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab-resegress07.png" src="../_images/lab-resegress07.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -689,27 +704,27 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab-resegress08.png" src="../_images/lab-resegress08.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">WebGroup #2</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">WebGroup #2</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id17">
 <a class="reference internal image-reference" href="../_images/lab-resegress09.png"><img alt="../_images/lab-resegress09.png" src="../_images/lab-resegress09.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">WebGroup section</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">WebGroup section</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="task-5-3-resolution">
 <h3>Task 5.3 resolution<a class="headerlink" href="#task-5-3-resolution" title="Link to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab-resegress10.png" src="../_images/lab-resegress10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -722,18 +737,18 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab-resegress11.png" src="../_images/lab-resegress11.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">ExplicitDenyAll</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">ExplicitDenyAll</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab-resegress12.png"><img alt="../_images/lab-resegress12.png" src="../_images/lab-resegress12.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -746,19 +761,19 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li><p>192.168.0.0/16</p></li>
 <li><p>Navigate to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../_images/lab-resegress13.png"><img alt="../_images/lab-resegress13.png" src="../_images/lab-resegress13.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, click on the arrow icon  inside the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Resource</span> <span class="pre">Type&quot;</span></code> button and select <code class="docutils literal notranslate"><span class="pre">&quot;IP</span> <span class="pre">/</span> <span class="pre">CIDRs&quot;</span></code>.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab-resegress14.png"><img alt="../_images/lab-resegress14.png" src="../_images/lab-resegress14.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -769,18 +784,18 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li><p><strong>IPs / CIDRs</strong>: <span style='color:#479608'>192.168.0.0/16</span></p></li>
 </ul>
 <p>Before clicking on <strong>SAVE</strong>, delete the empty <code class="docutils literal notranslate"><span class="pre">&quot;Virtual</span> <span class="pre">Machines&quot;</span></code> additional condition.</p>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../_images/lab-resegress15.png"><img alt="../_images/lab-resegress15.png" src="../_images/lab-resegress15.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">New SG</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">New SG</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab-resegress16.png"><img alt="../_images/lab-resegress16.png" src="../_images/lab-resegress16.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">SmartGroups section</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">SmartGroups section</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -790,21 +805,21 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab-resegress17.png"><img alt="../_images/lab-resegress17.png" src="../_images/lab-resegress17.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Egress</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Egress</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Now, select the <em>egress-vpc</em> and then click on <strong>Add</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id26">
 <a class="reference internal image-reference" href="../_images/lab-resegress18.png"><img alt="../_images/lab-resegress18.png" src="../_images/lab-resegress18.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">egress-vpc with local Egress</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">egress-vpc with local Egress</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -814,11 +829,11 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab-resegress19.png"><img alt="../_images/lab-resegress19.png" src="../_images/lab-resegress19.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -833,10 +848,10 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id28">
 <img alt="../_images/lab-resegress20.png" src="../_images/lab-resegress20.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -846,11 +861,11 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <ul class="simple">
 <li><p>Before clicking the <strong>Commit</strong> button, click again the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab-resegress21.png"><img alt="../_images/lab-resegress21.png" src="../_images/lab-resegress21.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -865,18 +880,18 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id30">
 <img alt="../_images/lab-resegress22.png" src="../_images/lab-resegress22.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you can click on <strong>Commit</strong>.**</p>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab-resegress23.png"><img alt="../_images/lab-resegress23.png" src="../_images/lab-resegress23.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -886,19 +901,19 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong>, then select <em>egress-vpc</em> from the drop-down menu in the <code class="docutils literal notranslate"><span class="pre">VPC/VNets</span></code> field.</p></li>
 </ul>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id32">
 <a class="reference internal image-reference" href="../_images/lab-resegress24.png"><img alt="../_images/lab-resegress24.png" src="../_images/lab-resegress24.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will immediately observe the allowed domains, thanks to the two DCF rules you created, as well as the prohibited domains that were accessed but subsequently denied.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab-resegress25.png"><img alt="../_images/lab-resegress25.png" src="../_images/lab-resegress25.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details></section>
