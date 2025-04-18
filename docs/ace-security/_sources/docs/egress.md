@@ -119,23 +119,6 @@ Commit
 These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!
 ```
 
-- Aviatrix Spoke GW must be deployed in Region us-east-1 in the “egress-vpc”
-- GW Instance Size should be t3a.small
-
-### 4.1 Successful Completion of LAB
-
-After completing the lab, your screen should look more or less like the following. The IP addresses and UUIDs could be different.
-
-![Topology](images/egress_topology.png)
-
-![Gateway](images/egress_spoke.png)
-
-![Monitor](images/egress_monitor.png)
-
-![Filter](images/egress_monitor_filter.png)
-
-![Routes](images/egress_vpc_routes.png)
-
 ## 5. Lab Pre-req and Objectives
 
 These are the initial deployment requirements:
@@ -205,3 +188,19 @@ Certainly! Here's a refined and polished version of your paragraph:
 
 By implementing Aviatrix Secure Egress, our healthcare provider strengthened their security posture, reduced costs, and eliminated the visibility gaps associated with AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is safeguarded.
 Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-effective management of internet-bound traffic. Need assistance? Our support team is here to help.
+
+
+### 4.1 Successful Completion of LAB
+
+After completing the lab, your screen should look more or less like the following. The IP addresses and UUIDs could be different.
+
+![Topology](images/egress_topology.png)
+
+![Gateway](images/egress_spoke.png)
+
+![Monitor](images/egress_monitor.png)
+
+![Filter](images/egress_monitor_filter.png)
+
+![Routes](images/egress_vpc_routes.png)
+
