@@ -119,22 +119,6 @@ Commit
 These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!
 ```
 
-## 4. LAB Pre-Req
-
-Before starting the lab, change the following timers to their lowest value
-
-![Task Server](images/egress_timers.png)
-
-```{warning}
-DO NOT ATTEMPT TO CHANGE THESE TIMES IN PRE-PROD or PROD SETUP. THIS WOULD CAUSE SERIOUS ISSUES.
-```
-
-It should look like the following:
-
-![Task Server](images/egress_timers_updated.png)
-
-Do not change these times in the production setup
-
 - Aviatrix Spoke GW must be deployed in Region us-east-1 in the “egress-vpc”
 - GW Instance Size should be t3a.small
 
@@ -152,7 +136,13 @@ After completing the lab, your screen should look more or less like the followin
 
 ![Routes](images/egress_vpc_routes.png)
 
-## 5. Lab Hints
+## 5. Lab Pre-req and Objectives
+
+These are the initial deployment requirements:
+
+- Create a single Aviatrix Spoke Gateway in the AWS **us-east-1** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
+
+- The Spoke Gateway instance size should be **t3a.small**.
 
 ### 5.1 Create Secure Egress DCF Rules
 
