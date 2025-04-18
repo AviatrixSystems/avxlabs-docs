@@ -119,9 +119,9 @@ Commit
 These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!
 ```
 
-## 5. Lab Pre-req and Objectives
+## 5. Lab Objectives
 
-These are the requirements for this hands-on activity. Please follow each step carefully. However, if you get stuck, feel free to jump to Section #7 for a thorough solution.
+These are the requirements for this hands-on activity. Please follow each step carefully. However, if you get stuck, feel free to jump to **_Section #7_** for a thorough solution.
 
 ### 5.1 Deploy the Aviatrix Spoke Gateway
 
@@ -131,7 +131,15 @@ These are the requirements for this hands-on activity. Please follow each step c
 
 - The Spoke gateway must be attached to the **egress-vpc-public-us-east-1a** subnet
 
-### 5.1 Create Secure Egress DCF Rules
+### 5.2 Create Secure Egress DCF Rules
+
+- Create **two** WebGroups that match the domains listed on **_Section #3_**.
+
+```{hint}
+The WebGroup section will become enabled and visible in CoPilot once you activate the **Distributed Cloud Firewall** service (i.e., the Aviatrix Cloud Firewall).
+```
+
+### 5.3 Create Secure Egress DCF Rules
 
 - Create three rules
 - The last DCF rule is a zero-trust rule
@@ -194,11 +202,9 @@ Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-ef
   <summary>
 Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>RESOLUTION</span></summary>
 
-1) Task 5.1 requires deploying a Spoke Gateway first.
+### Task 5.1 resolution
 
 - Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateway**, then click on the `"+ Spoke Gateway"` button.
-
-Certainly! Here's a refined version:
 
 Make sure these parameters are entered in the `"Create Spoke Gateway"` pop-up window.
 
@@ -231,16 +237,40 @@ Create Spoke Gateway in AWS
 ---
 align: center
 ---
+height: 400px
 Topology
 ```
 
-```{hint}
+```{important}
 If you do not visualize the same topology, do not forget to click on the `"Managed"` button, to keeping hidden the _Unmanaged_ VPCs.
 ```{figure} images/lab-resegress03.png
 ---
+height: 400px
 align: center
 ---
 Managed VPCs
 ```
+
+### Task 5.2 resolution
+
+This task includes an important tip: you must first activate the DCF service before proceeding with the creation of WebGroups.
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Enable Distributed Cloud Firewall"`.
+Then, click on `"Begin"`.
+
+```{figure} images/lab-resegress04.png
+---
+align: center
+---
+Begin using Distributed Cloud Firewall
+```
+
+```{figure} images/lab-resegress05.png
+---
+align: center
+---
+Begin
+```
+
 
 </details>

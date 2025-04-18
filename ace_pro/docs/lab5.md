@@ -226,8 +226,8 @@ You have successfully activated your `Aviatrix Cloud Firewall` without disruptin
 - Enable the **Distributed Cloud Firewall**.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Enable Distributed Cloud Firewall"`.
-Afterwards click on `"Begin using Distributed Cloud Firewall"`, then click on `"Begin"`.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Enable Distributed Cloud Firewall"`.
+Then, click on `"Begin using Distributed Cloud Firewall"` followed by `"Begin"`.
 ```
 
 ```{figure} images/lab6-activate.png
