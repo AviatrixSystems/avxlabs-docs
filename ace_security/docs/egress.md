@@ -151,7 +151,19 @@ The WebGroup section will become enabled and visible in CoPilot once you activat
 The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!
 ```
 
-### 5.3 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
+### 5.4 Create a SmartGroup to classify traffic passing through the private subnets
+
+- You need to create a SmartGroup that includes all EAST-WEST traffic.
+
+```{hint}
+Use the RFC1918 routes!
+```
+
+### 5.5 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup.
+
+
+### 5.6 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup.
+
 
 
 
@@ -213,7 +225,7 @@ Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-ef
 
 <details>
   <summary>
-Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>RESOLUTION</span></summary>
+Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 
 ### Task 5.1 resolution
 
@@ -361,8 +373,6 @@ Insert the following parameters:
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
-- **Place Rule**: <span style='color:#479608'>Below</span>
-  - **Existing Rule**: <span style='color:#479608'>Egress-Rule</span>
 
 Do not forget to click on **Save In Drafts**.
 
