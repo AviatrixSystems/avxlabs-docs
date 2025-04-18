@@ -410,7 +410,7 @@ align: center
 New Rule
 ```
 
-Insert the following parameters
+Insert the following parameters:
 
 - **Name**: <span style='color:#479608'>ExplicitDenyAll</span>
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
@@ -436,7 +436,7 @@ Do not forget to click on **Commit**.
 ---
 align: center
 ---
-ExplicitDenyAll
+Commit
 ```
 
 ## 7. Connectivity Testing after enabling the Aviatrix Cloud Firewall
