@@ -244,7 +244,7 @@ Also, please verify whether the **SSH** protocol is functioning correctly with t
 
 Now let's access the Aviatrix Centralized Management Node, the CoPilot.
 
-Go to your POD portal, click on the `"Open Copilot"` button and insert the credentials!
+Navigate to your POD portal, click on the `"Open Copilot"` button and enter the credentials!
 
 ```{figure} images/lab2-gatus0600.png
 ---
@@ -259,7 +259,7 @@ POD Portal
 height: 400px
 align: center
 ---
-CoPilot UI
+CoPilot UI - Welcome page
 ```
 
 ```{note}
