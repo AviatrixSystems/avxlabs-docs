@@ -121,13 +121,15 @@ These are very aggressive settings. In a Production environment, you should not 
 
 ## 5. Lab Pre-req and Objectives
 
-These are the initial deployment requirements:
+These are the requirements for this hands-on activity. Please follow each step carefully. However, if you get stuck, feel free to jump to Section #7 for a thorough solution.
+
+### 5.1 Deploy the Aviatrix Spoke Gateway
 
 - Create a single Aviatrix Spoke Gateway in the AWS **us-east-1** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
 
 - The Spoke Gateway instance size should be **t3a.small**.
 
-- the Spoke gateway must be attached to the **egress-vpc-public-us-east-1a** subnet
+- The Spoke gateway must be attached to the **egress-vpc-public-us-east-1a** subnet
 
 ### 5.1 Create Secure Egress DCF Rules
 
@@ -192,11 +194,13 @@ Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-ef
   <summary>
 Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>RESOLUTION</span></summary>
 
-The prerequisites require you to first create a Spoke Gateway.
+1) Task 5.1 requires deploying a Spoke Gateway first.
 
 - Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateway**, then click on the `"+ Spoke Gateway"` button.
 
-Ensure these parameters are entered in the pop-up window `"Create Spoke Gateway"`.
+Certainly! Here's a refined version:
+
+Make sure these parameters are entered in the `"Create Spoke Gateway"` pop-up window.
 
 ```{note}
 You need to deploy one single instance!
@@ -219,6 +223,24 @@ Click **SAVE**.
 align: center
 ---
 Create Spoke Gateway in AWS
+```
+
+- Now, review the Dynamic Topology by navigating to **CoPilot > Cloud Fabric > Topology**. Here, you can see how the topology will appear after the Gateway deployment. Please keep in mind that it may take a few additional minutes for the changes to be reflected, so kindly be patient.
+
+```{figure} images/lab-resegress02.png
+---
+align: center
+---
+Topology
+```
+
+```{hint}
+If you do not visualize the same topology, do not forget to click on the `"Managed"` button, to keeping hidden the _Unmanaged_ VPCs.
+```{figure} images/lab-resegress03.png
+---
+align: center
+---
+Managed VPCs
 ```
 
 </details>
