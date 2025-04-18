@@ -383,7 +383,7 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <p>To add to the challenges, ABC Healthcare recently experienced a data exfiltration attack, causing substantial disruptions, reputational harm, and a decline in its stock value. As a consequence, the company dismissed its previous cloud network architects.</p>
 <section id="you-are-the-newly-hired-cloud-networking-architect">
 <h3>2.1 You are the Newly Hired Cloud Networking Architect<a class="headerlink" href="#you-are-the-newly-hired-cloud-networking-architect" title="Link to this heading">#</a></h3>
-<p>As the newly appointed architect, your task is to secure this traffic using the Aviatrix Cloud Firewall service. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.</p>
+<p>As the newly appointed architect, your task is to secure this traffic using the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> service. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.</p>
 </section>
 </section>
 <section id="lab-objective">
@@ -545,6 +545,34 @@ Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-ef
 </section>
 <section id="lab-resolution">
 <h2>7. Lab Resolution<a class="headerlink" href="#lab-resolution" title="Link to this heading">#</a></h2>
+<p>Certainly! Here’s an improved version:</p>
+<p>The prerequisites require you to first create a Spoke Gateway.</p>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateway</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Spoke</span> <span class="pre">Gateway&quot;</span></code> button.</p></li>
+</ul>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Spoke</span> <span class="pre">Gateway&quot;</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to deploy one single instance!</p>
+</div>
+<ul class="simple">
+<li><p><strong>Name:</strong> <span style='color:#479608'>Choose your favorite name</span></p></li>
+<li><p><strong>Cloud:</strong> <span style='color:#479608'>AWS (Standard)</span></p></li>
+<li><p><strong>Account:</strong> <span style='color:#479608'>aws-account</span></p></li>
+<li><p><strong>Region:</strong> <span style='color:#479608'>us-east-2 (Ohio)</span></p></li>
+<li><p><strong>VPC ID:</strong> <span style='color:#479608'>aws-us-east-2-spoke1 (Make sure you don’t select aws-us-east-2-<strong>transit</strong> VPC)</span></p></li>
+<li><p><strong>Instance Size:</strong> <span style='color:#479608'>t2.medium</span></p></li>
+<li><p><strong>High Performance Encryption:</strong> <span style='color:#479608'><strong>Off</strong></span></p></li>
+<li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>10.0.1.96/27 - aws-us-east-2-spoke1-Public-1-us-east-2a</span></p></li>
+<li><p><strong>Public IP:</strong> <span style='color:#479608'>Allocate New Static Public IP</span></p></li>
+</ul>
+<p>Click <strong>SAVE</strong>.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab-resegress01.png" src="../_images/lab-resegress01.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Create Spoke Gateway in AWS</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
