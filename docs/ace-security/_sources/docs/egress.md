@@ -241,7 +241,7 @@ Managed VPCs
 ```
 
 - The **aws-instance** was pre-provisioned at the launch of the POD and is automatically generating traffic.
-- 
+
 ```{figure} images/lab-resegress80.png
 ---
 height: 400px
@@ -361,7 +361,7 @@ Do not forget to click on **Commit**.
 
 ```{figure} images/lab-resegress12.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Commit
@@ -485,7 +485,7 @@ This task involves creating another Distributed Cloud Firewall rule and attachin
 
 ```{figure} images/lab-resegress21.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 +Rule
@@ -515,7 +515,7 @@ Now you can click on **Commit**.
 
 ```{figure} images/lab-resegress23.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 Commit
