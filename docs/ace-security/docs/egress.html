@@ -336,10 +336,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. Scenario</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expensive-and-limited-csp-native-nat-gateway">2. Expensive and Limited CSP Native NAT Gateway</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#damaged-reputation-and-employee-fired">2.1 Damaged Reputation and Employee Fired</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-the-newly-hired-cloud-networking-architect">2.2 You are the Newly Hired Cloud Networking Architect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-scenario">1. Initial Scenario</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csp-native-nat-gateway-limitations">1.1 CSP Native NAT Gateway Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exfiltration-attack">2. Data Exfiltration Attack</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-the-newly-hired-cloud-networking-architect">2.1 You are the Newly Hired Cloud Networking Architect</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">3. LAB Objective</a></li>
@@ -352,10 +354,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-spoke-gw-to-become-the-egress-gw">5.5 Enable spoke GW to become the Egress GW</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#successful-completion-of-lab">4.1 Successful Completion of LAB</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-resolution">7. Lab Resolution</a></li>
 </ul>
             </nav>
         </div>
@@ -369,21 +369,21 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="aviatrix-cloud-firewall-lab">
 <h1>Aviatrix Cloud Firewall Lab<a class="headerlink" href="#aviatrix-cloud-firewall-lab" title="Link to this heading">#</a></h1>
-<section id="scenario">
-<h2>1. Scenario<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
+<section id="initial-scenario">
+<h2>1. Initial Scenario<a class="headerlink" href="#initial-scenario" title="Link to this heading">#</a></h2>
 <p>ABC Healthcare (a fictitious company), a leading healthcare provider, operates exclusively within the AWS cloud environment. For internet egress traffic, they utilize AWS NAT Gateway. While the NAT Gateway effectively handles IP address translation, it is not intended to serve as a comprehensive security solution. This limited security capability has raised concerns among ABC Healthcare’s management regarding data privacy and HIPAA compliance.</p>
-</section>
-<section id="expensive-and-limited-csp-native-nat-gateway">
-<h2>2. Expensive and Limited CSP Native NAT Gateway<a class="headerlink" href="#expensive-and-limited-csp-native-nat-gateway" title="Link to this heading">#</a></h2>
+<section id="csp-native-nat-gateway-limitations">
+<h3>1.1 CSP Native NAT Gateway Limitations<a class="headerlink" href="#csp-native-nat-gateway-limitations" title="Link to this heading">#</a></h3>
 <p>The current AWS NAT Gateway doesn’t provide the necessary visibility and logging capabilities, and it’s also very expensive due to 2 cents per GB egress data processing charges. ABC Healthcare’s average monthly egress traffic is around 500 TB.
 The native solution also lacks visibility, is cost-prohibitive, and doesn’t support zero trust architecture—putting sensitive patient data and the healthcare provider’s reputation at risk.</p>
-<section id="damaged-reputation-and-employee-fired">
-<h3>2.1 Damaged Reputation and Employee Fired<a class="headerlink" href="#damaged-reputation-and-employee-fired" title="Link to this heading">#</a></h3>
-<p>To add to the challenges, ABC Healthcare recently experienced a data exfiltration attack, causing substantial disruptions, reputational harm, and a decline in its stock value. As a consequence, the company dismissed its previous cloud network architects.</p>
 </section>
+</section>
+<section id="data-exfiltration-attack">
+<h2>2. Data Exfiltration Attack<a class="headerlink" href="#data-exfiltration-attack" title="Link to this heading">#</a></h2>
+<p>To add to the challenges, ABC Healthcare recently experienced a data exfiltration attack, causing substantial disruptions, reputational harm, and a decline in its stock value. As a consequence, the company dismissed its previous cloud network architects.</p>
 <section id="you-are-the-newly-hired-cloud-networking-architect">
-<h3>2.2 You are the Newly Hired Cloud Networking Architect<a class="headerlink" href="#you-are-the-newly-hired-cloud-networking-architect" title="Link to this heading">#</a></h3>
-<p>As the newly appointed architect, your task is to secure this traffic using the Aviatrix Secure Egress solution. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.</p>
+<h3>2.1 You are the Newly Hired Cloud Networking Architect<a class="headerlink" href="#you-are-the-newly-hired-cloud-networking-architect" title="Link to this heading">#</a></h3>
+<p>As the newly appointed architect, your task is to secure this traffic using the Aviatrix Cloud Firewall service. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.</p>
 </section>
 </section>
 <section id="lab-objective">
@@ -540,18 +540,11 @@ Adding Egress Control on VPC/VNet changes the default route on VPC/VNet to point
 </section>
 <section id="conclusion">
 <h2>6. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>Certainly! Here’s a refined and polished version of your paragraph:</p>
 <p>By implementing Aviatrix Secure Egress, our healthcare provider strengthened their security posture, reduced costs, and eliminated the visibility gaps associated with AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is safeguarded.
 Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-effective management of internet-bound traffic. Need assistance? Our support team is here to help.</p>
-<section id="successful-completion-of-lab">
-<h3>4.1 Successful Completion of LAB<a class="headerlink" href="#successful-completion-of-lab" title="Link to this heading">#</a></h3>
-<p>After completing the lab, your screen should look more or less like the following. The IP addresses and UUIDs could be different.</p>
-<p><img alt="Topology" src="../_images/egress_topology.png" /></p>
-<p><img alt="Gateway" src="../_images/egress_spoke.png" /></p>
-<p><img alt="Monitor" src="../_images/egress_monitor.png" /></p>
-<p><img alt="Filter" src="../_images/egress_monitor_filter.png" /></p>
-<p><img alt="Routes" src="../_images/egress_vpc_routes.png" /></p>
 </section>
+<section id="lab-resolution">
+<h2>7. Lab Resolution<a class="headerlink" href="#lab-resolution" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -619,10 +612,12 @@ Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-ef
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. Scenario</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expensive-and-limited-csp-native-nat-gateway">2. Expensive and Limited CSP Native NAT Gateway</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#damaged-reputation-and-employee-fired">2.1 Damaged Reputation and Employee Fired</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-the-newly-hired-cloud-networking-architect">2.2 You are the Newly Hired Cloud Networking Architect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-scenario">1. Initial Scenario</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csp-native-nat-gateway-limitations">1.1 CSP Native NAT Gateway Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exfiltration-attack">2. Data Exfiltration Attack</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-the-newly-hired-cloud-networking-architect">2.1 You are the Newly Hired Cloud Networking Architect</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">3. LAB Objective</a></li>
@@ -635,10 +630,8 @@ Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-ef
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-spoke-gw-to-become-the-egress-gw">5.5 Enable spoke GW to become the Egress GW</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#successful-completion-of-lab">4.1 Successful Completion of LAB</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-resolution">7. Lab Resolution</a></li>
 </ul>
   </nav></div>
 
