@@ -354,10 +354,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc-vpc">5.5 Enable the Local Egress on the egress-vpc VPC</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">5.4 Deploy Aviatrix Spoke GW</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-spoke-gw-to-become-the-egress-gw">5.5 Enable spoke GW to become the Egress GW</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet">5.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
@@ -369,6 +366,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-5-resolution">Task 5.5 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-6-resolution">Task 5.6 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-7-resolution">Task 5.7 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-8-resolution">Task 5.8 resolution</a></li>
 </ul>
 </li>
 </ul>
@@ -557,53 +555,16 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <h3>5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup<a class="headerlink" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>This Distributed Cloud Firewall rule should exclusively allow <strong>HTTPS</strong> traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the <em>allowed-internet-https</em> WebGroup.</p></li>
-<li><p>The last DCF rule is a zero-trust rule</p></li>
-<li><p>Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code> web group</p></li>
-<li><p>Rule 0 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-http</span></code> web group</p></li>
 </ul>
-<p><img alt="DCF" src="../_images/egress_dcf_rules.png" /></p>
 </section>
-<section id="create-rfc1918-smartgroup">
-<h3>5.2 Create rfc1918 SmartGroup<a class="headerlink" href="#create-rfc1918-smartgroup" title="Link to this heading">#</a></h3>
-<p><img alt="Group" src="../_images/egress_groups.png" /></p>
-<p><img alt="rfc1918" src="../_images/egress_rfc1918.png" /></p>
-</section>
-<section id="create-webgroup-to-define-fqdn-allowed-to-access-internet">
-<h3>5.3 Create WebGroup to Define FQDN Allowed to Access Internet<a class="headerlink" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet" title="Link to this heading">#</a></h3>
-<p><img alt="WebGroup" src="../_images/egress_create_group.png" /></p>
-<p><img alt="Edit Group" src="../_images/egress_edit_group.png" /></p>
-<p><img alt="Polling" src="../_images/egress_polling.png" /></p>
-</section>
-<section id="deploy-aviatrix-spoke-gw">
-<h3>5.4 Deploy Aviatrix Spoke GW<a class="headerlink" href="#deploy-aviatrix-spoke-gw" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>The public IP address will be different (Public EIP automatically allocated by CSP)</p></li>
-<li><p>The Subnet CIDR could be different (automatically picked up by Aviatrix Controller)</p></li>
-<li><p>Region: us-east-1</p></li>
-</ul>
-<p><img alt="Spoke" src="../_images/egress_spoke_gw.png" /></p>
-<p>Check the Egress setting. The Egress traffic is going through the AWS NAT GW.</p>
-<p><img alt="Egress" src="../_images/egress_egress.png" /></p>
-</section>
-<section id="enable-spoke-gw-to-become-the-egress-gw">
-<h3>5.5 Enable spoke GW to become the Egress GW<a class="headerlink" href="#enable-spoke-gw-to-become-the-egress-gw" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>Click +Local Egress on VPC/VNets.</p></li>
-<li><p>In the Add Local Egress on VPC/VNets dialog, select the VPC/VNets on which to enable Local Egress.</p></li>
-<li><p>Click Add.</p></li>
-</ol>
-<p><a class="reference external" href="https://docs.aviatrix.com/copilot/latest/network-security/index.html">Read more at Aviatrix Documentation</a></p>
-<p><img alt="Local" src="../_images/egress_add_local.png" /></p>
-<p>Add Local Egress on VPC/VNets
-Adding Egress Control on VPC/VNet changes the default route on VPC/VNet to point to the Spoke Gateway and enables SNAT. Egress Control also requires additional resources on the Spoke Gateway.VPC/VNets</p>
-<p>Now the diagram should look like the following:</p>
-<p><img alt="Vpc" src="../_images/egress_vpc.png" /></p>
+<section id="verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet">
+<h3>5.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet<a class="headerlink" href="#verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="conclusion">
 <h2>6. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>By implementing Aviatrix Secure Egress, our healthcare provider strengthened their security posture, reduced costs, and eliminated the visibility gaps associated with AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is safeguarded.
-Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-effective management of internet-bound traffic. Need assistance? Our support team is here to help.</p>
+<p>By implementing the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code>, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.</p>
+<p>Remember, <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> is your trusted solution for secure and cost-effective management of internet-bound traffic.</p>
 </section>
 <section id="lab-resolution">
 <h2>7. Lab Resolution<a class="headerlink" href="#lab-resolution" title="Link to this heading">#</a></h2>
@@ -912,6 +873,10 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <p><span class="caption-number">Fig. 31 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="task-5-8-resolution">
+<h3>Task 5.8 resolution<a class="headerlink" href="#task-5-8-resolution" title="Link to this heading">#</a></h3>
+<p>This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.</p>
 </details></section>
 </section>
 </section>
@@ -998,10 +963,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc-vpc">5.5 Enable the Local Egress on the egress-vpc VPC</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">5.4 Deploy Aviatrix Spoke GW</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-spoke-gw-to-become-the-egress-gw">5.5 Enable spoke GW to become the Egress GW</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet">5.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
@@ -1013,6 +975,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-5-resolution">Task 5.5 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-6-resolution">Task 5.6 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-7-resolution">Task 5.7 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-8-resolution">Task 5.8 resolution</a></li>
 </ul>
 </li>
 </ul>

@@ -171,62 +171,13 @@ Use the RFC1918 routes!
 
 - This Distributed Cloud Firewall rule should exclusively allow **HTTPS** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-https_ WebGroup.
 
-
-
-
-- The last DCF rule is a zero-trust rule
-- Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the `allowed-internet-https` web group
-- Rule 0 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the `allowed-internet-http` web group
-
-![DCF](images/egress_dcf_rules.png)
-
-### 5.2 Create rfc1918 SmartGroup
-
-![Group](images/egress_groups.png)
-
-![rfc1918](images/egress_rfc1918.png)
-
-### 5.3 Create WebGroup to Define FQDN Allowed to Access Internet
-
-![WebGroup](images/egress_create_group.png)
-
-![Edit Group](images/egress_edit_group.png)
-
-![Polling](images/egress_polling.png)
-
-### 5.4 Deploy Aviatrix Spoke GW
-
-- The public IP address will be different (Public EIP automatically allocated by CSP)
-- The Subnet CIDR could be different (automatically picked up by Aviatrix Controller)
-- Region: us-east-1
-
-![Spoke](images/egress_spoke_gw.png)
-
-Check the Egress setting. The Egress traffic is going through the AWS NAT GW.
-
-![Egress](images/egress_egress.png)
-
-### 5.5 Enable spoke GW to become the Egress GW
-
-1. Click +Local Egress on VPC/VNets.
-2. In the Add Local Egress on VPC/VNets dialog, select the VPC/VNets on which to enable Local Egress.
-3. Click Add.
-
-[Read more at Aviatrix Documentation](https://docs.aviatrix.com/copilot/latest/network-security/index.html)
-
-![Local](images/egress_add_local.png)
-
-Add Local Egress on VPC/VNets
-Adding Egress Control on VPC/VNet changes the default route on VPC/VNet to point to the Spoke Gateway and enables SNAT. Egress Control also requires additional resources on the Spoke Gateway.VPC/VNets
-
-Now the diagram should look like the following:
-
-![Vpc](images/egress_vpc.png)
+### 5.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
 
 ## 6. Conclusion
 
-By implementing Aviatrix Secure Egress, our healthcare provider strengthened their security posture, reduced costs, and eliminated the visibility gaps associated with AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is safeguarded.
-Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-effective management of internet-bound traffic. Need assistance? Our support team is here to help.
+By implementing the `Aviatrix Cloud Firewall`, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.  
+
+Remember, `Aviatrix Cloud Firewall` is your trusted solution for secure and cost-effective management of internet-bound traffic.
 
 ## 7. Lab Resolution
 
@@ -552,5 +503,8 @@ align: center
 Commit
 ```
 
+### Task 5.8 resolution
+
+This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
 
 </details>
