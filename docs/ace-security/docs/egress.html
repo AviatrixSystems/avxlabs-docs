@@ -346,9 +346,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ztna-and-the-allowed-domains">3. ZTNA and the allowed domains</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-copilot">4. Aviatrix CoPilot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req-and-objectives">5. Lab Pre-req and Objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objectives">5. Lab Objectives</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">5.1 Deploy the Aviatrix Spoke Gateway</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-secure-egress-dcf-rules">5.1 Create Secure Egress DCF Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-secure-egress-dcf-rules">5.2 Create Secure Egress DCF Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3 Create Secure Egress DCF Rules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">5.4 Deploy Aviatrix Spoke GW</a></li>
@@ -356,7 +357,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-resolution">7. Lab Resolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-resolution">7. Lab Resolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-1-resolution">Task 5.1 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-2-resolution">Task 5.2 resolution</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -418,26 +423,26 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <h2>4. Aviatrix CoPilot<a class="headerlink" href="#aviatrix-copilot" title="Link to this heading">#</a></h2>
 <p>Now, let’s access the Aviatrix Centralized Management Node, the <strong>CoPilot</strong>.</p>
 <p>Navigate to your POD portal, click on the <code class="docutils literal notranslate"><span class="pre">&quot;Copilot&quot;</span></code> button, and enter your credentials.</p>
-<figure class="align-center" id="id1">
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/lab-egress01.png"><img alt="../_images/lab-egress01.png" src="../_images/lab-egress01.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">POD Portal</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">POD Portal</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/lab-egress02.png"><img alt="../_images/lab-egress02.png" src="../_images/lab-egress02.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">CoPilot UI - Welcome page</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">CoPilot UI - Welcome page</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot <em>Dashboard</em> should look something like this:</p>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/lab-egress03.png"><img alt="../_images/lab-egress03.png" src="../_images/lab-egress03.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Dashboard</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Dashboard</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -448,35 +453,35 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <p>Navigate to <strong>CoPilot &gt; Settings &gt; Resources &gt; Task Server</strong></p>
 </div>
 <p>Set the intervals for <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">GW</span> <span class="pre">Routes</span></code> and <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">VPC</span> <span class="pre">Routes</span></code> to <strong>“1 Second”</strong> each, then click on <strong>SAVE</strong>.</p>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/lab-egress04.png"><img alt="../_images/lab-egress04.png" src="../_images/lab-egress04.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Task Server</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Task Server</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The order of the <strong><em>Task Servers</em></strong> on the screenshot above might be different on your CoPilot</p>
 </div>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id6">
 <img alt="../_images/lab-egress05.png" src="../_images/lab-egress05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Fetch GW Routes</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Fetch GW Routes</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id7">
 <img alt="../_images/lab-egress06.png" src="../_images/lab-egress06.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Fetch VPC Routes</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Fetch VPC Routes</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After that, click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/lab-egress07.png"><img alt="../_images/lab-egress07.png" src="../_images/lab-egress07.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -484,9 +489,9 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <p>These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!</p>
 </div>
 </section>
-<section id="lab-pre-req-and-objectives">
-<h2>5. Lab Pre-req and Objectives<a class="headerlink" href="#lab-pre-req-and-objectives" title="Link to this heading">#</a></h2>
-<p>These are the requirements for this hands-on activity. Please follow each step carefully. However, if you get stuck, feel free to jump to Section #7 for a thorough solution.</p>
+<section id="lab-objectives">
+<h2>5. Lab Objectives<a class="headerlink" href="#lab-objectives" title="Link to this heading">#</a></h2>
+<p>These are the requirements for this hands-on activity. Please follow each step carefully. However, if you get stuck, feel free to jump to <strong><em>Section #7</em></strong> for a thorough solution.</p>
 <section id="deploy-the-aviatrix-spoke-gateway">
 <h3>5.1 Deploy the Aviatrix Spoke Gateway<a class="headerlink" href="#deploy-the-aviatrix-spoke-gateway" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -496,7 +501,17 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 </ul>
 </section>
 <section id="create-secure-egress-dcf-rules">
-<h3>5.1 Create Secure Egress DCF Rules<a class="headerlink" href="#create-secure-egress-dcf-rules" title="Link to this heading">#</a></h3>
+<h3>5.2 Create Secure Egress DCF Rules<a class="headerlink" href="#create-secure-egress-dcf-rules" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create <strong>two</strong> WebGroups that match the domains listed on <strong><em>Section #3</em></strong>.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The WebGroup section will become enabled and visible in CoPilot once you activate the <strong>Distributed Cloud Firewall</strong> service (i.e., the Aviatrix Cloud Firewall).</p>
+</div>
+</section>
+<section id="id1">
+<h3>5.3 Create Secure Egress DCF Rules<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Create three rules</p></li>
 <li><p>The last DCF rule is a zero-trust rule</p></li>
@@ -552,13 +567,11 @@ Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-ef
 <details>
   <summary>
 Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>RESOLUTION</span></summary>
-<ol class="arabic simple">
-<li><p>Task 5.1 requires deploying a Spoke Gateway first.</p></li>
-</ol>
+<section id="task-5-1-resolution">
+<h3>Task 5.1 resolution<a class="headerlink" href="#task-5-1-resolution" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateway</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Spoke</span> <span class="pre">Gateway&quot;</span></code> button.</p></li>
 </ul>
-<p>Certainly! Here’s a refined version:</p>
 <p>Make sure these parameters are entered in the <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Spoke</span> <span class="pre">Gateway&quot;</span></code> pop-up window.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -576,32 +589,55 @@ Click here to view the complete walkthrough for the lab resolution: <span style=
 <li><p><strong>Public IP:</strong> <span style='color:#479608'>Allocate New Static Public IP</span></p></li>
 </ul>
 <p>Click <strong>SAVE</strong>.</p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id9">
 <img alt="../_images/lab-resegress01.png" src="../_images/lab-resegress01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Create Spoke Gateway in AWS</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Create Spoke Gateway in AWS</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Now, review the Dynamic Topology by navigating to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong>. Here, you can see how the topology will appear after the Gateway deployment. Please keep in mind that it may take a few additional minutes for the changes to be reflected, so kindly be patient.</p></li>
 </ul>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id10">
 <img alt="../_images/lab-resegress02.png" src="../_images/lab-resegress02.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">height: 400px
+Topology</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>If you do not visualize the same topology, do not forget to click on the <code class="docutils literal notranslate"><span class="pre">&quot;Managed&quot;</span></code> button, to keeping hidden the <em>Unmanaged</em> VPCs.</p>
-<figure class="align-center" id="id10">
-<img alt="../_images/lab-resegress03.png" src="../_images/lab-resegress03.png" />
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/lab-resegress03.png"><img alt="../_images/lab-resegress03.png" src="../_images/lab-resegress03.png" style="height: 400px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Managed VPCs</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Managed VPCs</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
+</section>
+<section id="task-5-2-resolution">
+<h3>Task 5.2 resolution<a class="headerlink" href="#task-5-2-resolution" title="Link to this heading">#</a></h3>
+<p>This task includes an important tip: you must first activate the DCF service before proceeding with the creation of WebGroups.</p>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>.
+Then, click on <code class="docutils literal notranslate"><span class="pre">&quot;Begin&quot;</span></code>.</p></li>
+</ul>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab-resegress04.png" src="../_images/lab-resegress04.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Begin using Distributed Cloud Firewall</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id13">
+<img alt="docs/images/lab-resegress05.png" src="docs/images/lab-resegress05.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </details></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -678,9 +714,10 @@ Click here to view the complete walkthrough for the lab resolution: <span style=
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ztna-and-the-allowed-domains">3. ZTNA and the allowed domains</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-copilot">4. Aviatrix CoPilot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req-and-objectives">5. Lab Pre-req and Objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objectives">5. Lab Objectives</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">5.1 Deploy the Aviatrix Spoke Gateway</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-secure-egress-dcf-rules">5.1 Create Secure Egress DCF Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-secure-egress-dcf-rules">5.2 Create Secure Egress DCF Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3 Create Secure Egress DCF Rules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">5.4 Deploy Aviatrix Spoke GW</a></li>
@@ -688,7 +725,11 @@ Click here to view the complete walkthrough for the lab resolution: <span style=
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-resolution">7. Lab Resolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-resolution">7. Lab Resolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-1-resolution">Task 5.1 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-2-resolution">Task 5.2 resolution</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
