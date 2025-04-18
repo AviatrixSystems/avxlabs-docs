@@ -542,19 +542,19 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <section id="enable-the-local-egress-on-the-egress-vpc-vpc">
 <h3>5.5 Enable the Local Egress on the egress-vpc VPC<a class="headerlink" href="#enable-the-local-egress-on-the-egress-vpc-vpc" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Activate the local egress service so that any private routing tables within the egress-vpc will receive a default route pointing to the Spoke Gateway.</p></li>
+<li><p>Activate the <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">egress</span></code> service so that any private routing tables within the <em>egress-vpc</em> will receive a default route pointing to the Spoke Gateway.</p></li>
 </ul>
 </section>
 <section id="create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">
 <h3>5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup<a class="headerlink" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Create a Distributed Cloud Firewall rule that permits traffic generated from any subnets associated to a private Routing Table to reach Internet towards the domains listed in to the <em>allowed-internet-http</em> WebGroup</p></li>
+<li><p>This Distributed Cloud Firewall rule should exclusively allow HTTP traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the <em>allowed-internet-http</em> WebGroup.</p></li>
 </ul>
 </section>
 <section id="create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">
 <h3>5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup<a class="headerlink" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Create a Distributed Cloud Firewall rule that permits HTTPS traffic generated from any subnets associated to a private Routing Table to reach Internet towards the domains listed in to the <em>allowed-internet-http</em> WebGroup</p></li>
+<li><p>This Distributed Cloud Firewall rule should exclusively allow HTTPS traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the <em>allowed-internet-https</em> WebGroup.</p></li>
 <li><p>The last DCF rule is a zero-trust rule</p></li>
 <li><p>Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code> web group</p></li>
 <li><p>Rule 0 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-http</span></code> web group</p></li>
@@ -818,7 +818,27 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </section>
 <section id="task-5-5-resolution">
 <h3>Task 5.5 resolution<a class="headerlink" href="#task-5-5-resolution" title="Link to this heading">#</a></h3>
-<p>In this task you are asked to create</p>
+<p>In this task you are asked to enable the <code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">Egress</span></code>.</p>
+<ul class="simple">
+<li><p>Navigate to CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code> button.</p></li>
+</ul>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="../_images/lab-resegress17.png"><img alt="../_images/lab-resegress17.png" src="../_images/lab-resegress17.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Egress</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now, select the <em>egress-vpc</em> and then click on <strong>Add</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id25">
+<a class="reference internal image-reference" href="../_images/lab-resegress18.png"><img alt="../_images/lab-resegress18.png" src="../_images/lab-resegress18.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">egress-vpc with local Egress</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </details></section>
 </section>
 </section>
