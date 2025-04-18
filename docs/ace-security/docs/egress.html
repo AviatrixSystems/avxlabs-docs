@@ -367,6 +367,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-3-resolution">Task 5.3 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-4-resolution">Task 5.4 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-5-resolution">Task 5.5 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-6-resolution">Task 5.6 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-7-resolution">Task 5.7 resolution</a></li>
 </ul>
 </li>
 </ul>
@@ -548,13 +550,13 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <section id="create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">
 <h3>5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup<a class="headerlink" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>This Distributed Cloud Firewall rule should exclusively allow HTTP traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the <em>allowed-internet-http</em> WebGroup.</p></li>
+<li><p>This Distributed Cloud Firewall rule should exclusively allow <strong>HTTP</strong> traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the <em>allowed-internet-http</em> WebGroup.</p></li>
 </ul>
 </section>
 <section id="create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">
 <h3>5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup<a class="headerlink" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>This Distributed Cloud Firewall rule should exclusively allow HTTPS traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the <em>allowed-internet-https</em> WebGroup.</p></li>
+<li><p>This Distributed Cloud Firewall rule should exclusively allow <strong>HTTPS</strong> traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the <em>allowed-internet-https</em> WebGroup.</p></li>
 <li><p>The last DCF rule is a zero-trust rule</p></li>
 <li><p>Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code> web group</p></li>
 <li><p>Rule 0 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-http</span></code> web group</p></li>
@@ -818,9 +820,9 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </section>
 <section id="task-5-5-resolution">
 <h3>Task 5.5 resolution<a class="headerlink" href="#task-5-5-resolution" title="Link to this heading">#</a></h3>
-<p>In this task you are asked to enable the <code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">Egress</span></code>.</p>
+<p>In this task, you are required to enable the <code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">Egress</span></code>.</p>
 <ul class="simple">
-<li><p>Navigate to CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code> button.</p></li>
+<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code> button.</p></li>
 </ul>
 <figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab-resegress17.png"><img alt="../_images/lab-resegress17.png" src="../_images/lab-resegress17.png" style="height: 400px;" />
@@ -837,6 +839,77 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 26 </span><span class="caption-text">egress-vpc with local Egress</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="task-5-6-resolution">
+<h3>Task 5.6 resolution<a class="headerlink" href="#task-5-6-resolution" title="Link to this heading">#</a></h3>
+<p>This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.</p>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p></li>
+</ul>
+<figure class="align-center" id="id26">
+<a class="reference internal image-reference" href="../_images/lab-resegress19.png"><img alt="../_images/lab-resegress19.png" src="../_images/lab-resegress19.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Insert the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>Choose your favorite name</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>rfc1918</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Public Internet</span></p></li>
+<li><p><strong>WebGroups</strong>: <span style='color:#479608'><strong>allowed-internet-http</strong></span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#479608'>80</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id27">
+<img alt="../_images/lab-resegress20.png" src="../_images/lab-resegress20.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="task-5-7-resolution">
+<h3>Task 5.7 resolution<a class="headerlink" href="#task-5-7-resolution" title="Link to this heading">#</a></h3>
+<p>This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.</p>
+<ul class="simple">
+<li><p>Before clicking the <strong>Commit</strong> button, click again the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p></li>
+</ul>
+<figure class="align-center" id="id28">
+<a class="reference internal image-reference" href="../_images/lab-resegress21.png"><img alt="../_images/lab-resegress21.png" src="../_images/lab-resegress21.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Insert the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>Choose your favorite name</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>rfc1918</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Public Internet</span></p></li>
+<li><p><strong>WebGroups</strong>: <span style='color:#479608'><strong>allowed-internet-https</strong></span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#479608'>443</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id29">
+<img alt="../_images/lab-resegress22.png" src="../_images/lab-resegress22.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now you can click on <strong>Commit</strong>.**</p>
+<figure class="align-center" id="id30">
+<img alt="../_images/lab-resegress23.png" src="../_images/lab-resegress23.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details></section>
@@ -938,6 +1011,8 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-3-resolution">Task 5.3 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-4-resolution">Task 5.4 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-5-resolution">Task 5.5 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-6-resolution">Task 5.6 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-7-resolution">Task 5.7 resolution</a></li>
 </ul>
 </li>
 </ul>

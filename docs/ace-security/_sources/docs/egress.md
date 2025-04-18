@@ -165,11 +165,11 @@ Use the RFC1918 routes!
 
 ### 5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
 
-- This Distributed Cloud Firewall rule should exclusively allow HTTP traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-http_ WebGroup.
+- This Distributed Cloud Firewall rule should exclusively allow **HTTP** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-http_ WebGroup.
 
 ### 5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
 
-- This Distributed Cloud Firewall rule should exclusively allow HTTPS traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-https_ WebGroup.
+- This Distributed Cloud Firewall rule should exclusively allow **HTTPS** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-https_ WebGroup.
 
 
 
@@ -453,9 +453,9 @@ SmartGroups section
 
 ### Task 5.5 resolution
 
-In this task you are asked to enable the `Local Egress`.
+In this task, you are required to enable the `Local Egress`.
 
-- Navigate to CoPilot > Security > Egress > Egress VPC/VNets and click on the `"Enable Local Egress on VPC/VNets"` button.
+- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `"Enable Local Egress on VPC/VNets"` button.
 
 ```{figure} images/lab-resegress17.png
 ---
@@ -475,9 +475,82 @@ align: center
 egress-vpc with local Egress
 ```
 
+### Task 5.6 resolution
 
+This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
 
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
+```{figure} images/lab-resegress19.png
+---
+height: 400px
+align: center
+---
++Rule
+```
+
+Insert the following parameters:
+
+- **Name**: <span style='color:#479608'>Choose your favorite name</span>
+- **Source Smartgroups**: <span style='color:#479608'>rfc1918</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
+- **WebGroups**: <span style='color:#479608'>**allowed-internet-http**</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>80</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab-resegress20.png
+---
+align: center
+---
+Saving the new Rule
+```
+
+### Task 5.7 resolution
+
+This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
+
+- Before clicking the **Commit** button, click again the `"+ Rule"` button.
+
+```{figure} images/lab-resegress21.png
+---
+height: 400px
+align: center
+---
++Rule
+```
+
+Insert the following parameters:
+
+- **Name**: <span style='color:#479608'>Choose your favorite name</span>
+- **Source Smartgroups**: <span style='color:#479608'>rfc1918</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
+- **WebGroups**: <span style='color:#479608'>**allowed-internet-https**</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>443</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab-resegress22.png
+---
+align: center
+---
+Saving the new Rule
+```
+
+Now you can click on **Commit**.**
+
+```{figure} images/lab-resegress23.png
+---
+align: center
+---
+Commit
+```
 
 
 </details>
