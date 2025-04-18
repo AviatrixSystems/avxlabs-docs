@@ -39,6 +39,33 @@ Please note that the lab provides only some of the steps needed to complete this
   - *.docker.io
   - www.oracle.com
 
+## 4. Aviatrix CoPilot
+
+Certainly! Here's a more polished and professional version of your phrase:
+
+
+Now, let's access the Aviatrix Centralized Management Node, CoPilot.
+
+Navigate to your POD portal, click on the `"Copilot"` button, and enter your credentials.
+
+Now let's access the Aviatrix Centralized Management Node, the CoPilot.
+
+```{figure} images/lab-egress01.png
+---
+height: 300px
+align: center
+---
+POD Portal
+```
+
+```{figure} images/lab-egress02.png
+---
+height: 400px
+align: center
+---
+CoPilot UI - Welcome page
+```
+
 ## 4. LAB Pre-Req
 
 Before starting the lab, change the following timers to their lowest value
