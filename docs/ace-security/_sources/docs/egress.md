@@ -41,10 +41,7 @@ Please note that the lab provides only some of the steps needed to complete this
 
 ## 4. Aviatrix CoPilot
 
-Certainly! Here's a more polished and professional version of your phrase:
-
-
-Now, let's access the Aviatrix Centralized Management Node, CoPilot.
+Now, let's access the Aviatrix Centralized Management Node, the **CoPilot**.
 
 Navigate to your POD portal, click on the `"Copilot"` button, and enter your credentials.
 
