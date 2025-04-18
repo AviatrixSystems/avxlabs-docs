@@ -392,4 +392,62 @@ align: center
 Commit
 ```
 
+### Task 5.4 resolution
+
+This task requires you to create an ad-hoc SmartGroup, leveraging the three famous Summary Routes:
+- 10.0.0.0/8
+- 172.16.0.0/12
+- 192.168.0.0/16
+
+- Navigate to **CoPilot > Groups > SmartGroups** and click on the `"+ SmartGroup"` button.
+
+```{figure} images/lab-resegress13.png
+---
+height: 400px
+align: center
+---
+SmartGroup
+```
+
+Now, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
+
+```{figure} images/lab-resegress14.png
+---
+height: 400px
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>rfc1918</span>
+- **IPs / CIDRs**: <span style='color:#479608'>10.0.0.0/8</span>
+- **IPs / CIDRs**: <span style='color:#479608'>172.16.0.0/12</span>
+- **IPs / CIDRs**: <span style='color:#479608'>192.168.0.0/16</span>
+
+Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
+
+```{figure} images/lab-resegress15.png
+---
+height: 400px
+align: center
+---
+New SG
+```
+
+```{figure} images/lab-resegress16.png
+---
+height: 400px
+align: center
+---
+SmartGroups section
+```
+
+
+
+
+
+
+
 </details>
