@@ -511,11 +511,11 @@ align: center
 Saving the new Rule
 ```
 
-Now you can click on **Commit**.**
+Now you can click on **Commit**.
 
 ```{figure} images/lab-resegress23.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Commit
@@ -529,7 +529,6 @@ This is the final task—simply review the logs in the **Egress** section for ve
 
 ```{figure} images/lab-resegress24.png
 ---
-height: 400px
 align: center
 ---
 Monitor
