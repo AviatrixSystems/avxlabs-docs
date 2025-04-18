@@ -348,8 +348,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-copilot">4. Aviatrix CoPilot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objectives">5. Lab Objectives</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">5.1 Deploy the Aviatrix Spoke Gateway</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-secure-egress-dcf-rules">5.2 Create Secure Egress DCF Rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3 Create Secure Egress DCF Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">5.2 Create the WebGroups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">5.4 Deploy Aviatrix Spoke GW</a></li>
@@ -360,6 +361,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-resolution">7. Lab Resolution</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-1-resolution">Task 5.1 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-2-resolution">Task 5.2 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-3-resolution">Task 5.3 resolution</a></li>
 </ul>
 </li>
 </ul>
@@ -500,8 +502,8 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <li><p>The Spoke gateway must be attached to the <strong>egress-vpc-public-us-east-1a</strong> subnet</p></li>
 </ul>
 </section>
-<section id="create-secure-egress-dcf-rules">
-<h3>5.2 Create Secure Egress DCF Rules<a class="headerlink" href="#create-secure-egress-dcf-rules" title="Link to this heading">#</a></h3>
+<section id="create-the-webgroups">
+<h3>5.2 Create the WebGroups<a class="headerlink" href="#create-the-webgroups" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Create <strong>two</strong> WebGroups that match the domains listed on <strong><em>Section #3</em></strong>.</p></li>
 </ul>
@@ -510,10 +512,21 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <p>The WebGroup section will become enabled and visible in CoPilot once you activate the <strong>Distributed Cloud Firewall</strong> service (i.e., the Aviatrix Cloud Firewall).</p>
 </div>
 </section>
-<section id="id1">
-<h3>5.3 Create Secure Egress DCF Rules<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">
+<h3>5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule<a class="headerlink" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Create three rules</p></li>
+<li><p>Create a rule named <strong>ExplicitDenyAll</strong>.</p></li>
+<li><p>Enable <strong>Logging</strong> for the rule</p></li>
+<li><p>Position the rule <strong>above</strong> <em>Greenfield-Rule</em></p></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!</p>
+</div>
+</section>
+<section id="id1">
+<h3>5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
 <li><p>The last DCF rule is a zero-trust rule</p></li>
 <li><p>Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code> web group</p></li>
 <li><p>Rule 0 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-http</span></code> web group</p></li>
@@ -647,10 +660,13 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Create the first <strong><em>WebGroup</em></strong> with the following parameters:</p></li>
+<li><p>Create the first <strong><em>WebGroup</em></strong> with the following parameters:</p>
+<ul>
 <li><p><strong>Name</strong>: <span style='color:#479608'>allowed-internet-http</span></p></li>
 <li><p><strong>Type</strong>: <span style='color:#479608'>Domains</span></p></li>
 <li><p><strong>Domains/URLs</strong>: <span style='color:#479608'>*.ubuntu.com</span></p></li>
+</ul>
+</li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id15">
@@ -660,7 +676,8 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Let’s proceed to create the second <strong><em>WebGroup</em></strong> using the following parameters:</p></li>
+<li><p>Let’s proceed to create the second <strong><em>WebGroup</em></strong> using the following parameters:</p>
+<ul>
 <li><p><strong>Name</strong>: <span style='color:#479608'>allowed-internet-https</span></p></li>
 <li><p><strong>Type</strong>: <span style='color:#479608'>Domains</span></p></li>
 <li><p><strong>Domains/URLs</strong>: <span style='color:#479608'>*.alibabacloud.com</span></p></li>
@@ -674,6 +691,8 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li><p><strong>Domains/URLs</strong>: <span style='color:#479608'>*.docker.io</span></p></li>
 <li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.oracle.com">www.oracle.com</a></span></p></li>
 </ul>
+</li>
+</ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id16">
 <img alt="../_images/lab-resegress08.png" src="../_images/lab-resegress08.png" />
@@ -682,9 +701,48 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </figcaption>
 </figure>
 <figure class="align-center" id="id17">
-<img alt="../_images/lab-resegress09.png" src="../_images/lab-resegress09.png" />
+<a class="reference internal image-reference" href="../_images/lab-resegress09.png"><img alt="../_images/lab-resegress09.png" src="../_images/lab-resegress09.png" style="height: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 17 </span><span class="caption-text">WebGroup section</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="task-5-3-resolution">
+<h3>Task 5.3 resolution<a class="headerlink" href="#task-5-3-resolution" title="Link to this heading">#</a></h3>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab-resegress10.png" src="../_images/lab-resegress10.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Insert the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>ExplicitDenyAll</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
+<li><p><strong>Place Rule</strong>: <span style='color:#479608'>Below</span></p>
+<ul>
+<li><p><strong>Existing Rule</strong>: <span style='color:#479608'>Egress-Rule</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id19">
+<img alt="docs/images/lab-resegress11.png" src="docs/images/lab-resegress11.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">ExplicitDenyAll</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>Commit</strong>.</p>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab-resegress12.png" src="../_images/lab-resegress12.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details></section>
@@ -767,8 +825,9 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-copilot">4. Aviatrix CoPilot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objectives">5. Lab Objectives</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">5.1 Deploy the Aviatrix Spoke Gateway</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-secure-egress-dcf-rules">5.2 Create Secure Egress DCF Rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3 Create Secure Egress DCF Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">5.2 Create the WebGroups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">5.4 Deploy Aviatrix Spoke GW</a></li>
@@ -779,6 +838,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-resolution">7. Lab Resolution</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-1-resolution">Task 5.1 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-2-resolution">Task 5.2 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-3-resolution">Task 5.3 resolution</a></li>
 </ul>
 </li>
 </ul>

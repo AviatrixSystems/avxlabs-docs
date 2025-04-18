@@ -131,7 +131,7 @@ These are the requirements for this hands-on activity. Please follow each step c
 
 - The Spoke gateway must be attached to the **egress-vpc-public-us-east-1a** subnet
 
-### 5.2 Create Secure Egress DCF Rules
+### 5.2 Create the WebGroups
 
 - Create **two** WebGroups that match the domains listed on **_Section #3_**.
 
@@ -139,9 +139,22 @@ These are the requirements for this hands-on activity. Please follow each step c
 The WebGroup section will become enabled and visible in CoPilot once you activate the **Distributed Cloud Firewall** service (i.e., the Aviatrix Cloud Firewall).
 ```
 
-### 5.3 Create Secure Egress DCF Rules
+### 5.3 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
 
-- Create three rules
+- Create a rule named **ExplicitDenyAll**.
+
+- Enable **Logging** for the rule  
+
+- Position the rule **above** _Greenfield-Rule_
+
+```{caution}
+The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!
+```
+
+### 5.3 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
+
+
+
 - The last DCF rule is a zero-trust rule
 - Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the `allowed-internet-https` web group
 - Rule 0 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the `allowed-internet-http` web group
@@ -284,9 +297,9 @@ Begin
 
 - Create the first **_WebGroup_** with the following parameters:
 
-- **Name**: <span style='color:#479608'>allowed-internet-http</span>
-- **Type**: <span style='color:#479608'>Domains</span>
-- **Domains/URLs**: <span style='color:#479608'>*.ubuntu.com</span>
+  - **Name**: <span style='color:#479608'>allowed-internet-http</span>
+  - **Type**: <span style='color:#479608'>Domains</span>
+  - **Domains/URLs**: <span style='color:#479608'>*.ubuntu.com</span>
 
 Do not forget to click on **Save**.
 
@@ -299,18 +312,18 @@ WebGroup creation
 
 - Let's proceed to create the second **_WebGroup_** using the following parameters:
 
-- **Name**: <span style='color:#479608'>allowed-internet-https</span>
-- **Type**: <span style='color:#479608'>Domains</span>
-- **Domains/URLs**: <span style='color:#479608'>*.alibabacloud.com</span>
-- **Domains/URLs**: <span style='color:#479608'>azure.microsoft.com</span>
-- **Domains/URLs**: <span style='color:#479608'>aws.amazon.com</span>
-- **Domains/URLs**: <span style='color:#479608'>*.amazonaws.com</span>
-- **Domains/URLs**: <span style='color:#479608'>*.aviatrix.com</span>
-- **Domains/URLs**: <span style='color:#479608'>aviatrix.com</span>
-- **Domains/URLs**: <span style='color:#479608'>cloud.google.com</span>
-- **Domains/URLs**: <span style='color:#479608'>*.docker.com</span>
-- **Domains/URLs**: <span style='color:#479608'>*.docker.io</span>
-- **Domains/URLs**: <span style='color:#479608'>www.oracle.com</span>
+  - **Name**: <span style='color:#479608'>allowed-internet-https</span>
+  - **Type**: <span style='color:#479608'>Domains</span>
+  - **Domains/URLs**: <span style='color:#479608'>*.alibabacloud.com</span>
+  - **Domains/URLs**: <span style='color:#479608'>azure.microsoft.com</span>
+  - **Domains/URLs**: <span style='color:#479608'>aws.amazon.com</span>
+  - **Domains/URLs**: <span style='color:#479608'>*.amazonaws.com</span>
+  - **Domains/URLs**: <span style='color:#479608'>*.aviatrix.com</span>
+  - **Domains/URLs**: <span style='color:#479608'>aviatrix.com</span>
+  - **Domains/URLs**: <span style='color:#479608'>cloud.google.com</span>
+  - **Domains/URLs**: <span style='color:#479608'>*.docker.com</span>
+  - **Domains/URLs**: <span style='color:#479608'>*.docker.io</span>
+  - **Domains/URLs**: <span style='color:#479608'>www.oracle.com</span>
 
 Do not forget to click on **Save**.
 
@@ -323,10 +336,50 @@ WebGroup #2
 
 ```{figure} images/lab-resegress09.png
 ---
+height: 400px
 align: center
 ---
 WebGroup section
 ```
 
+### Task 5.3 resolution
+
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+
+```{figure} images/lab-resegress10.png
+---
+align: center
+---
+New Rule
+```
+
+Insert the following parameters:
+
+- **Name**: <span style='color:#479608'>ExplicitDenyAll</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>Egress-Rule</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab-resegress11.png
+---
+align: center
+---
+ExplicitDenyAll 
+```
+
+Do not forget to click on **Commit**.
+
+```{figure} images/lab-resegress12.png
+---
+align: center
+---
+Commit
+```
 
 </details>
