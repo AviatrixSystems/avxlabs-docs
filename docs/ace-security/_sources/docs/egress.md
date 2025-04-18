@@ -173,6 +173,10 @@ Use the RFC1918 routes!
 
 ### 5.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
 
+- Certainly! Here's an improved version:
+
+After enabling the Aviatrix Cloud Firewall, you should see logs reflecting traffic to the permitted domains. All other traffic will be denied.
+
 ## 6. Conclusion
 
 By implementing the `Aviatrix Cloud Firewall`, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.  
@@ -345,6 +349,7 @@ Do not forget to click on **Commit**.
 
 ```{figure} images/lab-resegress12.png
 ---
+height: 400px
 align: center
 ---
 Commit
@@ -498,6 +503,7 @@ Now you can click on **Commit**.**
 
 ```{figure} images/lab-resegress23.png
 ---
+height: 400px
 align: center
 ---
 Commit
@@ -505,6 +511,25 @@ Commit
 
 ### Task 5.8 resolution
 
-This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
+This is the final task—simply review the logs in the **Egress** section for verification.
 
+- Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)**, then select _egress-vpc_ from the drop-down menu in the `VPC/VNets` field.
+
+```{figure} images/lab-resegress24.png
+---
+height: 400px
+align: center
+---
+Monitor
+```
+
+You will immediately observe the allowed domains, thanks to the two DCF rules you created, as well as the prohibited domains that were accessed but subsequently denied.
+
+```{figure} images/lab-resegress25.png
+---
+height: 400px
+align: center
+---
+Logs
+```
 </details>
