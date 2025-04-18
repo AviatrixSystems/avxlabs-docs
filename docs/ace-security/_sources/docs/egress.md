@@ -9,27 +9,21 @@ ABC Healthcare (a fictitious company), a leading healthcare provider, operates e
 The current AWS NAT Gateway doesn’t provide the necessary visibility and logging capabilities, and it’s also very expensive due to 2 cents per GB egress data processing charges. ABC Healthcare’s average monthly egress traffic is around 500 TB.
 The native solution also lacks visibility, is cost-prohibitive, and doesn’t support zero trust architecture—putting sensitive patient data and the healthcare provider’s reputation at risk.
 
-### 2.1 Data Charges Reference
+### 2.1 Damaged Reputation and Employee Fired
 
-<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/identify-and-optimize-public-ipv4-address-usage-on-aws" target="_blank">Networking and content delivery</a>
+To add to the challenges, ABC Healthcare recently experienced a data exfiltration attack, causing substantial disruptions, reputational harm, and a decline in its stock value. As a consequence, the company dismissed its previous cloud network architects.
 
-<a href="https://aws.amazon.com/blogs/apn/aws-data-transfer-charges-for-server-and-serverless-architectures" target="_blank">Data transfer</a>
+### 2.2 You are the Newly Hired Cloud Networking Architect
 
-<a href="https://www.cloudzero.com/blog/aws-egress-costs/#:~:text=Data%20transfers%20out%20of%20AWS,$0.0900%20and%20$0.0500%20per%20GB" target="_blank">Egress cost</a>
+As the newly appointed architect, your task is to secure this traffic using the Aviatrix Secure Egress solution. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.
 
-## 3. Damaged Reputation and Employee Fired
+## 3. LAB Objective
 
-To further complicate matters, ABC Healthcare recently suffered a data exfiltration attack, which led to significant disruptions, reputational damage, and a negative impact on its stock value. This incident resulted in the dismissal of the previous cloud network architects.
+Your responsibility is to conduct a POC/POV in your lab environment and demonstrate how your company can leverage the Aviatrix Cloud Perimeter Solution to address this pain point. You should deploy the Aviatrix Secure Egress solution using the Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than the AWS NAT Gateway.
 
-### 3.1 You are the Newly Hired Cloud Networking Architect
+<ins>The Zero Trust policy should allow only the specified domains and block all other FQDNs</ins>.
 
-You, the newly appointed architect, have been tasked with securing this traffic using the Aviatrix Secure Egress solution. Your mission is to implement a solution that enhances visibility, provides detailed logging, and complies with regulatory mandates while being cost-effective and efficient.
-
-## 4. LAB Objective
-
-It is your job to do a POC/POV in your lab and demonstrate how your company can leverage Aviatrix Cloud Perimeter Solution to solve this pain point. You need to deploy the Aviatrix Secure Egress solution using Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than the AWS NAT Gateway.
-The Zero Trust policy should only allow the following domains and block all other FQDNs.
-The lab intentionally only provides some of the steps for you to complete this lab. You should leverage <a href="https://docs.aviatrix.com" target="_blank">docs.aviatrix.com</a> if you are stuck.
+Please note that the lab provides only some of the steps needed to complete this exercise. If you encounter any difficulties, you are encouraged to consult the documentation at <a href="https://docs.aviatrix.com" target="_blank">docs.aviatrix.com</a>.
 
 - `allowed-internet-http` domains
   - *.ubuntu.com
