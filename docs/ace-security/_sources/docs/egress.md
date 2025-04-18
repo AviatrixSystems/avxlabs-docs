@@ -186,9 +186,8 @@ Now the diagram should look like the following:
 By implementing Aviatrix Secure Egress, our healthcare provider strengthened their security posture, reduced costs, and eliminated the visibility gaps associated with AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is safeguarded.
 Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-effective management of internet-bound traffic. Need assistance? Our support team is here to help.
 
-## 7. Lab Resolution
-
-Certainly! Here's an improved version:
+<details>
+  <summary><span style='color:#33ECFF'>7. Lab Resolution</span></summary>
 
 The prerequisites require you to first create a Spoke Gateway.
 
@@ -218,3 +217,5 @@ align: center
 ---
 Create Spoke Gateway in AWS
 ```
+
+</details>
