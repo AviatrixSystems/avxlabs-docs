@@ -53,8 +53,10 @@ After submitted your quiz, click on **Next** and do not forget to complete the q
 ```
 
 - Submit your answers!
+  
 ```{figure} images/quiz-2.png
 ---
+height: 400px
 align: center
 ---
 Submit
@@ -64,6 +66,7 @@ Submit
 
 ```{figure} images/quiz-3.png
 ---
+height: 400px
 align: center
 ---
 Survey
