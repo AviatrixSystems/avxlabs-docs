@@ -351,8 +351,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">5.2 Create the WebGroups</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">5.4 Create a SmartGroup to classify traffic passing through the private subnets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.5 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.6 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc-vpc">5.5 Enable the Local Egress on the egress-vpc VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">5.4 Deploy Aviatrix Spoke GW</a></li>
@@ -365,6 +366,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-2-resolution">Task 5.2 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-3-resolution">Task 5.3 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-4-resolution">Task 5.4 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-5-resolution">Task 5.5 resolution</a></li>
 </ul>
 </li>
 </ul>
@@ -537,12 +539,22 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <p>Use the RFC1918 routes!</p>
 </div>
 </section>
+<section id="enable-the-local-egress-on-the-egress-vpc-vpc">
+<h3>5.5 Enable the Local Egress on the egress-vpc VPC<a class="headerlink" href="#enable-the-local-egress-on-the-egress-vpc-vpc" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Activate the local egress service so that any private routing tables within the egress-vpc will receive a default route pointing to the Spoke Gateway.</p></li>
+</ul>
+</section>
 <section id="create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">
-<h3>5.5 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup.<a class="headerlink" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
+<h3>5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup<a class="headerlink" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create a Distributed Cloud Firewall rule that permits traffic generated from any subnets associated to a private Routing Table to reach Internet towards the domains listed in to the <em>allowed-internet-http</em> WebGroup</p></li>
+</ul>
 </section>
 <section id="create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">
-<h3>5.6 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup.<a class="headerlink" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
+<h3>5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup<a class="headerlink" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p>Create a Distributed Cloud Firewall rule that permits HTTPS traffic generated from any subnets associated to a private Routing Table to reach Internet towards the domains listed in to the <em>allowed-internet-http</em> WebGroup</p></li>
 <li><p>The last DCF rule is a zero-trust rule</p></li>
 <li><p>Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code> web group</p></li>
 <li><p>Rule 0 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-http</span></code> web group</p></li>
@@ -610,14 +622,14 @@ Click here to view the complete walkthrough for the lab resolution: <span style=
 <li><p><strong>Name:</strong> <span style='color:#479608'>Choose your favorite name</span></p></li>
 <li><p><strong>Cloud:</strong> <span style='color:#479608'>AWS (Standard)</span></p></li>
 <li><p><strong>Account:</strong> <span style='color:#479608'>aws-account</span></p></li>
-<li><p><strong>Region:</strong> <span style='color:#479608'>us-east-2 (Ohio)</span></p></li>
-<li><p><strong>VPC ID:</strong> <span style='color:#479608'>aws-us-east-2-spoke1 (Make sure you don’t select aws-us-east-2-<strong>transit</strong> VPC)</span></p></li>
-<li><p><strong>Instance Size:</strong> <span style='color:#479608'>t2.medium</span></p></li>
+<li><p><strong>Region:</strong> <span style='color:#479608'>us-east-1 (N. Virginia)</span></p></li>
+<li><p><strong>VPC ID:</strong> <span style='color:#479608'>egress-vpc</span></p></li>
+<li><p><strong>Instance Size:</strong> <span style='color:#479608'>t3a.small</span></p></li>
 <li><p><strong>High Performance Encryption:</strong> <span style='color:#479608'><strong>Off</strong></span></p></li>
-<li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>10.0.1.96/27 - aws-us-east-2-spoke1-Public-1-us-east-2a</span></p></li>
+<li><p><strong>Attach to Subnet:</strong> <span style='color:#479608'>10.1.2.32/28 - egress-vpc-public-us-east-1a</span></p></li>
 <li><p><strong>Public IP:</strong> <span style='color:#479608'>Allocate New Static Public IP</span></p></li>
 </ul>
-<p>Click <strong>SAVE</strong>.</p>
+<p>Click <strong>Save</strong>.</p>
 <figure class="align-center" id="id8">
 <img alt="../_images/lab-resegress01.png" src="../_images/lab-resegress01.png" />
 <figcaption>
@@ -759,7 +771,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </section>
 <section id="task-5-4-resolution">
 <h3>Task 5.4 resolution<a class="headerlink" href="#task-5-4-resolution" title="Link to this heading">#</a></h3>
-<p>This task requires you to create an ad-hoc SmartGroup, leveraging the three famous Summary Routes:</p>
+<p>This task requires you to create an ad-hoc SmartGroup, utilizing the three well-known <em>Summary Routes</em>:</p>
 <ul class="simple">
 <li><p>10.0.0.0/8</p></li>
 <li><p>172.16.0.0/12</p></li>
@@ -803,6 +815,10 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">SmartGroups section</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="task-5-5-resolution">
+<h3>Task 5.5 resolution<a class="headerlink" href="#task-5-5-resolution" title="Link to this heading">#</a></h3>
+<p>In this task you are asked to create</p>
 </details></section>
 </section>
 </section>
@@ -886,8 +902,9 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">5.2 Create the WebGroups</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">5.4 Create a SmartGroup to classify traffic passing through the private subnets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.5 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.6 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc-vpc">5.5 Enable the Local Egress on the egress-vpc VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">5.4 Deploy Aviatrix Spoke GW</a></li>
@@ -900,6 +917,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-2-resolution">Task 5.2 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-3-resolution">Task 5.3 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-4-resolution">Task 5.4 resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-5-resolution">Task 5.5 resolution</a></li>
 </ul>
 </li>
 </ul>
