@@ -45,8 +45,6 @@ Now, let's access the Aviatrix Centralized Management Node, the **CoPilot**.
 
 Navigate to your POD portal, click on the `"Copilot"` button, and enter your credentials.
 
-Now let's access the Aviatrix Centralized Management Node, the CoPilot.
-
 ```{figure} images/lab-egress01.png
 ---
 height: 300px
@@ -61,6 +59,64 @@ height: 400px
 align: center
 ---
 CoPilot UI - Welcome page
+```
+
+The CoPilot *Dashboard* should look something like this:
+
+```{figure} images/lab-egress03.png
+---
+height: 400px
+align: center
+---
+Dashboard
+```
+
+- Before you begin building your multicloud infrastructure, please adjust the **fetch timers** in CoPilot.
+
+```{hint}
+Navigate to **CoPilot > Settings > Resources > Task Server**
+```
+
+Set the intervals for `Fetch GW Routes` and `Fetch VPC Routes` to **“1 Second”** each, then click on **SAVE**.
+
+```{figure} images/lab-egress04.png
+---
+height: 400px
+align: center
+---
+Task Server
+```
+
+```{caution}
+The order of the **_Task Servers_** on the screenshot above might be different on your CoPilot
+```
+
+```{figure} images/lab-egress05.png
+---
+align: center
+---
+Fetch GW Routes
+```
+
+```{figure} images/lab-egress06.png
+---
+align: center
+---
+Fetch VPC Routes
+```
+
+After that, click on **Commit**.
+
+```{figure} images/lab-egress07.png
+---
+height: 400px
+align: center
+---
+Commit
+```
+
+```{note}
+These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!
 ```
 
 ## 4. LAB Pre-Req
