@@ -177,9 +177,7 @@ Use the RFC1918 routes!
 
 ### 5.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
 
-- Certainly! Here's an improved version:
-
-After enabling the Aviatrix Cloud Firewall, you should see logs reflecting traffic to the permitted domains. All other traffic will be denied.
+- After enabling the Aviatrix Cloud Firewall, you should see logs reflecting traffic to the permitted domains. All other traffic will be denied.
 
 ## 6. Conclusion
 
