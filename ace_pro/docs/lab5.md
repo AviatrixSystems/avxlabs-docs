@@ -353,7 +353,7 @@ align: center
 New Rule
 ```
 
-Insert the following parameters
+Insert the following parameters:
 
 - **Name**: <span style='color:#479608'>Egress-Rule</span>
 - **Source Smartgroups**: <span style='color:#479608'>us-east-2-private-subnet</span>
