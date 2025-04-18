@@ -1,5 +1,5 @@
 # Quiz - Hints
-Below are hints for select quiz questions, particularly those that require access to the "Cloud Perimeter Egress Security" Pod.
+Below are hints for selecting quiz questions, especially those that involve access to the `Aviatrix Cloud Firewall` Pod.
 
 <span style='color:#479608'>Q1.</span> Which Aviatrix CoPilot feature can block IP traffic to/from IP addresses associated with particular geographic regions.
 
