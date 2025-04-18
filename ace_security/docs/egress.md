@@ -529,6 +529,7 @@ This is the final task—simply review the logs in the **Egress** section for ve
 
 ```{figure} images/lab-resegress24.png
 ---
+height: 300px
 align: center
 ---
 Monitor
