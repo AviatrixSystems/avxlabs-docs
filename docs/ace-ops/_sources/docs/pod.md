@@ -7,6 +7,12 @@ You can view your personal POD portal by clicking on the picture below:
 
 <a href="https://ops-portal.ace.aviatrixlab.com/" target="_blank">
 
-![My image](images/pod.png)
+```{figure} images/pod.png
+---
+height: 300px
+align: center
+---
+POD Portal
+```
 
 </a>
