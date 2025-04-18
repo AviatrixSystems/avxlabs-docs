@@ -159,10 +159,18 @@ The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot 
 Use the RFC1918 routes!
 ```
 
-### 5.5 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup.
+### 5.5 Enable the Local Egress on the egress-vpc VPC
+
+- Activate the local egress service so that any private routing tables within the egress-vpc will receive a default route pointing to the Spoke Gateway.
+
+### 5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
+
+- Create a Distributed Cloud Firewall rule that permits traffic generated from any subnets associated to a private Routing Table to reach Internet towards the domains listed in to the _allowed-internet-http_ WebGroup
 
 
-### 5.6 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup.
+### 5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
+
+- Create a Distributed Cloud Firewall rule that permits HTTPS traffic generated from any subnets associated to a private Routing Table to reach Internet towards the domains listed in to the _allowed-internet-http_ WebGroup
 
 
 
@@ -240,14 +248,14 @@ You need to deploy one single instance!
 - **Name:** <span style='color:#479608'>Choose your favorite name</span>
 - **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
 - **Account:** <span style='color:#479608'>aws-account</span>
-- **Region:** <span style='color:#479608'>us-east-2 (Ohio)</span>
-- **VPC ID:** <span style='color:#479608'>aws-us-east-2-spoke1 (Make sure you don't select aws-us-east-2-**transit** VPC)</span>
-- **Instance Size:** <span style='color:#479608'>t2.medium</span>
+- **Region:** <span style='color:#479608'>us-east-1 (N. Virginia)</span>
+- **VPC ID:** <span style='color:#479608'>egress-vpc</span>
+- **Instance Size:** <span style='color:#479608'>t3a.small</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
-- **Attach to Subnet:** <span style='color:#479608'>10.0.1.96/27 - aws-us-east-2-spoke1-Public-1-us-east-2a</span>
+- **Attach to Subnet:** <span style='color:#479608'>10.1.2.32/28 - egress-vpc-public-us-east-1a</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
-Click **SAVE**.
+Click **Save**.
 
 ```{figure} images/lab-resegress01.png
 ---
@@ -394,7 +402,7 @@ Commit
 
 ### Task 5.4 resolution
 
-This task requires you to create an ad-hoc SmartGroup, leveraging the three famous Summary Routes:
+This task requires you to create an ad-hoc SmartGroup, utilizing the three well-known _Summary Routes_:
 - 10.0.0.0/8
 - 172.16.0.0/12
 - 192.168.0.0/16
@@ -443,6 +451,11 @@ align: center
 ---
 SmartGroups section
 ```
+
+### Task 5.5 resolution
+
+In this task you are asked to create
+
 
 
 
