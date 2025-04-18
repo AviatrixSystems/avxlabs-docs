@@ -272,5 +272,61 @@ align: center
 Begin
 ```
 
+- Navigate to **CoPilot > Groups > WebGroups** and click on the `"+ WebGroup"` button.
+
+```{figure} images/lab-resegress06.png
+---
+height: 400px
+align: center
+---
+Begin
+```
+
+- Create the first **_WebGroup_** with the following parameters:
+
+- **Name**: <span style='color:#479608'>allowed-internet-http</span>
+- **Type**: <span style='color:#479608'>Domains</span>
+- **Domains/URLs**: <span style='color:#479608'>*.ubuntu.com</span>
+
+Do not forget to click on **Save**.
+
+```{figure} images/lab-resegress07.png
+---
+align: center
+---
+WebGroup creation
+```
+
+- Let's proceed to create the second **_WebGroup_** using the following parameters:
+
+- **Name**: <span style='color:#479608'>allowed-internet-https</span>
+- **Type**: <span style='color:#479608'>Domains</span>
+- **Domains/URLs**: <span style='color:#479608'>*.alibabacloud.com</span>
+- **Domains/URLs**: <span style='color:#479608'>azure.microsoft.com</span>
+- **Domains/URLs**: <span style='color:#479608'>aws.amazon.com</span>
+- **Domains/URLs**: <span style='color:#479608'>*.amazonaws.com</span>
+- **Domains/URLs**: <span style='color:#479608'>*.aviatrix.com</span>
+- **Domains/URLs**: <span style='color:#479608'>aviatrix.com</span>
+- **Domains/URLs**: <span style='color:#479608'>cloud.google.com</span>
+- **Domains/URLs**: <span style='color:#479608'>*.docker.com</span>
+- **Domains/URLs**: <span style='color:#479608'>*.docker.io</span>
+- **Domains/URLs**: <span style='color:#479608'>www.oracle.com</span>
+
+Do not forget to click on **Save**.
+
+```{figure} images/lab-resegress08.png
+---
+align: center
+---
+WebGroup #2
+```
+
+```{figure} images/lab-resegress09.png
+---
+align: center
+---
+WebGroup section
+```
+
 
 </details>
