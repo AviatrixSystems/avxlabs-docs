@@ -1,21 +1,21 @@
 # Aviatrix Cloud Firewall Lab
 
-## 1. Scenario
+## 1. Initial Scenario
 
 ABC Healthcare (a fictitious company), a leading healthcare provider, operates exclusively within the AWS cloud environment. For internet egress traffic, they utilize AWS NAT Gateway. While the NAT Gateway effectively handles IP address translation, it is not intended to serve as a comprehensive security solution. This limited security capability has raised concerns among ABC Healthcare’s management regarding data privacy and HIPAA compliance.
 
-## 2. Expensive and Limited CSP Native NAT Gateway
+### 1.1 CSP Native NAT Gateway Limitations
 
 The current AWS NAT Gateway doesn’t provide the necessary visibility and logging capabilities, and it’s also very expensive due to 2 cents per GB egress data processing charges. ABC Healthcare’s average monthly egress traffic is around 500 TB.
 The native solution also lacks visibility, is cost-prohibitive, and doesn’t support zero trust architecture—putting sensitive patient data and the healthcare provider’s reputation at risk.
 
-### 2.1 Damaged Reputation and Employee Fired
+## 2. Data Exfiltration Attack
 
 To add to the challenges, ABC Healthcare recently experienced a data exfiltration attack, causing substantial disruptions, reputational harm, and a decline in its stock value. As a consequence, the company dismissed its previous cloud network architects.
 
-### 2.2 You are the Newly Hired Cloud Networking Architect
+### 2.1 You are the Newly Hired Cloud Networking Architect
 
-As the newly appointed architect, your task is to secure this traffic using the Aviatrix Secure Egress solution. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.
+As the newly appointed architect, your task is to secure this traffic using the Aviatrix Cloud Firewall service. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.
 
 ## 3. LAB Objective
 
@@ -183,24 +183,8 @@ Now the diagram should look like the following:
 
 ## 6. Conclusion
 
-Certainly! Here's a refined and polished version of your paragraph:
-
-
 By implementing Aviatrix Secure Egress, our healthcare provider strengthened their security posture, reduced costs, and eliminated the visibility gaps associated with AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is safeguarded.
 Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-effective management of internet-bound traffic. Need assistance? Our support team is here to help.
 
-
-### 4.1 Successful Completion of LAB
-
-After completing the lab, your screen should look more or less like the following. The IP addresses and UUIDs could be different.
-
-![Topology](images/egress_topology.png)
-
-![Gateway](images/egress_spoke.png)
-
-![Monitor](images/egress_monitor.png)
-
-![Filter](images/egress_monitor_filter.png)
-
-![Routes](images/egress_vpc_routes.png)
+## 7. Lab Resolution
 
