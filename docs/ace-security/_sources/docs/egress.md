@@ -17,7 +17,7 @@ To add to the challenges, ABC Healthcare recently experienced a data exfiltratio
 
 As the newly appointed architect, your task is to secure this traffic using the `Aviatrix Cloud Firewall` service. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.
 
-## 3. LAB Objective
+## 3. ZTNA and the allowed domains
 
 Your responsibility is to conduct a POC/POV in your lab environment and demonstrate how your company can leverage the Aviatrix Cloud Perimeter Solution to address this pain point. You should deploy the Aviatrix Secure Egress solution using the Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than the AWS NAT Gateway.
 
@@ -186,8 +186,11 @@ Now the diagram should look like the following:
 By implementing Aviatrix Secure Egress, our healthcare provider strengthened their security posture, reduced costs, and eliminated the visibility gaps associated with AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is safeguarded.
 Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-effective management of internet-bound traffic. Need assistance? Our support team is here to help.
 
+## 7. Lab Resolution
+
 <details>
-  <summary><span style='color:#33ECFF'>7. Lab Resolution</span></summary>
+  <summary>
+Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>RESOLUTION</span></summary>
 
 The prerequisites require you to first create a Spoke Gateway.
 
