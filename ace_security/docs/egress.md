@@ -161,16 +161,15 @@ Use the RFC1918 routes!
 
 ### 5.5 Enable the Local Egress on the egress-vpc VPC
 
-- Activate the local egress service so that any private routing tables within the egress-vpc will receive a default route pointing to the Spoke Gateway.
+- Activate the `local egress` service so that any private routing tables within the _egress-vpc_ will receive a default route pointing to the Spoke Gateway.
 
 ### 5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
 
-- Create a Distributed Cloud Firewall rule that permits traffic generated from any subnets associated to a private Routing Table to reach Internet towards the domains listed in to the _allowed-internet-http_ WebGroup
-
+- This Distributed Cloud Firewall rule should exclusively allow HTTP traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-http_ WebGroup.
 
 ### 5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
 
-- Create a Distributed Cloud Firewall rule that permits HTTPS traffic generated from any subnets associated to a private Routing Table to reach Internet towards the domains listed in to the _allowed-internet-http_ WebGroup
+- This Distributed Cloud Firewall rule should exclusively allow HTTPS traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-https_ WebGroup.
 
 
 
@@ -454,9 +453,27 @@ SmartGroups section
 
 ### Task 5.5 resolution
 
-In this task you are asked to create
+In this task you are asked to enable the `Local Egress`.
 
+- Navigate to CoPilot > Security > Egress > Egress VPC/VNets and click on the `"Enable Local Egress on VPC/VNets"` button.
 
+```{figure} images/lab-resegress17.png
+---
+height: 400px
+align: center
+---
+Egress
+```
+
+- Now, select the _egress-vpc_ and then click on **Add**.
+
+```{figure} images/lab-resegress18.png
+---
+height: 400px
+align: center
+---
+egress-vpc with local Egress
+```
 
 
 
