@@ -39,49 +39,7 @@ Please note that the lab provides only some of the steps needed to complete this
   - *.docker.io
   - www.oracle.com
 
-### 4.1 Listen to the following recording
-
-Listen carefully. There will be quiz questions based on this 4 min video, also.
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cNx51ZJhxek?si=V83b5ledWF08f1lx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-## LAB Access Details
-| **POD#** | **Copilot** |
-|:----------:|:---------------:|
-|      32     |       <a href="https://cplt.pod32.aviatrixlab.com" target="_blank">POD32</a>     |
-|      33     |       <a href="https://cplt.pod33.aviatrixlab.com" target="_blank">POD33</a>     |
-|      34     |       <a href="https://cplt.pod34.aviatrixlab.com" target="_blank">POD34</a>     |
-|      35     |       <a href="https://cplt.pod35.aviatrixlab.com" target="_blank">POD35</a>     |
-|      36     |       <a href="https://cplt.pod36.aviatrixlab.com" target="_blank">POD36</a>     |
-|      37     |       <a href="https://cplt.pod37.aviatrixlab.com" target="_blank">POD37</a>     |
-|      38     |       <a href="https://cplt.pod38.aviatrixlab.com" target="_blank">POD38</a>     |
-|      39     |       <a href="https://cplt.pod39.aviatrixlab.com" target="_blank">POD39</a>     |
-|      40     |       <a href="https://cplt.pod40.aviatrixlab.com" target="_blank">POD40</a>     |
-|      41     |       <a href="https://cplt.pod41.aviatrixlab.com" target="_blank">POD41</a>     |
-|      42     |       <a href="https://cplt.pod42.aviatrixlab.com" target="_blank">POD42</a>     |
-|      43     |       <a href="https://cplt.pod43.aviatrixlab.com" target="_blank">POD43</a>     |
-|      44     |       <a href="https://cplt.pod44.aviatrixlab.com" target="_blank">POD44</a>     |
-|      45     |       <a href="https://cplt.pod45.aviatrixlab.com" target="_blank">POD45</a>     |
-|      46     |       <a href="https://cplt.pod46.aviatrixlab.com" target="_blank">POD46</a>     |
-|      47     |       <a href="https://cplt.pod47.aviatrixlab.com" target="_blank">POD47</a>     |
-|      48     |       <a href="https://cplt.pod48.aviatrixlab.com" target="_blank">POD48</a>     |
-
-
-## Access credentials
-
-Username:
-
-```bash
-student
-```
-
-Password:
-
-```bash
-127#rdpn8K4GBJ
-```
-
-## 5. LAB Pre-Req
+## 4. LAB Pre-Req
 
 Before starting the lab, change the following timers to their lowest value
 
@@ -100,7 +58,7 @@ Do not change these times in the production setup
 - Aviatrix Spoke GW must be deployed in Region us-east-1 in the “egress-vpc”
 - GW Instance Size should be t3a.small
 
-### 5.1 Successful Completion of LAB
+### 4.1 Successful Completion of LAB
 
 After completing the lab, your screen should look more or less like the following. The IP addresses and UUIDs could be different.
 
@@ -114,9 +72,9 @@ After completing the lab, your screen should look more or less like the followin
 
 ![Routes](images/egress_vpc_routes.png)
 
-## 6. Lab Hints
+## 5. Lab Hints
 
-### 6.1 Create Secure Egress DCF Rules
+### 5.1 Create Secure Egress DCF Rules
 
 - Create three rules
 - The last DCF rule is a zero-trust rule
@@ -125,13 +83,13 @@ After completing the lab, your screen should look more or less like the followin
 
 ![DCF](images/egress_dcf_rules.png)
 
-### 6.2 Create rfc1918 SmartGroup
+### 5.2 Create rfc1918 SmartGroup
 
 ![Group](images/egress_groups.png)
 
 ![rfc1918](images/egress_rfc1918.png)
 
-### 6.3 Create WebGroup to Define FQDN Allowed to Access Internet
+### 5.3 Create WebGroup to Define FQDN Allowed to Access Internet
 
 ![WebGroup](images/egress_create_group.png)
 
@@ -139,7 +97,7 @@ After completing the lab, your screen should look more or less like the followin
 
 ![Polling](images/egress_polling.png)
 
-### 6.4 Deploy Aviatrix Spoke GW
+### 5.4 Deploy Aviatrix Spoke GW
 
 - The public IP address will be different (Public EIP automatically allocated by CSP)
 - The Subnet CIDR could be different (automatically picked up by Aviatrix Controller)
@@ -151,7 +109,7 @@ Check the Egress setting. The Egress traffic is going through the AWS NAT GW.
 
 ![Egress](images/egress_egress.png)
 
-### 6.5 Enable spoke GW to become the Egress GW
+### 5.5 Enable spoke GW to become the Egress GW
 
 1. Click +Local Egress on VPC/VNets.
 2. In the Add Local Egress on VPC/VNets dialog, select the VPC/VNets on which to enable Local Egress.
@@ -168,7 +126,7 @@ Now the diagram should look like the following:
 
 ![Vpc](images/egress_vpc.png)
 
-## 7. Conclusion
+## 6. Conclusion
 
 Certainly! Here's a refined and polished version of your paragraph:
 
