@@ -350,7 +350,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">5.1 Deploy the Aviatrix Spoke Gateway</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">5.2 Create the WebGroups</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">5.4 Create a SmartGroup to classify traffic passing through the private subnets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.5 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.6 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">5.4 Deploy Aviatrix Spoke GW</a></li>
@@ -425,26 +427,26 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <h2>4. Aviatrix CoPilot<a class="headerlink" href="#aviatrix-copilot" title="Link to this heading">#</a></h2>
 <p>Now, let’s access the Aviatrix Centralized Management Node, the <strong>CoPilot</strong>.</p>
 <p>Navigate to your POD portal, click on the <code class="docutils literal notranslate"><span class="pre">&quot;Copilot&quot;</span></code> button, and enter your credentials.</p>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/lab-egress01.png"><img alt="../_images/lab-egress01.png" src="../_images/lab-egress01.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">POD Portal</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">POD Portal</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/lab-egress02.png"><img alt="../_images/lab-egress02.png" src="../_images/lab-egress02.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">CoPilot UI - Welcome page</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">CoPilot UI - Welcome page</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot <em>Dashboard</em> should look something like this:</p>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/lab-egress03.png"><img alt="../_images/lab-egress03.png" src="../_images/lab-egress03.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Dashboard</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Dashboard</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -455,35 +457,35 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <p>Navigate to <strong>CoPilot &gt; Settings &gt; Resources &gt; Task Server</strong></p>
 </div>
 <p>Set the intervals for <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">GW</span> <span class="pre">Routes</span></code> and <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">VPC</span> <span class="pre">Routes</span></code> to <strong>“1 Second”</strong> each, then click on <strong>SAVE</strong>.</p>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/lab-egress04.png"><img alt="../_images/lab-egress04.png" src="../_images/lab-egress04.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Task Server</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Task Server</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The order of the <strong><em>Task Servers</em></strong> on the screenshot above might be different on your CoPilot</p>
 </div>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id5">
 <img alt="../_images/lab-egress05.png" src="../_images/lab-egress05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Fetch GW Routes</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Fetch GW Routes</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id6">
 <img alt="../_images/lab-egress06.png" src="../_images/lab-egress06.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Fetch VPC Routes</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Fetch VPC Routes</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After that, click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="../_images/lab-egress07.png"><img alt="../_images/lab-egress07.png" src="../_images/lab-egress07.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -524,8 +526,21 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <p>The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!</p>
 </div>
 </section>
-<section id="id1">
-<h3>5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">
+<h3>5.4 Create a SmartGroup to classify traffic passing through the private subnets<a class="headerlink" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>You need to create a SmartGroup that includes all EAST-WEST traffic.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Use the RFC1918 routes!</p>
+</div>
+</section>
+<section id="create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">
+<h3>5.5 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup.<a class="headerlink" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
+</section>
+<section id="create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">
+<h3>5.6 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup.<a class="headerlink" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The last DCF rule is a zero-trust rule</p></li>
 <li><p>Rule 100 is to allow traffic from the test instance on the private IP address to the public internet only to FQDNs specified in the <code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code> web group</p></li>
@@ -579,7 +594,7 @@ Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-ef
 <h2>7. Lab Resolution<a class="headerlink" href="#lab-resolution" title="Link to this heading">#</a></h2>
 <details>
   <summary>
-Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>RESOLUTION</span></summary>
+Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 <section id="task-5-1-resolution">
 <h3>Task 5.1 resolution<a class="headerlink" href="#task-5-1-resolution" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -602,30 +617,30 @@ Click here to view the complete walkthrough for the lab resolution: <span style=
 <li><p><strong>Public IP:</strong> <span style='color:#479608'>Allocate New Static Public IP</span></p></li>
 </ul>
 <p>Click <strong>SAVE</strong>.</p>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id8">
 <img alt="../_images/lab-resegress01.png" src="../_images/lab-resegress01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Create Spoke Gateway in AWS</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Create Spoke Gateway in AWS</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Now, review the Dynamic Topology by navigating to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong>. Here, you can see how the topology will appear after the Gateway deployment. Please keep in mind that it may take a few additional minutes for the changes to be reflected, so kindly be patient.</p></li>
 </ul>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id9">
 <img alt="../_images/lab-resegress02.png" src="../_images/lab-resegress02.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">height: 400px
-Topology</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+Topology</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>If you do not visualize the same topology, do not forget to click on the <code class="docutils literal notranslate"><span class="pre">&quot;Managed&quot;</span></code> button, to keeping hidden the <em>Unmanaged</em> VPCs.</p>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/lab-resegress03.png"><img alt="../_images/lab-resegress03.png" src="../_images/lab-resegress03.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Managed VPCs</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Managed VPCs</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -637,26 +652,26 @@ Topology</span><a class="headerlink" href="#id10" title="Link to this image">#</
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>.
 Then, click on <code class="docutils literal notranslate"><span class="pre">&quot;Begin&quot;</span></code>.</p></li>
 </ul>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id11">
 <img alt="../_images/lab-resegress04.png" src="../_images/lab-resegress04.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Begin using Distributed Cloud Firewall</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Begin using Distributed Cloud Firewall</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab-resegress05.png" src="../_images/lab-resegress05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id13">
 <a class="reference internal image-reference" href="../_images/lab-resegress06.png"><img alt="../_images/lab-resegress06.png" src="../_images/lab-resegress06.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -669,10 +684,10 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id14">
 <img alt="../_images/lab-resegress07.png" src="../_images/lab-resegress07.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -694,27 +709,27 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab-resegress08.png" src="../_images/lab-resegress08.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">WebGroup #2</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">WebGroup #2</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="../_images/lab-resegress09.png"><img alt="../_images/lab-resegress09.png" src="../_images/lab-resegress09.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">WebGroup section</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">WebGroup section</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="task-5-3-resolution">
 <h3>Task 5.3 resolution<a class="headerlink" href="#task-5-3-resolution" title="Link to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab-resegress10.png" src="../_images/lab-resegress10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -725,24 +740,19 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
-<li><p><strong>Place Rule</strong>: <span style='color:#479608'>Below</span></p>
-<ul>
-<li><p><strong>Existing Rule</strong>: <span style='color:#479608'>Egress-Rule</span></p></li>
-</ul>
-</li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id19">
-<img alt="docs/images/lab-resegress11.png" src="docs/images/lab-resegress11.png" />
+<figure class="align-center" id="id18">
+<img alt="../_images/lab-resegress11.png" src="../_images/lab-resegress11.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">ExplicitDenyAll</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">ExplicitDenyAll</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab-resegress12.png" src="../_images/lab-resegress12.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details></section>
@@ -827,7 +837,9 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">5.1 Deploy the Aviatrix Spoke Gateway</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">5.2 Create the WebGroups</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">5.4 Create a SmartGroup to classify traffic passing through the private subnets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.5 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.6 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-aviatrix-spoke-gw">5.4 Deploy Aviatrix Spoke GW</a></li>
