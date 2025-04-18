@@ -343,12 +343,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">3. LAB Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-copilot">4. Aviatrix CoPilot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req">4. LAB Pre-Req</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-copilot">4. Aviatrix CoPilot</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#successful-completion-of-lab">4.1 Successful Completion of LAB</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-hints">5. Lab Hints</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req-and-objectives">5. Lab Pre-req and Objectives</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-secure-egress-dcf-rules">5.1 Create Secure Egress DCF Rules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
@@ -483,18 +482,6 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <p class="admonition-title">Note</p>
 <p>These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!</p>
 </div>
-</section>
-<section id="lab-pre-req">
-<h2>4. LAB Pre-Req<a class="headerlink" href="#lab-pre-req" title="Link to this heading">#</a></h2>
-<p>Before starting the lab, change the following timers to their lowest value</p>
-<p><img alt="Task Server" src="../_images/egress_timers.png" /></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>DO NOT ATTEMPT TO CHANGE THESE TIMES IN PRE-PROD or PROD SETUP. THIS WOULD CAUSE SERIOUS ISSUES.</p>
-</div>
-<p>It should look like the following:</p>
-<p><img alt="Task Server" src="../_images/egress_timers_updated.png" /></p>
-<p>Do not change these times in the production setup</p>
 <ul class="simple">
 <li><p>Aviatrix Spoke GW must be deployed in Region us-east-1 in the “egress-vpc”</p></li>
 <li><p>GW Instance Size should be t3a.small</p></li>
@@ -509,8 +496,14 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <p><img alt="Routes" src="../_images/egress_vpc_routes.png" /></p>
 </section>
 </section>
-<section id="lab-hints">
-<h2>5. Lab Hints<a class="headerlink" href="#lab-hints" title="Link to this heading">#</a></h2>
+<section id="lab-pre-req-and-objectives">
+<h2>5. Lab Pre-req and Objectives<a class="headerlink" href="#lab-pre-req-and-objectives" title="Link to this heading">#</a></h2>
+<p>These are the initial deployment requirements:</p>
+<ul class="simple">
+<li><p>Create a single Aviatrix Spoke Gateway in the AWS <strong>us-east-1</strong> region within the VPC named <code class="docutils literal notranslate"><span class="pre">“egress-vpc”</span></code>. You may assign any name you prefer.</p></li>
+<li><p>The Spoke Gateway instance size should be <strong>t3a.small</strong>.</p></li>
+<li><p>the Spoke gateway must be attached to the <strong>egress-vpc-public-us-east-1a</strong> subnet</p></li>
+</ul>
 <section id="create-secure-egress-dcf-rules">
 <h3>5.1 Create Secure Egress DCF Rules<a class="headerlink" href="#create-secure-egress-dcf-rules" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -637,12 +630,11 @@ Remember, Aviatrix Secure Egress is your trusted solution for secure and cost-ef
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-objective">3. LAB Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-copilot">4. Aviatrix CoPilot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req">4. LAB Pre-Req</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-copilot">4. Aviatrix CoPilot</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#successful-completion-of-lab">4.1 Successful Completion of LAB</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-hints">5. Lab Hints</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-pre-req-and-objectives">5. Lab Pre-req and Objectives</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-secure-egress-dcf-rules">5.1 Create Secure Egress DCF Rules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-rfc1918-smartgroup">5.2 Create rfc1918 SmartGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-webgroup-to-define-fqdn-allowed-to-access-internet">5.3 Create WebGroup to Define FQDN Allowed to Access Internet</a></li>
