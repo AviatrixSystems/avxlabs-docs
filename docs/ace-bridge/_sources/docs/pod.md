@@ -1,7 +1,7 @@
 # POD Portal
 
 ## Link
-You can view your Team POD portal by clicking on the picture below. 
+Click on the image below to access your personal POD portal.
 
 | **TEAM #** | **Access Code** |
 |:----------:|:---------------:|
