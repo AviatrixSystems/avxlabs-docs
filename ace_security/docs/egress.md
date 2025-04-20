@@ -121,7 +121,9 @@ These are very aggressive settings. In a Production environment, you should not 
 
 ## 5. Lab Objectives
 
-These are the requirements for this hands-on activity. Please follow each step carefully. However, if you get stuck, feel free to jump to **_Section #7_** for a thorough solution.
+The purpose of this hands-on activity is to guide you through a series of tasks designed to enhance your understanding and practical skills. Please carefully follow each step outlined below to ensure a smooth and effective learning experience. As you progress, take your time to understand each action and its purpose.
+
+<ins>If you encounter any difficulties or become unsure at any point, don’t hesitate to skip ahead to **_Section #7_**</ins>, where you will find a comprehensive solution and troubleshooting guidance!
 
 ### 5.1 Deploy the Aviatrix Spoke Gateway
 
