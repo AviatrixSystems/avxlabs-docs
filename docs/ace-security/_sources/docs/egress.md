@@ -19,11 +19,9 @@ As the newly appointed architect, your task is to secure this traffic using the 
 
 ## 3. ZTNA and the allowed domains
 
-Your responsibility is to conduct a POC/POV in your lab environment and demonstrate how your company can leverage the Aviatrix Cloud Perimeter Solution to address this pain point. You should deploy the Aviatrix Secure Egress solution using the Aviatrix Spoke Gateway to protect internet-bound traffic more effectively than the AWS NAT Gateway.
+Your responsibility is to conduct a Proof of Concept (POC) or Proof of Value (POV) within your lab environment, demonstrating how your company can effectively leverage the Aviatrix Cloud Perimeter Solution to address this specific challenge. You should deploy the Aviatrix Cloud Firewall using the Aviatrix Spoke Gateway to enhance the security of internet-bound traffic, providing a more efficient and robust solution compared to the AWS NAT Gateway.
 
-<ins>The Zero Trust policy should allow only the specified domains and block all other FQDNs</ins>.
-
-Please note that the lab provides only some of the steps needed to complete this exercise. If you encounter any difficulties, you are encouraged to consult the documentation at <a href="https://docs.aviatrix.com" target="_blank">docs.aviatrix.com</a>.
+<ins>The Zero Trust policy must permit only the specified domains listed below and block all other FQDNs:</ins>
 
 - `allowed-internet-http` domains
   - *.ubuntu.com
