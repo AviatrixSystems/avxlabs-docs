@@ -1,7 +1,7 @@
 # POD Portal
 
 ## Link
-You can view your personal POD portal by clicking on the picture below.
+Click on the image below to access your personal POD portal.
 
 - **Access Code**: <span style='color:#479608'>5C7T</span>
 
