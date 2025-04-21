@@ -8,5 +8,4 @@ Click on the image below to access your personal POD portal.
 <a href="https://hybrid-portal.ace.aviatrixlab.com/" target="_blank">
 
 ![My image](images/ACE-Hybrid-Logo.png)
-
 </a>
