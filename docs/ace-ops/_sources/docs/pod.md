@@ -7,12 +7,5 @@ Click on the image below to access your personal POD portal.
 
 <a href="https://ops-portal.ace.aviatrixlab.com/" target="_blank">
 
-```{figure} images/pod.png
----
-height: 300px
-align: center
----
-POD Portal
-```
-
+![My image](images/pod.png)
 </a>
