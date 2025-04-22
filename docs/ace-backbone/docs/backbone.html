@@ -742,14 +742,14 @@ document.write(`
 </figcaption>
 </figure>
 <figure class="align-center" id="id32">
-<a class="reference internal image-reference" href="../_images/lab-newgatus04.png"><img alt="../_images/lab-newgatus04.png" src="../_images/lab-newgatus04.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab-newgatus11.png"><img alt="../_images/lab-newgatus11.png" src="../_images/lab-newgatus11.png" style="height: 400px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 32 </span><span class="caption-text">AWS to Azure</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id33">
-<a class="reference internal image-reference" href="../_images/lab-newgatus11.png"><img alt="../_images/lab-newgatus11.png" src="../_images/lab-newgatus11.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab-newgatus05.png"><img alt="../_images/lab-newgatus05.png" src="../_images/lab-newgatus05.png" style="height: 400px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 33 </span><span class="caption-text">AWS to Edge</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
@@ -779,6 +779,10 @@ document.write(`
 </figcaption>
 </figure>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You’ll notice that the Edge VM still cannot reach Azure or AWS because you haven’t deployed the attachments from the Aviatrix Edge Spoke Gateway yet.</p>
+</div>
 </section>
 </section>
 <section id="configure-bgp-asn">
@@ -796,7 +800,9 @@ document.write(`
 <p><span class="caption-number">Fig. 37 </span><span class="caption-text">transit-aws</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go to the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab, expand the <code class="docutils literal notranslate"><span class="pre">“Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section, and enter the AS number <strong>64582</strong> in the field labeled <code class="docutils literal notranslate"><span class="pre">&quot;“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>. Then, click <strong>Save</strong>.</p>
+<ul class="simple">
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab, expand the <code class="docutils literal notranslate"><span class="pre">“Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section, and enter the AS number <strong>64582</strong> in the field labeled <code class="docutils literal notranslate"><span class="pre">&quot;“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>. Then, click <strong>Save</strong>.</p></li>
+</ul>
 <figure class="align-center" id="id38">
 <img alt="../_images/backbone-tgw020.png" src="../_images/backbone-tgw020.png" />
 <figcaption>
@@ -808,13 +814,17 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/backbone-tgw021.png"><img alt="../_images/backbone-tgw021.png" src="../_images/backbone-tgw021.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Topology after task #6</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">BGP ASN</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The Transit Gateways in Azure were pre-configured with a BGP ASN when the POD was launched!</p>
+</div>
 </section>
 <section id="edge-to-transits">
 <h2>12. Edge to Transits<a class="headerlink" href="#edge-to-transits" title="Link to this heading">#</a></h2>
-<p>Let’s now connect the <strong>Secure Edge Gateway</strong> to the <strong>Transit Gateways</strong>.</p>
+<p>Let’s now connect the <strong>Edge Spoke Gateway</strong> to the <strong>Transit Gateways</strong>.</p>
 <figure class="align-center" id="id40">
 <a class="reference internal image-reference" href="../_images/backbone-tgw022.png"><img alt="../_images/backbone-tgw022.png" src="../_images/backbone-tgw022.png" style="height: 400px;" />
 </a>
@@ -875,13 +885,17 @@ document.write(`
 <li><p><strong>High Performance Encryption</strong>: <span style='color:#479608'><strong>ON</strong></span></p></li>
 <li><p><strong>Number of Tunnels</strong>: <span style='color:#479608'><strong>4</strong></span></p></li>
 </ul>
-<p>Once completed, click the <strong>Save</strong> button.</p>
 <figure class="align-center" id="id45">
 <img alt="../_images/backbone-tgw026.png" src="../_images/backbone-tgw026.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 45 </span><span class="caption-text">Template for azure</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Once completed, click the <strong>Save</strong> button.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please wait a few minutes for the Aviatrix Controller to deploy the two attachments.</p>
+</div>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud</strong> and select the <strong>aviarix-edge-1</strong> instance.</p></li>
 </ul>
@@ -891,7 +905,9 @@ document.write(`
 <p><span class="caption-number">Fig. 46 </span><span class="caption-text">aviatrix-edge-1</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Navigate to the Gateway Routes tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.1.2.0</span></code></strong> in AWS. You should see four IPSec tunnels connected to the First Transit Gateway, along with another four IPSec tunnels connected to the Second Transit Gateway.</p>
+<ul class="simple">
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Routes</span></code> tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.1.2.0</span></code></strong> (which represents the public subnet in AWS where the aws-instance was deployed). You should see four IPSec tunnels connected to the First Transit Gateway and another four tunnels connected to the Second Transit Gateway.</p></li>
+</ul>
 <figure class="align-center" id="id47">
 <a class="reference internal image-reference" href="../_images/backbone-tgw028.png"><img alt="../_images/backbone-tgw028.png" src="../_images/backbone-tgw028.png" style="height: 400px;" />
 </a>
@@ -899,7 +915,7 @@ document.write(`
 <p><span class="caption-number">Fig. 47 </span><span class="caption-text">8x IPSec tunnels towards AWS</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now, search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.2.2.0</span></code></strong> in Azure. You will observe four IPSec tunnels for each Transit Gateway once again.</p>
+<p>Now, search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.2.2.0</span></code></strong> (which represents the public subnet in Azure where the azure-instance was deployed). You will observe four IPSec tunnels for each Transit Gateway once again.</p>
 <figure class="align-center" id="id48">
 <a class="reference internal image-reference" href="../_images/backbone-tgw029.png"><img alt="../_images/backbone-tgw029.png" src="../_images/backbone-tgw029.png" style="height: 400px;" />
 </a>
