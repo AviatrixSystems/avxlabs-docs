@@ -345,7 +345,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-vpc-to-aws-tgw">7. Attach VPC to AWS TGW</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aviatrix-transit-vpc">8. Create an Aviatrix Transit VPC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-both-the-transit-gateways-and-the-peering">9. Create both the Transit Gateways and the peering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-transit-gateways-to-aws-tgw">10. Attach Transit Gateways to aws-tgw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-transit-gateways-to-aws-tgw">10. Attach Transit Gateways to aws-tgw</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-gatus">10.1 Connectivity test using Gatus</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-bgp-asn">11. Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-to-transits">12. Edge to Transits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">13. Connectivity Test</a></li>
@@ -720,6 +723,63 @@ document.write(`
 <p class="admonition-title">Caution</p>
 <p>It will take approximately <strong>3 minutes</strong> for the Aviatrix Controller to complete this task, so please be patient!</p>
 </div>
+<section id="connectivity-test-using-gatus">
+<h3>10.1 Connectivity test using Gatus<a class="headerlink" href="#connectivity-test-using-gatus" title="Link to this heading">#</a></h3>
+<p>Navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select all the three instances.</p>
+<p>Eventually, the connectivity tests between Azure and AWS, and vice versa, will gradually succeed, resulting in a green status.</p>
+<figure class="align-center" id="id30">
+<a class="reference internal image-reference" href="../_images/lab-newgatus10.png"><img alt="../_images/lab-newgatus10.png" src="../_images/lab-newgatus10.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Azure to AWS</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id31">
+<a class="reference internal image-reference" href="../_images/lab-newgatus03.png"><img alt="../_images/lab-newgatus03.png" src="../_images/lab-newgatus03.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Azure to Edge</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id32">
+<a class="reference internal image-reference" href="../_images/lab-newgatus04.png"><img alt="../_images/lab-newgatus04.png" src="../_images/lab-newgatus04.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">AWS to Azure</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id33">
+<a class="reference internal image-reference" href="../_images/lab-newgatus11.png"><img alt="../_images/lab-newgatus11.png" src="../_images/lab-newgatus11.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">AWS to Edge</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id34">
+<a class="reference internal image-reference" href="../_images/lab-newgatus00.png"><img alt="../_images/lab-newgatus00.png" src="../_images/lab-newgatus00.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Edge to AWS</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id35">
+<a class="reference internal image-reference" href="../_images/lab-newgatus01.png"><img alt="../_images/lab-newgatus01.png" src="../_images/lab-newgatus01.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Edge to Azure</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reduce the polling timer from 5 minutes to <strong>10 seconds</strong> to expedite the visibility of the results.</p>
+<figure class="align-center" id="id36">
+<img alt="../_images/lab-gastusfinal00.png" src="../_images/lab-gastusfinal00.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Timer</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="configure-bgp-asn">
 <h2>11. Configure BGP ASN<a class="headerlink" href="#configure-bgp-asn" title="Link to this heading">#</a></h2>
@@ -729,54 +789,54 @@ document.write(`
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <code class="docutils literal notranslate"><span class="pre">transit-aws</span></code> cluster!</p></li>
 </ul>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/backbone-tgw019.png"><img alt="../_images/backbone-tgw019.png" src="../_images/backbone-tgw019.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">transit-aws</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">transit-aws</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab, expand the <code class="docutils literal notranslate"><span class="pre">“Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section, and enter the AS number <strong>64582</strong> in the field labeled <code class="docutils literal notranslate"><span class="pre">&quot;“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>. Then, click <strong>Save</strong>.</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id38">
 <img alt="../_images/backbone-tgw020.png" src="../_images/backbone-tgw020.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">BGP ASN</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">BGP ASN</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After completing this task, here’s how the overall topology will appear.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id39">
 <a class="reference internal image-reference" href="../_images/backbone-tgw021.png"><img alt="../_images/backbone-tgw021.png" src="../_images/backbone-tgw021.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Topology after task #6</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Topology after task #6</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="edge-to-transits">
 <h2>12. Edge to Transits<a class="headerlink" href="#edge-to-transits" title="Link to this heading">#</a></h2>
 <p>Let’s now connect the <strong>Secure Edge Gateway</strong> to the <strong>Transit Gateways</strong>.</p>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id40">
 <a class="reference internal image-reference" href="../_images/backbone-tgw022.png"><img alt="../_images/backbone-tgw022.png" src="../_images/backbone-tgw022.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 33 </span><span class="caption-text">The Hybrid Cloud through the Aviatrix Backbone</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">The Hybrid Cloud through the Aviatrix Backbone</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud &gt; Edge Gateways</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Transit</span> <span class="pre">Gateway</span> <span class="pre">Attachment&quot;</span></code> button located on the right side of the screen.</p></li>
 </ul>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id41">
 <a class="reference internal image-reference" href="../_images/backbone-tgw023.png"><img alt="../_images/backbone-tgw023.png" src="../_images/backbone-tgw023.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Manage Gateway Attachment</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Manage Gateway Attachment</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;+Attachment&quot;</span></code> button.</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id42">
 <img alt="../_images/backbone-tgw024.png" src="../_images/backbone-tgw024.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">+Attachment</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">+Attachment</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Fill out the attachment template with the following settings:</p>
@@ -790,20 +850,20 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id43">
 <img alt="../_images/backbone-tgw025.png" src="../_images/backbone-tgw025.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Template for aws</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Template for aws</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Please make sure to select <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">over:</span> <span class="pre">Public</span> <span class="pre">Network&quot;</span></code>.</p>
 <p>If you accidentally choose “<em>Attach over: Private Network</em>”, the connection will not be established!</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id44">
 <img alt="../_images/edgeveryverynew.png" src="../_images/edgeveryverynew.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Attach over PUBLIC Network</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Attach over PUBLIC Network</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -816,35 +876,35 @@ document.write(`
 <li><p><strong>Number of Tunnels</strong>: <span style='color:#479608'><strong>4</strong></span></p></li>
 </ul>
 <p>Once completed, click the <strong>Save</strong> button.</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id45">
 <img alt="../_images/backbone-tgw026.png" src="../_images/backbone-tgw026.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Template for azure</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Template for azure</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud</strong> and select the <strong>aviarix-edge-1</strong> instance.</p></li>
 </ul>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id46">
 <img alt="../_images/backbone-tgw027.png" src="../_images/backbone-tgw027.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">aviatrix-edge-1</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">aviatrix-edge-1</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Navigate to the Gateway Routes tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.1.2.0</span></code></strong> in AWS. You should see four IPSec tunnels connected to the First Transit Gateway, along with another four IPSec tunnels connected to the Second Transit Gateway.</p>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id47">
 <a class="reference internal image-reference" href="../_images/backbone-tgw028.png"><img alt="../_images/backbone-tgw028.png" src="../_images/backbone-tgw028.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 40 </span><span class="caption-text">8x IPSec tunnels towards AWS</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">8x IPSec tunnels towards AWS</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">10.2.2.0</span></code></strong> in Azure. You will observe four IPSec tunnels for each Transit Gateway once again.</p>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id48">
 <a class="reference internal image-reference" href="../_images/backbone-tgw029.png"><img alt="../_images/backbone-tgw029.png" src="../_images/backbone-tgw029.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 41 </span><span class="caption-text">8x IPSec tunnels towards Azure</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">8x IPSec tunnels towards Azure</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You have successfully extended the Aviatrix solution to the on-premises Data Center by leveraging the <strong><code class="docutils literal notranslate"><span class="pre">High</span> <span class="pre">Performance</span> <span class="pre">Encryption</span></code></strong>  feature.</p>
@@ -853,63 +913,63 @@ document.write(`
 <h2>13. Connectivity Test<a class="headerlink" href="#connectivity-test" title="Link to this heading">#</a></h2>
 <p>Let’s now verify the connectivity between Azure, AWS, and the on-premises Data Center.</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong> and search for the <strong>aws-instance</strong> on the Search field, then retrieve its <strong>Public</strong> IP address!</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id49">
 <a class="reference internal image-reference" href="../_images/backbone-tgw233.png"><img alt="../_images/backbone-tgw233.png" src="../_images/backbone-tgw233.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 42 </span><span class="caption-text">click on +1 more</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">click on +1 more</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id50">
 <a class="reference internal image-reference" href="../_images/backbone-tgw030.png"><img alt="../_images/backbone-tgw030.png" src="../_images/backbone-tgw030.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">aws-instance on the Cloud Assets</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">aws-instance on the Cloud Assets</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Open an <strong>SSH client</strong> and establish a session with the <ins>aws-instance</ins>.</p>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id51">
 <img alt="../_images/backbone-tgw031.png" src="../_images/backbone-tgw031.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 44 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now let’s ping the <strong>Private</strong> IP address of the <ins>azure-instance</ins></p>
-<figure class="align-center" id="id45">
+<figure class="align-center" id="id52">
 <a class="reference internal image-reference" href="../_images/backbone-tgw032.png"><img alt="../_images/backbone-tgw032.png" src="../_images/backbone-tgw032.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 45 </span><span class="caption-text">azure-instance</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">azure-instance</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Run the following command to verify connectivity to the <strong><em>azure-instance</em></strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">10</span>.2.2.40<span class="w"> </span>
 </pre></div>
 </div>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id53">
 <a class="reference internal image-reference" href="../_images/backbone-tgw033.png"><img alt="../_images/backbone-tgw033.png" src="../_images/backbone-tgw033.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">ping towards azure-instance</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">ping towards azure-instance</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Stop the command, then attempt to ping the <strong>test-vm</strong> inside the on-premises Data Center.</p>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id54">
 <a class="reference internal image-reference" href="../_images/backbone-tgw034.png"><img alt="../_images/backbone-tgw034.png" src="../_images/backbone-tgw034.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 47 </span><span class="caption-text">ping towards the test-vm inside the DC</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">ping towards the test-vm inside the DC</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Run the following command to verify connectivity to the <strong><em>test-vm</em></strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">10</span>.40.251.29
 </pre></div>
 </div>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id55">
 <a class="reference internal image-reference" href="../_images/backbone-tgw035.png"><img alt="../_images/backbone-tgw035.png" src="../_images/backbone-tgw035.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 48 </span><span class="caption-text">ping towards the test-vm inside the DC</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">ping towards the test-vm inside the DC</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You have successfully verified the connectivity between the two CSPs and the on-premises Data Center via the Aviatrix Cloud Backbone.</p>
@@ -917,18 +977,18 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Destination<span class="w"> </span>IP<span class="w"> </span>Address<span class="w"> </span>is<span class="w"> </span><span class="m">10</span>.2.2.40
 </pre></div>
 </div>
-<figure class="align-center" id="id49">
+<figure class="align-center" id="id56">
 <a class="reference internal image-reference" href="../_images/backbone-tgw036.png"><img alt="../_images/backbone-tgw036.png" src="../_images/backbone-tgw036.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 49 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id50">
+<figure class="align-center" id="id57">
 <a class="reference internal image-reference" href="../_images/backbone-tgw037.png"><img alt="../_images/backbone-tgw037.png" src="../_images/backbone-tgw037.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -936,11 +996,11 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">FlowIQ</span></code> provides a very interesting service that helps you gaining a very rich and deep visibility into your Traffic Flows.</p>
 <p>For all network traffic moving across your Aviatrix-managed network, Aviatrix gateways capture <code class="docutils literal notranslate"><span class="pre">metadata</span></code> for all traffic traversing their links.</p>
 </div>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id58">
 <a class="reference internal image-reference" href="../_images/backbone-tgw038.png"><img alt="../_images/backbone-tgw038.png" src="../_images/backbone-tgw038.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 51 </span><span class="caption-text">FlowIQ outcome</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">FlowIQ outcome</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1023,7 +1083,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-vpc-to-aws-tgw">7. Attach VPC to AWS TGW</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-aviatrix-transit-vpc">8. Create an Aviatrix Transit VPC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-both-the-transit-gateways-and-the-peering">9. Create both the Transit Gateways and the peering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-transit-gateways-to-aws-tgw">10. Attach Transit Gateways to aws-tgw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-transit-gateways-to-aws-tgw">10. Attach Transit Gateways to aws-tgw</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-gatus">10.1 Connectivity test using Gatus</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-bgp-asn">11. Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-to-transits">12. Edge to Transits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">13. Connectivity Test</a></li>

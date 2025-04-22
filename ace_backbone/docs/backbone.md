@@ -395,6 +395,69 @@ Remember to click **Save**!
 It will take approximately **3 minutes** for the Aviatrix Controller to complete this task, so please be patient!
 ```
 
+### 10.1 Connectivity test using Gatus
+
+Navigate to your POD Portal, locate the `Gatus widget`, and select all the three instances.
+
+Eventually, the connectivity tests between Azure and AWS, and vice versa, will gradually succeed, resulting in a green status.
+
+```{figure} images/lab-newgatus10.png
+---
+height: 400px
+align: center
+---
+Azure to AWS
+```
+
+```{figure} images/lab-newgatus03.png
+---
+height: 400px
+align: center
+---
+Azure to Edge
+```
+
+```{figure} images/lab-newgatus04.png
+---
+height: 400px
+align: center
+---
+AWS to Azure
+```
+
+```{figure} images/lab-newgatus11.png
+---
+height: 400px
+align: center
+---
+AWS to Edge
+```
+
+```{figure} images/lab-newgatus00.png
+---
+height: 400px
+align: center
+---
+Edge to AWS
+```
+
+```{figure} images/lab-newgatus01.png
+---
+height: 400px
+align: center
+---
+Edge to Azure
+```
+
+```{note}
+Reduce the polling timer from 5 minutes to **10 seconds** to expedite the visibility of the results.
+```{figure} images/lab-gastusfinal00.png
+---
+align: center
+---
+Timer
+```
+
 ## 11. Configure BGP ASN
 
 Now that you’ve established the peering between the two cloud service providers, you’ve successfully created the **`Aviatrix Cloud Backbone`**.
