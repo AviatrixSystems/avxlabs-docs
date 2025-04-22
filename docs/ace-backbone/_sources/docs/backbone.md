@@ -94,7 +94,55 @@ align: center
 Gatus from the POD Portal
 ```
 
-You can select any of the three pre-deployed instances in AWS, Azure, and the on-premises data center, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the `MCNA` (i.e. MultiCloud Network Architecture).
+You can select any of the three pre-deployed instances in AWS, Azure, and the on-premises data center, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the `Aviatrix Cloud Bacbone`.
+
+```{figure} images/lab-newgatus02.png
+---
+height: 400px
+align: center
+---
+Azure to AWS
+```
+
+```{figure} images/lab-newgatus03.png
+---
+height: 400px
+align: center
+---
+Azure to Edge
+```
+
+```{figure} images/lab-newgatus04.png
+---
+height: 400px
+align: center
+---
+AWS to Azure
+```
+
+```{figure} images/lab-newgatus05.png
+---
+height: 400px
+align: center
+---
+AWS to Edge
+```
+
+```{figure} images/lab-newgatus00.png
+---
+height: 400px
+align: center
+---
+Edge to AWS
+```
+
+```{figure} images/lab-newgatus01.png
+---
+height: 400px
+align: center
+---
+Edge to Azure
+```
 
 ## 6. Create an AWS TGW using the CoPilot
 
