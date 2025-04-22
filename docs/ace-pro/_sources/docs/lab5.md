@@ -1,4 +1,4 @@
-# Lab 5 - AVIATRIX CLOUD FIREWALL (with Secure Egress)
+# Lab 5 - AVIATRIX CLOUD FIREWALL
 
 ## 1. Objective
 
