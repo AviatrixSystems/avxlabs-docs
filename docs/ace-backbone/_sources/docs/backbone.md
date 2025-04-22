@@ -192,7 +192,7 @@ align: center
 Transit VPC
 ```
 
-Please make sure to enter these parameters in the `"Create VPC/VNet"`.
+Please ensure these parameters are entered in the `"Create VPC/VNet"` window.
 
 - **Name:** <span style='color:#479608'>transit-aws</span>
 - **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
@@ -208,20 +208,22 @@ align: center
 VPC Template
 ```
 
+Do not forget to click on **Save**.
+
 ```{note}
-Wait few minutes for the completion of the task. Check the _hourglass_ icon on the right-hand side of your Copilot.
+Wait a few minutes for the task to complete. Check the _hourglass icon_ on the right side of your Copilot.
 ```
 
 ## 8. Create both the Transit Gateways and the peering
 
-Now it’s time to deploy a pair of **`Transit Gateways`** within the VPC you created in the previous task. Additionally, you’ll need to establish `peering` between the Transit Gateways in Azure and those in AWS.
+Now it's time to deploy a pair of **`Transit Gateways`** within the VPC you set up earlier. You'll also need to establish `peering` between the Transit Gateways in Azure and those in AWS.
 
 ```{figure} images/backbone-tgw011.png
 ---
 height: 400px
 align: center
 ---
-Inital Topology for Task #4
+Transit Gateways and the Peering
 ```
 
 - Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the `"+ Transit Gateway"` button.
@@ -234,7 +236,7 @@ align: center
 Transit Gateways section
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create Transit Gateway"`.
+Make sure to enter these parameters in the `"Create Transit Gateway"` pop-up window.
 
 - **Name:** <span style='color:#479608'>transit-aws</span>
 - **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
@@ -245,7 +247,7 @@ Ensure these parameters are entered in the pop-up window `"Create Transit Gatewa
 - **High Performance Encryption:** <span style='color:#479608'>**ON**</span>
 - **Peer To Transit Gateways:** <span style='color:#479608'>transit-azure</span>
 
-then click on the `"+ Instance"` button!
+Then click on the `"+ Instance"` button!
 
 **Instance-1**:
 - **Attach to Subnet:** <span style='color:#479608'>us-east-1a</span>
@@ -263,10 +265,10 @@ Transit GW Template
 Do not forget to click on **SAVE**.
 
 ```{note}
-The Aviatrix Controller will deploy two Transit Gateways while simultaneously establishing peering with the pre-deployed Transit Gateways in Azure.
+The Aviatrix Controller will deploy two Transit Gateways and set up peering with the pre-deployed Transit Gateways in Azure at the same time.
 ```
 
-You can monitor the progress of the task by navigating to **CoPilot > Monitor > Notifications > Tasks** and expanding the task labeled `"Create transit gateway: transit-aws"`.
+You can track the progress of the task by going to **CoPilot > Monitor > Notifications > Tasks** , then expanding the task labeled `"Create transit gateway: transit-aws"`.
 
 ```{figure} images/backbone-tgw014.png
 ---
@@ -279,7 +281,7 @@ Task in progress
 It will take approximately **10 minutes** for the Aviatrix Controller to complete this task, so please be patient!
 ```
 
-Now, navigate to **CoPilot > Cloud Fabric > Topology**. Click the `"Managed"` button to hide all unmanaged VPCs (i.e., VPCs without an Aviatrix Gateway), and then click the `"Collapse all VPC/VNets"` button.
+- Now, navigate to **CoPilot > Cloud Fabric > Topology**. Click the `"Managed"` button to hide all unmanaged VPCs (i.e., VPCs without an Aviatrix Gateway), and then click the `"Collapse all VPC/VNets"` button.
 
 ```{figure} images/backbone-tgw015.png
 ---
