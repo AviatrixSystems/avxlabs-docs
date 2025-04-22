@@ -89,7 +89,7 @@ The CoPilot provides an `AWS TGW (Transit Gateway) Network Orchestration` servic
 height: 400px
 align: center
 ---
-AWS TGW - initial topology 
+AWS TGW 
 ```
 
 - Navigate to **CoPilot > Networking > Connectivity > AWS TGW** and click on the `"+ AWS TGW"` button.
@@ -302,7 +302,7 @@ Now let's attach the Transit Gateways in AWS to the AWS TGW.
 height: 400px
 align: center
 ---
-Initial Topology for task #5
+Attachment
 ```
 
 - Navigate to **CoPilot > Networking > Connectivity > AWS TGW**, select the _AWS-NVirginia-TGW_ instance and then click the `"Attach Transit Gateway"` button.
@@ -314,7 +314,7 @@ align: center
 "Attach Transit GW" button
 ```
 
-Make sure to enter this parameter in the pop-up window titled `"Attach Transit Gateway to AWS-NVirginia-TGW"`.
+Ensure that you enter this parameter in the pop-up window titled `"Attach Transit Gateway to AWS-NVirginia-TGW"`.
 
 - **Transit Gateway:** <span style='color:#479608'>transit-aws</span>
 
