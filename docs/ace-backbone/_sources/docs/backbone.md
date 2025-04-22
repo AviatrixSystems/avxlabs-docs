@@ -89,7 +89,7 @@ The CoPilot provides an `AWS TGW (Transit Gateway) Network Orchestration` servic
 height: 400px
 align: center
 ---
-AWS TGW - initial topology for task#1
+AWS TGW - initial topology 
 ```
 
 - Navigate to **CoPilot > Networking > Connectivity > AWS TGW** and click on the `"+ AWS TGW"` button.
@@ -102,7 +102,7 @@ align: center
 AWS TGW section on the CoPilot
 ```
 
-Make sure to enter these parameters in the pop-up window titled `"Create AWS TGW"`.
+Please make sure to enter these parameters in the `"Create AWS TGW"` pop-up window.
 
 - **Name:** <span style='color:#479608'>AWS-NVirginia-TGW</span>
 - **Cloud:** <span style='color:#479608'>AWS (Standard)</span>
@@ -144,10 +144,10 @@ align: center
 AWS NVirginia-TGW
 ```
 
-Ensure these parameters are entered in the pop-up window `"Attach VPC to AWS TGW"`.
+Make sure to enter these parameters in the `"Attach VPC to AWS TGW"` pop-up window.
 
 - **VPC:** <span style='color:#479608'>spoke-aws</span>
-- **Network Domain:** <span style='color:#479608'>Default_Domain (_default value_)</span>
+- **Network Domain:** <span style='color:#479608'>Default_Domain (_default setting_)</span>
 
 ```{figure} images/backbone-tgw06.png
 ---
@@ -173,14 +173,14 @@ Attachment
 
 ## 7. Create an Aviatrix Transit VPC
 
-Let’s continue strengthening the cloud backbone. You are now tasked with creating a `Transit VPC`.
+Let's continue fortifying the cloud infrastructure. Your next task is to create a `Transit VPC`.
 
 ```{figure} images/backbone-tgw08.png
 ---
 height: 400px
 align: center
 ---
-Initial Topology for Task#3
+Dedicated Transit VPC
 ```
 
 - Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and click on the `"+ VPC/VNet"` button.
