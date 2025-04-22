@@ -12,9 +12,11 @@ Secure Cloud Networking Heroes are passionate about sharing their knowledge with
 **Benefits**:
 
 - Be defined as a thought leader in the fast-growing cloud networking industry
-- Receive a special highlight as part of the Secure Cloud Networking Hero blog series upon joining the program
+- Receive a special highlight as part of the Secure Cloud Networking Hero [blog series](https://aviatrix.com/blog/tag/cloud-networking-hero/)
+upon joining the program
 - Appear on The Cloud Network Community directory
 - Receive surfaced opportunities around topics of interest to establish your voice as an expert
 - Secure promotion opportunities to elevate your personal content across Aviatrix-owned channels
-- Enjoy priority access to instructor-led Aviatrix Certified Engineer (ACE) cloud networking trainings
-- Earn a digital badge for use across personal, professional, and social media channels
+- Enjoy priority access to instructor-led [Aviatrix Certified Engineer (ACE)](https://aviatrix.com/ace/?) cloud networking trainings
+- Earn a [digital badge](https://www.credly.com/org/aviatrix/badge/secure-cloud-networking-hero)
+for use across personal, professional, and social media channels
