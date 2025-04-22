@@ -80,7 +80,23 @@ Remember to click the **COMMIT** button!
 These settings are quite aggressive; in a production environment, it's advisable to avoid setting these intervals so frequently!
 ```
 
-## 5. Create an AWS TGW using the CoPilot
+## 5. Gatus
+
+All pre-deployed instances are running [Gatus](https://gatus.io/) and are attempting to connect with each other using various protocols, including **ICMP** and **TCP** on ports 1433, 3306, 443, 5000, 50100.
+
+You can access the Gatus dashboard directly from your POD Portal.
+
+```{figure} images/lab-gatus00.png
+---
+height: 400px
+align: center
+---
+Gatus from the POD Portal
+```
+
+You can select any of the three pre-deployed instances in AWS, Azure, and the on-premises data center, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the `MCNA` (i.e. MultiCloud Network Architecture).
+
+## 6. Create an AWS TGW using the CoPilot
 
 The CoPilot provides an `AWS TGW (Transit Gateway) Network Orchestration` service, allowing you to deploy AWS Transit Gateways seamlessly without relying on the AWS Console.
 
@@ -131,7 +147,7 @@ align: center
 Final Deployment outcome
 ```
 
-## 6. Attach VPC to AWS TGW
+## 7. Attach VPC to AWS TGW
 
 Now that you have an AWS TGW, you need also to attach it to the existing **spoke-vpc**.
 
@@ -171,7 +187,7 @@ align: center
 Attachment
 ```
 
-## 7. Create an Aviatrix Transit VPC
+## 8. Create an Aviatrix Transit VPC
 
 Let's continue fortifying the cloud infrastructure. Your next task is to create a `Transit VPC`.
 
@@ -214,7 +230,7 @@ Do not forget to click on **Save**.
 Wait a few minutes for the task to complete. Check the _hourglass icon_ on the right side of your Copilot.
 ```
 
-## 8. Create both the Transit Gateways and the peering
+## 9. Create both the Transit Gateways and the peering
 
 Now it's time to deploy a pair of **`Transit Gateways`** within the VPC you set up earlier. You'll also need to establish `peering` between the Transit Gateways in Azure and those in AWS.
 
@@ -293,7 +309,7 @@ Dynamic Topology
 
 You will see the newly created **peering**.
 
-## 9. Attach Transit Gateways to aws-tgw
+## 10. Attach Transit Gateways to aws-tgw
 
 Now let's attach the Transit Gateways in AWS to the AWS TGW.
 
@@ -331,7 +347,7 @@ Remember to click **Save**!
 It will take approximately **3 minutes** for the Aviatrix Controller to complete this task, so please be patient!
 ```
 
-## 10. Configure BGP ASN
+## 11. Configure BGP ASN
 
 Now that you’ve established the peering between the two cloud service providers, you’ve successfully created the **`Aviatrix Cloud Backbone`**.
 
@@ -368,7 +384,7 @@ align: center
 Topology after task #6
 ```
 
-## 11. Edge to Transits
+## 12. Edge to Transits
 
 Let's now connect the **Secure Edge Gateway** to the **Transit Gateways**.
 
@@ -473,7 +489,7 @@ align: center
 
 You have successfully extended the Aviatrix solution to the on-premises Data Center by leveraging the **`High Performance Encryption`**  feature.
 
-## 12. Connectivity Test
+## 13. Connectivity Test
 
 Let's now verify the connectivity between Azure, AWS, and the on-premises Data Center.
 
@@ -590,6 +606,6 @@ align: center
 FlowIQ outcome
 ```
 
-## 13. Conclusion
+## 14. Conclusion
 
 In this lab, you successfully designed and implemented a multi-cloud backbone architecture for ABC Healthcare, integrating their cloud infrastructure across Azure and AWS. Despite initial challenges, such as the absence of native connectivity between Azure Route Server and other cloud providers, you utilized Aviatrix’s multi-cloud transit capabilities to develop an efficient and resilient solution. Through a series of guided tasks, you deployed key infrastructure components, including AWS Transit Gateway, Aviatrix Transit VPCs, and Aviatrix Transit Gateways. As a result, ABC Healthcare now has a `scalable and high-performance multi-cloud network backbone`, well-equipped to support its expanding cloud initiatives with improved inter-cloud and hybrid connectivity.
