@@ -32,8 +32,6 @@ align: center
 Initial Topology
 ```
 
-### 3.1 LAB Pre-Req
-
 ## 4. Aviatrix CoPilot
 
 Now, let's access the Aviatrix Centralized Management Node, the **CoPilot**.
@@ -82,9 +80,9 @@ Remember to click the **COMMIT** button!
 These settings are quite aggressive; in a production environment, it's advisable to avoid setting these intervals so frequently!
 ```
 
-## 4. Create an AWS TGW using the CoPilot
+## 5. Create an AWS TGW using the CoPilot
 
-The CoPilot offers an `AWS TGW (Transit Gateway) Network Orchestration` service that enables the deployment of AWS TGW without the need to use the AWS Console.
+The CoPilot provides an `AWS TGW (Transit Gateway) Network Orchestration` service, allowing you to deploy AWS Transit Gateways seamlessly without relying on the AWS Console.
 
 ```{figure} images/backbone-tgw01.png
 ---
@@ -94,7 +92,7 @@ align: center
 AWS TGW - initial topology for task#1
 ```
 
-Go to **CoPilot > Networking > Connectivity > AWS TGW** and click on the `"+ AWS TGW"` button.
+- Navigate to **CoPilot > Networking > Connectivity > AWS TGW** and click on the `"+ AWS TGW"` button.
 
 ```{figure} images/backbone-tgw02.png
 ---
@@ -133,7 +131,7 @@ align: center
 Final Deployment outcome
 ```
 
-## 5. Attach VPC to AWS TGW
+## 6. Attach VPC to AWS TGW
 
 Now that you have an AWS TGW, you need also to attach it to the existing **spoke-vpc**.
 
@@ -173,7 +171,7 @@ align: center
 Attachment
 ```
 
-## 6. Create an Aviatrix Transit VPC
+## 7. Create an Aviatrix Transit VPC
 
 Let’s continue strengthening the cloud backbone. You are now tasked with creating a `Transit VPC`.
 
@@ -185,7 +183,7 @@ align: center
 Initial Topology for Task#3
 ```
 
-- Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and click on the `"+ VPC/VNet"` button.
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets** and click on the `"+ VPC/VNet"` button.
 
 ```{figure} images/backbone-tgw09.png
 ---
@@ -214,7 +212,7 @@ VPC Template
 Wait few minutes for the completion of the task. Check the _hourglass_ icon on the right-hand side of your Copilot.
 ```
 
-## 7. Create both the Transit Gateways and the peering
+## 8. Create both the Transit Gateways and the peering
 
 Now it’s time to deploy a pair of **`Transit Gateways`** within the VPC you created in the previous task. Additionally, you’ll need to establish `peering` between the Transit Gateways in Azure and those in AWS.
 
@@ -226,7 +224,7 @@ align: center
 Inital Topology for Task #4
 ```
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the `"+ Transit Gateway"` button.
+- Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the `"+ Transit Gateway"` button.
 
 ```{figure} images/backbone-tgw12.png
 ---
@@ -293,7 +291,7 @@ Dynamic Topology
 
 You will see the newly created **peering**.
 
-## 8. Attach Transit Gateways to aws-tgw
+## 9. Attach Transit Gateways to aws-tgw
 
 Now let's attach the Transit Gateways in AWS to the AWS TGW.
 
@@ -305,7 +303,7 @@ align: center
 Initial Topology for task #5
 ```
 
-Go to **CoPilot > Networking > Connectivity > AWS TGW**, select the _AWS-NVirginia-TGW_ instance and then click the `"Attach Transit Gateway"` button.
+- Navigate to **CoPilot > Networking > Connectivity > AWS TGW**, select the _AWS-NVirginia-TGW_ instance and then click the `"Attach Transit Gateway"` button.
 
 ```{figure} images/backbone-tgw017.png
 ---
@@ -331,7 +329,7 @@ Remember to click **Save**!
 It will take approximately **3 minutes** for the Aviatrix Controller to complete this task, so please be patient!
 ```
 
-## 9. Configure BGP ASN
+## 10. Configure BGP ASN
 
 Now that you’ve established the peering between the two cloud service providers, you’ve successfully created the **`Aviatrix Cloud Backbone`**.
 
@@ -339,7 +337,7 @@ Let’s proceed with the final deployment of connectivity to the on-premises dat
 
 Before configuring the attachments between the Secure Edge Gateway and the Transit Gateways, ensure that the Transit Gateway cluster previously deployed in AWS is configured with a **`BGP AS number`**. <ins>This is a prerequisite for completing the Edge deployment</ins>!
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the `transit-aws` cluster!
+- Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the `transit-aws` cluster!
 
 ```{figure} images/backbone-tgw019.png
 ---
@@ -368,7 +366,7 @@ align: center
 Topology after task #6
 ```
 
-## 10. Edge to Transits
+## 11. Edge to Transits
 
 Let's now connect the **Secure Edge Gateway** to the **Transit Gateways**.
 
@@ -380,7 +378,7 @@ align: center
 The Hybrid Cloud through the Aviatrix Backbone
 ```
 
-Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Transit Gateway Attachment"` button located on the right side of the screen.
+- Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Transit Gateway Attachment"` button located on the right side of the screen.
 
 ```{figure} images/backbone-tgw023.png
 ---
@@ -442,7 +440,7 @@ align: center
 Template for azure
 ```
 
-Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud** and select the **aviarix-edge-1** instance.
+- Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud** and select the **aviarix-edge-1** instance.
 
 ```{figure} images/backbone-tgw027.png
 ---
@@ -473,7 +471,7 @@ align: center
 
 You have successfully extended the Aviatrix solution to the on-premises Data Center by leveraging the **`High Performance Encryption`**  feature.
 
-## 11. Connectivity Test
+## 12. Connectivity Test
 
 Let's now verify the connectivity between Azure, AWS, and the on-premises Data Center.
 
@@ -590,6 +588,6 @@ align: center
 FlowIQ outcome
 ```
 
-## 12. Conclusion
+## 13. Conclusion
 
 In this lab, you successfully designed and implemented a multi-cloud backbone architecture for ABC Healthcare, integrating their cloud infrastructure across Azure and AWS. Despite initial challenges, such as the absence of native connectivity between Azure Route Server and other cloud providers, you utilized Aviatrix’s multi-cloud transit capabilities to develop an efficient and resilient solution. Through a series of guided tasks, you deployed key infrastructure components, including AWS Transit Gateway, Aviatrix Transit VPCs, and Aviatrix Transit Gateways. As a result, ABC Healthcare now has a `scalable and high-performance multi-cloud network backbone`, well-equipped to support its expanding cloud initiatives with improved inter-cloud and hybrid connectivity.
