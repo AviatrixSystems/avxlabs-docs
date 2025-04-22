@@ -32,71 +32,40 @@ align: center
 Initial Topology
 ```
 
-## LAB Access Details
-
-|         **_FULL NAME_**         |                             **_COPILOT #_**                            |
-|:-------------------------------:|:----------------------------------------------------------------------:|
-| Adnan Nasir                       | <a href="https://cplt.pod2.aviatrixlab.com" target="_blank">POD02</a>  |
-| Arvind Thevendriya             | <a href="https://cplt.pod3.aviatrixlab.com" target="_blank">POD03</a>  |
-| Avinash Shankarpalli                | <a href="https://cplt.pod4.aviatrixlab.com" target="_blank">POD04</a>  |
-| David Hanington                | <a href="https://cplt.pod5.aviatrixlab.com" target="_blank">POD05</a>  |
-| Deepak Kumar                  | <a href="https://cplt.pod6.aviatrixlab.com" target="_blank">POD06</a>  |
-| Ed Baichtal                   | <a href="https://cplt.pod7.aviatrixlab.com" target="_blank">POD07</a>  |
-| Emmanuel Etim                  | <a href="https://cplt.pod8.aviatrixlab.com" target="_blank">POD08</a>  |
-| Gaurav Mehta                   | <a href="https://cplt.pod9.aviatrixlab.com" target="_blank">POD09</a>  |
-| Georgios Charisiadis            | <a href="https://cplt.pod10.aviatrixlab.com" target="_blank">POD10</a> |
-| Hari babu Tirumani              | <a href="https://cplt.pod11.aviatrixlab.com" target="_blank">POD11</a> |
-| Jacob Matthews                  | <a href="https://cplt.pod12.aviatrixlab.com" target="_blank">POD12</a> |
-| Jefferey Hancock                | <a href="https://cplt.pod13.aviatrixlab.com" target="_blank">POD13</a> |
-| Jeremy Thomas                 | <a href="https://cplt.pod14.aviatrixlab.com" target="_blank">POD14</a> |
-| Kanishka Shakya---              | <a href="https://cplt.pod15.aviatrixlab.com" target="_blank">POD15</a> |
-| Kenneth Ho                     | <a href="https://cplt.pod16.aviatrixlab.com" target="_blank">POD16</a> |
-| Luke Woodhead                    | <a href="https://cplt.pod17.aviatrixlab.com" target="_blank">POD17</a> |
-| Mariselvam R                  | <a href="https://cplt.pod18.aviatrixlab.com" target="_blank">POD18</a> |
-| Michel Jammes                | <a href="https://cplt.pod19.aviatrixlab.com" target="_blank">POD19</a> |
-| Navneet Verma                | <a href="https://cplt.pod20.aviatrixlab.com" target="_blank">POD20</a> |
-| Nitin Sharma                     | <a href="https://cplt.pod21.aviatrixlab.com" target="_blank">POD22</a> |
-| Noel Baccay                   | <a href="https://cplt.pod22.aviatrixlab.com" target="_blank">POD22</a> |
-| Ramesh Pendela                 | <a href="https://cplt.pod23.aviatrixlab.com" target="_blank">POD23</a> |
-| Ridwan Palash                    | <a href="https://cplt.pod24.aviatrixlab.com" target="_blank">POD24</a> |
-| Rudy Romero                   | <a href="https://cplt.pod25.aviatrixlab.com" target="_blank">POD25</a> |
-| Ryan Bartusek                   | <a href="https://cplt.pod26.aviatrixlab.com" target="_blank">POD26</a> |
-| Ryan Pestka                       | <a href="https://cplt.pod27.aviatrixlab.com" target="_blank">POD27</a> |
-| Sanjeev Wije                   | <a href="https://cplt.pod28.aviatrixlab.com" target="_blank">POD28</a> |
-| Satyanarayana Chalavadi         | <a href="https://cplt.pod29.aviatrixlab.com" target="_blank">POD29</a> |
-| Sheldon Whyte                  | <a href="https://cplt.pod30.aviatrixlab.com" target="_blank">POD30</a> |
-| Srini P                         | <a href="https://cplt.pod31.aviatrixlab.com" target="_blank">POD31</a> |
-| Tinku Goyal                      | <a href="https://cplt.pod32.aviatrixlab.com" target="_blank">POD32</a> |
-| Tzahi Ben David                  | <a href="https://cplt.pod33.aviatrixlab.com" target="_blank">POD33</a> |
-| Vaibhav Sharma                  | <a href="https://cplt.pod34.aviatrixlab.com" target="_blank">POD34</a> |
-| Ygal Kemgne                      | <a href="https://cplt.pod35.aviatrixlab.com" target="_blank">POD35</a> |
-
-## Access credentials
-
-Username:
-
-```bash
-student
-```
-
-Password:
-
-```bash
-3159FmtaZX6P!36
-```
-
 ### 3.1 LAB Pre-Req
 
-Before building your backbone infrastructure, adjust the following **Fetch Timers** to their lowest values.
+## 4. Aviatrix CoPilot
+
+Now, let's access the Aviatrix Centralized Management Node, the **CoPilot**.
+
+Navigate to your POD portal, click on the `"Copilot"` button, and enter your credentials.
+
+```{figure} images/lab-backbone01.png
+---
+height: 300px
+align: center
+---
+POD Portal
+```
+
+```{figure} images/lab-backbone02.png
+---
+height: 400px
+align: center
+---
+CoPilot UI - Welcome page
+```
+
+- Before building your backbone infrastructure, adjust the following **Fetch Timers** to their lowest values.
 
 ```{hint}
 Go to **CoPilot > Settings > Resources > Task Server**
 ```
 
-Ensure that the `Fetch GW Routes` and `Fetch VPC Routes` intervals are set to **“1 Second”** each, then click **SAVE**.
+Please set both the `Fetch GW Routes` and `Fetch VPC Routes` intervals to **“1 Second”** each, then click **SAVE**.
 
 ```{hint}
-Click the _pencil_ icon to edit the timers."
+Click the _pencil_ icon to edit the timers.
 ```
 
 ```{figure} images/backbone-tasks.png
@@ -107,10 +76,10 @@ align: center
 Initial Topology
 ```
 
-Do not forget to click on the **COMMIT** button!
+Remember to click the **COMMIT** button!
 
 ```{caution}
-These settings are quite aggressive. In a production environment, you should avoid setting these intervals so frequently!
+These settings are quite aggressive; in a production environment, it's advisable to avoid setting these intervals so frequently!
 ```
 
 ## 4. Create an AWS TGW using the CoPilot
