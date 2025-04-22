@@ -1,4 +1,4 @@
-# Lab 7 - Aviatrix Cloud Firewall (Secure Egress)
+# Lab 7 - Aviatrix Cloud Firewall
 
 The cloud's borderless architecture presents considerable challenges in securing egress traffic, maintaining network visibility, and managing costs. Native solutions from providers typically offer only basic security measures, leading to high egress data expenses, compliance issues, and vulnerabilities to threats like data exfiltration. This situation results in operational inefficiencies, heightened security risks, and slower time to market. In this lab, you will activate the `Aviatrix Cloud Firewall`, which enhances cloud network security by integrating advanced features, including enterprise-grade NAT capabilities, centralized management, and AI-driven discovery and enrichment of egress traffic flows.
 
