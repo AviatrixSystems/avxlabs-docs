@@ -613,7 +613,69 @@ align: center
 
 You have successfully extended the Aviatrix solution to the on-premises Data Center by leveraging the **`High Performance Encryption`**  feature.
 
-## 13. Connectivity Test
+## 13. Final Connectivity Test
+
+Verify that each test instance can ping each other.
+
+### 13.1 Connectivity Test Using the Gatus App
+
+- Navigate to your POD Portal, locate the `Gatus widget`, and select all the three test instances.
+
+```{figure} images/lab-newgatus80.png
+---
+height: 400px
+align: center
+---
+Azure to AWS
+```
+
+```{figure} images/lab-newgatus81.png
+---
+height: 400px
+align: center
+---
+Azure to Edge
+```
+
+```{figure} images/lab-newgatus82.png
+---
+height: 400px
+align: center
+---
+AWS to Azure
+```
+
+```{figure} images/lab-newgatus83.png
+---
+height: 400px
+align: center
+---
+AWS to Edge
+```
+
+```{figure} images/lab-newgatus84.png
+---
+height: 400px
+align: center
+---
+Edge to AWS
+```
+
+```{figure} images/lab-newgatus85.png
+---
+height: 400px
+align: center
+---
+Edge to Azure
+```
+
+### 13.2 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+If you're not satisfied with the Gatus dashboard, you can also use your personal `SSH client` to perform the connectivity tests!
+
+```{caution}
+This test will fail if your corporate laptop has restrictions on port 22.
+```
 
 Let's now verify the connectivity between Azure, AWS, and the on-premises Data Center.
 

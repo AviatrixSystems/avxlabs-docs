@@ -351,7 +351,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-bgp-asn">11. Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-to-transits">12. Edge to Transits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">13. Connectivity Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-connectivity-test">13. Final Connectivity Test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-gatus-app">13.1 Connectivity Test Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-ssh-client-bonus">13.2 Connectivity Test Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">14. Conclusion</a></li>
 </ul>
             </nav>
@@ -925,67 +929,123 @@ document.write(`
 </figure>
 <p>You have successfully extended the Aviatrix solution to the on-premises Data Center by leveraging the <strong><code class="docutils literal notranslate"><span class="pre">High</span> <span class="pre">Performance</span> <span class="pre">Encryption</span></code></strong>  feature.</p>
 </section>
-<section id="connectivity-test">
-<h2>13. Connectivity Test<a class="headerlink" href="#connectivity-test" title="Link to this heading">#</a></h2>
-<p>Let’s now verify the connectivity between Azure, AWS, and the on-premises Data Center.</p>
-<p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong> and search for the <strong>aws-instance</strong> on the Search field, then retrieve its <strong>Public</strong> IP address!</p>
+<section id="final-connectivity-test">
+<h2>13. Final Connectivity Test<a class="headerlink" href="#final-connectivity-test" title="Link to this heading">#</a></h2>
+<p>Verify that each test instance can ping each other.</p>
+<section id="connectivity-test-using-the-gatus-app">
+<h3>13.1 Connectivity Test Using the Gatus App<a class="headerlink" href="#connectivity-test-using-the-gatus-app" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select all the three test instances.</p></li>
+</ul>
 <figure class="align-center" id="id49">
-<a class="reference internal image-reference" href="../_images/backbone-tgw233.png"><img alt="../_images/backbone-tgw233.png" src="../_images/backbone-tgw233.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab-newgatus80.png"><img alt="../_images/lab-newgatus80.png" src="../_images/lab-newgatus80.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 49 </span><span class="caption-text">click on +1 more</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Azure to AWS</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id50">
+<a class="reference internal image-reference" href="../_images/lab-newgatus81.png"><img alt="../_images/lab-newgatus81.png" src="../_images/lab-newgatus81.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Azure to Edge</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id51">
+<a class="reference internal image-reference" href="../_images/lab-newgatus82.png"><img alt="../_images/lab-newgatus82.png" src="../_images/lab-newgatus82.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">AWS to Azure</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id52">
+<a class="reference internal image-reference" href="../_images/lab-newgatus83.png"><img alt="../_images/lab-newgatus83.png" src="../_images/lab-newgatus83.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">AWS to Edge</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id53">
+<a class="reference internal image-reference" href="../_images/lab-newgatus84.png"><img alt="../_images/lab-newgatus84.png" src="../_images/lab-newgatus84.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Edge to AWS</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id54">
+<a class="reference internal image-reference" href="../_images/lab-newgatus85.png"><img alt="../_images/lab-newgatus85.png" src="../_images/lab-newgatus85.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Edge to Azure</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="connectivity-test-using-the-ssh-client-bonus">
+<h3>13.2 Connectivity Test Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-test-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<p>If you’re not satisfied with the Gatus dashboard, you can also use your personal <code class="docutils literal notranslate"><span class="pre">SSH</span> <span class="pre">client</span></code> to perform the connectivity tests!</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>This test will fail if your corporate laptop has restrictions on port 22.</p>
+</div>
+<p>Let’s now verify the connectivity between Azure, AWS, and the on-premises Data Center.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets</strong> and search for the <strong>aws-instance</strong> on the Search field, then retrieve its <strong>Public</strong> IP address!</p>
+<figure class="align-center" id="id55">
+<a class="reference internal image-reference" href="../_images/backbone-tgw233.png"><img alt="../_images/backbone-tgw233.png" src="../_images/backbone-tgw233.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">click on +1 more</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id56">
 <a class="reference internal image-reference" href="../_images/backbone-tgw030.png"><img alt="../_images/backbone-tgw030.png" src="../_images/backbone-tgw030.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">aws-instance on the Cloud Assets</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">aws-instance on the Cloud Assets</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Open an <strong>SSH client</strong> and establish a session with the <ins>aws-instance</ins>.</p>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id57">
 <img alt="../_images/backbone-tgw031.png" src="../_images/backbone-tgw031.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 51 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now let’s ping the <strong>Private</strong> IP address of the <ins>azure-instance</ins></p>
-<figure class="align-center" id="id52">
+<figure class="align-center" id="id58">
 <a class="reference internal image-reference" href="../_images/backbone-tgw032.png"><img alt="../_images/backbone-tgw032.png" src="../_images/backbone-tgw032.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 52 </span><span class="caption-text">azure-instance</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">azure-instance</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Run the following command to verify connectivity to the <strong><em>azure-instance</em></strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">10</span>.2.2.40<span class="w"> </span>
 </pre></div>
 </div>
-<figure class="align-center" id="id53">
+<figure class="align-center" id="id59">
 <a class="reference internal image-reference" href="../_images/backbone-tgw033.png"><img alt="../_images/backbone-tgw033.png" src="../_images/backbone-tgw033.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 53 </span><span class="caption-text">ping towards azure-instance</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">ping towards azure-instance</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Stop the command, then attempt to ping the <strong>test-vm</strong> inside the on-premises Data Center.</p>
-<figure class="align-center" id="id54">
+<figure class="align-center" id="id60">
 <a class="reference internal image-reference" href="../_images/backbone-tgw034.png"><img alt="../_images/backbone-tgw034.png" src="../_images/backbone-tgw034.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 54 </span><span class="caption-text">ping towards the test-vm inside the DC</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">ping towards the test-vm inside the DC</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Run the following command to verify connectivity to the <strong><em>test-vm</em></strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">10</span>.40.251.29
 </pre></div>
 </div>
-<figure class="align-center" id="id55">
+<figure class="align-center" id="id61">
 <a class="reference internal image-reference" href="../_images/backbone-tgw035.png"><img alt="../_images/backbone-tgw035.png" src="../_images/backbone-tgw035.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 55 </span><span class="caption-text">ping towards the test-vm inside the DC</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">ping towards the test-vm inside the DC</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You have successfully verified the connectivity between the two CSPs and the on-premises Data Center via the Aviatrix Cloud Backbone.</p>
@@ -993,18 +1053,18 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Destination<span class="w"> </span>IP<span class="w"> </span>Address<span class="w"> </span>is<span class="w"> </span><span class="m">10</span>.2.2.40
 </pre></div>
 </div>
-<figure class="align-center" id="id56">
+<figure class="align-center" id="id62">
 <a class="reference internal image-reference" href="../_images/backbone-tgw036.png"><img alt="../_images/backbone-tgw036.png" src="../_images/backbone-tgw036.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 56 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">FlowIQ</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id57">
+<figure class="align-center" id="id63">
 <a class="reference internal image-reference" href="../_images/backbone-tgw037.png"><img alt="../_images/backbone-tgw037.png" src="../_images/backbone-tgw037.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Condition</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -1012,13 +1072,14 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">FlowIQ</span></code> provides a very interesting service that helps you gaining a very rich and deep visibility into your Traffic Flows.</p>
 <p>For all network traffic moving across your Aviatrix-managed network, Aviatrix gateways capture <code class="docutils literal notranslate"><span class="pre">metadata</span></code> for all traffic traversing their links.</p>
 </div>
-<figure class="align-center" id="id58">
+<figure class="align-center" id="id64">
 <a class="reference internal image-reference" href="../_images/backbone-tgw038.png"><img alt="../_images/backbone-tgw038.png" src="../_images/backbone-tgw038.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 58 </span><span class="caption-text">FlowIQ outcome</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">FlowIQ outcome</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 </section>
 <section id="conclusion">
 <h2>14. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
@@ -1105,7 +1166,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-bgp-asn">11. Configure BGP ASN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-to-transits">12. Edge to Transits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">13. Connectivity Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-connectivity-test">13. Final Connectivity Test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-gatus-app">13.1 Connectivity Test Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test-using-the-ssh-client-bonus">13.2 Connectivity Test Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">14. Conclusion</a></li>
 </ul>
   </nav></div>
