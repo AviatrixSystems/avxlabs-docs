@@ -417,7 +417,7 @@ align: center
 Azure to Edge
 ```
 
-```{figure} images/lab-newgatus04.png
+```{figure} images/lab-newgatus11.png
 ---
 height: 400px
 align: center
@@ -425,7 +425,7 @@ align: center
 AWS to Azure
 ```
 
-```{figure} images/lab-newgatus11.png
+```{figure} images/lab-newgatus05.png
 ---
 height: 400px
 align: center
@@ -458,6 +458,10 @@ align: center
 Timer
 ```
 
+```{important}
+You'll notice that the Edge VM still cannot reach Azure or AWS because you haven't deployed the attachments from the Aviatrix Edge Spoke Gateway yet.
+```
+
 ## 11. Configure BGP ASN
 
 Now that you’ve established the peering between the two cloud service providers, you’ve successfully created the **`Aviatrix Cloud Backbone`**.
@@ -476,7 +480,7 @@ align: center
 transit-aws
 ```
 
-Go to the `"Settings"` tab, expand the `“Border Gateway Protocol (BGP)”` section, and enter the AS number **64582** in the field labeled `"“Local AS Number”`. Then, click **Save**.
+- Navigate to the `"Settings"` tab, expand the `“Border Gateway Protocol (BGP)”` section, and enter the AS number **64582** in the field labeled `"“Local AS Number”`. Then, click **Save**.
 
 ```{figure} images/backbone-tgw020.png
 ---
@@ -492,12 +496,16 @@ After completing this task, here’s how the overall topology will appear.
 height: 400px
 align: center
 ---
-Topology after task #6
+BGP ASN
+```
+
+```{caution}
+The Transit Gateways in Azure were pre-configured with a BGP ASN when the POD was launched!
 ```
 
 ## 12. Edge to Transits
 
-Let's now connect the **Secure Edge Gateway** to the **Transit Gateways**.
+Let's now connect the **Edge Spoke Gateway** to the **Transit Gateways**.
 
 ```{figure} images/backbone-tgw022.png
 ---
@@ -560,13 +568,18 @@ Before saving the template, click the `"+ Attachment"` button and enter the foll
 - **High Performance Encryption**: <span style='color:#479608'>**ON**</span>
 - **Number of Tunnels**: <span style='color:#479608'>**4**</span>
 
-Once completed, click the **Save** button.
 
 ```{figure} images/backbone-tgw026.png
 ---
 align: center
 ---
 Template for azure
+```
+
+Once completed, click the **Save** button.
+
+```{caution}
+Please wait a few minutes for the Aviatrix Controller to deploy the two attachments.
 ```
 
 - Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud** and select the **aviarix-edge-1** instance.
@@ -578,7 +591,7 @@ align: center
 aviatrix-edge-1
 ```
 
-Navigate to the Gateway Routes tab and search for the subnet **`10.1.2.0`** in AWS. You should see four IPSec tunnels connected to the First Transit Gateway, along with another four IPSec tunnels connected to the Second Transit Gateway.
+- Navigate to the `Gateway Routes` tab and search for the subnet **`10.1.2.0`** (which represents the public subnet in AWS where the aws-instance was deployed). You should see four IPSec tunnels connected to the First Transit Gateway and another four tunnels connected to the Second Transit Gateway.
 
 ```{figure} images/backbone-tgw028.png
 ---
@@ -588,7 +601,7 @@ align: center
 8x IPSec tunnels towards AWS
 ```
 
-Now, search for the subnet **`10.2.2.0`** in Azure. You will observe four IPSec tunnels for each Transit Gateway once again.
+Now, search for the subnet **`10.2.2.0`** (which represents the public subnet in Azure where the azure-instance was deployed). You will observe four IPSec tunnels for each Transit Gateway once again.
 
 ```{figure} images/backbone-tgw029.png
 ---
