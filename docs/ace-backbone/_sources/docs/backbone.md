@@ -22,7 +22,7 @@ As the newly appointed solutions architect, you have been assigned the following
 
 2- A pair of `Transit Gateways` has also been deployed in Azure and connected to the existing **Azure Route Server**.
 
-3- An `Aviatrix Transit Edge` has already been deployed in the on-premises data center.
+3- An `Aviatrix Spoke Edge` has already been deployed in the on-premises data center.
 
 ```{figure} images/backbone-initial-topology.png
 ---
@@ -794,4 +794,4 @@ FlowIQ outcome
 
 ## 14. Conclusion
 
-In this lab, you successfully designed and implemented a multi-cloud backbone architecture for ABC Healthcare, integrating their cloud infrastructure across Azure and AWS. Despite initial challenges, such as the absence of native connectivity between Azure Route Server and other cloud providers, you utilized Aviatrix’s multi-cloud transit capabilities to develop an efficient and resilient solution. Through a series of guided tasks, you deployed key infrastructure components, including AWS Transit Gateway, Aviatrix Transit VPCs, Aviatrix Transit GAteways and Aviatrix Transit Edge. As a result, ABC Healthcare now has a `scalable and high-performance multi-cloud network backbone`, well-equipped to support its expanding cloud initiatives with improved inter-cloud and hybrid connectivity.
+In this lab, you successfully designed and implemented a multi-cloud backbone architecture for ABC Healthcare, integrating their cloud infrastructure across Azure and AWS. Despite initial challenges, such as the absence of native connectivity between Azure Route Server and other cloud providers, you utilized Aviatrix’s multi-cloud transit capabilities to develop an efficient and resilient solution. Through a series of guided tasks, you deployed key infrastructure components, including AWS Transit Gateway, Aviatrix Transit VPCs, Aviatrix Transit Gateways and Aviatrix Spoke Edge. As a result, ABC Healthcare now has a `scalable and high-performance multi-cloud network backbone`, well-equipped to support its expanding cloud initiatives with improved inter-cloud and hybrid connectivity.
