@@ -3,15 +3,10 @@
 ## Link
 You can access both the **Quiz** and the **Survey** Portal clicking on the picture below. 
 
-<a href="https://ace.aviatrix.com/ace-multicloud-network-security-quiz" target="_blank">
+<a href="https://security-portal.ace.aviatrixlab.com/" target="_blank">
 
-```{figure} images/quiz.png
----
-height: 300px
-align: center
----
-POD Portal
-```
+![My image](images/quiz.png)
+
 </a>
 
 ```{figure} images/new-account.png
