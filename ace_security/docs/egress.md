@@ -123,7 +123,18 @@ The purpose of this hands-on activity is to guide you through a series of tasks 
 
 <ins>If you encounter any difficulties or become unsure at any point, don’t hesitate to skip ahead to **_Section #7_**</ins>, where you will find a comprehensive solution and troubleshooting guidance!
 
-### 5.1 Deploy the Aviatrix Spoke Gateway
+### 5.1 Initial Topology
+The initial topology consists of two VPCs in US-EAST-1 region: one dedicated to hosting both the `Aviatrix Controller` and `Aviatrix CoPilot`, and another hosting an EC2 instance named `"aws-instance"` deployed within a subnet associated with a private routing table (i.e., a routing table without a default route pointing to the IGW). To ensure secure egress access and control—without using the cloud provider's native NAT gateway—you plan to deploy an Aviatrix Spoke Gateway and activate the `Aviatrix Cloud Firewall` service.
+
+```{figure} images/lab-topology00.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
+
+### 5.2 Deploy the Aviatrix Spoke Gateway
 
 - Create a single Aviatrix Spoke Gateway in the AWS **us-east-1** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
 
@@ -135,7 +146,7 @@ The purpose of this hands-on activity is to guide you through a series of tasks 
 Please note that within the egress-vpc, there is a pre-deployed EC2 instance named **aws-instance** that is actively generating traffic.
 ```
 
-### 5.2 Create the WebGroups
+### 5.3 Create the WebGroups
 
 - Create **two** WebGroups that match the domains listed on **_Section #3_**.
 
@@ -143,7 +154,7 @@ Please note that within the egress-vpc, there is a pre-deployed EC2 instance nam
 The WebGroup section will become enabled and visible in CoPilot once you activate the **Distributed Cloud Firewall** service (i.e., the Aviatrix Cloud Firewall).
 ```
 
-### 5.3 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
+### 5.4 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
 
 - Create a rule named **ExplicitDenyAll**.
 
@@ -155,7 +166,7 @@ The WebGroup section will become enabled and visible in CoPilot once you activat
 The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!
 ```
 
-### 5.4 Create a SmartGroup to classify traffic passing through the private subnets
+### 5.5 Create a SmartGroup to classify traffic passing through the private subnets
 
 - You need to create a SmartGroup that includes all EAST-WEST traffic.
 
@@ -163,19 +174,19 @@ The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot 
 Use the RFC1918 routes!
 ```
 
-### 5.5 Enable the Local Egress on the egress-vpc VPC
+### 5.6 Enable the Local Egress on the egress-vpc VPC
 
 - Activate the `local egress` service so that any private routing tables within the _egress-vpc_ will receive a default route pointing to the Spoke Gateway.
 
-### 5.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
+### 5.7 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
 
 - This Distributed Cloud Firewall rule should exclusively allow **HTTP** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-http_ WebGroup.
 
-### 5.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
+### 5.8 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
 
 - This Distributed Cloud Firewall rule should exclusively allow **HTTPS** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-https_ WebGroup.
 
-### 5.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
+### 5.9 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
 
 - After enabling the Aviatrix Cloud Firewall, you should see logs reflecting traffic to the permitted domains. All other traffic will be denied.
 
