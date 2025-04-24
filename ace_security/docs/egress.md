@@ -190,6 +190,14 @@ Use the RFC1918 routes!
 
 - After enabling the Aviatrix Cloud Firewall, you should see logs reflecting traffic to the permitted domains. All other traffic will be denied.
 
+```{figure} images/lab-topology01.png
+---
+height: 400px
+align: center
+---
+Final Topology
+```
+
 ## 6. Conclusion
 
 By implementing the `Aviatrix Cloud Firewall`, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.  
@@ -202,7 +210,7 @@ Remember, `Aviatrix Cloud Firewall` is your trusted solution for secure and cost
   <summary>
 Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 
-### Task 5.1 resolution
+### Task 5.2 resolution
 
 - Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateway**, then click on the `"+ Spoke Gateway"` button.
 
@@ -261,7 +269,7 @@ align: center
 aws-instance
 ```
 
-### Task 5.2 resolution
+### Task 5.3 resolution
 
 This task includes an important tip: you must first activate the DCF service before proceeding with the creation of WebGroups.
 
@@ -339,7 +347,7 @@ align: center
 WebGroup section
 ```
 
-### Task 5.3 resolution
+### Task 5.4 resolution
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
@@ -378,7 +386,7 @@ align: center
 Commit
 ```
 
-### Task 5.4 resolution
+### Task 5.5 resolution
 
 This task requires you to create an ad-hoc SmartGroup, utilizing the three well-known _Summary Routes_:
 - 10.0.0.0/8
@@ -430,7 +438,7 @@ align: center
 SmartGroups section
 ```
 
-### Task 5.5 resolution
+### Task 5.6 resolution
 
 In this task, you are required to enable the `Local Egress`.
 
@@ -454,7 +462,7 @@ align: center
 egress-vpc with local Egress
 ```
 
-### Task 5.6 resolution
+### Task 5.7 resolution
 
 This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
 
@@ -488,7 +496,7 @@ align: center
 Saving the new Rule
 ```
 
-### Task 5.7 resolution
+### Task 5.8 resolution
 
 This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
 
@@ -532,7 +540,7 @@ align: center
 Commit
 ```
 
-### Task 5.8 resolution
+### Task 5.9 resolution
 
 This is the final task—simply review the logs in the **Egress** section for verification.
 
