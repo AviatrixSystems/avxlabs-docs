@@ -3,18 +3,11 @@
 ## Link
 You can access both the **Quiz** and the **Survey** Portal clicking on the picture below. 
 
-<a href="https://security-portal.ace.aviatrixlab.com/" target="_blank">
+<a href="https://ace.aviatrix.com/ace-security-quiz" target="_blank">
 
 ![My image](images/quiz.png)
 
 </a>
-
-```{figure} images/new-account.png
----
-align: center
----
-Portal
-```
 
 ```{important}
 After logged in, click on **"ACE Multicloud Network Security Quiz"**.
