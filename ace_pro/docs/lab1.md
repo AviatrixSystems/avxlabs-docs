@@ -25,6 +25,8 @@ You will only have access to the **AWS** Console. Access to both the _Azure_ Con
 ```
 
 ## 2. Azure VNet
+Let's begin our first task: creating a **VNet**.
+
 ### 2.1 Create Azure VNet
 
 Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
@@ -98,7 +100,7 @@ VPC Functions:
 The creation of the VNet will take approximately **4 to 5 minutes**. You can periodically check the status of the task by clicking the hourglass icon in the top right corner. Be sure to click the refresh button as needed. Once the task turns green, you can confidently conclude that the VNet has been successfully created.
 
 ```{important}
-**Clean up the SEARCH FIELD to restore the navigation panel view.**
+**Clear the search field to restore the navigation panel view.**
 ```{figure} images/lab1-cleanup.png
 ---
 height: 350px
@@ -138,6 +140,7 @@ Thank you for your patience!
 ```
 
 ## 3. AWS VPC
+It's now time to create a VPC in AWS.
 
 ### 3.1  Create AWS VPC
 
@@ -291,6 +294,7 @@ IGW created by the Aviatrix Controller
 ```
 
 ## 4. GCP VPC
+Next, we will complete this lab by creating a VPC in GCP.
 
 ### 4.1 Create GCP VPC
 

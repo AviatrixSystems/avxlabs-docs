@@ -16,13 +16,15 @@ Additionally, Aviatrix gives you a single, centralised location from which to tr
 
 ## 3. Topology
 
-In this lab, as shown in the topology below, we will configure the grey Aviatrix gateways, the grey attachments between Transit-Spoke and the grey peerings between Transit-Transit, but only in the following regions:
+In this lab, as illustrated in the topology below, we will configure the grey Aviatrix gateways, the grey attachments between Transit and Spoke, and the grey peerings between Transit and Transit. This configuration will be applied only in the following regions:
 
-- **AWS**: us-east-2
-- **GCP**: us-central-1
-- **AZURE**: west-us (only spoke1)
+- **AWS: us-east-2** 
 
-The rest of the topology has been preprovisioned to save time, including the test instances/VMs and the **Edge** inside the on-prem DC.
+- **GCP: us-central-1** 
+
+- **Azure: west-us** (specifically for Spoke1)
+
+The rest of the topology has been pre-provisioned to save time, including the test instances/VMs and the **Edge** Gateway inside the on-premises data center.
 
 ```{figure} images/lab2-topology.png
 ---
@@ -113,7 +115,7 @@ Check the **Gatus App** status for the remaining instances as well.
 ### 3.2 Preliminary Monitoring Check Using an SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 ```{caution}
-**BONUS** sections should be completed if you do not have a coporate laptop and you want more control using your personal SSH Client.
+**BONUS**: These sections should be completed only if you do not have a laptop with restrictions on _port 22_—typically a corporate laptop connected to the corporate network—and if you prefer to use your personal SSH client for greater control.
 ```
 
 Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.
@@ -366,9 +368,9 @@ align: center
 These are Clusters of GWs
 ```
 
-This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to the number of **_clusters_**, per each type of gateway.
+This view within the Cloud Fabric section indicates the number of **_clusters_** for each gateway type, rather than the exact number of individual gateways.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and you will find out that there are a total of **Three** Transit Gateways (Public IPs may differ):
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** to see that there are a total of three Transit Gateways (note: public IPs may vary).
 
 ```{figure} images/lab2-clustertransit.png
 ---
