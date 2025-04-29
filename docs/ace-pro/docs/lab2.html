@@ -423,13 +423,13 @@ document.write(`
 </section>
 <section id="topology">
 <h2>3. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
-<p>In this lab, as shown in the topology below, we will configure the grey Aviatrix gateways, the grey attachments between Transit-Spoke and the grey peerings between Transit-Transit, but only in the following regions:</p>
+<p>In this lab, as illustrated in the topology below, we will configure the grey Aviatrix gateways, the grey attachments between Transit and Spoke, and the grey peerings between Transit and Transit. This configuration will be applied only in the following regions:</p>
 <ul class="simple">
-<li><p><strong>AWS</strong>: us-east-2</p></li>
-<li><p><strong>GCP</strong>: us-central-1</p></li>
-<li><p><strong>AZURE</strong>: west-us (only spoke1)</p></li>
+<li><p><strong>AWS: us-east-2</strong></p></li>
+<li><p><strong>GCP: us-central-1</strong></p></li>
+<li><p><strong>Azure: west-us</strong> (specifically for Spoke1)</p></li>
 </ul>
-<p>The rest of the topology has been preprovisioned to save time, including the test instances/VMs and the <strong>Edge</strong> inside the on-prem DC.</p>
+<p>The rest of the topology has been pre-provisioned to save time, including the test instances/VMs and the <strong>Edge</strong> Gateway inside the on-premises data center.</p>
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/lab2-topology.png"><img alt="../_images/lab2-topology.png" src="../_images/lab2-topology.png" style="height: 400px;" />
 </a>
@@ -507,7 +507,7 @@ document.write(`
 <h3>3.2 Preliminary Monitoring Check Using an SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#preliminary-monitoring-check-using-an-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p><strong>BONUS</strong> sections should be completed if you do not have a coporate laptop and you want more control using your personal SSH Client.</p>
+<p><strong>BONUS</strong>: These sections should be completed only if you do not have a laptop with restrictions on <em>port 22</em>—typically a corporate laptop connected to the corporate network—and if you prefer to use your personal SSH client for greater control.</p>
 </div>
 <p>Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.</p>
 <ul class="simple">
@@ -736,8 +736,8 @@ document.write(`
 <p><span class="caption-number">Fig. 58 </span><span class="caption-text">These are Clusters of GWs</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This view within the Cloud Fabric section does not indicate the exact number of gateways but it refers to the number of <strong><em>clusters</em></strong>, per each type of gateway.</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and you will find out that there are a total of <strong>Three</strong> Transit Gateways (Public IPs may differ):</p>
+<p>This view within the Cloud Fabric section indicates the number of <strong><em>clusters</em></strong> for each gateway type, rather than the exact number of individual gateways.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> to see that there are a total of three Transit Gateways (note: public IPs may vary).</p>
 <figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab2-clustertransit.png"><img alt="../_images/lab2-clustertransit.png" src="../_images/lab2-clustertransit.png" style="height: 300px;" />
 </a>
