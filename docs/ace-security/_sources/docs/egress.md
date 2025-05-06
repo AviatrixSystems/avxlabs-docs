@@ -69,7 +69,7 @@ align: center
 Dashboard
 ```
 
-- Before you begin building your multicloud infrastructure, please adjust the **fetch timers** in CoPilot.
+- Before you begin building your `Aviatrix Cloud Firewall`, please adjust the **fetch timers** in CoPilot.
 
 ```{hint}
 Navigate to **CoPilot > Settings > Resources > Task Server**
@@ -124,7 +124,7 @@ The purpose of this hands-on activity is to guide you through a series of tasks 
 <ins>If you encounter any difficulties or become unsure at any point, don’t hesitate to skip ahead to **_Section #7_**</ins>, where you will find a comprehensive solution and troubleshooting guidance!
 
 ### 5.1 Initial Topology
-The initial topology consists of two VPCs in US-EAST-1 region: one dedicated to hosting both the `Aviatrix Controller` and `Aviatrix CoPilot`, and another hosting an EC2 instance named `"aws-instance"` deployed within a subnet associated with a private routing table (i.e., a routing table without a default route pointing to the IGW). To ensure secure egress access and control—without using the cloud provider's native NAT gateway—you plan to deploy an Aviatrix Spoke Gateway and activate the `Aviatrix Cloud Firewall` service.
+The initial topology consists of two VPCs in ****US-EAST-1** region: one dedicated to hosting both the `Aviatrix Controller` and the `Aviatrix CoPilot`, and another hosting an EC2 instance named `"aws-instance"` deployed within a subnet associated with a private routing table (i.e., _a routing table without a default route pointing to the IGW_). To ensure secure egress access and control—without using the cloud provider's native NAT gateway—you plan to deploy an Aviatrix Spoke Gateway and activate the `Aviatrix Cloud Firewall` service.
 
 ```{figure} images/lab-topology00.png
 ---
@@ -136,11 +136,11 @@ Initial Topology
 
 ### 5.2 Deploy the Aviatrix Spoke Gateway
 
-- Create a single Aviatrix Spoke Gateway in the AWS **us-east-1** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
+- Create a single Aviatrix Spoke Gateway in the AWS **US-EAST-1** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
 
-- The Spoke Gateway instance size should be **t3a.small**.
+- The Spoke Gateway instance size should be `t3a.small`.
 
-- The Spoke gateway must be attached to the **egress-vpc-public-us-east-1a** subnet
+- The Spoke gateway must be attached to the `egress-vpc-public-us-east-1a` subnet
 
 ```{important}
 Please note that within the egress-vpc, there is a pre-deployed EC2 instance named **aws-instance** that is actively generating traffic.
@@ -151,7 +151,7 @@ Please note that within the egress-vpc, there is a pre-deployed EC2 instance nam
 - Create **two** WebGroups that match the domains listed on **_Section #3_**.
 
 ```{hint}
-The WebGroup section will become enabled and visible in CoPilot once you activate the **Distributed Cloud Firewall** service (i.e., the Aviatrix Cloud Firewall).
+The WebGroup section will become enabled and visible in CoPilot once you activate the **Distributed Cloud Firewall** service (i.e., __the Aviatrix Cloud Firewall_).
 ```
 
 ### 5.4 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
@@ -202,7 +202,7 @@ Final Topology
 
 By implementing the `Aviatrix Cloud Firewall`, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.  
 
-Remember, `Aviatrix Cloud Firewall` is your trusted solution for secure and cost-effective management of internet-bound traffic.
+Remember, the `Aviatrix Cloud Firewall` is your trusted solution for secure and cost-effective management of internet-bound traffic.
 
 ## 7. Lab Resolution
 
@@ -239,13 +239,13 @@ align: center
 Create Spoke Gateway in AWS
 ```
 
-- Now, review the Dynamic Topology by navigating to **CoPilot > Cloud Fabric > Topology**. Here, you can see how the topology will appear after the Gateway deployment. Please keep in mind that it may take a few additional minutes for the changes to be reflected, so kindly be patient.
+- Now, review the `Dynamic Topology` by navigating to **CoPilot > Cloud Fabric > Topology**. Here, you can see how the topology will appear after the Gateway deployment. Please keep in mind that it may take a few additional minutes for the changes to be reflected, so kindly be patient.
 
 ```{figure} images/lab-resegress02.png
 ---
 align: center
----
 height: 400px
+---
 Topology
 ```
 
@@ -259,8 +259,6 @@ align: center
 Managed VPCs
 ```
 
-- The **aws-instance** was pre-provisioned at the launch of the POD and is automatically generating traffic.
-
 ```{figure} images/lab-resegress80.png
 ---
 height: 400px
@@ -269,9 +267,13 @@ align: center
 aws-instance
 ```
 
+```{caution}
+The **aws-instance** was pre-provisioned at the launch of the POD and is automatically generating traffic.
+```
+
 ### Task 5.3 resolution
 
-This task includes an important tip: you must first activate the DCF service before proceeding with the creation of WebGroups.
+This task includes an important tip: you must first activate the Distributed Cloud Firewall service before proceeding with the creation of WebGroups.
 
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Enable Distributed Cloud Firewall"`.
 Then, click on `"Begin"`.
