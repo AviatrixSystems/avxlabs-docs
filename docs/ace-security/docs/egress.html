@@ -454,7 +454,7 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Before you begin building your multicloud infrastructure, please adjust the <strong>fetch timers</strong> in CoPilot.</p></li>
+<li><p>Before you begin building your <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code>, please adjust the <strong>fetch timers</strong> in CoPilot.</p></li>
 </ul>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -503,7 +503,7 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <p><ins>If you encounter any difficulties or become unsure at any point, don’t hesitate to skip ahead to <strong><em>Section #7</em></strong></ins>, where you will find a comprehensive solution and troubleshooting guidance!</p>
 <section id="initial-topology">
 <h3>5.1 Initial Topology<a class="headerlink" href="#initial-topology" title="Link to this heading">#</a></h3>
-<p>The initial topology consists of two VPCs in US-EAST-1 region: one dedicated to hosting both the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Controller</span></code> and <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">CoPilot</span></code>, and another hosting an EC2 instance named <code class="docutils literal notranslate"><span class="pre">&quot;aws-instance&quot;</span></code> deployed within a subnet associated with a private routing table (i.e., a routing table without a default route pointing to the IGW). To ensure secure egress access and control—without using the cloud provider’s native NAT gateway—you plan to deploy an Aviatrix Spoke Gateway and activate the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> service.</p>
+<p>The initial topology consists of two VPCs in **<strong>US-EAST-1</strong> region: one dedicated to hosting both the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Controller</span></code> and the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">CoPilot</span></code>, and another hosting an EC2 instance named <code class="docutils literal notranslate"><span class="pre">&quot;aws-instance&quot;</span></code> deployed within a subnet associated with a private routing table (i.e., <em>a routing table without a default route pointing to the IGW</em>). To ensure secure egress access and control—without using the cloud provider’s native NAT gateway—you plan to deploy an Aviatrix Spoke Gateway and activate the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> service.</p>
 <figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/lab-topology00.png"><img alt="../_images/lab-topology00.png" src="../_images/lab-topology00.png" style="height: 400px;" />
 </a>
@@ -515,9 +515,9 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <section id="deploy-the-aviatrix-spoke-gateway">
 <h3>5.2 Deploy the Aviatrix Spoke Gateway<a class="headerlink" href="#deploy-the-aviatrix-spoke-gateway" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Create a single Aviatrix Spoke Gateway in the AWS <strong>us-east-1</strong> region within the VPC named <code class="docutils literal notranslate"><span class="pre">“egress-vpc”</span></code>. You may assign any name you prefer.</p></li>
-<li><p>The Spoke Gateway instance size should be <strong>t3a.small</strong>.</p></li>
-<li><p>The Spoke gateway must be attached to the <strong>egress-vpc-public-us-east-1a</strong> subnet</p></li>
+<li><p>Create a single Aviatrix Spoke Gateway in the AWS <strong>US-EAST-1</strong> region within the VPC named <code class="docutils literal notranslate"><span class="pre">“egress-vpc”</span></code>. You may assign any name you prefer.</p></li>
+<li><p>The Spoke Gateway instance size should be <code class="docutils literal notranslate"><span class="pre">t3a.small</span></code>.</p></li>
+<li><p>The Spoke gateway must be attached to the <code class="docutils literal notranslate"><span class="pre">egress-vpc-public-us-east-1a</span></code> subnet</p></li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -531,7 +531,7 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 </ul>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>The WebGroup section will become enabled and visible in CoPilot once you activate the <strong>Distributed Cloud Firewall</strong> service (i.e., the Aviatrix Cloud Firewall).</p>
+<p>The WebGroup section will become enabled and visible in CoPilot once you activate the <strong>Distributed Cloud Firewall</strong> service (i.e., _<em>the Aviatrix Cloud Firewall</em>).</p>
 </div>
 </section>
 <section id="create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">
@@ -591,7 +591,7 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <section id="conclusion">
 <h2>6. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>By implementing the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code>, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.</p>
-<p>Remember, <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> is your trusted solution for secure and cost-effective management of internet-bound traffic.</p>
+<p>Remember, the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> is your trusted solution for secure and cost-effective management of internet-bound traffic.</p>
 </section>
 <section id="lab-resolution">
 <h2>7. Lab Resolution<a class="headerlink" href="#lab-resolution" title="Link to this heading">#</a></h2>
@@ -627,13 +627,13 @@ Click here to view the complete walkthrough for the lab resolution: <span style=
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now, review the Dynamic Topology by navigating to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong>. Here, you can see how the topology will appear after the Gateway deployment. Please keep in mind that it may take a few additional minutes for the changes to be reflected, so kindly be patient.</p></li>
+<li><p>Now, review the <code class="docutils literal notranslate"><span class="pre">Dynamic</span> <span class="pre">Topology</span></code> by navigating to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong>. Here, you can see how the topology will appear after the Gateway deployment. Please keep in mind that it may take a few additional minutes for the changes to be reflected, so kindly be patient.</p></li>
 </ul>
 <figure class="align-center" id="id11">
-<img alt="../_images/lab-resegress02.png" src="../_images/lab-resegress02.png" />
+<a class="reference internal image-reference" href="../_images/lab-resegress02.png"><img alt="../_images/lab-resegress02.png" src="../_images/lab-resegress02.png" style="height: 400px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">height: 400px
-Topology</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -647,9 +647,6 @@ Topology</span><a class="headerlink" href="#id11" title="Link to this image">#</
 </figcaption>
 </figure>
 </div>
-<ul class="simple">
-<li><p>The <strong>aws-instance</strong> was pre-provisioned at the launch of the POD and is automatically generating traffic.</p></li>
-</ul>
 <figure class="align-center" id="id13">
 <a class="reference internal image-reference" href="../_images/lab-resegress80.png"><img alt="../_images/lab-resegress80.png" src="../_images/lab-resegress80.png" style="height: 400px;" />
 </a>
@@ -657,10 +654,14 @@ Topology</span><a class="headerlink" href="#id11" title="Link to this image">#</
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">aws-instance</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The <strong>aws-instance</strong> was pre-provisioned at the launch of the POD and is automatically generating traffic.</p>
+</div>
 </section>
 <section id="task-5-3-resolution">
 <h3>Task 5.3 resolution<a class="headerlink" href="#task-5-3-resolution" title="Link to this heading">#</a></h3>
-<p>This task includes an important tip: you must first activate the DCF service before proceeding with the creation of WebGroups.</p>
+<p>This task includes an important tip: you must first activate the Distributed Cloud Firewall service before proceeding with the creation of WebGroups.</p>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>.
 Then, click on <code class="docutils literal notranslate"><span class="pre">&quot;Begin&quot;</span></code>.</p></li>
