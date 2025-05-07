@@ -629,6 +629,10 @@ Overview of the new topology
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on  the `"Managed"` button to only showing the Managed VPCs!
 
+```{warning}
+Please keep in mind that the topology view may look different on your laptop depending on your screen resolution and zoom level.
+```
+
 ```{figure} images/lab2-newuitopo.png
 ---
 height: 400px
