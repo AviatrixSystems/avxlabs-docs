@@ -16,16 +16,7 @@ Unless otherwise mentioned, the lab PODs will be available until **Friday aftern
 - (_optional_ for bonus tasks) If you cannot SSH from your corporate laptop/desktop, <ins>please use a personal laptop/desktop that does not have security outboud restrictions (e.g. port 22 should be permitted)</ins>.
 - You may be asked to share your desktop on the Zoom call, so please be prepared.
 
-## 3. Getting Started with the labs
-
-To access Aviatrix Multicloud Networking and Security Bootcamp labs, use one of these supported browsers:
-
-- Chrome 71 (or later)
-- Firefox 63 (or later)
-- Edge 105 (or later)
-- Safari 16.3 (or later)
-
-## 4. Access Information
+## 3. Access Information
 
 This information is provided separately before the start of the labs inside a dedicated portal.
 
