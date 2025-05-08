@@ -2,7 +2,7 @@
 
 Please download the slides as soon as the training ends.
 
-They will be removed by <ins>EOD Friday of the week of the training</ins>. 
+They will be removed by EOD Friday of the week of the training.
 
 Click this link to {Download}`ACE Security Mod01 - Introduction<files/ACE-Security-Mod01-Introduction.pdf>`
 
