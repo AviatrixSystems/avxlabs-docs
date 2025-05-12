@@ -433,6 +433,9 @@ SmartGroups section
 
 - Activate the `local egress` service so that any private routing tables within the _egress-vpc_ will receive a default route pointing to the Spoke Gateway.
 
+<details>
+  <summary>
+Click here to view the complete task 6.5 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 ### Task 6.5 resolution
 
 In this task, you are required to enable the `Local Egress`.
@@ -466,7 +469,6 @@ egress-vpc with local Egress
 <details>
   <summary>
 Click here to view the complete Task 6.6 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-
 ### Task 6.6 resolution
 
 This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
@@ -602,170 +604,3 @@ By implementing the `Aviatrix Cloud Firewall`, our healthcare provider enhanced 
 
 Remember, the `Aviatrix Cloud Firewall` is your trusted solution for secure and cost-effective management of internet-bound traffic.
 
-
-### Task 5.5 resolution
-
-This task requires you to create an ad-hoc SmartGroup, utilizing the three well-known _Summary Routes_:
-- 10.0.0.0/8
-- 172.16.0.0/12
-- 192.168.0.0/16
-
-- Navigate to **CoPilot > Groups > SmartGroups** and click on the `"+ SmartGroup"` button.
-
-```{figure} images/lab-resegress13.png
----
-height: 400px
-align: center
----
-SmartGroup
-```
-
-Now, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
-
-```{figure} images/lab-resegress14.png
----
-height: 400px
-align: center
----
-SmartGroup
-```
-
-Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
-
-- **Name**: <span style='color:#479608'>rfc1918</span>
-- **IPs / CIDRs**: <span style='color:#479608'>10.0.0.0/8</span>
-- **IPs / CIDRs**: <span style='color:#479608'>172.16.0.0/12</span>
-- **IPs / CIDRs**: <span style='color:#479608'>192.168.0.0/16</span>
-
-Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
-
-```{figure} images/lab-resegress15.png
----
-height: 400px
-align: center
----
-New SG
-```
-
-```{figure} images/lab-resegress16.png
----
-height: 400px
-align: center
----
-SmartGroups section
-```
-
-### Task 5.6 resolution
-
-In this task, you are required to enable the `Local Egress`.
-
-- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `"Enable Local Egress on VPC/VNets"` button.
-
-```{figure} images/lab-resegress17.png
----
-height: 400px
-align: center
----
-Egress
-```
-
-- Now, select the _egress-vpc_ and then click on **Add**.
-
-```{figure} images/lab-resegress18.png
----
-height: 400px
-align: center
----
-egress-vpc with local Egress
-```
-
-</details>
-
-### Task 5.7 resolution
-
-This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
-
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
-
-```{figure} images/lab-resegress19.png
----
-height: 400px
-align: center
----
-+Rule
-```
-
-Insert the following parameters:
-
-- **Name**: <span style='color:#479608'>Choose your favorite name</span>
-- **Source Smartgroups**: <span style='color:#479608'>rfc1918</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
-- **WebGroups**: <span style='color:#479608'>**allowed-internet-http**</span>
-- **Protocol**: <span style='color:#479608'>TCP</span>
-- **Port**: <span style='color:#479608'>80</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
-- **Action**: <span style='color:#479608'>Permit</span>
-
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab-resegress20.png
----
-align: center
----
-Saving the new Rule
-```
-
-</details>
-
-
-### Task 5.5 resolution
-
-This task requires you to create an ad-hoc SmartGroup, utilizing the three well-known _Summary Routes_:
-- 10.0.0.0/8
-- 172.16.0.0/12
-- 192.168.0.0/16
-
-- Navigate to **CoPilot > Groups > SmartGroups** and click on the `"+ SmartGroup"` button.
-
-```{figure} images/lab-resegress13.png
----
-height: 400px
-align: center
----
-SmartGroup
-```
-
-Now, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
-
-```{figure} images/lab-resegress14.png
----
-height: 400px
-align: center
----
-SmartGroup
-```
-
-Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
-
-- **Name**: <span style='color:#479608'>rfc1918</span>
-- **IPs / CIDRs**: <span style='color:#479608'>10.0.0.0/8</span>
-- **IPs / CIDRs**: <span style='color:#479608'>172.16.0.0/12</span>
-- **IPs / CIDRs**: <span style='color:#479608'>192.168.0.0/16</span>
-
-Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
-
-```{figure} images/lab-resegress15.png
----
-height: 400px
-align: center
----
-New SG
-```
-
-```{figure} images/lab-resegress16.png
----
-height: 400px
-align: center
----
-SmartGroups section
-```
