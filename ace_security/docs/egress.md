@@ -154,7 +154,6 @@ Please note that within the egress-vpc, there is a pre-deployed EC2 instance nam
 <details>
   <summary>
 Click here to view the complete Task 6.1 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-
 ### Task 6.1 resolution
 
 - Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateway**, then click on the `"+ Spoke Gateway"` button.
@@ -229,7 +228,6 @@ The WebGroup section will become enabled and visible in CoPilot once you activat
 <details>
   <summary>
 Click here to view the complete task 6.2 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-
 ### Task 6.2 resolution
 
 This task includes an important tip: you must first activate the Distributed Cloud Firewall service before proceeding with the creation of WebGroups.
@@ -310,9 +308,22 @@ WebGroup section
 
 </details>
 
+### 5.4 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
+
+- Create a rule named **ExplicitDenyAll**.
+
+- Enable **Logging** for the rule  
+
+- Position the rule **above** _Greenfield-Rule_
+
+```{caution}
+The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!
+```
+
 <details>
   <summary>
-Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+Click here to view the complete task 6.4 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+### Task 6.2 resolution
 
 
 ### Task 5.4 resolution
@@ -355,18 +366,6 @@ Commit
 ```
 
 </details>
-
-### 5.4 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
-
-- Create a rule named **ExplicitDenyAll**.
-
-- Enable **Logging** for the rule  
-
-- Position the rule **above** _Greenfield-Rule_
-
-```{caution}
-The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!
-```
 
 ### 5.5 Create a SmartGroup to classify traffic passing through the private subnets
 
