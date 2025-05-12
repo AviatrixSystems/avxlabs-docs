@@ -560,7 +560,7 @@ Commit
 
 ### 6.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
 
-- After enabling the Aviatrix Cloud Firewall, you should see logs reflecting traffic to the permitted domains. All other traffic will be denied.
+- Once the Aviatrix Cloud Firewall is enabled, you should see **logs** showing traffic to the permitted domains. All other traffic will be automatically denied.
 
 ```{figure} images/lab-topology01.png
 ---
