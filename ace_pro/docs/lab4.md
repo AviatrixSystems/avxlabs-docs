@@ -23,7 +23,7 @@ Lab 5 Topology
 ```
 
 ```{note}
-Please keep in mind that the Spoke Gateway in **azure-west-us-spoke2** VPC will still remain unattached in this lab!
+Please note that the Spoke Gateway in the **azure-west-us-spoke2** VPC will remain unattached throughout this lab.
 ```
 
 ## 4. High Performance Encryption Configuration
@@ -301,11 +301,28 @@ Gatus from aws-us-east-1-spoke1-test2
 
 From the outcome above, you can conclude that the <ins>connectivity is broken</ins>!
 
+```{caution}
+The connectivity is broken because segmentation was not enabled on **aws-us-east-1-transit**, and **aws-us-east-1-spoke1** was not associated with the transit gateway in the correct network domain.
+```
+
 ### 8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 If you wish, you can also check the ICMP test using your SSH client.
 
-- SSH into **both** EC2 test instances in the **_aws-us-east-1-spoke1_** VPC (refer to your POD assignment).
+- **SSH** into **both** EC2 test instances within the **_aws-us-east-1-spoke1_** VPC (refer to your POD assignment).
+
+```{tip}
+Certainly! Here's a clearer and more polished version of your phrase:
+
+Navigate to **CoPilot > Cloud Resources > Virtual Machines**, search for the two EC2 instances: **_aws-us-east-1-spoke1-test1_****_ and aws-us-east-1-spoke1-test2_**, and note their public IP addresses.
+
+Refer to your personal POD!
+```{figure} images/lab4-sshterminal01.png
+---
+align: center
+---
+aws-us-east-1-spoke1-test1
+```
 
 Ping the EC2 test instance (10.0.1.100) in **_aws-us-east-1-spoke1_** VPC.
 
@@ -333,7 +350,7 @@ Ping fails from aws-us-east-1-spoke1-test2
 ```
 
 ```{caution}
-It will fail. Why? Because we didn’t enable segmentation on **aws-us-east-1-transit** and associate **aws-us-east-1-spoke1** with the transit gateway in the correct network domain.
+It will fail. Why? Because segmentation was not enabled on **aws-us-east-1-transit**, and **aws-us-east-1-spoke1** was not associated with the transit gateway in the correct network domain.
 ```
 
 ## 9. Enable Segmentation
@@ -588,7 +605,7 @@ align: center
 Gatus from aws-us-east-1-spoke1-test1
 ```
 
-Upon completing this lab, the overall topology will be as follows:
+Upon completing this task, the overall topology will be as follows:
 
 ```{figure} images/lab5-finaltopo.png
 ---
@@ -692,7 +709,7 @@ align: center
 Restart
 ```
 
-Upon completing this lab, the overall topology will be as follows:
+Upon completing this task, the overall topology will be as follows:
 
 ```{figure} images/lab5-finaltopo.png
 ---
