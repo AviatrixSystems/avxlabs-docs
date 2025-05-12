@@ -178,7 +178,7 @@ SSH Test towards gcp-us-central1-spoke1-test1 fails
 ```
 
 ```{important}
-The connectivity tests are both set to 5 minutes. If you prefer quicker results, you can reduce the timer to **10** seconds!
+Please note that the connectivity tests are currently set to 5 minutes. If you'd like faster results, you can reduce the interval to as little as **10 seconds**!
 ```{figure} images/lab3-gatus01.png
 ---
 height: 400px
