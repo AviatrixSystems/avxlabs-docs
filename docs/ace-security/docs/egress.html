@@ -353,11 +353,9 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">6. Tasks</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">6.1 Deploy the Aviatrix Spoke Gateway</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-1-resolution">Task 6.1 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">6.2 Create the WebGroups</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-2-resolution">Task 6.2 resolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-4-resolution">Task 5.4 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">5.4 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-4-resolution">Task 5.4 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">5.5 Create a SmartGroup to classify traffic passing through the private subnets</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc-vpc">5.6 Enable the Local Egress on the egress-vpc VPC</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.7 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
@@ -536,9 +534,7 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <details>
   <summary>
 Click here to view the complete Task 6.1 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-</section>
-<section id="task-6-1-resolution">
-<h3>Task 6.1 resolution<a class="headerlink" href="#task-6-1-resolution" title="Link to this heading">#</a></h3>
+### Task 6.1 resolution
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateway</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Spoke</span> <span class="pre">Gateway&quot;</span></code> button.</p></li>
 </ul>
@@ -611,9 +607,7 @@ Click here to view the complete Task 6.1 resolution: <span style='color:#33ECFF'
 <details>
   <summary>
 Click here to view the complete task 6.2 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-</section>
-<section id="task-6-2-resolution">
-<h3>Task 6.2 resolution<a class="headerlink" href="#task-6-2-resolution" title="Link to this heading">#</a></h3>
+### Task 6.2 resolution
 <p>This task includes an important tip: you must first activate the Distributed Cloud Firewall service before proceeding with the creation of WebGroups.</p>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code>.
@@ -690,9 +684,22 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </figcaption>
 </figure>
 </details>
+</section>
+<section id="create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">
+<h3>5.4 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule<a class="headerlink" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create a rule named <strong>ExplicitDenyAll</strong>.</p></li>
+<li><p>Enable <strong>Logging</strong> for the rule</p></li>
+<li><p>Position the rule <strong>above</strong> <em>Greenfield-Rule</em></p></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!</p>
+</div>
 <details>
   <summary>
-Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+Click here to view the complete task 6.4 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+### Task 6.2 resolution
 </section>
 <section id="task-5-4-resolution">
 <h3>Task 5.4 resolution<a class="headerlink" href="#task-5-4-resolution" title="Link to this heading">#</a></h3>
@@ -728,18 +735,6 @@ Click here to view the complete walkthrough for the lab resolution: <span style=
 </figcaption>
 </figure>
 </details>
-</section>
-<section id="create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">
-<h3>5.4 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule<a class="headerlink" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Create a rule named <strong>ExplicitDenyAll</strong>.</p></li>
-<li><p>Enable <strong>Logging</strong> for the rule</p></li>
-<li><p>Position the rule <strong>above</strong> <em>Greenfield-Rule</em></p></li>
-</ul>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!</p>
-</div>
 </section>
 <section id="create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">
 <h3>5.5 Create a SmartGroup to classify traffic passing through the private subnets<a class="headerlink" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets" title="Link to this heading">#</a></h3>
@@ -1080,11 +1075,9 @@ Click here to view the complete Task 6.9 resolution: <span style='color:#33ECFF'
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">6. Tasks</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">6.1 Deploy the Aviatrix Spoke Gateway</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-1-resolution">Task 6.1 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">6.2 Create the WebGroups</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-2-resolution">Task 6.2 resolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-4-resolution">Task 5.4 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">5.4 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-4-resolution">Task 5.4 resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">5.5 Create a SmartGroup to classify traffic passing through the private subnets</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc-vpc">5.6 Enable the Local Egress on the egress-vpc VPC</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">5.7 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
