@@ -154,7 +154,6 @@ Please note that within the egress-vpc, there is a pre-deployed EC2 instance nam
 <details>
   <summary>
 Click here to view the complete Task 6.1 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-### Task 6.1 resolution
 
 - Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateway**, then click on the `"+ Spoke Gateway"` button.
 
@@ -228,7 +227,6 @@ The WebGroup section will become enabled and visible in CoPilot once you activat
 <details>
   <summary>
 Click here to view the complete task 6.2 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-### Task 6.2 resolution
 
 This task includes an important tip: you must first activate the Distributed Cloud Firewall service before proceeding with the creation of WebGroups.
 
@@ -323,7 +321,6 @@ The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot 
 <details>
   <summary>
 Click here to view the complete task 6.3 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-### Task 6.3 resolution
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
@@ -375,7 +372,6 @@ Use the RFC1918 routes!
 <details>
   <summary>
 Click here to view the complete task 6.4 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-### Task 6.4 resolution
 
 This task requires you to create an ad-hoc SmartGroup, utilizing the three well-known _Summary Routes_:
 - 10.0.0.0/8
@@ -436,7 +432,6 @@ SmartGroups section
 <details>
   <summary>
 Click here to view the complete task 6.5 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-### Task 6.5 resolution
 
 In this task, you are required to enable the `Local Egress`.
 
@@ -469,7 +464,6 @@ egress-vpc with local Egress
 <details>
   <summary>
 Click here to view the complete Task 6.6 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-### Task 6.6 resolution
 
 This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
 
@@ -512,7 +506,6 @@ Saving the new Rule
 <details>
   <summary>
 Click here to view the complete Task 6.7 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-### Task 6.7 resolution
 
 This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
 
@@ -573,7 +566,6 @@ Final Topology
 <details>
   <summary>
 Click here to view the complete Task 6.8 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-### Task 6.8 resolution
 
 This is the final task—simply review the logs in the **Egress** section for verification.
 
@@ -603,4 +595,3 @@ Logs
 By implementing the `Aviatrix Cloud Firewall`, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.  
 
 Remember, the `Aviatrix Cloud Firewall` is your trusted solution for secure and cost-effective management of internet-bound traffic.
-
