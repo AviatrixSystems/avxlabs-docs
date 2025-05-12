@@ -121,7 +121,9 @@ These are very aggressive settings. In a Production environment, you should not 
 
 The purpose of this hands-on activity is to guide you through a series of tasks designed to enhance your understanding and practical skills. Please carefully follow each step outlined below to ensure a smooth and effective learning experience. As you progress, take your time to understand each action and its purpose.
 
-<ins>If you encounter any difficulties or become unsure at any point, don’t hesitate to skip ahead to **_Section #7_**</ins>, where you will find a comprehensive solution and troubleshooting guidance!
+```{important}
+If you encounter any difficulties or feel unsure at any point, don’t hesitate to consult the `solution section` at the very end of each task, where you'll find comprehensive solutions and troubleshooting guidance!
+```
 
 ### 5.1 Initial Topology
 The initial topology consists of two VPCs in ****US-EAST-1** region: one dedicated to hosting both the `Aviatrix Controller` and the `Aviatrix CoPilot`, and another hosting an EC2 instance named `"aws-instance"` deployed within a subnet associated with a private routing table (i.e., _a routing table without a default route pointing to the IGW_). To ensure secure egress access and control—without using the cloud provider's native NAT gateway—you plan to deploy an Aviatrix Spoke Gateway and activate the `Aviatrix Cloud Firewall` service.
@@ -134,7 +136,8 @@ align: center
 Initial Topology
 ```
 
-### 6. Tasks
+## 6. Tasks
+Let's begin deploying the Aviatrix Cloud Firewall.
 
 ### 6.1 Deploy the Aviatrix Spoke Gateway
 
@@ -225,9 +228,9 @@ The WebGroup section will become enabled and visible in CoPilot once you activat
 
 <details>
   <summary>
-Click here to view the complete task 5.3 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+Click here to view the complete task 6.2 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 
-### Task 5.3 resolution
+### Task 6.2 resolution
 
 This task includes an important tip: you must first activate the Distributed Cloud Firewall service before proceeding with the creation of WebGroups.
 
@@ -305,6 +308,8 @@ align: center
 WebGroup section
 ```
 
+</details>
+
 <details>
   <summary>
 Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
@@ -379,9 +384,99 @@ Use the RFC1918 routes!
 
 - This Distributed Cloud Firewall rule should exclusively allow **HTTP** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-http_ WebGroup.
 
+<details>
+  <summary>
+Click here to view the complete Task 5.7 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+
+### Task 5.7 resolution
+
+This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+
+```{figure} images/lab-resegress19.png
+---
+height: 400px
+align: center
+---
++Rule
+```
+
+Insert the following parameters:
+
+- **Name**: <span style='color:#479608'>Choose your favorite name</span>
+- **Source Smartgroups**: <span style='color:#479608'>rfc1918</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
+- **WebGroups**: <span style='color:#479608'>**allowed-internet-http**</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>80</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab-resegress20.png
+---
+align: center
+---
+Saving the new Rule
+```
+
+</details>
+
 ### 5.8 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
 
 - This Distributed Cloud Firewall rule should exclusively allow **HTTPS** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-https_ WebGroup.
+
+<details>
+  <summary>
+Click here to view the complete Task 5.8 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+
+### Task 5.8 resolution
+
+This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
+
+- Before clicking the **Commit** button, click again the `"+ Rule"` button.
+
+```{figure} images/lab-resegress21.png
+---
+height: 250px
+align: center
+---
++Rule
+```
+
+Insert the following parameters:
+
+- **Name**: <span style='color:#479608'>Choose your favorite name</span>
+- **Source Smartgroups**: <span style='color:#479608'>rfc1918</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
+- **WebGroups**: <span style='color:#479608'>**allowed-internet-https**</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>443</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab-resegress22.png
+---
+align: center
+---
+Saving the new Rule
+```
+
+Now you can click on **Commit**.
+
+```{figure} images/lab-resegress23.png
+---
+height: 250px
+align: center
+---
+Commit
+```
+
+</details>
 
 ### 5.9 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
 
@@ -395,17 +490,41 @@ align: center
 Final Topology
 ```
 
+<details>
+  <summary>
+Click here to view the complete Task 6.9 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+
+### Task 6.9 resolution
+
+This is the final task—simply review the logs in the **Egress** section for verification.
+
+- Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)**, then select _egress-vpc_ from the drop-down menu in the `VPC/VNets` field.
+
+```{figure} images/lab-resegress24.png
+---
+height: 300px
+align: center
+---
+Monitor
+```
+
+You will immediately observe the allowed domains, thanks to the two DCF rules you created, as well as the prohibited domains that were accessed but subsequently denied.
+
+```{figure} images/lab-resegress25.png
+---
+height: 400px
+align: center
+---
+Logs
+```
+</details>
+
 ## 6. Conclusion
 
 By implementing the `Aviatrix Cloud Firewall`, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.  
 
 Remember, the `Aviatrix Cloud Firewall` is your trusted solution for secure and cost-effective management of internet-bound traffic.
 
-## 7. Lab Resolution
-
-<details>
-  <summary>
-Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 
 ### Task 5.5 resolution
 
@@ -483,6 +602,8 @@ align: center
 egress-vpc with local Egress
 ```
 
+</details>
+
 ### Task 5.7 resolution
 
 This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
@@ -517,71 +638,4 @@ align: center
 Saving the new Rule
 ```
 
-### Task 5.8 resolution
-
-This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
-
-- Before clicking the **Commit** button, click again the `"+ Rule"` button.
-
-```{figure} images/lab-resegress21.png
----
-height: 250px
-align: center
----
-+Rule
-```
-
-Insert the following parameters:
-
-- **Name**: <span style='color:#479608'>Choose your favorite name</span>
-- **Source Smartgroups**: <span style='color:#479608'>rfc1918</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
-- **WebGroups**: <span style='color:#479608'>**allowed-internet-https**</span>
-- **Protocol**: <span style='color:#479608'>TCP</span>
-- **Port**: <span style='color:#479608'>443</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
-- **Action**: <span style='color:#479608'>Permit</span>
-
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab-resegress22.png
----
-align: center
----
-Saving the new Rule
-```
-
-Now you can click on **Commit**.
-
-```{figure} images/lab-resegress23.png
----
-height: 250px
-align: center
----
-Commit
-```
-
-### Task 5.9 resolution
-
-This is the final task—simply review the logs in the **Egress** section for verification.
-
-- Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)**, then select _egress-vpc_ from the drop-down menu in the `VPC/VNets` field.
-
-```{figure} images/lab-resegress24.png
----
-height: 300px
-align: center
----
-Monitor
-```
-
-You will immediately observe the allowed domains, thanks to the two DCF rules you created, as well as the prohibited domains that were accessed but subsequently denied.
-
-```{figure} images/lab-resegress25.png
----
-height: 400px
-align: center
----
-Logs
-```
 </details>
