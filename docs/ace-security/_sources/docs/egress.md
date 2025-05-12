@@ -372,9 +372,92 @@ Commit
 Use the RFC1918 routes!
 ```
 
+<details>
+  <summary>
+Click here to view the complete task 6.4 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+### Task 6.4 resolution
+
+This task requires you to create an ad-hoc SmartGroup, utilizing the three well-known _Summary Routes_:
+- 10.0.0.0/8
+- 172.16.0.0/12
+- 192.168.0.0/16
+
+- Navigate to **CoPilot > Groups > SmartGroups** and click on the `"+ SmartGroup"` button.
+
+```{figure} images/lab-resegress13.png
+---
+height: 400px
+align: center
+---
+SmartGroup
+```
+
+Now, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
+
+```{figure} images/lab-resegress14.png
+---
+height: 400px
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>rfc1918</span>
+- **IPs / CIDRs**: <span style='color:#479608'>10.0.0.0/8</span>
+- **IPs / CIDRs**: <span style='color:#479608'>172.16.0.0/12</span>
+- **IPs / CIDRs**: <span style='color:#479608'>192.168.0.0/16</span>
+
+Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
+
+```{figure} images/lab-resegress15.png
+---
+height: 400px
+align: center
+---
+New SG
+```
+
+```{figure} images/lab-resegress16.png
+---
+height: 400px
+align: center
+---
+SmartGroups section
+```
+
+</details>
+
 ### 6.5 Enable the Local Egress on the egress-vpc VPC
 
 - Activate the `local egress` service so that any private routing tables within the _egress-vpc_ will receive a default route pointing to the Spoke Gateway.
+
+### Task 6.5 resolution
+
+In this task, you are required to enable the `Local Egress`.
+
+- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `"Enable Local Egress on VPC/VNets"` button.
+
+```{figure} images/lab-resegress17.png
+---
+height: 400px
+align: center
+---
+Egress
+```
+
+- Now, select the _egress-vpc_ and then click on **Add**.
+
+```{figure} images/lab-resegress18.png
+---
+height: 400px
+align: center
+---
+egress-vpc with local Egress
+```
+
+</details>
 
 ### 6.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
 
@@ -633,3 +716,56 @@ Saving the new Rule
 ```
 
 </details>
+
+
+### Task 5.5 resolution
+
+This task requires you to create an ad-hoc SmartGroup, utilizing the three well-known _Summary Routes_:
+- 10.0.0.0/8
+- 172.16.0.0/12
+- 192.168.0.0/16
+
+- Navigate to **CoPilot > Groups > SmartGroups** and click on the `"+ SmartGroup"` button.
+
+```{figure} images/lab-resegress13.png
+---
+height: 400px
+align: center
+---
+SmartGroup
+```
+
+Now, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
+
+```{figure} images/lab-resegress14.png
+---
+height: 400px
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>rfc1918</span>
+- **IPs / CIDRs**: <span style='color:#479608'>10.0.0.0/8</span>
+- **IPs / CIDRs**: <span style='color:#479608'>172.16.0.0/12</span>
+- **IPs / CIDRs**: <span style='color:#479608'>192.168.0.0/16</span>
+
+Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
+
+```{figure} images/lab-resegress15.png
+---
+height: 400px
+align: center
+---
+New SG
+```
+
+```{figure} images/lab-resegress16.png
+---
+height: 400px
+align: center
+---
+SmartGroups section
+```
