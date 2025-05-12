@@ -308,7 +308,7 @@ WebGroup section
 
 </details>
 
-### 5.4 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
+### 6.3 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
 
 - Create a rule named **ExplicitDenyAll**.
 
@@ -322,11 +322,8 @@ The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot 
 
 <details>
   <summary>
-Click here to view the complete task 6.4 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-### Task 6.2 resolution
-
-
-### Task 5.4 resolution
+Click here to view the complete task 6.3 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+### Task 6.3 resolution
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
@@ -367,7 +364,7 @@ Commit
 
 </details>
 
-### 5.5 Create a SmartGroup to classify traffic passing through the private subnets
+### 6.4 Create a SmartGroup to classify traffic passing through the private subnets
 
 - You need to create a SmartGroup that includes all EAST-WEST traffic.
 
@@ -375,19 +372,19 @@ Commit
 Use the RFC1918 routes!
 ```
 
-### 5.6 Enable the Local Egress on the egress-vpc VPC
+### 6.5 Enable the Local Egress on the egress-vpc VPC
 
 - Activate the `local egress` service so that any private routing tables within the _egress-vpc_ will receive a default route pointing to the Spoke Gateway.
 
-### 5.7 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
+### 6.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
 
 - This Distributed Cloud Firewall rule should exclusively allow **HTTP** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-http_ WebGroup.
 
 <details>
   <summary>
-Click here to view the complete Task 5.7 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+Click here to view the complete Task 6.6 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 
-### Task 5.7 resolution
+### Task 6.6 resolution
 
 This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
 
@@ -423,15 +420,14 @@ Saving the new Rule
 
 </details>
 
-### 5.8 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
+### 6.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
 
 - This Distributed Cloud Firewall rule should exclusively allow **HTTPS** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-https_ WebGroup.
 
 <details>
   <summary>
-Click here to view the complete Task 5.8 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-
-### Task 5.8 resolution
+Click here to view the complete Task 6.7 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+### Task 6.7 resolution
 
 This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
 
@@ -477,7 +473,7 @@ Commit
 
 </details>
 
-### 5.9 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
+### 6.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
 
 - After enabling the Aviatrix Cloud Firewall, you should see logs reflecting traffic to the permitted domains. All other traffic will be denied.
 
@@ -491,9 +487,8 @@ Final Topology
 
 <details>
   <summary>
-Click here to view the complete Task 6.9 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-
-### Task 6.9 resolution
+Click here to view the complete Task 6.8 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+### Task 6.8 resolution
 
 This is the final task—simply review the logs in the **Egress** section for verification.
 
@@ -518,7 +513,7 @@ Logs
 ```
 </details>
 
-## 6. Conclusion
+## 7. Conclusion
 
 By implementing the `Aviatrix Cloud Firewall`, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.  
 
