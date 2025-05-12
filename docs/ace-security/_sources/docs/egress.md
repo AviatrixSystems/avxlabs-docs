@@ -134,7 +134,9 @@ align: center
 Initial Topology
 ```
 
-### 5.2 Deploy the Aviatrix Spoke Gateway
+### 6. Tasks
+
+### 6.1 Deploy the Aviatrix Spoke Gateway
 
 - Create a single Aviatrix Spoke Gateway in the AWS **US-EAST-1** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
 
@@ -146,71 +148,11 @@ Initial Topology
 Please note that within the egress-vpc, there is a pre-deployed EC2 instance named **aws-instance** that is actively generating traffic.
 ```
 
-### 5.3 Create the WebGroups
-
-- Create **two** WebGroups that match the domains listed on **_Section #3_**.
-
-```{hint}
-The WebGroup section will become enabled and visible in CoPilot once you activate the **Distributed Cloud Firewall** service (i.e., __the Aviatrix Cloud Firewall_).
-```
-
-### 5.4 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
-
-- Create a rule named **ExplicitDenyAll**.
-
-- Enable **Logging** for the rule  
-
-- Position the rule **above** _Greenfield-Rule_
-
-```{caution}
-The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!
-```
-
-### 5.5 Create a SmartGroup to classify traffic passing through the private subnets
-
-- You need to create a SmartGroup that includes all EAST-WEST traffic.
-
-```{hint}
-Use the RFC1918 routes!
-```
-
-### 5.6 Enable the Local Egress on the egress-vpc VPC
-
-- Activate the `local egress` service so that any private routing tables within the _egress-vpc_ will receive a default route pointing to the Spoke Gateway.
-
-### 5.7 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
-
-- This Distributed Cloud Firewall rule should exclusively allow **HTTP** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-http_ WebGroup.
-
-### 5.8 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
-
-- This Distributed Cloud Firewall rule should exclusively allow **HTTPS** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-https_ WebGroup.
-
-### 5.9 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
-
-- After enabling the Aviatrix Cloud Firewall, you should see logs reflecting traffic to the permitted domains. All other traffic will be denied.
-
-```{figure} images/lab-topology01.png
----
-height: 400px
-align: center
----
-Final Topology
-```
-
-## 6. Conclusion
-
-By implementing the `Aviatrix Cloud Firewall`, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.  
-
-Remember, the `Aviatrix Cloud Firewall` is your trusted solution for secure and cost-effective management of internet-bound traffic.
-
-## 7. Lab Resolution
-
 <details>
   <summary>
-Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+Click here to view the complete Task 6.1 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 
-### Task 5.2 resolution
+### Task 6.1 resolution
 
 - Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateway**, then click on the `"+ Spoke Gateway"` button.
 
@@ -270,6 +212,20 @@ aws-instance
 ```{caution}
 The **aws-instance** was pre-provisioned at the launch of the POD and is automatically generating traffic.
 ```
+
+</details>
+
+### 6.2 Create the WebGroups
+
+- Create **two** WebGroups that match the domains listed on **_Section #3_**.
+
+```{hint}
+The WebGroup section will become enabled and visible in CoPilot once you activate the **Distributed Cloud Firewall** service (i.e., __the Aviatrix Cloud Firewall_).
+```
+
+<details>
+  <summary>
+Click here to view the complete task 5.3 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 
 ### Task 5.3 resolution
 
@@ -349,6 +305,11 @@ align: center
 WebGroup section
 ```
 
+<details>
+  <summary>
+Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
+
+
 ### Task 5.4 resolution
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
@@ -387,6 +348,64 @@ align: center
 ---
 Commit
 ```
+
+</details>
+
+### 5.4 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
+
+- Create a rule named **ExplicitDenyAll**.
+
+- Enable **Logging** for the rule  
+
+- Position the rule **above** _Greenfield-Rule_
+
+```{caution}
+The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!
+```
+
+### 5.5 Create a SmartGroup to classify traffic passing through the private subnets
+
+- You need to create a SmartGroup that includes all EAST-WEST traffic.
+
+```{hint}
+Use the RFC1918 routes!
+```
+
+### 5.6 Enable the Local Egress on the egress-vpc VPC
+
+- Activate the `local egress` service so that any private routing tables within the _egress-vpc_ will receive a default route pointing to the Spoke Gateway.
+
+### 5.7 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
+
+- This Distributed Cloud Firewall rule should exclusively allow **HTTP** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-http_ WebGroup.
+
+### 5.8 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
+
+- This Distributed Cloud Firewall rule should exclusively allow **HTTPS** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-https_ WebGroup.
+
+### 5.9 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
+
+- After enabling the Aviatrix Cloud Firewall, you should see logs reflecting traffic to the permitted domains. All other traffic will be denied.
+
+```{figure} images/lab-topology01.png
+---
+height: 400px
+align: center
+---
+Final Topology
+```
+
+## 6. Conclusion
+
+By implementing the `Aviatrix Cloud Firewall`, our healthcare provider enhanced their security posture, reduced costs, and closed visibility gaps previously associated with the AWS NAT Gateway. Patient data remains protected, and the provider’s reputation is preserved.  
+
+Remember, the `Aviatrix Cloud Firewall` is your trusted solution for secure and cost-effective management of internet-bound traffic.
+
+## 7. Lab Resolution
+
+<details>
+  <summary>
+Click here to view the complete walkthrough for the lab resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 
 ### Task 5.5 resolution
 
