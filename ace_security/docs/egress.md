@@ -27,7 +27,7 @@ Your responsibility is to conduct a Proof of Concept (POC) or Proof of Value (PO
   - *.ubuntu.com
 - `allowed-internet-https` domains
   - *.alibabacloud.com
-  - azure.microsoft.com
+  - *.microsoft.com
   - aws.amazon.com
   - *.amazonaws.com
   - *.aviatrix.com
