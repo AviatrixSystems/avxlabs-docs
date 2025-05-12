@@ -312,9 +312,7 @@ If you wish, you can also check the ICMP test using your SSH client.
 - **SSH** into **both** EC2 test instances within the **_aws-us-east-1-spoke1_** VPC (refer to your POD assignment).
 
 ```{tip}
-Certainly! Here's a clearer and more polished version of your phrase:
-
-Navigate to **CoPilot > Cloud Resources > Virtual Machines**, search for the two EC2 instances: **_aws-us-east-1-spoke1-test1_****_ and aws-us-east-1-spoke1-test2_**, and note their public IP addresses.
+Navigate to **CoPilot > Cloud Resources > Virtual Machines**, search for the two EC2 instances: **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_**, and note their public IP addresses.
 
 Refer to your personal POD!
 ```{figure} images/lab4-sshterminal01.png
