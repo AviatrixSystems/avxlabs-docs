@@ -126,7 +126,7 @@ If you encounter any difficulties or feel unsure at any point, don’t hesitate 
 ```
 
 ### 5.1 Initial Topology
-The initial topology consists of two VPCs in ****US-EAST-1** region: one dedicated to hosting both the `Aviatrix Controller` and the `Aviatrix CoPilot`, and another hosting an EC2 instance named `"aws-instance"` deployed within a subnet associated with a private routing table (i.e., _a routing table without a default route pointing to the IGW_). To ensure secure egress access and control—without using the cloud provider's native NAT gateway—you plan to deploy an Aviatrix Spoke Gateway and activate the `Aviatrix Cloud Firewall` service.
+The initial topology consists of two VPCs in **US-EAST-1** region: one dedicated to hosting both the `Aviatrix Controller` and the `Aviatrix CoPilot`, and another hosting an EC2 instance named `"aws-instance"` deployed within a subnet associated with a private routing table (i.e., _a routing table without a default route pointing to the IGW_). To ensure secure egress access and control—without using the cloud provider's native NAT gateway—you plan to deploy an Aviatrix Spoke Gateway and activate the `Aviatrix Cloud Firewall` service.
 
 ```{figure} images/lab-topology00.png
 ---
@@ -221,7 +221,7 @@ The **aws-instance** was pre-provisioned at the launch of the POD and is automat
 - Create **two** WebGroups that match the domains listed on **_Section #3_**.
 
 ```{hint}
-The WebGroup section will become enabled and visible in CoPilot once you activate the **Distributed Cloud Firewall** service (i.e., __the Aviatrix Cloud Firewall_).
+The WebGroup section will become enabled and visible in CoPilot once you activate the **Distributed Cloud Firewall** service (i.e., _the Aviatrix Cloud Firewall_).
 ```
 
 <details>
