@@ -473,6 +473,13 @@ The ping to test2 will gradually fail!
 SSH traffic will also fail!
 ```
 
+```{figure} images/lab10-gatus8786.png
+---
+align: center
+---
+Gatus
+```
+
 ### 5.6 SG Orchestration Verification Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Relaunch the ping from **aws-us-east-2-spoke1-<span style='color:#479608'>test1</span>** towards **aws-us-east-2-spoke1-<span style='color:red'>test2</span>**. 
