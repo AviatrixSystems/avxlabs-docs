@@ -363,7 +363,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7. Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deletion-of-the-greenfield-rule-ztna">7.1 Deletion of the Greenfield-Rule = ZTNA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.2 Create a new WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.3 Create a PSF-Allow-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-psf-allow-rule">7.3 Create the “PSF-Allow-Rule”</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests">8. Connectivity Tests</a><ul class="nav section-nav flex-column">
@@ -642,7 +642,7 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>These two rules will protect the <code class="docutils literal notranslate"><span class="pre">bi-directional</span> <span class="pre">communication</span></code>: traffic will be blocked if <strong>aws-us-east-1-spoke1-test1</strong> will try to reach any <strong>Malcious IPs</strong> (by <em>ProofPoint’s DB</em>), and likewise traffic will be blocked if any <strong>Malicious IPs</strong> (by <em>ProofPoint’s DB</em>) will try to reach the <strong>aws-us-east-1-spoke1-test1</strong> instance.</p>
+<p>These two rules will ensure <code class="docutils literal notranslate"><span class="pre">bi-directional</span> <span class="pre">communication</span></code>: traffic from <strong>aws-us-east-1-spoke1-test1</strong>1 to <strong>Malcious IPs</strong> (as identified by ProofPoint’s database) will be blocked, and likewise, traffic from <strong>Malicious IPs</strong> to <strong>aws-us-east-1-spoke1-test1</strong> will also be prevented.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -712,8 +712,8 @@ document.write(`
 </figcaption>
 </figure>
 </section>
-<section id="create-a-psf-allow-rule">
-<h3>7.3 Create a PSF-Allow-Rule<a class="headerlink" href="#create-a-psf-allow-rule" title="Link to this heading">#</a></h3>
+<section id="create-the-psf-allow-rule">
+<h3>7.3 Create the “PSF-Allow-Rule”<a class="headerlink" href="#create-the-psf-allow-rule" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id28">
 <img alt="../_images/lab9-newrule100.png" src="../_images/lab9-newrule100.png" />
@@ -969,7 +969,7 @@ document.write(`
 </section>
 <section id="final-considerations">
 <h2>9. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
-<p>Now go to <strong>CoPilot &gt; Security &gt; ThreatIQ</strong>  section, then scroll down through the whole <strong>Overview</strong> section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either <strong><em>Source</em></strong> or <strong><em>Destination</em></strong>!</p>
+<p>Now go to <strong>CoPilot &gt; Security &gt; ThreatIQ</strong>  section, then scroll down through the whole <strong>Overview</strong> section, click on the filter icon and filter out based on the Maliciuous IP (i.e., <code class="docutils literal notranslate"><span class="pre">178.17.174.164</span></code>): you can choose either <strong><em>Source</em></strong> or <strong><em>Destination</em></strong>!</p>
 <figure class="align-center" id="id50">
 <img alt="../_images/lab96-newrule308.png" src="../_images/lab96-newrule308.png" />
 <figcaption>
@@ -1088,7 +1088,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7. Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deletion-of-the-greenfield-rule-ztna">7.1 Deletion of the Greenfield-Rule = ZTNA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.2 Create a new WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-psf-allow-rule">7.3 Create a PSF-Allow-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-psf-allow-rule">7.3 Create the “PSF-Allow-Rule”</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests">8. Connectivity Tests</a><ul class="nav section-nav flex-column">
