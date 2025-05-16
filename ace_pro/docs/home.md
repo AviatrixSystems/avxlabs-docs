@@ -18,16 +18,16 @@ Unless otherwise mentioned, the lab PODs will be available until **Friday aftern
 
 ## 3. Access Information
 
-This information is provided separately before the start of the labs inside a dedicated portal.
+This information is provided separately prior to the start of the labs through a dedicated portal:
 
 - Aviatrix CoPilot
 - Test Instances in each cloud
 - Gatus Application Dashboard
 - Bootstrap package information for Palo Alto Firewall (VM-Series) [**Lab 6**]
 - StrongSwan Router [**Lab 7**]
-- Malicious IP [**Lab 9** - *a fresh malicious IP will be provided by the trainer*]
+- Malicious IP [**Lab 9**]
 
-## 5. Lab Topology
+## 4. Lab Topology
 
 At the start of Day 1 of the class, each student will be given a POD with the following topology.
 
