@@ -192,6 +192,13 @@ align: center
 Choose the correct VPC
 ```
 
+```{figure} images/lab6-vpcegress97.png
+---
+align: center
+---
+Click Add
+```
+
 ### 4.2 Inspect the Private RTB
 
 Upon enabling Local Egress on the specified VPC, the Aviatrix Controller will immediately execute two actions on the specified VPC:
@@ -212,7 +219,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_a
 ---
 align: center
 ---
-Default route has been injected
+Default route has been modified!
 ```
 
 ```{important}
@@ -324,7 +331,7 @@ Now, click on the arrow icon  inside the `"+ Resource Type"` button and select `
 height: 400px
 align: center
 ---
-Private Subnet
+Resource Selection
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
@@ -530,7 +537,7 @@ curl command-04
 
 ### 7.3 Egress Overview
 
-Go to **CoPilot > Security > Egress > Overview**, and you will see the visibility of the domain hits.
+Go to **CoPilot > Security > Egress > Analyze**, and you will see the visibility of the domain hits.
 
 ```{figure} images/lab6-newrul12.png
 ---
