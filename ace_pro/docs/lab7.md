@@ -63,7 +63,7 @@ align: center
 S2C between Partner and GCP
 ```
 
-Click on the `"+ External Connection to"` button and let's create a new connection from scratch. 
+Click on the `"+ External Connection"` button and let's create a new connection from scratch. 
 
 Select the `"External Device"` option from the drop-down window!
 
@@ -141,11 +141,9 @@ S2C template
 ```
 
 ```{important}
-The configuration template will be grayed out after clicking on **Save**.
+The configuration template will be grayed out after clicking **Save**. Please be patient while the **_Aviatrix Controller_** completes the deployment. <ins>This process will establish the initial side of the connection on the GCP Spoke Gateway</ins>.
 
-Please be patient and wait for the **_Aviatrix Controller_** to complete the deployment. <ins>This will establish the first side of the connection on the GCP Spoke Gateway</ins>.
-
-The StrongSwan router was preconfigured at the launch of each POD!
+Additionally, the StrongSwan router was preconfigured at the launch of each POD to streamline setup.
 ```
 
 Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.
@@ -162,10 +160,10 @@ Now you have to complete the IPSec configuration of the **StrongSwan** router.
 ```{caution}
 If you are using a corporate laptop that does not allow the use of any SSH client and also blocks port 22, please proceed with task 4.2.1. However, keep in mind that you may experience some slowness in the response of the commands sent to the Guacamole Server (jumphost), so please be patient during the configuration. 
 
-If you have a laptop without these restrictions, please refer to task 4.2.2 and complete the configuration using your personal SSH client.
+If you have a laptop without these restrictions, please refer to task **4.2.2** and complete the configuration using your personal SSH client.
 ```
 
-#### 4.2.1  Configuration Using the Apache Guacamole Client (Jumphost)
+#### 4.2.1  Configuration Using the Workstation Edge (i.e., Apache Guacamole Client - Jumphost)
 
 Go to your personal POD portal, identify the section labeled `"Lab 7 and 8"`, then click on the `"Open Workstation"` button to log in to the **Workstation Edge** (a Guacamole clientless remote desktop gateway).
 
@@ -392,7 +390,7 @@ OnPrem-Partner site
 
 Verify that the the **on-prem-partner1** (i.e. the StrongSwan router) router can reach successfully the VM in GCP, pinging its `Virtual Local IP` address.
 
-### 6.1 Connectivity Testing Using the Apache Guacamole Client (Jumphost)</span></summary>
+### 6.1 Connectivity Testing Using the Workstation Edge (i.e., Apache Guacamole Client - Jumphost)
 
 ```{caution}
 Please complete this task only if you are using a corporate laptop. If you are using your personal laptop, please proceed with **Task 6.2**.
