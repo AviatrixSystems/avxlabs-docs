@@ -17,7 +17,7 @@ Go to your personal POD Portal, identify the **_Lab11_** section and click on th
 ---
 align: center
 ---
-Lab 11 section on the POD Portal
+Lab 12 section on the POD Portal
 ```
 
 Insert the corresponding credentials, available on the POD Portal, to log in to the remote "Workstation Edge".
@@ -29,7 +29,7 @@ align: center
 Edge Workstation credentials
 ```
 
-* Open the **Visual Studio Code** located on the Desktop and thn click on the `Explorer` button.
+* Open V**Visual Studio Code** located on the desktop, then click on the `Explorer` button.
 
 ```{figure} images/lab11-edge3.png
 ---
@@ -39,16 +39,16 @@ align: center
 VS Studio
 ```
 
+* Click on the **Open Folder** button, select the folder `terraform-lab` and click **Open**
+  * _When prompted to trust the authors of the files in this folder, select **Yes, I trust the authors**_
+
 ```{figure} images/lab11-edge32.png
 ---
 height: 400px
 align: center
 ---
-VS Studio
+Open Folder
 ```
-
-* Click on the **Open Folder** button, select the folder `terraform-lab` and click **Open**
-  * _When prompted to trust the authors of the files in this folder, select **Yes, I trust the authors**_
 
 ```{figure} images/lab11-edge4.png
 ---
@@ -257,7 +257,7 @@ Full-Blown Aviatrix Solution
 * Infrastructure as Code and Terraform are a perfect complement to the Aviatrix solution
 * In minutes, you can create the network, security and connectivity needed
 
-## 5. - Network Insights API
+## 5. Network Insights API
 
 ### 5.1 Description
 
