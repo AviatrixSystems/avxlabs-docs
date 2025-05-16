@@ -695,7 +695,7 @@ The logs above confirm that the **ICMP** protocol is permitted within the Smart 
 
 ## 9. Inter-rule from bu2 to bu1
 
-Create a new rule that allows ICMP FROM bu2 TO bu1.
+Create a new rule that allows **ICMP** <span style='color:green'>FROM</span></summary> bu2 <span style='color:green'>TO</span></summary> bu1.
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
@@ -1086,7 +1086,6 @@ Now you can carry on with the last **commit**!
 
 ```{figure} images/lab10-lastcommit.png
 ---
-height: 300px
 align: center
 ---
 Commit
@@ -1232,7 +1231,7 @@ align: center
 Spoke to Spoke
 ```
 
-After this lab, the overall topology will look like this:
+After completing this lab, the overall topology will appear as follows:
 
 ```{figure} images/lab10-lastdrawing.png
 ---
