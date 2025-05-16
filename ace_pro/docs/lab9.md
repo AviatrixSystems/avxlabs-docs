@@ -282,7 +282,7 @@ Commit the new rules
 ```
 
 ```{important}
-These two rules will protect the `bi-directional communication`: traffic will be blocked if **aws-us-east-1-spoke1-test1** will try to reach any **Malcious IPs** (by _ProofPoint's DB_), and likewise traffic will be blocked if any **Malicious IPs** (by _ProofPoint's DB_) will try to reach the **aws-us-east-1-spoke1-test1** instance.
+These two rules will ensure `bi-directional communication`: traffic from **aws-us-east-1-spoke1-test1**1 to **Malcious IPs** (as identified by ProofPoint’s database) will be blocked, and likewise, traffic from **Malicious IPs** to **aws-us-east-1-spoke1-test1** will also be prevented.
 ```
 
 ```{note}
@@ -358,7 +358,7 @@ align: center
 WebGroup creation
 ```
 
-### 7.3 Create a PSF-Allow-Rule
+### 7.3 Create the "PSF-Allow-Rule"
 
 Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
@@ -644,7 +644,7 @@ You will notice that the traffic towards the **IP with Bad Reputation** was bloc
 
 ## 9. Final Considerations
 
-Now go to **CoPilot > Security > ThreatIQ**  section, then scroll down through the whole **Overview** section, click on the filter icon and filter out based on the Maliciuous IP: you can choose either **_Source_** or **_Destination_**!
+Now go to **CoPilot > Security > ThreatIQ**  section, then scroll down through the whole **Overview** section, click on the filter icon and filter out based on the Maliciuous IP (i.e., `178.17.174.164`): you can choose either **_Source_** or **_Destination_**!
 
 ```{figure} images/lab96-newrule308.png
 ---
