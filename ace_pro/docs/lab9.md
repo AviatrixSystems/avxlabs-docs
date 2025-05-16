@@ -114,7 +114,7 @@ Go to your personal POD Portal, identify the status widget and then click on **_
 
 ```{figure} images/lab9-gatus010.png
 ---
-height: 250px
+height: 400px
 align: center
 ---
 Gatus

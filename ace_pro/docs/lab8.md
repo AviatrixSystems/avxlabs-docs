@@ -36,7 +36,7 @@ align: center
 BGPoverLAN inside the On-Prem DC
 ```
 
-Close the BGP Map and then click again on the "three-dot" icon and this time select the `"Show BGP Learned Routes"`.
+Close the BGP Map, then click the 'three-dot' icon again and select `"Show BGP Learned Routes"`.
 
 ```{figure} images/lab8-edge5.png
 ---
@@ -65,9 +65,9 @@ No routes advertised by the Edge yet
 
 ### 2.1. Attachment between Edge and the Transit
 
-Let's establish a peering between the Aviatrix Edge device and the Transit Gateway in **US-EAST-2**. 
+Let's establish a peering connection between the Aviatrix Edge device and the Transit Gateway in **US-EAST-2**. 
 
-In the Topology depicted below, you will notice that there is a workstation named "edge" attached to the LAN router. Once the attachment has been established, you will launch your ping from that client, for the connectivity verification!
+In the topology shown below, you'll see a workstation named 'edge' connected to the LAN router. Once the connection is established, you can initiate a ping from this client to verify connectivity.
 
 ```{figure} images/lab8-edge8.png
 ---
@@ -154,7 +154,7 @@ align: center
 Peering created
 ```
 
-Let's verify the presence of the attachment previously created on the Topology. 
+Let's verify the presence of the previously created attachment in the topology:
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
@@ -238,7 +238,7 @@ BGP Advertised Routes
 
 ## 4. Edge: Connectivity Test
 
-Let's launch a connectivity test, from the Workstation "Edge" inside the DC in New York. 
+Let's initiate a connectivity test from the 'Edge' workstation located inside the Data Center in New York.
 
 ```{figure} images/lab8-newjoe2.png
 ---
@@ -290,6 +290,7 @@ The ping will be successful, this means that you have extended the Aviatrix MCNA
 Do NOT forget to exit from the previous session used to log in to the on-prem-partner1 router (i.e. Lab 7)
 ```{figure} images/lab8-edge67.png
 ---
+height: 250px
 align: center
 ---
 exit
@@ -304,7 +305,7 @@ Ping
 
 ## 5. Edge: FlowIQ
 
-* Use <span style='color:#FF0000'>**FlowIQ**</span> from the Aviatrix CoPilot, <ins> for inspecting the NetFlow Data.
+* Use <span style='color:#FF0000'>**FlowIQ**</span> within Aviatrix CoPilot to analyze and inspect NetFlow data.
 
 ```{tip}
 Go to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based  on the `"Destination IP Address"` **10.0.1.100** (i.e. **_aws-us-east-2-spoke1-test1_**).
@@ -418,7 +419,7 @@ Fill in the attachment template using the following settings:
 - **Attach over**: <span style='color:#479608'>**Public Network**</span>
 
 ```{caution}
-The **High Performance Encryption** option is not visible in this case, because the  Aviatrix Controller is aware that the GCP Transit is already configured with _HPE=off_
+The **High Performance Encryption** option is not visible in this case, because the  Aviatrix Controller is aware that the GCP Transit is already configured with _**HPE=off**_
 ```
 
 Do not forget to click on **Save**.
@@ -462,7 +463,7 @@ Now let's verify the connectivity beetween  **aws-us-east-2-spoke1-test1** in AW
 
 #### 6.1.1 Connectivity Testing Using the Diagnostics Tools
 
-Navigate to your POD Portal, locate the `Gatus widget`, and select **_gcp-us-central1-spoke1-test1_**.
+Navigate to your POD Portal, locate the `Gatus widget`, and select both **_gcp-us-central1-spoke1-test1_** and **_aws-us-east-2-spoke1-test1_**.
 
 ```{figure} images/lab8-podportal110.png
 ---
@@ -491,7 +492,7 @@ gcp-us-central1-spoke1-test1
 The two instances can communicate without any issues.
 
 ```{caution}
-If the two instances are unable to communicate, check the DCF section, the Network Segmentation section, and the Hybrid Cloud section, where you might have forgotten some configurations.
+If the two instances are unable to communicate, check the DCF section, the Network Segmentation section, and the Hybrid Cloud section, as you may have overlooked some necessary configurations in these areas.
 ```
 
 Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the **_aws-us-east-2-spoke1_** Gateway, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e. `172.16.1.100`)
@@ -583,7 +584,7 @@ align: center
 Let's harness the **as-path prepend** feature for manipulating the traffic. 
 
 ```{important}
-The routes exchanged between transit gateways are considered `BGP-like routes`! This is because the Aviatrix Controller orchestrating the SD routing, also has to use a mechanism for the routing decision, and therefore these routes seem BGP routes, indeed they have some attributes similar to the attributes used with BGP routes. For instance, each Transit has its own `AS PATH`, and this is used for the best path selection process. Nevertheless, bear in mind that the control plane within the MCNA is based on `SDN` (Software Defined Networking).
+The routes exchanged between transit gateways are considered `BGP-like routes`. This is because the Aviatrix Controller, which orchestrates SDN routing, utilizes mechanisms similar to those of BGP for routing decisions. As a result, these routes exhibit attributes akin to BGP routes—for example, each transit has its own `AS PATH`, which is used for the best path selection process. However, it's important to remember that the control plane within the MCNA is fundamentally based on `SDN` (Software-Defined Networking).
 ```
 
 The objective of this task is to define a **Primary** path through the Edge device, whereas the path between the Transit gateways will be used as a **Backup** path.
@@ -623,7 +624,7 @@ align: center
 1 AS Path length
 ```
 
-From the **_aws-us-east-2-transit_** perspective, the destination route `172.16.1.0` is far just one single AS (i.e. 64514)
+From the **_aws-us-east-2-transit_** perspective, the destination route `172.16.1.0` is reachable via a single AS (i.e., 64514).
 
 Now let's apply the route manipulation. Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW.
 
@@ -706,7 +707,7 @@ traceroute
 
 ### 8.3 Transitive Routing
 
-The traceroute is still showing the Transit peering between AWS and GCP as the preferred path, although the `as-path prepend` was correctly applied earlier. 
+The traceroute still shows the Transit peering between AWS and GCP as the preferred path, despite the correct application of the `as-path prepend` earlier.
 
 There is another option that needs to be enabled in order to complete this lab. 
 
@@ -732,7 +733,7 @@ edge
 
 ### 9.1 Connectivity Testing Using the Diagnostics Tools
 
-Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_**
+Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e., **172.16.1.100**).
 
 ```{figure} images/lab8-podportal123.png
 ---
@@ -751,7 +752,7 @@ align: center
 
 ### 9.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-Let's relaunch the traceroute towards 172.16.1.100 from the **_aws-us-east-2-spoke1-test1_**.
+Let's relaunch the traceroute towards **172.16.1.100** from the **_aws-us-east-2-spoke1-test1_**.
 
 ```{figure} images/lab8-almostdone04.png
 ---
@@ -771,7 +772,7 @@ align: center
 
 Now go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** Gateway, then select the `"Route DB"` tab and then once again, on the right-hand side, type `172.16.1.0` inside the Search field.
 
-This time the AS Path Length will turn out being equal to **2**. 
+This time, the AS Path length will be equal to **2**.
 
 <ins>The best path is via the Edge!</ins>
 
