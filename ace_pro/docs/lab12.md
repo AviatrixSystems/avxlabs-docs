@@ -184,6 +184,13 @@ align: center
 Copy the statemets from the Lab Guides and paste them
 ```
 
+```{figure} images/lab11-clip33.png
+---
+align: center
+---
+Paste the commands
+```
+
 ```{figure} images/lab11-clip3.png
 ---
 align: center
@@ -195,7 +202,7 @@ Copy from the hidden clipboard and paste them inside the peering.tf
 ---
 align: center
 ---
-Close the Clipboard and save!
+Save the file!
 ```
 
 * **SAVE** the file in Visual Studio Code.
@@ -231,7 +238,7 @@ Once again "terraform apply"
 
 ### 3.3 Expected Results
 
-After a few minutes, a new peering will be established between the **aws-us-east-2-transit** GW and the **aws-us-west-2-transit** GW. You can go to CoPilot and have a look at the new topology.
+After a few minutes, a new peering will be established between the **aws-us-east-2-transit** GW and the a**aws-us-west-2-transit** GW. You can then open CoPilot to visualize the updated topology.
 
 ```{figure} images/lab11-topoloy-transit-peerings.png
 ---
@@ -240,7 +247,8 @@ align: center
 New Peering
 ```
 
-`Congratulations, you have deployed the full-blown Aviatrix solution!`
+`Congratulations! You have successfully deployed the complete Aviatrix solution.`
+
 
 ```{figure} images/lab11-lastdrawing.png
 ---
@@ -265,13 +273,13 @@ The `Aviatrix Network Insights API` simplifies the process of navigating network
 
 ### 5.2 Validate
 
-* Go to your personal POD Portal, identify the **_Lab11_** section and click on the `Open Grafana` button.
+* Go to your personal POD Portal, identify the **_Lab12_** section and click on the `Open Grafana` button.
 
 ```{figure} images/lab11-edge10.png
 ---
 align: center
 ---
-Lab 11 section on the POD Portal
+Lab 12 section on the POD Portal
 ```
 
 ```{important}
@@ -287,7 +295,7 @@ align: center
 Grafana Login Page
 ```
 
-You will immediately notice the Receive Rate and Transmit Rate stats!
+You will immediately notice the **Receive Rate** and **Transmit Rate** stats!
 
 ```{figure} images/lab11-edge30.png
 ---
