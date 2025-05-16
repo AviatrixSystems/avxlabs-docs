@@ -185,8 +185,15 @@ align: center
 Firenet Deployment Template
 ```
 
-```{warning}
-Please be patient - firewall deployment can take a long time, **_up to 20 minutes_**, due to the slow responsiveness of Azure API calls to prepare the firewall. Even after the firewall is created and is assigned a Public IP address, it doesn't mean it can be accessed immediately. 
+```{caution}
+Hold your horses! Before diving into the next task, take a chill pill and wait **20** minutes! Go grab a snack — just enjoy that extra break!
+
+<ins>Please be patient</ins> - firewall deployment can take a long time, **_up to 20 minutes_**, due to the slow responsiveness of Azure API calls to prepare the firewall. Even after the firewall is created and is assigned a Public IP address, it doesn't mean it can be accessed immediately.
+```{figure} images/lab6-20minute.png
+---
+align: center
+---
+Bonus Break!
 ```
 
 ```{figure} images/lab7-inprogress.png
@@ -218,15 +225,6 @@ height: 150px
 align: center
 ---
 Notification Panel
-```
-
-```{caution}
-Hold your horses! Before diving into the next task, take a chill pill and wait **20** minutes! Go grab a snack — just enjoy that extra break!
-```{figure} images/lab6-20minute.png
----
-align: center
----
-Bonus Break!
 ```
 
 #### 4.3.2 Firewall Vendor Integration
@@ -426,7 +424,7 @@ Allow-All
 
 ## 6. DCF Rules
 
-In Lab 5 (_Aviatrix Cloud Firewall_), the DCF functionality was enabled. The currently permitted rules are:
+In Lab 5 (i.e., _Aviatrix Cloud Firewall_), the DCF functionality was activated. The currently allowed rules are as follows::
 
 1) The `"Egress-Rule"` , that is only allowing http/https traffic towards two defined domains. 
 2) The `"ExplicitDenyAll"` with _Logging_=on
@@ -604,7 +602,7 @@ Monitoring traffic towards GCP
 
 Now, let's check the `DCF Monitor` section:
 
-- Go to **CoPilot > Security > Distributed Cloud Firewall** and filter out based on **ICMP**.
+- Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on **ICMP**.
 
 ```{figure} images/lab7-finalmonitor00.png
 ---
@@ -693,7 +691,7 @@ In this scenario, the `Health Check` mechanism involves the Aviatrix Controller 
 ## 10. Final Considerations
 
 ```{important}
-Maybe it's time to finally embrace the full-blown **`"Distributed Cloud Firewall"`** solution and get rid of the expensive NGFW!
+Perhaps it's time to finally adopt the **`"Aviatrix Cloud Firewali"`**, with its integrated distributed architecture, to replace costly next-generation firewalls (NGFWs) and streamline your security infrastructure.
 ```
 
 After completing this lab, the overall topology will appear as follows:
