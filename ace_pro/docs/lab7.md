@@ -447,6 +447,14 @@ Ping ok
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, click on the `Tools` button and then click on `Gateway Diagnostics`.
 
+```{figure} images/lab8-diag38.png
+---
+height: 400px
+align: center
+---
+"Managed" and unselect the other CSPs except GCP
+```
+
 ```{figure} images/lab8-diag.png
 ---
 height: 400px
@@ -466,7 +474,7 @@ align: center
 Active Sessions
 ```
 
-After completing the S2C connection, this is what the overall lab topology will look like:
+Upon completing the **S2C** connection, the overall lab topology will appear as follows:
 
 ```{figure} images/lab8-finaltopology.png
 ---

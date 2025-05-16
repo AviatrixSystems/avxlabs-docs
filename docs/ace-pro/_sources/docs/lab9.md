@@ -114,7 +114,7 @@ Go to your personal POD Portal, identify the status widget and then click on **_
 
 ```{figure} images/lab9-gatus010.png
 ---
-height: 250px
+height: 400px
 align: center
 ---
 Gatus
@@ -241,7 +241,7 @@ align: center
 Saving the new Rule
 ```
 
-Now before committing, create another DCF rule for blocking also the traffic sourced from **any Malicious IP addresses** towards the **aws-us-east-1-spoke1-test1** instance.
+Before proceeding, create an additional DCF rule to block traffic originating from **any Malicious IP addresses** targeting the **aws-us-east-1-spoke1-test1** instance.
 
 Create a new rule clicking on the `"+ Rule"` button:
 
@@ -283,18 +283,6 @@ Commit the new rules
 
 ```{important}
 These two rules will protect the `bi-directional communication`: traffic will be blocked if **aws-us-east-1-spoke1-test1** will try to reach any **Malcious IPs** (by _ProofPoint's DB_), and likewise traffic will be blocked if any **Malicious IPs** (by _ProofPoint's DB_) will try to reach the **aws-us-east-1-spoke1-test1** instance.
-```
-
-Explore the content of the `Default ThreatGroup`: 
-
-- Go to **CoPilot > Groups > ThreatGroups** and click on **Default ThreatGroup** and look at the ProofPoint Malicious IP addresses DB!
-
-```{figure} images/lab96-newrule12.png
----
-height: 400px
-align: center
----
-Default ThreatGroup
 ```
 
 ```{note}
