@@ -283,10 +283,11 @@ Unattached
 
 Once again, navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example.
 
-The ICMP test and the SSH test for the instance **_gcp-us-central1-spoke1-test1 _**should work this time.
+The ICMP test and the SSH test for the instance **_gcp-us-central1-spoke1-test1_** should work this time.
 
 ```{figure} images/lab3-gatus100.png
 ---
+height: 400px
 align: center
 ---
 ICMP test
@@ -294,6 +295,7 @@ ICMP test
 
 ```{figure} images/lab3-gatus188.png
 ---
+height: 400px
 align: center
 ---
 SSH test

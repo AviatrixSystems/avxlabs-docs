@@ -79,6 +79,14 @@ align: center
 "In progress" message
 ```
 
+```{note}
+VPC Functions:
+
+**1) Default** = Spoke VPC
+
+**2) Transit + FireNet** 
+```
+
 From the CoPilot search bar, type `“task”` and then click the search result `“Notifications / Tasks”`. Keep an eye on the VNet creation task and wait for it to complete.
 
 ```{figure} images/lab1-vnet5.png
@@ -87,14 +95,6 @@ height: 200px
 align: center
 ---
 Notification
-```
-
-```{note}
-VPC Functions:
-
-**1) Default** = Spoke VPC
-
-**2) Transit + FireNet** 
 ```
 
 The creation of the VNet will take approximately **4 to 5 minutes**. You can periodically check the status of the task by clicking the hourglass icon in the top right corner. Be sure to click the refresh button as needed. Once the task turns green, you can confidently conclude that the VNet has been successfully created.

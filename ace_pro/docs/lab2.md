@@ -244,7 +244,7 @@ Also, please verify whether the **SSH** protocol is functioning correctly with t
 
 ## 4. Aviatrix CoPilot
 
-Now let's access the Aviatrix Centralized Management Node, the CoPilot.
+Now, let's continue navigating through the Aviatrix Centralized Management Node, CoPilot.
 
 Navigate to your POD portal, click on the `"Open Copilot"` button and enter the credentials!
 
