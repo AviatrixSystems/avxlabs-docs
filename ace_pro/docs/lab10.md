@@ -156,7 +156,7 @@ New SmartGroup
 ```
 
 ```{warning}
-Do not select the value that ends with **"vm-1"**.
+Do not select the value ending with **"vm-1"**.
 ```{figure} images/lab10-newsg898.png
 ---
 height: 400px
