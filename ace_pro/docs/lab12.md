@@ -11,7 +11,7 @@ https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs
 
 We have prepared some Terraform code for you, which you will explore and deploy.
 
-Go to your personal POD Portal, identify the **_Lab11_** section and click on the `Open Workstation` button.
+Go to your personal POD Portal, identify the **_Lab12_** section and click on the `Open Workstation` button.
 
 ```{figure} images/lab11-edge.png
 ---
@@ -181,7 +181,14 @@ Hidden Clipboard
 ---
 align: center
 ---
-Copy the statemets from the Lab Guides and paste them
+Copy the statemets from the Lab Guides and paste them in to the hidden clipboard
+```
+
+```{figure} images/lab11-clip3.png
+---
+align: center
+---
+Copy the statements from the hidden clipboard and close the clipboard
 ```
 
 ```{figure} images/lab11-clip33.png
@@ -191,13 +198,6 @@ align: center
 Paste the commands
 ```
 
-```{figure} images/lab11-clip3.png
----
-align: center
----
-Copy from the hidden clipboard and paste them inside the peering.tf
-```
-
 ```{figure} images/lab11-clip4.png
 ---
 align: center
@@ -205,7 +205,7 @@ align: center
 Save the file!
 ```
 
-* **SAVE** the file in Visual Studio Code.
+* After creating the peering.tf manifest, be sure to **SAVE** the file in Visual Studio Code.
 * Go back to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
   
 ```{figure} images/lab11-clip5.png
