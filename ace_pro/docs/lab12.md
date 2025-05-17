@@ -305,9 +305,9 @@ Receive Rate and Transmit Rate
 ```
 
 ```{caution}
-Go to **CoPilot > Settings > Configuration** and then identify the `"Network Insights API"` widget.
+Navigate to **CoPilot > Settings > Configuration** and locate the "`"Network Insights API"` widget.
 
-You will find the **API Key** generated on the CoPilot and then used on Prometheus/Grafana!
+The **API Key** generated within CoPilot can be found there and should be used in Prometheus/Grafana.
 ```
 
 ```{figure} images/lab11-networkinsight1.png
