@@ -75,16 +75,6 @@ align: center
 AZURE
 ```
 
-You should immediately get insights on how they have been utilized.
-
-```{figure} images/lab9-costiq06.png
----
-height: 150px
-align: center
----
-Cost Centers Overview
-```
-
 ## 3. New York DC is the Shared Services
 
 Now let's discover the **CIDRs** of **New York DC**:

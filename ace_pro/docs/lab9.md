@@ -433,7 +433,6 @@ The traffic to the Malicious IP will gradually fail.
 
 ```{figure} images/lab9-gatus678.png
 ---
-height: 400px
 align: center
 ---
 Malicious ip
@@ -452,7 +451,7 @@ US EAST-2
 ### 8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 ```{important}
-Before proceeding with the verification from your SSH client, you need to re-establish the SSH connection with **_aws-us-east-1-spoke1-test1_**. After applying the previous DCF rules, the SSH session will be dropped. Although the SSH session will be established through the IGW, it will then span the Spoke GW, which will enforce the Distributed Cloud Firewall rules!
+Before verifying from your SSH client, please re-establish the SSH connection to **_aws-us-east-1-spoke1-test1_**. Note that applying the previous DCF rules will terminate the current SSH session. Although the connection is made through the IGW, it will then route via the Spoke Gateway, where the Distributed Cloud Firewall rules will be enforced.
 ```
 
 ```{figure} images/lab9-igw.png
@@ -469,7 +468,7 @@ Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, then sear
 
 ```{figure} images/lab9-igw04.png
 ---
-height: 250px
+height: 400px
 align: center
 ---
 SSH in to aws-us-east-1-spoke1-test2
@@ -479,11 +478,47 @@ SSH in to aws-us-east-1-spoke1-test2
 
 ```{figure} images/lab9-igw05.png
 ---
-height: 250px
+height: 400px
 align: center
 ---
 SSH in to test1 from test2
 ```
+
+- Execute now the following commands:
+
+```bash
+curl https://www.nginx.com
+```
+
+```bash
+curl https://www.ubuntu.com
+```
+
+```bash
+curl https://www.aviatrix.com
+```
+
+```{figure} images/lab96-newrule301.png
+---
+align: center
+---
+Outcomes from the curl commands
+```
+
+Now issue again the curl command towards the **malicious IP** address that was earlier provided by the Trainer!
+
+```bash
+curl https://178.17.174.164
+```
+
+```{figure} images/lab96-newrule302.png
+---
+align: center
+---
+Towards the Malicious IP
+```
+
+You will notice that the traffic towards the **IP with Bad Reputation** was blocked at the very first **SYN** and **SYN-ACK** packets!
 
 ```{important}
 Is it possible to directly SSH into **_aws-us-east-1-spoke1-test1_** without first connecting to test2?
@@ -605,42 +640,6 @@ align: center
 SSH to aws-us-east-1-spoke1-test1
 ```
 </details>
-
-- Execute now the following commands:
-
-```bash
-curl https://www.nginx.com
-```
-
-```bash
-curl https://www.ubuntu.com
-```
-
-```bash
-curl https://www.aviatrix.com
-```
-
-```{figure} images/lab96-newrule301.png
----
-align: center
----
-Outcomes from the curl commands
-```
-
-Now issue again the curl command towards the **malicious IP** address that was earlier provided by the Trainer!
-
-```bash
-curl https://178.17.174.164
-```
-
-```{figure} images/lab96-newrule302.png
----
-align: center
----
-Towards the Malicious IP
-```
-
-You will notice that the traffic towards the **IP with Bad Reputation** was blocked at the very first **SYN** and **SYN-ACK** packets!
 
 ## 9. Final Considerations
 
