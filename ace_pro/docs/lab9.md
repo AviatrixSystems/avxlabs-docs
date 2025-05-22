@@ -122,7 +122,7 @@ Gatus
 
 ```{figure} images/lab9-gatus011.png
 ---
-height: 250px
+height: 400px
 align: center
 ---
 Malicious IP
@@ -464,61 +464,15 @@ IGW and Spoke GW
 
 #### 8.2.1 SSH to aws-us-east1-spoke1-test1
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, then search for **aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary>**, retrieve its Public IP address and SSH in to the EC2 instance.
+First, SSH into **_aws-us-east1-spoke1-test1_**, then from there, SSH into **_aws-us-east1-spoke1-test2_**.
 
-```{figure} images/lab9-igw04.png
+```{figure} images/lab9-igw32.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
-SSH in to aws-us-east-1-spoke1-test2
+IGW and Spoke GW
 ```
-
-- SSH from **_aws-us-east-1-spoke1-test2_** to **_aws-us-east-1-spoke1-test1_**, using this time the Private IP address of the test1 instance.
-
-```{figure} images/lab9-igw05.png
----
-height: 400px
-align: center
----
-SSH in to test1 from test2
-```
-
-- Execute now the following commands:
-
-```bash
-curl https://www.nginx.com
-```
-
-```bash
-curl https://www.ubuntu.com
-```
-
-```bash
-curl https://www.aviatrix.com
-```
-
-```{figure} images/lab96-newrule301.png
----
-align: center
----
-Outcomes from the curl commands
-```
-
-Now issue again the curl command towards the **malicious IP** address that was earlier provided by the Trainer!
-
-```bash
-curl https://178.17.174.164
-```
-
-```{figure} images/lab96-newrule302.png
----
-align: center
----
-Towards the Malicious IP
-```
-
-You will notice that the traffic towards the **IP with Bad Reputation** was blocked at the very first **SYN** and **SYN-ACK** packets!
 
 ```{important}
 Is it possible to directly SSH into **_aws-us-east-1-spoke1-test1_** without first connecting to test2?
@@ -640,6 +594,66 @@ align: center
 SSH to aws-us-east-1-spoke1-test1
 ```
 </details>
+
+```{caution}
+If you do not wish to try the hidden resolution, please proceed with the task ahead.
+```
+
+Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, then search for **aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary>**, retrieve its Public IP address and SSH in to the EC2 instance.
+
+```{figure} images/lab9-igw04.png
+---
+height: 400px
+align: center
+---
+SSH in to aws-us-east-1-spoke1-test2
+```
+
+- SSH from **_aws-us-east-1-spoke1-test2_** to **_aws-us-east-1-spoke1-test1_**, using this time the Private IP address of the test1 instance.
+
+```{figure} images/lab9-igw05.png
+---
+height: 400px
+align: center
+---
+SSH in to test1 from test2
+```
+
+- Execute now the following commands:
+
+```bash
+curl https://www.nginx.com
+```
+
+```bash
+curl https://www.ubuntu.com
+```
+
+```bash
+curl https://www.aviatrix.com
+```
+
+```{figure} images/lab96-newrule301.png
+---
+align: center
+---
+Outcomes from the curl commands
+```
+
+Now issue again the curl command towards the **malicious IP** address that was earlier provided by the Trainer!
+
+```bash
+curl https://178.17.174.164
+```
+
+```{figure} images/lab96-newrule302.png
+---
+align: center
+---
+Towards the Malicious IP
+```
+
+You will notice that the traffic towards the **IP with Bad Reputation** was blocked at the very first **SYN** and **SYN-ACK** packets!
 
 ## 9. Final Considerations
 
