@@ -30,20 +30,36 @@ The CostIQ feature provides detailed traffic distribution analysis for your cost
 
 ### 2.1 Enable CostIQ
 
-Go to **Copilot > Settings > Configuration > License**, identify the **CostIQ** _Add-on Feature_ and click on the `"Enable"` link.
+Navigate to **Copilot > Settings > Configuration > License**. Locate the **Features** section and enable `CostIQ`. Remember to click **Save** to apply the changes.
 
 ```{figure} images/lab9-costiq123.png
 ---
 align: center
 ---
-Enable CostIQ
+CostIQ Feature
 ```
 
 ```{warning}
 Refresh the web page, before proceeding with the next task!
 ```
 
-Go to **Copilot > Monitor > CostIQ** and click on `"+ Cost Center"` and create the **AWS** Cost Center.
+Navigate to **Copilot > Monitor > CostIQ** and click on `"Enable CostIQ"`.
+
+```{figure} images/lab9-costiq1344.png
+---
+align: center
+---
+Enable CostIQ
+```
+
+```{figure} images/lab9-costiq1345.png
+---
+align: center
+---
+Enable CostIQ
+```
+
+- Now click on `"+ Cost Center"` and create the **AWS** Cost Center.
 
 ```{figure} images/lab9-costiq02.png
 ---
