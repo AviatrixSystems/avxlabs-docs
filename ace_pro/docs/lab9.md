@@ -293,9 +293,9 @@ These two rules will ensure `bi-directional communication`: traffic from **aws-u
 
 ### 7.1 Deletion of the Greenfield-Rule = ZTNA
 
-Now let's delete the **Greenfield-Rule**, such that the **ZTNA** can be restored in the Data Path!
+Let's delete the **Greenfield-Rule** to restore **ZTNA** in the Data Path.
 
-- Click on the **three dots** icon on the right-hand side of the Greenfield-Rule entry and then choose the `"Delete Rule"` option.
+Click the `trash icon` on the right side of the Greenfield-Rule entry to delete it.
 
 Do not forget to click on **Commit**.
 
