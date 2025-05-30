@@ -4,13 +4,13 @@ The cloud's borderless architecture presents considerable challenges in securing
 
 ## 1. SCENARIO
 
-BU2 DB needs to get updates, however the VM is inside a private subnet. The BU2 DB owner has raised a request that solely the *apt-get* commands should be allowed (<ins>other kind of egress traffic should be prohibited</ins>).
+The BU2 database requires updates; however, the VM resides within a private subnet. The BU2 DB owner has requested that only `apt-get` commands be permitted for egress traffic, while all other types of outbound traffic should be blocked.
 
-Furthermore, all egress traffic must be tracked, whereby **_Logging_** must be enabled.
+Additionally, all egress traffic must be monitored, with **_Logging_** enabled to track the activity.
 
-You are requested to activate the `Egress` feature on the **_ace-azure-east-us-spoke2_** VNet, likewise on the **_ace-azure-east-us-spoke1_** VNet but just temporarily as a Test VNet.
+Please activate the `Egress` feature on the **_ace-azure-east-us-spoke2_** VNet, similar to the setup on **_ace-azure-east-us-spoke1_**, but do so temporarily as a test in a separate Test VNet.
 
-In addition to this, you area also requested to create the DCF rules that would fulfil the aforementioned request.
+Furthermore, you are requested to create the DCF rules that will enforce these requirements.
 
 ```{figure} images/lab7-topology.png
 ---
