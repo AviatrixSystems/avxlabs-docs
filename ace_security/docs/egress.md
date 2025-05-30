@@ -23,9 +23,12 @@ Your responsibility is to conduct a Proof of Concept (POC) or Proof of Value (PO
 
 <ins>The Zero Trust policy must permit only the specified domains listed below and block all other FQDNs:</ins>
 
-- `allowed-internet-http` domains
+- name: `allowed-internet-http` 
+- domains:
   - *.ubuntu.com
-- `allowed-internet-https` domains
+
+- name: `allowed-internet-https` 
+- domains:
   - *.alibabacloud.com
   - *.microsoft.com
   - aws.amazon.com
@@ -146,6 +149,14 @@ Let's begin deploying the Aviatrix Cloud Firewall.
 - The Spoke Gateway instance size should be `t3a.small`.
 
 - The Spoke gateway must be attached to the `egress-vpc-public-us-east-1a` subnet
+
+```{figure} images/spokegateway-security01.png
+---
+height: 400px
+align: center
+---
+Spoke Gateway
+```
 
 ```{important}
 Please note that within the egress-vpc, there is a pre-deployed EC2 instance named **aws-instance** that is actively generating traffic.
