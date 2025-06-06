@@ -271,7 +271,7 @@ align: center
 Subnets created by the Aviatrix Controller
 ```
 
-Navigate to `Route Tables`.
+Navigate to `Route tables`.
 
 Here, you will see the **eight** route tables created by the Aviatrix Controller, each mapped to a corresponding subnet. The Public Route Tables include a 0.0.0.0/0 route that points to the Internet Gateway, which has also been deployed by the Controller.
 

@@ -228,7 +228,9 @@ The `Default Route` is now pointing to the Aviatrix Spoke Gateway.
 
 ### 4.3 Enable DCF
 
-You have successfully activated your `Aviatrix Cloud Firewall` without disrupting any resources on the private subnet. However, to obtain NetFlow information, you need to apply a `Distributed Cloud Firewall Rule`. This will allow you to evaluate the behavior of the private subnet and gain insights into which domains have been accessed from it.
+You have successfully activated your `Egress Control` without disrupting any resources in the private subnet. The default route inserted into the Private Routing Tables now points to the Spoke gateway.
+
+However, to collect NetFlow information and apply firewall rules, you need to enable the `Aviatrix Cloud Firewall`. This will allow you to monitor the behavior of the private subnet and gain insights into the domains accessed from it.
 
 - Enable the **Distributed Cloud Firewall**.
 
@@ -237,11 +239,18 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and clic
 Then, click on `"Begin using Distributed Cloud Firewall"` followed by `"Begin"`.
 ```
 
-```{figure} images/lab6-activate.png
+```{figure} images/lab6-activate678.png
 ---
 align: center
 ---
 Enable Distributed Cloud Firewall
+```
+
+```{figure} images/lab6-activate.png
+---
+align: center
+---
+Begin Using Distributed Cloud Firewall
 ```
 
 ```{figure} images/lab6-newjoe.png
@@ -278,7 +287,7 @@ At this point, you can use the **SmartGroup** feature to identify the test2 inst
 
 ### 5.1 Identify the subnet where the private workload resides
 
-First and foremost, you have to identify the **public subnet** where the **_aws-us-east-2-spoke1-test2_** instance resides.
+First and foremost, you have to identify the **private subnet** where the **_aws-us-east-2-spoke1-test2_** instance resides.
 
 ```{figure} images/lab6-greenfieldneww.png
 ---
@@ -720,7 +729,7 @@ align: center
 Action Denied
 ```
 
-## 10. Remotion of the AWS NAT Gateway
+## 10. Removal of the AWS NAT Gateway
 
 Now that you have successfully enabled the `Aviatrix Cloud Firewall`, you can get rid of the AWS NAT Gateway.
 
