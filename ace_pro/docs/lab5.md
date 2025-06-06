@@ -497,7 +497,7 @@ ICMP is ok only with aws-us-east-2-spoke1-test1
 
 ### 7.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-- From your SSH client opened on the **_aws-us-east-2-spoke1-test1_** instance, launch again the following curl commands:
+- From your SSH client connected to the **_aws-us-east-2-spoke1-test2_** instance, please re-run the following curl commands:
 
 ```bash
 curl -I https://aviatrix.com
@@ -510,6 +510,10 @@ curl -I https://www.football.com
 ```
 ```bash
 curl -I https://www.wikipedia.org
+```
+
+```{important}
+The **_aws-us-east-2-spoke1-test2_** instance is located in a private subnet. Therefore, to connect to it, you must first SSH into **_aws-us-east-2-spoke1-test1_**, and from there, SSH into test2. Remember, the Distributed Cloud Firewall rules are enforced on the Spoke Gateway, so intra-VPC traffic is not affected by these rules unless `Security Group Orchestration` is enabled.
 ```
 
 ```{figure} images/lab6-curl.png
@@ -644,7 +648,7 @@ Commit the changes
 
 ### 8.3 Connectivity Testing after enabling the Aviatrix Cloud Firewall
 
-Let's verify if the Egress Rule is now effectively dropping the traffic to both **_www.espn.com_** and **_www.football.com_**.
+Let's verify whether the Egress rule is now effectively blocking traffic to both **_www.espn.com_** and **_www.football.com_**.
 
 #### 8.3.1 Connectivity Testing Using the Gatus App
 
