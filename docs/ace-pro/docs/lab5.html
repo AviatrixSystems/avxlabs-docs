@@ -847,7 +847,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <section id="connectivity-testing-using-the-ssh-client-bonus">
 <h3>7.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-testing-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>From your SSH client opened on the <strong><em>aws-us-east-2-spoke1-test1</em></strong> instance, launch again the following curl commands:</p></li>
+<li><p>From your SSH client connected to the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance, please re-run the following curl commands:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-I<span class="w"> </span>https://aviatrix.com
 </pre></div>
@@ -860,6 +860,10 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-I<span class="w"> </span>https://www.wikipedia.org
 </pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance is located in a private subnet. Therefore, to connect to it, you must first SSH into <strong><em>aws-us-east-2-spoke1-test1</em></strong>, and from there, SSH into test2. Remember, the Distributed Cloud Firewall rules are enforced on the Spoke Gateway, so intra-VPC traffic is not affected by these rules unless <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Group</span> <span class="pre">Orchestration</span></code> is enabled.</p>
 </div>
 <figure class="align-center" id="id42">
 <a class="reference internal image-reference" href="../_images/lab6-curl.png"><img alt="../_images/lab6-curl.png" src="../_images/lab6-curl.png" style="height: 400px;" />
@@ -980,7 +984,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </section>
 <section id="id1">
 <h3>8.3 Connectivity Testing after enabling the Aviatrix Cloud Firewall<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Let’s verify if the Egress Rule is now effectively dropping the traffic to both <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong>.</p>
+<p>Let’s verify whether the Egress rule is now effectively blocking traffic to both <strong><em><a class="reference external" href="http://www.espn.com">www.espn.com</a></em></strong> and <strong><em><a class="reference external" href="http://www.football.com">www.football.com</a></em></strong>.</p>
 <section id="id2">
 <h4>8.3.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>Navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select both <strong><em>aws-us-east-2-spoke1-test2</em></strong>.</p>
