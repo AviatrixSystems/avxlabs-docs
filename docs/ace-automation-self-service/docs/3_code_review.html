@@ -1,0 +1,550 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Code Review &#8212; Aviatrix Automation - Instruqt Self Service</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1d85937c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/3_code_review';</script>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Initial Setup" href="4_setup.html" />
+    <link rel="prev" title="Scenario" href="2_scenario.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="1_introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Aviatrix_Logo_White_Gradient_RGB.svg" class="logo__image only-light" alt="Aviatrix Automation - Instruqt Self Service - Home"/>
+    <script>document.write(`<img src="../_static/Aviatrix_Logo_White_Gradient_RGB.svg" class="logo__image only-dark" alt="Aviatrix Automation - Instruqt Self Service - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="1_introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_scenario.html">Scenario</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Code Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_setup.html">Initial Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/3_code_review.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Code Review</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab1">Lab1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab2">Lab2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab3">Lab3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab4">Lab4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-actions">GitHub Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codeowners-and-branch-protections">Codeowners and branch protections</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="code-review">
+<h1>Code Review<a class="headerlink" href="#code-review" title="Link to this heading">#</a></h1>
+<p>Take a moment to review the code provided by the <code class="docutils literal notranslate"><span class="pre">ace-automation</span></code> repository.</p>
+<section id="lab1">
+<h2>Lab1<a class="headerlink" href="#lab1" title="Link to this heading">#</a></h2>
+<p>Review the terraform code for lab1:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lab1/main.tf</span></code> - Deployment of Aviatrix Spoke Gateways via two invocations of the Aviatrix <a class="reference external" href="https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-spoke/aviatrix/latest">mc-spoke</a> module.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lab1/outputs.tf</span></code> - Output the details of the spoke gateways for use in lab3.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lab1/provider.tf</span></code> - Configuration of the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">Aviatrix Terraform provider</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lab1/variables.tf</span></code> - Input variables that are provided by the configured <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> variable set</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lab1/versions.tf</span></code> - Backend configuration for <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> and version constraints for the Aviatrix provider and <code class="docutils literal notranslate"><span class="pre">Terraform</span></code></p></li>
+</ul>
+</section>
+<section id="lab2">
+<h2>Lab2<a class="headerlink" href="#lab2" title="Link to this heading">#</a></h2>
+<p>Review the terraform code for lab2:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dcf/main.tf</span></code> - Configuration for the Aviatrix Distributed Cloud Firewall (DCF)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dcf/provider.tf</span></code> - Configuration of the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">Aviatrix Terraform provider</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dcf/variables.tf</span></code> - Input variables that are provided by the configured <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> variable set</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dcf/versions.tf</span></code> - Backend configuration for <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> and version constraints for the Aviatrix provider and <code class="docutils literal notranslate"><span class="pre">Terraform</span></code></p></li>
+</ul>
+</section>
+<section id="lab3">
+<h2>Lab3<a class="headerlink" href="#lab3" title="Link to this heading">#</a></h2>
+<p>Review the terraform code for lab3:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lab3/main.tf</span></code> - Deployment of two Aviatrix Transit Gateways and their peering through invocation of the <a class="reference external" href="https://registry.terraform.io/modules/terraform-aviatrix-modules/backbone/aviatrix/latest">backbone</a> module as well as spoke-transit attachments using the <code class="docutils literal notranslate"><span class="pre">aviatrix_spoke_transit_attachment</span></code> resource</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lab3/provider.tf</span></code> - Configuration of the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs">Aviatrix Terraform provider</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lab3/variables.tf</span></code> - Input variables that are provided by the configured <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> variable set</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lab3/versions.tf</span></code> - Backend configuration for <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> and version constraints for the Aviatrix provider and <code class="docutils literal notranslate"><span class="pre">Terraform</span></code></p></li>
+</ul>
+</section>
+<section id="lab4">
+<h2>Lab4<a class="headerlink" href="#lab4" title="Link to this heading">#</a></h2>
+<p>[None]</p>
+</section>
+<section id="github-actions">
+<h2>GitHub Actions<a class="headerlink" href="#github-actions" title="Link to this heading">#</a></h2>
+<p>The configuration for GitHub Actions can be found under <code class="docutils literal notranslate"><span class="pre">ace-automation</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">.github</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">workflows</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">terraform.yml</span></code></p>
+<p>Review the comments for details of this configuration. Note that <code class="docutils literal notranslate"><span class="pre">GitHub</span> <span class="pre">Actions</span></code> will be triggered for changes inside the <code class="docutils literal notranslate"><span class="pre">dcf</span></code> folder only - on pushes to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch (merge) or pull requests (any branch).</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">Actions</span></code> are triggered for a pull request, a <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">Plan</span></code> will be executed its results written back to the PR itself.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">Actions</span></code> are triggered for a push to main (merge) a <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">Apply</span></code> will be executed.</p>
+</section>
+<section id="codeowners-and-branch-protections">
+<h2>Codeowners and branch protections<a class="headerlink" href="#codeowners-and-branch-protections" title="Link to this heading">#</a></h2>
+<p>The repository codeowners file and branch protections are the means by which you can enforce responsibility and collaboration between teams.</p>
+<p>Consider the scenario for this lab. The development team for ACE, Inc is responsible for applications deployed in the organization. They are best positioned to understand the egress requirements of their applications. We’ll have them communicate those changes by modifying the code directly and creating a PR (more on that below). This will automatically trigger a review by the security team to ensure these changes meet corporate standards of appropriateness. Once the security team approves, the network team can now merge the PR and trigger a workflow that implements the change in the network itself. Communication, collaboration, and implementation are all codifed and enforced by the configuration of the repository.</p>
+<p>Review the repository codeowners file located at <code class="docutils literal notranslate"><span class="pre">ace-automation</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">.github</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">CODEOWNERS</span></code></p>
+<p><img alt="Codeowners" src="../_images/code-owners.png" /></p>
+<p>Read the comments for an explanation of this file. We won’t be implementing these rules for this lab, but it’s important to understand the concept.</p>
+<p>You can read more about the codeowners file by clicking <a class="reference external" href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners">this link</a>.</p>
+<p>Next, let’s take a look at branch protections and how they work in tandem with the codeowners file to codify responsibility and collaboration.</p>
+<p>Go to your repository and click on <code class="docutils literal notranslate"><span class="pre">Settings</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Branches</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">branch</span> <span class="pre">protection</span> <span class="pre">rule</span></code></p>
+<p>Set the Branch Name Pattern: <code class="docutils literal notranslate"><span class="pre">main</span></code></p>
+<p>We won’t be implementing these for this course, this is just to understand the concept of codefying collaboration.</p>
+<p>If we were working on team, we would check the following 7 fields:</p>
+<ul class="simple">
+<li><p>Require a pull request before merging</p></li>
+<li><p>Require approvals</p></li>
+<li><p>Dismiss stale pull request approvals when new commits are pushed</p></li>
+<li><p>Require review from Code Owners</p></li>
+<li><p>Require status checks to pass before merging</p></li>
+<li><p>Require branches to be up to date before merging</p></li>
+<li><p>Do not allow bypassing the above settings</p></li>
+</ul>
+<p><img alt="Protect" src="../_images/code-protect.png" /></p>
+<p>With these protections in place no one person can makes changes to the network. Additionally, for any Terraform (<code class="docutils literal notranslate"><span class="pre">*.tf</span></code>) code, the Security team will also need to provide an approval to implement changes.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_scenario.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Scenario</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="4_setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Initial Setup</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab1">Lab1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab2">Lab2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab3">Lab3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab4">Lab4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-actions">GitHub Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codeowners-and-branch-protections">Codeowners and branch protections</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
