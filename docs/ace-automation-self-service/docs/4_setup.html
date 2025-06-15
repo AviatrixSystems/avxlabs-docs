@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Initial Setup &#8212; Aviatrix Automation - Instruqt Self Service</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1d85937c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/4_setup';</script>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Summary" href="summary.html" />
+    <link rel="prev" title="Code Review" href="3_code_review.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="1_introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Aviatrix_Logo_White_Gradient_RGB.svg" class="logo__image only-light" alt="Aviatrix Automation - Instruqt Self Service - Home"/>
+    <script>document.write(`<img src="../_static/Aviatrix_Logo_White_Gradient_RGB.svg" class="logo__image only-dark" alt="Aviatrix Automation - Instruqt Self Service - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="1_introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_scenario.html">Scenario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_code_review.html">Code Review</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Initial Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/4_setup.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Initial Setup</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terraform-hcl-formerly-terraform-cloud">Terraform HCL (formerly Terraform Cloud)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-organization-new-terraform-hcl-users">Create Organization - New Terraform HCL Users</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-organization-existing-terraform-hcl-users">Create Organization - Existing Terraform HCL Users</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-api-token">Create API Token</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github">GitHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-the-ace-automation-repository">Fork the ACE Automation repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personalize-the-code-for-your-accounts">Personalize the code for your accounts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-terraform-hcl-token">Configure the Terraform HCL token</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-github-actions">Enable GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terraform-hcl-continued">Terraform HCL (continued)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-workspaces">Create workspaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#share-state">Share State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-variable-set">Configure Variable Set</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="initial-setup">
+<h1>Initial Setup<a class="headerlink" href="#initial-setup" title="Link to this heading">#</a></h1>
+<p>Ensure you’ve opened the prerequisite accounts for <a class="reference external" href="https://github.com">GitHub</a> and <a class="reference external" href="https://app.terraform.io">Terraform HCL</a> if you do not already have them.</p>
+<p>Before launching the course, the following instructions will guide you through configuring both accounts to work in conjunction with the labs.</p>
+<section id="terraform-hcl-formerly-terraform-cloud">
+<h2>Terraform HCL (formerly Terraform Cloud)<a class="headerlink" href="#terraform-hcl-formerly-terraform-cloud" title="Link to this heading">#</a></h2>
+<p>Let’s begin by setting up Terraform HCL and creating an organization to be used with the lab automation.</p>
+<section id="create-organization-new-terraform-hcl-users">
+<h3>Create Organization - New Terraform HCL Users<a class="headerlink" href="#create-organization-new-terraform-hcl-users" title="Link to this heading">#</a></h3>
+<p>If you already have a <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> account your can skip this section.</p>
+<p>After signing up and confirming your email, first-time users of Terraform HCL should click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Organization</span></code>.</p>
+<p><img alt="Terraform HCL Setup" src="../_images/setup-tf-org.png" /></p>
+<p>Then, on the next page, select the <code class="docutils literal notranslate"><span class="pre">Personal</span></code> option, specify a unique <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">organization</span> <span class="pre">name</span></code> and click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">organization</span></code>. Your email address will be pre-filled with the one you used when signing up for your Terraform HCL account.</p>
+<p><img alt="Terraform HCL Org" src="../_images/setup-create-tf-org.png" /></p>
+</section>
+<section id="create-organization-existing-terraform-hcl-users">
+<h3>Create Organization - Existing Terraform HCL Users<a class="headerlink" href="#create-organization-existing-terraform-hcl-users" title="Link to this heading">#</a></h3>
+<p>Existing Terraform HCL users could use an existing organization. If you’d like to segregate this course into its own org, click this link to <a class="reference external" href="https://app.terraform.io/app/organizations/new">create a new organization</a>.</p>
+<p>Then, on the next page, select the <code class="docutils literal notranslate"><span class="pre">Personal</span></code> option, specify a unique <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">organization</span> <span class="pre">name</span></code> and click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">organization</span></code>. Your email address will be pre-filled with the one you used when signing up for your Terraform HCL account.</p>
+<p><img alt="Terraform HCL Org" src="../_images/setup-create-tf-org.png" /></p>
+</section>
+<section id="create-api-token">
+<h3>Create API Token<a class="headerlink" href="#create-api-token" title="Link to this heading">#</a></h3>
+<p>Next, we’ll create an API token that GitHub Actions can use to execute terraform on your behalf.</p>
+<p>Go to <code class="docutils literal notranslate"><span class="pre">Account</span> <span class="pre">settings</span></code> by pulling the dropdown on your account avatar at the top of the left-hand nav.</p>
+<p><img alt="Terraform HCL Settings" src="../_images/setup-tf-token.png" /></p>
+<p>Then, in the left-hand nav, click <code class="docutils literal notranslate"><span class="pre">Tokens</span></code> and <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">API</span> <span class="pre">token</span></code></p>
+<p><img alt="Terraform HCL Settings" src="../_images/setup-tf-create-token.png" /></p>
+<p>Add a description and expiration and click <code class="docutils literal notranslate"><span class="pre">Generate</span> <span class="pre">token</span></code></p>
+<p><img alt="Terraform HCL Settings" src="../_images/setup-tf-generate-token.png" /></p>
+<p>Copy the resulting token and save it somewhere secure. You’ll need it again shortly for the <code class="docutils literal notranslate"><span class="pre">GitHub</span></code> setup.</p>
+<p>We’ll stop here with the Terraform HCL configuration and continue in a later step after setting up your GitHub account.</p>
+</section>
+</section>
+<section id="github">
+<h2>GitHub<a class="headerlink" href="#github" title="Link to this heading">#</a></h2>
+<p>Next, lets create a working copy of the the code in your <code class="docutils literal notranslate"><span class="pre">GitHub</span></code> account to be used for the course and configure it with your personalizations.</p>
+<section id="fork-the-ace-automation-repository">
+<h3>Fork the ACE Automation repository<a class="headerlink" href="#fork-the-ace-automation-repository" title="Link to this heading">#</a></h3>
+<p>Login into your GitHub account and navigate to the <a class="reference external" href="https://github.com/AviatrixSystems/ace-automation">ACE Automation repository</a>.</p>
+<p>In the upper right corner, click on the <code class="docutils literal notranslate"><span class="pre">Fork</span></code> dropdown and click on <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">fork</span></code>.</p>
+<p><img alt="Fork-Github" src="../_images/setup-gh-fork.png" /></p>
+<p>This will create a remote repository (aka repo) of the lab code in your own GitHub account. Ensure you’re targeting the correct <code class="docutils literal notranslate"><span class="pre">Owner</span></code>, then click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">fork</span></code>.</p>
+<p><img alt="Create-Fork" src="../_images/setup-gh-create-fork.png" /></p>
+<p>You know have your own repository containing the course code.</p>
+</section>
+<section id="personalize-the-code-for-your-accounts">
+<h3>Personalize the code for your accounts<a class="headerlink" href="#personalize-the-code-for-your-accounts" title="Link to this heading">#</a></h3>
+<p>There are several files that we need to update with the <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> organization that you created earlier.</p>
+<p>In your browser, navigated to the forked <code class="docutils literal notranslate"><span class="pre">ace-automation</span></code> repository in your own <code class="docutils literal notranslate"><span class="pre">GitHub</span></code> account, enter <code class="docutils literal notranslate"><span class="pre">web</span> <span class="pre">editor</span></code> mode by pressing the period (<code class="docutils literal notranslate"><span class="pre">.</span></code>) key on your keyboard.</p>
+<p>Be sure you’re on the <code class="docutils literal notranslate"><span class="pre">ace-automation</span></code> repo <em>in your own GitHub account</em> (not the <code class="docutils literal notranslate"><span class="pre">AviatrixSystems</span></code> account).</p>
+<p>You should now see the repository in a Visual Studio Code-style editor.</p>
+<p><img alt="GitHub Web Editor" src="../_images/setup-gh-web-editor.png" /></p>
+<p>Navigate to <code class="docutils literal notranslate"><span class="pre">dcf/versions.tf</span></code> and uncomment the following line by removing the <code class="docutils literal notranslate"><span class="pre">#</span></code> character and the following <code class="docutils literal notranslate"><span class="pre">space</span></code> character (so the line aligns with the one above it).</p>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="c1">    # organization = &quot;&lt;replace-with-your-Terraform-Cloud-organization-and-uncomment&gt;&quot;</span>
+</pre></div>
+</div>
+<p>It should look similar to the following with the name of your <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> organization.</p>
+<p><img alt="GitHub Versions Edit" src="../_images/setup-gh-versions.png" /></p>
+<p>Next, make exactly the same edit to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lab1/versions.tf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lab3/versions.tf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lab3/main.tf</span></code></p></li>
+</ul>
+<p>Once you’ve made the edits to all three files, click on the merge icon (there should be a blue <code class="docutils literal notranslate"><span class="pre">4</span></code> icon superimposed on it).</p>
+<p><img alt="GitHub Merge" src="../_images/setup-gh-merge.png" /></p>
+<p>Then, type a meaningful commit message and click <code class="docutils literal notranslate"><span class="pre">Commit</span> <span class="pre">&amp;</span> <span class="pre">Push</span></code></p>
+<p><img alt="GitHub Merge" src="../_images/setup-gh-commit.png" /></p>
+<p>Your updates have now been saved to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch of the repository.</p>
+</section>
+<section id="configure-the-terraform-hcl-token">
+<h3>Configure the Terraform HCL token<a class="headerlink" href="#configure-the-terraform-hcl-token" title="Link to this heading">#</a></h3>
+<p>Navigate out of the web editor by clicking on the hamburger icon in the top of the left-hand nav and click <code class="docutils literal notranslate"><span class="pre">Go</span> <span class="pre">to</span> <span class="pre">Repository</span></code>.</p>
+<p><img alt="Settings" src="../_images/setup-repository.png" /></p>
+<p>For the repository (not the user), navigate to <code class="docutils literal notranslate"><span class="pre">Settings</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Secrets</span> <span class="pre">and</span> <span class="pre">variables</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Actions</span></code>.</p>
+<p><img alt="Settings" src="../_images/setup-gh-secrets-action.png" /></p>
+<p>Create a New repository secret named <code class="docutils literal notranslate"><span class="pre">TF_API_TOKEN</span></code> by clicking <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">repository</span> <span class="pre">secret</span></code>, setting the Terraform Cloud API token you created and saved earlier as the secret value.</p>
+<p><img alt="Settings Secret" src="../_images/setup-gh-tf-api-token.png" /></p>
+<p>Now your github repository can securely control your <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> workspace via its api.</p>
+<p><img alt="Settings Secret" src="../_images/setup-gh-api-secret.png" /></p>
+</section>
+<section id="enable-github-actions">
+<h3>Enable GitHub Actions<a class="headerlink" href="#enable-github-actions" title="Link to this heading">#</a></h3>
+<p>The final repository configuration is to enable <code class="docutils literal notranslate"><span class="pre">GitHub</span> <span class="pre">Actions</span></code>.</p>
+<p>Click on the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> button in the horizontal nav and click <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">understand</span> <span class="pre">my</span> <span class="pre">workflows,</span> <span class="pre">go</span> <span class="pre">ahead</span> <span class="pre">and</span> <span class="pre">enable</span> <span class="pre">them.</span></code></p>
+<p><img alt="GitHub Actions" src="../_images/setup-gh-actions.png" /></p>
+<p>This completes the pre-course <code class="docutils literal notranslate"><span class="pre">GitHub</span></code> setup.</p>
+</section>
+</section>
+<section id="terraform-hcl-continued">
+<h2>Terraform HCL (continued)<a class="headerlink" href="#terraform-hcl-continued" title="Link to this heading">#</a></h2>
+<p>Back to <a class="reference external" href="https://app.terraform.io">Terraform HCL</a>, we’ll configure several workspaces for the course which will also grant permission for <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> to access your <code class="docutils literal notranslate"><span class="pre">Github</span></code> repository.</p>
+<section id="create-workspaces">
+<h3>Create workspaces<a class="headerlink" href="#create-workspaces" title="Link to this heading">#</a></h3>
+<p>We will now configure three workspaces for the course.</p>
+<p>Navigate to the <code class="docutils literal notranslate"><span class="pre">Workspaces</span></code> section for your <code class="docutils literal notranslate"><span class="pre">Organization</span></code> and create a the first workspace by clicking <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">a</span> <span class="pre">Workspace</span></code>.</p>
+<p><img alt="TF Workspace" src="../_images/setup-tf-first-workspace.png" /></p>
+<p>Select <code class="docutils literal notranslate"><span class="pre">Version</span> <span class="pre">Control</span> <span class="pre">Workflow</span></code>.</p>
+<p><img alt="Workflow" src="../_images/setup-tf-ws-verion-control.png" /></p>
+<p>Under Connect to a version control provider, select <code class="docutils literal notranslate"><span class="pre">GitHub</span> <span class="pre">App</span></code></p>
+<p><img alt="VCS" src="../_images/setup-workspace-gh-app.png" /></p>
+<p>Under <code class="docutils literal notranslate"><span class="pre">Choose</span> <span class="pre">a</span> <span class="pre">repository</span></code>, select your <code class="docutils literal notranslate"><span class="pre">GitHub</span></code> organization (your github username). If it’s not in the dropdown, choose <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">another</span> <span class="pre">organization</span></code>. A pop-up window will appear to <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">Terraform</span> <span class="pre">Cloud</span></code>. If you do not see this window, you may need to disable your browser Ad Blocker.</p>
+<p>Select your org (username) and choose <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">select</span> <span class="pre">repositories</span></code>, choose <code class="docutils literal notranslate"><span class="pre">ace-automation</span></code>, and click <code class="docutils literal notranslate"><span class="pre">Install</span></code></p>
+<p><img alt="Confirm" src="../_images/setup-install-tf-cloud.png" /></p>
+<p>Authorize <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code> by authenticating with <code class="docutils literal notranslate"><span class="pre">GitHub</span></code>.
+The repository is now added. Click on it to configure settings.</p>
+<p><img alt="TFC" src="../_images/setup-workspace-repository.png" /></p>
+<p>Set the <code class="docutils literal notranslate"><span class="pre">Workspace</span> <span class="pre">Name</span></code> to <code class="docutils literal notranslate"><span class="pre">ace-automation-lab1</span></code>
+Click Advanced options and under <code class="docutils literal notranslate"><span class="pre">Workspace</span> <span class="pre">Settings</span></code>, set the <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">Working</span> <span class="pre">Directory</span></code> to <code class="docutils literal notranslate"><span class="pre">lab1</span></code>.</p>
+<p><img alt="Repo" src="../_images/setup-workspace-setting-lab1.png" /></p>
+<p>Scroll to the bottom of the page and click <code class="docutils literal notranslate"><span class="pre">Create</span></code>.</p>
+<p>Skip any prompt to configure variables and <code class="docutils literal notranslate"><span class="pre">Continue</span> <span class="pre">to</span> <span class="pre">workspace</span> <span class="pre">overview</span></code>.</p>
+<p>From there, navigate back to the workspaces list by clicking on <code class="docutils literal notranslate"><span class="pre">Workspaces</span></code> in the left-hand nav.</p>
+<p><img alt="TFC-Config" src="../_images/setup-workspaces-list.png" /></p>
+<p>Create the second workspace, by clicking the <code class="docutils literal notranslate"><span class="pre">New</span></code> dropdown in the top right of the page and selecting <code class="docutils literal notranslate"><span class="pre">Workspace</span></code>.</p>
+<p><img alt="TFC-WS-Vars" src="../_images/setup-workspace-new.png" /></p>
+<p>The second workspace is similar to the first.
+Use the same project used for the first workspace, select <code class="docutils literal notranslate"><span class="pre">Version</span> <span class="pre">Control</span> <span class="pre">Workflow</span></code>, and the <code class="docutils literal notranslate"><span class="pre">ace-automation</span></code> repository.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Workspace</span> <span class="pre">Name</span></code> should be <code class="docutils literal notranslate"><span class="pre">ace-automation-lab3</span></code>. Be sure to click <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">options</span></code> and set the <code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">Directory</span></code> to <code class="docutils literal notranslate"><span class="pre">lab3</span></code></p>
+<p><img alt="TFC-WS-Vars" src="../_images/setup-workspace-new-lab3.png" /></p>
+<p>Skip any prompt to configure variables and <code class="docutils literal notranslate"><span class="pre">Continue</span> <span class="pre">to</span> <span class="pre">workspace</span> <span class="pre">overview</span></code>.</p>
+<p>From there, navigate back to the workspaces list by clicking on <code class="docutils literal notranslate"><span class="pre">Workspaces</span></code> in the left-hand nav.</p>
+<p>The final workspace is a bit different than the first two.</p>
+<p>Create the third workspace, by clicking the <code class="docutils literal notranslate"><span class="pre">New</span></code> dropdown in the top right of the page and selecting <code class="docutils literal notranslate"><span class="pre">Workspace</span></code>. Again, putting it into the same <code class="docutils literal notranslate"><span class="pre">Project</span></code> as you had for the previous workspaces.</p>
+<p>This time, select <code class="docutils literal notranslate"><span class="pre">API-Driven</span></code> workflow.</p>
+<p><img alt="HCL API Workspace" src="../_images/setup-workspace-api-driven.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Workspace</span> <span class="pre">Name</span></code> should be <code class="docutils literal notranslate"><span class="pre">ace-automation-dcf</span></code>. There is no advanced option(s) for this workspace. Click <code class="docutils literal notranslate"><span class="pre">Create</span></code>.</p>
+<p><img alt="HCL API Workspace" src="../_images/setup-workspace-create-dcf.png" /></p>
+</section>
+<section id="share-state">
+<h3>Share State<a class="headerlink" href="#share-state" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">lab3</span></code> workspace will require access to the <code class="docutils literal notranslate"><span class="pre">lab1</span></code> terraform state during the course. Let’s configure that now.</p>
+<p>Navigate back to the <code class="docutils literal notranslate"><span class="pre">Workspaces</span></code> list and select the <code class="docutils literal notranslate"><span class="pre">lab1</span></code> workspace. In the left-hand nav, select <code class="docutils literal notranslate"><span class="pre">Settings</span></code>. In the <code class="docutils literal notranslate"><span class="pre">General</span> <span class="pre">Settings</span></code>, scroll down to <code class="docutils literal notranslate"><span class="pre">Remote</span> <span class="pre">state</span> <span class="pre">sharing</span></code>. Click on <code class="docutils literal notranslate"><span class="pre">Share</span> <span class="pre">with</span> <span class="pre">specific</span> <span class="pre">workspaces</span></code> and click on <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">workspaces</span></code> to select <code class="docutils literal notranslate"><span class="pre">ace-automation-lab3</span></code>. Then, click <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">settings</span></code>.</p>
+<p><img alt="HCL State Settings" src="../_images/setup-workspace-settings-share-state.png" /></p>
+</section>
+<section id="configure-variable-set">
+<h3>Configure Variable Set<a class="headerlink" href="#configure-variable-set" title="Link to this heading">#</a></h3>
+<p>Next, we’ll create a variable set to be used with all the workspaces. Navigate back to the workspace list and click <code class="docutils literal notranslate"><span class="pre">Settings</span></code>. Under <code class="docutils literal notranslate"><span class="pre">Organization</span> <span class="pre">Settings</span></code>, click <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">Sets</span></code>.
+Then, click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">variable</span> <span class="pre">set</span></code>.</p>
+<p><img alt="Variable Set" src="../_images/setup-create-variable-set.png" /></p>
+<p>Set the <code class="docutils literal notranslate"><span class="pre">Name</span></code> to <code class="docutils literal notranslate"><span class="pre">ace-automation</span></code> and choose <code class="docutils literal notranslate"><span class="pre">Apply</span> <span class="pre">to</span> <span class="pre">all</span> <span class="pre">projects</span> <span class="pre">and</span> <span class="pre">workspaces</span></code></p>
+<p><img alt="Variable Set Config" src="../_images/setup-variable-set-apply-all.png" /></p>
+<p>Next, we’re going to add 4 Terraform variables to the set. Click <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">variable</span></code> and the values from the following table.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Sensitive</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>controller_ip</p></td>
+<td><p>placeholder</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>placeholder</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>us_east_1_vpc_id</p></td>
+<td><p>placeholder</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>us_west_2_vpc_id</p></td>
+<td><p>placeholder</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Note</strong> We’re only adding placeholder values at this time. We’ll return later in the course to configure actual values.</p>
+<p>Once all 4 variables have been added to the set, click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">variable</span> <span class="pre">set</span></code>.</p>
+<p><img alt="Variable Set Created" src="../_images/setup-variable-set-created.png" /></p>
+<p>This concludes the pre-course setup for <code class="docutils literal notranslate"><span class="pre">GitHub</span></code> and <code class="docutils literal notranslate"><span class="pre">Terraform</span> <span class="pre">HCL</span></code>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3_code_review.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Code Review</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="summary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Summary</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terraform-hcl-formerly-terraform-cloud">Terraform HCL (formerly Terraform Cloud)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-organization-new-terraform-hcl-users">Create Organization - New Terraform HCL Users</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-organization-existing-terraform-hcl-users">Create Organization - Existing Terraform HCL Users</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-api-token">Create API Token</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github">GitHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-the-ace-automation-repository">Fork the ACE Automation repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personalize-the-code-for-your-accounts">Personalize the code for your accounts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-terraform-hcl-token">Configure the Terraform HCL token</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-github-actions">Enable GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terraform-hcl-continued">Terraform HCL (continued)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-workspaces">Create workspaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#share-state">Share State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-variable-set">Configure Variable Set</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
