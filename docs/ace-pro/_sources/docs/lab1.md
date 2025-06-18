@@ -193,11 +193,9 @@ align: center
 Hourglass icon
 ```
 
-Check the VPC list to verify the creation of your VPC. If the CIDR does not appear right away, click the **Refresh** icon or refresh the web page to trigger the update.
+Verify the creation of your VPC (i.e., `aws-us-west-2-spoke1`) by checking the VPC list. If the VPC does not appear immediately, click the **Refresh** icon or reload the webpage to update the list.
 
 Please allow a few minutes (approximately **2-3** minutes) for the changes to reflect in the "VPC/VNets & Subnets" section.
-
-You can also filter by the CIDR `10.0.22.0/24` for easier access.
 
 ```{figure} images/lab1-vpc4.png
 ---
@@ -341,9 +339,9 @@ align: center
 VPC template
 ```
 
-Wait for some minutes and then verify the completion of the VPC creation in the VPC list, as soon as you see the confirmation pop-up message. Hit the Refresh icon if you do not see the CIDR immediately (alternatively, refresh the web page for triggering the change).
+Wait a few minutes, then verify that the VPC creation is complete in the VPC list once you see the confirmation pop-up message. If the VPC does not appear immediately, click the Refresh icon or reload the webpage to update the list.  
 
-You can filter by CIDR `172.16.22.0/24`.
+You can filter the list by the VPC name: `gcp-us-west2-spoke1`.
 
 ```{figure} images/lab1-gcp3.png
 ---
