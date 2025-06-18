@@ -123,7 +123,7 @@ Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Trans
 It may take a minute or two to reflect here.
 ```
 
-You will find out that the route 10.0.1.0/24 is reachable through **nine** connections with the **_aws-us-east-2-transit_**.
+You will see that the route 10.0.1.0/24 is reachable via **nine** connections to the **_aws-us-east-2-transit_**.
 
 ```{figure} images/lab5-hpe.png
 ---
@@ -299,7 +299,7 @@ align: center
 Gatus from aws-us-east-1-spoke1-test2
 ```
 
-From the outcome above, you can conclude that the <ins>connectivity is broken</ins>!
+Based on the above outcome, you can conclude that the <ins>connectivity is disrupted</ins>.
 
 ```{caution}
 The connectivity is broken because segmentation was not enabled on **aws-us-east-1-transit**, and **aws-us-east-1-spoke1** was not associated with the transit gateway in the correct network domain.
@@ -467,8 +467,7 @@ Before proceeding with the actions that you need to carry out on the AWS console
 ---
 align: center
 ---
-Disable "Gateway Single AZ HA
-"
+Disable "Gateway Single AZ HA"
 ```
 
 ```{caution}
@@ -581,7 +580,7 @@ aws-us-east-1-spoke1-test1
 
 - Now restart the **Spoke Gateway #1**.
 
-Go to the AWS Console, select the **_aviatrix-aws-us-east-1-spoke1_** Spoke Gateway, then click on the "Instance state" button and choose `"Start instance"`.
+Navigate to the AWS Console, select the **_aviatrix-aws-us-east-1-spoke1_** Spoke Gateway, then click on the "Instance state" button and choose `"Start instance"`.
 
 ```{figure} images/lab4-gatus406.png
 ---
@@ -880,7 +879,7 @@ align: center
 Confirm the stop
 ```
 
-Go back to the VPC Router's Routing Table page and keep refreshing the page. The Target will change from the ENI of the Spoke Gateway 1 to the ENI of the Spoke Gateway 2.
+Return to the VPC Router’s Routing Table page opened in the previous tab and continue refreshing the page. The Target will change from the ENI of Spoke Gateway 1 to the ENI of **Spoke Gateway 2**.
 
 ```{figure} images/lab5-reprogram511.png
 ---
@@ -898,6 +897,16 @@ height: 400px
 align: center
 ---
 ENI of the Spoke Gateway 2
+```
+
+```{caution}
+Do not forget to restart the **Spoke Gateweay #1** (i.e., _aviatrix-aws-us-east-1spoke1_ instance)
+```{figure} images/lab5-reprogram534.png
+---
+height: 400px
+align: center
+---
+Restart the Spoke Gateway 1
 ```
 
 ## 13. FlightPath

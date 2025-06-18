@@ -11,10 +11,10 @@ Unless otherwise mentioned, the lab PODs will be available until **Friday aftern
 ## 2. Prerequisites
 
 - The `ACE Associate` certificate is a mandatory prerequisite. 
-- Public cloud experience of 1+ year and an expert-level understanding of VPC, TGW, IGW, VGW, etc. in AWS and similar concepts in Azure is required.
-- (_optional_ for bonus tasks) You must have an `SSH client` installed on your PC and be comfortable using it.
-- (_optional_ for bonus tasks) If you cannot SSH from your corporate laptop/desktop, <ins>please use a personal laptop/desktop that does not have security outboud restrictions (e.g. port 22 should be permitted)</ins>.
-- You may be asked to share your desktop on the Zoom call, so please be prepared.
+- At least 1 year of hands-on experience with public cloud platforms, along with an expert-level understanding of VPC, TGW, IGW, VGW, and related concepts in AWS, as well as similar technologies in Azure, is required.  
+- (_optional_ for bonus tasks) You should have an `SSH client` installed on your PC and be comfortable using it.
+- (_optional_ for bonus tasks) If SSH access from your corporate laptop or desktop is restricted, <ins>please use a personal device without outbound security restrictions (e.g., port 22 must be open)</ins>. 
+- You may be asked to share your desktop via `Teams` during the session, so please be prepared.
 
 ## 3. Access Information
 
@@ -47,7 +47,7 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 - Single/Multicloud Network Segmentation
 - High Performance Encryption (aka *Insane Mode*)
 - ActiveMesh with High Availability
-- Aviatrix Cloud Firewall with Secure Egress
+- Aviatrix Cloud Firewall
 - FireNet
 - Site2Cloud with Overlapping IPs
 - Edge

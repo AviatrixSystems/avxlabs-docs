@@ -48,7 +48,7 @@ align: center
 Gatus from the POD Portal
 ```
 
-You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the `MCNA` (i.e. MultiCloud Network Architecture).
+You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the `CNSF` (i.e. Cloud NAtive Security Fabric).
 
 - Select the EC2 instance "**_aws-us-east-2-spoke1-test1_**" and then enter the credentials to access the Gatus App!
 
@@ -192,7 +192,7 @@ align: center
 SSH with public IP address
 ```
 
-#### 3.2.2 Topology (to retrieve IP addresses)
+#### 3.2.2 Topology (to retrieve IP addresses) <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Navigate to **CoPilot > Topology > Overview (Default Tab)** and enter **_aws-us-east-1-spoke1-test1_** in the search field located on the right-hand side.
 
@@ -218,7 +218,7 @@ Properties
 In the **Properties** window under the Topology section of your CoPilot, you can also access the **Private IP addresses** for EAST-WEST traffic.
 ```
 
-#### 3.2.3 Verification Using Your SSH Client
+#### 3.2.3 Verification Using Your SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Now that you have logged in to the **_aws-us-east-2-spoke1-test1_** successfully, you can issue your ping commands towards the **Private IP address** of the other instances!
 
@@ -510,7 +510,7 @@ Only one Spoke Gateway will be deployed in VPC **aws-us-east2-spoke1**.
 - **Account:** <span style='color:#479608'>aws-account</span>
 - **Region:** <span style='color:#479608'>us-east-2 (Ohio)</span>
 - **VPC ID:** <span style='color:#479608'>aws-us-east-2-spoke1 (Make sure you don't select aws-us-east-2-**transit** VPC)</span>
-- **Instance Size:** <span style='color:#479608'>t2.medium</span>
+- **Instance Size:** <span style='color:#479608'>t3.medium</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
 - **Attach to Subnet:** <span style='color:#479608'>10.0.1.96/27 - aws-us-east-2-spoke1-Public-1-us-east-2a</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
@@ -580,8 +580,8 @@ Only one Spoke Gateway will be deployed in VPC **gcp-us-central1-spoke1**.
 - **VPC:** <span style='color:#479608'>gcp-us-**central1**-spoke1 (Make sure you don't select gcp-us-**west2**-spoke1 VPC)</span>
 - **Instance Size:** <span style='color:#479608'>n1-standard-1</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
-- **Attach to Subnet:** <span style='color:#479608'>gcp-us-central1-spoke1-sub1</span>
-- **Zone:** <span style='color:#479608'>172.16.1.0/24 - us-central1-a</span>
+- **Attach to Subnet:** <span style='color:#479608'>172.16.1.0/24 us-central1 | gcp-us-central1-spoke1-sub1</span>
+- **Zone:** <span style='color:#479608'>us-central1-a</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
 
 Click **SAVE**.
