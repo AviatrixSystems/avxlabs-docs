@@ -168,9 +168,14 @@ Click Advanced options and under `Workspace Settings`, set the `Terraform Workin
 
 ![Repo](images/setup-workspace-setting-lab1.png)
 
+Under `Pull Requests`, uncheck `Automatic speculative plans`
+
+![PR](images/setup-uncheck-spec-plans.png)
 Scroll to the bottom of the page and click `Create`.
 
-Skip any prompt to configure variables and `Continue to workspace overview`.
+The workspace will autodetect the variables in the code and prompt you to enter them. Click `Skip this step` as we'll configure them globally in a subsequent step.
+
+![Skip Var](images/setup-skip-variables.png)
 
 From there, navigate back to the workspaces list by clicking on `Workspaces` in the left-hand nav.
 
