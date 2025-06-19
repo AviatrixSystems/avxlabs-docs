@@ -46,6 +46,9 @@ When `Actions` are triggered for a push to main (merge) a `Terraform Apply` will
 
 ## Codeowners and branch protections
 
+> [!NOTE]
+> This section describes `GitHub` code and configuration and is included for reference only. There is no action required.
+
 The repository codeowners file and branch protections are the means by which you can enforce responsibility and collaboration between teams.
 
 Consider the scenario for this lab. The development team for ACE, Inc is responsible for applications deployed in the organization. They are best positioned to understand the egress requirements of their applications. We'll have them communicate those changes by modifying the code directly and creating a PR (more on that below). This will automatically trigger a review by the security team to ensure these changes meet corporate standards of appropriateness. Once the security team approves, the network team can now merge the PR and trigger a workflow that implements the change in the network itself. Communication, collaboration, and implementation are all codifed and enforced by the configuration of the repository.
@@ -64,7 +67,8 @@ Go to your repository and click on `Settings` > `Branches` > `Add branch protect
 
 Set the Branch Name Pattern: `main`
 
-We won't be implementing these for this course, this is just to understand the concept of codefying collaboration.
+> [!WARNING]
+> We won't be implementing these for this course, this is just to understand the concept of codefying collaboration. Applying these settings will inhibit your ability to complete the labs.
 
 If we were working on team, we would check the following 7 fields:
 
