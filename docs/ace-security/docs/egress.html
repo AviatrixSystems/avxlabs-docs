@@ -354,7 +354,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">6. Tasks</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">6.1 Deploy the Aviatrix Spoke Gateway</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">6.2 Create the WebGroups</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">6.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-the-ztna">6.3 Enabling the ZTNA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">6.4 Create a SmartGroup to classify traffic passing through the private subnets</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc-vpc">6.5 Enable the Local Egress on the egress-vpc VPC</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
@@ -397,6 +397,8 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <h2>3. ZTNA and the allowed domains<a class="headerlink" href="#ztna-and-the-allowed-domains" title="Link to this heading">#</a></h2>
 <p>Your responsibility is to conduct a Proof of Concept (POC) or Proof of Value (POV) within your lab environment, demonstrating how your company can effectively leverage the Aviatrix Cloud Perimeter Solution to address this specific challenge. You should deploy the Aviatrix Cloud Firewall using the Aviatrix Spoke Gateway to enhance the security of internet-bound traffic, providing a more efficient and robust solution compared to the AWS NAT Gateway.</p>
 <p><ins>The Zero Trust policy must permit only the specified domains listed below and block all other FQDNs:</ins></p>
+<ol class="arabic simple">
+<li><p><strong>Policy #1</strong></p>
 <ul class="simple">
 <li><p>name: <code class="docutils literal notranslate"><span class="pre">allowed-internet-http</span></code></p></li>
 <li><p>domains:</p>
@@ -404,6 +406,10 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <li><p>*.ubuntu.com</p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p><strong>Policy #2</strong></p>
+<ul class="simple">
 <li><p>name: <code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code></p></li>
 <li><p>domains:</p>
 <ul>
@@ -420,6 +426,8 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 </ul>
 </li>
 </ul>
+</li>
+</ol>
 </section>
 <section id="aviatrix-copilot">
 <h2>4. Aviatrix CoPilot<a class="headerlink" href="#aviatrix-copilot" title="Link to this heading">#</a></h2>
@@ -517,7 +525,7 @@ The native solution also lacks visibility, is cost-prohibitive, and doesn’t su
 <h3>6.1 Deploy the Aviatrix Spoke Gateway<a class="headerlink" href="#deploy-the-aviatrix-spoke-gateway" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Create a single Aviatrix Spoke Gateway in the AWS <strong>US-EAST-1</strong> region within the VPC named <code class="docutils literal notranslate"><span class="pre">“egress-vpc”</span></code>. You may assign any name you prefer.</p></li>
-<li><p>The Spoke Gateway instance size should be <code class="docutils literal notranslate"><span class="pre">t3a.small</span></code>.</p></li>
+<li><p>The Spoke Gateway instance size should be <code class="docutils literal notranslate"><span class="pre">t3.medium</span></code>.</p></li>
 <li><p>The Spoke gateway must be attached to the <code class="docutils literal notranslate"><span class="pre">egress-vpc-public-us-east-1a</span></code> subnet</p></li>
 </ul>
 <figure class="align-center" id="id9">
@@ -597,7 +605,7 @@ Click here to view the complete Task 6.1 resolution: <span style='color:#33ECFF'
 <section id="create-the-webgroups">
 <h3>6.2 Create the WebGroups<a class="headerlink" href="#create-the-webgroups" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Create <strong>two</strong> WebGroups that match the domains listed on <strong><em>Section #3</em></strong>.</p></li>
+<li><p>Create <strong>two</strong> WebGroups that correspond to the domains listed in <strong><em>Section #3</em></strong>.</p></li>
 </ul>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -683,8 +691,9 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </figure>
 </details>
 </section>
-<section id="create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">
-<h3>6.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule<a class="headerlink" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule" title="Link to this heading">#</a></h3>
+<section id="enabling-the-ztna">
+<h3>6.3 Enabling the ZTNA<a class="headerlink" href="#enabling-the-ztna" title="Link to this heading">#</a></h3>
+<p>After enabling the Distributed Cloud Firewall, you must activate the <strong>Zero Trust Network Access</strong> methodology by installing an explicit deny rule positioned above the Greenfield-Rule.</p>
 <ul class="simple">
 <li><p>Create a rule named <strong>ExplicitDenyAll</strong>.</p></li>
 <li><p>Enable <strong>Logging</strong> for the rule</p></li>
@@ -692,7 +701,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </ul>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!</p>
+<p>Once you enable the Distributed Cloud Firewall, the Aviatrix Controller will automatically inject the <code class="docutils literal notranslate"><span class="pre">Greenfield-Rule</span></code>, allowing all types of traffic. This indicates that the Aviatrix Cloud Firewall begins operating in Deny-List mode.</p>
 </div>
 <details>
   <summary>
@@ -1030,7 +1039,7 @@ Click here to view the complete Task 6.8 resolution: <span style='color:#33ECFF'
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">6. Tasks</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">6.1 Deploy the Aviatrix Spoke Gateway</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">6.2 Create the WebGroups</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-editable-explicitdenyall-rule-above-the-greenfield-rule">6.3 Create an “editable” ExplicitDenyAll rule above the Greenfield-Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-the-ztna">6.3 Enabling the ZTNA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">6.4 Create a SmartGroup to classify traffic passing through the private subnets</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc-vpc">6.5 Enable the Local Egress on the egress-vpc VPC</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
