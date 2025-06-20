@@ -15,7 +15,7 @@ Duration: Approximately 4 Hours
 ### Course Objectives
 
 - Learn how to onboard, monitor, and protect existing cloud networks by deploying the Aviatrix Cloud Native Security Fabric (CNSF) using the Aviatrix Terraform provider.
-- Build a CI/CD pipeline using GitHub actions and Terraform HCL to implement changes to the CNSF based on new security requirements.
+- Build a CI/CD pipeline using GitHub actions and HCP Terraform to implement changes to the CNSF based on new security requirements.
 - Understand how Security, Networking, and Application teams can all collaborate via code to implement those requirements and reduce friction between those teams.
 - Build, extend and protect multicloud networks without prior deep coding or CSP experience by leveraging AI and the Aviatrix Terraform provider.
 
@@ -67,4 +67,4 @@ None. All software is provided by the training environment.
 
 - An ACE Associate certificate.
 - A [GitHub](https://github.com) account.
-- A [Terraform HCL](https://app.terraform.io) account.
+- A [HCP Terraform](https://app.terraform.io) account.

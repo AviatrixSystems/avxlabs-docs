@@ -1,32 +1,32 @@
 # Initial Setup
 
-Ensure you've opened the prerequisite accounts for [GitHub](https://github.com) and [Terraform HCL](https://app.terraform.io) if you do not already have them.
+Ensure you've opened the prerequisite accounts for [GitHub](https://github.com) and [HCP Terraform](https://app.terraform.io) if you do not already have them.
 
 Before launching the course, the following instructions will guide you through configuring both accounts to work in conjunction with the labs.
 
-## Terraform HCL (formerly Terraform Cloud)
+## HCP Terraform (formerly Terraform Cloud)
 
-Let's begin by setting up Terraform HCL and creating an organization to be used with the lab automation.
+Let's begin by setting up HCP Terraform and creating an organization to be used with the lab automation.
 
-### Create Organization - New Terraform HCL Users
+### Create Organization - New HCP Terraform Users
 
-If you already have a `Terraform HCL` account your can skip this section.
+If you already have a `HCP Terraform` account your can skip this section.
 
-After signing up and confirming your email, first-time users of Terraform HCL should click `Create Organization`.
+After signing up and confirming your email, first-time users of HCP Terraform should click `Create Organization`.
 
-![Terraform HCL Setup](images/setup-tf-org.png)
+![HCP Terraform Setup](images/setup-tf-org.png)
 
-Then, on the next page, select the `Personal` option, specify a unique `Terraform organization name` and click `Create organization`. Your email address will be pre-filled with the one you used when signing up for your Terraform HCL account.
+Then, on the next page, select the `Personal` option, specify a unique `Terraform organization name` and click `Create organization`. Your email address will be pre-filled with the one you used when signing up for your HCP Terraform account.
 
-![Terraform HCL Org](images/setup-create-tf-org.png)
+![HCP Terraform Org](images/setup-create-tf-org.png)
 
-### Create Organization - Existing Terraform HCL Users
+### Create Organization - Existing HCP Terraform Users
 
-Existing Terraform HCL users could use an existing organization. If you'd like to segregate this course into its own org, click this link to [create a new organization](https://app.terraform.io/app/organizations/new).
+Existing HCP Terraform users could use an existing organization. If you'd like to segregate this course into its own org, click this link to [create a new organization](https://app.terraform.io/app/organizations/new).
 
-Then, on the next page, select the `Personal` option, specify a unique `Terraform organization name` and click `Create organization`. Your email address will be pre-filled with the one you used when signing up for your Terraform HCL account.
+Then, on the next page, select the `Personal` option, specify a unique `Terraform organization name` and click `Create organization`. Your email address will be pre-filled with the one you used when signing up for your HCP Terraform account.
 
-![Terraform HCL Org](images/setup-create-tf-org.png)
+![HCP Terraform Org](images/setup-create-tf-org.png)
 
 ### Create API Token
 
@@ -34,19 +34,19 @@ Next, we'll create an API token that GitHub Actions can use to execute terraform
 
 Go to `Account settings` by pulling the dropdown on your account avatar at the top of the left-hand nav.
 
-![Terraform HCL Settings](images/setup-tf-token.png)
+![HCP Terraform Settings](images/setup-tf-token.png)
 
 Then, in the left-hand nav, click `Tokens` and `Create API token`
 
-![Terraform HCL Settings](images/setup-tf-create-token.png)
+![HCP Terraform Settings](images/setup-tf-create-token.png)
 
 Add a description and expiration and click `Generate token`
 
-![Terraform HCL Settings](images/setup-tf-generate-token.png)
+![HCP Terraform Settings](images/setup-tf-generate-token.png)
 
 Copy the resulting token and save it somewhere secure. You'll need it again shortly for the `GitHub` setup.
 
-We'll stop here with the Terraform HCL configuration and continue in a later step after setting up your GitHub account.
+We'll stop here with the HCP Terraform configuration and continue in a later step after setting up your GitHub account.
 
 ## GitHub
 
@@ -68,7 +68,7 @@ You know have your own repository containing the course code.
 
 ### Personalize the code for your accounts
 
-There are several files that we need to update with the `Terraform HCL` organization that you created earlier.
+There are several files that we need to update with the `HCP Terraform` organization that you created earlier.
 
 In your browser, navigated to the forked `ace-automation` repository in your own `GitHub` account, enter `web editor` mode by pressing the period (`.`) key on your keyboard.
 
@@ -84,7 +84,7 @@ Navigate to `dcf/versions.tf` and uncomment the following line by removing the `
     # organization = "<replace-with-your-Terraform-Cloud-organization-and-uncomment>"
 ```
 
-It should look similar to the following with the name of your `Terraform HCL` organization.
+It should look similar to the following with the name of your `HCP Terraform` organization.
 
 ![GitHub Versions Edit](images/setup-gh-versions.png)
 
@@ -104,7 +104,7 @@ Then, type a meaningful commit message and click `Commit & Push`
 
 Your updates have now been saved to the `main` branch of the repository.
 
-### Configure the Terraform HCL token
+### Configure the HCP Terraform token
 
 Navigate out of the web editor by clicking on the hamburger icon in the top of the left-hand nav and click `Go to Repository`.
 
@@ -118,7 +118,7 @@ Create a New repository secret named `TF_API_TOKEN` by clicking `New repository 
 
 ![Settings Secret](images/setup-gh-tf-api-token.png)
 
-Now your github repository can securely control your `Terraform HCL` workspace via its api.
+Now your github repository can securely control your `HCP Terraform` workspace via its api.
 
 ![Settings Secret](images/setup-gh-api-secret.png)
 
@@ -132,9 +132,9 @@ Click on the `Actions` button in the horizontal nav and click `I understand my w
 
 This completes the pre-course `GitHub` setup.
 
-## Terraform HCL (continued)
+## HCP Terraform (continued)
 
-Back to [Terraform HCL](https://app.terraform.io), we'll configure several workspaces for the course which will also grant permission for `Terraform HCL` to access your `Github` repository.
+Back to [HCP Terraform](https://app.terraform.io), we'll configure several workspaces for the course which will also grant permission for `HCP Terraform` to access your `Github` repository.
 
 ### Create workspaces
 
@@ -158,7 +158,7 @@ Select your org (username) and choose `Only select repositories`, choose `ace-au
 
 ![Confirm](images/setup-install-tf-cloud.png)
 
-Authorize `Terraform HCL` by authenticating with `GitHub`.
+Authorize `HCP Terraform` by authenticating with `GitHub`.
 The repository is now added. Click on it to configure settings.
 
 ![TFC](images/setup-workspace-repository.png)
@@ -242,4 +242,4 @@ Once all 4 variables have been added to the set, click `Create variable set`.
 
 ![Variable Set Created](images/setup-variable-set-created.png)
 
-This concludes the pre-course setup for `GitHub` and `Terraform HCL`.
+This concludes the pre-course setup for `GitHub` and `HCP Terraform`.
