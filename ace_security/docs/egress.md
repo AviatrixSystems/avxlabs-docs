@@ -450,7 +450,7 @@ Click here to view the complete task 6.5 resolution: <span style='color:#33ECFF'
 
 In this task, you are required to enable the `Local Egress`.
 
-- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `"Enable Local Egress on VPC/VNets"` button.
+- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `"Deploy Gateway"` button on the right side of the **egress-vpc** entry
 
 ```{figure} images/lab-resegress17.png
 ---
