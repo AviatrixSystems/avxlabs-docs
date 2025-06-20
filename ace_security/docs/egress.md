@@ -23,22 +23,24 @@ Your responsibility is to conduct a Proof of Concept (POC) or Proof of Value (PO
 
 <ins>The Zero Trust policy must permit only the specified domains listed below and block all other FQDNs:</ins>
 
-- name: `allowed-internet-http` 
-- domains:
-  - *.ubuntu.com
+1) **Policy #1**
+   - name: `allowed-internet-http` 
+   - domains:
+     - *.ubuntu.com
 
-- name: `allowed-internet-https` 
-- domains:
-  - *.alibabacloud.com
-  - *.microsoft.com
-  - aws.amazon.com
-  - *.amazonaws.com
-  - *.aviatrix.com
-  - aviatrix.com
-  - cloud.google.com
-  - *.docker.com
-  - *.docker.io
-  - www.oracle.com
+2) **Policy #2**
+   - name: `allowed-internet-https` 
+   - domains:
+     - *.alibabacloud.com
+     - *.microsoft.com
+     - aws.amazon.com
+     - *.amazonaws.com
+     - *.aviatrix.com
+     - aviatrix.com
+     - cloud.google.com
+     - *.docker.com
+     - *.docker.io
+     - www.oracle.com
 
 ## 4. Aviatrix CoPilot
 
@@ -146,7 +148,7 @@ Let's begin deploying the Aviatrix Cloud Firewall.
 
 - Create a single Aviatrix Spoke Gateway in the AWS **US-EAST-1** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
 
-- The Spoke Gateway instance size should be `t3a.small`.
+- The Spoke Gateway instance size should be `t3.medium`.
 
 - The Spoke gateway must be attached to the `egress-vpc-public-us-east-1a` subnet
 
@@ -229,7 +231,7 @@ The **aws-instance** was pre-provisioned at the launch of the POD and is automat
 
 ### 6.2 Create the WebGroups
 
-- Create **two** WebGroups that match the domains listed on **_Section #3_**.
+- Create **two** WebGroups that correspond to the domains listed in **_Section #3_**.
 
 ```{hint}
 The WebGroup section will become enabled and visible in CoPilot once you activate the **Distributed Cloud Firewall** service (i.e., _the Aviatrix Cloud Firewall_).
@@ -317,7 +319,9 @@ WebGroup section
 
 </details>
 
-### 6.3 Create an "editable" ExplicitDenyAll rule above the Greenfield-Rule
+### 6.3 Enabling the ZTNA
+
+After enabling the Distributed Cloud Firewall, you must activate the **Zero Trust Network Access** methodology by installing an explicit deny rule positioned above the Greenfield-Rule.
 
 - Create a rule named **ExplicitDenyAll**.
 
@@ -326,7 +330,7 @@ WebGroup section
 - Position the rule **above** _Greenfield-Rule_
 
 ```{caution}
-The pre-defined ExplicitDenyAll rule is not editable; therefore, logging cannot be activated for it!
+Once you enable the Distributed Cloud Firewall, the Aviatrix Controller will automatically inject the `Greenfield-Rule`, allowing all types of traffic. This indicates that the Aviatrix Cloud Firewall begins operating in Deny-List mode.
 ```
 
 <details>
