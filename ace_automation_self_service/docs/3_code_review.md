@@ -9,8 +9,8 @@ Review the terraform code for lab1:
 - `lab1/main.tf` - Deployment of Aviatrix Spoke Gateways via two invocations of the Aviatrix [mc-spoke](https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-spoke/aviatrix/latest) module.
 - `lab1/outputs.tf` - Output the details of the spoke gateways for use in lab3.
 - `lab1/provider.tf` - Configuration of the [Aviatrix Terraform provider](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs)
-- `lab1/variables.tf` - Input variables that are provided by the configured `Terraform HCL` variable set
-- `lab1/versions.tf` - Backend configuration for `Terraform HCL` and version constraints for the Aviatrix provider and `Terraform`
+- `lab1/variables.tf` - Input variables that are provided by the configured `HCP Terraform` variable set
+- `lab1/versions.tf` - Backend configuration for `HCP Terraform` and version constraints for the Aviatrix provider and `Terraform`
 
 ## Lab2
 
@@ -18,8 +18,8 @@ Review the terraform code for lab2:
 
 - `dcf/main.tf` - Configuration for the Aviatrix Distributed Cloud Firewall (DCF)
 - `dcf/provider.tf` - Configuration of the [Aviatrix Terraform provider](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs)
-- `dcf/variables.tf` - Input variables that are provided by the configured `Terraform HCL` variable set
-- `dcf/versions.tf` - Backend configuration for `Terraform HCL` and version constraints for the Aviatrix provider and `Terraform`
+- `dcf/variables.tf` - Input variables that are provided by the configured `HCP Terraform` variable set
+- `dcf/versions.tf` - Backend configuration for `HCP Terraform` and version constraints for the Aviatrix provider and `Terraform`
 
 ## Lab3
 
@@ -27,8 +27,8 @@ Review the terraform code for lab3:
 
 - `lab3/main.tf` - Deployment of two Aviatrix Transit Gateways and their peering through invocation of the [backbone](https://registry.terraform.io/modules/terraform-aviatrix-modules/backbone/aviatrix/latest) module as well as spoke-transit attachments using the `aviatrix_spoke_transit_attachment` resource
 - `lab3/provider.tf` - Configuration of the [Aviatrix Terraform provider](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs)
-- `lab3/variables.tf` - Input variables that are provided by the configured `Terraform HCL` variable set
-- `lab3/versions.tf` - Backend configuration for `Terraform HCL` and version constraints for the Aviatrix provider and `Terraform`
+- `lab3/variables.tf` - Input variables that are provided by the configured `HCP Terraform` variable set
+- `lab3/versions.tf` - Backend configuration for `HCP Terraform` and version constraints for the Aviatrix provider and `Terraform`
 
 ## Lab4
 

@@ -34,7 +34,7 @@ Now that we know what our applications are connecting to on the Internet, we can
 
 ## Lab 2
 
-In lab2 we'll set up a CI/CD pipeline, using `GitHub Actions` and `Terraform HCL`
+In lab2 we'll set up a CI/CD pipeline, using `GitHub Actions` and `HCP Terraform`
 
 You'll be asked to think in terms of the personas we noted above - `NetOps`, `SecOps`, `DevOps`.
 
