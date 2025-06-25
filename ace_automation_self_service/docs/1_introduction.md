@@ -26,7 +26,6 @@ None. All software is provided by the training environment.
 
 - An ACE Associate certificate.
 - A [GitHub](https://github.com) account.
-- A [HCP Terraform](https://app.terraform.io) account.
 
 ### Course Objectives
 

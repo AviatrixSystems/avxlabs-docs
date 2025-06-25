@@ -1,6 +1,6 @@
 ![ACE Automation Speciality](images/ace-automation-banner.png)
 
-# Summary  
+# Summary
 
 Congratulations! You have just onboarded, monitored, protected, and extended cloud networks using automation. Leveraging `GitHub Actions` and `HCP Terraform`, you have experienced the `"GitOps"` methodology in action. You've role-played development, security, and networking team personas in your organization to understand how each can collaborate in a CI/CD pipeline to implement changes to cloud networks in a secure and automated fashion. No meetings required!
 
