@@ -1,6 +1,6 @@
 # Code Review
 
-Take a moment to review the code provided by the `ace-automation` repository.
+Take a moment to review the code provided by the [`ace-automation`](https://github.com/AviatrixSystems/ace-automation) repository.
 
 ## Lab1
 
