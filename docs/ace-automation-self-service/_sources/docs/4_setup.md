@@ -227,7 +227,7 @@ Set the `Name` to `ace-automation` and choose `Apply to all projects and workspa
 
 ![Variable Set Config](images/setup-variable-set-apply-all.png)
 
-Next, we're going to add 4 Terraform variables to the set. Click `+ Add variable` and the values from the following table.
+Next, we're going to add 4 `Terraform variables` to the set. Click `+ Add variable` and the values from the following table.
 
 | Key              | Value       | Sensitive |
 | ---------------- | ----------- | --------- |
