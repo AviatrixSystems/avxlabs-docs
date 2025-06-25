@@ -49,19 +49,21 @@ When `Actions` are triggered for a push to main (merge) a `Terraform Apply` will
 > [!NOTE]
 > This section describes `GitHub` code and configuration and is included for reference only. There is no action required.
 
-The repository codeowners file and branch protections are the means by which you can enforce responsibility and collaboration between teams.
+The repository `CODEOWNERS` file and branch protections are the means by which you can enforce responsibility and collaboration between teams.
 
-Consider the scenario for this lab. The development team for ACE, Inc is responsible for applications deployed in the organization. They are best positioned to understand the egress requirements of their applications. We'll have them communicate those changes by modifying the code directly and creating a PR (more on that below). This will automatically trigger a review by the security team to ensure these changes meet corporate standards of appropriateness. Once the security team approves, the network team can now merge the PR and trigger a workflow that implements the change in the network itself. Communication, collaboration, and implementation are all codifed and enforced by the configuration of the repository.
+Consider the scenario for this lab. The development team for ACE, Inc is responsible for applications deployed in the organization. They are best positioned to understand the egress requirements of their applications. We'll have them communicate those changes by modifying the code directly and creating a PR (more on that below).
 
-Review the repository codeowners file located at `ace-automation` > `.github` > `CODEOWNERS`
+This will automatically trigger a review by the security team to ensure these changes meet corporate standards of appropriateness. Once the security team approves, the network team can now merge the PR and trigger a workflow that implements the change in the network itself. Communication, collaboration, and implementation are all codified and enforced by the configuration of the repository.
+
+Review the repository `CODEOWNERS` file located at `ace-automation` > `.github` > `CODEOWNERS`
 
 ![Codeowners](images/code-owners.png)
 
 Read the comments for an explanation of this file. We won't be implementing these rules for this lab, but it's important to understand the concept.
 
-You can read more about the codeowners file by clicking [this link](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
+You can read more about the `CODEOWNERS` file by clicking [this link](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
 
-Next, let's take a look at branch protections and how they work in tandem with the codeowners file to codify responsibility and collaboration.
+Next, let's take a look at branch protections and how they work in tandem with the `CODEOWNERS` file to codify responsibility and collaboration.
 
 Go to your repository and click on `Settings` > `Branches` > `Add branch protection rule`
 
