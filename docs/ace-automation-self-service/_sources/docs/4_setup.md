@@ -98,6 +98,10 @@ Once you've made the edits to all three files, click on the merge icon (there sh
 
 ![GitHub Merge](images/setup-gh-merge.png)
 
+Search "organization" in the codebase to ensure the necessary code changes have been made.
+
+![GitHub Merge](images/setup-search-github.png)
+
 Then, type a meaningful commit message and click `Commit & Push`
 
 ![GitHub Merge](images/setup-gh-commit.png)
@@ -227,7 +231,7 @@ Set the `Name` to `ace-automation` and choose `Apply to all projects and workspa
 
 ![Variable Set Config](images/setup-variable-set-apply-all.png)
 
-Next, we're going to add 4 Terraform variables to the set. Click `+ Add variable` and the values from the following table.
+Next, we're going to add 4 `Terraform variables` to the set. Click `+ Add variable` and the values from the following table.
 
 | Key              | Value       | Sensitive |
 | ---------------- | ----------- | --------- |
