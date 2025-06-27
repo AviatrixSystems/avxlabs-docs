@@ -355,8 +355,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">6.1 Deploy the Aviatrix Spoke Gateway</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">6.2 Create the WebGroups</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-the-ztna">6.3 Enabling the ZTNA</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">6.4 Create a SmartGroup to classify traffic passing through the private subnets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc-vpc">6.5 Enable the Local Egress on the egress-vpc VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-originating-from-private-subnets">6.4 Create a SmartGroup to classify traffic originating from private subnets.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc">6.5 Enable the Local Egress on the “egress-vpc”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet">6.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet</a></li>
@@ -722,7 +722,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </ul>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>Once you enable the Distributed Cloud Firewall, the Aviatrix Controller will automatically inject the <code class="docutils literal notranslate"><span class="pre">Greenfield-Rule</span></code>, allowing all types of traffic. This indicates that the Aviatrix Cloud Firewall begins operating in Deny-List mode.</p>
+<p>Once you enable the Distributed Cloud Firewall, the Aviatrix Controller will automatically inject the <code class="docutils literal notranslate"><span class="pre">Greenfield-Rule</span></code>, allowing all types of traffic. This indicates that the Aviatrix Cloud Firewall begins operating in Deny-List model.</p>
 </div>
 <details>
   <summary>
@@ -752,7 +752,7 @@ Click here to view the complete task 6.3 resolution: <span style='color:#33ECFF'
 </figure>
 <p>Do not forget to click on <strong>Commit</strong>.</p>
 <figure class="align-center" id="id24">
-<a class="reference internal image-reference" href="../_images/lab-resegress12.png"><img alt="../_images/lab-resegress12.png" src="../_images/lab-resegress12.png" style="height: 250px;" />
+<a class="reference internal image-reference" href="../_images/lab-resegress12.png"><img alt="../_images/lab-resegress12.png" src="../_images/lab-resegress12.png" style="height: 400px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
@@ -760,14 +760,14 @@ Click here to view the complete task 6.3 resolution: <span style='color:#33ECFF'
 </figure>
 </details>
 </section>
-<section id="create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">
-<h3>6.4 Create a SmartGroup to classify traffic passing through the private subnets<a class="headerlink" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets" title="Link to this heading">#</a></h3>
+<section id="create-a-smartgroup-to-classify-traffic-originating-from-private-subnets">
+<h3>6.4 Create a SmartGroup to classify traffic originating from private subnets.<a class="headerlink" href="#create-a-smartgroup-to-classify-traffic-originating-from-private-subnets" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>You need to create a SmartGroup that includes all EAST-WEST traffic.</p></li>
+<li><p>Create a SmartGroup that encompasses all EAST-WEST traffic.</p></li>
 </ul>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>Use the RFC1918 routes!</p>
+<p>Use the <strong>RFC1918</strong> routes and <strong>Resource Type: IPs /CIDRs</strong></p>
 </div>
 <details>
   <summary>
@@ -810,7 +810,7 @@ Click here to view the complete task 6.4 resolution: <span style='color:#33ECFF'
 </figcaption>
 </figure>
 <figure class="align-center" id="id28">
-<a class="reference internal image-reference" href="../_images/lab-resegress16.png"><img alt="../_images/lab-resegress16.png" src="../_images/lab-resegress16.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab-resegress16.png"><img alt="../_images/lab-resegress16.png" src="../_images/lab-resegress16.png" style="height: 300px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 28 </span><span class="caption-text">SmartGroups section</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
@@ -818,33 +818,54 @@ Click here to view the complete task 6.4 resolution: <span style='color:#33ECFF'
 </figure>
 </details>
 </section>
-<section id="enable-the-local-egress-on-the-egress-vpc-vpc">
-<h3>6.5 Enable the Local Egress on the egress-vpc VPC<a class="headerlink" href="#enable-the-local-egress-on-the-egress-vpc-vpc" title="Link to this heading">#</a></h3>
+<section id="enable-the-local-egress-on-the-egress-vpc">
+<h3>6.5 Enable the Local Egress on the “egress-vpc”<a class="headerlink" href="#enable-the-local-egress-on-the-egress-vpc" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Activate the <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">egress</span></code> service so that any private routing tables within the <em>egress-vpc</em> will receive a default route pointing to the Spoke Gateway.</p></li>
+<li><p>Activate the <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">egress</span></code> service to ensure that all private routing tables within the <em>egress-vpc</em> receive a default route pointing to the Spoke Gateway.</p></li>
 </ul>
 <details>
   <summary>
 Click here to view the complete task 6.5 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 <p>In this task, you are required to enable the <code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">Egress</span></code>.</p>
 <ul class="simple">
-<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Deploy</span> <span class="pre">Gateway&quot;</span></code> button on the right side of the <strong>egress-vpc</strong> entry</p></li>
+<li><p>Before enabling Egress Control, review the current routes in the private routing tables of the egress VPC. Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; VPC/VNets Routes</strong> and examine the private routing tables.</p></li>
 </ul>
 <figure class="align-center" id="id29">
+<a class="reference internal image-reference" href="../_images/lab-resegress1734.png"><img alt="../_images/lab-resegress1734.png" src="../_images/lab-resegress1734.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Current Status of the Private Routing Tables</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Monitor&quot;</span></code> button on the right side of the <strong>egress-vpc</strong> entry</p></li>
+</ul>
+<figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab-resegress17.png"><img alt="../_images/lab-resegress17.png" src="../_images/lab-resegress17.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Egress</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The “egress-vpc” already has a Spoke Gateway deployed. Once you click on <code class="docutils literal notranslate"><span class="pre">&quot;Monitor&quot;</span></code>, the Aviatrix Controller will automatically update the next hop of the <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">route</span></code> in all private routing tables to point to the Aviatrix Spoke Gateway instead of the AWS NAT gateway. Additionally, the Aviatrix Controller will enable Source NAT, and a Watch Rule will be created for the affected VPC.</p>
+</div>
+<figure class="align-center" id="id31">
+<a class="reference internal image-reference" href="../_images/lab-resegress178.png"><img alt="../_images/lab-resegress178.png" src="../_images/lab-resegress178.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Confirm “Monitor”</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Now, select the <em>egress-vpc</em> and then click on <strong>Add</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id32">
 <a class="reference internal image-reference" href="../_images/lab-resegress18.png"><img alt="../_images/lab-resegress18.png" src="../_images/lab-resegress18.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">egress-vpc with local Egress</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">egress-vpc with local Egress</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details>
@@ -861,11 +882,11 @@ Click here to view the complete Task 6.6 resolution: <span style='color:#33ECFF'
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab-resegress19.png"><img alt="../_images/lab-resegress19.png" src="../_images/lab-resegress19.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -880,10 +901,10 @@ Click here to view the complete Task 6.6 resolution: <span style='color:#33ECFF'
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id34">
 <img alt="../_images/lab-resegress20.png" src="../_images/lab-resegress20.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details>
@@ -900,11 +921,11 @@ Click here to view the complete Task 6.7 resolution: <span style='color:#33ECFF'
 <ul class="simple">
 <li><p>Before clicking the <strong>Commit</strong> button, click again the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab-resegress21.png"><img alt="../_images/lab-resegress21.png" src="../_images/lab-resegress21.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 33 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following parameters:</p>
@@ -919,18 +940,18 @@ Click here to view the complete Task 6.7 resolution: <span style='color:#33ECFF'
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id36">
 <img alt="../_images/lab-resegress22.png" src="../_images/lab-resegress22.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you can click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab-resegress23.png"><img alt="../_images/lab-resegress23.png" src="../_images/lab-resegress23.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details>
@@ -940,11 +961,11 @@ Click here to view the complete Task 6.7 resolution: <span style='color:#33ECFF'
 <ul class="simple">
 <li><p>Once the Aviatrix Cloud Firewall is enabled, you should see <strong>logs</strong> showing traffic to the permitted domains. All other traffic will be automatically denied.</p></li>
 </ul>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab-topology01.png"><img alt="../_images/lab-topology01.png" src="../_images/lab-topology01.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Final Topology</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Final Topology</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <details>
@@ -954,19 +975,19 @@ Click here to view the complete Task 6.8 resolution: <span style='color:#33ECFF'
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong>, then select <em>egress-vpc</em> from the drop-down menu in the <code class="docutils literal notranslate"><span class="pre">VPC/VNets</span></code> field.</p></li>
 </ul>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id39">
 <a class="reference internal image-reference" href="../_images/lab-resegress24.png"><img alt="../_images/lab-resegress24.png" src="../_images/lab-resegress24.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will immediately observe the allowed domains, thanks to the two DCF rules you created, as well as the prohibited domains that were accessed but subsequently denied.</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id40">
 <a class="reference internal image-reference" href="../_images/lab-resegress25.png"><img alt="../_images/lab-resegress25.png" src="../_images/lab-resegress25.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details>
@@ -1061,8 +1082,8 @@ Click here to view the complete Task 6.8 resolution: <span style='color:#33ECFF'
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-aviatrix-spoke-gateway">6.1 Deploy the Aviatrix Spoke Gateway</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-webgroups">6.2 Create the WebGroups</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-the-ztna">6.3 Enabling the ZTNA</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-passing-through-the-private-subnets">6.4 Create a SmartGroup to classify traffic passing through the private subnets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc-vpc">6.5 Enable the Local Egress on the egress-vpc VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-classify-traffic-originating-from-private-subnets">6.4 Create a SmartGroup to classify traffic originating from private subnets.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-local-egress-on-the-egress-vpc">6.5 Enable the Local Egress on the “egress-vpc”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet">6.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet</a></li>
