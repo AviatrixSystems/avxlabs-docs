@@ -538,7 +538,25 @@ align: center
 Confirm "Monitor"
 ```
 
-- Now, select the _egress-vpc_ and then click on **Add**.
+- Once monitoring, or the Local Egress, has been enabled, access the Gatus Dashboard from your personal POD Portal. You will notice that all traffic begins to fail, turning **red**, due to the ExplicitDenyRule applied above the Greenfield rule.
+
+```{figure} images/lab-resegress1756.png
+---
+height: 400px
+align: center
+---
+Turning red
+```
+
+```{important}
+To reduce the timer duration, adjust the polling timer by selecting 10 seconds in the bottom-left corner.
+```{figure} images/lab-resegress17567.png
+---
+height: 400px
+align: center
+---
+10seconds
+```
 
 </details>
 
