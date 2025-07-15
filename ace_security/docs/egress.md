@@ -146,7 +146,7 @@ Let's begin deploying the Aviatrix Cloud Firewall.
 
 ### 6.1 Deploy the Aviatrix Spoke Gateway
 
-- Create a single Aviatrix Spoke Gateway in the AWS **US-EAST-1** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
+- Create a single Aviatrix Spoke Gateway in the AWS **“US-EAST-1“** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
 
 - The Spoke Gateway instance size should be `t3.medium`.
 
@@ -162,6 +162,16 @@ Spoke Gateway
 
 ```{important}
 Please note that within the egress-vpc, there is a pre-deployed EC2 instance named **aws-instance** that is actively generating traffic.
+```
+
+```{caution}
+Once you have initiated the deployment of the Spoke Gateway, please be patient, as it may take several minutes. You can monitor the progress by clicking on the hourglass icon in the top right corner of the CoPilot.
+```{figure} images/spokegateway-security88.png
+---
+height: 400px
+align: center
+---
+Spoke Gateway Deployment
 ```
 
 <details>
@@ -282,13 +292,6 @@ align: center
 Begin
 ```
 
-```{figure} images/lab-resegress0534.png
----
-align: center
----
-Acknowledge
-```
-
 - Navigate to **CoPilot > Groups > WebGroups** and click on the `"+ WebGroup"` button.
 
 ```{figure} images/lab-resegress06.png
@@ -296,7 +299,7 @@ Acknowledge
 height: 400px
 align: center
 ---
-Begin
++WebGroup
 ```
 
 - Create the first **_WebGroup_** with the following parameters:
@@ -422,7 +425,7 @@ This task requires you to create an ad-hoc SmartGroup, utilizing the three well-
 - 172.16.0.0/12
 - 192.168.0.0/16
 
-- Navigate to **CoPilot > Groups > SmartGroups** and click on the `"+ SmartGroup"` button.
+Navigate to **CoPilot > Groups > SmartGroups** and click on the `"+ SmartGroup"` button.
 
 ```{figure} images/lab-resegress13.png
 ---
@@ -471,7 +474,7 @@ SmartGroups section
 
 ### 6.5 Enable the Local Egress on the "egress-vpc"
 
-- Activate the `egress` service to ensure that all private routing tables within the _egress-vpc_ update their next hop from the AWS NAT Gateway to the Aviatrix Spoke Gateway.
+- Activate the `egress` service to ensure that all private routing tables within the _egress-vpc_ update their next hop from the AWS NAT Gateway to the previously deployed Aviatrix Spoke Gateway.
 
 <details>
   <summary>
@@ -479,7 +482,9 @@ Click here to view the complete task 6.5 resolution: <span style='color:#33ECFF'
 
 In this task, you are required to enable the `Egress`.
 
-- Before enabling Egress Control, review the current routes in the private routing tables of the egress VPC. Navigate to **CoPilot > Diagnostics > Cloud Routes > VPC/VNets Routes** and examine the private routing tables.
+- Before enabling Egress Control, review the current routes in the private routing tables of the egress VPC.
+
+- Navigate to **CoPilot > Diagnostics > Cloud Routes > VPC/VNets Routes** and examine the private routing tables.
 
 ```{figure} images/lab-resegress1734.png
 ---
@@ -516,14 +521,6 @@ Confirm "Monitor"
 ```
 
 - Now, select the _egress-vpc_ and then click on **Add**.
-
-```{figure} images/lab-resegress18.png
----
-height: 400px
-align: center
----
-egress-vpc with local Egress
-```
 
 </details>
 
