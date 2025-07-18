@@ -15,7 +15,10 @@ To add to the challenges, ABC Healthcare recently experienced a data exfiltratio
 
 ### 2.1 You are the Newly Hired Cloud Networking Architect
 
-As the newly appointed architect, your task is to secure this traffic using the `Aviatrix Cloud Firewall` service. Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.
+As the newly appointed architect, your task is to secure this traffic using the `Aviatrix Cloud Firewall` service.
+The Aviatrix Cloud Firewall is a key component of the `Cloud Native Security Fabric`. Unlike _traditional monolithic firewalls_ that are rigidly embedded within the network, the Aviatrix Cloud Firewall is a distributed security solution designed specifically for cloud environments. It enables the enforcement of security policies very close to the source of traffic, providing granular control and reducing the attack surface. This architecture allows organizations to implement consistent, scalable, and flexible security policies across multi-cloud and hybrid cloud deployments, ensuring comprehensive protection without sacrificing agility.
+
+Your objective is to implement a solution that enhances visibility, offers comprehensive logging, and complies with regulatory requirements—all while being cost-effective and efficient.
 
 ## 3. ZTNA and the allowed domains
 
@@ -66,7 +69,7 @@ CoPilot UI - Welcome page
 
 The CoPilot *Dashboard* should look something like this:
 
-```{figure} images/lab-egress03.png
+```{figure} images/lab-egress033.png
 ---
 height: 400px
 align: center
@@ -119,7 +122,7 @@ Commit
 ```
 
 ```{note}
-These are very aggressive settings. In a Production environment, you should not set these intervals that frequently!
+These are very **aggressive** settings. In a Production environment, <ins>you should not set these intervals that frequently!</ins>
 ```
 
 ## 5. Lab Objectives
@@ -131,7 +134,9 @@ If you encounter any difficulties or feel unsure at any point, don’t hesitate 
 ```
 
 ### 5.1 Initial Topology
-The initial topology consists of two VPCs in **US-EAST-1** region: one dedicated to hosting both the `Aviatrix Controller` and the `Aviatrix CoPilot`, and another hosting an EC2 instance named `"aws-instance"` deployed within a subnet associated with a private routing table (i.e., _a routing table without a default route pointing to the IGW_). To ensure secure egress access and control—without using the cloud provider's native NAT gateway—you plan to deploy an Aviatrix Spoke Gateway and activate the `Aviatrix Cloud Firewall` service.
+The initial network topology consists of two Virtual Private Clouds (VPCs) located in the **US-EAST-1** region. The first VPC is dedicated to hosting both the `Aviatrix Controller` and `Aviatrix CoPilot`, which are essential for managing and monitoring the cloud network environment. The second VPC hosts an EC2 instance named `"aws-instance"`, deployed within a subnet associated with a private routing table. This routing table intentionally lacks a default route pointing to the Internet Gateway (IGW), ensuring the instance remains private and isolated from direct internet access.
+
+To enhance security and control over outbound traffic—while avoiding reliance on the cloud provider’s native NAT Gateway—you plan to deploy an Aviatrix Spoke Gateway within the network. Additionally, you will activate the `Aviatrix Cloud Firewall` service to enforce security policies effectively, providing granular egress control and threat protection at the network edge. This setup not only improves security posture but also offers greater flexibility and centralized management for your multi-cloud environment.
 
 ```{figure} images/lab-topology00.png
 ---
@@ -156,7 +161,18 @@ Gatus
 height: 400px
 align: center
 ---
-allowed and prohibited domains
+all green
+```
+
+```{important}
+The first entry,  `"aviatrix | www.aviatrix.com"`,  pertains to connectivity originating from the public subnet where the aws-gatus instance is deployed. 
+Please keep in mind that during your connectivity tests and policy enforcement, this entry will continue to remain green.
+```{figure} images/lab-topology00347.png
+---
+height: 400px
+align: center
+---
+all green
 ```
 
 ## 6. Tasks
@@ -183,7 +199,7 @@ Please note that within the egress-vpc, there is a pre-deployed EC2 instance nam
 ```
 
 ```{caution}
-Once you have initiated the deployment of the Spoke Gateway, please be patient, as it may take several minutes. You can monitor the progress by clicking on the hourglass icon in the top right corner of the CoPilot.
+Once you have initiated the deployment of the Spoke Gateway, please be patient, as it may take several minutes. You can monitor the progress by clicking on the **hourglass** icon in the top right corner of the CoPilot.
 ```{figure} images/spokegateway-security88.png
 ---
 height: 400px
@@ -209,7 +225,7 @@ You need to deploy one single instance!
 - **Account:** <span style='color:#479608'>aws-account</span>
 - **Region:** <span style='color:#479608'>us-east-1 (N. Virginia)</span>
 - **VPC ID:** <span style='color:#479608'>egress-vpc</span>
-- **Instance Size:** <span style='color:#479608'>t3a.small</span>
+- **Instance Size:** <span style='color:#479608'>t3.medium</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
 - **Attach to Subnet:** <span style='color:#479608'>10.1.2.32/28 - egress-vpc-public-us-east-1a</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
@@ -296,7 +312,7 @@ This task includes an important tip: you must first activate the Distributed Clo
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Enable Distributed Cloud Firewall"`.
 Then, click on `"Begin"`.
 
-```{figure} images/lab-resegress04.png
+```{figure} images/lab-resegress044.png
 ---
 align: center
 ---
@@ -389,7 +405,7 @@ Click here to view the complete task 6.3 resolution: <span style='color:#33ECFF'
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
-```{figure} images/lab-resegress10.png
+```{figure} images/lab-resegress100.png
 ---
 align: center
 ---
@@ -416,7 +432,7 @@ ExplicitDenyAll
 
 Do not forget to click on **Commit**.
 
-```{figure} images/lab-resegress12.png
+```{figure} images/lab-resegress122.png
 ---
 height: 200px
 align: center
