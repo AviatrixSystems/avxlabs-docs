@@ -596,9 +596,9 @@ align: center
 
 </details>
 
-### 6.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup
+### 6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup.
 
-- This Distributed Cloud Firewall rule should exclusively allow **HTTP** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-http_ WebGroup.
+- This DCF rule should strictly permit **HTTP** traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains included in the _allowed-internet-http_ WebGroup, ensuring controlled and secure outbound web access.
 
 <details>
   <summary>
