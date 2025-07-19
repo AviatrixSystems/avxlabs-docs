@@ -574,7 +574,7 @@ align: center
 Local Egress
 ```
 
-- Once Cloud Egress Security is enabled, access the Gatus Dashboard from your personal POD Portal. You will observe that all traffic starts to fail, turning **red**, as a result of the ExplicitDenyRule applied above the Greenfield rule.
+- Once Cloud Egress Security is enabled, access the Gatus Dashboard from your personal POD Portal. You will observe that all traffic starts to fail, turning **`red`**, as a result of the ExplicitDenyRule applied above the Greenfield rule.
 
 ```{figure} images/lab-resegress1756.png
 ---
@@ -598,7 +598,7 @@ align: center
 
 ### 6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup
 
-- This Distributed Cloud Firewall rule should strictly permit **HTTP** traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains included in the _allowed-internet-http_ WebGroup, ensuring controlled and secure outbound web access.
+- This Distributed Cloud Firewall rule should strictly permit **HTTP** traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains included in the _`allowed-internet-http`_ WebGroup, ensuring controlled and secure outbound web access.
 
 <details>
   <summary>
@@ -640,7 +640,7 @@ Save in Drafts
 
 ### 6.7 Create a Distributed Cloud Firewall rule that allows HTTPS traffic from all private subnets by utilizing the appropriate WebGroup
 
-- This Distributed Cloud Firewall rule should exclusively permit **HTTPS** traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains listed in the _allowed-internet-https_ WebGroup, ensuring secure and controlled outbound connections.
+- This Distributed Cloud Firewall rule should exclusively permit **HTTPS** traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains listed in the _`allowed-internet-https`_ WebGroup, ensuring secure and controlled outbound connections.
 
 <details>
   <summary>
@@ -690,9 +690,19 @@ Commit
 
 </details>
 
-### 6.8 Verify that the Monitor section within the Egress area is effectively safeguarding the private subnet
+### 6.8 Verify that the Monitor tab within the Egress section is effectively safeguarding the private subnet by providing comprehensive logs
 
 - Once the <ins>permitted</ins> Distributed Cloud Firewall rules are enforced on the Spoke Gateway and integrated into the Aviatrix Cloud Firewall, you should observe **logs** displaying traffic to both the allowed domains and the prohibited domains (which will be dropped).
+
+- At the conclusion of this lab, the Gatus Dashboard should display the layout and data similar to the example shown below, reflecting the successful configuration and monitoring setup you have implemented:
+
+```{figure} images/lab-gatus99.png
+---
+height: 400px
+align: center
+---
+Gatus outcomes
+```
 
 ```{figure} images/lab-topology01.png
 ---
@@ -718,7 +728,7 @@ align: center
 Monitor
 ```
 
-You will immediately notice the allowed domains, thanks to the two Distributed Cloud Firewall (DCF) rules you configured, which permit traffic to these destinations. At the same time, you will see attempts to access prohibited domains, which are subsequently denied in accordance with the `Zero Trust` approach enabled by the Aviatrix Cloud Firewall. This setup effectively demonstrates how the security policies are enforced in real-time, ensuring only authorized traffic is permitted while malicious or unauthorized access is promptly blocked.
+You will immediately notice the allowed domains, thanks to the two Distributed Cloud Firewall (DCF) rules you configured, which permit traffic to these destinations. At the same time, you will see attempts to access prohibited domains, which are subsequently denied in accordance with the `Zero Trust approach enabled by the Aviatrix Cloud Firewall. This setup effectively demonstrates how the security policies are enforced in real-time, ensuring only authorized traffic is permitted while malicious or unauthorized access is promptly blocked.
 
 ```{figure} images/lab-resegress25.png
 ---
@@ -726,6 +736,26 @@ height: 400px
 align: center
 ---
 Logs
+```
+
+- You can also review the "Monitor" tab within the Distributed Cloud Firewall section. There, you will observe entries for both of the permitted rules, confirming that traffic matching these rules is allowed. Additionally, you will see that all other traffic is automatically dropped, thanks to the enforcement of the ExplicitDenyAll rule. This provides clear visibility into how the firewall policies are actively controlling and securing your network traffic.
+
+```{figure} images/lab-resegress253.png
+---
+height: 400px
+align: center
+---
+DCF Monitor tab
+```
+
+- Last but not least, navigate to your personal POD Portal, access the Gatus Dashboard and verify that you see the same outcomes shown in the screenshot below:
+
+```{figure} images/lab-resegress2534.png
+---
+height: 400px
+align: center
+---
+DCF Monitor tab
 ```
 
 </details>
