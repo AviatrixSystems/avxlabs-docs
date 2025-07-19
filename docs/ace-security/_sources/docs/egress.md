@@ -22,7 +22,9 @@ Your objective is to implement a solution that enhances visibility, offers compr
 
 ## 3. ZTNA and the allowed domains
 
-Your responsibility is to conduct a Proof of Concept (POC) or Proof of Value (POV) within your lab environment, demonstrating how your company can effectively leverage the Aviatrix Cloud Perimeter Solution to address this specific challenge. You should deploy the Aviatrix Cloud Firewall using the Aviatrix Spoke Gateway to enhance the security of internet-bound traffic, providing a more efficient and robust solution compared to the AWS NAT Gateway.
+Your primary responsibility is to conduct a comprehensive Proof of Concept (POC) or Proof of Value (POV) within your laboratory environment. The goal is to demonstrate how your organization can effectively leverage the Aviatrix Cloud Native Security Fabric to address this specific challenge.
+
+As part of this demonstration, you should deploy the Aviatrix Cloud Firewall, a feature integrated into the Aviatrix Spoke Gateway, to enhance the security posture of internet-bound traffic. This approach offers a more efficient, scalable, and robust solution compared to traditional options such as the AWS NAT Gateway. By showcasing this deployment, you will highlight the advantages of the Aviatrix platform in providing seamless security, improved performance, and simplified management for cloud network security needs.
 
 <ins>The Zero Trust policy must permit only the specified domains listed below and block all other FQDNs:</ins>
 
@@ -83,7 +85,7 @@ Dashboard
 Navigate to **CoPilot > Settings > Resources > Task Server**
 ```
 
-Set the intervals for `Fetch GW Routes` and `Fetch VPC Routes` to **“1 Second”** each, then click on **SAVE**.
+Please set the intervals for both `Fetch GW Routes` and `Fetch VPC Routes` to **“1 Second”** each, and then click on **SAVE** to apply the changes.
 
 ```{figure} images/lab-egress04.png
 ---
@@ -94,7 +96,14 @@ Task Server
 ```
 
 ```{caution}
-The order of the **_Task Servers_** on the screenshot above might be different on your CoPilot
+Please note that the order of the **_Task Server_** timers displayed in the screenshot above may vary in your CoPilot interface. The arrangement can differ depending on your configuration or updates, but the functionality and roles of the timers remain the same.
+```
+
+```{figure} images/lab-egress055.png
+---
+align: center
+---
+Fetch Instances
 ```
 
 ```{figure} images/lab-egress05.png
@@ -169,7 +178,6 @@ The first entry,  `"aviatrix | www.aviatrix.com"`,  pertains to connectivity ori
 Please keep in mind that during your connectivity tests and policy enforcement, this entry will continue to remain green.
 ```{figure} images/lab-topology00347.png
 ---
-height: 400px
 align: center
 ---
 all green
@@ -180,7 +188,7 @@ Let's begin deploying the Aviatrix Cloud Firewall.
 
 ### 6.1 Deploy the Aviatrix Spoke Gateway
 
-- Create a single Aviatrix Spoke Gateway in the AWS **“US-EAST-1“** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
+- Create a single Aviatrix **Spoke** Gateway in the AWS **“US-EAST-1“** region within the VPC named `“egress-vpc”`. You may assign any name you prefer.
 
 - The Spoke Gateway instance size should be `t3.medium`.
 
@@ -195,11 +203,15 @@ Spoke Gateway
 ```
 
 ```{important}
-Please note that within the egress-vpc, there is a pre-deployed EC2 instance named **aws-instance** that is actively generating traffic.
+Please note that within the egress-VPC, there is a pre-deployed EC2 instance named **aws-instance** that is actively generating network traffic. This instance is deployed inside a private subnet, ensuring it remains isolated from direct internet access. 
+
+In addition, there is another EC2 instance named **aws-gatus**, which is deployed within a public subnet. This instance provides access to the Gatus Dashboard, enabling monitoring and visualization of network metrics. 
+
+Understanding the placement and roles of these instances is important for interpreting traffic flow and security configurations within the environment.
 ```
 
 ```{caution}
-Once you have initiated the deployment of the Spoke Gateway, please be patient, as it may take several minutes. You can monitor the progress by clicking on the **hourglass** icon in the top right corner of the CoPilot.
+Once you have initiated the deployment of the **Spoke** Gateway, please be patient, as it may take several minutes. You can monitor the progress by clicking on the **hourglass** icon in the top right corner of the CoPilot.
 ```{figure} images/spokegateway-security88.png
 ---
 height: 400px
@@ -268,15 +280,13 @@ aws-instance
 ```
 
 ```{important}
-The “egress-vpc” does not immediately branch off the elements deployed within it.
-
-Please be patient and wait for 30 minutes...
+Click on the VPC icon labeled `"egress-vpc"` to expand and view the various elements contained within it. This will allow you to see the associated subnets, EC2 instances, and other resources that are part of this Virtual Private Cloud, providing a clearer understanding of its structure and the relationships between its components.
 ```{figure} images/lab-resegress8077.png
 ---
 height: 400px
 align: center
 ---
-Dynamic Topology
+egress-vpc
 ```
 
 ```{caution}
@@ -399,6 +409,10 @@ After enabling the Distributed Cloud Firewall, you must activate the **Zero Trus
 Once you enable the Distributed Cloud Firewall, the Aviatrix Controller will automatically inject the `Greenfield-Rule`, allowing all types of traffic. This indicates that the Aviatrix Cloud Firewall begins operating in Deny-List model.
 ```
 
+```{tip}
+The `DefaultDenyAll` cannot be positioned above the Greenfield Rule, nor can you enable logging on it. Therefore, you need to create an ad-hoc explicit deny rule to fulfill this requirement!
+```
+
 <details>
   <summary>
 Click here to view the complete task 6.3 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
@@ -442,12 +456,12 @@ Commit
 
 </details>
 
-### 6.4 Create a SmartGroup to classify traffic originating from private subnets.
+### 6.4 Create a SmartGroup to categorize and manage traffic originating from private subnets.
 
-- Create a SmartGroup that encompasses all EAST-WEST traffic.
+- The SmartGroup should include all **East-West** traffic, ensuring comprehensive coverage of internal data flows within the private networks.
 
 ```{hint}
-Use the **RFC1918** routes and **Resource Type: IPs /CIDRs**
+Use the **RFC1918** address ranges and the Resource Type **IPs / CIDRs**.
 ```
 
 <details>
@@ -506,9 +520,9 @@ SmartGroups section
 
 </details>
 
-### 6.5 Enable the Local Egress on the "egress-vpc"
+### 6.5 Enable the Cloud Egress Security on the "egress-vpc"
 
-- Activate the `egress` service to ensure that all private routing tables within the _egress-vpc_ update their next hop from the AWS NAT Gateway to the previously deployed Aviatrix Spoke Gateway.
+- Activate the `cloud egress security` control to ensure that all private routing tables within the _egress-vpc_ update their next hop from the AWS NAT Gateway to the previously deployed Aviatrix Spoke Gateway,  which incorporates the Aviatrix Cloud Firewall service. This change will enhance security and traffic control for outbound internet access..
 
 <details>
   <summary>
@@ -532,29 +546,35 @@ Current Status of the Private Routing Tables
 Currently, two private routing tables have a default route pointing to the **AWS NAT Gateway**.
 ```
 
-- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `"Monitor"` button on the right side of the **egress-vpc** entry
+- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `"Enable Local Egress on VPC/VNets"` button located on the right side of the **egress-vpc** entry. After that, select "egress-vpc" from the drop-down menu and click **Add** to complete the configuration.
 
-```{figure} images/lab-resegress17.png
+```{figure} images/lab-resegress177.png
 ---
 height: 200px
 align: center
 ---
-Monitor
+Enable
 ```
 
-```{important}
-The "egress-vpc" already has a Spoke Gateway deployed. Once you click on `"Monitor"`, the Aviatrix Controller will automatically update the _`next hop`_ of the `default route` in all private routing tables to point to the Aviatrix Spoke Gateway instead of the AWS NAT gateway. Additionally, the Aviatrix Controller will enable _`Source NAT`_, and a _`Watch Rule`_ will be created for the affected VPC.
-```
-
-```{figure} images/lab-resegress178.png
+```{figure} images/lab-resegress17777.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
-Confirm "Monitor"
+Select the egress-vpc
 ```
 
-- Once monitoring, or the Local Egress, has been enabled, access the Gatus Dashboard from your personal POD Portal. You will notice that all traffic begins to fail, turning **red**, due to the ExplicitDenyRule applied above the Greenfield rule.
+After a few seconds, click on the refresh button located at the bottom left side. You will notice that under the Point of Egress column, the value has changed from `"Native Cloud Egress"` to `"Local Egress"`.
+
+```{figure} images/lab-resegress17777.png
+---
+height: 200px
+align: center
+---
+Local Egress
+```
+
+- Once Cloud Egress Security is enabled, access the Gatus Dashboard from your personal POD Portal. You will observe that all traffic starts to fail, turning **red**, as a result of the ExplicitDenyRule applied above the Greenfield rule.
 
 ```{figure} images/lab-resegress1756.png
 ---
