@@ -357,7 +357,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-the-ztna">6.3 Enabling the ZTNA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-categorize-and-manage-traffic-originating-from-private-subnets">6.4 Create a SmartGroup to categorize and manage traffic originating from private subnets.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-cloud-egress-security-on-the-egress-vpc">6.5 Enable the Cloud Egress Security on the “egress-vpc”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet">6.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet</a></li>
 </ul>
@@ -946,10 +946,10 @@ Click here to view the complete task 6.5 resolution: <span style='color:#33ECFF'
 </div>
 </details>
 </section>
-<section id="create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">
-<h3>6.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup<a class="headerlink" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
+<section id="create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">
+<h3>6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup.<a class="headerlink" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>This Distributed Cloud Firewall rule should exclusively allow <strong>HTTP</strong> traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the <em>allowed-internet-http</em> WebGroup.</p></li>
+<li><p>This DCF rule should strictly permit <strong>HTTP</strong> traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains included in the <em>allowed-internet-http</em> WebGroup, ensuring controlled and secure outbound web access.</p></li>
 </ul>
 <details>
   <summary>
@@ -1160,7 +1160,7 @@ Click here to view the complete Task 6.8 resolution: <span style='color:#33ECFF'
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-the-ztna">6.3 Enabling the ZTNA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-categorize-and-manage-traffic-originating-from-private-subnets">6.4 Create a SmartGroup to categorize and manage traffic originating from private subnets.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-cloud-egress-security-on-the-egress-vpc">6.5 Enable the Cloud Egress Security on the “egress-vpc”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-http-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.6 Create a DCF rule that permits HTTP traffic from any private subnets, using the corresponding WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet">6.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet</a></li>
 </ul>
