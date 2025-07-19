@@ -357,9 +357,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-the-ztna">6.3 Enabling the ZTNA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-categorize-and-manage-traffic-originating-from-private-subnets">6.4 Create a SmartGroup to categorize and manage traffic originating from private subnets.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-cloud-egress-security-on-the-egress-vpc">6.5 Enable the Cloud Egress Security on the “egress-vpc”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet">6.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-https-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.7 Create a Distributed Cloud Firewall rule that allows HTTPS traffic from all private subnets by utilizing the appropriate WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-within-the-egress-area-is-effectively-safeguarding-the-private-subnet">6.8 Verify that the Monitor section within the Egress area is effectively safeguarding the private subnet</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7. Conclusion</a></li>
@@ -877,7 +877,7 @@ Click here to view the complete task 6.4 resolution: <span style='color:#33ECFF'
 <section id="enable-the-cloud-egress-security-on-the-egress-vpc">
 <h3>6.5 Enable the Cloud Egress Security on the “egress-vpc”<a class="headerlink" href="#enable-the-cloud-egress-security-on-the-egress-vpc" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Activate the <code class="docutils literal notranslate"><span class="pre">cloud</span> <span class="pre">egress</span> <span class="pre">security</span></code> control to ensure that all private routing tables within the <em>egress-vpc</em> update their next hop from the AWS NAT Gateway to the previously deployed Aviatrix Spoke Gateway,  which incorporates the Aviatrix Cloud Firewall service. This change will enhance security and traffic control for outbound internet access..</p></li>
+<li><p>Activate the <code class="docutils literal notranslate"><span class="pre">cloud</span> <span class="pre">egress</span> <span class="pre">security</span></code> control to ensure that all private routing tables within the <em>egress-vpc</em> update their next hop from the AWS NAT Gateway to the previously deployed Aviatrix Spoke Gateway,  which incorporates the Aviatrix Cloud Firewall service. This change will enhance security and traffic control for outbound internet access.</p></li>
 </ul>
 <details>
   <summary>
@@ -915,7 +915,7 @@ Click here to view the complete task 6.5 resolution: <span style='color:#33ECFF'
 <p><span class="caption-number">Fig. 36 </span><span class="caption-text">Select the egress-vpc</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>After a few seconds, click on the refresh button located at the bottom left side. You will notice that under the Point of Egress column, the value has changed from <code class="docutils literal notranslate"><span class="pre">&quot;Native</span> <span class="pre">Cloud</span> <span class="pre">Egress&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;Local</span> <span class="pre">Egress&quot;</span></code>.</p>
+<p>After a few seconds, click on the refresh button located at the bottom right side. You will notice that under the Point of Egress column, the value has changed from <code class="docutils literal notranslate"><span class="pre">&quot;Native</span> <span class="pre">Cloud</span> <span class="pre">Egress&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;Local</span> <span class="pre">Egress&quot;</span></code>.</p>
 <figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab-resegress17777.png"><img alt="../_images/lab-resegress17777.png" src="../_images/lab-resegress17777.png" style="height: 200px;" />
 </a>
@@ -947,14 +947,14 @@ Click here to view the complete task 6.5 resolution: <span style='color:#33ECFF'
 </details>
 </section>
 <section id="create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">
-<h3>6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup.<a class="headerlink" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup" title="Link to this heading">#</a></h3>
+<h3>6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup<a class="headerlink" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>This DCF rule should strictly permit <strong>HTTP</strong> traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains included in the <em>allowed-internet-http</em> WebGroup, ensuring controlled and secure outbound web access.</p></li>
 </ul>
 <details>
   <summary>
 Click here to view the complete Task 6.6 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-<p>This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.</p>
+<p>This task involves creating a Distributed Cloud Firewall rule and associating it with the WebGroup you previously established.</p>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p></li>
 </ul>
@@ -980,20 +980,20 @@ Click here to view the complete Task 6.6 resolution: <span style='color:#33ECFF'
 <figure class="align-center" id="id41">
 <img alt="../_images/lab-resegress20.png" src="../_images/lab-resegress20.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Save in Drafts</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details>
 </section>
-<section id="create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">
-<h3>6.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup<a class="headerlink" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup" title="Link to this heading">#</a></h3>
+<section id="create-a-distributed-cloud-firewall-rule-that-allows-https-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">
+<h3>6.7 Create a Distributed Cloud Firewall rule that allows HTTPS traffic from all private subnets by utilizing the appropriate WebGroup<a class="headerlink" href="#create-a-distributed-cloud-firewall-rule-that-allows-https-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>This Distributed Cloud Firewall rule should exclusively allow <strong>HTTPS</strong> traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the <em>allowed-internet-https</em> WebGroup.</p></li>
+<li><p>This Distributed Cloud Firewall rule should exclusively permit <strong>HTTPS</strong> traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains listed in the <em>allowed-internet-https</em> WebGroup, ensuring secure and controlled outbound connections.</p></li>
 </ul>
 <details>
   <summary>
 Click here to view the complete Task 6.7 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
-<p>This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.</p>
+<p>This task involves creating an additional Distributed Cloud Firewall rule and attaching it to the WebGroup you previously established. This will help you define specific security policies and ensure consistent enforcement across your network resources.</p>
 <ul class="simple">
 <li><p>Before clicking the <strong>Commit</strong> button, click again the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p></li>
 </ul>
@@ -1032,10 +1032,10 @@ Click here to view the complete Task 6.7 resolution: <span style='color:#33ECFF'
 </figure>
 </details>
 </section>
-<section id="verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet">
-<h3>6.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet<a class="headerlink" href="#verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet" title="Link to this heading">#</a></h3>
+<section id="verify-that-the-monitor-section-within-the-egress-area-is-effectively-safeguarding-the-private-subnet">
+<h3>6.8 Verify that the Monitor section within the Egress area is effectively safeguarding the private subnet<a class="headerlink" href="#verify-that-the-monitor-section-within-the-egress-area-is-effectively-safeguarding-the-private-subnet" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Once the Aviatrix Cloud Firewall is enabled, you should see <strong>logs</strong> showing traffic to the permitted domains. All other traffic will be automatically denied.</p></li>
+<li><p>Once the <ins>permitted</ins> Distributed Cloud Firewall rules are enforced on the Spoke Gateway and integrated into the Aviatrix Cloud Firewall, you should observe <strong>logs</strong> displaying traffic to both the allowed domains and the prohibited domains (which will be dropped).</p></li>
 </ul>
 <figure class="align-center" id="id45">
 <a class="reference internal image-reference" href="../_images/lab-topology01.png"><img alt="../_images/lab-topology01.png" src="../_images/lab-topology01.png" style="height: 400px;" />
@@ -1160,9 +1160,9 @@ Click here to view the complete Task 6.8 resolution: <span style='color:#33ECFF'
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-the-ztna">6.3 Enabling the ZTNA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-smartgroup-to-categorize-and-manage-traffic-originating-from-private-subnets">6.4 Create a SmartGroup to categorize and manage traffic originating from private subnets.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-cloud-egress-security-on-the-egress-vpc">6.5 Enable the Cloud Egress Security on the “egress-vpc”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dcf-rule-that-permits-https-traffic-from-any-private-subnets-using-the-corresponding-webgroup">6.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-in-the-egress-area-is-effectively-protecting-the-private-subnet">6.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-https-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.7 Create a Distributed Cloud Firewall rule that allows HTTPS traffic from all private subnets by utilizing the appropriate WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-within-the-egress-area-is-effectively-safeguarding-the-private-subnet">6.8 Verify that the Monitor section within the Egress area is effectively safeguarding the private subnet</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7. Conclusion</a></li>
