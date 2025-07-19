@@ -522,7 +522,7 @@ SmartGroups section
 
 ### 6.5 Enable the Cloud Egress Security on the "egress-vpc"
 
-- Activate the `cloud egress security` control to ensure that all private routing tables within the _egress-vpc_ update their next hop from the AWS NAT Gateway to the previously deployed Aviatrix Spoke Gateway,  which incorporates the Aviatrix Cloud Firewall service. This change will enhance security and traffic control for outbound internet access..
+- Activate the `cloud egress security` control to ensure that all private routing tables within the _egress-vpc_ update their next hop from the AWS NAT Gateway to the previously deployed Aviatrix Spoke Gateway,  which incorporates the Aviatrix Cloud Firewall service. This change will enhance security and traffic control for outbound internet access.
 
 <details>
   <summary>
@@ -564,7 +564,7 @@ align: center
 Select the egress-vpc
 ```
 
-After a few seconds, click on the refresh button located at the bottom left side. You will notice that under the Point of Egress column, the value has changed from `"Native Cloud Egress"` to `"Local Egress"`.
+After a few seconds, click on the refresh button located at the bottom right side. You will notice that under the Point of Egress column, the value has changed from `"Native Cloud Egress"` to `"Local Egress"`.
 
 ```{figure} images/lab-resegress17777.png
 ---
@@ -596,7 +596,7 @@ align: center
 
 </details>
 
-### 6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup.
+### 6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup
 
 - This DCF rule should strictly permit **HTTP** traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains included in the _allowed-internet-http_ WebGroup, ensuring controlled and secure outbound web access.
 
@@ -604,7 +604,7 @@ align: center
   <summary>
 Click here to view the complete Task 6.6 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 
-This task involves creating a Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
+This task involves creating a Distributed Cloud Firewall rule and associating it with the WebGroup you previously established.
 
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
 
@@ -633,20 +633,20 @@ Do not forget to click on **Save In Drafts**.
 ---
 align: center
 ---
-Saving the new Rule
+Save in Drafts
 ```
 
 </details>
 
-### 6.7 Create a DCF rule that permits HTTPs traffic from any private subnets, using the corresponding WebGroup
+### 6.7 Create a Distributed Cloud Firewall rule that allows HTTPS traffic from all private subnets by utilizing the appropriate WebGroup
 
-- This Distributed Cloud Firewall rule should exclusively allow **HTTPS** traffic originating from any subnets linked to a private routing table to access the internet, specifically targeting the domains listed in the _allowed-internet-https_ WebGroup.
+- This Distributed Cloud Firewall rule should exclusively permit **HTTPS** traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains listed in the _allowed-internet-https_ WebGroup, ensuring secure and controlled outbound connections.
 
 <details>
   <summary>
 Click here to view the complete Task 6.7 resolution: <span style='color:#33ECFF'>[disclose the RESOLUTION]</span></summary>
 
-This task involves creating another Distributed Cloud Firewall rule and attaching the WebGroup you previously created.
+This task involves creating an additional Distributed Cloud Firewall rule and attaching it to the WebGroup you previously established. This will help you define specific security policies and ensure consistent enforcement across your network resources.
 
 - Before clicking the **Commit** button, click again the `"+ Rule"` button.
 
@@ -690,9 +690,9 @@ Commit
 
 </details>
 
-### 6.8 Verify that the Monitor section in the Egress area is effectively protecting the private subnet
+### 6.8 Verify that the Monitor section within the Egress area is effectively safeguarding the private subnet
 
-- Once the Aviatrix Cloud Firewall is enabled, you should see **logs** showing traffic to the permitted domains. All other traffic will be automatically denied.
+- Once the <ins>permitted</ins> Distributed Cloud Firewall rules are enforced on the Spoke Gateway and integrated into the Aviatrix Cloud Firewall, you should observe **logs** displaying traffic to both the allowed domains and the prohibited domains (which will be dropped).
 
 ```{figure} images/lab-topology01.png
 ---
@@ -727,6 +727,7 @@ align: center
 ---
 Logs
 ```
+
 </details>
 
 ## 7. Conclusion
