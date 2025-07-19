@@ -359,7 +359,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-cloud-egress-security-on-the-egress-vpc">6.5 Enable the Cloud Egress Security on the “egress-vpc”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-https-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.7 Create a Distributed Cloud Firewall rule that allows HTTPS traffic from all private subnets by utilizing the appropriate WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-within-the-egress-area-is-effectively-safeguarding-the-private-subnet">6.8 Verify that the Monitor section within the Egress area is effectively safeguarding the private subnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-tab-within-the-egress-section-is-effectively-safeguarding-the-private-subnet-by-providing-comprehensive-logs">6.8 Verify that the Monitor tab within the Egress section is effectively safeguarding the private subnet by providing comprehensive logs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7. Conclusion</a></li>
@@ -924,7 +924,7 @@ Click here to view the complete task 6.5 resolution: <span style='color:#33ECFF'
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Once Cloud Egress Security is enabled, access the Gatus Dashboard from your personal POD Portal. You will observe that all traffic starts to fail, turning <strong>red</strong>, as a result of the ExplicitDenyRule applied above the Greenfield rule.</p></li>
+<li><p>Once Cloud Egress Security is enabled, access the Gatus Dashboard from your personal POD Portal. You will observe that all traffic starts to fail, turning <strong><code class="docutils literal notranslate"><span class="pre">red</span></code></strong>, as a result of the ExplicitDenyRule applied above the Greenfield rule.</p></li>
 </ul>
 <figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab-resegress1756.png"><img alt="../_images/lab-resegress1756.png" src="../_images/lab-resegress1756.png" style="height: 400px;" />
@@ -949,7 +949,7 @@ Click here to view the complete task 6.5 resolution: <span style='color:#33ECFF'
 <section id="create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">
 <h3>6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup<a class="headerlink" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>This Distributed Cloud Firewall rule should strictly permit <strong>HTTP</strong> traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains included in the <em>allowed-internet-http</em> WebGroup, ensuring controlled and secure outbound web access.</p></li>
+<li><p>This Distributed Cloud Firewall rule should strictly permit <strong>HTTP</strong> traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains included in the <em><code class="docutils literal notranslate"><span class="pre">allowed-internet-http</span></code></em> WebGroup, ensuring controlled and secure outbound web access.</p></li>
 </ul>
 <details>
   <summary>
@@ -988,7 +988,7 @@ Click here to view the complete Task 6.6 resolution: <span style='color:#33ECFF'
 <section id="create-a-distributed-cloud-firewall-rule-that-allows-https-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">
 <h3>6.7 Create a Distributed Cloud Firewall rule that allows HTTPS traffic from all private subnets by utilizing the appropriate WebGroup<a class="headerlink" href="#create-a-distributed-cloud-firewall-rule-that-allows-https-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>This Distributed Cloud Firewall rule should exclusively permit <strong>HTTPS</strong> traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains listed in the <em>allowed-internet-https</em> WebGroup, ensuring secure and controlled outbound connections.</p></li>
+<li><p>This Distributed Cloud Firewall rule should exclusively permit <strong>HTTPS</strong> traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains listed in the <em><code class="docutils literal notranslate"><span class="pre">allowed-internet-https</span></code></em> WebGroup, ensuring secure and controlled outbound connections.</p></li>
 </ul>
 <details>
   <summary>
@@ -1032,16 +1032,24 @@ Click here to view the complete Task 6.7 resolution: <span style='color:#33ECFF'
 </figure>
 </details>
 </section>
-<section id="verify-that-the-monitor-section-within-the-egress-area-is-effectively-safeguarding-the-private-subnet">
-<h3>6.8 Verify that the Monitor section within the Egress area is effectively safeguarding the private subnet<a class="headerlink" href="#verify-that-the-monitor-section-within-the-egress-area-is-effectively-safeguarding-the-private-subnet" title="Link to this heading">#</a></h3>
+<section id="verify-that-the-monitor-tab-within-the-egress-section-is-effectively-safeguarding-the-private-subnet-by-providing-comprehensive-logs">
+<h3>6.8 Verify that the Monitor tab within the Egress section is effectively safeguarding the private subnet by providing comprehensive logs<a class="headerlink" href="#verify-that-the-monitor-tab-within-the-egress-section-is-effectively-safeguarding-the-private-subnet-by-providing-comprehensive-logs" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Once the <ins>permitted</ins> Distributed Cloud Firewall rules are enforced on the Spoke Gateway and integrated into the Aviatrix Cloud Firewall, you should observe <strong>logs</strong> displaying traffic to both the allowed domains and the prohibited domains (which will be dropped).</p></li>
+<li><p>At the conclusion of this lab, the Gatus Dashboard should display the layout and data similar to the example shown below, reflecting the successful configuration and monitoring setup you have implemented:</p></li>
 </ul>
 <figure class="align-center" id="id45">
+<a class="reference internal image-reference" href="../_images/lab-gatus99.png"><img alt="../_images/lab-gatus99.png" src="../_images/lab-gatus99.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Gatus outcomes</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id46">
 <a class="reference internal image-reference" href="../_images/lab-topology01.png"><img alt="../_images/lab-topology01.png" src="../_images/lab-topology01.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Final Topology</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Final Topology</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <details>
@@ -1051,19 +1059,39 @@ Click here to view the complete Task 6.8 resolution: <span style='color:#33ECFF'
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong>, then select <em>egress-vpc</em> from the drop-down menu in the <code class="docutils literal notranslate"><span class="pre">VPC/VNets</span></code> field.</p></li>
 </ul>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id47">
 <a class="reference internal image-reference" href="../_images/lab-resegress24.png"><img alt="../_images/lab-resegress24.png" src="../_images/lab-resegress24.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will immediately notice the allowed domains, thanks to the two Distributed Cloud Firewall (DCF) rules you configured, which permit traffic to these destinations. At the same time, you will see attempts to access prohibited domains, which are subsequently denied in accordance with the <code class="docutils literal notranslate"><span class="pre">Zero</span> <span class="pre">Trust</span></code> approach enabled by the Aviatrix Cloud Firewall. This setup effectively demonstrates how the security policies are enforced in real-time, ensuring only authorized traffic is permitted while malicious or unauthorized access is promptly blocked.</p>
-<figure class="align-center" id="id47">
+<p>You will immediately notice the allowed domains, thanks to the two Distributed Cloud Firewall (DCF) rules you configured, which permit traffic to these destinations. At the same time, you will see attempts to access prohibited domains, which are subsequently denied in accordance with the `Zero Trust approach enabled by the Aviatrix Cloud Firewall. This setup effectively demonstrates how the security policies are enforced in real-time, ensuring only authorized traffic is permitted while malicious or unauthorized access is promptly blocked.</p>
+<figure class="align-center" id="id48">
 <a class="reference internal image-reference" href="../_images/lab-resegress25.png"><img alt="../_images/lab-resegress25.png" src="../_images/lab-resegress25.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>You can also review the “Monitor” tab within the Distributed Cloud Firewall section. There, you will observe entries for both of the permitted rules, confirming that traffic matching these rules is allowed. Additionally, you will see that all other traffic is automatically dropped, thanks to the enforcement of the ExplicitDenyAll rule. This provides clear visibility into how the firewall policies are actively controlling and securing your network traffic.</p></li>
+</ul>
+<figure class="align-center" id="id49">
+<a class="reference internal image-reference" href="../_images/lab-resegress253.png"><img alt="../_images/lab-resegress253.png" src="../_images/lab-resegress253.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">DCF Monitor tab</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Last but not least, navigate to your personal POD Portal, access the Gatus Dashboard and verify that you see the same outcomes shown in the screenshot below:</p></li>
+</ul>
+<figure class="align-center" id="id50">
+<a class="reference internal image-reference" href="../_images/lab-resegress2534.png"><img alt="../_images/lab-resegress2534.png" src="../_images/lab-resegress2534.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">DCF Monitor tab</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details>
@@ -1162,7 +1190,7 @@ Click here to view the complete Task 6.8 resolution: <span style='color:#33ECFF'
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-cloud-egress-security-on-the-egress-vpc">6.5 Enable the Cloud Egress Security on the “egress-vpc”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-http-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-distributed-cloud-firewall-rule-that-allows-https-traffic-from-all-private-subnets-by-utilizing-the-appropriate-webgroup">6.7 Create a Distributed Cloud Firewall rule that allows HTTPS traffic from all private subnets by utilizing the appropriate WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-section-within-the-egress-area-is-effectively-safeguarding-the-private-subnet">6.8 Verify that the Monitor section within the Egress area is effectively safeguarding the private subnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-that-the-monitor-tab-within-the-egress-section-is-effectively-safeguarding-the-private-subnet-by-providing-comprehensive-logs">6.8 Verify that the Monitor tab within the Egress section is effectively safeguarding the private subnet by providing comprehensive logs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7. Conclusion</a></li>
