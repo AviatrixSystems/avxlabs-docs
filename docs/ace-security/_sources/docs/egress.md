@@ -550,7 +550,7 @@ Currently, two private routing tables have a default route pointing to the **AWS
 
 ```{figure} images/lab-resegress177.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 Enable
@@ -558,7 +558,7 @@ Enable
 
 ```{figure} images/lab-resegress1777.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 Select the egress-vpc
@@ -568,7 +568,7 @@ After a few seconds, click on the refresh button located at the bottom right sid
 
 ```{figure} images/lab-resegress17777.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 Local Egress
@@ -598,7 +598,7 @@ align: center
 
 ### 6.6 Create a Distributed Cloud Firewall rule that allows HTTP traffic from all private subnets by utilizing the appropriate WebGroup
 
-- This DCF rule should strictly permit **HTTP** traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains included in the _allowed-internet-http_ WebGroup, ensuring controlled and secure outbound web access.
+- This Distributed Cloud Firewall rule should strictly permit **HTTP** traffic originating from any subnets associated with a private routing table to access the internet. The rule should specifically target the domains included in the _allowed-internet-http_ WebGroup, ensuring controlled and secure outbound web access.
 
 <details>
   <summary>
@@ -712,13 +712,13 @@ This is the final task—simply review the logs in the **Egress** section for ve
 
 ```{figure} images/lab-resegress24.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Monitor
 ```
 
-You will immediately observe the allowed domains, thanks to the two DCF rules you created, as well as the prohibited domains that were accessed but subsequently denied.
+You will immediately notice the allowed domains, thanks to the two Distributed Cloud Firewall (DCF) rules you configured, which permit traffic to these destinations. At the same time, you will see attempts to access prohibited domains, which are subsequently denied in accordance with the `Zero Trust` approach enabled by the Aviatrix Cloud Firewall. This setup effectively demonstrates how the security policies are enforced in real-time, ensuring only authorized traffic is permitted while malicious or unauthorized access is promptly blocked.
 
 ```{figure} images/lab-resegress25.png
 ---
