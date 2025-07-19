@@ -556,7 +556,7 @@ align: center
 Enable
 ```
 
-```{figure} images/lab-resegress17777.png
+```{figure} images/lab-resegress1777.png
 ---
 height: 200px
 align: center
