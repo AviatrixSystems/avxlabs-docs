@@ -184,7 +184,7 @@ all green
 ```
 
 ## 6. Tasks
-Let's begin deploying the Aviatrix Cloud Firewall.
+Let's start by deploying the Aviatrix Spoke Gateway, and once that is complete, we will proceed to activate the Aviatrix Cloud Firewall.
 
 ### 6.1 Deploy the Aviatrix Spoke Gateway
 
