@@ -13,10 +13,14 @@ You can access both the **Quiz** and the **Survey** Portal clicking on the pictu
 After logged in, click on **"ACE Multicloud Network Security Quiz"**.
 ```
 
-- In order to address certain quiz questions effectively, it is necessary to  "Cloud Perimeter Egress Security" Pod Access.
-- You have **8** hours to complete the quiz
-- After 8 hours lab pod will be shutdown
-- You have a total of **3** maximum attempts!
+- Some questions relate to the hands-on activity, while others pertain to the theory lectures.  
+
+- You have **2 hours and 30 minutes** to complete the quiz.  
+
+- The pod will be shut down at the end of the training.  
+
+- You are allowed a maximum of 3 attempts to complete the quiz.
+
 
 ```{figure} images/survey.png
 ---
@@ -24,8 +28,6 @@ align: center
 ---
 Portal
 ```
-
-
 
 - Start the Quiz!
 
@@ -37,17 +39,7 @@ Start the Quiz
 ```
 
 ```{important}
-After submitted your quiz, click on **Next** and do not forget to complete the quick survey!
-```
-
-- Submit your answers!
-  
-```{figure} images/quiz-2.png
----
-height: 400px
-align: center
----
-Submit
+After submitting your quiz, click on **Next** and don’t forget to complete the quick survey! Please note that completing the survey is mandatory to receive your certification.
 ```
 
 - Fill in the post training Survey!
