@@ -696,7 +696,7 @@ Commit
 
 - At the conclusion of this lab, the Gatus Dashboard should display the layout and data similar to the example shown below, reflecting the successful configuration and monitoring setup you have implemented:
 
-```{figure} images/lab-gatus99.png
+```{figure} images/lab-gatus999.png
 ---
 height: 400px
 align: center
@@ -750,12 +750,12 @@ DCF Monitor tab
 
 - Last but not least, navigate to your personal POD Portal, access the `Gatus Dashboard` and verify that you see the same outcomes shown in the screenshot below:
 
-```{figure} images/lab-resegress2534.png
+```{figure} images/lab-resegress25342.png
 ---
 height: 400px
 align: center
 ---
-DCF Monitor tab
+Gatus Dashboard
 ```
 
 </details>
