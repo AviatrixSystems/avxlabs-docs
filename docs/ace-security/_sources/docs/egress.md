@@ -85,7 +85,7 @@ Dashboard
 Navigate to **CoPilot > Settings > Resources > Task Server**
 ```
 
-Please set the intervals for both `Fetch GW Routes` and `Fetch VPC Routes` to **“1 Second”** each, and then click on **SAVE** to apply the changes.
+Please set the intervals for `Fetch GW Routes`, `Fetch VPC Routes` and `Fetch Instances` to **“1 Second”** each, and then click on **SAVE** to apply the changes.
 
 ```{figure} images/lab-egress04.png
 ---
