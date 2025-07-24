@@ -399,7 +399,7 @@ WebGroup section
 
 After enabling the Distributed Cloud Firewall, you must activate the **Zero Trust Network Access** methodology by installing an explicit deny rule positioned above the Greenfield-Rule.
 
-- Create a rule named **ExplicitDenyAll** where both the Source SmartGroup and Destination SmartGroup match the pre-defined SmartGroup Anywhere (0.0.0.0/0), with protocol set to Any and action set to Permit.
+- Create a rule named **ExplicitDenyAll** where both the Source SmartGroup and Destination SmartGroup match the pre-defined SmartGroup Anywhere (0.0.0.0/0), with protocol set to Any and action set to **Deny**.
 
 - Enable **Logging** for the rule  
 
