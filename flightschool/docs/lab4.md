@@ -18,15 +18,6 @@ We have prepared and installed a **microsegmentation** policy already. Lets revi
 * Look at the policy to get an understanding of which rules are set up
 * Edit the last policy **_DefaultAllowAll_** and set enforcement to off and hit **Save In Draft**.
 
-```{caution}
-If you see this message, please click on the `"Enable Distributed Cloud Firewall"` button.
-```{figure} images/lab4-dcf.png
----
-align: center
----
-Enable dcf
-```
-
 ```{figure} images/lab4-edit.png
 ---
 height: 200px
@@ -138,40 +129,7 @@ The aws-shared server needs access to the internet to access software updates. W
 
 ### Expected Results
 
-As you can see, there is currently no connectivity possible. All egress connections are failing.
-
-```{figure} images/lab4-no-internet.png
----
-align: center
----
-No Internet Access
-```
-
-## Lab 4.4 - Enable Source NAT
-
-### Description
-
-By enabling source NAT on the aws-shared spoke gateway, we provide a path towards the internet through the spoke gateway.
-
-### Validate
-
-* Go to **_Cloud Fabric -> Gateways -> Spoke Gateways_** and click on **_aws-shared_**.
-* Go to the settings pane and under SNAT enable NAT and save the settings.
-* Check connectivity on the dashboard again.
-
-```{figure} images/lab4-nat.png
----
-height: 200px
-align: center
----
-SNAT enabled
-```
-
-> Does the aws-shared server have access to the internet now?
-
-### Expected Results
-
-As you can see, all connectivity towards the internet is now allowed. With this setting enabled, the spoke gateway makes a great and cost effective replacement for cloud native NAT gateways.
+As you can see, all connectivity towards the internet is allowed.
 
 ```{figure} images/lab4-nat-enabled.png
 ---
@@ -180,11 +138,11 @@ align: center
 Internet Access
 ```
 
-## Lab 4.5 - Configure domain filtering
+## Lab 4.4 - Configure domain filtering
 
 ### Description
 
-Now that we have enabled internet access for aws-shared through NAT translation on the spoke gateway, we want to make sure only trusted destinations are accessible. In this lab we will enable domain based filtering.
+Now that we have confirmed internet access for aws-shared through NAT translation on the spoke gateway, we want to make sure only trusted destinations are accessible. In this lab we will enable domain based filtering.
 
 ### Validate
 
@@ -226,7 +184,7 @@ align: center
 Domains blocked
 ```
 
-## Lab 4.6 - Configure URL Filtering
+## Lab 4.5 - Configure URL Filtering
 
 ### Description
 
@@ -264,7 +222,7 @@ align: center
 URL Filtering working
 ```
 
-## Lab 4.7 - Firenet
+## Lab 4.6 - Firenet
 
 ### Description
 
@@ -307,7 +265,7 @@ align: center
 Associate firewall result
 ``` 
 
-## Lab 4.8 - Firewall logging
+## Lab 4.7 - Firewall logging
 
 ### Description
 
@@ -332,7 +290,7 @@ align: center
 Empty firewall logs
 ``` 
 
-## Lab 4.9 - Enable inspection
+## Lab 4.8 - Enable inspection
 
 ### Description
 
@@ -363,13 +321,13 @@ You should start seeing entries like the screenshot below.
 align: center
 ---
 FW Logs
-``` 
+```
 
 ## Lab 4 Summary
 
 * You have enabled microsegmentation between VNET's and VPC's.
 * You have enabled microsegmentation within VNET's and VPC's, to allow for native SG and NSG orchestration.
-* You have enabled access to the internet in a VPC by using the Aviatrix spoke gateway as a NAT gateway.
+* You have confirmed access to the internet in a VPC using the Aviatrix spoke gateway as a NAT gateway.
 * You have added domain based filtering to trusted destinations only.
 * You have set up URL based filtering to allow only very specific parts of websites.
 * You have integrated a 3rd party NGFW into the network, for even more extensive filtering.
