@@ -170,9 +170,9 @@ curl command-04
 ```
 
 ## 4. Aviatrix Cloud Firewall
-### 4.1 Enable the Secure Local Egress Control
+### 4.1 Enable the Cloud Egress Security
 
-Now let's enable the egress within the VPC that is hosting the **_aws-us-east-2-spoke1-test2_** instance.
+Now let's enable the cloud egress security within the VPC that is hosting the **_aws-us-east-2-spoke1-test2_** instance.
 
 ```{note}
 Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"Enable Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
@@ -253,13 +253,6 @@ align: center
 Begin Using Distributed Cloud Firewall
 ```
 
-```{figure} images/lab6-newjoe.png
----
-align: center
----
-Begin using Distributed Cloud Firewall
-```
-
 ```{figure} images/lab6-newjoe2.png
 ---
 align: center
@@ -267,18 +260,16 @@ align: center
 Begin
 ```
 
-After enabling the DCF, two rules will be generated automatically:
+After enabling the DCF, one rule will be generated automatically:
 - `Greendfield-Rule` = ALLOW EVERYTHING
-- `DefaultDenyAll` = it's an EXPLICIT deny
 
-The first rule essentially allows all kind of traffic.
 
 ```{figure} images/lab6-greenfield.png
 ---
 height: 150px
 align: center
 ---
-Automatic rules injected by the Controller
+Greenfield-Rule automatically injected by the Controller
 ```
 
 ## 5. Define a new SmartGroup 
