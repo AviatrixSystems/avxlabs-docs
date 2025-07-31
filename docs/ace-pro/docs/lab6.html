@@ -392,12 +392,16 @@ document.write(`
 <h1>Lab 6 - FIRENET<a class="headerlink" href="#lab-6-firenet" title="Link to this heading">#</a></h1>
 <section id="objective">
 <h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
-<p>The objective of this lab is to learn how to deploy <strong>Palo Alto</strong> Networks (aka PAN) VM-series firewalls in the <strong>Transit VNet</strong> and inspect traffic between the two Spoke VNets using firewall policies.</p>
+<p>The objective of this lab is to learn how to deploy a <strong>Palo Alto Networks (PAN)</strong> Firewall in the <strong>Transit VNet</strong> and monitor traffic between the two Spoke VNets using firewall policies.</p>
 </section>
 <section id="firenet-overview-firewall-network">
 <h2>2. FireNet Overview (Firewall Network)<a class="headerlink" href="#firenet-overview-firewall-network" title="Link to this heading">#</a></h2>
 <p>Aviatrix Firewall Network (aka <em><code class="docutils literal notranslate"><span class="pre">FireNet</span></code></em>) is a turnkey solution to deploy and manage firewall instances in the cloud, as shown in the topology below. Firewall Network significantly simplifies virtual firewall deployment and allows the firewall to inspect VPC/VNet/VCN to VPC/VNet/VCN (East West) traffic, VPC/VNet/VCN to Internet (Egress) traffic, and VPC/VNet/VCN to on-prem including partners and branches (North South) traffic.</p>
 <p>In addition, Firewall Network allows you to scale firewall deployment to multi AZ and multi instances/VMs in maximum throughput active/active state without the SNAT requirement.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">FireNet</span></code> is a service chaining feature that simplifies the deployment of third-party NGFWs. However, this is considered a legacy approach, as traditional firewalls are typically <ins>bolted onto the cloud network</ins>.</p>
+</div>
 </section>
 <section id="topology">
 <h2>3. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
@@ -507,7 +511,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>When you click on the <strong>Firewall Image</strong> drop-down, you will see a <code class="docutils literal notranslate"><span class="pre">&quot;Loading&quot;</span></code> message. This indicates that the Controller is contacting the Marketplace via API calls. Please be patient and wait for about <span style='color:#479608'><strong><em>3 minutes!</em></strong></span>.</p>
+<p>When you click on the <strong>Firewall Image</strong> drop-down, you will see a <code class="docutils literal notranslate"><span class="pre">&quot;Loading&quot;</span></code> message. This indicates that the Controller is contacting the Marketplace via API calls. Please be patient and wait for less than <span style='color:#479608'><strong><em>1 minute!</em></strong></span></p>
 </div>
 <figure class="align-center" id="id10">
 <img alt="../_images/lab7-marketplace.png" src="../_images/lab7-marketplace.png" />
@@ -763,12 +767,11 @@ Do not forget to click on <strong>Save</strong>.</p>
 </section>
 <section id="dcf-rules">
 <h2>6. DCF Rules<a class="headerlink" href="#dcf-rules" title="Link to this heading">#</a></h2>
-<p>In Lab 5 (i.e., <em>Aviatrix Cloud Firewall</em>), the DCF functionality was activated. The currently allowed rules are as follows::</p>
+<p>In Lab 5 (<em>Aviatrix Cloud Firewall</em>), the DCF functionality was enabled. The currently permitted rules are as follows:</p>
 <ol class="arabic simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;Egress-Rule&quot;</span></code> , that is only allowing http/https traffic towards two defined domains.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;ExplicitDenyAll&quot;</span></code> with <em>Logging</em>=on</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;Greenfield-Rule&quot;</span></code></p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;DefaultDenyAll&quot;</span></code>, at the very bottom.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;Egress-Rule&quot;</span></code> , which permits onlyg HTTP/HTTPS traffic to two specified domains.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;ExplicitDenyAll&quot;</span></code> rule, with <em>Logging</em> enabled.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;Greenfield-Rule&quot;</span></code>.</p></li>
 </ol>
 <figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab7-dcfrule.png"><img alt="../_images/lab7-dcfrule.png" src="../_images/lab7-dcfrule.png" style="height: 250px;" />
@@ -854,7 +857,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <p><span class="caption-number">Fig. 333 </span><span class="caption-text">gcp-us-central1-spoke1-test1</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>All three instances can reach each other!</p>
+<p>All three instances can communicate with each other!</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>AWS US-EAST-<span style='color:red'>1</span></summary> is not reachable from either Azure or GCP due to the requirement for a <strong>Full-Mesh</strong> configuration.</p>
@@ -938,7 +941,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 </section>
 <section id="fw-path-verification">
 <h2>9. FW Path Verification<a class="headerlink" href="#fw-path-verification" title="Link to this heading">#</a></h2>
-<p>Let’s verify that the traffic generated from both VNets is indeed diverted to the firewall.</p>
+<p>Let’s verify that traffic originating from both VNets is properly routed through the firewall.</p>
 <figure class="align-center" id="id52">
 <a class="reference internal image-reference" href="../_images/lab6-verification.png"><img alt="../_images/lab6-verification.png" src="../_images/lab6-verification.png" style="height: 400px;" />
 </a>
@@ -1000,7 +1003,7 @@ Do not forget to click on <strong>Save</strong>.</p>
 <h2>10. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Perhaps it’s time to finally adopt the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewali&quot;</span></code></strong>, with its integrated distributed architecture, to replace costly next-generation firewalls (NGFWs) and streamline your security infrastructure.</p>
+<p>Perhaps it’s time to embrace the <strong><code class="docutils literal notranslate"><span class="pre">&quot;Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code></strong>, with its integrated distributed architecture, to replace costly next-generation firewalls (NGFWs) and simplify your security infrastructure.</p>
 </div>
 <p>After completing this lab, the overall topology will appear as follows:</p>
 <figure class="align-center" id="id57">

@@ -87,7 +87,7 @@ Create a connection from the Cloud (GCP) to an on-premises partner site using th
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.100.0/24</span>
 - **Internet Key Exchange**: <span style='color:#479608'>**IKEv2**</span>
 - **Authetication Method**: <span style='color:#479608'>Pre-Shared Key</span>
-- **Remote Gateway IP**: <span style='color:#479608'>[**Refer to your Pod assignment for the **on-prem-partner1**'s Public IP - Lab7/8 section** - You will need to use the dig/host/nslookup command]</span>
+- **Remote Gateway IP**: <span style='color:#479608'>[**Refer to your Pod assignment for the **on-prem-partner1**'s Public IP - Lab7/8 section** - You will need to use the dig, host, or nslookup command. Please see the following **Note** section for instructions on resolving the symbolic name to an IP address.]</span>
 - **Local Gateway Instance**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
 - **Pre-Shared Key**: <span style='color:#479608'>[**Refer to your Pod assignment for the StrongSwan PSK - Lab7/8 section**]</span>
 
@@ -197,7 +197,11 @@ LX terminal
 Please bear in mind that if you decide to use the Jumpbox, copy and paste do not work directly from the host machine. Therefore, activate the **Guacamole Menu**, which is a sidebar that is hidden until explicitly shown. On a laptop or other device with a hardware keyboard, you can display this menu by pressing **_Ctrl+Alt+Shift_** on a Windows machine (**_Control+Shift+Command_** on a Mac).
 ```
 
-Type the SSH command to log in to the StrongSwan router (**on-prem-partner1**). Then copy the command and paste it insid ethe LX terminal.
+```{caution}
+**The Guacamole client may experience some slight lag, so please be patient.**
+```
+
+Type the SSH command (i.e., `ssh student@...`) to log in to the StrongSwan router (**on-prem-partner1**). Afterward, copy the command and paste it into the LX terminal.
 
 ```{tip}
 You can retrieve its DNS name from your personal POD Portal.
@@ -376,7 +380,7 @@ Connection is up
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)**
 
-Filter out based on the **GCP** Cloud, expand all the VPCs and you will see the new S2C connection with the remote OnPrem-Partner site!
+Filter by **GCP Cloud** and select the **Managed** button. Expand all the VPCs to see the new S2C connection with the remote On-Prem Partner site!
 
 ```{figure} images/lab8-onprem.png
 ---
@@ -384,6 +388,14 @@ height: 400px
 align: center
 ---
 OnPrem-Partner site
+```
+
+```{figure} images/lab8-diag38.png
+---
+height: 400px
+align: center
+---
+"Managed" and unselect the other CSPs except GCP
 ```
 
 ## 6. Connectivity Testing
@@ -447,14 +459,6 @@ Ping ok
 
 Go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, click on the `Tools` button and then click on `Gateway Diagnostics`.
 
-```{figure} images/lab8-diag38.png
----
-height: 400px
-align: center
----
-"Managed" and unselect the other CSPs except GCP
-```
-
 ```{figure} images/lab8-diag.png
 ---
 height: 400px
@@ -463,7 +467,7 @@ align: center
 Gateway Diagnostics
 ```
 
-Choose the `“Active Sessions”` option, click on **Run**. After you receive the result, type `“icmp”` in the **Search** field.
+Select the `“Active Sessions”` option and click **Run**. Once the results appear, type `“icmp”` into the **Search** field.
 
 You will notice the subnets involved (i.e. **real** and **virtual** subnets) in the Mapped NAT.
 

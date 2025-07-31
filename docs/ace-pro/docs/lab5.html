@@ -651,7 +651,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </section>
 <section id="define-a-new-smartgroup">
 <h2>5. Define a new SmartGroup<a class="headerlink" href="#define-a-new-smartgroup" title="Link to this heading">#</a></h2>
-<p>At this point, you can use the <strong>SmartGroup</strong> feature to identify the test2 instance.</p>
+<p>At this point, you can use the <strong>SmartGroup</strong> feature to identify the <code class="docutils literal notranslate"><span class="pre">test2</span></code> instance in the aws-us-east-2-spoke1 VPC.</p>
 <section id="identify-the-subnet-where-the-private-workload-resides">
 <h3>5.1 Identify the subnet where the private workload resides<a class="headerlink" href="#identify-the-subnet-where-the-private-workload-resides" title="Link to this heading">#</a></h3>
 <p>First and foremost, you have to identify the <strong>private subnet</strong> where the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance resides.</p>
@@ -745,7 +745,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <p><code class="docutils literal notranslate"><span class="pre">All-Web</span></code> <em>WebGroup</em> = this is an “allow-all” WebGroup that you must select in a Distributed Cloud Firewall rule if you do not want to limit the Internet-bound traffic for that rule, but you still want to log the FQDNs that are being accessed.</p>
 <p>Ultimately , this Webgroup will limit Internet traffic solely for <strong>HTTP</strong> and <strong>HTTPS</strong> protocols.</p>
 </div>
-<p>Click on the <strong>Commit</strong> button, and the rule previously created will be enfored in to the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Path</span></code>..</p>
+<p>Click on the <strong>Commit</strong> button, and the rule previously created will be enforced in to the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Path</span></code>..</p>
 <figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab6-newrule11.png"><img alt="../_images/lab6-newrule11.png" src="../_images/lab6-newrule11.png" style="height: 250px;" />
 </a>
@@ -764,7 +764,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now Create an Explicit Deny rule that is <strong>editable</strong>:</p></li>
+<li><p>Now Create an Explicit Deny rule:</p></li>
 </ul>
 <p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id35">
@@ -896,7 +896,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <p><span class="caption-number">Fig. 266 </span><span class="caption-text">Overview</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You now have complete <strong>Egress observability</strong>, along with a full list of domains accessed by the EC2 instance within that private subnet.</p>
+<p>You now have comprehensive <strong>Secure Cloud Egress observability</strong>, including a detailed list of all domains accessed by the EC2 instance within that private subnet.</p>
 <p>Furthermore, go to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong> and from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window, select the <strong><em>aws-us-east-2-spoke1 VPC</em></strong>.</p>
 <figure class="align-center" id="id46">
 <a class="reference internal image-reference" href="../_images/lab6-monitor.png"><img alt="../_images/lab6-monitor.png" src="../_images/lab6-monitor.png" style="height: 400px;" />
@@ -910,7 +910,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </section>
 <section id="ztna-zero-trust-network-access">
 <h2>8. ZTNA - Zero Trust Network Access<a class="headerlink" href="#ztna-zero-trust-network-access" title="Link to this heading">#</a></h2>
-<p>Now we have enabled the <code class="docutils literal notranslate"><span class="pre">Zero</span> <span class="pre">Trust</span> <span class="pre">Network</span> <span class="pre">Access</span></code> approach, denying everything at the very bottom of the DCF rules list.</p>
+<p>We have now enabled the Ze<code class="docutils literal notranslate"><span class="pre">Zero</span> <span class="pre">Trust</span> <span class="pre">Network</span> <span class="pre">Access</span></code> approach, which default-denies all access and only permits explicitly authorized connections.</p>
 <section id="create-a-new-webgroup">
 <h3>8.1 Create a New WebGroup<a class="headerlink" href="#create-a-new-webgroup" title="Link to this heading">#</a></h3>
 <p>Let’s move towards a posture where only specific egress domains are in place.</p>
@@ -1056,7 +1056,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </section>
 <section id="removal-of-the-aws-nat-gateway">
 <h2>10. Removal of the AWS NAT Gateway<a class="headerlink" href="#removal-of-the-aws-nat-gateway" title="Link to this heading">#</a></h2>
-<p>Now that you have successfully enabled the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code>, you can get rid of the AWS NAT Gateway.</p>
+<p>With the successful deployment of the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> within the Cloud Native Security Fabric (CNSF), you can now eliminate the need for the AWS NAT Gateway.</p>
 <section id="aws-console">
 <h3>10.1 AWS Console<a class="headerlink" href="#aws-console" title="Link to this heading">#</a></h3>
 <p>Login to <strong>AWS console</strong></a>. Refer to your pod info for login information (<ins>Please always refer to your personal POD Portal</ins>).</p>
