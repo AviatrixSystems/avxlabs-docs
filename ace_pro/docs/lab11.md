@@ -50,7 +50,7 @@ Create two Smart Groups and classify each one using the CSP tag `"environment"`:
 
 ### 3.1 Smart Group “bu1”
 
-Go to **CoPilot > Groups > SmartGroups** and click on `"+ SmartGroup"`.
+Navigate to **CoPilot > Groups > SmartGroups** and click on `"+ SmartGroup"`.
 
 ```{figure} images/lab10-smart2.png
 ---
@@ -123,7 +123,7 @@ align: center
 Resources that match the condition
 ```
 
-At this stage, you have created logical containers that do not impact the existing routing domain, thanks to the `Connetion Policy` applied in **Lab 3**. Now, it’s time to thoroughly define Distributed Cloud Firewall (DCF) rules to govern **East-West** traffic.
+At this stage, you have created logical containers that do not affect the existing routing domain, thanks to the `Connetion Policy`  applied in **Lab 3**. Now, it's time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
 
 Below is the current list of your DCF Rules within the **Distributed Cloud Firewall** section of your CoPilot:
 
@@ -240,7 +240,7 @@ The previous results clearly confirm that connectivity is disrupted, allowing on
 Zero Trust architecture is "Never trust, always verify", a critical component to enterprise cloud adoption success!
 ```
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
 ```{figure} images/lab10-newrule.png
 ---
@@ -249,7 +249,7 @@ align: center
 New Rule
 ```
 
-Insert the following parameters:
+Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>intra-icmp-bu1</span>
 - **Source Smartgroups**: <span style='color:#479608'>bu1</span>
@@ -307,7 +307,7 @@ align: center
 intra-icmp-bu2
 ```
 
-Now proceed and click on the **Commit** button.
+Next, proceed by clicking the **Commit** button.
 
 ```{figure} images/lab10-rulecommitted01.png
 ---
@@ -397,7 +397,7 @@ Ping
 
 Let's investigate the logs:
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and then click on the filter icon and filter out based on the rule `"intra-icmp-bu1"`.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and then click on the filter icon and filter out based on the rule `"intra-icmp-bu1"`.
 
 ```{tip}
 Filter out based on the protocol **ICMP**.
@@ -415,7 +415,7 @@ align: center
 Outcomes
 ```
 
-Based on the outcome above, you will not see 10.0.1.10 (aws-us-east-2-spoke1-test2) because it belongs to bu2, which does not match the intra-icmp-bu1 rule. 
+Based on the above outcome, you will not see **10.0.1.10** (aws-us-east-2-spoke1-test2) because it belongs to bu2, which does not match the intra-icmp-bu1 rule.
 
 However, **aws-us-east-2-spoke1-test1** can ping **aws-us-east-2-spoke1-test2** due to intra-VPC communication, without needing to match any of the deployed DCF rules.
 
@@ -437,7 +437,7 @@ tes1 and test2 in AWS US-EAST-2
 The instances **aws-us-east-2-spoke1-test1** and **aws-us-east-2-spoke1-test2** are in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka **_intra-vpc separation_**).
 ```
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button, inside the `"Security Group (SG) Orchestration"` field.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button, inside the `"Security Group (SG) Orchestration"` field.
 
 ```{figure} images/lab10-orchestration.png
 ---
@@ -458,7 +458,7 @@ Manage SG Orchestration
 
 ### 5.5 SG Orchestration Verification Using the Gatus App
 
-Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the connectivity with **_aws-us-east-2-spoke1-test2_**.
+Open the **Gatus** App on **_aws-us-east-2-spoke1-test1_** and verify the connectivity with **_aws-us-east-2-spoke1-test2_**.
 
 ```{figure} images/lab10-gatus81.png
 ---
@@ -597,7 +597,7 @@ SSH ok
 
 Let's investigate the logs once again.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on the **intra-ssh-bu1** Rule!
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on the **intra-ssh-bu1** Rule!
 
 ```{figure} images/lab10-logsshbu187.png
 ---
