@@ -17,7 +17,7 @@ Now let's connect the `Aviatrix Edge` to the existing MCNA.
 
 First and foremost let's explore the **BGP Map** that describes the connectivity established through the BGPoverLAN.
 
-Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Map"` option.
+Navigate to **CoPilot > Diagnostics > Cloud Routes > BGP info**. Click on the three dots icon and select the `"Show BGP Map"` option.
 
 ```{figure} images/lab8-edge3.png
 ---
@@ -54,7 +54,7 @@ align: center
 225 Routes
 ```
 
-If you check also the `"Show BGP Advertised Routes"` outcome, you will notice that the Aviatrix Edge is not advertising any routes, because it is not connected to the MCNA yet!
+If you also review the `"Show BGP Advertised Routes"` output, you'll notice that Aviatrix Edge is not advertising any routes, as it is not yet connected to the CNSF.
 
 ```{figure} images/lab8-edge7.png
 ---
@@ -67,7 +67,7 @@ No routes advertised by the Edge yet
 
 Let's establish a peering connection between the Aviatrix Edge device and the Transit Gateway in **US-EAST-2**. 
 
-In the topology shown below, you'll see a workstation named 'edge' connected to the LAN router. Once the connection is established, you can initiate a ping from this client to verify connectivity.
+In the topology below, you'll see a workstation named `Edge` connected to the LAN router. Once the connection is established, you can initiate a ping from this client to verify connectivity.
 
 ```{figure} images/lab8-edge8.png
 ---
@@ -135,9 +135,9 @@ Manage Gateway Attachment
 ```
 
 ```{caution}
-Please make sure to select `"Attach over: Public Network"`. 
+Please make sure to select `"Attach Over: Public Network"`. 
 
-If you accidentally choose "_Attach over: Private Network_", the connection will not be established!
+If you accidentally choose "_Attach Over: Private Network_", the connection will not be established!
 ```{figure} images/lab8-edgeveryverynew.png
 ---
 align: center
@@ -165,7 +165,7 @@ align: center
 New attachment
 ```
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** cluster.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** cluster.
 
 ```{figure} images/lab8-edge16.png
 ---
@@ -183,6 +183,10 @@ You will observe an attachment established between the Transit Gateway in the cl
 align: center
 ---
 Transit-Spoke Edge Peering
+```
+
+```{note}
+Please be patient; it may take a few minutes for the connection to show as **'Up'**.
 ```
 
 Here’s how the topology will appear following the establishment of the attachment.
@@ -287,7 +291,7 @@ Target for the connectivity test
 The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered as just an additional VPC!
 
 ```{note}
-Do NOT forget to exit from the previous session used to log in to the on-prem-partner1 router (i.e. Lab 7)
+Do NOT forget to exit from the previous session used to log in to the **on-prem-partner1 router** (i.e. Lab 7)
 ```{figure} images/lab8-edge67.png
 ---
 height: 250px
@@ -495,7 +499,7 @@ The two instances can communicate without any issues.
 If the two instances are unable to communicate, check the DCF section, the Network Segmentation section, and the Hybrid Cloud section, as you may have overlooked some necessary configurations in these areas.
 ```
 
-Now go to **CoPilot > Diagnostics > Diagnostics Tools**, select the **_aws-us-east-2-spoke1_** Gateway, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e. `172.16.1.100`)
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools**, select the **_aws-us-east-2-spoke1_** Gateway, choose the `Traceroute` command and enter the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e., `172.16.1.100`).
 
 ```{figure} images/lab8-podportal113.png
 ---
@@ -607,7 +611,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Route DB"` tab, then on right-hand side  type **172.16.1.0** on the Search field.
+Select the `"Route DB"` tab, then on right-hand side  type **172.16.1.0** on the **Search** field.
 
 ```{figure} images/lab8-primary03.png
 ---
@@ -635,7 +639,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget,  select the `gcp-us-central1-transit-peering` connection and type **two times** the AS number **64513**.
+Select the `"Settings"` tab, expand the `"Border Gateway Protocol (BGP)"` section, and in the `AS Path Prepend` widget, choose the `gcp-us-central1-transit-peering` connection. Then, enter the AS number **64513** <ins>twice</ins>.
 
 Of course, then click on **Save**.
 
@@ -648,7 +652,7 @@ as-path prepend
 
 Let's repeat the same kind of configuration on the **GCP** Transit GW.
 
-Go to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_** GW.
+navigate to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_** GW.
 
 ```{figure} images/lab8-edgedouble32.png
 ---
@@ -657,7 +661,7 @@ align: center
 gcp-us-central1-transit
 ```
 
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section, then under the `AS Path Prepend` widget select the `aws-us-east-2-transit-peering` connection and type **two times** the AS number **64514**.
+Select the `"Settings"` tab, expand the `"Border Gateway Protocol (BGP)"` section, and in the `AS Path Prepend` widget, choose the `aws-us-east-2-transit-peering` connection. Then, enter the AS number **64514** <ins>twice</ins>.
 
 Click on **Save** to apply the change!
 
@@ -668,7 +672,7 @@ align: center
 as-path prepend
 ```
 
-Now go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0/24** inside the Search field. This time the AS Path Length will turn out being equal to 3, due to to the route manipulation that harnessed the `as-path prepend` feature.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** inside the Search field. This time the AS Path Length will turn out being equal to 3, due to to the route manipulation that harnessed the `as-path prepend` feature.
 
 ```{figure} images/lab8-path.png
 ---
@@ -680,11 +684,11 @@ As path length = 3
 
 ## 8. Final Verification
 
-Now, let's launch again the traceroute towards 172.16.1.100
+Now, let's launch again the traceroute towards **172.16.1.100**.
 
 ### 8.1 Traceroute through the Spoke Gateway
 
-Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the **aws-us-east-2-spoke1** Gateway, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e. 172.16.1.100).
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools**, select the **aws-us-east-2-spoke1** Gateway, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e. 172.16.1.100).
 
 ```{figure} images/lab8-podportal113.png
 ---
@@ -709,9 +713,9 @@ traceroute
 
 The traceroute still shows the Transit peering between AWS and GCP as the preferred path, despite the correct application of the `as-path prepend` earlier.
 
-There is another option that needs to be enabled in order to complete this lab. 
+There is another option that needs to be enabled in order to complete this lab.
 
-Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `Edge` device.
+Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `Edge` gateway.
 
 ```{figure} images/lab8-almostdone02.png
 ---
@@ -720,7 +724,7 @@ align: center
 Edge
 ```
 
-Select the `"Settings"` Tab and then expand the `"Routing"` section, afterwards turn on the knob `Transitive Routing` and do not forget to click on **Save**.
+Select the `"Settings"` Tab and then expand the `"Routing"` section, and then enable the `Transitive Routing` toggle. Do not forget to click on **Save**.
 
 ```{figure} images/lab8-almostdone03.png
 ---
@@ -733,7 +737,7 @@ edge
 
 ### 9.1 Connectivity Testing Using the Diagnostics Tools
 
-Go to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e., **172.16.1.100**).
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e., **172.16.1.100**).
 
 ```{figure} images/lab8-podportal123.png
 ---
@@ -770,7 +774,7 @@ align: center
 
 ## 10. Final Considerations
 
-Now go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** Gateway, then select the `"Route DB"` tab and then once again, on the right-hand side, type `172.16.1.0` inside the Search field.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** Gateway, then select the `"Route DB"` tab and then once again, on the right-hand side, type `172.16.1.0` inside the **Search** field.
 
 This time, the AS Path length will be equal to **2**.
 
