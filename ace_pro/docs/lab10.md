@@ -30,7 +30,7 @@ The CostIQ feature provides detailed traffic distribution analysis for your cost
 
 ### 2.1 Enable CostIQ
 
-Navigate to **Copilot > Settings > Configuration > License**. Locate the **Features** section and enable `CostIQ`. Remember to click **Save** to apply the changes.
+Navigate to **Copilot > Settings > Configuration > License**. Locate the **Add-on Features** section and enable `CostIQ`.
 
 ```{figure} images/lab9-costiq123.png
 ---
@@ -43,30 +43,9 @@ CostIQ Feature
 Refresh the web page, before proceeding with the next task!
 ```
 
-Navigate to **Copilot > Monitor > CostIQ** and click on `"Enable CostIQ"`.
+- Navigate to **Copilot > Monitor > CostIQ** and click on `"+ Cost Center"` and create the **AWS** Cost Center.
 
-```{figure} images/lab9-costiq1344.png
----
-align: center
----
-Enable CostIQ
-```
 
-```{figure} images/lab9-costiq1345.png
----
-align: center
----
-Enable CostIQ
-```
-
-- Now click on `"+ Cost Center"` and create the **AWS** Cost Center.
-
-```{figure} images/lab9-costiq02.png
----
-align: center
----
-"+ Cost Center"
-```
 
 ```{figure} images/lab9-costiq03.png
 ---
@@ -75,7 +54,7 @@ align: center
 AWS
 ```
 
-Repeat the action creating the remaining two Cost Centers: **GCP** and **Azure**, associating the corresponing Application VPCs/VNets.
+- Repeat the action creating the remaining two Cost Centers: **GCP** and **Azure**, associating the corresponing Application VPCs/VNets.
 
 ```{figure} images/lab9-costiq04.png
 ---
@@ -95,7 +74,7 @@ AZURE
 
 Now let's discover the **CIDRs** of **New York DC**:
 
-- Go to **CoPilot > Diagnostics > Cloud Routes > BGP Info**, then click on the three dots icon and select the `"Show BGP Learned Routes"`.
+- Navigate to **CoPilot > Diagnostics > Cloud Routes > BGP Info**, then click on the three dots icon and select the `"Show BGP Learned Routes"`.
 
 ```{figure} images/lab9-costiq10.png
 ---
@@ -113,7 +92,7 @@ align: center
 CIDR
 ```
 
-Go back to **CoPilot > Monitor > CostIQ > Shared Services** and click on the `"+ Shared Service"` button.
+Navigate to **CoPilot > Monitor > CostIQ > Shared Services** and click on the `"+ Shared Service"` button.
 
 ```{figure} images/lab9-costiq12.png
 ---
@@ -137,7 +116,7 @@ align: center
 
 ### 4.1 Create a new SmartGroup for the WorkstationEdge
 
-Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
+Navigate to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
 
 ```{figure} images/lab10-newsg.png
 ---
@@ -219,7 +198,7 @@ align: center
 New Rule
 ```
 
-Insert the following parameters:
+Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>inter-icmp-edge-us-east2-test1</span>
 - **Source Smartgroups**: <span style='color:#479608'>WorkstationEdge</span>
@@ -291,7 +270,7 @@ Ping from the Wortkstation "Edge"
 
 ### 5.3 Cost Center and Shared Service
 
-Go to **CoPilot > Monitor > CostIQ > Shared Services** and click on **NEW YORK DC** to expand the visibility of the percentage of traffic between the **Cost Center** in AWS and the **Shared Services** in NY DC.
+Navigate to **CoPilot > Monitor > CostIQ > Shared Services** and click on **NEW YORK DC** to expand the visibility of the percentage of traffic between the **Cost Center** in AWS and the **Shared Services** in NY DC.
 
 This traffic is permitted thanks to the DCF rule previously created.
 
