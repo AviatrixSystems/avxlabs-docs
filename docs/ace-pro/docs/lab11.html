@@ -479,7 +479,7 @@ document.write(`
 </ul>
 <section id="smart-group-bu1">
 <h3>3.1 Smart Group “bu1”<a class="headerlink" href="#smart-group-bu1" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code>.</p>
+<p>Navigate to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code>.</p>
 <figure class="align-center" id="id5">
 <img alt="../_images/lab10-smart2.png" src="../_images/lab10-smart2.png" />
 <figcaption>
@@ -543,7 +543,7 @@ document.write(`
 <p><span class="caption-number">Fig. 533 </span><span class="caption-text">Resources that match the condition</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>At this stage, you have created logical containers that do not impact the existing routing domain, thanks to the <code class="docutils literal notranslate"><span class="pre">Connetion</span> <span class="pre">Policy</span></code> applied in <strong>Lab 3</strong>. Now, it’s time to thoroughly define Distributed Cloud Firewall (DCF) rules to govern <strong>East-West</strong> traffic.</p>
+<p>At this stage, you have created logical containers that do not affect the existing routing domain, thanks to the <code class="docutils literal notranslate"><span class="pre">Connetion</span> <span class="pre">Policy</span></code>  applied in <strong>Lab 3</strong>. Now, it’s time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.</p>
 <p>Below is the current list of your DCF Rules within the <strong>Distributed Cloud Firewall</strong> section of your CoPilot:</p>
 <figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/lab10-newone2.png"><img alt="../_images/lab10-newone2.png" src="../_images/lab10-newone2.png" style="height: 300px;" />
@@ -647,14 +647,14 @@ document.write(`
 <p class="admonition-title">Warning</p>
 <p>Zero Trust architecture is “Never trust, always verify”, a critical component to enterprise cloud adoption success!</p>
 </div>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id20">
 <img alt="../_images/lab10-newrule.png" src="../_images/lab10-newrule.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 543 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Insert the following parameters:</p>
+<p>Enter the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>intra-icmp-bu1</span></p></li>
 <li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>bu1</span></p></li>
@@ -708,7 +708,7 @@ document.write(`
 <p><span class="caption-number">Fig. 547 </span><span class="caption-text">intra-icmp-bu2</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now proceed and click on the <strong>Commit</strong> button.</p>
+<p>Next, proceed by clicking the <strong>Commit</strong> button.</p>
 <figure class="align-center" id="id25">
 <img alt="../_images/lab10-rulecommitted01.png" src="../_images/lab10-rulecommitted01.png" />
 <figcaption>
@@ -786,7 +786,7 @@ document.write(`
 <section id="sg-orchestration">
 <h3>5.4 SG Orchestration<a class="headerlink" href="#sg-orchestration" title="Link to this heading">#</a></h3>
 <p>Let’s investigate the logs:</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and then click on the filter icon and filter out based on the rule <code class="docutils literal notranslate"><span class="pre">&quot;intra-icmp-bu1&quot;</span></code>.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and then click on the filter icon and filter out based on the rule <code class="docutils literal notranslate"><span class="pre">&quot;intra-icmp-bu1&quot;</span></code>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Filter out based on the protocol <strong>ICMP</strong>.</p>
@@ -803,7 +803,7 @@ document.write(`
 <p><span class="caption-number">Fig. 556 </span><span class="caption-text">Outcomes</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Based on the outcome above, you will not see 10.0.1.10 (aws-us-east-2-spoke1-test2) because it belongs to bu2, which does not match the intra-icmp-bu1 rule.</p>
+<p>Based on the above outcome, you will not see <strong>10.0.1.10</strong> (aws-us-east-2-spoke1-test2) because it belongs to bu2, which does not match the intra-icmp-bu1 rule.</p>
 <p>However, <strong>aws-us-east-2-spoke1-test1</strong> can ping <strong>aws-us-east-2-spoke1-test2</strong> due to intra-VPC communication, without needing to match any of the deployed DCF rules.</p>
 <figure class="align-center" id="id34">
 <img alt="../_images/lab10-sgorch01.png" src="../_images/lab10-sgorch01.png" />
@@ -821,7 +821,7 @@ document.write(`
 <p class="admonition-title">Warning</p>
 <p>The instances <strong>aws-us-east-2-spoke1-test1</strong> and <strong>aws-us-east-2-spoke1-test2</strong> are in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don’t enable the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group(SG)</span> <span class="pre">Orchestration&quot;</span></code> (aka <strong><em>intra-vpc separation</em></strong>).</p>
 </div>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage&quot;</span></code> button, inside the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group</span> <span class="pre">(SG)</span> <span class="pre">Orchestration&quot;</span></code> field.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage&quot;</span></code> button, inside the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group</span> <span class="pre">(SG)</span> <span class="pre">Orchestration&quot;</span></code> field.</p>
 <figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab10-orchestration.png"><img alt="../_images/lab10-orchestration.png" src="../_images/lab10-orchestration.png" style="height: 300px;" />
 </a>
@@ -839,7 +839,7 @@ document.write(`
 </section>
 <section id="sg-orchestration-verification-using-the-gatus-app">
 <h3>5.5 SG Orchestration Verification Using the Gatus App<a class="headerlink" href="#sg-orchestration-verification-using-the-gatus-app" title="Link to this heading">#</a></h3>
-<p>Open the Gatus App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the connectivity with <strong><em>aws-us-east-2-spoke1-test2</em></strong>.</p>
+<p>Open the <strong>Gatus</strong> App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the connectivity with <strong><em>aws-us-east-2-spoke1-test2</em></strong>.</p>
 <figure class="align-center" id="id38">
 <img alt="../_images/lab10-gatus81.png" src="../_images/lab10-gatus81.png" />
 <figcaption>
@@ -968,7 +968,7 @@ document.write(`
 <section id="logs">
 <h2>7. Logs<a class="headerlink" href="#logs" title="Link to this heading">#</a></h2>
 <p>Let’s investigate the logs once again.</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and filter out based on the <strong>intra-ssh-bu1</strong> Rule!</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and filter out based on the <strong>intra-ssh-bu1</strong> Rule!</p>
 <figure class="align-center" id="id48">
 <a class="reference internal image-reference" href="../_images/lab10-logsshbu187.png"><img alt="../_images/lab10-logsshbu187.png" src="../_images/lab10-logsshbu187.png" style="height: 150px;" />
 </a>
