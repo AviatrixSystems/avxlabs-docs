@@ -43,7 +43,7 @@ Ping fails
 - Check whether the relevant Spoke Gateways have the required routes installed on their routing tables or not.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select for example the gateway **ace-aws-eu-west-1-spoke1**  **> Gateway Routes** and search for the subnet **10.1.212.0/24**, where BU2 Mobile App resides.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select for example the gateway **ace-aws-eu-west-1-spoke1**  **> Gateway Routes** and search for the subnet **10.1.212.0/24**, where BU2 Mobile App resides.
 ```
 
 ```{figure} images/lab3-routecheck.png
@@ -61,7 +61,7 @@ From the outcome above, it is evident that Spoke1 in AWS has the destination rou
 ```{tip}
 Retrieve the private IP address of the **BU2 Mobile App** from the Cloud Assets inventory, first!
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the interested EC2 instance.
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the interested EC2 instance.
 ```
 
 ```{figure} images/lab3-personalpod.png
@@ -73,7 +73,7 @@ Private IP of BU2 Mobile App
 ```
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Diagnostics Tools** then select the GW **ace-aws-eu-west-1-spoke1** and ping the private IP of BU2 Mobile App
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools** then select the GW **ace-aws-eu-west-1-spoke1** and ping the private IP of BU2 Mobile App
 ```
 
 ```{figure} images/lab3-pingfailss.png
@@ -109,7 +109,7 @@ From the outcome above, you can notice that the Transit GW in AWS can ping both 
 - Let's check the **FireNet** section!
 
 ```{tip}
-Go to **CoPilot > Security > FireNet**
+Navigate to **CoPilot > Security > FireNet**
 ```
 
 ```{figure} images/lab3-unreachable.png
@@ -137,7 +137,7 @@ The FW is down
 - Apply a quick **workaround**. Before exploring the firewall configuration, exclude from the East-West Inspection, either of the CIDRs of the two AWS Spoke VPCs.
 
 ```{tip}
-Go to **CoPilot > Security > FireNet > FireNet Gateways** and click on the **_ace-aws-eu-west-1-transit1_** GW.
+Navigate to **CoPilot > Security > FireNet > FireNet Gateways** and click on the **_ace-aws-eu-west-1-transit1_** GW.
 
 Then click on **Settings** and insert the CIDR of the AWS **ace-aws-eu-west-1-spoke2** VPC on the field `"Exclude from East-West Inspection"`. 
 
@@ -183,10 +183,10 @@ The traceroute outcome shows the whole path from the source, the BU1 Frontend, t
 <ins>Undoubtedly, the Firewall is excluded from this path!</ins>
 ```
 
-- Now remove the workaround and explore the Firewall configuration!
+- Now <ins>remove the workaround</ins> and explore the Firewall configuration!
 
 ```{tip}
-Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_ace-aws-eu-west-1-transit1_** GW, then click on **Settings** and remove the CIDR `10.1.212.0/24`. 
+Navigate to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_ace-aws-eu-west-1-transit1_** GW, then click on **Settings** and remove the CIDR `10.1.212.0/24`. 
 
 Do not forget to click on **Save**.
 ```
@@ -232,7 +232,7 @@ FW access
 ```
 
 ```{tip}
-Go to **FW > Network > Interfaces** and click the LAN interface (port2) and fix the issue!
+Navigate to **FW > Network > Interfaces** and click the LAN interface (port2) and fix the issue!
 ```
 
 The port was disabled to simulate a software failure of the FW...
@@ -276,5 +276,5 @@ New Traceroute outcome
 ```
 
 ```{important}
-This time the traceroute outcome shows twice the IP address of the Transit FireNet GW (i.e. **.143** as shown in the screenshot above) along the path, due to the fact that the traffic is now diverted towards the Firewall that, after the completion of the Deep Packet Inspection, sends the permitted traffic back to the Transit FireNet GW.
+This time, the traceroute shows the IP address of the Transit FireNet Gateway (e.g., **.143**, as in the example screenshot) twice along the path. This happens because the traffic is diverted to the firewall for Deep Packet Inspection, and after approval, the firewall sends the traffic back to the Transit FireNet Gateway.
 ```

@@ -4,7 +4,7 @@
 
 The infrastructure has recently been divided into two network domains: **BU1** and **BU2**.
 
- Please verify the segregation between these two domains.
+Please verify the segregation between these two domains, as implemented through the `Aviatrix Cloud Native Security Fabric`.
 
 ```{figure} images/lab1-segmentation.png
 ---
@@ -334,10 +334,10 @@ align: center
 Network Domains
 ```
   
-* Examine the various routing tables (*VRFs*) managed by the Transit Gateways.
+* Examine the various routing tables (i.e., *VRFs*) managed by the Transit Gateways.
 
 ```{tip}
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select **_the ace-aws-eu-west-1-transit_** Gateway, then go to **Gateway Routes** and filter by any *Network Domains* (e.g., BU1 or BU2).
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the **_ace-aws-eu-west-1-transit_** Gateway, then go to **Gateway Routes** and filter by any *Network Domain* (such as BU1 or BU2).
 ```
 
 ```{figure} images/lab1-bu1vrf.png
@@ -349,7 +349,7 @@ Network Domain (aka VRF)
 ```
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ace-aws-eu-west-1-transit** Gateway and then select the tab **Route DB**. 
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ace-aws-eu-west-1-transit** Gateway and then select the tab **Route DB**. 
 
 You will notice that the `Segmentation` feature is indeed enabled. Moreover, you will notice the different RTBs.
 ```{figure} images/lab1-newjoe.png
@@ -363,12 +363,22 @@ RIB
 * Use the <span style='color:#FF0000'>**FlowIQ**</span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.
 
 ```{tip}
-Go to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based, for instance, on the `"Destination IP Address"` **172.16.211.100** (i.e. BU1 Analytics).
+Navigate to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based, for instance, on the `"Destination IP Address"` **172.16.211.100** (i.e. BU1 Analytics).
 
 Do not forget to click on **Apply**.
 ```
 
 ```{figure} images/lab1-plus.png
+---
+height: 150px
+align: center
+---
+FlowIQ Filter
+```
+
+```{caution}
+You probably won't see any results immediately after clicking Apply. It may take a few more minutes for CoPilot to display the NetFlow information collected through CNSF.
+```{figure} images/lab1-plus78.png
 ---
 height: 150px
 align: center
