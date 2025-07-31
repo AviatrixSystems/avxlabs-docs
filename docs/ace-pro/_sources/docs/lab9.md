@@ -26,7 +26,7 @@ Lab 9 Initial Topology
 
 ### 3.1 Deploy the PSF
 
-Go to **CoPilot > Cloud Fabric > Gateways > Specialty Gateways**, then click on the `“+ Gateway"` button and then choose the **Public Subnet Filtering Gateway**.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Specialty Gateways**, then click on the `“+ Gateway"` button and then choose the **Public Subnet Filtering Gateway**.
 
 ```{figure} images/lab9-psf.png
 ---
@@ -36,7 +36,7 @@ align: center
 PSF
 ```
 
-Insert the following parameters:
+Enter the following parameters:
 - **Name**: <span style='color:#479608'>aws-us-east-1-psf</span>
 - **Account**: <span style='color:#479608'>aws-account</span>
 - **Region**: <span style='color:#479608'>us-east-1 (N. Virginia)</span>
@@ -90,7 +90,7 @@ PSF rtb
 ```
 
 ```{caution}
-The subnet with the PSF gateway is a **Public** Subnet with 0/0 pointing to IGW. 
+The subnet with the PSF gateway is a **Public** subnet with a 0/0 route pointing to the IGW.
 
 **No workload instances should be deployed in this subnet**.
 ```
@@ -110,7 +110,7 @@ Now that there is a PSF Gateway on defending the Public Subnet, let's generate s
 
 ### 4.1 Connectivity Testing Using the Gatus App
 
-Go to your personal POD Portal, identify the status widget and then click on **_aws-us-east1-spoke1-test1_**.
+Navigate to your personal POD Portal, identify the Gatus widget and then click on **_aws-us-east1-spoke1-test1_**. Scroll through the tests to find the one named 'psf'.
 
 ```{figure} images/lab9-gatus010.png
 ---
@@ -134,7 +134,7 @@ The EC2 instance is already generating traffic towards a malicious IP address.
 
 Retrieve the Public IP address of **_aws-us-east-1-spoke1-test1_** instance:
 
-- Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, search for `aws-us-east-1-spoke1-test1` and then copy the **Public** IPv4 address!
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, search for `aws-us-east-1-spoke1-test1` and then copy the **Public** IPv4 address!
 
 ```{figure} images/lab9-newsg010.png
 ---
@@ -179,7 +179,7 @@ align: center
 aws-us-east-1-spoke1-Public-1-us-east-1a
 ```
 
-Go to **CoPilot > Groups > SmartGroups** and then click on the `"+ SmartGroup"` button.
+Navigate to **CoPilot > Groups > SmartGroups** and then click on the `"+ SmartGroup"` button.
 
 ```{figure} images/lab9-smart001.png
 ---
@@ -213,7 +213,7 @@ SmartGroups List
 
 ## 6. Create two new DCF rules
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
 ```{figure} images/lab9-newrule10.png
 ---
@@ -222,7 +222,7 @@ align: center
 New Rule
 ```
 
-Insert the following parameters:
+Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-aws-us-east-1-spoke1-test1</span>
 - **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
@@ -252,7 +252,7 @@ align: center
 New Rule
 ```
 
-Insert the following parameters:
+Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-malicious-ips</span>
 - **Source Groups**: <span style='color:#479608'>DeafultThreatGroup</span>
@@ -331,7 +331,7 @@ Let's create another **WebGroup** that will exactly match three domains:
 2) www.ubuntu.com
 3) www.aviatrix.com
 
-Go to **CoPilot > Groups > WebGroups** and then click on the `"+ WebGroup"` button.
+Navigate to **CoPilot > Groups > WebGroups** and then click on the `"+ WebGroup"` button.
 
 ```{figure} images/lab9-smart100.png
 ---
@@ -360,7 +360,7 @@ WebGroup creation
 
 ### 7.3 Create the "PSF-Allow-Rule"
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
 ```{figure} images/lab9-newrule100.png
 ---
@@ -369,7 +369,7 @@ align: center
 New Rule
 ```
 
-Insert the following parameters
+Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>PSF-Allow-Rule</span>
 - **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
@@ -407,7 +407,7 @@ Before launching the connectivity test, the three rules related to the PSF must 
 The `PSF` Gateway is a **_standalone Gateway_**: it is neither a Spoke nor a Transit.
 ```
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Settings** and enable the `"Enforcement on PSF Gateweays"` functionality.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Settings** and enable the `"Enforcement on PSF Gateweays"` functionality.
 
 ```{figure} images/lab96-newrule333.png
 ---
@@ -419,7 +419,7 @@ Enforcement
 
 ### 8.1 Connectivity Testing Using the Gatus App
 
-Go to your personal POD portal and click again on the click on **_aws-us-east-1-spoke1-test1_** instance.
+Navigate to your personal POD portal and click again on the click on **_aws-us-east-1-spoke1-test1_** instance.
 
 ```{figure} images/lab9-gatus010.png
 ---
@@ -491,7 +491,7 @@ align: center
 From your laptop to aws-us-east-1-spoke1-test1
 ```
 
-- Go to this URL https://whatismyipaddress.com/ and copy your personal Public IP address.
+- Navigate to this URL https://whatismyipaddress.com/ and copy your personal Public IP address.
 
 ```{figure} images/lab9-myip02.png
 ---
@@ -501,7 +501,7 @@ align: center
 whatismyipaddress.com
 ```
 
-- Go to **CoPilot > Groups > SmartGroups** and then click on the `"+ SmartGroup"` button.
+- Navigate to **CoPilot > Groups > SmartGroups** and then click on the `"+ SmartGroup"` button.
 
 ```{figure} images/lab9-myip03.png
 ---
@@ -532,7 +532,7 @@ align: center
 Smart Group My-IP
 ```
 
-- Go to **CoPilot > Security > Distributed Cloud Firewall** and create a new rule clicking on the `"+ Rule"` button:
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall** and create a new rule clicking on the `"+ Rule"` button:
 
 ```{figure} images/lab9-myip06.png
 ---
@@ -541,10 +541,10 @@ align: center
 New Rule
 ```
 
-Insert the following parameters:
+Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>inter-myip-east1-test1-ssh</span>
-- **Source Groups**: <span style='color:#479608'>My-IPp</span>
+- **Source Groups**: <span style='color:#479608'>My-IP</span>
 - **Destination Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>22</span>
@@ -571,7 +571,7 @@ align: center
 Commit
 ```
 
-- Now, retrieve the public IP address of the **aws-us-east-1-spoke1-test1** instance. Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for _aws-us-east-1-spoke1-test1_. Click on `"+ 1 more"` to reveal the public IP address, then copy it to your clipboard.
+- Retrieve the public IP address of the **aws-us-east-1-spoke1-test1** instance by navigating to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Search for _aws-us-east-1-spoke1-test1_, click on `"+ 1 more"` to display the public IP address, and then copy it to your clipboard.
 
 ```{figure} images/lab9-myip09.png
 ---
@@ -581,7 +581,7 @@ align: center
 aws-us-east-1-spoke1-test1
 ```
 
-- Now, open your SSH client and carry out the following command, pasting the Public IP address previously copied, then use the password available on your personal POD portal
+- Open your **SSH client** and execute the following command, pasting the previously copied Public IP address. Use the password provided on your personal POD portal.
 
 ```bash
 ssh student@...
@@ -596,10 +596,10 @@ SSH to aws-us-east-1-spoke1-test1
 </details>
 
 ```{caution}
-If you do not wish to try the hidden resolution, please proceed with the task ahead.
+If you prefer not to attempt the hidden resolution, please proceed with the next task.
 ```
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, then search for **aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary>**, retrieve its Public IP address and SSH in to the EC2 instance.
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, then search for **aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary>**, retrieve its Public IP address and SSH in to the EC2 instance.
 
 ```{figure} images/lab9-igw04.png
 ---
@@ -657,7 +657,7 @@ You will notice that the traffic towards the **IP with Bad Reputation** was bloc
 
 ## 9. Final Considerations
 
-Now go to **CoPilot > Security > ThreatIQ**  section, then scroll down through the whole **Overview** section, click on the filter icon and filter out based on the Maliciuous IP (i.e., `178.17.174.164`): you can choose either **_Source_** or **_Destination_**!
+Navigate to **CoPilot > Security > ThreatIQ**  section, then scroll down through the whole **Overview** section, click on the filter icon and filter out based on the Maliciuous IP (i.e., `178.17.174.164`): you can choose either **_Source_** or **_Destination_**!
 
 ```{figure} images/lab96-newrule308.png
 ---

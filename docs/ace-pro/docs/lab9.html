@@ -412,7 +412,7 @@ document.write(`
 <p><strong>Public Subnet Filtering</strong> Gateway = An Aviatrix gateway that provides ingress and egress security for AWS public subnets where instances have public IP addresses.</p>
 <section id="deploy-the-psf">
 <h3>3.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">Gateway&quot;</span></code> button and then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">Gateway&quot;</span></code> button and then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
 <figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/lab9-psf.png"><img alt="../_images/lab9-psf.png" src="../_images/lab9-psf.png" style="height: 300px;" />
 </a>
@@ -420,7 +420,7 @@ document.write(`
 <p><span class="caption-number">Fig. 451 </span><span class="caption-text">PSF</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Insert the following parameters:</p>
+<p>Enter the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>aws-us-east-1-psf</span></p></li>
 <li><p><strong>Account</strong>: <span style='color:#479608'>aws-account</span></p></li>
@@ -473,7 +473,7 @@ document.write(`
 </figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>The subnet with the PSF gateway is a <strong>Public</strong> Subnet with 0/0 pointing to IGW.</p>
+<p>The subnet with the PSF gateway is a <strong>Public</strong> subnet with a 0/0 route pointing to the IGW.</p>
 <p><strong>No workload instances should be deployed in this subnet</strong>.</p>
 </div>
 <ul class="simple">
@@ -492,7 +492,7 @@ document.write(`
 <p>Now that there is a PSF Gateway on defending the Public Subnet, let’s generate some traffic towards an IP with <strong>Bad Reputation</strong>.</p>
 <section id="connectivity-testing-using-the-gatus-app">
 <h3>4.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#connectivity-testing-using-the-gatus-app" title="Link to this heading">#</a></h3>
-<p>Go to your personal POD Portal, identify the status widget and then click on <strong><em>aws-us-east1-spoke1-test1</em></strong>.</p>
+<p>Navigate to your personal POD Portal, identify the Gatus widget and then click on <strong><em>aws-us-east1-spoke1-test1</em></strong>. Scroll through the tests to find the one named ‘psf’.</p>
 <figure class="align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/lab9-gatus010.png"><img alt="../_images/lab9-gatus010.png" src="../_images/lab9-gatus010.png" style="height: 400px;" />
 </a>
@@ -513,7 +513,7 @@ document.write(`
 <h3>4.2 SSH to aws-us-east1-spoke1-test1 <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#ssh-to-aws-us-east1-spoke1-test1-bonus" title="Link to this heading">#</a></h3>
 <p>Retrieve the Public IP address of <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance:</p>
 <ul class="simple">
-<li><p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, search for <code class="docutils literal notranslate"><span class="pre">aws-us-east-1-spoke1-test1</span></code> and then copy the <strong>Public</strong> IPv4 address!</p></li>
+<li><p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, search for <code class="docutils literal notranslate"><span class="pre">aws-us-east-1-spoke1-test1</span></code> and then copy the <strong>Public</strong> IPv4 address!</p></li>
 </ul>
 <figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/lab9-newsg010.png"><img alt="../_images/lab9-newsg010.png" src="../_images/lab9-newsg010.png" style="height: 250px;" />
@@ -553,7 +553,7 @@ document.write(`
 <p><span class="caption-number">Fig. 462 </span><span class="caption-text">aws-us-east-1-spoke1-Public-1-us-east-1a</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
+<p>Navigate to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
 <figure class="align-center" id="id15">
 <img alt="../_images/lab9-smart001.png" src="../_images/lab9-smart001.png" />
 <figcaption>
@@ -583,14 +583,14 @@ document.write(`
 </section>
 <section id="create-two-new-dcf-rules">
 <h2>6. Create two new DCF rules<a class="headerlink" href="#create-two-new-dcf-rules" title="Link to this heading">#</a></h2>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id18">
 <img alt="../_images/lab9-newrule10.png" src="../_images/lab9-newrule10.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 466 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Insert the following parameters:</p>
+<p>Enter the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Deny-Rule-from-aws-us-east-1-spoke1-test1</span></p></li>
 <li><p><strong>Source Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
@@ -615,7 +615,7 @@ document.write(`
 <p><span class="caption-number">Fig. 468 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Insert the following parameters:</p>
+<p>Enter the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Deny-Rule-from-malicious-ips</span></p></li>
 <li><p><strong>Source Groups</strong>: <span style='color:#479608'>DeafultThreatGroup</span></p></li>
@@ -686,7 +686,7 @@ document.write(`
 <li><p><a class="reference external" href="http://www.ubuntu.com">www.ubuntu.com</a></p></li>
 <li><p><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></p></li>
 </ol>
-<p>Go to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p>
+<p>Navigate to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p>
 <figure class="align-center" id="id26">
 <a class="reference internal image-reference" href="../_images/lab9-smart100.png"><img alt="../_images/lab9-smart100.png" src="../_images/lab9-smart100.png" style="height: 400px;" />
 </a>
@@ -712,14 +712,14 @@ document.write(`
 </section>
 <section id="create-the-psf-allow-rule">
 <h3>7.3 Create the “PSF-Allow-Rule”<a class="headerlink" href="#create-the-psf-allow-rule" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id28">
 <img alt="../_images/lab9-newrule100.png" src="../_images/lab9-newrule100.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 476 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Insert the following parameters</p>
+<p>Enter the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Allow-Rule</span></p></li>
 <li><p><strong>Source Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
@@ -754,7 +754,9 @@ document.write(`
 <p class="admonition-title">Caution</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">PSF</span></code> Gateway is a <strong><em>standalone Gateway</em></strong>: it is neither a Spoke nor a Transit.</p>
 </div>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and enable the <code class="docutils literal notranslate"><span class="pre">&quot;Enforcement</span> <span class="pre">on</span> <span class="pre">PSF</span> <span class="pre">Gateweays&quot;</span></code> functionality.</p>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and enable the <code class="docutils literal notranslate"><span class="pre">&quot;Enforcement</span> <span class="pre">on</span> <span class="pre">PSF</span> <span class="pre">Gateweays&quot;</span></code> functionality.</p></li>
+</ul>
 <figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab96-newrule333.png"><img alt="../_images/lab96-newrule333.png" src="../_images/lab96-newrule333.png" style="height: 400px;" />
 </a>
@@ -764,7 +766,7 @@ document.write(`
 </figure>
 <section id="id1">
 <h3>8.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Go to your personal POD portal and click again on the click on <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance.</p>
+<p>Navigate to your personal POD portal and click again on the click on <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance.</p>
 <figure class="align-center" id="id32">
 <a class="reference internal image-reference" href="../_images/lab9-gatus010.png"><img alt="../_images/lab9-gatus010.png" src="../_images/lab9-gatus010.png" style="height: 250px;" />
 </a>
@@ -826,7 +828,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Go to this URL <a class="reference external" href="https://whatismyipaddress.com/">https://whatismyipaddress.com/</a> and copy your personal Public IP address.</p></li>
+<li><p>Navigate to this URL <a class="reference external" href="https://whatismyipaddress.com/">https://whatismyipaddress.com/</a> and copy your personal Public IP address.</p></li>
 </ul>
 <figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab9-myip02.png"><img alt="../_images/lab9-myip02.png" src="../_images/lab9-myip02.png" style="height: 400px;" />
@@ -836,7 +838,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Go to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p></li>
+<li><p>Navigate to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p></li>
 </ul>
 <figure class="align-center" id="id39">
 <img alt="../_images/lab9-myip03.png" src="../_images/lab9-myip03.png" />
@@ -865,7 +867,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button:</p></li>
+<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button:</p></li>
 </ul>
 <figure class="align-center" id="id42">
 <img alt="../_images/lab9-myip06.png" src="../_images/lab9-myip06.png" />
@@ -873,10 +875,10 @@ document.write(`
 <p><span class="caption-number">Fig. 490 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Insert the following parameters:</p>
+<p>Enter the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>inter-myip-east1-test1-ssh</span></p></li>
-<li><p><strong>Source Groups</strong>: <span style='color:#479608'>My-IPp</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>My-IP</span></p></li>
 <li><p><strong>Destination Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
 <li><p><strong>Port</strong>: <span style='color:#479608'>22</span></p></li>
@@ -900,7 +902,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now, retrieve the public IP address of the <strong>aws-us-east-1-spoke1-test1</strong> instance. Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for <em>aws-us-east-1-spoke1-test1</em>. Click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">1</span> <span class="pre">more&quot;</span></code> to reveal the public IP address, then copy it to your clipboard.</p></li>
+<li><p>Retrieve the public IP address of the <strong>aws-us-east-1-spoke1-test1</strong> instance by navigating to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>. Search for <em>aws-us-east-1-spoke1-test1</em>, click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">1</span> <span class="pre">more&quot;</span></code> to display the public IP address, and then copy it to your clipboard.</p></li>
 </ul>
 <figure class="align-center" id="id45">
 <a class="reference internal image-reference" href="../_images/lab9-myip09.png"><img alt="../_images/lab9-myip09.png" src="../_images/lab9-myip09.png" style="height: 200px;" />
@@ -910,7 +912,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now, open your SSH client and carry out the following command, pasting the Public IP address previously copied, then use the password available on your personal POD portal</p></li>
+<li><p>Open your <strong>SSH client</strong> and execute the following command, pasting the previously copied Public IP address. Use the password provided on your personal POD portal.</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>student@...
 </pre></div>
@@ -924,9 +926,9 @@ document.write(`
 </details>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>If you do not wish to try the hidden resolution, please proceed with the task ahead.</p>
+<p>If you prefer not to attempt the hidden resolution, please proceed with the next task.</p>
 </div>
-<p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, then search for <strong>aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary></strong>, retrieve its Public IP address and SSH in to the EC2 instance.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, then search for <strong>aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary></strong>, retrieve its Public IP address and SSH in to the EC2 instance.</p>
 <figure class="align-center" id="id47">
 <a class="reference internal image-reference" href="../_images/lab9-igw04.png"><img alt="../_images/lab9-igw04.png" src="../_images/lab9-igw04.png" style="height: 400px;" />
 </a>
@@ -978,7 +980,7 @@ document.write(`
 </section>
 <section id="final-considerations">
 <h2>9. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
-<p>Now go to <strong>CoPilot &gt; Security &gt; ThreatIQ</strong>  section, then scroll down through the whole <strong>Overview</strong> section, click on the filter icon and filter out based on the Maliciuous IP (i.e., <code class="docutils literal notranslate"><span class="pre">178.17.174.164</span></code>): you can choose either <strong><em>Source</em></strong> or <strong><em>Destination</em></strong>!</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; ThreatIQ</strong>  section, then scroll down through the whole <strong>Overview</strong> section, click on the filter icon and filter out based on the Maliciuous IP (i.e., <code class="docutils literal notranslate"><span class="pre">178.17.174.164</span></code>): you can choose either <strong><em>Source</em></strong> or <strong><em>Destination</em></strong>!</p>
 <figure class="align-center" id="id51">
 <img alt="../_images/lab96-newrule308.png" src="../_images/lab96-newrule308.png" />
 <figcaption>
