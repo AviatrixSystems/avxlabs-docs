@@ -2,13 +2,17 @@
 
 ## 1. Objective
 
-The objective of this lab is to learn how to deploy **Palo Alto** Networks (aka PAN) VM-series firewalls in the **Transit VNet** and inspect traffic between the two Spoke VNets using firewall policies.
+The objective of this lab is to learn how to deploy a **Palo Alto Networks (PAN)** Firewall in the **Transit VNet** and monitor traffic between the two Spoke VNets using firewall policies.
 
 ## 2. FireNet Overview (Firewall Network)
 
 Aviatrix Firewall Network (aka *`FireNet`*) is a turnkey solution to deploy and manage firewall instances in the cloud, as shown in the topology below. Firewall Network significantly simplifies virtual firewall deployment and allows the firewall to inspect VPC/VNet/VCN to VPC/VNet/VCN (East West) traffic, VPC/VNet/VCN to Internet (Egress) traffic, and VPC/VNet/VCN to on-prem including partners and branches (North South) traffic.
 
 In addition, Firewall Network allows you to scale firewall deployment to multi AZ and multi instances/VMs in maximum throughput active/active state without the SNAT requirement.
+
+```{important}
+`FireNet` is a service chaining feature that simplifies the deployment of third-party NGFWs. However, this is considered a legacy approach, as traditional firewalls are typically <ins>bolted onto the cloud network</ins>.
+```
 
 ## 3. Topology
 
@@ -137,7 +141,7 @@ Deploy a Firewall by entering these settings within the `Deploy Firewall` window
 - **Firewall Image**: <span style='color:#479608'>Palo Alto Networks VM-Series Next-Generation Firewall Bundle 1</span>
 
 ```{warning}
-When you click on the **Firewall Image** drop-down, you will see a `"Loading"` message. This indicates that the Controller is contacting the Marketplace via API calls. Please be patient and wait for about <span style='color:#479608'>**_3 minutes!_**</span>.
+When you click on the **Firewall Image** drop-down, you will see a `"Loading"` message. This indicates that the Controller is contacting the Marketplace via API calls. Please be patient and wait for less than <span style='color:#479608'>**_1 minute!_**</span>
 ```
 
 ```{figure} images/lab7-marketplace.png
@@ -424,12 +428,11 @@ Allow-All
 
 ## 6. DCF Rules
 
-In Lab 5 (i.e., _Aviatrix Cloud Firewall_), the DCF functionality was activated. The currently allowed rules are as follows::
+In Lab 5 (_Aviatrix Cloud Firewall_), the DCF functionality was enabled. The currently permitted rules are as follows:
 
-1) The `"Egress-Rule"` , that is only allowing http/https traffic towards two defined domains. 
-2) The `"ExplicitDenyAll"` with _Logging_=on
-3) The `"Greenfield-Rule"`
-4) The `"DefaultDenyAll"`, at the very bottom.
+1) The `"Egress-Rule"` , which permits onlyg HTTP/HTTPS traffic to two specified domains.
+2) The `"ExplicitDenyAll"` rule, with _Logging_ enabled.
+3) The `"Greenfield-Rule"`.
 
 ```{figure} images/lab7-dcfrule.png
 ---
@@ -527,7 +530,7 @@ align: center
 gcp-us-central1-spoke1-test1
 ```
 
-All three instances can reach each other!
+All three instances can communicate with each other!
 
 ```{important}
 AWS US-EAST-<span style='color:red'>1</span></summary> is not reachable from either Azure or GCP due to the requirement for a **Full-Mesh** configuration.
@@ -624,7 +627,7 @@ Logs
 
 ## 9. FW Path Verification
 
-Let's verify that the traffic generated from both VNets is indeed diverted to the firewall.
+Let's verify that traffic originating from both VNets is properly routed through the firewall.
 
 ```{figure} images/lab6-verification.png
 ---
@@ -691,7 +694,7 @@ In this scenario, the `Health Check` mechanism involves the Aviatrix Controller 
 ## 10. Final Considerations
 
 ```{important}
-Perhaps it's time to finally adopt the **`"Aviatrix Cloud Firewali"`**, with its integrated distributed architecture, to replace costly next-generation firewalls (NGFWs) and streamline your security infrastructure.
+Perhaps it's time to embrace the **`"Aviatrix Cloud Firewall"`**, with its integrated distributed architecture, to replace costly next-generation firewalls (NGFWs) and simplify your security infrastructure.
 ```
 
 After completing this lab, the overall topology will appear as follows:

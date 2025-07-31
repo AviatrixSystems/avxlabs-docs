@@ -975,7 +975,6 @@ Then <ins>repeat</ins> the experiment carried out earlier!
 
 ```{figure} images/lab5-keepalive.png
 ---
-height: 400px
 align: center
 ---
 Keep Alive Speed

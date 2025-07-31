@@ -274,7 +274,7 @@ Greenfield-Rule automatically injected by the Controller
 
 ## 5. Define a new SmartGroup 
 
-At this point, you can use the **SmartGroup** feature to identify the test2 instance.
+At this point, you can use the **SmartGroup** feature to identify the `test2` instance in the aws-us-east-2-spoke1 VPC.
 
 ### 5.1 Identify the subnet where the private workload resides
 
@@ -385,7 +385,7 @@ Saving the new Rule
 Ultimately , this Webgroup will limit Internet traffic solely for **HTTP** and **HTTPS** protocols.
 ```
 
-Click on the **Commit** button, and the rule previously created will be enfored in to the `Data Path`..
+Click on the **Commit** button, and the rule previously created will be enforced in to the `Data Path`..
 
 ```{figure} images/lab6-newrule11.png
 ---
@@ -406,7 +406,7 @@ align: center
 Not Editable
 ```
 
-- Now Create an Explicit Deny rule that is **editable**:
+- Now Create an Explicit Deny rule:
 
 Click on the `"+ Rule"` button.
 
@@ -551,7 +551,7 @@ align: center
 Overview
 ```
 
-You now have complete **Egress observability**, along with a full list of domains accessed by the EC2 instance within that private subnet.
+You now have comprehensive **Secure Cloud Egress observability**, including a detailed list of all domains accessed by the EC2 instance within that private subnet.
 
 Furthermore, go to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east-2-spoke1 VPC_**.
 
@@ -567,7 +567,7 @@ You will get a granular Layer 7 visibility that allows you to get a good underst
 
 ## 8. ZTNA - Zero Trust Network Access
 
-Now we have enabled the `Zero Trust Network Access` approach, denying everything at the very bottom of the DCF rules list.
+We have now enabled the Ze`Zero Trust Network Access` approach, which default-denies all access and only permits explicitly authorized connections.
 
 ### 8.1 Create a New WebGroup
 
@@ -726,7 +726,7 @@ Action Denied
 
 ## 10. Removal of the AWS NAT Gateway
 
-Now that you have successfully enabled the `Aviatrix Cloud Firewall`, you can get rid of the AWS NAT Gateway.
+With the successful deployment of the `Aviatrix Cloud Firewall` within the Cloud Native Security Fabric (CNSF), you can now eliminate the need for the AWS NAT Gateway.
 
 ### 10.1 AWS Console
 
