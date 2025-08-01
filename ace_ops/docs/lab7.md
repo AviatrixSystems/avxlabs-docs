@@ -111,7 +111,7 @@ align: center
 Commit
 ```
 
-- Use the **_Spoke1 VNet_** as a Test VNet to find out the domains that should be allowed, in order to selectively execute the *apt-get* commands only towards the defined domains.
+- Use the **_Spoke1 VNet_** as a test environment to identify the domains that need to be allowed. This will enable you to selectively execute apt-get commands only towards the specified domains.
 
 ```{figure} images/lab7-test.png
 ---
@@ -123,7 +123,7 @@ Spoke1 VNet1 as test VNet
   - Enable the Egress on the **_Spoke1 VNet_** too.
 
 ```{tip}
-Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
+Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
 
 Select the **_ace-azure-east-us-spoke1_** VPC.
 
@@ -145,7 +145,7 @@ align: center
 ace-azure-east-us-spoke1
 ```
 
-- SSH to the **BU1 DB** (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU1 DB).
+- You need to SSH into the **BU1 DB**. Since this VM does not have a public IP, you must first SSH into the BU1 Frontend VM, and then, from there, initiate an SSH connection to the private IP of the BU1 DB.
 
 ```{figure} images/lab7-test3.png
 ---
@@ -158,7 +158,7 @@ SSH to BU1 DB
 - Enable the `Discovery Mode` on the Greenfield-Rule
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and edit the Greenfield-Rule, clicking on the pencil icon on the right-hand side.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and edit the Greenfield-Rule, clicking on the pencil icon on the right-hand side.
 
 This time attach the `All-Web` WebGroup and then click on **Save In Drafts**.
 ```
