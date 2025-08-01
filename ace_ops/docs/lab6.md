@@ -4,7 +4,7 @@
 
 ACE’s OnPrem Data Center has recently hired a new network engineer.
 
-You have been engaged for activating the <span style='color:orange'>**“Route Approval”**</span> feature in order to protect the MCNA from unauthorized advertisements.
+You have been engaged for activating the <span style='color:orange'>**“Route Approval”**</span> feature in order to protect the CNSF from unauthorized advertisements.
 
 ```{figure} images/lab6-topology.png
 ---
@@ -19,7 +19,8 @@ Lab 6 Scenario#1: Topology
 - Activate the **Route Approval** feature for monitoring unauthorized advertisements that could be received by the DC.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_ace-aws-eu-west-1-transit1_** GW **> Settings > Border Gateway Protocl (BGP) >** and turn on the **_Gateway Learned CIDR Approval_** knob.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_ace-aws-eu-west-1-transit1_** GW **> Settings > Border Gateway Protocl (BGP)**, and enable the `Manual Learned CIDR Approval`
+ toggle.
 
 Then click on **Save**.
 ```
@@ -32,7 +33,7 @@ align: center
 Route Approval
 ```
 
-Afterwards, inform the trainer that you have activated the feature with the tool <span style='color:orange'>**“Raise Hand”**</span> on Zoom, as depicted below, and type the number of your POD in the Zoom chat!
+Afterward, inform the trainer that you have activated the feature using the <span style='color:orange'>**“Raise Hand”**</span> tool on Zoom, as shown below, and then type your POD number in the Zoom chat!
 
 ```{figure} images/lab6-raise.png
 ---
