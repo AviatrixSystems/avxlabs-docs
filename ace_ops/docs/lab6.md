@@ -49,14 +49,14 @@ align: center
 Communicate your POD number
 ```
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW **> Approval**
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW **> Approval**
 
 ```{note}
-Wait for approximately **one minute** for BGP in order to send the Update. Then click on the <span style='color:orange'>**refresh button**</span> to see a <ins>default route</ins> being advertised from the DC.
+Please wait approximately **one minute** for BGP to send the Update. Then, click the <span style='color:orange'>**refresh button**</span> to see the default route being advertised from the Data Center.
 
-This route will remain in <ins>**pending state**</ins> and it will be not advertised within the MCNA untill it gets the final approval from the Aviatrix Administrator.
+This route will remain in a <ins>**pending state**</ins> and will not be advertised within the CNSF until it receives final approval from the *Aviatrix Administrator*.
 
-**Do not approve it**! If you accidentally approve it, you can click on **Remove** and store it back on the Pending status.
+**Important**: Do not approve the route yourself. If you accidentally approve it, you can click "Remove" to revert it back to the Pending status.
 ```
 
 ```{figure} images/lab6-pending.png
@@ -68,17 +68,16 @@ Refresh
 ```
 
 ```{important}
-You have successfully prevented that somebody from the DC could jeopardize the whole network inside the multicloud infrastructure! 
+You have successfully prevented someone from the Data Center from jeopardizing the entire network within the multicloud infrastructure.
 
-<ins>Once again do not approve that default route</ins>!
+<ins>Once again, please do not approve that default route</ins>!
 ```
 
 ## 3. SCENARIO#2
 
-ACE’s OnPrem Partner needs to be connected to the MCNA in the GCP region, however, it has overlapping IP’s with BU1’s Analytics VPC.
+ACE’s On-Premises Partner needs to be connected to the Aviatrix CNSF in the GCP region. However, there is an IP overlap with BU1’s Analytics VPC.
 
-You have been engaged for creating a <span style='color:#FF00FF'>**Site2Cloud**</span>
- connection between the GCP Spoke GW and the OnPrem Partner router and also for resolving the IP conflict through the **Mapped NAT** feature.
+You have been engaged to establish a <span style='color:#FF00FF'>**Site2Cloud**</span> connection between the GCP Spoke Gateway and the On-Premises Partner router, as well as to resolve the IP conflict using the **Mapped NAT** feature.
 
 ```{figure} images/lab6-topology2.png
 ---
@@ -93,7 +92,7 @@ Lab 6 Scenario#2: Topology
 - Create a new **S2C** connection.
 
 ```{tip}
-Go to **CoPilot > Networking >  Connectivity > External Connection (S2C) >** then click on the  `"+External Connection"` button, then select `"External Device"`.
+Navigate to **CoPilot > Networking >  Connectivity > External Connection (S2C) >** then click on the  `"+External Connection"` button, then select `"External Device"`.
 ```
 
 ```{figure} images/lab6-s2c.png
@@ -112,7 +111,7 @@ align: center
 External Device
 ```
 
-Configure the new S2C connection based on the schema below.
+Configure the new Site-to-Cloud (S2C) connection according to the schema below:
 
 - **Name**: <span style='color:#479608'>S2C-PARTNER</span>
 
@@ -131,11 +130,11 @@ Configure the new S2C connection based on the schema below.
 
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.2.0/24</span>
 
-- **Authentication Method**: <span style='color:#479608'>PSK</span>
+- **Authentication Method**: <span style='color:#479608'>Pre-Shared Key</span>
 
 - **IKEv2**: <span style='color:#479608'>ON</span>
 
-- **Remote Gateway IP**:  <span style='color:tomato'>follow the Note below</span>
+- **Remote Gateway IP**:  <span style='color:tomato'>please refer to the Note below</span>
 
 ```{note}
 Use the “**dig partner-csr-public.pod#.aviatrixlab.com +short**” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem-Partner CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
@@ -165,8 +164,6 @@ Nslookup
 ```
 
   - **Local Gateway Instance**: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span>
-  -  **Local Tunnel IP**: <span style='color:#479608'>169.254.0.1/30</span>
-  -  **Remote Tunnel IP**: <span style='color:#479608'>169.254.0.2/30</span>
   -  **Pre-Shared Key**: <span style='color:#479608'>Aviatrix123#</span>
 
 ```{important}
@@ -180,7 +177,7 @@ align: center
 External Connection Configuration
 ```
 
-Please wait a few seconds for the completion of the S2C. The new connection will appear as down (indicated by a red arrow symbol).
+Please wait a few seconds for the completion of the S2C. The new connection will appear as "Down", indicated by a red arrow symbol.
 
 ```{figure} images/lab6-notdone.png
 ---
@@ -212,7 +209,10 @@ align: center
 Cisco Router
 ```
 
-After successfully logging into the On-Prem Partner router (also known as the _CSR router_), run the following command to verify that the tunnel is operational:
+Certainly! Here's a polished version of your phrase:
+
+
+After successfully logging into the On-Premises Partner router (also known as the _CSR router_), execute the following command to verify that the tunnel is active:
 
 ```bash
 show ip int brief
@@ -241,11 +241,11 @@ Ping is ok
 - Launch the `Active Sessions`.
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_ace-gcp-us-east1-spoke1_** GW and then select the **Active Sessions** tool.
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_ace-gcp-us-east1-spoke1_** GW and then select the **Active Sessions** tool.
 
 Click on **Run** and almost simultaneously issue once again the ping command from the CSR router.
 
-Filter based on the `"icmp"` keyword.
+Filter the results using the `"icmp"` keyword.
 ```
 
 ```{figure} images/lab6-final.png

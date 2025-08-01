@@ -8,7 +8,7 @@ The BU2 database requires updates; however, the VM resides within a private subn
 
 Additionally, all egress traffic must be monitored, with **_Logging_** enabled to track the activity.
 
-Please activate the `Egress` feature on the **_ace-azure-east-us-spoke2_** VNet, similar to the setup on **_ace-azure-east-us-spoke1_**, but do so temporarily as a test in a separate Test VNet.
+Please activate the `Cloud Secure Egress` feature on the **_ace-azure-east-us-spoke2_** VNet, similar to the setup on **_ace-azure-east-us-spoke1_**, but do so temporarily as a test in a separate Test VNet.
 
 Furthermore, you are requested to create the DCF rules that will enforce these requirements.
 
@@ -25,7 +25,7 @@ Lab 7 Scenario Topology
 - Enable the Egress on the VNet where the BU2 DB resides.
 
 ```{tip}
-Go to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
+Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
 
 Select the **_ace-azure-east-us-spoke2_** VPC.
 
@@ -42,7 +42,7 @@ ace-azure-east-us-spoke2
 ```{important}
 This action will install a `Default Route` in all the Private Routing Tables inside the Azure Spoke2 VNet. The Defautl Routes will point to the **_ace-azure-east-us-spoke2_** GW.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_ace-azure-east-us-spoke2_** Gateway, then click on the `VPC/VNet Route Tables` tab and select any **Private** Routing Tables from the `Route Table` field!
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_ace-azure-east-us-spoke2_** Gateway, then click on the `VPC/VNet Route Tables` tab and select any **Private** Routing Tables from the `Route Table` field!
 
 ```{figure} images/lab7-defaultroute.png
 ---
@@ -54,7 +54,7 @@ Default Route injected by the AVX Controller
 - Enable the **Distributed Cloud Firewall** feature.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall** and then click on the `"Enable Distributed Cloud Firewall"` button, then to the subsequent `"Begin Using Distributed Cloud Firewall"` button, and last but not least to the `"Begin"` button
+Navigate to **CoPilot > Security > Distributed Cloud Firewall** and then click on the `"Enable Distributed Cloud Firewall"` button, then to the subsequent `"Begin Using Distributed Cloud Firewall"` button, and last but not least to the `"Begin"` button
 ```
 
 ```{figure} images/lab7-enabledcf01.png
@@ -75,22 +75,22 @@ Begin using DCF message
 ---
 align: center
 ---
-Greenfield Rule message
+Begin
 ```
 
-You will immediately notice a pop-up message, informing you that the `Greenfield Rule` will be created for allowing all kind of traffic.
+You will immediately notice that the Aviatrix Controller has applied a `Greenfield-Rule`, permitting all types of traffic.
 
 ```{figure} images/lab7-enabledcf04.png
 ---
 align: center
 ---
-Default Rules
+Default Rule
 ```
 
 - Enable the `"Logging"` on the Greenfield-Rule.
 
 ```{tip}
-Click on the pencil icon on the right-hand side of the entry **Greenfield-Rule**.
+Click on the Actions icon to the right of the**Greenfield-Rule** entry, and enable Logging.
 ```
 
 ```{figure} images/lab7-editgreen.png
@@ -101,14 +101,7 @@ align: center
 Edit the Greenfield-Rule
 ```
 
-```{figure} images/lab7-enablelog.png
----
-align: center
----
-Enable Logging
-```
-
-Do not forget to click on **Save In Drafts** and then click on **Commit**, to push the change into the Data Plane.
+Remember to click on **Commit** to apply the changes to the Data Plane.
 
 ```{figure} images/lab7-lastone.png
 ---
