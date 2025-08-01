@@ -30,7 +30,7 @@ Ping fails
 - Check whether both **AWS Spoke1** and **AWS Spoke2** have the required routes installed in their RTBs or not.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **ace-aws-eu-west-1-spoke1** gateway for instance, and filter out based on the remote route.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **ace-aws-eu-west-1-spoke1** gateway for instance, and filter out based on the remote route.
 ```
 
 ```{figure} images/lab4-filter.png
@@ -49,7 +49,7 @@ Try to verify the inverse, checking the destination route from the **AWS Spoke2*
 - From the *Spoke1 Gateway* in AWS, try to ping/traceroute the instance behind the other spoke (i.e. BU2 Mobile App).
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Topology**
+Navigate to **CoPilot > Cloud Fabric > Topology**
 
 Expand the **_ace-aws-eu-west-1-spoke1_** VPC, clicking on its corresponding icon, select the **_ace-aws-eu-west-1-spoke1_** Spoke GW and then click on the `Tools` button within the **Properties** window and click on `Gateway Diagnostics`.
 
@@ -99,7 +99,7 @@ From the outcome above, you can notice that the Transit GW in AWS can ping both 
 - Let's check the **FireNet** section!
 
 ```{tip}
-Go to **CoPilot > Security > FireNet**
+Navigate to **CoPilot > Security > FireNet**
 ```
 
 ```{figure} images/lab4-firewallok.png
@@ -132,7 +132,7 @@ The **eth-fn0** interface is hooked up to the **LAN** interface of the Firewall,
 ```
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_ace-aws-eu-west-1-transit1_** GW, then select the `Packet Capture` tool.
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_ace-aws-eu-west-1-transit1_** GW, then select the `Packet Capture` tool.
 
 ```{figure} images/lab4-packet1.png
 ---

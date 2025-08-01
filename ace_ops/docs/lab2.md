@@ -19,7 +19,7 @@ Network Domains with the Connection Policy
 * Apply the Connection Policy
 
 ```{tip}
-Go to **CoPilot > Networking > Network Segmentation > Network Domains** and then edit either network domains.
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains** and then edit either network domains.
 ```
 
 The Connection Policy works bidirectionally!
@@ -42,9 +42,9 @@ BU1 editing
 - Check the **Logical View** inside the Network Segmentation section.
 
 ```{tip}
-Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**. 
+Navigate to **CoPilot > Networking > Network Segmentation > Overview > Logical View**. 
 
-This time, you can observe the successful establishment of network relationships between the two Network Domains
+This time, you can observe the successful establishment of network relationships between the two Network Domains.
 ```
 
 ```{figure} images/lab2-logicalview.png
@@ -56,8 +56,8 @@ Logical View
 
 - Verify the connectivity **between** BU1 and BU2 domains.
 
-  - SSH to BU1 Frontend and carry out ping/ssh commands towards BU2 Mobile App.
-  - Ping and SSH between the two BUs should finally work, thanks to the `Connection Policy` (aka **_VRF leaking_**).
+  - SSH into the BU1 Frontend and run ping or SSH commands targeting the BU2 Mobile App.
+  - Ping and SSH between the two BUs should now work, thanks to the `Connection Policy` (aka **_VRF leaking_**).
 
 ```{figure} images/lab2-pingbu2.png
 ---
@@ -70,7 +70,7 @@ BU1 to BU2 is ok
 - Check the different routing tables (VRFs) maintained by any of the Transit Gateways.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Gateway Routes** and filter out based on any Network Domains.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Gateway Routes** and filter out based on any Network Domains.
 ```
 
 ```{figure} images/lab2-bu1andbu2.png
@@ -81,7 +81,7 @@ View on a specific RTB
 ```
 
 ```{important}
-The **Spoke** Gateways provide visibility only of the main routing table, the Global Routing Table (aka **GRT**), whereas the **Transit** Gateways provide visibility of all routings tables (the main rtb + any additional RTBs created through the Segmentation feature).
+**Spoke Gateways** only show the main routing table, known as the *Global Routing Table (GRT)*, while **Transit Gateways** provide visibility into all routing tables, including the main RTB and any additional RTBs created through segmentation.
 ```
 
 ## 3. TROUBLESHOOT REQUEST
@@ -99,7 +99,7 @@ align: center
 curl fails...
 ```
 
-You will notice that after issuing the curl command, it will hang and then, after some seconds, a message will be displayed reporting that the attempt to connecting to port **80** has indeed failed.
+After running the curl command, it may hang for a moment, and then a message will appear indicating that the connection to port **80** has failed.
 
 ```{important}
 Curl is not working, despite having both Ping and SSH working correctly.
@@ -112,10 +112,10 @@ align: center
 PING and SSH are successful
 ```
 
-* Use `AppIQ` for checking the *native cloud constructs* that separate the two nodes involved on this test.
+* Use `AppIQ` to verify the *CSP native cloud constructs* that isolate the two instances involved in this test.
 
 ```{tip}
-Go to **CoPilot > Diagnostics > AppIQ > FlightPath**
+Navigate to **CoPilot > Diagnostics > AppIQ > FlightPath**
 ```
 
 ```{figure} images/lab2-curl3.png
@@ -164,7 +164,7 @@ This helps you to identify connectivity problems on the underlay environments of
 Log in to the **AWS console**.
 
 ```{important}
-Go to your personal POD portal and click on the Console button under the AWS Console section.
+Navigate to your personal POD portal and click on the Console button under the AWS Console section.
 
 Sign in using the provided credentials (these screenshots refer to **Pod 143**).
 ```
@@ -248,7 +248,7 @@ align: center
 Add a new rule
 ```
 
-Create the required inbound rule (i.e. _"allow **http** traffic from 10.0.0.0/8"_) as depicted below and then click on the `"Save rules"` button.
+Create the required inbound rule (i.e., _"allow **http** traffic from 10.0.0.0/8"_) as depicted below and then click on the `"Save rules"` button.
 
 ```{figure} images/lab2-sg5.png
 ---
