@@ -2,9 +2,7 @@
 
 ## 1. SCENARIO
 
-BU1 is suddenly unable to communicate with both BU1 Analytics and BU1 DB.
-
-The network team discovered a disgruntled employee that jeopardized the connectivity between the involved workloads.
+BU1 Frontend suddenly cannot communicate with BU1 Analytics or BU1 DB. The network team found that a disgruntled employee had compromised the connectivity between these workloads.
 
 ```{figure} images/lab5-topology.png
 ---
@@ -29,9 +27,9 @@ Ping fails
 - Check whether the AWS Spoke1 GW and the GCP Spoke1 GW have the relevant routes or not.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **Spoke1 Gateway in AWS > Gateway Routes** and filter out based on the remote route.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **Spoke1 Gateway in AWS > Gateway Routes** and filter by the remote route.
 
-Repeat the same operation from the GCP's Spoke perspective!
+Repeat the same process from the GCP Spoke perspective!
 ```
 
 ```{figure} images/lab5-filter.png
@@ -47,7 +45,7 @@ The **Spoke1** in AWS does not have the destination route to reach the destinati
 - Check what route is received by the **GCP Transit GW** from the **GCP Spoke1 GW**.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_ace-gcp-us-east1-transit1_** Gateway in GCP **> Gateway Routes** and filter based on the parameter depicted below.
+Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_ace-gcp-us-east1-transit1_** Gateway in GCP **> Gateway Routes** and filter by the parameter depicted below.
 ```
 
 - "**Next Hop Gateway** *contains* **gcp**"
@@ -70,10 +68,10 @@ Malicious Route
 
 You will notice that the Spoke1 in GCP is advertising a **bogus/malicious** route (i.e. `40.40.40.0/24`), whereas the legit route **172.16.211.0/24** has been withdrawn!
 
-- Fix the issue checking the **Route Manipulation** section on the **Spoke GW in GCP**.
+- Fix the issue checking the **Settings** (i.e., the *Route Manipulation* section) section on the **Spoke GW in GCP**.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **Spoke GW in GCP > Settings > Routing** and <ins>remove</ins> the CIDR 40.40.40.0/24 from the **Customize Spoke Advertised VPC/VNet CIDRs** section and then click on **SAVE**.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **Spoke GW in GCP > Settings > Routing** and <ins>remove</ins> the CIDR 40.40.40.0/24 from the **Customize Spoke Advertised VPC/VNet CIDRs** section and then click on **SAVE**.
 ```
 
 ```{figure} images/lab5-customize.png
@@ -114,7 +112,7 @@ Ping is unsuccessful
 - Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and launch a **traceroute** towards the BU1 DB in Azure.
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
 
 Select the **_ace-aws-eu-west-1-spoke1_** Spoke GW and this time launch a **traceroute** towards the private IP address of the BU1 DB.
 ```
@@ -127,13 +125,13 @@ align: center
 ```
 
 ```{important}
-The outcome above shows **5** Hops. The last Hop that has responded to the traceroute is the Spoke1 GW in Azure, therefore the BU1 DB has not responded to the traceroute!</ins>
+The results above show **five** hops. The last hop to respond is the Spoke1 Gateway in Azure, which means the BU1 DB did not respond to the traceroute.
 ```
 
-- Launch a **Packet Capture** on the LAN interface (`eth0`) of the **_ace-azure-east-us-spoke1_** GW and filter out the outcome based on **ICMP**.
+- Start a **Packet Capture** on the LAN interface (`eth0`) of the **_ace-azure-east-us-spoke1_** gateway, and filter the results to focus on **ICMP** traffic.
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
 
 Select the **_ace-azure-east-us-spoke1_** Spoke GW and launch the packet capture on its eth0 interface.
 
@@ -142,7 +140,7 @@ This is the LAN interface within the VNet, where also the **VNet router** reside
 
 
 ```{tip}
-<ins>Open two tabs</ins>: on the first tab launch a packet capture on the **Azure Spoke GW1** on the LAN interface (`etho`), <ins>and after few seconds</ins>, launch a ping from the **BU1 Frontend** towards **BU1 DB** (VM in Azure) and keep it running, although it will fail.
+<ins>Open two tabs</ins>: on the first tab launch a packet capture on the **Azure Spoke GW1** on the LAN interface (`etho`), <ins>and after few seconds</ins>, start a ping from the **BU1 Frontend** towards **BU1 DB** (VM in Azure) and keep it running, although it will fail.
 
 - Diminish the `Duration` to solely **10** seconds to speed up the capture!
 - Filter out based on the `"ICMP"` protocol.
@@ -163,12 +161,12 @@ align: center
 Packet Capture
 ```
 
-You will only notice **ICMP Echo Request** packets going out from the LAN interface. Moreover the Source IP is completely different from the expected source IP: instead of an IP from the CIDR 10.1.211.0/24 (the legit source CIDR), the source IP is an address from the `50.50.50.0/24` CIDR!
+You will only see **ICMP Echo Request** packets leaving from the LAN interface. Additionally, the source IP is entirely different from what you'd expect: instead of an IP from the legitimate CIDR 10.1.211.0/24, the source address belongs to the `50.50.50.0/24` range.
 
 - Fix the issue checking the **Routes Manipulation** section on the **Spoke1 GW in Azure**.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke1_** GW in Azure **> Settings > Network Address Translation (NAT)**, delete the NAT Rule and click on **SAVE**.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke1_** GW in Azure **> Settings > Network Address Translation (NAT)**, delete the NAT Rule and click on **SAVE**.
 ```
 
 ```{figure} images/lab5-deleterule.png
@@ -190,10 +188,10 @@ Ping is ok
 
 ## 3. CHANGE REQUEST
 
-- Now that you have restored the connectivity, the BU2 DB owner has also asked you to filter out the route **10.0.211.0/24** from the routing table of the Azure Spoke2 GW.
+- Now that connectivity has been restored, the BU2 DB owner has also requested that you filter out the route **10.0.211.0/24** from the routing table of the Azure Spoke2 Gateway.
 
 ```{important}
-The subnet `10.0.211.0/24` is advertised by the OnPrem DC Router towards the Aviatrix MCNA through the Site2Cloud connection.
+The subnet `10.0.211.0/24` is advertised by the OnPrem DC Router towards the Aviatrix CNSF via the Site-to-Cloud connection.
 
 ```{figure} images/lab5-newrequest2.png
 ---
@@ -205,7 +203,7 @@ S2C route
 - Check the BGP Learned Routes
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Cloud Routes > BGP Info** and then click on the **3 dots** icon on the right-hand side of the screen and select the `"Show BGP Learned Routes"` option.
+Navigate to **CoPilot > Diagnostics > Cloud Routes > BGP Info** and then click on the **3 dots** icon on the right-hand side of the screen and select the `"Show BGP Learned Routes"` option.
 ```
 
 ```{figure} images/lab5-bgpinfo.png
@@ -224,7 +222,7 @@ align: center
 10.0.211.0/24
 ```
 
-You are asked to maintain visible this route (therefore fully installed in the routing tables) on all the Spoke gateways, <ins>except the Azure Spoke2 GW!</ins>
+You are required to keep this route visible (fully installed in the routing tables) on all the Spoke gateways, <ins>except for the Azure Spoke2 Gateway</ins>.
 
 ```{figure} images/lab5-newrequest.png
 ---
@@ -237,7 +235,7 @@ Topology
 - Verify first the presence of the route inside the routing table of the Azure Spoke2 GW.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Gateway Routes** tab.
+NAvigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Gateway Routes** tab.
 
 Now search for `10.0.211.0/24`.
 ```
@@ -250,10 +248,10 @@ align: center
 Search for the remote route from the OnPrem DC
 ```
 
-- Filter out the route `10.0.211.0/24` from the `Settings` section (i.e. *Route Manipulation* section).
+- Filter out the route `10.0.211.0/24` in the `Settings` section (i.e., the *Route Manipulation* section).
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Settings** tab.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Settings** tab.
 Expand the **Routing** section and insert the subnet **10.0.211.0/24** inside the `"Exclude Learned CIDRs to Spoke VPC/VNet Route Table"` option.
 
 Do not forget to click on **Save**.
@@ -267,10 +265,10 @@ align: center
 Exclude the route
 ```
 
-- Verify that the route has been withdrawn from the routing table of the Azure Spoke2 GW.
+- Confirm that the route has been removed from the routing table of the Azure Spoke2 Gateway.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Gateway Routes** tab.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Gateway Routes** tab.
 
 Now search for `10.0.211.0/24`.
 ```
@@ -283,4 +281,4 @@ align: center
 No Results found
 ```
 
-You can notice that route has been removed from the routing table, successfully.
+You can see that the route has been successfully removed from the routing table.
