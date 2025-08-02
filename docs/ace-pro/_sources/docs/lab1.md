@@ -296,7 +296,7 @@ Next, we will complete this lab by creating a VPC in GCP.
 
 ### 4.1 Create GCP VPC
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
 Before proceeding with the deployment of the VPC in GCP, please verify once more whether the CIDR range `172.16.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
 

@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-Build Transit Network in Azure, GCP and AWS using Aviatrix Multicloud Transit `Hub-and-Spoke Topology`.
+Build the `Aviatrix Cloud Native Security Fabric (CNSF)` by deploying both Spoke and Transit Gateways to effectively secure communication across your multicloud environment.
 
 In this lab, we will use Aviatrix CoPilot to connect three major clouds, i.e. Azure, GCP and AWS. The workloads in VPCs/VNets, in all three clouds, must communicate without manual configuration on the native consoles.
 
@@ -120,7 +120,7 @@ Check the **Gatus App** status for the remaining instances as well.
 
 Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.
 
-- Go to your POD Portal and search for the widget assigned to the **_aws-us-east-2-spoke1-test1_** instance within the LAB2 and LAB3 sections. Then copy on the clipboard the <ins>symbolic public DNS name</ins> of the istance!
+- Navigate to your POD Portal and search for the widget assigned to the **_aws-us-east-2-spoke1-test1_** instance within the LAB2 and LAB3 sections. Then copy on the clipboard the <ins>symbolic public DNS name</ins> of the istance!
 
 ```{figure} images/lab2-gatus06.png
 ---
@@ -160,7 +160,7 @@ You can also access your instances using also their **Public IP addresses**! You
 
 #### 3.2.1 Cloud Assets (to retrieve IP addresses)
 
-- Go to **CoPilot > Cloud Resources > Cloud Assets** and filer based on the keyword `"aws-us-east-2-spoke1-test1"`.
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets** and filer based on the keyword `"aws-us-east-2-spoke1-test1"`.
 - Copy its **public** ip address and use it with your SSH client.
 
 ```{figure} images/lab2-sshclient10.png
@@ -168,14 +168,6 @@ You can also access your instances using also their **Public IP addresses**! You
 align: center
 ---
 Search the test instance
-```
-
-```{figure} images/lab2-sshclient11.png
----
-height: 250px
-align: center
----
-Public IP address
 ```
 
 ```{important}
@@ -194,7 +186,7 @@ SSH with public IP address
 
 #### 3.2.2 Topology (to retrieve IP addresses) <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-- Navigate to **CoPilot > Topology > Overview (Default Tab)** and enter **_aws-us-east-2-spoke1-test1_** in the **Search** field located on the right-hand side.
+- Navigate to **CoPilot > Topology > Overview (Default Tab)** and enter **_aws-us-east-1-spoke1-test1_** in the **Search** field located on the right-hand side.
 
 ```{figure} images/lab02-searchfield.png
 ---
