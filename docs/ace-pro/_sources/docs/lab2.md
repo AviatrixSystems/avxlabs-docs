@@ -194,7 +194,7 @@ SSH with public IP address
 
 #### 3.2.2 Topology (to retrieve IP addresses) <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-- Navigate to **CoPilot > Topology > Overview (Default Tab)** and enter **_aws-us-east-1-spoke1-test1_** in the search field located on the right-hand side.
+- Navigate to **CoPilot > Topology > Overview (Default Tab)** and enter **_aws-us-east-2-spoke1-test1_** in the **Search** field located on the right-hand side.
 
 ```{figure} images/lab02-searchfield.png
 ---
@@ -384,7 +384,7 @@ Transit GWs Clusters
 You can deploy up to maximum **two** Transit Gateways per each Transit VPC/VNet/VCN.
 ```
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and explore the list of the available Spoke gateways. You can find out that there are a total of **three** Spoke Gateways (once again, the Public IPs may differ):
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and explore the list of the available Spoke gateways. You can find out that there are a total of **three** Spoke Gateways (once again, the Public IPs may differ):
 
 ```{figure} images/lab2-clusterspoke.png
 ---
@@ -394,7 +394,7 @@ align: center
 Spoke GWs Clusters
 ```
 
-You can notice that the cluster in AWS comprises two Spoke Gateways, whereas in Azure there is just a single Spoke Gateway. This is a valid deployment. The number of Spoke Gateways that you should deploy per each Spoke VPC/VNet/VCN is dictated by your architecture design.
+You will notice that the AWS cluster includes two Spoke Gateways, while the Azure deployment has only a single Spoke Gateway. This is a valid configuration. The number of Spoke Gateways you should deploy per Spoke VPC/VNet/VCN depends on your architecture design.
 
 ```{note}
 You can deploy up to maximum **fifteen** Spoke Gateways per each Spoke VPC/VNet/VCN.
@@ -414,7 +414,7 @@ In this section, you will experience the power and simplicity of the Aviatrix pl
 Please pay close attention to each step, as a misconfiguration could result in **20+** minutes of lost time! 
 ```
 
-- Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways > + Transit Gateway**
+- Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways > + Transit Gateway**
 
 ```{figure} images/lab2-transitbutton.png
 ---
@@ -606,7 +606,7 @@ align: center
 Deployment in progress
 ```
 
-Once all gateways have been created, confirm from **CoPilot > Cloud Fabric > Gateways > Overview (default TAB)** the presence of a total of **nine** GWs Clusters!
+Once all gateways have been created, verify their presence by navigating to **CoPilot > Cloud Fabric > Gateways > Overview (default tab)** to ensure there are a total of **nine** GW clusters.
 
 ```{figure} images/lab2-14gws.png
 ---
@@ -615,7 +615,7 @@ align: center
 Dashboard
 ```
 
-After created the Transit gateway in AWS  US-EAST-1 region and the single Spoke gateways in each cloud, this is how the topology would look like.
+After creating the Transit Gateway in the AWS US-East-1 region and the single Spoke Gateways in each cloud, the topology will look like this.
 
 ```{figure} images/lab2-temptopology.png
 ---
@@ -627,7 +627,7 @@ Overview of the new topology
 
 ## 6. Explore the Cloud Fabric
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on  the `"Managed"` button to only showing the Managed VPCs!
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on  the `"Managed"` button to only showing the Managed VPCs!
 
 ```{warning}
 Please keep in mind that the topology view may look different on your laptop depending on your screen resolution and zoom level.
@@ -777,7 +777,7 @@ The Spoke Gateway azure-west-us-**spoke2** will be attached to its Transit Gatew
 
 ## 8. CoPilot Verification of Spoke-Transit Attachments
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview**
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview**
 
 Now, verify the spoke-transit attachments. You can see the dotted lines connecting the 3 spoke gateways to their respective transits.
 
@@ -824,7 +824,7 @@ Transit peering is **_bidirectional_**.
 You do not need to configure peering in the opposite direction.
 ```
 
-Go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
 
 ### 9.1 AWS and Azure
 

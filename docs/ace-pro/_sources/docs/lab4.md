@@ -30,7 +30,7 @@ Please note that the Spoke Gateway in the **azure-west-us-spoke2** VPC will rema
 
 ### 4.1 CoPilot View before starting
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview**
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview**
 
 ```{important}
 Verify that **AWS US-EAST-1** region has a Transit gateway and a Spoke gateway that are not connected yet.
@@ -46,7 +46,7 @@ CoPilot view
 
 ### 4.2 Transit-Spoke Attachment
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **aws-us-east-1-spoke1** clicking on the pencil icon:
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **aws-us-east-1-spoke1** clicking on the pencil icon:
 
 ```{figure} images/lab5-editspoke.png
 ---
@@ -206,7 +206,7 @@ Go to **CoPilot > Diagnostics > Cloud Routes > VPC/VNet Routes**
 Click the filter button, select `“Name”` and enter **_aws-us-east-1-spoke1-Public-1-us-east-1a-rtb_** to filter by just that route table.
 
 ```{note}
-The **RFC 1918** summary routes points to the Aviatrix Spoke gateway for this routing table programmed by the Aviatrix Controller:
+The **RFC 1918** summary routes point to the Aviatrix Spoke gateway for this routing table, which is programmed by the Aviatrix Controller:
 ```
 
 ```{figure} images/lab5-filter.png
@@ -461,7 +461,7 @@ To demonstrate the `Active Mesh` capability, you will shut down _temporarily_ on
 
 Before proceeding with the actions that you need to carry out on the AWS console, let's turn off the `Gateway Single AZ HA` functionality.
 
-- Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-1-spoke1_** cluster! Now select the **Settings** tab, then expand the **General** section and last but not least, turn off the _Gateway Single AZ HA_ knob! Do not forget to click on **Save**.
+- Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-1-spoke1_** cluster! Now select the **Settings** tab, then expand the **General** section and last but not least, turn off the _Gateway Single AZ HA_ knob! Do not forget to click on **Save**.
 
 ```{figure} images/lab5-activemeshha.png
 ---
@@ -911,7 +911,7 @@ Restart the Spoke Gateway 1
 
 ## 13. FlightPath
 
- Go to **CoPilot > Diagnostics > AppIQ > FlightPath**
+ Navigate to **CoPilot > Diagnostics > AppIQ > FlightPath**
 
 Use the following inputs:
 
