@@ -70,7 +70,7 @@ The **_azure-west-us-transit_** is already enabled for **FireNet** functionality
 
 Before proceeding with the FireNet implementation, we need to associate **_azure-west-s-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
 
-Go to **CoPilot > Networking > Network Segmentation > Network Domains**
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains**
 
 Click the *pencil icon* to edit the Green network domain.
 
@@ -125,7 +125,7 @@ Specifically, you will be deploying a firewall image called **Palo Alto Networks
 
 Aviatrix has already taken care of the *`subscription`* from the Azure Marketplace.
 
-Go to **CoPilot > Security > FireNet > Firewall**, then click on the `"+ Firewall"` button.
+Navigate to **CoPilot > Security > FireNet > Firewall**, then click on the `"+ Firewall"` button.
 
 ```{figure} images/lab7-firenetbutton.png
 ---
@@ -221,7 +221,7 @@ Deployment completed
 
 Check the `Notifications` section on your CoPilot, during the deployment process.
 
-- Go to **CoPilot > Monitor > Notifications > Tasks**
+- Navigate to **CoPilot > Monitor > Notifications > Tasks**
 
 ```{figure} images/lab6-firenettaskalert.png
 ---
@@ -235,7 +235,7 @@ Notification Panel
 
 The `Vendor Integration` allows inserting the Summary Routes into the the Firewall's Routing Table.
 
-Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three-dot"` symbol on the right-hand side of the **_azure-west-us-transit_** row, and then click on `Vendor Integration`.
+Navigate to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three-dot"` symbol on the right-hand side of the **_azure-west-us-transit_** row, and then click on `Vendor Integration`.
 
 ```{figure} images/lab7-vendor.png
 ---
@@ -280,7 +280,7 @@ align: center
 Vendor Integration accomplished successfully
 ```
 
-Go to **CoPilot > Security > FireNet > Firewall** and click on the **_azure-west-us-pan_** firewall
+Navigate to **CoPilot > Security > FireNet > Firewall** and click on the **_azure-west-us-pan_** firewall.
 
 ```{figure} images/lab7-vendor4.png
 ---
@@ -347,7 +347,7 @@ align: center
 Inspection Policy accomplished
 ```
 
-## 5. Firewall Configuration Verification <span style='color:#33ECFF'>(BONUS)</span></summary>
+## 5. Firewall Configuration Verification <span style='color:#33ECFF'>(BONUS: Accept a self-signed certificate)</span></summary>
 
 Once you have deployed the firewall, applied both the Vendor Integration and the Inspection Policy, you can optionally decide to log in to the firewall.
 
@@ -392,7 +392,7 @@ PaloAlto Welcome page
 
 Dismiss the Welcome splash screen. This is an indication that the firewall is ready.
 
-### 5.1 Verify Routes Installed on Firewall <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 5.1 Verify Routes Installed on Firewall <span style='color:#33ECFF'>(BONUS: Accept a self-signed certificate)</span></summary>
 
 Verify the same RFC1918 routes exist on the PAN Firewall.
 
@@ -414,7 +414,7 @@ align: center
 Static Routes (RFC1918 routes)
 ```
 
-### 5.2 Verify Firewall Policy <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 5.2 Verify Firewall Policy <span style='color:#33ECFF'>(BONUS: Accept a self-signed certificate)</span></summary>
 
 Continue to explore the configuration of the PaloAlto FW. Navigate to `Policies` tab to find out that the firewall was pre-configured with a simple **Allow-All** policy.
 
@@ -605,7 +605,7 @@ Monitoring traffic towards GCP
 
 Now, let's check the `DCF Monitor` section:
 
-- Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on **ICMP**.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on **ICMP**.
 
 ```{figure} images/lab7-finalmonitor00.png
 ---
@@ -639,7 +639,7 @@ The inspected VNets
 
 Let's retrieve the **Private IP address** of the VM in  the **_azure-west-us-spoke2_** VNet.
 
-- Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_azure-west-us-spoke2-test<span style='color:#33ECFF'>1</span></summary>_** instance. Identify its Private IP address and copy it.
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_azure-west-us-spoke2-test<span style='color:#33ECFF'>1</span></summary>_** instance. Identify its Private IP address and copy it.
 
 ```{figure} images/lab6-searchfor.png
 ---
@@ -649,7 +649,7 @@ align: center
 Search for azure-west-us-spoke2-test1
 ```
 
-Now navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_azure-west-us-spoke<span style='color:#33ECFF'>1</span></summary>_** Gateway, then select the **Traceroute** command. Paste the IP address previously copied from the **Cloud Assets** section into the `Destination (IP / Hostname)` field, and then click on **Run**.
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_azure-west-us-spoke<span style='color:#33ECFF'>1</span></summary>_** Gateway, then select the **Traceroute** command. Paste the IP address previously copied from the **Cloud Assets** section into the `Destination (IP / Hostname)` field, and then click on **Run**.
 
 ```{figure} images/lab6-diag00.png
 ---

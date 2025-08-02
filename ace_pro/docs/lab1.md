@@ -132,7 +132,7 @@ Confirmation
 ```
 
 ```{note}
-It will take an additional **10 minutes** for both the VNet and all the four subnets (two public and two private) to become visible.
+It will take an additional **5 minutes** for both the VNet and all the four subnets (two public and two private) to become visible.
 
 Thank you for your patience!
 

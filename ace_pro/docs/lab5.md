@@ -34,7 +34,7 @@ Private Subnet and AWS NAT GW
 - Explore the **Routing Table** to see the private subnet where the **test2** instance resides.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1_** GW. Then, click on the **VPC/VNet Route Tables** tab and select the following Private RTB from the `Route Table` field: **aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb**.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1_** GW. Then, click on the **VPC/VNet Route Tables** tab and select the following Private RTB from the `Route Table` field: **aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb**.
 ```
 
 ```{figure} images/lab6-spokegw.png
@@ -170,12 +170,12 @@ curl command-04
 ```
 
 ## 4. Aviatrix Cloud Firewall
-### 4.1 Enable the Cloud Egress Security
+### 4.1 Enable the Cloud Secure Egress
 
-Now let's enable the cloud egress security within the VPC that is hosting the **_aws-us-east-2-spoke1-test2_** instance.
+Now let's enable the cloud secure egress within the VPC that is hosting the **_aws-us-east-2-spoke1-test2_** instance.
 
 ```{note}
-Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"Enable Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
+Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"Enable Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
 ```
 
 ```{figure} images/lab6-egress.png
@@ -212,7 +212,7 @@ At this point, the Aviatrix  performs the same functions as the **CSP NAT Gatewa
 - Verify its presence in any Private RTBs inside the **_aws-us-east-2-spoke1_** VPC.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab and then select the following Private RTB from the `Route Table` field: **aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb**.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_aws-us-east-2-spoke1 GW_**, then click on the **VPC/VNet Route Tables** tab and then select the following Private RTB from the `Route Table` field: **aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb**.
 ```
 
 ```{figure} images/lab6-defaultroute.png
@@ -228,7 +228,7 @@ The `Default Route` is now pointing to the Aviatrix Spoke Gateway.
 
 ### 4.3 Enable DCF
 
-You have successfully activated your `Egress Control` without disrupting any resources in the private subnet. The default route inserted into the Private Routing Tables now points to the Spoke gateway.
+You have successfully activated your `Cloud Secure Egress Control` without disrupting any resources in the private subnet. The default route inserted into the Private Routing Tables now points to the Spoke gateway.
 
 However, to collect NetFlow information and apply firewall rules, you need to enable the `Aviatrix Cloud Firewall`. This will allow you to monitor the behavior of the private subnet and gain insights into the domains accessed from it.
 
@@ -260,9 +260,17 @@ align: center
 Begin
 ```
 
+Finally, click on **Acknowledge**.
+
+```{figure} images/lab6-newjoe234.png
+---
+align: center
+---
+Acknolwedge
+```
+
 After enabling the DCF, one rule will be generated automatically:
 - `Greendfield-Rule` = ALLOW EVERYTHING
-
 
 ```{figure} images/lab6-greenfield.png
 ---
@@ -351,7 +359,7 @@ New SG
 
 ## 6. Create a new DCF Rule
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+Go to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
 ```{figure} images/lab6-newrule10.png
 ---
@@ -360,7 +368,7 @@ align: center
 New Rule
 ```
 
-Insert the following parameters:
+Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>Egress-Rule</span>
 - **Source Smartgroups**: <span style='color:#479608'>us-east-2-private-subnet</span>
@@ -395,18 +403,7 @@ align: center
 Egress-Rule
 ```
 
-```{important}
-The `DefaultDenyAll` rule injected by the Aviatrix Controller is by default <ins>not editable</ins>.
-```
-
-```{figure} images/lab6-new010.png
----
-align: center
----
-Not Editable
-```
-
-- Now Create an Explicit Deny rule:
+- Now, create an **Explicit Deny** rule and position it below the Egress Rule but above the Greenfield Rule to activate the `Zero Trust control`.
 
 Click on the `"+ Rule"` button.
 
@@ -541,7 +538,7 @@ curl command-04
 
 ### 7.3 Egress Overview
 
-Go to **CoPilot > Security > Egress > Analyze**, and you will see the visibility of the domain hits.
+Navigate to **CoPilot > Security > Egress > Analyze**, and you will see the visibility of the domain hits.
 
 ```{figure} images/lab6-newrul12.png
 ---
@@ -551,9 +548,9 @@ align: center
 Overview
 ```
 
-You now have comprehensive **Secure Cloud Egress observability**, including a detailed list of all domains accessed by the EC2 instance within that private subnet.
+You now have comprehensive **Cloud Secure Egress observability**, including a detailed list of all domains accessed by the EC2 instance within that private subnet.
 
-Furthermore, go to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east-2-spoke1 VPC_**.
+Furthermore, navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east-2-spoke1 VPC_**.
 
 ```{figure} images/lab6-monitor.png
 ---
@@ -567,13 +564,13 @@ You will get a granular Layer 7 visibility that allows you to get a good underst
 
 ## 8. ZTNA - Zero Trust Network Access
 
-We have now enabled the Ze`Zero Trust Network Access` approach, which default-denies all access and only permits explicitly authorized connections.
+We have now enabled the `Zero Trust Network Access` control, which default-denies all access and only permits explicitly authorized connections.
 
 ### 8.1 Create a New WebGroup
 
 Let's move towards a posture where only specific egress domains are in place.
 
-Go to **CoPilot > Groups > WebGroups** and click on `"+ WebGroup"` button.
+Navigate to **CoPilot > Groups > WebGroups** and click on `"+ WebGroup"` button.
 
 ```{figure} images/lab6-webgroup.png
 ---
@@ -604,7 +601,7 @@ The purpose of this **WebGroup** is to permit traffic exclusively to the domains
 
 ### 8.2 Edit the Egress-Rule
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
 
 ```{figure} images/lab6-webgroup2346.png
 ---
