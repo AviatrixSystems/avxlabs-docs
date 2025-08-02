@@ -354,7 +354,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-cloud-firewall">4. Aviatrix Cloud Firewall</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-cloud-egress-security">4.1 Enable the Cloud Egress Security</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-cloud-secure-egress">4.1 Enable the Cloud Secure Egress</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-private-rtb">4.2 Inspect the Private RTB</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-dcf">4.3 Enable DCF</a></li>
 </ul>
@@ -428,7 +428,7 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-2-spoke1</em></strong> GW. Then, click on the <strong>VPC/VNet Route Tables</strong> tab and select the following Private RTB from the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Table</span></code> field: <strong>aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb</strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-2-spoke1</em></strong> GW. Then, click on the <strong>VPC/VNet Route Tables</strong> tab and select the following Private RTB from the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Table</span></code> field: <strong>aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb</strong>.</p>
 </div>
 <figure class="align-center" id="id6">
 <img alt="../_images/lab6-spokegw.png" src="../_images/lab6-spokegw.png" />
@@ -554,12 +554,12 @@ document.write(`
 </section>
 <section id="aviatrix-cloud-firewall">
 <h2>4. Aviatrix Cloud Firewall<a class="headerlink" href="#aviatrix-cloud-firewall" title="Link to this heading">#</a></h2>
-<section id="enable-the-cloud-egress-security">
-<h3>4.1 Enable the Cloud Egress Security<a class="headerlink" href="#enable-the-cloud-egress-security" title="Link to this heading">#</a></h3>
-<p>Now let’s enable the cloud egress security within the VPC that is hosting the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance.</p>
+<section id="enable-the-cloud-secure-egress">
+<h3>4.1 Enable the Cloud Secure Egress<a class="headerlink" href="#enable-the-cloud-secure-egress" title="Link to this heading">#</a></h3>
+<p>Now let’s enable the cloud secure egress within the VPC that is hosting the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code>, then select the <strong><em>aws-us-east-2-spoke1</em></strong> VPC and click on <strong>Add</strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code>, then select the <strong><em>aws-us-east-2-spoke1</em></strong> VPC and click on <strong>Add</strong>.</p>
 </div>
 <figure class="align-center" id="id17">
 <img alt="../_images/lab6-egress.png" src="../_images/lab6-egress.png" />
@@ -593,7 +593,7 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-2-spoke1 GW</em></strong>, then click on the <strong>VPC/VNet Route Tables</strong> tab and then select the following Private RTB from the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Table</span></code> field: <strong>aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb</strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>aws-us-east-2-spoke1 GW</em></strong>, then click on the <strong>VPC/VNet Route Tables</strong> tab and then select the following Private RTB from the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Table</span></code> field: <strong>aws-us-east-2-spoke1-Private-<span style='color:#33ECFF'>1</span></summary>-us-east-2a-rtb</strong>.</p>
 </div>
 <figure class="align-center" id="id20">
 <img alt="../_images/lab6-defaultroute.png" src="../_images/lab6-defaultroute.png" />
@@ -608,7 +608,7 @@ document.write(`
 </section>
 <section id="enable-dcf">
 <h3>4.3 Enable DCF<a class="headerlink" href="#enable-dcf" title="Link to this heading">#</a></h3>
-<p>You have successfully activated your <code class="docutils literal notranslate"><span class="pre">Egress</span> <span class="pre">Control</span></code> without disrupting any resources in the private subnet. The default route inserted into the Private Routing Tables now points to the Spoke gateway.</p>
+<p>You have successfully activated your <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Secure</span> <span class="pre">Egress</span> <span class="pre">Control</span></code> without disrupting any resources in the private subnet. The default route inserted into the Private Routing Tables now points to the Spoke gateway.</p>
 <p>However, to collect NetFlow information and apply firewall rules, you need to enable the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code>. This will allow you to monitor the behavior of the private subnet and gain insights into the domains accessed from it.</p>
 <ul class="simple">
 <li><p>Enable the <strong>Distributed Cloud Firewall</strong>.</p></li>
@@ -636,15 +636,22 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <p><span class="caption-number">Fig. 244 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Finally, click on <strong>Acknowledge</strong>.</p>
+<figure class="align-center" id="id24">
+<img alt="../_images/lab6-newjoe234.png" src="../_images/lab6-newjoe234.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 245 </span><span class="caption-text">Acknolwedge</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>After enabling the DCF, one rule will be generated automatically:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Greendfield-Rule</span></code> = ALLOW EVERYTHING</p></li>
 </ul>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab6-greenfield.png"><img alt="../_images/lab6-greenfield.png" src="../_images/lab6-greenfield.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 245 </span><span class="caption-text">Greenfield-Rule automatically injected by the Controller</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 246 </span><span class="caption-text">Greenfield-Rule automatically injected by the Controller</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -655,48 +662,48 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <section id="identify-the-subnet-where-the-private-workload-resides">
 <h3>5.1 Identify the subnet where the private workload resides<a class="headerlink" href="#identify-the-subnet-where-the-private-workload-resides" title="Link to this heading">#</a></h3>
 <p>First and foremost, you have to identify the <strong>private subnet</strong> where the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance resides.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id26">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww.png"><img alt="../_images/lab6-greenfieldneww.png" src="../_images/lab6-greenfieldneww.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 246 </span><span class="caption-text">Private Subnet</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 247 </span><span class="caption-text">Private Subnet</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for the <strong><em>aws-us-east-2-spoke1-test2</em></strong> instance in the search field on the right-hand side.</p>
 <p>From the results, you need to identify the <code class="docutils literal notranslate"><span class="pre">Availability</span> <span class="pre">Zone</span></code>.</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww2.png"><img alt="../_images/lab6-greenfieldneww2.png" src="../_images/lab6-greenfieldneww2.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 247 </span><span class="caption-text">AZ</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 248 </span><span class="caption-text">AZ</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now that you know in which <code class="docutils literal notranslate"><span class="pre">Availability</span> <span class="pre">Zone</span></code> the private workload resides, you need to select the <code class="docutils literal notranslate"><span class="pre">VPC/VNets</span> <span class="pre">&amp;</span> <span class="pre">Subnets</span></code> tab and filter based on the <strong><em>aws-us-east-2-spoke1</em></strong> VPC.</p>
 <p>Identify the <code class="docutils literal notranslate"><span class="pre">Private</span> <span class="pre">Subnet</span></code> that belongs to the <code class="docutils literal notranslate"><span class="pre">us-east-2a</span></code> AZ and copy the corresponding <strong><em><code class="docutils literal notranslate"><span class="pre">IP</span> <span class="pre">Address</span> <span class="pre">CIDR</span></code></em></strong> value!</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww3.png"><img alt="../_images/lab6-greenfieldneww3.png" src="../_images/lab6-greenfieldneww3.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 248 </span><span class="caption-text">Private Subnet</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 249 </span><span class="caption-text">Private Subnet</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="create-an-ad-hoc-smartgroup">
 <h3>5.2 Create an ad-hoc SmartGroup<a class="headerlink" href="#create-an-ad-hoc-smartgroup" title="Link to this heading">#</a></h3>
 <p>Go to <strong>CoPilot &gt; Groups</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab6-newsg.png"><img alt="../_images/lab6-newsg.png" src="../_images/lab6-newsg.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 249 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 250 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, click on the arrow icon  inside the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Resource</span> <span class="pre">Type&quot;</span></code> button and select <code class="docutils literal notranslate"><span class="pre">&quot;IP</span> <span class="pre">/</span> <span class="pre">CIDRs&quot;</span></code>.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww4.png"><img alt="../_images/lab6-greenfieldneww4.png" src="../_images/lab6-greenfieldneww4.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 250 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -705,25 +712,25 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li><p><strong>IPs / CIDRs</strong>: <span style='color:#479608'>10.0.1.0/27</span></p></li>
 </ul>
 <p>Before clicking on <strong>SAVE</strong>, delete the empty <code class="docutils literal notranslate"><span class="pre">&quot;Virtual</span> <span class="pre">Machines&quot;</span></code> additional condition.</p>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab6-greenfieldneww45.png"><img alt="../_images/lab6-greenfieldneww45.png" src="../_images/lab6-greenfieldneww45.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 251 </span><span class="caption-text">New SG</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 252 </span><span class="caption-text">New SG</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="create-a-new-dcf-rule">
 <h2>6. Create a new DCF Rule<a class="headerlink" href="#create-a-new-dcf-rule" title="Link to this heading">#</a></h2>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id31">
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<figure class="align-center" id="id32">
 <img alt="../_images/lab6-newrule10.png" src="../_images/lab6-newrule10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 252 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 253 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Insert the following parameters:</p>
+<p>Enter the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>Egress-Rule</span></p></li>
 <li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>us-east-2-private-subnet</span></p></li>
@@ -734,10 +741,10 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id33">
 <img alt="../_images/lab6-new.png" src="../_images/lab6-new.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -746,25 +753,15 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <p>Ultimately , this Webgroup will limit Internet traffic solely for <strong>HTTP</strong> and <strong>HTTPS</strong> protocols.</p>
 </div>
 <p>Click on the <strong>Commit</strong> button, and the rule previously created will be enforced in to the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Path</span></code>..</p>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id34">
 <a class="reference internal image-reference" href="../_images/lab6-newrule11.png"><img alt="../_images/lab6-newrule11.png" src="../_images/lab6-newrule11.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Egress-Rule</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">DefaultDenyAll</span></code> rule injected by the Aviatrix Controller is by default <ins>not editable</ins>.</p>
-</div>
-<figure class="align-center" id="id34">
-<img alt="../_images/lab6-new010.png" src="../_images/lab6-new010.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Not Editable</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Egress-Rule</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now Create an Explicit Deny rule:</p></li>
+<li><p>Now, create an <strong>Explicit Deny</strong> rule and position it below the Egress Rule but above the Greenfield Rule to activate the <code class="docutils literal notranslate"><span class="pre">Zero</span> <span class="pre">Trust</span> <span class="pre">control</span></code>.</p></li>
 </ul>
 <p>Click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id35">
@@ -888,7 +885,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </section>
 <section id="egress-overview">
 <h3>7.3 Egress Overview<a class="headerlink" href="#egress-overview" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; Analyze</strong>, and you will see the visibility of the domain hits.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; Analyze</strong>, and you will see the visibility of the domain hits.</p>
 <figure class="align-center" id="id45">
 <a class="reference internal image-reference" href="../_images/lab6-newrul12.png"><img alt="../_images/lab6-newrul12.png" src="../_images/lab6-newrul12.png" style="height: 400px;" />
 </a>
@@ -896,8 +893,8 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 <p><span class="caption-number">Fig. 266 </span><span class="caption-text">Overview</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You now have comprehensive <strong>Secure Cloud Egress observability</strong>, including a detailed list of all domains accessed by the EC2 instance within that private subnet.</p>
-<p>Furthermore, go to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong> and from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window, select the <strong><em>aws-us-east-2-spoke1 VPC</em></strong>.</p>
+<p>You now have comprehensive <strong>Cloud Secure Egress observability</strong>, including a detailed list of all domains accessed by the EC2 instance within that private subnet.</p>
+<p>Furthermore, navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong> and from the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> drop-down window, select the <strong><em>aws-us-east-2-spoke1 VPC</em></strong>.</p>
 <figure class="align-center" id="id46">
 <a class="reference internal image-reference" href="../_images/lab6-monitor.png"><img alt="../_images/lab6-monitor.png" src="../_images/lab6-monitor.png" style="height: 400px;" />
 </a>
@@ -910,11 +907,11 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </section>
 <section id="ztna-zero-trust-network-access">
 <h2>8. ZTNA - Zero Trust Network Access<a class="headerlink" href="#ztna-zero-trust-network-access" title="Link to this heading">#</a></h2>
-<p>We have now enabled the Ze<code class="docutils literal notranslate"><span class="pre">Zero</span> <span class="pre">Trust</span> <span class="pre">Network</span> <span class="pre">Access</span></code> approach, which default-denies all access and only permits explicitly authorized connections.</p>
+<p>We have now enabled the <code class="docutils literal notranslate"><span class="pre">Zero</span> <span class="pre">Trust</span> <span class="pre">Network</span> <span class="pre">Access</span></code> control, which default-denies all access and only permits explicitly authorized connections.</p>
 <section id="create-a-new-webgroup">
 <h3>8.1 Create a New WebGroup<a class="headerlink" href="#create-a-new-webgroup" title="Link to this heading">#</a></h3>
 <p>Let’s move towards a posture where only specific egress domains are in place.</p>
-<p>Go to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p>
+<p>Navigate to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p>
 <figure class="align-center" id="id47">
 <img alt="../_images/lab6-webgroup.png" src="../_images/lab6-webgroup.png" />
 <figcaption>
@@ -942,7 +939,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </section>
 <section id="edit-the-egress-rule">
 <h3>8.2 Edit the Egress-Rule<a class="headerlink" href="#edit-the-egress-rule" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong>, click on the <strong>pencil</strong> button on the right-hand side of the <code class="docutils literal notranslate"><span class="pre">Egress-Rule</span></code>.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong>, click on the <strong>pencil</strong> button on the right-hand side of the <code class="docutils literal notranslate"><span class="pre">Egress-Rule</span></code>.</p>
 <figure class="align-center" id="id49">
 <img alt="../_images/lab6-webgroup2346.png" src="../_images/lab6-webgroup2346.png" />
 <figcaption>
@@ -1213,7 +1210,7 @@ Then, click on <code class="docutils literal notranslate"><span class="pre">&quo
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aviatrix-cloud-firewall">4. Aviatrix Cloud Firewall</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-cloud-egress-security">4.1 Enable the Cloud Egress Security</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-the-cloud-secure-egress">4.1 Enable the Cloud Secure Egress</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-private-rtb">4.2 Inspect the Private RTB</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-dcf">4.3 Enable DCF</a></li>
 </ul>
