@@ -240,7 +240,7 @@ The previous results clearly confirm that connectivity is disrupted, allowing on
 Zero Trust architecture is "Never trust, always verify", a critical component to enterprise cloud adoption success!
 ```
 
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
 ```{figure} images/lab10-newrule.png
 ---
@@ -423,18 +423,18 @@ However, **aws-us-east-2-spoke1-test1** can ping **aws-us-east-2-spoke1-test2** 
 ---
 align: center
 ---
-tes1 and test2 in AWS US-EAST-2
+test1 and test2 in AWS US-EAST-2
 ```
 
 ```{figure} images/lab10-sgorch02.png
 ---
 align: center
 ---
-tes1 and test2 in AWS US-EAST-2
+test1 and test2 in AWS US-EAST-2
 ```
 
 ```{warning}
-The instances **aws-us-east-2-spoke1-test1** and **aws-us-east-2-spoke1-test2** are in the same VPC. Although these two instances have been deployed in <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka **_intra-vpc separation_**).
+The instances **aws-us-east-2-spoke1-test1** and **aws-us-east-2-spoke1-test2** are in the same VPC. Although these two instances have been assigned to <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don't enable the `"Security Group(SG) Orchestration"` (aka **_intra-vpc separation_**).
 ```
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button, inside the `"Security Group (SG) Orchestration"` field.
@@ -607,14 +607,6 @@ align: center
 Logs 
 ```
 
-```{figure} images/lab10-logsshbu1.png
----
-height: 150px
-align: center
----
-Logs 
-```
-
 The log above clearly indicates that the `"intra-ssh-bu1"` rule is successfully permitting SSH traffic within the Smart Group bu1.
 
 Following the creation of this intra-rule, the topology with the permitted protocols will appear as follows:
@@ -697,7 +689,7 @@ The logs above confirm that the **ICMP** protocol is permitted within the Smart 
 
 Create a new rule that allows **ICMP** <span style='color:green'>FROM</span></summary> bu2 <span style='color:green'>TO</span></summary> bu1.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on the `"+ Rule"` button.
 
 ```{figure} images/lab10-newrule4.png
 ---
@@ -774,9 +766,9 @@ Ping fails
 
 Let's investigate the logs once again.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
-Filter out based on the **inter-icmp-bu2-bu1** Rule!
+Filter by the **inter-icmp-bu2-bu1** Rule!
 
 ```{figure} images/lab10-monitorfresh.png
 ---
@@ -861,7 +853,7 @@ The ping fails!
 
 Let’s check the routing table of the Spoke Gateway **_azure-west-us-spoke2_**.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the gateway **_azure-west-us-spoke2_**
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the gateway **_azure-west-us-spoke2_**
 
 ```{figure} images/lab10-spoke2azure.png
 ---
@@ -899,7 +891,7 @@ The destination route is **NOT** present in the routing table because the Transi
 
 Let’s enable the **MTT** feature and observe its behavior in action!
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-1-transit_**.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-1-transit_**.
 
 ```{figure} images/lab10-mtt.png
 ---
@@ -908,7 +900,7 @@ align: center
 aws-us-east-1-transit
 ```
 
-Go to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
+Navigate to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
 
 ```{figure} images/lab10-mtt2.png
 ---
@@ -933,7 +925,7 @@ azure-west-us-transit
 Both the **aws-us-east-2-transit** and **gcp-us-central1-transit** have already been configured with their ASNs during Lab 8!
 ```
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
 
 ```{figure} images/lab10-mtt3.png
 ---
@@ -955,7 +947,7 @@ Multi-Tier Transit
 
 Let’s verify once again the routing table of the Spoke Gateway in **_azure-west-us-spoke2_**.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the relevant gateway **_azure-west-us-spoke2_**
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the relevant gateway **_azure-west-us-spoke2_**
 
 ```{figure} images/lab10-mtt5.png
 ---
@@ -1020,7 +1012,7 @@ The reason is that the EC2 instance **aws-us-east-1-spoke1-test2** has not been 
 
 Let’s create an additional Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in the US-EAST-1 region of AWS.
 
-Go to **Copilot > Groups > SmartGroups** and click on  `"+ SmartGroup"` button.
+Navigate to **Copilot > Groups > SmartGroups** and click on  `"+ SmartGroup"` button.
 
 ```{figure} images/lab10-mttnew.png
 ---
@@ -1049,7 +1041,7 @@ Make sure to click **Save** once you're done.
 
 ### 14.2 Create an inter-rule that allows ICMP from bu2 towards east1
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create another rule clicking on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create another rule clicking on the `"+ Rule"` button.
 
 ```{figure} images/lab10-mtt8.png
 ---
@@ -1123,7 +1115,7 @@ This time, the ping will be successful!
 
 Check the logs once again.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter by the *inter-icmp-bu2-east1* rule.
 
 ```{figure} images/lab10-reallylast.png
 ---
@@ -1156,7 +1148,7 @@ No More NGFW
 
 ### 15.1 Creating a Spoke to Spoke Attachment
 
-Go to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** gateway and click on the **`Manage Gateway Attachments`** icon on the right-hand side.
+Navigate to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** gateway and click on the **`Manage Gateway Attachments`** icon on the right-hand side.
 
 ```{figure} images/lab10-spoke2spoke02.png
 ---
@@ -1184,7 +1176,7 @@ Save
 
 Do not forget to click on **Save**.
 
-Now go to **CoPilot > Cloud Fabric > Topology** and check the new attachment between the two Spoke Gateways in Azure.
+Navigate to **CoPilot > Cloud Fabric > Topology** and check the new attachment between the two Spoke Gateways in Azure.
 
 ```{figure} images/lab10-spoke2spoke04.png
 ---
@@ -1199,7 +1191,7 @@ It will take approximately **2** minutes to reflect into the Dynamic Topology.
 
 Let's check the **Routing Table** of the **_Spoke2_** in Azure.
 
-Go to **CoPilot > Cloud Fabric > Gateways**, select the **azure-west-us-spoke2**, then select the **Gateways Routes** tab and search for the subnet **`192.168.1.0`** on the right-hand side.
+Navigate to **CoPilot > Cloud Fabric > Gateways**, select the **azure-west-us-spoke2**, then select the **Gateways Routes** tab and search for the subnet **`192.168.1.0`** on the right-hand side.
 
 ```{figure} images/lab10-spoke2spoke05.png
 ---
@@ -1221,7 +1213,7 @@ Metric 50
 The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now prefer going through the Spoke-to-Spoke Attachment for communication with the Spoke1 VNet.
 
 ```{important}
-The Aviatrix Cloud Fabric is very flexible and does not lock you in with solely a _Hub and Spoke_ Topology!
+The `Aviatrix Cloud Native Security Fabric` is very flexible and does not lock you in with solely a _Hub and Spoke_ Topology!
 ```
 
 ```{figure} images/lab10-spoke2spoke07.png
