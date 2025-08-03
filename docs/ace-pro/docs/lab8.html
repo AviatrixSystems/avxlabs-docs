@@ -395,12 +395,12 @@ document.write(`
 </div>
 <section id="general-objectives">
 <h2>1. General Objectives<a class="headerlink" href="#general-objectives" title="Link to this heading">#</a></h2>
-<p>You are tasked with connecting the on-premises data center in New York to your MCNA. An <strong>Aviatrix Edge</strong> device has already been provisioned and registered with the existing <strong>Aviatrix Controller</strong>.</p>
+<p>You are tasked with connecting the on-premises data center in New York to your Aviatrix CNSF. An <strong>Aviatrix Edge</strong> device has already been provisioned and registered with the existing <strong>Aviatrix Controller</strong>.</p>
 <p>The Aviatrix Secure High-Performance Datacenter Edge solution empowers network administrators to provide seamless cloud connectivity without compromise. This robust solution offers encrypted, line-rate performance and supports single-region, multi-region, or multi-cloud redundancy options. Additionally, it ensures comprehensive visibility and troubleshooting capabilities throughout the entire network.</p>
 </section>
 <section id="initial-set-up">
 <h2>2. Initial set-up<a class="headerlink" href="#initial-set-up" title="Link to this heading">#</a></h2>
-<p>Now let’s connect the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Edge</span></code> to the existing MCNA.</p>
+<p>Now let’s connect the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Edge</span></code> to the existing <strong>Cloud Native Security Fabric (CNSF)</strong>.</p>
 <p>First and foremost let’s explore the <strong>BGP Map</strong> that describes the connectivity established through the BGPoverLAN.</p>
 <p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong>. Click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Map&quot;</span></code> option.</p>
 <figure class="align-center" id="id3">
@@ -449,7 +449,7 @@ document.write(`
 </figcaption>
 </figure>
 <p>First and foremost, you have to configure a <strong>BGP ASN</strong> on the <strong><em>aws-us-east-2-transit</em></strong> GW!</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong>.</p>
 <figure class="align-center" id="id9">
 <img alt="../_images/lab8-edge12.png" src="../_images/lab8-edge12.png" />
 <figcaption>
@@ -464,7 +464,7 @@ document.write(`
 </figcaption>
 </figure>
 <p>Now it’s time to establish the attachment!</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud &gt; Edge Gateways</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Gateway</span> <span class="pre">Attachments&quot;</span></code> button, on the right-hand side of the screen.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud &gt; Edge Gateways</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Gateway</span> <span class="pre">Attachments&quot;</span></code> button, on the right-hand side of the screen.</p>
 <figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/lab8-edge9.png"><img alt="../_images/lab8-edge9.png" src="../_images/lab8-edge9.png" style="height: 200px;" />
 </a>
@@ -516,7 +516,7 @@ document.write(`
 </figcaption>
 </figure>
 <p>Let’s verify the presence of the previously created attachment in the topology:</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
 <figure class="align-center" id="id16">
 <img alt="../_images/lab8-edge15.png" src="../_images/lab8-edge15.png" />
 <figcaption>
@@ -558,7 +558,7 @@ document.write(`
 <section id="network-domain-association">
 <h2>3. Network Domain Association<a class="headerlink" href="#network-domain-association" title="Link to this heading">#</a></h2>
 <p>Let’s associate the Edge connection with one of the existing Network Domains.</p>
-<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong> and edit, for instance, the <strong>Green</strong> domain. Select the <strong><code class="docutils literal notranslate"><span class="pre">on-prem-edge</span></code></strong> connection and do not forget to click on <strong>Save</strong>!</p>
+<p>Navigate to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong> and edit, for instance, the <strong>Green</strong> domain. Select the <strong><code class="docutils literal notranslate"><span class="pre">on-prem-edge</span></code></strong> connection and do not forget to click on <strong>Save</strong>!</p>
 <figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab8-edge19.png"><img alt="../_images/lab8-edge19.png" src="../_images/lab8-edge19.png" style="height: 400px;" />
 </a>
@@ -574,7 +574,7 @@ document.write(`
 </figcaption>
 </figure>
 <p>Let’s explore again the Cloud Routes section!</p>
-<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> and click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Advertised</span> <span class="pre">Routes</span></code> option.</p>
+<p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP info</strong> and click on the three dots icon and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Advertised</span> <span class="pre">Routes</span></code> option.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge device by the <strong>Aviatrix Controller</strong>, after the attachment got established!</p>
@@ -595,7 +595,7 @@ document.write(`
 <p><span class="caption-number">Fig. 401 </span><span class="caption-text">BGP Advertised Routes</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go to your personal POD portal, scroll down untill your reach the <strong>Lab 7 and 8</strong> section and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Open</span> <span class="pre">Workstation&quot;</span></code> button.</p>
+<p>Navigate to your personal POD portal, scroll down untill your reach the <strong>Lab 7 and 8</strong> section and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Open</span> <span class="pre">Workstation&quot;</span></code> button.</p>
 <figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab8-edgenew.png"><img alt="../_images/lab8-edgenew.png" src="../_images/lab8-edgenew.png" style="height: 250px;" />
 </a>
@@ -624,7 +624,7 @@ document.write(`
 <p><span class="caption-number">Fig. 405 </span><span class="caption-text">Target for the connectivity test</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered as just an additional VPC!</p>
+<p>The ping will be successful, this means that you have extended the Aviatrix CNSF to your on-prem DC, that ultimately can now be considered as just an additional VPC!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Do NOT forget to exit from the previous session used to log in to the <strong>on-prem-partner1 router</strong> (i.e. Lab 7)</p>
@@ -650,7 +650,7 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Monitor &gt; FlowIQ</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;+&quot;</span></code> icon and filter based  on the <code class="docutils literal notranslate"><span class="pre">&quot;Destination</span> <span class="pre">IP</span> <span class="pre">Address&quot;</span></code> <strong>10.0.1.100</strong> (i.e. <strong><em>aws-us-east-2-spoke1-test1</em></strong>).</p>
+<p>Navigate to <strong>CoPilot &gt; Monitor &gt; FlowIQ</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;+&quot;</span></code> icon and filter based  on the <code class="docutils literal notranslate"><span class="pre">&quot;Destination</span> <span class="pre">IP</span> <span class="pre">Address&quot;</span></code> <strong>10.0.1.100</strong> (i.e. <strong><em>aws-us-east-2-spoke1-test1</em></strong>).</p>
 <p>Do not forget to click on <strong>Apply</strong>.</p>
 </div>
 <figure class="align-center" id="id30">
@@ -705,7 +705,7 @@ and then click on the <strong><code class="docutils literal notranslate"><span c
 </figcaption>
 </figure>
 <p>Once again, you have to configure a <strong>BGP ASN</strong> on the <strong><em>gcp-us-central1-transit</em></strong> GW first, before deploying any new attachments.</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>gcp-us-central1-transit</em></strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>gcp-us-central1-transit</em></strong>.</p>
 <figure class="align-center" id="id36">
 <img alt="../_images/lab8-edgedouble5.png" src="../_images/lab8-edgedouble5.png" />
 <figcaption>
@@ -720,7 +720,7 @@ and then click on the <strong><code class="docutils literal notranslate"><span c
 </figcaption>
 </figure>
 <p>Now you are ready to proceed with the rest of the configuration on the Edge section!</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud &gt; Edge Gateways</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Gateway</span> <span class="pre">Attachments&quot;</span></code> button, on the right-hand side of the screen.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Hybrid Cloud &gt; Edge Gateways</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Gateway</span> <span class="pre">Attachments&quot;</span></code> button, on the right-hand side of the screen.</p>
 <figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab8-edgedouble2.png"><img alt="../_images/lab8-edgedouble2.png" src="../_images/lab8-edgedouble2.png" style="height: 200px;" />
 </a>
@@ -762,7 +762,7 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 </figcaption>
 </figure>
 <p>Let’s verify the presence of the new attachment previously created on the Topology.</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default)</strong>.</p>
 <figure class="align-center" id="id42">
 <img alt="../_images/lab8-edgedouble10.png" src="../_images/lab8-edgedouble10.png" />
 <figcaption>
@@ -885,7 +885,7 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 <p>Let’s harness the <strong>as-path prepend</strong> feature for manipulating the traffic.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The routes exchanged between transit gateways are considered <code class="docutils literal notranslate"><span class="pre">BGP-like</span> <span class="pre">routes</span></code>. This is because the Aviatrix Controller, which orchestrates SDN routing, utilizes mechanisms similar to those of BGP for routing decisions. As a result, these routes exhibit attributes akin to BGP routes—for example, each transit has its own <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">PATH</span></code>, which is used for the best path selection process. However, it’s important to remember that the control plane within the MCNA is fundamentally based on <code class="docutils literal notranslate"><span class="pre">SDN</span></code> (Software-Defined Networking).</p>
+<p>The routes exchanged between transit gateways are considered <code class="docutils literal notranslate"><span class="pre">BGP-like</span> <span class="pre">routes</span></code>. This is because the Aviatrix Controller, which orchestrates SDN routing, utilizes mechanisms similar to those of BGP for routing decisions. As a result, these routes exhibit attributes akin to BGP routes—for example, each transit has its own <code class="docutils literal notranslate"><span class="pre">AS</span> <span class="pre">PATH</span></code>, which is used for the best path selection process. However, it’s important to remember that the control plane within the CNSF is fundamentally based on <code class="docutils literal notranslate"><span class="pre">SDN</span></code> (Software-Defined Networking).</p>
 </div>
 <p>The objective of this task is to define a <strong>Primary</strong> path through the Edge device, whereas the path between the Transit gateways will be used as a <strong>Backup</strong> path.</p>
 <figure class="align-center" id="id53">
@@ -895,7 +895,7 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 </figcaption>
 </figure>
 <p>Let’s first check the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">DB</span></code> of the <strong><em>aws-us-east-2-transit</em></strong> GW.</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and select the <strong><em>aws-us-east-2-transit</em></strong> Gateway.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and select the <strong><em>aws-us-east-2-transit</em></strong> Gateway.</p>
 <figure class="align-center" id="id54">
 <img alt="../_images/lab8-primary01.png" src="../_images/lab8-primary01.png" />
 <figcaption>
@@ -917,7 +917,7 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 </figcaption>
 </figure>
 <p>From the <strong><em>aws-us-east-2-transit</em></strong> perspective, the destination route <code class="docutils literal notranslate"><span class="pre">172.16.1.0</span></code> is reachable via a single AS (i.e., 64514).</p>
-<p>Now let’s apply the route manipulation. Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW.</p>
+<p>Now let’s apply the route manipulation. Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>aws-us-east-2-transit</em></strong> GW.</p>
 <figure class="align-center" id="id57">
 <img alt="../_images/lab8-edgedouble30.png" src="../_images/lab8-edgedouble30.png" />
 <figcaption>
@@ -933,7 +933,7 @@ You will notice the existing attachment (grayedout) with the Transit Gateway in 
 </figcaption>
 </figure>
 <p>Let’s repeat the same kind of configuration on the <strong>GCP</strong> Transit GW.</p>
-<p>navigate to <strong>CoPilot &gt; Cloud fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>gcp-us-central1-transit</em></strong> GW.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the <strong><em>gcp-us-central1-transit</em></strong> GW.</p>
 <figure class="align-center" id="id59">
 <img alt="../_images/lab8-edgedouble32.png" src="../_images/lab8-edgedouble32.png" />
 <figcaption>

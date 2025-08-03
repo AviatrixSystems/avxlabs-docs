@@ -30,7 +30,9 @@ The CostIQ feature provides detailed traffic distribution analysis for your cost
 
 ### 2.1 Enable CostIQ
 
-Navigate to **Copilot > Settings > Configuration > License**. Locate the **Add-on Features** section and enable `CostIQ`.
+Navigate to **Copilot > Settings > Configuration > General**. Locate the **Features** section and enable `CostIQ`. 
+
+Do not forget to click on **Save**.
 
 ```{figure} images/lab9-costiq123.png
 ---
@@ -258,7 +260,7 @@ WorkstationEdge
 
 ### 5.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-If you continue to run the ping from the Workstation Edge terminal to the **aws-us-east-2-spoke1-test1** instance, you should observe both relative and absolute traffic from the Cost Center in AWS. The other two environments (GCP and Azure) will display 0% traffic, as there is no data directed toward the Shared Service in the New York data center.
+If you continue to run the ping from the Workstation Edge terminal to the **aws-us-east-2-spoke1-test1** instance, you should observe both relative and absolute traffic from the twoCost Centers in AWS. The other two environments (GCP and Azure) will display 0% traffic, as there is no data directed toward the Shared Service in the New York data center.
 
 
 ```{figure} images/lab9-ping.png
