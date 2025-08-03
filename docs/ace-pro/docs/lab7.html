@@ -441,7 +441,7 @@ document.write(`
 <p>Create a connection from the Cloud (GCP) to an on-premises partner site using the following settings in the <code class="docutils literal notranslate"><span class="pre">&quot;Add</span> <span class="pre">External</span> <span class="pre">Connection&quot;</span></code> window:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>GCP-to-OnPremPartner</span></p></li>
-<li><p><strong>Connecting Using</strong>: <span style='color:#479608'>Static Route-Based</span></p></li>
+<li><p><strong>Connecting Using</strong>: <span style='color:#479608'>Static Routing over IPSec</span></p></li>
 <li><p><strong>Type</strong>: <span style='color:#479608'><strong>Mapped NAT</strong></span></p></li>
 <li><p><strong>Local Gateway</strong>: <span style='color:#479608'>gcp-us-central1-spoke1</span></p></li>
 <li><p><strong>Real Local Subnet CIDR(s)</strong>: <span style='color:#479608'>172.16.1.0/24</span></p></li>
@@ -574,7 +574,7 @@ document.write(`
 <p><span class="caption-number">Fig. 360 </span><span class="caption-text">Paste the command</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now, before issuing the command, delete it from the RDP client clipboard. Then, retrieve the password from your personal POD Portal and paste it into the clipboard.</p>
+<p>Now, before issuing the command, delete the long SSH command from the RDP client clipboard. Next, retrieve the password from your personal POD Portal (e.g., Lab 7 and 8 Section), paste it into the RDP client clipboard, and copy it.</p>
 <figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="../_images/lab8-podportal058.png"><img alt="../_images/lab8-podportal058.png" src="../_images/lab8-podportal058.png" style="height: 400px;" />
 </a>
@@ -589,7 +589,7 @@ document.write(`
 <p><span class="caption-number">Fig. 362 </span><span class="caption-text">Copy the password</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now, close the clipboard using <strong><em>Ctrl+Alt+Shift</em></strong> on Windows machines or <strong><em>Control+Shift+Command</em></strong> on Mac machines. Then, on the LX terminal, issue the SSH command and paste the password.</p>
+<p>Now, close the clipboard using <strong><em>Ctrl+Alt+Shift</em></strong> on Windows machines or <strong><em>Control+Shift+Command</em></strong> on Mac machines. Then, on the LX terminal, issue the SSH command and <ins>paste the password</ins>.</p>
 <figure class="align-center" id="id18">
 <a class="reference internal image-reference" href="../_images/lab8-podportal06.png"><img alt="../_images/lab8-podportal06.png" src="../_images/lab8-podportal06.png" style="height: 400px;" />
 </a>
@@ -597,7 +597,9 @@ document.write(`
 <p><span class="caption-number">Fig. 363 </span><span class="caption-text">Paste the password</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now you need to retrieve the <strong>Public IP address</strong> assigned to the GCP Spoke Gateway.</p>
+<ul class="simple">
+<li><p>Now you need to retrieve the <strong>Public IP address</strong> assigned to the GCP Spoke Gateway.</p></li>
+</ul>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and then identify the GCP Spoke Gateway and <strong>copy</strong> its Public IP address.</p>
 <figure class="align-center" id="id19">
 <img alt="../_images/lab8-gcppublic.png" src="../_images/lab8-gcppublic.png" />
@@ -696,7 +698,7 @@ Check the content of the following file: <code class="docutils literal notransla
 </section>
 <section id="s2c-verification">
 <h2>5. S2C - Verification<a class="headerlink" href="#s2c-verification" title="Link to this heading">#</a></h2>
-<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong></p>
+<p>Navigate to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Click on the <strong>refresh</strong> button to see the status icon changing from red to green.</p>
@@ -709,7 +711,7 @@ Check the content of the following file: <code class="docutils literal notransla
 <p><span class="caption-number">Fig. 372 </span><span class="caption-text">Connection is up</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong></p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong></p>
 <p>Filter by <strong>GCP Cloud</strong> and select the <strong>Managed</strong> button. Expand all the VPCs to see the new S2C connection with the remote On-Prem Partner site!</p>
 <figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab8-onprem.png"><img alt="../_images/lab8-onprem.png" src="../_images/lab8-onprem.png" style="height: 400px;" />
@@ -781,7 +783,7 @@ Check the content of the following file: <code class="docutils literal notransla
 </section>
 <section id="gateway-diagnostics">
 <h2>7. Gateway Diagnostics<a class="headerlink" href="#gateway-diagnostics" title="Link to this heading">#</a></h2>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong> and click on the icon of the Spoke Gateway <strong><em>gcp-us-central1-spoke1</em></strong>, click on the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> button and then click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Diagnostics</span></code>.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong> and click on the icon of the Spoke Gateway <strong><em>gcp-us-central1-spoke1</em></strong>. Scroll through the Properties window to the bottom, locate the the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> button and then click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Diagnostics</span></code>.</p>
 <figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab8-diag.png"><img alt="../_images/lab8-diag.png" src="../_images/lab8-diag.png" style="height: 400px;" />
 </a>
