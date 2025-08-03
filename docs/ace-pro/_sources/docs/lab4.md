@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-In this lab, we will demonstrate Active/Active communication between resources using **High-Performance Encryption** (also known as `Insane Mode` — which involves a **large number of Active/Active tunnels**) between Aviatrix Gateways.
+In this lab, we will demonstrate Active/Active communication between resources using **High-Performance Encryption**—formerly known as `Insane Mode`—which utilizes numerous **Active/Active tunnels** between Aviatrix Gateways within the Cloud Native Security Fabric (CNSF).
 
 ## 2. High Performance Encryption and ActiveMesh
 
@@ -67,7 +67,7 @@ Attachment
 
 ### 4.3 CoPilot View after Transit-Spoke Attachment
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview**
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview**
 
 Verify that both **_aws-us-east-1-transit_** gateway and **_aws-us-east-1-spoke1_**  gateway are now connected. 
 
@@ -92,7 +92,7 @@ Attachment on the CoPilot
 
 Here you will configure Transit Peering between **aws-us-east-1** and **aws-us-east-2** regions.
 
-Go back to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**
 
 - **aws-us-east-1-transit** to **aws-us-east-2-transit**
 
@@ -117,13 +117,13 @@ Peering
 
 ### 5.1 Transit Peerings Verification
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Gateway Routes"` tab and check the route **10.0.1.0/24** for instance.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Gateway Routes"` tab and check the route **10.0.1.0/24** for instance.
 
 ```{note}
 It may take a minute or two to reflect here.
 ```
 
-You will see that the route 10.0.1.0/24 is reachable via **nine** connections to the **_aws-us-east-2-transit_**.
+You will observe that the route 10.0.1.0/24 is reachable through nine different connections to aws-us-east-2-transit.
 
 ```{figure} images/lab5-hpe.png
 ---
@@ -165,7 +165,7 @@ The actual configuration of **`High Performance Encryption`**  on both the **_aw
 
 HPE automatically creates an underlying **VPC Peering attachment** within AWS. Verify it on the CoPilot.
 
-Go to **CoPilot > Networking > Connectivity > Native Peering**
+Navigate to **CoPilot > Networking > Connectivity > Native Peering**
 
 ```{figure} images/lab5-native0.png
 ---
@@ -186,7 +186,7 @@ Native Peerings Properties
 
 ### 6.2 CoPilot Verification of HPE
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. 
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. 
 
 These tunnels are used with the Spoke Gateway _aws-us-east-1-spoke1_ and the Transit Gateway _aws-us-east-2-transit_, because HPE is also enabled on these gateways:
 
@@ -201,7 +201,7 @@ Interface Stats
 
 ### 7.1 CoPilot Verification of ActiveMesh
 
-Go to **CoPilot > Diagnostics > Cloud Routes > VPC/VNet Routes**
+Navigate to **CoPilot > Diagnostics > Cloud Routes > VPC/VNet Routes**
 
 Click the filter button, select `“Name”` and enter **_aws-us-east-1-spoke1-Public-1-us-east-1a-rtb_** to filter by just that route table.
 
@@ -353,7 +353,7 @@ It will fail. Why? Because segmentation was not enabled on **aws-us-east-1-trans
 
 ## 9. Enable Segmentation
 
-Go to **CoPilot > Networking > Network Segmentation > Network Domains > Transit Gateways**
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains > Transit Gateways**
 
 Enable Segmentation on **_aws-us-east-1-transit_**:
 
@@ -366,7 +366,7 @@ Enable Segmentation
 
 ### 9.2 Associate Aviatrix Spoke to the Network Domain
 
-Go to **CoPilot > Networking > Network Segmentation > Network Domains**
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains**
 
 Associate **_aws-us-east-1-spoke1_** with its transit in the <span style='color:lightgreen'>Green</span> network domain:
 

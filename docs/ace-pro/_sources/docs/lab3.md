@@ -12,7 +12,7 @@ Network Segmentation will be extended to on-premises in the Site2Cloud lab.
 
 Enterprises can define their network domains (aka *segments*) and group VNets/VPCs/VCNs with similar security policies without requiring firewall solutions.
 
-Aviatrix transits and spokes architecture (aka *`Hub & Spoke`* architecture) help enterprises create customised segments and onboard branches, partners and customers in their respective segments so no partner can communicate with each other unless desired.
+Aviatrix *`Cloud Native Security Fabric (CNSF)`* helps enterprises create customized segments and onboard branches, partners, and customers within their respective segments, ensuring that no partner can communicate with each other unless explicitly permitted.
 
 ## 3. Topology
 
@@ -34,7 +34,7 @@ Topology for Lab 3
 
 ### 4.1 Aviatrix Transit Gateways
 
-Go to **CoPilot > Networking > Network Segmentation > Network Domains > Transit Gateways**:
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains > Transit Gateways**:
 
 ```{figure} images/lab3-enabletransit.png
 ---
@@ -99,7 +99,7 @@ Topology with Network Domains
 
 ### 5.1 CoPilot Verification
 
-Go to **CoPilot > Networking > Network Segmentation > Network Domains**
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains**
 
 Verify the segments and the associations as shown below:
 
@@ -135,7 +135,7 @@ align: center
 Explore Blue
 ```
 
-Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**
+Navigate to **CoPilot > Networking > Network Segmentation > Overview > Logical View**
 
 The nodes depicted in the Logical View represent spokes and site2cloud instances. Hover over a node to highlight reachability. Nodes are grouped by colored arcs representing network domains. At this time, only the spoke gateways in Azure and AWS (i.e. Green Network Domain) are connected:
 
@@ -254,7 +254,7 @@ Apply the Connection Policy
 
 ### 7.1 Verification of Connection Policy
 
-Go to **CoPilot > Networking > Network Segmentation > Overview > Logical View**
+Navigate to **CoPilot > Networking > Network Segmentation > Overview > Logical View**
 
 Now you will see that the spoke gateways in all three clouds are connected. This is because the Blue and Green Network Domains are directly connected:
 

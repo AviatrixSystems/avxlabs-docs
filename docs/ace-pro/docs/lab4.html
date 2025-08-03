@@ -409,7 +409,7 @@ document.write(`
 <h1>Lab 4 - HPE WITH ACTIVE MESH<a class="headerlink" href="#lab-4-hpe-with-active-mesh" title="Link to this heading">#</a></h1>
 <section id="objective">
 <h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
-<p>In this lab, we will demonstrate Active/Active communication between resources using <strong>High-Performance Encryption</strong> (also known as <code class="docutils literal notranslate"><span class="pre">Insane</span> <span class="pre">Mode</span></code> — which involves a <strong>large number of Active/Active tunnels</strong>) between Aviatrix Gateways.</p>
+<p>In this lab, we will demonstrate Active/Active communication between resources using <strong>High-Performance Encryption</strong>—formerly known as <code class="docutils literal notranslate"><span class="pre">Insane</span> <span class="pre">Mode</span></code>—which utilizes numerous <strong>Active/Active tunnels</strong> between Aviatrix Gateways within the Cloud Native Security Fabric (CNSF).</p>
 </section>
 <section id="high-performance-encryption-and-activemesh">
 <h2>2. High Performance Encryption and ActiveMesh<a class="headerlink" href="#high-performance-encryption-and-activemesh" title="Link to this heading">#</a></h2>
@@ -468,7 +468,7 @@ document.write(`
 </section>
 <section id="copilot-view-after-transit-spoke-attachment">
 <h3>4.3 CoPilot View after Transit-Spoke Attachment<a class="headerlink" href="#copilot-view-after-transit-spoke-attachment" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview</strong></p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview</strong></p>
 <p>Verify that both <strong><em>aws-us-east-1-transit</em></strong> gateway and <strong><em>aws-us-east-1-spoke1</em></strong>  gateway are now connected.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -490,7 +490,7 @@ document.write(`
 <section id="transit-peerings-configuration">
 <h2>5. Transit Peerings Configuration<a class="headerlink" href="#transit-peerings-configuration" title="Link to this heading">#</a></h2>
 <p>Here you will configure Transit Peering between <strong>aws-us-east-1</strong> and <strong>aws-us-east-2</strong> regions.</p>
-<p>Go back to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong></p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong></p>
 <ul class="simple">
 <li><p><strong>aws-us-east-1-transit</strong> to <strong>aws-us-east-2-transit</strong></p></li>
 </ul>
@@ -511,12 +511,12 @@ document.write(`
 </figure>
 <section id="transit-peerings-verification">
 <h3>5.1 Transit Peerings Verification<a class="headerlink" href="#transit-peerings-verification" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east-1-transit</em></strong>, select the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab and check the route <strong>10.0.1.0/24</strong> for instance.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east-1-transit</em></strong>, select the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab and check the route <strong>10.0.1.0/24</strong> for instance.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It may take a minute or two to reflect here.</p>
 </div>
-<p>You will see that the route 10.0.1.0/24 is reachable via <strong>nine</strong> connections to the <strong><em>aws-us-east-2-transit</em></strong>.</p>
+<p>You will observe that the route 10.0.1.0/24 is reachable through nine different connections to aws-us-east-2-transit.</p>
 <figure class="align-center" id="id12">
 <img alt="../_images/lab5-hpe.png" src="../_images/lab5-hpe.png" />
 <figcaption>
@@ -553,7 +553,7 @@ document.write(`
 <section id="copilot-verification-of-the-vpc-peerings-transit-transit-and-spoke-transit">
 <h3>6.1 CoPilot Verification of the VPC Peerings(Transit-Transit and Spoke-Transit)<a class="headerlink" href="#copilot-verification-of-the-vpc-peerings-transit-transit-and-spoke-transit" title="Link to this heading">#</a></h3>
 <p>HPE automatically creates an underlying <strong>VPC Peering attachment</strong> within AWS. Verify it on the CoPilot.</p>
-<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; Native Peering</strong></p>
+<p>Navigate to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; Native Peering</strong></p>
 <figure class="align-center" id="id15">
 <img alt="../_images/lab5-native0.png" src="../_images/lab5-native0.png" />
 <figcaption>
@@ -571,7 +571,7 @@ document.write(`
 </section>
 <section id="copilot-verification-of-hpe">
 <h3>6.2 CoPilot Verification of HPE<a class="headerlink" href="#copilot-verification-of-hpe" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east-1-transit</em></strong>, select the <code class="docutils literal notranslate"><span class="pre">&quot;Interfaces&quot;</span></code> tab and check the huge number of tunnel interfaces that HPE has instantiated.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>, select the Transit Gateway <strong><em>aws-us-east-1-transit</em></strong>, select the <code class="docutils literal notranslate"><span class="pre">&quot;Interfaces&quot;</span></code> tab and check the huge number of tunnel interfaces that HPE has instantiated.</p>
 <p>These tunnels are used with the Spoke Gateway <em>aws-us-east-1-spoke1</em> and the Transit Gateway <em>aws-us-east-2-transit</em>, because HPE is also enabled on these gateways:</p>
 <figure class="align-center" id="id17">
 <img alt="../_images/lab5-ipip.png" src="../_images/lab5-ipip.png" />
@@ -585,7 +585,7 @@ document.write(`
 <h2>7. ActiveMesh<a class="headerlink" href="#activemesh" title="Link to this heading">#</a></h2>
 <section id="copilot-verification-of-activemesh">
 <h3>7.1 CoPilot Verification of ActiveMesh<a class="headerlink" href="#copilot-verification-of-activemesh" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; VPC/VNet Routes</strong></p>
+<p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; VPC/VNet Routes</strong></p>
 <p>Click the filter button, select <code class="docutils literal notranslate"><span class="pre">“Name”</span></code> and enter <strong><em>aws-us-east-1-spoke1-Public-1-us-east-1a-rtb</em></strong> to filter by just that route table.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -724,7 +724,7 @@ document.write(`
 </section>
 <section id="enable-segmentation">
 <h2>9. Enable Segmentation<a class="headerlink" href="#enable-segmentation" title="Link to this heading">#</a></h2>
-<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains &gt; Transit Gateways</strong></p>
+<p>Navigate to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains &gt; Transit Gateways</strong></p>
 <p>Enable Segmentation on <strong><em>aws-us-east-1-transit</em></strong>:</p>
 <figure class="align-center" id="id31">
 <img alt="../_images/lab5-enable.png" src="../_images/lab5-enable.png" />
@@ -734,7 +734,7 @@ document.write(`
 </figure>
 <section id="associate-aviatrix-spoke-to-the-network-domain">
 <h3>9.2 Associate Aviatrix Spoke to the Network Domain<a class="headerlink" href="#associate-aviatrix-spoke-to-the-network-domain" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong></p>
+<p>Navigate to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong></p>
 <p>Associate <strong><em>aws-us-east-1-spoke1</em></strong> with its transit in the <span style='color:lightgreen'>Green</span> network domain:</p>
 <figure class="align-center" id="id32">
 <img alt="../_images/lab5-green.png" src="../_images/lab5-green.png" />
