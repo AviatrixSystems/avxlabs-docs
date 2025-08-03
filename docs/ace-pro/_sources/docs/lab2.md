@@ -336,7 +336,7 @@ These are very aggressive settings. In a Production environment, you should not 
 
 ## 5. Initial configuration
 
-Go to **CoPilot > Dashboard** and check the `Gateways Health` either of the Spoke GW Clusters or the Transit GW Clusters. 
+Navigate to **CoPilot > Dashboard** and check the `Gateways Health` either of the Spoke GW Clusters or the Transit GW Clusters. 
 
 ```{figure} images/lab2-dashboardgw.png
 ---
@@ -670,7 +670,7 @@ In this section you are going to attach the Aviatrix Spoke Gateways created abov
  
 ### 7.1 Spoke to Transit Attachment in AWS
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_aws-us-east-2-spoke1_**, clicking on the pencil icon:
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_aws-us-east-2-spoke1_**, clicking on the pencil icon:
 
 ```{figure} images/lab2-spokeinawstotransit.png
 ---
@@ -910,7 +910,7 @@ Please note that the following pending elements will be completed in a subsequen
  
 ### 10.1 Verification of Transit Peerings on CoPilot (Cloud Fabric)
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `Attachments"` tab and finally select the `"Transit-Transit Peering"` tab: you will see **one** connection per each peering, that correspond to the `two IPSec tunnels`.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `Attachments"` tab and finally select the `"Transit-Transit Peering"` tab: you will see **one** connection per each peering, that correspond to the `two IPSec tunnels`.
 
 ```{figure} images/lab2-verification.png
 ---
@@ -921,7 +921,7 @@ Verification
 
 ### 10.2 Verification of Transit Peerings on CoPilot (Topology)
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview**
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview**
 
 ```{note}
 Refresh the web page!
@@ -947,7 +947,7 @@ Expanded Topology
 
 Route Info DB is akin to the *Routing Information Base (RIB)*. It will provide the overall routing information of a Transit Gateway known by the CoPilot.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east-2-transit_**:
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east-2-transit_**:
 
 ```{figure} images/lab2-transitaws.png
 ---
