@@ -22,7 +22,7 @@ Lab 9 Initial Topology
 ```
 
 ## 3. PSF
-**Public Subnet Filtering** Gateway = An Aviatrix gateway that provides ingress and egress security for AWS public subnets where instances have public IP addresses.
+**Public Subnet Filtering** Gateway = an Aviatrix gateway that provides ingress and egress security for AWS public subnets where instances have public IP addresses.
 
 ### 3.1 Deploy the PSF
 
@@ -295,7 +295,7 @@ These two rules will ensure `bi-directional communication`: traffic from **aws-u
 
 Let's delete the **Greenfield-Rule** to restore **ZTNA** in the Data Path.
 
-Click the `trash icon` on the right side of the Greenfield-Rule entry to delete it.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)**, click the `trash icon` on the right side of the Greenfield-Rule entry to delete it.
 
 Do not forget to click on **Commit**.
 
