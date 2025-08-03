@@ -42,7 +42,7 @@ align: center
 Topology in Azure
 ```
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_azure-west-us-spoke2_**, clicking on the pencil icon:
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and edit the Spoke Gateway **_azure-west-us-spoke2_**, clicking on the pencil icon:
 
 ```{figure} images/lab7-spoke.png
 ---
@@ -314,7 +314,7 @@ Vendor Integration outcome
 
 Now it is time to select the VPC/VNet that will be involved in the _FireNet inspection_.
 
-Go to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_azure-west-us-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
+Navigate to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_azure-west-us-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
 
 ```{figure} images/lab7-inspection2.png
 ---
@@ -428,7 +428,7 @@ Allow-All
 
 ## 6. DCF Rules
 
-In Lab 5 (_Aviatrix Cloud Firewall_), the DCF functionality was enabled. The currently permitted rules are as follows:
+In Lab 5 (i.e., _Aviatrix Cloud Firewall lab_), the DCF functionality was enabled. The currently permitted rules are as follows:
 
 1) The `"Egress-Rule"` , which permits onlyg HTTP/HTTPS traffic to two specified domains.
 2) The `"ExplicitDenyAll"` rule, with _Logging_ enabled.
@@ -444,7 +444,7 @@ DCF rules
 
 ### 6.1 Move the Greenfield-Rule
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules**, then click on Move button on the Greenfield-Rule entry and, choose `Top`. Do not forget to click `"Save Draft"`.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules**, then click on Move button on the **Greenfield-Rule** entry and, choose `To Top`. Do not forget to click `"Save Draft"`.
 
 ```{figure} images/lab6-new101.png
 ---

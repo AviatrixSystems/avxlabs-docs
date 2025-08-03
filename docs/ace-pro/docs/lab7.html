@@ -403,7 +403,7 @@ document.write(`
 <h2>4. Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
 <section id="site2cloud-connection-cloud-to-on-prem">
 <h3>4.1. Site2Cloud Connection (Cloud to On-Prem)<a class="headerlink" href="#site2cloud-connection-cloud-to-on-prem" title="Link to this heading">#</a></h3>
-<p>Go to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Networking &gt; Connectivity &gt; External Connection (S2C)</strong>.</p>
 <p>Here you will immediately notice the presence of an existing S2C connection.</p>
 <p>This is an established connection between an <strong>Aviatrix Edge</strong> device deployed in the remote data center in New York and a LAN router. This S2C connection was pre-deployed at the launch of the POD!</p>
 <figure class="align-center" id="id2">
@@ -442,7 +442,7 @@ document.write(`
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>GCP-to-OnPremPartner</span></p></li>
 <li><p><strong>Connecting Using</strong>: <span style='color:#479608'>Static Route-Based</span></p></li>
-<li><p><strong>Type</strong>: <span style='color:#479608'><strong>Mapped</strong></span></p></li>
+<li><p><strong>Type</strong>: <span style='color:#479608'><strong>Mapped NAT</strong></span></p></li>
 <li><p><strong>Local Gateway</strong>: <span style='color:#479608'>gcp-us-central1-spoke1</span></p></li>
 <li><p><strong>Real Local Subnet CIDR(s)</strong>: <span style='color:#479608'>172.16.1.0/24</span></p></li>
 <li><p><strong>Virtual Local Subnet CIDR(s)</strong>: <span style='color:#479608'>192.168.200.0/24</span></p></li>
@@ -451,8 +451,7 @@ document.write(`
 <li><p><strong>Virtual Remote Subnet CIDR(s)</strong>: <span style='color:#479608'>192.168.100.0/24</span></p></li>
 <li><p><strong>Internet Key Exchange</strong>: <span style='color:#479608'><strong>IKEv2</strong></span></p></li>
 <li><p><strong>Authetication Method</strong>: <span style='color:#479608'>Pre-Shared Key</span></p></li>
-<li><p><strong>Remote Gateway IP</strong>: <span style='color:#479608'>[<strong>Refer to your Pod assignment for the <strong>on-prem-partner1</strong>’s Public IP - Lab7/8 section</strong> - You will need to use the dig, host, or nslookup command. Please see the following <strong>Note</strong> section for instructions on resolving the symbolic name to an IP address.]</span></p></li>
-<li><p><strong>Local Gateway Instance</strong>: <span style='color:#479608'>gcp-us-central1-spoke1</span></p></li>
+<li><p><strong>Remote Device 1 Tunnel Destination IP</strong>: <span style='color:#479608'>[<strong>Refer to your Pod assignment for the <strong>on-prem-partner1</strong>’s Public IP - Lab7/8 section</strong> - You will need to use the dig, host, or nslookup command. Please see the following <strong>Note</strong> section for instructions on resolving the symbolic name to an IP address.]</span></p></li>
 <li><p><strong>Pre-Shared Key</strong>: <span style='color:#479608'>[<strong>Refer to your Pod assignment for the StrongSwan PSK - Lab7/8 section</strong>]</span></p></li>
 </ul>
 <p>Then click on <strong>Save</strong>.</p>
@@ -518,7 +517,7 @@ document.write(`
 </div>
 <section id="configuration-using-the-workstation-edge-i-e-apache-guacamole-client-jumphost">
 <h4>4.2.1  Configuration Using the Workstation Edge (i.e., Apache Guacamole Client - Jumphost)<a class="headerlink" href="#configuration-using-the-workstation-edge-i-e-apache-guacamole-client-jumphost" title="Link to this heading">#</a></h4>
-<p>Go to your personal POD portal, identify the section labeled <code class="docutils literal notranslate"><span class="pre">&quot;Lab</span> <span class="pre">7</span> <span class="pre">and</span> <span class="pre">8&quot;</span></code>, then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Open</span> <span class="pre">Workstation&quot;</span></code> button to log in to the <strong>Workstation Edge</strong> (a Guacamole clientless remote desktop gateway).</p>
+<p>Navigate to your personal POD portal, identify the section labeled <code class="docutils literal notranslate"><span class="pre">&quot;Lab</span> <span class="pre">7</span> <span class="pre">and</span> <span class="pre">8&quot;</span></code>, then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Open</span> <span class="pre">Workstation&quot;</span></code> button to log in to the <strong>Workstation Edge</strong> (a Guacamole clientless remote desktop gateway).</p>
 <figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/lab8-podportal00.png"><img alt="../_images/lab8-podportal00.png" src="../_images/lab8-podportal00.png" style="height: 300px;" />
 </a>
@@ -575,27 +574,35 @@ document.write(`
 <p><span class="caption-number">Fig. 360 </span><span class="caption-text">Paste the command</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now, before issuing the command, copy the password for logging into the StrongSwan router from the <strong>Clipboard</strong> window on the left-hand side, then close the Clipboard using the aforementioned commands (<strong><em>Ctrl+Alt+Shift</em></strong> on a Windows machine <strong><em>Control+Shift+Command</em></strong> on a Mac).</p>
+<p>Now, before issuing the command, delete it from the RDP client clipboard. Then, retrieve the password from your personal POD Portal and paste it into the clipboard.</p>
 <figure class="align-center" id="id16">
-<a class="reference internal image-reference" href="../_images/lab8-podportal06.png"><img alt="../_images/lab8-podportal06.png" src="../_images/lab8-podportal06.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab8-podportal058.png"><img alt="../_images/lab8-podportal058.png" src="../_images/lab8-podportal058.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 361 </span><span class="caption-text">Copy the pwd and close the Clipboard window</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 361 </span><span class="caption-text">Paste the password</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id17">
-<a class="reference internal image-reference" href="../_images/lab8-podportal07.png"><img alt="../_images/lab8-podportal07.png" src="../_images/lab8-podportal07.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab8-podportal059.png"><img alt="../_images/lab8-podportal059.png" src="../_images/lab8-podportal059.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 362 </span><span class="caption-text">Paste the pwd</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 362 </span><span class="caption-text">Copy the password</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now, close the clipboard using <strong><em>Ctrl+Alt+Shift</em></strong> on Windows machines or <strong><em>Control+Shift+Command</em></strong> on Mac machines. Then, on the LX terminal, issue the SSH command and paste the password.</p>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/lab8-podportal06.png"><img alt="../_images/lab8-podportal06.png" src="../_images/lab8-podportal06.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 363 </span><span class="caption-text">Paste the password</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you need to retrieve the <strong>Public IP address</strong> assigned to the GCP Spoke Gateway.</p>
-<p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and then identify the GCP Spoke Gateway and <strong>copy</strong> its Public IP address.</p>
-<figure class="align-center" id="id18">
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and then identify the GCP Spoke Gateway and <strong>copy</strong> its Public IP address.</p>
+<figure class="align-center" id="id19">
 <img alt="../_images/lab8-gcppublic.png" src="../_images/lab8-gcppublic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 363 </span><span class="caption-text">Public IP address</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 364 </span><span class="caption-text">Public IP address</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, go back to the <strong>Guacamole Client LX Terminal</strong> session and issue the following <strong><em>bash script</em></strong> to automatically update the content of the configuration file!</p>
@@ -613,18 +620,18 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Use the Clipboard window for typing your commands and then copying them into the LX Terminal from your machine.</p>
 </div>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab8-podportal08.png"><img alt="../_images/lab8-podportal08.png" src="../_images/lab8-podportal08.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 364 </span><span class="caption-text">Bash cmd</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 365 </span><span class="caption-text">Bash cmd</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../_images/lab8-podportal09.png"><img alt="../_images/lab8-podportal09.png" src="../_images/lab8-podportal09.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 365 </span><span class="caption-text">Bash script issued successfully</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 366 </span><span class="caption-text">Bash script issued successfully</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -632,16 +639,16 @@ document.write(`
 <h4>4.2.2  Configuratiom Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#configuratiom-using-the-ssh-client-bonus" title="Link to this heading">#</a></h4>
 <p>Alternatively, if you are NOT using a corporate laptop, you can SSH into the StrongSwan router and apply the configuration using your SSH client.</p>
 <p>You can either use the public IP address that you retrieved before using the host/nslookup command or you can use its dns name available on your personal POD portal.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab8-personalpod.png" src="../_images/lab8-personalpod.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 366 </span><span class="caption-text">StrongSwan’s DNS name</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 367 </span><span class="caption-text">StrongSwan’s DNS name</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab8-strong.png" src="../_images/lab8-strong.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 367 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 368 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -653,18 +660,18 @@ Check the content of the following file: <code class="docutils literal notransla
 </pre></div>
 </div>
 <p>You will need to replace the string <strong><code class="docutils literal notranslate"><span class="pre">REPLACE_WITH_SPOKE_GW_PUBLIC_IP</span></code></strong> with the public IP address of the GCP spoke gateway in 3 places within <code class="docutils literal notranslate"><span class="pre">/etc/swanctl/swanctl.conf</span></code></p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab8-replace.png" src="../_images/lab8-replace.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 368 </span><span class="caption-text">cfg file</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 369 </span><span class="caption-text">cfg file</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s retrieve the Public IP address assigned to the GCP Spoke Gateway.</p>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and then identify the GCP Spoke Gateway and <strong>copy</strong> its Public IP address.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id25">
 <img alt="../_images/lab8-gcppublic.png" src="../_images/lab8-gcppublic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 369 </span><span class="caption-text">Public IP address</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 370 </span><span class="caption-text">Public IP address</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now go back on the <strong>SSH</strong> session established with the StrongSwan router and instead of editig the cfg file manually, you are going to use a <strong><em>script</em></strong> for automatically updating the content of the coonfiguration file!</p>
@@ -678,10 +685,10 @@ Check the content of the following file: <code class="docutils literal notransla
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>./update_swanctl.sh<span class="w"> </span>&lt;REPLACE_WITH_SPOKE_GW_PUBLIC_IP&gt;
 </pre></div>
 </div>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab8-bash.png" src="../_images/lab8-bash.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 370 </span><span class="caption-text">sudo bash script</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 371 </span><span class="caption-text">sudo bash script</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -695,27 +702,27 @@ Check the content of the following file: <code class="docutils literal notransla
 <p>Click on the <strong>refresh</strong> button to see the status icon changing from red to green.</p>
 <p>The status will be reflected on the screen in about <strong>1 minute</strong>.</p>
 </div>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab8-refresh.png"><img alt="../_images/lab8-refresh.png" src="../_images/lab8-refresh.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 371 </span><span class="caption-text">Connection is up</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 372 </span><span class="caption-text">Connection is up</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong></p>
 <p>Filter by <strong>GCP Cloud</strong> and select the <strong>Managed</strong> button. Expand all the VPCs to see the new S2C connection with the remote On-Prem Partner site!</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab8-onprem.png"><img alt="../_images/lab8-onprem.png" src="../_images/lab8-onprem.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 372 </span><span class="caption-text">OnPrem-Partner site</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 373 </span><span class="caption-text">OnPrem-Partner site</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab8-diag38.png"><img alt="../_images/lab8-diag38.png" src="../_images/lab8-diag38.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 373 </span><span class="caption-text">“Managed” and unselect the other CSPs except GCP</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 374 </span><span class="caption-text">“Managed” and unselect the other CSPs except GCP</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -729,11 +736,11 @@ Check the content of the following file: <code class="docutils literal notransla
 <p>Please complete this task only if you are using a corporate laptop. If you are using your personal laptop, please proceed with <strong>Task 6.2</strong>.</p>
 </div>
 <p>Go back to your <strong>Workstation Edge</strong> (i.e. the Guacamole Client).</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab7-guacamole10.png"><img alt="../_images/lab7-guacamole10.png" src="../_images/lab7-guacamole10.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 374 </span><span class="caption-text">Guacamole Client</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 375 </span><span class="caption-text">Guacamole Client</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -746,11 +753,11 @@ Check the content of the following file: <code class="docutils literal notransla
 <p class="admonition-title">Tip</p>
 <p>Do not stop the ping command!</p>
 </div>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab7-guacamole11.png"><img alt="../_images/lab7-guacamole11.png" src="../_images/lab7-guacamole11.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 375 </span><span class="caption-text">ping</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 376 </span><span class="caption-text">ping</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -764,10 +771,10 @@ Check the content of the following file: <code class="docutils literal notransla
 <p class="admonition-title">Tip</p>
 <p>Keep the ping running recursively!</p>
 </div>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id32">
 <img alt="../_images/lab8-pingok.png" src="../_images/lab8-pingok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 376 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 377 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -775,27 +782,27 @@ Check the content of the following file: <code class="docutils literal notransla
 <section id="gateway-diagnostics">
 <h2>7. Gateway Diagnostics<a class="headerlink" href="#gateway-diagnostics" title="Link to this heading">#</a></h2>
 <p>Go to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default TAB)</strong> and click on the icon of the Spoke Gateway <strong><em>gcp-us-central1-spoke1</em></strong>, click on the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> button and then click on <code class="docutils literal notranslate"><span class="pre">Gateway</span> <span class="pre">Diagnostics</span></code>.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab8-diag.png"><img alt="../_images/lab8-diag.png" src="../_images/lab8-diag.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 377 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 378 </span><span class="caption-text">Gateway Diagnostics</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">“Active</span> <span class="pre">Sessions”</span></code> option and click <strong>Run</strong>. Once the results appear, type <code class="docutils literal notranslate"><span class="pre">“icmp”</span></code> into the <strong>Search</strong> field.</p>
 <p>You will notice the subnets involved (i.e. <strong>real</strong> and <strong>virtual</strong> subnets) in the Mapped NAT.</p>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id34">
 <img alt="../_images/lab8-active2.png" src="../_images/lab8-active2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 378 </span><span class="caption-text">Active Sessions</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 379 </span><span class="caption-text">Active Sessions</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Upon completing the <strong>S2C</strong> connection, the overall lab topology will appear as follows:</p>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab8-finaltopology.png"><img alt="../_images/lab8-finaltopology.png" src="../_images/lab8-finaltopology.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 379 </span><span class="caption-text">The Topology with the new S2C connection</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 380 </span><span class="caption-text">The Topology with the new S2C connection</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
