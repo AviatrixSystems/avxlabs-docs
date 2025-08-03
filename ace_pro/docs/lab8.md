@@ -7,13 +7,13 @@ Edge Gateway = An Aviatrix gateway that enables connectivity to edge locations s
 
 ## 1. General Objectives
 
-You are tasked with connecting the on-premises data center in New York to your MCNA. An **Aviatrix Edge** device has already been provisioned and registered with the existing **Aviatrix Controller**.
+You are tasked with connecting the on-premises data center in New York to your Aviatrix CNSF. An **Aviatrix Edge** device has already been provisioned and registered with the existing **Aviatrix Controller**.
 
 The Aviatrix Secure High-Performance Datacenter Edge solution empowers network administrators to provide seamless cloud connectivity without compromise. This robust solution offers encrypted, line-rate performance and supports single-region, multi-region, or multi-cloud redundancy options. Additionally, it ensures comprehensive visibility and troubleshooting capabilities throughout the entire network.
 
 ## 2. Initial set-up
 
-Now let's connect the `Aviatrix Edge` to the existing MCNA. 
+Now let's connect the `Aviatrix Edge` to the existing **Cloud Native Security Fabric (CNSF)**. 
 
 First and foremost let's explore the **BGP Map** that describes the connectivity established through the BGPoverLAN.
 
@@ -78,7 +78,7 @@ Peerings not established yet!
 
 First and foremost, you have to configure a **BGP ASN** on the **_aws-us-east-2-transit_** GW!
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_**.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_**.
 
 ```{figure} images/lab8-edge12.png
 ---
@@ -98,7 +98,7 @@ BGP ASN
 
 Now it's time to establish the attachment! 
 
-Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachments"` button, on the right-hand side of the screen.
+Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachments"` button, on the right-hand side of the screen.
 
 ```{figure} images/lab8-edge9.png
 ---
@@ -124,6 +124,7 @@ Fill in the attachment template using the following settings:
 - **Attach over**: <span style='color:#479608'>**Public Network**</span>
 - **Number of Tunnels**: <span style='color:#479608'>**Custom:**</span>
   - <span style='color:#479608'>**4**</span>
+
 
 Do not forget to click on **Save**.
 
@@ -156,7 +157,7 @@ Peering created
 
 Let's verify the presence of the previously created attachment in the topology:
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
 ```{figure} images/lab8-edge15.png
 ---
@@ -206,7 +207,7 @@ Once again, the **Edge** device facilitates the extension of all Aviatrix functi
 
 Let's associate the Edge connection with one of the existing Network Domains.
 
-Go to **CoPilot > Networking > Network Segmentation > Network Domains** and edit, for instance, the **Green** domain. Select the **`on-prem-edge`** connection and do not forget to click on **Save**!
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains** and edit, for instance, the **Green** domain. Select the **`on-prem-edge`** connection and do not forget to click on **Save**!
 
 ```{figure} images/lab8-edge19.png
 ---
@@ -227,7 +228,7 @@ The DC is now another VPC
 
 Let's explore again the Cloud Routes section!
 
-Go to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Advertised Routes` option.
+Navigate to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Advertised Routes` option.
 
 ```{important}
 This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge device by the **Aviatrix Controller**, after the attachment got established!
@@ -251,7 +252,7 @@ align: center
 BGP Advertised Routes
 ```
 
-Go to your personal POD portal, scroll down untill your reach the **Lab 7 and 8** section and click on the `"Open Workstation"` button.
+Navigate to your personal POD portal, scroll down untill your reach the **Lab 7 and 8** section and click on the `"Open Workstation"` button.
 
 ```{figure} images/lab8-edgenew.png
 ---
@@ -288,7 +289,7 @@ align: center
 Target for the connectivity test
 ```
 
-The ping will be successful, this means that you have extended the Aviatrix MCNA to your on-prem DC, that ultimately can now be considered as just an additional VPC!
+The ping will be successful, this means that you have extended the Aviatrix CNSF to your on-prem DC, that ultimately can now be considered as just an additional VPC!
 
 ```{note}
 Do NOT forget to exit from the previous session used to log in to the **on-prem-partner1 router** (i.e. Lab 7)
@@ -312,7 +313,7 @@ Ping
 * Use <span style='color:#FF0000'>**FlowIQ**</span> within Aviatrix CoPilot to analyze and inspect NetFlow data.
 
 ```{tip}
-Go to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based  on the `"Destination IP Address"` **10.0.1.100** (i.e. **_aws-us-east-2-spoke1-test1_**).
+Navigate to **CoPilot > Monitor > FlowIQ**, click on the `"+"` icon and filter based  on the `"Destination IP Address"` **10.0.1.100** (i.e. **_aws-us-east-2-spoke1-test1_**).
 
 Do not forget to click on **Apply**.
 ```
@@ -376,7 +377,7 @@ New Attachment towards GCP
 
 Once again, you have to configure a **BGP ASN** on the **_gcp-us-central1-transit_** GW first, before deploying any new attachments.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_**.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_**.
 
 ```{figure} images/lab8-edgedouble5.png
 ---
@@ -396,7 +397,7 @@ BGP ASN
 
 Now you are ready to proceed with the rest of the configuration on the Edge section!
 
-Go to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachments"` button, on the right-hand side of the screen.
+Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachments"` button, on the right-hand side of the screen.
 
 ```{figure} images/lab8-edgedouble2.png
 ---
@@ -448,7 +449,7 @@ Notification
 
 Let's verify the presence of the new attachment previously created on the Topology. 
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default)**.
 
 ```{figure} images/lab8-edgedouble10.png
 ---
@@ -588,7 +589,7 @@ align: center
 Let's harness the **as-path prepend** feature for manipulating the traffic. 
 
 ```{important}
-The routes exchanged between transit gateways are considered `BGP-like routes`. This is because the Aviatrix Controller, which orchestrates SDN routing, utilizes mechanisms similar to those of BGP for routing decisions. As a result, these routes exhibit attributes akin to BGP routes—for example, each transit has its own `AS PATH`, which is used for the best path selection process. However, it's important to remember that the control plane within the MCNA is fundamentally based on `SDN` (Software-Defined Networking).
+The routes exchanged between transit gateways are considered `BGP-like routes`. This is because the Aviatrix Controller, which orchestrates SDN routing, utilizes mechanisms similar to those of BGP for routing decisions. As a result, these routes exhibit attributes akin to BGP routes—for example, each transit has its own `AS PATH`, which is used for the best path selection process. However, it's important to remember that the control plane within the CNSF is fundamentally based on `SDN` (Software-Defined Networking).
 ```
 
 The objective of this task is to define a **Primary** path through the Edge device, whereas the path between the Transit gateways will be used as a **Backup** path.
@@ -602,7 +603,7 @@ Primary and Backup
 
 Let's first check the `Route DB` of the **_aws-us-east-2-transit_** GW.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the **_aws-us-east-2-transit_** Gateway.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the **_aws-us-east-2-transit_** Gateway.
 
 ```{figure} images/lab8-primary01.png
 ---
@@ -630,7 +631,7 @@ align: center
 
 From the **_aws-us-east-2-transit_** perspective, the destination route `172.16.1.0` is reachable via a single AS (i.e., 64514).
 
-Now let's apply the route manipulation. Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW.
+Now let's apply the route manipulation. Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW.
 
 ```{figure} images/lab8-edgedouble30.png
 ---
@@ -652,7 +653,7 @@ as-path prepend
 
 Let's repeat the same kind of configuration on the **GCP** Transit GW.
 
-navigate to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_** GW.
+Navigate to **CoPilot > Cloud fabric > Gateways > Transit Gateways** and click on the **_gcp-us-central1-transit_** GW.
 
 ```{figure} images/lab8-edgedouble32.png
 ---
