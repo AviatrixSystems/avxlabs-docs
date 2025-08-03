@@ -11,7 +11,7 @@ https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs
 
 We have prepared some Terraform code for you, which you will explore and deploy.
 
-Go to your personal POD Portal, identify the **_Lab12_** section and click on the `Open Workstation` button.
+Navigate to your personal POD Portal, identify the **_Lab12_** section and click on the `Open Workstation` button.
 
 ```{figure} images/lab11-edge.png
 ---
@@ -29,7 +29,7 @@ align: center
 Edge Workstation credentials
 ```
 
-* Open V**Visual Studio Code** located on the desktop, then click on the `Explorer` button.
+* Open **Visual Studio Code** located on the desktop, then click on the `Explorer` button.
 
 ```{figure} images/lab11-edge3.png
 ---
@@ -126,6 +126,10 @@ align: center
 Topology
 ```
 
+```{important}
+Please note that Terraform will take approximately **8 minutes** to complete the provisioning of the additional components of your Aviatrix Cloud Native Security Fabric (CNSF).
+```
+
 ## 3. Create Transit Peering
 
 ### 3.1 Description
@@ -136,7 +140,7 @@ In the previous exercise, we deployed a new Transit VPC, Aviatrix Transit Gatewa
 
 * Using the same **Visual Studio Code** session, let's create the `peering.tf` file.
 * We will be using the following module:  `https://registry.terraform.io/modules/terraform-aviatrix-modules/mc-transit-peering/aviatrix/latest`
-* Go back to the **Visual Studio Code** session and create a new file. Name it `peering.tf`.
+* Navigate to the **Visual Studio Code** session and create a new file. Name it `peering.tf`.
 
 ```{figure} images/lab11-newfile.png
 ---
@@ -206,7 +210,7 @@ Save the file!
 ```
 
 * After creating the peering.tf manifest, be sure to **SAVE** the file in Visual Studio Code.
-* Go back to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
+* Navigate to the **LXTerminal** and run `terraform init` again to download the `mc-transit-peering` module
   
 ```{figure} images/lab11-clip5.png
 ---
@@ -247,7 +251,7 @@ align: center
 New Peering
 ```
 
-`Congratulations! You have successfully deployed the complete Aviatrix solution.`
+`Congratulations! You have successfully deployed the complete Aviatrix CNSF solution.`
 
 
 ```{figure} images/lab11-lastdrawing.png
@@ -255,7 +259,7 @@ New Peering
 height: 400px
 align: center
 ---
-Full-Blown Aviatrix Solution
+Complete Aviatrix Cloud Native Security Fabric (CNSF) Solution
 ```
 
 ## 4. IAC Summary
@@ -273,7 +277,7 @@ The `Aviatrix Network Insights API` simplifies the process of navigating network
 
 ### 5.2 Validate
 
-* Go to your personal POD Portal, identify the **_Lab12_** section and click on the `Open Grafana` button.
+* Navigate to your personal POD Portal, identify the **_Lab12_** section and click on the `Open Grafana` button.
 
 ```{figure} images/lab11-edge10.png
 ---
