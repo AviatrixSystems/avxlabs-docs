@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-In this lab, we will demonstrate how to enable the `Aviatrix Cloud Firewall`, a built-in service within the Aviatrix Cloud Native Security Fabric.
+In this lab, we will demonstrate how to enable the `Aviatrix Cloud Firewall`, a built-in service within the *Aviatrix Cloud Native Security Fabric (CNSF)*.
 
 The Aviatrix Cloud Firewall enhances cloud security with enterprise-grade NAT, centralized management, and AI-driven threat detection. It offers comprehensive visibility and control, ensuring cost efficiency with a flat-rate billing model. Seamless integration and automated deployment make it ideal for scalable, resilient cloud environments.
 
