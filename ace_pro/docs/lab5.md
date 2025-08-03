@@ -296,7 +296,7 @@ align: center
 Private Subnet
 ```
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance in the search field on the right-hand side.
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance in the search field on the right-hand side.
 
 From the results, you need to identify the `Availability Zone`.
 
@@ -322,7 +322,7 @@ Private Subnet
 
 ### 5.2 Create an ad-hoc SmartGroup
 
-Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
+Navigate to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
 
 ```{figure} images/lab6-newsg.png
 ---
@@ -359,7 +359,7 @@ New SG
 
 ## 6. Create a new DCF Rule
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
 ```{figure} images/lab6-newrule10.png
 ---

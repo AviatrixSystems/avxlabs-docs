@@ -29,7 +29,7 @@ Lab 8 Initial Topology
 
 ### 4.1. Site2Cloud Connection (Cloud to On-Prem)
 
-Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**.
+Navigate to **CoPilot > Networking > Connectivity > External Connection (S2C)**.
 
 Here you will immediately notice the presence of an existing S2C connection. 
 
@@ -78,7 +78,7 @@ Create a connection from the Cloud (GCP) to an on-premises partner site using th
 
 - **Name**: <span style='color:#479608'>GCP-to-OnPremPartner</span>
 - **Connecting Using**: <span style='color:#479608'>Static Route-Based</span>
-- **Type**: <span style='color:#479608'>**Mapped**</span>
+- **Type**: <span style='color:#479608'>**Mapped NAT**</span>
 - **Local Gateway**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
 - **Real Local Subnet CIDR(s)**: <span style='color:#479608'>172.16.1.0/24</span>
 - **Virtual Local Subnet CIDR(s)**: <span style='color:#479608'>192.168.200.0/24</span>
@@ -87,8 +87,7 @@ Create a connection from the Cloud (GCP) to an on-premises partner site using th
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.100.0/24</span>
 - **Internet Key Exchange**: <span style='color:#479608'>**IKEv2**</span>
 - **Authetication Method**: <span style='color:#479608'>Pre-Shared Key</span>
-- **Remote Gateway IP**: <span style='color:#479608'>[**Refer to your Pod assignment for the **on-prem-partner1**'s Public IP - Lab7/8 section** - You will need to use the dig, host, or nslookup command. Please see the following **Note** section for instructions on resolving the symbolic name to an IP address.]</span>
-- **Local Gateway Instance**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
+- **Remote Device 1 Tunnel Destination IP**: <span style='color:#479608'>[**Refer to your Pod assignment for the **on-prem-partner1**'s Public IP - Lab7/8 section** - You will need to use the dig, host, or nslookup command. Please see the following **Note** section for instructions on resolving the symbolic name to an IP address.]</span>
 - **Pre-Shared Key**: <span style='color:#479608'>[**Refer to your Pod assignment for the StrongSwan PSK - Lab7/8 section**]</span>
 
 Then click on **Save**.
@@ -165,7 +164,7 @@ If you have a laptop without these restrictions, please refer to task **4.2.2** 
 
 #### 4.2.1  Configuration Using the Workstation Edge (i.e., Apache Guacamole Client - Jumphost)
 
-Go to your personal POD portal, identify the section labeled `"Lab 7 and 8"`, then click on the `"Open Workstation"` button to log in to the **Workstation Edge** (a Guacamole clientless remote desktop gateway).
+Navigate to your personal POD portal, identify the section labeled `"Lab 7 and 8"`, then click on the `"Open Workstation"` button to log in to the **Workstation Edge** (a Guacamole clientless remote desktop gateway).
 
 ```{figure} images/lab8-podportal00.png
 ---
@@ -231,27 +230,37 @@ align: center
 Paste the command
 ```
 
-Now, before issuing the command, copy the password for logging into the StrongSwan router from the **Clipboard** window on the left-hand side, then close the Clipboard using the aforementioned commands (**_Ctrl+Alt+Shift_** on a Windows machine **_Control+Shift+Command_** on a Mac).
+Now, before issuing the command, delete it from the RDP client clipboard. Then, retrieve the password from your personal POD Portal and paste it into the clipboard.
+
+```{figure} images/lab8-podportal058.png
+---
+height: 400px
+align: center
+---
+Paste the password 
+```
+
+```{figure} images/lab8-podportal059.png
+---
+height: 400px
+align: center
+---
+Copy the password
+```
+
+Now, close the clipboard using **_Ctrl+Alt+Shift_** on Windows machines or **_Control+Shift+Command_** on Mac machines. Then, on the LX terminal, issue the SSH command and paste the password.
 
 ```{figure} images/lab8-podportal06.png
 ---
 height: 400px
 align: center
 ---
-Copy the pwd and close the Clipboard window
-```
-
-```{figure} images/lab8-podportal07.png
----
-height: 400px
-align: center
----
-Paste the pwd
+Paste the password
 ```
 
 Now you need to retrieve the **Public IP address** assigned to the GCP Spoke Gateway.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and then identify the GCP Spoke Gateway and **copy** its Public IP address.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and then identify the GCP Spoke Gateway and **copy** its Public IP address.
 
 ```{figure} images/lab8-gcppublic.png
 ---
