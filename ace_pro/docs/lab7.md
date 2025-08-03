@@ -77,7 +77,7 @@ S2C creation
 Create a connection from the Cloud (GCP) to an on-premises partner site using the following settings in the `"Add External Connection"` window:
 
 - **Name**: <span style='color:#479608'>GCP-to-OnPremPartner</span>
-- **Connecting Using**: <span style='color:#479608'>Static Route-Based</span>
+- **Connecting Using**: <span style='color:#479608'>Static Routing over IPSec</span>
 - **Type**: <span style='color:#479608'>**Mapped NAT**</span>
 - **Local Gateway**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
 - **Real Local Subnet CIDR(s)**: <span style='color:#479608'>172.16.1.0/24</span>
@@ -230,7 +230,7 @@ align: center
 Paste the command
 ```
 
-Now, before issuing the command, delete it from the RDP client clipboard. Then, retrieve the password from your personal POD Portal and paste it into the clipboard.
+Now, before issuing the command, delete the long SSH command from the RDP client clipboard. Next, retrieve the password from your personal POD Portal (e.g., Lab 7 and 8 Section), paste it into the RDP client clipboard, and copy it.
 
 ```{figure} images/lab8-podportal058.png
 ---
@@ -248,7 +248,7 @@ align: center
 Copy the password
 ```
 
-Now, close the clipboard using **_Ctrl+Alt+Shift_** on Windows machines or **_Control+Shift+Command_** on Mac machines. Then, on the LX terminal, issue the SSH command and paste the password.
+Now, close the clipboard using **_Ctrl+Alt+Shift_** on Windows machines or **_Control+Shift+Command_** on Mac machines. Then, on the LX terminal, issue the SSH command and <ins>paste the password</ins>.
 
 ```{figure} images/lab8-podportal06.png
 ---
@@ -258,7 +258,7 @@ align: center
 Paste the password
 ```
 
-Now you need to retrieve the **Public IP address** assigned to the GCP Spoke Gateway.
+- Now you need to retrieve the **Public IP address** assigned to the GCP Spoke Gateway.
 
 Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and then identify the GCP Spoke Gateway and **copy** its Public IP address.
 
@@ -371,7 +371,7 @@ sudo bash script
 
 ## 5. S2C - Verification
 
-Go to **CoPilot > Networking > Connectivity > External Connection (S2C)**
+Navigate to **CoPilot > Networking > Connectivity > External Connection (S2C)**
 
 ```{tip}
 Click on the **refresh** button to see the status icon changing from red to green.
@@ -387,7 +387,7 @@ align: center
 Connection is up
 ```
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)**
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)**
 
 Filter by **GCP Cloud** and select the **Managed** button. Expand all the VPCs to see the new S2C connection with the remote On-Prem Partner site!
 
@@ -466,7 +466,7 @@ Ping ok
 
 ## 7. Gateway Diagnostics
 
-Go to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**, click on the `Tools` button and then click on `Gateway Diagnostics`.
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**. Scroll through the Properties window to the bottom, locate the the `Tools` button and then click on `Gateway Diagnostics`.
 
 ```{figure} images/lab8-diag.png
 ---
