@@ -665,7 +665,7 @@ Ping
 
 Let's investigate the logs once again.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter based on the _intra-icmp-bu2_ rule.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter based on the _intra-icmp-bu2_ rule.
 
 ```{figure} images/lab10-bu23monitor.png
 ---
