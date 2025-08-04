@@ -191,7 +191,7 @@ Do not forget to click on **Save**.
 
 ### 4.3 Create a new DCF rule
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
 ```{figure} images/lab10-newnew00.png
 ---
