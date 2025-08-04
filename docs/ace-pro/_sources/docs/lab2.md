@@ -349,7 +349,7 @@ After that, click on **Commit**.
 height: 400px
 align: center
 ---
-Commit
+Commit 01
 ```
 
 ```{figure} images/lab2-commit23.png
@@ -357,7 +357,7 @@ Commit
 height: 400px
 align: center
 ---
-Commit
+Commit 02
 ```
 
 ```{note}
