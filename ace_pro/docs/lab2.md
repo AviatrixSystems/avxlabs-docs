@@ -278,14 +278,22 @@ Dashboard
 Navigate to **CoPilot > Settings > Resources > Task Server**
 ```
 
-Ensure that `Fetch Topology`, `Fetch Instances`, `Fetch GW Routes` and `Fetch VPC Routes` intervals are set to **“1 Second”** each and then click on **SAVE**.
+Ensure that `Fetch Topology`, `Fetch Instances`, `Fetch GW Routes`, `Fetch VPC Routes`, `CostIQ Billing` and `CostIQ CSP Cost` intervals are set to **“1 Second”** each and then click on **SAVE**.
 
 ```{figure} images/lab2-timer.png
 ---
 height: 400px
 align: center
 ---
-Task Server
+Task Server 01
+```
+
+```{figure} images/lab2-timer99.png
+---
+height: 400px
+align: center
+---
+Task Server 02
 ```
 
 ```{caution}
@@ -320,9 +328,31 @@ align: center
 Fetch VPC
 ```
 
+```{figure} images/lab2-fetchcostiq.png
+---
+align: center
+---
+Fetch CostIQ Billing
+```
+
+```{figure} images/lab2-fetchcostiq02.png
+---
+align: center
+---
+Fetch CostIQ CSP Cost
+```
+
 After that, click on **Commit**.
 
 ```{figure} images/lab2-commit.png
+---
+height: 400px
+align: center
+---
+Commit
+```
+
+```{figure} images/lab2-commit23.png
 ---
 height: 400px
 align: center
