@@ -213,7 +213,7 @@ SmartGroups List
 
 ## 6. Create two new DCF rules
 
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
 ```{figure} images/lab9-newrule10.png
 ---
@@ -360,7 +360,7 @@ WebGroup creation
 
 ### 7.3 Create the "PSF-Allow-Rule"
 
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)** and create a new rule clicking on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
 ```{figure} images/lab9-newrule100.png
 ---
