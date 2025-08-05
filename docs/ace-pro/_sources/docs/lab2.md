@@ -38,6 +38,10 @@ Initial pre-provisioned topology
 
 All pre-deployed instances are running [Gatus](https://gatus.io/) and are attempting to connect with each other using various protocols, including **ICMP** and **TCP** on ports 80,443 and 22.
 
+```{important}
+**Gatus** is an open-source health monitoring tool that continuously checks the status and performance of your services and endpoints, providing real-time alerts and insights to ensure system reliability.
+```
+
 You can access the Gatus dashboard directly from your POD Portal.
 
 ```{figure} images/lab2-gatus00.png
@@ -153,10 +157,7 @@ align: center
 DNS fails
 ```
 
-You can also access your instances using also their **Public IP addresses**! You can retrieve them through your CoPilot, specifically from two sections:
-
-1) `Cloud Assets`
-2) `Topology`
+You can also access your instances using also their **Public IP addresses**! You can retrieve them through your CoPilot, specifically from the Inventory, in other words the `Cloud Assets` section.
 
 #### 3.2.1 Cloud Assets (to retrieve IP addresses)
 
@@ -184,33 +185,7 @@ align: center
 SSH with public IP address
 ```
 
-#### 3.2.2 Topology (to retrieve IP addresses) <span style='color:#33ECFF'>(BONUS)</span></summary>
-
-- Navigate to **CoPilot > Topology > Overview (Default Tab)** and enter **_aws-us-east-1-spoke1-test1_** in the **Search** field located on the right-hand side.
-
-```{figure} images/lab02-searchfield.png
----
-height: 400px
-align: center
----
-Search for any instances within the topology
-```
-
-Now, navigate to the **Properties** window, locate the Public IP address of the instance, and copy it to your clipboard!
-
-```{figure} images/lab02-searchfield00.png
----
-height: 400px
-align: center
----
-Properties
-```
-
-```{important}
-In the **Properties** window under the Topology section of your CoPilot, you can also access the **Private IP addresses** for EAST-WEST traffic.
-```
-
-#### 3.2.3 Verification Using Your SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 3.2.2 Verification Using Your SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Now that you have logged in to the **_aws-us-east-2-spoke1-test1_** successfully, you can issue your ping commands towards the **Private IP address** of the other instances!
 
