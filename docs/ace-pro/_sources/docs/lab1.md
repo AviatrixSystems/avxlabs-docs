@@ -144,7 +144,7 @@ It's now time to create a VPC in AWS.
 
 ### 3.1  Create AWS VPC
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
 Please verify once more whether the CIDR range `10.0.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
 
