@@ -29,7 +29,7 @@ Let's begin our first task: creating a **VNet**.
 
 ### 2.1 Create Azure VNet
 
-Go to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
 Verify if the CIDR range `192.168.12.0/24` overlaps with any currently used **CIDR ranges**, as illustrated below.
 
