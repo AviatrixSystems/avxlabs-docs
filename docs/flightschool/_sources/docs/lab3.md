@@ -86,7 +86,7 @@ For the VPC CIDR, replace **pod[#]** with your pod number. For example, if your 
 Hit **Save**, and the VPC will be created.
 
 ```{caution}
-Wait a few minutes for the **Aviatrix Controller** to create the new VPN and the additional native cloud constructs (i.e. IGW, Subnets, Routing Tables).
+Wait a few minutes for the **Aviatrix Controller** to create the new VPC and the additional native cloud constructs (i.e. IGW, Subnets, Routing Tables).
 ```
   
 ### Expected Results
@@ -103,12 +103,12 @@ In this exercise we are going to launch the Aviatrix Transit Gateway in the newl
 
 * Enter the following fields:
 
-|                          |                                                         |
-| ------------------------ | ------------------------------------------------------- |
-| **Transit Gateway VPC**  | aws-transit                                             |
-| **Gateway Name**         | aws-transit                                             |
-| **Gateway Size**         | t3.micro                                                |
-| **Instance 1 (Primary)** | aws-transit-Public-1-eu-central-1a + Allocate New EIP   |
+|                          |                                                                                   |
+| ------------------------ | --------------------------------------------------------------------------------- |
+| **Transit Gateway VPC**  | aws-transit                                                                       |
+| **Gateway Name**         | aws-transit                                                                       |
+| **Gateway Size**         | t3.micro                                                                          |
+| **Instance 1 (Primary)** | aws-transit-Public-1-eu-central-1a + Allocate New EIP                             |
 | **Transit Peers**        | Click "Select Transit Gateways"" and add the **azure-transit** as a peer and save |
 
 ```{figure} images/lab3-transit-config.png
