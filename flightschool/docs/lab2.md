@@ -26,20 +26,16 @@ In order to connect your Multicloud environment to the office, we will create an
 
 Now let’s add the office connection. In Copilot, navigate to **_Networking --> Connectivity --> External Connections (S2C)_**. Click the **`+ External Connection`** button and select `External Device` to add a new connection.
 
-|                       |                                                                                                                                                                                                                    |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Name**              | azure-to-office                                                                                                                                                                                                    |
-| **Connect Using**     | BGP                                                                                                                                                                                                                |
-| **Type**              | IPSec                                                                                                                                                                                                              |
-| **Local Gateway**     | azure-transit                                                                                                                                                                                                      |
-| **Local ASN**         | 65pod[#] _For Pods 1-9, double pad the pod# with an additional 0 (ie. 65004). For Pods 10-99 single pad (ie. 65010). For Pods > 100, no padding is needed (ie. 65100)_                                             |
-| **Remote Gateway IP** | <ip-address> _Please open a terminal session from your own pc and resolve the following FQDN to its IP address `onprem.pod[#].aviatrixlab.com`. Do NOT enter the FQDN on this field. Instead enter the IP address_ |
-| **Remote ASN**        | 65000                                                                                                                                                                                                              |
-| **Local Tunnel IP**   | 169.254.100.2/30                                                                                                                                                                                                   |
-| **Remote Tunnel IP**  | 169.254.100.1/30                                                                                                                                                                                                   |
-| **Pre-shared Key**    | mapleleafs                                                                                                                                                                                                         |
-
-It should look something like the example below. Make sure to put in your own remote gateway IP and AS number.
+|                                           |                                                                                                                                                                                                                    |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Name**                                  | azure-to-office                                                                                                                                                                                                    |
+| **Type**                                  | IPSec                                                                                                                                                                                                              |
+| **Local Gateway**                         | azure-transit                                                                                                                                                                                                      |
+| **Remote Device 1 Tunnel Destination IP** | <ip-address> _Please open a terminal session from your own pc and resolve the following FQDN to its IP address `onprem.pod[#].aviatrixlab.com`. Do NOT enter the FQDN on this field. Instead enter the IP address_ |
+| **Remote ASN**                            | 65000                                                                                                                                                                                                              |
+| **BGP Local IP**                          | 169.254.100.2/30                                                                                                                                                                                                   |
+| **BGP Neighbor IP**                       | 169.254.100.1/30                                                                                                                                                                                                   |
+| **Pre-shared Key**                        | mapleleafs                                                                                                                                                                                                         |
 
 ```{figure} images/lab2-pod.png
 ---
@@ -53,6 +49,8 @@ For Linux/Mac you can use the `"host"` command.
 
 For Windows you can use the `"nslookup"` command.
 ```
+
+It should look something like the example below. Make sure to put in your own remote gateway IP and AS number.
 
 ```{figure} images/lab2-configure-ipsec.png
 ---
