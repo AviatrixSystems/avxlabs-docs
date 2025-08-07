@@ -27,3 +27,5 @@ Click this link to {Download}`ACE Prof Mod10 - Threat Preventation and CostIQ <f
 Click this link to {Download}`ACE Prof Mod11 - Distributed Cloud Firewall <files/ACE Prof Mod11 - Distributed Cloud Firewall.pdf>`
 
 Click this link to {Download}`ACE Prof Mod12 - Iac and Network Insights API <files/ACE Prof Mod12 - Iac and Network Insights API.pdf>`
+
+Click this link to {Download}`CE Prof Mod13 - Lets Design Together <files/CE Prof Mod13 - Lets Design Together.pdf>`
