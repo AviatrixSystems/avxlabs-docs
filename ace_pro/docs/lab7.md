@@ -341,7 +341,7 @@ cfg file
 
 Let's retrieve the Public IP address assigned to the GCP Spoke Gateway.
 
-Go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and then identify the GCP Spoke Gateway and **copy** its Public IP address.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and then identify the GCP Spoke Gateway and **copy** its Public IP address.
 
 ```{figure} images/lab8-gcppublic.png
 ---
