@@ -2,7 +2,7 @@
 
 ## Scenario
 
-After resolving the challenge #4, the Database VM administrator found out that the workload is receiving requests from an unknown IP that belongs to the **11.64.0.0/16** space... 
+After resolving challenge #4, the Database VM administrator discovered that the workload was receiving requests from an unknown IP within the **11.64.0.0/16** subnet
 
 ```{figure} images/lab4-drawing.png
 ---
@@ -24,5 +24,5 @@ Use the **packet capture** feature on a specific egress interface (both Tunnel a
 </details>
 
 ```{attention}
-By the end of this challenge you need to ensure that the WEB VM is capable to reach the Database VM, successfully.
+By the end of this challenge, ensure that the WEB VM can reach the Database VM successfully.
 ```
