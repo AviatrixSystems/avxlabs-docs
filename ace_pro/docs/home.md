@@ -14,7 +14,7 @@ Unless otherwise mentioned, the lab PODs will be available until **Friday aftern
 - At least 1 year of hands-on experience with public cloud platforms, along with an expert-level understanding of VPC, TGW, IGW, VGW, and related concepts in AWS, as well as similar technologies in Azure, is required.  
 - (_optional_ for bonus tasks) You should have an `SSH client` installed on your PC and be comfortable using it.
 - (_optional_ for bonus tasks) If SSH access from your corporate laptop or desktop is restricted, <ins>please use a personal device without outbound security restrictions (e.g., port 22 must be open)</ins>. 
-- You may be asked to share your desktop via `Teams` during the session, so please be prepared.
+- You may be asked to share your desktop via `Zoom` during the session, so please be prepared.
 
 ## 3. Access Information
 

@@ -274,7 +274,7 @@ After enabling the DCF, one rule will be generated automatically:
 
 ```{figure} images/lab6-greenfield.png
 ---
-height: 150px
+height: 250px
 align: center
 ---
 Greenfield-Rule automatically injected by the Controller

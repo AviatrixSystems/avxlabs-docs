@@ -99,6 +99,22 @@ Notification
 
 The creation of the VNet will take approximately **4 to 5 minutes**. You can periodically check the status of the task by clicking the hourglass icon in the top right corner. Be sure to click the refresh button as needed. Once the task turns green, you can confidently conclude that the VNet has been successfully created.
 
+```{figure} images/lab1-new.png
+---
+height: 400px
+align: center
+---
+Hourglass icon
+```
+
+```{figure} images/lab1-vnet566.png
+---
+height: 200px
+align: center
+---
+Task completion
+```
+
 ```{important}
 **Clear the search field to restore the navigation panel view.**
 ```{figure} images/lab1-cleanup.png
@@ -107,14 +123,6 @@ height: 350px
 align: center
 ---
 Clean up the Search Field
-```
-
-```{figure} images/lab1-new.png
----
-height: 400px
-align: center
----
-Hourglass icon
 ```
 
 Navigate to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets**. In the search field, enter the name of the VNet you created earlier, **`azure-us-central-spoke1`**. Then, expand the VNet to view the additional subnets that were created by the **Aviatrix Controller**.

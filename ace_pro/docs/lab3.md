@@ -10,7 +10,7 @@ Network Segmentation will be extended to on-premises in the Site2Cloud lab.
 
 ## 2. Network Segmentation Overview
 
-Enterprises can define their network domains (aka *segments*) and group VNets/VPCs/VCNs with similar security policies without requiring firewall solutions.
+Enterprises can define their `network domains` (aka *segments*) and group VNets/VPCs/VCNs with similar security policies without requiring firewall solutions.
 
 Aviatrix *`Cloud Native Security Fabric (CNSF)`* helps enterprises create customized segments and onboard branches, partners, and customers within their respective segments, ensuring that no partner can communicate with each other unless explicitly permitted.
 
