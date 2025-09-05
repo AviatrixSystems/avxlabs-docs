@@ -52,7 +52,7 @@ align: center
 Gatus from the POD Portal
 ```
 
-You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the `CNSF` (i.e. Cloud NAtive Security Fabric).
+You can select any instances from the three CSP environments, and you will find that the connectivity is indeed broken. This is because all the involved VPCs are currently isolated, as you have not yet created the `CNSF` (i.e. Cloud Native Security Fabric).
 
 - Select the EC2 instance "**_aws-us-east-2-spoke1-test1_**" and then enter the credentials to access the Gatus App!
 
