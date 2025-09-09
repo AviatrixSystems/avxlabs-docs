@@ -444,7 +444,7 @@ DCF rules
 
 ### 6.1 Move the Greenfield-Rule
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules**, then click on Move button on the **Greenfield-Rule** entry and, choose `To Top`. Do not forget to click `"Save Draft"`.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, then click on Move button on the **Greenfield-Rule** entry and, choose `To Top`. Do not forget to click `"Save Draft"`.
 
 ```{figure} images/lab6-new101.png
 ---
