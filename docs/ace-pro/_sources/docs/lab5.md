@@ -536,7 +536,7 @@ align: center
 curl command-04
 ```
 
-### 7.3 Egress Overview
+### 7.3 Egress Analyze
 
 Navigate to **CoPilot > Security > Egress > Analyze**, and you will see the visibility of the domain hits.
 
@@ -545,7 +545,7 @@ Navigate to **CoPilot > Security > Egress > Analyze**, and you will see the visi
 height: 400px
 align: center
 ---
-Overview
+Analyze
 ```
 
 You now have comprehensive **Cloud Secure Egress observability**, including a detailed list of all domains accessed by the EC2 instance within that private subnet.
@@ -707,7 +707,7 @@ align: center
 curl command-04
 ```
 
-## 9. Monitor
+## 9. FQDN Monitor
 
 Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and from the `"VPC/VNets"` drop-down window, select the **_aws-us-east-2-spoke1 VPC_**.
 
