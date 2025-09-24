@@ -262,10 +262,20 @@ align: center
 SSH
 ```
 
- - From the BU1 Frontend instance, ping the <ins>private IP address</ins> of the **BU1 Analytics** instancein GCP.
+ - From the BU1 Frontend instance, ping the <ins>private IP address</ins> of the **BU1 Analytics** instance in GCP.
   - Confirm that **SSH** works from the BU1 Frontend instance to the BU1 Analytics instance.
 
 Ping and SSH will be successful **within** the same network domain!
+
+```{tip}
+Clear the keyword in the filter field to reestablish the complete topology view. 
+```{figure} images/lab1-filter.png
+---
+height: 400px
+align: center
+---
+Remove the filter
+```
 
 ```{figure} images/lab1-pingok.png
 ---
