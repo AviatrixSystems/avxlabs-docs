@@ -302,7 +302,7 @@ From the results, you need to identify the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
-height: 150px
+height: 300px
 align: center
 ---
 AZ
@@ -351,7 +351,6 @@ Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional co
 
 ```{figure} images/lab6-greenfieldneww45.png
 ---
-height: 400px
 align: center
 ---
 New SG
@@ -583,7 +582,7 @@ Create a **_WebGroup_** with the following parameters:
 
 - **Name**: <span style='color:#479608'>two-domains</span>
 - **Type**: <span style='color:#479608'>Domains</span>
-- **Domains/URLs**: <span style='color:#479608'>aviatrix.com</span>
+- **Domains/URLs**: <span style='color:#479608'>aviatrix.ai</span>
 - **Domains/URLs**: <span style='color:#479608'>www.wikipedia.org</span>
 
 Do not forget to click on **Save**.
@@ -596,7 +595,7 @@ WebGroup creation
 ```
 
 ```{important}
-The purpose of this **WebGroup** is to permit traffic exclusively to the domains *`aviatrix.com`* and *`www.wikipedia.org`*.org. Consequently, any curl commands directed at other domains will be blocked."
+The purpose of this **WebGroup** is to permit traffic exclusively to the domains *`aviatrix.ai`* and *`www.wikipedia.org`*.org. Consequently, any curl commands directed at other domains will be blocked."
 ```
 
 ### 8.2 Edit the Egress-Rule

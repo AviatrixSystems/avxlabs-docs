@@ -365,9 +365,9 @@ align: center
 These are Clusters of GWs
 ```
 
-This view within the Cloud Fabric section indicates the number of **_clusters_** for each gateway type, rather than the exact number of individual gateways.
+This view in the Cloud Fabric section shows the number of **_clusters_** by gateway type, not the exact count of individual gateways.
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** to see that there are a total of three Transit Gateways (note: public IPs may vary).
+To verify the total, navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**. You should see three Transit Gateways in total (public IPs may vary).
 
 ```{figure} images/lab2-clustertransit.png
 ---
