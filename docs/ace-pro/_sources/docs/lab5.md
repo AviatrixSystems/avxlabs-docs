@@ -487,7 +487,7 @@ ICMP is ok only with aws-us-east-2-spoke1-test1
 - From your SSH client connected to the **_aws-us-east-2-spoke1-test2_** instance, please re-run the following curl commands:
 
 ```bash
-curl -I https://aviatrix.com
+curl -I https://aviatrix.ai
 ```
 ```bash
 curl -I https://www.espn.com
@@ -664,7 +664,7 @@ aws-us-east-2-spoke1-test2
 - Re-launch the following curl commands from the SSH session opened with the **_aws-us-east-2-spoke1-test1_** instance:
 
 ```bash
-curl -I https://aviatrix.com
+curl -I https://aviatrix.ai
 ```
 ```bash
 curl -I https://www.espn.com
@@ -814,5 +814,5 @@ Final Topology for Lab 5
 ```
 
 ```{caution}
-At the end of this lab <ins>the **East-West traffic** wll be blocked</ins>, due to the current configuration of the Distributed Cloud Firewall!
+At the end of this lab <ins>the **East-West traffic** wll be blocked</ins>, due to the current configuration of the **Distributed Cloud Firewall**!
 ```
