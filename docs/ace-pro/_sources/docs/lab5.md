@@ -72,7 +72,7 @@ aws-us-east-2-spoke1-test2
 ```
 
 The private workload is generating traffic to **four** domains:
-1) aviatrix.com
+1) aviatrix.ai
 2) www.espn.com
 3) www.football.com
 4) www.wikipedia.org
@@ -125,7 +125,7 @@ Retrieve the private IP
 Now, launch the following curl commands:
 
 ```bash
-curl -I https://aviatrix.com
+curl -I https://aviatrix.ai
 ```
 ```bash
 curl -I https://www.espn.com
