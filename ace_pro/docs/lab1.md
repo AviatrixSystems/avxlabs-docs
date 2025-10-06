@@ -195,7 +195,7 @@ Keep an eye on the progress of the VPC creation by using the **hourglass** icon.
 
 ```{figure} images/lab1-vpc3.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 Hourglass icon
