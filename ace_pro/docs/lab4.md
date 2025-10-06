@@ -6,7 +6,7 @@ In this lab, we will demonstrate Active/Active communication between resources u
 
 ## 2. High Performance Encryption and ActiveMesh
 
-Encryption in the cloud can be a compliance, security, or business requirement. Hybrid cloud connectivity and in-cloud communication are considered untrusted. Aviatrix **`HPE`** provides high-performance encryption from on-premises (private/public connections) to cloud walled gardens, as well as between regions and clouds. It also helps address routing scalability challenges associated with native constructs.
+Encryption in the cloud can be a compliance, security, or business requirement. Hybrid cloud connectivity and in-cloud communication are considered untrusted. Aviatrix **`HPE`** provides high-performance encryption from on-premises (private/public connections) to cloud “walled gardens,” as well as between regions and clouds. It also helps address routing scalability challenges associated with native constructs.
 
 Aviatrix **`ActiveMesh`** technology provides network resiliency, better convergence and high performance. Both Aviatrix gateways in transit and spoke VPC/VNet/VCNs forward traffic simultaneously. It helps enterprises in traffic engineering and provides deterministic next hop based on path-selection algorithm.
 
