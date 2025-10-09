@@ -130,7 +130,7 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>WorkstationEdge</span>
 - **Virtual Machines**:
-  - **Matches all conditions (AND)/Name**: <span style='color:#479608'>onprem-pod##-host-vm</span>
+  - **Matches all conditions (AND)/Name**: <span style='color:#479608'>onprem-pod##-test-vm</span>
 
 ```{figure} images/lab10-newsg854.png
 ---
