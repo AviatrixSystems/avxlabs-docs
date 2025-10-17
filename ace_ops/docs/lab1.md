@@ -98,7 +98,7 @@ Managed VPCs only
 **Always** refer to your personal POD for the accurate IP addresses. The IP addresses displayed in the following screenshots are only <ins>examples</ins> sourced from a different POD and are intended solely for the creation of the lab guides.
 ```
 
-There are **two** methods to SSH into any instances within the multicloud infrastructure of this lab:
+There are **two** methods for SSH access to any instance within the lab’s multicloud infrastructure.
 
 1. Use an <span style='color:orange'>**SSH client**</span> from your laptop (<ins>recommended method!</ins>).
 
@@ -148,14 +148,14 @@ Guacamole Menu
 ```{tip}
 The IP addresses can be easily obtained using **three** different methods, according to your preference:
 
-1) From the **Properties** section of each Virtual Machine in the Topology.
+1) From the **Properties** section of each Virtual Machine in the Dynamic Topology.
 
-2) From the **Virtual Machines** Inventory*.
+2) From the **Virtual Machines** inventory within the Cloud Assets section.
 
-3) From your **personal POD portal**, where you can also utilize DNS symbolic names.
+3) From your **personal POD portal**, where you can also utilize the DNS symbolic names.
 ```
 
-- **Dynamic Topology**:
+- **Properties from the Dynamic Topology**:
 
 Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
 
@@ -232,7 +232,7 @@ align: center
 SSH credentials
 ```
 
-Let's use the Dynamic Topology for retrieving the Public IP address of the BU1 Frontend instance. Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on **Filters** and search for `"frontend"`.
+Let's use the **_Dynamic Topology_** for retrieving the Public IP address of the BU1 Frontend instance. Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default tab)**, then click on **Filters** and search for `"frontend"`.
 
 ```{figure} images/lab1-assets20.png
 ---
@@ -263,7 +263,7 @@ SSH
 ```
 
  - From the BU1 Frontend instance, ping the <ins>private IP address</ins> of the **BU1 Analytics** instance in GCP.
-  - Confirm that **SSH** works from the BU1 Frontend instance to the BU1 Analytics instance.
+  - Confirm that **SSH** works from the BU1 Frontend instance to the **BU1 Analytics** instance.
 
 Ping and SSH will be successful **within** the same network domain!
 
@@ -410,10 +410,10 @@ FlowIQ
 On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
-* Use **Cloud Routes** for pinpointing the originator of the route **172.16.211.0/24**.
+* Use **Cloud Routes** for pinpointing the `originator` of the route **172.16.211.0/24**.
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Cloud Routes**, search for the subnet **172.16.211.0/24** on the *search field* and then filter based on the following condition: "Gateway *contains* spoke1".
+Navigate to **CoPilot > Diagnostics > Cloud Routes**, search for the subnet **172.16.211.0/24** on the *search field* and then filter based on the following condition: "Gateway *contains* spoke1".
 
 The filter button is on the left-hand side of the screen and is shaped like a small funnel.
 ```
@@ -441,7 +441,7 @@ Originator = eth0
 * Use **Cloud Routes** for pinpointing the originator of the route **10.0.0.0/24**.
 
 ```{tip}
-Go to **CoPilot > Diagnostics > Cloud Routes** and search the subnet **10.0.0.0/24** on the *search field*. 
+Navigate to **CoPilot > Diagnostics > Cloud Routes** and search the subnet **10.0.0.0/24** on the *search field*. 
 
 <ins>Remove any previous filters</ins>!
 ```{figure} images/lab1-removefilter.png

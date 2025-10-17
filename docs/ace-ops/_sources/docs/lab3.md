@@ -31,7 +31,7 @@ Lab 3 Topology
 
 - Verify that the connectivity between **BU1 Frontend** and **BU2 Mobile App** is actually broken.
 
-  - SSH to BU1 Frontend and launch ping/ssh towards BU2 Mobile App.
+  - SSH to **BU1 Frontend** and launch ping/ssh towards **BU2 Mobile App**.
 
 ```{figure} images/lab3-pingfails.png
 ---

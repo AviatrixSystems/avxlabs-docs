@@ -16,7 +16,7 @@ Network Domains with the Connection Policy
 
 ## 2. CHANGE REQUEST
 
-* Apply the Connection Policy
+* Apply the **Connection Policy**.
 
 ```{tip}
 Navigate to **CoPilot > Networking > Network Segmentation > Network Domains** and then edit either network domains.
@@ -56,7 +56,7 @@ Logical View
 
 - Verify the connectivity **between** BU1 and BU2 domains.
 
-  - SSH into the BU1 Frontend and run ping or SSH commands targeting the BU2 Mobile App.
+  - SSH into the **BU1 Frontend** and run ping or SSH commands targeting the **BU2 Mobile App**.
   - Ping and SSH between the two BUs should now work, thanks to the `Connection Policy` (aka **_VRF leaking_**).
 
 ```{figure} images/lab2-pingbu2.png
@@ -164,7 +164,7 @@ This helps you to identify connectivity problems on the underlay environments of
 Log in to the **AWS console**.
 
 ```{important}
-Navigate to your personal POD portal and click on the Console button under the AWS Console section.
+Navigate to your personal POD portal and click on the **Console** button under the AWS Console section.
 
 Sign in using the provided credentials (these screenshots refer to **Pod 143**).
 ```
