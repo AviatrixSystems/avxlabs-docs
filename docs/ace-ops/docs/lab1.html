@@ -442,7 +442,7 @@ document.write(`
 <p class="admonition-title">Caution</p>
 <p><strong>Always</strong> refer to your personal POD for the accurate IP addresses. The IP addresses displayed in the following screenshots are only <ins>examples</ins> sourced from a different POD and are intended solely for the creation of the lab guides.</p>
 </div>
-<p>There are <strong>two</strong> methods to SSH into any instances within the multicloud infrastructure of this lab:</p>
+<p>There are <strong>two</strong> methods for SSH access to any instance within the lab’s multicloud infrastructure.</p>
 <ol class="arabic simple">
 <li><p>Use an <span style='color:orange'><strong>SSH client</strong></span> from your laptop (<ins>recommended method!</ins>).</p></li>
 </ol>
@@ -489,13 +489,13 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>The IP addresses can be easily obtained using <strong>three</strong> different methods, according to your preference:</p>
 <ol class="arabic simple">
-<li><p>From the <strong>Properties</strong> section of each Virtual Machine in the Topology.</p></li>
-<li><p>From the <strong>Virtual Machines</strong> Inventory*.</p></li>
-<li><p>From your <strong>personal POD portal</strong>, where you can also utilize DNS symbolic names.</p></li>
+<li><p>From the <strong>Properties</strong> section of each Virtual Machine in the Dynamic Topology.</p></li>
+<li><p>From the <strong>Virtual Machines</strong> inventory within the Cloud Assets section.</p></li>
+<li><p>From your <strong>personal POD portal</strong>, where you can also utilize the DNS symbolic names.</p></li>
 </ol>
 </div>
 <ul class="simple">
-<li><p><strong>Dynamic Topology</strong>:</p></li>
+<li><p><strong>Properties from the Dynamic Topology</strong>:</p></li>
 </ul>
 <p>Expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC and click on the test instance, then explore the <code class="docutils literal notranslate"><span class="pre">&quot;Properties&quot;</span></code> section on the right-hand side.</p>
 <div class="admonition caution">
@@ -574,7 +574,7 @@ document.write(`
 </figcaption>
 </figure>
 </div>
-<p>Let’s use the Dynamic Topology for retrieving the Public IP address of the BU1 Frontend instance. Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default tab)</strong>, then click on <strong>Filters</strong> and search for <code class="docutils literal notranslate"><span class="pre">&quot;frontend&quot;</span></code>.</p>
+<p>Let’s use the <strong><em>Dynamic Topology</em></strong> for retrieving the Public IP address of the BU1 Frontend instance. Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Topology &gt; Overview (default tab)</strong>, then click on <strong>Filters</strong> and search for <code class="docutils literal notranslate"><span class="pre">&quot;frontend&quot;</span></code>.</p>
 <figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab1-assets20.png"><img alt="../_images/lab1-assets20.png" src="../_images/lab1-assets20.png" style="height: 400px;" />
 </a>
@@ -600,7 +600,7 @@ document.write(`
 </figure>
 <ul class="simple">
 <li><p>From the BU1 Frontend instance, ping the <ins>private IP address</ins> of the <strong>BU1 Analytics</strong> instance in GCP.</p></li>
-<li><p>Confirm that <strong>SSH</strong> works from the BU1 Frontend instance to the BU1 Analytics instance.</p></li>
+<li><p>Confirm that <strong>SSH</strong> works from the BU1 Frontend instance to the <strong>BU1 Analytics</strong> instance.</p></li>
 </ul>
 <p>Ping and SSH will be successful <strong>within</strong> the same network domain!</p>
 <div class="admonition tip">
@@ -744,11 +744,11 @@ document.write(`
 <p>On the <strong>Aviatrix Gateway</strong> widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).</p>
 </div>
 <ul class="simple">
-<li><p>Use <strong>Cloud Routes</strong> for pinpointing the originator of the route <strong>172.16.211.0/24</strong>.</p></li>
+<li><p>Use <strong>Cloud Routes</strong> for pinpointing the <code class="docutils literal notranslate"><span class="pre">originator</span></code> of the route <strong>172.16.211.0/24</strong>.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong>, search for the subnet <strong>172.16.211.0/24</strong> on the <em>search field</em> and then filter based on the following condition: “Gateway <em>contains</em> spoke1”.</p>
+<p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong>, search for the subnet <strong>172.16.211.0/24</strong> on the <em>search field</em> and then filter based on the following condition: “Gateway <em>contains</em> spoke1”.</p>
 <p>The filter button is on the left-hand side of the screen and is shaped like a small funnel.</p>
 </div>
 <figure class="align-center" id="id35">
@@ -774,7 +774,7 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong> and search the subnet <strong>10.0.0.0/24</strong> on the <em>search field</em>.</p>
+<p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong> and search the subnet <strong>10.0.0.0/24</strong> on the <em>search field</em>.</p>
 <p><ins>Remove any previous filters</ins>!</p>
 <figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab1-removefilter.png"><img alt="../_images/lab1-removefilter.png" src="../_images/lab1-removefilter.png" style="height: 300px;" />
