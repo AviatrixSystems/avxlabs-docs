@@ -979,7 +979,7 @@ Verify that each test instance can ping each other.
 
 Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_** as an example. 
 
-Then, sign in to the Gatus app.
+Then, sign in to the Gatus app. In the ICMP section, you’ll see the results gradually turn green.
 
 ```{figure} images/lab2-gastusfinal00.png
 ---
@@ -987,6 +987,8 @@ align: center
 ---
 ICMP
 ```
+
+Additionally, verify the SSH section—the connectivity to the remote nodes will progressively turn green.
 
 ```{figure} images/lab2-gastusfinal01.png
 ---
@@ -1009,9 +1011,9 @@ You will observe that both **ICMP** and **SSH** tests have successfully complete
 
 1) **_aws-us-east-2-spoke1-test2_** (enabled by the normal `intra-VPC traffic`)
 
-2) **_gcp-us-central1-spoke1-test1_**(enabled by the `Aviatrix MCNA`)
+2) **_azure-west-us-spoke1-test1_** (enabled by the `Aviatrix CNSF`)
 
-3) **_azure-west-us-spoke1-test1_** (enabled by the `Aviatrix MCNA`)
+3) **_gcp-us-central1-spoke1-test1_**(enabled by the `Aviatrix CNSF`)
 
 ```{important}
 Review the Gatus App status for the other instances in Azure and GCP.
