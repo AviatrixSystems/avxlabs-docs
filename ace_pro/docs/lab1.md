@@ -127,6 +127,8 @@ Clean up the Search Field
 
 Navigate to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets**. In the search field, enter the name of the VNet you created earlier, **`azure-us-central-spoke1`**. Then, expand the VNet to view the additional subnets that were created by the **Aviatrix Controller**.
 
+The subnets will appear sequentially, one after another. Please be patient.
+
 ```{tip}
 **Click on the refresh button!**
 ```
