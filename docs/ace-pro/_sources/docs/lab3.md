@@ -110,7 +110,7 @@ align: center
 Associations verification
 ```
 
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east-2-transit_**:
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east-2-transit_**:
 
 ```{figure} images/lab3-exploretransit.png
 ---
