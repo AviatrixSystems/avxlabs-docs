@@ -33,7 +33,7 @@ Navigate to **CoPilot > Networking > Connectivity > External Connection (S2C)**.
 
 Here you will immediately notice the presence of an existing S2C connection. 
 
-This is an established connection between an **Aviatrix Edge** device deployed in the remote data center in New York and a LAN router. This S2C connection was pre-deployed at the launch of the POD!
+This is an established connection between an **Aviatrix Edge** device deployed in the remote data center in New York and a LAN router. This S2C connection was pre-deployed at the launch of the POD!xx
 
 ```{figure} images/lab8-edge1.png
 ---
