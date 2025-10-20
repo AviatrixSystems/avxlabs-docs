@@ -466,7 +466,8 @@ Ping ok
 
 ## 7. Gateway Diagnostics
 
-Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**. Scroll through the Properties window to the bottom, locate the the `Tools` button and then click on `Gateway Diagnostics`.
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)**.
+Click the Spoke Gateway **_gcp-us-central1-spoke1_** icon, then the `wrench icon` in the **Properties** window to open the `Diagnostics Tools` for that gateway.
 
 ```{figure} images/lab8-diag.png
 ---
