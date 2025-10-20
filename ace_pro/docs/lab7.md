@@ -417,7 +417,7 @@ Verify that the the **on-prem-partner1** (i.e. the StrongSwan router) router can
 Please complete this task only if you are using a corporate laptop. If you are using your personal laptop, please proceed with **Task 6.2**.
 ```
 
-Go back to your **Workstation Edge** (i.e. the Guacamole Client).
+Navigate to your **Workstation Edge** (i.e. the Guacamole Client).
 
 ```{figure} images/lab7-guacamole10.png
 ---
@@ -466,7 +466,8 @@ Ping ok
 
 ## 7. Gateway Diagnostics
 
-Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)** and click on the icon of the Spoke Gateway **_gcp-us-central1-spoke1_**. Scroll through the Properties window to the bottom, locate the the `Tools` button and then click on `Gateway Diagnostics`.
+Navigate to **CoPilot > Cloud Fabric > Topology > Overview (default TAB)**.
+Click the Spoke Gateway **_gcp-us-central1-spoke1_** icon, then the `wrench icon` in the **Properties** window to open the `Diagnostics Tools` for that gateway.
 
 ```{figure} images/lab8-diag.png
 ---
