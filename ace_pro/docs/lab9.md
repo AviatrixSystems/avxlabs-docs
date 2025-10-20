@@ -41,7 +41,7 @@ Enter the following parameters:
 - **Account**: <span style='color:#479608'>aws-account</span>
 - **Region**: <span style='color:#479608'>us-east-1 (N. Virginia)</span>
 - **VPC**: <span style='color:#479608'>aws-us-east1-spoke1</span>
-- **Instance Size**: <span style='color:#479608'>t2.medium</span>
+- **Instance Size**: <span style='color:#479608'>c6in.large</span>
 - **Attach to Unused Subnet**: <span style='color:#479608'>us-east-1a</span>
 - **Route Table**: <span style='color:#479608'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span>
 
@@ -347,7 +347,7 @@ Create the new **_WebGroup_** with the following parameters:
 - **Type**: <span style='color:#479608'>Domains</span>
 - **Domains/URLs**: <span style='color:#479608'>www.nginx.com</span>
 - **Domains/URLs**: <span style='color:#479608'>www.ubuntu.com</span>
-- **Domains/URLs**: <span style='color:#479608'>www.aviatrix.com</span>
+- **Domains/URLs**: <span style='color:#479608'>www.aviatrix.ai</span>
 
 Do not forget to click on **Save**.
 
