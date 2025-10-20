@@ -362,7 +362,7 @@ Aviatrix Gateway
 On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
-## 6. Edge: "It's more than a Spoke GW""
+## 6. Edge: "It's more than a Spoke GW"
 
 The Aviatrix Edge device is capable to be connected to multiple Transit Gateways, simultaneously, thus <ins>the Edge device is regarded much more than a classic Spoke gateway</ins>.
 
@@ -468,7 +468,7 @@ Now let's verify the connectivity beetween  **aws-us-east-2-spoke1-test1** in AW
 
 #### 6.1.1 Connectivity Testing Using the Diagnostics Tools
 
-Navigate to your POD Portal, locate the `Gatus widget`, and select both **_gcp-us-central1-spoke1-test1_** and **_aws-us-east-2-spoke1-test1_**.
+Navigate to your POD Portal, locate the `Gatus widget`, and select both  **_aws-us-east-2-spoke1-test1_** and **_gcp-us-central1-spoke1-test1_**.
 
 ```{figure} images/lab8-podportal110.png
 ---
