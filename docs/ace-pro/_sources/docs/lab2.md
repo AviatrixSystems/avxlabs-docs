@@ -1,4 +1,4 @@
-# Lab 2 - TRANSIT NETWORKING
+# Lab 2 - Cloud Native Security Fabric
 
 ## 1. Objective
 
