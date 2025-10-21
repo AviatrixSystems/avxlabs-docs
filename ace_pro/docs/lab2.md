@@ -34,6 +34,10 @@ align: center
 Initial pre-provisioned topology
 ```
 
+```{tip}
+Once you attach the gateways to form the Aviatrix CNSF, the connections are automatically encrypted with **IPSec**.
+```
+
 ### 3.1 Preliminary Monitoring Check Using the Gatus APP
 
 All pre-deployed instances are running [Gatus](https://gatus.io/) and are attempting to connect with each other using various protocols, including **ICMP** and **TCP** on ports 80,443 and 22.
