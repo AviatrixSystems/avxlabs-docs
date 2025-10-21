@@ -1,4 +1,4 @@
-# Lab 2 - Cloud Native Security Fabric
+# Lab 2 - CLOUD NATIVE SECURITY FABRIC
 
 ## 1. Objective
 
