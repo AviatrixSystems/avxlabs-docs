@@ -54,7 +54,7 @@ Enable Segmentation on the relevant Transit GWs
 
 ### 4.2 Network Domains
 
-Go to **CoPilot > Networking > Network Segmentation > Network Domains > + Network Domain**
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains > + Network Domain**
 
 ```{figure} images/lab3-networkdomain.png
 ---
@@ -119,21 +119,17 @@ align: center
 Select Transit in US-East-2
 ```
 
-Then select the `"Gateway Routes"` tab and inspect the routing table of the network domain **Green**, likewise the routing table of the network domain **Blue**:
+Then navigate to the `"Route DB"` tab and examine how routes are allocated to the dedicated routing table, which defines a distinct new Routing Domain (e.g., **Blue**, **Green**).
+Then select the `"Route DB"` tab and inspect the routing table of the network domain **Green**, likewise the routing table of the network domain **Blue**:
 
-```{figure} images/lab3-exploregreen.png
+```{figure} images/lab3-routedb101.png
 ---
 align: center
 ---
-Explore Green
+Route DB
 ```
 
-```{figure} images/lab3-exploreblue.png
----
-align: center
----
-Explore Blue
-```
+
 
 Navigate to **CoPilot > Networking > Network Segmentation > Overview > Logical View**
 
