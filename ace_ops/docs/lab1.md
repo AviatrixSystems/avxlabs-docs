@@ -191,7 +191,7 @@ Show Labels
 
 - **Cloud Assets**:
 
-Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, where you can search for any instances and retrieve their IP addresses!
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Perform a search for "_frontend_" and extract the corresponding IP addresses from the resulting list.
 
 ```{figure} images/lab1-assets.png
 ---
@@ -219,8 +219,10 @@ align: center
 DNS Names
 ```
 
-- Verify connectivity between clients **within** the same BU:
-    - SSH into the **BU1 Frontend**  instance in AWS.
+### 2.1 NETWORK SEGMENTATION: VERIFICATION
+#### 2.1.1 Verify connectivity between clients **within** the same BU
+    
+- SSH into the **BU1 Frontend**  instance in AWS.
 
 ```{important}
 The credentials for accessing the EC2 instances and VMs are available in your personal POD Portal, within the dedicated widget labeled `"SSH for Test Instances"`.
@@ -252,7 +254,7 @@ align: center
 Properties
 ```
 
-Open your SSH client and enter the SSH command to log in to the BU1 Frontend instance.
+Open your **SSH client** and enter the SSH command to log in to the BU1 Frontend instance.
 
 ```{figure} images/lab1-assets22.png
 ---
@@ -268,7 +270,7 @@ SSH
 Ping and SSH will be successful **within** the same network domain!
 
 ```{tip}
-Clear the keyword in the filter field to reestablish the complete topology view. 
+Clear the filter field to restore the full topology view, then search for "_analytics_".
 ```{figure} images/lab1-filter.png
 ---
 height: 400px
@@ -285,6 +287,8 @@ align: center
 ICMP
 ```
 
+Also attempt the SSH command to BU1 Analytics.
+
 ```{figure} images/lab1-pingok20.png
 ---
 height: 400px
@@ -293,11 +297,22 @@ align: center
 SSH
 ```
 
-* Verify the network segregation **between** the two BUs:
-  * From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
-  * From **BU1 Frontend** try to SSH **BU2 Mobile App** (use its Private IP address!).
+Additionally, execute the **CURL** command directed at BU1 Analytics.
 
-Ping and SSH commands should not work this time, due to the separation between the two segments (i.e. <ins>these are two different Routing Domains</ins>).
+```{figure} images/lab1-pingok29.png
+---
+height: 400px
+align: center
+---
+CURL
+```
+
+#### 2.1.2 Ensure there is no cross-BU connectivity among clients.
+
+- From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
+- From **BU1 Frontend** try to SSH **BU2 Mobile App** (use its Private IP address!).
+
+**Ping** and **SSH** commands will not work this time due to the separation between the two segments; <ins>these are two different Routing Domains</ins>.
 
 ```{important}
 Once again refer always to your personal POD for the IP addresses. 
@@ -324,7 +339,7 @@ BU1 to BU2: SSH test fails
 * Check the **Network Segmentation** section on the CoPilot, and then look at the **Logical View**.
 
 ```{tip}
-Go to **CoPilot > Networking > Network Segmentation > Overview**
+Navigate to **CoPilot > Networking > Network Segmentation > Overview**
 ```
 
 ```{figure} images/lab1-logicalview.png
@@ -347,7 +362,7 @@ Network Domains
 * Examine the various routing tables (i.e., *VRFs*) managed by the Transit Gateways.
 
 ```{tip}
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the **_ace-aws-eu-west-1-transit_** Gateway, then go to **Gateway Routes** and filter by any *Network Domain* (such as BU1 or BU2).
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the **_ace-aws-eu-west-1-transit_** Gateway, then open **Routes DB** and inspect the allocation of the routes to the specific BU routing tables (e.g., BU1 or BU2).
 ```
 
 ```{figure} images/lab1-bu1vrf.png
@@ -358,10 +373,8 @@ align: center
 Network Domain (aka VRF)
 ```
 
-```{tip}
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **ace-aws-eu-west-1-transit** Gateway and then select the tab **Route DB**. 
-
-You will notice that the `Segmentation` feature is indeed enabled. Moreover, you will notice the different RTBs.
+```{important}
+You will notice that the `Segmentation` feature is indeed enabled. 
 ```{figure} images/lab1-newjoe.png
 ---
 height: 400px
@@ -410,7 +423,8 @@ FlowIQ
 On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
-* Use **Cloud Routes** for pinpointing the `originator` of the route **172.16.211.0/24**.
+* Use **Cloud Routes**  to identify the originator of the route **172.16.211.0/24**.
+
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Cloud Routes**, search for the subnet **172.16.211.0/24** on the *search field* and then filter based on the following condition: "Gateway *contains* spoke1".
@@ -438,7 +452,7 @@ align: center
 Originator = eth0
 ```
 
-* Use **Cloud Routes** for pinpointing the originator of the route **10.0.0.0/24**.
+* Utilize **Cloud Routes** to pinpoint the source of the **10.0.0.0/24**.
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Cloud Routes** and search the subnet **10.0.0.0/24** on the *search field*. 
