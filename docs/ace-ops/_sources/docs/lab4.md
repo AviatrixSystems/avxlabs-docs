@@ -208,7 +208,7 @@ align: center
 10.0.0.0/8 has been successfully reinjected into the FW's rtb!
 ```
 
-- Relaunch the ping from **BU1 Frontend** towards **BU2 Mobile App**.
+- Please re-execute the ping from **BU1 Frontend** toward **BU2 Mobile App**.
 
 ```{figure} images/lab4-pingworks.png
 ---
