@@ -30,7 +30,7 @@ Ping fails
 - Check whether both **AWS Spoke1** and **AWS Spoke2** have the required routes installed in their RTBs or not.
 
 ```{tip}
-Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **ace-aws-eu-west-1-spoke1** gateway for instance, and filter out based on the remote route.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **ace-aws-eu-west-1-spoke1** gateway for instance, and filter by the remote route (i.e., 10.1.212.0/24)
 ```
 
 ```{figure} images/lab4-filter.png
@@ -38,7 +38,7 @@ Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the 
 height: 300px
 align: center
 ---
-Filter out
+Filter
 ```
 
 From the outcome above, once again it is evident that Spoke1 in AWS has the destination route in its RTB.
@@ -184,7 +184,7 @@ This time the firewall is reachable!
 - Let's check the `Vendor Integration`!
 
 ```{tip}
-Go to **CoPilot > Security > FireNet > Firewall**, click on the **_ACE-FW_** firewall.
+Navigate to **CoPilot > Security > FireNet > Firewall**, click on the **_ACE-FW_** firewall.
 ```
 
 ```{figure} images/lab4-vendor1.png
