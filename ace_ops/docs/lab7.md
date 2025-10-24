@@ -8,9 +8,9 @@ The BU2 database requires updates; however, the VM resides within a private subn
 
 Additionally, all egress traffic must be monitored, with **_Logging_** enabled to track the activity.
 
-Enable the `Cloud Secure Egress` feature on the **_ace-azure-east-us-spoke2_** VNet, mirroring the setup on **_ace-azure-east-us-spoke1_**. Implement this temporarily as a test in a separate Test VNet.
+Enable the `Cloud Secure Egress` feature on the **_ace-azure-east-us-spoke2_** VNet.
 
-Furthermore, you are requested to create the DCF rules that will enforce these requirements.
+Furthermore, you are requested to create the **DCF rules** that will enforce these requirements.
 
 ```{figure} images/lab7-topology.png
 ---
@@ -22,7 +22,7 @@ Lab 7 Scenario Topology
 
 ## 2. CHANGE REQUEST
 
-- Enable the Egress on the VNet where the BU2 DB resides.
+- Enable the **Egress** on the VNet where the BU2 DB resides.
 
 ```{tip}
 Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
@@ -78,7 +78,16 @@ align: center
 Begin
 ```
 
-You will immediately notice that the Aviatrix Controller has applied a `Greenfield-Rule`, permitting all types of traffic.
+Click also on **"Acknowledge"**.
+
+```{figure} images/lab7-enabledcf0345.png
+---
+align: center
+---
+Acknowledge
+```
+
+The Aviatrix Controller has applied a `Greenfield-Rule` that allows all traffic; you should see this immediately.
 
 ```{figure} images/lab7-enabledcf04.png
 ---
@@ -90,7 +99,7 @@ Default Rule
 - Enable the `"Logging"` on the Greenfield-Rule.
 
 ```{tip}
-Click on the Actions icon to the right of the**Greenfield-Rule** entry, and enable Logging.
+Click on the Actions icon to the right of the **Greenfield-Rule** entry, and enable Logging.
 ```
 
 ```{figure} images/lab7-editgreen.png
@@ -111,7 +120,7 @@ align: center
 Commit
 ```
 
-- Use the **_Spoke1 VNet_** as a test environment to identify the domains that need to be allowed. This will enable you to selectively execute apt-get commands only towards the specified domains.
+- Use **_Spoke1 VNet_** as a test environment to determine the domains to permit, then execute apt-get commands only toward those domains.
 
 ```{figure} images/lab7-test.png
 ---
