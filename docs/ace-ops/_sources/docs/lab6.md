@@ -234,7 +234,7 @@ align: center
 Ping is ok
 ```
 
-- Execute the `Active Sessions`.
+- Execute the `Active Sessions` command.
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_ace-gcp-us-east1-spoke1_** GW and then select the **Active Sessions** tool.
