@@ -15,7 +15,7 @@ Lab 5 Topology
 ## 2. TROUBLESHOOT REQUEST
 
 - Verify that the connectivity between BU1 Frontend and BU1 Analytics is actually broken.
-  - SSH to BU1 Frontend and carry out ping/traceroute/ssh commands towards BU1 Analytics.
+  - SSH to BU1 Frontend and execute ping/traceroute/ssh commands toward BU1 Analytics.
 
 ```{figure} images/lab5-pingfails.png
 ---
@@ -37,7 +37,7 @@ Repeat the same process from the GCP Spoke perspective!
 height: 350px
 align: center
 ---
-Filter out
+Filter
 ```
 
 The **Spoke1** in AWS does not have the destination route to reach the destination in GCP, based on the outcome above...
@@ -45,7 +45,7 @@ The **Spoke1** in AWS does not have the destination route to reach the destinati
 - Check what route is received by the **GCP Transit GW** from the **GCP Spoke1 GW**.
 
 ```{tip}
-Go to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_ace-gcp-us-east1-transit1_** Gateway in GCP **> Gateway Routes** and filter by the parameter depicted below.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the **_ace-gcp-us-east1-transit1_** Gateway in GCP **> Gateway Routes** and filter by the parameter depicted below.
 ```
 
 - "**Next Hop Gateway** *contains* **gcp**"
@@ -177,8 +177,8 @@ align: center
 Deletion of the NAT rule
 ```
 
-- Relaunch the ping from **BU1 Frontend** towards **BU1 DB**.
-
+- From BU1 Frontend, re-run the ping to **BU1 DB**.
+- 
 ```{figure} images/lab5-pingok2.png
 ---
 align: center
@@ -191,7 +191,7 @@ Ping is ok
 - Now that connectivity has been restored, the BU2 DB owner has also requested that you filter out the route **10.0.211.0/24** from the routing table of the Azure Spoke2 Gateway.
 
 ```{important}
-The subnet `10.0.211.0/24` is advertised by the OnPrem DC Router towards the Aviatrix CNSF via the Site-to-Cloud connection.
+The subnet `10.0.211.0/24` is advertised by the **OnPrem DC Router** towards the Aviatrix CNSF via the Site-to-Cloud connection.
 
 ```{figure} images/lab5-newrequest2.png
 ---
@@ -248,7 +248,7 @@ align: center
 Search for the remote route from the OnPrem DC
 ```
 
-- Filter out the route `10.0.211.0/24` in the `Settings` section (i.e., the *Route Manipulation* section).
+- Filter the route `10.0.211.0/24` in the `Settings` section (i.e., the *Route Manipulation* section).
 
 ```{tip}
 Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **_ace-azure-east-us-spoke2_** Gateway and then select the **Settings** tab.
