@@ -22,6 +22,8 @@ Lab 7 Scenario Topology
 
 ## 2. CHANGE REQUEST
 
+### 2.1 Secure Cloud Egress on VNet2
+
 - Enable the **Egress** on the VNet where the BU2 DB resides.
 
 ```{tip}
@@ -50,6 +52,18 @@ align: center
 ---
 Default Route injected by the AVX Controller
 ```
+
+### 2.2 Secure Cloud Egress on VNet1 - TEST VNET
+
+```{caution}
+Repeat the action for VNet2, employing the azure-east-us-spoke1 VNet as a test environment to determine the permitted domains.
+```
+
+- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button, then select the **_ace-azure-east-us-spoke1_** VPC.
+
+Do not forget to click on **Add**.
+
+### 2.3 Distributed Cloud Firewall - Activation
 
 - Enable the **Distributed Cloud Firewall** feature.
 
