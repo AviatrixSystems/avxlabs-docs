@@ -8,7 +8,7 @@ The BU2 database requires updates; however, the VM resides within a private subn
 
 Additionally, all egress traffic must be monitored, with **_Logging_** enabled to track the activity.
 
-Please activate the `Cloud Secure Egress` feature on the **_ace-azure-east-us-spoke2_** VNet, similar to the setup on **_ace-azure-east-us-spoke1_**, but do so temporarily as a test in a separate Test VNet.
+Enable the `Cloud Secure Egress` feature on the **_ace-azure-east-us-spoke2_** VNet, mirroring the setup on **_ace-azure-east-us-spoke1_**. Implement this temporarily as a test in a separate Test VNet.
 
 Furthermore, you are requested to create the DCF rules that will enforce these requirements.
 
