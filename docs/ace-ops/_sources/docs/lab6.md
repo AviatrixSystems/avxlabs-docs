@@ -49,10 +49,10 @@ align: center
 Communicate your POD number
 ```
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW **> Approval**
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW and then the **Route Approval** tab.
 
 ```{note}
-Please wait approximately **one minute** for BGP to send the Update. Then, click the <span style='color:orange'>**refresh button**</span> to see the default route being advertised from the Data Center.
+Please wait approximately **one or two minutes** for BGP to send the Update. Then, click the <span style='color:orange'>**refresh button**</span> to see the default route being advertised from the Data Center.
 
 This route will remain in a <ins>**pending state**</ins> and will not be advertised within the CNSF until it receives final approval from the *Aviatrix Administrator*.
 
@@ -92,7 +92,7 @@ Lab 6 Scenario#2: Topology
 - Create a new **S2C** connection.
 
 ```{tip}
-Navigate to **CoPilot > Networking >  Connectivity > External Connection (S2C) >** then click on the  `"+External Connection"` button, then select `"External Device"`.
+Navigate to **CoPilot > Networking >  Connectivity > External Connection (S2C) >** then click on the  `"+ External Connection"` button, then select `"External Device"`.
 ```
 
 ```{figure} images/lab6-s2c.png
@@ -115,8 +115,9 @@ Configure the new Site-to-Cloud (S2C) connection according to the schema below:
 
 - **Name**: <span style='color:#479608'>S2C-PARTNER</span>
 
-- **Connect Using:**: <span style='color:#479608'>Static-Route Based</span>
-- **Type:**: <span style='color:#479608'>Mapped</span>
+- **Connect Using:**: <span style='color:#479608'>Static-Route over IPSec</span>
+
+- **Static Routing Type**: <span style='color:#479608'>Mapped NAT</span>
 
 - **Local Gateway**: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span>
 
@@ -130,11 +131,11 @@ Configure the new Site-to-Cloud (S2C) connection according to the schema below:
 
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.2.0/24</span>
 
-- **Authentication Method**: <span style='color:#479608'>Pre-Shared Key</span>
-
 - **IKEv2**: <span style='color:#479608'>ON</span>
 
-- **Remote Gateway IP**:  <span style='color:tomato'>please refer to the Note below</span>
+- **Authentication Method**: <span style='color:#479608'>Pre-Shared Key</span>
+
+- **Remote Device 1 Tunnel Destination IP**:  <span style='color:tomato'>please refer to the Note below</span>
 
 ```{note}
 Use the “**dig partner-csr-public.pod#.aviatrixlab.com +short**” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem-Partner CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
@@ -162,8 +163,6 @@ align: center
 ---
 Nslookup 
 ```
-
-  - **Local Gateway Instance**: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span>
   -  **Pre-Shared Key**: <span style='color:#479608'>Aviatrix123#</span>
 
 ```{important}
@@ -209,9 +208,6 @@ align: center
 Cisco Router
 ```
 
-Certainly! Here's a polished version of your phrase:
-
-
 After successfully logging into the On-Premises Partner router (also known as the _CSR router_), execute the following command to verify that the tunnel is active:
 
 ```bash
@@ -238,7 +234,7 @@ align: center
 Ping is ok
 ```
 
-- Launch the `Active Sessions`.
+- Execute the `Active Sessions`.
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_ace-gcp-us-east1-spoke1_** GW and then select the **Active Sessions** tool.
