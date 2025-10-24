@@ -77,7 +77,7 @@ Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select th
 ---
 align: center
 ---
-View on a specific RTB
+Network Domains
 ```
 
 ```{important}
@@ -131,7 +131,7 @@ FlightPath
   - Destination: <span style='color:#479608'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span>
   - Protocol: <span style='color:#479608'>TCP</span>
   - Port: <span style='color:#479608'>80</span>
-  - Interface: <span style='color:#479608'>Private *(default)*</span>
+  - Interface: <span style='color:#479608'>Private</span>
 
 ```{figure} images/lab2-curl4.png
 ---
@@ -259,7 +259,7 @@ New inbound rule: allow port 80
 ```
 
 ```{caution}
-Please use the specific CIDR 10.0.0.0/8 instead of 0.0.0.0/0 to ensure precision in the Security Group rule!
+Please use the specific CIDR **10.0.0.0/8** instead of 0.0.0.0/0 to ensure precision in the Security Group rule!
 ```
 
 Now relaunch the **curl** command from the **_BU1 Frontend_** instance towards the private IP of the **_BU2 Mobile App_**.
