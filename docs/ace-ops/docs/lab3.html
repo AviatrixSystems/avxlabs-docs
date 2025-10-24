@@ -385,7 +385,7 @@ document.write(`
 <ul class="simple">
 <li><p>Verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU2 Mobile App</strong> is actually broken.</p>
 <ul>
-<li><p>SSH to <strong>BU1 Frontend</strong> and launch ping/ssh towards <strong>BU2 Mobile App</strong>.</p></li>
+<li><p>SSH to <strong>BU1 Frontend</strong> and run ping and SSH tests toward <strong>BU2 Mobile App</strong>.</p></li>
 </ul>
 </li>
 </ul>
@@ -409,7 +409,7 @@ document.write(`
 <p><span class="caption-number">Fig. 66 </span><span class="caption-text">Filtering out</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>From the outcome above, it is evident that Spoke1 in AWS has the destination route in its RTB. You can verify the inverse, inspecting the Routing Table of  the Spoke2 in AWS.</p>
+<p>From the above outcome, Spoke1 in AWS has the destination route in its RTB. You can verify the inverse by inspecting the Routing Table of Spoke2 in AWS.</p>
 <ul class="simple">
 <li><p>Use <strong>Diagnostics Tools</strong> from the <em>Spoke1 Gateway</em> in AWS and try to ping/traceroute the instance behind the other spoke (i.e. BU2 Mobile App).</p></li>
 </ul>
@@ -469,7 +469,7 @@ document.write(`
 <p><span class="caption-number">Fig. 71 </span><span class="caption-text">The FW is unreachable</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Click on the <strong>Firewall</strong> tab! You will notice that the Firewall turns out being down.</p>
+<p>Open the <strong>Firewall</strong> tab; the firewall appears to be down.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>The ICMP health check is initiated every <strong>5</strong> seconds from the Aviatrix Transit FireNet Gateway. The 5-second setting is the default and cannot be changed.</p>
@@ -504,7 +504,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Issue the ping towards the <strong>BU2 Mobile App</strong> from the <strong>BU1 Frontend</strong>. This time the connectivity will work!</p></li>
+<li><p>Execute a ping from <strong>BU1 Frontend</strong> to <strong>BU2 Mobile App</strong> to verify connectivity; results should indicate a working connection.</p></li>
 </ul>
 <figure class="align-center" id="id13">
 <img alt="../_images/lab3-pingok2.png" src="../_images/lab3-pingok2.png" />
@@ -527,7 +527,7 @@ document.write(`
 <p><ins>Undoubtedly, the Firewall is excluded from this path!</ins></p>
 </div>
 <ul class="simple">
-<li><p>Now <ins>remove the workaround</ins> and explore the Firewall configuration!</p></li>
+<li><p>Remove the <em>workaround</em> and perform a thorough review of the Firewall configuration.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -579,7 +579,7 @@ document.write(`
 <p>Navigate to <strong>FW &gt; Network &gt; Interfaces</strong> and click the LAN interface (port2) and fix the issue!</p>
 </div>
 <p>The port was disabled to simulate a software failure of the FW…</p>
-<p>Double click on the greyed-out interface LAN (port2), or alternatively, select the interface and click on the <strong>Edit</strong> button.</p>
+<p>Double click on the greyed-out interface <strong>LAN (port2)</strong>, or alternatively, select the interface and click on the <strong>Edit</strong> button.</p>
 <figure class="align-center" id="id19">
 <img alt="../_images/lab3-fwint.png" src="../_images/lab3-fwint.png" />
 <figcaption>
@@ -610,7 +610,7 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>This time, the traceroute shows the IP address of the Transit FireNet Gateway (e.g., <strong>.143</strong>, as in the example screenshot) twice along the path. This happens because the traffic is diverted to the firewall for Deep Packet Inspection, and after approval, the firewall sends the traffic back to the Transit FireNet Gateway.</p>
+<p>This time, the traceroute shows the IP address of the Transit FireNet Gateway (e.g., <strong>.143</strong>, as in the example screenshot) twice along the path. This happens because the traffic is diverted to the firewall for <em>Deep Packet Inspection</em>, and after approval, the firewall sends the traffic back to the Transit FireNet Gateway.</p>
 </div>
 </section>
 </section>
