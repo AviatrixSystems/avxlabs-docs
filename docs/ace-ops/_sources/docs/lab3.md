@@ -31,7 +31,7 @@ Lab 3 Topology
 
 - Verify that the connectivity between **BU1 Frontend** and **BU2 Mobile App** is actually broken.
 
-  - SSH to **BU1 Frontend** and launch ping/ssh towards **BU2 Mobile App**.
+  - SSH to **BU1 Frontend** and run ping and SSH tests toward **BU2 Mobile App**.
 
 ```{figure} images/lab3-pingfails.png
 ---
@@ -54,7 +54,7 @@ align: center
 Filtering out
 ```
 
-From the outcome above, it is evident that Spoke1 in AWS has the destination route in its RTB. You can verify the inverse, inspecting the Routing Table of  the Spoke2 in AWS.
+From the above outcome, Spoke1 in AWS has the destination route in its RTB. You can verify the inverse by inspecting the Routing Table of Spoke2 in AWS.
 
 - Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and try to ping/traceroute the instance behind the other spoke (i.e. BU2 Mobile App).
 
@@ -120,7 +120,7 @@ align: center
 The FW is unreachable
 ```
 
-Click on the **Firewall** tab! You will notice that the Firewall turns out being down.
+Open the **Firewall** tab; the firewall appears to be down.
 
 ```{important}
 The ICMP health check is initiated every **5** seconds from the Aviatrix Transit FireNet Gateway. The 5-second setting is the default and cannot be changed.
@@ -159,7 +159,7 @@ align: center
 Exclude the CIDR
 ```
 
-- Issue the ping towards the **BU2 Mobile App** from the **BU1 Frontend**. This time the connectivity will work!
+- Execute a ping from **BU1 Frontend** to **BU2 Mobile App** to verify connectivity; results should indicate a working connection.
 
 ```{figure} images/lab3-pingok2.png
 ---
@@ -183,7 +183,8 @@ The traceroute outcome shows the whole path from the source, the BU1 Frontend, t
 <ins>Undoubtedly, the Firewall is excluded from this path!</ins>
 ```
 
-- Now <ins>remove the workaround</ins> and explore the Firewall configuration!
+- Remove the _workaround_ and perform a thorough review of the Firewall configuration.
+
 
 ```{tip}
 Navigate to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_ace-aws-eu-west-1-transit1_** GW, then click on **Settings** and remove the CIDR `10.1.212.0/24`. 
@@ -237,7 +238,7 @@ Navigate to **FW > Network > Interfaces** and click the LAN interface (port2) an
 
 The port was disabled to simulate a software failure of the FW...
 
-Double click on the greyed-out interface LAN (port2), or alternatively, select the interface and click on the **Edit** button.
+Double click on the greyed-out interface **LAN (port2)**, or alternatively, select the interface and click on the **Edit** button.
 
 ```{figure} images/lab3-fwint.png
 ---
@@ -276,5 +277,5 @@ New Traceroute outcome
 ```
 
 ```{important}
-This time, the traceroute shows the IP address of the Transit FireNet Gateway (e.g., **.143**, as in the example screenshot) twice along the path. This happens because the traffic is diverted to the firewall for Deep Packet Inspection, and after approval, the firewall sends the traffic back to the Transit FireNet Gateway.
+This time, the traceroute shows the IP address of the Transit FireNet Gateway (e.g., **.143**, as in the example screenshot) twice along the path. This happens because the traffic is diverted to the firewall for _Deep Packet Inspection_, and after approval, the firewall sends the traffic back to the Transit FireNet Gateway.
 ```
