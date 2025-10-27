@@ -56,7 +56,7 @@ Commit
 These settings are quite aggressive. In a production environment, you should avoid setting these intervals to such frequent values!
 ```
 
-Navigate to **CoPilot > Cloud Fabric > Topology** to explore your POD topology.
+- Navigate to **CoPilot > Cloud Fabric > Topology** to explore your POD topology.
 
 You'll see that CoPilot displays both *Managed* and *Unmanaged* VPCs.
 
@@ -98,7 +98,7 @@ Managed VPCs only
 **Always** refer to your personal POD for the accurate IP addresses. The IP addresses displayed in the following screenshots are only <ins>examples</ins> sourced from a different POD and are intended solely for the creation of the lab guides.
 ```
 
-There are **two** methods for SSH access to any instance within the lab’s multicloud infrastructure.
+There are **two** SSH access methods you can use to connect to any instance in the lab’s multi‑cloud environment.
 
 1. Use an <span style='color:orange'>**SSH client**</span> from your laptop (<ins>recommended method!</ins>).
 
@@ -264,8 +264,8 @@ align: center
 SSH
 ```
 
- - From the BU1 Frontend instance, ping the <ins>private IP address</ins> of the **BU1 Analytics** instance in GCP.
-  - Confirm that **SSH** works from the BU1 Frontend instance to the **BU1 Analytics** instance.
+ - From the **BU1 Frontend** instance, ping the <ins>private IP address</ins> of the **BU1 Analytics** instance in GCP.
+  - Confirm that **SSH** works from the **BU1 Frontend** instance to the **BU1 Analytics** instance.
 
 Ping and SSH will be successful **within** the same network domain!
 
@@ -287,7 +287,7 @@ align: center
 ICMP
 ```
 
-Also attempt the SSH command to BU1 Analytics.
+Also attempt the **SSH** command to BU1 Analytics.
 
 ```{figure} images/lab1-pingok20.png
 ---
@@ -307,10 +307,10 @@ align: center
 CURL
 ```
 
-#### 2.1.2 Ensure there is no cross-BU connectivity among clients.
+#### 2.1.2 Ensure workloads do not have cross-BU connectivity
 
 - From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
-- From **BU1 Frontend** try to SSH **BU2 Mobile App** (use its Private IP address!).
+- From **BU1 Frontend** try to SSH **BU2 Mobile App** (use again its Private IP address!).
 
 **Ping** and **SSH** commands will not work this time due to the separation between the two segments; <ins>these are two different Routing Domains</ins>.
 
@@ -423,7 +423,7 @@ FlowIQ
 On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
-* Use **Cloud Routes**  to identify the originator of the route **172.16.211.0/24**.
+* Use **Cloud Routes**  to identify the _originator_ of the route **172.16.211.0/24**.
 
 
 ```{tip}
@@ -441,7 +441,7 @@ Search field and Filter icon
 ```
 
 ```{tip}
-The **Originator** has the egress interface that corresponds to the **eth0** interface (i.e. the LAN interface), which in turn means, direct connected.
+The **Originator** has the egress interface that corresponds to the **eth0** interface (i.e. the _LAN_ interface), which in turn means, direct connected.
 ```
 
 ```{figure} images/lab1-cloudroutes.png
