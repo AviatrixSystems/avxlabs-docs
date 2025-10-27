@@ -87,7 +87,7 @@ VPC Functions:
 **2) Transit + FireNet** 
 ```
 
-From the CoPilot search bar, type `“task”` and then click the search result `“Notifications / Tasks”`. Keep an eye on the VNet creation task and wait for it to complete.
+From the CoPilot search bar, type `“task”` and then click the search result `“Monitor / Notifications / Tasks”`. Keep an eye on the VNet creation task and wait for it to complete.
 
 ```{figure} images/lab1-vnet5.png
 ---
@@ -97,7 +97,7 @@ align: center
 Notification
 ```
 
-The creation of the VNet will take approximately **4 to 5 minutes**. You can periodically check the status of the task by clicking the hourglass icon in the top right corner. Be sure to click the refresh button as needed. Once the task turns green, you can confidently conclude that the VNet has been successfully created.
+The creation of the VNet will take approximately **4 to 5 minutes**. You can periodically check the status of the task by clicking the hourglass icon in the top right corner. Be sure to click the `refresh` button as needed. Once the task turns green, you can confidently conclude that the VNet has been successfully created.
 
 ```{figure} images/lab1-new.png
 ---
@@ -125,9 +125,9 @@ align: center
 Clean up the Search Field
 ```
 
-Navigate to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets**. In the search field, enter the name of the VNet you created earlier, **`azure-us-central-spoke1`**. Then, expand the VNet to view the additional subnets that were created by the **Aviatrix Controller**.
+- Navigate to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets**. In the search field, enter the name of the VNet you created earlier, **`azure-us-central-spoke1`**. Then, expand the VNet to view the additional subnets that were created by the **Aviatrix Controller**.
 
-The subnets will appear sequentially, one after another. Please be patient.
+The subnets will appear sequentially, one after another. Please be patient!
 
 ```{tip}
 **Click on the refresh button!**
