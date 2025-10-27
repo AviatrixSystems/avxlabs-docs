@@ -6,7 +6,7 @@ This lab will demonstrate how the `Distributed Cloud Firewall` works.
 
 ## 2. Distributed Cloud Firewall Overview
 
-The Distributed Cloud Firewall is a powerful feature of the `Aviatrix Cloud Firewall`, designed to enhance security across your cloud infrastructure. It offers a comprehensive suite of capabilities, including Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata Intrusion Detection and Prevention Systems (IDS/IPS), Advanced Network Address Translation (NAT) capabilities, and Micro-Segmentation.
+The **Distributed Cloud Firewall** is a powerful feature of the `Aviatrix Cloud Firewall`, designed to enhance security across your **CNSF**. It offers a comprehensive suite of capabilities, including Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata Intrusion Detection and Prevention Systems (IDS/IPS), Advanced Network Address Translation (NAT) capabilities, and Micro-Segmentation.
 
 In this lab, you will have the opportunity to create additional logical containers known as `Smart Groups`. These Smart Groups are designed to categorize instances within a VPC/VNet/VCN that share similar characteristics. Once you have organized your instances into these groups, you will then enforce security policies among them through **Distributed Cloud Firewalling Rules**. This approach not only streamlines management but also enhances security by allowing for targeted rule enforcement based on the specific behaviors and attributes of the grouped instances.
 
@@ -123,7 +123,7 @@ align: center
 Resources that match the condition
 ```
 
-At this stage, you have created logical containers that do not affect the existing routing domain, thanks to the `Connetion Policy`  applied in **Lab 3**. Now, it's time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
+At this stage, you have created logical containers that do not affect the existing routing domain, thanks to the `Connection Policy`  applied in **Lab 3**. Now, it's time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
 
 Below is the current list of your DCF Rules within the **Distributed Cloud Firewall** section of your CoPilot:
 
@@ -415,7 +415,7 @@ align: center
 Outcomes
 ```
 
-Based on the above outcome, you will not see **10.0.1.10** (aws-us-east-2-spoke1-test2) because it belongs to bu2, which does not match the intra-icmp-bu1 rule.
+Based on the above outcome, you will not see **10.0.1.10** (aws-us-east-2-spoke1-test2) because it belongs to **bu2**, which does not match the intra-icmp-bu1 rule.
 
 However, **aws-us-east-2-spoke1-test1** can ping **aws-us-east-2-spoke1-test2** due to intra-VPC communication, without needing to match any of the deployed DCF rules.
 
@@ -983,7 +983,7 @@ align: center
 Gatus
 ```
 
-Pinging **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** is still not working.
+Pinging **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_** remains unsuccessful.
 
 ### 13.2 ICMP Verification between Azure and AWS Using SSH Client after enabling MTT<span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -1074,7 +1074,7 @@ align: center
 The Last Rule...
 ```
 
-Now you can carry on with the last **commit**!
+Now you can go ahead with the last **commit**!
 
 ```{figure} images/lab10-lastcommit.png
 ---
