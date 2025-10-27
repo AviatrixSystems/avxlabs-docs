@@ -549,7 +549,7 @@ document.write(`
 </figure>
 <p>You will only see <strong>ICMP Echo Request</strong> packets leaving from the LAN interface. Additionally, the source IP is entirely different from what you’d expect: instead of an IP from the legitimate CIDR 10.1.211.0/24, the source address belongs to the <code class="docutils literal notranslate"><span class="pre">50.50.50.0/24</span></code> range.</p>
 <ul class="simple">
-<li><p>Fix the issue checking the <strong>Routes Manipulation</strong> section on the <strong>Spoke1 GW in Azure</strong>.</p></li>
+<li><p>Fix the issue checking the <strong>Routing</strong> section (aka as <em>Routes Manipulation</em> section) on the <strong>Spoke1 GW in Azure</strong>.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -564,7 +564,6 @@ document.write(`
 </figure>
 <ul class="simple">
 <li><p>From BU1 Frontend, re-run the ping to <strong>BU1 DB</strong>.</p></li>
-<li></li>
 </ul>
 <figure class="align-center" id="id17">
 <img alt="../_images/lab5-pingok2.png" src="../_images/lab5-pingok2.png" />
@@ -577,7 +576,7 @@ document.write(`
 <section id="change-request">
 <h2>3. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Now that connectivity has been restored, the BU2 DB owner has also requested that you filter out the route <strong>10.0.211.0/24</strong> from the routing table of the Azure Spoke2 Gateway.</p></li>
+<li><p>Now that connectivity has been restored, the <strong>BU2 DB</strong> owner has also requested that you filter out the route <strong>10.0.211.0/24</strong> from the routing table of the Azure Spoke2 Gateway.</p></li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -619,11 +618,11 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Verify first the presence of the route inside the routing table of the Azure Spoke2 GW.</p></li>
+<li><p>Verify first the presence of the route inside the routing table of the <strong>Azure Spoke2 GW</strong>.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>NAvigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Gateway Routes</strong> tab.</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Gateway Routes</strong> tab.</p>
 <p>Now search for <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code>.</p>
 </div>
 <figure class="align-center" id="id22">
@@ -634,7 +633,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Filter the route <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code> in the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> section (i.e., the <em>Route Manipulation</em> section).</p></li>
+<li><p>Filter the route <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code> in the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> section (i.e., the <em>Routes Manipulation</em> section).</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -650,7 +649,7 @@ Expand the <strong>Routing</strong> section and insert the subnet <strong>10.0.2
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Confirm that the route has been removed from the routing table of the Azure Spoke2 Gateway.</p></li>
+<li><p>Confirm that the route has been removed from the routing table of the <strong>Azure Spoke2 Gateway</strong>.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
