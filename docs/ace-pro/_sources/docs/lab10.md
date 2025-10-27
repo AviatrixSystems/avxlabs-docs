@@ -47,6 +47,13 @@ Refresh the web page, before proceeding with the next task!
 
 - Navigate to **Copilot > Monitor > CostIQ > Cost Centers** and click on `"+ Cost Center"` and create the **AWS** Cost Center.
 
+```{figure} images/lab9-costiq045.png
+---
+align: center
+---
+CostCenter
+```
+
 ```{figure} images/lab9-costiq03.png
 ---
 align: center
