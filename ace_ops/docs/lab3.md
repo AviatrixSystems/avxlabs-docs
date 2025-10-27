@@ -299,7 +299,7 @@ align: center
 Reactivate the LAN port
 ```
 
-Relaunch the ping from **BU1 Frontend** towards **BU2 Mobile App**, after having <ins>reactivated</ins> the LAN interface of the firewall.
+Reattempt the ping from **BU1 Frontend** to **BU2 Mobile App** once the firewall’s LAN interface has been reactivated.
 
 ```{figure} images/lab3-pingworks.png
 ---
