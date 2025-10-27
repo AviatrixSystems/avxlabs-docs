@@ -128,7 +128,7 @@ align: center
 SSH is unsuccessful
 ```
 
-- Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and launch a **traceroute** towards the BU1 DB in Azure.
+- Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and launch a **traceroute** to **BU1 DB** in Azure.
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
@@ -147,6 +147,15 @@ align: center
 The results above show **five** hops. The last hop to respond is the Spoke1 Gateway in Azure, which means the BU1 DB did not respond to the traceroute.
 ```
 
+- Continue pinging **BU1 DB's private IP address** from the SSH session established with BU1 Frontend.
+
+```{figure} images/lab5-5hops22.png
+---
+align: center
+---
+ping
+```
+
 - Start a **Packet Capture** on the LAN interface (`eth0`) of the **_ace-azure-east-us-spoke1_** gateway, and filter the results to focus on **ICMP** traffic.
 
 ```{tip}
@@ -157,8 +166,9 @@ Select the **_ace-azure-east-us-spoke1_** Spoke GW and launch the packet capture
 This is the LAN interface within the VNet, where also the **VNet router** resides!
 ```
 
-
 ```{tip}
+All Aviatrix Gateways are equipped with enterprise-grade tools, so you can launch a ping directly from the gateway, without opening an SSH session to the user workloads.
+
 <ins>Open two tabs</ins>: on the first tab launch a packet capture on the **Azure Spoke GW1** on the LAN interface (`etho`), <ins>and after few seconds</ins>, start a ping from the **BU1 Frontend** towards **BU1 DB** (VM in Azure) and keep it running, although it will fail.
 
 - Diminish the `Duration` to solely **10** seconds to speed up the capture!
