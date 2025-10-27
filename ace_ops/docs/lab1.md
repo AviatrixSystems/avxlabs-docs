@@ -75,7 +75,7 @@ Click the `"Managed"` button on the right side of the screen to hide the Unmanag
 height: 400px
 align: center
 ---
-Properties of your Topology
+Topology Characteristics
 ```
 
 ```{note}
@@ -267,7 +267,7 @@ SSH
  - From the **BU1 Frontend** instance, ping the <ins>private IP address</ins> of the **BU1 Analytics** instance in GCP.
   - Confirm that **SSH** works from the **BU1 Frontend** instance to the **BU1 Analytics** instance.
 
-Ping and SSH will be successful **within** the same network domain!
+**Ping** and **SSH** will be successful **within** the same network domain!
 
 ```{tip}
 Clear the filter field to restore the full topology view, then search for "_analytics_".
