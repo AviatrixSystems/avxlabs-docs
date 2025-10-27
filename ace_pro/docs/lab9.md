@@ -106,7 +106,7 @@ aws-us-east1-spoke1-rtb-public-a
 
 ## 4. Generate traffic towards a Malicious IP
 
-Now that there is a PSF Gateway on defending the Public Subnet, let's generate some traffic towards an IP with **Bad Reputation**.
+Now that there is a **PSF** Gateway on defending the Public Subnet, let's generate some traffic towards an IP with **Bad Reputation**.
 
 ### 4.1 Connectivity Testing Using the Gatus App
 
@@ -295,7 +295,7 @@ These two rules will ensure `bi-directional communication`: traffic from **aws-u
 
 Let's delete the **Greenfield-Rule** to restore **ZTNA** in the Data Path.
 
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules (default tab)**, click the `trash icon` on the right side of the Greenfield-Rule entry to delete it.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)**, click the `trash icon` on the right side of the **Greenfield-Rule** entry to delete it.
 
 Do not forget to click on **Commit**.
 
@@ -630,7 +630,7 @@ curl https://www.ubuntu.com
 ```
 
 ```bash
-curl https://www.aviatrix.com
+curl https://www.aviatrix.ai
 ```
 
 ```{figure} images/lab96-newrule301.png
