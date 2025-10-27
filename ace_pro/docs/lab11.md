@@ -1225,7 +1225,7 @@ Spoke to Spoke
 
 ## 16. Decommissioning of a peering
 
-Now that MTT is enabled on the **_aws-us-east-2-transit_** Gateway, every other Transit Gateway must have a single peering with the MTT Gateway; therefore the peering between the **_gcp-us-central1-transit_** Gateway and the **_azure-west-us-transit_** Gateway can be removed.
+Now that MTT is enabled on the **_aws-us-east-2-transit_** Gateway, every other Transit Gateway must have a single peering with the **MTT Gateway**; therefore the peering between the **_gcp-us-central1-transit_** Gateway and the **_azure-west-us-transit_** Gateway can be removed.
 
 ```{figure} images/lab10-spoke2spoke0788.png
 ---
@@ -1243,7 +1243,7 @@ align: center
 Edit the GCP Transit Gateway
 ```
 
-In the `"Attach To Transit Gateways"` field, remove the peering with the **_zure-west-us-transit_** Gateway, and then click Save.
+In the `"Attach To Transit Gateways"` field, remove the peering with the **_azure-west-us-transit_** Gateway, and then click Save.
 
 ```{figure} images/lab10-spoke2spoke0790.png
 ---
@@ -1259,5 +1259,5 @@ After completing this lab, the overall topology will appear as follows:
 height: 400px
 align: center
 ---
-Full-feature Aviatrix solution
+Full-feature Aviatrix CNSF solution
 ```
