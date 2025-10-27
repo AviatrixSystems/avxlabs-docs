@@ -1,16 +1,16 @@
 # Lab 7 - Aviatrix Cloud Firewall
 
-The cloud's borderless architecture presents considerable challenges in securing egress traffic, maintaining network visibility, and managing costs. Native solutions from providers typically offer only basic security measures, leading to high egress data expenses, compliance issues, and vulnerabilities to threats like data exfiltration. This situation results in operational inefficiencies, heightened security risks, and slower time to market. In this lab, you will activate the `Aviatrix Cloud Firewall`, which enhances cloud network security by integrating advanced features, including enterprise-grade NAT capabilities, centralized management, and AI-driven discovery and enrichment of egress traffic flows.
+In this lab you will activate the `Aviatrix Cloud Firewall`, a cloud-native security solution that provides distributed firewalling, traffic control, and network segmentation. Unlike centralized traditional firewalls, it simplifies security management across multi-cloud environments, automates policy enforcement, and can operate in either learning or enforcement modes, offering flexibility for securing both egress and east–west traffic.
 
 ## 1. SCENARIO
 
-The BU2 database requires updates; however, the VM resides within a private subnet. The BU2 DB owner has requested that only `apt-get` commands be permitted for egress traffic, while all other types of outbound traffic should be blocked.
+The BU2 database requires updates; however, the VM resides within a _private subnet_. The BU2 DB owner has requested that only `apt-get` commands be permitted for egress traffic, while all other types of outbound traffic should be blocked.
 
 Additionally, all egress traffic must be monitored, with **_Logging_** enabled to track the activity.
 
-Enable the `Cloud Secure Egress` feature on the **_ace-azure-east-us-spoke2_** VNet.
+- Enable the `Cloud Secure Egress` feature on the **_ace-azure-east-us-spoke2_** VNet.
 
-Furthermore, you are requested to create the **DCF rules** that will enforce these requirements.
+Furthermore, you are requested to create the **Distributed Cloud Firewall rules** that will enforce these requirements.
 
 ```{figure} images/lab7-topology.png
 ---
@@ -22,9 +22,9 @@ Lab 7 Scenario Topology
 
 ## 2. CHANGE REQUEST
 
-### 2.1 Secure Cloud Egress on VNet2
+### 2.1 Secure Cloud Egress on Spoke2 VNet
 
-- Enable the **Egress** on the VNet where the BU2 DB resides.
+- Enable the **Egress** on the VNet where **BU2 DB** resides.
 
 ```{tip}
 Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
@@ -56,12 +56,19 @@ Default Route injected by the AVX Controller
 ### 2.2 Secure Cloud Egress on VNet1 - TEST VNET
 
 ```{caution}
-Repeat the action for VNet2, employing the azure-east-us-spoke1 VNet as a test environment to determine the permitted domains.
+Replicate the steps applied to VNet2 by enabling the **Egress control** on the **_azure-east-us-spoke1_** VNet. The objective is to use the Spoke1 VNet as a test environment to identify the permitted domains.
 ```
 
 - Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button, then select the **_ace-azure-east-us-spoke1_** VPC.
 
 Do not forget to click on **Add**.
+
+```{figure} images/lab7-vpc45.png
+---
+align: center
+---
+ace-azure-east-us-spoke1
+```
 
 ### 2.3 Distributed Cloud Firewall - Activation
 
@@ -107,7 +114,7 @@ The Aviatrix Controller has applied a `Greenfield-Rule` that allows all traffic;
 ---
 align: center
 ---
-Default Rule
+Greenfield-Rule
 ```
 
 - Enable the `"Logging"` on the Greenfield-Rule.
@@ -134,7 +141,7 @@ align: center
 Commit
 ```
 
-- Use **_Spoke1 VNet_** as a test environment to determine the domains to permit, then execute apt-get commands only toward those domains.
+- Use **_Spoke1 VNet_** as a test environment. SSH to the **BU1 DB**, then execute the _apt-get_ commands. This will help identify the domains that should be permitted.
 
 ```{figure} images/lab7-test.png
 ---
@@ -143,32 +150,8 @@ align: center
 Spoke1 VNet1 as test VNet
 ```
 
-  - Enable the Egress on the **_Spoke1 VNet_** too.
 
-```{tip}
-Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
-
-Select the **_ace-azure-east-us-spoke1_** VPC.
-
-Do not forget to click on **Add**.
-
-```{figure} images/lab7-test20.png
----
-height: 400px
-align: center
----
-Enable Local Egress 
-```
-
-```{figure} images/lab7-test2.png
----
-height: 400px
-align: center
----
-ace-azure-east-us-spoke1
-```
-
-- You need to SSH into the **BU1 DB**. Since this VM does not have a public IP, you must first SSH into the BU1 Frontend VM, and then, from there, initiate an SSH connection to the private IP of the BU1 DB.
+- You need to **SSH** into the **BU1 DB**. Since this VM does not have a public IP, you must first SSH into the **BU1 Frontend** VM, and then, from there, initiate an SSH connection to the private IP of the **BU1 DB**.
 
 ```{figure} images/lab7-test3.png
 ---
@@ -178,10 +161,10 @@ align: center
 SSH to BU1 DB
 ```
 
-- Enable the `Discovery Mode` on the Greenfield-Rule
+- Apply the `All-Web` WebGroup to restrict HTTP/HTTPS traffic for capturing logs of accessed FQDNs.
 
 ```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and edit the Greenfield-Rule, clicking on the pencil icon on the right-hand side.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and edit the _Greenfield-Rule_, clicking on the pencil icon on the right-hand side.
 
 This time attach the `All-Web` WebGroup and then click on **Save In Drafts**.
 ```
@@ -210,7 +193,7 @@ align: center
 Commit
 ```
 
-- Now execute the **_apt-get_** commands from the BU1 DB !
+- Now execute the **_apt-get_** commands from the **BU1 DB** !
 
 ```bash
 sudo apt-get update -y 
@@ -239,7 +222,7 @@ Press Enter again
 - Check the domains hit by the *apt-get* commands
 
 ```{tip}
-Go to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the *ace-azure-east-us-spoke**1*** on the `"VPC/VNets"` field.
+Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the *ace-azure-east-us-spoke**1*** on the `"VPC/VNets"` field.
 ```
 
 ```{figure} images/lab7-test7.png
