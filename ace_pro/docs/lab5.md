@@ -6,7 +6,7 @@ In this lab, we will demonstrate how to enable the `Aviatrix Cloud Firewall`, a 
 
 The Aviatrix Cloud Firewall enhances cloud security with enterprise-grade NAT, centralized management, and AI-driven threat detection. It offers comprehensive visibility and control, ensuring cost efficiency with a flat-rate billing model. Seamless integration and automated deployment make it ideal for scalable, resilient cloud environments.
 
-In this lab, we will identify the target VPC. Of course, the selected VPC must have at least a subnet associated witho a **Private Routing table** (i.e., without a default route pointing to the IGW). The Controller will reroute the traffic through the Aviatrix Spoke Gateway. The Aviatrix Cloud Firewall provides enhanced visibility and control, effectively replacing the **CSP Native NAT Gateways**.
+In this lab, we will identify the _target VPC_. Of course, the selected VPC must have at least a subnet associated witho a **Private Routing table** (i.e., without a default route pointing to the IGW). The Controller will reroute the traffic through the Aviatrix Spoke Gateway. The Aviatrix Cloud Firewall provides enhanced visibility and control, effectively replacing the **CSP Native NAT Gateways**.
 
 ## 2. Topology
 
