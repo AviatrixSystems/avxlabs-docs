@@ -14,8 +14,10 @@ Lab 5 Topology
 
 ## 2. TROUBLESHOOT REQUEST
 
-- Verify that the connectivity between BU1 Frontend and BU1 Analytics is actually broken.
-  - SSH to BU1 Frontend and execute ping/traceroute/ssh commands toward BU1 Analytics.
+### 2.1 BU1 Analytics is not reachable
+
+- Verify that the connectivity between **BU1 Frontend** and **BU1 Analytics** is actually broken.
+  - SSH to **BU1 Frontend** and execute ping/traceroute/ssh commands toward **BU1 Analytics**.
 
 ```{figure} images/lab5-pingfails.png
 ---
@@ -66,7 +68,15 @@ align: center
 Malicious Route
 ```
 
-You will notice that the Spoke1 in GCP is advertising a **bogus/malicious** route (i.e. `40.40.40.0/24`), whereas the legit route **172.16.211.0/24** has been withdrawn!
+Spoke1 in GCP is advertising an **invalid route** (`40.40.40.0/24`), while the legitimate route **172.16.211.0/24** has been withdrawn.
+
+```{figure} images/lab5-nexthop99.png
+---
+height: 350px
+align: center
+---
+Malicious Route
+```
 
 - Fix the issue checking the **Settings** (i.e., the *Route Manipulation* section) section on the **Spoke GW in GCP**.
 
@@ -90,7 +100,7 @@ align: center
 Delete the malicious route
 ```
 
-- Relaunch the ping from **BU1 Frontend** towards **BU1 Analytics**.
+- Reevaluate connectivity by reissuing the ping from **BU1 Frontend** to **BU1 Analytics**.
 
 ```{figure} images/lab5-pingok.png
 ---
@@ -99,8 +109,10 @@ align: center
 Ping is ok
 ```
 
+### 2.2 BU1 DB is not reachable
+
 - Now verify that the connectivity between **BU1 Frontend** and **BU1 DB** is actually broken.
-  - SSH to BU1 Frontend and carry out ping/traceroute/ssh commands towards BU1 DB.
+  - Establish an **SSH session** to **BU1 Frontend** and perform _ping, traceroute, and SSH_ commands targeting **BU1 DB**.
 
 ```{figure} images/lab5-pingfails2.png
 ---
@@ -109,12 +121,19 @@ align: center
 Ping is unsuccessful
 ```
 
+```{figure} images/lab5-pingfails23.png
+---
+align: center
+---
+SSH is unsuccessful
+```
+
 - Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and launch a **traceroute** towards the BU1 DB in Azure.
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
 
-Select the **_ace-aws-eu-west-1-spoke1_** Spoke GW and this time launch a **traceroute** towards the private IP address of the BU1 DB.
+Select **_ace-aws-eu-west-1-spoke1_** Spoke GW and perform a **traceroute** to BU1 DB’s private IP.
 ```
 
 ```{figure} images/lab5-5hops.png
