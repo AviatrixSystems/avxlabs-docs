@@ -127,7 +127,7 @@ Topology
 ```
 
 ```{important}
-Please note that Terraform will take approximately **8 minutes** to complete the provisioning of the additional components of your Aviatrix Cloud Native Security Fabric (CNSF).
+Please note that Terraform will take approximately **8 minutes** to complete the provisioning of the additional components of your Aviatrix **Cloud Native Security Fabric** (CNSF).
 ```
 
 ## 3. Create Transit Peering
@@ -252,7 +252,6 @@ New Peering
 ```
 
 `Congratulations! You have successfully deployed the complete Aviatrix CNSF solution.`
-
 
 ```{figure} images/lab11-lastdrawing.png
 ---
