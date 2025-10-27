@@ -7,7 +7,7 @@ Edge Gateway = An Aviatrix gateway that enables connectivity to edge locations s
 
 ## 1. General Objectives
 
-You are tasked with connecting the on-premises data center in New York to your Aviatrix CNSF. An **Aviatrix Edge** device has already been provisioned and registered with the existing **Aviatrix Controller**.
+You are tasked with connecting the on-premises data center in New York to your Aviatrix **CNSF**. An **Aviatrix Edge** device has already been provisioned and registered with the existing **Aviatrix Controller**.
 
 The Aviatrix Secure High-Performance Datacenter Edge solution empowers network administrators to provide seamless cloud connectivity without compromise. This robust solution offers encrypted, line-rate performance and supports single-region, multi-region, or multi-cloud redundancy options. Additionally, it ensures comprehensive visibility and troubleshooting capabilities throughout the entire network.
 
@@ -673,7 +673,7 @@ align: center
 as-path prepend
 ```
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** inside the Search field. This time the AS Path Length will turn out being equal to 3, due to to the route manipulation that harnessed the `as-path prepend` feature.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** inside the Search field. This time the AS Path Length will turn out being equal to **3**, due to to the route manipulation that harnessed the `as-path prepend` feature.
 
 ```{figure} images/lab8-path.png
 ---
@@ -738,7 +738,7 @@ edge
 
 ### 9.1 Connectivity Testing Using the Diagnostics Tools
 
-Navigate to **CoPilot > Diagnostics > Diagnostics Tools**, select the aws-us-east-2-spoke1, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e., **172.16.1.100**).
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools**, select the **_aws-us-east-2-spoke1_** Gateway, choose the `Traceroute` command and insert the private IP address of **_gcp-us-central1-spoke1-test1_** (i.e., **172.16.1.100**).
 
 ```{figure} images/lab8-podportal123.png
 ---
@@ -747,6 +747,8 @@ align: center
 ---
 Traceroute
 ```
+
+The traceroute reveals **five** hops.
 
 ```{figure} images/lab8-almostdone055.png
 ---
@@ -765,6 +767,8 @@ align: center
 ---
 traceroute
 ```
+
+The traceroute reveals **six** hops.
 
 ```{figure} images/lab8-almostdone05.png
 ---
