@@ -4,7 +4,7 @@
 
 ACE’s OnPrem Data Center has recently hired a new network engineer.
 
-You have been engaged for activating the <span style='color:orange'>**“Route Approval”**</span> feature in order to protect the CNSF from unauthorized advertisements.
+You have been engaged for activating the <span style='color:orange'>**“Route Approval”**</span> feature in order to protect the Aviatrix **CNSF** from _unauthorized BGP advertisements_.
 
 ```{figure} images/lab6-topology.png
 ---
@@ -14,7 +14,7 @@ align: center
 Lab 6 Scenario#1: Topology
 ```
 
-## 2. CHANGE REQUEST
+## 2. CHANGE REQUEST - BGP Route Approval
 
 - Activate the **Route Approval** feature for monitoring unauthorized advertisements that could be received by the DC.
 
@@ -49,7 +49,7 @@ align: center
 Communicate your POD number
 ```
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW and then the **Route Approval** tab.
+- Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW and then the **Route Approval** tab.
 
 ```{note}
 Please wait approximately **one or two minutes** for BGP to send the Update. Then, click the <span style='color:orange'>**refresh button**</span> to see the default route being advertised from the Data Center.
@@ -77,7 +77,7 @@ You have successfully prevented someone from the Data Center from jeopardizing t
 
 ACE’s On-Premises Partner needs to be connected to the Aviatrix CNSF in the GCP region. However, there is an IP overlap with BU1’s Analytics VPC.
 
-You have been engaged to establish a <span style='color:#FF00FF'>**Site2Cloud**</span> connection between the GCP Spoke Gateway and the On-Premises Partner router, as well as to resolve the IP conflict using the **Mapped NAT** feature.
+You have been engaged to establish a <span style='color:#FF00FF'>**Site2Cloud**</span> connection between the GCP Spoke Gateway and the On-Premises Partner router, as well as to resolve the **IP conflict** using the **Mapped NAT** feature.
 
 ```{figure} images/lab6-topology2.png
 ---
@@ -87,7 +87,7 @@ align: center
 Lab 6 Scenario#2: Topology
 ```
 
-## 4. CHANGE REQUEST
+## 4. CHANGE REQUEST - Site-To-Cloud
 
 - Create a new **S2C** connection.
 
@@ -176,7 +176,7 @@ align: center
 External Connection Configuration
 ```
 
-Please wait a few seconds for the completion of the S2C. The new connection will appear as "Down", indicated by a red arrow symbol.
+Please wait a few seconds for the completion of the S2C. The new connection will appear as **"Down"**, indicated by a red arrow symbol.
 
 ```{figure} images/lab6-notdone.png
 ---
@@ -234,12 +234,12 @@ align: center
 Ping is ok
 ```
 
-- Execute the `Active Sessions` command.
+- Execute the `Active Sessions` command on the **GCP Spoke Gateway**!
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_ace-gcp-us-east1-spoke1_** GW and then select the **Active Sessions** tool.
 
-Click on **Run** and almost simultaneously issue once again the ping command from the CSR router.
+Click on **Run** and almost simultaneously issue once again the ping command from the Partner CSR router.
 
 Filter the results using the `"icmp"` keyword.
 ```
