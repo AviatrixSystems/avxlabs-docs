@@ -419,6 +419,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spoke-to-spoke-attachment">15.1 Creating a Spoke to Spoke Attachment</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decommissioning-of-a-peering">16. Decommissioning of a peering</a></li>
 </ul>
             </nav>
         </div>
@@ -1508,15 +1509,39 @@ document.write(`
 <p><span class="caption-number">Fig. 620 </span><span class="caption-text">Spoke to Spoke</span><a class="headerlink" href="#id94" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>After completing this lab, the overall topology will appear as follows:</p>
+</section>
+</section>
+<section id="decommissioning-of-a-peering">
+<h2>16. Decommissioning of a peering<a class="headerlink" href="#decommissioning-of-a-peering" title="Link to this heading">#</a></h2>
+<p>Now that MTT is enabled on the <strong><em>aws-us-east-2-transit</em></strong> Gateway, every other Transit Gateway must have a single peering with the MTT Gateway; therefore the peering between the <strong><em>gcp-us-central1-transit</em></strong> Gateway and the <strong><em>azure-west-us-transit</em></strong> Gateway can be removed.</p>
 <figure class="align-center" id="id95">
+<img alt="../_images/lab10-spoke2spoke0788.png" src="../_images/lab10-spoke2spoke0788.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 621 </span><span class="caption-text">Deletion of a peering</span><a class="headerlink" href="#id95" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>; edit the <strong><em>gcp-us-central1-transit</em></strong> gateway.</p>
+<figure class="align-center" id="id96">
+<img alt="../_images/lab10-spoke2spoke0789.png" src="../_images/lab10-spoke2spoke0789.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 622 </span><span class="caption-text">Edit the GCP Transit Gateway</span><a class="headerlink" href="#id96" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code> field, remove the peering with the <strong><em>zure-west-us-transit</em></strong> Gateway, and then click Save.</p>
+<figure class="align-center" id="id97">
+<img alt="../_images/lab10-spoke2spoke0790.png" src="../_images/lab10-spoke2spoke0790.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 623 </span><span class="caption-text">Deletion of a peering</span><a class="headerlink" href="#id97" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After completing this lab, the overall topology will appear as follows:</p>
+<figure class="align-center" id="id98">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing.png"><img alt="../_images/lab10-lastdrawing.png" src="../_images/lab10-lastdrawing.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 621 </span><span class="caption-text">Full-Blown Aviatrix Solution</span><a class="headerlink" href="#id95" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 624 </span><span class="caption-text">Full-feature Aviatrix solution</span><a class="headerlink" href="#id98" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
 </section>
 </section>
 
@@ -1657,6 +1682,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spoke-to-spoke-attachment">15.1 Creating a Spoke to Spoke Attachment</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decommissioning-of-a-peering">16. Decommissioning of a peering</a></li>
 </ul>
   </nav></div>
 
