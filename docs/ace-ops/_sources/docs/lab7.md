@@ -270,7 +270,7 @@ Press Enter again
 - Detach the **_All-Web_** Webgroup from the Greenfield-Rule.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the pencil icon on the righ-hand side of the Greenfield-Rule entry.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on the pencil icon on the righ-hand side of the Greenfield-Rule entry.
 
 Clear the `WebGroups` field and then click on **Save In Drafts**. 
 
@@ -294,7 +294,7 @@ Commit your change
 - Now that you have discovered the domains that are triggered when the **_apt-get_** commands are executed, you can proceed in disabling the `Egress` feature from the **Spoke1** VNet.
 
 ```{tip}
-Go to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `remove` button 
+Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `Disable Local Egress` button 
 beside the **_ace-azure-east-us-spoke1_** VNet entry.
 ```
 
@@ -330,9 +330,9 @@ curl www.espn.com
 
 All commands will be successful, however, this is not what the request asked you to configure...
 
-- Enable the `ZTNA Model` (i.e.  **Zero Trust Network Architecture Model**), removing the **Greenfield-Rule**, but first let's isnert an Explicit-Deny Rule that is <ins>editable</ins>.
+- Enable the `ZTNA Model` (i.e.  **Zero Trust Network Architecture Model**), remove the **Greenfield-Rule**, and first insert an **Explicit-Deny** Rule at the bottom.
 
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on the `"+ Rule"` button.
 
 ```{figure} images/lab7-deleterulee23.png
 ---
