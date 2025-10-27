@@ -342,7 +342,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable">2.1 BU1 Analytics is not reachable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-db-is-not-reachable">2.2 BU1 DB is not reachable</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">3. CHANGE REQUEST</a></li>
 </ul>
             </nav>
@@ -370,10 +374,12 @@ document.write(`
 </section>
 <section id="troubleshoot-request">
 <h2>2. TROUBLESHOOT REQUEST<a class="headerlink" href="#troubleshoot-request" title="Link to this heading">#</a></h2>
+<section id="bu1-analytics-is-not-reachable">
+<h3>2.1 BU1 Analytics is not reachable<a class="headerlink" href="#bu1-analytics-is-not-reachable" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Verify that the connectivity between BU1 Frontend and BU1 Analytics is actually broken.</p>
+<li><p>Verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU1 Analytics</strong> is actually broken.</p>
 <ul>
-<li><p>SSH to BU1 Frontend and execute ping/traceroute/ssh commands toward BU1 Analytics.</p></li>
+<li><p>SSH to <strong>BU1 Frontend</strong> and execute ping/traceroute/ssh commands toward <strong>BU1 Analytics</strong>.</p></li>
 </ul>
 </li>
 </ul>
@@ -423,7 +429,14 @@ document.write(`
 <p><span class="caption-number">Fig. 108 </span><span class="caption-text">Malicious Route</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will notice that the Spoke1 in GCP is advertising a <strong>bogus/malicious</strong> route (i.e. <code class="docutils literal notranslate"><span class="pre">40.40.40.0/24</span></code>), whereas the legit route <strong>172.16.211.0/24</strong> has been withdrawn!</p>
+<p>Spoke1 in GCP is advertising an <strong>invalid route</strong> (<code class="docutils literal notranslate"><span class="pre">40.40.40.0/24</span></code>), while the legitimate route <strong>172.16.211.0/24</strong> has been withdrawn.</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/lab5-nexthop99.png"><img alt="../_images/lab5-nexthop99.png" src="../_images/lab5-nexthop99.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 109 </span><span class="caption-text">Malicious Route</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Fix the issue checking the <strong>Settings</strong> (i.e., the <em>Route Manipulation</em> section) section on the <strong>Spoke GW in GCP</strong>.</p></li>
 </ul>
@@ -431,40 +444,49 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong>Spoke GW in GCP &gt; Settings &gt; Routing</strong> and <ins>remove</ins> the CIDR 40.40.40.0/24 from the <strong>Customize Spoke Advertised VPC/VNet CIDRs</strong> section and then click on <strong>SAVE</strong>.</p>
 </div>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="../_images/lab5-customize.png"><img alt="../_images/lab5-customize.png" src="../_images/lab5-customize.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 109 </span><span class="caption-text">Customize Spoke Advertised VPC/VNet CIDRs</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 110 </span><span class="caption-text">Customize Spoke Advertised VPC/VNet CIDRs</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/lab5-customize100.png"><img alt="../_images/lab5-customize100.png" src="../_images/lab5-customize100.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 110 </span><span class="caption-text">Delete the malicious route</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Delete the malicious route</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Relaunch the ping from <strong>BU1 Frontend</strong> towards <strong>BU1 Analytics</strong>.</p></li>
+<li><p>Reevaluate connectivity by reissuing the ping from <strong>BU1 Frontend</strong> to <strong>BU1 Analytics</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id9">
 <img alt="../_images/lab5-pingok.png" src="../_images/lab5-pingok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="bu1-db-is-not-reachable">
+<h3>2.2 BU1 DB is not reachable<a class="headerlink" href="#bu1-db-is-not-reachable" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Now verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU1 DB</strong> is actually broken.</p>
 <ul>
-<li><p>SSH to BU1 Frontend and carry out ping/traceroute/ssh commands towards BU1 DB.</p></li>
+<li><p>Establish an <strong>SSH session</strong> to <strong>BU1 Frontend</strong> and perform <em>ping, traceroute, and SSH</em> commands targeting <strong>BU1 DB</strong>.</p></li>
 </ul>
 </li>
 </ul>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id10">
 <img alt="../_images/lab5-pingfails2.png" src="../_images/lab5-pingfails2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Ping is unsuccessful</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Ping is unsuccessful</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id11">
+<img alt="docs/images/lab5-pingfails23.png" src="docs/images/lab5-pingfails23.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 114 </span><span class="caption-text">SSH is unsuccessful</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -473,12 +495,12 @@ document.write(`
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools &gt; Gateway Diagnostics</strong>.</p>
-<p>Select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> Spoke GW and this time launch a <strong>traceroute</strong> towards the private IP address of the BU1 DB.</p>
+<p>Select <strong><em>ace-aws-eu-west-1-spoke1</em></strong> Spoke GW and perform a <strong>traceroute</strong> to BU1 DB’s private IP.</p>
 </div>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab5-5hops.png" src="../_images/lab5-5hops.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 113 </span><span class="caption-text">5 Hops…</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 115 </span><span class="caption-text">5 Hops…</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -502,17 +524,17 @@ document.write(`
 <li><p>Filter out based on the <code class="docutils literal notranslate"><span class="pre">&quot;ICMP&quot;</span></code> protocol.</p></li>
 </ul>
 </div>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab5-pinfail.png" src="../_images/lab5-pinfail.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Ping to BU1 DB fails</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Ping to BU1 DB fails</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id14">
 <a class="reference internal image-reference" href="../_images/lab5-packetcapture00.png"><img alt="../_images/lab5-packetcapture00.png" src="../_images/lab5-packetcapture00.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 115 </span><span class="caption-text">Packet Capture</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 117 </span><span class="caption-text">Packet Capture</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will only see <strong>ICMP Echo Request</strong> packets leaving from the LAN interface. Additionally, the source IP is entirely different from what you’d expect: instead of an IP from the legitimate CIDR 10.1.211.0/24, the source address belongs to the <code class="docutils literal notranslate"><span class="pre">50.50.50.0/24</span></code> range.</p>
@@ -523,23 +545,24 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke1</em></strong> GW in Azure <strong>&gt; Settings &gt; Network Address Translation (NAT)</strong>, delete the NAT Rule and click on <strong>SAVE</strong>.</p>
 </div>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id15">
 <a class="reference internal image-reference" href="../_images/lab5-deleterule.png"><img alt="../_images/lab5-deleterule.png" src="../_images/lab5-deleterule.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Deletion of the NAT rule</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Deletion of the NAT rule</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>From BU1 Frontend, re-run the ping to <strong>BU1 DB</strong>.</p></li>
 <li></li>
 </ul>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab5-pingok2.png" src="../_images/lab5-pingok2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 117 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 </section>
 <section id="change-request">
 <h2>3. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Link to this heading">#</a></h2>
@@ -549,10 +572,10 @@ document.write(`
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>The subnet <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code> is advertised by the <strong>OnPrem DC Router</strong> towards the Aviatrix CNSF via the Site-to-Cloud connection.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab5-newrequest2.png" src="../_images/lab5-newrequest2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 118 </span><span class="caption-text">S2C route</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 120 </span><span class="caption-text">S2C route</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -563,26 +586,26 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP Info</strong> and then click on the <strong>3 dots</strong> icon on the right-hand side of the screen and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code> option.</p>
 </div>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id18">
 <a class="reference internal image-reference" href="../_images/lab5-bgpinfo.png"><img alt="../_images/lab5-bgpinfo.png" src="../_images/lab5-bgpinfo.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 121 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../_images/lab5-bgpinfo100.png"><img alt="../_images/lab5-bgpinfo100.png" src="../_images/lab5-bgpinfo100.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 120 </span><span class="caption-text">10.0.211.0/24</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 122 </span><span class="caption-text">10.0.211.0/24</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You are required to keep this route visible (fully installed in the routing tables) on all the Spoke gateways, <ins>except for the Azure Spoke2 Gateway</ins>.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab5-newrequest.png"><img alt="../_images/lab5-newrequest.png" src="../_images/lab5-newrequest.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 121 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -593,11 +616,11 @@ document.write(`
 <p>NAvigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Gateway Routes</strong> tab.</p>
 <p>Now search for <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code>.</p>
 </div>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../_images/lab5-newrequest3.png"><img alt="../_images/lab5-newrequest3.png" src="../_images/lab5-newrequest3.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 122 </span><span class="caption-text">Search for the remote route from the OnPrem DC</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Search for the remote route from the OnPrem DC</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -609,11 +632,11 @@ document.write(`
 Expand the <strong>Routing</strong> section and insert the subnet <strong>10.0.211.0/24</strong> inside the <code class="docutils literal notranslate"><span class="pre">&quot;Exclude</span> <span class="pre">Learned</span> <span class="pre">CIDRs</span> <span class="pre">to</span> <span class="pre">Spoke</span> <span class="pre">VPC/VNet</span> <span class="pre">Route</span> <span class="pre">Table&quot;</span></code> option.</p>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 </div>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab5-newrequest4.png"><img alt="../_images/lab5-newrequest4.png" src="../_images/lab5-newrequest4.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Exclude the route</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 125 </span><span class="caption-text">Exclude the route</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -624,11 +647,11 @@ Expand the <strong>Routing</strong> section and insert the subnet <strong>10.0.2
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Gateway Routes</strong> tab.</p>
 <p>Now search for <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code>.</p>
 </div>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../_images/lab5-newrequest5.png"><img alt="../_images/lab5-newrequest5.png" src="../_images/lab5-newrequest5.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 124 </span><span class="caption-text">No Results found</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 126 </span><span class="caption-text">No Results found</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You can see that the route has been successfully removed from the routing table.</p>
@@ -700,7 +723,11 @@ Expand the <strong>Routing</strong> section and insert the subnet <strong>10.0.2
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable">2.1 BU1 Analytics is not reachable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-db-is-not-reachable">2.2 BU1 DB is not reachable</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">3. CHANGE REQUEST</a></li>
 </ul>
   </nav></div>
