@@ -41,7 +41,7 @@ Enter the following parameters:
 - **Account**: <span style='color:#479608'>aws-account</span>
 - **Region**: <span style='color:#479608'>us-east-1 (N. Virginia)</span>
 - **VPC**: <span style='color:#479608'>aws-us-east1-spoke1</span>
-- **Instance Size**: <span style='color:#479608'>c6in.large</span>
+- **Instance Size**: <span style='color:#479608'>c5.large</span>
 - **Attach to Unused Subnet**: <span style='color:#479608'>us-east-1a</span>
 - **Route Table**: <span style='color:#479608'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span>
 
