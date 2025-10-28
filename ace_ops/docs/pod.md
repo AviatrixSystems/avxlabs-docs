@@ -5,7 +5,7 @@ Click on the image below to access your personal POD portal.
 
 - **Access Code**: <span style='color:#479608'>BUO6</span>
 
-- **PASSWORD**: <span style='color:#479608'>1025#5TU4rSytbEF</span>
+- **PASSWORD for CoPilot / Fortinet / AWS Console**: <span style='color:#479608'>1025#5TU4rSytbEF</span>
 
 <a href="https://ops-portal.ace.aviatrixlab.com/" target="_blank">
 
