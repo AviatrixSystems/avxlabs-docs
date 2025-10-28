@@ -14,7 +14,7 @@ Click this link to {Download}`ACE-Operations - 04 - Routes Manipulation and NAT<
 
 Click this link to {Download}`ACE-Operations - 05 - Site2Cloud<files/ACE-Operations - 05 - Site2Cloud.pdf>`
 
-Click this link to {Download}`ACE-Cloud-Ops - 06 - Aviatrix Cloud Firewall PDF<files/ACE-Cloud-Ops - 06 - Aviatrix Cloud Firewall PDF.pdf>`
+Click this link to {Download}`ACE-Operations - 06 - Aviatrix Cloud Firewall<files/ACE-Operations - 06 - Aviatrix Cloud Firewall.pdf>`
 
 Click this link to {Download}`ACE-Operations - 07 - Distributed Cloud Firewall<files/ACE-Operations - 07 - Distributed Cloud Firewall.pdf>`
 
