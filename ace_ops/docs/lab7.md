@@ -6,6 +6,7 @@ ACE’s environment has been split up in two SmartGroups: **BU1** and **BU2**. U
 
 ```{figure} images/ops-newlab-000.png
 ---
+height: 400px
 align: center
 ---
 Initial lab 7 Scenario Topology
@@ -42,6 +43,7 @@ The Aviatrix Controller has applied a `Greenfield-Rule` that allows all traffic;
 
 ```{figure} images/lab7-enabledcf0411.png
 ---
+height: 300px
 align: center
 ---
 Greenfield-Rule
@@ -65,7 +67,7 @@ Remember to click on **Commit** to apply the changes to the Data Plane.
 
 ```{figure} images/lab7-lastone.png
 ---
-height: 150px
+height: 200px
 align: center
 ---
 Commit
@@ -79,6 +81,7 @@ Click on the `"+ Rule"` button.
 
 ```{figure} images/ops-newlab-01.png
 ---
+height: 400px
 align: center
 ---
 New Rule
