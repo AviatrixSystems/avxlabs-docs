@@ -159,7 +159,6 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 ```{figure} images/ops-newlab-06.png
 ---
-height: 200px
 align: center
 ---
 intra-rule
@@ -169,7 +168,6 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
 ```{figure} images/ops-newlab-07.png
 ---
-height: 200px
 align: center
 ---
 Commit
@@ -200,7 +198,6 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 
 ```{figure} images/lab8-monitornew.png
 ---
-height: 100px
 align: center
 ---
 Monitor: Logs
@@ -219,7 +216,6 @@ Ping will fail
 
 ```{figure} images/lab8-denyicmp.png
 ---
-height: 100px
 align: center
 ---
 Monitor: Denied ICMP
@@ -242,7 +238,6 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 ```{figure} images/lab8-icmprulebu111.png
 ---
-height: 200px
 align: center
 ---
 New intra-rule
@@ -252,10 +247,9 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
 ```{figure} images/lab8-icmprulebu1.png
 ---
-height: 200px
 align: center
 ---
-New intra-rule
+Commit
 ```
 
 - The ping will succeed this time thanks to the newly created intra-rule that permits it.
@@ -271,7 +265,6 @@ Ping will be ok!
 
 ```{figure} images/lab8-pingpermitted.png
 ---
-height: 100px
 align: center
 ---
 Monitor: successful logs
@@ -321,7 +314,6 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
 ```{figure} images/lab8-penultimaterule.png
 ---
-height: 200px
 align: center
 ---
 DCF Rules List
