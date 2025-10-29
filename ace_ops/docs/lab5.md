@@ -237,7 +237,6 @@ Navigate to **CoPilot > Diagnostics > Cloud Routes > BGP Info** and then click o
 
 ```{figure} images/lab5-bgpinfo.png
 ---
-height: 350px
 align: center
 ---
 Show BGP Learned Routes
