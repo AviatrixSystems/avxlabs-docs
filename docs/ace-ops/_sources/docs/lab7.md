@@ -56,7 +56,7 @@ Default Route injected by the AVX Controller
 ### 2.2 Secure Cloud Egress on VNet1 - TEST VNET
 
 ```{caution}
-Replicate the steps applied to VNet2 by enabling the **Egress control** on the **_azure-east-us-spoke1_** VNet. The objective is to use the Spoke1 VNet as a test environment to identify the permitted domains.
+Replicate the steps applied to VNet2 by enabling the **Egress control** on the **_azure-east-us-spoke1_** VNet. The objective is to use the Spoke1 VNet <ins>as a test environment</ins> to identify the permitted domains.
 ```
 
 - Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button, then select the **_ace-azure-east-us-spoke1_** VPC.
