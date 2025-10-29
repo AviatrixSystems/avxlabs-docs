@@ -4,6 +4,13 @@
 
 ACE’s environment has been split up in two SmartGroups: **BU1** and **BU2**. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.
 
+```{figure} images/ops-newlab-000.png
+---
+align: center
+---
+Initial lab 7 Scenario Topology
+```
+
 Let’s enable the **Distributed Cloud Firewall** to secure and govern the traffic runtime within CNSF.
 
 ```{tip}
@@ -104,7 +111,7 @@ align: center
 Commit
 ```
 
-- Log in to **BU1 Frontend**, then SSH to the **BU1 Analytics** private IP address.
+- Log in to **BU1 Frontend**, then SSH to the **BU1 DB** private IP address.
 
 ```{figure} images/ops-newlab-04.png
 ---
@@ -124,38 +131,20 @@ align: center
 Monitor
 ```
 
-- Define the following Distributed Cloud Firewall (DCF) rules to re-establish and govern East-West traffic:
+Define the following Distributed Cloud Firewall (DCF) rules to re-establish and govern East-West traffic:
 
   - **Intra-rule**: allow SSH <span style='color:orange'>**within**</span> BU1
   - **Intra-rule**: allow ICMP <span style='color:orange'>**within**</span> BU1
   - **Inter-rule**: allow ICMP <span style='color:lightblue'>**from**</span> BU1 **to** BU2
   - **Inter-rule**: allow SSH <span style='color:lightblue'>**from**</span> BU2 **to** BU1
 
-```{figure} images/lab8-topology.png
----
-height: 400px
-align: center
----
-Initial lab 8 Scenario Topology
-```
-
 ## 2. CHANGE REQUEST
-
-- SSH on the **BU1 Frontend** and try to SSH to any other instances in BU1.
-  - SSH fails as expected.
-
-```{figure} images/lab8-sshbu1.png
----
-align: center
----
-SSH fails within BU1
-```
 
 - Create an intra-rule that allows SSH **within** BU1 and then verify that SSH is permitted among BU1’s instances. 
   Do not forget to enable **“Logging”**, for auditing purposes.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **"+ Rule"**.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall** and click on **"+ Rule"**.
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
@@ -168,17 +157,25 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
-Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
-
-```{figure} images/lab8-rule01.png
+```{figure} images/ops-newlab-06.png
 ---
 height: 200px
 align: center
 ---
-Another intra-rule
+intra-rule
 ```
 
-- Retry to SSH to the BU1 Analytics from the BU1 Frontend; this time the operation will be accomplished!
+Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
+
+```{figure} images/ops-newlab-07.png
+---
+height: 200px
+align: center
+---
+Commit
+```
+
+- Retry to SSH to the **BU1 DB** from the BU1 Frontend; this time the operation will be accomplished!
 
 ```{figure} images/lab8-sshok.png
 ---
@@ -198,7 +195,7 @@ Intra-SSH BU1
 - Check the **Logs** generated after the action carried out before.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
 ```
 
 ```{figure} images/lab8-monitornew.png
