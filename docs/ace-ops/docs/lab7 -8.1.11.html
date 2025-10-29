@@ -58,12 +58,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab7';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab7 -8.1.11';</script>
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lab 8 - Distributed Cloud Firewall" href="lab8.html" />
-    <link rel="prev" title="Lab 6 - Site2Cloud" href="lab6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,6 +124,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,7 +181,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Network Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Connection Policy</a></li>
@@ -189,7 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - FireNet - Routes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Routes Manipulation &amp; NAT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - Site2Cloud</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7 - Aviatrix Cloud Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - Aviatrix Cloud Firewall</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - Distributed Cloud Firewall</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CloudHeroes.html">CLOUD NETWORKING HEROES PROGRAM</a></li>
@@ -247,7 +247,7 @@
       
       
       
-      <li><a href="../_sources/docs/lab7.md" target="_blank"
+      <li><a href="../_sources/docs/lab7 -8.1.11.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -376,7 +376,7 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/lab7-topology.png"><img alt="../_images/lab7-topology.png" src="../_images/lab7-topology.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Lab 7 Scenario Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-text">Lab 7 Scenario Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -396,7 +396,7 @@ document.write(`
 <figure class="align-center" id="id2">
 <img alt="../_images/lab7-vpc.png" src="../_images/lab7-vpc.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 146 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -406,7 +406,7 @@ document.write(`
 <figure class="align-center" id="id3">
 <img alt="../_images/lab7-defaultroute.png" src="../_images/lab7-defaultroute.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 147 </span><span class="caption-text">Default Route injected by the AVX Controller</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-text">Default Route injected by the AVX Controller</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -424,7 +424,7 @@ document.write(`
 <figure class="align-center" id="id4">
 <img alt="../_images/lab7-vpc45.png" src="../_images/lab7-vpc45.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 148 </span><span class="caption-text">ace-azure-east-us-spoke1</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-text">ace-azure-east-us-spoke1</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -440,26 +440,33 @@ document.write(`
 <figure class="align-center" id="id5">
 <img alt="../_images/lab7-enabledcf01.png" src="../_images/lab7-enabledcf01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Enable DCF message</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-text">Enable DCF message</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id6">
-<img alt="../_images/lab7-enabledcf0222.png" src="../_images/lab7-enabledcf0222.png" />
+<img alt="../_images/lab7-enabledcf02.png" src="../_images/lab7-enabledcf02.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Begin using DCF message</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-text">Begin using DCF message</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id7">
-<img alt="../_images/lab7-enabledcf0322.png" src="../_images/lab7-enabledcf0322.png" />
+<img alt="../_images/lab7-enabledcf03.png" src="../_images/lab7-enabledcf03.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 151 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-text">Begin</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click also on <strong>“Acknowledge”</strong>.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab7-enabledcf0345.png" src="../_images/lab7-enabledcf0345.png" />
+<figcaption>
+<p><span class="caption-text">Acknowledge</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The Aviatrix Controller has applied a <code class="docutils literal notranslate"><span class="pre">Greenfield-Rule</span></code> that allows all traffic; you should see this immediately.</p>
-<figure class="align-center" id="id8">
-<img alt="../_images/lab7-enabledcf0411.png" src="../_images/lab7-enabledcf0411.png" />
+<figure class="align-center" id="id9">
+<img alt="../_images/lab7-enabledcf04.png" src="../_images/lab7-enabledcf04.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -467,38 +474,40 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Click on the Actions icon to the right of the <strong>Greenfield-Rule</strong> end select “Turn On Logging”.</p>
+<p>Click on the Actions icon to the right of the <strong>Greenfield-Rule</strong> entry, and enable Logging.</p>
 </div>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/lab7-editgreen.png"><img alt="../_images/lab7-editgreen.png" src="../_images/lab7-editgreen.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 153 </span><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Remember to click on <strong>Commit</strong> to apply the changes to the Data Plane.</p>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/lab7-lastone.png"><img alt="../_images/lab7-lastone.png" src="../_images/lab7-lastone.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-text">Commit</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Use <strong><em>Spoke1 VNet</em></strong> as a test environment. SSH to the <strong>BU1 DB</strong>, then execute the <em>apt-get</em> commands. This will help identify the domains that should be permitted.</p></li>
 </ul>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab7-test.png" src="../_images/lab7-test.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Spoke1 VNet1 as test VNet</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-text">Spoke1 VNet1 as test VNet</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You need to <strong>SSH</strong> into the <strong>BU1 DB</strong>. Since this VM does not have a public IP, you must first SSH into the <strong>BU1 Frontend</strong> VM, and then, from there, initiate an SSH connection to the private IP of the <strong>BU1 DB</strong>.</p>
-<figure class="align-center" id="id12">
+<ul class="simple">
+<li><p>You need to <strong>SSH</strong> into the <strong>BU1 DB</strong>. Since this VM does not have a public IP, you must first SSH into the <strong>BU1 Frontend</strong> VM, and then, from there, initiate an SSH connection to the private IP of the <strong>BU1 DB</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id13">
 <a class="reference internal image-reference" href="../_images/lab7-test3.png"><img alt="../_images/lab7-test3.png" src="../_images/lab7-test3.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 156 </span><span class="caption-text">SSH to BU1 DB</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-text">SSH to BU1 DB</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -509,24 +518,24 @@ document.write(`
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong> and edit the <em>Greenfield-Rule</em>, clicking on the pencil icon on the right-hand side.</p>
 <p>This time attach the <code class="docutils literal notranslate"><span class="pre">All-Web</span></code> WebGroup and then click on <strong>Save In Drafts</strong>.</p>
 </div>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id14">
 <a class="reference internal image-reference" href="../_images/lab7-test4.png"><img alt="../_images/lab7-test4.png" src="../_images/lab7-test4.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab7-test5.png" src="../_images/lab7-test5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 158 </span><span class="caption-text">All-Web</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-text">All-Web</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to <strong>Commit</strong> your changes into the Data Path.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab7-test6.png" src="../_images/lab7-test6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 159 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-text">Commit</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -540,16 +549,16 @@ document.write(`
 </pre></div>
 </div>
 <p>When you see these pop-up messages, just click on the <strong>Enter</strong> button on your keyboard!</p>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab7-enter.png" src="../_images/lab7-enter.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Press Enter</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-text">Press Enter</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab7-enter2.png" src="../_images/lab7-enter2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 161 </span><span class="caption-text">Press Enter again</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-text">Press Enter again</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -559,10 +568,10 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong> and select the <em>ace-azure-east-us-spoke<strong>1</strong></em> on the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> field.</p>
 </div>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab7-test7.png" src="../_images/lab7-test7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 162 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-text">Monitor</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -587,11 +596,11 @@ document.write(`
 <li><p><a class="reference external" href="http://storage.azure.net">storage.azure.net</a></p></li>
 <li><p><a class="reference external" href="http://windows.net">windows.net</a></p></li>
 </ul>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab7-prohibited.png"><img alt="../_images/lab7-prohibited.png" src="../_images/lab7-prohibited.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 163 </span><span class="caption-text">Press Enter again</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-text">Press Enter again</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </details>
@@ -607,16 +616,16 @@ document.write(`
 <p>Clear the <code class="docutils literal notranslate"><span class="pre">WebGroups</span></code> field and then click on <strong>Save In Drafts</strong>.</p>
 <p>Do not forget then to click on <strong>Commit</strong>.</p>
 </div>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab7-test8.png" src="../_images/lab7-test8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 164 </span><span class="caption-text">Detaching the All-Web WebGroup</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-text">Detaching the All-Web WebGroup</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab7-lastone2.png" src="../_images/lab7-lastone2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 165 </span><span class="caption-text">Commit your change</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-text">Commit your change</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -627,21 +636,21 @@ document.write(`
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on the <code class="docutils literal notranslate"><span class="pre">Disable</span> <span class="pre">Local</span> <span class="pre">Egress</span></code> button
 beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 </div>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../_images/lab7-disableegress.png"><img alt="../_images/lab7-disableegress.png" src="../_images/lab7-disableegress.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 166 </span><span class="caption-text">Disable Egress on Spoke1 VNet</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-text">Disable Egress on Spoke1 VNet</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>SSH to the <strong>BU2 DB</strong> (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB).</p></li>
 </ul>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab7-sshbu2db.png"><img alt="../_images/lab7-sshbu2db.png" src="../_images/lab7-sshbu2db.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 167 </span><span class="caption-text">BU2 DB ip address</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-text">BU2 DB ip address</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Issue the following curl commands:</p>
@@ -659,10 +668,10 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <li><p>Enable the <code class="docutils literal notranslate"><span class="pre">ZTNA</span> <span class="pre">Model</span></code> (i.e.  <strong>Zero Trust Network Architecture Model</strong>), remove the <strong>Greenfield-Rule</strong>, and first insert an <strong>Explicit-Deny</strong> Rule at the bottom.</p></li>
 </ul>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id25">
 <img alt="../_images/lab7-deleterulee23.png" src="../_images/lab7-deleterulee23.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 168 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-text">+Rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -674,18 +683,18 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <li><p><strong>Logging</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
 </ul>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab7-deleterulee235.png" src="../_images/lab7-deleterulee235.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> this new rule!</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab7-deleterulee2356.png"><img alt="../_images/lab7-deleterulee2356.png" src="../_images/lab7-deleterulee2356.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 170 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-text">Commit</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -696,18 +705,18 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;three</span> <span class="pre">dots&quot;</span></code> icon, on the right-hand side of the Greenfiled-Rule and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Delete</span> <span class="pre">Rule&quot;</span></code>.</p>
 </div>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab7-deleterulee.png"><img alt="../_images/lab7-deleterulee.png" src="../_images/lab7-deleterulee.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 171 </span><span class="caption-text">Delete Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-text">Delete Rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab7-deleterulee2.png"><img alt="../_images/lab7-deleterulee2.png" src="../_images/lab7-deleterulee2.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 172 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-text">Commit</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As soon as the <strong>Explicit-Deny-Rule (editable)</strong> is deployed on the top of the Rules list, the SSH session with the BU2 DB will be terminated.</p>
@@ -724,20 +733,20 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <p>Go to <strong>CoPilot &gt; Groups</strong></p>
 </div>
 <p>You will notice two SmartGroups, called <strong>BU1</strong> and <strong>BU2</strong>, in addition to the pre-defined SmartGroups (i.e. <em>Anywhere</em> and <em>Public Internet</em>).</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id30">
 <img alt="../_images/lab7-bus.png" src="../_images/lab7-bus.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 173 </span><span class="caption-text">SmartGroups list</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-text">SmartGroups list</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Expand either SmartGroups to find out what VMs have been associated to each of these logical container.</p></li>
 </ul>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab7-bus2.png"><img alt="../_images/lab7-bus2.png" src="../_images/lab7-bus2.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 174 </span><span class="caption-text">BU1’s members</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-text">BU1’s members</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>It is evident that BU1 Frontend turns out belonging to the BU1 SmartGroup, whereas the BU2 DB is a member of the BU2 SmartGroup.</p>
@@ -762,18 +771,18 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id32">
 <img alt="../_images/lab7-deleterulee23567.png" src="../_images/lab7-deleterulee23567.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 175 </span><span class="caption-text">inter-ssh-bu1-bu2</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-text">inter-ssh-bu1-bu2</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> this new rule!</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab7-bus3new.png"><img alt="../_images/lab7-bus3new.png" src="../_images/lab7-bus3new.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 176 </span><span class="caption-text">Three Rules</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-text">Three Rules</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -783,11 +792,11 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
 </div>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id34">
 <a class="reference internal image-reference" href="../_images/lab7-bus5.png"><img alt="../_images/lab7-bus5.png" src="../_images/lab7-bus5.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 177 </span><span class="caption-text">SSH logs</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-text">SSH logs</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -804,10 +813,10 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 –&gt; <strong>Cloud Tag Values</strong>: <span style='color:#479608'>bu2</span></p></li>
 </ul>
 <p>Then click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Add</span> <span class="pre">condition&quot;</span></code> button and select the following additonal parameters:</p>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id35">
 <img alt="../_images/lab7-bus50.png" src="../_images/lab7-bus50.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 178 </span><span class="caption-text">+Add condition</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-text">+Add condition</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -819,10 +828,10 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <p class="admonition-title">Tip</p>
 <p>The SmartGroup can match <strong>multiple tags</strong> simultaneously, harnessing the boolean expressions!</p>
 </div>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id36">
 <img alt="../_images/lab7-bu2db.png" src="../_images/lab7-bu2db.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 179 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -831,10 +840,10 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and then click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code>.</p>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id37">
 <img alt="../_images/lab7-webgroupp.png" src="../_images/lab7-webgroupp.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 180 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -855,11 +864,11 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <li><p>The FQDN <code class="docutils literal notranslate"><span class="pre">*.archive.ubuntu.com</span></code> is using a second-level wilcard, that allows to create a subdivision within <em><a class="reference external" href="http://archive.ubuntu.com">archive.ubuntu.com</a></em>.</p></li>
 </ul>
 </div>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="../_images/lab7-webgroup.png"><img alt="../_images/lab7-webgroup.png" src="../_images/lab7-webgroup.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 181 </span><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -880,16 +889,16 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule once again!</p>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id39">
 <img alt="../_images/lab7-lastrule.png" src="../_images/lab7-lastrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 182 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id40">
 <img alt="../_images/lab7-lastcommit.png" src="../_images/lab7-lastcommit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 183 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -904,19 +913,19 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
 </pre></div>
 </div>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id41">
 <a class="reference internal image-reference" href="../_images/lab7-explicitdeny101.png"><img alt="../_images/lab7-explicitdeny101.png" src="../_images/lab7-explicitdeny101.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 184 </span><span class="caption-text">Explicit Deny Rule matching</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-text">Explicit Deny Rule matching</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice three <strong>Drop</strong> entries within the <strong>Monitor</strong> section that have matched the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code>, successfully.</p>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id42">
 <a class="reference internal image-reference" href="../_images/lab7-explicitdeny.png"><img alt="../_images/lab7-explicitdeny.png" src="../_images/lab7-explicitdeny.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 185 </span><span class="caption-text">Explicit Deny Rule matching</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-text">Explicit Deny Rule matching</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -930,16 +939,16 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 </pre></div>
 </div>
 <p>Once again, if you see these pop-up messages, just click on the <strong>Enter</strong> button on your keyboard!</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id43">
 <img alt="../_images/lab7-enter.png" src="../_images/lab7-enter.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 186 </span><span class="caption-text">Press Enter</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-text">Press Enter</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id44">
 <img alt="../_images/lab7-enter2.png" src="../_images/lab7-enter2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 187 </span><span class="caption-text">Press Enter again</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-text">Press Enter again</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -949,18 +958,18 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong> and select the <strong>ace-azure-east-us-spoke2</strong> VNet</p>
 </div>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id45">
 <a class="reference internal image-reference" href="../_images/lab7-last.png"><img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 188 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id45">
+<figure class="align-center" id="id46">
 <a class="reference internal image-reference" href="../_images/lab7-lastlog.png"><img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You have successfully applied the Secure Egress Control, leveraging both the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature and the <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> rules!</p>
@@ -998,24 +1007,6 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="lab6.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lab 6 - Site2Cloud</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="lab8.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lab 8 - Distributed Cloud Firewall</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
