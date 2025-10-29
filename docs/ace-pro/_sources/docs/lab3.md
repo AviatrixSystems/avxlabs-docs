@@ -224,7 +224,7 @@ Ping test from GCP
 
 ## 7. Connection Policy
 
-Go to **CoPilot > Networking > Network Segmentation > Network Domains**
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains**
 
 Click the pencil icon to edit. You can either select the Green domain or the Blue domain.
 

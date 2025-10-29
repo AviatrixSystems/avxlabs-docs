@@ -122,7 +122,7 @@ Select Transit in US-East-2
 Then navigate to the `"Route DB"` tab and examine how routes are allocated to the dedicated routing table, which defines a distinct new Routing Domain (e.g., **Blue**, **Green**).
 Then select the `"Route DB"` tab and inspect the routing table of the network domain **Green**, likewise the routing table of the network domain **Blue**:
 
-```{figure} images/lab3-routedb101.png
+```{figure} images/lab3-routedb1012.png
 ---
 align: center
 ---
