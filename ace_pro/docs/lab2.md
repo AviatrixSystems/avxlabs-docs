@@ -88,7 +88,7 @@ Credentials
 
 After signing into the Gatus App, you'll observe that two protocols are currently in use: `ICMP` and `SSH`.
 
-The only item showing a green status is `aws-us-east-2-spoke1-test2`. 
+The only item showing a green status is `aws-us-east-2-spoke1-test2`.
 
 Both **ICMP** and **SSH** are functioning perfectly here. This success is attributed to the fact that this communication occurs within the same VPC (**`intra-VPC traffic`**), meaning it does not traverse other VPCs, regions, or cloud service providers. As a result, the Spoke Gateway is not involved in this scenario.
 
