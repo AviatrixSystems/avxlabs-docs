@@ -85,23 +85,32 @@ align: center
 Enable DCF message
 ```
 
-```{figure} images/lab7-enabledcf0222.png
+```{figure} images/lab7-enabledcf02.png
 ---
 align: center
 ---
 Begin using DCF message
 ```
 
-```{figure} images/lab7-enabledcf0322.png
+```{figure} images/lab7-enabledcf03.png
 ---
 align: center
 ---
 Begin
 ```
 
+Click also on **"Acknowledge"**.
+
+```{figure} images/lab7-enabledcf0345.png
+---
+align: center
+---
+Acknowledge
+```
+
 The Aviatrix Controller has applied a `Greenfield-Rule` that allows all traffic; you should see this immediately.
 
-```{figure} images/lab7-enabledcf0411.png
+```{figure} images/lab7-enabledcf04.png
 ---
 align: center
 ---
@@ -111,7 +120,7 @@ Greenfield-Rule
 - Enable the `"Logging"` on the Greenfield-Rule.
 
 ```{tip}
-Click on the Actions icon to the right of the **Greenfield-Rule** end select "Turn On Logging".
+Click on the Actions icon to the right of the **Greenfield-Rule** entry, and enable Logging.
 ```
 
 ```{figure} images/lab7-editgreen.png
@@ -141,7 +150,8 @@ align: center
 Spoke1 VNet1 as test VNet
 ```
 
-You need to **SSH** into the **BU1 DB**. Since this VM does not have a public IP, you must first SSH into the **BU1 Frontend** VM, and then, from there, initiate an SSH connection to the private IP of the **BU1 DB**.
+
+- You need to **SSH** into the **BU1 DB**. Since this VM does not have a public IP, you must first SSH into the **BU1 Frontend** VM, and then, from there, initiate an SSH connection to the private IP of the **BU1 DB**.
 
 ```{figure} images/lab7-test3.png
 ---
