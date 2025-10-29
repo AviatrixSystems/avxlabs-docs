@@ -631,7 +631,7 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>+Rule</strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>+Rule</strong>.</p>
 </div>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
 <ul class="simple">
@@ -642,45 +642,52 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
-<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
 <figure class="align-center" id="id27">
+<a class="reference internal image-reference" href="../_images/lab8-penultimaterule11.png"><img alt="../_images/lab8-penultimaterule11.png" src="../_images/lab8-penultimaterule11.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 170 </span><span class="caption-text">Inter-Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
+<figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab8-penultimaterule.png"><img alt="../_images/lab8-penultimaterule.png" src="../_images/lab8-penultimaterule.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 170 </span><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 171 </span><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Retry to ping the BU2 Mobile App from the BU1 Frontend. The ping will be successful thanks to the inter-rule!</p></li>
+<li><p>Retry to ping the <strong>BU2 Mobile App</strong> from the BU1 Frontend. The ping will be successful thanks to the inter-rule!</p></li>
 </ul>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab8-penultimateping.png" src="../_images/lab8-penultimateping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 171 </span><span class="caption-text">Ping from BU1 to BU2</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 172 </span><span class="caption-text">Ping from BU1 to BU2</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab8-intericmp-bu1bu2.png"><img alt="../_images/lab8-intericmp-bu1bu2.png" src="../_images/lab8-intericmp-bu1bu2.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 172 </span><span class="caption-text">Inter-ICMP BU1 to BU2</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 173 </span><span class="caption-text">Inter-ICMP BU1 to BU2</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now, let’s SSH to the Public IP of the <strong>BU2 Mobile App</strong> and then try to SSH to the Private IP of the <strong>BU1 Frontend</strong>. Of course, SSH will fail!</p></li>
+<li><p>SSH to the <strong>BU2 Mobile App</strong>’s public IP, then try SSH to the <strong>BU1 Frontend</strong>’s private IP. The second attempt will fail.</p></li>
 </ul>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <img alt="../_images/lab8-bu2sshbu1.png" src="../_images/lab8-bu2sshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 173 </span><span class="caption-text">SSH from BU2 to BU1 will fail</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 174 </span><span class="caption-text">SSH from BU2 to BU1 will fail</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Create another inter-rule that allows SSH <strong>from</strong> BU2 <strong>towards</strong> BU1. Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
+<li><p>Create another inter-rule allowing SSH <strong>from</strong> BU2 <strong>to</strong> BU1, and enable <strong>“Logging”</strong> for auditing.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>“+ Rule”</strong>.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>“+ Rule”</strong>.</p>
 </div>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
 <ul class="simple">
@@ -692,28 +699,35 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
+<figure class="align-center" id="id32">
+<a class="reference internal image-reference" href="../_images/lab8-lastrule111.png"><img alt="../_images/lab8-lastrule111.png" src="../_images/lab8-lastrule111.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 175 </span><span class="caption-text">“inter-ssh-bu2-bu1” Rule</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab8-lastrule.png"><img alt="../_images/lab8-lastrule.png" src="../_images/lab8-lastrule.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 174 </span><span class="caption-text">“inter-ssh-bu2-bu1” Rule</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 176 </span><span class="caption-text">“inter-ssh-bu2-bu1” Rule</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Let’s try to issue the SSH command from the BU2 Mobile App towards the BU1 Frontend. This time the SSH will work smoothly.</p></li>
+<li><p>Try issuing the SSH command from the <strong>BU2 Mobile App</strong> to the <strong>BU1 Frontend</strong>. This time it should work smoothly.</p></li>
 </ul>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id34">
 <img alt="../_images/lab8-lastssh.png" src="../_images/lab8-lastssh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 175 </span><span class="caption-text">SSH works from BU2 to BU1</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 177 </span><span class="caption-text">SSH works from BU2 to BU1</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab8-interssh-bu2bu1.png"><img alt="../_images/lab8-interssh-bu2bu1.png" src="../_images/lab8-interssh-bu2bu1.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 176 </span><span class="caption-text">Inter-SSH BU2 to BU1</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Inter-SSH BU2 to BU1</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -722,25 +736,25 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <ul class="simple">
 <li><p>Now before completing the lab, remove the <code class="docutils literal notranslate"><span class="pre">Inspection</span> <span class="pre">Policy</span></code> from the Transit GW in AWS.</p></li>
 </ul>
-<p>The Aviatrix Distributed Cloud Firewall has been enabled across the whole multicloud infrastructure, therefore we can get rid of the bolted Firewall in AWS.</p>
+<p>The <strong><code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code></strong> is enabled across the CNSF. As a result, you can decommission the <em>ngfw</em> in AWS.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong> and click on the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW, then click on <code class="docutils literal notranslate"><span class="pre">Policy</span></code>, select the two Spoke VPCs in AWS and choose the <code class="docutils literal notranslate"><span class="pre">Remove</span></code> action.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong> and click on the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW, then click on <code class="docutils literal notranslate"><span class="pre">Policy</span></code>, select the two Spoke VPCs in AWS and choose the <code class="docutils literal notranslate"><span class="pre">Remove</span></code> action.</p>
 <p>Traffic will be not be sent towards the FW anymore. Th DCF will perform the firewalling very close to the source!</p>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id36">
 <img alt="../_images/lab8-manageatt.png" src="../_images/lab8-manageatt.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 177 </span><span class="caption-text">FireNet cfg</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 179 </span><span class="caption-text">FireNet cfg</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id37">
 <img alt="../_images/lab8-lastone.png" src="../_images/lab8-lastone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Remove the inspection Policy</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 180 </span><span class="caption-text">Remove the inspection Policy</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Congratulations, you have completed all labs and created a nice set of DCF rules across your Multicloud infrastructure!</p>
+<p><code class="docutils literal notranslate"><span class="pre">Congratulations</span> <span class="pre">on</span> <span class="pre">completing</span> <span class="pre">all</span> <span class="pre">labs</span> <span class="pre">and</span> <span class="pre">establishing</span> <span class="pre">a</span> <span class="pre">comprehensive</span> <span class="pre">set</span> <span class="pre">of</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span> <span class="pre">(DCF)</span> <span class="pre">rules</span> <span class="pre">across</span> <span class="pre">your</span> <span class="pre">hybrid</span> <span class="pre">cloud</span> <span class="pre">infrastructure</span></code>.</p>
 </section>
 </section>
 
