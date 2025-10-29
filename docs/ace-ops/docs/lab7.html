@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lab 7 - Aviatrix Cloud Firewall &#8212; ACE Operations Lab</title>
+    <title>Lab 7 - Distributed Cloud Firewall &#8212; ACE Operations Lab</title>
   
   
   
@@ -62,7 +62,7 @@
     <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lab 8 - Distributed Cloud Firewall" href="lab8.html" />
+    <link rel="next" title="PDFs" href="pdfs.html" />
     <link rel="prev" title="Lab 6 - Site2Cloud" href="lab6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -189,8 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - FireNet - Routes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Routes Manipulation &amp; NAT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - Site2Cloud</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7 - Aviatrix Cloud Firewall</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - Distributed Cloud Firewall</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7 - Distributed Cloud Firewall</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CloudHeroes.html">CLOUD NETWORKING HEROES PROGRAM</a></li>
 </ul>
@@ -331,7 +330,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 7 - Aviatrix Cloud Firewall</h1>
+    <h1>Lab 7 - Distributed Cloud Firewall</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -342,14 +341,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-cloud-egress-on-spoke2-vnet">2.1 Secure Cloud Egress on Spoke2 VNet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-cloud-egress-on-vnet1-test-vnet">2.2 Secure Cloud Egress on VNet1 - TEST VNET</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-activation">2.3 Distributed Cloud Firewall - Activation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detach-the-webgroup">2.1 Detach the WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ztna">2.2 ZTNA</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. CHANGE REQUEST</a></li>
 </ul>
             </nav>
         </div>
@@ -361,610 +354,304 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-7-aviatrix-cloud-firewall">
-<h1>Lab 7 - Aviatrix Cloud Firewall<a class="headerlink" href="#lab-7-aviatrix-cloud-firewall" title="Link to this heading">#</a></h1>
-<p>In this lab you will activate the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code>, a cloud-native security solution that provides distributed firewalling, traffic control, and network segmentation. Unlike centralized traditional firewalls, it simplifies security management across multi-cloud environments, automates policy enforcement, and can operate in either learning or enforcement modes, offering flexibility for securing both egress and east–west traffic.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-7-distributed-cloud-firewall">
+<h1>Lab 7 - Distributed Cloud Firewall<a class="headerlink" href="#lab-7-distributed-cloud-firewall" title="Link to this heading">#</a></h1>
 <section id="scenario">
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
-<p>The BU2 database requires updates; however, the VM resides within a <em>private subnet</em>. The BU2 DB owner has requested that only <code class="docutils literal notranslate"><span class="pre">apt-get</span></code> commands be permitted for egress traffic, while all other types of outbound traffic should be blocked.</p>
-<p>Additionally, all egress traffic must be monitored, with <strong><em>Logging</em></strong> enabled to track the activity.</p>
-<ul class="simple">
-<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Secure</span> <span class="pre">Egress</span></code> feature on the <strong><em>ace-azure-east-us-spoke2</em></strong> VNet.</p></li>
-</ul>
-<p>Furthermore, you are requested to create the <strong>Distributed Cloud Firewall rules</strong> that will enforce these requirements.</p>
-<figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/lab7-topology.png"><img alt="../_images/lab7-topology.png" src="../_images/lab7-topology.png" style="height: 400px;" />
+<p>ACE’s environment has been split up in two SmartGroups: <strong>BU1</strong> and <strong>BU2</strong>. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.</p>
+<p>Furthermore, four DCF rules have been already applied so far.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/lab8-initialrule.png"><img alt="../_images/lab8-initialrule.png" src="../_images/lab8-initialrule.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Lab 7 Scenario Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Existing DCF rules</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The BU1 Frontend has raised a complaint that is not able to use the SSH protocol <span style='color:orange'><strong>within</strong></span> BU1.</p></li>
+<li><p>The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:orange'><strong>within</strong></span> BU1.</p></li>
+<li><p>The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:lightgreen'><strong>towards</strong></span> BU2.</p></li>
+<li><p>The BU2 Mobile App has raised a complaint that is not able to use the SSH protocol <span style='color:lightgreen'><strong>towards</strong></span> BU1.</p></li>
+</ul>
+<p>You have been engaged to create the following <strong><em>four</em></strong> new additional rules:</p>
+<ul class="simple">
+<li><p><strong>Intra-rule</strong>: allow SSH <span style='color:orange'><strong>within</strong></span> BU1</p></li>
+<li><p><strong>Intra-rule</strong>: allow ICMP <span style='color:orange'><strong>within</strong></span> BU1</p></li>
+<li><p><strong>Inter-rule</strong>: allow ICMP <span style='color:lightblue'><strong>from</strong></span> BU1 <strong>to</strong> BU2</p></li>
+<li><p><strong>Inter-rule</strong>: allow SSH <span style='color:lightblue'><strong>from</strong></span> BU2 <strong>to</strong> BU1</p></li>
+</ul>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/lab8-topology.png"><img alt="../_images/lab8-topology.png" src="../_images/lab8-topology.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 146 </span><span class="caption-text">Initial lab 8 Scenario Topology</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="change-request">
 <h2>2. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Link to this heading">#</a></h2>
-<section id="secure-cloud-egress-on-spoke2-vnet">
-<h3>2.1 Secure Cloud Egress on Spoke2 VNet<a class="headerlink" href="#secure-cloud-egress-on-spoke2-vnet" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Enable the <strong>Egress</strong> on the VNet where <strong>BU2 DB</strong> resides.</p></li>
+<li><p>SSH on the <strong>BU1 Frontend</strong> and try to SSH to any other instances in BU1.</p>
+<ul>
+<li><p>SSH fails as expected.</p></li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code> button.</p>
-<p>Select the <strong><em>ace-azure-east-us-spoke2</em></strong> VPC.</p>
-<p>Do not forget to click on <strong>Add</strong>.</p>
-</div>
-<figure class="align-center" id="id2">
-<img alt="../_images/lab7-vpc.png" src="../_images/lab7-vpc.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 146 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>This action will install a <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Route</span></code> in all the Private Routing Tables inside the Azure Spoke2 VNet. The Defautl Routes will point to the <strong><em>ace-azure-east-us-spoke2</em></strong> GW.</p>
-<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong> and select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway, then click on the <code class="docutils literal notranslate"><span class="pre">VPC/VNet</span> <span class="pre">Route</span> <span class="pre">Tables</span></code> tab and select any <strong>Private</strong> Routing Tables from the <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">Table</span></code> field!</p>
-<figure class="align-center" id="id3">
-<img alt="../_images/lab7-defaultroute.png" src="../_images/lab7-defaultroute.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 147 </span><span class="caption-text">Default Route injected by the AVX Controller</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</div>
-</section>
-<section id="secure-cloud-egress-on-vnet1-test-vnet">
-<h3>2.2 Secure Cloud Egress on VNet1 - TEST VNET<a class="headerlink" href="#secure-cloud-egress-on-vnet1-test-vnet" title="Link to this heading">#</a></h3>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Replicate the steps applied to VNet2 by enabling the <strong>Egress control</strong> on the <strong><em>azure-east-us-spoke1</em></strong> VNet. The objective is to use the Spoke1 VNet <ins>as a test environment</ins> to identify the permitted domains.</p>
-</div>
-<ul class="simple">
-<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Local</span> <span class="pre">Egress</span> <span class="pre">on</span> <span class="pre">VPC/VNets&quot;</span></code> button, then select the <strong><em>ace-azure-east-us-spoke1</em></strong> VPC.</p></li>
+</li>
 </ul>
-<p>Do not forget to click on <strong>Add</strong>.</p>
 <figure class="align-center" id="id4">
-<img alt="../_images/lab7-vpc45.png" src="../_images/lab7-vpc45.png" />
+<img alt="../_images/lab8-sshbu1.png" src="../_images/lab8-sshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 148 </span><span class="caption-text">ace-azure-east-us-spoke1</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 147 </span><span class="caption-text">SSH fails within BU1</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
-<section id="distributed-cloud-firewall-activation">
-<h3>2.3 Distributed Cloud Firewall - Activation<a class="headerlink" href="#distributed-cloud-firewall-activation" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Enable the <strong>Distributed Cloud Firewall</strong> feature.</p></li>
+<li><p>Create an intra-rule that allows SSH <strong>within</strong> BU1 and then verify that SSH is permitted among BU1’s instances.
+Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Enable</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code> button, then to the subsequent <code class="docutils literal notranslate"><span class="pre">&quot;Begin</span> <span class="pre">Using</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall&quot;</span></code> button, and last but not least to the <code class="docutils literal notranslate"><span class="pre">&quot;Begin&quot;</span></code> button</p>
-</div>
-<figure class="align-center" id="id5">
-<img alt="../_images/lab7-enabledcf01.png" src="../_images/lab7-enabledcf01.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Enable DCF message</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id6">
-<img alt="../_images/lab7-enabledcf0222.png" src="../_images/lab7-enabledcf0222.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Begin using DCF message</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id7">
-<img alt="../_images/lab7-enabledcf0322.png" src="../_images/lab7-enabledcf0322.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 151 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The Aviatrix Controller has applied a <code class="docutils literal notranslate"><span class="pre">Greenfield-Rule</span></code> that allows all traffic; you should see this immediately.</p>
-<figure class="align-center" id="id8">
-<img alt="../_images/lab7-enabledcf0411.png" src="../_images/lab7-enabledcf0411.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">&quot;Logging&quot;</span></code> on the Greenfield-Rule.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Click on the Actions icon to the right of the <strong>Greenfield-Rule</strong> end select “Turn On Logging”.</p>
-</div>
-<figure class="align-center" id="id9">
-<a class="reference internal image-reference" href="../_images/lab7-editgreen.png"><img alt="../_images/lab7-editgreen.png" src="../_images/lab7-editgreen.png" style="height: 150px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 153 </span><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Remember to click on <strong>Commit</strong> to apply the changes to the Data Plane.</p>
-<figure class="align-center" id="id10">
-<a class="reference internal image-reference" href="../_images/lab7-lastone.png"><img alt="../_images/lab7-lastone.png" src="../_images/lab7-lastone.png" style="height: 150px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Use <strong><em>Spoke1 VNet</em></strong> as a test environment. SSH to the <strong>BU1 DB</strong>, then execute the <em>apt-get</em> commands. This will help identify the domains that should be permitted.</p></li>
-</ul>
-<figure class="align-center" id="id11">
-<img alt="../_images/lab7-test.png" src="../_images/lab7-test.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Spoke1 VNet1 as test VNet</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>You need to <strong>SSH</strong> into the <strong>BU1 DB</strong>. Since this VM does not have a public IP, you must first SSH into the <strong>BU1 Frontend</strong> VM, and then, from there, initiate an SSH connection to the private IP of the <strong>BU1 DB</strong>.</p>
-<figure class="align-center" id="id12">
-<a class="reference internal image-reference" href="../_images/lab7-test3.png"><img alt="../_images/lab7-test3.png" src="../_images/lab7-test3.png" style="height: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 156 </span><span class="caption-text">SSH to BU1 DB</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Apply the <code class="docutils literal notranslate"><span class="pre">All-Web</span></code> WebGroup to restrict HTTP/HTTPS traffic for capturing logs of accessed FQDNs.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong> and edit the <em>Greenfield-Rule</em>, clicking on the pencil icon on the right-hand side.</p>
-<p>This time attach the <code class="docutils literal notranslate"><span class="pre">All-Web</span></code> WebGroup and then click on <strong>Save In Drafts</strong>.</p>
-</div>
-<figure class="align-center" id="id13">
-<a class="reference internal image-reference" href="../_images/lab7-test4.png"><img alt="../_images/lab7-test4.png" src="../_images/lab7-test4.png" style="height: 150px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Edit the Greenfield-Rule</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id14">
-<img alt="../_images/lab7-test5.png" src="../_images/lab7-test5.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 158 </span><span class="caption-text">All-Web</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Do not forget to <strong>Commit</strong> your changes into the Data Path.</p>
-<figure class="align-center" id="id15">
-<img alt="../_images/lab7-test6.png" src="../_images/lab7-test6.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 159 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Now execute the <strong><em>apt-get</em></strong> commands from the <strong>BU1 DB</strong> !</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span>
-</pre></div>
-</div>
-<p>and</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
-</pre></div>
-</div>
-<p>When you see these pop-up messages, just click on the <strong>Enter</strong> button on your keyboard!</p>
-<figure class="align-center" id="id16">
-<img alt="../_images/lab7-enter.png" src="../_images/lab7-enter.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Press Enter</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id17">
-<img alt="../_images/lab7-enter2.png" src="../_images/lab7-enter2.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 161 </span><span class="caption-text">Press Enter again</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Check the domains hit by the <em>apt-get</em> commands</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong> and select the <em>ace-azure-east-us-spoke<strong>1</strong></em> on the <code class="docutils literal notranslate"><span class="pre">&quot;VPC/VNets&quot;</span></code> field.</p>
-</div>
-<figure class="align-center" id="id18">
-<img alt="../_images/lab7-test7.png" src="../_images/lab7-test7.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 162 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><ins>Identify all the necessary domains for successfully executing the apt-get commands by exclusively examining the entire list of logs.</p>
-<p>Any other domains should be disregarded.</ins></p>
-</div>
-<p>The required domains are <strong>five</strong>!</p>
-<details>
-  <summary>Click here for discovering the <span style='color:#33ECFF'>allowed domains</span></summary>
-<ul class="simple">
-<li><p><a class="reference external" href="http://motd.ubuntu.com">motd.ubuntu.com</a></p></li>
-<li><p><a class="reference external" href="http://azure.archive.ubuntu.com">azure.archive.ubuntu.com</a></p></li>
-<li><p><a class="reference external" href="http://livepatch.canonical.com">livepatch.canonical.com</a></p></li>
-<li><p><a class="reference external" href="http://contracts.canonical.com">contracts.canonical.com</a></p></li>
-<li><p><a class="reference external" href="http://esm.ubuntu.com">esm.ubuntu.com</a></p></li>
-</ul>
-</details>
-<details>
-  <summary>Click here for discovering the <span style='color:#33ECFF'>prohibited domains</span></summary>
-<ul class="simple">
-<li><p><a class="reference external" href="http://storage.azure.net">storage.azure.net</a></p></li>
-<li><p><a class="reference external" href="http://windows.net">windows.net</a></p></li>
-</ul>
-<figure class="align-center" id="id19">
-<a class="reference internal image-reference" href="../_images/lab7-prohibited.png"><img alt="../_images/lab7-prohibited.png" src="../_images/lab7-prohibited.png" style="height: 150px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 163 </span><span class="caption-text">Press Enter again</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</details>
-</section>
-<section id="detach-the-webgroup">
-<h3>2.1 Detach the WebGroup<a class="headerlink" href="#detach-the-webgroup" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Detach the <strong><em>All-Web</em></strong> Webgroup from the Greenfield-Rule.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong> and click on the pencil icon on the righ-hand side of the Greenfield-Rule entry.</p>
-<p>Clear the <code class="docutils literal notranslate"><span class="pre">WebGroups</span></code> field and then click on <strong>Save In Drafts</strong>.</p>
-<p>Do not forget then to click on <strong>Commit</strong>.</p>
-</div>
-<figure class="align-center" id="id20">
-<img alt="../_images/lab7-test8.png" src="../_images/lab7-test8.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 164 </span><span class="caption-text">Detaching the All-Web WebGroup</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id21">
-<img alt="../_images/lab7-lastone2.png" src="../_images/lab7-lastone2.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 165 </span><span class="caption-text">Commit your change</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Now that you have discovered the domains that are triggered when the <strong><em>apt-get</em></strong> commands are executed, you can proceed in disabling the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature from the <strong>Spoke1</strong> VNet.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; Egress VPC/VNets</strong> and click on the <code class="docutils literal notranslate"><span class="pre">Disable</span> <span class="pre">Local</span> <span class="pre">Egress</span></code> button
-beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
-</div>
-<figure class="align-center" id="id22">
-<a class="reference internal image-reference" href="../_images/lab7-disableegress.png"><img alt="../_images/lab7-disableegress.png" src="../_images/lab7-disableegress.png" style="height: 200px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 166 </span><span class="caption-text">Disable Egress on Spoke1 VNet</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>SSH to the <strong>BU2 DB</strong> (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB).</p></li>
-</ul>
-<figure class="align-center" id="id23">
-<a class="reference internal image-reference" href="../_images/lab7-sshbu2db.png"><img alt="../_images/lab7-sshbu2db.png" src="../_images/lab7-sshbu2db.png" style="height: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 167 </span><span class="caption-text">BU2 DB ip address</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Issue the following curl commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.google.com
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
-</pre></div>
-</div>
-<p>All commands will be successful, however, this is not what the request asked you to configure…</p>
-<ul class="simple">
-<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">ZTNA</span> <span class="pre">Model</span></code> (i.e.  <strong>Zero Trust Network Architecture Model</strong>), remove the <strong>Greenfield-Rule</strong>, and first insert an <strong>Explicit-Deny</strong> Rule at the bottom.</p></li>
-</ul>
-<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id24">
-<img alt="../_images/lab7-deleterulee23.png" src="../_images/lab7-deleterulee23.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 168 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
-<ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>Explicit-Deny-Rule</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span></p></li>
-<li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
-<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
-</ul>
-<figure class="align-center" id="id25">
-<img alt="../_images/lab7-deleterulee235.png" src="../_images/lab7-deleterulee235.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Explicit-Deny-Rule</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> this new rule!</p>
-<figure class="align-center" id="id26">
-<a class="reference internal image-reference" href="../_images/lab7-deleterulee2356.png"><img alt="../_images/lab7-deleterulee2356.png" src="../_images/lab7-deleterulee2356.png" style="height: 200px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 170 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="ztna">
-<h3>2.2 ZTNA<a class="headerlink" href="#ztna" title="Link to this heading">#</a></h3>
-<p>Now you can proceed in deleting the Greenfield-Rule!</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong>, click on the <code class="docutils literal notranslate"><span class="pre">&quot;three</span> <span class="pre">dots&quot;</span></code> icon, on the right-hand side of the Greenfiled-Rule and then click on <code class="docutils literal notranslate"><span class="pre">&quot;Delete</span> <span class="pre">Rule&quot;</span></code>.</p>
-</div>
-<figure class="align-center" id="id27">
-<a class="reference internal image-reference" href="../_images/lab7-deleterulee.png"><img alt="../_images/lab7-deleterulee.png" src="../_images/lab7-deleterulee.png" style="height: 200px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 171 </span><span class="caption-text">Delete Rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id28">
-<a class="reference internal image-reference" href="../_images/lab7-deleterulee2.png"><img alt="../_images/lab7-deleterulee2.png" src="../_images/lab7-deleterulee2.png" style="height: 200px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 172 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>As soon as the <strong>Explicit-Deny-Rule (editable)</strong> is deployed on the top of the Rules list, the SSH session with the BU2 DB will be terminated.</p>
-<p>You will have to reestablish the SSH session with BU2 DB!</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The East-West traffic is blocked now!</p>
-</div>
-<ul class="simple">
-<li><p>Explore the <strong>SmartGroups</strong> section on the CoPilot</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Groups</strong></p>
-</div>
-<p>You will notice two SmartGroups, called <strong>BU1</strong> and <strong>BU2</strong>, in addition to the pre-defined SmartGroups (i.e. <em>Anywhere</em> and <em>Public Internet</em>).</p>
-<figure class="align-center" id="id29">
-<img alt="../_images/lab7-bus.png" src="../_images/lab7-bus.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 173 </span><span class="caption-text">SmartGroups list</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Expand either SmartGroups to find out what VMs have been associated to each of these logical container.</p></li>
-</ul>
-<figure class="align-center" id="id30">
-<a class="reference internal image-reference" href="../_images/lab7-bus2.png"><img alt="../_images/lab7-bus2.png" src="../_images/lab7-bus2.png" style="height: 200px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 174 </span><span class="caption-text">BU1’s members</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>It is evident that BU1 Frontend turns out belonging to the BU1 SmartGroup, whereas the BU2 DB is a member of the BU2 SmartGroup.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>These two SmartGroups had been preprovisioned for you at the launch of the PODs.</p>
-</div>
-<ul class="simple">
-<li><p>Create an <strong>inter-rule</strong> that allows SSH from BU1 to BU2.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>“+ Rule”</strong>.</p>
 </div>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>inter-ssh-bu1-bu2</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#479608'>intra-ssh-bu1</span></p></li>
 <li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>BU1</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>BU2</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>BU1</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
 <li><p><strong>Port</strong>: <span style='color:#479608'>22</span></p></li>
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
-<figure class="align-center" id="id31">
-<img alt="../_images/lab7-deleterulee23567.png" src="../_images/lab7-deleterulee23567.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 175 </span><span class="caption-text">inter-ssh-bu1-bu2</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> this new rule!</p>
-<figure class="align-center" id="id32">
-<a class="reference internal image-reference" href="../_images/lab7-bus3new.png"><img alt="../_images/lab7-bus3new.png" src="../_images/lab7-bus3new.png" style="height: 200px;" />
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/lab8-rule01.png"><img alt="../_images/lab8-rule01.png" src="../_images/lab8-rule01.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 176 </span><span class="caption-text">Three Rules</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Another intra-rule</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>SSH to BU2 DB from the BU1 Frontend, then check the logs!</p></li>
+<li><p>Retry to SSH to the BU1 Analytics from the BU1 Frontend; this time the operation will be accomplished!</p></li>
+</ul>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab8-sshok.png" src="../_images/lab8-sshok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 149 </span><span class="caption-text">SSH is ok within BU1</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/lab8-intrassh-bu1.png"><img alt="../_images/lab8-intrassh-bu1.png" src="../_images/lab8-intrassh-bu1.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Intra-SSH BU1</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Check the <strong>Logs</strong> generated after the action carried out before.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
 </div>
-<figure class="align-center" id="id33">
-<a class="reference internal image-reference" href="../_images/lab7-bus5.png"><img alt="../_images/lab7-bus5.png" src="../_images/lab7-bus5.png" style="height: 150px;" />
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/lab8-monitornew.png"><img alt="../_images/lab8-monitornew.png" src="../_images/lab8-monitornew.png" style="height: 100px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 177 </span><span class="caption-text">SSH logs</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 151 </span><span class="caption-text">Monitor: Logs</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now create another SmartGroup that identifies the BU2 DB, solely.</p></li>
+<li><p>Now terminate the SSH session with the BU1 Analytics, typing <code class="docutils literal notranslate"><span class="pre">&quot;exit&quot;</span></code>, and issue the <strong>ping</strong> command towards the BU1 Analytics from the BU1 Frontend. The ping will not work!</p></li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Groups</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
-</div>
-<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
-<ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>BU2-DB</span></p></li>
-<li><p><strong>Matches all conditions (AND)</strong>: <span style='color:#479608'>environment</span>
-–&gt; <strong>Cloud Tag Values</strong>: <span style='color:#479608'>bu2</span></p></li>
-</ul>
-<p>Then click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Add</span> <span class="pre">condition&quot;</span></code> button and select the following additonal parameters:</p>
-<figure class="align-center" id="id34">
-<img alt="../_images/lab7-bus50.png" src="../_images/lab7-bus50.png" />
+<figure class="align-center" id="id9">
+<img alt="../_images/lab8-pingbu1.png" src="../_images/lab8-pingbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 178 </span><span class="caption-text">+Add condition</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p><strong>Matches all conditions (AND)</strong>: <span style='color:#479608'>Region</span>
-–&gt; <strong>Cloud Tag Values</strong>: <span style='color:#479608'>eastus</span></p></li>
+<li><p>Check again the <strong>Logs</strong> from the <code class="docutils literal notranslate"><span class="pre">Monitor</span></code> section. The ICMP attempt hit the <strong><em>Explicit-Deny-Rule</em></strong>, whereby the action was denied!</p></li>
 </ul>
-<p>Do not forget to click on <strong>Save</strong>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The SmartGroup can match <strong>multiple tags</strong> simultaneously, harnessing the boolean expressions!</p>
-</div>
-<figure class="align-center" id="id35">
-<img alt="../_images/lab7-bu2db.png" src="../_images/lab7-bu2db.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 179 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Create a <strong>WebGroup</strong> that matches the domains and sub-domains that you found earlier.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and then click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code>.</p>
-<figure class="align-center" id="id36">
-<img alt="../_images/lab7-webgroupp.png" src="../_images/lab7-webgroupp.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 180 </span><span class="caption-text">BU2 DB SmartGroup</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</div>
-<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">WebGroup&quot;</span></code>:</p>
-<ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>ubuntu-update</span></p></li>
-<li><p><strong>Type</strong>: <span style='color:#479608'>Domains</span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'> *.ubuntu.com</span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'> *.archive.ubuntu.com</span></p></li>
-<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'> *.canonical.com</span></p></li>
-</ul>
-<p>then click on <strong>Save</strong>.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>These are the domains identified before using the <code class="docutils literal notranslate"><span class="pre">Discovery</span> <span class="pre">Mode</span></code> (<strong>= Greenfield-Rule + All-Web</strong>).</p>
-<ul class="simple">
-<li><p>The FQDNs <code class="docutils literal notranslate"><span class="pre">*.ubuntu.com</span></code> and <code class="docutils literal notranslate"><span class="pre">*.canonical.com</span></code> are both using a first-level wilcard. These wildcards will be placeholders for <em><a class="reference external" href="http://ntp.ubuntu.com">ntp.ubuntu.com</a></em>, <em><a class="reference external" href="http://ftp.ubuntu.com">ftp.ubuntu.com</a></em>, <em><a class="reference external" href="http://download.ubuntu.com">download.ubuntu.com</a></em>, <em><a class="reference external" href="http://contracts.canonical.com">contracts.canonical.com</a></em>…</p></li>
-<li><p>The FQDN <code class="docutils literal notranslate"><span class="pre">*.archive.ubuntu.com</span></code> is using a second-level wilcard, that allows to create a subdivision within <em><a class="reference external" href="http://archive.ubuntu.com">archive.ubuntu.com</a></em>.</p></li>
-</ul>
-</div>
-<figure class="align-center" id="id37">
-<a class="reference internal image-reference" href="../_images/lab7-webgroup.png"><img alt="../_images/lab7-webgroup.png" src="../_images/lab7-webgroup.png" style="height: 400px;" />
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/lab8-denyicmp.png"><img alt="../_images/lab8-denyicmp.png" src="../_images/lab8-denyicmp.png" style="height: 100px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 181 </span><span class="caption-text">ubuntu-update</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 153 </span><span class="caption-text">Monitor: Denied ICMP</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now create an <strong>inter-rule</strong> that allows BU2 DB to generate traffic towards Internet but only for reaching out the <ins>ubuntu servers</ins> !</p></li>
+<li><p>Create another intra-rule that allows ICMP <strong>within</strong> BU1 and then verify that ICMP is permitted among BU1’s instances. Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Rules</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>“+ Rule”</strong>.</p>
 </div>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>inter-ubuntu-bu2db-internet</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>BU2-DB</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Public internet</span></p></li>
-<li><p><strong>WebGroups</strong>: <span style='color:#479608'>ubuntu-update</span></p></li>
-<li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#479608'>intra-icmp-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>BU1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>BU1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>ICMP</span></p></li>
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
-<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule once again!</p>
-<figure class="align-center" id="id38">
-<img alt="../_images/lab7-lastrule.png" src="../_images/lab7-lastrule.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 182 </span><span class="caption-text">inter-ubuntu-bu2db-internet</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id39">
-<img alt="../_images/lab7-lastcommit.png" src="../_images/lab7-lastcommit.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 183 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Now try issuing the following curl commands once again from the BU2 DB virtual machine:</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.google.com
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.wikipedia.com
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>www.espn.com
-</pre></div>
-</div>
-<figure class="align-center" id="id40">
-<a class="reference internal image-reference" href="../_images/lab7-explicitdeny101.png"><img alt="../_images/lab7-explicitdeny101.png" src="../_images/lab7-explicitdeny101.png" style="height: 150px;" />
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/lab8-icmprulebu1.png"><img alt="../_images/lab8-icmprulebu1.png" src="../_images/lab8-icmprulebu1.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 184 </span><span class="caption-text">Explicit Deny Rule matching</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 154 </span><span class="caption-text">New intra-rule</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will notice three <strong>Drop</strong> entries within the <strong>Monitor</strong> section that have matched the <code class="docutils literal notranslate"><span class="pre">Explicit-Deny-Rule</span></code>, successfully.</p>
-<figure class="align-center" id="id41">
-<a class="reference internal image-reference" href="../_images/lab7-explicitdeny.png"><img alt="../_images/lab7-explicitdeny.png" src="../_images/lab7-explicitdeny.png" style="height: 150px;" />
+<ul class="simple">
+<li><p>The ping will work this time thanks to this new fresh intra-rule!</p></li>
+</ul>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab8-icmprulebu1ok.png" src="../_images/lab8-icmprulebu1ok.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Ping will be ok!</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Once again, inspect the <strong>Monitor</strong> section to find out immediately the corresponding <em>logs</em> of the action carried out before.</p></li>
+</ul>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../_images/lab8-pingpermitted.png"><img alt="../_images/lab8-pingpermitted.png" src="../_images/lab8-pingpermitted.png" style="height: 100px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 185 </span><span class="caption-text">Explicit Deny Rule matching</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Monitor: successful logs</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="../_images/lab8-intrasshicmp-bu1.png"><img alt="../_images/lab8-intrasshicmp-bu1.png" src="../_images/lab8-intrasshicmp-bu1.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Intra-SSH-ICMP BU1</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now try to run the <strong>apt-get</strong> commands !</p></li>
+<li><p>Let’s try to ping the BU2 Mobile App from the BU1 Frontend. The ping will fail due to the absence of an <strong>inter-rule</strong>.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span>
-</pre></div>
-</div>
-<p>and</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
-</pre></div>
-</div>
-<p>Once again, if you see these pop-up messages, just click on the <strong>Enter</strong> button on your keyboard!</p>
-<figure class="align-center" id="id42">
-<img alt="../_images/lab7-enter.png" src="../_images/lab7-enter.png" />
+<figure class="align-center" id="id15">
+<img alt="../_images/lab8-pingbu1bu2.png" src="../_images/lab8-pingbu1bu2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 186 </span><span class="caption-text">Press Enter</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id43">
-<img alt="../_images/lab7-enter2.png" src="../_images/lab7-enter2.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 187 </span><span class="caption-text">Press Enter again</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 158 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Now check the logs within the <strong>Egress</strong> section!</p></li>
+<li><p>This time create an inter-rule that allows ICMP <strong>from</strong> BU1 <strong>towards</strong> BU2. Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Go to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong> and select the <strong>ace-azure-east-us-spoke2</strong> VNet</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>+Rule</strong>.</p>
 </div>
-<figure class="align-center" id="id44">
-<a class="reference internal image-reference" href="../_images/lab7-last.png"><img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" style="height: 250px;" />
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>inter-icmp-bu1-bu2</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>BU1</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>BU2</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>ICMP</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../_images/lab8-penultimaterule.png"><img alt="../_images/lab8-penultimaterule.png" src="../_images/lab8-penultimaterule.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 188 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 159 </span><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id45">
-<a class="reference internal image-reference" href="../_images/lab7-lastlog.png"><img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" style="height: 250px;" />
+<ul class="simple">
+<li><p>Retry to ping the BU2 Mobile App from the BU1 Frontend. The ping will be successful thanks to the inter-rule!</p></li>
+</ul>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab8-penultimateping.png" src="../_images/lab8-penultimateping.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Ping from BU1 to BU2</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/lab8-intericmp-bu1bu2.png"><img alt="../_images/lab8-intericmp-bu1bu2.png" src="../_images/lab8-intericmp-bu1bu2.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 161 </span><span class="caption-text">Inter-ICMP BU1 to BU2</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You have successfully applied the Secure Egress Control, leveraging both the <code class="docutils literal notranslate"><span class="pre">Egress</span></code> feature and the <code class="docutils literal notranslate"><span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> rules!</p>
+<ul class="simple">
+<li><p>Now, let’s SSH to the Public IP of the <strong>BU2 Mobile App</strong> and then try to SSH to the Private IP of the <strong>BU1 Frontend</strong>. Of course, SSH will fail!</p></li>
+</ul>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab8-bu2sshbu1.png" src="../_images/lab8-bu2sshbu1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 162 </span><span class="caption-text">SSH from BU2 to BU1 will fail</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Create another inter-rule that allows SSH <strong>from</strong> BU2 <strong>towards</strong> BU1. Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and click on <strong>“+ Rule”</strong>.</p>
+</div>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>inter-ssh-bu2-bu1</span></p></li>
+<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>BU2</span></p></li>
+<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>BU1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#479608'>22</span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
+<figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="../_images/lab8-lastrule.png"><img alt="../_images/lab8-lastrule.png" src="../_images/lab8-lastrule.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 163 </span><span class="caption-text">“inter-ssh-bu2-bu1” Rule</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Let’s try to issue the SSH command from the BU2 Mobile App towards the BU1 Frontend. This time the SSH will work smoothly.</p></li>
+</ul>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab8-lastssh.png" src="../_images/lab8-lastssh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 164 </span><span class="caption-text">SSH works from BU2 to BU1</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id22">
+<a class="reference internal image-reference" href="../_images/lab8-interssh-bu2bu1.png"><img alt="../_images/lab8-interssh-bu2bu1.png" src="../_images/lab8-interssh-bu2bu1.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 165 </span><span class="caption-text">Inter-SSH BU2 to BU1</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
+<section id="id1">
+<h2>3. CHANGE REQUEST<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Now before completing the lab, remove the <code class="docutils literal notranslate"><span class="pre">Inspection</span> <span class="pre">Policy</span></code> from the Transit GW in AWS.</p></li>
+</ul>
+<p>The Aviatrix Distributed Cloud Firewall has been enabled across the whole multicloud infrastructure, therefore we can get rid of the bolted Firewall in AWS.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong> and click on the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW, then click on <code class="docutils literal notranslate"><span class="pre">Policy</span></code>, select the two Spoke VPCs in AWS and choose the <code class="docutils literal notranslate"><span class="pre">Remove</span></code> action.</p>
+<p>Traffic will be not be sent towards the FW anymore. Th DCF will perform the firewalling very close to the source!</p>
+<figure class="align-center" id="id23">
+<img alt="../_images/lab8-manageatt.png" src="../_images/lab8-manageatt.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 166 </span><span class="caption-text">FireNet cfg</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<figure class="align-center" id="id24">
+<img alt="../_images/lab8-lastone.png" src="../_images/lab8-lastone.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 167 </span><span class="caption-text">Remove the inspection Policy</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Congratulations, you have completed all labs and created a nice set of DCF rules across your Multicloud infrastructure!</p>
 </section>
 </section>
 
@@ -1008,11 +695,11 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
       </div>
     </a>
     <a class="right-next"
-       href="lab8.html"
+       href="pdfs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lab 8 - Distributed Cloud Firewall</p>
+        <p class="prev-next-title">PDFs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1033,14 +720,8 @@ beside the <strong><em>ace-azure-east-us-spoke1</em></strong> VNet entry.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-cloud-egress-on-spoke2-vnet">2.1 Secure Cloud Egress on Spoke2 VNet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-cloud-egress-on-vnet1-test-vnet">2.2 Secure Cloud Egress on VNet1 - TEST VNET</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-activation">2.3 Distributed Cloud Firewall - Activation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detach-the-webgroup">2.1 Detach the WebGroup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ztna">2.2 ZTNA</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. CHANGE REQUEST</a></li>
 </ul>
   </nav></div>
 
