@@ -206,7 +206,7 @@ align: center
 Monitor: Logs
 ```
 
-- Now terminate the SSH session with the BU1 Analytics, typing `"exit"`, and issue the **ping** command towards the BU1 Analytics from the BU1 Frontend. The ping will not work!
+- Now terminate the SSH session with the **BU1 DB**, typing `"exit"`, and issue the **ping** command towards the BU1 DB from the BU1 Frontend. The ping will not work!
 
 ```{figure} images/lab8-pingbu1.png
 ---
@@ -215,7 +215,7 @@ align: center
 Ping will fail
 ```
 
-- Check again the **Logs** from the `Monitor` section. The ICMP attempt hit the **_Explicit-Deny-Rule_**, whereby the action was denied!
+- Check the **Logs** in the `Monitor` section again. The ICMP attempt was blocked by the **_ExplicitDenyAll_** rule.
 
 ```{figure} images/lab8-denyicmp.png
 ---
@@ -228,7 +228,7 @@ Monitor: Denied ICMP
 - Create another intra-rule that allows ICMP **within** BU1 and then verify that ICMP is permitted among BU1’s instances. Do not forget to enable **“Logging”**, for auditing purposes.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall** and click on **"+ Rule"**.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall** and click on **"+ Rule"**.
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
@@ -240,6 +240,14 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
+```{figure} images/lab8-icmprulebu111.png
+---
+height: 200px
+align: center
+---
+New intra-rule
+```
+
 Do not forget to click on **Save In Drafts**, and then **Commit** your rule.
 
 ```{figure} images/lab8-icmprulebu1.png
@@ -250,7 +258,7 @@ align: center
 New intra-rule
 ```
 
-- The ping will work this time thanks to this new fresh intra-rule!
+- The ping will succeed this time thanks to the newly created intra-rule that permits it.
 
 ```{figure} images/lab8-icmprulebu1ok.png
 ---
