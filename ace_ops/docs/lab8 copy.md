@@ -4,7 +4,7 @@
 
 ACE’s environment has been split up in two SmartGroups: **BU1** and **BU2**. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.
 
-Furthermore, four DCF rules have been already applied so far.
+Let’s enable the **Distributed Cloud Firewall** to secure and govern the traffic runtime within CNSF.
 
 ```{figure} images/lab8-initialrule.png
 ---

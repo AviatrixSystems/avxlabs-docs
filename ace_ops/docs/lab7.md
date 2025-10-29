@@ -4,30 +4,132 @@
 
 ACE’s environment has been split up in two SmartGroups: **BU1** and **BU2**. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.
 
-Furthermore, four DCF rules have been already applied so far.
+Let’s enable the **Distributed Cloud Firewall** to secure and govern the traffic runtime within CNSF.
 
-```{figure} images/lab8-initialrule.png
----
-height: 200px
-align: center
----
-Existing DCF rules
+```{tip}
+Navigate to **CoPilot > Security > Distributed Cloud Firewall** and then click on the `"Enable Distributed Cloud Firewall"` button, then to the subsequent `"Begin Using Distributed Cloud Firewall"` button, and last but not least to the `"Begin"` button
 ```
 
-- The BU1 Frontend has raised a complaint that is not able to use the SSH protocol <span style='color:orange'>**within**</span> BU1.
+```{figure} images/lab7-enabledcf01.png
+---
+align: center
+---
+Enable DCF message
+```
 
-- The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:orange'>**within**</span> BU1.
+```{figure} images/lab7-enabledcf0222.png
+---
+align: center
+---
+Begin using DCF message
+```
 
-- The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:lightgreen'>**towards**</span> BU2.
+```{figure} images/lab7-enabledcf0322.png
+---
+align: center
+---
+Begin
+```
 
-- The BU2 Mobile App has raised a complaint that is not able to use the SSH protocol <span style='color:lightgreen'>**towards**</span> BU1.
+The Aviatrix Controller has applied a `Greenfield-Rule` that allows all traffic; you should see this immediately.
 
-You have been engaged to create the following **_four_** new additional rules:
+```{figure} images/lab7-enabledcf0411.png
+---
+align: center
+---
+Greenfield-Rule
+```
 
-- **Intra-rule**: allow SSH <span style='color:orange'>**within**</span> BU1
-- **Intra-rule**: allow ICMP <span style='color:orange'>**within**</span> BU1
-- **Inter-rule**: allow ICMP <span style='color:lightblue'>**from**</span> BU1 **to** BU2
-- **Inter-rule**: allow SSH <span style='color:lightblue'>**from**</span> BU2 **to** BU1
+- Enable the `"Logging"` on the Greenfield-Rule.
+
+```{tip}
+Click on the Actions icon to the right of the **Greenfield-Rule** end select "Turn On Logging".
+```
+
+```{figure} images/lab7-editgreen.png
+---
+height: 150px
+align: center
+---
+Edit the Greenfield-Rule
+```
+
+Remember to click on **Commit** to apply the changes to the Data Plane.
+
+```{figure} images/lab7-lastone.png
+---
+height: 150px
+align: center
+---
+Commit
+```
+
+Now enable the **Zero Trust Network Access** (ZTNA) inside the CNSF.
+
+- Create an **Explicit Deny** rule:
+
+Click on the `"+ Rule"` button.
+
+```{figure} images/ops-newlab-01.png
+---
+align: center
+---
+New Rule
+```
+
+Insert the following parameters:
+
+- **Name**: <span style='color:#479608'>ExplicitDenyAll</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/ops-newlab-02.png
+---
+align: center
+---
+ExplicitDenyAll
+```
+
+Do not forget to click on **Commit**.
+
+```{figure} images/ops-newlab-03.png
+---
+align: center
+---
+Commit
+```
+
+- Log in to **BU1 Frontend**, then SSH to the **BU1 Analytics** private IP address.
+
+```{figure} images/ops-newlab-04.png
+---
+align: center
+---
+SSH fails
+```
+
+The SSH attempt will fail because East-West traffic is blocked by the **_ExplicitDenyAll_** rule.
+
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. The SSH attempt initiated earlier was blocked by the `Explicit DenyAll` rule and the traffic was dropped.
+
+```{figure} images/ops-newlab-05.png
+---
+align: center
+---
+Monitor
+```
+
+- Define the following Distributed Cloud Firewall (DCF) rules to re-establish and govern East-West traffic:
+
+  - **Intra-rule**: allow SSH <span style='color:orange'>**within**</span> BU1
+  - **Intra-rule**: allow ICMP <span style='color:orange'>**within**</span> BU1
+  - **Inter-rule**: allow ICMP <span style='color:lightblue'>**from**</span> BU1 **to** BU2
+  - **Inter-rule**: allow SSH <span style='color:lightblue'>**from**</span> BU2 **to** BU1
 
 ```{figure} images/lab8-topology.png
 ---
