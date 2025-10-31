@@ -310,12 +310,12 @@ Click on **Commit**.
 height: 250px
 align: center
 ---
-Greenfield-Rule
+Commit
 ```
 
 ## 5. Define a new SmartGroup 
 
-At this point, you can use the **SmartGroup** feature to identify the `test2` instance in the aws-us-east-2-spoke1 VPC.
+At this stage, the **SmartGroup** feature enables the categorization of the `test2` instance within the aws-us-east-2-spoke1 VPC.
 
 ### 5.1 Identify the subnet where the private workload resides
 
@@ -341,11 +341,11 @@ align: center
 AZ
 ```
 
-Now that you know in which `Availability Zone` the private workload resides, you need to select the `VPC/VNets & Subnets` tab and filter based on the **_aws-us-east-2-spoke1_** VPC.
+Now that you know in which `Availability Zone` the private workload resides, you need to select the `VPC/VNets & Subnets` tab and filter based on the **_us-east-2a_** VPC.
 
-Identify the `Private Subnet` that belongs to the `us-east-2a` AZ and copy the corresponding **_`IP Address CIDR`_** value!
+Identify the spoke VPC, reveal its subnets, find the `private subnet`, and copy the `CIDR block` from the IP address CIDR column.
 
-```{figure} images/lab6-greenfieldneww3.png
+```{figure} images/lab6-greenfieldneww31.png
 ---
 height: 300px
 align: center
@@ -468,7 +468,7 @@ ExplicitDenyAll
 
 Do not forget to click on **Commit**.
 
-```{figure} images/lab6-newrule10011.png
+```{figure} images/lab6-newrule100110.png
 ---
 align: center
 ---
