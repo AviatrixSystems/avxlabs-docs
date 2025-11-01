@@ -470,16 +470,6 @@ You have successfully re-established the `Deny-List` model!
 Deny-List Model (formerly known as _blacklist_) = basic access control mechanism that allows through all elements except those explicitly mentioned on a “deny” list.
 ```
 
-Moreover, continue editing the **Greenfield-Rule**: click on the three-dot icon beside the Greenfield-Rule entry and select the option `"Turn On Logging"`.
-
-```{figure} images/lab6-new105.png
----
-height: 250px
-align: center
----
-Logging ON
-```
-
 **Commit** your final change again.
 
 ```{figure} images/lab6-new106.png
@@ -607,7 +597,7 @@ Now, let's check the `DCF Monitor` section:
 
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on **ICMP**.
 
-```{figure} images/lab7-finalmonitor00.png
+```{figure} images/lab7-finalmonitor001.png
 ---
 height: 300px
 align: center

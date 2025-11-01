@@ -51,7 +51,7 @@ BGPoverLAN
 ```
 
 ```{caution}
-The Aviatrix Spoke Edge will be configured on the subsequent lab (i.e. **Lab 8**).
+The Aviatrix Spoke **Edge** will be configured in the next lab (**Lab 8**).
 ```
 
 Now let's configure the **S2C** connection with the **Partner site**!
