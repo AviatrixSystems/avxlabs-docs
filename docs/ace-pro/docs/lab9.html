@@ -399,7 +399,7 @@ document.write(`
 </section>
 <section id="topology">
 <h2>2. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
-<p>In this lab, we will deploy a <code class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in AWS <strong>US-EAST-1</strong> region, to protect SOLELY the public subnet where the test1 instance resides.</p>
+<p>In this lab, we will deploy a <code class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in <strong>us-east-1</strong> to protect <strong><em>only</em></strong> the public subnet hosting the test1 instance.</p>
 <figure class="align-center" id="id2">
 <img alt="../_images/lab9-initialtopology.png" src="../_images/lab9-initialtopology.png" />
 <figcaption>
@@ -409,7 +409,7 @@ document.write(`
 </section>
 <section id="psf">
 <h2>3. PSF<a class="headerlink" href="#psf" title="Link to this heading">#</a></h2>
-<p><strong>Public Subnet Filtering</strong> Gateway = an Aviatrix gateway that provides ingress and egress security for AWS public subnets where instances have public IP addresses.</p>
+<p>The Aviatrix <strong>Public Subnet Filtering</strong> Gateway delivers <em>ingress</em> and <em>egress</em> security for AWS public subnets in which instances have public IP addresses.</p>
 <section id="deploy-the-psf">
 <h3>3.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf" title="Link to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">Gateway&quot;</span></code> button and then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
@@ -433,7 +433,7 @@ document.write(`
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>Please pay close attention to select the routing table <strong>1a-rtb</strong>!</p>
+<p>Please ensure that routing table <strong>1a-rtb</strong> is selected.</p>
 </div>
 <figure class="align-center" id="id4">
 <img alt="../_images/lab9-new.png" src="../_images/lab9-new.png" />
@@ -477,7 +477,7 @@ document.write(`
 <p><strong>No workload instances should be deployed in this subnet</strong>.</p>
 </div>
 <ul class="simple">
-<li><p>Verify one more routing table that we selected while deploying the PSF Gateway: <strong><em>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</em></strong>. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).</p></li>
+<li><p>Validate the routing table we selected during the PSF Gateway deployment: <strong><em>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</em></strong>. The default route should point to the PSF Gateway; we’re verifying this RTB because the test instance’s subnet points to it.</p></li>
 </ul>
 <figure class="align-center" id="id8">
 <img alt="../_images/lab9-routetablepsf2.png" src="../_images/lab9-routetablepsf2.png" />
@@ -507,7 +507,7 @@ document.write(`
 <p><span class="caption-number">Fig. 460 </span><span class="caption-text">Malicious IP</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The EC2 instance is already generating traffic towards a malicious IP address.</p>
+<p>The EC2 instance is actively communicating with a <strong>malicious IP</strong> address.</p>
 </section>
 <section id="ssh-to-aws-us-east1-spoke1-test1-bonus">
 <h3>4.2 SSH to aws-us-east1-spoke1-test1 <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#ssh-to-aws-us-east1-spoke1-test1-bonus" title="Link to this heading">#</a></h3>
@@ -545,7 +545,7 @@ document.write(`
 </section>
 <section id="create-a-new-smartgroup">
 <h2>5. Create a new SmartGroup<a class="headerlink" href="#create-a-new-smartgroup" title="Link to this heading">#</a></h2>
-<p>The traffic towards the malicious IP is permitted… Let’s now enforce the <code class="docutils literal notranslate"><span class="pre">Threats</span> <span class="pre">Detection</span> <span class="pre">mechanism</span></code>!</p>
+<p>The traffic to the malicious IP is permitted. Immediately enforce the <code class="docutils literal notranslate"><span class="pre">Threats</span> <span class="pre">Detection</span> <span class="pre">mechanism</span></code>.</p>
 <p>Let’s create another SmartGroup that can identify the <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance that resides in the <strong>US-EAST-1</strong> region.</p>
 <figure class="align-center" id="id14">
 <img alt="../_images/lab9-routetablepsf234.png" src="../_images/lab9-routetablepsf234.png" />
@@ -749,7 +749,7 @@ document.write(`
 </section>
 <section id="connectivity-tests">
 <h2>8. Connectivity Tests<a class="headerlink" href="#connectivity-tests" title="Link to this heading">#</a></h2>
-<p>Before launching the connectivity test, the three rules related to the PSF must be enforced on the PSF gateway itself.</p>
+<p>Prior to launching the connectivity test, ensure the three PSF rules are <strong>enforced</strong> on the PSF gateway.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">PSF</span></code> Gateway is a <strong><em>standalone Gateway</em></strong>: it is neither a Spoke nor a Transit.</p>

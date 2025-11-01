@@ -1225,7 +1225,7 @@ Spoke to Spoke
 
 ## 16. Decommissioning of a peering
 
-Now that MTT is enabled on the **_aws-us-east-2-transit_** Gateway, every other Transit Gateway must have a single peering with the **MTT Gateway**; therefore the peering between the **_gcp-us-central1-transit_** Gateway and the **_azure-west-us-transit_** Gateway can be removed.
+Now that `MTT` is enabled on the **_aws-us-east-2-transit_** Gateway, <ins>every other Transit Gateway must have a single peering with the **MTT Gateway**</ins>; therefore the peering between the **_gcp-us-central1-transit_** Gateway and the **_azure-west-us-transit_** Gateway can be removed.
 
 ```{figure} images/lab10-spoke2spoke0788.png
 ---
