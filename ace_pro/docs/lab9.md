@@ -12,7 +12,7 @@ The Default ThreatGroup is regularly updated with data from the **`Proofpoint Gl
 
 ## 2. Topology
 
-In this lab, we will deploy a `“PSF"` gateway in AWS **US-EAST-1** region, to protect SOLELY the public subnet where the test1 instance resides.
+In this lab, we will deploy a `“PSF"` gateway in **us-east-1** to protect **_only_** the public subnet hosting the test1 instance.
 
 ```{figure} images/lab9-initialtopology.png
 ---
@@ -22,7 +22,8 @@ Lab 9 Initial Topology
 ```
 
 ## 3. PSF
-**Public Subnet Filtering** Gateway = an Aviatrix gateway that provides ingress and egress security for AWS public subnets where instances have public IP addresses.
+
+The Aviatrix **Public Subnet Filtering** Gateway delivers _ingress_ and _egress_ security for AWS public subnets in which instances have public IP addresses.
 
 ### 3.1 Deploy the PSF
 
@@ -48,7 +49,7 @@ Enter the following parameters:
 Do not forget to click on **Save**.
 
 ```{caution}
-Please pay close attention to select the routing table **1a-rtb**!
+Please ensure that routing table **1a-rtb** is selected.
 ```
 
 ```{figure} images/lab9-new.png
@@ -95,7 +96,7 @@ The subnet with the PSF gateway is a **Public** subnet with a 0/0 route pointing
 **No workload instances should be deployed in this subnet**.
 ```
 
-- Verify one more routing table that we selected while deploying the PSF Gateway: **_aws-us-east1-spoke1-Public-1-us-east-1a-rtb_**. You can notice that the default route is pointing towards the PSF Gateway (we are verifying this rtb because the test instance’s subnet points to this rtb).
+- Validate the routing table we selected during the PSF Gateway deployment: **_aws-us-east1-spoke1-Public-1-us-east-1a-rtb_**. The default route should point to the PSF Gateway; we’re verifying this RTB because the test instance’s subnet points to it.
 
 ```{figure} images/lab9-routetablepsf2.png
 ---
@@ -128,7 +129,7 @@ align: center
 Malicious IP
 ```
 
-The EC2 instance is already generating traffic towards a malicious IP address.
+The EC2 instance is actively communicating with a **malicious IP** address.
 
 ### 4.2 SSH to aws-us-east1-spoke1-test1 <span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -168,7 +169,7 @@ Curl towards the malicious IP
 
 ## 5. Create a new SmartGroup
 
-The traffic towards the malicious IP is permitted... Let's now enforce the `Threats Detection mechanism`!
+The traffic to the malicious IP is permitted. Immediately enforce the `Threats Detection mechanism`.
 
 Let's create another SmartGroup that can identify the **_aws-us-east-1-spoke1-test1_** instance that resides in the **US-EAST-1** region.
 
@@ -401,7 +402,7 @@ Commit
 
 ## 8. Connectivity Tests
 
-Before launching the connectivity test, the three rules related to the PSF must be enforced on the PSF gateway itself.
+Prior to launching the connectivity test, ensure the three PSF rules are **enforced** on the PSF gateway.
 
 ```{caution}
 The `PSF` Gateway is a **_standalone Gateway_**: it is neither a Spoke nor a Transit.
