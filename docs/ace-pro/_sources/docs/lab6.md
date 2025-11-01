@@ -355,7 +355,7 @@ Once you have deployed the firewall, applied both the Vendor Integration and the
 Please bear in mind that you will have to accept a **_self-signed certificate_**. <ins>If you are using a corporate laptop, please ignore this verification and skim through this section to understand the purpose of this task</ins>.
 ```
 
- Try to click on the *hyperlink* of the firewall. You should be able to see the page where entering the credentials (refer to you POD portal).
+Please click the firewall *hyperlink*. You should see the page for entering your credentials (refer to your POD portal for details).
 
  ```{figure} images/lab6-mgmtfw.png
 ---
