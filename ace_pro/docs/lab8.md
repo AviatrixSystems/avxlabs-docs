@@ -100,7 +100,7 @@ Now it's time to establish the attachment!
 
 Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachments"` button, on the right-hand side of the screen.
 
-```{figure} images/lab8-edge9.png
+```{figure} images/lab8-edge922.png
 ---
 height: 200px
 align: center
@@ -280,7 +280,7 @@ align: center
 LX Terminal
 ```
 
-Now execute the ping command towards the private IP address of the **aws-us-east-2-spoke1-test1** instance (**i.e. 10.0.1.100**).
+Execute a ping to the private IP address of the **aws-us-east-2-spoke1-test1** instance (**10.0.1.100**).
 
 ```{figure} images/lab8-edge22.png
 ---
@@ -399,7 +399,7 @@ Now you are ready to proceed with the rest of the configuration on the Edge sect
 
 Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachments"` button, on the right-hand side of the screen.
 
-```{figure} images/lab8-edgedouble2.png
+```{figure} images/lab8-edgedouble221.png
 ---
 height: 200px
 align: center
@@ -673,7 +673,7 @@ align: center
 as-path prepend
 ```
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** inside the Search field. This time the AS Path Length will turn out being equal to **3**, due to to the route manipulation that harnessed the `as-path prepend` feature.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the **_aws-us-east-2-transit_** GW, then select the `"Route DB"` tab and then once again, on the right-hand side, type **172.16.1.0** inside the Search field. The AS Path Length will be **3**, caused by the `AS-Path prepend` route manipulation.
 
 ```{figure} images/lab8-path.png
 ---
