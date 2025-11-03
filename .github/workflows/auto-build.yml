@@ -46,17 +46,9 @@ jobs:
 
           echo "Building book for $folderName"
 
-          # Build the book - try jb first, fallback to jupyter-book
-          if command -v jb &> /dev/null; then
-            jb clean --all ${folderName}
-            jb build ${folderName}
-          elif command -v jupyter-book &> /dev/null; then
-            jupyter-book clean --all ${folderName}
-            jupyter-book build ${folderName}
-          else
-            python -m jupyter_book clean --all ${folderName}
-            python -m jupyter_book build ${folderName}
-          fi
+          # Build the book
+          python -m jupyter_book clean --all ${folderName}
+          python -m jupyter_book build ${folderName}
 
           # Move the files to the docs folder
           echo "Moving files to docs/${newFolderName}"
