@@ -43,8 +43,8 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 
 - VPC and VNet Creation
 - Single Cloud Transit
-- Multicloud Transit
-- Single/Multicloud Network Segmentation
+- CNSF
+- Network Segmentation
 - High Performance Encryption (aka *Insane Mode*)
 - ActiveMesh with High Availability
 - Aviatrix Cloud Firewall
