@@ -42,16 +42,15 @@ Initial Topology
 By the end of **Day 3**, each student will be able to deploy and verify the following Multicloud Topology, including the following use cases:
 
 - VPC and VNet Creation
-- Single Cloud Transit
-- Multicloud Transit
-- Single/Multicloud Network Segmentation
+- CNSF
+- Network Segmentation
 - High Performance Encryption (aka *Insane Mode*)
 - ActiveMesh with High Availability
 - Aviatrix Cloud Firewall
 - FireNet
 - Site2Cloud with Overlapping IPs
 - Edge
-- Threat Prevention with the special ThreatGroup
+- Threat Prevention with the special Default ThreatGroup
 - CostIQ
 - Distributed Cloud Firewall
 - Network Insights API
