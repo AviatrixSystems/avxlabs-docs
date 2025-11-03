@@ -77,12 +77,12 @@ S2C creation
 Create a connection from the Cloud (GCP) to an on-premises partner site using the following settings in the `"Add External Connection"` window:
 
 - **Name**: <span style='color:#479608'>GCP-to-OnPremPartner</span>
-- **Connecting Using**: <span style='color:#479608'>Static Routing over IPSec</span>
-- **Type**: <span style='color:#479608'>**Mapped NAT**</span>
+- **Type**: <span style='color:#479608'>Static Routing over IPSec</span>
+- **Static Routing Type**: <span style='color:#479608'>**Mapped NAT**</span>
 - **Local Gateway**: <span style='color:#479608'>gcp-us-central1-spoke1</span>
 - **Real Local Subnet CIDR(s)**: <span style='color:#479608'>172.16.1.0/24</span>
 - **Virtual Local Subnet CIDR(s)**: <span style='color:#479608'>192.168.200.0/24</span>
-- **Remote Gateway Type**: <span style='color:#479608'>Generic</span>
+- **Remote Device Type**: <span style='color:#479608'>Generic</span>
 - **Real Remote Subnet CIDR(s)**: <span style='color:#479608'>172.16.1.0/24</span>
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.100.0/24</span>
 - **Internet Key Exchange**: <span style='color:#479608'>**IKEv2**</span>
