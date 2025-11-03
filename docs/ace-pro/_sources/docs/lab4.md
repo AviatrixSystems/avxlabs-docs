@@ -1,4 +1,4 @@
-# Lab 4 - HPE WITH ACTIVE MESH
+# Lab 4 - HPE
 
 ## 1. Objective
 
