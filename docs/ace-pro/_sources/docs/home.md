@@ -42,8 +42,7 @@ Initial Topology
 By the end of **Day 3**, each student will be able to deploy and verify the following Multicloud Topology, including the following use cases:
 
 - VPC and VNet Creation
-- Single Cloud Transit
-- Multicloud Transit
+- CNSF
 - Single/Multicloud Network Segmentation
 - High Performance Encryption (aka *Insane Mode*)
 - ActiveMesh with High Availability
@@ -64,7 +63,7 @@ By the end of **Day 3**, each student will be able to deploy and verify the foll
 height: 400px
 align: center
 ---
-Full-Blown MCNA
+CNSF in full feature set
 ```
 
 ```{note}
