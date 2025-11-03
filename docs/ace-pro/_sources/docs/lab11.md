@@ -24,14 +24,19 @@ All test instances have been deployed with the standard cloud service provider *
 The **CSP tagging** is the recommended method for defining the SmartGroups.
 ```
 
-In this lab you are asked to achieve the following requirements among the instances deployed across the three CSPs:
+In this lab, you will implement the following requirements across all three CSPs:
 
-- Create a Smart Group with the name `"bu1"` leveraging the tag `"environment"`.
-- Create a Smart Group with the name `"bu2"` leveraging the tag `"environment"`.
-- Create an `intra-rule` that allows ICMP traffic within bu1.
-- Create an `intra-rule` that allows ICMP traffic within bu2.
-- Create an `intra-rule` that allows SSH traffic within bu1.
-- Create an `inter-rule` that allows ICMP traffic only <ins>from</ins> bu2 <ins>to</ins> bu1.
+- Create a Smart Group named `"bu1"` that uses the tag `"environment"`.
+
+- Create a Smart Group named "bu2" that uses the tag `"environment"`.
+
+- Create an `intra-rule` allowing ICMP traffic within bu1.
+
+- Create an `intra-rule` allowing ICMP traffic within bu2.
+
+- Create an `intra-rule` allowing SSH traffic within bu1.
+
+- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> bu2 <ins>to</ins> bu1 only.
 
 ```{figure} images/lab10-initial.png
 ---

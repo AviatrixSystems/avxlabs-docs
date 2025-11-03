@@ -24,6 +24,7 @@ All test instances have been deployed with the standard cloud service provider *
 The **CSP tagging** is the recommended method for defining the SmartGroups.
 ```
 
+
 In this lab, you will implement the following requirements across all three CSPs:
 
 - Create a Smart Group named `"bu1"` that uses the tag `"environment"`.
