@@ -1,5 +1,5 @@
 # Lab 8 - SECURE HIGH-PERFORMANCE DATACENTER EDGE
-This lab will demonstrate the functionalities of the `Edge Gateway`.
+This lab will demonstrate the functionalities of the `Edge Gateway`...
 
 ```{important}
 Edge Gateway = An Aviatrix gateway that enables connectivity to edge locations such as data centers, co-locations, remote sites, provider locations, branch offices, and retail stores.
