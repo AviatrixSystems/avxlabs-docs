@@ -44,8 +44,8 @@ jobs:
           echo "Building book for $folderName"
 
           # Build the book
-          jb clean --all ${folderName}
-          jb build ${folderName}
+          python -m jupyter_book clean --all ${folderName}
+          python -m jupyter_book build ${folderName}
 
           # Move the files to the docs folder
           echo "Moving files to docs/${newFolderName}"
