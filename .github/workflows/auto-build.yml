@@ -35,6 +35,9 @@ jobs:
 
       - name: Build Jupyter Book
         run: |
+          # Ensure Python bin directory is in PATH
+          export PATH="${pythonLocation}/bin:$PATH"
+
           for i in ${{ steps.pl.outputs.paths }}; do
           folderName=${i%"_toc.yml"}
 
@@ -43,9 +46,17 @@ jobs:
 
           echo "Building book for $folderName"
 
-          # Build the book
-          jupyter book clean --all ${folderName}
-          jupyter book build ${folderName}
+          # Build the book - try jb first, fallback to jupyter-book
+          if command -v jb &> /dev/null; then
+            jb clean --all ${folderName}
+            jb build ${folderName}
+          elif command -v jupyter-book &> /dev/null; then
+            jupyter-book clean --all ${folderName}
+            jupyter-book build ${folderName}
+          else
+            python -m jupyter_book clean --all ${folderName}
+            python -m jupyter_book build ${folderName}
+          fi
 
           # Move the files to the docs folder
           echo "Moving files to docs/${newFolderName}"
