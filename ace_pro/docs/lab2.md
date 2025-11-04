@@ -734,7 +734,7 @@ Attachment in Azure
 
 - **gcp-us-central1-spoke1** to **gcp-us-central1-transit**
 
-Edit the Spoke Gateway **_gcp-us-central-spoke1_**, clicking on the pencil icon:
+Edit the Spoke Gateway **_gcp-us-central1-spoke1_**, clicking on the pencil icon:
 
 ```{figure} images/lab2-editspokeingcp.png
 ---
