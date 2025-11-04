@@ -4,11 +4,11 @@ Please download the slides as soon as the training ends.
 
 They will be removed by <ins>EOD Friday of the week of the training</ins>. 
 
-Click this link to {Download}`ACE Prof Mod01 - Introduction <files/ACE Prof Mod01 - Intro.pdf>`
+Click this link to {Download}`ACE Prof Mod01 - Intro <files/ACE Prof Mod01 - Intro.pdf>`
 
-Click this link to {Download}`ACE Prof Mod02 - MCNA <files/ACE Prof Mod02 - MCNA.pdf>`
+Click this link to {Download}`ACE Prof Mod02 - CNSF Characteristics <files/ACE Prof Mod02 - CNSF Characteristics.pdf>`
 
-Click this link to {Download}`ACE Prof Mod03 - Transit Networking <files/ACE Prof Mod03 - Transit Networking.pdf>`
+Click this link to {Download}`ACE Prof Mod03 - CNSF Deployment <files/ACE Prof Mod03 - CNSF Deployment.pdf>`
 
 Click this link to {Download}`ACE Prof Mod04 - Network Segmentation <files/ACE Prof Mod04 - Network Segmentation.pdf>`
 
