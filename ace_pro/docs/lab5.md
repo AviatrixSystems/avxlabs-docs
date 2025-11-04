@@ -469,7 +469,7 @@ If you want to expedite the results on the Gatus dashboard, feel free to adjust 
 height: 400px
 align: center
 ---
-Egress traffic is now going through the Aviatrix Cloud Firewall embedded on the Spoke GW
+Egress traffic is now routed through the Aviatrix Cloud Firewall embedded in the Spoke Gateway
 ```
 
 On the other hand, the ICMP traffic tests will gradually start to fail, with the exception of the test directed towards **aws-us-east-2-spoke1-test1**. This exception is due to the intra-VPC traffic.
