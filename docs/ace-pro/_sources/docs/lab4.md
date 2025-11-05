@@ -186,7 +186,7 @@ Native Peerings Properties
 
 ### 6.2 CoPilot Verification of HPE
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Interfaces"` tab and check the huge number of tunnel interfaces that HPE has instantiated. 
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-1-transit_**, select the `"Interface Stats"` tab and check the huge number of tunnel interfaces that HPE has instantiated. 
 
 These tunnels are used with the Spoke Gateway _aws-us-east-1-spoke1_ and the Transit Gateway _aws-us-east-2-transit_, because HPE is also enabled on these gateways:
 
