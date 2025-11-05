@@ -68,7 +68,7 @@ The **_azure-west-us-transit_** is already enabled for **FireNet** functionality
 
 ### 4.2 Network Segmentation Configuration
 
-Before proceeding with the FireNet implementation, we need to associate **_azure-west-s-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
+Before proceeding with the FireNet implementation, we need to associate **_azure-west-us-spoke2_** to the <span style='color:lightgreen'>Green</span> Network Domain.
 
 Navigate to **CoPilot > Networking > Network Segmentation > Network Domains**
 
