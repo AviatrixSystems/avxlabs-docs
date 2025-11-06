@@ -310,7 +310,7 @@ Deletion of the Greenfield-Rule
 
 ```{figure} images/lab66-newruledeleted.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Commit
@@ -318,7 +318,7 @@ Commit
 
 ```{figure} images/lab66-newruledeleted00.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 DCF Rules List

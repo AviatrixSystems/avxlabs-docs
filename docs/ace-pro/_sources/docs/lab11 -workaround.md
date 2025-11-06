@@ -414,7 +414,7 @@ align: center
 Filter
 ```
 
-```{figure} images/lab10-monitor.png
+```{figure} images/lab10-monitor213.png
 ---
 align: center
 ---
@@ -445,9 +445,9 @@ The instances **aws-us-east-2-spoke1-test1** and **aws-us-east-2-spoke1-test2** 
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Settings** and click on the `"Manage"` button, inside the `"Security Group (SG) Orchestration"` field.
 
-```{figure} images/lab10-orchestration.png
+```{figure} images/lab10-orchestration00.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 SG Orchestration
@@ -605,9 +605,9 @@ Let's investigate the logs once again.
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on the **intra-ssh-bu1** Rule!
 
-```{figure} images/lab10-logsshbu187.png
+```{figure} images/lab10-logsshbu1878.png
 ---
-height: 150px
+height: 250px
 align: center
 ---
 Logs 
