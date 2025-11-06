@@ -44,7 +44,7 @@ Enter the following parameters:
 - **VPC**: <span style='color:#479608'>aws-us-east1-spoke1</span>
 - **Instance Size**: <span style='color:#479608'>c5.large</span>
 - **Attach to Unused Subnet**: <span style='color:#479608'>us-east-1a</span>
-- **Route Table**: <span style='color:#479608'>aws-us-east1-spoke1-Public-1-us-east-1a-rtb</span>
+- **Route Table**: <span style='color:#479608'>aws-us-east-1-spoke1-Public-1-us-east-1a-rtb</span>
 
 Do not forget to click on **Save**.
 
@@ -96,7 +96,7 @@ The subnet with the PSF gateway is a **Public** subnet with a 0/0 route pointing
 **No workload instances should be deployed in this subnet**.
 ```
 
-- Validate the routing table we selected during the PSF Gateway deployment: **_aws-us-east1-spoke1-Public-1-us-east-1a-rtb_**. The default route should point to the PSF Gateway; we’re verifying this RTB because the test instance’s subnet points to it.
+- Validate the routing table we selected during the PSF Gateway deployment: **_aws-us-east-1-spoke1-Public-1-us-east-1a-rtb_**. The default route should point to the PSF Gateway; we’re verifying this RTB because the test instance’s subnet points to it.
 
 ```{figure} images/lab9-routetablepsf2.png
 ---
@@ -227,7 +227,7 @@ Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-aws-us-east-1-spoke1-test1</span>
 - **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
-- **Destination Groups**: <span style='color:#479608'>DeafultThreatGroup</span>
+- **Destination Groups**: <span style='color:#479608'>Deafult ThreatGroup</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
 - **Logging**: <span style='color:#479608'>On</span>
@@ -256,7 +256,7 @@ New Rule
 Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-malicious-ips</span>
-- **Source Groups**: <span style='color:#479608'>DeafultThreatGroup</span>
+- **Source Groups**: <span style='color:#479608'>Deafult ThreatGroup</span>
 - **Destination Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
