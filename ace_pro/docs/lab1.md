@@ -35,7 +35,7 @@ Verify if the CIDR range `192.168.12.0/24` overlaps with any currently used **CI
 
 ```{figure} images/lab1-vnet1.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Searching for a subnet conflict
@@ -312,7 +312,7 @@ Before proceeding with the deployment of the VPC in GCP, please verify once more
 
 ```{figure} images/lab1-newpic8.png
 ---
-height: 350px
+height: 400px
 align: center
 ---
 Verification
