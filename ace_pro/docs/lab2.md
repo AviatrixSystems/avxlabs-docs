@@ -734,7 +734,7 @@ Attachment in Azure
 
 - **gcp-us-central1-spoke1** to **gcp-us-central1-transit**
 
-Edit the Spoke Gateway **_gcp-us-central1-spoke1_**, clicking on the pencil icon:
+Edit the Spoke Gateway **_gcp-us-central-spoke1_**, clicking on the pencil icon:
 
 ```{figure} images/lab2-editspokeingcp.png
 ---
@@ -919,7 +919,7 @@ Please note that the following pending elements will be completed in a subsequen
  
 ### 10.1 Verification of Transit Peerings on CoPilot (Cloud Fabric)
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `"Attachments"` tab and finally select the `"Transit-Transit Peering"` tab: you will see **one** connection per each peering, that correspond to the `two IPSec tunnels`.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the Transit Gateway **_aws-us-east-2-transit_**, then select the `Attachments"` tab and finally select the `"Transit-Transit Peering"` tab: you will see **one** connection per each peering, that correspond to the `two IPSec tunnels`.
 
 ```{figure} images/lab2-verification.png
 ---
@@ -968,7 +968,7 @@ Explore Transit in AWS
 Then select the `"Route DB"` tab. 
 Pay special attention to `“Best Routes”`, its prefixes, type and metric value:
 
-```{figure} images/lab2-rib.png
+```{figure} images/lab2-ri00b.png
 ---
 align: center
 ---

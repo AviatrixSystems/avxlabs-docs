@@ -178,7 +178,7 @@ Now let's enable the cloud secure egress within the VPC that is hosting the **_a
 Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on `"Enable Local Egress on VPC/VNets"`, then select the **_aws-us-east-2-spoke1_** VPC and click on **Add**.
 ```
 
-```{figure} images/lab6-egress.png
+```{figure} images/lab6-egress79.png
 ---
 align: center
 ---
@@ -235,15 +235,7 @@ However, to collect NetFlow information and apply firewall rules, you need to en
 - Enable the **Distributed Cloud Firewall**.
 
 ```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Enable Distributed Cloud Firewall"`.
-Then, click on `"Begin using Distributed Cloud Firewall"` followed by `"Begin"`.
-```
-
-```{figure} images/lab6-activate678.png
----
-align: center
----
-Enable Distributed Cloud Firewall
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Begin using Distributed Cloud Firewall"` followed by `"Begin"`.
 ```
 
 ```{figure} images/lab6-activate.png
@@ -253,36 +245,77 @@ align: center
 Begin Using Distributed Cloud Firewall
 ```
 
-```{figure} images/lab6-newjoe2.png
+```{figure} images/lab6-newjoe244.png
 ---
 align: center
 ---
 Begin
 ```
 
-Finally, click on **Acknowledge**.
+After enabling the Distributed Cloud Firewall feature, a **Default Action Rule** is created, within the **Post Rules Policy List (System)**. This is a system rule used to enforce zero trust principles by controlling how traffic is handled in the absence of explicit rules:
 
-```{figure} images/lab6-newjoe234.png
----
-align: center
----
-Acknolwedge
-```
+- `Default Action Rule` = ALLOW EVERYTHING
 
-After enabling the DCF, one rule will be generated automatically:
-- `Greendfield-Rule` = ALLOW EVERYTHING
-
-```{figure} images/lab6-greenfield.png
+```{figure} images/lab6-greenfield56.png
 ---
 height: 250px
 align: center
 ---
-Greenfield-Rule automatically injected by the Controller
+Default Action Rule automatically injected by the Controller
+```
+
+Now, click **Ruleset** and select the `V1 Policy List`.
+
+```{figure} images/lab6-greenfield5666.png
+---
+height: 250px
+align: center
+---
+V1 Policy List
+```
+
+- Create a new rule clicking on the **"+ Rule"** button.
+
+```{figure} images/lab6-greenfield56661.png
+---
+height: 250px
+align: center
+---
+New Rule
+```
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>Greenfield-Rule</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab6-greenfield566612.png
+---
+height: 250px
+align: center
+---
+Greenfield-Rule
+```
+
+Click on **Commit**.
+
+```{figure} images/lab6-greenfield5666123.png
+---
+height: 250px
+align: center
+---
+Commit
 ```
 
 ## 5. Define a new SmartGroup 
 
-At this point, you can use the **SmartGroup** feature to identify the `test2` instance in the aws-us-east-2-spoke1 VPC.
+At this stage, the **SmartGroup** feature enables the categorization of the `test2` instance within the aws-us-east-2-spoke1 VPC.
 
 ### 5.1 Identify the subnet where the private workload resides
 
@@ -308,11 +341,11 @@ align: center
 AZ
 ```
 
-Now that you know in which `Availability Zone` the private workload resides, you need to select the `VPC/VNets & Subnets` tab and filter based on the **_aws-us-east-2-spoke1_** VPC.
+Now that you know in which `Availability Zone` the private workload resides, you need to select the `VPC/VNets & Subnets` tab and filter based on the **_us-east-2a_** VPC.
 
-Identify the `Private Subnet` that belongs to the `us-east-2a` AZ and copy the corresponding **_`IP Address CIDR`_** value!
+Identify the spoke VPC, reveal its subnets, find the `private subnet`, and copy the `CIDR block` from the IP address CIDR column.
 
-```{figure} images/lab6-greenfieldneww3.png
+```{figure} images/lab6-greenfieldneww31.png
 ---
 height: 300px
 align: center
@@ -435,7 +468,7 @@ ExplicitDenyAll
 
 Do not forget to click on **Commit**.
 
-```{figure} images/lab6-newrule10011.png
+```{figure} images/lab6-newrule100110.png
 ---
 align: center
 ---
@@ -469,7 +502,7 @@ If you want to expedite the results on the Gatus dashboard, feel free to adjust 
 height: 400px
 align: center
 ---
-Egress traffic is now routed through the Aviatrix Cloud Firewall embedded in the Spoke Gateway
+Egress traffic is now going through the Aviatrix Cloud Firewall embedded on the Spoke GW
 ```
 
 On the other hand, the ICMP traffic tests will gradually start to fail, with the exception of the test directed towards **aws-us-east-2-spoke1-test1**. This exception is due to the intra-VPC traffic.
