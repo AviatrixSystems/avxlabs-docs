@@ -2,7 +2,7 @@
 
 ## 1. General Objectives
 
-The objective of this lab is to resolve an IP address overlap between an on-premises partner and the cloud. You will be using the **`Site2Cloud Mapped NAT`** feature to achieve this.
+The objective of this lab is to resolve an IP address overlap between an on-premises partner and the cloud. You will be using the **`Site2Cloud Mapped NAT`** feature to achieve this. 
 
 ## 2. Site2Cloud Overview
 
@@ -132,7 +132,7 @@ Nslookup
 
 This is how your template would look like.
 
-```{figure} images/lab8-s2ctemplate.png
+```{figure} images/lab8-s2ctemplate21.png
 ---
 align: center
 ---
