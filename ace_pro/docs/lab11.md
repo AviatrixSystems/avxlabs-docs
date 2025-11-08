@@ -1118,7 +1118,6 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and fi
 
 ```{figure} images/lab10-reallylast.png
 ---
-height: 100px
 align: center
 ---
 inter-icmp-bu2-east1 Logs
@@ -1136,7 +1135,8 @@ Final Topology
 
 ## 15. Spoke to Spoke Attachment
 
-Now that you have enabled the Distributed Cloud Firewall, the owner of the **_azure-west-us-spoke2-test1_** VM would like to communicate directly with the nearby **_azure-west-us-spoke1-test1_** VM, avoding that the traffic generated from the VNet is sent to the NGFW, first.
+Since Distributed Cloud Firewall is enabled, the owner of **_azure-west-us-spoke2-test1_** wants to directly communicate with **_azure-west-us-spoke1-test1_1, bypassing the NGFW for traffic from the VNet.
+sent to the NGFW, first.
 
 ```{figure} images/lab10-spoke2spoke01.png
 ---
