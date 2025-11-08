@@ -209,7 +209,7 @@ Please allow a few minutes (approximately **2-3** minutes) for the changes to re
 
 ```{figure} images/lab1-vpc4.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 Verification
@@ -312,7 +312,7 @@ Before proceeding with the deployment of the VPC in GCP, please verify once more
 
 ```{figure} images/lab1-newpic8.png
 ---
-height: 200px
+height: 350px
 align: center
 ---
 Verification

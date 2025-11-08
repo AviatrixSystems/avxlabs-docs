@@ -38,7 +38,7 @@ Verify that **AWS US-EAST-1** region has a Transit gateway and a Spoke gateway t
 
 ```{figure} images/lab5-topologycopilot.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 CoPilot view
