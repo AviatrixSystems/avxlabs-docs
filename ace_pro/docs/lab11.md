@@ -134,7 +134,6 @@ Below is the current list of your DCF Rules within the **Distributed Cloud Firew
 
 ```{figure} images/lab10-newone2.png
 ---
-height: 300px
 align: center
 ---
 Complete DCF Rules List
@@ -446,7 +445,6 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Settings** and c
 
 ```{figure} images/lab10-orchestration.png
 ---
-height: 300px
 align: center
 ---
 SG Orchestration
@@ -564,7 +562,6 @@ Click on `"Commit"` to enforce the new rule into the **Data Plane**.
 
 ```{figure} images/lab10-commitsshbu1.png
 ---
-height: 300px
 align: center
 ---
 Commit
@@ -606,7 +603,6 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and fi
 
 ```{figure} images/lab10-logsshbu187.png
 ---
-height: 150px
 align: center
 ---
 Logs 
@@ -674,7 +670,6 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and fi
 
 ```{figure} images/lab10-bu23monitor.png
 ---
-height: 150px
 align: center
 ---
 intra-icmp-bu2
@@ -777,7 +772,6 @@ Filter by the **inter-icmp-bu2-bu1** Rule!
 
 ```{figure} images/lab10-monitorfresh.png
 ---
-height: 150px
 align: center
 ---
 Monitor
@@ -878,7 +872,7 @@ Gateway Routes
 
 ```{figure} images/lab10-newjoe20.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 10.0.12.0
@@ -909,7 +903,7 @@ Navigate to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)�
 
 ```{figure} images/lab10-mtt2.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Border Gateway Protocol (BGP)
@@ -1124,7 +1118,7 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and fi
 
 ```{figure} images/lab10-reallylast.png
 ---
-height: 200px
+height: 100px
 align: center
 ---
 inter-icmp-bu2-east1 Logs
@@ -1243,6 +1237,7 @@ Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**; edit the *
 
 ```{figure} images/lab10-spoke2spoke0789.png
 ---
+height: 250px
 align: center
 ---
 Edit the GCP Transit Gateway
@@ -1255,6 +1250,13 @@ In the `"Attach To Transit Gateways"` field, remove the peering with the **_azur
 align: center
 ---
 Deletion of a peering
+```
+
+```{caution}
+ 
+`Full mesh calculation`: For N = 4 Transit Gateways, the required peerings are `N(N−1)/2` = 4×3/2 = 6.
+
+`With MTT election`: Only 3 peerings are needed. The MTT gateway acts as a central hub, so the three non-MTT gateways each create one peering with the MTT gateway, eliminating the need for interconnections among the non-MTT gateways.
 ```
 
 After completing this lab, the overall topology will appear as follows:
