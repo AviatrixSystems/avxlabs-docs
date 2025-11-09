@@ -360,7 +360,7 @@ When you begin this lab, you should have **six** Gateway Clusters (i.e. 3x Trans
 - **2x** <span style='color:orange'>Spoke GW Clusters</span>
 - **1x** <span style='color:violet'>Edge GW Cluster</span>
 
-If you go to **CoPilot > Cloud Fabric > Gateways > Overview (default tab)**, you will notice that the number of Transit Gateways is set to **three** indeed, whereas the number of Spoke Gateways is set to **two**.
+avigate to **CoPilot > Cloud Fabric > Gateways > Overview (default tab)**. You’ll see that Transit Gateways are set to **three**, while Spoke Gateways are set to **two**.
 
 ```{figure} images/lab2-cluster.png
 ---
