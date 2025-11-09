@@ -625,7 +625,7 @@ WebGroup creation
 ```
 
 ```{important}
-The purpose of this **WebGroup** is to permit traffic exclusively to the domains *`aviatrix.ai`* and *`www.wikipedia.org`*.org. Consequently, any curl commands directed at other domains will be blocked."
+The purpose of this **WebGroup** is to permit traffic exclusively to the domains *`aviatrix.ai`* and *`www.wikipedia.org`*.org. Consequently, any curl commands directed at other domains will be blocked.
 ```
 
 ### 8.2 Edit the Egress-Rule
