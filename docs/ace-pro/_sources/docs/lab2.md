@@ -382,7 +382,7 @@ Transit GWs Clusters
 ```
 
 ```{note}
-You can deploy up to maximum **two** Transit Gateways per each Transit VPC/VNet/VCN.
+A maximum of **15** Transit Gateways can be deployed per Transit VPC, VNet, or VCN when using `Controller Version 8.1 or higher`.
 ```
 
 Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and explore the list of the available Spoke gateways. You can find out that there are a total of **three** Spoke Gateways (once again, the Public IPs may differ):
@@ -398,7 +398,7 @@ Spoke GWs Clusters
 You will notice that the AWS cluster includes two Spoke Gateways, while the Azure deployment has only a single Spoke Gateway. This is a valid configuration. The number of Spoke Gateways you should deploy per Spoke VPC/VNet/VCN depends on your architecture design.
 
 ```{note}
-You can deploy up to maximum **fifteen** Spoke Gateways per each Spoke VPC/VNet/VCN.
+A maximum of **15** Spoke Gateways can be deployed per Spoke VPC, VNet, or VCN.
 ```
 
 ### 5.1 Aviatrix Transit Gateways
