@@ -269,7 +269,6 @@ Now, click **Ruleset** and select the `V1 Policy List`.
 
 ```{figure} images/lab6-greenfield5666.png
 ---
-height: 250px
 align: center
 ---
 V1 Policy List
@@ -279,7 +278,6 @@ V1 Policy List
 
 ```{figure} images/lab6-greenfield56661.png
 ---
-height: 250px
 align: center
 ---
 New Rule
@@ -298,7 +296,6 @@ Do not forget to click on **Save In Drafts**.
 
 ```{figure} images/lab6-greenfield566612.png
 ---
-height: 250px
 align: center
 ---
 Greenfield-Rule
@@ -308,7 +305,6 @@ Click on **Commit**.
 
 ```{figure} images/lab6-greenfield5666123.png
 ---
-height: 250px
 align: center
 ---
 Commit
