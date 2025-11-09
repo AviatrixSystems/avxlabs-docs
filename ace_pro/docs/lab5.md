@@ -228,10 +228,11 @@ The `Default Route` is now pointing to the Aviatrix Spoke Gateway.
 
 ### 4.3 Enable DCF
 
-You have successfully activated your `Cloud Secure Egress Control` without disrupting any resources in the private subnet. The default route inserted into the Private Routing Tables now points to the Spoke gateway.
+You have successfully activated `Cloud Secure Egress Control` without impacting any resources within the private subnet. The default route inserted into the Private Routing Tables now points to the Spoke gateway.
 
-However, to collect NetFlow information and apply firewall rules, you need to enable the `Aviatrix Cloud Firewall`. This will allow you to monitor the behavior of the private subnet and gain insights into the domains accessed from it.
+To collect NetFlow data and enforce firewall policies, please enable the `Aviatrix Cloud Firewall`. This will enable monitoring of the private subnet’s traffic and provide visibility into the domains accessed from it.
 
+Action:
 - Enable the **Distributed Cloud Firewall**.
 
 ```{tip}
