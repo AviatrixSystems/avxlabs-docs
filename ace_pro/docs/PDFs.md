@@ -12,7 +12,7 @@ Click this link to {Download}`ACE Prof Mod03 - CNSF Deployment <files/ACE Prof M
 
 Click this link to {Download}`ACE Prof Mod04 - Network Segmentation <files/ACE Prof Mod04 - Network Segmentation.pdf>`
 
-Click this link to {Download}`ACE Prof Mod05 - High Performance Encryption <files/ACE Prof Mod05 - High Performance Encryption.pdf>`
+Click this link to {Download}`ACE Prof Mod05 - High-Performance Encryption <files/ACE Prof Mod05 - High-Performance Encryption.pdf>`
 
 Click this link to {Download}`ACE Prof Mod06 - ActiveMesh <files/ACE Prof Mod06 - ActiveMesh.pdf>`
 
