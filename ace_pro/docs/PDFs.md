@@ -16,3 +16,8 @@ Click this link to {Download}`ACE Prof Mod05 - High-Performance Encryption <file
 
 Click this link to {Download}`ACE Prof Mod06 - ActiveMesh <files/ACE Prof Mod06 - ActiveMesh.pdf>`
 
+Click this link to {Download}`ACE Prof Mod07 - Security <files/ACE Prof Mod07 - Security.pdf>`
+
+Click this link to {Download}`ACE Prof Mod08 - Firewall Networks <files/ACE Prof Mod08 - Firewall Networks.pdf>`
+
+Click this link to {Download}`ACE Prof Mod09 - Site2Cloud & Edge <files/ACE Prof Mod09 - Site2Cloud & Edge.pdf>`
