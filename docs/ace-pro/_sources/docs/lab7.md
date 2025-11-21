@@ -139,10 +139,15 @@ align: center
 S2C template
 ```
 
-```{important}
-The configuration template will be grayed out after clicking **Save**. Please be patient while the **_Aviatrix Controller_** completes the deployment. <ins>This process will establish the initial side of the connection on the GCP Spoke Gateway</ins>.
+```{caution}
+Once Save is clicked, the configuration template will be grayed out. Please allow time for the **_Aviatrix Controller_** to finalize the deployment. This step provisions the initial side of the connection on the GCP Spoke Gateway. <ins>The connection may appear down initially, since the opposite side of the connection—the on-prem-partner-1 router (e.g., StrongSwan router)—also requires configuration</ins>.
+```
 
-Additionally, the StrongSwan router was preconfigured at the launch of each POD to streamline setup.
+```{figure} images/lab8-newdown01.png
+---
+align: center
+---
+GCP-to-OnPremPartner connection shows as down 
 ```
 
 Since On-Prem-Partner1 uses the overlapping IP space, we will utilise the Aviatrix Mapped NAT feature and use two virtual subnets.
@@ -350,7 +355,7 @@ align: center
 Public IP address
 ```
 
-Now go back on the **SSH** session established with the StrongSwan router and instead of editig the cfg file manually, you are going to use a **_script_** for automatically updating the content of the coonfiguration file!
+Return to the **SSH** session connected to the StrongSwan router. Rather than editing the configuration file by hand, employ a **_script_** to automatically update the file’s contents.
 
 - Run  the following bash script:
 

@@ -684,7 +684,7 @@ In this scenario, the `Health Check` mechanism involves the Aviatrix Controller 
 ## 10. Final Considerations
 
 ```{important}
-Perhaps it's time to embrace the **`"Aviatrix Cloud Firewall"`**, with its integrated distributed architecture, to replace costly next-generation firewalls (NGFWs) and simplify your security infrastructure.
+Consider the **`"Aviatrix Cloud Firewall"`** and its integrated distributed architecture as a cost-effective alternative to traditional NGFWs, while simplifying and strengthening your security posture.
 ```
 
 After completing this lab, the overall topology will appear as follows:
