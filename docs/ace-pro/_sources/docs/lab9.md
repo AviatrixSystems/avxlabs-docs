@@ -195,6 +195,13 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 - **Virtual Machines - Matches all conditions (AND)**: <span style='color:#479608'>Name</span>
 - **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 
+```{figure} images/lab9-smart00331.png
+---
+align: center
+---
+Name
+```
+
 ```{figure} images/lab9-smart002.png
 ---
 align: center
@@ -439,7 +446,7 @@ align: center
 Malicious ip
 ```
 
-However, you will gradually start to notice that traffic to **US EAST-2** will begin to fail.
+However, you will progressively see also failures in traffic routed to **US EAST-2**.
 
 ```{figure} images/lab9-gatus622.png
 ---
@@ -451,17 +458,19 @@ US EAST-2
 
 ### 8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-```{important}
-Before verifying from your SSH client, please re-establish the SSH connection to **_aws-us-east-1-spoke1-test1_**. Note that applying the previous DCF rules will terminate the current SSH session. Although the connection is made through the IGW, it will then route via the Spoke Gateway, where the Distributed Cloud Firewall rules will be enforced.
-```
+Let's verify that traffic to the malicious IP address has been successfully blocked, including via the SSH client.
 
+```{caution}
+If you accidentally close your SSH session and try to log in again to the aws-us-east-1-spoke1-test1 public IP, the SSH connection will fail. With the PSF deployed and the Distributed Cloud Firewall Policy enforced, the PSF is an `Enforcement Security Point` like other Spoke Gateways. SSH from your laptop will be blocked unless you create a policy that allows SSH from your public IP.
 ```{figure} images/lab9-igw.png
 ---
 height: 250px
 align: center
 ---
-IGW and Spoke GW
+Enforcement Security Point
 ```
+
+
 
 #### 8.2.1 SSH to aws-us-east1-spoke1-test1
 
