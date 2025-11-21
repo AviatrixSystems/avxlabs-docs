@@ -1,6 +1,6 @@
 # Lab 9 - THREAT PREVENTION
 
-This lab will demonstrate how the `DCF ThreatGroup` is capable to prevent traffic from being sent to, or from, a set of **threat IPs**.
+This lab will demonstrate how the `Default ThreatGroup` is capable to prevent traffic from being sent to, or from, a set of **threat IPs**.
 
 ## 1. ThreatGroup Overview
 
