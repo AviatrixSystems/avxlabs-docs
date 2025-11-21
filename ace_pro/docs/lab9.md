@@ -480,10 +480,9 @@ align: center
 SSH still ok
 ```
 
-
 #### 8.2.1 SSH to aws-us-east1-spoke1-test1
 
-Let's use the fastest approach to ssh back into the **_aws-us-east1-spoke1-test1_** instance, then from there connect to **_aws-us-east1-spoke1-test2_**.
+Let's use the fastest approach to SSH back into the **_aws-us-east1-spoke1-test1_** instance, then from there connect to **_aws-us-east1-spoke1-test2_**.
 
 ```{important}
 The **_aws-us-east1-spoke1-test2_** Public IP address is not protected by the _PSF gateway_, thus you can easily SSH to the aws-us-east1-spoke1-test2 instance first.
@@ -500,7 +499,7 @@ IGW and Spoke GW
 ```
 
 ```{important}
-Is it possible to directly SSH into **_aws-us-east-1-spoke1-test1_** without first connecting to test2?
+**Is it possible to directly SSH into **_aws-us-east-1-spoke1-test1_** without first connecting to test2?**
 ```
 
 <details>

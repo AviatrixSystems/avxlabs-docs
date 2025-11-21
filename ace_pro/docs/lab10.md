@@ -139,6 +139,16 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 - **Virtual Machines**:
   - **Matches all conditions (AND)/Name**: <span style='color:#479608'>onprem-pod##-test-vm</span>
 
+```{tip}
+Select the first option, **"Name"**, from the drop-down menu!
+```{figure} images/lab10-newsg85411.png
+---
+height: 400px
+align: center
+---
+Name
+```
+
 ```{figure} images/lab10-newsg854.png
 ---
 height: 400px
