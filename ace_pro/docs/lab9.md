@@ -470,6 +470,15 @@ align: center
 Enforcement Security Point
 ```
 
+If your SSH session on **_aws-us-east1-spoke1-test1_** is still up and responsive, go ahead with task **8.2.2**.
+
+```{figure} images/lab9-igw456.png
+---
+height: 250px
+align: center
+---
+SSH still ok
+```
 
 
 #### 8.2.1 SSH to aws-us-east1-spoke1-test1
@@ -477,7 +486,9 @@ Enforcement Security Point
 Let's use the fastest approach to ssh back into the **_aws-us-east1-spoke1-test1_** instance, then from there connect to **_aws-us-east1-spoke1-test2_**.
 
 ```{important}
-The **_aws-us-east1-spoke1-test2_** public IP is not PSF-protected. Access should occur only through approved jump hosts and compliant security controls to reach the private IP of **_aws-us-east1-spoke1-test1_**.
+The **_aws-us-east1-spoke1-test2_** Public IP address is not protected by the _PSF gateway_, thus you can easily SSH to the aws-us-east1-spoke1-test2 instance first.
+
+Once you have SSH access to the **_aws-us-east1-spoke1-test2_** instance, SSH to the private IP of **_aws-us-east1-spoke1-test1_**.
 ```
 
 ```{figure} images/lab9-igw32.png
@@ -632,6 +643,8 @@ align: center
 ---
 SSH in to test1 from test2
 ```
+
+#### 8.2.2 Execution of the curl commands
 
 - Execute now the following commands:
 
