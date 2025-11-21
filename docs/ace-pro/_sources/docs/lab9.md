@@ -461,7 +461,7 @@ US EAST-2
 Let's verify that traffic to the malicious IP address has been successfully blocked, including via the SSH client.
 
 ```{caution}
-If you accidentally close your SSH session and try to log in again to the aws-us-east-1-spoke1-test1 public IP, the SSH connection will fail. With the PSF deployed and the Distributed Cloud Firewall Policy enforced, the PSF is an `Enforcement Security Point` like other Spoke Gateways. SSH from your laptop will be blocked unless you create a policy that allows SSH from your public IP.
+If you accidentally close your SSH session and try to log in again to the **_aws-us-east-1-spoke1-test1_** public IP, the SSH connection will fail. With the PSF deployed and the Distributed Cloud Firewall Policy enforced, the PSF is an `Enforcement Security Point` like other Spoke Gateways. SSH from your laptop will be blocked unless you create a policy that allows SSH from your public IP.
 ```{figure} images/lab9-igw.png
 ---
 height: 250px
@@ -474,7 +474,11 @@ Enforcement Security Point
 
 #### 8.2.1 SSH to aws-us-east1-spoke1-test1
 
-First, SSH into **_aws-us-east1-spoke1-test1_**, then from there, SSH into **_aws-us-east1-spoke1-test2_**.
+Let's use the fastest approach to ssh back into the **_aws-us-east1-spoke1-test1_** instance, then from there connect to **_aws-us-east1-spoke1-test2_**.
+
+```{important}
+The **_aws-us-east1-spoke1-test2_** public IP is not PSF-protected. Access should occur only through approved jump hosts and compliant security controls to reach the private IP of **_aws-us-east1-spoke1-test1_**.
+```
 
 ```{figure} images/lab9-igw32.png
 ---

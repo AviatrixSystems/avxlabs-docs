@@ -801,7 +801,7 @@ document.write(`
 <p>Let’s verify that traffic to the malicious IP address has been successfully blocked, including via the SSH client.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>If you accidentally close your SSH session and try to log in again to the aws-us-east-1-spoke1-test1 public IP, the SSH connection will fail. With the PSF deployed and the Distributed Cloud Firewall Policy enforced, the PSF is an <code class="docutils literal notranslate"><span class="pre">Enforcement</span> <span class="pre">Security</span> <span class="pre">Point</span></code> like other Spoke Gateways. SSH from your laptop will be blocked unless you create a policy that allows SSH from your public IP.</p>
+<p>If you accidentally close your SSH session and try to log in again to the <strong><em>aws-us-east-1-spoke1-test1</em></strong> public IP, the SSH connection will fail. With the PSF deployed and the Distributed Cloud Firewall Policy enforced, the PSF is an <code class="docutils literal notranslate"><span class="pre">Enforcement</span> <span class="pre">Security</span> <span class="pre">Point</span></code> like other Spoke Gateways. SSH from your laptop will be blocked unless you create a policy that allows SSH from your public IP.</p>
 <figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab9-igw.png"><img alt="../_images/lab9-igw.png" src="../_images/lab9-igw.png" style="height: 250px;" />
 </a>
@@ -812,7 +812,11 @@ document.write(`
 </div>
 <section id="ssh-to-aws-us-east1-spoke1-test1">
 <h4>8.2.1 SSH to aws-us-east1-spoke1-test1<a class="headerlink" href="#ssh-to-aws-us-east1-spoke1-test1" title="Link to this heading">#</a></h4>
-<p>First, SSH into <strong><em>aws-us-east1-spoke1-test1</em></strong>, then from there, SSH into <strong><em>aws-us-east1-spoke1-test2</em></strong>.</p>
+<p>Let’s use the fastest approach to ssh back into the <strong><em>aws-us-east1-spoke1-test1</em></strong> instance, then from there connect to <strong><em>aws-us-east1-spoke1-test2</em></strong>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong><em>aws-us-east1-spoke1-test2</em></strong> public IP is not PSF-protected. Access should occur only through approved jump hosts and compliant security controls to reach the private IP of <strong><em>aws-us-east1-spoke1-test1</em></strong>.</p>
+</div>
 <figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab9-igw32.png"><img alt="../_images/lab9-igw32.png" src="../_images/lab9-igw32.png" style="height: 250px;" />
 </a>
