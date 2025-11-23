@@ -821,9 +821,10 @@ document.write(`
 </figure>
 <section id="ssh-to-aws-us-east1-spoke1-test1">
 <h4>8.2.1 SSH to aws-us-east1-spoke1-test1<a class="headerlink" href="#ssh-to-aws-us-east1-spoke1-test1" title="Link to this heading">#</a></h4>
-<p>Let’s use the fastest approach to SSH back into the <strong><em>aws-us-east1-spoke1-test1</em></strong> instance, then from there connect to <strong><em>aws-us-east1-spoke1-test2</em></strong>.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
+<p>Let’s use the fastest approach to SSH back into the <strong><em>aws-us-east1-spoke1-test1</em></strong> instance: the jumphost method.</p>
+<p>The jumphost serves as a single entry point: first connect to the <strong><em>aws-us-east1-spoke1-test2</em></strong> public IP (accessible through the CSP Internet Gateway), then SSH into <strong><em>aws-us-east1-spoke1-test1</em></strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>The <strong><em>aws-us-east1-spoke1-test2</em></strong> Public IP address is not protected by the <em>PSF gateway</em>, thus you can easily SSH to the aws-us-east1-spoke1-test2 instance first.</p>
 <p>Once you have SSH access to the <strong><em>aws-us-east1-spoke1-test2</em></strong> instance, SSH to the private IP of <strong><em>aws-us-east1-spoke1-test1</em></strong>.</p>
 </div>

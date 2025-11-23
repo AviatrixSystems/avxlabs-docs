@@ -482,9 +482,11 @@ SSH still ok
 
 #### 8.2.1 SSH to aws-us-east1-spoke1-test1
 
-Let's use the fastest approach to SSH back into the **_aws-us-east1-spoke1-test1_** instance, then from there connect to **_aws-us-east1-spoke1-test2_**.
+Let's use the fastest approach to SSH back into the **_aws-us-east1-spoke1-test1_** instance: the jumphost method. 
 
-```{important}
+The jumphost serves as a single entry point: first connect to the **_aws-us-east1-spoke1-test2_** public IP (accessible through the CSP Internet Gateway), then SSH into **_aws-us-east1-spoke1-test1_**.
+
+```{tip}
 The **_aws-us-east1-spoke1-test2_** Public IP address is not protected by the _PSF gateway_, thus you can easily SSH to the aws-us-east1-spoke1-test2 instance first.
 
 Once you have SSH access to the **_aws-us-east1-spoke1-test2_** instance, SSH to the private IP of **_aws-us-east1-spoke1-test1_**.
