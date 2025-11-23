@@ -622,7 +622,7 @@ SSH to aws-us-east-1-spoke1-test1
 </details>
 
 ```{caution}
-If you prefer not to attempt the hidden resolution, please proceed with the next task.
+ If you’d rather not try the hidden resolution, just go ahead with the steps below.
 ```
 
 Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, then search for **aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary>**, retrieve its Public IP address and SSH in to the EC2 instance.
