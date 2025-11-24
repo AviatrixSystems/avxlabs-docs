@@ -21,3 +21,9 @@ Click this link to {Download}`ACE Prof Mod07 - Security <files/ACE Prof Mod07 - 
 Click this link to {Download}`ACE Prof Mod08 - Firewall Networks <files/ACE Prof Mod08 - Firewall Networks.pdf>`
 
 Click this link to {Download}`ACE Prof Mod09 - Site2Cloud & Edge <files/ACE Prof Mod09 - Site2Cloud & Edge.pdf>`
+
+Click this link to {Download}`ACE Prof Mod10 - Threat Preventation and CostIQ <files/ACE Prof Mod10 - Threat Prevention and CostIQ.pdf>`
+
+Click this link to {Download}`ACE Prof Mod11 - Distributed Cloud Firewall <files/ACE Prof Mod11 - Distributed Cloud Firewall.pdf>`
+
+Click this link to {Download}`ACE Prof Mod12 - Iac and Network Insights API <files/ACE Prof Mod12 - Iac and Network Insights API.pdf>`
