@@ -609,7 +609,7 @@ You will immediately notice the logs that successfully matched the Greenfield-Ru
 
 ```{figure} images/lab7-finalmonitor01.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 Logs
