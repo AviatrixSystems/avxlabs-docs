@@ -188,6 +188,31 @@ align: center
 Resource that matches the condition
 ```
 
+```{important}
+**What is the difference between the Smart Groups `us-east-2-private-subnet` and `us-east-2-test2`**?
+```
+
+<details>
+  <summary>Click here for a logical explanation: <span style='color:#33ECFF'>Hint!</span></summary>
+
+The `us-east-2-test2` SmartGroup identifies a single instance, while the `us-east-2-private-subnet` SmartGroup covers the entire private subnet.
+
+```{figure} images/lab10-smart788.png
+---
+align: center
+---
+us-east-2-test2
+```
+
+```{figure} images/lab10-smart789.png
+---
+align: center
+---
+us-east-2-private-subnet
+```
+
+</details>
+
 At this stage, you’ve created logical containers to categorize instances or subnets. Now, define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
 
 Below is the current list of your DCF Rules within the **Distributed Cloud Firewall** section of your CoPilot:
