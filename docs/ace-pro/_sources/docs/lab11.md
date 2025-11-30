@@ -168,7 +168,7 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
 
-Before clicking **SAVE**, discover which subnet matches the condition by turning on the `"Preview"` knob.
+Do not forget to click **SAVE**. 
 
 ```{figure} images/lab10-smart611.png
 ---
@@ -185,7 +185,7 @@ This time, CoPilot shows that the condition is matched by a specific subnet.
 ---
 align: center
 ---
-Resource that matches the condition
+192.168.2.0/24
 ```
 
 ```{important}
@@ -244,7 +244,7 @@ Navigate to **CoPilot > Networking > Network Segmentation > Network Domains**, a
 
 ```{figure} images/lab10-landing00.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 Editing the Segment
@@ -447,7 +447,7 @@ Next, proceed by clicking the **Commit** button.
 ---
 align: center
 ---
-Rule committed
+Commit
 ```
 
 ## 5. Verification
