@@ -432,7 +432,7 @@ In Lab 5 (i.e., _Aviatrix Cloud Firewall lab_), the DCF functionality was enable
 
 1) The `"Egress-Rule"` , which permits onlyg HTTP/HTTPS traffic to two specified domains.
 2) The `"ExplicitDenyAll"` rule, with _Logging_ enabled.
-3) The `"Greenfield-Rule"`.
+3) The `"Greenfield-Rule"`, with _Logging_ enabled.
 
 ```{figure} images/lab7-dcfrule.png
 ---
@@ -468,16 +468,6 @@ You have successfully re-established the `Deny-List` model!
 
 ```{important}
 Deny-List Model (formerly known as _blacklist_) = basic access control mechanism that allows through all elements except those explicitly mentioned on a “deny” list.
-```
-
-**Commit** your final change again.
-
-```{figure} images/lab6-new106.png
----
-height: 300px
-align: center
----
-Commit
 ```
 
 ## 7. Connectivity Testing

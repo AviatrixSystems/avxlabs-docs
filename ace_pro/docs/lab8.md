@@ -243,13 +243,45 @@ BGP Advertised Routes
 
 ## 4. Edge: Connectivity Test
 
-Let's initiate a connectivity test from the 'Edge' workstation located inside the Data Center in New York.
+Let's verify that you have successfully established connectivity between the workstation "Edge" inside the New York data center and the Aviatrix CNSF, using the on-prem `Edge gateway`.
+
+```{figure} images/lab8-edgenewyork01.png
+---
+height: 400px
+align: center
+---
+Connectivity through the Edge gateway
+```
+
+### 4.1 Connectivity Test Using Gatus App
+
+Navigate to your POD Portal, locate the `Gatus widget`, and select **_on-prem-pod##-edge_**. Then, sign in to the Gatus app.
+
+```{figure} images/lab8-newjoe2123.png
+---
+align: center
+---
+Gatus
+```
+
+The ICMP check for **_aws-us-east-2-test1_** will gradually turn green.
+
+```{figure} images/lab8-newjoe21232.png
+---
+align: center
+---
+Gatus outcome
+```
+
+### 4.2 Connectivity Test Using the Workstation "Edge" <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+Let's initiate a connectivity test from the `Edge` workstation located inside the Data Center in New York.
 
 ```{figure} images/lab8-newjoe2.png
 ---
 align: center
 ---
-BGP Advertised Routes
+Workstation "Edge"
 ```
 
 Navigate to your personal POD portal, scroll down untill your reach the **Lab 7 and 8** section and click on the `"Open Workstation"` button.
