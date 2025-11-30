@@ -168,30 +168,9 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
 
-```{figure} images/lab11-greenfieldneww45.png
----
-align: center
----
-New SG
-```
-
 Before clicking **SAVE**, discover which subnet matches the condition by turning on the `"Preview"` knob.
 
-```{figure} images/lab1081-smart6.png
----
-align: center
----
-us-east-2-private
-```
-
-```{figure} images/lab1080-smart6.png
----
-align: center
----
-Tag: Name
-```
-
-```{figure} images/lab10-smart6.png
+```{figure} images/lab10-smart611.png
 ---
 align: center
 ---
@@ -200,7 +179,7 @@ Resource Selection
 
 This time, CoPilot shows that the condition is matched by a specific subnet.
 
-- **aws-us-east2-spoke1-test2** in AZURE WEST-US SPOKE2.
+- **192.168.2.0/24** in AZURE WEST-US SPOKE2.
 
 ```{figure} images/lab10-smart7.png
 ---
@@ -209,7 +188,7 @@ align: center
 Resource that matches the condition
 ```
 
-At this stage, you have created logical containers that do not affect the existing routing domain, thanks to the `Connection Policy`  applied in **Lab 3**. Now, it's time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
+At this stage, you’ve created logical containers to categorize instances or subnets. Now, define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
 
 Below is the current list of your DCF Rules within the **Distributed Cloud Firewall** section of your CoPilot:
 
@@ -220,7 +199,49 @@ align: center
 Complete DCF Rules List
 ```
 
-### 3.3 Connectivity Verification (ICMP) Using Gatus App
+### 3.5 Removal of the Connection Policy
+
+The gcp-us-central1-spoke1 VPC must remain isolated because, within this VPC, the Spoke gateway serves as the _landing Spoke_ for the `Site-to-Cloud` connection established with the partner router.
+
+```{figure} images/lab10-landing.png
+---
+height: 400px
+align: center
+---
+Landing Spoke GW
+```
+
+- Disable the `Connection Policy`:
+
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains**, and edit one of the two existing **Segments** by clicking the pencil icon on the right.
+
+```{figure} images/lab10-landing00.png
+---
+height: 400px
+align: center
+---
+Editing the Segment
+```
+
+```{figure} images/lab10-landing01.png
+---
+height: 400px
+align: center
+---
+Removal of the Connection Policy
+```
+
+This is what the topology will look like after this task:
+
+```{figure} images/lab10-landing03.png
+---
+height: 400px
+align: center
+---
+The New Topology
+```
+
+### 3.5 Connectivity Verification (ICMP) Using Gatus App
 
 Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_**.
 
@@ -244,7 +265,7 @@ aws-us-east-2-spoke1-test1
 
 The **East-West** traffic is disrupted. The instance **_aws-us-east-2-spoke1-test1_** can only reach **test2** due to intra-VPC traffic, which bypasses the Aviatrix Spoke Gateway (i.e. the **Enforcement Security Point**).
 
-### 3.4 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 3.6 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Open a terminal window and SSH into the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (_NOT test2_). From there, ping the private IPs of each other instances to verify that the connectivity is indeed **broken**!
 

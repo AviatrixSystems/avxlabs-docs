@@ -352,8 +352,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1 Smart Group “bu1”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-us-east-2-test2">3.2 Smart Group “us-east-2-test2”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-azure-spoke2">3.3 Smart Group “azure-spoke2”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-gatus-app">3.3 Connectivity Verification (ICMP) Using Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-ssh-client-bonus">3.4 Connectivity Verification (ICMP) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-of-the-connection-policy">3.5 Removal of the Connection Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-gatus-app">3.5 Connectivity Verification (ICMP) Using Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-ssh-client-bonus">3.6 Connectivity Verification (ICMP) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-gatus-app">3.5 Connectivity Verification (SSH) Using Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-ssh-client-bonus">3.6  Connectivity Verification (SSH) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
@@ -577,94 +578,113 @@ document.write(`
 <li><p><strong>IPs / CIDRs</strong>: <span style='color:#479608'>192.168.2.0/24</span></p></li>
 </ul>
 <p>Before clicking on <strong>SAVE</strong>, delete the empty <code class="docutils literal notranslate"><span class="pre">&quot;Virtual</span> <span class="pre">Machines&quot;</span></code> additional condition.</p>
-<figure class="align-center" id="id15">
-<img alt="../_images/lab11-greenfieldneww45.png" src="../_images/lab11-greenfieldneww45.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 547 </span><span class="caption-text">New SG</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 <p>Before clicking <strong>SAVE</strong>, discover which subnet matches the condition by turning on the <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code> knob.</p>
-<figure class="align-center" id="id16">
-<img alt="../_images/lab1081-smart6.png" src="../_images/lab1081-smart6.png" />
+<figure class="align-center" id="id15">
+<img alt="../_images/lab10-smart611.png" src="../_images/lab10-smart611.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 548 </span><span class="caption-text">us-east-2-private</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id17">
-<img alt="../_images/lab1080-smart6.png" src="../_images/lab1080-smart6.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 549 </span><span class="caption-text">Tag: Name</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id18">
-<img alt="../_images/lab10-smart6.png" src="../_images/lab10-smart6.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 550 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 547 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time, CoPilot shows that the condition is matched by a specific subnet.</p>
 <ul class="simple">
-<li><p><strong>aws-us-east2-spoke1-test2</strong> in AZURE WEST-US SPOKE2.</p></li>
+<li><p><strong>192.168.2.0/24</strong> in AZURE WEST-US SPOKE2.</p></li>
 </ul>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab10-smart7.png" src="../_images/lab10-smart7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 551 </span><span class="caption-text">Resource that matches the condition</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 548 </span><span class="caption-text">Resource that matches the condition</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>At this stage, you have created logical containers that do not affect the existing routing domain, thanks to the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code>  applied in <strong>Lab 3</strong>. Now, it’s time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.</p>
+<p>At this stage, you’ve created logical containers to categorize instances or subnets. Now, define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.</p>
 <p>Below is the current list of your DCF Rules within the <strong>Distributed Cloud Firewall</strong> section of your CoPilot:</p>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab10-newone2.png" src="../_images/lab10-newone2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 552 </span><span class="caption-text">Complete DCF Rules List</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 549 </span><span class="caption-text">Complete DCF Rules List</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="removal-of-the-connection-policy">
+<h3>3.5 Removal of the Connection Policy<a class="headerlink" href="#removal-of-the-connection-policy" title="Link to this heading">#</a></h3>
+<p>The gcp-us-central1-spoke1 VPC must remain isolated because, within this VPC, the Spoke gateway serves as the <em>landing Spoke</em> for the <code class="docutils literal notranslate"><span class="pre">Site-to-Cloud</span></code> connection established with the partner router.</p>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/lab10-landing.png"><img alt="../_images/lab10-landing.png" src="../_images/lab10-landing.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 550 </span><span class="caption-text">Landing Spoke GW</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Disable the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code>:</p></li>
+</ul>
+<p>Navigate to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong>, and edit one of the two existing <strong>Segments</strong> by clicking the pencil icon on the right.</p>
+<figure class="align-center" id="id19">
+<a class="reference internal image-reference" href="../_images/lab10-landing00.png"><img alt="../_images/lab10-landing00.png" src="../_images/lab10-landing00.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 551 </span><span class="caption-text">Editing the Segment</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="../_images/lab10-landing01.png"><img alt="../_images/lab10-landing01.png" src="../_images/lab10-landing01.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 552 </span><span class="caption-text">Removal of the Connection Policy</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is what the topology will look like after this task:</p>
+<figure class="align-center" id="id21">
+<a class="reference internal image-reference" href="../_images/lab10-landing03.png"><img alt="../_images/lab10-landing03.png" src="../_images/lab10-landing03.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 553 </span><span class="caption-text">The New Topology</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="connectivity-verification-icmp-using-gatus-app">
-<h3>3.3 Connectivity Verification (ICMP) Using Gatus App<a class="headerlink" href="#connectivity-verification-icmp-using-gatus-app" title="Link to this heading">#</a></h3>
+<h3>3.5 Connectivity Verification (ICMP) Using Gatus App<a class="headerlink" href="#connectivity-verification-icmp-using-gatus-app" title="Link to this heading">#</a></h3>
 <p>Navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select <strong><em>aws-us-east-2-spoke1-test1</em></strong>.</p>
 <p>Insert the credentials available on your POD Portal and then click on <strong>“Sign in”</strong>.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab10-gatus00.png"><img alt="../_images/lab10-gatus00.png" src="../_images/lab10-gatus00.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 553 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 554 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../_images/lab10-gatus01.png"><img alt="../_images/lab10-gatus01.png" src="../_images/lab10-gatus01.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 554 </span><span class="caption-text">aws-us-east-2-spoke1-test1</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 555 </span><span class="caption-text">aws-us-east-2-spoke1-test1</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The <strong>East-West</strong> traffic is disrupted. The instance <strong><em>aws-us-east-2-spoke1-test1</em></strong> can only reach <strong>test2</strong> due to intra-VPC traffic, which bypasses the Aviatrix Spoke Gateway (i.e. the <strong>Enforcement Security Point</strong>).</p>
 </section>
 <section id="connectivity-verification-icmp-using-ssh-client-bonus">
-<h3>3.4 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-verification-icmp-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<h3>3.6 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-verification-icmp-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>Open a terminal window and SSH into the public IP of the instance <strong>aws-us-east-2-spoke1-<span style='color:red'>test1</span></strong> (<em>NOT test2</em>). From there, ping the private IPs of each other instances to verify that the connectivity is indeed <strong>broken</strong>!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Refer to your POD for the private IPs.</p>
 </div>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab10-newone.png"><img alt="../_images/lab10-newone.png" src="../_images/lab10-newone.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 555 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id24">
-<img alt="../_images/lab10-newone3.png" src="../_images/lab10-newone3.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 556 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 556 </span><span class="caption-text">SSH</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id25">
-<img alt="../_images/lab10-newone43.png" src="../_images/lab10-newone43.png" />
+<img alt="../_images/lab10-newone3.png" src="../_images/lab10-newone3.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 557 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id26">
+<img alt="../_images/lab10-newone43.png" src="../_images/lab10-newone43.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 558 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -676,11 +696,11 @@ document.write(`
 <section id="connectivity-verification-ssh-using-gatus-app">
 <h3>3.5 Connectivity Verification (SSH) Using Gatus App<a class="headerlink" href="#connectivity-verification-ssh-using-gatus-app" title="Link to this heading">#</a></h3>
 <p>From the Gatus App open on <strong><em>aws-us-east-2-spoke1-test1</em></strong>, verify the SSH section.</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab10-gatus02.png"><img alt="../_images/lab10-gatus02.png" src="../_images/lab10-gatus02.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 558 </span><span class="caption-text">aws-us-east-2-spoke1-test1</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 559 </span><span class="caption-text">aws-us-east-2-spoke1-test1</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The SSH test is only successful against <strong><em>aws-us-east-2-spoke1-test2</em></strong> due to intra-VPC traffic.</p>
@@ -692,16 +712,16 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>Refer to your POD for the private IPs.</p>
 </div>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id28">
 <img alt="../_images/lab10-sshtoaws.png" src="../_images/lab10-sshtoaws.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 559 </span><span class="caption-text">SSH to test2 in AWS US-East-2–&gt; OK</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 560 </span><span class="caption-text">SSH to test2 in AWS US-East-2–&gt; OK</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab10-sshnew2.png" src="../_images/lab10-sshnew2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 560 </span><span class="caption-text">SSH fails towards the other instances</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 561 </span><span class="caption-text">SSH fails towards the other instances</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The previous results clearly confirm that connectivity is disrupted, allowing only <code class="docutils literal notranslate"><span class="pre">intra-vpc</span> <span class="pre">traffic</span></code>.</p>
@@ -716,10 +736,10 @@ document.write(`
 <p>Zero Trust architecture is “Never trust, always verify”, a critical component to enterprise cloud adoption success!</p>
 </div>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id30">
 <img alt="../_images/lab10-newrule.png" src="../_images/lab10-newrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 561 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 562 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enter the following parameters:</p>
@@ -732,27 +752,27 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <img alt="../_images/lab10-rule1.png" src="../_images/lab10-rule1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 562 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 563 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id32">
 <img alt="../_images/lab10-rulecommitted00.png" src="../_images/lab10-rulecommitted00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 563 </span><span class="caption-text">Rule committed</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 564 </span><span class="caption-text">Rule committed</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="create-an-intra-rule-that-allows-icmp-inside-bu2">
 <h3>4.2. Create an intra-rule that allows ICMP inside bu2<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu2" title="Link to this heading">#</a></h3>
 <p>Create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id33">
 <img alt="../_images/lab10-rule3.png" src="../_images/lab10-rule3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 564 </span><span class="caption-text">New rule</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 565 </span><span class="caption-text">New rule</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -770,17 +790,17 @@ document.write(`
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id34">
 <img alt="../_images/lab10-intrabu2.png" src="../_images/lab10-intrabu2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 565 </span><span class="caption-text">intra-icmp-bu2</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 566 </span><span class="caption-text">intra-icmp-bu2</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Next, proceed by clicking the <strong>Commit</strong> button.</p>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id35">
 <img alt="../_images/lab10-rulecommitted01.png" src="../_images/lab10-rulecommitted01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 566 </span><span class="caption-text">Rule committed</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 567 </span><span class="caption-text">Rule committed</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -788,20 +808,20 @@ document.write(`
 <section id="verification">
 <h2>5. Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
 <p>Following the creation of the previous Smart Groups and Rules, the topology with the permitted protocols will appear as follows:</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab10-topology2.png"><img alt="../_images/lab10-topology2.png" src="../_images/lab10-topology2.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 567 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 568 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-gatus-app">
 <h3>5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App<a class="headerlink" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the ICMP Traffic.</p>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id37">
 <img alt="../_images/lab10-gatus80.png" src="../_images/lab10-gatus80.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 568 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 569 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong><em>aws-us-east-2-spoke1-test1</em></strong> and <strong><em>azure-west-us-spoke1-test1</em></strong> can ping each other due to the intra-rule applied to the SmartGroup “bu1”.</p>
@@ -810,20 +830,20 @@ document.write(`
 <section id="verify-ssh-traffic-from-your-laptop-to-bu1-using-ssh-client-bonus">
 <h3>5.2 Verify SSH traffic from your laptop to bu1 Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-ssh-traffic-from-your-laptop-to-bu1-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>SSH to the Public IP of the instance <strong>aws-us-east-2-spoke1-test1</strong>.</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id38">
 <img alt="../_images/lab10-sshpod.png" src="../_images/lab10-sshpod.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 569 </span><span class="caption-text">SSH from your laptop</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 570 </span><span class="caption-text">SSH from your laptop</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The SSH session from your laptop to the <strong><em>aws-us-east-2-spoke1-test1</em></strong> instance is not affected by any DCF rules, because the connection is established directly through the <strong>AWS IGW</strong>.</p>
 </div>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id39">
 <img alt="../_images/lab10-laptop.png" src="../_images/lab10-laptop.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 570 </span><span class="caption-text">SSH from your laptop - logical diagram</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 571 </span><span class="caption-text">SSH from your laptop - logical diagram</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -836,17 +856,17 @@ document.write(`
 <li><p><strong>azure-west-us-spoke2-test1</strong> in Azure</p></li>
 </ul>
 <p>According to the rules created before, only the ping towards the <strong>azure-us-west-spoke1-test1</strong> will work, because this instance belongs to the same Smart Group bu1 as the instance from where you generated ICMP traffic.</p>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id40">
 <img alt="../_images/lab10-pingcheck.png" src="../_images/lab10-pingcheck.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 571 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 572 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, let’s try to ping the instance <strong>aws-us-east-2-spoke1-test2</strong> from <strong>aws-us-east-2-spoke1-test1</strong>.</p>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id41">
 <img alt="../_images/lab10-pingtotest2.png" src="../_images/lab10-pingtotest2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 572 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 573 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>aws-us-east-2-spoke1-test1</strong> can successfully ping <strong>aws-us-east-2-spoke1-test<span style='color:red'>2</span></summary></strong> because the communication occurs within the VPC, bypassing the Spoke Gateway.</p>
@@ -858,31 +878,31 @@ document.write(`
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Filter out based on the protocol <strong>ICMP</strong>.</p>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id42">
 <img alt="../_images/lab10-monitor100.png" src="../_images/lab10-monitor100.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 573 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 574 </span><span class="caption-text">Filter</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id43">
 <img alt="../_images/lab10-monitor.png" src="../_images/lab10-monitor.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 574 </span><span class="caption-text">Outcomes</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 575 </span><span class="caption-text">Outcomes</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Based on the above outcome, you will not see <strong>10.0.1.10</strong> (aws-us-east-2-spoke1-test2) because it belongs to <strong>bu2</strong>, which does not match the intra-icmp-bu1 rule.</p>
 <p>However, <strong>aws-us-east-2-spoke1-test1</strong> can ping <strong>aws-us-east-2-spoke1-test2</strong> due to intra-VPC communication, without needing to match any of the deployed DCF rules.</p>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id44">
 <img alt="../_images/lab10-sgorch01.png" src="../_images/lab10-sgorch01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 575 </span><span class="caption-text">test1 and test2 in AWS US-EAST-2</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 576 </span><span class="caption-text">test1 and test2 in AWS US-EAST-2</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id45">
 <img alt="../_images/lab10-sgorch02.png" src="../_images/lab10-sgorch02.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 576 </span><span class="caption-text">test1 and test2 in AWS US-EAST-2</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 577 </span><span class="caption-text">test1 and test2 in AWS US-EAST-2</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -890,27 +910,27 @@ document.write(`
 <p>The instances <strong>aws-us-east-2-spoke1-test1</strong> and <strong>aws-us-east-2-spoke1-test2</strong> are in the same VPC. Although these two instances have been assigned to <ins>two distinct and separate Smart Groups</ins>, the communication will occur until you don’t enable the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group(SG)</span> <span class="pre">Orchestration&quot;</span></code> (aka <strong><em>intra-vpc separation</em></strong>).</p>
 </div>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;Manage&quot;</span></code> button, inside the <code class="docutils literal notranslate"><span class="pre">&quot;Security</span> <span class="pre">Group</span> <span class="pre">(SG)</span> <span class="pre">Orchestration&quot;</span></code> field.</p>
-<figure class="align-center" id="id45">
+<figure class="align-center" id="id46">
 <img alt="../_images/lab10-orchestration.png" src="../_images/lab10-orchestration.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 577 </span><span class="caption-text">SG Orchestration</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 578 </span><span class="caption-text">SG Orchestration</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enable the <strong><em>SG orchestration</em></strong> feature on the <strong><em>aws-us-east-2-spoke1</em></strong> VPC, flag the checkbox  <code class="docutils literal notranslate"><span class="pre">&quot;I</span> <span class="pre">understand</span> <span class="pre">the</span> <span class="pre">network</span> <span class="pre">impact</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">changes&quot;</span></code> and then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id47">
 <img alt="../_images/lab10-orchestration2.png" src="../_images/lab10-orchestration2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 578 </span><span class="caption-text">Manage SG Orchestration</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 579 </span><span class="caption-text">Manage SG Orchestration</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="sg-orchestration-verification-using-the-gatus-app">
 <h3>5.5 SG Orchestration Verification Using the Gatus App<a class="headerlink" href="#sg-orchestration-verification-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the <strong>Gatus</strong> App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the connectivity with <strong><em>aws-us-east-2-spoke1-test2</em></strong>.</p>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id48">
 <img alt="../_images/lab10-gatus81.png" src="../_images/lab10-gatus81.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 579 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 580 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The ping to test2 will gradually fail!</p>
@@ -918,20 +938,20 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>SSH traffic will also fail!</p>
 </div>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id49">
 <img alt="../_images/lab10-gatus8786.png" src="../_images/lab10-gatus8786.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 580 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 581 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="sg-orchestration-verification-using-the-ssh-client-bonus">
 <h3>5.6 SG Orchestration Verification Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#sg-orchestration-verification-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>Relaunch the ping from <strong>aws-us-east-2-spoke1-<span style='color:#479608'>test1</span></strong> towards <strong>aws-us-east-2-spoke1-<span style='color:red'>test2</span></strong>.</p>
-<figure class="align-center" id="id49">
+<figure class="align-center" id="id50">
 <img alt="../_images/lab10-pingtotest2fail.png" src="../_images/lab10-pingtotest2fail.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 581 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 582 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -946,10 +966,10 @@ document.write(`
 <section id="verify-ssh-within-bu1-using-the-gatus-app">
 <h3>5.7 Verify SSH within bu1 Using the Gatus App<a class="headerlink" href="#verify-ssh-within-bu1-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the SSH Traffic.</p>
-<figure class="align-center" id="id50">
+<figure class="align-center" id="id51">
 <img alt="../_images/lab10-gatus88.png" src="../_images/lab10-gatus88.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 582 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 583 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong><em>aws-us-east-2-spoke1-test1</em></strong>  is unable to SSH into any other instances within bu1, as well as those in bu2.</p>
@@ -957,20 +977,20 @@ document.write(`
 <section id="verify-ssh-within-bu1-using-the-ssh-client-bonus">
 <h3>5.8 Verify SSH within bu1 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-ssh-within-bu1-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>SSH to the Private IP of the instance <strong><em>azure-west-us-spoke1-test1</em></strong> in Azure. Despite the fact that the instance is within the same Smart Group “bu1”, the SSH will fail due to the absence of a dedicated rule that would permit SSH traffic within the Smart Group.</p>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id52">
 <img alt="../_images/lab10-sshfail.png" src="../_images/lab10-sshfail.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 583 </span><span class="caption-text">SSH fails</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 584 </span><span class="caption-text">SSH fails</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="add-a-rule-that-allows-ssh-in-bu1">
 <h3>5.9 Add a rule that allows SSH in bu1<a class="headerlink" href="#add-a-rule-that-allows-ssh-in-bu1" title="Link to this heading">#</a></h3>
 <p>Create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id52">
+<figure class="align-center" id="id53">
 <img alt="../_images/lab10-newrule2.png" src="../_images/lab10-newrule2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 584 </span><span class="caption-text">New rule</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 585 </span><span class="caption-text">New rule</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -989,17 +1009,17 @@ document.write(`
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id53">
+<figure class="align-center" id="id54">
 <img alt="../_images/lab10-sshbu1.png" src="../_images/lab10-sshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 585 </span><span class="caption-text">Create rule</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 586 </span><span class="caption-text">Create rule</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> to enforce the new rule into the <strong>Data Plane</strong>.</p>
-<figure class="align-center" id="id54">
+<figure class="align-center" id="id55">
 <img alt="../_images/lab10-commitsshbu1.png" src="../_images/lab10-commitsshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 586 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 587 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1009,10 +1029,10 @@ document.write(`
 <section id="id1">
 <h3>6.1 Verify SSH within bu1 Using the Gatus App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the SSH Traffic.</p>
-<figure class="align-center" id="id55">
+<figure class="align-center" id="id56">
 <img alt="../_images/lab10-gatus97.png" src="../_images/lab10-gatus97.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 587 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 588 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong><em>aws-us-east-2-spoke1-test1</em></strong> can now SSH to <strong><em>azure-west-us-spoke1-test1</em></strong></p>
@@ -1023,10 +1043,10 @@ document.write(`
 <li><p>Try once again to SSH to the Private IP of the instance <strong><em>azure-west-us-spoke1-<span style='color:red'>test1</span></em></strong> in Azure in BU1.</p></li>
 </ul>
 <p>This time the connection will be established, thanks to the new intra-rule.</p>
-<figure class="align-center" id="id56">
+<figure class="align-center" id="id57">
 <img alt="../_images/lab10-sshbu1ok.png" src="../_images/lab10-sshbu1ok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 588 </span><span class="caption-text">SSH ok</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 589 </span><span class="caption-text">SSH ok</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1035,19 +1055,19 @@ document.write(`
 <h2>7. Logs<a class="headerlink" href="#logs" title="Link to this heading">#</a></h2>
 <p>Let’s investigate the logs once again.</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and filter out based on the <strong>intra-ssh-bu1</strong> Rule!</p>
-<figure class="align-center" id="id57">
+<figure class="align-center" id="id58">
 <img alt="../_images/lab10-logsshbu187.png" src="../_images/lab10-logsshbu187.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 589 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 590 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The log above clearly indicates that the <code class="docutils literal notranslate"><span class="pre">&quot;intra-ssh-bu1&quot;</span></code> rule is successfully permitting SSH traffic within the Smart Group bu1.</p>
 <p>Following the creation of this intra-rule, the topology with the permitted protocols will appear as follows:</p>
-<figure class="align-center" id="id58">
+<figure class="align-center" id="id59">
 <a class="reference internal image-reference" href="../_images/lab10-topologynew.png"><img alt="../_images/lab10-topologynew.png" src="../_images/lab10-topologynew.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 590 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 591 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1056,10 +1076,10 @@ document.write(`
 <section id="verify-icmp-traffic-within-bu2-using-gatus-app">
 <h3>8.1 Verify ICMP traffic within bu2 Using Gatus App<a class="headerlink" href="#verify-icmp-traffic-within-bu2-using-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>gcp-us-central1-spoke1-test1</em></strong> and verify the ICMP Traffic.</p>
-<figure class="align-center" id="id59">
+<figure class="align-center" id="id60">
 <img alt="../_images/lab10-gatus34.png" src="../_images/lab10-gatus34.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 591 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 592 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ping towards the <strong><em>azure-west-us-spoke2-test1</em></strong> and <strong><em>aws-us-east-2-spoke1-test2</em></strong> will work, because these two instance belongs to the same Smart Group bu2!</p>
@@ -1067,10 +1087,10 @@ document.write(`
 <section id="verify-icmp-traffic-within-bu2-using-ssh-client-bonus">
 <h3>8.2 Verify ICMP traffic within bu2 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-icmp-traffic-within-bu2-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>SSH to the Public IP of the instance <strong><em>gcp-us-central1-spoke1-test1</em></strong>:</p>
-<figure class="align-center" id="id60">
+<figure class="align-center" id="id61">
 <img alt="../_images/lab10-sshtocentral.png" src="../_images/lab10-sshtocentral.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 592 </span><span class="caption-text">SSH to gcp-us-central1-spoke1-test1</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 593 </span><span class="caption-text">SSH to gcp-us-central1-spoke1-test1</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ping the following instances:</p>
@@ -1081,10 +1101,10 @@ document.write(`
 <li><p><strong>azure-west-us-spoke2-test1</strong> in Azure</p></li>
 </ul>
 <p>According to the rules created before, only the ping towards the <strong>azure-west-us-spoke2-test1</strong> and <strong>aws-us-east-2-spoke1-test2</strong> will work, because these two instance belongs to the same Smart Group <strong>bu2</strong> as the instance from where you executed the ICMP traffic.</p>
-<figure class="align-center" id="id61">
+<figure class="align-center" id="id62">
 <img alt="../_images/lab10-pingtestgcp.png" src="../_images/lab10-pingtestgcp.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 593 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 594 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1092,17 +1112,17 @@ document.write(`
 <h3>8.3 Logs Verification<a class="headerlink" href="#logs-verification" title="Link to this heading">#</a></h3>
 <p>Let’s investigate the logs once again.</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and filter based on the <em>intra-icmp-bu2</em> rule.</p>
-<figure class="align-center" id="id62">
+<figure class="align-center" id="id63">
 <img alt="../_images/lab10-bu23monitor.png" src="../_images/lab10-bu23monitor.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 594 </span><span class="caption-text">intra-icmp-bu2</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 595 </span><span class="caption-text">intra-icmp-bu2</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id63">
+<figure class="align-center" id="id64">
 <a class="reference internal image-reference" href="../_images/lab10-bu2monitor.png"><img alt="../_images/lab10-bu2monitor.png" src="../_images/lab10-bu2monitor.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 595 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 596 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The logs above confirm that the <strong>ICMP</strong> protocol is permitted within the Smart Group bu2.</p>
@@ -1112,10 +1132,10 @@ document.write(`
 <h2>9. Inter-rule from bu2 to bu1<a class="headerlink" href="#inter-rule-from-bu2-to-bu1" title="Link to this heading">#</a></h2>
 <p>Create a new rule that allows <strong>ICMP</strong> <span style='color:green'>FROM</span></summary> bu2 <span style='color:green'>TO</span></summary> bu1.</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id64">
+<figure class="align-center" id="id65">
 <img alt="../_images/lab10-newrule4.png" src="../_images/lab10-newrule4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 596 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 597 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -1133,20 +1153,20 @@ document.write(`
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id65">
+<figure class="align-center" id="id66">
 <img alt="../_images/lab10-interssh.png" src="../_images/lab10-interssh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 597 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 598 </span><span class="caption-text">Create Rule</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enforce this new rule into the Data Plane clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;Commit&quot;</span></code> button.</p>
 <section id="verify-icmp-traffic-from-bu2-to-bu1-using-the-gatus-app">
 <h3>9.1 Verify ICMP traffic from bu2 to bu1 Using the Gatus App<a class="headerlink" href="#verify-icmp-traffic-from-bu2-to-bu1-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>azure-west-us-spoke2-test1</em></strong> and verify the ICMP Traffic.</p>
-<figure class="align-center" id="id66">
+<figure class="align-center" id="id67">
 <img alt="../_images/lab10-newcommit2.png" src="../_images/lab10-newcommit2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 598 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 599 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>All pings will be successful except those to the <strong>aws EAST-1</strong> region, as the lack of a <strong>full-mesh</strong> topology impacts connectivity.</p>
@@ -1162,17 +1182,17 @@ document.write(`
 <li><p><strong>azure-west-us-spoke1-test1</strong> in Azure</p></li>
 </ul>
 <p>Thit time all pings will be successful, thanks to the inter-rule applied between bu2 and bu1.</p>
-<figure class="align-center" id="id67">
+<figure class="align-center" id="id68">
 <img alt="../_images/lab10-pingallok.png" src="../_images/lab10-pingallok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 599 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 600 </span><span class="caption-text">Ping ok</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>AWS US-EAST-1</strong> region is not reachable yet!</p>
-<figure class="align-center" id="id68">
+<figure class="align-center" id="id69">
 <img alt="../_images/lab10-pingallokk.png" src="../_images/lab10-pingallokk.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 600 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 601 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1182,29 +1202,29 @@ document.write(`
 <p>Let’s investigate the logs once again.</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
 <p>Filter by the <strong>inter-icmp-bu2-bu1</strong> Rule!</p>
-<figure class="align-center" id="id69">
+<figure class="align-center" id="id70">
 <img alt="../_images/lab10-monitorfresh.png" src="../_images/lab10-monitorfresh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 601 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 602 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The logs clearly show that the inter-rule is successfully allowing ICMP traffic from bu2 to bu1.</p>
 <p>After establishing this inter-rule, the topology with all permitted protocols will be represented as follows:</p>
-<figure class="align-center" id="id70">
+<figure class="align-center" id="id71">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing2.png"><img alt="../_images/lab10-lastdrawing2.png" src="../_images/lab10-lastdrawing2.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 602 </span><span class="caption-text">New Topology with the DCF rules</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 603 </span><span class="caption-text">New Topology with the DCF rules</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The last inter-rule works smoothly only because the ICMP traffic is generated from the bu2, however, if you SSH to any instances in the Smart Group bu1, the ICMP traffic towards bu2 will fail due to the direction of the inter-rule that was created before: <strong>FROM</strong> bu2 <strong>TO</strong> bu1 (please note the direction of the arrow in the drawing).</p>
 </div>
-<figure class="align-center" id="id71">
+<figure class="align-center" id="id72">
 <img alt="../_images/lab10-direction.png" src="../_images/lab10-direction.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 603 </span><span class="caption-text">From-To</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 604 </span><span class="caption-text">From-To</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The inter-rule is <strong>Stateful</strong>, meaning it allows the echo-reply generated from bu1 to reach the instance in bu2.</p>
@@ -1215,21 +1235,21 @@ document.write(`
 <h3>11.1 Activation of the MTT<a class="headerlink" href="#activation-of-the-mtt" title="Link to this heading">#</a></h3>
 <p>Let’s now include the AWS region <strong>US-EAST-1</strong>.</p>
 <p>This time, you need to permit ICMP traffic exclusively between the Smart Group <strong>bu2</strong> and the EC2 instance <strong><em>aws-us-east-1-spoke1-test2</em></strong>.</p>
-<figure class="align-center" id="id72">
+<figure class="align-center" id="id73">
 <a class="reference internal image-reference" href="../_images/lab10-newtopology3.png"><img alt="../_images/lab10-newtopology3.png" src="../_images/lab10-newtopology3.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 604 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 605 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="verification-of-icmp-traffic-between-azure-and-aws-using-gatus-app">
 <h3>11.2 Verification of ICMP traffic between Azure and AWS Using Gatus App<a class="headerlink" href="#verification-of-icmp-traffic-between-azure-and-aws-using-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>azure-west-us-spoke2-test1</em></strong> and verify the ICMP Traffic.</p>
-<figure class="align-center" id="id73">
+<figure class="align-center" id="id74">
 <img alt="../_images/lab10-gatus334.png" src="../_images/lab10-gatus334.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 605 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 606 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ping towards the <strong><em>aws-us-east-1-spoke1-test1</em></strong> and <strong><em>aws-us-east-1-spoke1-test2</em></strong> will NOT work.</p>
@@ -1241,10 +1261,10 @@ document.write(`
 <ul class="simple">
 <li><p><strong>aws-us-east-1-spoke1-test2</strong> in AWS</p></li>
 </ul>
-<figure class="align-center" id="id74">
+<figure class="align-center" id="id75">
 <img alt="../_images/lab10-pingfails10.png" src="../_images/lab10-pingfails10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 606 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 607 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The ping fails!</p>
@@ -1254,24 +1274,24 @@ document.write(`
 <h2>12. Verification of the MTT<a class="headerlink" href="#verification-of-the-mtt" title="Link to this heading">#</a></h2>
 <p>Let’s check the routing table of the Spoke Gateway <strong><em>azure-west-us-spoke2</em></strong>.</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the gateway <strong><em>azure-west-us-spoke2</em></strong></p>
-<figure class="align-center" id="id75">
+<figure class="align-center" id="id76">
 <img alt="../_images/lab10-spoke2azure.png" src="../_images/lab10-spoke2azure.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 607 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 608 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab and check whether the destination route (i.e. <strong>10.0.12.0/23</strong>) is present in the routing table or not.</p>
-<figure class="align-center" id="id76">
+<figure class="align-center" id="id77">
 <img alt="../_images/lab10-gatewayroutes.png" src="../_images/lab10-gatewayroutes.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 608 </span><span class="caption-text">Gateway Routes</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 609 </span><span class="caption-text">Gateway Routes</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id77">
+<figure class="align-center" id="id78">
 <a class="reference internal image-reference" href="../_images/lab10-newjoe20.png"><img alt="../_images/lab10-newjoe20.png" src="../_images/lab10-newjoe20.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 609 </span><span class="caption-text">10.0.12.0</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 610 </span><span class="caption-text">10.0.12.0</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1286,28 +1306,28 @@ document.write(`
 </ul>
 <p>Let’s enable the <strong>MTT</strong> feature and observe its behavior in action!</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the Transit Gateway <strong><em>aws-us-east-1-transit</em></strong>.</p>
-<figure class="align-center" id="id78">
+<figure class="align-center" id="id79">
 <img alt="../_images/lab10-mtt.png" src="../_images/lab10-mtt.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 610 </span><span class="caption-text">aws-us-east-1-transit</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 611 </span><span class="caption-text">aws-us-east-1-transit</span><a class="headerlink" href="#id79" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Navigate to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;“Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section and insert the AS number <strong>64512</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">&quot;“Local</span> <span class="pre">AS</span> <span class="pre">Number”</span></code>, then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id79">
+<figure class="align-center" id="id80">
 <a class="reference internal image-reference" href="../_images/lab10-mtt2.png"><img alt="../_images/lab10-mtt2.png" src="../_images/lab10-mtt2.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 611 </span><span class="caption-text">Border Gateway Protocol (BGP)</span><a class="headerlink" href="#id79" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 612 </span><span class="caption-text">Border Gateway Protocol (BGP)</span><a class="headerlink" href="#id80" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Repeat the previous action for the last Transit Gateway still without a BGP ASN configured properly:</p>
 <ul class="simple">
 <li><p><strong>azure-west-us-transit</strong>: <span style='color:#479608'>ASN <strong>64515</strong></span></p></li>
 </ul>
-<figure class="align-center" id="id80">
+<figure class="align-center" id="id81">
 <img alt="../_images/lab10-newlab.png" src="../_images/lab10-newlab.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 612 </span><span class="caption-text">azure-west-us-transit</span><a class="headerlink" href="#id80" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 613 </span><span class="caption-text">azure-west-us-transit</span><a class="headerlink" href="#id81" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1315,34 +1335,34 @@ document.write(`
 <p>Both the <strong>aws-us-east-2-transit</strong> and <strong>gcp-us-central1-transit</strong> have already been configured with their ASNs during Lab 8!</p>
 </div>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong> and click on the Transit Gateway <strong><em>aws-us-east-2-transit</em></strong>.</p>
-<figure class="align-center" id="id81">
+<figure class="align-center" id="id82">
 <img alt="../_images/lab10-mtt3.png" src="../_images/lab10-mtt3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 613 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id81" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 614 </span><span class="caption-text">aws-us-east-2-transit</span><a class="headerlink" href="#id82" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Navigate to the <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab, expand the <code class="docutils literal notranslate"><span class="pre">&quot;General&quot;</span></code> section, and activate <code class="docutils literal notranslate"><span class="pre">&quot;Multi-Tier</span> <span class="pre">Transit&quot;</span></code> by toggling the corresponding switch.</p>
 <p>Then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id82">
+<figure class="align-center" id="id83">
 <img alt="../_images/lab10-mtt4.png" src="../_images/lab10-mtt4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 614 </span><span class="caption-text">Multi-Tier Transit</span><a class="headerlink" href="#id82" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 615 </span><span class="caption-text">Multi-Tier Transit</span><a class="headerlink" href="#id83" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s verify once again the routing table of the Spoke Gateway in <strong><em>azure-west-us-spoke2</em></strong>.</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the relevant gateway <strong><em>azure-west-us-spoke2</em></strong></p>
-<figure class="align-center" id="id83">
+<figure class="align-center" id="id84">
 <img alt="../_images/lab10-mtt5.png" src="../_images/lab10-mtt5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 615 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id83" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 616 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id84" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time if you click on the <code class="docutils literal notranslate"><span class="pre">&quot;Gateway</span> <span class="pre">Routes&quot;</span></code> tab, you will be able to see the destination route, <strong>10.0.12.0/23</strong>, in <strong>aws-us-east1-spoke1</strong> VPC.</p>
-<figure class="align-center" id="id84">
+<figure class="align-center" id="id85">
 <a class="reference internal image-reference" href="../_images/lab10-mtt6.png"><img alt="../_images/lab10-mtt6.png" src="../_images/lab10-mtt6.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 616 </span><span class="caption-text">10.0.12.0/23</span><a class="headerlink" href="#id84" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 617 </span><span class="caption-text">10.0.12.0/23</span><a class="headerlink" href="#id85" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition hint">
@@ -1355,10 +1375,10 @@ document.write(`
 <section id="icmp-verification-traffic-between-azure-and-aws-using-gatus-app-after-enabling-mtt">
 <h3>13.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabling MTT<a class="headerlink" href="#icmp-verification-traffic-between-azure-and-aws-using-gatus-app-after-enabling-mtt" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>azure-west-us-spoke2-test1</em></strong> and verify the ICMP Traffic.</p>
-<figure class="align-center" id="id85">
+<figure class="align-center" id="id86">
 <img alt="../_images/lab10-gatus334.png" src="../_images/lab10-gatus334.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 617 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id85" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 618 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id86" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Pinging <strong><em>aws-us-east-1-spoke1-test1</em></strong> and <strong><em>aws-us-east-1-spoke1-test2</em></strong> remains unsuccessful.</p>
@@ -1372,10 +1392,10 @@ document.write(`
 <ul class="simple">
 <li><p><strong>aws-us-east-1-spoke1-test2</strong> in AWS (refer to your personal POD portal for the private IP).</p></li>
 </ul>
-<figure class="align-center" id="id86">
+<figure class="align-center" id="id87">
 <img alt="../_images/lab10-mtt7.png" src="../_images/lab10-mtt7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 618 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id86" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 619 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id87" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1391,10 +1411,10 @@ document.write(`
 <h3>14.1 Smart Group “east1”<a class="headerlink" href="#smart-group-east1" title="Link to this heading">#</a></h3>
 <p>Let’s create an additional Smart Group for the test instance <strong><em>aws-us-east-1-spoke1-test2</em></strong> in the US-EAST-1 region of AWS.</p>
 <p>Navigate to <strong>Copilot &gt; Groups &gt; SmartGroups</strong> and click on  <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
-<figure class="align-center" id="id87">
+<figure class="align-center" id="id88">
 <img alt="../_images/lab10-mttnew.png" src="../_images/lab10-mttnew.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 619 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id87" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 620 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id88" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -1402,10 +1422,10 @@ document.write(`
 <li><p><strong>Name</strong>: <span style='color:#479608'>east1</span></p></li>
 <li><p><strong>Virtual Machines/Name</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span></p></li>
 </ul>
-<figure class="align-center" id="id88">
+<figure class="align-center" id="id89">
 <img alt="../_images/lab10-mtt9.png" src="../_images/lab10-mtt9.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 620 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id88" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 621 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id89" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>CoPilot indicates that there is only one instance that matches the condition:</p>
@@ -1417,10 +1437,10 @@ document.write(`
 <section id="create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">
 <h3>14.2 Create an inter-rule that allows ICMP from bu2 towards east1<a class="headerlink" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1" title="Link to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies (default tab)</strong> and create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
-<figure class="align-center" id="id89">
+<figure class="align-center" id="id90">
 <img alt="../_images/lab10-mtt8.png" src="../_images/lab10-mtt8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 621 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id89" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 622 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id90" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -1438,17 +1458,17 @@ document.write(`
 <p>Please note the direction of this new inter-rule:</p>
 <p><strong>FROM</strong> bu2 <strong>TO</strong> east1</p>
 </div>
-<figure class="align-center" id="id90">
+<figure class="align-center" id="id91">
 <img alt="../_images/lab10-lastrule.png" src="../_images/lab10-lastrule.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 622 </span><span class="caption-text">The Last Rule…</span><a class="headerlink" href="#id90" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 623 </span><span class="caption-text">The Last Rule…</span><a class="headerlink" href="#id91" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you can go ahead with the last <strong>commit</strong>!</p>
-<figure class="align-center" id="id91">
+<figure class="align-center" id="id92">
 <img alt="../_images/lab10-lastcommit.png" src="../_images/lab10-lastcommit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 623 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id91" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 624 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id92" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1457,10 +1477,10 @@ document.write(`
 <section id="icmp-verification-traffic-between-azure-and-aws-using-gatus-app-after-enabled-mtt">
 <h4>14.3.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabled MTT<a class="headerlink" href="#icmp-verification-traffic-between-azure-and-aws-using-gatus-app-after-enabled-mtt" title="Link to this heading">#</a></h4>
 <p>Open the Gatus App on <strong><em>azure-west-us-spoke2-test1</em></strong> and verify the ICMP Traffic to <strong><em>aws-us-east-1-spoke1-test2</em></strong></p>
-<figure class="align-center" id="id92">
+<figure class="align-center" id="id93">
 <img alt="../_images/lab10-gatus345.png" src="../_images/lab10-gatus345.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 624 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id92" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 625 </span><span class="caption-text">Gatus</span><a class="headerlink" href="#id93" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The ICMP traffic test will gradually turn green!</p>
@@ -1470,10 +1490,10 @@ document.write(`
 <ul class="simple">
 <li><p>SSH to the Public IP of the instance <strong><em>azure-west-us-spoke2-test1</em></strong> and ping the private IP of the ec2-instance <strong><em>aws-us-east-1-spoke1-test2</em></strong></p></li>
 </ul>
-<figure class="align-center" id="id93">
+<figure class="align-center" id="id94">
 <img alt="../_images/lab10-lastping.png" src="../_images/lab10-lastping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 625 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id93" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 626 </span><span class="caption-text">Ping</span><a class="headerlink" href="#id94" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This time, the ping will be successful!</p>
@@ -1482,18 +1502,18 @@ document.write(`
 <h4>14.3.3 Logs<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p>Check the logs once again.</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and filter by the <em>inter-icmp-bu2-east1</em> rule.</p>
-<figure class="align-center" id="id94">
+<figure class="align-center" id="id95">
 <img alt="../_images/lab10-reallylast.png" src="../_images/lab10-reallylast.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 626 </span><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id94" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 627 </span><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id95" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After creating both the previous inter-rule and the additional Smart Groups, the topology with all permitted protocols will appear as follows:</p>
-<figure class="align-center" id="id95">
+<figure class="align-center" id="id96">
 <a class="reference internal image-reference" href="../_images/lab10-newjoe.png"><img alt="../_images/lab10-newjoe.png" src="../_images/lab10-newjoe.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 627 </span><span class="caption-text">Final Topology</span><a class="headerlink" href="#id95" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 628 </span><span class="caption-text">Final Topology</span><a class="headerlink" href="#id96" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1503,41 +1523,41 @@ document.write(`
 <h2>15. Spoke to Spoke Attachment<a class="headerlink" href="#spoke-to-spoke-attachment" title="Link to this heading">#</a></h2>
 <p>Since Distributed Cloud Firewall is enabled, the owner of <strong><em>azure-west-us-spoke2-test1</em></strong> wants to directly communicate with **_azure-west-us-spoke1-test1_1, bypassing the NGFW for traffic from the VNet.
 sent to the NGFW, first.</p>
-<figure class="align-center" id="id96">
+<figure class="align-center" id="id97">
 <img alt="../_images/lab10-spoke2spoke01.png" src="../_images/lab10-spoke2spoke01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 628 </span><span class="caption-text">No More NGFW</span><a class="headerlink" href="#id96" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 629 </span><span class="caption-text">No More NGFW</span><a class="headerlink" href="#id97" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="creating-a-spoke-to-spoke-attachment">
 <h3>15.1 Creating a Spoke to Spoke Attachment<a class="headerlink" href="#creating-a-spoke-to-spoke-attachment" title="Link to this heading">#</a></h3>
 <p>Navigate to <strong>Copilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong>, locate the <strong><em>azure-west-us-spoke2</em></strong> gateway and click on the <strong><code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">Gateway</span> <span class="pre">Attachments</span></code></strong> icon on the right-hand side.</p>
-<figure class="align-center" id="id97">
+<figure class="align-center" id="id98">
 <a class="reference internal image-reference" href="../_images/lab10-spoke2spoke02.png"><img alt="../_images/lab10-spoke2spoke02.png" src="../_images/lab10-spoke2spoke02.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 629 </span><span class="caption-text">Manage Gateway Attachments</span><a class="headerlink" href="#id97" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 630 </span><span class="caption-text">Manage Gateway Attachments</span><a class="headerlink" href="#id98" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <strong>Spoke Gateway</strong> tab, click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Attachment&quot;</span></code> button and then choose the <strong>azure-west-us-spoke1</strong> GW from the drop-down window.</p>
-<figure class="align-center" id="id98">
+<figure class="align-center" id="id99">
 <img alt="../_images/lab10-spoke2spoke03.png" src="../_images/lab10-spoke2spoke03.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 630 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id98" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 631 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id99" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id99">
+<figure class="align-center" id="id100">
 <img alt="../_images/lab10-newspokeatt.png" src="../_images/lab10-newspokeatt.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 631 </span><span class="caption-text">Save</span><a class="headerlink" href="#id99" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 632 </span><span class="caption-text">Save</span><a class="headerlink" href="#id100" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong> and check the new attachment between the two Spoke Gateways in Azure.</p>
-<figure class="align-center" id="id100">
+<figure class="align-center" id="id101">
 <img alt="../_images/lab10-spoke2spoke04.png" src="../_images/lab10-spoke2spoke04.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 632 </span><span class="caption-text">Spoke to Spoke Attachment</span><a class="headerlink" href="#id100" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 633 </span><span class="caption-text">Spoke to Spoke Attachment</span><a class="headerlink" href="#id101" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1546,18 +1566,18 @@ sent to the NGFW, first.</p>
 </div>
 <p>Let’s check the <strong>Routing Table</strong> of the <strong><em>Spoke2</em></strong> in Azure.</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways</strong>, select the <strong>azure-west-us-spoke2</strong>, then select the <strong>Gateways Routes</strong> tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">192.168.1.0</span></code></strong> on the right-hand side.</p>
-<figure class="align-center" id="id101">
+<figure class="align-center" id="id102">
 <img alt="../_images/lab10-spoke2spoke05.png" src="../_images/lab10-spoke2spoke05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 633 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id101" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 634 </span><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id102" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice that the destination is now reachable with a <strong>lower</strong> metric (50)!</p>
-<figure class="align-center" id="id102">
+<figure class="align-center" id="id103">
 <a class="reference internal image-reference" href="../_images/lab10-spoke2spoke06.png"><img alt="../_images/lab10-spoke2spoke06.png" src="../_images/lab10-spoke2spoke06.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 634 </span><span class="caption-text">Metric 50</span><a class="headerlink" href="#id102" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 635 </span><span class="caption-text">Metric 50</span><a class="headerlink" href="#id103" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The traffic generated from the <strong><em>azure-west-us-spoke2-test1</em></strong> VM will now prefer going through the Spoke-to-Spoke Attachment for communication with the Spoke1 VNet.</p>
@@ -1565,10 +1585,10 @@ sent to the NGFW, first.</p>
 <p class="admonition-title">Important</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Native</span> <span class="pre">Security</span> <span class="pre">Fabric</span></code> is very flexible and does not lock you in with solely a <em>Hub and Spoke</em> Topology!</p>
 </div>
-<figure class="align-center" id="id103">
+<figure class="align-center" id="id104">
 <img alt="../_images/lab10-spoke2spoke07.png" src="../_images/lab10-spoke2spoke07.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 635 </span><span class="caption-text">Spoke to Spoke</span><a class="headerlink" href="#id103" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 636 </span><span class="caption-text">Spoke to Spoke</span><a class="headerlink" href="#id104" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1576,25 +1596,25 @@ sent to the NGFW, first.</p>
 <section id="decommissioning-of-a-peering">
 <h2>16. Decommissioning of a peering<a class="headerlink" href="#decommissioning-of-a-peering" title="Link to this heading">#</a></h2>
 <p>Now that <code class="docutils literal notranslate"><span class="pre">MTT</span></code> is enabled on the <strong><em>aws-us-east-2-transit</em></strong> Gateway, <ins>every other Transit Gateway must have a single peering with the <strong>MTT Gateway</strong></ins>; therefore the peering between the <strong><em>gcp-us-central1-transit</em></strong> Gateway and the <strong><em>azure-west-us-transit</em></strong> Gateway can be removed.</p>
-<figure class="align-center" id="id104">
+<figure class="align-center" id="id105">
 <img alt="../_images/lab10-spoke2spoke0788.png" src="../_images/lab10-spoke2spoke0788.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 636 </span><span class="caption-text">Deletion of a peering</span><a class="headerlink" href="#id104" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 637 </span><span class="caption-text">Deletion of a peering</span><a class="headerlink" href="#id105" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>; edit the <strong><em>gcp-us-central1-transit</em></strong> gateway.</p>
-<figure class="align-center" id="id105">
+<figure class="align-center" id="id106">
 <a class="reference internal image-reference" href="../_images/lab10-spoke2spoke0789.png"><img alt="../_images/lab10-spoke2spoke0789.png" src="../_images/lab10-spoke2spoke0789.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 637 </span><span class="caption-text">Edit the GCP Transit Gateway</span><a class="headerlink" href="#id105" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 638 </span><span class="caption-text">Edit the GCP Transit Gateway</span><a class="headerlink" href="#id106" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code> field, remove the peering with the <strong><em>azure-west-us-transit</em></strong> Gateway, and then click Save.</p>
-<figure class="align-center" id="id106">
+<figure class="align-center" id="id107">
 <img alt="../_images/lab10-spoke2spoke0790.png" src="../_images/lab10-spoke2spoke0790.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 638 </span><span class="caption-text">Deletion of a peering</span><a class="headerlink" href="#id106" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 639 </span><span class="caption-text">Deletion of a peering</span><a class="headerlink" href="#id107" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1603,11 +1623,11 @@ sent to the NGFW, first.</p>
 <p><code class="docutils literal notranslate"><span class="pre">With</span> <span class="pre">MTT</span> <span class="pre">election</span></code>: Only 3 peerings are needed. The MTT gateway acts as a central hub, so the three non-MTT gateways each create one peering with the MTT gateway, eliminating the need for interconnections among the non-MTT gateways.</p>
 </div>
 <p>After completing this lab, the overall topology will appear as follows:</p>
-<figure class="align-center" id="id107">
+<figure class="align-center" id="id108">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing.png"><img alt="../_images/lab10-lastdrawing.png" src="../_images/lab10-lastdrawing.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 639 </span><span class="caption-text">Full-feature Aviatrix CNSF solution</span><a class="headerlink" href="#id107" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 640 </span><span class="caption-text">Full-feature Aviatrix CNSF solution</span><a class="headerlink" href="#id108" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1683,8 +1703,9 @@ sent to the NGFW, first.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1 Smart Group “bu1”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-us-east-2-test2">3.2 Smart Group “us-east-2-test2”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-azure-spoke2">3.3 Smart Group “azure-spoke2”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-gatus-app">3.3 Connectivity Verification (ICMP) Using Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-ssh-client-bonus">3.4 Connectivity Verification (ICMP) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-of-the-connection-policy">3.5 Removal of the Connection Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-gatus-app">3.5 Connectivity Verification (ICMP) Using Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-ssh-client-bonus">3.6 Connectivity Verification (ICMP) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-gatus-app">3.5 Connectivity Verification (SSH) Using Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-ssh-client-bonus">3.6  Connectivity Verification (SSH) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
