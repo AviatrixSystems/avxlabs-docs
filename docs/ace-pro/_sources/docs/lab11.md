@@ -103,7 +103,7 @@ New Smart Group
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>us-east-2-private</span>
-- **Matches all conditions (AND)/environment**: <span style='color:#479608'>Name: aws-us-east-2-spoke1-test2</span>
+- **Matches all conditions (AND)/Name**: <span style='color:#479608'> aws-us-east-2-spoke1-test2</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
@@ -143,17 +143,37 @@ Resource that matches the condition
 
 Create another Smart Group clicking on the `"+ SmartGroup"` button.
 
-```{figure} images/lab10-smart5.png
+```{figure} images/lab11-newjoe011.png
 ---
+height: 400px
 align: center
 ---
-New Smart Group
+New SG
+```
+
+Now, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
+
+```{figure} images/lab6-greenfieldneww4.png
+---
+height: 400px
+align: center
+---
+Resource Selection
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>azure-spoke2</span>
-- **Matches all conditions (AND)/environment**: <span style='color:#479608'>bu2</span>
+- **IPs / CIDRs**: <span style='color:#479608'>192.168.2.0/24</span>
+
+Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
+
+```{figure} images/lab11-greenfieldneww45.png
+---
+align: center
+---
+New SG
+```
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
