@@ -462,7 +462,7 @@ align: center
 New Topology
 ```
 
-### 5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App
+### 5.1 Verify ICMP within bu1 Using the Gatus App
 
 Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the ICMP Traffic.
 
@@ -499,7 +499,7 @@ align: center
 SSH from your laptop - logical diagram
 ```
 
-### 5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 5.3 Verify ICMP within bu1 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Ping the following instances from **aws-us-east-2-spoke1-test1**:
 
@@ -549,9 +549,9 @@ align: center
 Outcomes
 ```
 
-Based on the above outcome, you will not see **10.0.1.10** (aws-us-east-2-spoke1-test2) because it belongs to **bu2**, which does not match the intra-icmp-bu1 rule.
+Based on the above outcome, you will not see **10.0.1.10** (aws-us-east-2-spoke1-test2) because it belongs to the **us-east-2-test2** Smart Group, which does not match the intra-icmp-bu1 rule.
 
-However, **aws-us-east-2-spoke1-test1** can ping **aws-us-east-2-spoke1-test2** due to intra-VPC communication, without needing to match any of the deployed DCF rules.
+However, **aws-us-east-2-spoke1-test1** can ping **aws-us-east-2-spoke1-test2** due to intra-VPC communication, <ins>without needing to match any of the deployed DCF rules</ins>.
 
 ```{figure} images/lab10-sgorch01.png
 ---
