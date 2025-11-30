@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-In this lab, you will create **3** VPCs/VNets, one in each cloud, i.e., Azure, AWS and GCP. 
+n this lab, you will deploy **four** virtual networks (VPCs/VNets) across the three cloud service providers: Azure, AWS, and Google Cloud Platform (GCP).
 
 The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).
 
@@ -41,7 +41,14 @@ align: center
 Searching for a subnet conflict
 ```
 
-- Great! Now that you have confirmed that the CIDR range 192.168.12.0/24 does not conflict with any existing CIDR ranges, please proceed to create an **Application/Spoke** Virtual Network (VNet) using the CoPilot
+- Great! Now that you have confirmed that the CIDR range 192.168.12.0/24 does not conflict with any existing CIDR ranges, please proceed to create an **Application/Spoke** Virtual Network (VNet) using the CoPilot.
+
+```{figure} images/lab1-vnet2.png
+---
+align: center
+---
+VNet creation
+```
 
 Click on the button `“+ VPC/VNET”`.
 
@@ -130,7 +137,7 @@ Clean up the Search Field
 The subnets will appear sequentially, one after another. Please be patient!
 
 ```{tip}
-**Click on the refresh button!**
+**Click the refresh button located at the bottom-right corner of the screen!**
 ```
 
 ```{figure} images/lab1-new2.png
@@ -149,10 +156,78 @@ Thank you for your patience!
 <ins>Please continue with the next tasks, and once they are completed, confirm that all underlay constructs have been successfully deployed</ins>.
 ```
 
-## 3. AWS VPC
+## 3. GCP VPC
+Next, we will complete this lab by creating a VPC in GCP.
+
+### 3.1 Create GCP VPC
+
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
+
+Before proceeding with the deployment of the VPC in GCP, please verify once more whether the CIDR range `172.16.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
+
+```{figure} images/lab1-newpic8.png
+---
+height: 400px
+align: center
+---
+Verification
+```
+
+Create once again an **Application/Spoke** VPC. Click on the button `“+ VPC/VNET”`.
+
+```{figure} images/lab1-gcp1.png
+---
+align: center
+---
+VPC creation
+```
+
+Insert the following values:
+
+ - **Name**: <span style='color:#479608'>gcp-us-west2-spoke1</span>
+ - **Cloud**: <span style='color:#479608'>GCP</span>
+ - **Account**: <span style='color:#479608'>gcp-account [use the drop-down window]</span>
+ - **Name**: <span style='color:#479608'>gcp-us-west2-spoke1-sub1</span>
+ - **Region**: <span style='color:#479608'>us-west2 [use the drop-down window]</span>
+ - **CIDR**: <span style='color:#479608'>172.16.22.0/24</span>
+
+Then click on **Save**.
+
+```{note}
+Make sure there are no spaces at the start or end of the keywords above, then copy and paste them into the VPC creation window.
+```
+
+```{figure} images/lab1-gcp2.png
+---
+align: center
+---
+VPC template
+```
+
+Wait a few minutes, then verify that the VPC creation is complete in the VPC list once you see the confirmation pop-up message. If the VPC does not appear immediately, click the Refresh icon or reload the webpage to update the list.  
+
+You can filter the list by the VPC name: `gcp-us-west2-spoke1`.
+
+```{figure} images/lab1-gcp3.png
+---
+height: 200px
+align: center
+---
+Verification
+```
+
+```{note}
+Expand the **GCP VPC** if you want to see the subnet **"gcp-us-west2-spoke1-sub1"**
+```
+
+```{caution}
+The VPC in Google Cloud Platform (GCP) may require a brief delay before it appears in the VPC/VNets & Subnets section. Proceed with the subsequent task; once **Task 4** is complete, search for the most recent GCP VPC to validate the action.
+```
+
+## 4. AWS VPC
 It's now time to create a VPC in AWS.
 
-### 3.1  Create AWS VPC
+### 4.1  Create AWS VPC
 
 Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
@@ -215,7 +290,7 @@ align: center
 Verification
 ```
 
-### 3.2 Verify from AWS Console
+### 4.2 Verify from AWS Console
 
 Log in to the **AWS console** using the credentials provided in your pod information. (**_Note_**: This screenshot is for **Pod 2**.)
 
@@ -299,70 +374,6 @@ Here, you will find the Internet Gateway created by the Aviatrix Controller. You
 align: center
 ---
 IGW created by the Aviatrix Controller
-```
-
-## 4. GCP VPC
-Next, we will complete this lab by creating a VPC in GCP.
-
-### 4.1 Create GCP VPC
-
-Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
-
-Before proceeding with the deployment of the VPC in GCP, please verify once more whether the CIDR range `172.16.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
-
-```{figure} images/lab1-newpic8.png
----
-height: 400px
-align: center
----
-Verification
-```
-
-Create once again an **Application/Spoke** VPC. Click on the button `“+ VPC/VNET”`.
-
-```{figure} images/lab1-gcp1.png
----
-align: center
----
-VPC creation
-```
-
-Insert the following values:
-
- - **Name**: <span style='color:#479608'>gcp-us-west2-spoke1</span>
- - **Cloud**: <span style='color:#479608'>GCP</span>
- - **Account**: <span style='color:#479608'>gcp-account [use the drop-down window]</span>
- - **Name**: <span style='color:#479608'>gcp-us-west2-spoke1-sub1</span>
- - **Region**: <span style='color:#479608'>us-west2 [use the drop-down window]</span>
- - **CIDR**: <span style='color:#479608'>172.16.22.0/24</span>
-
-Then click on **Save**.
-
-```{note}
-Make sure there are no white spaces at the beginning or end of the VPC name.
-```
-
-```{figure} images/lab1-gcp2.png
----
-align: center
----
-VPC template
-```
-
-Wait a few minutes, then verify that the VPC creation is complete in the VPC list once you see the confirmation pop-up message. If the VPC does not appear immediately, click the Refresh icon or reload the webpage to update the list.  
-
-You can filter the list by the VPC name: `gcp-us-west2-spoke1`.
-
-```{figure} images/lab1-gcp3.png
----
-height: 200px
-align: center
----
-Verification
-```
-
-```{note}
-Expand the **GCP VPC** if you want to see the subnet **"gcp-us-west2-spoke1-sub1"**
 ```
 
 ```{caution}

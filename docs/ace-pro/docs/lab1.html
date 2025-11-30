@@ -351,13 +351,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-azure-vnet">2.1 Create Azure VNet</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-vpc">3. AWS VPC</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-aws-vpc">3.1  Create AWS VPC</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">3.2 Verify from AWS Console</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gcp-vpc">3. GCP VPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gcp-vpc">3.1 Create GCP VPC</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gcp-vpc">4. GCP VPC</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gcp-vpc">4.1 Create GCP VPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-vpc">4. AWS VPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-aws-vpc">4.1  Create AWS VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">4.2 Verify from AWS Console</a></li>
 </ul>
 </li>
 </ul>
@@ -375,7 +375,7 @@ document.write(`
 <h1>Lab 1 - VPCs/VNets CREATION<a class="headerlink" href="#lab-1-vpcs-vnets-creation" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>In this lab, you will create <strong>3</strong> VPCs/VNets, one in each cloud, i.e., Azure, AWS and GCP.</p>
+<p>n this lab, you will deploy <strong>four</strong> virtual networks (VPCs/VNets) across the three cloud service providers: Azure, AWS, and Google Cloud Platform (GCP).</p>
 <p>The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).</p>
 <p>Refer to your POD assignment for CoPilot login information, as depicted below. Click on the <code class="docutils literal notranslate"><span class="pre">URL</span></code> button of the CoPilot (i.e “Open Copilot”) and log in using the credentials assigned to your POD.</p>
 <div class="admonition important">
@@ -409,13 +409,19 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Great! Now that you have confirmed that the CIDR range 192.168.12.0/24 does not conflict with any existing CIDR ranges, please proceed to create an <strong>Application/Spoke</strong> Virtual Network (VNet) using the CoPilot</p></li>
+<li><p>Great! Now that you have confirmed that the CIDR range 192.168.12.0/24 does not conflict with any existing CIDR ranges, please proceed to create an <strong>Application/Spoke</strong> Virtual Network (VNet) using the CoPilot.</p></li>
 </ul>
-<p>Click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
 <figure class="align-center" id="id3">
 <img alt="../_images/lab1-vnet2.png" src="../_images/lab1-vnet2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">VNet creation</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab1-vnet2.png" src="../_images/lab1-vnet2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">VNet creation</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Please enter the following values:</p>
@@ -428,17 +434,17 @@ document.write(`
 <li><p><strong>VPC Function</strong>: <span style='color:#479608'>Default [use the drop-down window]</span></p></li>
 </ul>
 <p>Then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id5">
 <img alt="../_images/lab1-vnet3.png" src="../_images/lab1-vnet3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">VNet template</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">VNet template</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will see a message appear in the top-right corner right away!</p>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id6">
 <img alt="../_images/lab1-vnet4.png" src="../_images/lab1-vnet4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">“In progress” message</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">“In progress” message</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -448,36 +454,36 @@ document.write(`
 <p><strong>2) Transit + FireNet</strong></p>
 </div>
 <p>From the CoPilot search bar, type <code class="docutils literal notranslate"><span class="pre">“task”</span></code> and then click the search result <code class="docutils literal notranslate"><span class="pre">“Monitor</span> <span class="pre">/</span> <span class="pre">Notifications</span> <span class="pre">/</span> <span class="pre">Tasks”</span></code>. Keep an eye on the VNet creation task and wait for it to complete.</p>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="../_images/lab1-vnet5.png"><img alt="../_images/lab1-vnet5.png" src="../_images/lab1-vnet5.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Notification</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Notification</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The creation of the VNet will take approximately <strong>4 to 5 minutes</strong>. You can periodically check the status of the task by clicking the hourglass icon in the top right corner. Be sure to click the <code class="docutils literal notranslate"><span class="pre">refresh</span></code> button as needed. Once the task turns green, you can confidently conclude that the VNet has been successfully created.</p>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/lab1-new.png"><img alt="../_images/lab1-new.png" src="../_images/lab1-new.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Hourglass icon</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Hourglass icon</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/lab1-vnet566.png"><img alt="../_images/lab1-vnet566.png" src="../_images/lab1-vnet566.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Task completion</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Task completion</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p><strong>Clear the search field to restore the navigation panel view.</strong></p>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/lab1-cleanup.png"><img alt="../_images/lab1-cleanup.png" src="../_images/lab1-cleanup.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Clean up the Search Field</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Clean up the Search Field</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -487,13 +493,13 @@ document.write(`
 <p>The subnets will appear sequentially, one after another. Please be patient!</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p><strong>Click on the refresh button!</strong></p>
+<p><strong>Click the refresh button located at the bottom-right corner of the screen!</strong></p>
 </div>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/lab1-new2.png"><img alt="../_images/lab1-new2.png" src="../_images/lab1-new2.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Confirmation</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Confirmation</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -504,149 +510,25 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="aws-vpc">
-<h2>3. AWS VPC<a class="headerlink" href="#aws-vpc" title="Link to this heading">#</a></h2>
-<p>It’s now time to create a VPC in AWS.</p>
-<section id="create-aws-vpc">
-<h3>3.1  Create AWS VPC<a class="headerlink" href="#create-aws-vpc" title="Link to this heading">#</a></h3>
-<p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong>.</p>
-<p>Please verify once more whether the CIDR range <code class="docutils literal notranslate"><span class="pre">10.0.22.0/24</span></code> overlaps with any existing CIDR ranges, as illustrated below.</p>
-<figure class="align-center" id="id11">
-<a class="reference internal image-reference" href="../_images/lab1-newpic5.png"><img alt="../_images/lab1-newpic5.png" src="../_images/lab1-newpic5.png" style="height: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Searching for a subnet conflict</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>This time, let’s create an <strong>Application/Spoke</strong> VPC. Click the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code> button to get started.</p>
-<figure class="align-center" id="id12">
-<img alt="../_images/lab1-vpc1.png" src="../_images/lab1-vpc1.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Please enter the following values:</p>
-<ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>aws-us-west-2-spoke1</span></p></li>
-<li><p><strong>Cloud</strong>: <span style='color:#479608'>AWS</span></p></li>
-<li><p><strong>Account</strong>: <span style='color:#479608'>aws-account [use the drop-down window - <strong>DO NOT</strong> select the aws-admin]</span></p></li>
-<li><p><strong>Region</strong>: <span style='color:#479608'>us-west-2 (Oregon) [use the drop-down window]</span></p></li>
-<li><p><strong>VPC CIDR</strong>: <span style='color:#479608'>10.0.22.0/24</span></p></li>
-<li><p><strong>VPC Function</strong>: <span style='color:#479608'>Default [use the drop-down window]</span></p></li>
-</ul>
-<p>Then click on <strong>Save</strong>.</p>
-<figure class="align-center" id="id13">
-<img alt="../_images/lab1-vpc2.png" src="../_images/lab1-vpc2.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">VPC configuration</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Keep an eye on the progress of the VPC creation by using the <strong>hourglass</strong> icon.</p>
-<figure class="align-center" id="id14">
-<a class="reference internal image-reference" href="../_images/lab1-vpc3.png"><img alt="../_images/lab1-vpc3.png" src="../_images/lab1-vpc3.png" style="height: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Hourglass icon</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Verify the creation of your VPC (i.e., <code class="docutils literal notranslate"><span class="pre">aws-us-west-2-spoke1</span></code>) by checking the VPC list. If the VPC does not appear immediately, click the <strong>Refresh</strong> icon or reload the webpage to update the list.</p>
-<p>Please allow a few minutes (approximately <strong>2-3</strong> minutes) for the changes to reflect in the “VPC/VNets &amp; Subnets” section.</p>
-<figure class="align-center" id="id15">
-<a class="reference internal image-reference" href="../_images/lab1-vpc4.png"><img alt="../_images/lab1-vpc4.png" src="../_images/lab1-vpc4.png" style="height: 350px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="verify-from-aws-console">
-<h3>3.2 Verify from AWS Console<a class="headerlink" href="#verify-from-aws-console" title="Link to this heading">#</a></h3>
-<p>Log in to the <strong>AWS console</strong> using the credentials provided in your pod information. (<strong><em>Note</em></strong>: This screenshot is for <strong>Pod 2</strong>.)</p>
-<figure class="align-center" id="id16">
-<img alt="../_images/lab1-newaws.png" src="../_images/lab1-newaws.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">AWS console credentials</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id17">
-<img alt="../_images/lab1-vpc5.png" src="../_images/lab1-vpc5.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Change the region to <code class="docutils literal notranslate"><span class="pre">Oregon</span> <span class="pre">(us-west-2)</span></code> in the top-right corner, then access the <strong>VPC</strong> service.</p>
-<figure class="align-center" id="id18">
-<img alt="../_images/lab1-newpic6.png" src="../_images/lab1-newpic6.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Oregon region</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id19">
-<img alt="../_images/lab1-newpic61.png" src="../_images/lab1-newpic61.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Invoke VPC service</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Now, click on the <strong>VPCs</strong> link shown below:</p>
-<figure class="align-center" id="id20">
-<img alt="../_images/lab1-newpic611.png" src="../_images/lab1-newpic611.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">VPCs</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>You should see the <code class="docutils literal notranslate"><span class="pre">VPC</span></code> that was created, along with its assigned CIDR block.</p>
-<figure class="align-center" id="id21">
-<a class="reference internal image-reference" href="../_images/lab1-new3.png"><img alt="../_images/lab1-new3.png" src="../_images/lab1-new3.png" style="height: 150px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">VPC</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>In the VPC section, navigate to <code class="docutils literal notranslate"><span class="pre">Subnets</span></code> in the left-hand navigation panel.</p>
-<p>As you can see, the Controller has created one Public Subnet and one Private Subnet for each Availability Zone. Since the us-west-2 region has four Availability Zones, a total of <strong>eight</strong> subnets have been created.</p>
-<figure class="align-center" id="id22">
-<img alt="../_images/lab1-newpic7.png" src="../_images/lab1-newpic7.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Subnets created by the Aviatrix Controller</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Navigate to <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">tables</span></code>.</p>
-<p>Here, you will see the <strong>eight</strong> route tables created by the Aviatrix Controller, each mapped to a corresponding subnet. The Public Route Tables include a 0.0.0.0/0 route that points to the Internet Gateway, which has also been deployed by the Controller.</p>
-<figure class="align-center" id="id23">
-<img alt="../_images/lab1-rt.png" src="../_images/lab1-rt.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Routing Tables created by the Aviatrix Controller</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Now, navigate to the <code class="docutils literal notranslate"><span class="pre">Internet</span> <span class="pre">gateways</span></code> section.</p>
-<p>Here, you will find the Internet Gateway created by the Aviatrix Controller. You’ll notice that the <strong>IGW</strong> shares the same name as the VPC you defined and is attached to it as well.</p>
-<figure class="align-center" id="id24">
-<img alt="../_images/lab1-igw.png" src="../_images/lab1-igw.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">IGW created by the Aviatrix Controller</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
 <section id="gcp-vpc">
-<h2>4. GCP VPC<a class="headerlink" href="#gcp-vpc" title="Link to this heading">#</a></h2>
+<h2>3. GCP VPC<a class="headerlink" href="#gcp-vpc" title="Link to this heading">#</a></h2>
 <p>Next, we will complete this lab by creating a VPC in GCP.</p>
 <section id="create-gcp-vpc">
-<h3>4.1 Create GCP VPC<a class="headerlink" href="#create-gcp-vpc" title="Link to this heading">#</a></h3>
+<h3>3.1 Create GCP VPC<a class="headerlink" href="#create-gcp-vpc" title="Link to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong>.</p>
 <p>Before proceeding with the deployment of the VPC in GCP, please verify once more whether the CIDR range <code class="docutils literal notranslate"><span class="pre">172.16.22.0/24</span></code> overlaps with any existing CIDR ranges, as illustrated below.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id12">
 <a class="reference internal image-reference" href="../_images/lab1-newpic8.png"><img alt="../_images/lab1-newpic8.png" src="../_images/lab1-newpic8.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create once again an <strong>Application/Spoke</strong> VPC. Click on the button <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code>.</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab1-gcp1.png" src="../_images/lab1-gcp1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Insert the following values:</p>
@@ -661,27 +543,155 @@ document.write(`
 <p>Then click on <strong>Save</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Make sure there are no white spaces at the beginning or end of the VPC name.</p>
+<p>Make sure there are no spaces at the start or end of the keywords above, then copy and paste them into the VPC creation window.</p>
 </div>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id14">
 <img alt="../_images/lab1-gcp2.png" src="../_images/lab1-gcp2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">VPC template</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">VPC template</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Wait a few minutes, then verify that the VPC creation is complete in the VPC list once you see the confirmation pop-up message. If the VPC does not appear immediately, click the Refresh icon or reload the webpage to update the list.</p>
 <p>You can filter the list by the VPC name: <code class="docutils literal notranslate"><span class="pre">gcp-us-west2-spoke1</span></code>.</p>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id15">
 <a class="reference internal image-reference" href="../_images/lab1-gcp3.png"><img alt="../_images/lab1-gcp3.png" src="../_images/lab1-gcp3.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Expand the <strong>GCP VPC</strong> if you want to see the subnet <strong>“gcp-us-west2-spoke1-sub1”</strong></p>
 </div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The VPC in Google Cloud Platform (GCP) may require a brief delay before it appears in the VPC/VNets &amp; Subnets section. Proceed with the subsequent task; once <strong>Task 4</strong> is complete, search for the most recent GCP VPC to validate the action.</p>
+</div>
+</section>
+</section>
+<section id="aws-vpc">
+<h2>4. AWS VPC<a class="headerlink" href="#aws-vpc" title="Link to this heading">#</a></h2>
+<p>It’s now time to create a VPC in AWS.</p>
+<section id="create-aws-vpc">
+<h3>4.1  Create AWS VPC<a class="headerlink" href="#create-aws-vpc" title="Link to this heading">#</a></h3>
+<p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; VPC/VNets &amp; Subnets</strong>.</p>
+<p>Please verify once more whether the CIDR range <code class="docutils literal notranslate"><span class="pre">10.0.22.0/24</span></code> overlaps with any existing CIDR ranges, as illustrated below.</p>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../_images/lab1-newpic5.png"><img alt="../_images/lab1-newpic5.png" src="../_images/lab1-newpic5.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Searching for a subnet conflict</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This time, let’s create an <strong>Application/Spoke</strong> VPC. Click the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">VPC/VNET”</span></code> button to get started.</p>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab1-vpc1.png" src="../_images/lab1-vpc1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">VPC creation</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Please enter the following values:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>aws-us-west-2-spoke1</span></p></li>
+<li><p><strong>Cloud</strong>: <span style='color:#479608'>AWS</span></p></li>
+<li><p><strong>Account</strong>: <span style='color:#479608'>aws-account [use the drop-down window - <strong>DO NOT</strong> select the aws-admin]</span></p></li>
+<li><p><strong>Region</strong>: <span style='color:#479608'>us-west-2 (Oregon) [use the drop-down window]</span></p></li>
+<li><p><strong>VPC CIDR</strong>: <span style='color:#479608'>10.0.22.0/24</span></p></li>
+<li><p><strong>VPC Function</strong>: <span style='color:#479608'>Default [use the drop-down window]</span></p></li>
+</ul>
+<p>Then click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab1-vpc2.png" src="../_images/lab1-vpc2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">VPC configuration</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Keep an eye on the progress of the VPC creation by using the <strong>hourglass</strong> icon.</p>
+<figure class="align-center" id="id19">
+<a class="reference internal image-reference" href="../_images/lab1-vpc3.png"><img alt="../_images/lab1-vpc3.png" src="../_images/lab1-vpc3.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Hourglass icon</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Verify the creation of your VPC (i.e., <code class="docutils literal notranslate"><span class="pre">aws-us-west-2-spoke1</span></code>) by checking the VPC list. If the VPC does not appear immediately, click the <strong>Refresh</strong> icon or reload the webpage to update the list.</p>
+<p>Please allow a few minutes (approximately <strong>2-3</strong> minutes) for the changes to reflect in the “VPC/VNets &amp; Subnets” section.</p>
+<figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="../_images/lab1-vpc4.png"><img alt="../_images/lab1-vpc4.png" src="../_images/lab1-vpc4.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Verification</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="verify-from-aws-console">
+<h3>4.2 Verify from AWS Console<a class="headerlink" href="#verify-from-aws-console" title="Link to this heading">#</a></h3>
+<p>Log in to the <strong>AWS console</strong> using the credentials provided in your pod information. (<strong><em>Note</em></strong>: This screenshot is for <strong>Pod 2</strong>.)</p>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab1-newaws.png" src="../_images/lab1-newaws.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">AWS console credentials</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id22">
+<img alt="../_images/lab1-vpc5.png" src="../_images/lab1-vpc5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Change the region to <code class="docutils literal notranslate"><span class="pre">Oregon</span> <span class="pre">(us-west-2)</span></code> in the top-right corner, then access the <strong>VPC</strong> service.</p>
+<figure class="align-center" id="id23">
+<img alt="../_images/lab1-newpic6.png" src="../_images/lab1-newpic6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Oregon region</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id24">
+<img alt="../_images/lab1-newpic61.png" src="../_images/lab1-newpic61.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Invoke VPC service</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now, click on the <strong>VPCs</strong> link shown below:</p>
+<figure class="align-center" id="id25">
+<img alt="../_images/lab1-newpic611.png" src="../_images/lab1-newpic611.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">VPCs</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You should see the <code class="docutils literal notranslate"><span class="pre">VPC</span></code> that was created, along with its assigned CIDR block.</p>
+<figure class="align-center" id="id26">
+<a class="reference internal image-reference" href="../_images/lab1-new3.png"><img alt="../_images/lab1-new3.png" src="../_images/lab1-new3.png" style="height: 150px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">VPC</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the VPC section, navigate to <code class="docutils literal notranslate"><span class="pre">Subnets</span></code> in the left-hand navigation panel.</p>
+<p>As you can see, the Controller has created one Public Subnet and one Private Subnet for each Availability Zone. Since the us-west-2 region has four Availability Zones, a total of <strong>eight</strong> subnets have been created.</p>
+<figure class="align-center" id="id27">
+<img alt="../_images/lab1-newpic7.png" src="../_images/lab1-newpic7.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Subnets created by the Aviatrix Controller</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Navigate to <code class="docutils literal notranslate"><span class="pre">Route</span> <span class="pre">tables</span></code>.</p>
+<p>Here, you will see the <strong>eight</strong> route tables created by the Aviatrix Controller, each mapped to a corresponding subnet. The Public Route Tables include a 0.0.0.0/0 route that points to the Internet Gateway, which has also been deployed by the Controller.</p>
+<figure class="align-center" id="id28">
+<img alt="../_images/lab1-rt.png" src="../_images/lab1-rt.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Routing Tables created by the Aviatrix Controller</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now, navigate to the <code class="docutils literal notranslate"><span class="pre">Internet</span> <span class="pre">gateways</span></code> section.</p>
+<p>Here, you will find the Internet Gateway created by the Aviatrix Controller. You’ll notice that the <strong>IGW</strong> shares the same name as the VPC you defined and is attached to it as well.</p>
+<figure class="align-center" id="id29">
+<img alt="../_images/lab1-igw.png" src="../_images/lab1-igw.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">IGW created by the Aviatrix Controller</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The VPCs and VNets created in this lab will <strong>NOT</strong> be utilized in the subsequent labs.</p>
@@ -759,13 +769,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-azure-vnet">2.1 Create Azure VNet</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-vpc">3. AWS VPC</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-aws-vpc">3.1  Create AWS VPC</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">3.2 Verify from AWS Console</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gcp-vpc">3. GCP VPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gcp-vpc">3.1 Create GCP VPC</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gcp-vpc">4. GCP VPC</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gcp-vpc">4.1 Create GCP VPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-vpc">4. AWS VPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-aws-vpc">4.1  Create AWS VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">4.2 Verify from AWS Console</a></li>
 </ul>
 </li>
 </ul>
