@@ -207,7 +207,9 @@ Once again, the **Edge** device facilitates the extension of all Aviatrix functi
 
 Let's associate the Edge connection with one of the existing Network Domains.
 
-Navigate to **CoPilot > Networking > Network Segmentation > Network Domains** and edit, for instance, the **Green** domain. Select the **`on-prem-edge`** connection and do not forget to click on **Save**!
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains** and edit the **Green** domain. 
+
+Select the **`on-prem-edge`** connection and do not forget to click on **Save**!
 
 ```{figure} images/lab8-edge19.png
 ---
