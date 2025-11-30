@@ -350,7 +350,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-overview">2. Distributed Cloud Firewall Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-groups-creation">3. Smart Groups Creation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1 Smart Group “bu1”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-us-east-2-private">3.2 Smart Group “us-east-2-private”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-us-east-2-test2">3.2 Smart Group “us-east-2-test2”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-azure-spoke2">3.3 Smart Group “azure-spoke2”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-gatus-app">3.3 Connectivity Verification (ICMP) Using Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-ssh-client-bonus">3.4 Connectivity Verification (ICMP) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
@@ -458,7 +458,7 @@ document.write(`
 <p>In this lab, you will implement the following requirements across all three CSPs:</p>
 <ul class="simple">
 <li><p>Create a Smart Group named <code class="docutils literal notranslate"><span class="pre">&quot;bu1&quot;</span></code> tagged with <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code> that identifies the following instances: <strong><em>aws-us-east-2-spoke1-test1</em></strong> and <strong><em>azure-west-us-spoke1-test1</em></strong>.</p></li>
-<li><p>Create a Smart Group named <code class="docutils literal notranslate"><span class="pre">&quot;us-east-2-private&quot;</span></code> that uses the tag <code class="docutils literal notranslate"><span class="pre">&quot;Name&quot;</span> <span class="pre">=</span> <span class="pre">&quot;aws-us-east-2-spoke1-test2&quot;</span></code> that identifies the following instance: <strong><em>aws-us-east-2-spoke1-test2</em></strong></p></li>
+<li><p>Create a Smart Group named <code class="docutils literal notranslate"><span class="pre">&quot;us-east-2-test2&quot;</span></code> that uses the tag <code class="docutils literal notranslate"><span class="pre">&quot;Name&quot;</span> <span class="pre">=</span> <span class="pre">&quot;aws-us-east-2-spoke1-test2&quot;</span></code> that identifies the following instance: <strong><em>aws-us-east-2-spoke1-test2</em></strong></p></li>
 <li><p>Create a Smart Group named <code class="docutils literal notranslate"><span class="pre">&quot;azure-spoke2&quot;</span></code> that uses the tag <code class="docutils literal notranslate"><span class="pre">&quot;IP/CDR&quot;</span> <span class="pre">=</span> <span class="pre">&quot;192.168.2.0/24&quot;</span></code> that identifies the following instance: <strong><em>azure-west-us-spoke2</em></strong></p></li>
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> allowing ICMP traffic within <code class="docutils literal notranslate"><span class="pre">bu1</span></code>.</p></li>
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> allowing ICMP traffic <ins>from</ins> <code class="docutils literal notranslate"><span class="pre">us-east-2-private</span></code> <ins>to</ins> <code class="docutils literal notranslate"><span class="pre">azure-spoke2</span></code> only.</p></li>
@@ -509,8 +509,8 @@ document.write(`
 </figcaption>
 </figure>
 </section>
-<section id="smart-group-us-east-2-private">
-<h3>3.2 Smart Group “us-east-2-private”<a class="headerlink" href="#smart-group-us-east-2-private" title="Link to this heading">#</a></h3>
+<section id="smart-group-us-east-2-test2">
+<h3>3.2 Smart Group “us-east-2-test2”<a class="headerlink" href="#smart-group-us-east-2-test2" title="Link to this heading">#</a></h3>
 <p>Create another Smart Group clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
 <figure class="align-center" id="id8">
 <img alt="../_images/lab10-smart5.png" src="../_images/lab10-smart5.png" />
@@ -520,14 +520,14 @@ document.write(`
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>us-east-2-private</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#479608'>us-east-2-test2</span></p></li>
 <li><p><strong>Matches all conditions (AND)/Name</strong>: <span style='color:#479608'> aws-us-east-2-spoke1-test2</span></p></li>
 </ul>
 <p>Before clicking on <strong>SAVE</strong>, discover what instances match the condition, turning on the knob <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code>.</p>
 <figure class="align-center" id="id9">
 <img alt="../_images/lab1081-smart6.png" src="../_images/lab1081-smart6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 541 </span><span class="caption-text">us-east-2-private</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 541 </span><span class="caption-text">us-east-2-test2</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id10">
@@ -583,7 +583,7 @@ document.write(`
 <p><span class="caption-number">Fig. 547 </span><span class="caption-text">New SG</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Before clicking on <strong>SAVE</strong>, discover what instances match the condition, turning on the knob <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code>.</p>
+<p>Before clicking <strong>SAVE</strong>, discover which subnet matches the condition by turning on the <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code> knob.</p>
 <figure class="align-center" id="id16">
 <img alt="../_images/lab1081-smart6.png" src="../_images/lab1081-smart6.png" />
 <figcaption>
@@ -602,9 +602,9 @@ document.write(`
 <p><span class="caption-number">Fig. 550 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The CoPilot shows that there is one instance that matches the condition:</p>
+<p>This time, CoPilot shows that the condition is matched by a specific subnet.</p>
 <ul class="simple">
-<li><p><strong>aws-us-east2-spoke1-test2</strong> in AWS</p></li>
+<li><p><strong>aws-us-east2-spoke1-test2</strong> in AZURE WEST-US SPOKE2.</p></li>
 </ul>
 <figure class="align-center" id="id19">
 <img alt="../_images/lab10-smart7.png" src="../_images/lab10-smart7.png" />
@@ -1681,7 +1681,7 @@ sent to the NGFW, first.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-firewall-overview">2. Distributed Cloud Firewall Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-groups-creation">3. Smart Groups Creation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1 Smart Group “bu1”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-us-east-2-private">3.2 Smart Group “us-east-2-private”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-us-east-2-test2">3.2 Smart Group “us-east-2-test2”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-azure-spoke2">3.3 Smart Group “azure-spoke2”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-gatus-app">3.3 Connectivity Verification (ICMP) Using Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-ssh-client-bonus">3.4 Connectivity Verification (ICMP) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>

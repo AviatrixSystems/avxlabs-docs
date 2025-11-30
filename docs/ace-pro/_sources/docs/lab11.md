@@ -28,7 +28,7 @@ In this lab, you will implement the following requirements across all three CSPs
 
 - Create a Smart Group named `"bu1"` tagged with `"environment"` that identifies the following instances: **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke1-test1_**.
 
-- Create a Smart Group named `"us-east-2-private"` that uses the tag `"Name" = "aws-us-east-2-spoke1-test2"` that identifies the following instance: **_aws-us-east-2-spoke1-test2_**
+- Create a Smart Group named `"us-east-2-test2"` that uses the tag `"Name" = "aws-us-east-2-spoke1-test2"` that identifies the following instance: **_aws-us-east-2-spoke1-test2_**
 
 - Create a Smart Group named `"azure-spoke2"` that uses the tag `"IP/CDR" = "192.168.2.0/24"` that identifies the following instance: **_azure-west-us-spoke2_**
 
@@ -89,7 +89,7 @@ align: center
 Resources that match the condition
 ```
 
-### 3.2 Smart Group “us-east-2-private”
+### 3.2 Smart Group “us-east-2-test2”
 
 Create another Smart Group clicking on the `"+ SmartGroup"` button.
 
@@ -102,7 +102,7 @@ New Smart Group
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
-- **Name**: <span style='color:#479608'>us-east-2-private</span>
+- **Name**: <span style='color:#479608'>us-east-2-test2</span>
 - **Matches all conditions (AND)/Name**: <span style='color:#479608'> aws-us-east-2-spoke1-test2</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
@@ -111,7 +111,7 @@ Before clicking on **SAVE**, discover what instances match the condition, turnin
 ---
 align: center
 ---
-us-east-2-private
+us-east-2-test2
 ```
 
 ```{figure} images/lab1080-smart6.png
@@ -175,7 +175,7 @@ align: center
 New SG
 ```
 
-Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
+Before clicking **SAVE**, discover which subnet matches the condition by turning on the `"Preview"` knob.
 
 ```{figure} images/lab1081-smart6.png
 ---
@@ -198,9 +198,9 @@ align: center
 Resource Selection
 ```
 
-The CoPilot shows that there is one instance that matches the condition:
+This time, CoPilot shows that the condition is matched by a specific subnet.
 
-- **aws-us-east2-spoke1-test2** in AWS
+- **aws-us-east2-spoke1-test2** in AZURE WEST-US SPOKE2.
 
 ```{figure} images/lab10-smart7.png
 ---
