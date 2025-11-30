@@ -169,7 +169,7 @@ onprem-pod##-host-vm
 
 ```{figure} images/lab10-newsg01.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 WorkstationEdge SG
@@ -196,7 +196,7 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 ```{figure} images/lab10-newsg0133.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 aws-us-east-2-spoke1-test1 SG
