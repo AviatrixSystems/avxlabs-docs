@@ -34,7 +34,7 @@ In this lab, you will implement the following requirements across all three CSPs
 
 - Create an `intra-rule` allowing ICMP traffic within `bu1`.
 
-- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> `us-east-2-private` <ins>to</ins> `azure-spoke2` only.
+- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> `us-east-2-test2` <ins>to</ins> `azure-spoke2` only.
 
 - Create an `intra-rule` allowing SSH traffic within bu1.
 
@@ -213,6 +213,8 @@ us-east-2-private-subnet
 
 </details>
 
+### 3.5 Current status of the DCF Policies List
+
 At this stage, you’ve created logical containers to categorize instances or subnets. Now, define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
 
 Below is the current list of your DCF Rules within the **Distributed Cloud Firewall** section of your CoPilot:
@@ -224,7 +226,7 @@ align: center
 Complete DCF Rules List
 ```
 
-### 3.5 Removal of the Connection Policy
+### 3.6 Removal of the Connection Policy
 
 The gcp-us-central1-spoke1 VPC must remain isolated because, within this VPC, the Spoke gateway serves as the _landing Spoke_ for the `Site-to-Cloud` connection established with the partner router.
 
@@ -266,7 +268,7 @@ align: center
 The New Topology
 ```
 
-### 3.5 Connectivity Verification (ICMP) Using Gatus App
+### 3.7 Connectivity Verification (ICMP) Using Gatus App
 
 Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_**.
 
@@ -290,7 +292,7 @@ aws-us-east-2-spoke1-test1
 
 The **East-West** traffic is disrupted. The instance **_aws-us-east-2-spoke1-test1_** can only reach **test2** due to intra-VPC traffic, which bypasses the Aviatrix Spoke Gateway (i.e. the **Enforcement Security Point**).
 
-### 3.6 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 3.8 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Open a terminal window and SSH into the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (_NOT test2_). From there, ping the private IPs of each other instances to verify that the connectivity is indeed **broken**!
 
@@ -326,7 +328,7 @@ From the outcomes above, you can see that only the **aws-us-east-2-spoke1-<span 
 The ICMP traffic is utilizing the standard behavior of intra-VPC communication.
 ```
 
-### 3.5 Connectivity Verification (SSH) Using Gatus App
+### 3.9 Connectivity Verification (SSH) Using Gatus App
 
 From the Gatus App open on **_aws-us-east-2-spoke1-test1_**, verify the SSH section.
 
@@ -340,7 +342,7 @@ aws-us-east-2-spoke1-test1
 
 The SSH test is only successful against **_aws-us-east-2-spoke1-test2_** due to intra-VPC traffic.
 
-### 3.6  Connectivity Verification (SSH) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 3.10  Connectivity Verification (SSH) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Verify also from the instance **aws-us-east-2-spoke1-test1** that you **_can't_** SSH to any other instances, except to the **aws-us-east-2-spoke1-test2**, due to the fact that the SSH connection in this case, is established once again within the VPC, <ins>bypassing the Spoke Gateway (i.e. the DCF Enforcement Point)</ins>!
 
@@ -362,10 +364,11 @@ align: center
 SSH fails towards the other instances
 ```
 
-The previous results clearly confirm that connectivity is disrupted, allowing only `intra-vpc traffic`.
+The previous results confirm that East-West connectivity is disrupted; only `intra-vpc traffic` is allowed in the AWS us-east-2 region.
 
 ## 4. DCF Rules Creation
-### 4.1. Create an intra-rule that allows ICMP inside bu1
+
+### 4.1 Create an intra-rule that allows ICMP inside bu1
 
 ```{warning}
 Zero Trust architecture is "Never trust, always verify", a critical component to enterprise cloud adoption success!
@@ -383,8 +386,8 @@ New Rule
 Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>intra-icmp-bu1</span>
-- **Source Smartgroups**: <span style='color:#479608'>bu1</span>
-- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Source Groups**: <span style='color:#479608'>bu1</span>
+- **Destination Groups**: <span style='color:#479608'>bu1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
@@ -404,10 +407,10 @@ Click on **Commit**.
 ---
 align: center
 ---
-Rule committed
+Policy not committed yet
 ```
 
-### 4.2. Create an intra-rule that allows ICMP inside bu2
+### 4.2 Create an inter-rule that allows ICMP from us-east-2-test2 to azure-spoke2
 
 Create another rule clicking on the `"+ Rule"` button.
 
@@ -420,9 +423,9 @@ New rule
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
-- **Name**: <span style='color:#479608'>intra-icmp-bu2</span>
-- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
-- **Destination Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Name**: <span style='color:#479608'>inter-icmp-us-east-2-test2-azure-spoke2</span>
+- **Source Groups**: <span style='color:#479608'>us-east-2-test2</span>
+- **Destination Groups**: <span style='color:#479608'>azure-spoke2</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
@@ -435,7 +438,7 @@ Do not forget to click on **Save In Drafts**.
 ---
 align: center
 ---
-intra-icmp-bu2
+inter-icmp-us-east-2-test2-azure-spoke2
 ```
 
 Next, proceed by clicking the **Commit** button.

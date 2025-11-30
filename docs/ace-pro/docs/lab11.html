@@ -352,16 +352,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1 Smart Group “bu1”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-us-east-2-test2">3.2 Smart Group “us-east-2-test2”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-azure-spoke2">3.3 Smart Group “azure-spoke2”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-of-the-connection-policy">3.5 Removal of the Connection Policy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-gatus-app">3.5 Connectivity Verification (ICMP) Using Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-ssh-client-bonus">3.6 Connectivity Verification (ICMP) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-gatus-app">3.5 Connectivity Verification (SSH) Using Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-ssh-client-bonus">3.6  Connectivity Verification (SSH) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-status-of-the-dcf-policies-list">3.5 Current status of the DCF Policies List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-of-the-connection-policy">3.6 Removal of the Connection Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-gatus-app">3.7 Connectivity Verification (ICMP) Using Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-ssh-client-bonus">3.8 Connectivity Verification (ICMP) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-gatus-app">3.9 Connectivity Verification (SSH) Using Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-ssh-client-bonus">3.10  Connectivity Verification (SSH) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dcf-rules-creation">4. DCF Rules Creation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu1">4.1. Create an intra-rule that allows ICMP inside bu1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu2">4.2. Create an intra-rule that allows ICMP inside bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu1">4.1 Create an intra-rule that allows ICMP inside bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-inter-rule-that-allows-icmp-from-us-east-2-test2-to-azure-spoke2">4.2 Create an inter-rule that allows ICMP from us-east-2-test2 to azure-spoke2</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a><ul class="nav section-nav flex-column">
@@ -462,7 +463,7 @@ document.write(`
 <li><p>Create a Smart Group named <code class="docutils literal notranslate"><span class="pre">&quot;us-east-2-test2&quot;</span></code> that uses the tag <code class="docutils literal notranslate"><span class="pre">&quot;Name&quot;</span> <span class="pre">=</span> <span class="pre">&quot;aws-us-east-2-spoke1-test2&quot;</span></code> that identifies the following instance: <strong><em>aws-us-east-2-spoke1-test2</em></strong></p></li>
 <li><p>Create a Smart Group named <code class="docutils literal notranslate"><span class="pre">&quot;azure-spoke2&quot;</span></code> that uses the tag <code class="docutils literal notranslate"><span class="pre">&quot;IP/CDR&quot;</span> <span class="pre">=</span> <span class="pre">&quot;192.168.2.0/24&quot;</span></code> that identifies the following instance: <strong><em>azure-west-us-spoke2</em></strong></p></li>
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> allowing ICMP traffic within <code class="docutils literal notranslate"><span class="pre">bu1</span></code>.</p></li>
-<li><p>Create an <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> allowing ICMP traffic <ins>from</ins> <code class="docutils literal notranslate"><span class="pre">us-east-2-private</span></code> <ins>to</ins> <code class="docutils literal notranslate"><span class="pre">azure-spoke2</span></code> only.</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> allowing ICMP traffic <ins>from</ins> <code class="docutils literal notranslate"><span class="pre">us-east-2-test2</span></code> <ins>to</ins> <code class="docutils literal notranslate"><span class="pre">azure-spoke2</span></code> only.</p></li>
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> allowing SSH traffic within bu1.</p></li>
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> allowing ICMP traffic <ins>from</ins> <code class="docutils literal notranslate"><span class="pre">azure-spoke2</span></code> <ins>to</ins> <code class="docutils literal notranslate"><span class="pre">bu1</span></code> only.</p></li>
 </ul>
@@ -615,6 +616,9 @@ document.write(`
 </figcaption>
 </figure>
 </details>
+</section>
+<section id="current-status-of-the-dcf-policies-list">
+<h3>3.5 Current status of the DCF Policies List<a class="headerlink" href="#current-status-of-the-dcf-policies-list" title="Link to this heading">#</a></h3>
 <p>At this stage, you’ve created logical containers to categorize instances or subnets. Now, define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.</p>
 <p>Below is the current list of your DCF Rules within the <strong>Distributed Cloud Firewall</strong> section of your CoPilot:</p>
 <figure class="align-center" id="id19">
@@ -625,7 +629,7 @@ document.write(`
 </figure>
 </section>
 <section id="removal-of-the-connection-policy">
-<h3>3.5 Removal of the Connection Policy<a class="headerlink" href="#removal-of-the-connection-policy" title="Link to this heading">#</a></h3>
+<h3>3.6 Removal of the Connection Policy<a class="headerlink" href="#removal-of-the-connection-policy" title="Link to this heading">#</a></h3>
 <p>The gcp-us-central1-spoke1 VPC must remain isolated because, within this VPC, the Spoke gateway serves as the <em>landing Spoke</em> for the <code class="docutils literal notranslate"><span class="pre">Site-to-Cloud</span></code> connection established with the partner router.</p>
 <figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab10-landing.png"><img alt="../_images/lab10-landing.png" src="../_images/lab10-landing.png" style="height: 400px;" />
@@ -662,7 +666,7 @@ document.write(`
 </figure>
 </section>
 <section id="connectivity-verification-icmp-using-gatus-app">
-<h3>3.5 Connectivity Verification (ICMP) Using Gatus App<a class="headerlink" href="#connectivity-verification-icmp-using-gatus-app" title="Link to this heading">#</a></h3>
+<h3>3.7 Connectivity Verification (ICMP) Using Gatus App<a class="headerlink" href="#connectivity-verification-icmp-using-gatus-app" title="Link to this heading">#</a></h3>
 <p>Navigate to your POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">Gatus</span> <span class="pre">widget</span></code>, and select <strong><em>aws-us-east-2-spoke1-test1</em></strong>.</p>
 <p>Insert the credentials available on your POD Portal and then click on <strong>“Sign in”</strong>.</p>
 <figure class="align-center" id="id24">
@@ -682,7 +686,7 @@ document.write(`
 <p>The <strong>East-West</strong> traffic is disrupted. The instance <strong><em>aws-us-east-2-spoke1-test1</em></strong> can only reach <strong>test2</strong> due to intra-VPC traffic, which bypasses the Aviatrix Spoke Gateway (i.e. the <strong>Enforcement Security Point</strong>).</p>
 </section>
 <section id="connectivity-verification-icmp-using-ssh-client-bonus">
-<h3>3.6 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-verification-icmp-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<h3>3.8 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-verification-icmp-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>Open a terminal window and SSH into the public IP of the instance <strong>aws-us-east-2-spoke1-<span style='color:red'>test1</span></strong> (<em>NOT test2</em>). From there, ping the private IPs of each other instances to verify that the connectivity is indeed <strong>broken</strong>!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -714,7 +718,7 @@ document.write(`
 </div>
 </section>
 <section id="connectivity-verification-ssh-using-gatus-app">
-<h3>3.5 Connectivity Verification (SSH) Using Gatus App<a class="headerlink" href="#connectivity-verification-ssh-using-gatus-app" title="Link to this heading">#</a></h3>
+<h3>3.9 Connectivity Verification (SSH) Using Gatus App<a class="headerlink" href="#connectivity-verification-ssh-using-gatus-app" title="Link to this heading">#</a></h3>
 <p>From the Gatus App open on <strong><em>aws-us-east-2-spoke1-test1</em></strong>, verify the SSH section.</p>
 <figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab10-gatus02.png"><img alt="../_images/lab10-gatus02.png" src="../_images/lab10-gatus02.png" style="height: 400px;" />
@@ -726,7 +730,7 @@ document.write(`
 <p>The SSH test is only successful against <strong><em>aws-us-east-2-spoke1-test2</em></strong> due to intra-VPC traffic.</p>
 </section>
 <section id="connectivity-verification-ssh-using-ssh-client-bonus">
-<h3>3.6  Connectivity Verification (SSH) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-verification-ssh-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<h3>3.10  Connectivity Verification (SSH) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-verification-ssh-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>Verify also from the instance <strong>aws-us-east-2-spoke1-test1</strong> that you <strong><em>can’t</em></strong> SSH to any other instances, except to the <strong>aws-us-east-2-spoke1-test2</strong>, due to the fact that the SSH connection in this case, is established once again within the VPC, <ins>bypassing the Spoke Gateway (i.e. the DCF Enforcement Point)</ins>!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -744,13 +748,13 @@ document.write(`
 <p><span class="caption-number">Fig. 563 </span><span class="caption-text">SSH fails towards the other instances</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The previous results clearly confirm that connectivity is disrupted, allowing only <code class="docutils literal notranslate"><span class="pre">intra-vpc</span> <span class="pre">traffic</span></code>.</p>
+<p>The previous results confirm that East-West connectivity is disrupted; only <code class="docutils literal notranslate"><span class="pre">intra-vpc</span> <span class="pre">traffic</span></code> is allowed in the AWS us-east-2 region.</p>
 </section>
 </section>
 <section id="dcf-rules-creation">
 <h2>4. DCF Rules Creation<a class="headerlink" href="#dcf-rules-creation" title="Link to this heading">#</a></h2>
 <section id="create-an-intra-rule-that-allows-icmp-inside-bu1">
-<h3>4.1. Create an intra-rule that allows ICMP inside bu1<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu1" title="Link to this heading">#</a></h3>
+<h3>4.1 Create an intra-rule that allows ICMP inside bu1<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu1" title="Link to this heading">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Zero Trust architecture is “Never trust, always verify”, a critical component to enterprise cloud adoption success!</p>
@@ -765,8 +769,8 @@ document.write(`
 <p>Enter the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>intra-icmp-bu1</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>bu1</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>bu1</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>bu1</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>bu1</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>ICMP</span></p></li>
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
@@ -782,12 +786,12 @@ document.write(`
 <figure class="align-center" id="id34">
 <img alt="../_images/lab10-rulecommitted00.png" src="../_images/lab10-rulecommitted00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 566 </span><span class="caption-text">Rule committed</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 566 </span><span class="caption-text">Policy not committed yet</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="create-an-intra-rule-that-allows-icmp-inside-bu2">
-<h3>4.2. Create an intra-rule that allows ICMP inside bu2<a class="headerlink" href="#create-an-intra-rule-that-allows-icmp-inside-bu2" title="Link to this heading">#</a></h3>
+<section id="create-an-inter-rule-that-allows-icmp-from-us-east-2-test2-to-azure-spoke2">
+<h3>4.2 Create an inter-rule that allows ICMP from us-east-2-test2 to azure-spoke2<a class="headerlink" href="#create-an-inter-rule-that-allows-icmp-from-us-east-2-test2-to-azure-spoke2" title="Link to this heading">#</a></h3>
 <p>Create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 <figure class="align-center" id="id35">
 <img alt="../_images/lab10-rule3.png" src="../_images/lab10-rule3.png" />
@@ -797,9 +801,9 @@ document.write(`
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: <span style='color:#479608'>intra-icmp-bu2</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>bu2</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>bu2</span></p></li>
+<li><p><strong>Name</strong>: <span style='color:#479608'>inter-icmp-us-east-2-test2-azure-spoke2</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>us-east-2-test2</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>azure-spoke2</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>ICMP</span></p></li>
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
@@ -813,7 +817,7 @@ document.write(`
 <figure class="align-center" id="id36">
 <img alt="../_images/lab10-intrabu2.png" src="../_images/lab10-intrabu2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 568 </span><span class="caption-text">intra-icmp-bu2</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 568 </span><span class="caption-text">inter-icmp-us-east-2-test2-azure-spoke2</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Next, proceed by clicking the <strong>Commit</strong> button.</p>
@@ -1723,16 +1727,17 @@ sent to the NGFW, first.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-bu1">3.1 Smart Group “bu1”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-us-east-2-test2">3.2 Smart Group “us-east-2-test2”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-azure-spoke2">3.3 Smart Group “azure-spoke2”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-of-the-connection-policy">3.5 Removal of the Connection Policy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-gatus-app">3.5 Connectivity Verification (ICMP) Using Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-ssh-client-bonus">3.6 Connectivity Verification (ICMP) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-gatus-app">3.5 Connectivity Verification (SSH) Using Gatus App</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-ssh-client-bonus">3.6  Connectivity Verification (SSH) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-status-of-the-dcf-policies-list">3.5 Current status of the DCF Policies List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-of-the-connection-policy">3.6 Removal of the Connection Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-gatus-app">3.7 Connectivity Verification (ICMP) Using Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-icmp-using-ssh-client-bonus">3.8 Connectivity Verification (ICMP) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-gatus-app">3.9 Connectivity Verification (SSH) Using Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-ssh-using-ssh-client-bonus">3.10  Connectivity Verification (SSH) Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dcf-rules-creation">4. DCF Rules Creation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu1">4.1. Create an intra-rule that allows ICMP inside bu1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu2">4.2. Create an intra-rule that allows ICMP inside bu2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-intra-rule-that-allows-icmp-inside-bu1">4.1 Create an intra-rule that allows ICMP inside bu1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-inter-rule-that-allows-icmp-from-us-east-2-test2-to-azure-spoke2">4.2 Create an inter-rule that allows ICMP from us-east-2-test2 to azure-spoke2</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a><ul class="nav section-nav flex-column">
