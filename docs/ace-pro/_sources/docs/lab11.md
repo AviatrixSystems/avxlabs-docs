@@ -26,17 +26,19 @@ The **CSP tagging** is the recommended method for defining the SmartGroups.
 
 In this lab, you will implement the following requirements across all three CSPs:
 
-- Create a Smart Group named `"bu1"` that uses the tag `"environment"`.
+- Create a Smart Group named `"bu1"` tagged with `"environment"` that identifies the following instances: **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke1-test1_**.
 
-- Create a Smart Group named "bu2" that uses the tag `"environment"`.
+- Create a Smart Group named `"us-east-2-private"` that uses the tag `"Name" = "aws-us-east-2-spoke1-test1"` that identifies the following instance: **_aws-us-east-2-spoke1-test2_**
 
-- Create an `intra-rule` allowing ICMP traffic within bu1.
+- Create a Smart Group named `"azure-spoke2"` that uses the tag `"IP/CDR" = "192.168.2.0/24"` that identifies the following instance: **_azure-west-us-spoke2_**
 
-- Create an `intra-rule` allowing ICMP traffic within bu2.
+- Create an `intra-rule` allowing ICMP traffic within `bu1`.
+
+- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> `us-east-2-private` <ins>to</ins> `azure-spoke2` only.
 
 - Create an `intra-rule` allowing SSH traffic within bu1.
 
-- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> bu2 <ins>to</ins> bu1 only.
+- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> `azure-spoke2` <ins>to</ins> `bu1 only`.
 
 ```{figure} images/lab10-initial.png
 ---
