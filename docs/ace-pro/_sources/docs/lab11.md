@@ -28,7 +28,7 @@ In this lab, you will implement the following requirements across all three CSPs
 
 - Create a Smart Group named `"bu1"` tagged with `"environment"` that identifies the following instances: **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke1-test1_**.
 
-- Create a Smart Group named `"us-east-2-private"` that uses the tag `"Name" = "aws-us-east-2-spoke1-test1"` that identifies the following instance: **_aws-us-east-2-spoke1-test2_**
+- Create a Smart Group named `"us-east-2-private"` that uses the tag `"Name" = "aws-us-east-2-spoke1-test2"` that identifies the following instance: **_aws-us-east-2-spoke1-test2_**
 
 - Create a Smart Group named `"azure-spoke2"` that uses the tag `"IP/CDR" = "192.168.2.0/24"` that identifies the following instance: **_azure-west-us-spoke2_**
 
@@ -38,7 +38,7 @@ In this lab, you will implement the following requirements across all three CSPs
 
 - Create an `intra-rule` allowing SSH traffic within bu1.
 
-- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> `azure-spoke2` <ins>to</ins> `bu1 only`.
+- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> `azure-spoke2` <ins>to</ins> `bu1` only.
 
 ```{figure} images/lab10-initial.png
 ---
@@ -50,10 +50,7 @@ Initial Topology Lab 11
 
 ## 3. Smart Groups Creation
 
-Create two Smart Groups and classify each one using the CSP tag `"environment"`: 
-
-- Assign the name `"bu1"` to the Smart Group **#1**.
-- Assign the name `"bu2"` to the Smart Group **#2**.
+Let’s begin `micro-segmentation` by creating the Smart Groups.
 
 ### 3.1 Smart Group “bu1”
 
@@ -92,7 +89,7 @@ align: center
 Resources that match the condition
 ```
 
-### 3.2 Smart Group “bu2”
+### 3.2 Smart Group “us-east-2-private”
 
 Create another Smart Group clicking on the `"+ SmartGroup"` button.
 
@@ -105,10 +102,24 @@ New Smart Group
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
-- **Name**: <span style='color:#479608'>bu2</span>
-- **Matches all conditions (AND)/environment**: <span style='color:#479608'>bu2</span>
+- **Name**: <span style='color:#479608'>us-east-2-private</span>
+- **Matches all conditions (AND)/environment**: <span style='color:#479608'>Name: aws-us-east-2-spoke1-test2</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
+
+```{figure} images/lab1081-smart6.png
+---
+align: center
+---
+us-east-2-private
+```
+
+```{figure} images/lab1080-smart6.png
+---
+align: center
+---
+Tag: Name
+```
 
 ```{figure} images/lab10-smart6.png
 ---
@@ -117,17 +128,65 @@ align: center
 Resource Selection
 ```
 
-The CoPilot shows that there are three instances that match the condition:
+The CoPilot shows that there is one instance that matches the condition:
 
 - **aws-us-east2-spoke1-test2** in AWS
-- **azure-us-west-spoke2-test1** in Azure
-- **gcp-us-central1-spoke1-test1** in GCP
 
 ```{figure} images/lab10-smart7.png
 ---
 align: center
 ---
-Resources that match the condition
+Resource that matches the condition
+```
+
+### 3.3 Smart Group “azure-spoke2”
+
+Create another Smart Group clicking on the `"+ SmartGroup"` button.
+
+```{figure} images/lab10-smart5.png
+---
+align: center
+---
+New Smart Group
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>azure-spoke2</span>
+- **Matches all conditions (AND)/environment**: <span style='color:#479608'>bu2</span>
+
+Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
+
+```{figure} images/lab1081-smart6.png
+---
+align: center
+---
+us-east-2-private
+```
+
+```{figure} images/lab1080-smart6.png
+---
+align: center
+---
+Tag: Name
+```
+
+```{figure} images/lab10-smart6.png
+---
+align: center
+---
+Resource Selection
+```
+
+The CoPilot shows that there is one instance that matches the condition:
+
+- **aws-us-east2-spoke1-test2** in AWS
+
+```{figure} images/lab10-smart7.png
+---
+align: center
+---
+Resource that matches the condition
 ```
 
 At this stage, you have created logical containers that do not affect the existing routing domain, thanks to the `Connection Policy`  applied in **Lab 3**. Now, it's time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
