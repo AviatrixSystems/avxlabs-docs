@@ -422,7 +422,7 @@ Saving the new Rule
 Ultimately , this Webgroup will limit Internet traffic solely for **HTTP** and **HTTPS** protocols.
 ```
 
-Click on the **Commit** button, and the rule previously created will be enforced in to the `Data Path`..
+Click on the **Commit** button, and the rule previously created will be enforced in to the `Data Path`.
 
 ```{figure} images/lab6-newrule11.png
 ---
