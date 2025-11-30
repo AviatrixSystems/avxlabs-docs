@@ -366,9 +366,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-gatus-app">5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-using-the-gatus-app">5.1 Verify ICMP within bu1 Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-traffic-from-your-laptop-to-bu1-using-ssh-client-bonus">5.2 Verify SSH traffic from your laptop to bu1 Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-ssh-client-bonus">5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-using-the-ssh-client-bonus">5.3 Verify ICMP within bu1 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration">5.4 SG Orchestration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-gatus-app">5.5 SG Orchestration Verification Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-ssh-client-bonus">5.6 SG Orchestration Verification Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
@@ -839,8 +839,8 @@ document.write(`
 <p><span class="caption-number">Fig. 573 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-gatus-app">
-<h3>5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App<a class="headerlink" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-gatus-app" title="Link to this heading">#</a></h3>
+<section id="verify-icmp-within-bu1-using-the-gatus-app">
+<h3>5.1 Verify ICMP within bu1 Using the Gatus App<a class="headerlink" href="#verify-icmp-within-bu1-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the ICMP Traffic.</p>
 <figure class="align-center" id="id39">
 <img alt="../_images/lab10-gatus80.png" src="../_images/lab10-gatus80.png" />
@@ -871,8 +871,8 @@ document.write(`
 </figcaption>
 </figure>
 </section>
-<section id="verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-ssh-client-bonus">
-<h3>5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<section id="verify-icmp-within-bu1-using-the-ssh-client-bonus">
+<h3>5.3 Verify ICMP within bu1 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-icmp-within-bu1-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>Ping the following instances from <strong>aws-us-east-2-spoke1-test1</strong>:</p>
 <ul class="simple">
 <li><p><strong>gcp-us-central1-spoke1-test1</strong> in GCP</p></li>
@@ -915,8 +915,8 @@ document.write(`
 <p><span class="caption-number">Fig. 580 </span><span class="caption-text">Outcomes</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Based on the above outcome, you will not see <strong>10.0.1.10</strong> (aws-us-east-2-spoke1-test2) because it belongs to <strong>bu2</strong>, which does not match the intra-icmp-bu1 rule.</p>
-<p>However, <strong>aws-us-east-2-spoke1-test1</strong> can ping <strong>aws-us-east-2-spoke1-test2</strong> due to intra-VPC communication, without needing to match any of the deployed DCF rules.</p>
+<p>Based on the above outcome, you will not see <strong>10.0.1.10</strong> (aws-us-east-2-spoke1-test2) because it belongs to the <strong>us-east-2-test2</strong> Smart Group, which does not match the intra-icmp-bu1 rule.</p>
+<p>However, <strong>aws-us-east-2-spoke1-test1</strong> can ping <strong>aws-us-east-2-spoke1-test2</strong> due to intra-VPC communication, <ins>without needing to match any of the deployed DCF rules</ins>.</p>
 <figure class="align-center" id="id46">
 <img alt="../_images/lab10-sgorch01.png" src="../_images/lab10-sgorch01.png" />
 <figcaption>
@@ -1741,9 +1741,9 @@ sent to the NGFW, first.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-gatus-app">5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-using-the-gatus-app">5.1 Verify ICMP within bu1 Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-traffic-from-your-laptop-to-bu1-using-ssh-client-bonus">5.2 Verify SSH traffic from your laptop to bu1 Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-ssh-client-bonus">5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-using-the-ssh-client-bonus">5.3 Verify ICMP within bu1 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration">5.4 SG Orchestration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-gatus-app">5.5 SG Orchestration Verification Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-ssh-client-bonus">5.6 SG Orchestration Verification Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
