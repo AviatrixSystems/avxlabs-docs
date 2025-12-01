@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-n this lab, you will deploy **four** virtual networks (VPCs/VNets) across the three cloud service providers: Azure, AWS, and Google Cloud Platform (GCP).
+In this lab, you will deploy **four** virtual networks (VPCs/VNets) across the three cloud service providers: Azure, AWS, and Google Cloud Platform (GCP).
 
 The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).
 
