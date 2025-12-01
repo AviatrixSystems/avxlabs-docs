@@ -496,7 +496,7 @@ Topology
 The Aviatrix Edge Spoke Gateway can be attached to multiple Transit Gateways!
 ```
 
-### 6.1 Connectivity Testing
+### 6.1 Final Connectivity Testing
 
 Now let's verify the connectivity beetween  **aws-us-east-2-spoke1-test1** in AWS  and **gcp-us-central1-spoke1-test1** in GCP
 
