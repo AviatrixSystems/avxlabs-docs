@@ -1,4 +1,5 @@
 # Lab 8 - SECURE HIGH-PERFORMANCE DATACENTER EDGE
+
 This lab will demonstrate the functionalities of the `Edge Gateway`.
 
 ```{important}
