@@ -86,6 +86,16 @@ Ping is unsuccessful
 
 From the outcome above you can notice that from the Spoke1 GW in AWS, the BU2 Mobile App is not reachable.
 
+```{figure} images/lab3-zerohops.png
+---
+height: 300px
+align: center
+---
+0 Hops
+```
+
+The traceroute results show a surprising outcome: **0 hops**.
+
 - Now try to ping both workloads (i.e. BU1 Frontend and BU2 Mobile App) from the **Transit** GW in AWS.
 
 ```{figure} images/lab3-bu1ping.png
@@ -128,7 +138,7 @@ The ICMP health check is initiated every **5** seconds from the Aviatrix Transit
 
 ```{figure} images/lab3-fwdown.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 The FW is down
@@ -177,6 +187,17 @@ align: center
 Traceroute is ok
 ```
 
+- Alternatively, you can run traceroute directly from Spoke1 in EU-WEST-1—the gateway in the same VPC as the Frontend instance.
+
+- Navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the _ace-aws-eu-west-1-spoke1_ gateway, then run traceroute to the private IP address of the Mobile-App instance.
+
+```{figure} images/lab3-traceroutespoke.png
+---
+align: center
+---
+Traceroute is ok
+```
+
 ```{important}
 The traceroute outcome shows the whole path from the source, the BU1 Frontend, till the recipient, the BU2 Mobile App.
 
@@ -216,7 +237,7 @@ eth-fn0 interface
 
 ```{figure} images/lab3-ethernet02.png
 ---
-height: 250px
+height: 150px
 align: center
 ---
 ping
@@ -308,7 +329,16 @@ align: center
 Ping is ok!
 ```
 
-Relaunch also the traceroute from **BU1 Frontend** towards **BU2 Mobile App**.
+- Also re-run the traceroute from BU1 (`Diagnostics tools`) to **BU2 Mobile App**, selecting the appropriate gateway, **_ace-aws-eu-west-1-spoke1_**!
+
+```{figure} images/lab3-traceroute280.png
+---
+align: center
+---
+New Traceroute outcome from the Spoke1
+```
+
+- Alternatively, run the traceroute again from the **BU1 Frontend** SSH session, which is still open, toward **BU2 Mobile App**.
 
 ```{figure} images/lab3-traceroute2.png
 ---
