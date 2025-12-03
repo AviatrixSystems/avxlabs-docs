@@ -27,6 +27,17 @@ align: center
 Ping fails
 ```
 
+```{important}
+Remember that all Aviatrix gateways include built-in enterprise-grade tools, such as ping and traceroute. If you can’t use an SSH client, run these commands directly from the `Diagnostics Tools` section.
+```
+
+```{figure} images/lab4-traceroute280.png
+---
+align: center
+---
+Ping from the Spoke1
+```
+
 - Check whether both **AWS Spoke1** and **AWS Spoke2** have the required routes installed in their RTBs or not.
 
 ```{tip}
@@ -208,7 +219,16 @@ align: center
 10.0.0.0/8 has been successfully reinjected into the FW's rtb!
 ```
 
-- Please re-execute the ping from **BU1 Frontend** toward **BU2 Mobile App**.
+- Re-run ping to the MobileApp instance’s private IP address from AWS Spoke1, using the Diagnostics Tools.
+
+```{figure} images/lab4-traceroute281.png
+---
+align: center
+---
+Ping from the Spoke1
+```
+
+- Alternatively, re-execute the ping from **BU1 Frontend** toward **BU2 Mobile App**.
 
 ```{figure} images/lab4-pingworks.png
 ---
