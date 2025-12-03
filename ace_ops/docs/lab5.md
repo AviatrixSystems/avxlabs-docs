@@ -2,7 +2,7 @@
 
 ## 1. SCENARIO
 
-BU1 Frontend suddenly cannot communicate with BU1 Analytics or BU1 DB. The network team found that a disgruntled employee had compromised the connectivity between these workloads.
+**BU1 Frontend** suddenly cannot communicate with **BU1 Analytics** or **BU1 DB**. The network team found that a disgruntled employee had compromised the connectivity between these workloads.
 
 ```{figure} images/lab5-topology.png
 ---
@@ -131,6 +131,21 @@ Ping is ok
 ### 2.2 BU1 DB is not reachable
 
 - Now verify that the connectivity between **BU1 Frontend** and **BU1 DB** is actually broken.
+  - Run the traceroute command from the `Diagnostics tools` to the private IP address of the BU1 DB.
+  
+```{tip}
+Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
+
+Select **_ace-aws-eu-west-1-spoke1_** Spoke GW and perform a **traceroute** to BU1 DB’s private IP.
+```
+
+```{figure} images/lab5-5hops.png
+---
+align: center
+---
+5 Hops...
+```
+  
   - Establish an **SSH session** to **BU1 Frontend** and perform _ping, traceroute, and SSH_ commands targeting **BU1 DB**.
 
 ```{figure} images/lab5-pingfails2.png
@@ -148,19 +163,6 @@ SSH is unsuccessful
 ```
 
 - Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and launch a **traceroute** to **BU1 DB** in Azure.
-
-```{tip}
-Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
-
-Select **_ace-aws-eu-west-1-spoke1_** Spoke GW and perform a **traceroute** to BU1 DB’s private IP.
-```
-
-```{figure} images/lab5-5hops.png
----
-align: center
----
-5 Hops...
-```
 
 ```{important}
 The results above show **five** hops. The last hop to respond is the Spoke1 Gateway in Azure, which means the BU1 DB did not respond to the traceroute.
