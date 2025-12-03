@@ -17,7 +17,17 @@ Lab 5 Topology
 ### 2.1 BU1 Analytics is not reachable
 
 - Verify that the connectivity between **BU1 Frontend** and **BU1 Analytics** is actually broken.
-  - SSH to **BU1 Frontend** and execute ping/traceroute/ssh commands toward **BU1 Analytics**.
+
+  - Run the ping command from the Diagnostics tools to the private IP address of the **BU1 Analytics**
+
+```{figure} images/lab5-traceroute2812.png
+---
+align: center
+---
+Ping from the Spoke1
+```
+
+  -  Alternatively, connect via SSH to **BU1 Frontend** and execute ping, traceroute, or SSH commands toward **BU1 Analytics**.
 
 ```{figure} images/lab5-pingfails.png
 ---
@@ -26,7 +36,7 @@ align: center
 Ping fails
 ```
 
-- Check whether the AWS Spoke1 GW and the GCP Spoke1 GW have the relevant routes or not.
+- Check whether the **AWS Spoke1 GW** and the **GCP Spoke1 GW** have the relevant routes or not.
 
 ```{tip}
 Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select the **Spoke1 Gateway in AWS > Gateway Routes** and filter by the remote route.
@@ -100,7 +110,16 @@ align: center
 Delete the malicious route
 ```
 
-- Reevaluate connectivity by reissuing the ping from **BU1 Frontend** to **BU1 Analytics**.
+- From Diagnostics Tools, re-run ping to the private IP address of **BU2 MobileApp**.
+
+```{figure} images/lab5-traceroute28123.png
+---
+align: center
+---
+Ping from the Spoke1
+```
+
+- Reevaluate connectivity by reissuing the ping from **BU1 Frontend** to **BU1 Analytics** using your SSH client.
 
 ```{figure} images/lab5-pingok.png
 ---
