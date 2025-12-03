@@ -4,7 +4,7 @@
 
 The infrastructure has recently been divided into two network domains: **BU1** and **BU2**.
 
-Please verify the segregation between these two domains, as implemented through the `Aviatrix Cloud Native Security Fabric`.
+Please verify the segregation between these two domains, as implemented through the `Aviatrix Cloud Native Security Fabric (CNSF)`.
 
 ```{figure} images/lab1-segmentation.png
 ---
@@ -16,8 +16,8 @@ Initial Topology
 
 ## 2. VALIDATION REQUEST
 
-* Navigate to **CoPilot > Settings > Resources > Task Server**. 
-  * Ensure that both `Fetch GW Routes` and `Fetch VPC Routes` intervals are set to `1 second`. Then, click **Save** to apply the changes.
+* Navigate to **CoPilot > Settings > Resources > Task Server**.
+  * Ensure that `Fetch GW Routes`, `Fetch VPC Routes` and `Fetch BGP` intervals are set to `1 second`. Then, click **Save** to apply the changes.
 
 
 ```{figure} images/lab1-task.png
@@ -40,6 +40,13 @@ Fetch GW Routes
 align: center
 ---
 Fetch VPC Routes
+```
+
+```{figure} images/lab1-fetchbgp.png
+---
+align: center
+---
+Fetch BGP
 ```
 
 After that, click on **Commit**.
@@ -301,7 +308,7 @@ Additionally, execute the **CURL** command directed at BU1 Analytics.
 
 ```{figure} images/lab1-pingok29.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 CURL
@@ -377,7 +384,7 @@ Network Domain (aka VRF)
 You will notice that the `Segmentation` feature is indeed enabled. 
 ```{figure} images/lab1-newjoe.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 RIB
@@ -393,7 +400,7 @@ Do not forget to click on **Apply**.
 
 ```{figure} images/lab1-plus.png
 ---
-height: 150px
+height: 250px
 align: center
 ---
 FlowIQ Filter
@@ -413,7 +420,7 @@ Then check the `"Flow Exporters"` widget, then from the drop-down menu select th
 
 ```{figure} images/lab1-flowiq.png
 ---
-height: 500px
+height: 400px
 align: center
 ---
 FlowIQ
@@ -446,7 +453,7 @@ The **Originator** has the egress interface that corresponds to the **eth0** int
 
 ```{figure} images/lab1-cloudroutes.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Originator = eth0
