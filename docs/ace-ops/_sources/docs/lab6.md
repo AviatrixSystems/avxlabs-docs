@@ -115,9 +115,9 @@ Configure the new Site-to-Cloud (S2C) connection according to the schema below:
 
 - **Name**: <span style='color:#479608'>S2C-PARTNER</span>
 
-- **Connect Using**: <span style='color:#479608'>Static Route-Based</span>
+- **Type**: <span style='color:#479608'>Static Routing over IPsec</span>
 
-- **Type**: <span style='color:#479608'>Mapped</span>
+- **Static Routing Type**: <span style='color:#479608'>Mapped</span>
 
 - **Local Gateway**: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span>
 
@@ -131,11 +131,11 @@ Configure the new Site-to-Cloud (S2C) connection according to the schema below:
 
 - **Virtual Remote Subnet CIDR(s)**: <span style='color:#479608'>192.168.2.0/24</span>
 
-- **IKEv2**: <span style='color:#479608'>ON</span>
+- **Internet Key Exchange**: <span style='color:#479608'>IKEv2</span>
 
-- **Authentication**: <span style='color:#479608'>Pre-Shared Key</span>
+- **Authentication (Method)**: <span style='color:#479608'>Pre-Shared Key</span>
 
-- **Remote Device IP**:  <span style='color:tomato'>please refer to the Note below</span>
+- **Remote Device 1 Tunnel Destination IP**:  <span style='color:tomato'>please refer to the Note below</span>
 
 ```{note}
 Use the “**dig partner-csr-public.pod#.aviatrixlab.com +short**” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem-Partner CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
@@ -163,8 +163,6 @@ align: center
 ---
 Nslookup 
 ```
-
--  **Local gateway Instance**: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span>
   -  **Pre-Shared Key**: <span style='color:#479608'>Aviatrix123#</span>
 
 ```{important}
@@ -248,7 +246,7 @@ Filter the results using the `"icmp"` keyword.
 
 ```{figure} images/lab6-final.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Mapped NAT in action !
