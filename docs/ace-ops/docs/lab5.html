@@ -532,13 +532,13 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The results above show <strong>five</strong> hops (<strong>six</strong> if you run traceroute from the BU1 Frontend EC2 instance). The last hop to respond is the Spoke1 Gateway in Azure, which means the BU1 DB did not respond to the traceroute.</p>
+<p>The results above show <strong>five</strong> hops (<strong>six</strong> if you run traceroute from the BU1 Frontend EC2 instance). The last hop to respond is the Spoke1 Gateway in Azure, <ins>which means the BU1 DB did not respond to the traceroute</ins>.</p>
 </div>
 <section id="packet-capture">
 <h4>2.2.1 Packet Capture<a class="headerlink" href="#packet-capture" title="Link to this heading">#</a></h4>
 <p>You can duplicate the current CoPilot UI tab and run Diagnostics Tools in parallel: one tab to generate ICMP traffic, and another to capture packets.</p>
 <ul class="simple">
-<li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. Select the <strong><em>ace-azure-east-us-spoke1</em></strong> gateway, then choose <code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">Capture</span></code> from the actions list and set the capture duration to 10 seconds. Before clicking <strong>RUN</strong>, switch to the other tab to generate ICMP traffic.</p></li>
+<li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. Select the <strong><em>ace-azure-east-us-spoke1</em></strong> gateway, then choose <code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">Capture</span></code> from the actions list, select the <strong>eth0</strong> interface and set the capture duration to <strong>10 seconds</strong>. Before clicking <strong>RUN</strong>, switch to the other tab to generate ICMP traffic.</p></li>
 </ul>
 <figure class="align-center" id="id16">
 <img alt="../_images/lab5-packetcapture000.png" src="../_images/lab5-packetcapture000.png" />
@@ -547,7 +547,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>On the other tab, go to CoPilot &gt; Diagnostics &gt; Diagnostics Tools. Select the ace-aws-eu-west-1-spoke1 gateway, then choose Ping from the actions list. Before clicking RUN, first trigger the packet capture on the other tab, then execute the ping.</p></li>
+<li><p>On the other tab, navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. Select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway, then choose <strong>Ping</strong> from the actions list. Before clicking RUN, first trigger the packet capture on the other tab, then execute the ping.</p></li>
 </ul>
 <figure class="align-center" id="id17">
 <img alt="../_images/lab5-packetcapture0001.png" src="../_images/lab5-packetcapture0001.png" />
@@ -556,43 +556,19 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Continue pinging <strong>BU1 DB’s private IP address</strong> from the SSH session established with BU1 Frontend.</p></li>
+<li><p>Alternatively, You can geenrate the ICMP traffic using the SSH client, and keep caputring the packets from the <strong>Diagnostics Tools</strong>!</p></li>
 </ul>
 <figure class="align-center" id="id18">
-<img alt="../_images/lab5-5hops22.png" src="../_images/lab5-5hops22.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 127 </span><span class="caption-text">ping</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Start a <strong>Packet Capture</strong> on the LAN interface (<code class="docutils literal notranslate"><span class="pre">eth0</span></code>) of the <strong><em>ace-azure-east-us-spoke1</em></strong> gateway, and filter the results to focus on <strong>ICMP</strong> traffic.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools &gt; Gateway Diagnostics</strong>.</p>
-<p>Select the <strong><em>ace-azure-east-us-spoke1</em></strong> Spoke GW and launch the packet capture on its eth0 interface.</p>
-<p>This is the LAN interface within the VNet, where also the <strong>VNet router</strong> resides!</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>All Aviatrix Gateways are equipped with enterprise-grade tools, so you can launch a ping directly from the gateway, without opening an SSH session to the user workloads.</p>
-<p><ins>Open two tabs</ins>: on the first tab launch a packet capture on the <strong>Azure Spoke GW1</strong> on the LAN interface (<code class="docutils literal notranslate"><span class="pre">etho</span></code>), <ins>and after few seconds</ins>, start a ping from the <strong>BU1 Frontend</strong> towards <strong>BU1 DB</strong> (VM in Azure) and keep it running, although it will fail.</p>
-<ul class="simple">
-<li><p>Diminish the <code class="docutils literal notranslate"><span class="pre">Duration</span></code> to solely <strong>10</strong> seconds to speed up the capture!</p></li>
-<li><p>Filter out based on the <code class="docutils literal notranslate"><span class="pre">&quot;ICMP&quot;</span></code> protocol.</p></li>
-</ul>
-</div>
-<figure class="align-center" id="id19">
 <img alt="../_images/lab5-pinfail.png" src="../_images/lab5-pinfail.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 128 </span><span class="caption-text">Ping to BU1 DB fails</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 127 </span><span class="caption-text">Ping to BU1 DB fails</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../_images/lab5-packetcapture00.png"><img alt="../_images/lab5-packetcapture00.png" src="../_images/lab5-packetcapture00.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 129 </span><span class="caption-text">Packet Capture</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 128 </span><span class="caption-text">Packet Capture</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will only see <strong>ICMP Echo Request</strong> packets leaving from the LAN interface. Additionally, the source IP is entirely different from what you’d expect: instead of an IP from the legitimate CIDR 10.1.211.0/24, the source address belongs to the <code class="docutils literal notranslate"><span class="pre">50.50.50.0/24</span></code> range.</p>
@@ -603,29 +579,29 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke1</em></strong> GW in Azure <strong>&gt; Settings &gt; Network Address Translation (NAT)</strong>, delete the NAT Rule and click on <strong>SAVE</strong>.</p>
 </div>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab5-deleterule.png"><img alt="../_images/lab5-deleterule.png" src="../_images/lab5-deleterule.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 130 </span><span class="caption-text">Deletion of the NAT rule</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 129 </span><span class="caption-text">Deletion of the NAT rule</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Run the ping command from the <code class="docutils literal notranslate"><span class="pre">Diagnostics</span> <span class="pre">tools</span></code> to the private IP address of the BU1 DB.</p></li>
 </ul>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id21">
 <img alt="docs/images/lab5-traceroute281214.png" src="docs/images/lab5-traceroute281214.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 131 </span><span class="caption-text">Ping from the Spoke1</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 130 </span><span class="caption-text">Ping from the Spoke1</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>From BU1 Frontend, re-run the ping to <strong>BU1 DB</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab5-pingok2.png" src="../_images/lab5-pingok2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 132 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 131 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -639,10 +615,10 @@ document.write(`
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>The subnet <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code> is advertised by the <strong>OnPrem DC Router</strong> towards the Aviatrix CNSF via the Site-to-Cloud connection.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab5-newrequest2.png" src="../_images/lab5-newrequest2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 133 </span><span class="caption-text">S2C route</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 132 </span><span class="caption-text">S2C route</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -653,25 +629,25 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP Info</strong> and then click on the <strong>3 dots</strong> icon on the right-hand side of the screen and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code> option.</p>
 </div>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab5-bgpinfo.png" src="../_images/lab5-bgpinfo.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 134 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 133 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab5-bgpinfo100.png"><img alt="../_images/lab5-bgpinfo100.png" src="../_images/lab5-bgpinfo100.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 135 </span><span class="caption-text">10.0.211.0/24</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 134 </span><span class="caption-text">10.0.211.0/24</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You are required to keep this route visible (fully installed in the routing tables) on all the Spoke gateways, <ins>except for the Azure Spoke2 Gateway</ins>.</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id26">
 <a class="reference internal image-reference" href="../_images/lab5-newrequest.png"><img alt="../_images/lab5-newrequest.png" src="../_images/lab5-newrequest.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 136 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 135 </span><span class="caption-text">Topology</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -682,11 +658,11 @@ document.write(`
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Gateway Routes</strong> tab.</p>
 <p>Now search for <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code>.</p>
 </div>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab5-newrequest3.png"><img alt="../_images/lab5-newrequest3.png" src="../_images/lab5-newrequest3.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Search for the remote route from the OnPrem DC</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 136 </span><span class="caption-text">Search for the remote route from the OnPrem DC</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -698,11 +674,11 @@ document.write(`
 Expand the <strong>Routing</strong> section and insert the subnet <strong>10.0.211.0/24</strong> inside the <code class="docutils literal notranslate"><span class="pre">&quot;Exclude</span> <span class="pre">Learned</span> <span class="pre">CIDRs</span> <span class="pre">to</span> <span class="pre">Spoke</span> <span class="pre">VPC/VNet</span> <span class="pre">Route</span> <span class="pre">Table&quot;</span></code> option.</p>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 </div>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab5-newrequest4.png"><img alt="../_images/lab5-newrequest4.png" src="../_images/lab5-newrequest4.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 138 </span><span class="caption-text">Exclude the route</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Exclude the route</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -713,11 +689,11 @@ Expand the <strong>Routing</strong> section and insert the subnet <strong>10.0.2
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Gateway Routes</strong> tab.</p>
 <p>Now search for <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code>.</p>
 </div>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab5-newrequest5.png"><img alt="../_images/lab5-newrequest5.png" src="../_images/lab5-newrequest5.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 139 </span><span class="caption-text">No Results found</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 138 </span><span class="caption-text">No Results found</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The route has been successfully removed from the routing table!</p>
