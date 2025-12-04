@@ -556,7 +556,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Alternatively, You can geenrate the ICMP traffic using the SSH client, and keep caputring the packets from the <strong>Diagnostics Tools</strong>!</p></li>
+<li><p>Alternatively, you can generate the ICMP traffic using the SSH client, and keep capturing the packets from the <strong>Diagnostics Tools</strong>!</p></li>
 </ul>
 <figure class="align-center" id="id18">
 <img alt="../_images/lab5-pinfail.png" src="../_images/lab5-pinfail.png" />
@@ -564,6 +564,7 @@ document.write(`
 <p><span class="caption-number">Fig. 127 </span><span class="caption-text">Ping to BU1 DB fails</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>You will only see <strong>ICMP Echo Request</strong> packets leaving from the LAN interface. Additionally, the source IP is entirely different from what you’d expect: instead of an IP from the legitimate CIDR 10.1.211.0/24, the source address belongs to the <code class="docutils literal notranslate"><span class="pre">50.50.50.0/24</span></code> range.</p>
 <figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../_images/lab5-packetcapture00.png"><img alt="../_images/lab5-packetcapture00.png" src="../_images/lab5-packetcapture00.png" style="height: 350px;" />
 </a>
@@ -571,7 +572,6 @@ document.write(`
 <p><span class="caption-number">Fig. 128 </span><span class="caption-text">Packet Capture</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You will only see <strong>ICMP Echo Request</strong> packets leaving from the LAN interface. Additionally, the source IP is entirely different from what you’d expect: instead of an IP from the legitimate CIDR 10.1.211.0/24, the source address belongs to the <code class="docutils literal notranslate"><span class="pre">50.50.50.0/24</span></code> range.</p>
 <ul class="simple">
 <li><p>Fix the issue checking the <strong>Routing</strong> section (aka as <em>Routes Manipulation</em> section) on the <strong>Spoke1 GW in Azure</strong>.</p></li>
 </ul>
@@ -590,13 +590,13 @@ document.write(`
 <li><p>Run the ping command from the <code class="docutils literal notranslate"><span class="pre">Diagnostics</span> <span class="pre">tools</span></code> to the private IP address of the BU1 DB.</p></li>
 </ul>
 <figure class="align-center" id="id21">
-<img alt="docs/images/lab5-traceroute281214.png" src="docs/images/lab5-traceroute281214.png" />
+<img alt="../_images/lab5-traceroute2812141.png" src="../_images/lab5-traceroute2812141.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 130 </span><span class="caption-text">Ping from the Spoke1</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>From BU1 Frontend, re-run the ping to <strong>BU1 DB</strong>.</p></li>
+<li><p>Alternatively, re-run the ping to <strong>BU1 DB</strong> from the SSH session established with the BU1 Frontend.</p></li>
 </ul>
 <figure class="align-center" id="id22">
 <img alt="../_images/lab5-pingok2.png" src="../_images/lab5-pingok2.png" />
