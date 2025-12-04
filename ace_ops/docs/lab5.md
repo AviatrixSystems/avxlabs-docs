@@ -119,7 +119,7 @@ align: center
 Ping from the Spoke1
 ```
 
-- Reevaluate connectivity by reissuing the ping from **BU1 Frontend** to **BU1 Analytics** using your SSH client.
+- If you prefer, please reevaluate connectivity by reissuing a ping from **BU1 Frontend** to **BU1 Analytics** via your SSH client.
 
 ```{figure} images/lab5-pingok.png
 ---
@@ -146,7 +146,7 @@ align: center
 5 Hops...
 ```
   
-  - Establish an **SSH session** to **BU1 Frontend** and perform _ping, traceroute, and SSH_ commands targeting **BU1 DB**.
+  - Alternatively, establish an **SSH session** to **BU1 Frontend** and perform _ping, ssh and traceroute_ commands targeting **BU1 DB**.
 
 ```{figure} images/lab5-pingfails2.png
 ---
@@ -162,10 +162,37 @@ align: center
 SSH is unsuccessful
 ```
 
-- Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and launch a **traceroute** to **BU1 DB** in Azure.
+```{figure} images/lab5-pingfails2314.png
+---
+align: center
+---
+Traceroute = 6 hops
+```
 
 ```{important}
-The results above show **five** hops. The last hop to respond is the Spoke1 Gateway in Azure, which means the BU1 DB did not respond to the traceroute.
+The results above show **five** hops (**six** if you run traceroute from the BU1 Frontend EC2 instance). The last hop to respond is the Spoke1 Gateway in Azure, which means the BU1 DB did not respond to the traceroute.
+```
+
+#### 2.2.1 Packet Capture
+
+You can duplicate the current CoPilot UI tab and run Diagnostics Tools in parallel: one tab to generate ICMP traffic, and another to capture packets.
+
+- Navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the **_ace-azure-east-us-spoke1_** gateway, then choose `Packet Capture` from the actions list and set the capture duration to 10 seconds. Before clicking **RUN**, switch to the other tab to generate ICMP traffic.
+
+```{figure} images/lab5-packetcapture000.png
+---
+align: center
+---
+Packet Capture
+```
+
+- On the other tab, go to CoPilot > Diagnostics > Diagnostics Tools. Select the ace-aws-eu-west-1-spoke1 gateway, then choose Ping from the actions list. Before clicking RUN, first trigger the packet capture on the other tab, then execute the ping.
+
+```{figure} images/lab5-packetcapture0001.png
+---
+align: center
+---
+PING
 ```
 
 - Continue pinging **BU1 DB's private IP address** from the SSH session established with BU1 Frontend.
@@ -227,6 +254,15 @@ align: center
 Deletion of the NAT rule
 ```
 
+- Run the ping command from the `Diagnostics tools` to the private IP address of the BU1 DB.
+
+```{figure} images/lab5-traceroute281214.png
+---
+align: center
+---
+Ping from the Spoke1
+```
+
 - From BU1 Frontend, re-run the ping to **BU1 DB**.
 
 ```{figure} images/lab5-pingok2.png
@@ -250,7 +286,7 @@ align: center
 S2C route
 ```
 
-- Check the BGP Learned Routes
+- Check the **BGP Learned Routes**!
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Cloud Routes > BGP Info** and then click on the **3 dots** icon on the right-hand side of the screen and select the `"Show BGP Learned Routes"` option.
@@ -330,4 +366,4 @@ align: center
 No Results found
 ```
 
-You can see that the route has been successfully removed from the routing table.
+The route has been successfully removed from the routing table!
