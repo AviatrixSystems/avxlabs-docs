@@ -195,7 +195,7 @@ align: center
 PING
 ```
 
-- Alternatively, You can geenrate the ICMP traffic using the SSH client, and keep caputring the packets from the **Diagnostics Tools**!
+- Alternatively, you can generate the ICMP traffic using the SSH client, and keep capturing the packets from the **Diagnostics Tools**!
 
 ```{figure} images/lab5-pinfail.png
 ---
@@ -204,6 +204,8 @@ align: center
 Ping to BU1 DB fails
 ```
 
+You will only see **ICMP Echo Request** packets leaving from the LAN interface. Additionally, the source IP is entirely different from what you'd expect: instead of an IP from the legitimate CIDR 10.1.211.0/24, the source address belongs to the `50.50.50.0/24` range.
+
 ```{figure} images/lab5-packetcapture00.png
 ---
 height: 350px
@@ -211,8 +213,6 @@ align: center
 ---
 Packet Capture
 ```
-
-You will only see **ICMP Echo Request** packets leaving from the LAN interface. Additionally, the source IP is entirely different from what you'd expect: instead of an IP from the legitimate CIDR 10.1.211.0/24, the source address belongs to the `50.50.50.0/24` range.
 
 - Fix the issue checking the **Routing** section (aka as _Routes Manipulation_ section) on the **Spoke1 GW in Azure**.
 
@@ -230,14 +230,14 @@ Deletion of the NAT rule
 
 - Run the ping command from the `Diagnostics tools` to the private IP address of the BU1 DB.
 
-```{figure} images/lab5-traceroute281214.png
+```{figure} images/lab5-traceroute2812141.png
 ---
 align: center
 ---
 Ping from the Spoke1
 ```
 
-- From BU1 Frontend, re-run the ping to **BU1 DB**.
+- Alternatively, re-run the ping to **BU1 DB** from the SSH session established with the BU1 Frontend.
 
 ```{figure} images/lab5-pingok2.png
 ---
