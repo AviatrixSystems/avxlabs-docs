@@ -170,14 +170,14 @@ Traceroute = 6 hops
 ```
 
 ```{important}
-The results above show **five** hops (**six** if you run traceroute from the BU1 Frontend EC2 instance). The last hop to respond is the Spoke1 Gateway in Azure, which means the BU1 DB did not respond to the traceroute.
+The results above show **five** hops (**six** if you run traceroute from the BU1 Frontend EC2 instance). The last hop to respond is the Spoke1 Gateway in Azure, <ins>which means the BU1 DB did not respond to the traceroute</ins>.
 ```
 
 #### 2.2.1 Packet Capture
 
 You can duplicate the current CoPilot UI tab and run Diagnostics Tools in parallel: one tab to generate ICMP traffic, and another to capture packets.
 
-- Navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the **_ace-azure-east-us-spoke1_** gateway, then choose `Packet Capture` from the actions list and set the capture duration to 10 seconds. Before clicking **RUN**, switch to the other tab to generate ICMP traffic.
+- Navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the **_ace-azure-east-us-spoke1_** gateway, then choose `Packet Capture` from the actions list, select the **eth0** interface and set the capture duration to **10 seconds**. Before clicking **RUN**, switch to the other tab to generate ICMP traffic.
 
 ```{figure} images/lab5-packetcapture000.png
 ---
@@ -186,7 +186,7 @@ align: center
 Packet Capture
 ```
 
-- On the other tab, go to CoPilot > Diagnostics > Diagnostics Tools. Select the ace-aws-eu-west-1-spoke1 gateway, then choose Ping from the actions list. Before clicking RUN, first trigger the packet capture on the other tab, then execute the ping.
+- On the other tab, navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the **_ace-aws-eu-west-1-spoke1_** gateway, then choose **Ping** from the actions list. Before clicking RUN, first trigger the packet capture on the other tab, then execute the ping.
 
 ```{figure} images/lab5-packetcapture0001.png
 ---
@@ -195,33 +195,7 @@ align: center
 PING
 ```
 
-- Continue pinging **BU1 DB's private IP address** from the SSH session established with BU1 Frontend.
-
-```{figure} images/lab5-5hops22.png
----
-align: center
----
-ping
-```
-
-- Start a **Packet Capture** on the LAN interface (`eth0`) of the **_ace-azure-east-us-spoke1_** gateway, and filter the results to focus on **ICMP** traffic.
-
-```{tip}
-Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
-
-Select the **_ace-azure-east-us-spoke1_** Spoke GW and launch the packet capture on its eth0 interface.
-
-This is the LAN interface within the VNet, where also the **VNet router** resides!
-```
-
-```{tip}
-All Aviatrix Gateways are equipped with enterprise-grade tools, so you can launch a ping directly from the gateway, without opening an SSH session to the user workloads.
-
-<ins>Open two tabs</ins>: on the first tab launch a packet capture on the **Azure Spoke GW1** on the LAN interface (`etho`), <ins>and after few seconds</ins>, start a ping from the **BU1 Frontend** towards **BU1 DB** (VM in Azure) and keep it running, although it will fail.
-
-- Diminish the `Duration` to solely **10** seconds to speed up the capture!
-- Filter out based on the `"ICMP"` protocol.
-```
+- Alternatively, You can geenrate the ICMP traffic using the SSH client, and keep caputring the packets from the **Diagnostics Tools**!
 
 ```{figure} images/lab5-pinfail.png
 ---
