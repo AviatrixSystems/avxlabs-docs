@@ -67,10 +67,14 @@ align: center
 Refresh
 ```
 
-```{important}
-You have successfully prevented someone from the Data Center from jeopardizing the entire network within the multicloud infrastructure.
+```{caution}
+**Do not approve the route yourself**. If you accidentally approve it, you can click "Delete" to revert it back to the Pending status.
+```
 
-<ins>Once again, please do not approve that default route</ins>!
+```{important}
+You have successfully mitigated a potential threat in the Data Center that could have jeopardized the entire network across our multicloud environment.
+
+<ins>Once again, please refrain from approving the default route</ins>.
 ```
 
 ## 3. SCENARIO#2
