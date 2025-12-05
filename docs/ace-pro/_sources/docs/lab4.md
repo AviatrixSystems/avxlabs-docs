@@ -568,7 +568,7 @@ align: center
 Reconvergence in action
 ```
 
-The ICMP test initiated from the **_aws-us-east-1-spoke1-test2_** instance will be successful because Spoke Gateway 2 is still operational, and traffic is continuously flowing through it.
+Conversely, the ICMP test initiated from the **_aws-us-east-1-spoke1-test2_** instance should succeed because Spoke Gateway 2 remains operational and traffic continues to flow through it.
 
 ```{figure} images/lab4-gatus405.png
 ---
@@ -913,13 +913,13 @@ Restart the Spoke Gateway 1
 
  Navigate to **CoPilot > Diagnostics > AppIQ > FlightPath**
 
-Use the following inputs:
+Use the following inputs and then click **"Run"**.
 
 - **Source**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 - **Destination**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>443</span>
-- **Interface**: <span style='color:#479608'>Private</span>
+- **Interface**: <span style='color:#479608'>Private [default value]</span>
 
 ```{figure} images/lab5-flightpath.png
 ---
@@ -943,23 +943,15 @@ align: center
 FlightPath Report
 ```
 
-Scroll down to get more details about:
-
-- The latency between each pair of gateways
-- Performance monitoring metrics of all gateways in the path
-- FlowIQ between the two instances
-- Security group checks
-- NACL checks
-- Routing tables 
-
-You can also download the entire report in pdf format by clicking the **PDF icon** at the top right corner:
-
-```{figure} images/lab5-download.png
----
-align: center
----
-FlightPath Report PDF
-```
+- FlightPath provides detailed reports on the following:
+  - Source Network ACL status
+  - Source Security Group status
+  - Source Route Table status
+  - Gateway Route Tables status
+  - Destination Network ACL status
+  - Destination Security Group status
+  - Destination Route Table status
+  - System metrics, network metrics, and connection latencies
 
 ## 14. Final Tasks
 

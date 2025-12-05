@@ -43,13 +43,6 @@ Searching for a subnet conflict
 
 - Great! Now that you have confirmed that the CIDR range 192.168.12.0/24 does not conflict with any existing CIDR ranges, please proceed to create an **Application/Spoke** Virtual Network (VNet) using the CoPilot.
 
-```{figure} images/lab1-vnet2.png
----
-align: center
----
-VNet creation
-```
-
 Click on the button `“+ VPC/VNET”`.
 
 ```{figure} images/lab1-vnet2.png
@@ -132,7 +125,7 @@ align: center
 Clean up the Search Field
 ```
 
-- Navigate to **Cloud Resources > Cloud Assets > VPC/VNets & Subnets**. In the search field, enter the name of the VNet you created earlier, **`azure-us-central-spoke1`**. Then, expand the VNet to view the additional subnets that were created by the **Aviatrix Controller**.
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**. In the search field, enter the name of the VNet you created earlier, **`azure-us-central-spoke1`**. Then, expand the VNet to view the additional subnets that were created by the **Aviatrix Controller**.
 
 The subnets will appear sequentially, one after another. Please be patient!
 
