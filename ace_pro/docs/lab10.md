@@ -275,7 +275,7 @@ WorkstationEdge
 
 ### 5.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-If you run the ping from the Workstation Edge terminal to the **aws-us-east-2-spoke1-test1** instance, you should see both relative and absolute traffic from the two Cost Centers in AWS. The GCP and Azure environments, on the other hand, will show 0% traffic since no data is being directed toward the Shared Service in the New York data center.
+Alternatively, you can generate ICMP traffic using the **LXTerminal** on the Workstation Edge: ping **10.0.1.100** (the private IP address of **_aws-us-east-2-spoke1-test1_**).
 
 ```{figure} images/lab9-ping.png
 ---
@@ -285,6 +285,8 @@ Ping from the Wortkstation "Edge"
 ```
 
 ### 5.3 Shared Services and Cost Centers
+
+If you continue running ping from the **Workstation Edge** terminal to **_aws-us-east-2-spoke1-test1_** (or via your _SSH client_), you should observe traffic from the two Cost Centers in AWS. The GCP and Azure environments will show 0% traffic since no data is being directed toward the Shared Service in the New York data center.
 
 Navigate to **CoPilot > Monitor > CostIQ > Shared Services** and click on **NEW YORK DC** to expand the visibility of the percentage of traffic between the **Cost Center** in AWS and the **Shared Services** in NY DC.
 
