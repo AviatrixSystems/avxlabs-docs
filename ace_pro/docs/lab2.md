@@ -35,7 +35,7 @@ Initial pre-provisioned topology
 ```
 
 ```{tip}
-Once you attach the gateways to form the Aviatrix CNSF, the connections are automatically encrypted with **IPSec**.
+Once you attach the gateways to form the Aviatrix CNSF, the connections are automatically encrypted with **IPSec**. These are not on-demand links; once established, they remain continuously active.
 ```
 
 ### 3.1 Preliminary Monitoring Check Using the Gatus APP
@@ -43,7 +43,7 @@ Once you attach the gateways to form the Aviatrix CNSF, the connections are auto
 All pre-deployed instances are running [Gatus](https://gatus.io/) and are attempting to connect with each other using various protocols, including **ICMP** and **TCP** on ports 80,443 and 22.
 
 ```{important}
-**Gatus** is an open-source health monitoring tool that continuously checks the status and performance of your services and endpoints, providing real-time alerts and insights to ensure system reliability.
+**Gatus** is an open-source health monitoring tool that continuously checks the status and performance of services on your instances, delivering real-time alerts to ensure reliability.
 ```
 
 You can access the Gatus dashboard directly from your POD Portal.
