@@ -906,7 +906,7 @@ document.write(`
 <p><span class="caption-number">Fig. 183 </span><span class="caption-text">Reconvergence in action</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The ICMP test initiated from the <strong><em>aws-us-east-1-spoke1-test2</em></strong> instance will be successful because Spoke Gateway 2 is still operational, and traffic is continuously flowing through it.</p>
+<p>Conversely, the ICMP test initiated from the <strong><em>aws-us-east-1-spoke1-test2</em></strong> instance should succeed because Spoke Gateway 2 remains operational and traffic continues to flow through it.</p>
 <figure class="align-center" id="id50">
 <a class="reference internal image-reference" href="../_images/lab4-gatus405.png"><img alt="../_images/lab4-gatus405.png" src="../_images/lab4-gatus405.png" style="height: 400px;" />
 </a>
@@ -1197,13 +1197,13 @@ document.write(`
 <section id="flightpath">
 <h2>13. FlightPath<a class="headerlink" href="#flightpath" title="Link to this heading">#</a></h2>
 <p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; AppIQ &gt; FlightPath</strong></p>
-<p>Use the following inputs:</p>
+<p>Use the following inputs and then click <strong>“Run”</strong>.</p>
 <ul class="simple">
 <li><p><strong>Source</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
 <li><p><strong>Destination</strong>: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
 <li><p><strong>Port</strong>: <span style='color:#479608'>443</span></p></li>
-<li><p><strong>Interface</strong>: <span style='color:#479608'>Private</span></p></li>
+<li><p><strong>Interface</strong>: <span style='color:#479608'>Private [default value]</span></p></li>
 </ul>
 <figure class="align-center" id="id84">
 <a class="reference internal image-reference" href="../_images/lab5-flightpath.png"><img alt="../_images/lab5-flightpath.png" src="../_images/lab5-flightpath.png" style="height: 250px;" />
@@ -1224,22 +1224,20 @@ document.write(`
 <p><span class="caption-number">Fig. 219 </span><span class="caption-text">FlightPath Report</span><a class="headerlink" href="#id85" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Scroll down to get more details about:</p>
 <ul class="simple">
-<li><p>The latency between each pair of gateways</p></li>
-<li><p>Performance monitoring metrics of all gateways in the path</p></li>
-<li><p>FlowIQ between the two instances</p></li>
-<li><p>Security group checks</p></li>
-<li><p>NACL checks</p></li>
-<li><p>Routing tables</p></li>
+<li><p>FlightPath provides detailed reports on the following:</p>
+<ul>
+<li><p>Source Network ACL status</p></li>
+<li><p>Source Security Group status</p></li>
+<li><p>Source Route Table status</p></li>
+<li><p>Gateway Route Tables status</p></li>
+<li><p>Destination Network ACL status</p></li>
+<li><p>Destination Security Group status</p></li>
+<li><p>Destination Route Table status</p></li>
+<li><p>System metrics, network metrics, and connection latencies</p></li>
 </ul>
-<p>You can also download the entire report in pdf format by clicking the <strong>PDF icon</strong> at the top right corner:</p>
-<figure class="align-center" id="id86">
-<img alt="../_images/lab5-download.png" src="../_images/lab5-download.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 220 </span><span class="caption-text">FlightPath Report PDF</span><a class="headerlink" href="#id86" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
+</li>
+</ul>
 </section>
 <section id="final-tasks">
 <h2>14. Final Tasks<a class="headerlink" href="#final-tasks" title="Link to this heading">#</a></h2>
@@ -1251,10 +1249,10 @@ document.write(`
 <p>You can modify the <ins>Gateway to Controller Communication timer</ins> directly from the CoPilot. Go to <strong>CoPilot &gt; Settings &gt; Configuration &gt; General</strong>,  then identify the widget <strong>Gateway to Controller Communication</strong> and change the <code class="docutils literal notranslate"><span class="pre">Keep</span> <span class="pre">Alive</span> <span class="pre">Speed</span></code> from <strong><em>medium</em></strong> (default) to <strong><em>fast</em></strong>.</p>
 <p>Then <ins>repeat</ins> the experiment carried out earlier!</p>
 </div>
-<figure class="align-center" id="id87">
+<figure class="align-center" id="id86">
 <img alt="../_images/lab5-keepalive.png" src="../_images/lab5-keepalive.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 221 </span><span class="caption-text">Keep Alive Speed</span><a class="headerlink" href="#id87" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Keep Alive Speed</span><a class="headerlink" href="#id86" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1265,11 +1263,11 @@ document.write(`
 <p>The test instances in <strong><em>aws-us-east-1-spoke1</em></strong> are not able to communicate with the test instances in GCP or in Azure.</p>
 </div>
 <p>You can verify this in the Gateway Routing Table under <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; Gateway Routes &gt; aws-us-east-1-transit</strong>. You will not see the GCP Spoke route of <strong><em>172.16.1.0/24</em></strong>, nor will you see any routes from Azure.</p>
-<figure class="align-center" id="id88">
+<figure class="align-center" id="id87">
 <a class="reference internal image-reference" href="../_images/lab5-keepalive100.png"><img alt="../_images/lab5-keepalive100.png" src="../_images/lab5-keepalive100.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 222 </span><span class="caption-text">aws-us-east-1-transit’s rtb</span><a class="headerlink" href="#id88" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 221 </span><span class="caption-text">aws-us-east-1-transit’s rtb</span><a class="headerlink" href="#id87" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1287,35 +1285,35 @@ What would be needed to make those routes visible?</p></li>
 A type of networking design in which each node in the system has a circuit that connects it to every other node. While full mesh does make multiple redundant connections, this design keeps traffic going even if one node fails.</p>
 <p>Full-mesh design is useful in systems which are intransitive: A connects to B and B connects to C, but A cannot interact with C.</p>
 </div>
-<figure class="align-center" id="id89">
+<figure class="align-center" id="id88">
 <a class="reference internal image-reference" href="../_images/lab4-fullmesh01.png"><img alt="../_images/lab4-fullmesh01.png" src="../_images/lab4-fullmesh01.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 223 </span><span class="caption-text">Full-mesh: physical</span><a class="headerlink" href="#id89" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 222 </span><span class="caption-text">Full-mesh: physical</span><a class="headerlink" href="#id88" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id90">
+<figure class="align-center" id="id89">
 <a class="reference internal image-reference" href="../_images/lab4-fullmesh02.png"><img alt="../_images/lab4-fullmesh02.png" src="../_images/lab4-fullmesh02.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Full-mesh: logical</span><a class="headerlink" href="#id90" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 223 </span><span class="caption-text">Full-mesh: logical</span><a class="headerlink" href="#id89" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The Gateway in the <strong>AWS US-EAST-1</strong> region is exclusively peering with the Gateway in <strong>AWS US-EAST-2</strong>.</p>
-<figure class="align-center" id="id91">
+<figure class="align-center" id="id90">
 <a class="reference internal image-reference" href="../_images/lab4-fullmesh03.png"><img alt="../_images/lab4-fullmesh03.png" src="../_images/lab4-fullmesh03.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 225 </span><span class="caption-text">Single peering</span><a class="headerlink" href="#id91" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Single peering</span><a class="headerlink" href="#id90" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The Aviatrix Controller will not install a route to a Transit Gateway that is not directly peering with the originating Transit Gateway. Therefore, each Transit Gateway must learn about networks from its originating Transit Gateway.</p>
 <p>To avoid the limitations of full-mesh peering, which is not very scalable, you can utilize the <a class="reference external" href="https://docs.aviatrix.com/documentation/latest/getting-started/platform-overview/aviatrix-glossary.html#multi-tier-transit">multi-tier transit</a> feature.</p>
-<figure class="align-center" id="id92">
+<figure class="align-center" id="id91">
 <a class="reference internal image-reference" href="../_images/lab4-fullmesh04.png"><img alt="../_images/lab4-fullmesh04.png" src="../_images/lab4-fullmesh04.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 226 </span><span class="caption-text">Intransitive behaviour without Full-Mesh config.</span><a class="headerlink" href="#id92" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 225 </span><span class="caption-text">Intransitive behaviour without Full-Mesh config.</span><a class="headerlink" href="#id91" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">

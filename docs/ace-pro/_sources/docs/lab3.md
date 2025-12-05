@@ -110,7 +110,7 @@ align: center
 Associations verification
 ```
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east-2-transit_**:
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and select the Transit Gateway **_aws-us-east-2-transit_**.
 
 ```{figure} images/lab3-exploretransit.png
 ---
@@ -119,8 +119,16 @@ align: center
 Select Transit in US-East-2
 ```
 
-Then navigate to the `"Route DB"` tab and examine how routes are allocated to the dedicated routing table, which defines a distinct new Routing Domain (e.g., **Blue**, **Green**).
-Then select the `"Route DB"` tab and inspect the routing table of the network domain **Green**, likewise the routing table of the network domain **Blue**:
+In the **Gateway Routes** tab, use the Network Domain filter to select the Green segment and identify all _Green routes_. Network segmentation allows the Transit Gateway to maintain multiple routing tables.
+
+```{figure} images/lab3-routedb10188.png
+---
+align: center
+---
+Route DB
+```
+
+Then navigate to the `"Route DB"` tab and examine how routes are allocated to the dedicated routing table, which defines a distinct routing domain (e.g., **Blue**, **Green**). Next, select the Route DB tab and inspect the routing tables for the **Green** and **Blue** network domains. The `"Route DB"` visualizes all routing tables, including _VRFs_ and the _Main Routing Table_.
 
 ```{figure} images/lab3-routedb1012.png
 ---
