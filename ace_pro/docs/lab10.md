@@ -310,6 +310,10 @@ align: center
 AWS
 ```
 
+```{warning}
+The **CostIQ graphs** may take a moment to render. Please wait a moment and return later to view the percentages.
+```
+
 Upon completing this lab, the overall topology will be represented as follows:
 
 ```{figure} images/lab9-final.png
