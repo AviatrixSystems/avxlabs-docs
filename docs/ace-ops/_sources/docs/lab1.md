@@ -310,7 +310,7 @@ align: center
 bu1-db is reachable
 ```
 
-#### 2.5.2 Verify connectivity between clients **within** the same BU using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.5.2 Verify connectivity between clients **within** the same BU Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
     
 - SSH into the **BU1 Frontend**  instance in AWS.
 
@@ -447,7 +447,7 @@ align: center
 ping to BU2-DB
 ```
 
-#### 2.5.4 Ensure workloads do not have cross-BU connectivity using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.5.4 Ensure workloads do not have cross-BU connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
 - From **BU1 Frontend** try to SSH **BU2 Mobile App** (use again its Private IP address!).
@@ -627,5 +627,5 @@ This time you need to proceed with a <ins>recursive lookup</ins>: from any Spoke
 height: 300px
 align: center
 ---
-Cloud Routes - Recursive lookup
+Cloud Routes - Recursive Routing Lookup
 ```
