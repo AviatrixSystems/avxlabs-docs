@@ -2,9 +2,7 @@
 
 ## 1. SCENARIO
 
-Now ACE Inc. has decided that BU1 and BU2 need to be able to communicate with each other. You are engaged for applying a `Connection Policy` in order to merge the two Network Domains.
-
-After the change has been applied, verify that both the network domains have been merged together, successfully.
+ACE Inc. has decided that BU1 and BU2 must communicate. You are engaged to apply a `Connection Policy` to merge the two Network Domains. After the change is applied, verify that the two network domains have been merged successfully.
 
 ```{figure} images/lab2-topology.png
 ---
@@ -16,13 +14,13 @@ Network Domains with the Connection Policy
 
 ## 2. CHANGE REQUEST
 
-* Apply the **Connection Policy**.
+* Apply the **Connection Policy**
 
 ```{tip}
-Navigate to **CoPilot > Networking > Network Segmentation > Network Domains** and then edit either network domains.
+Navigate to **CoPilot > Networking > Network Segmentation > Network Domains**, then edit one of the network domains.
 ```
 
-The Connection Policy works bidirectionally!
+The Connection Policy operates bidirectionally.
 
 ```{figure} images/lab2-editnd.png
 ---
@@ -39,7 +37,7 @@ align: center
 BU1 editing
 ```
 
-- Check the **Logical View** inside the Network Segmentation section.
+- Check the **Logical View** inside the `Network Segmentation` section.
 
 ```{tip}
 Navigate to **CoPilot > Networking > Network Segmentation > Overview > Logical View**. 
@@ -54,7 +52,19 @@ align: center
 Logical View
 ```
 
-- Verify the connectivity **between** BU1 and BU2 domains.
+### 2.1 Verify the connectivity between BU1 and BU2 domains Using thw Diagnostic tools
+
+- Navigate to **CoPilot > Diagnostics > Diagnostic Tools**, select the **_ace-aws-eu-west-1-spoke1_** gateway, and run a ping to the **BU2-MobileApp** private IP address. This time ICMP traffic will be successful thanks to the Connection Policy.
+
+```{figure} images/lab2-cp000.png
+---
+height: 400px
+align: center
+---
+BU1 to BU2 is ok
+```
+
+### 2.1 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
   - SSH into the **BU1 Frontend** and run ping or SSH commands targeting the **BU2 Mobile App**.
   - Ping and SSH between the two BUs should now work, thanks to the `Connection Policy` (aka **_VRF leaking_**).
