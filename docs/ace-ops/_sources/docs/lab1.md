@@ -403,22 +403,48 @@ Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not
 
 #### 2.5.3 Ensure workloads do not have cross-BU connectivity using the Diagnostic Tools
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, search for `mobile-app`, and fetch its private IP address.
+```{figure} images/lab1-diagnosticstools1100.png
+---
+height: 300px
+align: center
+---
+Default Gateway and the Destinations
+```
+
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, search for `mobile-app`, and fetch its private IP address. Repeat the search for `bu2-db` and retrieve its private IP address.
 
 ```{figure} images/lab1-mobileapp00.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 BU2-MobileApp
 ```
 
-```{figure} images/lab1-mobileapp001.png
+```{figure} images/lab1-mobileapp0078.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
-ping fails
+BU2-DB
+```
+
+- Navigate to **CoPilot > Diagnostics > Diagnostic Tools**, select the **_ace-aws-eu-west-1-spoke1_** gateway, and ping the two VMs’ private IP addresses that you fetched earlier. This outcome occurs because of the isolation between the two segments.
+
+```{figure} images/lab1-mobileapp001.png
+---
+height: 250px
+align: center
+---
+ping to BU2-MobileApp
+```
+
+```{figure} images/lab1-mobileapp00147.png
+---
+height: 250px
+align: center
+---
+ping to BU2-DB
 ```
 
 #### 2.5.4 Ensure workloads do not have cross-BU connectivity using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
@@ -450,6 +476,8 @@ align: center
 BU1 to BU2: SSH test fails
 ```
 
+#### 2.5.5 Network Segmentation section
+
 * Check the **Network Segmentation** section on the CoPilot, and then look at the **Logical View**.
 
 ```{tip}
@@ -477,6 +505,8 @@ Network Domains
 
 ```{tip}
 Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways**, select the **_ace-aws-eu-west-1-transit_** Gateway, then open **Routes DB** and inspect the allocation of the routes to the specific BU routing tables (e.g., BU1 or BU2).
+
+The Route DB tab provides visibility for all VRFs.
 ```
 
 ```{figure} images/lab1-bu1vrf.png
@@ -495,6 +525,16 @@ height: 250px
 align: center
 ---
 RIB
+```
+
+- Select the `Gateway Routes` tab and filter by one of the two segments, e.g., BU1. You will see only the routes associated with the BU1 Network Domain.
+
+```{figure} images/lab1-bu1vrf000.png
+---
+height: 400px
+align: center
+---
+Gateway Routes
 ```
 
 * Use the <span style='color:#FF0000'>**FlowIQ**</span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.
