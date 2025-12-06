@@ -343,6 +343,15 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">2. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-configuration">2.1 Initial Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-client-and-jumpbox">2.2 SSH client and Jumpbox</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ip-addresses">2.3 IP addresses</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-topology-properties">2.3.1 Dynamic Topology - Properties</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-assets">2.3.2 Cloud Assets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pod-portal">2.3.3 POD Portal</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools">2.4 Enterprise-Grade Tools</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-verification">2.1 NETWORK SEGMENTATION: VERIFICATION</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">2.1.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">2.1.2 Verify connectivity between clients <strong>within</strong> the same BU using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
@@ -378,6 +387,8 @@ document.write(`
 </section>
 <section id="validation-request">
 <h2>2. VALIDATION REQUEST<a class="headerlink" href="#validation-request" title="Link to this heading">#</a></h2>
+<section id="initial-configuration">
+<h3>2.1 Initial Configuration<a class="headerlink" href="#initial-configuration" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Settings &gt; Resources &gt; Task Server</strong>.</p>
 <ul>
@@ -465,6 +476,9 @@ document.write(`
 <p class="admonition-title">Caution</p>
 <p><strong>Always</strong> refer to your personal POD for the accurate IP addresses. The IP addresses displayed in the following screenshots are only <ins>examples</ins> sourced from a different POD and are intended solely for the creation of the lab guides.</p>
 </div>
+</section>
+<section id="ssh-client-and-jumpbox">
+<h3>2.2 SSH client and Jumpbox<a class="headerlink" href="#ssh-client-and-jumpbox" title="Link to this heading">#</a></h3>
 <p>There are <strong>two</strong> SSH access methods you can use to connect to any instance in the lab’s multi‑cloud environment.</p>
 <ol class="arabic simple">
 <li><p>Use an <span style='color:orange'><strong>SSH client</strong></span> from your laptop (<ins>recommended method!</ins>).</p></li>
@@ -482,7 +496,7 @@ document.write(`
 </figcaption>
 </figure>
 <ol class="arabic simple" start="2">
-<li><p>Use the <span style='color:orange'><strong>Apache Jumpbox</strong></span> from the POD Portal, particularly if you are on your corporate network and typically face outbound restrictions blocking <strong>port 22</strong>.</p></li>
+<li><p>Use the <span style='color:orange'><strong>Guacamole Jumpbox</strong></span> from the POD Portal, particularly if you are on your corporate network and typically face outbound restrictions blocking <strong>port 22</strong>.</p></li>
 </ol>
 <figure class="align-center" id="id13">
 <a class="reference internal image-reference" href="../_images/lab1-jumpbox.png"><img alt="../_images/lab1-jumpbox.png" src="../_images/lab1-jumpbox.png" style="height: 200px;" />
@@ -508,6 +522,10 @@ document.write(`
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Guacamole Menu</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="ip-addresses">
+<h3>2.3 IP addresses<a class="headerlink" href="#ip-addresses" title="Link to this heading">#</a></h3>
+<p>The CoPilot is your <strong><em>single pane of glass</em></strong>, offering a complete database of IP addresses for all instances in the hybrid-cloud environment it governs.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The IP addresses can be easily obtained using <strong>three</strong> different methods, according to your preference:</p>
@@ -517,9 +535,8 @@ document.write(`
 <li><p>From your <strong>personal POD portal</strong>, where you can also utilize the DNS symbolic names.</p></li>
 </ol>
 </div>
-<ul class="simple">
-<li><p><strong>Properties from the Dynamic Topology</strong>:</p></li>
-</ul>
+<section id="dynamic-topology-properties">
+<h4>2.3.1 Dynamic Topology - Properties<a class="headerlink" href="#dynamic-topology-properties" title="Link to this heading">#</a></h4>
 <p>Expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC and click on the test instance, then explore the <code class="docutils literal notranslate"><span class="pre">&quot;Properties&quot;</span></code> section on the right-hand side.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
@@ -550,9 +567,9 @@ document.write(`
 </figcaption>
 </figure>
 </div>
-<ul class="simple">
-<li><p><strong>Cloud Assets</strong>:</p></li>
-</ul>
+</section>
+<section id="cloud-assets">
+<h4>2.3.2 Cloud Assets<a class="headerlink" href="#cloud-assets" title="Link to this heading">#</a></h4>
 <p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>. Perform a search for “<em>frontend</em>” and extract the corresponding IP addresses from the resulting list.</p>
 <figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../_images/lab1-assets.png"><img alt="../_images/lab1-assets.png" src="../_images/lab1-assets.png" style="height: 200px;" />
@@ -561,9 +578,9 @@ document.write(`
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Inventory</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<ul class="simple">
-<li><p><strong>POD Portal</strong>:</p></li>
-</ul>
+</section>
+<section id="pod-portal">
+<h4>2.3.3 POD Portal<a class="headerlink" href="#pod-portal" title="Link to this heading">#</a></h4>
 <p>Access your personal POD to obtain the symbolic names of any test instances.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
@@ -579,6 +596,10 @@ document.write(`
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">DNS Names</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+</section>
+<section id="enterprise-grade-tools">
+<h3>2.4 Enterprise-Grade Tools<a class="headerlink" href="#enterprise-grade-tools" title="Link to this heading">#</a></h3>
 <p>Alternatively, you can skip using the SSH client or a Jumpbox altogether and rely entirely on the <code class="docutils literal notranslate"><span class="pre">enterprise-grade</span> <span class="pre">tools</span></code> available on all Aviatrix Gateways.</p>
 <ul class="simple">
 <li><p>Navigate to <strong>Copilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. From here, select the Spoke gateways that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run <strong>ping</strong>, <strong>traceroute</strong>, <strong>packet capture</strong>, and more.</p></li>
@@ -590,6 +611,7 @@ document.write(`
 <p><span class="caption-number">Fig. 22 </span><span class="caption-text">Diagnostics Tools</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 <section id="network-segmentation-verification">
 <h3>2.1 NETWORK SEGMENTATION: VERIFICATION<a class="headerlink" href="#network-segmentation-verification" title="Link to this heading">#</a></h3>
 <section id="verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">
@@ -953,6 +975,15 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">2. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-configuration">2.1 Initial Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-client-and-jumpbox">2.2 SSH client and Jumpbox</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ip-addresses">2.3 IP addresses</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-topology-properties">2.3.1 Dynamic Topology - Properties</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-assets">2.3.2 Cloud Assets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pod-portal">2.3.3 POD Portal</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools">2.4 Enterprise-Grade Tools</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-verification">2.1 NETWORK SEGMENTATION: VERIFICATION</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">2.1.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">2.1.2 Verify connectivity between clients <strong>within</strong> the same BU using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
