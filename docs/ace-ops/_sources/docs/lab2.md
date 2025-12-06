@@ -52,7 +52,7 @@ align: center
 Logical View
 ```
 
-### 2.1 Verify the connectivity between BU1 and BU2 domains Using thw Diagnostic tools
+### 2.1 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools
 
 - Navigate to **CoPilot > Diagnostics > Diagnostic Tools**, select the **_ace-aws-eu-west-1-spoke1_** gateway, and run a ping to the **BU2-MobileApp** private IP address. This time ICMP traffic will be successful thanks to the Connection Policy.
 
@@ -64,10 +64,10 @@ align: center
 BU1 to BU2 is ok
 ```
 
-### 2.1 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 2.2 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
   - SSH into the **BU1 Frontend** and run ping or SSH commands targeting the **BU2 Mobile App**.
-  - Ping and SSH between the two BUs should now work, thanks to the `Connection Policy` (aka **_VRF leaking_**).
+  - Connectivity via ICMP ping and SSH between the two BUs is now established, thanks to the `Connection Policy`(commonly referred to as **_VRF leakage_**).
 
 ```{figure} images/lab2-pingbu2.png
 ---
@@ -89,6 +89,8 @@ align: center
 ---
 Network Domains
 ```
+
+If you filter by either of the two Network Domains, you will now see routes from both the BU1 and BU2 segments. You have successfully merged them.
 
 ```{important}
 **Spoke Gateways** only show the main routing table, known as the *Global Routing Table (GRT)*, while **Transit Gateways** provide visibility into all routing tables, including the main RTB and any additional RTBs created through segmentation.
