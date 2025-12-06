@@ -116,9 +116,10 @@ Collapsed View
 
 ### 2.2 SSH client and Jumpbox
 
-There are **two** SSH access methods you can use to connect to any instance in the lab’s multi‑cloud environment.
+There are **two** SSH access methods available to connect to any instance in the lab’s hybrid‑cloud environment.  
 
-1. Use an <span style='color:orange'>**SSH client**</span> from your laptop (<ins>recommended method!</ins>).
+1. <span style='color:orange'>**SSH**</span>
+from your laptop (recommended).
 
 ```{figure} images/lab1-publicip.png
 ---
@@ -134,21 +135,21 @@ align: center
 DNS name
 ```
 
-2. Use the <span style='color:orange'>**Guacamole Jumpbox**</span> from the POD Portal, particularly if you are on your corporate network and typically face outbound restrictions blocking **port 22**.
+2. <span style='color:orange'>**Guacamole Jumpbox**</span>, from the POD Portal is especially useful for corporate networks that block outbound port 22.
 
 ```{figure} images/lab1-jumpbox.png
 ---
 height: 200px
 align: center
 ---
-Jumpbox
+Guacamole Jumpbox
 ```
 
 ```{figure} images/lab1-guacamoleaccess.png
 ---
 align: center
 ---
-Apache Guacamole Portal
+Guacamole Jumpbox Portal
 ```
 
 ```{note}
@@ -245,7 +246,7 @@ DNS Names
 
 Alternatively, you can skip using the SSH client or a Jumpbox altogether and rely entirely on the `enterprise-grade tools` available on all Aviatrix Gateways.
 
-- Navigate to **Copilot > Diagnostics > Diagnostics Tools**. From here, select the Spoke gateways that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
+- Navigate to **Copilot > Diagnostics > Diagnostics Tools**. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
 
 ```{figure} images/lab1-diagnosticstools.png
 ---
