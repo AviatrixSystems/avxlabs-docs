@@ -22,18 +22,26 @@ Initial Topology
 
 ## 2. TECHNICAL DETAILS
 
-All applications in AWS and GCP have **Public** and **Private** IP’s, whereas instances in Azure <ins>only have Private IP’s</ins>.
+All applications in AWS and GCP have both _public_ and _private_ IP addresses, whereas Azure VMs are configured with _private_ IP addresses only.
 
-These are the CIDR blocks per each CSP:
+- **CIDR blocks by CSP**:
 
-- AWS = 10.0.0.0/8
-- GCP = 172.16.0.0/16
-- Azure = 192.168.0.0/16
+  - AWS: 10.0.0.0/8
 
-<ins>Databases do not have HTTP running</ins>. All other apps have HTTP running (i.e. curl command can be issued).
+  - GCP: 172.16.0.0/16
 
-- 3rd octet of all Spoke 1’s is 211
-- 3rd octet of all Spoke 2’s is 212
-  
-Management access from Internet for instances in AWS and GCP is enabled, however, none of the apps are currently exposed to the Internet.
+  - Azure: 192.168.0.0/16
 
+- Databases do not expose HTTP. All other applications expose HTTP (i.e., curl can be used to test).
+
+- **Network addressing**:
+
+  - The 3rd octet of all Spoke 1 networks is 211
+
+  - The 3rd octet of all Spoke 2 networks is 212
+
+- **SSH access**:
+
+  - Inbound SSH is enabled for instances in AWS and GCP.
+
+  - Instances in Azure are not accessible via SSH because they reside in private subnets.
