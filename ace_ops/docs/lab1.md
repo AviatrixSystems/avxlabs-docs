@@ -152,6 +152,15 @@ align: center
 Guacamole Jumpbox Portal
 ```
 
+Once you have logged into the Guacamole Jumpbox, you will land in a _Virtual Desktop_ from which you can open **LXTerminal**.
+
+```{figure} images/lab1-guacamoleaccess098.png
+---
+align: center
+---
+LXTerminal
+```
+
 ```{note}
 Please note that if you choose to use the Jumpbox, copy and paste functionality will not work directly from the host machine. To enable this feature, activate the **Guacamole Menu**, which is initially hidden. On a desktop or any device with a hardware keyboard, you can display this menu by pressing **_Ctrl+Alt+Shift_** on a Windows machine (**_Control+Shift+Command_** on a Mac).
 ```
