@@ -352,8 +352,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools">2.4 Enterprise-Grade Tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-verification">2.1 NETWORK SEGMENTATION: VERIFICATION</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">2.1.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-verification">2.5 Network Segmentation: verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">2.5.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">2.1.2 Verify connectivity between clients <strong>within</strong> the same BU using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity">2.1.2 Ensure workloads do not have cross-BU connectivity</a></li>
 </ul>
@@ -614,9 +614,9 @@ from your laptop (recommended).</p></li>
 </figure>
 </section>
 <section id="network-segmentation-verification">
-<h3>2.1 NETWORK SEGMENTATION: VERIFICATION<a class="headerlink" href="#network-segmentation-verification" title="Link to this heading">#</a></h3>
+<h3>2.5 Network Segmentation: verification<a class="headerlink" href="#network-segmentation-verification" title="Link to this heading">#</a></h3>
 <section id="verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">
-<h4>2.1.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools<a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools" title="Link to this heading">#</a></h4>
+<h4>2.5.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools<a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools" title="Link to this heading">#</a></h4>
 <p>You can generate the <strong>ping directly</strong> from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of <strong>BU1 Analytics</strong> and <strong>BU1 DB</strong> from the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Assets</span></code> section.</p>
 <figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab1-diagnosticstools11.png"><img alt="../_images/lab1-diagnosticstools11.png" src="../_images/lab1-diagnosticstools11.png" style="height: 300px;" />
@@ -647,7 +647,7 @@ from your laptop (recommended).</p></li>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong> and generate ICMP traffic from the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> Gateway ypewartdds BU1-Analytics and BU1-DB.</p></li>
+<li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostic Tools</strong>, and generate <strong>ICMP</strong> traffic from the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway for <strong>BU1-Analytics</strong> and <strong>BU1-DB</strong>.</p></li>
 </ul>
 <figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab1-diagnosticstools992.png"><img alt="../_images/lab1-diagnosticstools992.png" src="../_images/lab1-diagnosticstools992.png" style="height: 300px;" />
@@ -743,6 +743,10 @@ from your laptop (recommended).</p></li>
 <p><span class="caption-number">Fig. 35 </span><span class="caption-text">CURL</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Repeat the verification for <strong>BU1-DB</strong>. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.</p>
+</div>
 </section>
 <section id="ensure-workloads-do-not-have-cross-bu-connectivity">
 <h4>2.1.2 Ensure workloads do not have cross-BU connectivity<a class="headerlink" href="#ensure-workloads-do-not-have-cross-bu-connectivity" title="Link to this heading">#</a></h4>
@@ -985,8 +989,8 @@ from your laptop (recommended).</p></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools">2.4 Enterprise-Grade Tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-verification">2.1 NETWORK SEGMENTATION: VERIFICATION</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">2.1.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-verification">2.5 Network Segmentation: verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">2.5.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">2.1.2 Verify connectivity between clients <strong>within</strong> the same BU using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity">2.1.2 Ensure workloads do not have cross-BU connectivity</a></li>
 </ul>

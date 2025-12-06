@@ -256,9 +256,9 @@ align: center
 Diagnostics Tools
 ```
 
-### 2.1 NETWORK SEGMENTATION: VERIFICATION
+### 2.5 Network Segmentation: verification
 
-#### 2.1.1 Verify connectivity between clients **within** the same BU using the Diagnostic Tools
+#### 2.5.1 Verify connectivity between clients **within** the same BU using the Diagnostic Tools
 
 You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Assets` section.
 
@@ -292,7 +292,7 @@ align: center
 bu1-db
 ```
 
-- Navigate to **CoPilot > Diagnostics > Diagnostics Tools** and generate ICMP traffic from the **_ace-aws-eu-west-1-spoke1_** Gateway ypewartdds BU1-Analytics and BU1-DB.
+- Navigate to **CoPilot > Diagnostics > Diagnostic Tools**, and generate **ICMP** traffic from the **_ace-aws-eu-west-1-spoke1_** gateway for **BU1-Analytics** and **BU1-DB**.
 
 ```{figure} images/lab1-diagnosticstools992.png
 ---
@@ -395,6 +395,10 @@ height: 250px
 align: center
 ---
 CURL
+```
+
+```{tip}
+Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.
 ```
 
 #### 2.1.2 Ensure workloads do not have cross-BU connectivity
