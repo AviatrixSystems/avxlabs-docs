@@ -420,7 +420,7 @@ align: center
 Default Gateway and the Destinations
 ```
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, search for `mobile-app`, and fetch its private IP address. Repeat the search for `bu2-db` and retrieve its private IP address.
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Search for `mobile-app` and obtain its private IP address. Next, search for `bu2-db` and obtain its private IP address.
 
 ```{figure} images/lab1-mobileapp00.png
 ---

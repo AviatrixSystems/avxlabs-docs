@@ -382,7 +382,7 @@ document.write(`
 <ul class="simple">
 <li><p>Verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU1 Analytics</strong> is actually broken.</p>
 <ul>
-<li><p>Run the ping command from the Diagnostics tools to the private IP address of the <strong>BU1 Analytics</strong></p></li>
+<li><p>Run the ping command from the <code class="docutils literal notranslate"><span class="pre">Diagnostics</span> <span class="pre">Tools</span></code> to the private IP address of the <strong>BU1 Analytics</strong></p></li>
 </ul>
 </li>
 </ul>
@@ -393,7 +393,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Alternatively, connect via SSH to <strong>BU1 Frontend</strong> and execute ping, traceroute, or SSH commands toward <strong>BU1 Analytics</strong>.</p></li>
+<li><p>Alternatively, establish an SSH connection to the <strong>BU1 Frontend</strong> and execute ping, traceroute, or SSH commands toward <strong>BU1 Analytics</strong>.</p></li>
 </ul>
 <figure class="align-center" id="id3">
 <img alt="../_images/lab5-pingfails.png" src="../_images/lab5-pingfails.png" />
@@ -471,7 +471,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>From Diagnostics Tools, re-run ping to the private IP address of <strong>BU2 MobileApp</strong>.</p></li>
+<li><p>From <code class="docutils literal notranslate"><span class="pre">Diagnostics</span> <span class="pre">Tools</span></code>, re-run ping to the private IP address of <strong>BU2 MobileApp</strong>.</p></li>
 </ul>
 <figure class="align-center" id="id10">
 <img alt="../_images/lab5-traceroute28123.png" src="../_images/lab5-traceroute28123.png" />
@@ -494,7 +494,7 @@ document.write(`
 <ul class="simple">
 <li><p>Now verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU1 DB</strong> is actually broken.</p>
 <ul>
-<li><p>Run the traceroute command from the <code class="docutils literal notranslate"><span class="pre">Diagnostics</span> <span class="pre">tools</span></code> to the private IP address of the BU1 DB.</p></li>
+<li><p>Run the traceroute command from the <code class="docutils literal notranslate"><span class="pre">Diagnostics</span> <span class="pre">Tools</span></code> to the private IP address of the BU1 DB.</p></li>
 </ul>
 </li>
 </ul>
@@ -536,7 +536,7 @@ document.write(`
 </div>
 <section id="packet-capture">
 <h4>2.2.1 Packet Capture<a class="headerlink" href="#packet-capture" title="Link to this heading">#</a></h4>
-<p>You can duplicate the current CoPilot UI tab and run Diagnostics Tools in parallel: one tab to generate ICMP traffic, and another to capture packets.</p>
+<p>You can duplicate the current CoPilot UI tab and run <code class="docutils literal notranslate"><span class="pre">Diagnostics</span> <span class="pre">Tools</span></code> in parallel: one tab to generate ICMP traffic, and another to capture packets.</p>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. Select the <strong><em>ace-azure-east-us-spoke1</em></strong> gateway, then choose <code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">Capture</span></code> from the actions list, select the <strong>eth0</strong> interface and set the capture duration to <strong>10 seconds</strong>. Before clicking <strong>RUN</strong>, switch to the other tab to generate ICMP traffic.</p></li>
 </ul>
@@ -547,7 +547,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>On the other tab, navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. Select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway, then choose <strong>Ping</strong> from the actions list. Before clicking RUN, first trigger the packet capture on the other tab, then execute the ping.</p></li>
+<li><p>On the other tab, navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. Select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway, then choose <strong>Ping</strong> from the actions list, and enter the private IP address of <strong>BU1-DB</strong>. Before clicking RUN, <ins>first trigger the packet capture on the other tab</ins>, then execute the ping.</p></li>
 </ul>
 <figure class="align-center" id="id17">
 <img alt="../_images/lab5-packetcapture0001.png" src="../_images/lab5-packetcapture0001.png" />
@@ -630,13 +630,14 @@ document.write(`
 <p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP Info</strong> and then click on the <strong>3 dots</strong> icon on the right-hand side of the screen and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code> option.</p>
 </div>
 <figure class="align-center" id="id24">
-<img alt="../_images/lab5-bgpinfo.png" src="../_images/lab5-bgpinfo.png" />
+<a class="reference internal image-reference" href="../_images/lab5-bgpinfo.png"><img alt="../_images/lab5-bgpinfo.png" src="../_images/lab5-bgpinfo.png" style="height: 350px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 148 </span><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id25">
-<a class="reference internal image-reference" href="../_images/lab5-bgpinfo100.png"><img alt="../_images/lab5-bgpinfo100.png" src="../_images/lab5-bgpinfo100.png" style="height: 350px;" />
+<a class="reference internal image-reference" href="../_images/lab5-bgpinfo100.png"><img alt="../_images/lab5-bgpinfo100.png" src="../_images/lab5-bgpinfo100.png" style="height: 450px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 149 </span><span class="caption-text">10.0.211.0/24</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
@@ -675,7 +676,7 @@ Expand the <strong>Routing</strong> section and insert the subnet <strong>10.0.2
 <p>Do not forget to click on <strong>Save</strong>.</p>
 </div>
 <figure class="align-center" id="id28">
-<a class="reference internal image-reference" href="../_images/lab5-newrequest4.png"><img alt="../_images/lab5-newrequest4.png" src="../_images/lab5-newrequest4.png" style="height: 350px;" />
+<a class="reference internal image-reference" href="../_images/lab5-newrequest4.png"><img alt="../_images/lab5-newrequest4.png" src="../_images/lab5-newrequest4.png" style="height: 450px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 152 </span><span class="caption-text">Exclude the route</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
@@ -690,7 +691,7 @@ Expand the <strong>Routing</strong> section and insert the subnet <strong>10.0.2
 <p>Now search for <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code>.</p>
 </div>
 <figure class="align-center" id="id29">
-<a class="reference internal image-reference" href="../_images/lab5-newrequest5.png"><img alt="../_images/lab5-newrequest5.png" src="../_images/lab5-newrequest5.png" style="height: 300px;" />
+<a class="reference internal image-reference" href="../_images/lab5-newrequest5.png"><img alt="../_images/lab5-newrequest5.png" src="../_images/lab5-newrequest5.png" style="height: 450px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 153 </span><span class="caption-text">No Results found</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>

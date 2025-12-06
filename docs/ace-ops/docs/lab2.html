@@ -343,8 +343,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-thw-diagnostic-tools">2.1 Verify the connectivity between BU1 and BU2 domains Using thw Diagnostic tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.1 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">2.1 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.2 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">3. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
@@ -412,8 +412,8 @@ document.write(`
 <p><span class="caption-number">Fig. 59 </span><span class="caption-text">Logical View</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="verify-the-connectivity-between-bu1-and-bu2-domains-using-thw-diagnostic-tools">
-<h3>2.1 Verify the connectivity between BU1 and BU2 domains Using thw Diagnostic tools<a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-thw-diagnostic-tools" title="Link to this heading">#</a></h3>
+<section id="verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">
+<h3>2.1 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools<a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostic Tools</strong>, select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway, and run a ping to the <strong>BU2-MobileApp</strong> private IP address. This time ICMP traffic will be successful thanks to the Connection Policy.</p></li>
 </ul>
@@ -426,10 +426,10 @@ document.write(`
 </figure>
 </section>
 <section id="verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">
-<h3>2.1 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<h3>2.2 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>SSH into the <strong>BU1 Frontend</strong> and run ping or SSH commands targeting the <strong>BU2 Mobile App</strong>.</p></li>
-<li><p>Ping and SSH between the two BUs should now work, thanks to the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code> (aka <strong><em>VRF leaking</em></strong>).</p></li>
+<li><p>Connectivity via ICMP ping and SSH between the two BUs is now established, thanks to the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code>(commonly referred to as <strong><em>VRF leakage</em></strong>).</p></li>
 </ul>
 <figure class="align-center" id="id6">
 <a class="reference internal image-reference" href="../_images/lab2-pingbu2.png"><img alt="../_images/lab2-pingbu2.png" src="../_images/lab2-pingbu2.png" style="height: 400px;" />
@@ -451,6 +451,7 @@ document.write(`
 <p><span class="caption-number">Fig. 62 </span><span class="caption-text">Network Domains</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>If you filter by either of the two Network Domains, you will now see routes from both the BU1 and BU2 segments. You have successfully merged them.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p><strong>Spoke Gateways</strong> only show the main routing table, known as the <em>Global Routing Table (GRT)</em>, while <strong>Transit Gateways</strong> provide visibility into all routing tables, including the main RTB and any additional RTBs created through segmentation.</p>
@@ -692,8 +693,8 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-thw-diagnostic-tools">2.1 Verify the connectivity between BU1 and BU2 domains Using thw Diagnostic tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.1 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">2.1 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.2 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">3. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">

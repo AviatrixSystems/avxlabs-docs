@@ -18,7 +18,7 @@ Lab 5 Topology
 
 - Verify that the connectivity between **BU1 Frontend** and **BU1 Analytics** is actually broken.
 
-  - Run the ping command from the Diagnostics tools to the private IP address of the **BU1 Analytics**
+  - Run the ping command from the `Diagnostics Tools` to the private IP address of the **BU1 Analytics**
 
 ```{figure} images/lab5-traceroute2812.png
 ---
@@ -27,7 +27,7 @@ align: center
 Ping from the Spoke1
 ```
 
-  -  Alternatively, connect via SSH to **BU1 Frontend** and execute ping, traceroute, or SSH commands toward **BU1 Analytics**.
+-  Alternatively, establish an SSH connection to the **BU1 Frontend** and execute ping, traceroute, or SSH commands toward **BU1 Analytics**.
 
 ```{figure} images/lab5-pingfails.png
 ---
@@ -110,7 +110,7 @@ align: center
 Delete the malicious route
 ```
 
-- From Diagnostics Tools, re-run ping to the private IP address of **BU2 MobileApp**.
+- From `Diagnostics Tools`, re-run ping to the private IP address of **BU2 MobileApp**.
 
 ```{figure} images/lab5-traceroute28123.png
 ---
@@ -131,7 +131,7 @@ Ping is ok
 ### 2.2 BU1 DB is not reachable
 
 - Now verify that the connectivity between **BU1 Frontend** and **BU1 DB** is actually broken.
-  - Run the traceroute command from the `Diagnostics tools` to the private IP address of the BU1 DB.
+  - Run the traceroute command from the `Diagnostics Tools` to the private IP address of the BU1 DB.
   
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
@@ -175,7 +175,7 @@ The results above show **five** hops (**six** if you run traceroute from the BU1
 
 #### 2.2.1 Packet Capture
 
-You can duplicate the current CoPilot UI tab and run Diagnostics Tools in parallel: one tab to generate ICMP traffic, and another to capture packets.
+You can duplicate the current CoPilot UI tab and run `Diagnostics Tools` in parallel: one tab to generate ICMP traffic, and another to capture packets.
 
 - Navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the **_ace-azure-east-us-spoke1_** gateway, then choose `Packet Capture` from the actions list, select the **eth0** interface and set the capture duration to **10 seconds**. Before clicking **RUN**, switch to the other tab to generate ICMP traffic.
 
@@ -186,7 +186,7 @@ align: center
 Packet Capture
 ```
 
-- On the other tab, navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the **_ace-aws-eu-west-1-spoke1_** gateway, then choose **Ping** from the actions list. Before clicking RUN, first trigger the packet capture on the other tab, then execute the ping.
+- On the other tab, navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the **_ace-aws-eu-west-1-spoke1_** gateway, then choose **Ping** from the actions list, and enter the private IP address of **BU1-DB**. Before clicking RUN, <ins>first trigger the packet capture on the other tab</ins>, then execute the ping.
 
 ```{figure} images/lab5-packetcapture0001.png
 ---
@@ -268,6 +268,7 @@ Navigate to **CoPilot > Diagnostics > Cloud Routes > BGP Info** and then click o
 
 ```{figure} images/lab5-bgpinfo.png
 ---
+height: 350px
 align: center
 ---
 Show BGP Learned Routes
@@ -275,7 +276,7 @@ Show BGP Learned Routes
 
 ```{figure} images/lab5-bgpinfo100.png
 ---
-height: 350px
+height: 450px
 align: center
 ---
 10.0.211.0/24
@@ -318,7 +319,7 @@ Do not forget to click on **Save**.
 
 ```{figure} images/lab5-newrequest4.png
 ---
-height: 350px
+height: 450px
 align: center
 ---
 Exclude the route
@@ -334,7 +335,7 @@ Now search for `10.0.211.0/24`.
 
 ```{figure} images/lab5-newrequest5.png
 ---
-height: 300px
+height: 450px
 align: center
 ---
 No Results found
