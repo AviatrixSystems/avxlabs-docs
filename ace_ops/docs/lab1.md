@@ -16,6 +16,8 @@ Initial Topology
 
 ## 2. VALIDATION REQUEST
 
+### 2.1 Initial Configuration
+
 * Navigate to **CoPilot > Settings > Resources > Task Server**.
   * Ensure that `Fetch GW Routes`, `Fetch VPC Routes` and `Fetch BGP` intervals are set to `1 second`. Then, click **Save** to apply the changes.
 
@@ -112,6 +114,8 @@ Collapsed View
 **Always** refer to your personal POD for the accurate IP addresses. The IP addresses displayed in the following screenshots are only <ins>examples</ins> sourced from a different POD and are intended solely for the creation of the lab guides.
 ```
 
+### 2.2 SSH client and Jumpbox
+
 There are **two** SSH access methods you can use to connect to any instance in the lab’s multi‑cloud environment.
 
 1. Use an <span style='color:orange'>**SSH client**</span> from your laptop (<ins>recommended method!</ins>).
@@ -130,7 +134,7 @@ align: center
 DNS name
 ```
 
-2. Use the <span style='color:orange'>**Apache Jumpbox**</span> from the POD Portal, particularly if you are on your corporate network and typically face outbound restrictions blocking **port 22**.
+2. Use the <span style='color:orange'>**Guacamole Jumpbox**</span> from the POD Portal, particularly if you are on your corporate network and typically face outbound restrictions blocking **port 22**.
 
 ```{figure} images/lab1-jumpbox.png
 ---
@@ -159,6 +163,10 @@ align: center
 Guacamole Menu
 ```
 
+### 2.3 IP addresses
+
+The CoPilot is your **_single pane of glass_**, offering a complete database of IP addresses for all instances in the hybrid-cloud environment it governs.
+
 ```{tip}
 The IP addresses can be easily obtained using **three** different methods, according to your preference:
 
@@ -169,8 +177,8 @@ The IP addresses can be easily obtained using **three** different methods, accor
 3) From your **personal POD portal**, where you can also utilize the DNS symbolic names.
 ```
 
-- **Properties from the Dynamic Topology**:
-
+#### 2.3.1 Dynamic Topology - Properties
+  
 Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
 
 ```{caution}
@@ -203,7 +211,7 @@ align: center
 Show Labels
 ```
 
-- **Cloud Assets**:
+#### 2.3.2 Cloud Assets
 
 Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Perform a search for "_frontend_" and extract the corresponding IP addresses from the resulting list.
 
@@ -215,7 +223,7 @@ align: center
 Inventory
 ```
 
-- **POD Portal**:
+#### 2.3.3 POD Portal
 
 Access your personal POD to obtain the symbolic names of any test instances.
 
@@ -232,6 +240,8 @@ align: center
 ---
 DNS Names
 ```
+
+### 2.4 Enterprise-Grade Tools
 
 Alternatively, you can skip using the SSH client or a Jumpbox altogether and rely entirely on the `enterprise-grade tools` available on all Aviatrix Gateways.
 
