@@ -4,9 +4,11 @@ In this lab you will activate the `Aviatrix Cloud Firewall`, a cloud-native secu
 
 ## 1. SCENARIO
 
-The BU2 database requires updates; however, the VM resides within a _private subnet_. The BU2 DB owner has requested that only `apt-get` commands be permitted for egress traffic, while all other types of outbound traffic should be blocked.
+The BU2 database requires updates, but the VM resides in a private subnet. The BU2 DB owner has requested that only `apt-get` commands be permitted for egress traffic, while all other outbound traffic be blocked. All egress traffic must be monitored with **_logging_** enabled.
 
-Additionally, all egress traffic must be monitored, with **_Logging_** enabled to track the activity.
+Actions:
+- Enable Cloud Secure Egress on the ace-azure-east-us-spoke2 VNet.
+- Create Distributed Cloud Firewall rules to enforce these requirements.
 
 - Enable the `Cloud Secure Egress` feature on the **_ace-azure-east-us-spoke2_** VNet.
 
