@@ -310,7 +310,7 @@ align: center
 bu1-db is reachable
 ```
 
-#### 2.1.2 Verify connectivity between clients **within** the same BU using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.5.2 Verify connectivity between clients **within** the same BU using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
     
 - SSH into the **BU1 Frontend**  instance in AWS.
 
@@ -344,7 +344,7 @@ align: center
 Properties
 ```
 
-Open your **SSH client** and enter the SSH command to log in to the BU1 Frontend instance.
+Open your **SSH client** and enter the SSH command to log in to the **BU1 Frontend** instance.
 
 ```{figure} images/lab1-assets22.png
 ---
@@ -391,7 +391,7 @@ Additionally, execute the **CURL** command directed at BU1 Analytics.
 
 ```{figure} images/lab1-pingok29.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 CURL
@@ -401,7 +401,27 @@ CURL
 Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.
 ```
 
-#### 2.1.2 Ensure workloads do not have cross-BU connectivity
+#### 2.5.3 Ensure workloads do not have cross-BU connectivity using the Diagnostic Tools
+
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, search for `mobile-app`, and fetch its private IP address.
+
+```{figure} images/lab1-mobileapp00.png
+---
+height: 300px
+align: center
+---
+BU2-MobileApp
+```
+
+```{figure} images/lab1-mobileapp001.png
+---
+height: 300px
+align: center
+---
+ping fails
+```
+
+#### 2.5.4 Ensure workloads do not have cross-BU connectivity using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
 - From **BU1 Frontend** try to SSH **BU2 Mobile App** (use again its Private IP address!).
