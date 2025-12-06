@@ -19,7 +19,6 @@ Initial Topology
 * Navigate to **CoPilot > Settings > Resources > Task Server**.
   * Ensure that `Fetch GW Routes`, `Fetch VPC Routes` and `Fetch BGP` intervals are set to `1 second`. Then, click **Save** to apply the changes.
 
-
 ```{figure} images/lab1-task.png
 ---
 height: 400px
@@ -99,6 +98,14 @@ height: 400px
 align: center
 ---
 Managed VPCs only
+```
+
+```{figure} images/lab1-managedvpc321.png
+---
+height: 400px
+align: center
+---
+Collapsed View
 ```
 
 ```{caution}
@@ -213,7 +220,7 @@ Inventory
 Access your personal POD to obtain the symbolic names of any test instances.
 
 ```{caution}
-- Use the symbolic name containing the word `"public"` to log into the instance from your laptop."
+- Use the symbolic name containing the word `"public"` to log into the instance from your laptop.
 
 - Use the symbolic name containing the word `"private"` for East-West traffic verification after accessing any test instance from your laptop.
 ```
@@ -226,8 +233,73 @@ align: center
 DNS Names
 ```
 
+Alternatively, you can skip using the SSH client or a Jumpbox altogether and rely entirely on the `enterprise-grade tools` available on all Aviatrix Gateways.
+
+- Navigate to **Copilot > Diagnostics > Diagnostics Tools**. From here, select the Spoke gateways that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
+
+```{figure} images/lab1-diagnosticstools.png
+---
+height: 300px
+align: center
+---
+Diagnostics Tools
+```
+
 ### 2.1 NETWORK SEGMENTATION: VERIFICATION
-#### 2.1.1 Verify connectivity between clients **within** the same BU
+
+#### 2.1.1 Verify connectivity between clients **within** the same BU using the Diagnostic Tools
+
+You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Assets` section.
+
+```{figure} images/lab1-diagnosticstools11.png
+---
+height: 300px
+align: center
+---
+Default Gateway and the Destinations
+```
+
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, filter for the keywords **"analytics"** and **"bu1-db"**, and capture the private IP addresses of the resulting VMs.
+
+```{tip}
+Use multiple tabs on your browser!
+```
+
+```{figure} images/lab1-diagnosticstools990.png
+---
+height: 300px
+align: center
+---
+bu1-analytics
+```
+
+```{figure} images/lab1-diagnosticstools991.png
+---
+height: 300px
+align: center
+---
+bu1-db
+```
+
+- Navigate to **CoPilot > Diagnostics > Diagnostics Tools** and generate ICMP traffic from the **_ace-aws-eu-west-1-spoke1_** Gateway ypewartdds BU1-Analytics and BU1-DB.
+
+```{figure} images/lab1-diagnosticstools992.png
+---
+height: 300px
+align: center
+---
+bu1-analytics is reachable
+```
+
+```{figure} images/lab1-diagnosticstools993.png
+---
+height: 300px
+align: center
+---
+bu1-db is reachable
+```
+
+#### 2.1.2 Verify connectivity between clients **within** the same BU using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
     
 - SSH into the **BU1 Frontend**  instance in AWS.
 
@@ -400,7 +472,7 @@ Do not forget to click on **Apply**.
 
 ```{figure} images/lab1-plus.png
 ---
-height: 250px
+height: 450px
 align: center
 ---
 FlowIQ Filter
