@@ -375,6 +375,8 @@ Commit
 The last two policies ensure you can securely SSH from the BU1 Frontend to the Azure database VMs in private subnets, which do not have public IP addresses.
 ```
 
+### 2.6 Discovery Process
+
 - Use **_Spoke1 VNet_** as a test environment. SSH to the **BU1 DB**, then execute the _apt-get_ commands. This will help identify the domains that should be permitted.
 
 ```{figure} images/lab7-test.png
@@ -394,36 +396,14 @@ align: center
 SSH to BU1 DB
 ```
 
-- Apply the `All-Web` WebGroup to restrict HTTP/HTTPS traffic for capturing logs of accessed FQDNs.
+You can explore the logs of your enforcement. Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and search for `"inter-ssh-bu1frontend-bu1db"`. You will see that the policy was triggered by the SSH action you performed from the BU1 Frontend to the BU2 DB.
 
-```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and edit the _Greenfield-Rule_, clicking on the pencil icon on the right-hand side.
-
-This time attach the `All-Web` WebGroup and then click on **Save In Drafts**.
-```
-
-```{figure} images/lab7-test4.png
+```{figure} images/lab7-test-logs.png
 ---
-height: 150px
+height: 400px
 align: center
 ---
-Edit the Greenfield-Rule
-```
-
-```{figure} images/lab7-test5.png
----
-align: center
----
-All-Web
-```
-
-Do not forget to **Commit** your changes into the Data Path.
-
-```{figure} images/lab7-test6.png
----
-align: center
----
-Commit
+Logs
 ```
 
 - Now execute the **_apt-get_** commands from the **BU1 DB** !
