@@ -310,8 +310,10 @@ Before clicking **Commit**, create another DCF Rule and then click `"+ Rule"`.
 ---
 align: center
 ---
-+ Rule
++Rule
 ```
+
+### 2.5 DCF Rules
 
 Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 
@@ -332,17 +334,45 @@ align: center
 inter-ssh
 ```
 
-Enforce this new rule into the Data Plane clicking on the `"Commit"` button.
+Before clicking **Commit**, continue adding a new DCF Rule by clicking `"+ Rule"`.
 
-### 2.5 DCF Rules
-
-
-
-```{figure} images/lab7-green01.png
+```{figure} images/lab7-green03.png
 ---
 align: center
 ---
-All-Web
++Rule
+```
+
+Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+
+- **Name**: <span style='color:#479608'>inter-ssh-bu1frontend-bu2db</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU2-DB</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **PORT**: <span style='color:#479608'>22</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+  
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab7-interssh002.png
+---
+align: center
+---
+inter-ssh
+```
+
+You can now proceed and click **Commit** to enforce the policies in the data plane.
+
+```{figure} images/lab7-interssh0023.png
+---
+align: center
+---
+Commit
+```
+
+```{caution}
+The last two policies ensure you can securely SSH from the BU1 Frontend to the Azure database VMs in private subnets, which do not have public IP addresses.
 ```
 
 - Use **_Spoke1 VNet_** as a test environment. SSH to the **BU1 DB**, then execute the _apt-get_ commands. This will help identify the domains that should be permitted.
