@@ -287,7 +287,7 @@ Use multiple tabs on your browser!
 
 ```{figure} images/lab1-diagnosticstools990.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 bu1-analytics
@@ -295,7 +295,7 @@ bu1-analytics
 
 ```{figure} images/lab1-diagnosticstools991.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 bu1-db
@@ -400,7 +400,7 @@ Additionally, execute the **CURL** command directed at BU1 Analytics.
 
 ```{figure} images/lab1-pingok29.png
 ---
-height: 200px
+height: 150px
 align: center
 ---
 CURL
