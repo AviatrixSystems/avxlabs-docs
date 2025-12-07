@@ -112,7 +112,7 @@ align: center
 V1 Policy List
 ```
 
-#### 2.3.2 Ad-hoc greenfield-Rule
+#### 2.3.2 Ad-hoc Greenfield-Rule
 
 - Create a new rule clicking on the **"+ Rule"** button.
 
@@ -280,6 +280,70 @@ The CoPilot shows that there is one instance that perfectly matches the conditio
 
 - **_ace-azure-east-us-spoke2-bu2-db_**
 
+#### 2.4.1 Updating the Greenfield Rule
+
+Navigate to **CoPilot > Security > Distributed Cloud Firewall**, and click the `pencil icon` beside the **Greenfield Rule** to update its configuration.
+
+```{figure} images/lab7-green00.png
+---
+align: center
+---
+Edit the Greenfiled-Rule
+```
+
+Select the `"All-Web"` WebGroup from the **_WebGroups_** field, then click **"Save In Drafts"**.
+
+```{figure} images/lab7-green01.png
+---
+align: center
+---
+All-Web
+```
+
+```{important}
+The All-Web WebGroup attached to the Greenfield-Rule will allow logging of the FQDNs being accessed.
+```
+
+Before clicking **Commit**, create another DCF Rule and then click `"+ Rule"`.
+
+```{figure} images/lab7-green02.png
+---
+align: center
+---
++ Rule
+```
+
+Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+
+- **Name**: <span style='color:#479608'>inter-ssh-bu1frontend-bu1db</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU1-DB</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **PORT**: <span style='color:#479608'>22</span>
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+  
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab7-interssh001.png
+---
+align: center
+---
+inter-ssh
+```
+
+Enforce this new rule into the Data Plane clicking on the `"Commit"` button.
+
+### 2.5 DCF Rules
+
+
+
+```{figure} images/lab7-green01.png
+---
+align: center
+---
+All-Web
+```
 
 - Use **_Spoke1 VNet_** as a test environment. SSH to the **BU1 DB**, then execute the _apt-get_ commands. This will help identify the domains that should be permitted.
 
