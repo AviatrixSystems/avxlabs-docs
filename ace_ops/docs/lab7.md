@@ -70,7 +70,7 @@ align: center
 ace-azure-east-us-spoke1
 ```
 
-### 2.3 Distributed Cloud Firewall - Activation
+### 2.3 Distributed Cloud Firewall
 
 #### 2.3.1 DCF - Activation
 
@@ -112,6 +112,8 @@ align: center
 V1 Policy List
 ```
 
+#### 2.3.2 Ad-hoc greenfield-Rule
+
 - Create a new rule clicking on the **"+ Rule"** button.
 
 ```{figure} images/lab7-greenfield56661.png
@@ -148,7 +150,7 @@ align: center
 Commit
 ```
 
-#### 2.3.2 Smart Groups
+### 2.4 Smart Groups
 
 Create three Smart Groups to identify:
 1) **BU1 Frontend**
@@ -176,7 +178,7 @@ align: center
 Name = ace-aws-eu-west-1-spoke1-bu1-frontend
 ```
 
-Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
 
 ```{figure} images/lab7-smart31.png
 ---
@@ -217,7 +219,7 @@ align: center
 Name = ace-azure-east-us-spoke1-bu1-db
 ```
 
-Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
 
 ```{figure} images/lab7-smart41.png
 ---
@@ -258,7 +260,7 @@ align: center
 Name = ace-azure-east-us-spoke2-bu2-db
 ```
 
-Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
 
 ```{figure} images/lab7-smart51.png
 ---

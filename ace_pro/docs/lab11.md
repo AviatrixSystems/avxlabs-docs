@@ -105,7 +105,7 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 - **Name**: <span style='color:#479608'>us-east-2-test2</span>
 - **Matches all conditions (AND)/Name**: <span style='color:#479608'> aws-us-east-2-spoke1-test2</span>
 
-Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
 
 ```{figure} images/lab1081-smart6.png
 ---
