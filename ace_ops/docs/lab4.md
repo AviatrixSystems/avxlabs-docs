@@ -16,6 +16,8 @@ Lab 4 Topology
 
 ## 2. TROUBLESHOOT REQUEST
 
+### 2.1 Connectivity verification
+
 - Verify that the connectivity between **BU1 Frontend** and **BU2 Mobile App** is actually broken.
 
   - SSH to BU1 Frontend and launch ping/traceroute to BU2 Mobile App.
@@ -121,6 +123,12 @@ Ping is ok from the Transit GW towards BU2 Mobile App
 
 From the outcome above, you can notice that the Transit GW in AWS can ping both BU1 Frontend and BU2 Mobile App, successfully.
 
+```{important}
+The Transit Gateway is now responding to the traceroute, which suggests that the traffic path is no longer being dropped as it was in the previous lab.
+```
+
+### 2.2 FireNet section
+
 - Let's check the **FireNet** section!
 
 ```{tip}
@@ -141,7 +149,9 @@ This time the FW is responding properly to the **Health Check** mechanism, there
 The Firewall is reachable from the Transit FireNet GW!
 ```
 
-- Keep running the ping command from the **BU1 Frontend** towards the **BU2 Mobile App**, although it will fail!
+#### 2.2.1 Connectivity test
+
+- Please keep sending ping requests from the **BU1 Frontend** to the **BU2 Mobile App**, noting that the results are expected to fail.
 
 ```{figure} images/lab4-keepit.png
 ---
@@ -150,7 +160,11 @@ align: center
 Keep the ping running...
 ```
 
-- Now let's launch a *packet capture* on the `eth-fn0` interface of the **Transit FireNet GW**.
+```{tip}
+You can also generate ICMP traffic from the Spoke gateway using **Diagnostics > Diagnostic Tools**.
+```
+
+- Proceed to start a _packet capture_ on the `eth-fn0` interface of the **Transit FireNet GW**.
 
 ```{important}
 The **eth-fn0** interface is hooked up to the **LAN** interface of the Firewall, within the **_transit1-dmz-firewall_** subnet!
