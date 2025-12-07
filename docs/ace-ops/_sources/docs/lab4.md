@@ -2,7 +2,7 @@
 
 ## 1. SCENARIO
 
-BU1 and BU2 were able to communicate as end of Lab3.
+**BU1** and **BU2** were able to communicate as end of Lab3.
 
 Unfortunately, the network team received another complaint from BU1 Frontend Team that BU2 Mobile App was no longer reachable.
 
@@ -18,13 +18,20 @@ Lab 4 Topology
 
 - Verify that the connectivity between **BU1 Frontend** and **BU2 Mobile App** is actually broken.
 
-  - SSH to BU1 Frontend and launch ping/ssh to BU2 Mobile App.
+  - SSH to BU1 Frontend and launch ping/traceroute to BU2 Mobile App.
 
 ```{figure} images/lab4-pingunsucc.png
 ---
 align: center
 ---
 Ping fails
+```
+
+```{figure} images/lab4-pingunsucc00.png
+---
+align: center
+---
+Traceroute outcome
 ```
 
 ```{important}
@@ -36,6 +43,13 @@ Remember that all Aviatrix gateways include built-in enterprise-grade tools, suc
 align: center
 ---
 Ping from the Spoke1
+```
+
+```{figure} images/lab4-traceroute283.png
+---
+align: center
+---
+Traceroute from the Spoke1
 ```
 
 - Check whether both **AWS Spoke1** and **AWS Spoke2** have the required routes installed in their RTBs or not.
