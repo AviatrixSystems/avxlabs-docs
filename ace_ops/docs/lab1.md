@@ -233,6 +233,10 @@ align: center
 Inventory
 ```
 
+```{important}
+Always refer to your personal CoPilot for the IP addresses. These images are only examples.
+```
+
 #### 2.3.3 POD Portal
 
 Access your personal POD to obtain the symbolic names of any test instances.
@@ -305,7 +309,6 @@ bu1-db
 
 ```{figure} images/lab1-diagnosticstools992.png
 ---
-height: 300px
 align: center
 ---
 bu1-analytics is reachable
@@ -313,7 +316,6 @@ bu1-analytics is reachable
 
 ```{figure} images/lab1-diagnosticstools993.png
 ---
-height: 300px
 align: center
 ---
 bu1-db is reachable
@@ -380,7 +382,7 @@ Remove the filter
 
 ```{figure} images/lab1-pingok.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 ICMP
@@ -410,7 +412,7 @@ CURL
 Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.
 ```
 
-#### 2.5.3 Ensure workloads do not have cross-BU connectivity using the Diagnostic Tools
+#### 2.5.3 Ensure workloads do not have **cross-BU** connectivity using the Diagnostic Tools
 
 ```{figure} images/lab1-diagnosticstools1100.png
 ---
@@ -456,7 +458,7 @@ align: center
 ping to BU2-DB
 ```
 
-#### 2.5.4 Ensure workloads do not have cross-BU connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.5.4 Ensure workloads do not have **cross-BU** connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
 - From **BU1 Frontend** try to SSH **BU2 Mobile App** (use again its Private IP address!).
@@ -536,7 +538,7 @@ align: center
 RIB
 ```
 
-- Select the `Gateway Routes` tab and filter by one of the two segments, e.g., BU1. You will see only the routes associated with the BU1 Network Domain.
+- Select the `Gateway Routes` tab and filter by one of the two segments, e.g., **BU1**. You will see only the routes associated with the BU1 Network Domain.
 
 ```{figure} images/lab1-bu1vrf000.png
 ---
@@ -556,7 +558,7 @@ Do not forget to click on **Apply**.
 
 ```{figure} images/lab1-plus.png
 ---
-height: 450px
+height: 250px
 align: center
 ---
 FlowIQ Filter
@@ -566,7 +568,7 @@ FlowIQ Filter
 You probably won't see any results immediately after clicking Apply. It may take a few more minutes for CoPilot to display the NetFlow information collected through CNSF.
 ```{figure} images/lab1-plus78.png
 ---
-height: 150px
+height: 350px
 align: center
 ---
 FlowIQ Filter
