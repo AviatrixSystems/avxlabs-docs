@@ -75,58 +75,72 @@ ace-azure-east-us-spoke1
 - Enable the **Distributed Cloud Firewall** feature.
 
 ```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall** and then click on the `"Enable Distributed Cloud Firewall"` button, then to the subsequent `"Begin Using Distributed Cloud Firewall"` button, and last but not least to the `"Begin"` button
+Navigate to **CoPilot > Security > Distributed Cloud Firewall** and then click on the `"Begin Using Distributed Cloud Firewall"` button, then to the subsequent `"Begin Using Distributed Cloud Firewall"` button, and last but not least to the `"Begin"` button
 ```
 
 ```{figure} images/lab7-enabledcf01.png
 ---
 align: center
 ---
-Enable DCF message
+Begin Using Distributed Cloud Firewall
 ```
 
 ```{figure} images/lab7-enabledcf0222.png
 ---
 align: center
 ---
-Begin using DCF message
-```
-
-```{figure} images/lab7-enabledcf0322.png
----
-align: center
----
 Begin
 ```
 
-The Aviatrix Controller has applied a `Greenfield-Rule` that allows all traffic; you should see this immediately.
+The Aviatrix Controller has pushed a `Default- Action Rule` permitting all traffic; you should observe the impact right away.
 
 ```{figure} images/lab7-enabledcf0411.png
+---
+align: center
+---
+Default Action Rule
+```
+
+Now, click **Ruleset** and select the `V1 Policy List`.
+
+```{figure} images/lab7-greenfield5666.png
+---
+align: center
+---
+V1 Policy List
+```
+
+- Create a new rule clicking on the **"+ Rule"** button.
+
+```{figure} images/lab7-greenfield56661.png
+---
+align: center
+---
+New Rule
+```
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>Greenfield-Rule</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab7-greenfield566612.png
 ---
 align: center
 ---
 Greenfield-Rule
 ```
 
-- Enable the `"Logging"` on the Greenfield-Rule.
+Click on **Commit**.
 
-```{tip}
-Click on the Actions icon to the right of the **Greenfield-Rule** end select "Turn On Logging".
-```
-
-```{figure} images/lab7-editgreen.png
+```{figure} images/lab7-greenfield5666123.png
 ---
-height: 150px
-align: center
----
-Edit the Greenfield-Rule
-```
-
-Remember to click on **Commit** to apply the changes to the Data Plane.
-
-```{figure} images/lab7-lastone.png
----
-height: 150px
 align: center
 ---
 Commit
