@@ -58,7 +58,7 @@ Logical View
 
 ```{figure} images/lab2-cp000.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 BU1 to BU2 is ok
@@ -77,7 +77,9 @@ align: center
 BU1 to BU2 is ok
 ```
 
-- Check the different routing tables (VRFs) maintained by any of the Transit Gateways.
+### 2.3 Routing Tables
+
+- Review the routing tables (**VRFs**) managed by any of the transit gateways.
 
 ```{tip}
 Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Gateway Routes** and filter out based on any Network Domains.
