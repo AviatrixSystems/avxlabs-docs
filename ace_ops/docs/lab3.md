@@ -34,12 +34,14 @@ Lab 3 Topology
 - Navigate to **CoPilot > Diagnostics > Diagnostic Tools**. Select the **_ace-aws-eu-west-1-spoke1_** gateway (the gateway in front of the source endpoint). First, `ping` the private IP address of **BU2-MobileApp**, then perform a `traceroute` to that address.
 
 ```{tip}
-Private IP addresses are retrievable in the Cloud Assets section.
+Retrieve the private IP address of the **BU2 Mobile App** from the **Cloud Assets** inventory, first!
+
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the relevant EC2 instance.
 ```
 
 ```{figure} images/lab23-cp000.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 BU2-MobileApp is unreachable
@@ -51,6 +53,10 @@ height: 400px
 align: center
 ---
 Traceroute outcome
+```
+
+```{important}
+The traceroute results show a surprising outcome: **0** hops.
 ```
 
 ### 2.2 Verify connectivity using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
@@ -65,6 +71,26 @@ align: center
 ---
 Ping fails
 ```
+
+```{figure} images/lab3-sshfails00.png
+---
+align: center
+---
+SSH fails
+```
+
+```{figure} images/lab3-sshfails01.png
+---
+align: center
+---
+Traceroute outcome
+```
+
+```{important}
+The traceroute results show a surprising outcome: **1** hop. Only the Spoke gateway acting as the default gateway is responding to the traceroute.
+```
+
+### 2.3 Verify the routing
 
 - Check whether the relevant Spoke Gateways have the required routes installed on their routing tables or not.
 
@@ -83,20 +109,6 @@ Filtering out
 From the above outcome, Spoke1 in AWS has the destination route in its RTB. You can verify the inverse by inspecting the Routing Table of Spoke2 in AWS.
 
 - Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and try to ping/traceroute the instance behind the other spoke (i.e. **BU2 Mobile App**).
-
-```{tip}
-Retrieve the private IP address of the **BU2 Mobile App** from the **Cloud Assets** inventory, first!
-
-Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the relevant EC2 instance.
-```
-
-```{figure} images/lab3-personalpod.png
----
-height: 300px
-align: center
----
-Private IP of BU2 Mobile App
-```
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Diagnostics Tools** then select the GW **ace-aws-eu-west-1-spoke1** and ping the private IP of BU2 Mobile App
