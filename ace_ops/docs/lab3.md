@@ -55,6 +55,26 @@ align: center
 Traceroute outcome
 ```
 
+- Now try to ping both workloads (i.e. BU1 Frontend and BU2 Mobile App) from the **Transit** GW in AWS.
+
+```{figure} images/lab3-bu1ping.png
+---
+height: 400px
+align: center
+---
+Ping is successful from the Transit Gateway to BU1 Frontend.
+```
+
+```{figure} images/lab3-bu2ping.png
+---
+height: 400px
+align: center
+---
+Ping is successful from the Transit Gateway to BU2 Mobile App.
+```
+
+From the outcome above, you can notice that the Transit GW in AWS can ping both BU1 Frontend and BU2 Mobile App, successfully.
+
 ```{important}
 The traceroute results show a surprising outcome: **0** hops.
 ```
@@ -64,6 +84,10 @@ The traceroute results show a surprising outcome: **0** hops.
 - Verify that the connectivity between **BU1 Frontend** and **BU2 Mobile App** is actually broken.
 
   - SSH to **BU1 Frontend** and run ping and SSH tests toward **BU2 Mobile App**.
+
+```{tip}
+Private IP addresses can be found in the `Cloud Assets` section.
+```
 
 ```{figure} images/lab3-pingfails.png
 ---
@@ -90,7 +114,7 @@ Traceroute outcome
 The traceroute results show a surprising outcome: **1** hop. Only the Spoke gateway acting as the default gateway is responding to the traceroute.
 ```
 
-### 2.3 Verify the routing
+### 2.3 Verify the Routing
 
 - Check whether the relevant Spoke Gateways have the required routes installed on their routing tables or not.
 
@@ -108,51 +132,7 @@ Filtering out
 
 From the above outcome, Spoke1 in AWS has the destination route in its RTB. You can verify the inverse by inspecting the Routing Table of Spoke2 in AWS.
 
-- Use **Diagnostics Tools** from the *Spoke1 Gateway* in AWS and try to ping/traceroute the instance behind the other spoke (i.e. **BU2 Mobile App**).
-
-```{tip}
-Navigate to **CoPilot > Diagnostics > Diagnostics Tools** then select the GW **ace-aws-eu-west-1-spoke1** and ping the private IP of BU2 Mobile App
-```
-
-```{figure} images/lab3-pingfailss.png
----
-height: 300px
-align: center
----
-Ping is unsuccessful
-```
-
-From the outcome above you can notice that from the Spoke1 GW in AWS, the BU2 Mobile App is not reachable.
-
-```{figure} images/lab3-zerohops.png
----
-height: 300px
-align: center
----
-0 Hops
-```
-
-The traceroute results show a surprising outcome: **0 hops**.
-
-- Now try to ping both workloads (i.e. BU1 Frontend and BU2 Mobile App) from the **Transit** GW in AWS.
-
-```{figure} images/lab3-bu1ping.png
----
-height: 400px
-align: center
----
-Ping is ok from the Transit GW towards BU1 Frontend
-```
-
-```{figure} images/lab3-bu2ping.png
----
-height: 400px
-align: center
----
-Ping is ok from the Transit GW towards BU2 Mobile App
-```
-
-From the outcome above, you can notice that the Transit GW in AWS can ping both BU1 Frontend and BU2 Mobile App, successfully.
+### 2.4 FireNet
 
 - Let's check the **FireNet** section!
 
