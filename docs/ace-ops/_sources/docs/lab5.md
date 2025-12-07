@@ -18,7 +18,7 @@ Lab 5 Topology
 
 - Verify that the connectivity between **BU1 Frontend** and **BU1 Analytics** is actually broken.
 
-  - Run the ping command from the `Diagnostics Tools` to the private IP address of the **BU1 Analytics**
+  - Run the ping command from the `Diagnostic Tools` to the private IP address of the **BU1 Analytics**
 
 ```{figure} images/lab5-traceroute2812.png
 ---
@@ -110,7 +110,7 @@ align: center
 Delete the malicious route
 ```
 
-- From `Diagnostics Tools`, re-run ping to the private IP address of **BU2 MobileApp**.
+- From `Diagnostic Tools`, re-run ping to the private IP address of **BU2 MobileApp**.
 
 ```{figure} images/lab5-traceroute28123.png
 ---
@@ -131,7 +131,7 @@ Ping is ok
 ### 2.2 BU1 DB is not reachable
 
 - Now verify that the connectivity between **BU1 Frontend** and **BU1 DB** is actually broken.
-  - Run the traceroute command from the `Diagnostics Tools` to the private IP address of the BU1 DB.
+  - Run the traceroute command from the `Diagnostic Tools` to the private IP address of the BU1 DB.
   
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
@@ -268,7 +268,6 @@ Navigate to **CoPilot > Diagnostics > Cloud Routes > BGP Info** and then click o
 
 ```{figure} images/lab5-bgpinfo.png
 ---
-height: 350px
 align: center
 ---
 Show BGP Learned Routes
