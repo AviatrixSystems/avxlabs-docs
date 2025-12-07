@@ -29,6 +29,32 @@ Lab 3 Topology
 
 ## 2. TROUBLESHOOT REQUEST
 
+### 2.1 Verify connectivity using the Diagnostic Tools
+
+- Navigate to **CoPilot > Diagnostics > Diagnostic Tools**. Select the **_ace-aws-eu-west-1-spoke1_** gateway (the gateway in front of the source endpoint). First, `ping` the private IP address of **BU2-MobileApp**, then perform a `traceroute` to that address.
+
+```{tip}
+Private IP addresses are retrievable in the Cloud Assets section.
+```
+
+```{figure} images/lab23-cp000.png
+---
+height: 400px
+align: center
+---
+BU2-MobileApp is unreachable
+```
+
+```{figure} images/lab23-cp001.png
+---
+height: 400px
+align: center
+---
+Traceroute outcome
+```
+
+### 2.2 Verify connectivity using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
 - Verify that the connectivity between **BU1 Frontend** and **BU2 Mobile App** is actually broken.
 
   - SSH to **BU1 Frontend** and run ping and SSH tests toward **BU2 Mobile App**.

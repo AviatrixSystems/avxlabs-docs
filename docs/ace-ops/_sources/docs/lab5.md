@@ -14,7 +14,7 @@ Lab 5 Topology
 
 ## 2. TROUBLESHOOT REQUEST
 
-### 2.1 BU1 Analytics is not reachable
+### 2.1 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
 
 - Verify that the connectivity between **BU1 Frontend** and **BU1 Analytics** is actually broken.
 

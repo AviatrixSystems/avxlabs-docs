@@ -343,6 +343,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-using-the-diagnostic-tools">2.1 Verify connectivity using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-using-the-ssh-client-bonus">2.2 Verify connectivity using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#health-check-mechanism-failure">2.1 Health-check mechanism failure</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ngfw-misconfiguration">2.2 NGFW Misconfiguration</a></li>
 </ul>
@@ -386,6 +388,32 @@ document.write(`
 </section>
 <section id="troubleshoot-request">
 <h2>2. TROUBLESHOOT REQUEST<a class="headerlink" href="#troubleshoot-request" title="Link to this heading">#</a></h2>
+<section id="verify-connectivity-using-the-diagnostic-tools">
+<h3>2.1 Verify connectivity using the Diagnostic Tools<a class="headerlink" href="#verify-connectivity-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostic Tools</strong>. Select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway (the gateway in front of the source endpoint). First, <code class="docutils literal notranslate"><span class="pre">ping</span></code> the private IP address of <strong>BU2-MobileApp</strong>, then perform a <code class="docutils literal notranslate"><span class="pre">traceroute</span></code> to that address.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Private IP addresses are retrievable in the Cloud Assets section.</p>
+</div>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/lab23-cp000.png"><img alt="../_images/lab23-cp000.png" src="../_images/lab23-cp000.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 81 </span><span class="caption-text">BU2-MobileApp is unreachable</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/lab23-cp001.png"><img alt="../_images/lab23-cp001.png" src="../_images/lab23-cp001.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Traceroute outcome</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="verify-connectivity-using-the-ssh-client-bonus">
+<h3>2.2 Verify connectivity using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-connectivity-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU2 Mobile App</strong> is actually broken.</p>
 <ul>
@@ -393,10 +421,10 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id5">
 <img alt="../_images/lab3-pingfails.png" src="../_images/lab3-pingfails.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 81 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -406,11 +434,11 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select for example the gateway <strong>ace-aws-eu-west-1-spoke1</strong>  <strong>&gt; Gateway Routes</strong> and search for the subnet <strong>10.1.212.0/24</strong>, where BU2 Mobile App resides.</p>
 </div>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id6">
 <a class="reference internal image-reference" href="../_images/lab3-routecheck.png"><img alt="../_images/lab3-routecheck.png" src="../_images/lab3-routecheck.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Filtering out</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Filtering out</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the above outcome, Spoke1 in AWS has the destination route in its RTB. You can verify the inverse by inspecting the Routing Table of Spoke2 in AWS.</p>
@@ -422,48 +450,48 @@ document.write(`
 <p>Retrieve the private IP address of the <strong>BU2 Mobile App</strong> from the <strong>Cloud Assets</strong> inventory, first!</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong> and search for <code class="docutils literal notranslate"><span class="pre">&quot;mobile&quot;</span></code>, then retrieve the private IP of the relevant EC2 instance.</p>
 </div>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="../_images/lab3-personalpod.png"><img alt="../_images/lab3-personalpod.png" src="../_images/lab3-personalpod.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Private IP of BU2 Mobile App</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Private IP of BU2 Mobile App</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong> then select the GW <strong>ace-aws-eu-west-1-spoke1</strong> and ping the private IP of BU2 Mobile App</p>
 </div>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/lab3-pingfailss.png"><img alt="../_images/lab3-pingfailss.png" src="../_images/lab3-pingfailss.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Ping is unsuccessful</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Ping is unsuccessful</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the outcome above you can notice that from the Spoke1 GW in AWS, the BU2 Mobile App is not reachable.</p>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/lab3-zerohops.png"><img alt="../_images/lab3-zerohops.png" src="../_images/lab3-zerohops.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 85 </span><span class="caption-text">0 Hops</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">0 Hops</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The traceroute results show a surprising outcome: <strong>0 hops</strong>.</p>
 <ul class="simple">
 <li><p>Now try to ping both workloads (i.e. BU1 Frontend and BU2 Mobile App) from the <strong>Transit</strong> GW in AWS.</p></li>
 </ul>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/lab3-bu1ping.png"><img alt="../_images/lab3-bu1ping.png" src="../_images/lab3-bu1ping.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Ping is ok from the Transit GW towards BU1 Frontend</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Ping is ok from the Transit GW towards BU1 Frontend</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/lab3-bu2ping.png"><img alt="../_images/lab3-bu2ping.png" src="../_images/lab3-bu2ping.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Ping is ok from the Transit GW towards BU2 Mobile App</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Ping is ok from the Transit GW towards BU2 Mobile App</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the outcome above, you can notice that the Transit GW in AWS can ping both BU1 Frontend and BU2 Mobile App, successfully.</p>
@@ -474,11 +502,11 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; FireNet</strong></p>
 </div>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id12">
 <a class="reference internal image-reference" href="../_images/lab3-unreachable.png"><img alt="../_images/lab3-unreachable.png" src="../_images/lab3-unreachable.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 88 </span><span class="caption-text">The FW is unreachable</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">The FW is unreachable</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Open the <strong>Firewall</strong> tab; the firewall appears to be down.</p>
@@ -486,11 +514,11 @@ document.write(`
 <p class="admonition-title">Important</p>
 <p>The ICMP health check is initiated every <strong>5</strong> seconds from the Aviatrix Transit FireNet Gateway. The 5-second setting is the default and cannot be changed.</p>
 </div>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id13">
 <a class="reference internal image-reference" href="../_images/lab3-fwdown.png"><img alt="../_images/lab3-fwdown.png" src="../_images/lab3-fwdown.png" style="height: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 89 </span><span class="caption-text">The FW is down</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">The FW is down</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -502,45 +530,45 @@ document.write(`
 <p>Then click on <strong>Settings</strong> and insert the CIDR of the AWS <strong>ace-aws-eu-west-1-spoke2</strong> VPC on the field <code class="docutils literal notranslate"><span class="pre">&quot;Exclude</span> <span class="pre">from</span> <span class="pre">East-West</span> <span class="pre">Inspection&quot;</span></code>.</p>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 </div>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id14">
 <a class="reference internal image-reference" href="../_images/lab3-firenetgw.png"><img alt="../_images/lab3-firenetgw.png" src="../_images/lab3-firenetgw.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 90 </span><span class="caption-text">The Transit FireNet GW</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">The Transit FireNet GW</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab3-excemption2.png" src="../_images/lab3-excemption2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Exclude the CIDR</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Exclude the CIDR</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Execute a ping from <strong>BU1 Frontend</strong> to <strong>BU2 Mobile App</strong> to verify connectivity; results should indicate a working connection.</p></li>
 </ul>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab3-pingok2.png" src="../_images/lab3-pingok2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Launch a <strong>traceroute</strong> towards the Private IP address of the BU2 Mobile App.</p></li>
 </ul>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab3-traceroute.png" src="../_images/lab3-traceroute.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Traceroute is ok</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Traceroute is ok</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Alternatively, you can run traceroute directly from Spoke1 in EU-WEST-1—the gateway in the same VPC as the Frontend instance.</p></li>
 <li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. Select the <em>ace-aws-eu-west-1-spoke1</em> gateway, then run traceroute to the private IP address of the Mobile-App instance.</p></li>
 </ul>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id18">
 <img alt="../_images/lab3-traceroutespoke.png" src="../_images/lab3-traceroutespoke.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Traceroute is ok</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Traceroute is ok</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -556,31 +584,32 @@ document.write(`
 <p>Navigate to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>, click on the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW, then click on <strong>Settings</strong> and remove the CIDR <code class="docutils literal notranslate"><span class="pre">10.1.212.0/24</span></code>.</p>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 </div>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../_images/lab3-removeex.png"><img alt="../_images/lab3-removeex.png" src="../_images/lab3-removeex.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Remove the exemption</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Remove the exemption</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 <section id="health-check-mechanism-failure">
 <h3>2.1 Health-check mechanism failure<a class="headerlink" href="#health-check-mechanism-failure" title="Link to this heading">#</a></h3>
 <p>Continue troubleshooting using the packet capture feature on the interface of the transit gateway attached to the NGFW.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab3-ethernet01.png"><img alt="../_images/lab3-ethernet01.png" src="../_images/lab3-ethernet01.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 96 </span><span class="caption-text">eth-fn0 interface</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text">eth-fn0 interface</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Maintain a continuous ping from the BU1 Frontend session on your SSH client to the private IP of the BU2 Mobile App.</p></li>
 </ul>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../_images/lab3-ethernet02.png"><img alt="../_images/lab3-ethernet02.png" src="../_images/lab3-ethernet02.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 97 </span><span class="caption-text">ping</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">ping</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -590,11 +619,11 @@ document.write(`
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. Select the <strong><em>ace-aws-eu-west-1-transit1</em></strong> gateway, then choose <strong><code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">Capture</span></code></strong> from the available features. Select the <code class="docutils literal notranslate"><span class="pre">eth-fn0</span></code> interface, set the duration to <strong>10</strong> seconds, and click <strong>Run</strong>. When the results appear, you can filter by “icmp.”</p></li>
 </ul>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab3-ethernet03.png"><img alt="../_images/lab3-ethernet03.png" src="../_images/lab3-ethernet03.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 98 </span><span class="caption-text">packet capture</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">packet capture</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The observed traffic consists solely of ICMP echo requests issued by the Transit Gateway to the firewall’s LAN interface. The firewall is not producing echo replies; consequently, the Transit Gateway has no alternative but to drop the ICMP traffic generated by the BU1 Frontend, as the health-check mechanism has clearly failed.</p>
@@ -612,26 +641,26 @@ document.write(`
 <li><p><strong>CoPilot &gt; Security &gt; FireNet &gt; Firewall</strong> and click on the <strong>URL</strong>.</p></li>
 </ol>
 </div>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab3-newportal.png" src="../_images/lab3-newportal.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 99 </span><span class="caption-text">POD Portal</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">POD Portal</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab3-url.png"><img alt="../_images/lab3-url.png" src="../_images/lab3-url.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 100 </span><span class="caption-text">FW URL from the FireNet section on the CoPilot</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">FW URL from the FireNet section on the CoPilot</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Insert the credentials.</p></li>
 </ul>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id25">
 <img alt="../_images/lab3-fw.png" src="../_images/lab3-fw.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 101 </span><span class="caption-text">FW access</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">FW access</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -640,43 +669,43 @@ document.write(`
 </div>
 <p>The port was disabled to simulate a software failure of the FW…</p>
 <p>Double click on the greyed-out interface <strong>LAN (port2)</strong>, or alternatively, select the interface and click on the <strong>Edit</strong> button.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab3-fwint.png" src="../_images/lab3-fwint.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 102 </span><span class="caption-text">FW interface</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">FW interface</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Scroll down until you see the <code class="docutils literal notranslate"><span class="pre">&quot;Status&quot;</span></code> button of the interface and finally reactivate it.</p>
 <p>Of course, then click on <strong>OK</strong>.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id27">
 <img alt="../_images/lab3-enableint.png" src="../_images/lab3-enableint.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 103 </span><span class="caption-text">Reactivate the LAN port</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Reactivate the LAN port</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Reattempt the ping from <strong>BU1 Frontend</strong> to <strong>BU2 Mobile App</strong> once the firewall’s LAN interface has been reactivated.</p>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id28">
 <img alt="../_images/lab3-pingworks.png" src="../_images/lab3-pingworks.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Ping is ok!</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text">Ping is ok!</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Also re-run the traceroute from BU1 (<code class="docutils literal notranslate"><span class="pre">Diagnostics</span> <span class="pre">tools</span></code>) to <strong>BU2 Mobile App</strong>, selecting the appropriate gateway, <strong><em>ace-aws-eu-west-1-spoke1</em></strong>!</p></li>
 </ul>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab3-traceroute280.png" src="../_images/lab3-traceroute280.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 105 </span><span class="caption-text">New Traceroute outcome from the Spoke1</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 107 </span><span class="caption-text">New Traceroute outcome from the Spoke1</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Alternatively, run the traceroute again from the <strong>BU1 Frontend</strong> SSH session, which is still open, toward <strong>BU2 Mobile App</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id30">
 <img alt="../_images/lab3-traceroute2.png" src="../_images/lab3-traceroute2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 106 </span><span class="caption-text">New Traceroute outcome</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text">New Traceroute outcome</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -753,6 +782,8 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-using-the-diagnostic-tools">2.1 Verify connectivity using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-using-the-ssh-client-bonus">2.2 Verify connectivity using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#health-check-mechanism-failure">2.1 Health-check mechanism failure</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ngfw-misconfiguration">2.2 NGFW Misconfiguration</a></li>
 </ul>
