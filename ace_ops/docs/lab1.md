@@ -305,10 +305,11 @@ align: center
 bu1-db
 ```
 
-- Navigate to **CoPilot > Diagnostics > Diagnostic Tools**, and generate **ICMP** traffic from the **_ace-aws-eu-west-1-spoke1_** gateway for **BU1-Analytics** and **BU1-DB**.
+- Navigate to **CoPilot > Diagnostics > Diagnostic Tools**, and generate **ICMP** traffic from the **_ace-aws-eu-west-1-spoke1_** gateway for **BU1 Analytics** and **BU1 DB**.
 
 ```{figure} images/lab1-diagnosticstools992.png
 ---
+height: 200px
 align: center
 ---
 bu1-analytics is reachable
@@ -316,6 +317,7 @@ bu1-analytics is reachable
 
 ```{figure} images/lab1-diagnosticstools993.png
 ---
+height: 200px
 align: center
 ---
 bu1-db is reachable
@@ -611,7 +613,7 @@ The **Originator** has the egress interface that corresponds to the **eth0** int
 
 ```{figure} images/lab1-cloudroutes.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Originator = eth0
