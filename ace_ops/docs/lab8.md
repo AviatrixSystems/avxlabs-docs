@@ -40,6 +40,8 @@ These are the **requirements** for this lab:
 
 6) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 DB to communicate with BU2 DB on TCP/22
 
+7) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Frontend to ping with BU2 DB.
+
 ## 2. CHANGE REQUEST
 
 ### 2.1 SmartGroups creation
@@ -418,7 +420,7 @@ inter-rule
 
 #### 2.2.4 Inter-rule between BU1 DB and BU2 DB
 
-The final policy is an inter-rule designed to permit **BU1 DB** to establish SSH access to **BU2 DB**.
+The fourth policy is an inter-rule designed to permit **BU1 DB** to establish SSH access to **BU2 DB**.
 
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
 
@@ -465,7 +467,7 @@ Commit
 height: 200px
 align: center
 ---
-firstSSH
+first SSH
 ```
 
 ```{figure} images/lab712-intraruleinaction24.png
@@ -488,6 +490,76 @@ logs
 This is how the overall topology would look after implementing the latest inter-rule.
 
 ```{figure} images/lab712-segmentation093.png
+---
+height: 400px
+align: center
+---
+inter-rule
+```
+
+#### 2.2.5 Inter-rule between BU1 Frontend and BU1 DB
+
+The final policy is an inter-rule designed to permit **BU1 Frontend** to ping **BU2 DB**.
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
+
+```{figure} images/lab8-greenfield16.png
+---
+height: 400px
+align: center
+---
+New Rule
+```
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>inter-icmp-bu1frontend-bu1db</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU1-DB</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab8-greenfieldjoe0101.png
+---
+align: center
+---
+inter-icmp-bu1frontend-bu1db
+```
+
+Click on **Commit**.
+
+```{figure} images/lab8-greenfieldcommit023.png
+---
+align: center
+---
+Commit
+```
+
+- SSH into the **BU1 Frontend** and generate ICMP traffic targeting the private IP address of the **BU1 DB**.
+
+```{figure} images/lab712-intraruleinactionping.png
+---
+height: 200px
+align: center
+---
+ping
+```
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-icmp-bu1frontend-bu1db` rule will appear.
+
+```{figure} images/lab712-monitor04.png
+---
+align: center
+---
+logs
+```
+
+This is how the overall topology would look after implementing the latest inter-rule.
+
+```{figure} images/lab712-segmentation094.png
 ---
 height: 400px
 align: center
