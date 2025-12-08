@@ -259,7 +259,6 @@ intra-rule in action
 
 ```{figure} images/lab712-monitor00.png
 ---
-height: 200px
 align: center
 ---
 logs
@@ -283,6 +282,7 @@ The second policy is an inter-rule, requiring **BU1 Frontend** to communicate wi
 
 ```{figure} images/lab8-greenfield13.png
 ---
+height: 400px
 align: center
 ---
 New Rule
@@ -320,7 +320,7 @@ Commit
 
 ```{figure} images/lab712-intraruleinaction22.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 inter-rule in action
@@ -330,7 +330,6 @@ inter-rule in action
 
 ```{figure} images/lab712-monitor01.png
 ---
-height: 200px
 align: center
 ---
 logs
@@ -348,7 +347,76 @@ inter-rule
 
 #### 2.2.3 Inter-rule between BU1 Analytics and BU1 Frontend
 
-#### 2.2.3 Inter-rule between BU1 DB and BU2 DB
+The third policy is again an inter-rule, requiring **BU1 Analytics** to ping **BU1 Frontend**.
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
+
+```{figure} images/lab8-greenfield14.png
+---
+height: 400px
+align: center
+---
+New Rule
+```
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>inter-icmp-bu1analytics-bu1frontend</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU2-MOBILEAPP1</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>80</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab8-greenfieldjoe01.png
+---
+align: center
+---
+inter-icmp-bu1analytics-bu1frontend
+```
+
+Click on **Commit**.
+
+```{figure} images/lab8-greenfieldcommit01.png
+---
+align: center
+---
+Commit
+```
+
+- SSH into the **BU1 Analytics** and generate ICMP traffic targeting the private IP address of the **BU1 Frontend**.
+
+```{figure} images/lab712-intraruleinaction23.png
+---
+height: 200px
+align: center
+---
+inter-rule in action
+```
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-icmp-bu1analytics-bu1frontend` rule will appear.
+
+```{figure} images/lab712-monitor02.png
+---
+align: center
+---
+logs
+```
+
+This is how the overall topology would look after implementing the latest inter-rule.
+
+```{figure} images/lab712-segmentation092.png
+---
+height: 400px
+align: center
+---
+inter-rule
+```
+
+#### 2.2.4 Inter-rule between BU1 DB and BU2 DB
 
 ## 3. CHANGE REQUEST
 
