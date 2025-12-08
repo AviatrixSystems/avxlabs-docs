@@ -141,6 +141,59 @@ New Rule
 
 #### 2.2.1 Intra-rule between BU1 Frontend and BU2 Mobile App
 
+The current SmartGroups status is depicted below. The first rule to create is an `intra-rule` involving both **BU1 Frontend** and **BU2 Mobile App**. To enforce this intra-rule, define an additional SmartGroup that can include both instances, for example by using the label `Region=eu-west-1`.
+
+```{figure} images/lab71-segmentation.png
+---
+height: 400px
+align: center
+---
+Current SmartGroup status
+```
+
+- Navigate to **CoPilot > Groups > SmartGroups** and click the `“+ SmartGroup”`.
+
+```{figure} images/lab8-SGnew2090.png
+---
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>EU-WEST-1</span>
+- **Matches all conditions (AND)/Region**: <span style='color:#479608'>eu-west-1</span>
+
+```{figure} images/lab8-smart3.png
+---
+align: center
+---
+Name = ace-aws-eu-west-1-spoke2-bu2-mobile-app
+```
+
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
+
+```{figure} images/lab8-smart5122.png
+---
+align: center
+---
+Resource Selection
+```
+
+```{figure} images/lab8-smart51132.png
+---
+align: center
+---
+Preview
+```
+
+The CoPilot shows that there are three instances that perfectly match the condition:
+
+- **_ACE-FW_**
+- **_ace-aws-eu-west-1-spoke1-bu1-frontend_**
+- **_ace-aws-eu-west-1-spoke2-bu2-mobile-app_**
+
 Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>intra-icmp-bu1frontend-bu2mobileapp</span>
