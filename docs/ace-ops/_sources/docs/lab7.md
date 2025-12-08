@@ -681,7 +681,7 @@ Allowed domains!
 ```
 
 ```{caution}
-In the logs, you’ll probably see an allowed entry for `"api.snapcraft.io"`. This domain was allowed <ins>before </ins>applying the ExplicitDenyAll rule and the specific inter-rule that uses the Ubuntu-update WebGroup.
+In the logs, you’ll probably see an allowed entry for `"api.snapcraft.io"`. This domain was allowed <ins>before </ins>applying the ExplicitDenyAll rule and the specific inter-rule that uses the `ubuntu-update` WebGroup.
 ```
 
 You have successfully applied Secure Egress Control, leveraging both the `Egress` feature and the `Distributed Cloud Firewall` policy.
