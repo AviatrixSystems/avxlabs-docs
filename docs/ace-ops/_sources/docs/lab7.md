@@ -386,6 +386,10 @@ align: center
 Spoke1 VNet1 as test VNet
 ```
 
+```{warning}
+Both VNets are configured with private routing tables, each containing a default route that points to the Spoke gateway deployed in that VNet, enabled by the `Secure Cloud Egress` functionality.
+```
+
 You need to **SSH** into the **BU1 DB**. Since this VM does not have a public IP, you must first SSH into the **BU1 Frontend** VM, and then, from there, initiate an SSH connection to the private IP of the **BU1 DB**.
 
 ```{figure} images/lab7-test3.png
@@ -416,20 +420,13 @@ and
 sudo apt-get upgrade -y
 ```
 
-When you see these pop-up messages, just click on the **Enter** button on your keyboard!
+If you see the pop-up message depicted below, please press the **Enter** key on your keyboard.
 
 ```{figure} images/lab7-enter.png
 ---
 align: center
 ---
 Press Enter
-```
-
-```{figure} images/lab7-enter2.png
----
-align: center
----
-Press Enter again
 ```
 
 - Check the domains hit by the *apt-get* commands
@@ -446,62 +443,64 @@ Monitor
 ```
 
 ```{warning}
-<ins>Identify all the necessary domains for successfully executing the apt-get commands by exclusively examining the entire list of logs. 
-
-Any other domains should be disregarded.</ins>
+Identify all the domains required to successfully execute the apt-get commands by examining the entire logs. The domains hit should belong to _ubuntu/canonical_ domains, and you can derive subdomains using the wildcard *.
 ```
 
-The required domains are **five**!
+The required domains are **six**!
 
 <details>
   <summary>Click here for discovering the <span style='color:#33ECFF'>allowed domains</span></summary>
   
 - motd.ubuntu.com
 - azure.archive.ubuntu.com
+- changelogs.ubuntu.com
 - livepatch.canonical.com
 - contracts.canonical.com
 - esm.ubuntu.com
 </details>
 
-<details>
-  <summary>Click here for discovering the <span style='color:#33ECFF'>prohibited domains</span></summary>
-  
-- storage.azure.net
-- windows.net
+### 2.7 ZTNA
 
-```{figure} images/lab7-prohibited.png
----
-height: 150px
-align: center
----
-Press Enter again
-```
-</details>
-
-### 2.1 Detach the WebGroup
-
-- Detach the **_All-Web_** Webgroup from the Greenfield-Rule.
+Now that the discovery process is complete on the test VNet where the Azure Spoke1 Gateway is deployed, we can activate the ZTNA framework by inserting an explicit deny-all rule above the Greenfield-Rule.
 
 ```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on the pencil icon on the righ-hand side of the Greenfield-Rule entry.
-
-Clear the `WebGroups` field and then click on **Save In Drafts**. 
-
-Do not forget then to click on **Commit**.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**. 
 ```
 
-```{figure} images/lab7-test8.png
+- Clicking the `"+ Rule"` button.
+
+```{figure} images/lab7-green53.png
 ---
 align: center
 ---
-Detaching the All-Web WebGroup
++Rule
 ```
 
-```{figure} images/lab7-lastone2.png
+Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+
+- **Name**: <span style='color:#479608'>ExplicitDenyAll</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+  
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab7-exdeall.png
 ---
 align: center
 ---
-Commit your change
+ExplicitDenyAll
+```
+
+Click **Commit** to enforce the policies in the data plane.
+
+```{figure} images/lab7-xdeall00.png
+---
+align: center
+---
+Commit
 ```
 
 - Now that you have discovered the domains that are triggered when the **_apt-get_** commands are executed, you can proceed in disabling the `Egress` feature from the **Spoke1** VNet.
@@ -562,6 +561,8 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Logging**: <span style='color:#479608'>**On**</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>inter-ssh-bu1frontend-bu1db</span>
 
 ```{figure} images/lab7-deleterulee235.png
 ---
