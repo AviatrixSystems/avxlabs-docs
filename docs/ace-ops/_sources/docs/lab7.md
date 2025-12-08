@@ -404,7 +404,7 @@ align: center
 SSH to BU1 DB
 ```
 
-You can explore the logs of your enforcement. Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and search for `"inter-ssh-bu1frontend-bu1db"`. You will see that the policy was triggered by the SSH action you performed from the BU1 Frontend to the BU2 DB.
+You can explore the logs of your enforcement. Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and search for `"inter-ssh-bu1frontend-bu1db"`. You will see that the policy was triggered by the SSH action you performed from the BU1 Frontend to the BU1 DB.
 
 ```{figure} images/lab7-test-logs.png
 ---
@@ -521,6 +521,16 @@ align: center
 BU2 DB ip address
 ```
 
+Open the **Monitor** tab to access the logs, then search for `"inter-ssh-bu1frontend-bu2db"`. You’ll see that the policy was triggered by the SSH action you performed from the **BU1 Frontend**, this time aimed at the **BU2 DB**.
+
+```{figure} images/lab7-test-logs02.png
+---
+height: 200px
+align: center
+---
+Logs
+```
+
 Issue the following curl commands:
 
 ```bash
@@ -533,199 +543,22 @@ curl www.wikipedia.com
 curl www.espn.com
 ```
 
-All commands will be successful, however, this is not what the request asked you to configure...
-
-- Enable the `ZTNA Model` (i.e.  **Zero Trust Network Architecture Model**), remove the **Greenfield-Rule**, and first insert an **Explicit-Deny** Rule at the bottom.
-
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on the `"+ Rule"` button.
-
-```{figure} images/lab7-deleterulee23.png
----
-align: center
----
-+Rule
-```
-
-Ensure these parameters are entered in the pop-up window `"Create Rule"`:
-
-- **Name**: <span style='color:#479608'>Explicit-Deny-Rule</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
-- **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
-- **Action**: <span style='color:#479608'>**Deny**</span>
-- **Place Rule**: <span style='color:#479608'>Below</span>
-  - **Existing Rule**: <span style='color:#479608'>inter-ssh-bu1frontend-bu1db</span>
-
-```{figure} images/lab7-deleterulee235.png
----
-align: center
----
-Explicit-Deny-Rule
-```
-
-Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
-
-```{figure} images/lab7-deleterulee2356.png
+```{figure} images/lab7-test-logs1234.png
 ---
 height: 200px
 align: center
 ---
-Commit
+Curl fails
 ```
 
-### 2.2 ZTNA
+The prior curls command will fail, as traffic is blocked by the **ExplicitDenyAll** rule.
 
-Now you can proceed in deleting the Greenfield-Rule!
+### 2.8 WebGroup
+
+- Create a **WebGroup** that matches the domains and subdomains identified previously.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules**, click on the `"three dots"` icon, on the right-hand side of the Greenfiled-Rule and then click on `"Delete Rule"`.
-```
-
-```{figure} images/lab7-deleterulee.png
----
-height: 200px
-align: center
----
-Delete Rule
-```
-
-```{figure} images/lab7-deleterulee2.png
----
-height: 200px
-align: center
----
-Commit
-```
-
-As soon as the **Explicit-Deny-Rule (editable)** is deployed on the top of the Rules list, the SSH session with the BU2 DB will be terminated. 
-
-You will have to reestablish the SSH session with BU2 DB!
-
-```{warning}
-The East-West traffic is blocked now!
-```
-
-- Explore the **SmartGroups** section on the CoPilot
-
-```{tip}
-Go to **CoPilot > Groups**
-```
-
-You will notice two SmartGroups, called **BU1** and **BU2**, in addition to the pre-defined SmartGroups (i.e. *Anywhere* and *Public Internet*).
-
-```{figure} images/lab7-bus.png
----
-align: center
----
-SmartGroups list
-```
-
-- Expand either SmartGroups to find out what VMs have been associated to each of these logical container.
-
-```{figure} images/lab7-bus2.png
----
-height: 200px
-align: center
----
-BU1's members
-```
-
-It is evident that BU1 Frontend turns out belonging to the BU1 SmartGroup, whereas the BU2 DB is a member of the BU2 SmartGroup.
-
-```{important}
-These two SmartGroups had been preprovisioned for you at the launch of the PODs.
-```
-
-- Create an **inter-rule** that allows SSH from BU1 to BU2.
-
-```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
-```
-
-Ensure these parameters are entered in the pop-up window `"Create Rule"`:
-
-- **Name**: <span style='color:#479608'>inter-ssh-bu1-bu2</span>
-- **Source Smartgroups**: <span style='color:#479608'>BU1</span>
-- **Destination Smartgroups**: <span style='color:#479608'>BU2</span>
-- **Protocol**: <span style='color:#479608'>TCP</span>
-- **Port**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
-
-```{figure} images/lab7-deleterulee23567.png
----
-align: center
----
-inter-ssh-bu1-bu2
-```
-
-Do not forget to click on **Save In Drafts**, and then **Commit** this new rule!
-
-```{figure} images/lab7-bus3new.png
----
-height: 200px
-align: center
----
-Three Rules
-```
-
-- SSH to BU2 DB from the BU1 Frontend, then check the logs!
-
-```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Monitor**
-```
-
-```{figure} images/lab7-bus5.png
----
-height: 150px
-align: center
----
-SSH logs
-```
-
-- Now create another SmartGroup that identifies the BU2 DB, solely.
-
-```{tip}
-Go to **CoPilot > Groups** and click on the `"+ SmartGroup"` button.
-```
-
-Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
-
-- **Name**: <span style='color:#479608'>BU2-DB</span>
-- **Matches all conditions (AND)**: <span style='color:#479608'>environment</span>
-  --> **Cloud Tag Values**: <span style='color:#479608'>bu2</span>
-
-Then click on `"+ Add condition"` button and select the following additonal parameters:
-
-```{figure} images/lab7-bus50.png
----
-align: center
----
-+Add condition
-```
-
-- **Matches all conditions (AND)**: <span style='color:#479608'>Region</span>
-  --> **Cloud Tag Values**: <span style='color:#479608'>eastus</span>
-
-
-Do not forget to click on **Save**.
-
-```{tip}
-The SmartGroup can match **multiple tags** simultaneously, harnessing the boolean expressions!
-```
-
-```{figure} images/lab7-bu2db.png
----
-align: center
----
-BU2 DB SmartGroup
-```
-
-- Create a **WebGroup** that matches the domains and sub-domains that you found earlier.
-
-```{tip}
-Go to **CoPilot > Groups > WebGroups** and then click on `"+ WebGroup"`.
+Navigate to **CoPilot > Groups > WebGroups** and then click on `"+ WebGroup"`.
 ```{figure} images/lab7-webgroupp.png
 ---
 align: center
@@ -746,7 +579,7 @@ then click on **Save**.
 ```{caution}
 These are the domains identified before using the `Discovery Mode` (**= Greenfield-Rule + All-Web**).
 
-- The FQDNs `*.ubuntu.com` and `*.canonical.com` are both using a first-level wilcard. These wildcards will be placeholders for *ntp.ubuntu.com*, *ftp.ubuntu.com*, *download.ubuntu.com*, *contracts.canonical.com*...
+- The FQDNs `*.ubuntu.com` and `*.canonical.com` are both using a first-level wilcard. These wildcards will be placeholders for *ntp.ubuntu.com*, *ftp.ubuntu.com*, *download.ubuntu.com*, *contracts.canonical.com*, *changelogs.ubuntu.com*...
 - The FQDN `*.archive.ubuntu.com` is using a second-level wilcard, that allows to create a subdivision within *archive.ubuntu.com*.
 ```
 
@@ -758,10 +591,18 @@ align: center
 ubuntu-update
 ```
 
-- Now create an **inter-rule** that allows BU2 DB to generate traffic towards Internet but only for reaching out the <ins>ubuntu servers</ins> !
+- Now create an **inter-rule** that permits **BU2 DB** to generate traffic to the **Internet**, but solely for reaching the _Ubuntu servers_.
 
 ```{tip}
-Go to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on the `"+ Rule"` button.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on the `"+ Rule"` button.
+```
+
+```{figure} images/lab7-webgroup001.png
+---
+height: 400px
+align: center
+---
++Rule
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
@@ -791,36 +632,6 @@ align: center
 DCF rules list
 ```
 
-- Now try issuing the following curl commands once again from the BU2 DB virtual machine:
-
-```bash
-curl www.google.com
-```
-```bash
-curl www.wikipedia.com
-```
-```bash
-curl www.espn.com
-```
-
-```{figure} images/lab7-explicitdeny101.png
----
-height: 150px
-align: center
----
-Explicit Deny Rule matching
-```
-
-You will notice three **Drop** entries within the **Monitor** section that have matched the `Explicit-Deny-Rule`, successfully.
-
-```{figure} images/lab7-explicitdeny.png
----
-height: 150px
-align: center
----
-Explicit Deny Rule matching
-```
-
 - Now try to run the **apt-get** commands !
 
 ```bash
@@ -831,7 +642,7 @@ and
 sudo apt-get upgrade -y
 ```
 
-Once again, if you see these pop-up messages, just click on the **Enter** button on your keyboard!
+Once again, if you see any of the pop-up messages depicted below, please press the **Enter** key on your keyboard.
 
 ```{figure} images/lab7-enter.png
 ---
@@ -840,17 +651,17 @@ align: center
 Press Enter
 ```
 
-```{figure} images/lab7-enter2.png
+```{figure} images/lab7-enter909.png
 ---
 align: center
 ---
-Press Enter again
+Press Enter
 ```
 
 - Now check the logs within the **Egress** section!
 
 ```{tip}
-Go to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the **ace-azure-east-us-spoke2** VNet
+Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the **ace-azure-east-us-spoke2** VNet, then filter by `"Allowed"`.
 ```
 
 ```{figure} images/lab7-last.png
@@ -869,4 +680,8 @@ align: center
 Allowed domains!
 ```
 
-You have successfully applied the Secure Egress Control, leveraging both the `Egress` feature and the `Distributed Cloud Firewall` rules!
+```{caution}
+In the logs, you’ll probably see an allowed entry for `"api.snapcraft.io"`. This domain was allowed <ins>before </ins>applying the ExplicitDenyAll rule and the specific inter-rule that uses the Ubuntu-update WebGroup.
+```
+
+You have successfully applied Secure Egress Control, leveraging both the `Egress` feature and the `Distributed Cloud Firewall` policy.
