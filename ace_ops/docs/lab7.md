@@ -286,7 +286,7 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall**, and click the `
 
 ```{figure} images/lab7-green00.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Edit the Greenfiled-Rule
@@ -309,7 +309,6 @@ Before clicking **Commit**, create another DCF Rule and then click `"+ Rule"`.
 
 ```{figure} images/lab7-green02.png
 ---
-height: 400px
 align: center
 ---
 +Rule
@@ -340,7 +339,6 @@ Before clicking **Commit**, continue adding a new DCF Rule by clicking `"+ Rule"
 
 ```{figure} images/lab7-green03.png
 ---
-height: 400px
 align: center
 ---
 +Rule
@@ -369,7 +367,6 @@ You can now proceed and click **Commit** to enforce the policies in the data pla
 
 ```{figure} images/lab7-interssh0023.png
 ---
-height: 400px
 align: center
 ---
 Commit
@@ -441,7 +438,6 @@ Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select t
 
 ```{figure} images/lab7-test7.png
 ---
-height: 300px
 align: center
 ---
 Monitor
@@ -674,7 +670,7 @@ ace-azure-east-us-spoke2
 
 ```{figure} images/lab7-lastlog.png
 ---
-height: 250px
+height: 450px
 align: center
 ---
 Allowed domains!
