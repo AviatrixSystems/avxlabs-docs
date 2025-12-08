@@ -259,7 +259,7 @@ intra-rule in action
 
 ```{figure} images/lab712-monitor00.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 logs
@@ -277,6 +277,74 @@ intra-rule
 
 #### 2.2.2 Inter-rule between BU1 Frontend and BU2 Mobile App
 
+The second policy is an inter-rule, requiring **BU1 Frontend** to communicate with **BU2 Mobile App** via TCP port 80.
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
+
+```{figure} images/lab8-greenfield13.png
+---
+align: center
+---
+New Rule
+```
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>inter-http-bu1frontend-bu2mobileapp</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU2-MOBILEAPP1</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>80</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab8-greenfieldjoe00.png
+---
+align: center
+---
+inter-http-bu1frontend-bu2mobileapp
+```
+
+Click on **Commit**.
+
+```{figure} images/lab8-greenfieldcommit00.png
+---
+align: center
+---
+Commit
+```
+
+- SSH into the **BU1 Frontend** and generate a curl command targeting the private IP address of the **BU2 Mobile App**.
+
+```{figure} images/lab712-intraruleinaction22.png
+---
+height: 400px
+align: center
+---
+inter-rule in action
+```
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-http-bu1frontend-bu2mobileapp` rule will appear.
+
+```{figure} images/lab712-monitor01.png
+---
+height: 200px
+align: center
+---
+logs
+```
+
+This is how the overall topology would look after implementing the latest inter-rule.
+
+```{figure} images/lab712-segmentation091.png
+---
+height: 400px
+align: center
+---
+inter-rule
+```
 
 #### 2.2.3 Inter-rule between BU1 Analytics and BU1 Frontend
 
