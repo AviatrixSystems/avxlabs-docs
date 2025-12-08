@@ -286,6 +286,7 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall**, and click the `
 
 ```{figure} images/lab7-green00.png
 ---
+height: 400px
 align: center
 ---
 Edit the Greenfiled-Rule
@@ -308,6 +309,7 @@ Before clicking **Commit**, create another DCF Rule and then click `"+ Rule"`.
 
 ```{figure} images/lab7-green02.png
 ---
+height: 400px
 align: center
 ---
 +Rule
@@ -338,6 +340,7 @@ Before clicking **Commit**, continue adding a new DCF Rule by clicking `"+ Rule"
 
 ```{figure} images/lab7-green03.png
 ---
+height: 400px
 align: center
 ---
 +Rule
@@ -366,6 +369,7 @@ You can now proceed and click **Commit** to enforce the policies in the data pla
 
 ```{figure} images/lab7-interssh0023.png
 ---
+height: 400px
 align: center
 ---
 Commit
@@ -404,7 +408,7 @@ You can explore the logs of your enforcement. Navigate to **CoPilot > Security >
 
 ```{figure} images/lab7-test-logs.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 Logs
@@ -437,6 +441,7 @@ Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select t
 
 ```{figure} images/lab7-test7.png
 ---
+height: 300px
 align: center
 ---
 Monitor
@@ -484,6 +489,8 @@ Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Logging**: <span style='color:#479608'>**On**</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>inter-ssh-bu1frontend-bu1db</span>
   
 Do not forget to click on **Save In Drafts**.
 
@@ -498,27 +505,13 @@ Click **Commit** to enforce the policies in the data plane.
 
 ```{figure} images/lab7-xdeall00.png
 ---
+height: 300px
 align: center
 ---
 Commit
 ```
 
-- Now that you have discovered the domains that are triggered when the **_apt-get_** commands are executed, you can proceed in disabling the `Egress` feature from the **Spoke1** VNet.
-
-```{tip}
-Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and click on the `Disable Local Egress` button 
-beside the **_ace-azure-east-us-spoke1_** VNet entry.
-```
-
-```{figure} images/lab7-disableegress.png
----
-height: 200px
-align: center
----
-Disable Egress on Spoke1 VNet
-```
-
-- SSH to the **BU2 DB** (this VM does not have a Public IP, whereby you need to SSH to BU1 Frontend first, and then from that VM, issue the SSH command towards the Private IP of BU2 DB).
+- SSH into the **BU2 DB** host (this VM has no public IP). Access must be via the **BU1 Frontend** first, then from that VM SSH to the private IP of BU2 DB.
 
 ```{figure} images/lab7-sshbu2db.png
 ---
