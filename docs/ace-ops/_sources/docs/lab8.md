@@ -12,11 +12,15 @@ align: center
 Initial Topology
 ```
 
+```{important}
+From a routing perspective, the domain is flat, enabled by the `Connection Policy` applied in Lab 2.
+```
+
 This is the current list of Distributed Cloud Firewall policies.
 
 ```{figure} images/lab8-initialrule.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 Existing DCF rules
@@ -24,9 +28,9 @@ Existing DCF rules
 
 These are the **requirements** for this lab:
 
-1) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App.
+1) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU1 Analytics
 
-2) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU1 Analytics
+2) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App.
 
 3) Create an <span style='color:lightgreen'>**intra-rule**</span> that allows BU1 Frontend and BU2 Mobile App to ping each other
 
@@ -37,6 +41,132 @@ These are the **requirements** for this lab:
 6) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 DB to communicate with BU2 DB on TCP/22
 
 ## 2. CHANGE REQUEST
+
+### 2.1 SmartGroups creation
+
+Navigate to **CoPilot > Groups > SmartGroups**, and click  the `“+ SmartGroup”` button.
+
+```{figure} images/lab8-SGnew10.png
+---
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>BU1-ANALYTICS</span>
+- **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-gcp-us-east1-spoke1-bu1-analytics</span>
+
+```{figure} images/lab7-smart3.png
+---
+align: center
+---
+Name = ace-gcp-us-east1-spoke1-bu1-analytics
+```
+
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
+
+```{figure} images/lab8-smart41.png
+---
+align: center
+---
+Resource Selection
+```
+
+```{figure} images/lab8-smart411.png
+---
+align: center
+---
+Preview
+```
+
+The CoPilot shows that there is one instance that perfectly matches the condition:
+
+- **_ace-gcp-us-east1-spoke1-bu1-analytics_**
+
+Add another Smart Group by tapping the `“+ SmartGroup”` one more time.
+
+```{figure} images/lab8-SGnew20.png
+---
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>BU1-MOBILEAPP</span>
+- **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span>
+
+```{figure} images/lab7-smart3.png
+---
+align: center
+---
+Name = ace-aws-eu-west-1-spoke2-bu2-mobile-app
+```
+
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
+
+```{figure} images/lab8-smart51.png
+---
+align: center
+---
+Resource Selection
+```
+
+```{figure} images/lab8-smart511.png
+---
+align: center
+---
+Preview
+```
+
+The CoPilot shows that there is one instance that perfectly matches the condition:
+
+- **_ace-aws-eu-west-1-spoke2-bu2-mobile-app_**
+
+### 2.2 Distributed Cloud Firewall Policies
+
+Proceed to the **Distributed Cloud Firewall** section and configure the policies to manage `East–West` traffic.
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
+
+```{figure} images/lab8-greenfield56661.png
+---
+align: center
+---
+New Rule
+```
+
+#### 2.2.1 Intra-rule between BU1 Frontend and BU2 Mobile App
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>intra-icmp-bu1frontend-bu2mobileapp</span>
+- **Source Smartgroups**: <span style='color:#479608'>EU-WEST-1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>EU-WEST-1</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab7-greenfield566612.png
+---
+align: center
+---
+Greenfield-Rule
+```
+
+Click on **Commit**.
+
+```{figure} images/lab7-greenfield5666123.png
+---
+align: center
+---
+Commit
+```
 
 - SSH on the **BU1 Frontend** and try to SSH to any other instances in BU1.
   - SSH fails as expected.
