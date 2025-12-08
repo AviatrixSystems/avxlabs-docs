@@ -418,6 +418,83 @@ inter-rule
 
 #### 2.2.4 Inter-rule between BU1 DB and BU2 DB
 
+The final policy is an inter-rule designed to permit **BU1 DB** to establish SSH access to **BU2 DB**.
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
+
+```{figure} images/lab8-greenfield15.png
+---
+height: 400px
+align: center
+---
+New Rule
+```
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>inter-icmp-bu1db-bu2db</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-DB</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU2-DB</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>22</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab8-greenfieldjoe0100.png
+---
+align: center
+---
+inter-icmp-bu1db-bu2db
+```
+
+Click on **Commit**.
+
+```{figure} images/lab8-greenfieldcommit022.png
+---
+align: center
+---
+Commit
+```
+
+- SSH into the **BU1 Frontend** and generate ICMP traffic targeting the private IP address of the **BU1 Frontend**.
+
+```{figure} images/lab712-intraruleinaction245.png
+---
+height: 200px
+align: center
+---
+firstSSH
+```
+
+```{figure} images/lab712-intraruleinaction24.png
+---
+height: 200px
+align: center
+---
+second SSH
+```
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-icmp-bu1db-bu2db` rule will appear.
+
+```{figure} images/lab712-monitor03.png
+---
+align: center
+---
+logs
+```
+
+This is how the overall topology would look after implementing the latest inter-rule.
+
+```{figure} images/lab712-segmentation093.png
+---
+height: 400px
+align: center
+---
+inter-rule
+```
+
 ## 3. CHANGE REQUEST
 
 - Now before completing the lab, remove the `Inspection Policy` from the Transit GW in AWS. 
