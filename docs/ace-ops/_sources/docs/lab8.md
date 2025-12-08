@@ -13,14 +13,14 @@ Initial Topology
 ```
 
 ```{important}
-From a routing perspective, the domain is flat, enabled by the `Connection Policy` applied in Lab 2.
+From a routing perspective, there is a flat rouing domain, enabled by the `Connection Policy` applied in Lab 2.
 ```
 
 This is the current list of Distributed Cloud Firewall policies.
 
 ```{figure} images/lab8-initialrule.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Existing DCF rules
@@ -126,10 +126,6 @@ The CoPilot shows that there is one instance that perfectly matches the conditio
 
 - **_ace-aws-eu-west-1-spoke2-bu2-mobile-app_**
 
-### 2.2 Distributed Cloud Firewall Policies
-
-Proceed to the **Distributed Cloud Firewall** section and configure the policies to manage `East–West` traffic.
-
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
 
 ```{figure} images/lab8-greenfield56661.png
@@ -138,6 +134,10 @@ align: center
 ---
 New Rule
 ```
+
+### 2.2 Distributed Cloud Firewall Policies
+
+Let's begin defining the **DCF rules** to govern `East–West` traffic.
 
 #### 2.2.1 Intra-rule between BU1 Frontend and BU2 Mobile App
 
@@ -169,7 +169,7 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 ---
 align: center
 ---
-Name = ace-aws-eu-west-1-spoke2-bu2-mobile-app
+Region = eu-west-1
 ```
 
 Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
@@ -194,6 +194,19 @@ The CoPilot shows that there are three instances that perfectly match the condit
 - **_ace-aws-eu-west-1-spoke1-bu1-frontend_**
 - **_ace-aws-eu-west-1-spoke2-bu2-mobile-app_**
 
+The new SmartGroup encompasses the two instances involved in establishing an _intra-rule_ between **BU1 Frontend** and **BU2 Mobile App**, as illustrated in the figure below.
+
+```{figure} images/lab712-segmentation.png
+---
+height: 400px
+align: center
+---
+Topology with the latest SmartGroup
+```
+
+```{important}
+Instances can belong to multiple SmartGroups.
+```
 Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>intra-icmp-bu1frontend-bu2mobileapp</span>

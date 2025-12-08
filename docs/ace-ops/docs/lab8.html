@@ -376,11 +376,11 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>From a routing perspective, the domain is flat, enabled by the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code> applied in Lab 2.</p>
+<p>From a routing perspective, there is a flat rouing domain, enabled by the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code> applied in Lab 2.</p>
 </div>
 <p>This is the current list of Distributed Cloud Firewall policies.</p>
 <figure class="align-center" id="id3">
-<a class="reference internal image-reference" href="../_images/lab8-initialrule.png"><img alt="../_images/lab8-initialrule.png" src="../_images/lab8-initialrule.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab8-initialrule.png"><img alt="../_images/lab8-initialrule.png" src="../_images/lab8-initialrule.png" style="height: 300px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 228 </span><span class="caption-text">Existing DCF rules</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
@@ -469,12 +469,6 @@ document.write(`
 <p>The CoPilot shows that there is one instance that perfectly matches the condition:</p>
 <ul class="simple">
 <li><p><strong><em>ace-aws-eu-west-1-spoke2-bu2-mobile-app</em></strong></p></li>
-</ul>
-</section>
-<section id="distributed-cloud-firewall-policies">
-<h3>2.2 Distributed Cloud Firewall Policies<a class="headerlink" href="#distributed-cloud-firewall-policies" title="Link to this heading">#</a></h3>
-<p>Proceed to the <strong>Distributed Cloud Firewall</strong> section and configure the policies to manage <code class="docutils literal notranslate"><span class="pre">East–West</span></code> traffic.</p>
-<ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong>, and click on the <strong>“+ Rule”</strong> button.</p></li>
 </ul>
 <figure class="align-center" id="id12">
@@ -483,6 +477,10 @@ document.write(`
 <p><span class="caption-number">Fig. 237 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="distributed-cloud-firewall-policies">
+<h3>2.2 Distributed Cloud Firewall Policies<a class="headerlink" href="#distributed-cloud-firewall-policies" title="Link to this heading">#</a></h3>
+<p>Let’s begin defining the <strong>DCF rules</strong> to govern <code class="docutils literal notranslate"><span class="pre">East–West</span></code> traffic.</p>
 <section id="intra-rule-between-bu1-frontend-and-bu2-mobile-app">
 <h4>2.2.1 Intra-rule between BU1 Frontend and BU2 Mobile App<a class="headerlink" href="#intra-rule-between-bu1-frontend-and-bu2-mobile-app" title="Link to this heading">#</a></h4>
 <p>The current SmartGroups status is depicted below. The first rule to create is an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> involving both <strong>BU1 Frontend</strong> and <strong>BU2 Mobile App</strong>. To enforce this intra-rule, define an additional SmartGroup that can include both instances, for example by using the label <code class="docutils literal notranslate"><span class="pre">Region=eu-west-1</span></code>.</p>
@@ -510,7 +508,7 @@ document.write(`
 <figure class="align-center" id="id15">
 <img alt="../_images/lab8-smart3.png" src="../_images/lab8-smart3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 240 </span><span class="caption-text">Name = ace-aws-eu-west-1-spoke2-bu2-mobile-app</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 240 </span><span class="caption-text">Region = eu-west-1</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Before clicking <strong>Save</strong>, enable <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code> to identify which instances match the condition.</p>
@@ -532,6 +530,18 @@ document.write(`
 <li><p><strong><em>ace-aws-eu-west-1-spoke1-bu1-frontend</em></strong></p></li>
 <li><p><strong><em>ace-aws-eu-west-1-spoke2-bu2-mobile-app</em></strong></p></li>
 </ul>
+<p>The new SmartGroup encompasses the two instances involved in establishing an <em>intra-rule</em> between <strong>BU1 Frontend</strong> and <strong>BU2 Mobile App</strong>, as illustrated in the figure below.</p>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/lab712-segmentation.png"><img alt="../_images/lab712-segmentation.png" src="../_images/lab712-segmentation.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 243 </span><span class="caption-text">Topology with the latest SmartGroup</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Instances can belong to multiple SmartGroups.</p>
+</div>
 <p>Enter the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>intra-icmp-bu1frontend-bu2mobileapp</span></p></li>
@@ -542,17 +552,17 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id19">
 <img alt="../_images/lab7-greenfield566612.png" src="../_images/lab7-greenfield566612.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 243 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 244 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <img alt="../_images/lab7-greenfield5666123.png" src="../_images/lab7-greenfield5666123.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 244 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 245 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -562,10 +572,10 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab8-sshbu1.png" src="../_images/lab8-sshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 245 </span><span class="caption-text">SSH fails within BU1</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 246 </span><span class="caption-text">SSH fails within BU1</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -587,27 +597,27 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab8-rule01.png"><img alt="../_images/lab8-rule01.png" src="../_images/lab8-rule01.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 246 </span><span class="caption-text">Another intra-rule</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 247 </span><span class="caption-text">Another intra-rule</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Retry to SSH to the BU1 Analytics from the BU1 Frontend; this time the operation will be accomplished!</p></li>
 </ul>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab8-sshok.png" src="../_images/lab8-sshok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 247 </span><span class="caption-text">SSH is ok within BU1</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 248 </span><span class="caption-text">SSH is ok within BU1</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab8-intrassh-bu1.png"><img alt="../_images/lab8-intrassh-bu1.png" src="../_images/lab8-intrassh-bu1.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 248 </span><span class="caption-text">Intra-SSH BU1</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 249 </span><span class="caption-text">Intra-SSH BU1</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -617,30 +627,30 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong></p>
 </div>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab8-monitornew.png"><img alt="../_images/lab8-monitornew.png" src="../_images/lab8-monitornew.png" style="height: 100px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 249 </span><span class="caption-text">Monitor: Logs</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 250 </span><span class="caption-text">Monitor: Logs</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Now terminate the SSH session with the BU1 Analytics, typing <code class="docutils literal notranslate"><span class="pre">&quot;exit&quot;</span></code>, and issue the <strong>ping</strong> command towards the BU1 Analytics from the BU1 Frontend. The ping will not work!</p></li>
 </ul>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab8-pingbu1.png" src="../_images/lab8-pingbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 250 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Check again the <strong>Logs</strong> from the <code class="docutils literal notranslate"><span class="pre">Monitor</span></code> section. The ICMP attempt hit the <strong><em>Explicit-Deny-Rule</em></strong>, whereby the action was denied!</p></li>
 </ul>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab8-denyicmp.png"><img alt="../_images/lab8-denyicmp.png" src="../_images/lab8-denyicmp.png" style="height: 100px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Monitor: Denied ICMP</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 252 </span><span class="caption-text">Monitor: Denied ICMP</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -660,46 +670,46 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab8-icmprulebu1.png"><img alt="../_images/lab8-icmprulebu1.png" src="../_images/lab8-icmprulebu1.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 252 </span><span class="caption-text">New intra-rule</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 253 </span><span class="caption-text">New intra-rule</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>The ping will work this time thanks to this new fresh intra-rule!</p></li>
 </ul>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab8-icmprulebu1ok.png" src="../_images/lab8-icmprulebu1ok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Ping will be ok!</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Ping will be ok!</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Once again, inspect the <strong>Monitor</strong> section to find out immediately the corresponding <em>logs</em> of the action carried out before.</p></li>
 </ul>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab8-pingpermitted.png"><img alt="../_images/lab8-pingpermitted.png" src="../_images/lab8-pingpermitted.png" style="height: 100px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Monitor: successful logs</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Monitor: successful logs</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="../_images/lab8-intrasshicmp-bu1.png"><img alt="../_images/lab8-intrasshicmp-bu1.png" src="../_images/lab8-intrasshicmp-bu1.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Intra-SSH-ICMP BU1</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Intra-SSH-ICMP BU1</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Let’s try to ping the BU2 Mobile App from the BU1 Frontend. The ping will fail due to the absence of an <strong>inter-rule</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id32">
 <img alt="../_images/lab8-pingbu1bu2.png" src="../_images/lab8-pingbu1bu2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Ping will fail</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -719,36 +729,36 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id33">
 <a class="reference internal image-reference" href="../_images/lab8-penultimaterule.png"><img alt="../_images/lab8-penultimaterule.png" src="../_images/lab8-penultimaterule.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 257 </span><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 258 </span><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Retry to ping the BU2 Mobile App from the BU1 Frontend. The ping will be successful thanks to the inter-rule!</p></li>
 </ul>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id34">
 <img alt="../_images/lab8-penultimateping.png" src="../_images/lab8-penultimateping.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 258 </span><span class="caption-text">Ping from BU1 to BU2</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Ping from BU1 to BU2</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab8-intericmp-bu1bu2.png"><img alt="../_images/lab8-intericmp-bu1bu2.png" src="../_images/lab8-intericmp-bu1bu2.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Inter-ICMP BU1 to BU2</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Inter-ICMP BU1 to BU2</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Now, let’s SSH to the Public IP of the <strong>BU2 Mobile App</strong> and then try to SSH to the Private IP of the <strong>BU1 Frontend</strong>. Of course, SSH will fail!</p></li>
 </ul>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id36">
 <img alt="../_images/lab8-bu2sshbu1.png" src="../_images/lab8-bu2sshbu1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 260 </span><span class="caption-text">SSH from BU2 to BU1 will fail</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 261 </span><span class="caption-text">SSH from BU2 to BU1 will fail</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -769,27 +779,27 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule.</p>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id37">
 <a class="reference internal image-reference" href="../_images/lab8-lastrule.png"><img alt="../_images/lab8-lastrule.png" src="../_images/lab8-lastrule.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 261 </span><span class="caption-text">“inter-ssh-bu2-bu1” Rule</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 262 </span><span class="caption-text">“inter-ssh-bu2-bu1” Rule</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Let’s try to issue the SSH command from the BU2 Mobile App towards the BU1 Frontend. This time the SSH will work smoothly.</p></li>
 </ul>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id38">
 <img alt="../_images/lab8-lastssh.png" src="../_images/lab8-lastssh.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 262 </span><span class="caption-text">SSH works from BU2 to BU1</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 263 </span><span class="caption-text">SSH works from BU2 to BU1</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id39">
 <a class="reference internal image-reference" href="../_images/lab8-interssh-bu2bu1.png"><img alt="../_images/lab8-interssh-bu2bu1.png" src="../_images/lab8-interssh-bu2bu1.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 263 </span><span class="caption-text">Inter-SSH BU2 to BU1</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 264 </span><span class="caption-text">Inter-SSH BU2 to BU1</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -805,17 +815,17 @@ Do not forget to enable <strong>“Logging”</strong>, for auditing purposes.</
 <p class="admonition-title">Tip</p>
 <p>Go to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong> and click on the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW, then click on <code class="docutils literal notranslate"><span class="pre">Policy</span></code>, select the two Spoke VPCs in AWS and choose the <code class="docutils literal notranslate"><span class="pre">Remove</span></code> action.</p>
 <p>Traffic will be not be sent towards the FW anymore. Th DCF will perform the firewalling very close to the source!</p>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id40">
 <img alt="../_images/lab8-manageatt.png" src="../_images/lab8-manageatt.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 264 </span><span class="caption-text">FireNet cfg</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 265 </span><span class="caption-text">FireNet cfg</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id41">
 <img alt="../_images/lab8-lastone.png" src="../_images/lab8-lastone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Remove the inspection Policy</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Remove the inspection Policy</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Congratulations, you have completed all labs and created a nice set of DCF rules across your Multicloud infrastructure!</p>
