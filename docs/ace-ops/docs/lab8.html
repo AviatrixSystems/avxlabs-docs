@@ -359,35 +359,31 @@ document.write(`
 <h1>Lab 8 - Distributed Cloud Firewall<a class="headerlink" href="#lab-8-distributed-cloud-firewall" title="Link to this heading">#</a></h1>
 <section id="scenario">
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
-<p>ACE’s environment has been split up in two SmartGroups: <strong>BU1</strong> and <strong>BU2</strong>. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.</p>
-<p>Let’s enable the <strong>Distributed Cloud Firewall</strong> to secure and govern the traffic runtime within CNSF.</p>
+<p>In the previous lab, you initiated micro-segmentation by defining a SmartGroup and applying the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> rules. Right now, <em>East–West</em> traffic is largely blocked, except for the policy that allows <strong>BU1 Frontend</strong> to SSH to both <strong>BU1 DB</strong> and <strong>BU2 DB</strong>.</p>
 <figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/lab7-segmentation.png"><img alt="../_images/lab7-segmentation.png" src="../_images/lab7-segmentation.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 227 </span><span class="caption-text">Initial Topology</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is the current list of Distributed Cloud Firewall policies.</p>
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/lab8-initialrule.png"><img alt="../_images/lab8-initialrule.png" src="../_images/lab8-initialrule.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 227 </span><span class="caption-text">Existing DCF rules</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 228 </span><span class="caption-text">Existing DCF rules</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<ul class="simple">
-<li><p>The BU1 Frontend has raised a complaint that is not able to use the SSH protocol <span style='color:orange'><strong>within</strong></span> BU1.</p></li>
-<li><p>The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:orange'><strong>within</strong></span> BU1.</p></li>
-<li><p>The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:lightgreen'><strong>towards</strong></span> BU2.</p></li>
-<li><p>The BU2 Mobile App has raised a complaint that is not able to use the SSH protocol <span style='color:lightgreen'><strong>towards</strong></span> BU1.</p></li>
-</ul>
-<p>You have been engaged to create the following <strong><em>four</em></strong> new additional rules:</p>
-<ul class="simple">
-<li><p><strong>Intra-rule</strong>: allow SSH <span style='color:orange'><strong>within</strong></span> BU1</p></li>
-<li><p><strong>Intra-rule</strong>: allow ICMP <span style='color:orange'><strong>within</strong></span> BU1</p></li>
-<li><p><strong>Inter-rule</strong>: allow ICMP <span style='color:lightblue'><strong>from</strong></span> BU1 <strong>to</strong> BU2</p></li>
-<li><p><strong>Inter-rule</strong>: allow SSH <span style='color:lightblue'><strong>from</strong></span> BU2 <strong>to</strong> BU1</p></li>
-</ul>
-<figure class="align-center" id="id3">
-<a class="reference internal image-reference" href="../_images/lab8-topology.png"><img alt="../_images/lab8-topology.png" src="../_images/lab8-topology.png" style="height: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 228 </span><span class="caption-text">Initial lab 8 Scenario Topology</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
+<p>These are the <strong>requirements</strong> for this lab:</p>
+<ol class="arabic simple">
+<li><p>Create a <span style='color:red'><strong>Smart Group</strong></span> that identifies the BU2 Mobile App.</p></li>
+<li><p>Create a <span style='color:red'><strong>Smart Group</strong></span> that identifies the BU1 Analytics</p></li>
+<li><p>Create an <span style='color:lightgreen'><strong>intra-rule</strong></span> that allows BU1 Frontend and BU2 Mobile App to ping each other</p></li>
+<li><p>Create an <span style='color:orange'><strong>inter-rule</strong></span> that allows BU1 Frontend to talk with BU2 Mobile App on TCP/80</p></li>
+<li><p>Create an <span style='color:orange'><strong>inter-rule</strong></span> that allows BU1 Analytics to ping BU1 Frontend</p></li>
+<li><p>Create an <span style='color:orange'><strong>inter-rule</strong></span> that allows BU1 DB to communicate with BU2 DB on TCP/22</p></li>
+</ol>
 </section>
 <section id="change-request">
 <h2>2. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Link to this heading">#</a></h2>
