@@ -2,9 +2,17 @@
 
 ## 1. SCENARIO
 
-ACE’s environment has been split up in two SmartGroups: **BU1** and **BU2**. Under the hood, there is a flat routing domain, due to the connection policy that merged the two network domains.
+In the previous lab, you initiated micro-segmentation by defining a SmartGroup and applying the `Aviatrix Cloud Firewall` rules. Right now, _East–West_ traffic is largely blocked, except for the policy that allows **BU1 Frontend** to SSH to both **BU1 DB** and **BU2 DB**.
 
-Let’s enable the **Distributed Cloud Firewall** to secure and govern the traffic runtime within CNSF.
+```{figure} images/lab7-segmentation.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
+
+This is the current list of Distributed Cloud Firewall policies.
 
 ```{figure} images/lab8-initialrule.png
 ---
@@ -14,28 +22,19 @@ align: center
 Existing DCF rules
 ```
 
-- The BU1 Frontend has raised a complaint that is not able to use the SSH protocol <span style='color:orange'>**within**</span> BU1.
+These are the **requirements** for this lab:
 
-- The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:orange'>**within**</span> BU1.
+1) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App.
 
-- The BU1 Frontend has raised a complaint that is not able to use the ICMP protocol <span style='color:lightgreen'>**towards**</span> BU2.
+2) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU1 Analytics
 
-- The BU2 Mobile App has raised a complaint that is not able to use the SSH protocol <span style='color:lightgreen'>**towards**</span> BU1.
+3) Create an <span style='color:lightgreen'>**intra-rule**</span> that allows BU1 Frontend and BU2 Mobile App to ping each other
 
-You have been engaged to create the following **_four_** new additional rules:
+4) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Frontend to talk with BU2 Mobile App on TCP/80
 
-- **Intra-rule**: allow SSH <span style='color:orange'>**within**</span> BU1
-- **Intra-rule**: allow ICMP <span style='color:orange'>**within**</span> BU1
-- **Inter-rule**: allow ICMP <span style='color:lightblue'>**from**</span> BU1 **to** BU2
-- **Inter-rule**: allow SSH <span style='color:lightblue'>**from**</span> BU2 **to** BU1
+5) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Analytics to ping BU1 Frontend
 
-```{figure} images/lab8-topology.png
----
-height: 400px
-align: center
----
-Initial lab 8 Scenario Topology
-```
+6) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 DB to communicate with BU2 DB on TCP/22
 
 ## 2. CHANGE REQUEST
 
