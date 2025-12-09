@@ -263,7 +263,7 @@ Alternatively, you can skip using the SSH client or a Jumpbox altogether and rel
 
 ```{figure} images/lab1-diagnosticstools.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Diagnostics Tools
@@ -277,7 +277,7 @@ You can generate the **ping directly** from the Spoke1 Gateway deployed in the s
 
 ```{figure} images/lab1-diagnosticstools11.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Default Gateway and the Destinations
@@ -291,7 +291,7 @@ Use multiple tabs on your browser!
 
 ```{figure} images/lab1-diagnosticstools990.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 bu1-analytics
@@ -299,7 +299,7 @@ bu1-analytics
 
 ```{figure} images/lab1-diagnosticstools991.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 bu1-db
@@ -384,7 +384,7 @@ Remove the filter
 
 ```{figure} images/lab1-pingok.png
 ---
-height: 400px
+height: 450px
 align: center
 ---
 ICMP
@@ -418,7 +418,7 @@ Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not
 
 ```{figure} images/lab1-diagnosticstools1100.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 Default Gateway and the Destinations
