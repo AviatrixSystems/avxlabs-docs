@@ -82,7 +82,7 @@ BU1 to BU2 is ok
 - Review the routing tables (**VRFs**) managed by any of the transit gateways.
 
 ```{tip}
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Gateway Routes** and filter out based on any Network Domains.
+Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the gateway **ace-aws-eu-west-1-transit1** **> Gateway Routes**. From there, you can filter by "All," which includes the Main Routing Table and other VRF Routing tables (BU1, BU2), or you can selectively pick the VRF Routing Table that corresponds to a specific Segment.
 ```
 
 ```{figure} images/lab2-bu1andbu2.png
@@ -209,7 +209,7 @@ Regions selection
 
 ```{figure} images/lab2-invoke.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 Invoke the EC2 service
@@ -217,7 +217,7 @@ Invoke the EC2 service
 
 ```{figure} images/lab2-instance.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 Instances (running)
