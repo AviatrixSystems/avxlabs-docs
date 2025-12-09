@@ -50,7 +50,7 @@ You can access the Gatus dashboard directly from your POD Portal.
 
 ```{figure} images/lab2-gatus00.png
 ---
-height: 400px
+height: 450px
 align: center
 ---
 Gatus from the POD Portal
@@ -62,7 +62,7 @@ You can select any instances from the three CSP environments, and you will find 
 
 ```{figure} images/lab2-gatus01.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 aws-us-east-2-spoke1-test1 
@@ -652,7 +652,7 @@ Now you can click on the `"Collapse all VPC/VNets"` button on the bottom right-h
 
 ```{figure} images/lab2-collapse.png
 ---
-height: 400px
+height: 450px
 align: center
 ---
 Collapse button
@@ -835,7 +835,7 @@ Edit the Transit Gateway **_aws-us-east-2-transit_**, clicking on the pencil ico
 
 ```{figure} images/lab2-edittransitinaws.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Edit Transit in AWS
