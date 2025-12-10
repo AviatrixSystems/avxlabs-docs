@@ -364,9 +364,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-gatus-app">5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-using-the-gatus-app">5.1 Verify ICMP <strong>within</strong> bu1 Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-traffic-from-your-laptop-to-bu1-using-ssh-client-bonus">5.2 Verify SSH traffic from your laptop to bu1 Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-ssh-client-bonus">5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-using-the-ssh-client-bonus">5.3 Verify ICMP <strong>within</strong> bu1 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration">5.4 SG Orchestration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-gatus-app">5.5 SG Orchestration Verification Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-ssh-client-bonus">5.6 SG Orchestration Verification Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
@@ -713,7 +713,7 @@ document.write(`
 <figure class="align-center" id="id26">
 <img alt="../_images/lab10-rulecommitted00.png" src="../_images/lab10-rulecommitted00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 560 </span><span class="caption-text">Rule committed</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 560 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -766,8 +766,8 @@ document.write(`
 <p><span class="caption-number">Fig. 564 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-gatus-app">
-<h3>5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App<a class="headerlink" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-gatus-app" title="Link to this heading">#</a></h3>
+<section id="verify-icmp-within-bu1-using-the-gatus-app">
+<h3>5.1 Verify ICMP <strong>within</strong> bu1 Using the Gatus App<a class="headerlink" href="#verify-icmp-within-bu1-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the ICMP Traffic.</p>
 <figure class="align-center" id="id31">
 <img alt="../_images/lab10-gatus80.png" src="../_images/lab10-gatus80.png" />
@@ -776,7 +776,7 @@ document.write(`
 </figcaption>
 </figure>
 <p><strong><em>aws-us-east-2-spoke1-test1</em></strong> and <strong><em>azure-west-us-spoke1-test1</em></strong> can ping each other due to the intra-rule applied to the SmartGroup “bu1”.</p>
-<p>However, <strong><em>aws-us-east-2-spoke1-test1</em></strong> is also capable of pinging <strong><em>aws-us-east-2-spoke1-test<span style='color:red'>2</span></summary></em></strong>, although the latter belongs to “bu2”. Once again, this behaviour stems from the fact that the two instances reside in the same VPC.</p>
+<p>However, <strong><em>aws-us-east-2-spoke1-test1</em></strong> is also capable of pinging <strong><em>aws-us-east-2-spoke1-test<span style='color:red'>2</span></summary></em></strong>, although the latter belongs to <strong>“bu2”</strong>. Once again, this behaviour stems from the fact that the two instances reside in the same VPC.</p>
 </section>
 <section id="verify-ssh-traffic-from-your-laptop-to-bu1-using-ssh-client-bonus">
 <h3>5.2 Verify SSH traffic from your laptop to bu1 Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-ssh-traffic-from-your-laptop-to-bu1-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
@@ -790,6 +790,7 @@ document.write(`
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The SSH session from your laptop to the <strong><em>aws-us-east-2-spoke1-test1</em></strong> instance is not affected by any DCF rules, because the connection is established directly through the <strong>AWS IGW</strong>.</p>
+<p>To protect the public workload <strong><em>aws-us-east-2-spoke1-test1</em></strong> from unauthorized access, deploy a <code class="docutils literal notranslate"><span class="pre">PSF</span> <span class="pre">Gateway</span></code> as you did in Lab 9.</p>
 </div>
 <figure class="align-center" id="id33">
 <img alt="../_images/lab10-laptop.png" src="../_images/lab10-laptop.png" />
@@ -798,15 +799,15 @@ document.write(`
 </figcaption>
 </figure>
 </section>
-<section id="verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-ssh-client-bonus">
-<h3>5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<section id="verify-icmp-within-bu1-using-the-ssh-client-bonus">
+<h3>5.3 Verify ICMP <strong>within</strong> bu1 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-icmp-within-bu1-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>Ping the following instances from <strong>aws-us-east-2-spoke1-test1</strong>:</p>
 <ul class="simple">
 <li><p><strong>gcp-us-central1-spoke1-test1</strong> in GCP</p></li>
 <li><p><strong>azure-west-us-spoke1-test1</strong> in Azure</p></li>
 <li><p><strong>azure-west-us-spoke2-test1</strong> in Azure</p></li>
 </ul>
-<p>According to the rules created before, only the ping towards the <strong>azure-us-west-spoke1-test1</strong> will work, because this instance belongs to the same Smart Group bu1 as the instance from where you generated ICMP traffic.</p>
+<p>According to the rules established previously, only the ping to <strong>azure-us-west-spoke1-test1</strong> will be permitted, since this instance resides in the same Smart Group (bu1) as the source instance from which the ICMP traffic originated.</p>
 <figure class="align-center" id="id34">
 <img alt="../_images/lab10-pingcheck.png" src="../_images/lab10-pingcheck.png" />
 <figcaption>
@@ -887,7 +888,7 @@ document.write(`
 <p>The ping to test2 will gradually fail!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>SSH traffic will also fail!</p>
+<p>And SSH traffic to <strong><em>aws-us-east-2-spoke1-test2</em></strong> will also gradually fail.</p>
 </div>
 <figure class="align-center" id="id43">
 <img alt="../_images/lab10-gatus8786.png" src="../_images/lab10-gatus8786.png" />
@@ -907,7 +908,7 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2 region, thanks to the Security Group Orchestration carried out by the <strong>Aviatrix Controller</strong>.</p>
+<p>This time the ping fails. You have achieved complete isolation between Smart Groups deployed within the same VPC in the AWS US-EAST-2 region, enabled by the <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Group</span> <span class="pre">Orchestration</span></code> performed by the <strong>Aviatrix Controller</strong>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1666,9 +1667,9 @@ sent to the NGFW, first.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">5. Verification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-gatus-app">5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-using-the-gatus-app">5.1 Verify ICMP <strong>within</strong> bu1 Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-traffic-from-your-laptop-to-bu1-using-ssh-client-bonus">5.2 Verify SSH traffic from your laptop to bu1 Using SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-and-from-bu1-towards-bu2-using-the-ssh-client-bonus">5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-icmp-within-bu1-using-the-ssh-client-bonus">5.3 Verify ICMP <strong>within</strong> bu1 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration">5.4 SG Orchestration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-gatus-app">5.5 SG Orchestration Verification Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-ssh-client-bonus">5.6 SG Orchestration Verification Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
