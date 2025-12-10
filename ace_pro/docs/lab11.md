@@ -672,6 +672,8 @@ New Topology
 
 ## 8.  Verification inside bu2
 
+### 8.1 Verify ICMP traffic **within** bu2 Using Gatus App
+
 Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
 
 ```{figure} images/lab10-gatus3412.png
@@ -681,7 +683,7 @@ align: center
 Gatus
 ```
 
-The only ping that succeeds is from **_azure-west-us-spoke2-test1_**  to **_azure-west-us-spoke2-test1_** . The ping to **_azure-west-us-spoke2-test1_**  will fail, since this destination resides in a different Routing Domain.
+The only ping that succeeds is from **_azure-west-us-spoke2-test1_**  to **_aws-us-east-2-spoke1-test2_** . The ping to **_gcp-us-central1-spoke1-test1_**  will fail, since this instance resides in a different Routing Domain.
 
 ### 8.1 Verify ICMP traffic **within** bu2 Using Gatus App
 
@@ -698,23 +700,23 @@ Ping towards the **_azure-west-us-spoke2-test1_** and **_aws-us-east-2-spoke1-te
 
 ### 8.2 Verify ICMP traffic within bu2 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
 
-SSH to the Public IP of the instance **_gcp-us-central1-spoke1-test1_**:
+SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**:
 
 ```{figure} images/lab10-sshtocentral.png
 ---
 align: center
 ---
-SSH to gcp-us-central1-spoke1-test1
+SSH to azure-west-us-spoke2-test1
 ```
 
 Ping the following instances:
 
 - **aws-us-east-2-spoke1-test1** in AWS
 - **aws-us-east-2-spoke1-test2** in AWS
+- **gcp-us-central1-spoke1-test1:** in GCP
 - **azure-west-us-spoke1-test1** in Azure
-- **azure-west-us-spoke2-test1** in Azure
 
-According to the rules created before, only the ping towards the **azure-west-us-spoke2-test1** and **aws-us-east-2-spoke1-test2** will work, because these two instance belongs to the same Smart Group **bu2** as the instance from where you executed the ICMP traffic.
+According to the rules created before, only the ping towards the **aws-us-east-2-spoke1-test2** will work, because this instance belongs to the same Smart Group **bu2** as the instance from where you executed the ICMP traffic.
 
 ```{figure} images/lab10-pingtestgcp.png
 ---
