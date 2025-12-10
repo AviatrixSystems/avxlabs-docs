@@ -215,7 +215,7 @@ Open a terminal window and SSH into the public IP of the instance **aws-us-east-
 Refer to your POD for the private IPs.
 ```
 
-```{figure} images/lab10-newone.png
+```{figure} images/lab10-newone1.png
 ---
 height: 400px
 align: center
