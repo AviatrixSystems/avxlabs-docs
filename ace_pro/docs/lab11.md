@@ -672,7 +672,18 @@ New Topology
 
 ## 8.  Verification inside bu2
 
-### 8.1 Verify ICMP traffic within bu2 Using Gatus App
+Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
+
+```{figure} images/lab10-gatus3412.png
+---
+align: center
+---
+Gatus
+```
+
+The only ping that succeeds is from **_azure-west-us-spoke2-test1_**  to **_azure-west-us-spoke2-test1_** . The ping to **_azure-west-us-spoke2-test1_**  will fail, since this destination resides in a different Routing Domain.
+
+### 8.1 Verify ICMP traffic **within** bu2 Using Gatus App
 
 Open the Gatus App on **_gcp-us-central1-spoke1-test1_** and verify the ICMP Traffic.
 
