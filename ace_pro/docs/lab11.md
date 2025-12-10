@@ -541,7 +541,7 @@ Ping fails
 ```
 
 ```{important}
-This time the ping fails. You have achieved a complete separation between Smart Groups deployed in the same VPC in AWS US-EAST-2 region, thanks to the Security Group Orchestration carried out by the **Aviatrix Controller**.
+This time the ping fails. You have achieved complete isolation between Smart Groups deployed within the same VPC in the AWS US-EAST-2 region, enabled by the `Security Group Orchestration` performed by the **Aviatrix Controller**.
 ```
 
 ```{note}
