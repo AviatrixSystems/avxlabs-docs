@@ -541,7 +541,7 @@ Back on the PAN firewall, click on the `Monitor` tab. Then paste this string in 
 
 ```{figure} images/lab7-monitor2.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 Monitor on the PaloAlto

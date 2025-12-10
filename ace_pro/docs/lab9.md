@@ -419,7 +419,7 @@ The `PSF` Gateway is a **_standalone Gateway_**: it is neither a Spoke nor a Tra
 
 ```{figure} images/lab96-newrule333.png
 ---
-height: 400px
+height: 450px
 align: center
 ---
 Enforcement
