@@ -386,7 +386,7 @@ The status will be reflected on the screen in about **1 minute**.
 
 ```{figure} images/lab8-refresh.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 Connection is up
@@ -406,7 +406,7 @@ OnPrem-Partner site
 
 ```{figure} images/lab8-diag38.png
 ---
-height: 400px
+height: 450px
 align: center
 ---
 "Managed" and unselect the other CSPs except GCP
