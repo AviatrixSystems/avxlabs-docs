@@ -28,7 +28,7 @@ In this lab, you will implement the following requirements across all three CSPs
 
 - Create a Smart Group named `"bu1"` that uses the tag `"environment"`.
 
-- Create a Smart Group named "bu2" that uses the tag `"environment"`.
+- Create a Smart Group named `"bu2"` that uses the tag `"environment"`.
 
 - Create an `intra-rule` allowing ICMP traffic within bu1.
 
@@ -181,6 +181,10 @@ height: 400px
 align: center
 ---
 The New Topology
+```
+
+```{caution}
+Please note that the **_gcp-us-central1-spoke1-test1_** VM is not isolated; it resides in a different routing domain (**"Blue"**). As a result, any policies you create will keep this instance isolated from East–West traffic.
 ```
 
 ### 3.4 Connectivity Verification (ICMP) Using Gatus App

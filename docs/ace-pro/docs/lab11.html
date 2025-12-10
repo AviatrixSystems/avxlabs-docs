@@ -459,7 +459,7 @@ document.write(`
 <p>In this lab, you will implement the following requirements across all three CSPs:</p>
 <ul class="simple">
 <li><p>Create a Smart Group named <code class="docutils literal notranslate"><span class="pre">&quot;bu1&quot;</span></code> that uses the tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code>.</p></li>
-<li><p>Create a Smart Group named “bu2” that uses the tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code>.</p></li>
+<li><p>Create a Smart Group named <code class="docutils literal notranslate"><span class="pre">&quot;bu2&quot;</span></code> that uses the tag <code class="docutils literal notranslate"><span class="pre">&quot;environment&quot;</span></code>.</p></li>
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> allowing ICMP traffic within bu1.</p></li>
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> allowing ICMP traffic within bu2.</p></li>
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> allowing SSH traffic within bu1.</p></li>
@@ -592,6 +592,10 @@ document.write(`
 <p><span class="caption-number">Fig. 549 </span><span class="caption-text">The New Topology</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please note that the <strong><em>gcp-us-central1-spoke1-test1</em></strong> VM is not isolated; it resides in a different routing domain (<strong>“Blue”</strong>). As a result, any policies you create will keep this instance isolated from East–West traffic.</p>
+</div>
 </section>
 <section id="connectivity-verification-icmp-using-gatus-app">
 <h3>3.4 Connectivity Verification (ICMP) Using Gatus App<a class="headerlink" href="#connectivity-verification-icmp-using-gatus-app" title="Link to this heading">#</a></h3>
