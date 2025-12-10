@@ -26,21 +26,19 @@ The **CSP tagging** is the recommended method for defining the SmartGroups.
 
 In this lab, you will implement the following requirements across all three CSPs:
 
-- Create a Smart Group named `"bu1"` tagged with `"environment"` that identifies the following instances: **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke1-test1_**.
+- Create a Smart Group named `"bu1"` that uses the tag `"environment"`.
 
-- Create a Smart Group named `"us-east-2-test2"` that uses the tag `"Name" = "aws-us-east-2-spoke1-test2"` that identifies the following instance: **_aws-us-east-2-spoke1-test2_**
+- Create a Smart Group named "bu2" that uses the tag `"environment"`.
 
-- Create a Smart Group named `"azure-spoke2"` that uses the tag `"IP/CDR" = "192.168.2.0/24"` that identifies the following instance: **_azure-west-us-spoke2_**
+- Create an `intra-rule` allowing ICMP traffic within bu1.
 
-- Create an `intra-rule` allowing ICMP traffic within `bu1`.
-
-- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> `us-east-2-test2` <ins>to</ins> `azure-spoke2` only.
+- Create an `intra-rule` allowing ICMP traffic within bu2.
 
 - Create an `intra-rule` allowing SSH traffic within bu1.
 
-- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> `azure-spoke2` <ins>to</ins> `bu1` only.
+- Create an `inter-rule` allowing ICMP traffic <ins>from</ins> bu2 <ins>to</ins> bu1 only.
 
-```{figure} images/lab10-initial.png
+```{figure} images/lab10-initialnew00.png
 ---
 height: 400px
 align: center
@@ -51,6 +49,11 @@ Initial Topology Lab 11
 ## 3. Smart Groups Creation
 
 Let’s begin `micro-segmentation` by creating the Smart Groups.
+
+- Create **two** Smart Groups and classify each one using the CSP tag `"environment"`: 
+
+- Assign the name `"bu1"` to the Smart Group **#1**.
+- Assign the name `"bu2"` to the Smart Group **#2**.
 
 ### 3.1 Smart Group “bu1”
 
@@ -80,7 +83,7 @@ Resource Selection
 The CoPilot shows that there are two instances that perfectly match the condition:
 
 - **aws-us-east2-spoke1-test1** in AWS
-- **azure-us-west-spoke1-test1** in Azure
+- **azure-west-us-spoke1-test1** in Azure
 
 ```{figure} images/lab10-smart4.png
 ---
@@ -89,7 +92,7 @@ align: center
 Resources that match the condition
 ```
 
-### 3.2 Smart Group “us-east-2-test2”
+### 3.2 Smart Group “bu2”
 
 Create another Smart Group clicking on the `"+ SmartGroup"` button.
 
@@ -102,24 +105,10 @@ New Smart Group
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
-- **Name**: <span style='color:#479608'>us-east-2-test2</span>
-- **Matches all conditions (AND)/Name**: <span style='color:#479608'> aws-us-east-2-spoke1-test2</span>
+- **Name**: <span style='color:#479608'>bu2</span>
+- **Matches all conditions (AND)/environment**: <span style='color:#479608'>bu2</span>
 
-Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
-
-```{figure} images/lab1081-smart6.png
----
-align: center
----
-us-east-2-test2
-```
-
-```{figure} images/lab1080-smart6.png
----
-align: center
----
-Tag: Name
-```
+Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
 ```{figure} images/lab10-smart6.png
 ---
@@ -128,94 +117,20 @@ align: center
 Resource Selection
 ```
 
-The CoPilot shows that there is one instance that matches the condition:
+The CoPilot shows that there are three instances that match the condition:
 
-- **aws-us-east2-spoke1-test2** in AWS
+- **aws-us-east-2-spoke1-test2** in AWS
+- **azure-west-us-spoke2-test1** in Azure
+- **gcp-us-central1-spoke1-test1** in GCP
 
-```{figure} images/lab10-smart7.png
+```{figure} images/lab10-smart7new.png
 ---
 align: center
 ---
-Resource that matches the condition
+Resources that match the condition
 ```
 
-### 3.3 Smart Group “azure-spoke2”
-
-Create another Smart Group clicking on the `"+ SmartGroup"` button.
-
-```{figure} images/lab11-newjoe011.png
----
-height: 400px
-align: center
----
-New SG
-```
-
-Now, click on the arrow icon  inside the `"+ Resource Type"` button and select `"IP / CIDRs"`.
-
-```{figure} images/lab6-greenfieldneww4.png
----
-height: 400px
-align: center
----
-Resource Selection
-```
-
-Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
-
-- **Name**: <span style='color:#479608'>azure-spoke2</span>
-- **IPs / CIDRs**: <span style='color:#479608'>192.168.2.0/24</span>
-
-Before clicking on **SAVE**, delete the empty `"Virtual Machines"` additional condition.
-
-Do not forget to click **SAVE**. 
-
-```{figure} images/lab10-smart611.png
----
-align: center
----
-Resource Selection
-```
-
-This time, CoPilot shows that the condition is matched by a specific subnet.
-
-- **192.168.2.0/24** in AZURE WEST-US SPOKE2.
-
-```{figure} images/lab10-smart7.png
----
-align: center
----
-192.168.2.0/24
-```
-
-```{important}
-**What is the difference between the Smart Groups `us-east-2-private-subnet` and `us-east-2-test2`**?
-```
-
-<details>
-  <summary>Click here for a logical explanation: <span style='color:#33ECFF'>Hint!</span></summary>
-
-The `us-east-2-test2` SmartGroup identifies a single instance, while the `us-east-2-private-subnet` SmartGroup covers the entire private subnet.
-
-```{figure} images/lab10-smart788.png
----
-align: center
----
-us-east-2-test2
-```
-
-```{figure} images/lab10-smart789.png
----
-align: center
----
-us-east-2-private-subnet
-```
-
-</details>
-
-### 3.5 Current status of the DCF Policies List
-
-At this stage, you’ve created logical containers to categorize instances or subnets. Now, define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
+At this stage, you have created logical groups that do not affect the existing flat routing domain, thanks to the `Connection Policy`  applied in **Lab 3**. Now, it's time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
 
 Below is the current list of your DCF Rules within the **Distributed Cloud Firewall** section of your CoPilot:
 
@@ -226,11 +141,11 @@ align: center
 Complete DCF Rules List
 ```
 
-### 3.6 Removal of the Connection Policy
+### 3.3 Removal of the Connection Policy
 
-The gcp-us-central1-spoke1 VPC must remain isolated because, within this VPC, the Spoke gateway serves as the _landing Spoke_ for the `Site-to-Cloud` connection established with the partner router.
+The **_gcp-us-central1-spoke1_** VPC must stay isolated, as its Spoke gateway acts as the _landing Spoke_ for the `Site-to-Cloud` connection with the partner router.
 
-```{figure} images/lab10-landing.png
+```{figure} images/lab10-landingnew.png
 ---
 height: 400px
 align: center
@@ -260,7 +175,7 @@ Removal of the Connection Policy
 
 This is what the topology will look like after this task:
 
-```{figure} images/lab10-landing03.png
+```{figure} images/lab10-landing03new.png
 ---
 height: 400px
 align: center
@@ -268,7 +183,7 @@ align: center
 The New Topology
 ```
 
-### 3.7 Connectivity Verification (ICMP) Using Gatus App
+### 3.4 Connectivity Verification (ICMP) Using Gatus App
 
 Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_**.
 
@@ -292,7 +207,7 @@ aws-us-east-2-spoke1-test1
 
 The **East-West** traffic is disrupted. The instance **_aws-us-east-2-spoke1-test1_** can only reach **test2** due to intra-VPC traffic, which bypasses the Aviatrix Spoke Gateway (i.e. the **Enforcement Security Point**).
 
-### 3.8 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 3.4 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Open a terminal window and SSH into the public IP of the instance **aws-us-east-2-spoke1-<span style='color:red'>test1</span>** (_NOT test2_). From there, ping the private IPs of each other instances to verify that the connectivity is indeed **broken**!
 
@@ -328,7 +243,7 @@ From the outcomes above, you can see that only the **aws-us-east-2-spoke1-<span 
 The ICMP traffic is utilizing the standard behavior of intra-VPC communication.
 ```
 
-### 3.9 Connectivity Verification (SSH) Using Gatus App
+### 3.5 Connectivity Verification (SSH) Using Gatus App
 
 From the Gatus App open on **_aws-us-east-2-spoke1-test1_**, verify the SSH section.
 
@@ -342,7 +257,7 @@ aws-us-east-2-spoke1-test1
 
 The SSH test is only successful against **_aws-us-east-2-spoke1-test2_** due to intra-VPC traffic.
 
-### 3.10  Connectivity Verification (SSH) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 3.6  Connectivity Verification (SSH) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Verify also from the instance **aws-us-east-2-spoke1-test1** that you **_can't_** SSH to any other instances, except to the **aws-us-east-2-spoke1-test2**, due to the fact that the SSH connection in this case, is established once again within the VPC, <ins>bypassing the Spoke Gateway (i.e. the DCF Enforcement Point)</ins>!
 
@@ -364,11 +279,10 @@ align: center
 SSH fails towards the other instances
 ```
 
-The previous results confirm that East-West connectivity is disrupted; only `intra-vpc traffic` is allowed in the AWS us-east-2 region.
+The previous results clearly confirm that connectivity is disrupted, allowing only `intra-vpc traffic`.
 
 ## 4. DCF Rules Creation
-
-### 4.1 Create an intra-rule that allows ICMP inside bu1
+### 4.1. Create an intra-rule that allows ICMP inside bu1
 
 ```{warning}
 Zero Trust architecture is "Never trust, always verify", a critical component to enterprise cloud adoption success!
@@ -386,8 +300,8 @@ New Rule
 Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>intra-icmp-bu1</span>
-- **Source Groups**: <span style='color:#479608'>bu1</span>
-- **Destination Groups**: <span style='color:#479608'>bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
@@ -407,10 +321,10 @@ Click on **Commit**.
 ---
 align: center
 ---
-Policy not committed yet
+Rule committed
 ```
 
-### 4.2 Create an inter-rule that allows ICMP from us-east-2-test2 to azure-spoke2
+### 4.2. Create an intra-rule that allows ICMP inside bu2
 
 Create another rule clicking on the `"+ Rule"` button.
 
@@ -423,9 +337,9 @@ New rule
 
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
-- **Name**: <span style='color:#479608'>inter-icmp-us-east-2-test2-azure-spoke2</span>
-- **Source Groups**: <span style='color:#479608'>us-east-2-test2</span>
-- **Destination Groups**: <span style='color:#479608'>azure-spoke2</span>
+- **Name**: <span style='color:#479608'>intra-icmp-bu2</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu2</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
@@ -438,7 +352,7 @@ Do not forget to click on **Save In Drafts**.
 ---
 align: center
 ---
-inter-icmp-us-east-2-test2-azure-spoke2
+intra-icmp-bu2
 ```
 
 Next, proceed by clicking the **Commit** button.
@@ -447,7 +361,7 @@ Next, proceed by clicking the **Commit** button.
 ---
 align: center
 ---
-Commit
+Rule committed
 ```
 
 ## 5. Verification
@@ -462,7 +376,7 @@ align: center
 New Topology
 ```
 
-### 5.1 Verify ICMP within bu1 Using the Gatus App
+### 5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App
 
 Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the ICMP Traffic.
 
@@ -499,7 +413,7 @@ align: center
 SSH from your laptop - logical diagram
 ```
 
-### 5.3 Verify ICMP within bu1 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Ping the following instances from **aws-us-east-2-spoke1-test1**:
 
@@ -549,9 +463,9 @@ align: center
 Outcomes
 ```
 
-Based on the above outcome, you will not see **10.0.1.10** (aws-us-east-2-spoke1-test2) because it belongs to the **us-east-2-test2** Smart Group, which does not match the intra-icmp-bu1 rule.
+Based on the above outcome, you will not see **10.0.1.10** (aws-us-east-2-spoke1-test2) because it belongs to **bu2**, which does not match the intra-icmp-bu1 rule.
 
-However, **aws-us-east-2-spoke1-test1** can ping **aws-us-east-2-spoke1-test2** due to intra-VPC communication, <ins>without needing to match any of the deployed DCF rules</ins>.
+However, **aws-us-east-2-spoke1-test1** can ping **aws-us-east-2-spoke1-test2** due to intra-VPC communication, without needing to match any of the deployed DCF rules.
 
 ```{figure} images/lab10-sgorch01.png
 ---
