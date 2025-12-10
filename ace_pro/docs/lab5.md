@@ -571,7 +571,7 @@ Navigate to **CoPilot > Security > Egress > Analyze**, and you will see the visi
 
 ```{figure} images/lab6-newrul12.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 Analyze
@@ -652,7 +652,7 @@ Editing the Egress-Rule
 
 ```{figure} images/lab6-webgroup2345.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 Commit the changes
@@ -801,7 +801,7 @@ Now click on the `NAT Gateways` section in the Navigation Panel on the right-han
 
 ```{figure} images/lab5-region012.png
 ---
-height: 400px
+height: 450px
 align: center
 ---
 NAT gateways section

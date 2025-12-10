@@ -294,7 +294,7 @@ This traffic is permitted thanks to the DCF rule previously created.
 
 ```{figure} images/lab9-percentage.png
 ---
-height: 350px
+height: 400px
 align: center
 ---
 From the Cost Center in AWS to the Shared Service

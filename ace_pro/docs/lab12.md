@@ -44,7 +44,7 @@ VS Studio
 
 ```{figure} images/lab11-edge32.png
 ---
-height: 400px
+height: 450px
 align: center
 ---
 Open Folder
@@ -315,7 +315,7 @@ The **API Key** generated within CoPilot can be found there and should be used i
 
 ```{figure} images/lab11-networkinsight1.png
 ---
-height: 400px
+height: 450px
 align: center
 ---
 Network Insight API section
