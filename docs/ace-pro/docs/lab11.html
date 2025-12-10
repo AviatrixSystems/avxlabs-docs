@@ -370,13 +370,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration">5.4 SG Orchestration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-gatus-app">5.5 SG Orchestration Verification Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-ssh-client-bonus">5.6 SG Orchestration Verification Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-within-bu1-using-the-gatus-app">5.7 Verify SSH within bu1 Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-within-bu1-using-the-gatus-app">5.7 Verify SSH <strong>within</strong> bu1 Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-within-bu1-using-the-ssh-client-bonus">5.8 Verify SSH within bu1 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-rule-that-allows-ssh-in-bu1">5.9 Add a rule that allows SSH in bu1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-after-the-intra-rule">6. Verification after the intra-rule</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.1 Verify SSH within bu1 Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.1 Verify SSH <strong>within</strong> bu1 Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.2 Verify SSH within bu1 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
@@ -766,6 +766,10 @@ document.write(`
 <p><span class="caption-number">Fig. 564 </span><span class="caption-text">New Topology</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">intra-icmp-bu2</span></code> rule will only operate between <strong><em>aws-us-east-2-spoke1-test2</em></strong> and <strong><em>azure-west-us-spoke2-test1</em></strong>. The VM in GCP is now isolated following the removal of the Connection Policy. Although the BU2 includes the <strong><em>gcp-us-central1-spoke1-test1</em></strong> VM, the intra-rule will not apply to this instance because it resides in a different Routing Domain (i.e., the <strong>“Blue”</strong> Segment).</p>
+</div>
 <section id="verify-icmp-within-bu1-using-the-gatus-app">
 <h3>5.1 Verify ICMP <strong>within</strong> bu1 Using the Gatus App<a class="headerlink" href="#verify-icmp-within-bu1-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the ICMP Traffic.</p>
@@ -790,7 +794,7 @@ document.write(`
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The SSH session from your laptop to the <strong><em>aws-us-east-2-spoke1-test1</em></strong> instance is not affected by any DCF rules, because the connection is established directly through the <strong>AWS IGW</strong>.</p>
-<p>To protect the public workload <strong><em>aws-us-east-2-spoke1-test1</em></strong> from unauthorized access, deploy a <code class="docutils literal notranslate"><span class="pre">PSF</span> <span class="pre">Gateway</span></code> as you did in Lab 9.</p>
+<p>To protect the public workload <strong><em>aws-us-east-2-spoke1-test1</em></strong> from unauthorized access, you should deploy a <code class="docutils literal notranslate"><span class="pre">PSF</span> <span class="pre">Gateway</span></code> as you did in Lab 9.</p>
 </div>
 <figure class="align-center" id="id33">
 <img alt="../_images/lab10-laptop.png" src="../_images/lab10-laptop.png" />
@@ -916,7 +920,7 @@ document.write(`
 </div>
 </section>
 <section id="verify-ssh-within-bu1-using-the-gatus-app">
-<h3>5.7 Verify SSH within bu1 Using the Gatus App<a class="headerlink" href="#verify-ssh-within-bu1-using-the-gatus-app" title="Link to this heading">#</a></h3>
+<h3>5.7 Verify SSH <strong>within</strong> bu1 Using the Gatus App<a class="headerlink" href="#verify-ssh-within-bu1-using-the-gatus-app" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the SSH Traffic.</p>
 <figure class="align-center" id="id45">
 <img alt="../_images/lab10-gatus88.png" src="../_images/lab10-gatus88.png" />
@@ -979,7 +983,7 @@ document.write(`
 <section id="verification-after-the-intra-rule">
 <h2>6. Verification after the intra-rule<a class="headerlink" href="#verification-after-the-intra-rule" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h3>6.1 Verify SSH within bu1 Using the Gatus App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>6.1 Verify SSH <strong>within</strong> bu1 Using the Gatus App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>aws-us-east-2-spoke1-test1</em></strong> and verify the SSH Traffic.</p>
 <figure class="align-center" id="id50">
 <img alt="../_images/lab10-gatus97.png" src="../_images/lab10-gatus97.png" />
@@ -1006,7 +1010,7 @@ document.write(`
 <section id="logs">
 <h2>7. Logs<a class="headerlink" href="#logs" title="Link to this heading">#</a></h2>
 <p>Let’s investigate the logs once again.</p>
-<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and filter out based on the <strong>intra-ssh-bu1</strong> Rule!</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong>, and filter using the <strong>intra-ssh-bu1</strong> rule.</p>
 <figure class="align-center" id="id52">
 <img alt="../_images/lab10-logsshbu187.png" src="../_images/lab10-logsshbu187.png" />
 <figcaption>
@@ -1673,13 +1677,13 @@ sent to the NGFW, first.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration">5.4 SG Orchestration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-gatus-app">5.5 SG Orchestration Verification Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sg-orchestration-verification-using-the-ssh-client-bonus">5.6 SG Orchestration Verification Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-within-bu1-using-the-gatus-app">5.7 Verify SSH within bu1 Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-within-bu1-using-the-gatus-app">5.7 Verify SSH <strong>within</strong> bu1 Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ssh-within-bu1-using-the-ssh-client-bonus">5.8 Verify SSH within bu1 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-rule-that-allows-ssh-in-bu1">5.9 Add a rule that allows SSH in bu1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-after-the-intra-rule">6. Verification after the intra-rule</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.1 Verify SSH within bu1 Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.1 Verify SSH <strong>within</strong> bu1 Using the Gatus App</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.2 Verify SSH within bu1 Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
