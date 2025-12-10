@@ -376,6 +376,10 @@ align: center
 New Topology
 ```
 
+```{warning}
+The `intra-icmp-bu2` rule will only operate between **_aws-us-east-2-spoke1-test2_** and **_azure-west-us-spoke2-test1_**. The VM in GCP is now isolated following the removal of the Connection Policy. Although the BU2 includes the **_gcp-us-central1-spoke1-test1_** VM, the intra-rule will not apply to this instance because it resides in a different Routing Domain (i.e., the **"Blue"** Segment).
+```
+
 ### 5.1 Verify ICMP **within** bu1 Using the Gatus App
 
 Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the ICMP Traffic.
@@ -405,7 +409,7 @@ SSH from your laptop
 ```{caution}
 The SSH session from your laptop to the **_aws-us-east-2-spoke1-test1_** instance is not affected by any DCF rules, because the connection is established directly through the **AWS IGW**.
 
-To protect the public workload **_aws-us-east-2-spoke1-test1_** from unauthorized access, deploy a `PSF Gateway` as you did in Lab 9.
+To protect the public workload **_aws-us-east-2-spoke1-test1_** from unauthorized access, you should deploy a `PSF Gateway` as you did in Lab 9.
 ```
 
 ```{figure} images/lab10-laptop.png
@@ -548,7 +552,7 @@ This time the ping fails. You have achieved complete isolation between Smart Gro
 SSH traffic will also fail!
 ```
 
-### 5.7 Verify SSH within bu1 Using the Gatus App
+### 5.7 Verify SSH **within** bu1 Using the Gatus App
 
 Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the SSH Traffic.
 
@@ -615,7 +619,7 @@ Commit
 
 ## 6. Verification after the intra-rule 
 
-### 6.1 Verify SSH within bu1 Using the Gatus App
+### 6.1 Verify SSH **within** bu1 Using the Gatus App
 
 Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the SSH Traffic.
 
@@ -645,7 +649,7 @@ SSH ok
 
 Let's investigate the logs once again.
 
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter out based on the **intra-ssh-bu1** Rule!
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**, and filter using the **intra-ssh-bu1** rule.
 
 ```{figure} images/lab10-logsshbu187.png
 ---
