@@ -321,7 +321,7 @@ Click on **Commit**.
 ---
 align: center
 ---
-Rule committed
+Commit
 ```
 
 ### 4.2. Create an intra-rule that allows ICMP inside bu2
@@ -376,7 +376,7 @@ align: center
 New Topology
 ```
 
-### 5.1 Verify ICMP within bu1 and from bu1 towards bu2 Using the Gatus App
+### 5.1 Verify ICMP **within** bu1 Using the Gatus App
 
 Open the Gatus App on **_aws-us-east-2-spoke1-test1_** and verify the ICMP Traffic.
 
@@ -389,7 +389,7 @@ Gatus
 
 **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke1-test1_** can ping each other due to the intra-rule applied to the SmartGroup "bu1".
 
-However, **_aws-us-east-2-spoke1-test1_** is also capable of pinging **_aws-us-east-2-spoke1-test<span style='color:red'>2</span></summary>_**, although the latter belongs to "bu2". Once again, this behaviour stems from the fact that the two instances reside in the same VPC.
+However, **_aws-us-east-2-spoke1-test1_** is also capable of pinging **_aws-us-east-2-spoke1-test<span style='color:red'>2</span></summary>_**, although the latter belongs to **"bu2"**. Once again, this behaviour stems from the fact that the two instances reside in the same VPC.
 
 ### 5.2 Verify SSH traffic from your laptop to bu1 Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -404,6 +404,8 @@ SSH from your laptop
 
 ```{caution}
 The SSH session from your laptop to the **_aws-us-east-2-spoke1-test1_** instance is not affected by any DCF rules, because the connection is established directly through the **AWS IGW**.
+
+To protect the public workload **_aws-us-east-2-spoke1-test1_** from unauthorized access, deploy a `PSF Gateway` as you did in Lab 9.
 ```
 
 ```{figure} images/lab10-laptop.png
@@ -413,7 +415,7 @@ align: center
 SSH from your laptop - logical diagram
 ```
 
-### 5.3 Verify ICMP within bu1 and from bu1 towards bu2 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 5.3 Verify ICMP **within** bu1 Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Ping the following instances from **aws-us-east-2-spoke1-test1**:
 
@@ -421,7 +423,7 @@ Ping the following instances from **aws-us-east-2-spoke1-test1**:
 - **azure-west-us-spoke1-test1** in Azure
 - **azure-west-us-spoke2-test1** in Azure
 
-According to the rules created before, only the ping towards the **azure-us-west-spoke1-test1** will work, because this instance belongs to the same Smart Group bu1 as the instance from where you generated ICMP traffic.
+According to the rules established previously, only the ping to **azure-us-west-spoke1-test1** will be permitted, since this instance resides in the same Smart Group (bu1) as the source instance from which the ICMP traffic originated.
 
 ```{figure} images/lab10-pingcheck.png
 ---
@@ -517,7 +519,7 @@ Gatus
 The ping to test2 will gradually fail!
 
 ```{note}
-SSH traffic will also fail!
+And SSH traffic to **_aws-us-east-2-spoke1-test2_** will also gradually fail.
 ```
 
 ```{figure} images/lab10-gatus8786.png
