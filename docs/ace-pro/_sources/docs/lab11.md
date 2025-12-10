@@ -783,6 +783,13 @@ Create Rule
 
 Enforce this new rule into the Data Plane clicking on the `"Commit"` button.
 
+```{figure} images/lab10-newrule4commit.png
+---
+align: center
+---
+Commit
+```
+
 ### 9.1 Verify ICMP traffic from bu2 to bu1 Using the Gatus App
 
 Open the Gatus App on **_azure-west-us-spoke2-test1_** and verify the ICMP Traffic.
@@ -794,7 +801,7 @@ align: center
 Gatus
 ```
 
-All pings will be successful except those to the **aws EAST-1** region, as the lack of a **full-mesh** topology impacts connectivity.
+All pings will succeed except those to the **AWS US-EAST-1** region, where connectivity is affected by the lack of a `full-mesh` topology, and to **_gcp-us-central1-spoke1-test1_**, which resides in a different Routing Domain.
 
 ### 9.2 Verify ICMP traffic from bu2 to bu1 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
 
