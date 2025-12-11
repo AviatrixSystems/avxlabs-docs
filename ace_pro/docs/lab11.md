@@ -689,19 +689,6 @@ Gatus
 
 The only ping that succeeds is from **_azure-west-us-spoke2-test1_**  to **_aws-us-east-2-spoke1-test2_** . The ping to **_gcp-us-central1-spoke1-test1_**  will fail, since this instance resides in a different Routing Domain.
 
-### 8.1 Verify ICMP traffic **within** bu2 Using Gatus App
-
-Open the Gatus App on **_gcp-us-central1-spoke1-test1_** and verify the ICMP Traffic.
-
-```{figure} images/lab10-gatus34.png
----
-align: center
----
-Gatus
-```
-
-Ping towards the **_azure-west-us-spoke2-test1_** and **_aws-us-east-2-spoke1-test2_** will work, because these two instance belongs to the same Smart Group bu2!
-
 ### 8.2 Verify ICMP traffic within bu2 Using SSH Client<span style='color:#33ECFF'>(BONUS)</span></summary>
 
 SSH to the Public IP of the instance **_azure-west-us-spoke2-test1_**:
@@ -744,7 +731,7 @@ intra-icmp-bu2
 
 ```{figure} images/lab10-bu2monitor.png
 ---
-height: 150px
+height: 450px
 align: center
 ---
 Monitor
@@ -817,14 +804,14 @@ Ping the following instances:
 - **gcp-us-central1-spoke1-test1** in GCP
 - **azure-west-us-spoke1-test1** in Azure
 
-Thit time all pings will be successful, thanks to the inter-rule applied between bu2 and bu1.
+With the exception of the **GCP VM** in another routing domain, all pings will be successful this time.
 
 ```{figure} images/lab10-pingallok.png
 ---
 
 align: center
 ---
-Ping ok
+Ping
 ```
 
 **AWS US-EAST-1** region is not reachable yet!
