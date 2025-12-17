@@ -294,7 +294,7 @@ Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>inter-http-bu1frontend-bu2mobileapp</span>
 - **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
-- **Destination Smartgroups**: <span style='color:#479608'>BU2-MOBILEAPP1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU2-MOBILEAPP</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>80</span>
 - **Logging**: <span style='color:#479608'>**On**</span>
@@ -364,10 +364,9 @@ New Rule
 Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>inter-icmp-bu1analytics-bu1frontend</span>
-- **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
-- **Destination Smartgroups**: <span style='color:#479608'>BU2-MOBILEAPP1</span>
-- **Protocol**: <span style='color:#479608'>TCP</span>
-- **Port**: <span style='color:#479608'>80</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-ANALYTICS</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Logging**: <span style='color:#479608'>**On**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
@@ -434,7 +433,7 @@ New Rule
 
 Enter the following parameters:
 
-- **Name**: <span style='color:#479608'>inter-icmp-bu1db-bu2db</span>
+- **Name**: <span style='color:#479608'>inter-ssh-bu1db-bu2db</span>
 - **Source Smartgroups**: <span style='color:#479608'>BU1-DB</span>
 - **Destination Smartgroups**: <span style='color:#479608'>BU2-DB</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
@@ -478,9 +477,9 @@ align: center
 second SSH
 ```
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-icmp-bu1db-bu2db` rule will appear.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-ssh s-bu1db-bu2db` rule will appear.
 
-```{figure} images/lab712-monitor03.png
+```{figure} image s/lab712-monitor03.png
 ---
 align: center
 ---
