@@ -98,7 +98,7 @@ SmartGroup
 
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
-- **Name**: <span style='color:#479608'>BU1-MOBILEAPP</span>
+- **Name**: <span style='color:#479608'>BU2-MOBILEAPP</span>
 - **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span>
 
 ```{figure} images/lab7-smart3.png

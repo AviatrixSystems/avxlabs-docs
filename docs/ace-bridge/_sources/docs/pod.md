@@ -7,7 +7,7 @@ Click on the image below to access your personal POD portal.
 |------------|-------------|-------------------|
 |    Percy   |    Team1    |        UV39       |
 | Prasanth   |    Team2    |        UV39       |
-|    Joe     |    Team3    |        UV39       |
+|    Joseph  |    Team3    |        UV39       |
 |   Clayton  |    Team4    |        UV39       |
 |   Bishnu   |    Team5    |        UV39       |
 
