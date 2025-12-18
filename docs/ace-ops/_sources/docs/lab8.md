@@ -447,7 +447,7 @@ Do not forget to click on **Save In Drafts**.
 ---
 align: center
 ---
-inter-icmp-bu1db-bu2db
+inter-ssh-bu1db-bu2db
 ```
 
 Click on **Commit**.
