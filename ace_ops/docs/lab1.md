@@ -14,9 +14,11 @@ align: center
 Initial Topology
 ```
 
-## 2. VALIDATION REQUEST
+## 2. INITIAL CONFIGURATION
 
-### 2.1 Initial Configuration
+Under normal circumstances, the `Task Server`'s task frequency should not require adjustment. However, in a lab environment it is convenient to lower these values so that changes are immediately visible on our CoPilot—for example, a new route added to the routing table or a new connection appearing in the Dynamic Topology.
+
+### 2.1 Task Servers
 
 * Navigate to **CoPilot > Settings > Resources > Task Server**.
   * Ensure that `Fetch GW Routes`, `Fetch VPC Routes` and `Fetch BGP` intervals are set to `1 second`. Then, click **Save** to apply the changes.
@@ -63,6 +65,8 @@ Commit
 ```{warning}
 These settings are quite aggressive. In a production environment, you should avoid setting these intervals to such frequent values!
 ```
+
+### 2.2 Dynamic Topology
 
 - Navigate to **CoPilot > Cloud Fabric > Topology** to explore your POD topology.
 
@@ -114,7 +118,9 @@ Collapsed View
 **Always** refer to your personal POD for the accurate IP addresses. The IP addresses displayed in the following screenshots are only <ins>examples</ins> sourced from a different POD and are intended solely for the creation of the lab guides.
 ```
 
-### 2.2 SSH client and Jumpbox
+### 2.3 How to Access Test Instances
+
+#### 2.3.1 Personal SSH client and Gucamole client
 
 There are **two** SSH access methods available to connect to any instance in the lab’s hybrid‑cloud environment.  
 
@@ -126,13 +132,6 @@ from your laptop (recommended).
 align: center
 ---
 Public IP
-```
-
-```{figure} images/lab1-publicname.png
----
-align: center
----
-DNS name
 ```
 
 2. <span style='color:orange'>**Guacamole Jumpbox**</span>, from the POD Portal is especially useful for corporate networks that block outbound port 22.
@@ -173,22 +172,17 @@ align: center
 Guacamole Menu
 ```
 
-### 2.3 IP addresses
+### 2.4 Where to Find the IP Addresses
 
 The CoPilot is your **_single pane of glass_**, offering a complete database of IP addresses for all instances in the hybrid-cloud environment it governs.
 
-```{tip}
-The IP addresses can be easily obtained using **three** different methods, according to your preference:
 
-1) From the **Properties** section of each Virtual Machine in the Dynamic Topology.
+The IP addresses can be easily obtained using **three** different methods, according to your preference.
 
-2) From the **Virtual Machines** inventory within the Cloud Assets section.
+#### 2.4.1 Dynamic Topology - Properties
 
-3) From your **personal POD portal**, where you can also utilize the DNS symbolic names.
-```
+From the **Properties** section of each Virtual Machine in the Dynamic Topology:
 
-#### 2.3.1 Dynamic Topology - Properties
-  
 Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
 
 ```{caution}
@@ -221,7 +215,9 @@ align: center
 Show Labels
 ```
 
-#### 2.3.2 Cloud Assets
+#### 2.4.2 Cloud Assets
+
+From the **Virtual Machines** inventory within the Cloud Assets section.
 
 Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Perform a search for "_frontend_" and extract the corresponding IP addresses from the resulting list.
 
@@ -237,7 +233,9 @@ Inventory
 Always refer to your personal CoPilot for the IP addresses. These images are only examples.
 ```
 
-#### 2.3.3 POD Portal
+#### 2.4.3 POD Portal
+
+From your **personal POD portal**, where you can also utilize the DNS symbolic names.
 
 Access your personal POD to obtain the symbolic names of any test instances.
 
@@ -255,7 +253,7 @@ align: center
 DNS Names
 ```
 
-### 2.4 Enterprise-Grade Tools
+### 2.5 Enterprise-Grade Tools
 
 Alternatively, you can skip using the SSH client or a Jumpbox altogether and rely entirely on the `enterprise-grade tools` available on all Aviatrix Gateways.
 
@@ -269,9 +267,11 @@ align: center
 Diagnostics Tools
 ```
 
-### 2.5 Network Segmentation: verification
+## 3. VALIDATION REQUEST
 
-#### 2.5.1 Verify connectivity between clients **within** the same BU using the Diagnostic Tools
+Let's verify the **Network Segmentation**.
+
+### 3.1 Verify connectivity between clients **within** the same BU using the Diagnostic Tools
 
 You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Assets` section.
 
@@ -323,7 +323,7 @@ align: center
 bu1-db is reachable
 ```
 
-#### 2.5.2 Verify connectivity between clients **within** the same BU Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 3.1.1 Verify connectivity between clients **within** the same BU Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
     
 - SSH into the **BU1 Frontend**  instance in AWS.
 
