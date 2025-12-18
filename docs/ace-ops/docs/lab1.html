@@ -346,7 +346,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-servers">2.1 Task Servers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-topology">2.2 Dynamic Topology</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-test-instances">2.3 How to Access Test Instances</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client-and-gucamole-client">2.3.1 Personal SSH client and Gucamole client</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client">2.3.1 Personal SSH client</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guacamole-client">2.3.2 Guacamole client</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-find-the-ip-addresses">2.4 Where to Find the IP Addresses</a><ul class="nav section-nav flex-column">
@@ -359,13 +360,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">3. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">3.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">3.1.1 Verify connectivity between clients <strong>within</strong> the same BU Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-diagnostic-tools">2.5.3 Ensure workloads do not have <strong>cross-BU</strong> connectivity using the Diagnostic Tools</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-ssh-client-bonus">2.5.4 Ensure workloads do not have <strong>cross-BU</strong> connectivity Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-section">2.5.5 Network Segmentation section</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">3.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">3.2 Verify connectivity between clients <strong>within</strong> the same BU Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-diagnostic-tools">3.3 Ensure workloads do not have <strong>cross-BU</strong> connectivity using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-ssh-client-bonus">3.4 Ensure workloads do not have <strong>cross-BU</strong> connectivity Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-section">3.5 Network Segmentation section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowiq">3.6 FlowIQ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-routes">3.7 Cloud Routes</a></li>
 </ul>
 </li>
 </ul>
@@ -395,7 +396,7 @@ document.write(`
 </section>
 <section id="initial-configuration">
 <h2>2. INITIAL CONFIGURATION<a class="headerlink" href="#initial-configuration" title="Link to this heading">#</a></h2>
-<p>Under normal circumstances, the <code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">Server</span></code>’s task frequency should not require adjustment. However, in a lab environment it is convenient to lower these values so that changes are immediately visible on our CoPilot—for example, a new route added to the routing table or a new connection appearing in the Dynamic Topology.</p>
+<p>Under normal circumstances, the <code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">Server's</span> <span class="pre">frequency</span></code> does not need to be adjusted. However, in a lab environment it is convenient to lower these values so that changes are immediately visible on our CoPilot—for example, a new route added to the routing table or a new connection appearing in the Dynamic Topology.</p>
 <section id="task-servers">
 <h3>2.1 Task Servers<a class="headerlink" href="#task-servers" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -491,22 +492,25 @@ document.write(`
 </section>
 <section id="how-to-access-test-instances">
 <h3>2.3 How to Access Test Instances<a class="headerlink" href="#how-to-access-test-instances" title="Link to this heading">#</a></h3>
-<section id="personal-ssh-client-and-gucamole-client">
-<h4>2.3.1 Personal SSH client and Gucamole client<a class="headerlink" href="#personal-ssh-client-and-gucamole-client" title="Link to this heading">#</a></h4>
 <p>There are <strong>two</strong> SSH access methods available to connect to any instance in the lab’s hybrid‑cloud environment.</p>
-<ol class="arabic simple">
+<section id="personal-ssh-client">
+<h4>2.3.1 Personal SSH client<a class="headerlink" href="#personal-ssh-client" title="Link to this heading">#</a></h4>
+<ul class="simple">
 <li><p><span style='color:orange'><strong>SSH</strong></span>
 from your laptop (recommended).</p></li>
-</ol>
+</ul>
 <figure class="align-center" id="id11">
 <img alt="../_images/lab1-publicip.png" src="../_images/lab1-publicip.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 12 </span><span class="caption-text">Public IP</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<ol class="arabic simple" start="2">
+</section>
+<section id="guacamole-client">
+<h4>2.3.2 Guacamole client<a class="headerlink" href="#guacamole-client" title="Link to this heading">#</a></h4>
+<ul class="simple">
 <li><p><span style='color:orange'><strong>Guacamole Jumpbox</strong></span>, from the POD Portal is especially useful for corporate networks that block outbound port 22.</p></li>
-</ol>
+</ul>
 <figure class="align-center" id="id12">
 <a class="reference internal image-reference" href="../_images/lab1-jumpbox.png"><img alt="../_images/lab1-jumpbox.png" src="../_images/lab1-jumpbox.png" style="height: 200px;" />
 </a>
@@ -680,8 +684,9 @@ from your laptop (recommended).</p></li>
 <p><span class="caption-number">Fig. 27 </span><span class="caption-text">bu1-db is reachable</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 <section id="verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">
-<h4>3.1.1 Verify connectivity between clients <strong>within</strong> the same BU Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus" title="Link to this heading">#</a></h4>
+<h3>3.2 Verify connectivity between clients <strong>within</strong> the same BU Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>SSH into the <strong>BU1 Frontend</strong>  instance in AWS.</p></li>
 </ul>
@@ -765,7 +770,7 @@ from your laptop (recommended).</p></li>
 </div>
 </section>
 <section id="ensure-workloads-do-not-have-cross-bu-connectivity-using-the-diagnostic-tools">
-<h4>2.5.3 Ensure workloads do not have <strong>cross-BU</strong> connectivity using the Diagnostic Tools<a class="headerlink" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-diagnostic-tools" title="Link to this heading">#</a></h4>
+<h3>3.3 Ensure workloads do not have <strong>cross-BU</strong> connectivity using the Diagnostic Tools<a class="headerlink" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
 <figure class="align-center" id="id35">
 <a class="reference internal image-reference" href="../_images/lab1-diagnosticstools1100.png"><img alt="../_images/lab1-diagnosticstools1100.png" src="../_images/lab1-diagnosticstools1100.png" style="height: 400px;" />
 </a>
@@ -809,7 +814,7 @@ from your laptop (recommended).</p></li>
 </figure>
 </section>
 <section id="ensure-workloads-do-not-have-cross-bu-connectivity-using-the-ssh-client-bonus">
-<h4>2.5.4 Ensure workloads do not have <strong>cross-BU</strong> connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-ssh-client-bonus" title="Link to this heading">#</a></h4>
+<h3>3.4 Ensure workloads do not have <strong>cross-BU</strong> connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>From <strong>BU1 Frontend</strong> try to ping the <ins>private IP address</ins> of the <strong>BU2 Mobile App</strong>.</p></li>
 <li><p>From <strong>BU1 Frontend</strong> try to SSH <strong>BU2 Mobile App</strong> (use again its Private IP address!).</p></li>
@@ -836,7 +841,7 @@ from your laptop (recommended).</p></li>
 </figure>
 </section>
 <section id="network-segmentation-section">
-<h4>2.5.5 Network Segmentation section<a class="headerlink" href="#network-segmentation-section" title="Link to this heading">#</a></h4>
+<h3>3.5 Network Segmentation section<a class="headerlink" href="#network-segmentation-section" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Check the <strong>Network Segmentation</strong> section on the CoPilot, and then look at the <strong>Logical View</strong>.</p></li>
 </ul>
@@ -896,6 +901,9 @@ from your laptop (recommended).</p></li>
 <p><span class="caption-number">Fig. 47 </span><span class="caption-text">Gateway Routes</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="flowiq">
+<h3>3.6 FlowIQ<a class="headerlink" href="#flowiq" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use the <span style='color:#FF0000'><strong>FlowIQ</strong></span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.</p></li>
 </ul>
@@ -934,6 +942,9 @@ from your laptop (recommended).</p></li>
 <p class="admonition-title">Note</p>
 <p>On the <strong>Aviatrix Gateway</strong> widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).</p>
 </div>
+</section>
+<section id="cloud-routes">
+<h3>3.7 Cloud Routes<a class="headerlink" href="#cloud-routes" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use <strong>Cloud Routes</strong>  to identify the <em>originator</em> of the route <strong>172.16.211.0/24</strong>.</p></li>
 </ul>
@@ -983,7 +994,6 @@ from your laptop (recommended).</p></li>
 <p><span class="caption-number">Fig. 54 </span><span class="caption-text">Cloud Routes - Recursive Routing Lookup</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
 </section>
 </section>
 </section>
@@ -1057,7 +1067,8 @@ from your laptop (recommended).</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-servers">2.1 Task Servers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-topology">2.2 Dynamic Topology</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-test-instances">2.3 How to Access Test Instances</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client-and-gucamole-client">2.3.1 Personal SSH client and Gucamole client</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client">2.3.1 Personal SSH client</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guacamole-client">2.3.2 Guacamole client</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-find-the-ip-addresses">2.4 Where to Find the IP Addresses</a><ul class="nav section-nav flex-column">
@@ -1070,13 +1081,13 @@ from your laptop (recommended).</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">3. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">3.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">3.1.1 Verify connectivity between clients <strong>within</strong> the same BU Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-diagnostic-tools">2.5.3 Ensure workloads do not have <strong>cross-BU</strong> connectivity using the Diagnostic Tools</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-ssh-client-bonus">2.5.4 Ensure workloads do not have <strong>cross-BU</strong> connectivity Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-section">2.5.5 Network Segmentation section</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">3.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">3.2 Verify connectivity between clients <strong>within</strong> the same BU Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-diagnostic-tools">3.3 Ensure workloads do not have <strong>cross-BU</strong> connectivity using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-ssh-client-bonus">3.4 Ensure workloads do not have <strong>cross-BU</strong> connectivity Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-section">3.5 Network Segmentation section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowiq">3.6 FlowIQ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-routes">3.7 Cloud Routes</a></li>
 </ul>
 </li>
 </ul>
