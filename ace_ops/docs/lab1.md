@@ -16,7 +16,7 @@ Initial Topology
 
 ## 2. INITIAL CONFIGURATION
 
-Under normal circumstances, the `Task Server`'s task frequency should not require adjustment. However, in a lab environment it is convenient to lower these values so that changes are immediately visible on our CoPilot—for example, a new route added to the routing table or a new connection appearing in the Dynamic Topology.
+Under normal circumstances, the `Task Server's frequency` does not need to be adjusted. However, in a lab environment it is convenient to lower these values so that changes are immediately visible on our CoPilot—for example, a new route added to the routing table or a new connection appearing in the Dynamic Topology.
 
 ### 2.1 Task Servers
 
@@ -120,11 +120,11 @@ Collapsed View
 
 ### 2.3 How to Access Test Instances
 
-#### 2.3.1 Personal SSH client and Gucamole client
-
 There are **two** SSH access methods available to connect to any instance in the lab’s hybrid‑cloud environment.  
 
-1. <span style='color:orange'>**SSH**</span>
+#### 2.3.1 Personal SSH client 
+
+- <span style='color:orange'>**SSH**</span>
 from your laptop (recommended).
 
 ```{figure} images/lab1-publicip.png
@@ -134,7 +134,9 @@ align: center
 Public IP
 ```
 
-2. <span style='color:orange'>**Guacamole Jumpbox**</span>, from the POD Portal is especially useful for corporate networks that block outbound port 22.
+#### 2.3.2 Guacamole client
+
+- <span style='color:orange'>**Guacamole Jumpbox**</span>, from the POD Portal is especially useful for corporate networks that block outbound port 22.
 
 ```{figure} images/lab1-jumpbox.png
 ---
@@ -323,7 +325,7 @@ align: center
 bu1-db is reachable
 ```
 
-#### 3.1.1 Verify connectivity between clients **within** the same BU Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 3.2 Verify connectivity between clients **within** the same BU Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
     
 - SSH into the **BU1 Frontend**  instance in AWS.
 
@@ -414,7 +416,7 @@ CURL
 Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.
 ```
 
-#### 2.5.3 Ensure workloads do not have **cross-BU** connectivity using the Diagnostic Tools
+### 3.3 Ensure workloads do not have **cross-BU** connectivity using the Diagnostic Tools
 
 ```{figure} images/lab1-diagnosticstools1100.png
 ---
@@ -460,7 +462,7 @@ align: center
 ping to BU2-DB
 ```
 
-#### 2.5.4 Ensure workloads do not have **cross-BU** connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 3.4 Ensure workloads do not have **cross-BU** connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
 - From **BU1 Frontend** try to SSH **BU2 Mobile App** (use again its Private IP address!).
@@ -489,7 +491,7 @@ align: center
 BU1 to BU2: SSH test fails
 ```
 
-#### 2.5.5 Network Segmentation section
+### 3.5 Network Segmentation section
 
 * Check the **Network Segmentation** section on the CoPilot, and then look at the **Logical View**.
 
@@ -550,6 +552,8 @@ align: center
 Gateway Routes
 ```
 
+### 3.6 FlowIQ
+
 * Use the <span style='color:#FF0000'>**FlowIQ**</span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.
 
 ```{tip}
@@ -589,6 +593,8 @@ FlowIQ
 ```{note}
 On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
+
+### 3.7 Cloud Routes
 
 * Use **Cloud Routes**  to identify the _originator_ of the route **172.16.211.0/24**.
 
