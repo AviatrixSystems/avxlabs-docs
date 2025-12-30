@@ -235,6 +235,8 @@ Please be aware that the AWS and GCP instances are reachable from your laptop, a
 
 #### 4.2.2 Jump Box
 
+The Jumpbox button on the POD Portal lets you access the Guacamole client, a lightweight virtual desktop from which you can open an SSH terminal.
+
 - <span style='color:orange'>**Guacamole Client**</span>, from the POD Portal is especially useful for corporate networks that block outbound port 22.
 
 ```{figure} images/lab1-jumpbox.png
