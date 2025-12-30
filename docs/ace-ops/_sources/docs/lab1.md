@@ -12,7 +12,7 @@ align: center
 Initial Topology
 ```
 
-The administrator then partitioned the environment into distinct _Network Domains_: **BU1** and **BU2**.
+The administrator divided the environment into two distinct _network domains_, **BU1** and **BU2**, for enhanced isolation.
 
 ```{figure} images/lab1-segmentation.png
 ---
@@ -23,6 +23,8 @@ Topology after the Network Segmentation
 ```
 
 ## 2. INITIAL CONFIGURATION
+
+Prior to commencing the evaluation of the first request, configure CoPilot such that any modifications to CNSF are immediately reflected for operator assessment.
 
 Under normal circumstances, the `Task Server's frequency` does not need to be adjusted. However, in a lab environment it is convenient to lower these values so that changes are immediately visible on our CoPilot—for example, a new route added to the routing table or a new connection appearing in the Dynamic Topology.
 
@@ -76,6 +78,8 @@ These settings are quite aggressive. In a production environment, you should avo
 
 ### 2.2 Dynamic Topology
 
+After adjusting the Task Servers’ timers, the Dynamic Topology section of CoPilot enables inspection of the current Aviatrix Gateway connectivity, verification of instances within the Spoke VPCs, retrieval of IP addresses, and access to the Diagnostic Tools.
+
 - Navigate to **CoPilot > Cloud Fabric > Topology** to explore your POD topology.
 
 You'll see that CoPilot displays both *Managed* and *Unmanaged* VPCs.
@@ -126,15 +130,87 @@ Collapsed View
 **Always** refer to your personal POD for the accurate IP addresses. The IP addresses displayed in the following screenshots are only <ins>examples</ins> sourced from a different POD and are intended solely for the creation of the lab guides.
 ```
 
-## 3 Traffic-generating instances
+## 3. WHERE TO FIND THE IP ADDRESSES
 
-The instances deployed within the multi-cloud environment automatically generate traffic using an application named `Gatus`. 
+The CoPilot is your **_single pane of glass_**, offering a complete database of IP addresses for all instances in the hybrid-cloud environment it governs.
+
+The IP addresses can be easily obtained using **three** different methods, according to your preference.
+
+### 3.1 Dynamic Topology - Properties
+
+From the **Properties** section of each Virtual Machine in the Dynamic Topology:
+
+Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
+
+```{caution}
+You **cannot** connect to any Aviatrix Gateways using the SSH protocol, <ins>as port 22 is secured</ins>!
+```
+
+```{figure} images/lab1-newpicture.png
+---
+height: 400px
+align: center
+---
+EC2 Instance
+```
+
+```{figure} images/lab1-ec2.png
+---
+height: 400px
+align: center
+---
+Instance Properties
+```
+
+```{tip}
+To view the full hostnames of each node, select `"Show Labels"` from the bottom left sidebar.
+```{figure} images/lab1-showlabels.png
+---
+height: 400px
+align: center
+---
+Show Labels
+```
+
+### 3.2 Cloud Assets
+
+From the **Virtual Machines** inventory within the Cloud Assets section.
+
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Perform a search for "_frontend_" and extract the corresponding IP addresses from the resulting list.
+
+```{figure} images/lab1-assets.png
+---
+height: 200px
+align: center
+---
+Inventory
+```
+
+```{important}
+Always refer to your personal CoPilot for the IP addresses. These images are only examples.
+```
+
+### 3.3 POD Portal
+
+From your **personal POD portal**.
+
+```{figure} images/lab1-podred.png
+---
+height: 300px
+align: center
+---
+DNS Names
+```
+
+## 4 TRAFFIC-GENERATING INSTANCES
+
+The instances deployed within the multi-cloud environment automatically generate traffic using an application named `Gatus`.
 
 Gatus is an open-source, self-hosted health-check dashboard that periodically generates traffic to endpoints and presents their status, response times, and outages in a user-friendly web UI.
 
-### 3.1 Gatus Dashboard
+### 4.1 Gatus Dashboard
 
-### 3.2 SSH client and Jump Box
+### 4.2 SSH client and Jump Box
 
 Alternatively, you can access the test instances either with your personal SSH client or by leveraging the Jump Box service.
 
@@ -142,7 +218,7 @@ Alternatively, you can access the test instances either with your personal SSH c
 The SSH client should be used if your corporate laptop restricts port 22. The Jump Box can also be used in cases where port 22 is blocked.
 ```
 
-#### 3.2.1 Personal SSH client 
+#### 4.2.1 Personal SSH client
 
 - <span style='color:orange'>**SSH**</span>
 from your laptop (recommended).
@@ -154,9 +230,9 @@ align: center
 Public IP
 ```
 
-#### 2.3.2 Guacamole client
+#### 4.2.2 Jump Box
 
-- <span style='color:orange'>**Guacamole Jumpbox**</span>, from the POD Portal is especially useful for corporate networks that block outbound port 22.
+- <span style='color:orange'>**Guacamole Client**</span>, from the POD Portal is especially useful for corporate networks that block outbound port 22.
 
 ```{figure} images/lab1-jumpbox.png
 ---
@@ -194,80 +270,7 @@ align: center
 Guacamole Menu
 ```
 
-### 2.4 Where to Find the IP Addresses
-
-The CoPilot is your **_single pane of glass_**, offering a complete database of IP addresses for all instances in the hybrid-cloud environment it governs.
-
-
-The IP addresses can be easily obtained using **three** different methods, according to your preference.
-
-#### 2.4.1 Dynamic Topology - Properties
-
-From the **Properties** section of each Virtual Machine in the Dynamic Topology:
-
-Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
-
-```{caution}
-You **cannot** connect to any Aviatrix Gateways using the SSH protocol, <ins>as port 22 is secured</ins>!
-```
-
-```{figure} images/lab1-newpicture.png
----
-height: 400px
-align: center
----
-EC2 Instance
-```
-
-```{figure} images/lab1-ec2.png
----
-height: 400px
-align: center
----
-Instance Properties
-```
-
-```{tip}
-To view the full hostnames of each node, select `"Show Labels"` from the bottom left sidebar.
-```{figure} images/lab1-showlabels.png
----
-height: 400px
-align: center
----
-Show Labels
-```
-
-#### 2.4.2 Cloud Assets
-
-From the **Virtual Machines** inventory within the Cloud Assets section.
-
-Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Perform a search for "_frontend_" and extract the corresponding IP addresses from the resulting list.
-
-```{figure} images/lab1-assets.png
----
-height: 200px
-align: center
----
-Inventory
-```
-
-```{important}
-Always refer to your personal CoPilot for the IP addresses. These images are only examples.
-```
-
-#### 2.4.3 POD Portal
-
-From your **personal POD portal**.
-
-```{figure} images/lab1-podred.png
----
-height: 300px
-align: center
----
-DNS Names
-```
-
-### 2.5 Enterprise-Grade Tools
+## 5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS
 
 Alternatively, you can skip using the SSH client or the Jumpbox (i.e., the Guacamole client) altogether and rely entirely on the `enterprise-grade tools` available on all Aviatrix Gateways.
 
@@ -281,11 +284,11 @@ align: center
 Diagnostics Tools
 ```
 
-## 4. VALIDATION REQUEST
+## 6. VALIDATION REQUEST
 
 The initial request consists of verifying the separation between the two **network domains**.
 
-### 4.1 Verify connectivity between clients **within** the same Segment using the Diagnostic Tools
+### 6.1 Verify connectivity between clients **within** the same network domain using the Diagnostic Tools
 
 You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Assets` section.
 
@@ -337,7 +340,7 @@ align: center
 bu1-db is reachable
 ```
 
-### 3.2 Verify connectivity between clients **within** the same BU Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 6.2 Verify connectivity between clients **within** the same network domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
     
 - SSH into the **BU1 Frontend**  instance in AWS.
 
@@ -428,7 +431,7 @@ CURL
 Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.
 ```
 
-### 3.3 Ensure workloads do not have **cross-BU** connectivity using the Diagnostic Tools
+### 6.3 Ensure workloads remain isolated across network domains using the Diagnostic Tools.
 
 ```{figure} images/lab1-diagnosticstools1100.png
 ---
@@ -474,7 +477,7 @@ align: center
 ping to BU2-DB
 ```
 
-### 3.4 Ensure workloads do not have **cross-BU** connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 6.4 Ensure workloads remain isolated across network domains Using the SSH client. <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
 - From **BU1 Frontend** try to SSH **BU2 Mobile App** (use again its Private IP address!).
@@ -503,7 +506,7 @@ align: center
 BU1 to BU2: SSH test fails
 ```
 
-### 3.5 Network Segmentation section
+### 6.5 Network Segmentation section
 
 * Check the **Network Segmentation** section on the CoPilot, and then look at the **Logical View**.
 
@@ -564,7 +567,7 @@ align: center
 Gateway Routes
 ```
 
-### 3.6 FlowIQ
+### 6.6 FlowIQ
 
 * Use the <span style='color:#FF0000'>**FlowIQ**</span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.
 
