@@ -286,7 +286,17 @@ Alternatively, you can bypass the SSH client, Jumpbox (Guacamole client), and th
 height: 400px
 align: center
 ---
-Diagnostics Tools
+Diagnostic Tools
+```
+
+Diagnostic Tools can also be launched directly from the Topology. Please select an Aviatrix Gateway (identified by the gateway icon with four arrows). After selecting the gateway, click the **wrench icon** on the right-hand side to initiate the Diagnostic Tools.
+
+```{figure} images/lab1-diagnosticstools90.png
+---
+height: 400px
+align: center
+---
+Diagnostic Tools from the Topology
 ```
 
 ## 6. VALIDATION REQUEST
