@@ -364,13 +364,15 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools-on-the-aviatrix-gateways">5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">6. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools">6.1 Verify connectivity between clients <strong>within</strong> the same network domain using the Diagnostic Tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-ssh-client-bonus">6.2 Verify connectivity between clients <strong>within</strong> the same network domain Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-diagnostic-tools">6.3 Ensure workloads remain isolated across network domains using the Diagnostic Tools.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-ssh-client-bonus">6.4 Ensure workloads remain isolated across network domains Using the SSH client. <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-section">6.5 Network Segmentation section</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowiq">6.6 FlowIQ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-routes">3.7 Cloud Routes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-gatus">6.1 Verify connectivity between clients <strong>within</strong> the same network domain Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools">6.2 Verify connectivity between clients <strong>within</strong> the same network domain Using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-ssh-client-bonus">6.3 Verify connectivity between clients <strong>within</strong> the same network domain Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-remain-isolated-across-network-domains-using-gatus">6.4 Ensure workloads remain isolated across network domains Using Gatus.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-diagnostic-tools">6.5 Ensure workloads remain isolated across network domains Using the Diagnostic Tools.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-ssh-client-bonus">6.6 Ensure workloads remain isolated across network domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-section">6.7 Network Segmentation section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowiq">6.8 FlowIQ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-routes">6.9 Cloud Routes</a></li>
 </ul>
 </li>
 </ul>
@@ -642,7 +644,7 @@ document.write(`
 </section>
 <section id="enterprise-grade-tools-on-the-aviatrix-gateways">
 <h2>5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS<a class="headerlink" href="#enterprise-grade-tools-on-the-aviatrix-gateways" title="Link to this heading">#</a></h2>
-<p>Alternatively, you can skip using the SSH client or the Jumpbox (i.e., the Guacamole client) altogether and rely entirely on the <code class="docutils literal notranslate"><span class="pre">enterprise-grade</span> <span class="pre">tools</span></code> available on all Aviatrix Gateways.</p>
+<p>Alternatively, you can bypass the SSH client, Jumpbox (Guacamole client), and the Gatus Dashboard and rely entirely on the <code class="docutils literal notranslate"><span class="pre">enterprise-grade</span> <span class="pre">tools</span></code>  provided by all Aviatrix Gateways.</p>
 <ul class="simple">
 <li><p>Navigate to <strong>Copilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run <strong>ping</strong>, <strong>traceroute</strong>, <strong>packet capture</strong>, and more.</p></li>
 </ul>
@@ -656,9 +658,12 @@ document.write(`
 </section>
 <section id="validation-request">
 <h2>6. VALIDATION REQUEST<a class="headerlink" href="#validation-request" title="Link to this heading">#</a></h2>
-<p>The initial request consists of verifying the separation between the two <strong>network domains</strong>.</p>
+<p>The initial request is to verify the separation between the two network domains. Note that the verification consists of checking the CoPilot configuration and, of course, testing with the test instances and the traffic they generate to each other. This section shows how to use Gatus, the SSH client, and the Jumpbox, as well as the enterprise-grade tools (the recommended method).</p>
+<section id="verify-connectivity-between-clients-within-the-same-network-domain-using-gatus">
+<h3>6.1 Verify connectivity between clients <strong>within</strong> the same network domain Using Gatus<a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-gatus" title="Link to this heading">#</a></h3>
+</section>
 <section id="verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools">
-<h3>6.1 Verify connectivity between clients <strong>within</strong> the same network domain using the Diagnostic Tools<a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+<h3>6.2 Verify connectivity between clients <strong>within</strong> the same network domain Using the Diagnostic Tools<a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
 <p>You can generate the <strong>ping directly</strong> from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of <strong>BU1 Analytics</strong> and <strong>BU1 DB</strong> from the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Assets</span></code> section.</p>
 <figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="../_images/lab1-diagnosticstools11.png"><img alt="../_images/lab1-diagnosticstools11.png" src="../_images/lab1-diagnosticstools11.png" style="height: 400px;" />
@@ -707,7 +712,7 @@ document.write(`
 </figure>
 </section>
 <section id="verify-connectivity-between-clients-within-the-same-network-domain-using-the-ssh-client-bonus">
-<h3>6.2 Verify connectivity between clients <strong>within</strong> the same network domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<h3>6.3 Verify connectivity between clients <strong>within</strong> the same network domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>SSH into the <strong>BU1 Frontend</strong>  instance in AWS.</p></li>
 </ul>
@@ -790,8 +795,11 @@ document.write(`
 <p>Repeat the verification for <strong>BU1-DB</strong>. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.</p>
 </div>
 </section>
+<section id="ensure-workloads-remain-isolated-across-network-domains-using-gatus">
+<h3>6.4 Ensure workloads remain isolated across network domains Using Gatus.<a class="headerlink" href="#ensure-workloads-remain-isolated-across-network-domains-using-gatus" title="Link to this heading">#</a></h3>
+</section>
 <section id="ensure-workloads-remain-isolated-across-network-domains-using-the-diagnostic-tools">
-<h3>6.3 Ensure workloads remain isolated across network domains using the Diagnostic Tools.<a class="headerlink" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+<h3>6.5 Ensure workloads remain isolated across network domains Using the Diagnostic Tools.<a class="headerlink" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
 <figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab1-diagnosticstools1100.png"><img alt="../_images/lab1-diagnosticstools1100.png" src="../_images/lab1-diagnosticstools1100.png" style="height: 400px;" />
 </a>
@@ -835,7 +843,7 @@ document.write(`
 </figure>
 </section>
 <section id="ensure-workloads-remain-isolated-across-network-domains-using-the-ssh-client-bonus">
-<h3>6.4 Ensure workloads remain isolated across network domains Using the SSH client. <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<h3>6.6 Ensure workloads remain isolated across network domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>From <strong>BU1 Frontend</strong> try to ping the <ins>private IP address</ins> of the <strong>BU2 Mobile App</strong>.</p></li>
 <li><p>From <strong>BU1 Frontend</strong> try to SSH <strong>BU2 Mobile App</strong> (use again its Private IP address!).</p></li>
@@ -862,7 +870,7 @@ document.write(`
 </figure>
 </section>
 <section id="network-segmentation-section">
-<h3>6.5 Network Segmentation section<a class="headerlink" href="#network-segmentation-section" title="Link to this heading">#</a></h3>
+<h3>6.7 Network Segmentation section<a class="headerlink" href="#network-segmentation-section" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Check the <strong>Network Segmentation</strong> section on the CoPilot, and then look at the <strong>Logical View</strong>.</p></li>
 </ul>
@@ -924,7 +932,7 @@ document.write(`
 </figure>
 </section>
 <section id="flowiq">
-<h3>6.6 FlowIQ<a class="headerlink" href="#flowiq" title="Link to this heading">#</a></h3>
+<h3>6.8 FlowIQ<a class="headerlink" href="#flowiq" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use the <span style='color:#FF0000'><strong>FlowIQ</strong></span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.</p></li>
 </ul>
@@ -965,7 +973,7 @@ document.write(`
 </div>
 </section>
 <section id="cloud-routes">
-<h3>3.7 Cloud Routes<a class="headerlink" href="#cloud-routes" title="Link to this heading">#</a></h3>
+<h3>6.9 Cloud Routes<a class="headerlink" href="#cloud-routes" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use <strong>Cloud Routes</strong>  to identify the <em>originator</em> of the route <strong>172.16.211.0/24</strong>.</p></li>
 </ul>
@@ -1106,13 +1114,15 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools-on-the-aviatrix-gateways">5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">6. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools">6.1 Verify connectivity between clients <strong>within</strong> the same network domain using the Diagnostic Tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-ssh-client-bonus">6.2 Verify connectivity between clients <strong>within</strong> the same network domain Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-diagnostic-tools">6.3 Ensure workloads remain isolated across network domains using the Diagnostic Tools.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-ssh-client-bonus">6.4 Ensure workloads remain isolated across network domains Using the SSH client. <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-section">6.5 Network Segmentation section</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowiq">6.6 FlowIQ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-routes">3.7 Cloud Routes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-gatus">6.1 Verify connectivity between clients <strong>within</strong> the same network domain Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools">6.2 Verify connectivity between clients <strong>within</strong> the same network domain Using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-ssh-client-bonus">6.3 Verify connectivity between clients <strong>within</strong> the same network domain Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-remain-isolated-across-network-domains-using-gatus">6.4 Ensure workloads remain isolated across network domains Using Gatus.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-diagnostic-tools">6.5 Ensure workloads remain isolated across network domains Using the Diagnostic Tools.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-remain-isolated-across-network-domains-using-the-ssh-client-bonus">6.6 Ensure workloads remain isolated across network domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-segmentation-section">6.7 Network Segmentation section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowiq">6.8 FlowIQ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-routes">6.9 Cloud Routes</a></li>
 </ul>
 </li>
 </ul>
