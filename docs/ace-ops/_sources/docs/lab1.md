@@ -277,7 +277,7 @@ Guacamole Menu
 
 ## 5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS
 
-Alternatively, you can skip using the SSH client or the Jumpbox (i.e., the Guacamole client) altogether and rely entirely on the `enterprise-grade tools` available on all Aviatrix Gateways.
+Alternatively, you can bypass the SSH client, Jumpbox (Guacamole client), and the Gatus Dashboard and rely entirely on the `enterprise-grade tools`  provided by all Aviatrix Gateways.
 
 - Navigate to **Copilot > Diagnostics > Diagnostics Tools**. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
 
@@ -291,9 +291,11 @@ Diagnostics Tools
 
 ## 6. VALIDATION REQUEST
 
-The initial request consists of verifying the separation between the two **network domains**.
+The initial request is to verify the separation between the two network domains. Note that the verification consists of checking the CoPilot configuration and, of course, testing with the test instances and the traffic they generate to each other. This section shows how to use Gatus, the SSH client, and the Jumpbox, as well as the enterprise-grade tools (the recommended method).
 
-### 6.1 Verify connectivity between clients **within** the same network domain using the Diagnostic Tools
+### 6.1 Verify connectivity between clients **within** the same network domain Using Gatus
+
+### 6.2 Verify connectivity between clients **within** the same network domain Using the Diagnostic Tools
 
 You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Assets` section.
 
@@ -345,8 +347,8 @@ align: center
 bu1-db is reachable
 ```
 
-### 6.2 Verify connectivity between clients **within** the same network domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
-    
+### 6.3 Verify connectivity between clients **within** the same network domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
 - SSH into the **BU1 Frontend**  instance in AWS.
 
 ```{important}
@@ -436,7 +438,9 @@ CURL
 Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.
 ```
 
-### 6.3 Ensure workloads remain isolated across network domains using the Diagnostic Tools.
+### 6.4 Ensure workloads remain isolated across network domains Using Gatus.
+
+### 6.5 Ensure workloads remain isolated across network domains Using the Diagnostic Tools.
 
 ```{figure} images/lab1-diagnosticstools1100.png
 ---
@@ -482,7 +486,7 @@ align: center
 ping to BU2-DB
 ```
 
-### 6.4 Ensure workloads remain isolated across network domains Using the SSH client. <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 6.6 Ensure workloads remain isolated across network domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
 - From **BU1 Frontend** try to SSH **BU2 Mobile App** (use again its Private IP address!).
@@ -511,7 +515,7 @@ align: center
 BU1 to BU2: SSH test fails
 ```
 
-### 6.5 Network Segmentation section
+### 6.7 Network Segmentation section
 
 * Check the **Network Segmentation** section on the CoPilot, and then look at the **Logical View**.
 
@@ -572,7 +576,7 @@ align: center
 Gateway Routes
 ```
 
-### 6.6 FlowIQ
+### 6.8 FlowIQ
 
 * Use the <span style='color:#FF0000'>**FlowIQ**</span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.
 
@@ -614,7 +618,7 @@ FlowIQ
 On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
-### 3.7 Cloud Routes
+### 6.9 Cloud Routes
 
 * Use **Cloud Routes**  to identify the _originator_ of the route **172.16.211.0/24**.
 
