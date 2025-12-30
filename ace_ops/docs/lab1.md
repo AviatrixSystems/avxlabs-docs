@@ -12,9 +12,7 @@ align: center
 Initial Topology
 ```
 
-The administrator then partitioned the environment into distinct network domains: **BU1** and **BU2**.
-
-Please verify the segregation between these two domains, as implemented through the `Aviatrix Cloud Native Security Fabric (CNSF)`.
+The administrator then partitioned the environment into distinct _Network Domains_: **BU1** and **BU2**.
 
 ```{figure} images/lab1-segmentation.png
 ---
