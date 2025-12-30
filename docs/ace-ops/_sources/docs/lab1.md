@@ -118,11 +118,23 @@ Collapsed View
 **Always** refer to your personal POD for the accurate IP addresses. The IP addresses displayed in the following screenshots are only <ins>examples</ins> sourced from a different POD and are intended solely for the creation of the lab guides.
 ```
 
-### 2.3 How to Access Test Instances
+## 3 Traffic-generating instances
 
-There are **two** SSH access methods available to connect to any instance in the lab’s hybrid‑cloud environment.  
+The instances deployed within the multi-cloud environment automatically generate traffic using an application named `Gatus`. 
 
-#### 2.3.1 Personal SSH client 
+Gatus is an open-source, self-hosted health-check dashboard that periodically generates traffic to endpoints and presents their status, response times, and outages in a user-friendly web UI.
+
+### 3.1 Gatus Dashboard
+
+### 3.2 SSH client and Jump Box
+
+Alternatively, you can access the test instances either with your personal SSH client or by leveraging the Jump Box service.
+
+```{caution}
+The SSH client should be used if your corporate laptop restricts port 22. The Jump Box can also be used in cases where port 22 is blocked.
+```
+
+#### 3.2.1 Personal SSH client 
 
 - <span style='color:orange'>**SSH**</span>
 from your laptop (recommended).
@@ -237,15 +249,7 @@ Always refer to your personal CoPilot for the IP addresses. These images are onl
 
 #### 2.4.3 POD Portal
 
-From your **personal POD portal**, where you can also utilize the DNS symbolic names.
-
-Access your personal POD to obtain the symbolic names of any test instances.
-
-```{caution}
-- Use the symbolic name containing the word `"public"` to log into the instance from your laptop.
-
-- Use the symbolic name containing the word `"private"` for East-West traffic verification after accessing any test instance from your laptop.
-```
+From your **personal POD portal**.
 
 ```{figure} images/lab1-podred.png
 ---
@@ -257,7 +261,7 @@ DNS Names
 
 ### 2.5 Enterprise-Grade Tools
 
-Alternatively, you can skip using the SSH client or a Jumpbox altogether and rely entirely on the `enterprise-grade tools` available on all Aviatrix Gateways.
+Alternatively, you can skip using the SSH client or the Jumpbox (i.e., the Guacamole client) altogether and rely entirely on the `enterprise-grade tools` available on all Aviatrix Gateways.
 
 - Navigate to **Copilot > Diagnostics > Diagnostics Tools**. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
 
@@ -269,11 +273,11 @@ align: center
 Diagnostics Tools
 ```
 
-## 3. VALIDATION REQUEST
+## 4. VALIDATION REQUEST
 
-Let's verify the **Network Segmentation**.
+The initial request consists of verifying the separation between the two **network domains**.
 
-### 3.1 Verify connectivity between clients **within** the same BU using the Diagnostic Tools
+### 4.1 Verify connectivity between clients **within** the same Segment using the Diagnostic Tools
 
 You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Assets` section.
 

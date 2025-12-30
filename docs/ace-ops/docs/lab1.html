@@ -345,8 +345,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-configuration">2. INITIAL CONFIGURATION</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-servers">2.1 Task Servers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-topology">2.2 Dynamic Topology</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-test-instances">2.3 How to Access Test Instances</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client">2.3.1 Personal SSH client</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traffic-generating-instances">3 Traffic-generating instances</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gatus-dashboard">3.1 Gatus Dashboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-client-and-jump-box">3.2 SSH client and Jump Box</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client">3.2.1 Personal SSH client</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guacamole-client">2.3.2 Guacamole client</a></li>
 </ul>
 </li>
@@ -359,8 +363,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools">2.5 Enterprise-Grade Tools</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">3. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">3.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">4. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-segment-using-the-diagnostic-tools">4.1 Verify connectivity between clients <strong>within</strong> the same Segment using the Diagnostic Tools</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">3.2 Verify connectivity between clients <strong>within</strong> the same BU Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-diagnostic-tools">3.3 Ensure workloads do not have <strong>cross-BU</strong> connectivity using the Diagnostic Tools</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-ssh-client-bonus">3.4 Ensure workloads do not have <strong>cross-BU</strong> connectivity Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
@@ -490,11 +494,23 @@ document.write(`
 <p><strong>Always</strong> refer to your personal POD for the accurate IP addresses. The IP addresses displayed in the following screenshots are only <ins>examples</ins> sourced from a different POD and are intended solely for the creation of the lab guides.</p>
 </div>
 </section>
-<section id="how-to-access-test-instances">
-<h3>2.3 How to Access Test Instances<a class="headerlink" href="#how-to-access-test-instances" title="Link to this heading">#</a></h3>
-<p>There are <strong>two</strong> SSH access methods available to connect to any instance in the lab’s hybrid‑cloud environment.</p>
+</section>
+<section id="traffic-generating-instances">
+<h2>3 Traffic-generating instances<a class="headerlink" href="#traffic-generating-instances" title="Link to this heading">#</a></h2>
+<p>The instances deployed within the multi-cloud environment automatically generate traffic using an application named <code class="docutils literal notranslate"><span class="pre">Gatus</span></code>.</p>
+<p>Gatus is an open-source, self-hosted health-check dashboard that periodically generates traffic to endpoints and presents their status, response times, and outages in a user-friendly web UI.</p>
+<section id="gatus-dashboard">
+<h3>3.1 Gatus Dashboard<a class="headerlink" href="#gatus-dashboard" title="Link to this heading">#</a></h3>
+</section>
+<section id="ssh-client-and-jump-box">
+<h3>3.2 SSH client and Jump Box<a class="headerlink" href="#ssh-client-and-jump-box" title="Link to this heading">#</a></h3>
+<p>Alternatively, you can access the test instances either with your personal SSH client or by leveraging the Jump Box service.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SSH client should be used if your corporate laptop restricts port 22. The Jump Box can also be used in cases where port 22 is blocked.</p>
+</div>
 <section id="personal-ssh-client">
-<h4>2.3.1 Personal SSH client<a class="headerlink" href="#personal-ssh-client" title="Link to this heading">#</a></h4>
+<h4>3.2.1 Personal SSH client<a class="headerlink" href="#personal-ssh-client" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><span style='color:orange'><strong>SSH</strong></span>
 from your laptop (recommended).</p></li>
@@ -600,15 +616,7 @@ from your laptop (recommended).</p></li>
 </section>
 <section id="pod-portal">
 <h4>2.4.3 POD Portal<a class="headerlink" href="#pod-portal" title="Link to this heading">#</a></h4>
-<p>From your <strong>personal POD portal</strong>, where you can also utilize the DNS symbolic names.</p>
-<p>Access your personal POD to obtain the symbolic names of any test instances.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<ul class="simple">
-<li><p>Use the symbolic name containing the word <code class="docutils literal notranslate"><span class="pre">&quot;public&quot;</span></code> to log into the instance from your laptop.</p></li>
-<li><p>Use the symbolic name containing the word <code class="docutils literal notranslate"><span class="pre">&quot;private&quot;</span></code> for East-West traffic verification after accessing any test instance from your laptop.</p></li>
-</ul>
-</div>
+<p>From your <strong>personal POD portal</strong>.</p>
 <figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab1-podred.png"><img alt="../_images/lab1-podred.png" src="../_images/lab1-podred.png" style="height: 300px;" />
 </a>
@@ -620,7 +628,7 @@ from your laptop (recommended).</p></li>
 </section>
 <section id="enterprise-grade-tools">
 <h3>2.5 Enterprise-Grade Tools<a class="headerlink" href="#enterprise-grade-tools" title="Link to this heading">#</a></h3>
-<p>Alternatively, you can skip using the SSH client or a Jumpbox altogether and rely entirely on the <code class="docutils literal notranslate"><span class="pre">enterprise-grade</span> <span class="pre">tools</span></code> available on all Aviatrix Gateways.</p>
+<p>Alternatively, you can skip using the SSH client or the Jumpbox (i.e., the Guacamole client) altogether and rely entirely on the <code class="docutils literal notranslate"><span class="pre">enterprise-grade</span> <span class="pre">tools</span></code> available on all Aviatrix Gateways.</p>
 <ul class="simple">
 <li><p>Navigate to <strong>Copilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run <strong>ping</strong>, <strong>traceroute</strong>, <strong>packet capture</strong>, and more.</p></li>
 </ul>
@@ -634,10 +642,10 @@ from your laptop (recommended).</p></li>
 </section>
 </section>
 <section id="validation-request">
-<h2>3. VALIDATION REQUEST<a class="headerlink" href="#validation-request" title="Link to this heading">#</a></h2>
-<p>Let’s verify the <strong>Network Segmentation</strong>.</p>
-<section id="verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">
-<h3>3.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools<a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+<h2>4. VALIDATION REQUEST<a class="headerlink" href="#validation-request" title="Link to this heading">#</a></h2>
+<p>The initial request consists of verifying the separation between the two <strong>network domains</strong>.</p>
+<section id="verify-connectivity-between-clients-within-the-same-segment-using-the-diagnostic-tools">
+<h3>4.1 Verify connectivity between clients <strong>within</strong> the same Segment using the Diagnostic Tools<a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-segment-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
 <p>You can generate the <strong>ping directly</strong> from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of <strong>BU1 Analytics</strong> and <strong>BU1 DB</strong> from the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Assets</span></code> section.</p>
 <figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab1-diagnosticstools11.png"><img alt="../_images/lab1-diagnosticstools11.png" src="../_images/lab1-diagnosticstools11.png" style="height: 400px;" />
@@ -1066,8 +1074,12 @@ from your laptop (recommended).</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-configuration">2. INITIAL CONFIGURATION</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-servers">2.1 Task Servers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-topology">2.2 Dynamic Topology</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-test-instances">2.3 How to Access Test Instances</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client">2.3.1 Personal SSH client</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traffic-generating-instances">3 Traffic-generating instances</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gatus-dashboard">3.1 Gatus Dashboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-client-and-jump-box">3.2 SSH client and Jump Box</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client">3.2.1 Personal SSH client</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guacamole-client">2.3.2 Guacamole client</a></li>
 </ul>
 </li>
@@ -1080,8 +1092,8 @@ from your laptop (recommended).</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools">2.5 Enterprise-Grade Tools</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">3. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-diagnostic-tools">3.1 Verify connectivity between clients <strong>within</strong> the same BU using the Diagnostic Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">4. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-segment-using-the-diagnostic-tools">4.1 Verify connectivity between clients <strong>within</strong> the same Segment using the Diagnostic Tools</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-bu-using-the-ssh-client-bonus">3.2 Verify connectivity between clients <strong>within</strong> the same BU Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-diagnostic-tools">3.3 Ensure workloads do not have <strong>cross-BU</strong> connectivity using the Diagnostic Tools</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-workloads-do-not-have-cross-bu-connectivity-using-the-ssh-client-bonus">3.4 Ensure workloads do not have <strong>cross-BU</strong> connectivity Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
