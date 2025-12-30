@@ -220,14 +220,17 @@ The SSH client should be used if your corporate laptop restricts port 22. The Ju
 
 #### 4.2.1 Personal SSH client
 
-- <span style='color:orange'>**SSH**</span>
-from your laptop (recommended).
+- <span style='color:orange'>**SSH**</span> from your laptop to the public IP addresses of the instances you want to access.
 
 ```{figure} images/lab1-publicip.png
 ---
 align: center
 ---
 Public IP
+```
+
+```{important}
+Please be aware that the AWS and GCP instances are reachable from your laptop, as they reside in public subnets; in contrast, the two Azure instances are not accessible from your laptop, since they reside in private subnets.
 ```
 
 #### 4.2.2 Jump Box
