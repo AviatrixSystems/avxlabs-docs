@@ -2,7 +2,17 @@
 
 ## 1. SCENARIO
 
-The infrastructure has recently been divided into two network domains: **BU1** and **BU2**.
+The `Aviatrix Cloud Native Security Fabric (CNSF)` was deployed within the hybrid-cloud environment to establish initial network connectivity through IPSec tunnels.
+
+```{figure} images/lab1-segmentation90.png
+---
+height: 400px
+align: center
+---
+Initial Topology
+```
+
+The administrator then partitioned the environment into distinct network domains: **BU1** and **BU2**.
 
 Please verify the segregation between these two domains, as implemented through the `Aviatrix Cloud Native Security Fabric (CNSF)`.
 
@@ -11,7 +21,7 @@ Please verify the segregation between these two domains, as implemented through 
 height: 400px
 align: center
 ---
-Initial Topology
+Topology after the Network Segmentation
 ```
 
 ## 2. INITIAL CONFIGURATION
