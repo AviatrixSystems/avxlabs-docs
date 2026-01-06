@@ -217,6 +217,14 @@ IP Addresses on the POD Portal
 
 The instances deployed within the multi-cloud environment automatically generate traffic using an application named `Gatus`.
 
+```{figure} images/lab1-gatus909.png
+---
+height: 300px
+align: center
+---
+All instances are currently generating traffic
+```
+
 ```{important}
 Gatus is an open-source, self-hosted health-check dashboard that periodically generates traffic to endpoints and presents their status, response times, and outages in a user-friendly web UI.
 ```
@@ -225,13 +233,15 @@ Gatus is an open-source, self-hosted health-check dashboard that periodically ge
 
 ## 5. SSH client and Jump Box
 
-Alternatively, you can access the test instances either with your personal SSH client or by leveraging the Jump Box service.
+Want direct access to the instances to generate traffic? Use your own SSH client, or the Guacamole  client (i.e., the Jumpbox) available in the POD Portal.
 
 ```{caution}
-The SSH client should be used if your corporate laptop restricts port 22. The Jump Box can also be used in cases where port 22 is blocked.
+In the subsequent tasks, certain items will be labeled <span style='color:#33ECFF'>"bonus"</span></summary>. These tasks pertain to generating traffic directly from the instances and may be skipped.
+
+For corporate laptops, port 22 is typically blocked; therefore, please skip the Bonus tasks. If you are on a non-corporate device without port 22 restrictions, you may complete the Bonus tasks using an SSH client or Jump Box to access the instances.
 ```
 
-#### 4.2.1 Personal SSH client
+### 5.1 Personal SSH client
 
 - <span style='color:orange'>**SSH**</span> from your laptop to the public IP addresses of the instances you want to access.
 
@@ -243,10 +253,10 @@ Public IP
 ```
 
 ```{important}
-Please be aware that the AWS and GCP instances are reachable from your laptop, as they reside in public subnets; in contrast, the two Azure instances are not accessible from your laptop, since they reside in private subnets.
+Please be aware that the AWS and GCP instances are reachable from your laptop, as they reside in **public** subnets; in contrast, the two Azure instances are not accessible from your laptop, since they reside in **private** subnets.
 ```
 
-#### 4.2.2 Jump Box
+### 5.2 Jump Box
 
 The Jumpbox button on the POD Portal lets you access the Guacamole client, a lightweight virtual desktop from which you can open an SSH terminal.
 
@@ -288,7 +298,7 @@ align: center
 Guacamole Menu
 ```
 
-## 5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS
+## 6. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS
 
 Alternatively, you can bypass the SSH client, Jumpbox (Guacamole client), and the Gatus Dashboard and rely entirely on the `enterprise-grade tools`  provided by all Aviatrix Gateways.
 
