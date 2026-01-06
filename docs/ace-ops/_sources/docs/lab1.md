@@ -138,9 +138,36 @@ The IP addresses can be easily obtained using **three** different methods, accor
 
 ### 3.1 Dynamic Topology - Properties
 
-From the **Properties** section of each Virtual Machine in the Dynamic Topology:
+You can retrieve IP addresses from the **Properties** section of each instance in the Dynamic Topology.
 
-Expand the **_ace-aws-eu-west-1-spoke1_** VPC and click on the test instance, then explore the `"Properties"` section on the right-hand side.
+- Navigate to **CoPilot > Cloud Fabric > Topology** and
+expand the **_ace-aws-eu-west-1-spoke1_** VPC icon, click the test instance "bu1-frontend", then explore the `"Properties"` pane on the right-hand side.
+
+```{tip}
+To view the full hostnames of each node, select `"Show Labels"` from the bottom left sidebar.
+```{figure} images/lab1-showlabels.png
+---
+height: 400px
+align: center
+---
+Show Labels
+```
+
+```{figure} images/lab1-vpcicon.png
+---
+height: 400px
+align: center
+---
+VPC icon
+```
+
+```{figure} images/lab1-ec2.png
+---
+height: 400px
+align: center
+---
+Instance Properties Pane
+```
 
 ```{caution}
 You **cannot** connect to any Aviatrix Gateways using the SSH protocol, <ins>as port 22 is secured</ins>!
@@ -154,29 +181,11 @@ align: center
 EC2 Instance
 ```
 
-```{figure} images/lab1-ec2.png
----
-height: 400px
-align: center
----
-Instance Properties
-```
-
-```{tip}
-To view the full hostnames of each node, select `"Show Labels"` from the bottom left sidebar.
-```{figure} images/lab1-showlabels.png
----
-height: 400px
-align: center
----
-Show Labels
-```
-
 ### 3.2 Cloud Assets
 
-From the **Virtual Machines** inventory within the Cloud Assets section.
+Another important and useful method for obtaining IP addresses in CoPilot is through the **Virtual Machines** section.
 
-Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Perform a search for "_frontend_" and extract the corresponding IP addresses from the resulting list.
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Perform a search for "_frontend_" and extract the corresponding IP addresses from the resulting list.
 
 ```{figure} images/lab1-assets.png
 ---
@@ -187,30 +196,34 @@ Inventory
 ```
 
 ```{important}
-Always refer to your personal CoPilot for the IP addresses. These images are only examples.
+Always refer to your personal CoPilot for the IP addresses. 
+
+<ins>These images are only examples!</ins>
 ```
 
 ### 3.3 POD Portal
 
-From your **personal POD portal**.
+You can also retrieve IP addresses from the **POD portal**, but we recommend using CoPilot exclusively to familiarize yourself with the tool.
 
 ```{figure} images/lab1-podred.png
 ---
 height: 300px
 align: center
 ---
-DNS Names
+IP Addresses on the POD Portal
 ```
 
 ## 4 TRAFFIC-GENERATING INSTANCES
 
 The instances deployed within the multi-cloud environment automatically generate traffic using an application named `Gatus`.
 
+```{important}
 Gatus is an open-source, self-hosted health-check dashboard that periodically generates traffic to endpoints and presents their status, response times, and outages in a user-friendly web UI.
+```
 
 ### 4.1 Gatus Dashboard
 
-### 4.2 SSH client and Jump Box
+## 5. SSH client and Jump Box
 
 Alternatively, you can access the test instances either with your personal SSH client or by leveraging the Jump Box service.
 
