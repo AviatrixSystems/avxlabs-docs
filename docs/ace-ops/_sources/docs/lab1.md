@@ -181,11 +181,15 @@ align: center
 EC2 Instance
 ```
 
+```{important}
+Important: choose the correct instance. The Aviatrix gateway uses the standard router icon (four arrows). Always select the User Instance, because the gateway itself cannot be accessed via SSH.
+```
+
 ### 3.2 Cloud Assets
 
 Another important and useful method for obtaining IP addresses in CoPilot is through the **Virtual Machines** section.
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Perform a search for "_frontend_" and extract the corresponding IP addresses from the resulting list.
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Perform a search for "_frontend_". The results will display the information you need, including the IP addresses.
 
 ```{figure} images/lab1-assets.png
 ---
