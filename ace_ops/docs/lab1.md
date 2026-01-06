@@ -219,7 +219,7 @@ The instances deployed within the multi-cloud environment automatically generate
 
 ```{figure} images/lab1-gatus909.png
 ---
-height: 300px
+height: 400px
 align: center
 ---
 All instances are currently generating traffic
@@ -238,12 +238,12 @@ Want direct access to the instances to generate traffic? Use your own SSH client
 ```{caution}
 In the subsequent tasks, certain items will be labeled <span style='color:#33ECFF'>"bonus"</span></summary>. These tasks pertain to generating traffic directly from the instances and may be skipped.
 
-For corporate laptops, port 22 is typically blocked; therefore, please skip the Bonus tasks. If you are on a non-corporate device without port 22 restrictions, you may complete the Bonus tasks using an SSH client or Jump Box to access the instances.
+For corporate laptops, port 22 is typically blocked; therefore, <ins>please skip the Bonus tasks</ins>. If you are on a non-corporate device without port 22 restrictions, you may complete the Bonus tasks using an SSH client or Jump Box to access the instances.
 ```
 
 ### 5.1 Personal SSH client
 
-- <span style='color:orange'>**SSH**</span> from your laptop to the public IP addresses of the instances you want to access.
+- Open your <span style='color:orange'>**SSH**</span> client and connect to the public IPs of the instances you need. You’ll find the credentials in the POD Portal.
 
 ```{figure} images/lab1-publicip.png
 ---
@@ -260,7 +260,7 @@ Please be aware that the AWS and GCP instances are reachable from your laptop, a
 
 The Jumpbox button on the POD Portal lets you access the Guacamole client, a lightweight virtual desktop from which you can open an SSH terminal.
 
-- <span style='color:orange'>**Guacamole Client**</span>, from the POD Portal is especially useful for corporate networks that block outbound port 22.
+- The <span style='color:orange'>**Jumpbox**</span> provided via the POD Portal is especially useful in networks that block outbound port 22.
 
 ```{figure} images/lab1-jumpbox.png
 ---
@@ -300,7 +300,7 @@ Guacamole Menu
 
 ## 6. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS
 
-Alternatively, you can bypass the SSH client, Jumpbox (Guacamole client), and the Gatus Dashboard and rely entirely on the `enterprise-grade tools`  provided by all Aviatrix Gateways.
+All Aviatrix gateways come with built-in `enterprise-grade tools`. If you want, you can skip the Gatus Dashboard and direct SSH/Guacamole access to the instances. The Spoke Gateway acts as the default gateway in the VPOC, letting you run ping, traceroute, or packet captures right from the Aviatrix Gateway.
 
 - Navigate to **Copilot > Diagnostics > Diagnostics Tools**. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
 
@@ -322,13 +322,15 @@ align: center
 Diagnostic Tools from the Topology
 ```
 
-## 6. VALIDATION REQUEST
+## 7. VALIDATION REQUEST
+
+Having explored IP address retrieval and the available traffic-generation tools, you are now ready to begin the lab with its first task.
 
 The initial request is to verify the separation between the two network domains. Note that the verification consists of checking the CoPilot configuration and, of course, testing with the test instances and the traffic they generate to each other. This section shows how to use Gatus, the SSH client, and the Jumpbox, as well as the enterprise-grade tools (the recommended method).
 
-### 6.1 Verify connectivity between clients **within** the same network domain Using Gatus
+### 7.1 Verify connectivity between clients **within** the same network domain Using Gatus
 
-### 6.2 Verify connectivity between clients **within** the same network domain Using the Diagnostic Tools
+### 7.2 Verify connectivity between clients **within** the same network domain Using the Diagnostic Tools
 
 You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Assets` section.
 
@@ -380,7 +382,7 @@ align: center
 bu1-db is reachable
 ```
 
-### 6.3 Verify connectivity between clients **within** the same network domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 7.3 Verify connectivity between clients **within** the same network domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH into the **BU1 Frontend**  instance in AWS.
 
@@ -471,9 +473,9 @@ CURL
 Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.
 ```
 
-### 6.4 Ensure workloads remain isolated across network domains Using Gatus.
+### 7.4 Ensure workloads remain isolated across network domains Using Gatus.
 
-### 6.5 Ensure workloads remain isolated across network domains Using the Diagnostic Tools.
+### 7.5 Ensure workloads remain isolated across network domains Using the Diagnostic Tools.
 
 ```{figure} images/lab1-diagnosticstools1100.png
 ---
@@ -519,7 +521,7 @@ align: center
 ping to BU2-DB
 ```
 
-### 6.6 Ensure workloads remain isolated across network domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 7.6 Ensure workloads remain isolated across network domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
 - From **BU1 Frontend** try to SSH **BU2 Mobile App** (use again its Private IP address!).
@@ -548,7 +550,7 @@ align: center
 BU1 to BU2: SSH test fails
 ```
 
-### 6.7 Network Segmentation section
+### 7.7 Network Segmentation section
 
 * Check the **Network Segmentation** section on the CoPilot, and then look at the **Logical View**.
 
@@ -609,7 +611,7 @@ align: center
 Gateway Routes
 ```
 
-### 6.8 FlowIQ
+### 7.8 FlowIQ
 
 * Use the <span style='color:#FF0000'>**FlowIQ**</span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.
 
@@ -651,10 +653,9 @@ FlowIQ
 On the **Aviatrix Gateway** widget, the very first gateway from the list is the gateway with the highest traffic (in KibiBytes).
 ```
 
-### 6.9 Cloud Routes
+### 7.9 Cloud Routes
 
 * Use **Cloud Routes**  to identify the _originator_ of the route **172.16.211.0/24**.
-
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Cloud Routes**, search for the subnet **172.16.211.0/24** on the *search field* and then filter based on the following condition: "Gateway *contains* spoke1".
