@@ -20,7 +20,7 @@ Network Domains with the Connection Policy
 Navigate to **CoPilot > Networking > Network Segmentation > Network Domains**, then edit one of the network domains.
 ```
 
-The Connection Policy operates bidirectionally.
+The Connection Policy operates bidirectionally. It will merge the two Network Domains.
 
 ```{figure} images/lab2-editnd.png
 ---
@@ -52,7 +52,11 @@ align: center
 Logical View
 ```
 
-### 2.1 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools
+### 2.1 Verify the connectivity between BU1 and BU2 domains Using Gatus
+
+### 2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools
+
+Start your verification tests with the Diagnostic Tools.
 
 - Navigate to **CoPilot > Diagnostics > Diagnostic Tools**, select the **_ace-aws-eu-west-1-spoke1_** gateway, and run a ping to the **BU2-MobileApp** private IP address. This time ICMP traffic will be successful thanks to the Connection Policy.
 
@@ -64,7 +68,9 @@ align: center
 BU1 to BU2 is ok
 ```
 
-### 2.2 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 2.4 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+If you want to run the ping directly from the instance, complete this task using the SSH client.
 
   - SSH into the **BU1 Frontend** and run ping or SSH commands targeting the **BU2 Mobile App**.
   - Connectivity via ICMP ping and SSH between the two BUs is now established, thanks to the `Connection Policy`(commonly referred to as **_VRF leakage_**).
@@ -77,7 +83,7 @@ align: center
 BU1 to BU2 is ok
 ```
 
-### 2.3 Routing Tables
+### 2.5 Routing Tables
 
 - Review the routing tables (**VRFs**) managed by any of the transit gateways.
 
@@ -99,6 +105,14 @@ If you filter by either of the two Network Domains, you will now see routes from
 ```
 
 ## 3. TROUBLESHOOT REQUEST
+
+The Apache HTTP Server running on the BU2 Mobile App has become unresponsive. The service is not accepting connections. Immediate troubleshooting is required to diagnose the cause of the failure.
+
+### 3.1 Troubleshoot Using Gatus
+
+### 3.2 Troubleshoot Using the Diagnostic Tools
+
+### 3.3 Troubleshoot Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 * From the **BU1 Frontend**, execute the *`curl`* command towards the private IP of **BU2 Mobile App**.
   
@@ -126,7 +140,9 @@ align: center
 PING and SSH are successful
 ```
 
-* Use `AppIQ` to verify the *CSP native cloud constructs* that isolate the two instances involved in this test.
+### 3.4 FlightPath
+
+* Use `FlightPath` to verify the *CSP native cloud constructs* that isolate the two instances involved in this test.
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > AppIQ > FlightPath**
@@ -173,7 +189,7 @@ AppIQ report
 This helps you to identify connectivity problems on the underlay environments of each CSP involved along the communication path between two nodes.
 ```
 
-### 3.1. Verify from AWS Console
+### 3.5 AWS Console Inspection
 
 Log in to the **AWS console**.
 
@@ -275,6 +291,12 @@ New inbound rule: allow port 80
 ```{caution}
 Please use the specific CIDR **10.0.0.0/8** instead of 0.0.0.0/0 to ensure precision in the Security Group rule!
 ```
+
+### 3.6 Verification Using Gatus
+
+### 3.7 Verification Using the Diagnostic Tools
+
+### 3.8 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Now re-run the **curl** command from the **_BU1 Frontend_** instance to the private IP address of the **_BU2 Mobile App_**.
 
