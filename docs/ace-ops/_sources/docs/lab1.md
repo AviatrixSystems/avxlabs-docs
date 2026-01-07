@@ -326,6 +326,14 @@ align: center
 Diagnostic Tools from the Topology
 ```
 
+```{figure} images/lab1-diagnosticstools90123.png
+---
+height: 400px
+align: center
+---
+Diagnostic Tools
+```
+
 ## 7. VALIDATION REQUEST
 
 Having explored IP address retrieval and the available traffic-generation tools, you are now ready to begin the lab with its first task.
@@ -377,7 +385,6 @@ align: center
 ---
 bu1-analytics is reachable
 ```
-
 ```{figure} images/lab1-diagnosticstools993.png
 ---
 height: 200px
@@ -386,12 +393,16 @@ align: center
 bu1-db is reachable
 ```
 
+```{tip}
+Diagnostics tools can also be launched from Topology.
+```
+
 ### 7.3 Verify connectivity between clients **within** the same network domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH into the **BU1 Frontend**  instance in AWS.
 
 ```{important}
-The credentials for accessing the EC2 instances and VMs are available in your personal POD Portal, within the dedicated widget labeled `"SSH for Test Instances"`.
+The credentials for accessing the EC2 instances and VMs are available in your personal POD Portal, nder the section labeled `"SSH for Test Instances"`.
 ```{figure} images/lab1-widget.png
 ---
 height: 400px
@@ -481,6 +492,8 @@ Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not
 
 ### 7.5 Ensure workloads remain isolated across network domains Using the Diagnostic Tools.
 
+We should ensure that, from the BU1 Frontend perspective, connectivity to the BU2 Mobile App and the BU2 DB is blocked.
+
 ```{figure} images/lab1-diagnosticstools1100.png
 ---
 height: 400px
@@ -490,6 +503,10 @@ Default Gateway and the Destinations
 ```
 
 - Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Search for `mobile-app` and obtain its private IP address. Next, search for `bu2-db` and obtain its private IP address.
+
+```{tip}
+Feel free to open and maintain multiple tabs to keep the information you need readily available.
+```
 
 ```{figure} images/lab1-mobileapp00.png
 ---
@@ -556,6 +573,8 @@ BU1 to BU2: SSH test fails
 
 ### 7.7 Network Segmentation section
 
+Now that we have verified connectivity within the Network Domain and across the two different network Domains, let's explore the Network Segmentation section and other useful areas of CoPilot.
+
 * Check the **Network Segmentation** section on the CoPilot, and then look at the **Logical View**.
 
 ```{tip}
@@ -617,6 +636,8 @@ Gateway Routes
 
 ### 7.8 FlowIQ
 
+On the FlowIQ overview page, CoPilot shows all traffic that has traversed your Aviatrix transit network in the last hour, day, week, month, or a custom timeframe.
+
 * Use the <span style='color:#FF0000'>**FlowIQ**</span> functionality from the CoPilot, <ins> for inspecting the NetFlow Data.
 
 ```{tip}
@@ -658,6 +679,8 @@ On the **Aviatrix Gateway** widget, the very first gateway from the list is the 
 ```
 
 ### 7.9 Cloud Routes
+
+Cloud Routes provides a unified view of routing information for all resources in your Aviatrix transit network, including multicloud and on-premises (external/Site-to-Cloud) connections. This central view lets cloud engineers monitor across clouds without signing into each cloud provider console.
 
 * Use **Cloud Routes**  to identify the _originator_ of the route **172.16.211.0/24**.
 
