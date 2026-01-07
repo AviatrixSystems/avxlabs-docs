@@ -343,13 +343,21 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">2.1 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.2 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables">2.3 Routing Tables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-gatus">2.1 Verify the connectivity between BU1 and BU2 domains Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.4 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables">2.5 Routing Tables</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">3. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">3.1. Verify from AWS Console</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-using-gatus">3.1 Troubleshoot Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-using-the-diagnostic-tools">3.2 Troubleshoot Using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-using-the-ssh-client-bonus">3.3 Troubleshoot Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">3.4 FlightPath</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-console-inspection">3.5 AWS Console Inspection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-gatus">3.6 Verification Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-the-diagnostic-tools">3.7 Verification Using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-the-ssh-client-bonus">3.8 Verification Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 </ul>
@@ -385,7 +393,7 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Networking &gt; Network Segmentation &gt; Network Domains</strong>, then edit one of the network domains.</p>
 </div>
-<p>The Connection Policy operates bidirectionally.</p>
+<p>The Connection Policy operates bidirectionally. It will merge the two Network Domains.</p>
 <figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/lab2-editnd.png"><img alt="../_images/lab2-editnd.png" src="../_images/lab2-editnd.png" style="height: 200px;" />
 </a>
@@ -413,8 +421,12 @@ document.write(`
 <p><span class="caption-number">Fig. 63 </span><span class="caption-text">Logical View</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<section id="verify-the-connectivity-between-bu1-and-bu2-domains-using-gatus">
+<h3>2.1 Verify the connectivity between BU1 and BU2 domains Using Gatus<a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-gatus" title="Link to this heading">#</a></h3>
+</section>
 <section id="verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">
-<h3>2.1 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools<a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+<h3>2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools<a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+<p>Start your verification tests with the Diagnostic Tools.</p>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostic Tools</strong>, select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway, and run a ping to the <strong>BU2-MobileApp</strong> private IP address. This time ICMP traffic will be successful thanks to the Connection Policy.</p></li>
 </ul>
@@ -427,7 +439,8 @@ document.write(`
 </figure>
 </section>
 <section id="verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">
-<h3>2.2 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<h3>2.4 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<p>If you want to run the ping directly from the instance, complete this task using the SSH client.</p>
 <ul class="simple">
 <li><p>SSH into the <strong>BU1 Frontend</strong> and run ping or SSH commands targeting the <strong>BU2 Mobile App</strong>.</p></li>
 <li><p>Connectivity via ICMP ping and SSH between the two BUs is now established, thanks to the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code>(commonly referred to as <strong><em>VRF leakage</em></strong>).</p></li>
@@ -441,7 +454,7 @@ document.write(`
 </figure>
 </section>
 <section id="routing-tables">
-<h3>2.3 Routing Tables<a class="headerlink" href="#routing-tables" title="Link to this heading">#</a></h3>
+<h3>2.5 Routing Tables<a class="headerlink" href="#routing-tables" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Review the routing tables (<strong>VRFs</strong>) managed by any of the transit gateways.</p></li>
 </ul>
@@ -464,6 +477,15 @@ document.write(`
 </section>
 <section id="troubleshoot-request">
 <h2>3. TROUBLESHOOT REQUEST<a class="headerlink" href="#troubleshoot-request" title="Link to this heading">#</a></h2>
+<p>The Apache HTTP Server running on the BU2 Mobile App has become unresponsive. The service is not accepting connections. Immediate troubleshooting is required to diagnose the cause of the failure.</p>
+<section id="troubleshoot-using-gatus">
+<h3>3.1 Troubleshoot Using Gatus<a class="headerlink" href="#troubleshoot-using-gatus" title="Link to this heading">#</a></h3>
+</section>
+<section id="troubleshoot-using-the-diagnostic-tools">
+<h3>3.2 Troubleshoot Using the Diagnostic Tools<a class="headerlink" href="#troubleshoot-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+</section>
+<section id="troubleshoot-using-the-ssh-client-bonus">
+<h3>3.3 Troubleshoot Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#troubleshoot-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>From the <strong>BU1 Frontend</strong>, execute the <em><code class="docutils literal notranslate"><span class="pre">curl</span></code></em> command towards the private IP of <strong>BU2 Mobile App</strong>.</p></li>
 </ul>
@@ -488,8 +510,11 @@ document.write(`
 <p><span class="caption-number">Fig. 68 </span><span class="caption-text">PING and SSH are successful</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="flightpath">
+<h3>3.4 FlightPath<a class="headerlink" href="#flightpath" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">AppIQ</span></code> to verify the <em>CSP native cloud constructs</em> that isolate the two instances involved in this test.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">FlightPath</span></code> to verify the <em>CSP native cloud constructs</em> that isolate the two instances involved in this test.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -534,8 +559,9 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">AppIQ</span></code> is a troubleshooting tool. It retrieves and displays, in a side by side fashion, cloud provider’s network related information such as <strong>Security Groups</strong>, <strong>NACLs</strong> and <strong>Route Tables</strong>.</p>
 <p>This helps you to identify connectivity problems on the underlay environments of each CSP involved along the communication path between two nodes.</p>
 </div>
-<section id="verify-from-aws-console">
-<h3>3.1. Verify from AWS Console<a class="headerlink" href="#verify-from-aws-console" title="Link to this heading">#</a></h3>
+</section>
+<section id="aws-console-inspection">
+<h3>3.5 AWS Console Inspection<a class="headerlink" href="#aws-console-inspection" title="Link to this heading">#</a></h3>
 <p>Log in to the <strong>AWS console</strong>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -619,6 +645,15 @@ document.write(`
 <p class="admonition-title">Caution</p>
 <p>Please use the specific CIDR <strong>10.0.0.0/8</strong> instead of 0.0.0.0/0 to ensure precision in the Security Group rule!</p>
 </div>
+</section>
+<section id="verification-using-gatus">
+<h3>3.6 Verification Using Gatus<a class="headerlink" href="#verification-using-gatus" title="Link to this heading">#</a></h3>
+</section>
+<section id="verification-using-the-diagnostic-tools">
+<h3>3.7 Verification Using the Diagnostic Tools<a class="headerlink" href="#verification-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+</section>
+<section id="verification-using-the-ssh-client-bonus">
+<h3>3.8 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verification-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>Now re-run the <strong>curl</strong> command from the <strong><em>BU1 Frontend</em></strong> instance to the private IP address of the <strong><em>BU2 Mobile App</em></strong>.</p>
 <p>Curl command will work this time.</p>
 <figure class="align-center" id="id23">
@@ -697,13 +732,21 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">2.1 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.2 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables">2.3 Routing Tables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-gatus">2.1 Verify the connectivity between BU1 and BU2 domains Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.4 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables">2.5 Routing Tables</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">3. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-from-aws-console">3.1. Verify from AWS Console</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-using-gatus">3.1 Troubleshoot Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-using-the-diagnostic-tools">3.2 Troubleshoot Using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-using-the-ssh-client-bonus">3.3 Troubleshoot Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flightpath">3.4 FlightPath</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-console-inspection">3.5 AWS Console Inspection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-gatus">3.6 Verification Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-the-diagnostic-tools">3.7 Verification Using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-the-ssh-client-bonus">3.8 Verification Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 </ul>
