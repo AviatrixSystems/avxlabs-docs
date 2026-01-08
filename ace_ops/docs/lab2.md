@@ -14,7 +14,7 @@ Network Domains with the Connection Policy
 
 ## 2. CHANGE REQUEST
 
-* Apply the **Connection Policy**
+* Apply the **Connection Policy** between the two Network Domains.
 
 ```{tip}
 Navigate to **CoPilot > Networking > Network Segmentation > Network Domains**, then edit one of the network domains.
