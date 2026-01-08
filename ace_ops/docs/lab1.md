@@ -223,7 +223,39 @@ Gatus is an open-source, self-hosted health-check dashboard that periodically ge
 
 ### 4.1 Gatus Dashboard
 
-## 5. SSH client and Jump Box
+## 5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS
+
+All Aviatrix gateways come with built-in `enterprise-grade tools`. If you want, you can skip the Gatus Dashboard and direct SSH/Guacamole access to the instances. The Spoke Gateway acts as the default gateway in the VPOC, letting you run ping, traceroute, or packet captures right from the Aviatrix Gateway.
+
+- Navigate to **Copilot > Diagnostics > Diagnostics Tools**. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
+
+```{figure} images/lab1-diagnosticstools.png
+---
+height: 400px
+align: center
+---
+Diagnostic Tools
+```
+
+Diagnostic Tools can also be launched directly from the Topology. Please select an Aviatrix Gateway (identified by the gateway icon with four arrows). After selecting the gateway, click the **wrench icon** on the right-hand side to initiate the Diagnostic Tools.
+
+```{figure} images/lab1-diagnosticstools90.png
+---
+height: 400px
+align: center
+---
+Diagnostic Tools from the Topology
+```
+
+```{figure} images/lab1-diagnosticstools90123.png
+---
+height: 400px
+align: center
+---
+Diagnostic Tools
+```
+
+## 6. SSH client and Jump Box
 
 Want direct access to the instances to generate traffic? Use your own SSH client, or the Guacamole  client (i.e., the Jumpbox) available in the POD Portal.
 
@@ -233,7 +265,7 @@ In the subsequent tasks, certain items will be labeled <span style='color:#33ECF
 For corporate laptops, port 22 is typically blocked; therefore, <ins>please skip the Bonus tasks</ins>. If you are on a non-corporate device without port 22 restrictions, you may complete the Bonus tasks using an SSH client or Jump Box to access the instances.
 ```
 
-### 5.1 Personal SSH client
+### 6.1 Personal SSH client
 
 - Open your <span style='color:orange'>**SSH**</span> client and connect to the public IPs of the instances you need. You’ll find the credentials in the POD Portal.
 
@@ -248,7 +280,7 @@ Public IP
 Please be aware that the AWS and GCP instances are reachable from your laptop, as they reside in **public** subnets; in contrast, the two Azure instances are not accessible from your laptop, since they reside in **private** subnets.
 ```
 
-### 5.2 Jump Box
+### 6.2 Jump Box
 
 The Jumpbox button on the POD Portal lets you access the Guacamole client, a lightweight virtual desktop from which you can open an SSH terminal.
 
@@ -288,38 +320,6 @@ height: 400px
 align: center
 ---
 Guacamole Menu
-```
-
-## 6. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS
-
-All Aviatrix gateways come with built-in `enterprise-grade tools`. If you want, you can skip the Gatus Dashboard and direct SSH/Guacamole access to the instances. The Spoke Gateway acts as the default gateway in the VPOC, letting you run ping, traceroute, or packet captures right from the Aviatrix Gateway.
-
-- Navigate to **Copilot > Diagnostics > Diagnostics Tools**. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
-
-```{figure} images/lab1-diagnosticstools.png
----
-height: 400px
-align: center
----
-Diagnostic Tools
-```
-
-Diagnostic Tools can also be launched directly from the Topology. Please select an Aviatrix Gateway (identified by the gateway icon with four arrows). After selecting the gateway, click the **wrench icon** on the right-hand side to initiate the Diagnostic Tools.
-
-```{figure} images/lab1-diagnosticstools90.png
----
-height: 400px
-align: center
----
-Diagnostic Tools from the Topology
-```
-
-```{figure} images/lab1-diagnosticstools90123.png
----
-height: 400px
-align: center
----
-Diagnostic Tools
 ```
 
 ## 7. VALIDATION REQUEST

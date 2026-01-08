@@ -356,12 +356,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gatus-dashboard">4.1 Gatus Dashboard</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-client-and-jump-box">5. SSH client and Jump Box</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client">5.1 Personal SSH client</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jump-box">5.2 Jump Box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools-on-the-aviatrix-gateways">5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-client-and-jump-box">6. SSH client and Jump Box</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client">6.1 Personal SSH client</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jump-box">6.2 Jump Box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools-on-the-aviatrix-gateways">6. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">7. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-gatus">7.1 Verify connectivity between clients <strong>within</strong> the same network domain Using Gatus</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools">7.2 Verify connectivity between clients <strong>within</strong> the same network domain Using the Diagnostic Tools</a></li>
@@ -595,8 +595,37 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 <h3>4.1 Gatus Dashboard<a class="headerlink" href="#gatus-dashboard" title="Link to this heading">#</a></h3>
 </section>
 </section>
+<section id="enterprise-grade-tools-on-the-aviatrix-gateways">
+<h2>5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS<a class="headerlink" href="#enterprise-grade-tools-on-the-aviatrix-gateways" title="Link to this heading">#</a></h2>
+<p>All Aviatrix gateways come with built-in <code class="docutils literal notranslate"><span class="pre">enterprise-grade</span> <span class="pre">tools</span></code>. If you want, you can skip the Gatus Dashboard and direct SSH/Guacamole access to the instances. The Spoke Gateway acts as the default gateway in the VPOC, letting you run ping, traceroute, or packet captures right from the Aviatrix Gateway.</p>
+<ul class="simple">
+<li><p>Navigate to <strong>Copilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run <strong>ping</strong>, <strong>traceroute</strong>, <strong>packet capture</strong>, and more.</p></li>
+</ul>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/lab1-diagnosticstools.png"><img alt="../_images/lab1-diagnosticstools.png" src="../_images/lab1-diagnosticstools.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Diagnostic Tools</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Diagnostic Tools can also be launched directly from the Topology. Please select an Aviatrix Gateway (identified by the gateway icon with four arrows). After selecting the gateway, click the <strong>wrench icon</strong> on the right-hand side to initiate the Diagnostic Tools.</p>
+<figure class="align-center" id="id19">
+<a class="reference internal image-reference" href="../_images/lab1-diagnosticstools90.png"><img alt="../_images/lab1-diagnosticstools90.png" src="../_images/lab1-diagnosticstools90.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Diagnostic Tools from the Topology</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="../_images/lab1-diagnosticstools90123.png"><img alt="../_images/lab1-diagnosticstools90123.png" src="../_images/lab1-diagnosticstools90123.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Diagnostic Tools</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 <section id="ssh-client-and-jump-box">
-<h2>5. SSH client and Jump Box<a class="headerlink" href="#ssh-client-and-jump-box" title="Link to this heading">#</a></h2>
+<h2>6. SSH client and Jump Box<a class="headerlink" href="#ssh-client-and-jump-box" title="Link to this heading">#</a></h2>
 <p>Want direct access to the instances to generate traffic? Use your own SSH client, or the Guacamole  client (i.e., the Jumpbox) available in the POD Portal.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
@@ -604,14 +633,14 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 <p>For corporate laptops, port 22 is typically blocked; therefore, <ins>please skip the Bonus tasks</ins>. If you are on a non-corporate device without port 22 restrictions, you may complete the Bonus tasks using an SSH client or Jump Box to access the instances.</p>
 </div>
 <section id="personal-ssh-client">
-<h3>5.1 Personal SSH client<a class="headerlink" href="#personal-ssh-client" title="Link to this heading">#</a></h3>
+<h3>6.1 Personal SSH client<a class="headerlink" href="#personal-ssh-client" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Open your <span style='color:orange'><strong>SSH</strong></span> client and connect to the public IPs of the instances you need. You’ll find the credentials in the POD Portal.</p></li>
 </ul>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab1-publicip.png" src="../_images/lab1-publicip.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Public IP</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Public IP</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -620,72 +649,43 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 </div>
 </section>
 <section id="jump-box">
-<h3>5.2 Jump Box<a class="headerlink" href="#jump-box" title="Link to this heading">#</a></h3>
+<h3>6.2 Jump Box<a class="headerlink" href="#jump-box" title="Link to this heading">#</a></h3>
 <p>The Jumpbox button on the POD Portal lets you access the Guacamole client, a lightweight virtual desktop from which you can open an SSH terminal.</p>
 <ul class="simple">
 <li><p>The <span style='color:orange'><strong>Jumpbox</strong></span> provided via the POD Portal is especially useful in networks that block outbound port 22.</p></li>
 </ul>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="../_images/lab1-jumpbox.png"><img alt="../_images/lab1-jumpbox.png" src="../_images/lab1-jumpbox.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Guacamole Jumpbox</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Guacamole Jumpbox</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab1-guacamoleaccess.png" src="../_images/lab1-guacamoleaccess.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Guacamole Jumpbox Portal</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Guacamole Jumpbox Portal</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Once you have logged into the Guacamole Jumpbox, you will land in a <em>Virtual Desktop</em> from which you can open <strong>LXTerminal</strong>.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab1-guacamoleaccess098.png" src="../_images/lab1-guacamoleaccess098.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">LXTerminal</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">LXTerminal</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Please note that if you choose to use the Jumpbox, copy and paste functionality will not work directly from the host machine. To enable this feature, activate the <strong>Guacamole Menu</strong>, which is initially hidden. On a desktop or any device with a hardware keyboard, you can display this menu by pressing <strong><em>Ctrl+Alt+Shift</em></strong> on a Windows machine (<strong><em>Control+Shift+Command</em></strong> on a Mac).</p>
 </div>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab1-guacamoleterminal.png"><img alt="../_images/lab1-guacamoleterminal.png" src="../_images/lab1-guacamoleterminal.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Guacamole Menu</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Guacamole Menu</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-</section>
-<section id="enterprise-grade-tools-on-the-aviatrix-gateways">
-<h2>6. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS<a class="headerlink" href="#enterprise-grade-tools-on-the-aviatrix-gateways" title="Link to this heading">#</a></h2>
-<p>All Aviatrix gateways come with built-in <code class="docutils literal notranslate"><span class="pre">enterprise-grade</span> <span class="pre">tools</span></code>. If you want, you can skip the Gatus Dashboard and direct SSH/Guacamole access to the instances. The Spoke Gateway acts as the default gateway in the VPOC, letting you run ping, traceroute, or packet captures right from the Aviatrix Gateway.</p>
-<ul class="simple">
-<li><p>Navigate to <strong>Copilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run <strong>ping</strong>, <strong>traceroute</strong>, <strong>packet capture</strong>, and more.</p></li>
-</ul>
-<figure class="align-center" id="id23">
-<a class="reference internal image-reference" href="../_images/lab1-diagnosticstools.png"><img alt="../_images/lab1-diagnosticstools.png" src="../_images/lab1-diagnosticstools.png" style="height: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Diagnostic Tools</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Diagnostic Tools can also be launched directly from the Topology. Please select an Aviatrix Gateway (identified by the gateway icon with four arrows). After selecting the gateway, click the <strong>wrench icon</strong> on the right-hand side to initiate the Diagnostic Tools.</p>
-<figure class="align-center" id="id24">
-<a class="reference internal image-reference" href="../_images/lab1-diagnosticstools90.png"><img alt="../_images/lab1-diagnosticstools90.png" src="../_images/lab1-diagnosticstools90.png" style="height: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Diagnostic Tools from the Topology</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id25">
-<a class="reference internal image-reference" href="../_images/lab1-diagnosticstools90123.png"><img alt="../_images/lab1-diagnosticstools90123.png" src="../_images/lab1-diagnosticstools90123.png" style="height: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Diagnostic Tools</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 </section>
 <section id="validation-request">
 <h2>7. VALIDATION REQUEST<a class="headerlink" href="#validation-request" title="Link to this heading">#</a></h2>
@@ -1150,12 +1150,12 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gatus-dashboard">4.1 Gatus Dashboard</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-client-and-jump-box">5. SSH client and Jump Box</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client">5.1 Personal SSH client</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jump-box">5.2 Jump Box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools-on-the-aviatrix-gateways">5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-client-and-jump-box">6. SSH client and Jump Box</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-ssh-client">6.1 Personal SSH client</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jump-box">6.2 Jump Box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enterprise-grade-tools-on-the-aviatrix-gateways">6. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-request">7. VALIDATION REQUEST</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-gatus">7.1 Verify connectivity between clients <strong>within</strong> the same network domain Using Gatus</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools">7.2 Verify connectivity between clients <strong>within</strong> the same network domain Using the Diagnostic Tools</a></li>
