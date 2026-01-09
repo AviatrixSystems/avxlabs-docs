@@ -1005,11 +1005,12 @@ Refresh the web page, to see the changes reflected into your CoPilot's topology!
 ```
 
 ```{note}
-**`CLOUD WORKLOADS`**:
+**`CLOUD WORKLOADS (Copilot > Cloud Resources > Cloud Workloads > Virtual Machines)`**:
 
 Please note that both the public and private IP addresses of the test instances can be retrieved in Copilot: **Cloud Resources > Cloud Workloads > Virtual Machines**.
 ```{figure} images/lab2-newpic.png
 ---
+height: 400px
 align: center
 ---
 Cloud Workloads
