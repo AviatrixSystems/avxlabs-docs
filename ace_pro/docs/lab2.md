@@ -128,44 +128,11 @@ Check the **Gatus App** status for the remaining instances as well.
 
 Alternatively, if you want an additional verification, you can also access all the istances using an SSH client.
 
-- Navigate to your POD Portal and search for the widget assigned to the **_aws-us-east-2-spoke1-test1_** instance within the LAB2 and LAB3 sections. Then copy on the clipboard the <ins>symbolic public DNS name</ins> of the istance!
+You can access the instances deployed inside public subents using their **Public IP addresses**! You can retrieve them through your CoPilot, specifically from the Inventory, in other words the `Cloud Resources` section.
 
-```{figure} images/lab2-gatus06.png
----
-height: 250px
-align: center
----
-DNS name
-```
+#### 3.2.1 Cloud Workloads (to retrieve IP addresses)
 
-Now, open your **SSH client** and enter the command to access the EC2 instance using your credentials!
-
-```bash
-ssh student@...
-```
-
-```{figure} images/lab2-gatus07.png
----
-height: 300px
-align: center
----
-SSH client
-```
-
-```{important}
-If the SSH connection to the symbolic DNS name fails, as shown in the screenshot, please proceed with either **Task 3.2.1** or **Task 3.2.2**.
-```{figure} images/lab2-sshfails.png
----
-align: center
----
-DNS fails
-```
-
-You can also access your instances using also their **Public IP addresses**! You can retrieve them through your CoPilot, specifically from the Inventory, in other words the `Cloud Assets` section.
-
-#### 3.2.1 Cloud Assets (to retrieve IP addresses)
-
-- Navigate to **CoPilot > Cloud Resources > Cloud Assets** and filer based on the keyword `"aws-us-east-2-spoke1-test1"`.
+- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines** and filer based on the keyword `"aws-us-east-2-spoke1-test1"`.
 - Copy its **public** ip address and use it with your SSH client.
 
 ```{figure} images/lab2-sshclient10.png
@@ -176,7 +143,7 @@ Search the test instance
 ```
 
 ```{important}
-Within the Cloud Assets, you can also retrieve the **Private IP addresses** for the classic EAST-WEST and NORTH-SOUTH traffic.
+Within the Virtual Machines section, you can also retrieve the **Private IP addresses** for the classic EAST-WEST and NORTH-SOUTH traffic.
 ```
 
 Now access the EC2 instance using its public IP address:
@@ -1031,21 +998,21 @@ If you're not satisfied with the Gatus dashboard, you can also use your personal
 
 Then ping the **private** IPs of each other VMs to test the Multi-Cloud connectivity. 
 
-<ins>Refer to your pod portal for the public/private IPs or retrieve them from the **_Cloud Assets/Topology_**</ins>.
+<ins>Refer to your pod portal for the public/private IPs or retrieve them from the **_Cloud Workloads section/Topology_**</ins>.
 
 ```{important}
 Refresh the web page, to see the changes reflected into your CoPilot's topology!
 ```
 
 ```{note}
-**`POD PORTAL`**:
+**`CLOUD WORKLOADS`**:
 
-Please note that both the public DNS names and private IP addresses of the **test** instances can be retrieved from your personal POD portal.
+Please note that both the public and private IP addresses of the test instances can be retrieved in Copilot: **Cloud Resources > Cloud Workloads > Virtual Machines**.
 ```{figure} images/lab2-newpic.png
 ---
 align: center
 ---
-POD Portal info
+Cloud Workloads
 ```
 
 ```{note}
@@ -1074,7 +1041,6 @@ align: center
 ---
 Different Logos
 ```
-
 
 - SSH into aws-us-**east-2**-spoke1-<span style='color:red'>test1</span> (ssh student@public_ip)
 - SSH into azure-west-us-**spoke1**-<span style='color:red'>test1</span> (ssh student@public_ip)
