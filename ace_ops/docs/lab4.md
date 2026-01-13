@@ -16,13 +16,15 @@ Lab 4 Topology
 
 ## 2. TROUBLESHOOT REQUEST
 
-Let’s move forward with the troubleshooting.
+Let’s move forward with the troubleshooting. Verify the connectivity between **BU1 Frontend** and **BU2 Mobile App**.
 
 ### 2.1 Connectivity verification Using Gatus
 
 ### 2.2 Connectivity verification Using Diagnostic Tools
 
-Remember that all Aviatrix gateways include built-in enterprise-grade tools, such as ping and traceroute. If you can’t use an SSH client, run these commands directly from the `Diagnostic Tools` section.
+Remember that all Aviatrix gateways include built-in enterprise-grade tools, such as ping and traceroute. Run these commands directly from the `Diagnostic Tools` section.
+
+From _ace-aws-eu-west-1-spoke1_, ping the private IP address of **BU2 Mobile App** and perform a traceroute.
 
 ```{figure} images/lab4-traceroute280.png
 ---
@@ -39,6 +41,30 @@ Traceroute from the Spoke1
 ```
 
 This time, one hop—the Transit Gateway—has responded.
+
+Repeat this operation: from the _ace-aws-eu-west-1-spoke2_ Spoke GW, try to ping the private IP address of the BU1 Frontend too.
+
+- Now try to ping both workloads (i.e. BU1 Frontend and BU2 Mobile App) from the **Transit** GW in AWS.
+
+```{figure} images/lab3-bu1ping.png
+---
+align: center
+---
+Ping is ok from the Transit GW towards BU1 Frontend
+```
+
+```{figure} images/lab3-bu2ping.png
+---
+align: center
+---
+Ping is ok from the Transit GW towards BU2 Mobile App
+```
+
+From the outcome above, you can notice that the Transit GW in AWS can ping both BU1 Frontend and BU2 Mobile App, successfully.
+
+```{important}
+The Transit Gateway is now responding to the traceroute, which suggests that the traffic path is no longer being dropped as it was in the previous lab.
+```
 
 ### 2.3 Connectivity verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -78,62 +104,7 @@ Filter
 
 From the outcome above, once again it is evident that Spoke1 in AWS has the destination route in its RTB.
 
-Try to verify the inverse, checking the destination route from the **AWS Spoke2** side.
-
-- This time launch the **Diagnostics Tools** directly from the *`Topology`* section.
-- From the *Spoke1 Gateway* in AWS, try to ping/traceroute the instance behind the other spoke (i.e. BU2 Mobile App).
-
-```{tip}
-Navigate to **CoPilot > Cloud Fabric > Topology**
-
-Expand the **_ace-aws-eu-west-1-spoke1_** VPC, clicking on its corresponding icon, select the **_ace-aws-eu-west-1-spoke1_** Spoke GW, then click the `wrench icon` in the Properties window to launch the Gateway Diagnostics tools!
-
-<ins>Repeat this operation</ins>: from the **_ace-aws-eu-west-1-spoke2_** Spoke GW, try to ping the private IP address of the BU1 Frontend too.
-```{figure} images/lab4-mapdiag1.png
----
-height: 400px
-align: center
----
-Diagnostics Tools from the Topology
-```
-
-```{figure} images/lab4-pingfails2.png
----
-height: 450px
-align: center
----
-Ping fails from ace-aws-eu-west-1-spoke1 towards BU2 Mobile App
-```
-
-```{figure} images/lab4-pingfails.png
----
-height: 450px
-align: center
----
-Ping fails from ace-aws-eu-west-1-spoke2 towards BU1 Frontend
-```
-
-- Now try to ping both workloads (i.e. BU1 Frontend and BU2 Mobile App) from the **Transit** GW in AWS.
-
-```{figure} images/lab3-bu1ping.png
----
-align: center
----
-Ping is ok from the Transit GW towards BU1 Frontend
-```
-
-```{figure} images/lab3-bu2ping.png
----
-align: center
----
-Ping is ok from the Transit GW towards BU2 Mobile App
-```
-
-From the outcome above, you can notice that the Transit GW in AWS can ping both BU1 Frontend and BU2 Mobile App, successfully.
-
-```{important}
-The Transit Gateway is now responding to the traceroute, which suggests that the traffic path is no longer being dropped as it was in the previous lab.
-```
+Verify the reverse path by checking that the **AWS Spoke2 gateway** has a route to reach BU1 Frontend.
 
 ### 2.2 FireNet section
 
@@ -157,7 +128,9 @@ This time the FW is responding properly to the **Health Check** mechanism, there
 The Firewall is reachable from the Transit FireNet GW!
 ```
 
-#### 2.2.1 Connectivity test
+#### 2.2.1 Connectivity test Using the Diagnostic Tools
+
+#### 2.2.2 Connectivity test Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Please keep sending ping requests from the **BU1 Frontend** to the **BU2 Mobile App**, noting that the results are expected to fail.
 
@@ -247,6 +220,12 @@ align: center
 ---
 10.0.0.0/8 has been successfully reinjected into the FW's rtb!
 ```
+
+### 2.4 Final Verification
+
+#### 2.4.1 Connectivity test Using the Diagnostic Tools
+
+#### 2.4.2 Connectivity test Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Re-run ping to the MobileApp instance’s private IP address from AWS Spoke1, using the `Diagnostic Tools`.
 
