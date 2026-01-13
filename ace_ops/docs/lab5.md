@@ -150,17 +150,15 @@ align: center
 Ping is ok
 ```
 
-### 2.8 BU1 DB is not reachable
+### 2.7 BU1 DB is not reachable
 
 - Now verify that the connectivity between **BU1 Frontend** and **BU1 DB** is actually broken.
 
-#### 2.8.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus
+#### 2.7.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus
 
-#### 2.8.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
+#### 2.7.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
 
-#### 2.8.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
-
-  - Run the traceroute command from the `Diagnostic Tools` to the private IP address of the BU1 DB.
+- Run the traceroute command from the `Diagnostic Tools` to the private IP address of the BU1 DB.
   
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
@@ -174,7 +172,13 @@ align: center
 ---
 5 Hops...
 ```
-  
+
+```{important}
+The results above show **five** hops. The last hop to respond is the Spoke1 Gateway in Azure, <ins>which means the BU1 DB did not respond to the traceroute</ins>.
+```
+
+#### 2.7.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
   - Alternatively, establish an **SSH session** to **BU1 Frontend** and perform _ping, ssh and traceroute_ commands targeting **BU1 DB**.
 
 ```{figure} images/lab5-pingfails2.png
@@ -199,7 +203,7 @@ Traceroute = 6 hops
 ```
 
 ```{important}
-The results above show **five** hops (**six** if you run traceroute from the BU1 Frontend EC2 instance). The last hop to respond is the Spoke1 Gateway in Azure, <ins>which means the BU1 DB did not respond to the traceroute</ins>.
+The results above show **six** hops. The last hop to respond is the Spoke1 Gateway in Azure, <ins>which means the BU1 DB did not respond to the traceroute</ins>.
 ```
 
 #### 2.2.1 Packet Capture
