@@ -393,6 +393,8 @@ bu1-db is reachable
 Diagnostics tools can also be launched from Topology.
 ```
 
+BU1 Analytics and BU1 BD are reachable because they share the same network domain as BU1 Frontend.
+
 ### 7.3 Verify connectivity between clients **within** the same network domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH into the **BU1 Frontend**  instance in AWS.

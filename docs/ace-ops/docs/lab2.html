@@ -345,8 +345,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-gatus">2.1 Verify the connectivity between BU1 and BU2 domains Using Gatus</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.4 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables">2.5 Routing Tables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.3 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables">2.4 Routing Tables</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">3. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
@@ -426,9 +426,9 @@ document.write(`
 </section>
 <section id="verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">
 <h3>2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools<a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
-<p>Start your verification tests with the Diagnostic Tools.</p>
+<p>Start your verification tests also with the Diagnostic Tools.</p>
 <ul class="simple">
-<li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostic Tools</strong>, select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway, and run a ping to the <strong>BU2-MobileApp</strong> private IP address. This time ICMP traffic will be successful thanks to the Connection Policy.</p></li>
+<li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostic Tools</strong>, select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway, and run a ping to the <strong>BU2-MobileApp</strong> private IP address.</p></li>
 </ul>
 <figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/lab2-cp000.png"><img alt="../_images/lab2-cp000.png" src="../_images/lab2-cp000.png" style="height: 200px;" />
@@ -437,9 +437,10 @@ document.write(`
 <p><span class="caption-number">Fig. 64 </span><span class="caption-text">BU1 to BU2 is ok</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>This time ICMP traffic will be successful thanks to the Connection Policy.</p>
 </section>
 <section id="verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">
-<h3>2.4 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<h3>2.3 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>If you want to run the ping directly from the instance, complete this task using the SSH client.</p>
 <ul class="simple">
 <li><p>SSH into the <strong>BU1 Frontend</strong> and run ping or SSH commands targeting the <strong>BU2 Mobile App</strong>.</p></li>
@@ -454,7 +455,7 @@ document.write(`
 </figure>
 </section>
 <section id="routing-tables">
-<h3>2.5 Routing Tables<a class="headerlink" href="#routing-tables" title="Link to this heading">#</a></h3>
+<h3>2.4 Routing Tables<a class="headerlink" href="#routing-tables" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Review the routing tables (<strong>VRFs</strong>) managed by any of the transit gateways.</p></li>
 </ul>
@@ -513,6 +514,7 @@ document.write(`
 </section>
 <section id="flightpath">
 <h3>3.4 FlightPath<a class="headerlink" href="#flightpath" title="Link to this heading">#</a></h3>
+<p>The Aviatrix solution includes a powerful feature for performing hop-by-hop analysis of the native cloud constructs between two endpoints.</p>
 <ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">FlightPath</span></code> to verify the <em>CSP native cloud constructs</em> that isolate the two instances involved in this test.</p></li>
 </ul>
@@ -734,8 +736,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">2. CHANGE REQUEST</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-gatus">2.1 Verify the connectivity between BU1 and BU2 domains Using Gatus</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-diagnostic-tools">2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.4 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables">2.5 Routing Tables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-connectivity-between-bu1-and-bu2-domains-using-the-ssh-client-bonus">2.3 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables">2.4 Routing Tables</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">3. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
