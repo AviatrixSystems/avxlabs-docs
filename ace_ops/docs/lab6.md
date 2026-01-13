@@ -109,7 +109,7 @@ New S2C
 
 ```{figure} images/lab6-s2c100.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 External Device
@@ -201,7 +201,11 @@ align: center
 S2C is finally UP
 ```
 
-- Now it's time to **SSH** to the **OnPrem partner** router!
+### 4.1 Verifiy connectivity Using the Diagnostic Tools
+
+### 4.2 Verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+- If you need additional control, SSH to the **OnPrem partner** router (i.e., a Cisco router).
 
 ```{tip}
 Access your personal POD Portal, locate the `"SSH widget for Cisco CSR"`, and use the provided credentials to connect to the CSR router as an On-Prem Partner.
