@@ -189,14 +189,14 @@ Important: choose the correct instance. The Aviatrix gateway uses the standard r
 
 Another important and useful method for obtaining IP addresses in CoPilot is through the **Virtual Machines** section.
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines**. Perform a search for "_frontend_". The results will display the information you need, including the IP addresses.
+- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines**. Perform a search for "_frontend_". The results will display the information you need about the instance, including its IP addresses.
 
 ```{figure} images/lab1-assets.png
 ---
 height: 200px
 align: center
 ---
-Inventory
+Virtual Machines Inventory
 ```
 
 ```{important}
@@ -225,9 +225,9 @@ Gatus is an open-source, self-hosted health-check dashboard that periodically ge
 
 ## 5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS
 
-All Aviatrix gateways come with built-in `enterprise-grade tools`. If you want, you can skip the Gatus Dashboard and direct SSH/Guacamole access to the instances. The Spoke Gateway acts as the default gateway in the VPOC, letting you run ping, traceroute, or packet captures right from the Aviatrix Gateway.
+All Aviatrix gateways include built-in `enterprise-grade tools`. If you prefer, you can skip the Gateways Dashboard and connect directly to the instances via SSH/Guacamole (see the next section). The Spoke Gateway serves as the VPC’s default gateway, so you can run ping, traceroute, or packet captures right from the Aviatrix Gateway.
 
-- Navigate to **Copilot > Diagnostics > Diagnostics Tools**. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
+- Navigate to **Copilot > Diagnostics > Diagnostic Tools**. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
 
 ```{figure} images/lab1-diagnosticstools.png
 ---
@@ -237,7 +237,7 @@ align: center
 Diagnostic Tools
 ```
 
-Diagnostic Tools can also be launched directly from the Topology. Please select an Aviatrix Gateway (identified by the gateway icon with four arrows). After selecting the gateway, click the **wrench icon** on the right-hand side to initiate the Diagnostic Tools.
+Diagnostic Tools can also be launched directly from the Topology. Please select an Aviatrix Gateway (<ins>identified by the gateway icon with four arrows</ins>). After selecting the gateway, click the **wrench icon** on the right-hand side to initiate the Diagnostic Tools.
 
 ```{figure} images/lab1-diagnosticstools90.png
 ---
@@ -260,7 +260,7 @@ Diagnostic Tools
 Want direct access to the instances to generate traffic? Use your own SSH client, or the Guacamole  client (i.e., the Jumpbox) available in the POD Portal.
 
 ```{caution}
-In the subsequent tasks, certain items will be labeled <span style='color:#33ECFF'>"bonus"</span></summary>. These tasks pertain to generating traffic directly from the instances and may be skipped.
+In the subsequent tasks, certain items will be labeled <span style='color:#33ECFF'>"BONUS"</span></summary>. These tasks pertain to generating traffic directly from the instances and may be skipped.
 
 For corporate laptops, port 22 is typically blocked; therefore, <ins>please skip the Bonus tasks</ins>. If you are on a non-corporate device without port 22 restrictions, you may complete the Bonus tasks using an SSH client or Jump Box to access the instances.
 ```
@@ -274,6 +274,13 @@ For corporate laptops, port 22 is typically blocked; therefore, <ins>please skip
 align: center
 ---
 Public IP
+```
+
+```{figure} images/lab1-credportal.png
+---
+align: center
+---
+Username and Password
 ```
 
 ```{important}
