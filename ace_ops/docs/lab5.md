@@ -261,7 +261,13 @@ align: center
 Deletion of the NAT rule
 ```
 
-- Run the ping command from the `Diagnostics tools` to the private IP address of the BU1 DB.
+### 2.8  BU1 DB - final verification
+
+#### 2.8.1 BU1 DB is not reachable - final verification Using Gatus
+
+#### 2.8.2 BU1 DB is not reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+- Run the ping command from the `Diagnostic tools` to the private IP address of the BU1 DB.
 
 ```{figure} images/lab5-traceroute2812141.png
 ---
@@ -269,6 +275,8 @@ align: center
 ---
 Ping from the Spoke1
 ```
+
+#### 2.8.3 BU1 DB is not reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Alternatively, re-run the ping to **BU1 DB** from the SSH session established with the BU1 Frontend.
 
