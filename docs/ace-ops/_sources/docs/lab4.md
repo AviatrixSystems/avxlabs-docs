@@ -248,4 +248,3 @@ align: center
 ---
 Ping is ok
 ```
-cxcxcx

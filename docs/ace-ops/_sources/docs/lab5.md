@@ -16,7 +16,9 @@ Lab 5 Topology
 
 Let’s proceed with another troubleshooting request, using the same tools we used in the previous labs.
 
-### 2.1 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
+### 2.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus
+
+### 2.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
 
 - Verify that the connectivity between **BU1 Frontend** and **BU1 Analytics** is actually broken.
 
@@ -29,7 +31,7 @@ align: center
 Ping from the Spoke1
 ```
 
-### 2.2 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 2.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 -  Alternatively, establish an SSH connection to the **BU1 Frontend** and execute ping, traceroute, or SSH commands toward **BU1 Analytics**.
 
@@ -40,7 +42,7 @@ align: center
 Ping fails
 ```
 
-### 2.3 Routing Tables verification
+### 2.4 Routing Tables verification
 
 - Check whether the **AWS Spoke1 GW** and the **GCP Spoke1 GW** have the relevant routes or not.
 
@@ -60,7 +62,7 @@ Filter
 
 The **Spoke1** in AWS does not have the destination route to reach the destination in GCP, based on the outcome above...
 
-#### 2.3.1 Gateway Routes Filter
+#### 2.4.1 Gateway Routes Filter
 
 - Check what route is received by the **GCP Transit GW** from the **GCP Spoke1 GW**.
 
@@ -96,7 +98,7 @@ align: center
 Malicious Route
 ```
 
-### 2.4 Misconfiguration in Settings
+### 2.5 Misconfiguration in Settings
 
 - Fix the issue checking the **Settings** (i.e., the *Route Manipulation* section) section on the **Spoke GW in GCP**.
 
@@ -120,7 +122,13 @@ align: center
 Delete the malicious route
 ```
 
-### 2.5 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
+### 2.6 BU1 Analytics - final verification
+
+Now that we’ve identified the problem location, let’s re-run the connectivity tests.
+
+#### 2.6.1 BU1 Analytics is not reachable - final verification Using Gatus
+
+#### 2.6.2 BU1 Analytics is not reachable - final verification Using the Diagnostic Tools
 
 - From `Diagnostic Tools`, re-run ping to the private IP address of **BU2 MobileApp**.
 
@@ -131,7 +139,7 @@ align: center
 Ping from the Spoke1
 ```
 
-### 2.6 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.6.3 BU1 Analytics is not reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - If you prefer, please reevaluate connectivity by reissuing a ping from **BU1 Frontend** to **BU1 Analytics** via your SSH client.
 
@@ -142,13 +150,15 @@ align: center
 Ping is ok
 ```
 
-### 2.7 BU1 DB is not reachable
+### 2.8 BU1 DB is not reachable
 
 - Now verify that the connectivity between **BU1 Frontend** and **BU1 DB** is actually broken.
 
-#### 2.7.1 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
+#### 2.8.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus
 
-#### 2.7.2 2.2 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.8.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
+
+#### 2.8.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
   - Run the traceroute command from the `Diagnostic Tools` to the private IP address of the BU1 DB.
   
