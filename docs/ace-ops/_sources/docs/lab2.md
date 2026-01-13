@@ -56,9 +56,9 @@ Logical View
 
 ### 2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools
 
-Start your verification tests with the Diagnostic Tools.
+Start your verification tests also with the Diagnostic Tools.
 
-- Navigate to **CoPilot > Diagnostics > Diagnostic Tools**, select the **_ace-aws-eu-west-1-spoke1_** gateway, and run a ping to the **BU2-MobileApp** private IP address. This time ICMP traffic will be successful thanks to the Connection Policy.
+- Navigate to **CoPilot > Diagnostics > Diagnostic Tools**, select the **_ace-aws-eu-west-1-spoke1_** gateway, and run a ping to the **BU2-MobileApp** private IP address. 
 
 ```{figure} images/lab2-cp000.png
 ---
@@ -68,7 +68,9 @@ align: center
 BU1 to BU2 is ok
 ```
 
-### 2.4 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+This time ICMP traffic will be successful thanks to the Connection Policy.
+
+### 2.3 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 If you want to run the ping directly from the instance, complete this task using the SSH client.
 
@@ -83,7 +85,7 @@ align: center
 BU1 to BU2 is ok
 ```
 
-### 2.5 Routing Tables
+### 2.4 Routing Tables
 
 - Review the routing tables (**VRFs**) managed by any of the transit gateways.
 
@@ -141,6 +143,8 @@ PING and SSH are successful
 ```
 
 ### 3.4 FlightPath
+
+The Aviatrix solution includes a powerful feature for performing hop-by-hop analysis of the native cloud constructs between two endpoints.
 
 * Use `FlightPath` to verify the *CSP native cloud constructs* that isolate the two instances involved in this test.
 
