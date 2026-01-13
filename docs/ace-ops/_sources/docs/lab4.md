@@ -16,7 +16,31 @@ Lab 4 Topology
 
 ## 2. TROUBLESHOOT REQUEST
 
-### 2.1 Connectivity verification
+Let’s move forward with the troubleshooting.
+
+### 2.1 Connectivity verification Using Gatus
+
+### 2.2 Connectivity verification Using Diagnostic Tools
+
+Remember that all Aviatrix gateways include built-in enterprise-grade tools, such as ping and traceroute. If you can’t use an SSH client, run these commands directly from the `Diagnostic Tools` section.
+
+```{figure} images/lab4-traceroute280.png
+---
+align: center
+---
+Ping from the Spoke1
+```
+
+```{figure} images/lab4-traceroute283.png
+---
+align: center
+---
+Traceroute from the Spoke1
+```
+
+This time, one hop—the Transit Gateway—has responded.
+
+### 2.3 Connectivity verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Verify that the connectivity between **BU1 Frontend** and **BU2 Mobile App** is actually broken.
 
@@ -36,23 +60,7 @@ align: center
 Traceroute outcome
 ```
 
-```{important}
-Remember that all Aviatrix gateways include built-in enterprise-grade tools, such as ping and traceroute. If you can’t use an SSH client, run these commands directly from the `Diagnostics Tools` section.
-```
-
-```{figure} images/lab4-traceroute280.png
----
-align: center
----
-Ping from the Spoke1
-```
-
-```{figure} images/lab4-traceroute283.png
----
-align: center
----
-Traceroute from the Spoke1
-```
+### 2.4 Routing Tables verification
 
 - Check whether both **AWS Spoke1** and **AWS Spoke2** have the required routes installed in their RTBs or not.
 

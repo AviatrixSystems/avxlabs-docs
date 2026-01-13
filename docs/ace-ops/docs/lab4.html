@@ -343,7 +343,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification">2.1 Connectivity verification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-using-gatus">2.1 Connectivity verification Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-using-diagnostic-tools">2.2 Connectivity verification Using Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-using-ssh-client-bonus">2.3 Connectivity verification Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables-verification">2.4 Routing Tables verification</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-section">2.2 FireNet section</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">2.2.1 Connectivity test</a></li>
 </ul>
@@ -378,8 +381,29 @@ document.write(`
 </section>
 <section id="troubleshoot-request">
 <h2>2. TROUBLESHOOT REQUEST<a class="headerlink" href="#troubleshoot-request" title="Link to this heading">#</a></h2>
-<section id="connectivity-verification">
-<h3>2.1 Connectivity verification<a class="headerlink" href="#connectivity-verification" title="Link to this heading">#</a></h3>
+<p>Let’s move forward with the troubleshooting.</p>
+<section id="connectivity-verification-using-gatus">
+<h3>2.1 Connectivity verification Using Gatus<a class="headerlink" href="#connectivity-verification-using-gatus" title="Link to this heading">#</a></h3>
+</section>
+<section id="connectivity-verification-using-diagnostic-tools">
+<h3>2.2 Connectivity verification Using Diagnostic Tools<a class="headerlink" href="#connectivity-verification-using-diagnostic-tools" title="Link to this heading">#</a></h3>
+<p>Remember that all Aviatrix gateways include built-in enterprise-grade tools, such as ping and traceroute. If you can’t use an SSH client, run these commands directly from the <code class="docutils literal notranslate"><span class="pre">Diagnostic</span> <span class="pre">Tools</span></code> section.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab4-traceroute280.png" src="../_images/lab4-traceroute280.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 117 </span><span class="caption-text">Ping from the Spoke1</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab4-traceroute283.png" src="../_images/lab4-traceroute283.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Traceroute from the Spoke1</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This time, one hop—the Transit Gateway—has responded.</p>
+</section>
+<section id="connectivity-verification-using-ssh-client-bonus">
+<h3>2.3 Connectivity verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-verification-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU2 Mobile App</strong> is actually broken.</p>
 <ul>
@@ -387,34 +411,21 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id4">
 <img alt="../_images/lab4-pingunsucc.png" src="../_images/lab4-pingunsucc.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 117 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id3">
-<img alt="../_images/lab4-pingunsucc00.png" src="../_images/lab4-pingunsucc00.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Traceroute outcome</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Remember that all Aviatrix gateways include built-in enterprise-grade tools, such as ping and traceroute. If you can’t use an SSH client, run these commands directly from the <code class="docutils literal notranslate"><span class="pre">Diagnostics</span> <span class="pre">Tools</span></code> section.</p>
-</div>
-<figure class="align-center" id="id4">
-<img alt="../_images/lab4-traceroute280.png" src="../_images/lab4-traceroute280.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Ping from the Spoke1</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Ping fails</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id5">
-<img alt="../_images/lab4-traceroute283.png" src="../_images/lab4-traceroute283.png" />
+<img alt="../_images/lab4-pingunsucc00.png" src="../_images/lab4-pingunsucc00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 120 </span><span class="caption-text">Traceroute from the Spoke1</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 120 </span><span class="caption-text">Traceroute outcome</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="routing-tables-verification">
+<h3>2.4 Routing Tables verification<a class="headerlink" href="#routing-tables-verification" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Check whether both <strong>AWS Spoke1</strong> and <strong>AWS Spoke2</strong> have the required routes installed in their RTBs or not.</p></li>
 </ul>
@@ -684,7 +695,10 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification">2.1 Connectivity verification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-using-gatus">2.1 Connectivity verification Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-using-diagnostic-tools">2.2 Connectivity verification Using Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-verification-using-ssh-client-bonus">2.3 Connectivity verification Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables-verification">2.4 Routing Tables verification</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firenet-section">2.2 FireNet section</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-test">2.2.1 Connectivity test</a></li>
 </ul>
