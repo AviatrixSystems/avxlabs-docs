@@ -9,8 +9,9 @@ However, the network team received a complaint from BU1 Frontend Team that the c
 ```{warning}
 The traffic between the two VPCs in AWS is inspected by a **Firewall** deployed through the Aviatrix **FireNet** feature.
 
-The **`Inspection Policy`** had been already applied on each Spoke VPC in AWS, at the launch of the PODs. The traffic generating from or going to either of the AWS VPCs will be sent to the Firewall by the Transit FireNet Gateway for carrying out the Deep Packet Inspection.
+The **`Inspection Policy`** has already been applied to each Spoke VPC in AWS at POD launch. Traffic to or from either AWS VPC is routed to the Firewall through the Transit FireNet Gateway for Deep Packet Inspection.
 
+- Navigate to **CoPilot > Security > FireNet**, click on the _ace-aws-eu-west-1-transit1_ gateway and inspect the `"Policy"` tab,
 ```{figure} images/lab3-policy2.png
 ---
 height: 300px
@@ -28,15 +29,18 @@ Lab 3 Topology
 ```
 
 ## 2. TROUBLESHOOT REQUEST
+Let’s dive into troubleshooting to figure out exactly where things are going wrong.
 
-### 2.1 Verify connectivity using the Diagnostic Tools
+### 2.1 Verify connectivity Using Gatus
+
+### 2.2 Verify connectivity using the Diagnostic Tools
 
 - Navigate to **CoPilot > Diagnostics > Diagnostic Tools**. Select the **_ace-aws-eu-west-1-spoke1_** gateway (the gateway in front of the source endpoint). First, `ping` the private IP address of **BU2-MobileApp**, then perform a `traceroute` to that address.
 
 ```{tip}
-Retrieve the private IP address of the **BU2 Mobile App** from the **Cloud Assets** inventory, first!
+Retrieve the private IP address of the **BU2 Mobile App** from the **Cloud Workloads** inventory, first!
 
-Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the relevant EC2 instance.
+Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the relevant EC2 instance.
 ```
 
 ```{figure} images/lab23-cp000.png
@@ -79,14 +83,14 @@ From the outcome above, you can notice that the Transit GW in AWS can ping both 
 The traceroute results show a surprising outcome: **0** hops.
 ```
 
-### 2.2 Verify connectivity using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 2.3 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Verify that the connectivity between **BU1 Frontend** and **BU2 Mobile App** is actually broken.
 
-  - SSH to **BU1 Frontend** and run ping and SSH tests toward **BU2 Mobile App**.
+  - SSH into **BU1 Frontend**, run ping tests to **BU2-Mobile-App**, initiate an SSH session to **BU2-Mobile-App**, and run also a traceroute to **BU2-Mobile-App**.
 
 ```{tip}
-Private IP addresses can be found in the `Cloud Assets` section.
+Private IP addresses can be found in the `Cloud Workloads` section.
 ```
 
 ```{figure} images/lab3-pingfails.png
@@ -114,9 +118,9 @@ Traceroute outcome
 The traceroute results show a surprising outcome: **1** hop. Only the Spoke gateway acting as the default gateway is responding to the traceroute.
 ```
 
-### 2.3 Verify the Routing
+### 2.4 Verify the Routing
 
-- Check whether the relevant Spoke Gateways have the required routes installed on their routing tables or not.
+- Check whether the relevant Spoke Gateways have the required routes installed on their respective routing tables or not.
 
 ```{tip}
 Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select for example the gateway **ace-aws-eu-west-1-spoke1**  **> Gateway Routes** and search for the subnet **10.1.212.0/24**, where BU2 Mobile App resides.
@@ -162,6 +166,8 @@ align: center
 The FW is down
 ```
 
+#### 2.4.1 FireNet Workaround
+
 - Apply a quick **workaround**. Before continuing the firewall troubleshooting, exclude from the East-West Inspection, either of the CIDRs of the two AWS Spoke VPCs.
 
 ```{tip}
@@ -187,7 +193,9 @@ align: center
 Exclude the CIDR
 ```
 
-#### 2.4.1 FireNet - Verification using the Diagnostic Tools
+#### 2.4.2 FireNet - Verification using Gatus
+
+#### 2.4.3 FireNet - Verification using the Diagnostic Tools
 
 - Run `traceroute` directly from Spoke1 in EU-WEST-1, the gateway in the same VPC as the **Frontend** instance.
 
@@ -206,7 +214,7 @@ The traceroute outcome shows the whole path from the source, the BU1 Frontend, t
 <ins>Undoubtedly, the Firewall is excluded from this path!</ins>
 ```
 
-#### 2.4.2 FireNet - Verification using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.4.4 FireNet - Verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Alternatively, you can execute a `ping` from **BU1 Frontend** to **BU2 Mobile App** to verify connectivity; results should indicate a working connection.
 
@@ -231,6 +239,8 @@ The firewall is indeed excluded.
 ```
 
 ### 2.5 Discarding the workaround
+
+Having identified the root cause and applied the workaround, we should remove the workaround and investigate the firewall-side configuration.
 
 - <ins>Remove</ins> the _workaround_ and perform a thorough review of the Firewall configuration.
 
@@ -393,9 +403,11 @@ Reactivate the LAN port
 
 ### 2.8 Final Verification
 
-#### 2.8.1 Verify connectivity using the Diagnostic Tools
+#### 2.8.1 Verify connectivity Using Gatus
 
-- Rerun traceroute from **_ace-aws-eu-west-1-spoke1_** (`Diagnostics > Diagnostic Tools`) to **BU2-MobileApp**.
+#### 2.8.2 Verify connectivity Using the Diagnostic Tools
+
+- Rerun ping and traceroute from **_ace-aws-eu-west-1-spoke1_** (`Diagnostics > Diagnostic Tools`) to **BU2-MobileApp**.
 
 ```{figure} images/lab3-traceroute280.png
 ---
@@ -404,7 +416,16 @@ align: center
 New Traceroute outcome from the Spoke1
 ```
 
-#### 2.8.2 Verify connectivity using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+```{figure} images/lab3-traceroute28089.png
+---
+align: center
+---
+New Ping outcome from the Spoke1
+```
+
+You have successfully fixed the issue and restored connectivity.
+
+#### 2.8.3 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Reattempt the ping from **BU1 Frontend** to **BU2 Mobile App** once the firewall’s LAN interface has been reactivated.
 
