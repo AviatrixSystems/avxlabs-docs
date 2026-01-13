@@ -106,7 +106,7 @@ From the outcome above, once again it is evident that Spoke1 in AWS has the dest
 
 Verify the reverse path by checking that the **AWS Spoke2 gateway** has a route to reach BU1 Frontend.
 
-### 2.2 FireNet section
+### 2.5 FireNet section
 
 - Let's check the **FireNet** section!
 
@@ -128,9 +128,11 @@ This time the FW is responding properly to the **Health Check** mechanism, there
 The Firewall is reachable from the Transit FireNet GW!
 ```
 
-#### 2.2.1 Connectivity test Using the Diagnostic Tools
+#### 2.5.1 Connectivity test Using Gatus
 
-#### 2.2.2 Connectivity test Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.5.2 Connectivity test Using the Diagnostic Tools
+
+#### 2.5.3 Connectivity test Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Please keep sending ping requests from the **BU1 Frontend** to the **BU2 Mobile App**, noting that the results are expected to fail.
 
@@ -192,7 +194,7 @@ The health check shows the echo request and echo reply exchanged between the Tra
 This time the firewall is reachable!
 ```
 
-### 2.3 Vendor Integration
+### 2.6 Vendor Integration
 
 - Let's check the `Vendor Integration`!
 
@@ -221,11 +223,13 @@ align: center
 10.0.0.0/8 has been successfully reinjected into the FW's rtb!
 ```
 
-### 2.4 Final Verification
+### 2.7 Final Verification
 
-#### 2.4.1 Connectivity test Using the Diagnostic Tools
+#### 2.7.1 Connectivity test Using Gatus
 
-#### 2.4.2 Connectivity test Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.7.2 Connectivity test Using the Diagnostic Tools
+
+#### 2.7.3 Connectivity test Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Re-run ping to the MobileApp instance’s private IP address from AWS Spoke1, using the `Diagnostic Tools`.
 
