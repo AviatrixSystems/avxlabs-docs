@@ -312,7 +312,7 @@ If you wish, you can also check the ICMP test using your SSH client.
 - **SSH** into **both** EC2 test instances within the **_aws-us-east-1-spoke1_** VPC (refer to your POD assignment).
 
 ```{tip}
-Navigate to **CoPilot > Cloud Resources > Virtual Machines**, search for the two EC2 instances: **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_**, and note their public IP addresses.
+Navigate to **CoPilot > Cloud Resources > Cloud Workloads**, search for the two EC2 instances: **_aws-us-east-1-spoke1-test1_** and **_aws-us-east-1-spoke1-test2_**, and note their public IP addresses.
 
 Refer to your personal POD!
 ```{figure} images/lab4-sshterminal01.png
@@ -734,7 +734,7 @@ Now, scroll down through the navigation panel on the left-hand side and click on
 
 ```{figure} images/lab5-reprogram80.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 Network Interfaces
@@ -798,7 +798,7 @@ Scroll to the right until you find the **Route Table** associated with the selec
 
 ```{figure} images/lab5-reprogram108.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 rtb
@@ -836,7 +836,7 @@ Duplicate the current tab and then open the **EC2** service.
 
 ```{figure} images/lab5-reprogram211.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 Duplicate TAB
@@ -903,7 +903,7 @@ ENI of the Spoke Gateway 2
 Do not forget to restart the **Spoke Gateweay #1** (i.e., _aviatrix-aws-us-east-1spoke1_ instance)
 ```{figure} images/lab5-reprogram534.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 Restart the Spoke Gateway 1

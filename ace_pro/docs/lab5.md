@@ -289,7 +289,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -299,6 +299,18 @@ Do not forget to click on **Save In Drafts**.
 align: center
 ---
 Greenfield-Rule
+```
+
+```{tip}
+**Logging Options**:
+
+- _Log at Start_: Captures session initiation details
+
+- _Log at End_: Captures session termination details, including duration and traffic size
+
+- _Log at Start & End_: Provides full lifecycle visibility
+
+- _Off_: Disables logging for the rule
 ```
 
 Click on **Commit**.
@@ -326,7 +338,7 @@ align: center
 Private Subnet
 ```
 
-Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance in the search field on the right-hand side.
+Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance in the search field on the right-hand side.
 
 From the results, you need to identify the `Availability Zone`.
 
