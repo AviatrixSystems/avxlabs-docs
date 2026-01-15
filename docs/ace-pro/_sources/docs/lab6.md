@@ -430,7 +430,7 @@ Allow-All
 
 In Lab 5 (i.e., _Aviatrix Cloud Firewall lab_), the DCF functionality was enabled. The currently permitted rules are as follows:
 
-1) The `"Egress-Rule"` , which permits onlyg HTTP/HTTPS traffic to two specified domains.
+1) The `"Egress-Rule"` , which permits only HTTP/HTTPS traffic to two specified domains.
 2) The `"ExplicitDenyAll"` rule, with _Logging_ enabled.
 3) The `"Greenfield-Rule"`, with _Logging_ enabled.
 
@@ -444,7 +444,7 @@ DCF rules
 
 ### 6.1 Move the Greenfield-Rule
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, then click on Move button on the **Greenfield-Rule** entry and, choose `To Top`. Do not forget to click `"Save Draft"`.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, then click on the **"Move"** button on the **Greenfield-Rule** entry and, choose `To Top`. Do not forget to click `"Save Draft"`.
 
 ```{figure} images/lab6-new101.png
 ---
@@ -619,7 +619,7 @@ The inspected VNets
 
 Let's retrieve the **Private IP address** of the VM in  the **_azure-west-us-spoke2_** VNet.
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for the **_azure-west-us-spoke2-test<span style='color:#33ECFF'>1</span></summary>_** instance. Identify its Private IP address and copy it.
+- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines** and search for the **_azure-west-us-spoke2-test<span style='color:#33ECFF'>1</span></summary>_** instance. Identify its Private IP address and copy it.
 
 ```{figure} images/lab6-searchfor.png
 ---
