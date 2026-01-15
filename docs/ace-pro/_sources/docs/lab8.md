@@ -214,7 +214,7 @@ Select the **`on-prem-edge`** connection and do not forget to click on **Save**!
 
 ```{figure} images/lab8-edge19.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 Network Domain Association
@@ -234,7 +234,7 @@ Let's explore again the Cloud Routes section!
 Navigate to **CoPilot > Diagnostics > Cloud Routes > BGP info** and click on the three dots icon and select the `"Show BGP Advertised Routes` option.
 
 ```{important}
-This time you will notice that the Edge device is advertising all the MCNA CIDRs to the LAN router! Those routes got installed into the Edge device by the **Aviatrix Controller**, after the attachment got established!
+You’ll see the Edge device share all CNSF CIDRs with the LAN router. The **Aviatrix Controller** added these routes once the connection was set up.
 ```
 
 ```{figure} images/lab8-edge20.png

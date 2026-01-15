@@ -16,7 +16,7 @@ On one end of the tunnel is an Aviatrix Gateway; on the other could be an on-pre
 
 In this lab, you will initially set up Site-to-Cloud (S2C) connectivity with a `StrongSwan Router`, simulating an on-premises branch router.
 
-Additionally, you will address a common scenario involving **overlapping IP addresses**, as illustrated in the diagram below:
+Additionally, you will address a common scenario involving **overlapping IP addresses**, as illustrated in the diagram below.
 
 ```{figure} images/lab8-topology.png
 ---
