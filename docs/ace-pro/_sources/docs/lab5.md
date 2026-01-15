@@ -350,7 +350,7 @@ align: center
 AZ
 ```
 
-Now that you know in which `Availability Zone` the private workload resides, you need to select the `VPC/VNets & Subnets` tab and filter based on the **_us-east-2a_** VPC.
+Now that you know in which `Availability Zone` the private workload resides, you need to navigate to **CoPilot > Cloud Resources > Cloud Networks > VPC/VNets & Subnets** and filter based on the **_us-east-2a_** VPC.
 
 Identify the spoke VPC, reveal its subnets, find the `private subnet`, and copy the `CIDR block` from the IP address CIDR column.
 
@@ -416,7 +416,7 @@ Enter the following parameters:
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>**All-Web**</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -461,7 +461,7 @@ Insert the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>On</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
 - **Place Rule**: <span style='color:#479608'>Below</span>
   - **Existing Rule**: <span style='color:#479608'>Egress-Rule</span>
