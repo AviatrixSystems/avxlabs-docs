@@ -135,7 +135,7 @@ The EC2 instance is actively communicating with a **malicious IP** address.
 
 Retrieve the Public IP address of **_aws-us-east-1-spoke1-test1_** instance:
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, search for `aws-us-east-1-spoke1-test1` and then copy the **Public** IPv4 address!
+- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines**, search for `aws-us-east-1-spoke1-test1` and then copy the **Public** IPv4 address!
 
 ```{figure} images/lab9-newsg010.png
 ---
