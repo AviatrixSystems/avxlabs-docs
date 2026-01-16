@@ -267,7 +267,7 @@ Enter the following parameters:
 - **Destination Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
-- **Logging**: <span style='color:#479608'>On</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
 
 Do not forget to click on **Save In Drafts**. 
@@ -385,7 +385,7 @@ Enter the following parameters:
 - **WebGroups**: <span style='color:#479608'>Allowed-Public-Domains</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
-- **Logging**: <span style='color:#479608'>On</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -412,10 +412,10 @@ Commit
 Prior to launching the connectivity test, ensure the three PSF rules are **enforced** on the PSF gateway.
 
 ```{caution}
-The `PSF` Gateway is a **_standalone Gateway_**: it is neither a Spoke nor a Transit.
+The `PSF` Gateway is a **_standalone Gateway_**: it is neither a Spoke nor a Transit. Enforcement is enabled by default. Confirm that the feature is enabled.
 ```
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Settings** and enable the `"Enforcement on PSF Gateweays"` functionality.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Settings**.  `"Enforcement on PSF Gateweays"` is currently enabled!
 
 ```{figure} images/lab96-newrule333.png
 ---
