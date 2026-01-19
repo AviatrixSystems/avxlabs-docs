@@ -269,6 +269,24 @@ After signing into the Gatus App, you'll observe that two protocols are currentl
 
 TCP is monitored on ports 22 and 80.
 
+```{figure} images/lab2-gatus04.png
+---
+height: 400px
+align: center
+---
+BU1-Frontend Gatus
+```
+
+```{note}
+Reduce the polling timer from 5 minutes to **10 seconds** to expedite the visibility of the results.
+```{figure} images/lab2-gatus05.png
+---
+height: 400px
+align: center
+---
+Timer
+```
+
 ## 5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS
 
 All Aviatrix gateways include built-in `enterprise-grade tools`. If you prefer, you can skip the Gateways Dashboard and connect directly to the instances via SSH/Guacamole (see the next section). The Spoke Gateway serves as the VPC’s default gateway, so you can run ping, traceroute, or packet captures right from the Aviatrix Gateway.
