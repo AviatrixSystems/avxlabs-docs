@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 5 - Routes Manipulation &amp; NAT &#8212; ACE Operations Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1d85937c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab5 - 4.28.1';</script>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Aviatrix_Logo_White_Gradient_RGB.svg" class="logo__image only-light" alt="ACE Operations Lab - Home"/>
+    <script>document.write(`<img src="../_static/Aviatrix_Logo_White_Gradient_RGB.svg" class="logo__image only-dark" alt="ACE Operations Lab - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Operations Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Network Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Connection Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - FireNet - Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - FireNet - Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Routes Manipulation &amp; NAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - Site2Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - Aviatrix Cloud Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - Distributed Cloud Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CloudHeroes.html">CLOUD NETWORKING HEROES PROGRAM</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab5 - 4.28.1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 5 - Routes Manipulation & NAT</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-verifiy-connectivity-using-gatus">2.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-verifiy-connectivity-using-the-diagnostic-tools">2.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-verifiy-connectivity-using-ssh-client-bonus">2.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables-verification">2.4 Routing Tables verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-routes-filter">2.4.1 Gateway Routes Filter</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misconfiguration-in-settings">2.5 Misconfiguration in Settings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-final-verification">2.6 BU1 Analytics - final verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-final-verification-using-gatus">2.6.1 BU1 Analytics is not reachable - final verification Using Gatus</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-final-verification-using-the-diagnostic-tools">2.6.2 BU1 Analytics is not reachable - final verification Using the Diagnostic Tools</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-final-verification-using-ssh-client-bonus">2.6.3 BU1 Analytics is not reachable - final verification Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-db-is-not-reachable">2.7 BU1 DB is not reachable</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.7.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.7.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.7.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#packet-capture">2.2.1 Packet Capture</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-db-final-verification">2.8  BU1 DB - final verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-db-is-not-reachable-final-verification-using-gatus">2.8.1 BU1 DB is not reachable - final verification Using Gatus</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-db-is-not-reachable-final-verification-using-ssh-client-bonus">2.8.2 BU1 DB is not reachable - final verification Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.8.3 BU1 DB is not reachable - final verification Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">3. CHANGE REQUEST</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-5-routes-manipulation-nat">
+<h1>Lab 5 - Routes Manipulation &amp; NAT<a class="headerlink" href="#lab-5-routes-manipulation-nat" title="Link to this heading">#</a></h1>
+<section id="scenario">
+<h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
+<p><strong>BU1 Frontend</strong> suddenly cannot communicate with <strong>BU1 Analytics</strong> or <strong>BU1 DB</strong>. The network team found that a disgruntled employee had compromised the connectivity between these workloads.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/lab5-topology.png"><img alt="../_images/lab5-topology.png" src="../_images/lab5-topology.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Lab 5 Topology</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="troubleshoot-request">
+<h2>2. TROUBLESHOOT REQUEST<a class="headerlink" href="#troubleshoot-request" title="Link to this heading">#</a></h2>
+<p>Let’s proceed with another troubleshooting request, using the same tools we used in the previous labs.</p>
+<section id="bu1-analytics-is-not-reachable-verifiy-connectivity-using-gatus">
+<h3>2.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus<a class="headerlink" href="#bu1-analytics-is-not-reachable-verifiy-connectivity-using-gatus" title="Link to this heading">#</a></h3>
+</section>
+<section id="bu1-analytics-is-not-reachable-verifiy-connectivity-using-the-diagnostic-tools">
+<h3>2.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools<a class="headerlink" href="#bu1-analytics-is-not-reachable-verifiy-connectivity-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU1 Analytics</strong> is actually broken.</p>
+<ul>
+<li><p>Run the ping command from the <code class="docutils literal notranslate"><span class="pre">Diagnostic</span> <span class="pre">Tools</span></code> to the private IP address of the <strong>BU1 Analytics</strong></p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="id6">
+<img alt="../_images/lab5-traceroute2812.png" src="../_images/lab5-traceroute2812.png" />
+<figcaption>
+<p><span class="caption-text">Ping from the Spoke1</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="bu1-analytics-is-not-reachable-verifiy-connectivity-using-ssh-client-bonus">
+<h3>2.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#bu1-analytics-is-not-reachable-verifiy-connectivity-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Alternatively, establish an SSH connection to the <strong>BU1 Frontend</strong> and execute ping, traceroute, or SSH commands toward <strong>BU1 Analytics</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab5-pingfails.png" src="../_images/lab5-pingfails.png" />
+<figcaption>
+<p><span class="caption-text">Ping fails</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="routing-tables-verification">
+<h3>2.4 Routing Tables verification<a class="headerlink" href="#routing-tables-verification" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Check whether the <strong>AWS Spoke1 GW</strong> and the <strong>GCP Spoke1 GW</strong> have the relevant routes or not.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong>Spoke1 Gateway in AWS &gt; Gateway Routes</strong> and filter by the remote route.</p>
+<p>Repeat the same process from the GCP Spoke perspective!</p>
+</div>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/lab5-filter.png"><img alt="../_images/lab5-filter.png" src="../_images/lab5-filter.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Filter</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The <strong>Spoke1</strong> in AWS does not have the destination route to reach the destination in GCP, based on the outcome above…</p>
+<section id="gateway-routes-filter">
+<h4>2.4.1 Gateway Routes Filter<a class="headerlink" href="#gateway-routes-filter" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Check what route is received by the <strong>GCP Transit GW</strong> from the <strong>GCP Spoke1 GW</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the <strong><em>ace-gcp-us-east1-transit1</em></strong> Gateway in GCP <strong>&gt; Gateway Routes</strong> and filter by the parameter depicted below.</p>
+</div>
+<ul class="simple">
+<li><p>“<strong>Next Hop Gateway</strong> <em>contains</em> <strong>gcp</strong>”</p></li>
+</ul>
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/lab5-nexthop200.png"><img alt="../_images/lab5-nexthop200.png" src="../_images/lab5-nexthop200.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Next Hop</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/lab5-nexthop.png"><img alt="../_images/lab5-nexthop.png" src="../_images/lab5-nexthop.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Malicious Route</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Spoke1 in GCP is advertising an <strong>invalid route</strong> (<code class="docutils literal notranslate"><span class="pre">40.40.40.0/24</span></code>), while the legitimate route <strong>172.16.211.0/24</strong> has been withdrawn.</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/lab5-nexthop99.png"><img alt="../_images/lab5-nexthop99.png" src="../_images/lab5-nexthop99.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Malicious Route</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="misconfiguration-in-settings">
+<h3>2.5 Misconfiguration in Settings<a class="headerlink" href="#misconfiguration-in-settings" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fix the issue checking the <strong>Settings</strong> (i.e., the <em>Route Manipulation</em> section) section on the <strong>Spoke GW in GCP</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong>Spoke GW in GCP &gt; Settings &gt; Routing</strong> and <ins>remove</ins> the CIDR 40.40.40.0/24 from the <strong>Customize Spoke Advertised VPC/VNet CIDRs</strong> section and then click on <strong>SAVE</strong>.</p>
+</div>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="../_images/lab5-customize.png"><img alt="../_images/lab5-customize.png" src="../_images/lab5-customize.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Customize Spoke Advertised VPC/VNet CIDRs</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../_images/lab5-customize100.png"><img alt="../_images/lab5-customize100.png" src="../_images/lab5-customize100.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Delete the malicious route</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="bu1-analytics-final-verification">
+<h3>2.6 BU1 Analytics - final verification<a class="headerlink" href="#bu1-analytics-final-verification" title="Link to this heading">#</a></h3>
+<p>Now that we’ve identified the problem location, let’s re-run the connectivity tests.</p>
+<section id="bu1-analytics-is-not-reachable-final-verification-using-gatus">
+<h4>2.6.1 BU1 Analytics is not reachable - final verification Using Gatus<a class="headerlink" href="#bu1-analytics-is-not-reachable-final-verification-using-gatus" title="Link to this heading">#</a></h4>
+</section>
+<section id="bu1-analytics-is-not-reachable-final-verification-using-the-diagnostic-tools">
+<h4>2.6.2 BU1 Analytics is not reachable - final verification Using the Diagnostic Tools<a class="headerlink" href="#bu1-analytics-is-not-reachable-final-verification-using-the-diagnostic-tools" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>From <code class="docutils literal notranslate"><span class="pre">Diagnostic</span> <span class="pre">Tools</span></code>, re-run ping to the private IP address of <strong>BU2 MobileApp</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab5-traceroute28123.png" src="../_images/lab5-traceroute28123.png" />
+<figcaption>
+<p><span class="caption-text">Ping from the Spoke1</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="bu1-analytics-is-not-reachable-final-verification-using-ssh-client-bonus">
+<h4>2.6.3 BU1 Analytics is not reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#bu1-analytics-is-not-reachable-final-verification-using-ssh-client-bonus" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>If you prefer, please reevaluate connectivity by reissuing a ping from <strong>BU1 Frontend</strong> to <strong>BU1 Analytics</strong> via your SSH client.</p></li>
+</ul>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab5-pingok.png" src="../_images/lab5-pingok.png" />
+<figcaption>
+<p><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="bu1-db-is-not-reachable">
+<h3>2.7 BU1 DB is not reachable<a class="headerlink" href="#bu1-db-is-not-reachable" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Now verify that the connectivity between <strong>BU1 Frontend</strong> and <strong>BU1 DB</strong> is actually broken.</p></li>
+</ul>
+<section id="id1">
+<h4>2.7.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+</section>
+<section id="id2">
+<h4>2.7.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Run the traceroute command from the <code class="docutils literal notranslate"><span class="pre">Diagnostic</span> <span class="pre">Tools</span></code> to the private IP address of the BU1 DB.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools &gt; Gateway Diagnostics</strong>.</p>
+<p>Select <strong><em>ace-aws-eu-west-1-spoke1</em></strong> Spoke GW and perform a <strong>traceroute</strong> to BU1 DB’s private IP.</p>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab5-5hops.png" src="../_images/lab5-5hops.png" />
+<figcaption>
+<p><span class="caption-text">5 Hops…</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The results above show <strong>five</strong> hops. The last hop to respond is the Spoke1 Gateway in Azure, <ins>which means the BU1 DB did not respond to the traceroute</ins>.</p>
+</div>
+</section>
+<section id="id3">
+<h4>2.7.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Alternatively, establish an <strong>SSH session</strong> to <strong>BU1 Frontend</strong> and perform <em>ping, ssh and traceroute</em> commands targeting <strong>BU1 DB</strong>.</p></li>
+</ul>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab5-pingfails2.png" src="../_images/lab5-pingfails2.png" />
+<figcaption>
+<p><span class="caption-text">Ping is unsuccessful</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id18">
+<img alt="../_images/lab5-pingfails23.png" src="../_images/lab5-pingfails23.png" />
+<figcaption>
+<p><span class="caption-text">SSH is unsuccessful</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab5-pingfails2314.png" src="../_images/lab5-pingfails2314.png" />
+<figcaption>
+<p><span class="caption-text">Traceroute = 6 hops</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The results above show <strong>six</strong> hops. The last hop to respond is the Spoke1 Gateway in Azure, <ins>which means the BU1 DB did not respond to the traceroute</ins>.</p>
+</div>
+</section>
+<section id="packet-capture">
+<h4>2.2.1 Packet Capture<a class="headerlink" href="#packet-capture" title="Link to this heading">#</a></h4>
+<p>You can duplicate the current CoPilot UI tab and run <code class="docutils literal notranslate"><span class="pre">Diagnostics</span> <span class="pre">Tools</span></code> in parallel: one tab to generate ICMP traffic, and another to capture packets.</p>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. Select the <strong><em>ace-azure-east-us-spoke1</em></strong> gateway, then choose <code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">Capture</span></code> from the actions list, select the <strong>eth0</strong> interface and set the capture duration to <strong>10 seconds</strong>. Before clicking <strong>RUN</strong>, switch to the other tab to generate ICMP traffic.</p></li>
+</ul>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab5-packetcapture000.png" src="../_images/lab5-packetcapture000.png" />
+<figcaption>
+<p><span class="caption-text">Packet Capture</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>On the other tab, navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools</strong>. Select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway, then choose <strong>Ping</strong> from the actions list, and enter the private IP address of <strong>BU1-DB</strong>. Before clicking RUN, <ins>first trigger the packet capture on the other tab</ins>, then execute the ping.</p></li>
+</ul>
+<figure class="align-center" id="id21">
+<img alt="../_images/lab5-packetcapture0001.png" src="../_images/lab5-packetcapture0001.png" />
+<figcaption>
+<p><span class="caption-text">PING</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Alternatively, you can generate the ICMP traffic using the SSH client, and keep capturing the packets from the <strong>Diagnostics Tools</strong>!</p></li>
+</ul>
+<figure class="align-center" id="id22">
+<img alt="../_images/lab5-pinfail.png" src="../_images/lab5-pinfail.png" />
+<figcaption>
+<p><span class="caption-text">Ping to BU1 DB fails</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will only see <strong>ICMP Echo Request</strong> packets leaving from the LAN interface. Additionally, the source IP is entirely different from what you’d expect: instead of an IP from the legitimate CIDR 10.1.211.0/24, the source address belongs to the <code class="docutils literal notranslate"><span class="pre">50.50.50.0/24</span></code> range.</p>
+<figure class="align-center" id="id23">
+<a class="reference internal image-reference" href="../_images/lab5-packetcapture00.png"><img alt="../_images/lab5-packetcapture00.png" src="../_images/lab5-packetcapture00.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Packet Capture</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Fix the issue checking the <strong>Routing</strong> section (aka as <em>Routes Manipulation</em> section) on the <strong>Spoke1 GW in Azure</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke1</em></strong> GW in Azure <strong>&gt; Settings &gt; Network Address Translation (NAT)</strong>, delete the NAT Rule and click on <strong>SAVE</strong>.</p>
+</div>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="../_images/lab5-deleterule.png"><img alt="../_images/lab5-deleterule.png" src="../_images/lab5-deleterule.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Deletion of the NAT rule</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="bu1-db-final-verification">
+<h3>2.8  BU1 DB - final verification<a class="headerlink" href="#bu1-db-final-verification" title="Link to this heading">#</a></h3>
+<section id="bu1-db-is-not-reachable-final-verification-using-gatus">
+<h4>2.8.1 BU1 DB is not reachable - final verification Using Gatus<a class="headerlink" href="#bu1-db-is-not-reachable-final-verification-using-gatus" title="Link to this heading">#</a></h4>
+</section>
+<section id="bu1-db-is-not-reachable-final-verification-using-ssh-client-bonus">
+<h4>2.8.2 BU1 DB is not reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#bu1-db-is-not-reachable-final-verification-using-ssh-client-bonus" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Run the ping command from the <code class="docutils literal notranslate"><span class="pre">Diagnostic</span> <span class="pre">tools</span></code> to the private IP address of the BU1 DB.</p></li>
+</ul>
+<figure class="align-center" id="id25">
+<img alt="../_images/lab5-traceroute2812141.png" src="../_images/lab5-traceroute2812141.png" />
+<figcaption>
+<p><span class="caption-text">Ping from the Spoke1</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h4>2.8.3 BU1 DB is not reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Alternatively, re-run the ping to <strong>BU1 DB</strong> from the SSH session established with the BU1 Frontend.</p></li>
+</ul>
+<figure class="align-center" id="id26">
+<img alt="../_images/lab5-pingok2.png" src="../_images/lab5-pingok2.png" />
+<figcaption>
+<p><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="change-request">
+<h2>3. CHANGE REQUEST<a class="headerlink" href="#change-request" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Now that connectivity has been restored, the <strong>BU2 DB</strong> owner has also requested that you filter out the route <strong>10.0.211.0/24</strong> from the routing table of the Azure Spoke2 Gateway.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The subnet <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code> is advertised by the <strong>OnPrem DC Router</strong> towards the Aviatrix CNSF via the Site-to-Cloud connection.</p>
+<figure class="align-center" id="id27">
+<img alt="../_images/lab5-newrequest2.png" src="../_images/lab5-newrequest2.png" />
+<figcaption>
+<p><span class="caption-text">S2C route</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<ul class="simple">
+<li><p>Check the <strong>BGP Learned Routes</strong>!</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes &gt; BGP Info</strong> and then click on the <strong>3 dots</strong> icon on the right-hand side of the screen and select the <code class="docutils literal notranslate"><span class="pre">&quot;Show</span> <span class="pre">BGP</span> <span class="pre">Learned</span> <span class="pre">Routes&quot;</span></code> option.</p>
+</div>
+<figure class="align-center" id="id28">
+<img alt="../_images/lab5-bgpinfo.png" src="../_images/lab5-bgpinfo.png" />
+<figcaption>
+<p><span class="caption-text">Show BGP Learned Routes</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id29">
+<a class="reference internal image-reference" href="../_images/lab5-bgpinfo100.png"><img alt="../_images/lab5-bgpinfo100.png" src="../_images/lab5-bgpinfo100.png" style="height: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">10.0.211.0/24</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You are required to keep this route visible (fully installed in the routing tables) on all the Spoke gateways, <ins>except for the Azure Spoke2 Gateway</ins>.</p>
+<figure class="align-center" id="id30">
+<a class="reference internal image-reference" href="../_images/lab5-newrequest.png"><img alt="../_images/lab5-newrequest.png" src="../_images/lab5-newrequest.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Topology</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Verify first the presence of the route inside the routing table of the <strong>Azure Spoke2 GW</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Gateway Routes</strong> tab.</p>
+<p>Now search for <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code>.</p>
+</div>
+<figure class="align-center" id="id31">
+<a class="reference internal image-reference" href="../_images/lab5-newrequest3.png"><img alt="../_images/lab5-newrequest3.png" src="../_images/lab5-newrequest3.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Search for the remote route from the OnPrem DC</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Filter the route <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code> in the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> section (i.e., the <em>Routes Manipulation</em> section).</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Settings</strong> tab.
+Expand the <strong>Routing</strong> section and insert the subnet <strong>10.0.211.0/24</strong> inside the <code class="docutils literal notranslate"><span class="pre">&quot;Exclude</span> <span class="pre">Learned</span> <span class="pre">CIDRs</span> <span class="pre">to</span> <span class="pre">Spoke</span> <span class="pre">VPC/VNet</span> <span class="pre">Route</span> <span class="pre">Table&quot;</span></code> option.</p>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+</div>
+<figure class="align-center" id="id32">
+<a class="reference internal image-reference" href="../_images/lab5-newrequest4.png"><img alt="../_images/lab5-newrequest4.png" src="../_images/lab5-newrequest4.png" style="height: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Exclude the route</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Confirm that the route has been removed from the routing table of the <strong>Azure Spoke2 Gateway</strong>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways &gt;</strong> select the <strong><em>ace-azure-east-us-spoke2</em></strong> Gateway and then select the <strong>Gateway Routes</strong> tab.</p>
+<p>Now search for <code class="docutils literal notranslate"><span class="pre">10.0.211.0/24</span></code>.</p>
+</div>
+<figure class="align-center" id="id33">
+<a class="reference internal image-reference" href="../_images/lab5-newrequest5.png"><img alt="../_images/lab5-newrequest5.png" src="../_images/lab5-newrequest5.png" style="height: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">No Results found</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The route has been successfully removed from the routing table!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">1. SCENARIO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshoot-request">2. TROUBLESHOOT REQUEST</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-verifiy-connectivity-using-gatus">2.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-verifiy-connectivity-using-the-diagnostic-tools">2.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-verifiy-connectivity-using-ssh-client-bonus">2.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-tables-verification">2.4 Routing Tables verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-routes-filter">2.4.1 Gateway Routes Filter</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misconfiguration-in-settings">2.5 Misconfiguration in Settings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-final-verification">2.6 BU1 Analytics - final verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-final-verification-using-gatus">2.6.1 BU1 Analytics is not reachable - final verification Using Gatus</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-final-verification-using-the-diagnostic-tools">2.6.2 BU1 Analytics is not reachable - final verification Using the Diagnostic Tools</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-analytics-is-not-reachable-final-verification-using-ssh-client-bonus">2.6.3 BU1 Analytics is not reachable - final verification Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-db-is-not-reachable">2.7 BU1 DB is not reachable</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.7.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.7.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.7.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#packet-capture">2.2.1 Packet Capture</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-db-final-verification">2.8  BU1 DB - final verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-db-is-not-reachable-final-verification-using-gatus">2.8.1 BU1 DB is not reachable - final verification Using Gatus</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bu1-db-is-not-reachable-final-verification-using-ssh-client-bonus">2.8.2 BU1 DB is not reachable - final verification Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.8.3 BU1 DB is not reachable - final verification Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request">3. CHANGE REQUEST</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

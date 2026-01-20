@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 6 - Site2Cloud &#8212; ACE Operations Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1d85937c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab6 - 4.28.1';</script>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Aviatrix_Logo_White_Gradient_RGB.svg" class="logo__image only-light" alt="ACE Operations Lab - Home"/>
+    <script>document.write(`<img src="../_static/Aviatrix_Logo_White_Gradient_RGB.svg" class="logo__image only-dark" alt="ACE Operations Lab - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Operations Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Network Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Connection Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - FireNet - Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - FireNet - Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - Routes Manipulation &amp; NAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - Site2Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - Aviatrix Cloud Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - Distributed Cloud Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdfs.html">PDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CloudHeroes.html">CLOUD NETWORKING HEROES PROGRAM</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab6 - 4.28.1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 6 - Site2Cloud</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-1">1. SCENARIO#1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-bgp-route-approval">2. CHANGE REQUEST - BGP Route Approval</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-2">3. SCENARIO#2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-site-to-cloud">4. CHANGE REQUEST - Site-To-Cloud</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifiy-connectivity-using-the-diagnostic-tools">4.1 Verifiy connectivity Using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifiy-connectivity-using-ssh-client-bonus">4.2 Verifiy connectivity Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-6-site2cloud">
+<h1>Lab 6 - Site2Cloud<a class="headerlink" href="#lab-6-site2cloud" title="Link to this heading">#</a></h1>
+<section id="scenario-1">
+<h2>1. SCENARIO#1<a class="headerlink" href="#scenario-1" title="Link to this heading">#</a></h2>
+<p>ACE’s OnPrem Data Center has recently hired a new network engineer.</p>
+<p>You have been engaged for activating the <span style='color:orange'><strong>“Route Approval”</strong></span> feature in order to protect the Aviatrix <strong>CNSF</strong> from <em>unauthorized BGP advertisements</em>.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/lab6-topology.png"><img alt="../_images/lab6-topology.png" src="../_images/lab6-topology.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Lab 6 Scenario#1: Topology</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="change-request-bgp-route-approval">
+<h2>2. CHANGE REQUEST - BGP Route Approval<a class="headerlink" href="#change-request-bgp-route-approval" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Activate the <strong>Route Approval</strong> feature for monitoring unauthorized advertisements that could be received by the DC.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW <strong>&gt; Settings &gt; Border Gateway Protocl (BGP)</strong>, and enable the <code class="docutils literal notranslate"><span class="pre">Manual</span> <span class="pre">Learned</span> <span class="pre">CIDR</span> <span class="pre">Approval</span></code>
+toggle.</p>
+<p>Then click on <strong>Save</strong>.</p>
+</div>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/lab6-routeapproval.png"><img alt="../_images/lab6-routeapproval.png" src="../_images/lab6-routeapproval.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Route Approval</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Afterward, inform the trainer that you have activated the feature using the <span style='color:orange'><strong>“Raise Hand”</strong></span> tool on Zoom, as shown below, and then type your POD number in the Zoom chat!</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/lab6-raise.png" src="../_images/lab6-raise.png" />
+<figcaption>
+<p><span class="caption-text">Raise Hand tool on Zoom</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab6-inform.png" src="../_images/lab6-inform.png" />
+<figcaption>
+<p><span class="caption-text">Communicate your POD number</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways &gt;</strong> select the <em>ace-aws-eu-west-1-transit1</em> GW and then the <strong>Route Approval</strong> tab.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please wait approximately <strong>one or two minutes</strong> for BGP to send the Update. Then, click the <span style='color:orange'><strong>refresh button</strong></span> to see the default route being advertised from the Data Center.</p>
+<p>This route will remain in a <ins><strong>pending state</strong></ins> and will not be advertised within the CNSF until it receives final approval from the <em>Aviatrix Administrator</em>.</p>
+<p><strong>Important</strong>: Do not approve the route yourself. If you accidentally approve it, you can click “Remove” to revert it back to the Pending status.</p>
+</div>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/lab6-pending.png"><img alt="../_images/lab6-pending.png" src="../_images/lab6-pending.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Refresh</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p><strong>Do not approve the route yourself</strong>. If you accidentally approve it, you can click “Delete” to revert it back to the Pending status.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You have successfully mitigated a potential threat in the Data Center that could have jeopardized the entire network across our multicloud environment.</p>
+<p><ins>Once again, please refrain from approving the default route</ins>.</p>
+</div>
+</section>
+<section id="scenario-2">
+<h2>3. SCENARIO#2<a class="headerlink" href="#scenario-2" title="Link to this heading">#</a></h2>
+<p>ACE’s On-Premises Partner needs to be connected to the Aviatrix CNSF in the GCP region. However, there is an IP overlap with BU1’s Analytics VPC.</p>
+<p>You have been engaged to establish a <span style='color:#FF00FF'><strong>Site2Cloud</strong></span> connection between the GCP Spoke Gateway and the On-Premises Partner router, as well as to resolve the <strong>IP conflict</strong> using the <strong>Mapped NAT</strong> feature.</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/lab6-topology2.png"><img alt="../_images/lab6-topology2.png" src="../_images/lab6-topology2.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Lab 6 Scenario#2: Topology</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="change-request-site-to-cloud">
+<h2>4. CHANGE REQUEST - Site-To-Cloud<a class="headerlink" href="#change-request-site-to-cloud" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Create a new <strong>S2C</strong> connection.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Networking &gt;  Connectivity &gt; External Connection (S2C) &gt;</strong> then click on the  <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">External</span> <span class="pre">Connection&quot;</span></code> button, then select <code class="docutils literal notranslate"><span class="pre">&quot;External</span> <span class="pre">Device&quot;</span></code>.</p>
+</div>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/lab6-s2c.png"><img alt="../_images/lab6-s2c.png" src="../_images/lab6-s2c.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">New S2C</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/lab6-s2c100.png"><img alt="../_images/lab6-s2c100.png" src="../_images/lab6-s2c100.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">External Device</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Configure the new Site-to-Cloud (S2C) connection according to the schema below:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>S2C-PARTNER</span></p></li>
+<li><p><strong>Type</strong>: <span style='color:#479608'>Static Routing over IPsec</span></p></li>
+<li><p><strong>Static Routing Type</strong>: <span style='color:#479608'>Mapped</span></p></li>
+<li><p><strong>Local Gateway</strong>: <span style='color:#479608'>ace-gcp-us-east1-spoke1</span></p></li>
+<li><p><strong>Real Local Subnet CIDR(s)</strong>: <span style='color:#479608'>172.16.211.0/24</span></p></li>
+<li><p><strong>Virtual Local Subnet CIDR(s)</strong>: <span style='color:#479608'>192.168.1.0/24</span></p></li>
+<li><p><strong>Remote Gateway Type</strong>: <span style='color:#479608'>Generic</span></p></li>
+<li><p><strong>Real Remote Subnet CIDR(s)</strong>: <span style='color:#479608'>172.16.211.0/24</span></p></li>
+<li><p><strong>Virtual Remote Subnet CIDR(s)</strong>: <span style='color:#479608'>192.168.2.0/24</span></p></li>
+<li><p><strong>Internet Key Exchange</strong>: <span style='color:#479608'>IKEv2</span></p></li>
+<li><p><strong>Authentication (Method)</strong>: <span style='color:#479608'>Pre-Shared Key</span></p></li>
+<li><p><strong>Remote Device 1 Tunnel Destination IP</strong>:  <span style='color:tomato'>please refer to the Note below</span></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the “<strong>dig partner-csr-public.pod#.aviatrixlab.com +short</strong>” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem-Partner CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.</p>
+</div>
+<p><ins>Replace the <strong>#</strong> symbol with your POD number!</ins></p>
+<p>The example is referring to POD #35 (please issue the command based on your POD number!).</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/lab6-podnumber.png" src="../_images/lab6-podnumber.png" />
+<figcaption>
+<p><span class="caption-text">Retrieving the Public IP</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For <strong>Windows OS</strong> you can use the command <code class="docutils literal notranslate"><span class="pre">&quot;nslookup&quot;</span></code>:</p>
+<p><strong>nslookup partner-csr-public.pod#.aviatrixlab.com</strong></p>
+<figure class="align-center" id="id10">
+<img alt="../_images/lab6-nslookup.png" src="../_images/lab6-nslookup.png" />
+<figcaption>
+<p><span class="caption-text">Nslookup</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<ul class="simple">
+<li><p><strong>Pre-Shared Key</strong>: <span style='color:#479608'>Aviatrix123#</span></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+</div>
+<figure class="align-center" id="id11">
+<img alt="../_images/lab6-finals2c.png" src="../_images/lab6-finals2c.png" />
+<figcaption>
+<p><span class="caption-text">External Connection Configuration</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Please wait a few seconds for the completion of the S2C. The new connection will appear as <strong>“Down”</strong>, indicated by a red arrow symbol.</p>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="../_images/lab6-notdone.png"><img alt="../_images/lab6-notdone.png" src="../_images/lab6-notdone.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">S2C is establishing the connection</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on the <span style='color:orange'><strong>refresh</strong></span>
+button to see the status changing from red to green.</p>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../_images/lab6-s2cok.png"><img alt="../_images/lab6-s2cok.png" src="../_images/lab6-s2cok.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">S2C is finally UP</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="verifiy-connectivity-using-the-diagnostic-tools">
+<h3>4.1 Verifiy connectivity Using the Diagnostic Tools<a class="headerlink" href="#verifiy-connectivity-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+</section>
+<section id="verifiy-connectivity-using-ssh-client-bonus">
+<h3>4.2 Verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verifiy-connectivity-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>If you need additional control, SSH to the <strong>OnPrem partner</strong> router (i.e., a Cisco router).</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Access your personal POD Portal, locate the <code class="docutils literal notranslate"><span class="pre">&quot;SSH</span> <span class="pre">widget</span> <span class="pre">for</span> <span class="pre">Cisco</span> <span class="pre">CSR&quot;</span></code>, and use the provided credentials to connect to the CSR router as an On-Prem Partner.</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab6-csrrouter.png" src="../_images/lab6-csrrouter.png" />
+<figcaption>
+<p><span class="caption-text">Cisco Router</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<p>After successfully logging into the On-Premises Partner router (also known as the <em>CSR router</em>), execute the following command to verify that the tunnel is active:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>show<span class="w"> </span>ip<span class="w"> </span>int<span class="w"> </span>brief
+</pre></div>
+</div>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab6-tunnelup.png" src="../_images/lab6-tunnelup.png" />
+<figcaption>
+<p><span class="caption-text">Tunnel1 up/up</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then from the <strong>OnPrem Partner</strong> router issue the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span><span class="nb">source</span><span class="w"> </span>gigabitethernet1
+</pre></div>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab6-pingok2.png" src="../_images/lab6-pingok2.png" />
+<figcaption>
+<p><span class="caption-text">Ping is ok</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Execute the <code class="docutils literal notranslate"><span class="pre">Active</span> <span class="pre">Sessions</span></code> command on the <strong>GCP Spoke Gateway</strong>!</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Diagnostics Tools &gt; Gateway Diagnostics</strong>, select the <strong><em>ace-gcp-us-east1-spoke1</em></strong> GW and then select the <strong>Active Sessions</strong> tool.</p>
+<p>Click on <strong>Run</strong> and almost simultaneously issue once again the ping command from the Partner CSR router.</p>
+<p>Filter the results using the <code class="docutils literal notranslate"><span class="pre">&quot;icmp&quot;</span></code> keyword.</p>
+</div>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="../_images/lab6-final.png"><img alt="../_images/lab6-final.png" src="../_images/lab6-final.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Mapped NAT in action !</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-1">1. SCENARIO#1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-bgp-route-approval">2. CHANGE REQUEST - BGP Route Approval</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-2">3. SCENARIO#2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-site-to-cloud">4. CHANGE REQUEST - Site-To-Cloud</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifiy-connectivity-using-the-diagnostic-tools">4.1 Verifiy connectivity Using the Diagnostic Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifiy-connectivity-using-ssh-client-bonus">4.2 Verifiy connectivity Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
