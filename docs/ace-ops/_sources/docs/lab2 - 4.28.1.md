@@ -162,9 +162,23 @@ If you filter by either of the two Network Domains, you will now see routes from
 
 ## 3. TROUBLESHOOT REQUEST
 
+```{caution}
+<ins>Before proceeding, let the trainer know you’ve reached Task 3 by sending a Zoom direct message. Once informed, the trainer will execute a a python script to inject a configuration failure inside your personal POD</ins>!
+```
+
 The Apache HTTP Server running on the BU2 Mobile App has become unresponsive. The service is not accepting connections. Immediate troubleshooting is required to diagnose the cause of the failure.
 
 ### 3.1 Troubleshoot Using Gatus
+
+Start the Gatus dashboard for BU1 Frontend, inspect the TCP view. Port 80 traffic from the BU2 Mobile App will progressively show red, with other traffic staying green.
+
+```{figure} images/lab1-4.28.diagnosticstools1190167.png
+---
+height: 400px
+align: center
+---
+TCP 80 to Bu2 Mobile App
+```
 
 ### 3.2 Troubleshoot Using the Diagnostic Tools
 
