@@ -54,7 +54,43 @@ Logical View
 
 ### 2.1 Verify the connectivity between BU1 and BU2 domains Using Gatus
 
-### 2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic tools
+Navigate to the Pod Portal and open the Gatus dashboard for BU1 Frontend.
+
+```{figure} images/lab1-4.28.diagnosticstools112.png
+---
+height: 400px
+align: center
+---
+Gatus for BU1 Frontend
+```
+
+```{figure} images/lab1-4.28.diagnosticstools1190.png
+---
+height: 400px
+align: center
+---
+Source and the Destinations
+```
+
+After applying the Connection policy, ICMP traffic and TCP traffic to ports 22 and 80 to the BU2 instances will gradually turn green. This outcome reflects the expected result of merging the two network domains.
+
+```{figure} images/lab1-4.28.diagnosticstools11901.png
+---
+height: 400px
+align: center
+---
+ICMP
+```
+
+```{figure} images/lab1-4.28.diagnosticstools119012.png
+---
+height: 400px
+align: center
+---
+TCP
+```
+
+### 2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic Tools
 
 Start your verification tests also with the Diagnostic Tools.
 
