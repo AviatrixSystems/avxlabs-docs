@@ -104,7 +104,25 @@ align: center
 BU1 to BU2 is ok
 ```
 
+```{figure} images/lab2-cp00023.png
+---
+height: 200px
+align: center
+---
+BU1 to BU2 is *ok*
+```
+
 This time ICMP traffic will be successful thanks to the Connection Policy.
+
+```{tip}
+Try the Connectivity feature in Diagnostic Tools to verify reachability on TCP ports 80 and 22 to the BU2 instances.
+```{figure} images/lab2-cp000236.png
+---
+height: 200px
+align: center
+---
+Connectivity
+```
 
 ### 2.3 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
