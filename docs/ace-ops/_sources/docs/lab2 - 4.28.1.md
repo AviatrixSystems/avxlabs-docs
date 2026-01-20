@@ -115,7 +115,7 @@ BU1 to BU2 is *ok*
 This time ICMP traffic will be successful thanks to the Connection Policy.
 
 ```{tip}
-Try the Connectivity feature in Diagnostic Tools to verify reachability on TCP ports 80 and 22 to the BU2 instances.
+Try the `Connectivity` feature in Diagnostic Tools to verify reachability on TCP ports 80 and 22 to the BU2 instances.
 ```{figure} images/lab2-cp000236.png
 ---
 height: 400px
@@ -194,7 +194,7 @@ Open **Copilot > Diagnostics > Diagnostic Tools**, select **_ace-aws-eu-west-1-s
 
 ```{figure} images/lab1-4.28.diagnosticstools11901678.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 TCP 80 to BU2 Mobile App
@@ -232,18 +232,10 @@ PING and SSH are successful
 
 The Aviatrix solution includes a powerful feature for performing hop-by-hop analysis of the native cloud constructs between two endpoints.
 
-* Use `FlightPath` to verify the *CSP native cloud constructs* that isolate the two instances involved in this test.
+* Use `FlightPath (Legacy)` to verify the *CSP native cloud constructs* that isolate the two instances involved in this test.
 
 ```{tip}
 Navigate to **CoPilot > Diagnostics > AppIQ > FlightPath**
-```
-
-```{figure} images/lab2-curl3.png
----
-height: 300px
-align: center
----
-FlightPath
 ```
 
 * Select the following parameters and then click on **Run AppIQ**.
@@ -253,7 +245,7 @@ FlightPath
   - Port: <span style='color:#479608'>80</span>
   - Interface: <span style='color:#479608'>Private</span>
 
-```{figure} images/lab2-curl4.png
+```{figure} images/old-lab2-curl4.png
 ---
 height: 250px
 align: center
@@ -261,7 +253,7 @@ align: center
 AppIQ configuration
 ```
 
-Wait for some seconds and then check the report!
+Wait a few seconds, then review the report. Explore all sections until you locate the native construct that did not pass validation.
 
 The Security Group attached to BU2 Mobile APP is missing a rule that should allow inbound traffic on tcp/80.
 
@@ -270,11 +262,11 @@ The Security Group attached to BU2 Mobile APP is missing a rule that should allo
 height: 300px
 align: center
 ---
-AppIQ report
+FlightPath report
 ```
 
 ```{note}
-`AppIQ` is a troubleshooting tool. It retrieves and displays, in a side by side fashion, cloud provider’s network related information such as **Security Groups**, **NACLs** and **Route Tables**. 
+`FlightPath` is a troubleshooting tool. It retrieves and displays, in a side by side fashion, cloud provider’s network related information such as **Security Groups**, **NACLs** and **Route Tables**. 
 
 This helps you to identify connectivity problems on the underlay environments of each CSP involved along the communication path between two nodes.
 ```
@@ -384,7 +376,27 @@ Please use the specific CIDR **10.0.0.0/8** instead of 0.0.0.0/0 to ensure preci
 
 ### 3.6 Verification Using Gatus
 
+Launch the **BU1 Frontend** Gatus Dashboard and watch the TCP port 80 traffic to the BU2 Mobile App gradually turn green.
+
+```{figure} images/lab1-4.28.90.png
+---
+height: 400px
+align: center
+---
+ICMP
+```
+
 ### 3.7 Verification Using the Diagnostic Tools
+
+Navigate to **Copilot > Diagnostics > Diagnostic Tools**, select the **_ace-aws-eu-west-1-spoke1_** gateway, choose `Connectivity`, and validate TCP/80 traffic. This time, the check should succeed.
+
+```{figure} images/lab1-4.28.90000.png
+---
+height: 400px
+align: center
+---
+TCP/80 to BU2 Mobile App
+```
 
 ### 3.8 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
