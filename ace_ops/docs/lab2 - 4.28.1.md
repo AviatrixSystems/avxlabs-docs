@@ -98,7 +98,7 @@ Start your verification tests also with the Diagnostic Tools.
 
 ```{figure} images/lab2-cp000.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 BU1 to BU2 is ok
@@ -106,7 +106,7 @@ BU1 to BU2 is ok
 
 ```{figure} images/lab2-cp00023.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 BU1 to BU2 is *ok*
@@ -118,7 +118,7 @@ This time ICMP traffic will be successful thanks to the Connection Policy.
 Try the Connectivity feature in Diagnostic Tools to verify reachability on TCP ports 80 and 22 to the BU2 instances.
 ```{figure} images/lab2-cp000236.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 Connectivity
@@ -132,6 +132,14 @@ If you want to run the ping directly from the instance, complete this task using
   - Connectivity via ICMP ping and SSH between the two BUs is now established, thanks to the `Connection Policy`(commonly referred to as **_VRF leakage_**).
 
 ```{figure} images/lab2-pingbu2.png
+---
+height: 400px
+align: center
+---
+BU1 to BU2 is ok
+```
+
+```{figure} images/lab2-pingbu289.png
 ---
 height: 400px
 align: center
@@ -177,10 +185,20 @@ Start the Gatus dashboard for BU1 Frontend, inspect the TCP view. Port 80 traffi
 height: 400px
 align: center
 ---
-TCP 80 to Bu2 Mobile App
+TCP 80 to BU2 Mobile App
 ```
 
 ### 3.2 Troubleshoot Using the Diagnostic Tools
+
+Open **Copilot > Diagnostics > Diagnostic Tools**, select **_ace-aws-eu-west-1-spoke1_** gateway, then click "Connectivity" and confirm TCP port 80 against the **BU2 Mobile App**’s private IP address.
+
+```{figure} images/lab1-4.28.diagnosticstools11901678.png
+---
+height: 400px
+align: center
+---
+TCP 80 to BU2 Mobile App
+```
 
 ### 3.3 Troubleshoot Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 

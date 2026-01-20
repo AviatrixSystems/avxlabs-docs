@@ -32,7 +32,7 @@ All applications in AWS and GCP have both _public_ and _private_ IP addresses, w
 
   - Azure: 192.168.0.0/16
 
-- Databases do not expose HTTP. All other applications expose HTTP (i.e., curl can be used to test).
+- All instances are running an Apache web server, and therefore expose TCP port 80.
 
 - **Network addressing**:
 

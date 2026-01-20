@@ -273,7 +273,7 @@ BU1-Frontend Gatus
 Reduce the polling timer from 5 minutes to **10 seconds** to expedite the visibility of the results.
 ```{figure} images/lab2-gatus05.png
 ---
-height: 400px
+height: 550px
 align: center
 ---
 Timer
@@ -485,7 +485,7 @@ Now choose the "Connectivity" option and validate reachability to the destinatio
 
 ```{figure} images/lab1-diagnosticstools9921.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 tcp/80 for bu1-analystics
@@ -493,7 +493,7 @@ tcp/80 for bu1-analystics
 
 ```{figure} images/lab1-diagnosticstools99212.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 tcp/22 for bu1-analystics
@@ -501,7 +501,7 @@ tcp/22 for bu1-analystics
 
 ```{figure} images/lab1-diagnosticstools992123.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 tcp/80 for bu1-db
@@ -509,7 +509,7 @@ tcp/80 for bu1-db
 
 ```{figure} images/lab1-diagnosticstools9921234.png
 ---
-height: 200px
+height: 400px
 align: center
 ---
 tcp/22 for bu1-db
@@ -529,7 +529,7 @@ BU1 Analytics and BU1 BD are reachable because they share the same network domai
 The credentials for accessing the EC2 instances and VMs are available in your personal POD Portal, nder the section labeled `"SSH for Test Instances"`.
 ```{figure} images/lab1-widget.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 SSH credentials
@@ -559,7 +559,7 @@ Open your **SSH client** and enter the SSH command to log in to the **BU1 Fronte
 
 ```{figure} images/lab1-assets22.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 SSH
@@ -632,7 +632,7 @@ align: center
 Source and the Destinations
 ```
 
-According to the applied Network Domain configuration, this time, **BU1 Frontend** should be unable to reach **BU1 Analytics** and **BU1 DB** via ICMP or TCP. The traffic is completely blocked because the remote destinations reside in a different Routing Domain.
+According to the applied Network Domain configuration, this time, **BU1 Frontend** should be unable to reach **BU2 Mobile App** and **BU2 DB** via ICMP or TCP. The traffic is completely blocked because the remote destinations reside in a different Routing Domain.
 
 ```{figure} images/lab1-4.28.diagnosticstools115.png
 ---
@@ -676,7 +676,7 @@ align: center
 BU2-MobileApp
 ```
 
-```{figure} images/lab1-mobileapp0078.png
+```{figure} images/old-lab1-mobileapp0078.png
 ---
 height: 200px
 align: center
