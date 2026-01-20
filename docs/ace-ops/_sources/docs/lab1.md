@@ -257,14 +257,6 @@ align: center
 BU1 Frontend on the Dynamic Topology
 ```
 
-```{figure} images/lab2-gatus03.png
----
-height: 400px
-align: center
----
-Current situation on BU1 Frontend
-```
-
 After signing into the Gatus App, you'll observe that two protocols are currently in use: `ICMP` and `TCP`.
 
 TCP is monitored on ports 22 and 80.
@@ -401,9 +393,45 @@ The initial request is to verify the separation between the two network domains.
 
 ### 7.1 Verify connectivity between clients **within** the same network domain Using Gatus
 
+Navigate to the Pod Portal and open the Gatus dashboard for BU1 Frontend.
+
+```{figure} images/lab1-4.28.diagnosticstools112.png
+---
+height: 400px
+align: center
+---
+Gatus for BU1 Frontend
+```
+
+```{figure} images/lab1-4.28.diagnosticstools11.png
+---
+height: 400px
+align: center
+---
+Source and the Destinations
+```
+
+According to the applied Network Domain configuration, **BU1 Frontend** should be able to reach **BU1 Analytics** and **BU1 DB** via ICMP, and should be able to access BU1 Analytics and BU1 DB via HTTP on ports 22 and 80.
+
+```{figure} images/lab1-4.28.diagnosticstools115.png
+---
+height: 400px
+align: center
+---
+ICMP
+```
+
+```{figure} images/lab1-4.28.diagnosticstools116.png
+---
+height: 400px
+align: center
+---
+TCP
+```
+
 ### 7.2 Verify connectivity between clients **within** the same network domain Using the Diagnostic Tools
 
-You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Workloads` section.
+You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Assets` section.
 
 ```{figure} images/lab1-diagnosticstools11.png
 ---
@@ -413,13 +441,13 @@ align: center
 Default Gateway and the Destinations
 ```
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines**, filter for the keywords **"analytics"** and **"bu1-db"**, and capture the private IP addresses of the resulting VMs.
+- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, filter for the keywords **"analytics"** and **"bu1-db"**, and capture the private IP addresses of the resulting VMs.
 
 ```{tip}
 Use multiple tabs on your browser!
 ```
 
-```{figure} images/lab1-diagnosticstools990.png
+```{figure} images/lab1-old.diagnosticstools990.png
 ---
 height: 250px
 align: center
@@ -427,7 +455,7 @@ align: center
 bu1-analytics
 ```
 
-```{figure} images/lab1-diagnosticstools991.png
+```{figure} images/lab1-old.diagnosticstools991.png
 ---
 height: 250px
 align: center
@@ -451,6 +479,40 @@ height: 200px
 align: center
 ---
 bu1-db is reachable
+```
+
+Now choose the "Connectivity" option and validate reachability to the destination on both ports 80 and 22.
+
+```{figure} images/lab1-diagnosticstools9921.png
+---
+height: 200px
+align: center
+---
+tcp/80 for bu1-analystics
+```
+
+```{figure} images/lab1-diagnosticstools99212.png
+---
+height: 200px
+align: center
+---
+tcp/22 for bu1-analystics
+```
+
+```{figure} images/lab1-diagnosticstools992123.png
+---
+height: 200px
+align: center
+---
+tcp/80 for bu1-db
+```
+
+```{figure} images/lab1-diagnosticstools9921234.png
+---
+height: 200px
+align: center
+---
+tcp/22 for bu1-db
 ```
 
 ```{tip}
@@ -550,9 +612,45 @@ CURL
 Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.
 ```
 
-### 7.4 Ensure workloads remain isolated across network domains Using Gatus.
+### 7.4 Ensure workloads remain isolated across network domains Using Gatus
 
-### 7.5 Ensure workloads remain isolated across network domains Using the Diagnostic Tools.
+Navigate to the Pod Portal and open the Gatus dashboard for BU1 Frontend.
+
+```{figure} images/lab1-4.28.diagnosticstools112.png
+---
+height: 400px
+align: center
+---
+Gatus for BU1 Frontend
+```
+
+```{figure} images/lab1-4.28.diagnosticstools1100.png
+---
+height: 400px
+align: center
+---
+Source and the Destinations
+```
+
+According to the applied Network Domain configuration, this time, **BU1 Frontend** should be unable to reach **BU1 Analytics** and **BU1 DB** via ICMP or TCP. The traffic is completely blocked because the remote destinations reside in a different Routing Domain.
+
+```{figure} images/lab1-4.28.diagnosticstools115.png
+---
+height: 400px
+align: center
+---
+ICMP
+```
+
+```{figure} images/lab1-4.28.diagnosticstools116.png
+---
+height: 400px
+align: center
+---
+TCP
+```
+
+### 7.5 Ensure workloads remain isolated across network domains Using the Diagnostic Tools
 
 We should ensure that, from the BU1 Frontend perspective, connectivity to the BU2 Mobile App and the BU2 DB is blocked.
 
