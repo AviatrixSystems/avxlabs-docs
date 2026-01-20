@@ -477,7 +477,7 @@ document.write(`
 <p>This time ICMP traffic will be successful thanks to the Connection Policy.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Try the Connectivity feature in Diagnostic Tools to verify reachability on TCP ports 80 and 22 to the BU2 instances.</p>
+<p>Try the <code class="docutils literal notranslate"><span class="pre">Connectivity</span></code> feature in Diagnostic Tools to verify reachability on TCP ports 80 and 22 to the BU2 instances.</p>
 <figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/lab2-cp000236.png"><img alt="../_images/lab2-cp000236.png" src="../_images/lab2-cp000236.png" style="height: 400px;" />
 </a>
@@ -545,7 +545,7 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/lab1-4.28.diagnosticstools1190167.png"><img alt="../_images/lab1-4.28.diagnosticstools1190167.png" src="../_images/lab1-4.28.diagnosticstools1190167.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 91 </span><span class="caption-text">TCP 80 to Bu2 Mobile App</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">TCP 80 to BU2 Mobile App</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -553,7 +553,7 @@ document.write(`
 <h3>3.2 Troubleshoot Using the Diagnostic Tools<a class="headerlink" href="#troubleshoot-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
 <p>Open <strong>Copilot &gt; Diagnostics &gt; Diagnostic Tools</strong>, select <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway, then click “Connectivity” and confirm TCP port 80 against the <strong>BU2 Mobile App</strong>’s private IP address.</p>
 <figure class="align-center" id="id16">
-<a class="reference internal image-reference" href="../_images/lab1-4.28.diagnosticstools11901678.png"><img alt="../_images/lab1-4.28.diagnosticstools11901678.png" src="../_images/lab1-4.28.diagnosticstools11901678.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab1-4.28.diagnosticstools11901678.png"><img alt="../_images/lab1-4.28.diagnosticstools11901678.png" src="../_images/lab1-4.28.diagnosticstools11901678.png" style="height: 300px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 92 </span><span class="caption-text">TCP 80 to BU2 Mobile App</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
@@ -597,13 +597,6 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; AppIQ &gt; FlightPath</strong></p>
 </div>
-<figure class="align-center" id="id19">
-<a class="reference internal image-reference" href="../_images/lab2-curl3.png"><img alt="../_images/lab2-curl3.png" src="../_images/lab2-curl3.png" style="height: 300px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">FlightPath</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 <ul class="simple">
 <li><p>Select the following parameters and then click on <strong>Run AppIQ</strong>.</p>
 <ul>
@@ -615,25 +608,25 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="../_images/lab2-curl4.png"><img alt="../_images/lab2-curl4.png" src="../_images/lab2-curl4.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 96 </span><span class="caption-text">AppIQ configuration</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">AppIQ configuration</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Wait for some seconds and then check the report!</p>
+<p>Wait a few seconds, then review the report. Explore all sections until you locate the native construct that did not pass validation.</p>
 <p>The Security Group attached to BU2 Mobile APP is missing a rule that should allow inbound traffic on tcp/80.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/lab2-curl5.png"><img alt="../_images/lab2-curl5.png" src="../_images/lab2-curl5.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 97 </span><span class="caption-text">AppIQ report</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">AppIQ report</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">AppIQ</span></code> is a troubleshooting tool. It retrieves and displays, in a side by side fashion, cloud provider’s network related information such as <strong>Security Groups</strong>, <strong>NACLs</strong> and <strong>Route Tables</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">FlightPath</span></code> is a troubleshooting tool. It retrieves and displays, in a side by side fashion, cloud provider’s network related information such as <strong>Security Groups</strong>, <strong>NACLs</strong> and <strong>Route Tables</strong>.</p>
 <p>This helps you to identify connectivity problems on the underlay environments of each CSP involved along the communication path between two nodes.</p>
 </div>
 </section>
@@ -645,77 +638,77 @@ document.write(`
 <p>Navigate to your personal POD portal and click on the <strong>Console</strong> button under the AWS Console section.</p>
 <p>Sign in using the provided credentials (these screenshots refer to <strong>Pod 143</strong>).</p>
 </div>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="../_images/lab2-console.png"><img alt="../_images/lab2-console.png" src="../_images/lab2-console.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 98 </span><span class="caption-text">POD Portal - AWS Console button</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">POD Portal - AWS Console button</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab2-aws.png" src="../_images/lab2-aws.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 99 </span><span class="caption-text">AWS</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text">AWS</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Change the region to <code class="docutils literal notranslate"><span class="pre">Ireland</span> <span class="pre">(eu-west-1)</span></code> in the top-right corner and invoke the <strong>EC2</strong> service, then click on the <strong>Instances (running)</strong> section.</p>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab2-euwest.png" src="../_images/lab2-euwest.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Regions selection</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">Regions selection</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id24">
 <a class="reference internal image-reference" href="../_images/lab2-invoke.png"><img alt="../_images/lab2-invoke.png" src="../_images/lab2-invoke.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 101 </span><span class="caption-text">Invoke the EC2 service</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Invoke the EC2 service</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="../_images/lab2-instance.png"><img alt="../_images/lab2-instance.png" src="../_images/lab2-instance.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Instances (running)</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">Instances (running)</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Search for <strong><em>ace-aws-eu-west-1-spoke2-bu2-mobile-app</em></strong>, select the instance and choose the tab <code class="docutils literal notranslate"><span class="pre">&quot;Security&quot;</span></code> below and then click on the security group identificator with a long string.</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab2-sg.png" src="../_images/lab2-sg.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 103 </span><span class="caption-text">Select the Security Group</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Select the Security Group</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Explore the inbound rules and you will find out the absence of a rule that should permit the incoming traffic on port <strong>tcp/80</strong>.</p>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id27">
 <a class="reference internal image-reference" href="../_images/lab2-sg2.png"><img alt="../_images/lab2-sg2.png" src="../_images/lab2-sg2.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 104 </span><span class="caption-text">The Security Group attached to the Mobile App</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">The Security Group attached to the Mobile App</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Edit</span> <span class="pre">inbound</span> <span class="pre">rules&quot;</span></code>.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id28">
 <a class="reference internal image-reference" href="../_images/lab2-sg3.png"><img alt="../_images/lab2-sg3.png" src="../_images/lab2-sg3.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Edit the SG</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Edit the SG</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;Add</span> <span class="pre">rule&quot;</span></code>.</p>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id29">
 <a class="reference internal image-reference" href="../_images/lab2-sg4.png"><img alt="../_images/lab2-sg4.png" src="../_images/lab2-sg4.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 106 </span><span class="caption-text">Add a new rule</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Add a new rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Create the required inbound rule (i.e., <em>“allow <strong>http</strong> traffic from 10.0.0.0/8”</em>) as depicted below and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;Save</span> <span class="pre">rules&quot;</span></code> button.</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id30">
 <a class="reference internal image-reference" href="../_images/lab2-sg5.png"><img alt="../_images/lab2-sg5.png" src="../_images/lab2-sg5.png" style="height: 150px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 107 </span><span class="caption-text">New inbound rule: allow port 80</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text">New inbound rule: allow port 80</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -725,18 +718,34 @@ document.write(`
 </section>
 <section id="verification-using-gatus">
 <h3>3.6 Verification Using Gatus<a class="headerlink" href="#verification-using-gatus" title="Link to this heading">#</a></h3>
+<p>Launch the <strong>BU1 Frontend</strong> Gatus Dashboard and watch the TCP port 80 traffic to the BU2 Mobile App gradually turn green.</p>
+<figure class="align-center" id="id31">
+<a class="reference internal image-reference" href="../_images/lab1-4.28.90.png"><img alt="../_images/lab1-4.28.90.png" src="../_images/lab1-4.28.90.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 107 </span><span class="caption-text">TCP/80 to BU2 Mobile App</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="verification-using-the-diagnostic-tools">
 <h3>3.7 Verification Using the Diagnostic Tools<a class="headerlink" href="#verification-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
+<p>Navigate to <strong>Copilot &gt; Diagnostics &gt; Diagnostic Tools</strong>, select the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> gateway, choose <code class="docutils literal notranslate"><span class="pre">Connectivity</span></code>, and validate TCP/80 traffic. This time, the check should succeed.</p>
+<figure class="align-center" id="id32">
+<a class="reference internal image-reference" href="../_images/lab1-4.28.90000.png"><img alt="../_images/lab1-4.28.90000.png" src="../_images/lab1-4.28.90000.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text">TCP/80 to BU2 Mobile App</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="verification-using-the-ssh-client-bonus">
 <h3>3.8 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verification-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <p>Now re-run the <strong>curl</strong> command from the <strong><em>BU1 Frontend</em></strong> instance to the private IP address of the <strong><em>BU2 Mobile App</em></strong>.</p>
 <p>Curl command will work this time.</p>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id33">
 <img alt="../_images/lab2-last.png" src="../_images/lab2-last.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 108 </span><span class="caption-text">Curl is ok!</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 109 </span><span class="caption-text">Curl is ok!</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

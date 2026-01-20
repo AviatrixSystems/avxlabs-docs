@@ -481,7 +481,7 @@ align: center
 bu1-db is reachable
 ```
 
-Now choose the "Connectivity" option and validate reachability to the destination on both ports 80 and 22.
+Now choose the `"Connectivity"` option and validate reachability to the destination on both ports 80 and 22.
 
 ```{figure} images/lab1-diagnosticstools9921.png
 ---
