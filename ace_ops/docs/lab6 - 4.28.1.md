@@ -245,7 +245,7 @@ Ping is ok
 - Execute the `Active Sessions` command on the **GCP Spoke Gateway**!
 
 ```{tip}
-Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**, select the **_ace-gcp-us-east1-spoke1_** GW and then select the **Active Sessions** tool.
+Navigate to **CoPilot > Diagnostics > Diagnostic Tools > Gateway Diagnostics**, select the **_ace-gcp-us-east1-spoke1_** GW and then select the **Active Sessions** tool.
 
 Click on **Run** and almost simultaneously issue once again the ping command from the Partner CSR router.
 
