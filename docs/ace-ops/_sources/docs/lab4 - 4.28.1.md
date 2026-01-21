@@ -293,16 +293,7 @@ ping is ok!
 
 #### 2.7.3 Connectivity test Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-- Re-run ping to the MobileApp instance’s private IP address from AWS Spoke1, using the `Diagnostic Tools`.
-
-```{figure} images/lab4-traceroute281.png
----
-align: center
----
-Ping from the Spoke1
-```
-
-- Alternatively, re-execute the ping from **BU1 Frontend** toward **BU2 Mobile App**.
+Alternatively, re-execute the ping from **BU1 Frontend** toward **BU2 Mobile App**.
 
 ```{figure} images/lab4-pingworks.png
 ---
