@@ -209,6 +209,16 @@ Exclude the CIDR
 
 #### 2.5.2 FireNet - Verification using Gatus
 
+Open the Gatus Dashboard for **BU1 Frontend**. You’ll notice almost immediately that ICMP traffic and TCP traffic to ports 80 and 22 for the BU2 Mobile App have been restored, thanks to the workaround.
+
+```{figure} images/lab3-4.28.diagnosticstools1190156.png
+---
+height: 400px
+align: center
+---
+All kind fo traffic is blocked
+```
+
 #### 2.5.3 FireNet - Verification using the Diagnostic Tools
 
 - Run `traceroute` directly from Spoke1 in EU-WEST-1, the gateway in the same VPC as the **Frontend** instance.
@@ -258,9 +268,8 @@ Having identified the root cause and applied the workaround, we should remove th
 
 - <ins>Remove</ins> the _workaround_ and perform a thorough review of the Firewall configuration.
 
-
 ```{tip}
-Navigate to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_ace-aws-eu-west-1-transit1_** GW, then click on **Settings** and remove the CIDR `10.1.212.0/24`. 
+Navigate to **CoPilot > Security > FireNet**, click on the **_ace-aws-eu-west-1-transit1_** GW, then click on **Settings** and remove the CIDR `10.1.212.0/24`. 
 
 Do not forget to click on **Save**.
 ```
@@ -343,7 +352,7 @@ ping
 Refer always to your personal POD Portal for the IP addresses!
 ```
 
-- Navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the **_ace-aws-eu-west-1-transit1_** gateway, then choose **`Packet Capture`** from the available features. Select the `eth-fn0` interface, set the duration to **10** seconds, and click **Run**. When the results appear, you can filter by **"icmp"**.
+- Navigate to **CoPilot > Diagnostics > Diagnostic Tools**. Select the **_ace-aws-eu-west-1-transit1_** gateway, then choose **`Packet Capture`** from the available features. Select the `eth-fn0` interface, set the duration to **10** seconds, and click **Run**. When the results appear, you can filter by **"icmp"**.
 
 ```{figure} images/lab3-ethernet03.png
 ---
