@@ -72,7 +72,7 @@ align: center
 Source and the Destinations
 ```
 
-After applying the Connection policy, ICMP traffic and TCP traffic to ports 22 and 80 to the BU2 instances will gradually turn green. This outcome reflects the expected result of merging the two network domains.
+After applying the `Connection Policy`, ICMP traffic and TCP traffic to ports 22 and 80 to the BU2 instances will gradually turn green. This outcome reflects the expected result of merging the two network domains.
 
 ```{figure} images/lab1-4.28.diagnosticstools11901.png
 ---
@@ -98,7 +98,7 @@ Start your verification tests also with the Diagnostic Tools.
 
 ```{figure} images/lab2-cp000.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 BU1 to BU2 is ok
@@ -190,7 +190,7 @@ TCP 80 to BU2 Mobile App
 
 ### 3.2 Troubleshoot Using the Diagnostic Tools
 
-Open **Copilot > Diagnostics > Diagnostic Tools**, select **_ace-aws-eu-west-1-spoke1_** gateway, then click "Connectivity" and confirm TCP port 80 against the **BU2 Mobile App**’s private IP address.
+Open **Copilot > Diagnostics > Diagnostic Tools**, select **_ace-aws-eu-west-1-spoke1_** gateway, then click `"Connectivity"` and confirm TCP port 80 against the **BU2 Mobile App**’s private IP address.
 
 ```{figure} images/lab1-4.28.diagnosticstools11901678.png
 ---
@@ -376,7 +376,7 @@ Please use the specific CIDR **10.0.0.0/8** instead of 0.0.0.0/0 to ensure preci
 
 ### 3.6 Verification Using Gatus
 
-Launch the **BU1 Frontend** Gatus Dashboard and watch the TCP port 80 traffic to the BU2 Mobile App gradually turn green.
+Launch the **BU1 Frontend** Gatus Dashboard and observe the TCP port 80 traffic to BU2 Mobile App gradually turning green.
 
 ```{figure} images/lab1-4.28.90.png
 ---
@@ -402,7 +402,7 @@ TCP/80 to BU2 Mobile App
 
 Now re-run the **curl** command from the **_BU1 Frontend_** instance to the private IP address of the **_BU2 Mobile App_**.
 
-Curl command will work this time.
+The curl command should work this time.
 ```{figure} images/lab2-last.png
 ---
 align: center
