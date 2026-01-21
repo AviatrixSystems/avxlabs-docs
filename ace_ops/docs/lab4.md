@@ -265,9 +265,31 @@ align: center
 
 ### 2.7 Final Verification
 
+The firewall didn’t have a route for the return traffic (i.e., its routing table was missing the 10.0.0.0/8 route), so the firewall was dropping the traffic. After the vendor integration and synchronization of the RFC1918 routes, we’ve verified that connectivity has been restored.
+
 #### 2.7.1 Connectivity test Using Gatus
 
+Check the Gatus dashboard for **BU1 Frontend**.
+
+```{figure} images/lab3-4.28.diagnosticstools11901r4.png
+---
+height: 400px
+align: center
+---
+Traffic is back to normal
+```
+
 #### 2.7.2 Connectivity test Using the Diagnostic Tools
+
+From Diagnostic Tools, run the ping command from the **_ace-aws-eu-west-1-spoke1_** gateway to the private IP address of the **BU2 Mobile App**. This time, the ping should succeed.
+
+```{figure} images/lab3-4.28.diagnosticstools11901r41.png
+---
+height: 400px
+align: center
+---
+ping is ok!
+```
 
 #### 2.7.3 Connectivity test Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
