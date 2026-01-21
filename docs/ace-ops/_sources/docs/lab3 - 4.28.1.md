@@ -40,7 +40,7 @@ Access the **BU1 Frontend** Dashboard. You’ll notice East–West traffic is en
 height: 400px
 align: center
 ---
-All kind fo traffic is blocked
+All types of traffic are blocked.
 ```
 
 ### 2.2 Verify connectivity using the Diagnostic Tools
@@ -426,7 +426,19 @@ Reactivate the LAN port
 
 ### 2.9 Final Verification
 
+Let's proceed to the final verification after the firewall problem is resolved.
+
 #### 2.9.1 Verify connectivity Using Gatus
+
+Reopen the **BU1 Frontend** Gatus Dashboard. All traffic flows have been restored.
+
+```{figure} images/lab3-4.28.diagnosticstools1190189.png
+---
+height: 400px
+align: center
+---
+All types of traffic have been restored
+```
 
 #### 2.9.2 Verify connectivity Using the Diagnostic Tools
 
@@ -469,5 +481,5 @@ New Traceroute outcome
 ```
 
 ```{important}
-This time, the traceroute shows the IP address of the Transit FireNet Gateway (e.g., **.143**, as in the example screenshot) twice along the path. This happens because the traffic is diverted to the firewall for _Deep Packet Inspection_, and after approval, the firewall sends the traffic back to the Transit FireNet Gateway.
+This time, the traceroute shows the IP address of the Transit FireNet Gateway (e.g., **.186**, as in the example screenshot) twice along the path. This happens because the traffic is diverted to the firewall for _Deep Packet Inspection_, and after approval, the firewall sends the traffic back to the Transit FireNet Gateway.
 ```
