@@ -33,6 +33,15 @@ Let’s dive into troubleshooting to figure out exactly where things are going w
 
 ### 2.1 Verify connectivity Using Gatus
 
+Access the **BU1 Frontend** Dashboard. You’ll notice East–West traffic is entirely blocked, impacting communication with the BU2 Mobile App and all other instances.
+
+```{figure} images/lab3-4.28.diagnosticstools11901.png
+---
+height: 400px
+align: center
+---
+All kind fo traffic is blocked
+```
 ### 2.2 Verify connectivity using the Diagnostic Tools
 
 - Navigate to **CoPilot > Diagnostics > Diagnostic Tools**. Select the **_ace-aws-eu-west-1-spoke1_** gateway (the gateway in front of the source endpoint). First, `ping` the private IP address of **BU2-MobileApp**, then perform a `traceroute` to that address.
@@ -59,6 +68,10 @@ align: center
 Traceroute outcome
 ```
 
+```{important}
+The traceroute results show a surprising outcome: **0** hops.
+```
+
 - Now try to ping both workloads (i.e. BU1 Frontend and BU2 Mobile App) from the **Transit** GW in AWS.
 
 ```{figure} images/lab3-bu1ping.png
@@ -78,10 +91,6 @@ Ping is successful from the Transit Gateway to BU2 Mobile App.
 ```
 
 From the outcome above, you can notice that the Transit GW in AWS can ping both BU1 Frontend and BU2 Mobile App, successfully.
-
-```{important}
-The traceroute results show a surprising outcome: **0** hops.
-```
 
 ### 2.3 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -136,6 +145,10 @@ Filtering out
 
 From the above outcome, Spoke1 in AWS has the destination route in its RTB. You can verify the inverse by inspecting the Routing Table of Spoke2 in AWS.
 
+```{tip}
+Confirm that the **_ace-aws-eu-west-1-spoke2_** gateway includes a route to **10.1.211.0/24** in its routing table.
+```
+
 ### 2.5 FireNet
 
 - Let's check the **FireNet** section!
@@ -171,7 +184,7 @@ The FW is down
 - Apply a quick **workaround**. Before continuing the firewall troubleshooting, exclude from the East-West Inspection, either of the CIDRs of the two AWS Spoke VPCs.
 
 ```{tip}
-Navigate to **CoPilot > Security > FireNet > FireNet Gateways** and click on the **_ace-aws-eu-west-1-transit1_** GW.
+Navigate to **CoPilot > Security > FireNet** and click on the **_ace-aws-eu-west-1-transit1_** GW.
 
 Then click on **Settings** and insert the CIDR of the AWS **ace-aws-eu-west-1-spoke2** VPC on the field `"Exclude from East-West Inspection"`. 
 

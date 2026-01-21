@@ -263,7 +263,7 @@ TCP is monitored on ports 22 and 80.
 
 ```{figure} images/lab2-gatus04.png
 ---
-height: 400px
+height: 550px
 align: center
 ---
 BU1-Frontend Gatus
@@ -411,7 +411,7 @@ align: center
 Source and the Destinations
 ```
 
-According to the applied Network Domain configuration, **BU1 Frontend** should be able to reach **BU1 Analytics** and **BU1 DB** via ICMP, and should be able to access BU1 Analytics and BU1 DB via HTTP on ports 22 and 80.
+According to the applied Network Segmentation configuration, **BU1 Frontend** should be able to reach **BU1 Analytics** and **BU1 DB** via ICMP, and should be able to access BU1 Analytics and BU1 DB via HTTP on ports 22 and 80.
 
 ```{figure} images/lab1-4.28.diagnosticstools115.png
 ---
@@ -632,7 +632,7 @@ align: center
 Source and the Destinations
 ```
 
-According to the applied Network Domain configuration, this time, **BU1 Frontend** should be unable to reach **BU2 Mobile App** and **BU2 DB** via ICMP or TCP. The traffic is completely blocked because the remote destinations reside in a different Routing Domain.
+The inter-domain controls must guarantee that **BU1 Frontend** cannot reach **BU2 Mobile App** or **BU2 DB** via ICMP or TCP. All such traffic is blocked because the remote destinations reside in a different routing domain.
 
 ```{figure} images/lab1-4.28.diagnosticstools115.png
 ---
