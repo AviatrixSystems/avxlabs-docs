@@ -40,7 +40,7 @@ Access the **BU1 Frontend** Dashboard. You’ll notice East–West traffic is en
 height: 400px
 align: center
 ---
-All types of traffic are blocked.
+All types of traffic are blocked
 ```
 
 ### 2.2 Verify connectivity using the Diagnostic Tools

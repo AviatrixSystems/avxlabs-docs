@@ -20,6 +20,16 @@ Let’s move forward with the troubleshooting. Verify the connectivity between *
 
 ### 2.1 Connectivity verification Using Gatus
 
+Analyze the **BU1 Frontend** Gatus dashboard again: traffic to the BU2 Mobile App is blocked, and traffic to the other instances is blocked as well. All checks are turning red.
+
+```{figure} images/lab3-4.28.diagnosticstools11901.png
+---
+height: 400px
+align: center
+---
+All types of traffic are blocked
+```
+
 ### 2.2 Connectivity verification Using Diagnostic Tools
 
 Remember that all Aviatrix gateways include built-in enterprise-grade tools, such as ping and traceroute. Run these commands directly from the `Diagnostic Tools` section.
