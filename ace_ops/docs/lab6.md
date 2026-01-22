@@ -145,9 +145,17 @@ Configure the new Site-to-Cloud (S2C) connection according to the schema below:
 Use the “**dig partner-csr-public.pod#.aviatrixlab.com +short**” command <ins>from your personal laptop terminal</ins> to resolve the symbolic public name of the OnPrem-Partner CSR router and retrieve the <ins>REMOTE GATEWAY PUBLIC IP address</ins>, as depicted in the example below.
 ```
 
+```{figure} images/lab6-topologyas.png
+---
+height: 400px
+align: center
+---
+Onprem Partner 
+```
+
 <ins>Replace the **#** symbol with your POD number!</ins>
 
-The example is referring to POD #35 (please issue the command based on your POD number!).
+The example is referring to POD **#2** (please issue the command based on your POD number!).
 
 ```{figure} images/lab6-podnumber.png
 ---

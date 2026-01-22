@@ -144,7 +144,7 @@ Delete the malicious route
 
 Now that we’ve identified the problem location, let’s re-run the connectivity tests.
 
-#### 2.6.1 BU1 Analytics is not reachable - final verification Using Gatus
+#### 2.6.1 BU1 Analytics is now reachable - final verification Using Gatus
 
 The Gatus dashboard for **BU1 Frontend** shows that ICMP traffic and TCP traffic to **BU1 Analytics** have been restored.
 
@@ -164,7 +164,7 @@ align: center
 TCP
 ```
 
-#### 2.6.2 BU1 Analytics is not reachable - final verification Using the Diagnostic Tools
+#### 2.6.2 BU1 Analytics is now reachable - final verification Using the Diagnostic Tools
 
 - From `Diagnostic Tools`, re-run ping to the private IP address of **BU2 MobileApp**.
 
@@ -175,7 +175,7 @@ align: center
 Ping from the Spoke1
 ```
 
-#### 2.6.3 BU1 Analytics is not reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.6.3 BU1 Analytics is now reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - If you prefer, please reevaluate connectivity by reissuing a ping from **BU1 Frontend** to **BU1 Analytics** via your SSH client.
 
@@ -215,7 +215,7 @@ TCP
 - Run the _traceroute_ command from the `Diagnostic Tools` to the private IP address of the BU1 DB.
   
 ```{tip}
-Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
+Navigate to **CoPilot > Diagnostics > Diagnostic Tools > Gateway Diagnostics**.
 
 Select **_ace-aws-eu-west-1-spoke1_** Spoke GW and perform a **traceroute** to BU1 DB’s private IP.
 ```
