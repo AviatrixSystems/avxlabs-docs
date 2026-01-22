@@ -209,9 +209,7 @@ align: center
 S2C is finally UP
 ```
 
-### 4.1 Verifiy connectivity Using the Diagnostic Tools
-
-### 4.2 Verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 4.1 Verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - If you need additional control, SSH to the **OnPrem partner** router (i.e., a Cisco router).
 
