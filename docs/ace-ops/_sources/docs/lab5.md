@@ -18,6 +18,24 @@ Let’s proceed with another troubleshooting request, using the same tools we us
 
 ### 2.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus
 
+Log in to the Gatus dashboard within **BU1 Frontend**. You will observe that both ICMP and TCP traffic destined for **BU1 Analytics** and **BU1 DB** gradually turn red.
+
+```{figure} images/lab5-4.28.diagnosticstools11901.png
+---
+height: 400px
+align: center
+---
+ICMP
+```
+
+```{figure} images/lab5-4.28.diagnosticstools11902.png
+---
+height: 400px
+align: center
+---
+TCP
+```
+
 ### 2.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
 
 - Verify that the connectivity between **BU1 Frontend** and **BU1 Analytics** is actually broken.
@@ -156,6 +174,24 @@ Ping is ok
 
 #### 2.7.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus
 
+The Gatus dashboard for **BU1 Frontend** shows that ICMP traffic and TCP traffic to **BU1 Analytics** have been restored.
+
+```{figure} images/lab5-4.28.diagnosticstools119014.png
+---
+height: 400px
+align: center
+---
+ICMP
+```
+
+```{figure} images/lab5-4.28.diagnosticstools1190143.png
+---
+height: 400px
+align: center
+---
+TCP
+```
+
 #### 2.7.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
 
 - Run the traceroute command from the `Diagnostic Tools` to the private IP address of the BU1 DB.
@@ -185,14 +221,14 @@ The results above show **five** hops. The last hop to respond is the Spoke1 Gate
 ---
 align: center
 ---
-Ping is unsuccessful
+Ping is successful
 ```
 
 ```{figure} images/lab5-pingfails23.png
 ---
 align: center
 ---
-SSH is unsuccessful
+SSH is successful
 ```
 
 ```{figure} images/lab5-pingfails2314.png
