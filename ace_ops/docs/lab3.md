@@ -48,9 +48,9 @@ All types of traffic are blocked
 - Navigate to **CoPilot > Diagnostics > Diagnostic Tools**. Select the **_ace-aws-eu-west-1-spoke1_** gateway (the gateway in front of the source endpoint). First, `ping` the private IP address of **BU2-MobileApp**, then perform a `traceroute` to that address.
 
 ```{tip}
-Retrieve the private IP address of the **BU2 Mobile App** from the **Cloud Workloads** inventory, first!
+Retrieve the private IP address of the **BU2 Mobile App** from the **Cloud Assets** inventory, first!
 
-Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the relevant EC2 instance.
+Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the relevant EC2 instance.
 ```
 
 ```{figure} images/lab23-cp000.png
@@ -100,7 +100,7 @@ From the outcome above, you can notice that the Transit GW in AWS can ping both 
   - SSH into **BU1 Frontend**, run ping tests to **BU2-Mobile-App**, initiate an SSH session to **BU2-Mobile-App**, and run also a traceroute to **BU2-Mobile-App**.
 
 ```{tip}
-Private IP addresses can be found in the `Cloud Workloads` section.
+Private IP addresses can be found in the `Cloud Assets` section.
 ```
 
 ```{figure} images/lab3-pingfails.png
@@ -471,7 +471,7 @@ align: center
 Ping is ok!
 ```
 
-- From the **BU1 Frontend **SSH session (still open), rerun the traceroute to **BU2 Mobile App**.
+- From the **BU1 Frontend** SSH session (still open), rerun the traceroute to **BU2 Mobile App**.
 
 ```{figure} images/lab3-traceroute2.png
 ---
