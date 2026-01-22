@@ -146,6 +146,24 @@ Now that we’ve identified the problem location, let’s re-run the connectivit
 
 #### 2.6.1 BU1 Analytics is not reachable - final verification Using Gatus
 
+The Gatus dashboard for **BU1 Frontend** shows that ICMP traffic and TCP traffic to **BU1 Analytics** have been restored.
+
+```{figure} images/lab5-4.28.diagnosticstools119014.png
+---
+height: 400px
+align: center
+---
+ICMP
+```
+
+```{figure} images/lab5-4.28.diagnosticstools1190143.png
+---
+height: 400px
+align: center
+---
+TCP
+```
+
 #### 2.6.2 BU1 Analytics is not reachable - final verification Using the Diagnostic Tools
 
 - From `Diagnostic Tools`, re-run ping to the private IP address of **BU2 MobileApp**.
@@ -172,11 +190,11 @@ Ping is ok
 
 - Now verify that the connectivity between **BU1 Frontend** and **BU1 DB** is actually broken.
 
-#### 2.7.1 BU1 Analytics is not reachable - verifiy connectivity Using Gatus
+#### 2.7.1 BU1 DB is not reachable - verifiy connectivity Using Gatus
 
-The Gatus dashboard for **BU1 Frontend** shows that ICMP traffic and TCP traffic to **BU1 Analytics** have been restored.
+The Gatus dashboard for **BU1 Frontend** shows that ICMP and TCP traffic to **BU1 DB** are both broken.
 
-```{figure} images/lab5-4.28.diagnosticstools119014.png
+```{figure} images/lab5-4.28.diagnosticstools11901400.png
 ---
 height: 400px
 align: center
@@ -184,7 +202,7 @@ align: center
 ICMP
 ```
 
-```{figure} images/lab5-4.28.diagnosticstools1190143.png
+```{figure} images/lab5-4.28.diagnosticstools1190143111.png
 ---
 height: 400px
 align: center
@@ -192,9 +210,9 @@ align: center
 TCP
 ```
 
-#### 2.7.2 BU1 Analytics is not reachable - verifiy connectivity Using the Diagnostic Tools
+#### 2.7.2 BU1 DB is not reachable - verifiy connectivity Using the Diagnostic Tools
 
-- Run the traceroute command from the `Diagnostic Tools` to the private IP address of the BU1 DB.
+- Run the _traceroute_ command from the `Diagnostic Tools` to the private IP address of the BU1 DB.
   
 ```{tip}
 Navigate to **CoPilot > Diagnostics > Diagnostics Tools > Gateway Diagnostics**.
@@ -213,7 +231,7 @@ align: center
 The results above show **five** hops. The last hop to respond is the Spoke1 Gateway in Azure, <ins>which means the BU1 DB did not respond to the traceroute</ins>.
 ```
 
-#### 2.7.3 BU1 Analytics is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.7.3 BU1 DB is not reachable - verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
   - Alternatively, establish an **SSH session** to **BU1 Frontend** and perform _ping, ssh and traceroute_ commands targeting **BU1 DB**.
 
@@ -221,14 +239,14 @@ The results above show **five** hops. The last hop to respond is the Spoke1 Gate
 ---
 align: center
 ---
-Ping is successful
+Ping is unsuccessful
 ```
 
 ```{figure} images/lab5-pingfails23.png
 ---
 align: center
 ---
-SSH is successful
+SSH is ussuccessful
 ```
 
 ```{figure} images/lab5-pingfails2314.png
@@ -244,9 +262,9 @@ The results above show **six** hops. The last hop to respond is the Spoke1 Gatew
 
 #### 2.2.1 Packet Capture
 
-You can duplicate the current CoPilot UI tab and run `Diagnostics Tools` in parallel: one tab to generate ICMP traffic, and another to capture packets.
+You can duplicate the current CoPilot UI tab and run `Diagnostic Tools` in parallel: one tab to generate ICMP traffic, and another to capture packets.
 
-- Navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the **_ace-azure-east-us-spoke1_** gateway, then choose `Packet Capture` from the actions list, select the **eth0** interface and set the capture duration to **10 seconds**. Before clicking **RUN**, switch to the other tab to generate ICMP traffic.
+- Navigate to **CoPilot > Diagnostics > Diagnostic Tools**. Select the **_ace-azure-east-us-spoke1_** gateway, then choose `Packet Capture` from the actions list, select the **eth0** interface and set the capture duration to **10 seconds**. Before clicking **RUN**, switch to the other tab to generate ICMP traffic.
 
 ```{figure} images/lab5-packetcapture000.png
 ---
@@ -255,7 +273,7 @@ align: center
 Packet Capture
 ```
 
-- On the other tab, navigate to **CoPilot > Diagnostics > Diagnostics Tools**. Select the **_ace-aws-eu-west-1-spoke1_** gateway, then choose **Ping** from the actions list, and enter the private IP address of **BU1-DB**. Before clicking RUN, <ins>first trigger the packet capture on the other tab</ins>, then execute the ping.
+- On the other tab, navigate to **CoPilot > Diagnostics > Diagnostic Tools**. Select the **_ace-aws-eu-west-1-spoke1_** gateway, then choose **Ping** from the actions list, and enter the private IP address of **BU1-DB**. Before clicking RUN, <ins>first trigger the packet capture on the other tab</ins>, then execute the ping.
 
 ```{figure} images/lab5-packetcapture0001.png
 ---
@@ -264,7 +282,7 @@ align: center
 PING
 ```
 
-- Alternatively, you can generate the ICMP traffic using the SSH client, and keep capturing the packets from the **Diagnostics Tools**!
+- Alternatively, you can generate the ICMP traffic using the SSH client, and keep capturing the packets from the **Diagnostic Tools**!
 
 ```{figure} images/lab5-pinfail.png
 ---
@@ -299,9 +317,27 @@ Deletion of the NAT rule
 
 ### 2.8  BU1 DB - final verification
 
-#### 2.8.1 BU1 DB is not reachable - final verification Using Gatus
+#### 2.8.1 BU1 DB is now reachable - final verification Using Gatus
 
-#### 2.8.2 BU1 DB is not reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+The Gatus dashboard for **BU1 Frontend** shows that connectivity to **BU1 DB** has been restored—please verify end-to-end functionality to ensure stability.
+
+```{figure} images/lab5-4.28.diagnosticstools11901a.png
+---
+height: 400px
+align: center
+---
+ICMP
+```
+
+```{figure} images/lab5-4.28.diagnosticstools11902b.png
+---
+height: 400px
+align: center
+---
+TCP
+```
+
+#### 2.8.2 BU1 DB is now reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Run the ping command from the `Diagnostic tools` to the private IP address of the BU1 DB.
 
@@ -312,7 +348,7 @@ align: center
 Ping from the Spoke1
 ```
 
-#### 2.8.3 BU1 DB is not reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.8.3 BU1 DB is now reachable - final verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Alternatively, re-run the ping to **BU1 DB** from the SSH session established with the BU1 Frontend.
 
