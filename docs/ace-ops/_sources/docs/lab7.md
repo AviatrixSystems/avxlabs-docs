@@ -42,7 +42,6 @@ When `Local Egress` is enabled, **SNAT** is automatically turned on. As a result
 
 ```{figure} images/lab7-newgatus03.png
 ---
-height: 300px
 align: center
 ---
 Cloud Secure Egress
@@ -306,6 +305,8 @@ align: center
 ---
 +Rule
 ```
+
+#### 2.2.2 Egress - Analyze section
 
 ### 2.3 DCF Rules
 
