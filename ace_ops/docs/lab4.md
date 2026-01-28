@@ -24,12 +24,12 @@ Re-analyzing the **BU1 Frontend** Gatus dashboard shows that **BU2 Mobile** App 
 
 Let's start troubleshooting.
 
-```{figure} images/lab3-4.28.diagnosticstools11901.png
+```{figure} images/lab3-4.28.diagnosticstools11901891.png
 ---
 height: 400px
 align: center
 ---
-All types of traffic are blocked
+Traffic to BU2 Mobile App is blocked
 ```
 
 ### 2.2 Connectivity verification Using Diagnostic Tools
