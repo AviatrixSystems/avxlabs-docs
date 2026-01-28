@@ -20,7 +20,7 @@ Let’s move forward with the troubleshooting. Verify the connectivity between *
 
 ### 2.1 Connectivity verification Using Gatus
 
-Analyze the **BU1 Frontend** Gatus dashboard again: traffic to the BU2 Mobile App is blocked, and traffic to the other instances is blocked as well. All checks are turning red.
+Re-analyzing the **BU1 Frontend** Gatus dashboard shows that **BU2 Mobile** App traffic is blocked, but traffic to the other instances is allowed.
 
 ```{figure} images/lab3-4.28.diagnosticstools11901.png
 ---
