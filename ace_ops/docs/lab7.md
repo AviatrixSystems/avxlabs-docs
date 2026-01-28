@@ -42,7 +42,7 @@ When `Local Egress` is enabled, **SNAT** is automatically turned on. As a result
 
 ```{figure} images/lab7-newgatus03.png
 ---
-height: 400px
+height: 300px
 align: center
 ---
 Cloud Secure Egress
@@ -105,7 +105,7 @@ align: center
 V1 Policy List
 ```
 
-#### 2.3.2 Ad-hoc Greenfield-Rule
+#### 2.1.2 Ad-hoc Greenfield-Rule
 
 - Create a new rule clicking on the **"+ Rule"** button.
 
@@ -143,7 +143,7 @@ align: center
 Commit
 ```
 
-### 2.4 Smart Groups
+### 2.2 Smart Groups
 
 Create three Smart Groups to identify:
 1) **BU1 Frontend**
@@ -273,7 +273,7 @@ The CoPilot shows that there is one instance that perfectly matches the conditio
 
 - **_ace-azure-east-us-spoke2-bu2-db_**
 
-#### 2.4.1 Updating the Greenfield Rule
+#### 2.2.1 Updating the Greenfield Rule
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall**, and click the `pencil icon` beside the **Greenfield Rule** to update its configuration.
 
@@ -307,7 +307,9 @@ align: center
 +Rule
 ```
 
-### 2.5 DCF Rules
+### 2.3 DCF Rules
+
+The following two DCF rules allow SSH traffic from the BU1 Frontend to both the **BU1-DB** and **BU2-DB**.
 
 Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 
@@ -366,96 +368,12 @@ Commit
 ```
 
 ```{caution}
-The last two policies ensure you can securely SSH from the BU1 Frontend to the Azure database VMs in private subnets, which do not have public IP addresses.
+Once again, the last two policies enable secure SSH access from the BU1 Frontend to the Azure database VMs hosted in private subnets. Because these VMs have no public IP addresses, direct SSH access from your laptop is not possible..
 ```
 
-### 2.6 Discovery Process
+### 2.4 ZTNA
 
-- Use **_Spoke1 VNet_** as a test environment. SSH to the **BU1 DB**, then execute the _apt-get_ commands. This will help identify the domains that should be permitted.
-
-```{figure} images/lab7-test.png
----
-align: center
----
-Spoke1 VNet1 as test VNet
-```
-
-```{warning}
-Both VNets are configured with private routing tables, each containing a default route that points to the Spoke gateway deployed in that VNet, enabled by the `Secure Cloud Egress` functionality.
-```
-
-You need to **SSH** into the **BU1 DB**. Since this VM does not have a public IP, you must first SSH into the **BU1 Frontend** VM, and then, from there, initiate an SSH connection to the private IP of the **BU1 DB**.
-
-```{figure} images/lab7-test3.png
----
-height: 400px
-align: center
----
-SSH to BU1 DB
-```
-
-You can explore the logs of your enforcement. Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and search for `"inter-ssh-bu1frontend-bu1db"`. You will see that the policy was triggered by the SSH action you performed from the BU1 Frontend to the BU1 DB.
-
-```{figure} images/lab7-test-logs.png
----
-height: 200px
-align: center
----
-Logs
-```
-
-- Now execute the **_apt-get_** commands from the **BU1 DB** !
-
-```bash
-sudo apt-get update -y 
-```
-and
-```bash
-sudo apt-get upgrade -y
-```
-
-If you see the pop-up message depicted below, please press the **Enter** key on your keyboard.
-
-```{figure} images/lab7-enter.png
----
-align: center
----
-Press Enter
-```
-
-- Check the domains hit by the *apt-get* commands
-
-```{tip}
-Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the *ace-azure-east-us-spoke**1*** on the `"VPC/VNets"` field.
-```
-
-```{figure} images/lab7-test7.png
----
-align: center
----
-Monitor
-```
-
-```{warning}
-Identify all the domains required to successfully execute the apt-get commands by examining the entire logs. The domains hit should belong to _ubuntu/canonical_ domains, and you can derive subdomains using the wildcard *.
-```
-
-The required domains are **six**!
-
-<details>
-  <summary>Click here for discovering the <span style='color:#33ECFF'>allowed domains</span></summary>
-  
-- motd.ubuntu.com
-- azure.archive.ubuntu.com
-- changelogs.ubuntu.com
-- livepatch.canonical.com
-- contracts.canonical.com
-- esm.ubuntu.com
-</details>
-
-### 2.7 ZTNA
-
-Now that the discovery process is complete on the test VNet where the Azure Spoke1 Gateway is deployed, we can activate the ZTNA framework by inserting an explicit deny-all rule above the Greenfield-Rule.
+Now let’s enable the `Zero Trust` control by creating an explicit deny rule, which must be placed above the greenfield rule.
 
 ```{tip}
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**. 
