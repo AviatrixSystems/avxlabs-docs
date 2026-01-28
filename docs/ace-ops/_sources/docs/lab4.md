@@ -22,6 +22,8 @@ Let’s move forward with the troubleshooting. Verify the connectivity between *
 
 Re-analyzing the **BU1 Frontend** Gatus dashboard shows that **BU2 Mobile** App traffic is blocked, but traffic to the other instances is allowed...
 
+Let's start troubleshooting.
+
 ```{figure} images/lab3-4.28.diagnosticstools11901.png
 ---
 height: 400px
