@@ -4,13 +4,7 @@ In this lab you will activate the `Aviatrix Cloud Firewall`, a cloud-native secu
 
 ## 1. SCENARIO
 
-The BU2 database requires updates, but the VM resides in a private subnet. The BU2 DB owner has requested that only `apt-get` commands be permitted for egress traffic, while all other outbound traffic be blocked. All egress traffic must be monitored with **_logging_** enabled.
-
-Actions:
-- Enable the `Cloud Secure Egress` feature on the **_ace-azure-east-us-spoke2_** VNet.
-- Create `Distributed Cloud Firewall` rules to enforce these requirements.
-
-Furthermore, you are requested to create the **Distributed Cloud Firewall rules** that will enforce these requirements.
+The database VNet owner requires that prohibited egress traffic be dropped. Please review egress traffic for **BU1-DB** and **BU2-DB** and ensure any restricted destinations are blocked.
 
 ```{figure} images/lab7-topology.png
 ---
@@ -20,32 +14,44 @@ align: center
 Lab 7 Scenario Topology
 ```
 
-## 2. CHANGE REQUEST
+In your POD Portal, open the Gatus Dashboard for BU1-DB and BU2-DB and examine the External section to identify prohibited traffic.
 
-### 2.1 Secure Cloud Egress on Spoke2 VNet
-
-- Enable the **Egress** on the VNet where **BU2 DB** resides.
-
-```{tip}
-Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
-
-Select the **_ace-azure-east-us-spoke2_** VPC.
-
-Do not forget to click on **Add**.
-```
-
-```{figure} images/lab7-vpc.png
+```{figure} images/lab7-newgatus01.png
 ---
+height: 400px
 align: center
 ---
-ace-azure-east-us-spoke2
+BU1-DB Gatus
+```
+
+```{figure} images/lab7-newgatus02.png
+---
+height: 400px
+align: center
+---
+BU2-DB Gatus
 ```
 
 ```{important}
-This action will install a `Default Route` in all the Private Routing Tables inside the Azure Spoke2 VNet. The Defautl Routes will point to the **_ace-azure-east-us-spoke2_** GW.
+Even though the two virtual machines are deployed in private subnets, they can still access the public internet because the `Egress` feature was enabled when the POD was launched.
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_ace-azure-east-us-spoke2_** Gateway, then click on the `VPC/VNet Route Tables` tab and select any **Private** Routing Tables from the `Route Table` field!
+When `Local Egress` is enabled, **SNAT** is automatically turned on. As a result, all outbound traffic from the Spoke VPC/VNet is translated to use the gateway’s public IP address. In addition, the VPC/VNet’s default route (**0.0.0.0/0**) is updated to point to the Spoke gateway.
+```
 
+- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets**. You’ll see that both **_ace-azure-east-us-spoke1_** and **_ace-azure-east-us-spoke2_** VNets are already configured with Local Egress enabled.
+
+```{figure} images/lab7-newgatus03.png
+---
+height: 400px
+align: center
+---
+Cloud Secure Egress
+```
+
+```{important}
+This action installs a default route in every private route table within the Azure spoke VNets. These default routes point to the Aviatrix Spoke Gateway(s).
+
+To verify, go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways**, select a spoke gateway (for example, ace-azure-east-us-spoke2), then open the `VPC/VNet Route Tables` tab. From the Route Table drop-down, select any private route table.
 ```{figure} images/lab7-defaultroute.png
 ---
 align: center
@@ -53,26 +59,13 @@ align: center
 Default Route injected by the AVX Controller
 ```
 
-### 2.2 Secure Cloud Egress on VNet1 - TEST VNET
+## 2. CHANGE REQUEST
 
-```{caution}
-Replicate the steps applied to VNet2 by enabling the **Egress control** on the **_azure-east-us-spoke1_** VNet. The objective is to use the Spoke1 VNet <ins>as a test environment</ins> to identify the permitted domains.
-```
+### 2.1 Distributed Cloud Firewall
 
-- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button, then select the **_ace-azure-east-us-spoke1_** VPC.
+To control and enforce egress traffic, you must enable the `Distributed Cloud Firewall`.
 
-Do not forget to click on **Add**.
-
-```{figure} images/lab7-vpc45.png
----
-align: center
----
-ace-azure-east-us-spoke1
-```
-
-### 2.3 Distributed Cloud Firewall
-
-#### 2.3.1 DCF - Activation
+#### 2.1.1 DCF - Activation
 
 - Enable the **Distributed Cloud Firewall** feature.
 
