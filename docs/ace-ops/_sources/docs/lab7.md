@@ -2,9 +2,9 @@
 
 ## 1. SCENARIO
 
-In the previous lab, you initiated micro-segmentation by defining a SmartGroup and applying the `Aviatrix Cloud Firewall` rules. Right now, _East–West_ traffic is largely blocked, except for the policy that allows **BU1 Frontend** to SSH to both **BU1 DB** and **BU2 DB**.
+In this lab, you will begin micro-segmentation by creating `SmartGroups` and applying `Aviatrix Cloud Firewall` rules.
 
-```{figure} images/lab7-segmentation.png
+```{figure} images/templab7-segmentation.png
 ---
 height: 400px
 align: center
@@ -13,36 +13,163 @@ Initial Topology
 ```
 
 ```{important}
-From a routing perspective, there is a flat rouing domain, enabled by the `Connection Policy` applied in Lab 2.
-```
-
-This is the current list of Distributed Cloud Firewall policies.
-
-```{figure} images/lab8-initialrule.png
----
-height: 300px
-align: center
----
-Existing DCF rules
+From a routing perspective, there is a flat routing domain, enabled by the `Connection Policy` applied in Lab 2.
 ```
 
 These are the **requirements** for this lab:
 
-1) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU1 Analytics
+1) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU1 Frontend
 
-2) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App.
+1) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App
 
-3) Create an <span style='color:lightgreen'>**intra-rule**</span> that allows BU1 Frontend and BU2 Mobile App to ping each other
+2) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU1 Analytics
 
-4) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Frontend to talk with BU2 Mobile App on TCP/80
+3) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App.
 
-5) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Analytics to ping BU1 Frontend
+4) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App.
 
-6) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 DB to communicate with BU2 DB on TCP/22
+5) Create an <span style='color:lightgreen'>**intra-rule**</span> that allows BU1 Frontend and BU2 Mobile App to ping each other
 
-7) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Frontend to ping with BU2 DB.
+6) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Frontend to talk with BU2 Mobile App on TCP/80
+
+7) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Analytics to ping BU1 Frontend
+
+8) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 DB to communicate with BU2 DB on TCP/22
+
+9)  Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Frontend to ping with BU2 DB.
 
 ## 2. CHANGE REQUEST
+
+Let’s begin by activating the Distributed Cloud Firewall.  
+
+### 2.1 Distributed Cloud Firewall
+
+To control and enforce policies within your CNSF, you must enable the `Distributed Cloud Firewall`.
+
+#### 2.1.1 DCF - Activation
+
+- Enable the **Distributed Cloud Firewall** feature.
+
+```{tip}
+Navigate to **CoPilot > Security > Distributed Cloud Firewall**, click `Begin Using Distributed Cloud Firewall`, and then click `Begin` on the next screen.
+```
+
+```{figure} images/lab7-enabledcf01.png
+---
+align: center
+---
+Begin Using Distributed Cloud Firewall
+```
+
+```{figure} images/lab7-enabledcf0222.png
+---
+align: center
+---
+Begin
+```
+
+The Aviatrix Controller has pushed a `Default Action Rule` permitting all traffic; you should observe the impact right away.
+
+```{figure} images/lab7-enabledcf0411.png
+---
+align: center
+---
+Default Action Rule
+```
+
+Now, click **Ruleset** and select the `V1 Policy List`.
+
+```{figure} images/lab7-greenfield5666.png
+---
+align: center
+---
+V1 Policy List
+```
+
+#### 2.1.2 Ad-hoc Greenfield-Rule
+
+- Create a new rule clicking on the **"+ Rule"** button.
+
+```{figure} images/lab7-greenfield56661.png
+---
+align: center
+---
+New Rule
+```
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>Greenfield-Rule</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab7-greenfield566612.png
+---
+align: center
+---
+Greenfield-Rule
+```
+
+Click on **Commit**.
+
+```{figure} images/lab7-greenfield5666123.png
+---
+align: center
+---
+Commit
+```
+
+#### 2.1.3 ZTNA
+
+Now let’s enable the `Zero Trust` control by creating an explicit deny rule, which must be placed above the greenfield rule.
+
+```{tip}
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**. 
+```
+
+- Clicking the `"+ Rule"` button.
+
+```{figure} images/templab7-green53.png
+---
+align: center
+---
++Rule
+```
+
+Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+
+- **Name**: <span style='color:#479608'>ExplicitDenyAll</span>
+- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
+- **Action**: <span style='color:#479608'>**Deny**</span>
+- **Place Rule**: <span style='color:#479608'>Below</span>
+  - **Existing Rule**: <span style='color:#479608'>Greenfield-Rule</span>
+  
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/templab7-exdeall.png
+---
+align: center
+---
+ExplicitDenyAll
+```
+
+Click **Commit** to enforce the policies in the data plane.
+
+```{figure} images/templab7-xdeall00.png
+---
+height: 300px
+align: center
+---
+Commit
+```
 
 ### 2.1 SmartGroups creation
 
