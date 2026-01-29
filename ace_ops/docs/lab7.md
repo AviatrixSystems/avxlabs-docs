@@ -24,7 +24,7 @@ These are the **requirements** for this lab:
 
 2) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU1 Analytics
 
-3) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App.
+3) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU1 Mobile App.
 
 4) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App.
 
@@ -171,7 +171,144 @@ align: center
 Commit
 ```
 
-### 2.1 SmartGroups creation
+```{caution}
+From this point forward, **East–West** traffic will be blocked. You’ll need to create ad hoc policies to control traffic within your CNSF.
+```
+
+### 2.2 SmartGroups creation
+
+Create three Smart Groups to identify:
+1) **BU1 Frontend**
+2) **BU1 DB**
+3) **BU2 DB**
+
+- Navigate to **CoPilot > Groups > SmartGroups**, then click the `“+ SmartGroup”` button.
+
+```{figure} images/lab7-SGnew00.png
+---
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>BU1-FRONTEND</span>
+- **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-aws-eu-west-1-spoke1-bu1-frontend</span>
+
+```{figure} images/lab7-smart3.png
+---
+align: center
+---
+Name = ace-aws-eu-west-1-spoke1-bu1-frontend
+```
+
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
+
+```{figure} images/lab7-smart31.png
+---
+align: center
+---
+Resource Selection
+```
+
+```{figure} images/lab7-smart311.png
+---
+align: center
+---
+Preview
+```
+
+The CoPilot shows that there is one instance that perfectly matches the condition:
+
+- **_ace-aws-eu-west-1-spoke1-bu1-frontend_**
+
+Create another Smart Group by clicking the `“+ SmartGroup”` button again.
+
+```{figure} images/lab7-SGnew10.png
+---
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>BU1-DB</span>
+- **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-azure-east-us-spoke1-bu1-db</span>
+
+```{figure} images/lab7-smart3.png
+---
+align: center
+---
+Name = ace-azure-east-us-spoke1-bu1-db
+```
+
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
+
+```{figure} images/lab7-smart41.png
+---
+align: center
+---
+Resource Selection
+```
+
+```{figure} images/lab7-smart411.png
+---
+align: center
+---
+Preview
+```
+
+The CoPilot shows that there is one instance that perfectly matches the condition:
+
+- **_ace-azure-east-us-spoke1-bu1-db_**
+
+Add another Smart Group by tapping the `“+ SmartGroup”` one more time.
+
+```{figure} images/lab7-SGnew20.png
+---
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>BU2-DB</span>
+- **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-azure-east-us-spoke2-bu2-db</span>
+
+```{figure} images/lab7-smart3.png
+---
+align: center
+---
+Name = ace-azure-east-us-spoke2-bu2-db
+```
+
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
+
+```{figure} images/lab7-smart51.png
+---
+align: center
+---
+Resource Selection
+```
+
+```{figure} images/lab7-smart511.png
+---
+align: center
+---
+Preview
+```
+
+The CoPilot shows that there is one instance that perfectly matches the condition:
+
+- **_ace-azure-east-us-spoke2-bu2-db_**
+
+
+
+
+
 
 Navigate to **CoPilot > Groups > SmartGroups**, and click  the `“+ SmartGroup”` button.
 
