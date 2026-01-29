@@ -597,7 +597,7 @@ Commit
 height: 400px
 align: center
 ---
-intra-icmp-bu1frontend-bu2mobileapp
+inter-http-bu1frontend-bu2mobileapp
 ```
 
 #### 2.2.6 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
@@ -785,15 +785,6 @@ align: center
 second SSH
 ```
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-ssh s-bu1db-bu2db` rule will appear.
-
-```{figure} image s/lab712-monitor03.png
----
-align: center
----
-logs
-```
-
 This is how the overall topology would look after implementing the latest inter-rule.
 
 ```{figure} images/lab712-segmentation093.png
@@ -804,13 +795,13 @@ align: center
 inter-rule
 ```
 
-#### 2.2.5 Inter-rule between BU1 Frontend and BU1 DB
+#### 2.2.13 Inter-rule between BU1 Frontend and BU1 DB
 
 The final policy is an inter-rule designed to permit **BU1 Frontend** to ping **BU2 DB**.
 
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
 
-```{figure} images/lab8-greenfield16.png
+```{figure} images/templab8-greenfield16.png
 ---
 height: 400px
 align: center
@@ -824,12 +815,12 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
 - **Destination Smartgroups**: <span style='color:#479608'>BU1-DB</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
 
-```{figure} images/lab8-greenfieldjoe0101.png
+```{figure} images/templab8-greenfieldjoe0101.png
 ---
 align: center
 ---
@@ -838,12 +829,24 @@ inter-icmp-bu1frontend-bu1db
 
 Click on **Commit**.
 
-```{figure} images/lab8-greenfieldcommit023.png
+```{figure} images/templab8-greenfieldcommit023.png
 ---
 align: center
 ---
 Commit
 ```
+
+#### 2.2.14 Verification Using Gatus
+
+```{figure} images/templab3-4.28.diagnosticstools11901568812222.png
+---
+height: 400px
+align: center
+---
+inter-icmp-bu1frontend-bu1db
+```
+
+#### 2.2.15 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH into the **BU1 Frontend** and generate ICMP traffic targeting the private IP address of the **BU1 DB**.
 
