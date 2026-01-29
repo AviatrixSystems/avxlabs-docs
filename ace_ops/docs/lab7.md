@@ -388,7 +388,7 @@ align: center
 Preview
 ```
 
-The CoPilot shows that there is one instance that perfectly matches the condition:
+The CoPilot shows that there is one instance that perfectly matches the condition::
 
 - **_ace-aws-eu-west-1-spoke2-bu2-mobile-app_**
 
