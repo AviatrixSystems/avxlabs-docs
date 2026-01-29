@@ -362,12 +362,14 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-between-bu1-db-and-bu2-db">2.2.10 Inter-rule between BU1 DB and BU2 DB</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.11 Verification Using Gatus</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.2.12 Verification Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-between-bu1-frontend-and-bu1-db">2.2.5 Inter-rule between BU1 Frontend and BU1 DB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-between-bu1-frontend-and-bu1-db">2.2.13 Inter-rule between BU1 Frontend and BU1 DB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.2.14 Verification Using Gatus</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2.15 Verification Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3. CHANGE REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3. CHANGE REQUEST</a></li>
 </ul>
             </nav>
         </div>
@@ -384,11 +386,11 @@ document.write(`
 <section id="scenario">
 <h2>1. SCENARIO<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h2>
 <p>In this lab, you will begin micro-segmentation by creating <code class="docutils literal notranslate"><span class="pre">SmartGroups</span></code> and applying <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code> rules.</p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/templab7-segmentation.png"><img alt="../_images/templab7-segmentation.png" src="../_images/templab7-segmentation.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 223 </span><span class="caption-text">Initial Topology</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 223 </span><span class="caption-text">Initial Topology</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -424,30 +426,30 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong>, click <code class="docutils literal notranslate"><span class="pre">Begin</span> <span class="pre">Using</span> <span class="pre">Distributed</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code>, and then click <code class="docutils literal notranslate"><span class="pre">Begin</span></code> on the next screen.</p>
 </div>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id11">
 <img alt="../_images/lab7-enabledcf01.png" src="../_images/lab7-enabledcf01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Begin Using Distributed Cloud Firewall</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Begin Using Distributed Cloud Firewall</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id12">
 <img alt="../_images/lab7-enabledcf0222.png" src="../_images/lab7-enabledcf0222.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 225 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 225 </span><span class="caption-text">Begin</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The Aviatrix Controller has pushed a <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Action</span> <span class="pre">Rule</span></code> permitting all traffic; you should observe the impact right away.</p>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id13">
 <img alt="../_images/lab7-enabledcf0411.png" src="../_images/lab7-enabledcf0411.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 226 </span><span class="caption-text">Default Action Rule</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 226 </span><span class="caption-text">Default Action Rule</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now, click <strong>Ruleset</strong> and select the <code class="docutils literal notranslate"><span class="pre">V1</span> <span class="pre">Policy</span> <span class="pre">List</span></code>.</p>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id14">
 <img alt="../_images/lab7-greenfield5666.png" src="../_images/lab7-greenfield5666.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 227 </span><span class="caption-text">V1 Policy List</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 227 </span><span class="caption-text">V1 Policy List</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -456,10 +458,10 @@ document.write(`
 <ul class="simple">
 <li><p>Create a new rule clicking on the <strong>“+ Rule”</strong> button.</p></li>
 </ul>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id15">
 <img alt="../_images/lab7-greenfield56661.png" src="../_images/lab7-greenfield56661.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 228 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 228 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enter the following parameters:</p>
@@ -472,17 +474,17 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id16">
 <img alt="../_images/lab7-greenfield566612.png" src="../_images/lab7-greenfield566612.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Greenfield-Rule</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id15">
+<figure class="align-center" id="id17">
 <img alt="../_images/lab7-greenfield5666123.png" src="../_images/lab7-greenfield5666123.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -496,10 +498,10 @@ document.write(`
 <ul class="simple">
 <li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id18">
 <img alt="../_images/templab7-green53.png" src="../_images/templab7-green53.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 231 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 231 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
@@ -517,18 +519,18 @@ document.write(`
 </li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id19">
 <img alt="../_images/templab7-exdeall.png" src="../_images/templab7-exdeall.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 232 </span><span class="caption-text">ExplicitDenyAll</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 232 </span><span class="caption-text">ExplicitDenyAll</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click <strong>Commit</strong> to enforce the policies in the data plane.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="../_images/templab7-xdeall00.png"><img alt="../_images/templab7-xdeall00.png" src="../_images/templab7-xdeall00.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -543,10 +545,10 @@ document.write(`
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong>, then click the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">SmartGroup”</span></code> button.</p></li>
 </ul>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id21">
 <img alt="../_images/lab7-SGnew00.png" src="../_images/lab7-SGnew00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 234 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 234 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -554,23 +556,23 @@ document.write(`
 <li><p><strong>Name</strong>: <span style='color:#479608'>BU1-FRONTEND</span></p></li>
 <li><p><strong>Matches all conditions (AND)/Name</strong>: <span style='color:#479608'>ace-aws-eu-west-1-spoke1-bu1-frontend</span></p></li>
 </ul>
-<figure class="align-center" id="id20">
+<figure class="align-center" id="id22">
 <img alt="../_images/lab7-smart3.png" src="../_images/lab7-smart3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Name = ace-aws-eu-west-1-spoke1-bu1-frontend</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Name = ace-aws-eu-west-1-spoke1-bu1-frontend</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Before clicking <strong>Save</strong>, enable <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code> to identify which instances match the condition.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id23">
 <img alt="../_images/lab7-smart31.png" src="../_images/lab7-smart31.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id24">
 <img alt="../_images/lab7-smart311.png" src="../_images/lab7-smart311.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there is one instance that perfectly matches the condition:</p>
@@ -578,10 +580,10 @@ document.write(`
 <li><p><strong><em>ace-aws-eu-west-1-spoke1-bu1-frontend</em></strong></p></li>
 </ul>
 <p>Create another Smart Group by clicking the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">SmartGroup”</span></code> button again.</p>
-<figure class="align-center" id="id23">
+<figure class="align-center" id="id25">
 <img alt="../_images/lab7-SGnew10.png" src="../_images/lab7-SGnew10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 238 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 238 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -589,23 +591,23 @@ document.write(`
 <li><p><strong>Name</strong>: <span style='color:#479608'>BU1-DB</span></p></li>
 <li><p><strong>Matches all conditions (AND)/Name</strong>: <span style='color:#479608'>ace-azure-east-us-spoke1-bu1-db</span></p></li>
 </ul>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id26">
 <img alt="../_images/lab7-smart3.png" src="../_images/lab7-smart3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 239 </span><span class="caption-text">Name = ace-azure-east-us-spoke1-bu1-db</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 239 </span><span class="caption-text">Name = ace-azure-east-us-spoke1-bu1-db</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Before clicking <strong>Save</strong>, enable <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code> to identify which instances match the condition.</p>
-<figure class="align-center" id="id25">
+<figure class="align-center" id="id27">
 <img alt="../_images/lab7-smart41.png" src="../_images/lab7-smart41.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 240 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 240 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id26">
+<figure class="align-center" id="id28">
 <img alt="../_images/lab7-smart411.png" src="../_images/lab7-smart411.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 241 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 241 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there is one instance that perfectly matches the condition:</p>
@@ -613,10 +615,10 @@ document.write(`
 <li><p><strong><em>ace-azure-east-us-spoke1-bu1-db</em></strong></p></li>
 </ul>
 <p>Add another Smart Group by tapping the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">SmartGroup”</span></code> one more time.</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id29">
 <img alt="../_images/lab7-SGnew20.png" src="../_images/lab7-SGnew20.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 242 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 242 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -624,23 +626,23 @@ document.write(`
 <li><p><strong>Name</strong>: <span style='color:#479608'>BU2-DB</span></p></li>
 <li><p><strong>Matches all conditions (AND)/Name</strong>: <span style='color:#479608'>ace-azure-east-us-spoke2-bu2-db</span></p></li>
 </ul>
-<figure class="align-center" id="id28">
+<figure class="align-center" id="id30">
 <img alt="../_images/lab7-smart3.png" src="../_images/lab7-smart3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 243 </span><span class="caption-text">Name = ace-azure-east-us-spoke2-bu2-db</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 243 </span><span class="caption-text">Name = ace-azure-east-us-spoke2-bu2-db</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Before clicking <strong>Save</strong>, enable <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code> to identify which instances match the condition.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id31">
 <img alt="../_images/lab7-smart51.png" src="../_images/lab7-smart51.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 244 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 244 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id32">
 <img alt="../_images/lab7-smart511.png" src="../_images/lab7-smart511.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 245 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 245 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there is one instance that perfectly matches the condition:</p>
@@ -648,10 +650,10 @@ document.write(`
 <li><p><strong><em>ace-azure-east-us-spoke2-bu2-db</em></strong></p></li>
 </ul>
 <p>Create another Smart Group by clicking the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">SmartGroup”</span></code> button.</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id33">
 <img alt="../_images/templab8-SGnew10.png" src="../_images/templab8-SGnew10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 246 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 246 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -659,23 +661,23 @@ document.write(`
 <li><p><strong>Name</strong>: <span style='color:#479608'>BU1-ANALYTICS</span></p></li>
 <li><p><strong>Matches all conditions (AND)/Name</strong>: <span style='color:#479608'>ace-gcp-us-east1-spoke1-bu1-analytics</span></p></li>
 </ul>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id34">
 <img alt="../_images/lab7-smart3.png" src="../_images/lab7-smart3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 247 </span><span class="caption-text">Name = ace-gcp-us-east1-spoke1-bu1-analytics</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 247 </span><span class="caption-text">Name = ace-gcp-us-east1-spoke1-bu1-analytics</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Before clicking <strong>Save</strong>, enable <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code> to identify which instances match the condition.</p>
-<figure class="align-center" id="id33">
+<figure class="align-center" id="id35">
 <img alt="../_images/lab8-smart41.png" src="../_images/lab8-smart41.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 248 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 248 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id34">
+<figure class="align-center" id="id36">
 <img alt="../_images/lab8-smart411.png" src="../_images/lab8-smart411.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 249 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 249 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there is one instance that perfectly matches the condition:</p>
@@ -683,10 +685,10 @@ document.write(`
 <li><p><strong><em>ace-gcp-us-east1-spoke1-bu1-analytics</em></strong></p></li>
 </ul>
 <p>Add another Smart Group by tapping the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">SmartGroup”</span></code> one more time.</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id37">
 <img alt="../_images/templab8-SGnew20.png" src="../_images/templab8-SGnew20.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 250 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 250 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -694,23 +696,23 @@ document.write(`
 <li><p><strong>Name</strong>: <span style='color:#479608'>BU2-MOBILEAPP</span></p></li>
 <li><p><strong>Matches all conditions (AND)/Name</strong>: <span style='color:#479608'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span></p></li>
 </ul>
-<figure class="align-center" id="id36">
+<figure class="align-center" id="id38">
 <img alt="../_images/lab7-smart3.png" src="../_images/lab7-smart3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Name = ace-aws-eu-west-1-spoke2-bu2-mobile-app</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Name = ace-aws-eu-west-1-spoke2-bu2-mobile-app</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Before clicking <strong>Save</strong>, enable <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code> to identify which instances match the condition.</p>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id39">
 <img alt="../_images/lab8-smart51.png" src="../_images/lab8-smart51.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 252 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 252 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id40">
 <img alt="../_images/lab8-smart511.png" src="../_images/lab8-smart511.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there is one instance that perfectly matches the condition::</p>
@@ -726,20 +728,20 @@ document.write(`
 <p>The current SmartGroups status is depicted below.</p>
 <p>The first requirement states: “Create an intra-rule that allows BU1 Frontend and BU2 Mobile App to ping each other.”</p>
 <p>Accordingly, the first rule to create is an <code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> that includes both <strong>BU1 Frontend</strong> and <strong>BU2 Mobile App</strong>. To enforce this intra-rule, define an additional SmartGroup that contains instances from both applications—for example, by selecting a shared attribute such as the label <code class="docutils literal notranslate"><span class="pre">Region=eu-west-1</span></code>.</p>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id41">
 <a class="reference internal image-reference" href="../_images/lab71-segmentation.png"><img alt="../_images/lab71-segmentation.png" src="../_images/lab71-segmentation.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Current SmartGroup status</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Current SmartGroup status</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and click the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">SmartGroup”</span></code>.</p></li>
 </ul>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id42">
 <img alt="../_images/templab8-SGnew2090.png" src="../_images/templab8-SGnew2090.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 255 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 255 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
@@ -747,23 +749,23 @@ document.write(`
 <li><p><strong>Name</strong>: <span style='color:#479608'>EU-WEST-1</span></p></li>
 <li><p><strong>Matches all conditions (AND)/Region</strong>: <span style='color:#479608'>eu-west-1</span></p></li>
 </ul>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id43">
 <img alt="../_images/lab8-smart3.png" src="../_images/lab8-smart3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Region = eu-west-1</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Region = eu-west-1</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Before clicking <strong>Save</strong>, enable <code class="docutils literal notranslate"><span class="pre">&quot;Preview&quot;</span></code> to identify which instances match the condition.</p>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id44">
 <img alt="../_images/lab8-smart5122.png" src="../_images/lab8-smart5122.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id43">
+<figure class="align-center" id="id45">
 <img alt="../_images/lab8-smart51132.png" src="../_images/lab8-smart51132.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 258 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 258 </span><span class="caption-text">Preview</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The CoPilot shows that there are three instances that perfectly match the condition:</p>
@@ -773,11 +775,11 @@ document.write(`
 <li><p><strong><em>ace-aws-eu-west-1-spoke2-bu2-mobile-app</em></strong></p></li>
 </ul>
 <p>The new SmartGroup encompasses the two instances involved in establishing an <em>intra-rule</em> between <strong>BU1 Frontend</strong> and <strong>BU2 Mobile App</strong>, as illustrated in the figure below.</p>
-<figure class="align-center" id="id44">
+<figure class="align-center" id="id46">
 <a class="reference internal image-reference" href="../_images/lab712-segmentation.png"><img alt="../_images/lab712-segmentation.png" src="../_images/lab712-segmentation.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Topology with the latest SmartGroup</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Topology with the latest SmartGroup</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition important">
@@ -787,10 +789,10 @@ document.write(`
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong>, and click on the <strong>“+ Rule”</strong> button.</p></li>
 </ul>
-<figure class="align-center" id="id45">
+<figure class="align-center" id="id47">
 <img alt="../_images/templab8-greenfield56661.png" src="../_images/templab8-greenfield56661.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 260 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 260 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enter the following parameters:</p>
@@ -803,27 +805,27 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id46">
+<figure class="align-center" id="id48">
 <img alt="../_images/templab8-greenfield566612.png" src="../_images/templab8-greenfield566612.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 261 </span><span class="caption-text">intra-icmp-bu1frontend-bu2mobileapp</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 261 </span><span class="caption-text">intra-icmp-bu1frontend-bu2mobileapp</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id47">
+<figure class="align-center" id="id49">
 <img alt="../_images/templab8-greenfield5666123.png" src="../_images/templab8-greenfield5666123.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="verification-using-gatus">
 <h4>2.2.2 Verification Using Gatus<a class="headerlink" href="#verification-using-gatus" title="Link to this heading">#</a></h4>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id50">
 <a class="reference internal image-reference" href="../_images/templab3-4.28.diagnosticstools1190156.png"><img alt="../_images/templab3-4.28.diagnosticstools1190156.png" src="../_images/templab3-4.28.diagnosticstools1190156.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 263 </span><span class="caption-text">intra-icmp-bu1frontend-bu2mobileapp</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 263 </span><span class="caption-text">intra-icmp-bu1frontend-bu2mobileapp</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -832,38 +834,38 @@ document.write(`
 <ul class="simple">
 <li><p>SSH to the <strong>BU1 Frontend</strong> and ping the private IP address of the <strong>BU2 Mobile App</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id49">
+<figure class="align-center" id="id51">
 <a class="reference internal image-reference" href="../_images/lab712-intraruleinaction00.png"><img alt="../_images/lab712-intraruleinaction00.png" src="../_images/lab712-intraruleinaction00.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 264 </span><span class="caption-text">intra-rule in action</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 264 </span><span class="caption-text">intra-rule in action</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Now repeat the test: SSH into the <strong>BU2 Mobile App</strong> and ping the private IP of the <strong>BU1 Frontend</strong> to confirm that both instances can generate an ICMP Echo request.</p></li>
 </ul>
-<figure class="align-center" id="id50">
+<figure class="align-center" id="id52">
 <a class="reference internal image-reference" href="../_images/lab712-intraruleinaction01.png"><img alt="../_images/lab712-intraruleinaction01.png" src="../_images/lab712-intraruleinaction01.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 265 </span><span class="caption-text">intra-rule in action</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 265 </span><span class="caption-text">intra-rule in action</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong>. After completing the previous tests, the logs for the <code class="docutils literal notranslate"><span class="pre">intra-icmp-bu1frontend-bu2mobileapp</span></code> rule will appear.</p></li>
 </ul>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id53">
 <img alt="../_images/lab712-monitor00.png" src="../_images/lab712-monitor00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 266 </span><span class="caption-text">logs</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 266 </span><span class="caption-text">logs</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is how the overall topology would look after implementing the latest intra-rule.</p>
-<figure class="align-center" id="id52">
+<figure class="align-center" id="id54">
 <a class="reference internal image-reference" href="../_images/lab712-segmentation090.png"><img alt="../_images/lab712-segmentation090.png" src="../_images/lab712-segmentation090.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 267 </span><span class="caption-text">intra-rule</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 267 </span><span class="caption-text">intra-rule</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -873,11 +875,11 @@ document.write(`
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong>, and click on the <strong>“+ Rule”</strong> button.</p></li>
 </ul>
-<figure class="align-center" id="id53">
+<figure class="align-center" id="id55">
 <a class="reference internal image-reference" href="../_images/templab8-greenfield13.png"><img alt="../_images/templab8-greenfield13.png" src="../_images/templab8-greenfield13.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 268 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 268 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enter the following parameters:</p>
@@ -891,27 +893,27 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id54">
+<figure class="align-center" id="id56">
 <img alt="../_images/templab8-greenfieldjoe00.png" src="../_images/templab8-greenfieldjoe00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 269 </span><span class="caption-text">inter-http-bu1frontend-bu2mobileapp</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 269 </span><span class="caption-text">inter-http-bu1frontend-bu2mobileapp</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id55">
+<figure class="align-center" id="id57">
 <img alt="../_images/templab8-greenfieldcommit00.png" src="../_images/templab8-greenfieldcommit00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id1">
 <h4>2.2.5 Verification Using Gatus<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
-<figure class="align-center" id="id56">
+<figure class="align-center" id="id58">
 <a class="reference internal image-reference" href="../_images/templab3-4.28.diagnosticstools119015688.png"><img alt="../_images/templab3-4.28.diagnosticstools119015688.png" src="../_images/templab3-4.28.diagnosticstools119015688.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 271 </span><span class="caption-text">intra-icmp-bu1frontend-bu2mobileapp</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 271 </span><span class="caption-text">inter-http-bu1frontend-bu2mobileapp</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -920,28 +922,28 @@ document.write(`
 <ul class="simple">
 <li><p>SSH into the <strong>BU1 Frontend</strong> and generate a curl command targeting the private IP address of the <strong>BU2 Mobile App</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id57">
+<figure class="align-center" id="id59">
 <a class="reference internal image-reference" href="../_images/lab712-intraruleinaction22.png"><img alt="../_images/lab712-intraruleinaction22.png" src="../_images/lab712-intraruleinaction22.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 272 </span><span class="caption-text">inter-rule in action</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 272 </span><span class="caption-text">inter-rule in action</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong>. After completing the previous test, the logs for the <code class="docutils literal notranslate"><span class="pre">inter-http-bu1frontend-bu2mobileapp</span></code> rule will appear.</p></li>
 </ul>
-<figure class="align-center" id="id58">
+<figure class="align-center" id="id60">
 <img alt="../_images/lab712-monitor01.png" src="../_images/lab712-monitor01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 273 </span><span class="caption-text">logs</span><a class="headerlink" href="#id58" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 273 </span><span class="caption-text">logs</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is how the overall topology would look after implementing the latest inter-rule.</p>
-<figure class="align-center" id="id59">
+<figure class="align-center" id="id61">
 <a class="reference internal image-reference" href="../_images/lab712-segmentation091.png"><img alt="../_images/lab712-segmentation091.png" src="../_images/lab712-segmentation091.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 274 </span><span class="caption-text">inter-rule</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 274 </span><span class="caption-text">inter-rule</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -951,11 +953,11 @@ document.write(`
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong>, and click on the <strong>“+ Rule”</strong> button.</p></li>
 </ul>
-<figure class="align-center" id="id60">
+<figure class="align-center" id="id62">
 <a class="reference internal image-reference" href="../_images/templab8-greenfield14.png"><img alt="../_images/templab8-greenfield14.png" src="../_images/templab8-greenfield14.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 275 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enter the following parameters:</p>
@@ -968,27 +970,27 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id61">
+<figure class="align-center" id="id63">
 <img alt="../_images/templab8-greenfieldjoe01.png" src="../_images/templab8-greenfieldjoe01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 276 </span><span class="caption-text">inter-icmp-bu1analytics-bu1frontend</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">inter-icmp-bu1analytics-bu1frontend</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id62">
+<figure class="align-center" id="id64">
 <img alt="../_images/templab8-greenfieldcommit01.png" src="../_images/templab8-greenfieldcommit01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id3">
 <h4>2.2.8 Verification Using Gatus<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
-<figure class="align-center" id="id63">
+<figure class="align-center" id="id65">
 <a class="reference internal image-reference" href="../_images/templab3-4.28.diagnosticstools1190156881.png"><img alt="../_images/templab3-4.28.diagnosticstools1190156881.png" src="../_images/templab3-4.28.diagnosticstools1190156881.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 278 </span><span class="caption-text">inter-icmp-bu1analytics-bu1frontend</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">inter-icmp-bu1analytics-bu1frontend</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -997,28 +999,28 @@ document.write(`
 <ul class="simple">
 <li><p>SSH into the <strong>BU1 Analytics</strong> and generate ICMP traffic targeting the private IP address of the <strong>BU1 Frontend</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id64">
+<figure class="align-center" id="id66">
 <a class="reference internal image-reference" href="../_images/lab712-intraruleinaction23.png"><img alt="../_images/lab712-intraruleinaction23.png" src="../_images/lab712-intraruleinaction23.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 279 </span><span class="caption-text">inter-rule in action</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">inter-rule in action</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong>. After completing the previous test, the logs for the <code class="docutils literal notranslate"><span class="pre">inter-icmp-bu1analytics-bu1frontend</span></code> rule will appear.</p></li>
 </ul>
-<figure class="align-center" id="id65">
+<figure class="align-center" id="id67">
 <img alt="../_images/lab712-monitor02.png" src="../_images/lab712-monitor02.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 280 </span><span class="caption-text">logs</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">logs</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is how the overall topology would look after implementing the latest inter-rule.</p>
-<figure class="align-center" id="id66">
+<figure class="align-center" id="id68">
 <a class="reference internal image-reference" href="../_images/lab712-segmentation092.png"><img alt="../_images/lab712-segmentation092.png" src="../_images/lab712-segmentation092.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 281 </span><span class="caption-text">inter-rule</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">inter-rule</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1028,11 +1030,11 @@ document.write(`
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong>, and click on the <strong>“+ Rule”</strong> button.</p></li>
 </ul>
-<figure class="align-center" id="id67">
+<figure class="align-center" id="id69">
 <a class="reference internal image-reference" href="../_images/templab8-greenfield15.png"><img alt="../_images/templab8-greenfield15.png" src="../_images/templab8-greenfield15.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 282 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enter the following parameters:</p>
@@ -1046,27 +1048,27 @@ document.write(`
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id68">
+<figure class="align-center" id="id70">
 <img alt="../_images/templab8-greenfieldjoe0100.png" src="../_images/templab8-greenfieldjoe0100.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 283 </span><span class="caption-text">inter-ssh-bu1db-bu2db</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">inter-ssh-bu1db-bu2db</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id69">
+<figure class="align-center" id="id71">
 <img alt="../_images/templab8-greenfieldcommit022.png" src="../_images/templab8-greenfieldcommit022.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id5">
 <h4>2.2.11 Verification Using Gatus<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
-<figure class="align-center" id="id70">
-<a class="reference internal image-reference" href="docs/images/templab3-4.28.diagnosticstools119015688122.png"><img alt="docs/images/templab3-4.28.diagnosticstools119015688122.png" src="docs/images/templab3-4.28.diagnosticstools119015688122.png" style="height: 400px;" />
+<figure class="align-center" id="id72">
+<a class="reference internal image-reference" href="../_images/templab3-4.28.diagnosticstools119015688122.png"><img alt="../_images/templab3-4.28.diagnosticstools119015688122.png" src="../_images/templab3-4.28.diagnosticstools119015688122.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 285 </span><span class="caption-text">inter-ssh-bu1db-bu2db</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">inter-ssh-bu1db-bu2db</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1075,49 +1077,40 @@ document.write(`
 <ul class="simple">
 <li><p>SSH into the <strong>BU1 Frontend</strong> and generate ICMP traffic targeting the private IP address of the <strong>BU1 Frontend</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id71">
+<figure class="align-center" id="id73">
 <a class="reference internal image-reference" href="../_images/lab712-intraruleinaction245.png"><img alt="../_images/lab712-intraruleinaction245.png" src="../_images/lab712-intraruleinaction245.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 286 </span><span class="caption-text">first SSH</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 286 </span><span class="caption-text">first SSH</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id72">
+<figure class="align-center" id="id74">
 <a class="reference internal image-reference" href="../_images/lab712-intraruleinaction24.png"><img alt="../_images/lab712-intraruleinaction24.png" src="../_images/lab712-intraruleinaction24.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 287 </span><span class="caption-text">second SSH</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong>. After completing the previous test, the logs for the <code class="docutils literal notranslate"><span class="pre">inter-ssh</span> <span class="pre">s-bu1db-bu2db</span></code> rule will appear.</p></li>
-</ul>
-<figure class="align-center" id="id73">
-<img alt="../_images/lab712-monitor03.png" src="../_images/lab712-monitor03.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 288 </span><span class="caption-text">logs</span><a class="headerlink" href="#id73" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 287 </span><span class="caption-text">second SSH</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is how the overall topology would look after implementing the latest inter-rule.</p>
-<figure class="align-center" id="id74">
+<figure class="align-center" id="id75">
 <a class="reference internal image-reference" href="../_images/lab712-segmentation093.png"><img alt="../_images/lab712-segmentation093.png" src="../_images/lab712-segmentation093.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 289 </span><span class="caption-text">inter-rule</span><a class="headerlink" href="#id74" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 288 </span><span class="caption-text">inter-rule</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="inter-rule-between-bu1-frontend-and-bu1-db">
-<h4>2.2.5 Inter-rule between BU1 Frontend and BU1 DB<a class="headerlink" href="#inter-rule-between-bu1-frontend-and-bu1-db" title="Link to this heading">#</a></h4>
+<h4>2.2.13 Inter-rule between BU1 Frontend and BU1 DB<a class="headerlink" href="#inter-rule-between-bu1-frontend-and-bu1-db" title="Link to this heading">#</a></h4>
 <p>The final policy is an inter-rule designed to permit <strong>BU1 Frontend</strong> to ping <strong>BU2 DB</strong>.</p>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong>, and click on the <strong>“+ Rule”</strong> button.</p></li>
 </ul>
-<figure class="align-center" id="id75">
-<a class="reference internal image-reference" href="../_images/lab8-greenfield16.png"><img alt="../_images/lab8-greenfield16.png" src="../_images/lab8-greenfield16.png" style="height: 400px;" />
+<figure class="align-center" id="id76">
+<a class="reference internal image-reference" href="../_images/templab8-greenfield16.png"><img alt="../_images/templab8-greenfield16.png" src="../_images/templab8-greenfield16.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 290 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id75" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 289 </span><span class="caption-text">New Rule</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enter the following parameters:</p>
@@ -1126,55 +1119,68 @@ document.write(`
 <li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>BU1-FRONTEND</span></p></li>
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>BU1-DB</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>ICMP</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'><strong>At Start &amp; End</strong></span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
-<figure class="align-center" id="id76">
-<img alt="../_images/lab8-greenfieldjoe0101.png" src="../_images/lab8-greenfieldjoe0101.png" />
+<figure class="align-center" id="id77">
+<img alt="../_images/templab8-greenfieldjoe0101.png" src="../_images/templab8-greenfieldjoe0101.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 291 </span><span class="caption-text">inter-icmp-bu1frontend-bu1db</span><a class="headerlink" href="#id76" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 290 </span><span class="caption-text">inter-icmp-bu1frontend-bu1db</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on <strong>Commit</strong>.</p>
-<figure class="align-center" id="id77">
-<img alt="../_images/lab8-greenfieldcommit023.png" src="../_images/lab8-greenfieldcommit023.png" />
+<figure class="align-center" id="id78">
+<img alt="../_images/templab8-greenfieldcommit023.png" src="../_images/templab8-greenfieldcommit023.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 292 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id77" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 291 </span><span class="caption-text">Commit</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="id7">
+<h4>2.2.14 Verification Using Gatus<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<figure class="align-center" id="id79">
+<a class="reference internal image-reference" href="../_images/templab3-4.28.diagnosticstools11901568812222.png"><img alt="../_images/templab3-4.28.diagnosticstools11901568812222.png" src="../_images/templab3-4.28.diagnosticstools11901568812222.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 292 </span><span class="caption-text">inter-icmp-bu1frontend-bu1db</span><a class="headerlink" href="#id79" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id8">
+<h4>2.2.15 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>SSH into the <strong>BU1 Frontend</strong> and generate ICMP traffic targeting the private IP address of the <strong>BU1 DB</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id78">
+<figure class="align-center" id="id80">
 <a class="reference internal image-reference" href="../_images/lab712-intraruleinactionping.png"><img alt="../_images/lab712-intraruleinactionping.png" src="../_images/lab712-intraruleinactionping.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 293 </span><span class="caption-text">ping</span><a class="headerlink" href="#id78" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 293 </span><span class="caption-text">ping</span><a class="headerlink" href="#id80" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong>. After completing the previous test, the logs for the <code class="docutils literal notranslate"><span class="pre">inter-icmp-bu1frontend-bu1db</span></code> rule will appear.</p></li>
 </ul>
-<figure class="align-center" id="id79">
+<figure class="align-center" id="id81">
 <img alt="../_images/lab712-monitor04.png" src="../_images/lab712-monitor04.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 294 </span><span class="caption-text">logs</span><a class="headerlink" href="#id79" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 294 </span><span class="caption-text">logs</span><a class="headerlink" href="#id81" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is how the overall topology would look after implementing the latest inter-rule.</p>
-<figure class="align-center" id="id80">
+<figure class="align-center" id="id82">
 <a class="reference internal image-reference" href="../_images/lab712-segmentation094.png"><img alt="../_images/lab712-segmentation094.png" src="../_images/lab712-segmentation094.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 295 </span><span class="caption-text">inter-rule</span><a class="headerlink" href="#id80" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 295 </span><span class="caption-text">inter-rule</span><a class="headerlink" href="#id82" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 </section>
-<section id="id7">
-<h2>3. CHANGE REQUEST<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id9">
+<h2>3. CHANGE REQUEST<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Now before completing the lab, remove the <code class="docutils literal notranslate"><span class="pre">Inspection</span> <span class="pre">Policy</span></code> from the Transit GW in AWS.</p></li>
 </ul>
@@ -1182,17 +1188,17 @@ document.write(`
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; FireNet &gt; FireNet Gateways</strong>. Open the <strong><em>ace-aws-eu-west-1-transit1</em></strong> GW, go to <strong>Policy</strong>, select the two AWS spoke VPCs, and click Remove. Traffic will not be sent to the firewall anymore, <strong>and the Aviatrix DCF will perform firewalling near the source</strong>.</p>
-<figure class="align-center" id="id81">
+<figure class="align-center" id="id83">
 <img alt="../_images/lab8-manageatt.png" src="../_images/lab8-manageatt.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 296 </span><span class="caption-text">FireNet cfg</span><a class="headerlink" href="#id81" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 296 </span><span class="caption-text">FireNet cfg</span><a class="headerlink" href="#id83" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
-<figure class="align-center" id="id82">
+<figure class="align-center" id="id84">
 <img alt="../_images/lab8-lastone.png" src="../_images/lab8-lastone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 297 </span><span class="caption-text">Remove the inspection Policy</span><a class="headerlink" href="#id82" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 297 </span><span class="caption-text">Remove the inspection Policy</span><a class="headerlink" href="#id84" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Congratulations, you have completed all labs and created a nice set of DCF rules across your Hybrid-cloud infrastructure!</p>
@@ -1285,12 +1291,14 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-between-bu1-db-and-bu2-db">2.2.10 Inter-rule between BU1 DB and BU2 DB</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.11 Verification Using Gatus</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.2.12 Verification Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-between-bu1-frontend-and-bu1-db">2.2.5 Inter-rule between BU1 Frontend and BU1 DB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-between-bu1-frontend-and-bu1-db">2.2.13 Inter-rule between BU1 Frontend and BU1 DB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.2.14 Verification Using Gatus</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2.15 Verification Using the SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3. CHANGE REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3. CHANGE REQUEST</a></li>
 </ul>
   </nav></div>
 
