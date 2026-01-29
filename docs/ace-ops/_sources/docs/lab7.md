@@ -1,115 +1,209 @@
-# Lab 7 - Aviatrix Cloud Firewall
-
-In this lab you will activate the `Aviatrix Cloud Firewall`, a cloud-native security solution that provides distributed firewalling, traffic control, and network segmentation. Unlike centralized traditional firewalls, it simplifies security management across multi-cloud environments, automates policy enforcement, and can operate in either learning or enforcement modes, offering flexibility for securing both egress and east–west traffic.
+# Lab 7 - Distributed Cloud Firewall
 
 ## 1. SCENARIO
 
-The database VNet owner requires that prohibited egress traffic be dropped. Please review egress traffic for **BU1-DB** and **BU2-DB** and ensure any restricted destinations are blocked.
+In the previous lab, you initiated micro-segmentation by defining a SmartGroup and applying the `Aviatrix Cloud Firewall` rules. Right now, _East–West_ traffic is largely blocked, except for the policy that allows **BU1 Frontend** to SSH to both **BU1 DB** and **BU2 DB**.
 
-```{figure} images/lab7-topology.png
+```{figure} images/lab7-segmentation.png
 ---
 height: 400px
 align: center
 ---
-Lab 7 Scenario Topology
-```
-
-In your POD Portal, open the Gatus Dashboard for **BU1-DB** and **BU2-DB** and examine the `External` section to identify prohibited traffic.
-
-```{figure} images/lab7-newgatus01.png
----
-height: 400px
-align: center
----
-BU1-DB Gatus
-```
-
-```{figure} images/lab7-newgatus02.png
----
-height: 400px
-align: center
----
-BU2-DB Gatus
+Initial Topology
 ```
 
 ```{important}
-Even though the two virtual machines are deployed in private subnets, they can still access the public internet because the `Egress` feature was enabled when the POD was launched.
-
-When `Local Egress` is enabled, **SNAT** is automatically turned on. As a result, all outbound traffic from the Spoke VPC/VNet is translated to use the gateway’s public IP address. In addition, the VPC/VNet’s default route (**0.0.0.0/0**) is updated to point to the Spoke gateway.
+From a routing perspective, there is a flat rouing domain, enabled by the `Connection Policy` applied in Lab 2.
 ```
 
-- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets**. You’ll see that both **_ace-azure-east-us-spoke1_** and **_ace-azure-east-us-spoke2_** VNets are already configured with Local Egress enabled.
+This is the current list of Distributed Cloud Firewall policies.
 
-```{figure} images/lab7-newgatus03.png
+```{figure} images/lab8-initialrule.png
 ---
-height: 250px
+height: 300px
 align: center
 ---
-Cloud Secure Egress
+Existing DCF rules
 ```
 
-```{important}
-This action installs a default route in every private route table within the Azure spoke VNets. These default routes point to the Aviatrix Spoke Gateway(s).
+These are the **requirements** for this lab:
 
-To verify, go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways**, select a spoke gateway (for example, ace-azure-east-us-spoke2), then open the `VPC/VNet Route Tables` tab. From the Route Table drop-down, select any private route table.
-```{figure} images/lab7-defaultroute.png
----
-align: center
----
-Default Route injected by the AVX Controller
-```
+1) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU1 Analytics
+
+2) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App.
+
+3) Create an <span style='color:lightgreen'>**intra-rule**</span> that allows BU1 Frontend and BU2 Mobile App to ping each other
+
+4) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Frontend to talk with BU2 Mobile App on TCP/80
+
+5) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Analytics to ping BU1 Frontend
+
+6) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 DB to communicate with BU2 DB on TCP/22
+
+7) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Frontend to ping with BU2 DB.
 
 ## 2. CHANGE REQUEST
 
-### 2.1 Distributed Cloud Firewall
+### 2.1 SmartGroups creation
 
-To control and enforce egress traffic, you must enable the `Distributed Cloud Firewall`.
+Navigate to **CoPilot > Groups > SmartGroups**, and click  the `“+ SmartGroup”` button.
 
-#### 2.1.1 DCF - Activation
-
-- Enable the **Distributed Cloud Firewall** feature.
-
-```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall**, click `Begin Using Distributed Cloud Firewall`, and then click `Begin` on the next screen.
-```
-
-```{figure} images/lab7-enabledcf01.png
+```{figure} images/lab8-SGnew10.png
 ---
 align: center
 ---
-Begin Using Distributed Cloud Firewall
+SmartGroup
 ```
 
-```{figure} images/lab7-enabledcf0222.png
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>BU1-ANALYTICS</span>
+- **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-gcp-us-east1-spoke1-bu1-analytics</span>
+
+```{figure} images/lab7-smart3.png
 ---
 align: center
 ---
-Begin
+Name = ace-gcp-us-east1-spoke1-bu1-analytics
 ```
 
-The Aviatrix Controller has pushed a `Default Action Rule` permitting all traffic; you should observe the impact right away.
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
 
-```{figure} images/lab7-enabledcf0411.png
+```{figure} images/lab8-smart41.png
 ---
 align: center
 ---
-Default Action Rule
+Resource Selection
 ```
 
-Now, click **Ruleset** and select the `V1 Policy List`.
-
-```{figure} images/lab7-greenfield5666.png
+```{figure} images/lab8-smart411.png
 ---
 align: center
 ---
-V1 Policy List
+Preview
 ```
 
-#### 2.1.2 Ad-hoc Greenfield-Rule
+The CoPilot shows that there is one instance that perfectly matches the condition:
 
-- Create a new rule clicking on the **"+ Rule"** button.
+- **_ace-gcp-us-east1-spoke1-bu1-analytics_**
 
-```{figure} images/lab7-greenfield56661.png
+Add another Smart Group by tapping the `“+ SmartGroup”` one more time.
+
+```{figure} images/lab8-SGnew20.png
+---
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>BU2-MOBILEAPP</span>
+- **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span>
+
+```{figure} images/lab7-smart3.png
+---
+align: center
+---
+Name = ace-aws-eu-west-1-spoke2-bu2-mobile-app
+```
+
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
+
+```{figure} images/lab8-smart51.png
+---
+align: center
+---
+Resource Selection
+```
+
+```{figure} images/lab8-smart511.png
+---
+align: center
+---
+Preview
+```
+
+The CoPilot shows that there is one instance that perfectly matches the condition:
+
+- **_ace-aws-eu-west-1-spoke2-bu2-mobile-app_**
+
+### 2.2 Distributed Cloud Firewall Policies
+
+Let's begin defining the **DCF rules** to govern `East–West` traffic.
+
+#### 2.2.1 Intra-rule between BU1 Frontend and BU2 Mobile App
+
+The current SmartGroups status is depicted below. The first rule to create is an `intra-rule` involving both **BU1 Frontend** and **BU2 Mobile App**. To enforce this intra-rule, define an additional SmartGroup that can include both instances, for example by using the label `Region=eu-west-1`.
+
+```{figure} images/lab71-segmentation.png
+---
+height: 400px
+align: center
+---
+Current SmartGroup status
+```
+
+- Navigate to **CoPilot > Groups > SmartGroups** and click the `“+ SmartGroup”`.
+
+```{figure} images/lab8-SGnew2090.png
+---
+align: center
+---
+SmartGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+
+- **Name**: <span style='color:#479608'>EU-WEST-1</span>
+- **Matches all conditions (AND)/Region**: <span style='color:#479608'>eu-west-1</span>
+
+```{figure} images/lab8-smart3.png
+---
+align: center
+---
+Region = eu-west-1
+```
+
+Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
+
+```{figure} images/lab8-smart5122.png
+---
+align: center
+---
+Resource Selection
+```
+
+```{figure} images/lab8-smart51132.png
+---
+align: center
+---
+Preview
+```
+
+The CoPilot shows that there are three instances that perfectly match the condition:
+
+- **_ACE-FW_**
+- **_ace-aws-eu-west-1-spoke1-bu1-frontend_**
+- **_ace-aws-eu-west-1-spoke2-bu2-mobile-app_**
+
+The new SmartGroup encompasses the two instances involved in establishing an _intra-rule_ between **BU1 Frontend** and **BU2 Mobile App**, as illustrated in the figure below.
+
+```{figure} images/lab712-segmentation.png
+---
+height: 400px
+align: center
+---
+Topology with the latest SmartGroup
+```
+
+```{important}
+Instances can belong to multiple SmartGroups.
+```
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
+
+```{figure} images/lab8-greenfield56661.png
 ---
 align: center
 ---
@@ -118,479 +212,381 @@ New Rule
 
 Enter the following parameters:
 
-- **Name**: <span style='color:#479608'>Greenfield-Rule</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
-- **Protocol**: <span style='color:#479608'>Any</span>
-- **Log**: <span style='color:#479608'>**At Start & End**</span>
+- **Name**: <span style='color:#479608'>intra-icmp-bu1frontend-bu2mobileapp</span>
+- **Source Smartgroups**: <span style='color:#479608'>EU-WEST-1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>EU-WEST-1</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
 
-```{figure} images/lab7-greenfield566612.png
+```{figure} images/lab8-greenfield566612.png
 ---
 align: center
 ---
-Greenfield-Rule
+intra-icmp-bu1frontend-bu2mobileapp
 ```
 
 Click on **Commit**.
 
-```{figure} images/lab7-greenfield5666123.png
+```{figure} images/lab8-greenfield5666123.png
 ---
 align: center
 ---
 Commit
 ```
 
-### 2.2 Smart Groups
+- SSH to the **BU1 Frontend** and ping the private IP address of the **BU2 Mobile App**.
 
-Create three Smart Groups to identify:
-1) **BU1 Frontend**
-2) **BU1 DB**
-3) **BU2 DB**
+```{figure} images/lab712-intraruleinaction00.png
+---
+height: 400px
+align: center
+---
+intra-rule in action
+```
 
-- Navigate to **CoPilot > Groups > SmartGroups**, then click the `“+ SmartGroup”` button.
+- Now repeat the test: SSH into the **BU2 Mobile App** and ping the private IP of the **BU1 Frontend** to confirm that both instances can generate an ICMP Echo request.
 
-```{figure} images/lab7-SGnew00.png
+```{figure} images/lab712-intraruleinaction01.png
+---
+height: 400px
+align: center
+---
+intra-rule in action
+```
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous tests, the logs for the `intra-icmp-bu1frontend-bu2mobileapp` rule will appear.
+
+```{figure} images/lab712-monitor00.png
 ---
 align: center
 ---
-SmartGroup
+logs
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
+This is how the overall topology would look after implementing the latest intra-rule.
 
-- **Name**: <span style='color:#479608'>BU1-FRONTEND</span>
-- **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-aws-eu-west-1-spoke1-bu1-frontend</span>
+```{figure} images/lab712-segmentation090.png
+---
+height: 400px
+align: center
+---
+intra-rule
+```
 
-```{figure} images/lab7-smart3.png
+#### 2.2.2 Inter-rule between BU1 Frontend and BU2 Mobile App
+
+The second policy is an inter-rule, requiring **BU1 Frontend** to communicate with **BU2 Mobile App** via TCP port 80.
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
+
+```{figure} images/lab8-greenfield13.png
+---
+height: 400px
+align: center
+---
+New Rule
+```
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>inter-http-bu1frontend-bu2mobileapp</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU2-MOBILEAPP</span>
+- **Protocol**: <span style='color:#479608'>TCP</span>
+- **Port**: <span style='color:#479608'>80</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab8-greenfieldjoe00.png
 ---
 align: center
 ---
-Name = ace-aws-eu-west-1-spoke1-bu1-frontend
+inter-http-bu1frontend-bu2mobileapp
 ```
 
-Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
+Click on **Commit**.
 
-```{figure} images/lab7-smart31.png
+```{figure} images/lab8-greenfieldcommit00.png
 ---
 align: center
 ---
-Resource Selection
+Commit
 ```
 
-```{figure} images/lab7-smart311.png
----
-align: center
----
-Preview
-```
+- SSH into the **BU1 Frontend** and generate a curl command targeting the private IP address of the **BU2 Mobile App**.
 
-The CoPilot shows that there is one instance that perfectly matches the condition:
-
-- **_ace-aws-eu-west-1-spoke1-bu1-frontend_**
-
-Create another Smart Group by clicking the `“+ SmartGroup”` button again.
-
-```{figure} images/lab7-SGnew10.png
----
-align: center
----
-SmartGroup
-```
-
-Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
-
-- **Name**: <span style='color:#479608'>BU1-DB</span>
-- **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-azure-east-us-spoke1-bu1-db</span>
-
-```{figure} images/lab7-smart3.png
----
-align: center
----
-Name = ace-azure-east-us-spoke1-bu1-db
-```
-
-Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
-
-```{figure} images/lab7-smart41.png
----
-align: center
----
-Resource Selection
-```
-
-```{figure} images/lab7-smart411.png
----
-align: center
----
-Preview
-```
-
-The CoPilot shows that there is one instance that perfectly matches the condition:
-
-- **_ace-azure-east-us-spoke1-bu1-db_**
-
-Add another Smart Group by tapping the `“+ SmartGroup”` one more time.
-
-```{figure} images/lab7-SGnew20.png
----
-align: center
----
-SmartGroup
-```
-
-Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
-
-- **Name**: <span style='color:#479608'>BU2-DB</span>
-- **Matches all conditions (AND)/Name**: <span style='color:#479608'>ace-azure-east-us-spoke2-bu2-db</span>
-
-```{figure} images/lab7-smart3.png
----
-align: center
----
-Name = ace-azure-east-us-spoke2-bu2-db
-```
-
-Before clicking **Save**, enable `"Preview"` to identify which instances match the condition.
-
-```{figure} images/lab7-smart51.png
----
-align: center
----
-Resource Selection
-```
-
-```{figure} images/lab7-smart511.png
----
-align: center
----
-Preview
-```
-
-The CoPilot shows that there is one instance that perfectly matches the condition:
-
-- **_ace-azure-east-us-spoke2-bu2-db_**
-
-#### 2.2.1 Updating the Greenfield Rule
-
-Navigate to **CoPilot > Security > Distributed Cloud Firewall**, and click the `pencil icon` beside the **Greenfield Rule** to update its configuration.
-
-```{figure} images/lab7-green00.png
+```{figure} images/lab712-intraruleinaction22.png
 ---
 height: 200px
 align: center
 ---
-Edit the Greenfiled-Rule
+inter-rule in action
 ```
 
-Select the `"All-Web"` WebGroup from the **_WebGroups_** field, then click **"Save In Drafts"**.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-http-bu1frontend-bu2mobileapp` rule will appear.
 
-```{figure} images/lab7-green01.png
+```{figure} images/lab712-monitor01.png
 ---
 align: center
 ---
-All-Web
+logs
 ```
 
-```{important}
-The `All-Web` WebGroup attached to the Greenfield-Rule will allow logging of the FQDNs being accessed.
+This is how the overall topology would look after implementing the latest inter-rule.
+
+```{figure} images/lab712-segmentation091.png
+---
+height: 400px
+align: center
+---
+inter-rule
 ```
 
-Proceed by enforcing the policy in the data plane and click **Commit**. From this point onward, East–West traffic will be blocked. However, you will still be able to intercept traffic generated by both databases, thanks to the WebGroup applied to the Greenfield-Rule.
+#### 2.2.3 Inter-rule between BU1 Analytics and BU1 Frontend
 
-```{figure} images/lab7-green02.png
+The third policy is again an inter-rule, requiring **BU1 Analytics** to ping **BU1 Frontend**.
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
+
+```{figure} images/lab8-greenfield14.png
+---
+height: 400px
+align: center
+---
+New Rule
+```
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>inter-icmp-bu1analytics-bu1frontend</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-ANALYTICS</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
+
+Do not forget to click on **Save In Drafts**.
+
+```{figure} images/lab8-greenfieldjoe01.png
+---
+align: center
+---
+inter-icmp-bu1analytics-bu1frontend
+```
+
+Click on **Commit**.
+
+```{figure} images/lab8-greenfieldcommit01.png
 ---
 align: center
 ---
 Commit
 ```
 
-#### 2.2.2 Egress - Analyze section
+- SSH into the **BU1 Analytics** and generate ICMP traffic targeting the private IP address of the **BU1 Frontend**.
 
-### 2.3 DCF Rules
+```{figure} images/lab712-intraruleinaction23.png
+---
+height: 200px
+align: center
+---
+inter-rule in action
+```
 
-The following two DCF rules allow SSH traffic from the BU1 Frontend to both the **BU1-DB** and **BU2-DB**.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-icmp-bu1analytics-bu1frontend` rule will appear.
 
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
-
-- **Name**: <span style='color:#479608'>inter-ssh-bu1frontend-bu1db</span>
-- **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
-- **Destination Smartgroups**: <span style='color:#479608'>BU1-DB</span>
-- **Protocol**: <span style='color:#479608'>TCP</span>
-- **PORT**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
-  
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab7-interssh001.png
+```{figure} images/lab712-monitor02.png
 ---
 align: center
 ---
-inter-ssh
+logs
 ```
 
-Before clicking **Commit**, continue adding a new DCF Rule by clicking `"+ Rule"`.
+This is how the overall topology would look after implementing the latest inter-rule.
 
-```{figure} images/lab7-green03.png
+```{figure} images/lab712-segmentation092.png
 ---
+height: 400px
 align: center
 ---
-+Rule
+inter-rule
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+#### 2.2.4 Inter-rule between BU1 DB and BU2 DB
 
-- **Name**: <span style='color:#479608'>inter-ssh-bu1frontend-bu2db</span>
-- **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
+The fourth policy is an inter-rule designed to permit **BU1 DB** to establish SSH access to **BU2 DB**.
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
+
+```{figure} images/lab8-greenfield15.png
+---
+height: 400px
+align: center
+---
+New Rule
+```
+
+Enter the following parameters:
+
+- **Name**: <span style='color:#479608'>inter-ssh-bu1db-bu2db</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-DB</span>
 - **Destination Smartgroups**: <span style='color:#479608'>BU2-DB</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
-- **PORT**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
-  
-Do not forget to click on **Save In Drafts**.
-
-```{figure} images/lab7-interssh002.png
----
-align: center
----
-inter-ssh
-```
-
-You can now proceed and click **Commit** to enforce the policies in the data plane.
-
-```{figure} images/lab7-interssh0023.png
----
-align: center
----
-Commit
-```
-
-```{caution}
-Once again, the last two policies enable secure SSH access from the BU1 Frontend to the Azure database VMs hosted in private subnets. Because these VMs have no public IP addresses, direct SSH access from your laptop is not possible..
-```
-
-### 2.4 ZTNA
-
-Now let’s enable the `Zero Trust` control by creating an explicit deny rule, which must be placed above the greenfield rule.
-
-```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**. 
-```
-
-- Clicking the `"+ Rule"` button.
-
-```{figure} images/lab7-green53.png
----
-align: center
----
-+Rule
-```
-
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
-
-- **Name**: <span style='color:#479608'>ExplicitDenyAll</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
-- **Protocol**: <span style='color:#479608'>Any</span>
+- **Port**: <span style='color:#479608'>22</span>
 - **Logging**: <span style='color:#479608'>**On**</span>
-- **Action**: <span style='color:#479608'>**Deny**</span>
-- **Place Rule**: <span style='color:#479608'>Below</span>
-  - **Existing Rule**: <span style='color:#479608'>inter-ssh-bu1frontend-bu1db</span>
-  
+- **Action**: <span style='color:#479608'>Permit</span>
+
 Do not forget to click on **Save In Drafts**.
 
-```{figure} images/lab7-exdeall.png
+```{figure} images/lab8-greenfieldjoe0100.png
 ---
 align: center
 ---
-ExplicitDenyAll
+inter-ssh-bu1db-bu2db
 ```
 
-Click **Commit** to enforce the policies in the data plane.
+Click on **Commit**.
 
-```{figure} images/lab7-xdeall00.png
+```{figure} images/lab8-greenfieldcommit022.png
 ---
-height: 300px
 align: center
 ---
 Commit
 ```
 
-- SSH into the **BU2 DB** host (this VM has no public IP). Access must be via the **BU1 Frontend** first, then from that VM SSH to the private IP of BU2 DB.
+- SSH into the **BU1 Frontend** and generate ICMP traffic targeting the private IP address of the **BU1 Frontend**.
 
-```{figure} images/lab7-sshbu2db.png
----
-height: 400px
-align: center
----
-BU2 DB ip address
-```
-
-Open the **Monitor** tab to access the logs, then search for `"inter-ssh-bu1frontend-bu2db"`. You’ll see that the policy was triggered by the SSH action you performed from the **BU1 Frontend**, this time aimed at the **BU2 DB**.
-
-```{figure} images/lab7-test-logs02.png
+```{figure} images/lab712-intraruleinaction245.png
 ---
 height: 200px
 align: center
 ---
-Logs
+first SSH
 ```
 
-Issue the following curl commands:
-
-```bash
-curl www.google.com
-```
-```bash
-curl www.wikipedia.com
-```
-```bash
-curl www.espn.com
-```
-
-```{figure} images/lab7-test-logs1234.png
+```{figure} images/lab712-intraruleinaction24.png
 ---
 height: 200px
 align: center
 ---
-Curl fails
+second SSH
 ```
 
-The prior curls command will fail, as traffic is blocked by the **ExplicitDenyAll** rule.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-ssh s-bu1db-bu2db` rule will appear.
 
-### 2.8 WebGroup
-
-- Create a **WebGroup** that matches the domains and subdomains identified previously.
-
-```{tip}
-Navigate to **CoPilot > Groups > WebGroups** and then click on `"+ WebGroup"`.
-```{figure} images/lab7-webgroupp.png
+```{figure} image s/lab712-monitor03.png
 ---
 align: center
 ---
-BU2 DB SmartGroup
+logs
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create WebGroup"`:
+This is how the overall topology would look after implementing the latest inter-rule.
 
-- **Name**: <span style='color:#479608'>ubuntu-update</span>
-- **Type**: <span style='color:#479608'>Domains</span>
-- **Domains/URLs**: <span style='color:#479608'> *.ubuntu.com</span>
-- **Domains/URLs**: <span style='color:#479608'> *.archive.ubuntu.com</span>
-- **Domains/URLs**: <span style='color:#479608'> *.canonical.com</span>
-
-then click on **Save**.
-
-```{caution}
-These are the domains identified before using the `Discovery Mode` (**= Greenfield-Rule + All-Web**).
-
-- The FQDNs `*.ubuntu.com` and `*.canonical.com` are both using a first-level wilcard. These wildcards will be placeholders for *ntp.ubuntu.com*, *ftp.ubuntu.com*, *download.ubuntu.com*, *contracts.canonical.com*, *changelogs.ubuntu.com*...
-- The FQDN `*.archive.ubuntu.com` is using a second-level wilcard, that allows to create a subdivision within *archive.ubuntu.com*.
-```
-
-```{figure} images/lab7-webgroup.png
+```{figure} images/lab712-segmentation093.png
 ---
 height: 400px
 align: center
 ---
-ubuntu-update
+inter-rule
 ```
 
-- Now create an **inter-rule** that permits **BU2 DB** to generate traffic to the **Internet**, but solely for reaching the _Ubuntu servers_.
+#### 2.2.5 Inter-rule between BU1 Frontend and BU1 DB
 
-```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on the `"+ Rule"` button.
-```
+The final policy is an inter-rule designed to permit **BU1 Frontend** to ping **BU2 DB**.
 
-```{figure} images/lab7-webgroup001.png
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
+
+```{figure} images/lab8-greenfield16.png
 ---
 height: 400px
 align: center
 ---
-+Rule
+New Rule
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+Enter the following parameters:
 
-- **Name**: <span style='color:#479608'>inter-ubuntu-bu2db-internet</span>
-- **Source Smartgroups**: <span style='color:#479608'>BU2-DB</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Public internet</span>
-- **WebGroups**: <span style='color:#479608'>ubuntu-update</span>
-- **Protocol**: <span style='color:#479608'>Any</span>
+- **Name**: <span style='color:#479608'>inter-icmp-bu1frontend-bu1db</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
+- **Destination Smartgroups**: <span style='color:#479608'>BU1-DB</span>
+- **Protocol**: <span style='color:#479608'>ICMP</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
+- **Action**: <span style='color:#479608'>Permit</span>
 
-- **Logging**: <span style='color:#479608'>On</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
+Do not forget to click on **Save In Drafts**.
 
-Do not forget to click on **Save In Drafts**, and then **Commit** your rule once again!
-
-```{figure} images/lab7-lastrule.png
+```{figure} images/lab8-greenfieldjoe0101.png
 ---
 align: center
 ---
-inter-ubuntu-bu2db-internet
+inter-icmp-bu1frontend-bu1db
 ```
 
-```{figure} images/lab7-lastcommit.png
+Click on **Commit**.
+
+```{figure} images/lab8-greenfieldcommit023.png
 ---
 align: center
 ---
-DCF rules list
+Commit
 ```
 
-- Now try to run the **apt-get** commands !
+- SSH into the **BU1 Frontend** and generate ICMP traffic targeting the private IP address of the **BU1 DB**.
 
-```bash
-sudo apt-get update -y 
+```{figure} images/lab712-intraruleinactionping.png
+---
+height: 200px
+align: center
+---
+ping
 ```
-and
-```bash
-sudo apt-get upgrade -y
-```
 
-Once again, if you see any of the pop-up messages depicted below, please press the **Enter** key on your keyboard.
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-icmp-bu1frontend-bu1db` rule will appear.
 
-```{figure} images/lab7-enter.png
+```{figure} images/lab712-monitor04.png
 ---
 align: center
 ---
-Press Enter
+logs
 ```
 
-```{figure} images/lab7-enter909.png
+This is how the overall topology would look after implementing the latest inter-rule.
+
+```{figure} images/lab712-segmentation094.png
 ---
+height: 400px
 align: center
 ---
-Press Enter
+inter-rule
 ```
 
-- Now check the logs within the **Egress** section!
+## 3. CHANGE REQUEST
+
+- Now before completing the lab, remove the `Inspection Policy` from the Transit GW in AWS. 
+
+The Aviatrix Distributed Cloud Firewall is now enabled across the multicloud infrastructure, so we can **retire** the NGFW that was in place.
 
 ```{tip}
-Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the **ace-azure-east-us-spoke2** VNet, then filter by `"Allowed"`.
-```
+Navigate to **CoPilot > Security > FireNet > FireNet Gateways**. Open the **_ace-aws-eu-west-1-transit1_** GW, go to **Policy**, select the two AWS spoke VPCs, and click Remove. Traffic will not be sent to the firewall anymore, **and the Aviatrix DCF will perform firewalling near the source**.
 
-```{figure} images/lab7-last.png
+```{figure} images/lab8-manageatt.png
 ---
-height: 250px
 align: center
 ---
-ace-azure-east-us-spoke2
+FireNet cfg
 ```
 
-```{figure} images/lab7-lastlog.png
+```{figure} images/lab8-lastone.png
 ---
-height: 450px
 align: center
 ---
-Allowed domains!
+Remove the inspection Policy
 ```
 
-```{caution}
-In the logs, you’ll probably see an allowed entry for `"api.snapcraft.io"`. This domain was allowed <ins>before </ins>applying the ExplicitDenyAll rule and the specific inter-rule that uses the `ubuntu-update` WebGroup.
-```
-
-You have successfully applied Secure Egress Control, leveraging both the `Egress` feature and the `Distributed Cloud Firewall` policy.
+Congratulations, you have completed all labs and created a nice set of DCF rules across your Hybrid-cloud infrastructure!
