@@ -149,7 +149,7 @@ Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
-- **Place Rule**: <span style='color:#479608'>Below</span>
+- **Place Rule**: <span style='color:#479608'>Above</span>
   - **Existing Rule**: <span style='color:#479608'>Greenfield-Rule</span>
   
 Do not forget to click on **Save In Drafts**.
@@ -177,10 +177,7 @@ From this point forward, **East–West** traffic will be blocked. You’ll need 
 
 ### 2.2 SmartGroups creation
 
-Create three Smart Groups to identify:
-1) **BU1 Frontend**
-2) **BU1 DB**
-3) **BU2 DB**
+Let's create the Smart Groups:
 
 - Navigate to **CoPilot > Groups > SmartGroups**, then click the `“+ SmartGroup”` button.
 
@@ -305,14 +302,9 @@ The CoPilot shows that there is one instance that perfectly matches the conditio
 
 - **_ace-azure-east-us-spoke2-bu2-db_**
 
+Create another Smart Group by clicking the `“+ SmartGroup”` button.
 
-
-
-
-
-Navigate to **CoPilot > Groups > SmartGroups**, and click  the `“+ SmartGroup”` button.
-
-```{figure} images/lab8-SGnew10.png
+```{figure} images/templab8-SGnew10.png
 ---
 align: center
 ---
@@ -353,7 +345,7 @@ The CoPilot shows that there is one instance that perfectly matches the conditio
 
 Add another Smart Group by tapping the `“+ SmartGroup”` one more time.
 
-```{figure} images/lab8-SGnew20.png
+```{figure} images/templab8-SGnew20.png
 ---
 align: center
 ---
