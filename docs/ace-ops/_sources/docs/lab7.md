@@ -390,7 +390,11 @@ Let's begin defining the **DCF rules** to govern `East–West` traffic.
 
 #### 2.2.1 Intra-rule between BU1 Frontend and BU2 Mobile App
 
-The current SmartGroups status is depicted below. The first rule to create is an `intra-rule` involving both **BU1 Frontend** and **BU2 Mobile App**. To enforce this intra-rule, define an additional SmartGroup that can include both instances, for example by using the label `Region=eu-west-1`.
+The current SmartGroups status is depicted below. 
+
+The first requirement states: “Create an intra-rule that allows BU1 Frontend and BU2 Mobile App to ping each other.”  
+
+Accordingly, the first rule to create is an `intra-rule` that includes both **BU1 Frontend** and **BU2 Mobile App**. To enforce this intra-rule, define an additional SmartGroup that contains instances from both applications—for example, by selecting a shared attribute such as the label `Region=eu-west-1`.
 
 ```{figure} images/lab71-segmentation.png
 ---
@@ -402,7 +406,7 @@ Current SmartGroup status
 
 - Navigate to **CoPilot > Groups > SmartGroups** and click the `“+ SmartGroup”`.
 
-```{figure} images/lab8-SGnew2090.png
+```{figure} images/templab8-SGnew2090.png
 ---
 align: center
 ---
@@ -459,7 +463,7 @@ Instances can belong to multiple SmartGroups.
 
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
 
-```{figure} images/lab8-greenfield56661.png
+```{figure} images/templab8-greenfield56661.png
 ---
 align: center
 ---
@@ -472,12 +476,12 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>EU-WEST-1</span>
 - **Destination Smartgroups**: <span style='color:#479608'>EU-WEST-1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
 
-```{figure} images/lab8-greenfield566612.png
+```{figure} images/templab8-greenfield566612.png
 ---
 align: center
 ---
@@ -486,7 +490,7 @@ intra-icmp-bu1frontend-bu2mobileapp
 
 Click on **Commit**.
 
-```{figure} images/lab8-greenfield5666123.png
+```{figure} images/templab8-greenfield5666123.png
 ---
 align: center
 ---
