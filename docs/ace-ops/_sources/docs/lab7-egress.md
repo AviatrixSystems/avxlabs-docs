@@ -4,13 +4,7 @@ In this lab you will activate the `Aviatrix Cloud Firewall`, a cloud-native secu
 
 ## 1. SCENARIO
 
-The BU2 database requires updates, but the VM resides in a private subnet. The BU2 DB owner has requested that only `apt-get` commands be permitted for egress traffic, while all other outbound traffic be blocked. All egress traffic must be monitored with **_logging_** enabled.
-
-Actions:
-- Enable the `Cloud Secure Egress` feature on the **_ace-azure-east-us-spoke2_** VNet.
-- Create `Distributed Cloud Firewall` rules to enforce these requirements.
-
-Furthermore, you are requested to create the **Distributed Cloud Firewall rules** that will enforce these requirements.
+The database VNet owner requires that prohibited egress traffic be dropped. Please review egress traffic for **BU1-DB** and **BU2-DB** and ensure any restricted destinations are blocked.
 
 ```{figure} images/lab7-topology.png
 ---
@@ -20,32 +14,44 @@ align: center
 Lab 7 Scenario Topology
 ```
 
-## 2. CHANGE REQUEST
+In your POD Portal, open the Gatus Dashboard for **BU1-DB** and **BU2-DB** and examine the `External` section to identify prohibited traffic.
 
-### 2.1 Secure Cloud Egress on Spoke2 VNet
-
-- Enable the **Egress** on the VNet where **BU2 DB** resides.
-
-```{tip}
-Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button.
-
-Select the **_ace-azure-east-us-spoke2_** VPC.
-
-Do not forget to click on **Add**.
-```
-
-```{figure} images/lab7-vpc.png
+```{figure} images/lab7-newgatus01.png
 ---
+height: 400px
 align: center
 ---
-ace-azure-east-us-spoke2
+BU1-DB Gatus
+```
+
+```{figure} images/lab7-newgatus02.png
+---
+height: 400px
+align: center
+---
+BU2-DB Gatus
 ```
 
 ```{important}
-This action will install a `Default Route` in all the Private Routing Tables inside the Azure Spoke2 VNet. The Defautl Routes will point to the **_ace-azure-east-us-spoke2_** GW.
+Even though the two virtual machines are deployed in private subnets, they can still access the public internet because the `Egress` feature was enabled when the POD was launched.
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways** and select the **_ace-azure-east-us-spoke2_** Gateway, then click on the `VPC/VNet Route Tables` tab and select any **Private** Routing Tables from the `Route Table` field!
+When `Local Egress` is enabled, **SNAT** is automatically turned on. As a result, all outbound traffic from the Spoke VPC/VNet is translated to use the gateway’s public IP address. In addition, the VPC/VNet’s default route (**0.0.0.0/0**) is updated to point to the Spoke gateway.
+```
 
+- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets**. You’ll see that both **_ace-azure-east-us-spoke1_** and **_ace-azure-east-us-spoke2_** VNets are already configured with Local Egress enabled.
+
+```{figure} images/lab7-newgatus03.png
+---
+height: 250px
+align: center
+---
+Cloud Secure Egress
+```
+
+```{important}
+This action installs a default route in every private route table within the Azure spoke VNets. These default routes point to the Aviatrix Spoke Gateway(s).
+
+To verify, go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways**, select a spoke gateway (for example, ace-azure-east-us-spoke2), then open the `VPC/VNet Route Tables` tab. From the Route Table drop-down, select any private route table.
 ```{figure} images/lab7-defaultroute.png
 ---
 align: center
@@ -53,31 +59,18 @@ align: center
 Default Route injected by the AVX Controller
 ```
 
-### 2.2 Secure Cloud Egress on VNet1 - TEST VNET
+## 2. CHANGE REQUEST
 
-```{caution}
-Replicate the steps applied to VNet2 by enabling the **Egress control** on the **_azure-east-us-spoke1_** VNet. The objective is to use the Spoke1 VNet <ins>as a test environment</ins> to identify the permitted domains.
-```
+### 2.1 Distributed Cloud Firewall
 
-- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets** and then click on the `"Enable Local Egress on VPC/VNets"` button, then select the **_ace-azure-east-us-spoke1_** VPC.
+To control and enforce egress traffic, you must enable the `Distributed Cloud Firewall`.
 
-Do not forget to click on **Add**.
-
-```{figure} images/lab7-vpc45.png
----
-align: center
----
-ace-azure-east-us-spoke1
-```
-
-### 2.3 Distributed Cloud Firewall
-
-#### 2.3.1 DCF - Activation
+#### 2.1.1 DCF - Activation
 
 - Enable the **Distributed Cloud Firewall** feature.
 
 ```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall** and then click on the `"Begin Using Distributed Cloud Firewall"` button, then to the subsequent `"Begin Using Distributed Cloud Firewall"` button, and last but not least to the `"Begin"` button
+Navigate to **CoPilot > Security > Distributed Cloud Firewall**, click `Begin Using Distributed Cloud Firewall`, and then click `Begin` on the next screen.
 ```
 
 ```{figure} images/lab7-enabledcf01.png
@@ -112,7 +105,7 @@ align: center
 V1 Policy List
 ```
 
-#### 2.3.2 Ad-hoc Greenfield-Rule
+#### 2.1.2 Ad-hoc Greenfield-Rule
 
 - Create a new rule clicking on the **"+ Rule"** button.
 
@@ -129,7 +122,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -150,7 +143,7 @@ align: center
 Commit
 ```
 
-### 2.4 Smart Groups
+### 2.2 Smart Groups
 
 Create three Smart Groups to identify:
 1) **BU1 Frontend**
@@ -280,7 +273,7 @@ The CoPilot shows that there is one instance that perfectly matches the conditio
 
 - **_ace-azure-east-us-spoke2-bu2-db_**
 
-#### 2.4.1 Updating the Greenfield Rule
+#### 2.2.1 Updating the Greenfield Rule
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall**, and click the `pencil icon` beside the **Greenfield Rule** to update its configuration.
 
@@ -302,19 +295,23 @@ All-Web
 ```
 
 ```{important}
-The All-Web WebGroup attached to the Greenfield-Rule will allow logging of the FQDNs being accessed.
+The `All-Web` WebGroup attached to the Greenfield-Rule will allow logging of the FQDNs being accessed.
 ```
 
-Before clicking **Commit**, create another DCF Rule and then click `"+ Rule"`.
+Proceed by enforcing the policy in the data plane and click **Commit**. From this point onward, East–West traffic will be blocked. However, you will still be able to intercept traffic generated by both databases, thanks to the WebGroup applied to the Greenfield-Rule.
 
 ```{figure} images/lab7-green02.png
 ---
 align: center
 ---
-+Rule
+Commit
 ```
 
-### 2.5 DCF Rules
+#### 2.2.2 Egress - Analyze section
+
+### 2.3 DCF Rules
+
+The following two DCF rules allow SSH traffic from the BU1 Frontend to both the **BU1-DB** and **BU2-DB**.
 
 Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 
@@ -373,96 +370,12 @@ Commit
 ```
 
 ```{caution}
-The last two policies ensure you can securely SSH from the BU1 Frontend to the Azure database VMs in private subnets, which do not have public IP addresses.
+Once again, the last two policies enable secure SSH access from the BU1 Frontend to the Azure database VMs hosted in private subnets. Because these VMs have no public IP addresses, direct SSH access from your laptop is not possible..
 ```
 
-### 2.6 Discovery Process
+### 2.4 ZTNA
 
-- Use **_Spoke1 VNet_** as a test environment. SSH to the **BU1 DB**, then execute the _apt-get_ commands. This will help identify the domains that should be permitted.
-
-```{figure} images/lab7-test.png
----
-align: center
----
-Spoke1 VNet1 as test VNet
-```
-
-```{warning}
-Both VNets are configured with private routing tables, each containing a default route that points to the Spoke gateway deployed in that VNet, enabled by the `Secure Cloud Egress` functionality.
-```
-
-You need to **SSH** into the **BU1 DB**. Since this VM does not have a public IP, you must first SSH into the **BU1 Frontend** VM, and then, from there, initiate an SSH connection to the private IP of the **BU1 DB**.
-
-```{figure} images/lab7-test3.png
----
-height: 400px
-align: center
----
-SSH to BU1 DB
-```
-
-You can explore the logs of your enforcement. Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and search for `"inter-ssh-bu1frontend-bu1db"`. You will see that the policy was triggered by the SSH action you performed from the BU1 Frontend to the BU1 DB.
-
-```{figure} images/lab7-test-logs.png
----
-height: 200px
-align: center
----
-Logs
-```
-
-- Now execute the **_apt-get_** commands from the **BU1 DB** !
-
-```bash
-sudo apt-get update -y 
-```
-and
-```bash
-sudo apt-get upgrade -y
-```
-
-If you see the pop-up message depicted below, please press the **Enter** key on your keyboard.
-
-```{figure} images/lab7-enter.png
----
-align: center
----
-Press Enter
-```
-
-- Check the domains hit by the *apt-get* commands
-
-```{tip}
-Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the *ace-azure-east-us-spoke**1*** on the `"VPC/VNets"` field.
-```
-
-```{figure} images/lab7-test7.png
----
-align: center
----
-Monitor
-```
-
-```{warning}
-Identify all the domains required to successfully execute the apt-get commands by examining the entire logs. The domains hit should belong to _ubuntu/canonical_ domains, and you can derive subdomains using the wildcard *.
-```
-
-The required domains are **six**!
-
-<details>
-  <summary>Click here for discovering the <span style='color:#33ECFF'>allowed domains</span></summary>
-  
-- motd.ubuntu.com
-- azure.archive.ubuntu.com
-- changelogs.ubuntu.com
-- livepatch.canonical.com
-- contracts.canonical.com
-- esm.ubuntu.com
-</details>
-
-### 2.7 ZTNA
-
-Now that the discovery process is complete on the test VNet where the Azure Spoke1 Gateway is deployed, we can activate the ZTNA framework by inserting an explicit deny-all rule above the Greenfield-Rule.
+Now let’s enable the `Zero Trust` control by creating an explicit deny rule, which must be placed above the greenfield rule.
 
 ```{tip}
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**. 
