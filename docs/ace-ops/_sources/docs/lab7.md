@@ -497,6 +497,18 @@ align: center
 Commit
 ```
 
+#### 2.2.2 Verification Using Gatus
+
+```{figure} images/templab3-4.28.diagnosticstools1190156.png
+---
+height: 400px
+align: center
+---
+intra-icmp-bu1frontend-bu2mobileapp
+```
+
+#### 2.2.3 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
 - SSH to the **BU1 Frontend** and ping the private IP address of the **BU2 Mobile App**.
 
 ```{figure} images/lab712-intraruleinaction00.png
@@ -536,13 +548,13 @@ align: center
 intra-rule
 ```
 
-#### 2.2.2 Inter-rule between BU1 Frontend and BU2 Mobile App
+#### 2.2.4 Inter-rule between BU1 Frontend and BU2 Mobile App
 
 The second policy is an inter-rule, requiring **BU1 Frontend** to communicate with **BU2 Mobile App** via TCP port 80.
 
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
 
-```{figure} images/lab8-greenfield13.png
+```{figure} images/templab8-greenfield13.png
 ---
 height: 400px
 align: center
@@ -557,12 +569,12 @@ Enter the following parameters:
 - **Destination Smartgroups**: <span style='color:#479608'>BU2-MOBILEAPP</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>80</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
 
-```{figure} images/lab8-greenfieldjoe00.png
+```{figure} images/templab8-greenfieldjoe00.png
 ---
 align: center
 ---
@@ -571,12 +583,24 @@ inter-http-bu1frontend-bu2mobileapp
 
 Click on **Commit**.
 
-```{figure} images/lab8-greenfieldcommit00.png
+```{figure} images/templab8-greenfieldcommit00.png
 ---
 align: center
 ---
 Commit
 ```
+
+#### 2.2.5 Verification Using Gatus
+
+```{figure} images/templab3-4.28.diagnosticstools119015688.png
+---
+height: 400px
+align: center
+---
+intra-icmp-bu1frontend-bu2mobileapp
+```
+
+#### 2.2.6 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH into the **BU1 Frontend** and generate a curl command targeting the private IP address of the **BU2 Mobile App**.
 
@@ -607,13 +631,13 @@ align: center
 inter-rule
 ```
 
-#### 2.2.3 Inter-rule between BU1 Analytics and BU1 Frontend
+#### 2.2.7 Inter-rule between BU1 Analytics and BU1 Frontend
 
 The third policy is again an inter-rule, requiring **BU1 Analytics** to ping **BU1 Frontend**.
 
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
 
-```{figure} images/lab8-greenfield14.png
+```{figure} images/templab8-greenfield14.png
 ---
 height: 400px
 align: center
@@ -627,12 +651,12 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>BU1-ANALYTICS</span>
 - **Destination Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
 
-```{figure} images/lab8-greenfieldjoe01.png
+```{figure} images/templab8-greenfieldjoe01.png
 ---
 align: center
 ---
@@ -641,12 +665,24 @@ inter-icmp-bu1analytics-bu1frontend
 
 Click on **Commit**.
 
-```{figure} images/lab8-greenfieldcommit01.png
+```{figure} images/templab8-greenfieldcommit01.png
 ---
 align: center
 ---
 Commit
 ```
+
+#### 2.2.8 Verification Using Gatus
+
+```{figure} images/templab3-4.28.diagnosticstools1190156881.png
+---
+height: 400px
+align: center
+---
+inter-icmp-bu1analytics-bu1frontend
+```
+
+#### 2.2.9 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH into the **BU1 Analytics** and generate ICMP traffic targeting the private IP address of the **BU1 Frontend**.
 
@@ -677,13 +713,13 @@ align: center
 inter-rule
 ```
 
-#### 2.2.4 Inter-rule between BU1 DB and BU2 DB
+#### 2.2.10 Inter-rule between BU1 DB and BU2 DB
 
 The fourth policy is an inter-rule designed to permit **BU1 DB** to establish SSH access to **BU2 DB**.
 
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
 
-```{figure} images/lab8-greenfield15.png
+```{figure} images/templab8-greenfield15.png
 ---
 height: 400px
 align: center
@@ -698,12 +734,12 @@ Enter the following parameters:
 - **Destination Smartgroups**: <span style='color:#479608'>BU2-DB</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
 
-```{figure} images/lab8-greenfieldjoe0100.png
+```{figure} images/templab8-greenfieldjoe0100.png
 ---
 align: center
 ---
@@ -712,12 +748,24 @@ inter-ssh-bu1db-bu2db
 
 Click on **Commit**.
 
-```{figure} images/lab8-greenfieldcommit022.png
+```{figure} images/templab8-greenfieldcommit022.png
 ---
 align: center
 ---
 Commit
 ```
+
+#### 2.2.11 Verification Using Gatus
+
+```{figure} images/templab3-4.28.diagnosticstools119015688122.png
+---
+height: 400px
+align: center
+---
+inter-ssh-bu1db-bu2db
+```
+
+#### 2.2.12 Verification Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH into the **BU1 Frontend** and generate ICMP traffic targeting the private IP address of the **BU1 Frontend**.
 
