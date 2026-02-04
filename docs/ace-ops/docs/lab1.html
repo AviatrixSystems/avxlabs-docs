@@ -348,7 +348,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-find-the-ip-addresses">3. WHERE TO FIND THE IP ADDRESSES</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-topology-properties">3.1 Dynamic Topology - Properties</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-assets">3.2 Cloud Assets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-workloads">3.2 Cloud Workloads</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traffic-generating-instances">4 TRAFFIC-GENERATING INSTANCES</a><ul class="nav section-nav flex-column">
@@ -556,14 +556,14 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 <p>Important: choose the correct instance. The Aviatrix gateway uses the standard router icon (four arrows). Always select the User Instance, because the gateway itself cannot be accessed via SSH.</p>
 </div>
 </section>
-<section id="cloud-assets">
-<h3>3.2 Cloud Assets<a class="headerlink" href="#cloud-assets" title="Link to this heading">#</a></h3>
+<section id="cloud-workloads">
+<h3>3.2 Cloud Workloads<a class="headerlink" href="#cloud-workloads" title="Link to this heading">#</a></h3>
 <p>Another important and useful method for obtaining IP addresses in CoPilot is through the <strong>Virtual Machines</strong> section.</p>
 <ul class="simple">
-<li><p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>. Perform a search for “<em>frontend</em>”. The results will display the information you need about the instance, including its IP addresses.</p></li>
+<li><p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Workloads &gt; Virtual Machines</strong>. Perform a search for “<em>frontend</em>”. The results will display the information you need about the instance, including its IP addresses.</p></li>
 </ul>
 <figure class="align-center" id="id16">
-<a class="reference internal image-reference" href="../_images/lab1-4.27.assets.png"><img alt="../_images/lab1-4.27.assets.png" src="../_images/lab1-4.27.assets.png" style="height: 200px;" />
+<a class="reference internal image-reference" href="../_images/lab1-assets.png"><img alt="../_images/lab1-assets.png" src="../_images/lab1-assets.png" style="height: 200px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 17 </span><span class="caption-text">Virtual Machines Inventory</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
@@ -635,7 +635,7 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 <p class="admonition-title">Note</p>
 <p>Reduce the polling timer from 5 minutes to <strong>10 seconds</strong> to expedite the visibility of the results.</p>
 <figure class="align-center" id="id22">
-<a class="reference internal image-reference" href="../_images/lab2-gatus05.png"><img alt="../_images/lab2-gatus05.png" src="../_images/lab2-gatus05.png" style="height: 550px;" />
+<a class="reference internal image-reference" href="../_images/lab2-gatus05.png"><img alt="../_images/lab2-gatus05.png" src="../_images/lab2-gatus05.png" style="height: 5500px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 23 </span><span class="caption-text">Timer</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
@@ -675,7 +675,7 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 </section>
 <section id="ssh-client-and-jump-box">
 <h2>6. SSH client and Jump Box<a class="headerlink" href="#ssh-client-and-jump-box" title="Link to this heading">#</a></h2>
-<p>Want direct access to the instances to generate traffic? Use your own SSH client, or the Guacamole  client (i.e., the Jumpbox) available in the POD Portal.</p>
+<p>Want direct access to the instances to generate traffic? Use your own <strong>SSH client</strong>, or the <strong>Guacamole  client</strong> (i.e., the Jumpbox) available in the POD Portal.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>In the subsequent tasks, certain items will be labeled <span style='color:#33ECFF'>”BONUS”</span></summary>. These tasks pertain to generating traffic directly from the instances and may be skipped.</p>
@@ -781,7 +781,7 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 </section>
 <section id="verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools">
 <h3>7.2 Verify connectivity between clients <strong>within</strong> the same network domain Using the Diagnostic Tools<a class="headerlink" href="#verify-connectivity-between-clients-within-the-same-network-domain-using-the-diagnostic-tools" title="Link to this heading">#</a></h3>
-<p>You can generate the <strong>ping directly</strong> from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of <strong>BU1 Analytics</strong> and <strong>BU1 DB</strong> from the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Assets</span></code> section.</p>
+<p>You can generate the <strong>ping directly</strong> from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of <strong>BU1 Analytics</strong> and <strong>BU1 DB</strong> from the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Workloads</span></code> section.</p>
 <figure class="align-center" id="id36">
 <a class="reference internal image-reference" href="../_images/lab1-diagnosticstools11.png"><img alt="../_images/lab1-diagnosticstools11.png" src="../_images/lab1-diagnosticstools11.png" style="height: 400px;" />
 </a>
@@ -790,21 +790,21 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, filter for the keywords <strong>“analytics”</strong> and <strong>“bu1-db”</strong>, and capture the private IP addresses of the resulting VMs.</p></li>
+<li><p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Workloads &gt; Virtual Machines</strong>, filter for the keywords <strong>“analytics”</strong> and <strong>“bu1-db”</strong>, and capture the private IP addresses of the resulting VMs.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Use multiple tabs on your browser!</p>
 </div>
 <figure class="align-center" id="id37">
-<a class="reference internal image-reference" href="../_images/lab1-old.diagnosticstools990.png"><img alt="../_images/lab1-old.diagnosticstools990.png" src="../_images/lab1-old.diagnosticstools990.png" style="height: 250px;" />
+<a class="reference internal image-reference" href="../_images/lab1-diagnosticstools990.png"><img alt="../_images/lab1-diagnosticstools990.png" src="../_images/lab1-diagnosticstools990.png" style="height: 250px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 38 </span><span class="caption-text">bu1-analytics</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id38">
-<a class="reference internal image-reference" href="../_images/lab1-old.diagnosticstools991.png"><img alt="../_images/lab1-old.diagnosticstools991.png" src="../_images/lab1-old.diagnosticstools991.png" style="height: 250px;" />
+<a class="reference internal image-reference" href="../_images/lab1-diagnosticstools991.png"><img alt="../_images/lab1-diagnosticstools991.png" src="../_images/lab1-diagnosticstools991.png" style="height: 250px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 39 </span><span class="caption-text">bu1-db</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
@@ -1004,7 +1004,7 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 </figcaption>
 </figure>
 <figure class="align-center" id="id59">
-<a class="reference internal image-reference" href="../_images/old-lab1-mobileapp0078.png"><img alt="../_images/old-lab1-mobileapp0078.png" src="../_images/old-lab1-mobileapp0078.png" style="height: 200px;" />
+<a class="reference internal image-reference" href="../_images/lab1-mobileapp0078.png"><img alt="../_images/lab1-mobileapp0078.png" src="../_images/lab1-mobileapp0078.png" style="height: 200px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 60 </span><span class="caption-text">BU2-DB</span><a class="headerlink" href="#id59" title="Link to this image">#</a></p>
@@ -1168,7 +1168,7 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong>, search for the subnet <strong>172.16.211.0/24</strong> on the <em>search field</em> and then filter based on the following condition: “Gateway <em>contains</em> spoke1”.</p>
+<p>Navigate to <strong>CoPilot &gt; Diagnostics &gt; Cloud Routes</strong>, search for the subnet <strong>172.16.211.0/24</strong> on the <em><code class="docutils literal notranslate"><span class="pre">Search</span> <span class="pre">Field</span></code></em> and then filter based on the following condition: “Gateway <em>contains</em> spoke1”.</p>
 <p>The filter button is on the left-hand side of the screen and is shaped like a small funnel.</p>
 </div>
 <figure class="align-center" id="id72">
@@ -1288,7 +1288,7 @@ expand the <strong><em>ace-aws-eu-west-1-spoke1</em></strong> VPC icon, click th
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-find-the-ip-addresses">3. WHERE TO FIND THE IP ADDRESSES</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-topology-properties">3.1 Dynamic Topology - Properties</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-assets">3.2 Cloud Assets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-workloads">3.2 Cloud Workloads</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traffic-generating-instances">4 TRAFFIC-GENERATING INSTANCES</a><ul class="nav section-nav flex-column">
