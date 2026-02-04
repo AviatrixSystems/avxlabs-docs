@@ -185,13 +185,13 @@ EC2 Instance
 Important: choose the correct instance. The Aviatrix gateway uses the standard router icon (four arrows). Always select the User Instance, because the gateway itself cannot be accessed via SSH.
 ```
 
-### 3.2 Cloud Assets
+### 3.2 Cloud Workloads
 
 Another important and useful method for obtaining IP addresses in CoPilot is through the **Virtual Machines** section.
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Perform a search for "_frontend_". The results will display the information you need about the instance, including its IP addresses.
+- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines**. Perform a search for "_frontend_". The results will display the information you need about the instance, including its IP addresses.
 
-```{figure} images/lab1-4.27.assets.png
+```{figure} images/lab1-assets.png
 ---
 height: 200px
 align: center
@@ -273,7 +273,7 @@ BU1-Frontend Gatus
 Reduce the polling timer from 5 minutes to **10 seconds** to expedite the visibility of the results.
 ```{figure} images/lab2-gatus05.png
 ---
-height: 550px
+height: 5500px
 align: center
 ---
 Timer
@@ -313,7 +313,7 @@ Diagnostic Tools
 
 ## 6. SSH client and Jump Box
 
-Want direct access to the instances to generate traffic? Use your own SSH client, or the Guacamole  client (i.e., the Jumpbox) available in the POD Portal.
+Want direct access to the instances to generate traffic? Use your own **SSH client**, or the **Guacamole  client** (i.e., the Jumpbox) available in the POD Portal.
 
 ```{caution}
 In the subsequent tasks, certain items will be labeled <span style='color:#33ECFF'>"BONUS"</span></summary>. These tasks pertain to generating traffic directly from the instances and may be skipped.
@@ -431,7 +431,7 @@ TCP
 
 ### 7.2 Verify connectivity between clients **within** the same network domain Using the Diagnostic Tools
 
-You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Assets` section.
+You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Workloads` section.
 
 ```{figure} images/lab1-diagnosticstools11.png
 ---
@@ -441,13 +441,13 @@ align: center
 Default Gateway and the Destinations
 ```
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, filter for the keywords **"analytics"** and **"bu1-db"**, and capture the private IP addresses of the resulting VMs.
+- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines**, filter for the keywords **"analytics"** and **"bu1-db"**, and capture the private IP addresses of the resulting VMs.
 
 ```{tip}
 Use multiple tabs on your browser!
 ```
 
-```{figure} images/lab1-old.diagnosticstools990.png
+```{figure} images/lab1-diagnosticstools990.png
 ---
 height: 250px
 align: center
@@ -455,7 +455,7 @@ align: center
 bu1-analytics
 ```
 
-```{figure} images/lab1-old.diagnosticstools991.png
+```{figure} images/lab1-diagnosticstools991.png
 ---
 height: 250px
 align: center
@@ -676,7 +676,7 @@ align: center
 BU2-MobileApp
 ```
 
-```{figure} images/old-lab1-mobileapp0078.png
+```{figure} images/lab1-mobileapp0078.png
 ---
 height: 200px
 align: center
@@ -845,7 +845,7 @@ Cloud Routes provides a unified view of routing information for all resources in
 * Use **Cloud Routes**  to identify the _originator_ of the route **172.16.211.0/24**.
 
 ```{tip}
-Navigate to **CoPilot > Diagnostics > Cloud Routes**, search for the subnet **172.16.211.0/24** on the *search field* and then filter based on the following condition: "Gateway *contains* spoke1".
+Navigate to **CoPilot > Diagnostics > Cloud Routes**, search for the subnet **172.16.211.0/24** on the *`Search Field`* and then filter based on the following condition: "Gateway *contains* spoke1".
 
 The filter button is on the left-hand side of the screen and is shaped like a small funnel.
 ```
