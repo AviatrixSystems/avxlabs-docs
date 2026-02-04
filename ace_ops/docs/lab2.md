@@ -109,7 +109,7 @@ BU1 to BU2 is ok
 height: 400px
 align: center
 ---
-BU1 to BU2 is ok
+BU1 to BU2 is *ok*
 ```
 
 This time ICMP traffic will be successful thanks to the Connection Policy.
@@ -235,34 +235,35 @@ The Aviatrix solution includes a powerful feature for performing hop-by-hop anal
 * Use `FlightPath` to verify the *CSP native cloud constructs* that isolate the two instances involved in this test.
 
 ```{tip}
-Navigate to **CoPilot > Diagnostics > AppIQ > FlightPath (Legacy)**
+Navigate to **CoPilot > Diagnostics > AppIQ > FlightPath**
 ```
 
 * Select the following parameters and then click on **Run AppIQ**.
-  - Source: <span style='color:#479608'>ace-aws-eu-west-1-spoke1-bu1-frontend</span>
-  - Destination: <span style='color:#479608'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span>
+  - Source Virtual Machine / IP Address: <span style='color:#479608'>ace-aws-eu-west-1-spoke1-bu1-frontend</span>
+  - Destination Virtual Machine / IP Address: <span style='color:#479608'>ace-aws-eu-west-1-spoke2-bu2-mobile-app</span>
   - Protocol: <span style='color:#479608'>TCP</span>
   - Port: <span style='color:#479608'>80</span>
-  - Interface: <span style='color:#479608'>Private</span>
+  - Interface: <span style='color:#479608'>Private (**Default value)**</span>
 
-```{figure} images/lab2-curl4.png
+```{figure} images/old-lab2-curl4.png
 ---
 height: 250px
 align: center
 ---
-AppIQ configuration
+FlightPath configuration
 ```
 
-Wait a few seconds, then review the report. Explore all sections until you locate the native construct that did not pass validation.
+Wait a few seconds, then review the report. Open the Routing tab and work through each section until you find the native construct that failed validation.
 
-The Security Group attached to BU2 Mobile APP is missing a rule that should allow inbound traffic on tcp/80.
+Pay close attention to the `Destination Security Groups` section. The Security Group attached to the **BU2 Mobile App** is missing an inbound rule that allows _TCP/80_. This native construct was not validated by the Copilot and is currently misconfigured.
+
 
 ```{figure} images/lab2-curl5.png
 ---
 height: 300px
 align: center
 ---
-AppIQ report
+FlightPath report
 ```
 
 ```{note}
@@ -383,7 +384,7 @@ Launch the **BU1 Frontend** Gatus Dashboard and observe the TCP port 80 traffic 
 height: 400px
 align: center
 ---
-TCP/80 to BU2 Mobile App
+ICMP
 ```
 
 ### 3.7 Verification Using the Diagnostic Tools
