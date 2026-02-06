@@ -393,6 +393,13 @@ align: center
 Browser
 ```
 
+```{figure} images/lab3-newportal909112.png
+---
+align: center
+---
+NGFW URL
+```
+
 #### 2.8.2 NGFW Misconfiguration
 
 - Log in to the FW (<ins>refer to your POD portal for the credentials</ins>) and explore the configuration.
