@@ -368,7 +368,7 @@ The observed traffic consists solely of ICMP echo requests issued by the Transit
 
 In the next two sections, you will be asked to access the Fortinet firewall to resolve the configuration issue. You will be prompted to accept a self-signed certificate. If you are using a corporate laptop, please proceed with task **2.8.1** (<span style='color:#33ECFF'>Guacamole Client</span>); otherwise, proceed with task **2.8.2**.
 
-#### 2.8.1 NGFW Misconfiguration <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 2.8.1 NGFW Misconfiguration <span style='color:#33ECFF'>(Guacamole Client)</span></summary>
 
 Accessing the NGFW will require accepting a self-signed certificate. In the Personal POD Portal, navigate to the POD Portal, identify the `Jumpbox button`, click it, and enter your credentials to access the Guacamole client.
 
@@ -393,11 +393,37 @@ align: center
 Browser
 ```
 
+Let's retrieve the Fortinet URL from CoPilot. 
+Navigate to **Security > Fortinet > Firewall** and copy the _NGFW URL_.
+
 ```{figure} images/lab3-newportal909112.png
 ---
 align: center
 ---
 NGFW URL
+```
+
+Open the hidden Clipboard window by pressing _Ctrl+Alt+Shift_ on Windows, or _Control+Shift+Command_ on Mac, and paste the URL you previously copied from CoPilot.
+
+```{figure} images/lab3-newportal909112.png
+---
+align: center
+---
+NGFW URL
+```
+
+```{figure} images/lab3-newportal9091122.png
+---
+align: center
+---
+Copy and paste
+```
+
+```{figure} images/lab3-newportal90911223.png
+---
+align: center
+---
+Self-Signed Certificate
 ```
 
 #### 2.8.2 NGFW Misconfiguration
