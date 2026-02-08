@@ -366,7 +366,7 @@ The observed traffic consists solely of ICMP echo requests issued by the Transit
 
 ### 2.8 NGFW issue remediation 
 
-In the next two sections, you will be asked to access the Fortinet firewall to resolve the configuration issue. You will be prompted to accept a self-signed certificate. If you are using a corporate laptop, please proceed with task **2.8.1** (<span style='color:#33ECFF'>Guacamole Client</span>); otherwise, proceed with task **2.8.2**.
+In the next two sections, you will be asked to access the Fortinet firewall to resolve the configuration issue. You will be prompted to accept a self-signed certificate. If you are using a corporate laptop, please proceed with task **2.8.1** (<span style='color:#33ECFF'>Guacamole Client - Corporate laptop</span>); otherwise, proceed with task **2.8.2**.
 
 #### 2.8.1 NGFW Misconfiguration <span style='color:#33ECFF'>(Guacamole Client)</span></summary>
 
@@ -440,10 +440,39 @@ Credentials
 ---
 align: center
 ---
-Fortinet log in
+Fortinet Sign-In
 ```
 
-#### 2.8.2 NGFW Misconfiguration
+On the next page, click **“Later"**.
+
+```{figure} images/lab3-newporta456098.png
+---
+align: center
+---
+Later
+```
+
+Navigate to **Network > Interfaces**, then click the `LAN (port2)` interface (it appears in grey).
+
+```{figure} images/lab3-newporta456098234.png
+---
+align: center
+---
+LAN(port2)
+```
+
+Once you’ve successfully selected the LAN (port2) entry, click Enabled, then click Save. This will reactivate the interface.
+
+To wrap up: this lab simulates a scenario where, after a weekend update, the firewall comes back up but the LAN interface does not. Disabling the LAN interface was used to recreate that situation.
+
+```{figure} images/lab3-newporta456098234a.png
+---
+align: center
+---
+Enabled
+```
+
+#### 2.8.2 NGFW Misconfiguration (<span style='color:#33ECFF'>NO Corporate laptop</span>)
 
 - Log in to the FW (<ins>refer to your POD portal for the credentials</ins>) and explore the configuration.
 
