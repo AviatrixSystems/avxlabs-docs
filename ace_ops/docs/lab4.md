@@ -98,6 +98,10 @@ align: center
 Traceroute outcome
 ```
 
+```{important}
+The traceroute output shows that two hops are responding: the Spoke Gateway 1 in AWS and the Transit Gateway in AWS.
+```
+
 ### 2.4 Routing Tables verification
 
 - Check whether both **AWS Spoke1** and **AWS Spoke2** have the required routes installed in their RTBs or not.
@@ -164,7 +168,7 @@ Packet Capture
 
 ```{figure} images/lab4-firewallok9902.png
 ---
-height: 300px
+height: 500px
 align: center
 ---
 Traceroute Outcome
@@ -222,7 +226,7 @@ Restrict the visibility of the Packet Capture to the required parameters
 
 ```{figure} images/lab4-packet3.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 Outcome of the Packet capture
@@ -236,7 +240,7 @@ The health check shows the echo request and echo reply exchanged between the Tra
 This time the firewall is reachable!
 ```
 
-### 2.6 Vendor Integration
+### 2.6 Sync Routes to Firewall
 
 - Let's check the `Vendor Integration`!
 
