@@ -336,7 +336,7 @@ Public IP
 ---
 align: center
 ---
-Username and Password
+Username and Password for SSH
 ```
 
 ```{important}
@@ -345,7 +345,7 @@ Please be aware that the AWS and GCP instances are reachable from your laptop, a
 
 ### 6.2 Jump Box
 
-The Jumpbox button on the POD Portal lets you access the Guacamole client, a lightweight virtual desktop from which you can open an SSH terminal.
+The Jumpbox button on the POD Portal lets you access the _Guacamole client_, a lightweight virtual desktop from which you can open an SSH terminal.
 
 - The <span style='color:orange'>**Jumpbox**</span> provided via the POD Portal is especially useful in networks that block outbound port 22.
 
@@ -608,8 +608,8 @@ align: center
 CURL
 ```
 
-```{tip}
-Repeat the verification for **BU1-DB**. The curl command against BU1-DB will not work, since this VM does not run an Apache web server.
+```{important}
+Repeat the verification for **BU1-DB**.
 ```
 
 ### 7.4 Ensure workloads remain isolated across network domains Using Gatus
@@ -729,6 +729,10 @@ height: 400px
 align: center
 ---
 BU1 to BU2: SSH test fails
+```
+
+```{important}
+Repeat the verification for **BU1-DB**.
 ```
 
 ### 7.7 Network Segmentation section
