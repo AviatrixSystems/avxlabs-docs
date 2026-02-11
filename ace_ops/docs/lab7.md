@@ -603,7 +603,7 @@ align: center
 inter-bu2db-internet
 ```
 
-```{figure} images/lab7-lastcommit00.png
+```{figure} images/lab7-lastcommit.png
 ---
 align: center
 ---
