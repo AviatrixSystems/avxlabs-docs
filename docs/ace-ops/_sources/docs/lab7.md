@@ -313,10 +313,19 @@ Now that the Distributed Cloud Firewall is enabled, we can gather useful insight
 
 ```{figure} images/lab7-green02aa.png
 ---
+height: 450px
 align: center
 ---
 Analyze
 ```
+
+The following domains should be blocked:  
+
+- www.ransomware.org  
+
+- www.botnet.com  
+
+- www.malware.com
 
 ### 2.3 DCF Rules
 
@@ -431,51 +440,37 @@ align: center
 Commit
 ```
 
-- SSH into the **BU2 DB** host (this VM has no public IP). Access must be via the **BU1 Frontend** first, then from that VM SSH to the private IP of BU2 DB.
+### 2.5 ACCESS FROM BU1 FRONTEND TO DATABASE VMs <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+Let’s verify the East–West traffic communication between the **BU1 Frontend** and the database VMs in Azure.
+
+- SSH into the **BU1 Frontend** (retrieve its public IP address from either the `Topology` view or the `Cloud Workloads` section). Then SSH to the private IP address of **BU1 DB** first, and then to **BU2 DB**.
 
 ```{figure} images/lab7-sshbu2db.png
 ---
 height: 400px
 align: center
 ---
-BU2 DB ip address
+BU1 DB 
 ```
 
-Open the **Monitor** tab to access the logs, then search for `"inter-ssh-bu1frontend-bu2db"`. You’ll see that the policy was triggered by the SSH action you performed from the **BU1 Frontend**, this time aimed at the **BU2 DB**.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and search for `inter-ssh-bu1frontend-bu1db`. You’ll see that the policy was triggered by the SSH attempt you initiated from **BU1 Frontend** to **BU1 DB**.
 
 ```{figure} images/lab7-test-logs02.png
 ---
 height: 200px
 align: center
 ---
-Logs
+inter-ssh-bu1frontend-bu1db
 ```
 
-Issue the following curl commands:
-
-```bash
-curl www.google.com
-```
-```bash
-curl www.wikipedia.com
-```
-```bash
-curl www.espn.com
+```{important}
+Repeat the same check: try to SSH from **BU1 Frontend** to **BU2 DB**, then verify that the corresponding logs appear in the Monitor section of the **Distributed Cloud Firewall**.
 ```
 
-```{figure} images/lab7-test-logs1234.png
----
-height: 200px
-align: center
----
-Curl fails
-```
+### 2.6 WebGroup
 
-The prior curls command will fail, as traffic is blocked by the **ExplicitDenyAll** rule.
-
-### 2.8 WebGroup
-
-- Create a **WebGroup** that matches the domains and subdomains identified previously.
+- Create two **WebGroup** that match the _allowed domains_ identified previously.
 
 ```{tip}
 Navigate to **CoPilot > Groups > WebGroups** and then click on `"+ WebGroup"`.
@@ -483,35 +478,61 @@ Navigate to **CoPilot > Groups > WebGroups** and then click on `"+ WebGroup"`.
 ---
 align: center
 ---
-BU2 DB SmartGroup
+WebGroup
 ```
 
 Ensure these parameters are entered in the pop-up window `"Create WebGroup"`:
 
-- **Name**: <span style='color:#479608'>ubuntu-update</span>
+- **Name**: <span style='color:#479608'>bu1-allowed-domains</span>
 - **Type**: <span style='color:#479608'>Domains</span>
-- **Domains/URLs**: <span style='color:#479608'> *.ubuntu.com</span>
-- **Domains/URLs**: <span style='color:#479608'> *.archive.ubuntu.com</span>
-- **Domains/URLs**: <span style='color:#479608'> *.canonical.com</span>
+- **Domains/URLs**: <span style='color:#479608'> www.digitalocean.com</span>
+- **Domains/URLs**: <span style='color:#479608'> www.microsoft.com</span>
+- **Domains/URLs**: <span style='color:#479608'> www.terraform.com</span>
 
 then click on **Save**.
 
 ```{caution}
 These are the domains identified before using the `Discovery Mode` (**= Greenfield-Rule + All-Web**).
 
-- The FQDNs `*.ubuntu.com` and `*.canonical.com` are both using a first-level wilcard. These wildcards will be placeholders for *ntp.ubuntu.com*, *ftp.ubuntu.com*, *download.ubuntu.com*, *contracts.canonical.com*, *changelogs.ubuntu.com*...
-- The FQDN `*.archive.ubuntu.com` is using a second-level wilcard, that allows to create a subdivision within *archive.ubuntu.com*.
-```
 
 ```{figure} images/lab7-webgroup.png
 ---
 height: 400px
 align: center
 ---
-ubuntu-update
+bu1-allowed-domains
 ```
 
-- Now create an **inter-rule** that permits **BU2 DB** to generate traffic to the **Internet**, but solely for reaching the _Ubuntu servers_.
+Let’s create another WebGroup—click the `"+ WebGroup"` button.
+
+```{figure} images/lab7-webgrouppnew.png
+---
+align: center
+---
+A new WebGroup
+```
+
+Ensure these parameters are entered in the pop-up window `"Create WebGroup"`:
+
+- **Name**: <span style='color:#479608'>bu2-allowed-domains</span>
+- **Type**: <span style='color:#479608'>Domains</span>
+- **Domains/URLs**: <span style='color:#479608'> cloud.google.com</span>
+- **Domains/URLs**: <span style='color:#479608'> www.aviatrix.com</span>
+- **Domains/URLs**: <span style='color:#479608'> www.aws.amazon.com</span>
+
+then click on **Save**.
+
+```{figure} images/lab7-webgroup11.png
+---
+height: 400px
+align: center
+---
+bu2-allowed-domains
+```
+
+### 2.7 NEW DCF RULES
+
+- Now create an `inter-rule` that allows **BU1 DB** to access the **Internet** only to reach the domains defined in the `bu1-allowed-domains `WebGroup.
 
 ```{tip}
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on the `"+ Rule"` button.
@@ -525,12 +546,12 @@ align: center
 +Rule
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:.
 
-- **Name**: <span style='color:#479608'>inter-ubuntu-bu2db-internet</span>
-- **Source Smartgroups**: <span style='color:#479608'>BU2-DB</span>
+- **Name**: <span style='color:#479608'>inter-bu1db-internet</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-DB</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Public internet</span>
-- **WebGroups**: <span style='color:#479608'>ubuntu-update</span>
+- **WebGroups**: <span style='color:#479608'>bu1-allowed-domains</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 
 - **Logging**: <span style='color:#479608'>On</span>
@@ -542,7 +563,7 @@ Do not forget to click on **Save In Drafts**, and then **Commit** your rule once
 ---
 align: center
 ---
-inter-ubuntu-bu2db-internet
+inter-bu1db-internet
 ```
 
 ```{figure} images/lab7-lastcommit.png
@@ -551,6 +572,44 @@ align: center
 ---
 DCF rules list
 ```
+
+- Create another `inter-rule` that allows **BU2 DB** to access the **Internet** only for the domains defined in the ``bu2-allowed-domains` WebGroup.
+
+```{figure} images/lab7-webgroup0012.png
+---
+height: 400px
+align: center
+---
++Rule
+```
+
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+
+- **Name**: <span style='color:#479608'>inter-bu2db-internet</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU1-DB</span>
+- **Destination Smartgroups**: <span style='color:#479608'>Public internet</span>
+- **WebGroups**: <span style='color:#479608'>bu2-allowed-domains</span>
+- **Protocol**: <span style='color:#479608'>Any</span>
+
+- **Logging**: <span style='color:#479608'>On</span>
+- **Action**: <span style='color:#479608'>**Permit**</span>
+
+Do not forget to click on **Save In Drafts**, and then **Commit**.
+
+```{figure} images/lab7-lastrule22.png
+---
+align: center
+---
+inter-bu2db-internet
+```
+
+```{figure} images/lab7-lastcommit.png
+---
+align: center
+---
+DCF rules list
+```
+
 
 - Now try to run the **apt-get** commands !
 

@@ -546,7 +546,7 @@ align: center
 +Rule
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create Rule"`:
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:.
 
 - **Name**: <span style='color:#479608'>inter-bu1db-internet</span>
 - **Source Smartgroups**: <span style='color:#479608'>BU1-DB</span>
