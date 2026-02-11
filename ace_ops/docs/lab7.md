@@ -309,7 +309,7 @@ Commit
 
 #### 2.2.2 Egress - Analyze section
 
-Now that the Distributed Cloud Firewall is enabled, we can gather useful insights from the Egress section. Navigate to **Security > Egress > Analyze**, and in `Top Domains`, identify the domains that are being blocked.
+Now that the **Distributed Cloud Firewall** is enabled, we can gather useful insights from the Egress section. Navigate to **Security > Egress > Analyze**, and in `Top Domains`, identify the domains that are being blocked.
 
 ```{figure} images/lab7-green02aa.png
 ---
