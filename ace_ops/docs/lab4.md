@@ -139,9 +139,11 @@ The FW is UP
 ```
 
 ```{note}
-This time the FW is responding properly to the **Health Check** mechanism, therefore we can't blame the Security Team.
+This time, the firewall is responding correctly to the **health-check** mechanism, so the issue does not appear to be on the Security team’s side.
 
-The Firewall is reachable from the Transit FireNet GW!
+The firewall is reachable from the Transit FireNet gateway.
+
+
 ```
 
 #### 2.5.1 Connectivity test Using the Diagnostic Tools
