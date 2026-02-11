@@ -51,6 +51,28 @@ Communicate your POD number
 
 - Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW and then the **Route Approval** tab.
 
+You’ll immediately notice three CIDRs already approved:
+
+- 10.0.0.0/24  
+
+- 10.0.111.0/24  
+
+- 10.0.211.0/24
+
+And one CIDR in a pending state:
+
+- 169.254.74.128/30
+
+Keep clicking Refresh—a new CIDR should appear shortly.
+
+```{figure} images/lab6-pending000.png
+---
+height: 400px
+align: center
+---
+Existing CIDRs
+```
+
 ```{note}
 Please wait approximately **one or two minutes** for BGP to send the Update. Then, click the <span style='color:orange'>**refresh button**</span> to see the default route being advertised from the Data Center.
 
@@ -68,7 +90,7 @@ Refresh
 ```
 
 ```{caution}
-**Do not approve the route yourself**. If you accidentally approve it, you can click "Delete" to revert it back to the Pending status.
+**Do not approve the default route**. If you accidentally approve it, you can click "Discard" to revert it to Pending.
 ```
 
 ```{important}
