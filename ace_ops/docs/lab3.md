@@ -2,9 +2,9 @@
 
 ## 1. SCENARIO
 
-BU1 and BU2 were able to communicate with each other as of Friday EOB (i.e end of LAB2).
+BU1 and BU2 were able to communicate with each other as of Friday EOD (end of LAB2). 
 
-However, the network team received a complaint from BU1 Frontend Team that the connectivity with BU2 Mobile App was no longer working.
+However, the Network Team has received a report from BU1 Frontend Team that it cannot reach any instances inside the BU2 domain. Additionally, BU1 Analytics and BU1 DB are affected.
 
 ```{warning}
 The traffic between the two VPCs in AWS is inspected by a **Firewall** deployed through the Aviatrix **FireNet** feature.
