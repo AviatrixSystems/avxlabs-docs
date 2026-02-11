@@ -358,6 +358,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-from-bu1-frontend-to-database-vms-bonus">2.5 ACCESS FROM BU1 FRONTEND TO DATABASE VMs <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webgroup">2.6 WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-dcf-rules">2.7 NEW DCF RULES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-gatus">2.8 Verification Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-ssh-client-bonus">2.9 Verification Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 </ul>
@@ -783,7 +785,7 @@ document.write(`
 </figure>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and search for <code class="docutils literal notranslate"><span class="pre">inter-ssh-bu1frontend-bu1db</span></code>. You’ll see that the policy was triggered by the SSH attempt you initiated from <strong>BU1 Frontend</strong> to <strong>BU1 DB</strong>.</p>
 <figure class="align-center" id="id37">
-<a class="reference internal image-reference" href="../_images/lab7-test-logs02.png"><img alt="../_images/lab7-test-logs02.png" src="../_images/lab7-test-logs02.png" style="height: 200px;" />
+<a class="reference internal image-reference" href="../_images/lab7-test-logs02.png"><img alt="../_images/lab7-test-logs02.png" src="../_images/lab7-test-logs02.png" style="height: 450px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 271 </span><span class="caption-text">inter-ssh-bu1frontend-bu1db</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
@@ -893,7 +895,7 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>Create another <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> that allows <strong>BU2 DB</strong> to access the <strong>Internet</strong> only for the domains defined in the ``bu2-allowed-domains` WebGroup.</p></li>
+<li><p>Create another <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> that allows <strong>BU2 DB</strong> to access the <strong>Internet</strong> only for the domains defined in the <code class="docutils literal notranslate"><span class="pre">bu2-allowed-domains</span></code> WebGroup.</p></li>
 </ul>
 <figure class="align-center" id="id45">
 <a class="reference internal image-reference" href="../_images/lab7-webgroup0012.png"><img alt="../_images/lab7-webgroup0012.png" src="../_images/lab7-webgroup0012.png" style="height: 400px;" />
@@ -925,6 +927,27 @@ document.write(`
 <p><span class="caption-number">Fig. 281 </span><span class="caption-text">DCF rules list</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="verification-using-gatus">
+<h3>2.8 Verification Using Gatus<a class="headerlink" href="#verification-using-gatus" title="Link to this heading">#</a></h3>
+<p>Review the Gatus dashboards for both <strong>BU1 DB</strong> and <strong>BU2 DB</strong>.</p>
+<figure class="align-center" id="id48">
+<a class="reference internal image-reference" href="docs/images/lab7-newgatus02new01.png"><img alt="docs/images/lab7-newgatus02new01.png" src="docs/images/lab7-newgatus02new01.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">BU1-DB Gatus</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id49">
+<a class="reference internal image-reference" href="docs/images/lab7-newgatus02new02.png"><img alt="docs/images/lab7-newgatus02new02.png" src="docs/images/lab7-newgatus02new02.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">BU2-DB Gatus</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="verification-using-ssh-client-bonus">
+<h3>2.9 Verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verification-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Now try to run the <strong>apt-get</strong> commands !</p></li>
 </ul>
@@ -936,16 +959,16 @@ document.write(`
 </pre></div>
 </div>
 <p>Once again, if you see any of the pop-up messages depicted below, please press the <strong>Enter</strong> key on your keyboard.</p>
-<figure class="align-center" id="id48">
+<figure class="align-center" id="id50">
 <img alt="../_images/lab7-enter.png" src="../_images/lab7-enter.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 282 </span><span class="caption-text">Press Enter</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Press Enter</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id49">
+<figure class="align-center" id="id51">
 <img alt="../_images/lab7-enter909.png" src="../_images/lab7-enter909.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 283 </span><span class="caption-text">Press Enter</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">Press Enter</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -955,18 +978,18 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong> and select the <strong>ace-azure-east-us-spoke2</strong> VNet, then filter by <code class="docutils literal notranslate"><span class="pre">&quot;Allowed&quot;</span></code>.</p>
 </div>
-<figure class="align-center" id="id50">
+<figure class="align-center" id="id52">
 <a class="reference internal image-reference" href="../_images/lab7-last.png"><img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 284 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 286 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id51">
+<figure class="align-center" id="id53">
 <a class="reference internal image-reference" href="../_images/lab7-lastlog.png"><img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" style="height: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 285 </span><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 287 </span><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1059,6 +1082,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-from-bu1-frontend-to-database-vms-bonus">2.5 ACCESS FROM BU1 FRONTEND TO DATABASE VMs <span style="color:#33ECFF">(BONUS)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webgroup">2.6 WebGroup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-dcf-rules">2.7 NEW DCF RULES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-gatus">2.8 Verification Using Gatus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-ssh-client-bonus">2.9 Verification Using SSH client <span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
 </ul>

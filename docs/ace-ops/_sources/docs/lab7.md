@@ -458,7 +458,7 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and se
 
 ```{figure} images/lab7-test-logs02.png
 ---
-height: 200px
+height: 450px
 align: center
 ---
 inter-ssh-bu1frontend-bu1db
@@ -573,7 +573,7 @@ align: center
 DCF rules list
 ```
 
-- Create another `inter-rule` that allows **BU2 DB** to access the **Internet** only for the domains defined in the ``bu2-allowed-domains` WebGroup.
+- Create another `inter-rule` that allows **BU2 DB** to access the **Internet** only for the domains defined in the `bu2-allowed-domains` WebGroup.
 
 ```{figure} images/lab7-webgroup0012.png
 ---
@@ -610,6 +610,27 @@ align: center
 DCF rules list
 ```
 
+### 2.8 Verification Using Gatus
+
+Review the Gatus dashboards for both **BU1 DB** and **BU2 DB**.
+
+```{figure} images/lab7-newgatus02new01.png
+---
+height: 400px
+align: center
+---
+BU1-DB Gatus
+```
+
+```{figure} images/lab7-newgatus02new02.png
+---
+height: 400px
+align: center
+---
+BU2-DB Gatus
+```
+
+### 2.9 Verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - Now try to run the **apt-get** commands !
 
