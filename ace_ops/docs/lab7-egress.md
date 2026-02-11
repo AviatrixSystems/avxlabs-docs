@@ -38,7 +38,7 @@ Even though the two virtual machines are deployed in private subnets, they can s
 When `Local Egress` is enabled, **SNAT** is automatically turned on. As a result, all outbound traffic from the Spoke VPC/VNet is translated to use the gateway’s public IP address. In addition, the VPC/VNet’s default route (**0.0.0.0/0**) is updated to point to the Spoke gateway.
 ```
 
-- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets**. You’ll see that both **_ace-azure-east-us-spoke1_** and **_ace-azure-east-us-spoke2_** VNets are already configured with Local Egress enabled.
+- Navigate to **CoPilot > Security > Egress > Egress VPC/VNets**. You’ll see that both **_ace-azure-east-us-spoke1_** and **_ace-azure-east-us-spoke2_** VNets are already configured with _Local Egress_ enabled.
 
 ```{figure} images/lab7-newgatus03.png
 ---
@@ -49,7 +49,7 @@ Cloud Secure Egress
 ```
 
 ```{important}
-This action installs a default route in every private route table within the Azure spoke VNets. These default routes point to the Aviatrix Spoke Gateway(s).
+This action adds a **default route** to each private route table in the Azure spoke VNets. The routes direct traffic to the Aviatrix Spoke Gateways.
 
 To verify, go to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways**, select a spoke gateway (for example, ace-azure-east-us-spoke2), then open the `VPC/VNet Route Tables` tab. From the Route Table drop-down, select any private route table.
 ```{figure} images/lab7-defaultroute.png
@@ -122,7 +122,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Log**: <span style='color:#479608'>**At Start & End**</span>
+- **Logging**: <span style='color:#479608'>**On**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -309,9 +309,20 @@ Commit
 
 #### 2.2.2 Egress - Analyze section
 
+Now that the Distributed Cloud Firewall is enabled, we can gather useful insights from the Egress section. Navigate to **Security > Egress > Analyze**, and in `Top Domains`, identify the domains that are being blocked.
+
+```{figure} images/lab7-green02aa.png
+---
+align: center
+---
+Analyze
+```
+
 ### 2.3 DCF Rules
 
-The following two DCF rules allow SSH traffic from the BU1 Frontend to both the **BU1-DB** and **BU2-DB**.
+Let’s add two more rules to permit SSH traffic from the **BU1 Frontend** to the DB VMs.
+
+Navigate to **Security > Distributed Cloud Firewall**, then click `"+ Rule"`.
 
 Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 
@@ -370,15 +381,15 @@ Commit
 ```
 
 ```{caution}
-Once again, the last two policies enable secure SSH access from the BU1 Frontend to the Azure database VMs hosted in private subnets. Because these VMs have no public IP addresses, direct SSH access from your laptop is not possible..
+Once again, the last two policies enable secure SSH access from the BU1 Frontend to the Azure database VMs hosted in private subnets. Because these VMs have no public IP addresses, direct SSH access from your laptop is not possible.
 ```
 
 ### 2.4 ZTNA
 
 Now let’s enable the `Zero Trust` control by creating an explicit deny rule, which must be placed above the greenfield rule.
 
-```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**. 
+```{important}
+**Zero trust** in networking is a security approach that “trusts no one by default,” whether inside or outside the network perimeter. Instead of assuming that users or devices inside the network are trustworthy, it requires strict verification for every access attempt and continuous evaluation of risk.
 ```
 
 - Clicking the `"+ Rule"` button.
