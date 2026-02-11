@@ -2,9 +2,9 @@
 
 ## 1. SCENARIO
 
-**BU1** and **BU2** were able to communicate as end of Lab3.
+**BU1** and **BU2** were able to communicate by the end of Lab 3.
 
-Unfortunately, the network team received another complaint from BU1 Frontend Team that BU2 Mobile App was no longer reachable.
+Unfortunately, the Network team has received another complaint from the **BU1 Frontend** team. Once again, all instances in the BU1 Network > Domain are unreachable, and the two instances in the other BU1 network domains are also unreachable again.
 
 ```{figure} images/lab4-topology.png
 ---
@@ -20,7 +20,7 @@ Let’s move forward with the troubleshooting. Verify the connectivity between *
 
 ### 2.1 Connectivity verification Using Gatus
 
-Re-analyzing the **BU1 Frontend** Gatus dashboard shows that **BU2 Mobile** App traffic is blocked, but traffic to the other instances is allowed...
+A review of the **BU1 Frontend** Gatus dashboard shows that east–west traffic to the other instances is impacted again.
 
 Let's start troubleshooting.
 
