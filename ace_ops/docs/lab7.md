@@ -319,11 +319,11 @@ align: center
 Analyze
 ```
 
-The following domains should be blocked:  
+Block the following domains and allow all others:
 
-- www.ransomware.org  
+- www.ransomware.org
 
-- www.botnet.com  
+- www.botnet.com
 
 - www.malware.com
 
@@ -333,7 +333,7 @@ Let’s add two more rules to permit SSH traffic from the **BU1 Frontend** to th
 
 Navigate to **Security > Distributed Cloud Firewall**, then click `"+ Rule"`.
 
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 - **Name**: <span style='color:#479608'>inter-ssh-bu1frontend-bu1db</span>
 - **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
@@ -361,7 +361,7 @@ align: center
 +Rule
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 - **Name**: <span style='color:#479608'>inter-ssh-bu1frontend-bu2db</span>
 - **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
@@ -410,7 +410,7 @@ align: center
 +Rule
 ```
 
-Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
+Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 - **Name**: <span style='color:#479608'>ExplicitDenyAll</span>
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
@@ -517,8 +517,8 @@ Ensure these parameters are entered in the pop-up window `"Create WebGroup"`:
 - **Name**: <span style='color:#479608'>bu2-allowed-domains</span>
 - **Type**: <span style='color:#479608'>Domains</span>
 - **Domains/URLs**: <span style='color:#479608'> cloud.google.com</span>
-- **Domains/URLs**: <span style='color:#479608'> www.aviatrix.com</span>
 - **Domains/URLs**: <span style='color:#479608'> www.aws.amazon.com</span>
+- **Domains/URLs**: <span style='color:#479608'> www.ubuntu.com</span>
 
 then click on **Save**.
 
