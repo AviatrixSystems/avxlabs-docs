@@ -613,7 +613,7 @@ DCF rules list
 
 Review the Gatus dashboards for both **BU1 DB** and **BU2 DB**.
 
-```{figure} images/lab7-newgatus02new01.png
+```{figure} images/lab7-newgatus02new012.png
 ---
 height: 400px
 align: center
@@ -621,7 +621,7 @@ align: center
 BU1-DB Gatus
 ```
 
-```{figure} images/lab7-newgatus02new02.png
+```{figure} images/lab7-newgatus02new022.png
 ---
 height: 400px
 align: center
