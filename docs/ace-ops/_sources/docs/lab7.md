@@ -517,7 +517,7 @@ Ensure these parameters are entered in the pop-up window `"Create WebGroup"`:
 - **Name**: <span style='color:#479608'>bu2-allowed-domains</span>
 - **Type**: <span style='color:#479608'>Domains</span>
 - **Domains/URLs**: <span style='color:#479608'> cloud.google.com</span>
-- **Domains/URLs**: <span style='color:#479608'> www.aws.amazon.com</span>
+- **Domains/URLs**: <span style='color:#479608'> *.amazon.com</span>
 
 then click on **Save**.
 
@@ -527,6 +527,10 @@ height: 400px
 align: center
 ---
 bu2-allowed-domains
+```
+
+```{important}
+The FQDN __www.aws.amazon.com_ can be matched using the wildcard `*.aws.amazon.com`, which covers any single-label subdomain under _aws.amazon.com_ (e.g., _foo.aws.amazon.com_), but not the apex _amazon.com_.
 ```
 
 ### 2.7 NEW DCF RULES
