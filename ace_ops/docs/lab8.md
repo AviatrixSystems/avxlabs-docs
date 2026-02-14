@@ -611,6 +611,20 @@ align: center
 Commit
 ```
 
+#### 2.2.18 Verify connectivity Using Gatus
+
+Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 Mobile App**, specifically for `TCP` traffic.
+
+```{figure} images/lab8-gatus006.png
+---
+height: 400px
+align: center
+---
+BU1 Frontend
+```
+
+#### 2.2.19 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
 - SSH into the **BU1 Frontend** and generate ICMP traffic targeting the private IP address of the **BU1 DB**.
 
 ```{figure} images/lab712-intraruleinactionping.png
@@ -621,7 +635,9 @@ align: center
 ping
 ```
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-icmp-bu1frontend-bu1db` rule will appear.
+#### 2.2.20 DCF Monitor section
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, log entries for the `inter-icmp-bu1frontend-bu1db` rule should appear. Once again, use the Search field to filter by the name of the rule you just created.
 
 ```{figure} images/lab712-monitor04.png
 ---
