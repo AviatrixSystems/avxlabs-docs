@@ -261,7 +261,6 @@ BU2 Mobile App
 
 #### 2.2.3 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-
 - SSH to the **BU1 Frontend** and ping the private IP address of the **BU2 Mobile App**.
 
 ```{figure} images/lab712-intraruleinaction00.png
@@ -282,7 +281,9 @@ align: center
 intra-rule in action
 ```
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous tests, the logs for the `intra-icmp-bu1frontend-bu2mobileapp` rule will appear.
+#### 2.2.4 DCF Monitor section
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous tests, you should see log entries for the `intra-icmp-bu1frontend-bu2mobileapp`  rule. Use the Search field to filter by the rule name.
 
 ```{figure} images/lab712-monitor00.png
 ---
@@ -301,7 +302,7 @@ align: center
 intra-rule
 ```
 
-#### 2.2.2 Inter-rule between BU1 Frontend and BU2 Mobile App
+#### 2.2.5 Inter-rule between BU1 Frontend and BU2 Mobile App
 
 The second policy is an inter-rule, requiring **BU1 Frontend** to communicate with **BU2 Mobile App** via TCP port 80.
 
@@ -343,6 +344,20 @@ align: center
 Commit
 ```
 
+#### 2.2.6 Verify connectivity Using Gatus
+
+Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 Mobile App**, specifically for `TCP` traffic.
+
+```{figure} images/lab8-gatus003.png
+---
+height: 400px
+align: center
+---
+BU1 Frontend
+```
+
+#### 2.2.7 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
 - SSH into the **BU1 Frontend** and generate a curl command targeting the private IP address of the **BU2 Mobile App**.
 
 ```{figure} images/lab712-intraruleinaction22.png
@@ -353,7 +368,9 @@ align: center
 inter-rule in action
 ```
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-http-bu1frontend-bu2mobileapp` rule will appear.
+#### 2.2.8 DCF Monitor section
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, log entries for the `inter-http-bu1frontend-bu2mobileapp` rule should appear. Once again, use the Search field to filter by the name of the rule you just created.
 
 ```{figure} images/lab712-monitor01.png
 ---
@@ -372,7 +389,7 @@ align: center
 inter-rule
 ```
 
-#### 2.2.3 Inter-rule between BU1 Analytics and BU1 Frontend
+#### 2.2.9 Inter-rule between BU1 Analytics and BU1 Frontend
 
 The third policy is again an inter-rule, requiring **BU1 Analytics** to ping **BU1 Frontend**.
 
@@ -413,6 +430,20 @@ align: center
 Commit
 ```
 
+#### 2.2.10 Verify connectivity Using Gatus
+
+Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 Mobile App**, specifically for `TCP` traffic.
+
+```{figure} images/lab8-gatus004.png
+---
+height: 400px
+align: center
+---
+BU1 Analytics
+```
+
+#### 2.2.11 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
 - SSH into the **BU1 Analytics** and generate ICMP traffic targeting the private IP address of the **BU1 Frontend**.
 
 ```{figure} images/lab712-intraruleinaction23.png
@@ -423,7 +454,9 @@ align: center
 inter-rule in action
 ```
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-icmp-bu1analytics-bu1frontend` rule will appear.
+#### 2.2.12 DCF Monitor section
+
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, log entries for the `inter-icmp-bu1analytics-bu1frontend` rule should appear. Use the Search field to filter by the rule name and narrow the results to the relevant logs.
 
 ```{figure} images/lab712-monitor02.png
 ---
@@ -442,7 +475,7 @@ align: center
 inter-rule
 ```
 
-#### 2.2.4 Inter-rule between BU1 DB and BU2 DB
+#### 2.2.13 Inter-rule between BU1 DB and BU2 DB
 
 The fourth policy is an inter-rule designed to permit **BU1 DB** to establish SSH access to **BU2 DB**.
 
@@ -484,7 +517,21 @@ align: center
 Commit
 ```
 
-- SSH into the **BU1 Frontend** and generate ICMP traffic targeting the private IP address of the **BU1 Frontend**.
+#### 2.2.14 Verify connectivity Using Gatus
+
+Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 Mobile App**, specifically for `TCP` traffic.
+
+```{figure} images/lab8-gatus005.png
+---
+height: 400px
+align: center
+---
+BU1 DB
+```
+
+#### 2.2.15 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+- SSH into the **BU1 Frontend** first, then SSH to the **BU1 DB** using its private IP address. Once you’re on BU1 DB, run the curl command to the **BU2 DB** private IP address.
 
 ```{figure} images/lab712-intraruleinaction245.png
 ---
@@ -502,9 +549,11 @@ align: center
 second SSH
 ```
 
-- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, the logs for the `inter-ssh s-bu1db-bu2db` rule will appear.
+#### 2.2.16 DCF Monitor section
 
-```{figure} image s/lab712-monitor03.png
+- Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor**. After completing the previous test, log entries for the `inter-ssh-bu1db-bu2db` rule should appear. Use the Search field to filter by the rule name.
+
+```{figure} images/lab712-monitor03.png
 ---
 align: center
 ---
@@ -521,7 +570,7 @@ align: center
 inter-rule
 ```
 
-#### 2.2.5 Inter-rule between BU1 Frontend and BU1 DB
+#### 2.2.17 Inter-rule between BU1 Frontend and BU1 DB
 
 The final policy is an inter-rule designed to permit **BU1 Frontend** to ping **BU2 DB**.
 
