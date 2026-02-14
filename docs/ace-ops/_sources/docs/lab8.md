@@ -237,6 +237,31 @@ align: center
 Commit
 ```
 
+#### 2.2.2 Verify connectivity Using Gatus
+
+Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 Mobile App**, specifically for `ICMP` traffic.
+
+```{figure} images/lab8-gatus001.png
+---
+height: 400px
+align: center
+---
+BU1 Frontend
+```
+
+Also, check the Gatus dashboard for the **BU2 Mobile App**. You should see the `ICMP` check gradually turning green as it approaches the **BU1 Frontend**.
+
+```{figure} images/lab8-gatus002.png
+---
+height: 400px
+align: center
+---
+BU2 Mobile App
+```
+
+#### 2.2.3 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+
+
 - SSH to the **BU1 Frontend** and ping the private IP address of the **BU2 Mobile App**.
 
 ```{figure} images/lab712-intraruleinaction00.png
