@@ -637,33 +637,7 @@ align: center
 BU2-DB Gatus
 ```
 
-### 2.9 Verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
-
-With the BU1 SSH session active, please execute the curl commands toward the following domains:
-
-```bash
-www.digitalocean.com
-
-www.microsoft.com
-
-www.terraform.com
-
-www.ransomware.org
-```
-
-With the BU2 SSH session active, please execute the curl commands toward the following domains:
-
-```bash
-www.aws.amazon.com
-
-www.terraform.com
-
-wwww.botnet.com 
-
-www.malware.net
-```
-
-### 2.10 FQDN Monitor (Legacy)
+### 2.9 FQDN Monitor (Legacy)
 
 - Now check the logs within the **Egress** section!
 
@@ -688,7 +662,7 @@ Denied
 ```
 
 ```{tip}
-Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the **ace-azure-east-us-spoke1** VNet, then filter by `"denied"`.
+Chwck again the **FQDN Monitor (Legacy)**, selecting this time the **ace-azure-east-us-spoke2** VNet, then filter by `"denied"`.
 ```
 
 ```{figure} images/lab7-last2.png
