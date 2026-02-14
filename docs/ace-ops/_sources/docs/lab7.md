@@ -663,10 +663,12 @@ wwww.botnet.com
 www.malware.net
 ```
 
+### 2.10 FQDN Monitor (Legacy)
+
 - Now check the logs within the **Egress** section!
 
 ```{tip}
-Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the **ace-azure-east-us-spoke2** VNet, then filter by `"Allowed"`.
+Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the **ace-azure-east-us-spoke1** VNet, then filter by `"denied"`.
 ```
 
 ```{figure} images/lab7-last.png
@@ -682,11 +684,27 @@ ace-azure-east-us-spoke2
 height: 450px
 align: center
 ---
-Allowed domains!
+Denied
 ```
 
-```{caution}
-In the logs, you’ll probably see an allowed entry for `"api.snapcraft.io"`. This domain was allowed <ins>before </ins>applying the ExplicitDenyAll rule and the specific inter-rule that uses the `ubuntu-update` WebGroup.
+```{tip}
+Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the **ace-azure-east-us-spoke1** VNet, then filter by `"denied"`.
+```
+
+```{figure} images/lab7-last2.png
+---
+height: 250px
+align: center
+---
+ace-azure-east-us-spoke2
+```
+
+```{figure} images/lab7-lastlog2.png
+---
+height: 450px
+align: center
+---
+Denied
 ```
 
 You have successfully applied Secure Egress Control, leveraging both the `Egress` feature and the `Distributed Cloud Firewall` policy.
