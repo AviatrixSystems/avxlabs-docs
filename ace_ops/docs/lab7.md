@@ -530,7 +530,7 @@ bu2-allowed-domains
 ```
 
 ```{important}
-The FQDN __www.aws.amazon.com_ can be matched using the wildcard `*.aws.amazon.com`, which covers any single-label subdomain under _aws.amazon.com_ (e.g., _foo.aws.amazon.com_), but not the apex _amazon.com_.
+The FQDN _www.aws.amazon.com_ can be matched using the wildcard `*.aws.amazon.com`, which covers any single-label subdomain under _aws.amazon.com_ (e.g., _foo.aws.amazon.com_), but not the apex _amazon.com_.
 ```
 
 ### 2.7 NEW DCF RULES
@@ -617,6 +617,8 @@ DCF rules list
 
 Review the Gatus dashboards for both **BU1 DB** and **BU2 DB**.
 
+**BU1-DB** will be able to reach _www.digitalocean.com_, _www.microsoft.com_, and _www.terraform.com_. The domain _www.ransomware.org_ will be blocked.
+
 ```{figure} images/lab7-newgatus02new012.png
 ---
 height: 400px
@@ -624,6 +626,8 @@ align: center
 ---
 BU1-DB Gatus
 ```
+
+**BU2-DB** will be able to access the following sites: _www.google.com_, _www.aws.amazon.com_, and _www.terraform.com_. The domains _www.botnet.com_ and _www.malware.net_ will be blocked.
 
 ```{figure} images/lab7-newgatus02new022.png
 ---
@@ -635,30 +639,28 @@ BU2-DB Gatus
 
 ### 2.9 Verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-- Now try to run the **apt-get** commands !
+With the BU1 SSH session active, please execute the curl commands toward the following domains:
 
 ```bash
-sudo apt-get update -y 
+www.digitalocean.com
+
+www.microsoft.com
+
+www.terraform.com
+
+www.ransomware.org
 ```
-and
+
+With the BU2 SSH session active, please execute the curl commands toward the following domains:
+
 ```bash
-sudo apt-get upgrade -y
-```
+www.aws.amazon.com
 
-Once again, if you see any of the pop-up messages depicted below, please press the **Enter** key on your keyboard.
+www.terraform.com
 
-```{figure} images/lab7-enter.png
----
-align: center
----
-Press Enter
-```
+wwww.botnet.com 
 
-```{figure} images/lab7-enter909.png
----
-align: center
----
-Press Enter
+www.malware.net
 ```
 
 - Now check the logs within the **Egress** section!

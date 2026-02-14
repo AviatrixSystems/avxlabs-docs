@@ -855,7 +855,7 @@ document.write(`
 </figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The FQDN _<em><a class="reference external" href="http://www.aws.amazon.com">www.aws.amazon.com</a></em> can be matched using the wildcard <code class="docutils literal notranslate"><span class="pre">*.aws.amazon.com</span></code>, which covers any single-label subdomain under <em><a class="reference external" href="http://aws.amazon.com">aws.amazon.com</a></em> (e.g., <em><a class="reference external" href="http://foo.aws.amazon.com">foo.aws.amazon.com</a></em>), but not the apex <em><a class="reference external" href="http://amazon.com">amazon.com</a></em>.</p>
+<p>The FQDN <em><a class="reference external" href="http://www.aws.amazon.com">www.aws.amazon.com</a></em> can be matched using the wildcard <code class="docutils literal notranslate"><span class="pre">*.aws.amazon.com</span></code>, which covers any single-label subdomain under <em><a class="reference external" href="http://aws.amazon.com">aws.amazon.com</a></em> (e.g., <em><a class="reference external" href="http://foo.aws.amazon.com">foo.aws.amazon.com</a></em>), but not the apex <em><a class="reference external" href="http://amazon.com">amazon.com</a></em>.</p>
 </div>
 </section>
 <section id="new-dcf-rules">
@@ -934,6 +934,7 @@ document.write(`
 <section id="verification-using-gatus">
 <h3>2.8 Verification Using Gatus<a class="headerlink" href="#verification-using-gatus" title="Link to this heading">#</a></h3>
 <p>Review the Gatus dashboards for both <strong>BU1 DB</strong> and <strong>BU2 DB</strong>.</p>
+<p><strong>BU1-DB</strong> will be able to reach <em><a class="reference external" href="http://www.digitalocean.com">www.digitalocean.com</a></em>, <em><a class="reference external" href="http://www.microsoft.com">www.microsoft.com</a></em>, and <em><a class="reference external" href="http://www.terraform.com">www.terraform.com</a></em>. The domain <em><a class="reference external" href="http://www.ransomware.org">www.ransomware.org</a></em> will be blocked.</p>
 <figure class="align-center" id="id48">
 <a class="reference internal image-reference" href="../_images/lab7-newgatus02new012.png"><img alt="../_images/lab7-newgatus02new012.png" src="../_images/lab7-newgatus02new012.png" style="height: 400px;" />
 </a>
@@ -941,6 +942,7 @@ document.write(`
 <p><span class="caption-number">Fig. 282 </span><span class="caption-text">BU1-DB Gatus</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p><strong>BU2-DB</strong> will be able to access the following sites: <em><a class="reference external" href="http://www.google.com">www.google.com</a></em>, <em><a class="reference external" href="http://www.aws.amazon.com">www.aws.amazon.com</a></em>, and <em><a class="reference external" href="http://www.terraform.com">www.terraform.com</a></em>. The domains <em><a class="reference external" href="http://www.botnet.com">www.botnet.com</a></em> and <em><a class="reference external" href="http://www.malware.net">www.malware.net</a></em> will be blocked.</p>
 <figure class="align-center" id="id49">
 <a class="reference internal image-reference" href="../_images/lab7-newgatus02new022.png"><img alt="../_images/lab7-newgatus02new022.png" src="../_images/lab7-newgatus02new022.png" style="height: 400px;" />
 </a>
@@ -951,29 +953,26 @@ document.write(`
 </section>
 <section id="verification-using-ssh-client-bonus">
 <h3>2.9 Verification Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#verification-using-ssh-client-bonus" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Now try to run the <strong>apt-get</strong> commands !</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span>
+<p>With the BU1 SSH session active, please execute the curl commands toward the following domains:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>www.digitalocean.com
+
+www.microsoft.com
+
+www.terraform.com
+
+www.ransomware.org
 </pre></div>
 </div>
-<p>and</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
+<p>With the BU2 SSH session active, please execute the curl commands toward the following domains:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>www.aws.amazon.com
+
+www.terraform.com
+
+wwww.botnet.com<span class="w"> </span>
+
+www.malware.net
 </pre></div>
 </div>
-<p>Once again, if you see any of the pop-up messages depicted below, please press the <strong>Enter</strong> key on your keyboard.</p>
-<figure class="align-center" id="id50">
-<img alt="../_images/lab7-enter.png" src="../_images/lab7-enter.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Press Enter</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id51">
-<img alt="../_images/lab7-enter909.png" src="../_images/lab7-enter909.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 285 </span><span class="caption-text">Press Enter</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 <ul class="simple">
 <li><p>Now check the logs within the <strong>Egress</strong> section!</p></li>
 </ul>
@@ -981,18 +980,18 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Egress &gt; FQDN Monitor (Legacy)</strong> and select the <strong>ace-azure-east-us-spoke2</strong> VNet, then filter by <code class="docutils literal notranslate"><span class="pre">&quot;Allowed&quot;</span></code>.</p>
 </div>
-<figure class="align-center" id="id52">
+<figure class="align-center" id="id50">
 <a class="reference internal image-reference" href="../_images/lab7-last.png"><img alt="../_images/lab7-last.png" src="../_images/lab7-last.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 286 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">ace-azure-east-us-spoke2</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id53">
+<figure class="align-center" id="id51">
 <a class="reference internal image-reference" href="../_images/lab7-lastlog.png"><img alt="../_images/lab7-lastlog.png" src="../_images/lab7-lastlog.png" style="height: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 287 </span><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">Allowed domains!</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
