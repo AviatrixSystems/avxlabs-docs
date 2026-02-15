@@ -311,9 +311,9 @@ align: center
 Diagnostic Tools
 ```
 
-## 6. SSH client and Jump Box
+## 6. SSH CLIENT AND JUMP BOX
 
-Want direct access to the instances to generate traffic? Use your own **SSH client**, or the **Guacamole  client** (i.e., the Jumpbox) available in the POD Portal.
+Want direct access to the instances to generate traffic? Use your own **SSH client**, or the **Guacamole  client** (i.e., the Jump box) available in the POD Portal.
 
 ```{caution}
 In the subsequent tasks, certain items will be labeled <span style='color:#33ECFF'>"BONUS"</span></summary>. These tasks pertain to generating traffic directly from the instances and may be skipped.
