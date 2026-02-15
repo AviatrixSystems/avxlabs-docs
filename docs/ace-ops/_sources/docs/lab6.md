@@ -14,7 +14,7 @@ align: center
 Lab 6 Scenario#1: Topology
 ```
 
-## 2. CHANGE REQUEST - BGP Route Approval
+## 2. CHANGE REQUEST - BGP ROUTE APPROVAL
 
 - Activate the **Route Approval** feature for monitoring unauthorized advertisements that could be received by the DC.
 
@@ -113,7 +113,7 @@ align: center
 Lab 6 Scenario#2: Topology
 ```
 
-## 4. CHANGE REQUEST - Site-To-Cloud
+### 3.1 CHANGE REQUEST - Site-To-Cloud
 
 - Create a new **S2C** connection.
 
@@ -231,7 +231,7 @@ align: center
 S2C is finally UP
 ```
 
-### 4.1 Verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+#### 3.2 Verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - If you need additional control, SSH to the **OnPrem partner** router (i.e., a Cisco router).
 
