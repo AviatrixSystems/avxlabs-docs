@@ -440,7 +440,7 @@ align: center
 Commit
 ```
 
-### 2.5 ACCESS FROM BU1 FRONTEND TO DATABASE VMs <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 2.5 Access from BU1 Frontend to Database VMs <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 Let’s verify the East–West traffic communication between the **BU1 Frontend** and the database VMs in Azure.
 
@@ -533,7 +533,7 @@ bu2-allowed-domains
 The FQDN _www.aws.amazon.com_ can be matched using the wildcard `*.aws.amazon.com`, which covers any single-label subdomain under _aws.amazon.com_ (e.g., _foo.aws.amazon.com_), but not the apex _amazon.com_.
 ```
 
-### 2.7 NEW DCF RULES
+### 2.7 New DCF Rules
 
 - Now create an `inter-rule` that allows **BU1 DB** to access the **Internet** only to reach the domains defined in the `bu1-allowed-domains `WebGroup.
 
