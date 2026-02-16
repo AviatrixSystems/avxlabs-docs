@@ -887,6 +887,13 @@ Monitor
 
 The logs clearly show that the inter-rule is successfully allowing ICMP traffic from bu2 to bu1.
 
+```{figure} images/lab10-monitorfresh090.png
+---
+align: center
+---
+Logs
+```
+
 After establishing this inter-rule, the topology with all permitted protocols will be represented as follows:
 
 ```{figure} images/lab10-lastdrawing2.png
@@ -1074,7 +1081,7 @@ align: center
 ```
 
 ```{hint}
-Click on `"+ 230 more"`
+Click on `"+ 228 more"`
 ```
 
 ## 13. The last DCF rule
@@ -1228,6 +1235,13 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and fi
 ---
 align: center
 ---
+Filter
+```
+
+```{figure} images/lab10-reallylast000.png
+---
+align: center
+---
 inter-icmp-bu2-east1 Logs
 ```
 
@@ -1243,7 +1257,7 @@ Final Topology
 
 ## 15. Spoke to Spoke Attachment
 
-Since Distributed Cloud Firewall is enabled, the owner of **_azure-west-us-spoke2-test1_** wants to directly communicate with **_azure-west-us-spoke1-test1_1, bypassing the NGFW for traffic from the VNet.
+Since Distributed Cloud Firewall is enabled, the owner of **_azure-west-us-spoke2-test1_** wants to directly communicate with **_azure-west-us-spoke1-test1_**, bypassing the NGFW for traffic from the VNet.
 sent to the NGFW, first.
 
 ```{figure} images/lab10-spoke2spoke01.png
