@@ -74,6 +74,13 @@ Yes, I trust the authors
 * Let’s explore the Terraform files in this directory:
   * Explore the file contents of **main.tf, variables.tf, providers.tf** and **terraform.tfvars**
 
+```{figure} images/lab11-terraform200.png
+---
+align: center
+---
+Manifest
+```
+
 ```{figure} images/lab11-terraform2.png
 ---
 align: center
