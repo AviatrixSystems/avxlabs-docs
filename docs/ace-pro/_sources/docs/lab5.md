@@ -289,7 +289,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Log**: <span style='color:#479608'>**At Start & End**</span>
+- **Logging**: <span style='color:#479608'>**ON**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -338,7 +338,7 @@ align: center
 Private Subnet
 ```
 
-Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines** and search for the **_aws-us-east-2-spoke1-test2_** instance in the search field on the right-hand side.
+Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines** and search for the **_`aws-us-east-2-spoke1-test2`_** instance in the search field on the right-hand side.
 
 From the results, you need to identify the `Availability Zone`.
 
@@ -416,7 +416,7 @@ Enter the following parameters:
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>**All-Web**</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Log**: <span style='color:#479608'>**At Start & End**</span>
+- **Logging**: <span style='color:#479608'>**ON**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -461,7 +461,7 @@ Insert the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Log**: <span style='color:#479608'>At Start & End</span>
+- **Logging**: <span style='color:#479608'>ON</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
 - **Place Rule**: <span style='color:#479608'>Below</span>
   - **Existing Rule**: <span style='color:#479608'>Egress-Rule</span>
