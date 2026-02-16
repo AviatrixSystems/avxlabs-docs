@@ -645,6 +645,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Port**: <span style='color:#479608'>22</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
+- **SG Orchestration**: <span style='color:#479608'>**ON**</span>
 - **Place Rule**: <span style='color:#479608'>Below</span>
   - **Existing Rule**: <span style='color:#479608'>intra-icmp-bu2</span>
 
@@ -805,6 +806,7 @@ Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
+- **SG Orchestration**: <span style='color:#479608'>**ON**</span>
 - **Place Rule**: <span style='color:#479608'>Below</span>
   - **Existing Rule**: <span style='color:#479608'>intra-ssh-bu1</span>
   
