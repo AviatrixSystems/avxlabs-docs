@@ -513,6 +513,51 @@ align: center
 Manage SG Orchestration
 ```
 
+Since **SG Orchestration** is enabled in the _aws-us-east-2-spoke1_ VPC, also apply and enforce the related functionality in the traffic policy for that VPC.
+
+- Navigate to **Copilot > Security > Distributed Cloud Firewall**, then edit the _`intra-icmp-bu1`_ rule by clicking the pencil icon.
+
+```{figure} images/lab10-sgonew01.png
+---
+align: center
+---
+Editing intra-icmp-bu1
+```
+
+Activate the `"SG Orchestration"` toggle and click **"Save Drafts"**.
+
+```{figure} images/lab10-sgonew02.png
+---
+align: center
+---
+SG Orchestration toggle
+```
+
+Prior to committing the change, please edit the second rule (_`intra-icmp-bu2`_) once more by selecting the pencil icon.
+
+```{figure} images/lab10-sgonew03.png
+---
+align: center
+---
+Editing intra-icmp-bu2
+```
+
+Turn on the `"SG Orchestration"` toggle, click **"Save In Drafts"**, and then click the **"Commit"** button to proceed.
+
+```{figure} images/lab10-sgonew04.png
+---
+align: center
+---
+SG Orchestration toggle
+```
+
+```{figure} images/lab10-sgonew05.png
+---
+align: center
+---
+Commit
+```
+
 ### 5.5 SG Orchestration Verification Using the Gatus App
 
 Open the **Gatus** App on **_aws-us-east-2-spoke1-test1_** and verify the connectivity with **_aws-us-east-2-spoke1-test2_**.
