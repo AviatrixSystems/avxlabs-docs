@@ -687,7 +687,7 @@ Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-u
 
 ```{figure} images/lab6-gatus500.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 aws-us-east-2-spoke1-test2
