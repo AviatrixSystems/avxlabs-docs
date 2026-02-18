@@ -317,7 +317,7 @@ Deletion of the Greenfield-Rule
 
 ```{figure} images/lab66-newruledeleted.png
 ---
-height: 450px
+height: 250px
 align: center
 ---
 Commit
