@@ -402,7 +402,7 @@ New SG
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
-```{figure} images/lab6-newrule10.png
+```{figure} images/lab6-newrule108.2.png
 ---
 align: center
 ---
@@ -416,12 +416,12 @@ Enter the following parameters:
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>**All-Web**</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**ON**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
 
-```{figure} images/lab6-new.png
+```{figure} images/lab6-new8.2.png
 ---
 align: center
 ---
@@ -436,7 +436,7 @@ Ultimately , this Webgroup will limit Internet traffic solely for **HTTP** and *
 
 Click on the **Commit** button, and the rule previously created will be enforced in to the `Data Path`.
 
-```{figure} images/lab6-newrule11.png
+```{figure} images/lab6-newrule118.2.png
 ---
 height: 250px
 align: center
@@ -448,7 +448,7 @@ Egress-Rule
 
 Click on the `"+ Rule"` button.
 
-```{figure} images/lab6-newrule100.png
+```{figure} images/lab6-newrule1008.2.png
 ---
 align: center
 ---
@@ -468,7 +468,7 @@ Insert the following parameters:
 
 Do not forget to click on **Save In Drafts**.
 
-```{figure} images/lab6-newrule1001.png
+```{figure} images/lab6-newrule10018.2.png
 ---
 align: center
 ---
@@ -477,7 +477,7 @@ ExplicitDenyAll
 
 Do not forget to click on **Commit**.
 
-```{figure} images/lab6-newrule100110.png
+```{figure} images/lab6-newrule1001108.2.png
 ---
 align: center
 ---
@@ -644,7 +644,7 @@ The purpose of this **WebGroup** is to permit traffic exclusively to the domains
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, click on the **pencil** button on the right-hand side of the `Egress-Rule`.
 
-```{figure} images/lab6-webgroup2346.png
+```{figure} images/lab6-webgroup23468.2.png
 ---
 align: center
 ---
@@ -655,14 +655,14 @@ Pencil icon
 
 Do not forget to click on **Save In Drafts** and then **Commit** your changes!
 
-```{figure} images/lab6-webgroup234.png
+```{figure} images/lab6-webgroup2348.2.png
 ---
 align: center
 ---
 Editing the Egress-Rule
 ```
 
-```{figure} images/lab6-webgroup2345.png
+```{figure} images/lab6-webgroup23458.2.png
 ---
 height: 250px
 align: center
