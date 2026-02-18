@@ -1,0 +1,1176 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 9 - THREAT PREVENTION &#8212; ACE Operations Lab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1d85937c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/lab9 - 8.2';</script>
+    <link rel="icon" href="../_static/aviatrix-favicon-32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Aviatrix_Logo_White_Gradient_RGB.svg" class="logo__image only-light" alt="ACE Operations Lab - Home"/>
+    <script>document.write(`<img src="../_static/Aviatrix_Logo_White_Gradient_RGB.svg" class="logo__image only-dark" alt="ACE Operations Lab - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="home.html">
+                    Welcome to ACE Professional Lab
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pod.html">POD Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - VPCs/VNets CREATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - CLOUD NATIVE SECURITY FABRIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - NETWORK SEGMENTATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - HPE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 5 - AVIATRIX CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 6 - FIRENET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 7 - SITE2CLOUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 8 - SECURE HIGH-PERFORMANCE DATACENTER EDGE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab9.html">Lab 9 - THREAT PREVENTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab10.html">Lab 10 - COSTIQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab11.html">Lab 11 - DISTRIBUTED CLOUD FIREWALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab12.html">Lab 12 - IAC &amp; NETWORK INSIGHTS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logos-icons.html">LOGOS-ICONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDFs.html">PDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CloudHeroes.html">CLOUD NETWORKING HEROES PROGRAM</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/lab9 - 8.2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 9 - THREAT PREVENTION</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatgroup-overview">1. ThreatGroup Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">2. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">3. PSF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">3.1 Deploy the PSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">3.2 RTB verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-a-malicious-ip">4. Generate traffic towards a Malicious IP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-gatus-app">4.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-aws-us-east1-spoke1-test1-bonus">4.2 SSH to aws-us-east1-spoke1-test1 <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5. Create a new SmartGroup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6. Create two new DCF rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7. Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deletion-of-the-greenfield-rule-ztna">7.1 Deletion of the Greenfield-Rule = ZTNA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.2 Create a new WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-psf-allow-rule">7.3 Create the “PSF-Allow-Rule”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests">8. Connectivity Tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-ssh-client-bonus">8.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-aws-us-east1-spoke1-test1">8.2.1 SSH to aws-us-east1-spoke1-test1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-of-the-curl-commands">8.2.2 Execution of the curl commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-considerations">9. Final Considerations</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-9-threat-prevention">
+<h1>Lab 9 - THREAT PREVENTION<a class="headerlink" href="#lab-9-threat-prevention" title="Link to this heading">#</a></h1>
+<p>This lab will demonstrate how the <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">ThreatGroup</span></code> is capable to prevent traffic from being sent to, or from, a set of <strong>threat IPs</strong>.</p>
+<section id="threatgroup-overview">
+<h2>1. ThreatGroup Overview<a class="headerlink" href="#threatgroup-overview" title="Link to this heading">#</a></h2>
+<p>The <strong>Default ThreatGroup</strong> can be used in DCF rules to ensure that traffic meeting the ThreatGroup criteria is blocked.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The Default ThreatGroup is regularly updated with data from the <strong><code class="docutils literal notranslate"><span class="pre">Proofpoint</span> <span class="pre">Global</span> <span class="pre">Threat</span> <span class="pre">Database</span></code></strong>.</p>
+</div>
+</section>
+<section id="topology">
+<h2>2. Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
+<p>In this lab, we will deploy a <code class="docutils literal notranslate"><span class="pre">“PSF&quot;</span></code> gateway in <strong>us-east-1</strong> to protect <strong><em>only</em></strong> the public subnet hosting the test1 instance.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/lab9-initialtopology.png" src="../_images/lab9-initialtopology.png" />
+<figcaption>
+<p><span class="caption-text">Lab 9 Initial Topology</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="psf">
+<h2>3. PSF<a class="headerlink" href="#psf" title="Link to this heading">#</a></h2>
+<p>The Aviatrix <strong>Public Subnet Filtering</strong> Gateway delivers <em>ingress</em> and <em>egress</em> security for AWS public subnets in which instances have public IP addresses.</p>
+<section id="deploy-the-psf">
+<h3>3.1 Deploy the PSF<a class="headerlink" href="#deploy-the-psf" title="Link to this heading">#</a></h3>
+<p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Specialty Gateways</strong>, then click on the <code class="docutils literal notranslate"><span class="pre">“+</span> <span class="pre">Gateway&quot;</span></code> button and then choose the <strong>Public Subnet Filtering Gateway</strong>.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/lab9-psf.png"><img alt="../_images/lab9-psf.png" src="../_images/lab9-psf.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">PSF</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Enter the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>aws-us-east-1-psf</span></p></li>
+<li><p><strong>Account</strong>: <span style='color:#479608'>aws-account</span></p></li>
+<li><p><strong>Region</strong>: <span style='color:#479608'>us-east-1 (N. Virginia)</span></p></li>
+<li><p><strong>VPC</strong>: <span style='color:#479608'>aws-us-east1-spoke1</span></p></li>
+<li><p><strong>Instance Size</strong>: <span style='color:#479608'>c5.large</span></p></li>
+<li><p><strong>Attach to Unused Subnet</strong>: <span style='color:#479608'>us-east-1a</span></p></li>
+<li><p><strong>Route Table</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-Public-1-us-east-1a-rtb</span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please ensure that routing table <strong>1a-rtb</strong> is selected.</p>
+</div>
+<figure class="align-center" id="id4">
+<img alt="../_images/lab9-new.png" src="../_images/lab9-new.png" />
+<figcaption>
+<p><span class="caption-text">PSF template</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Wait for about <strong>8</strong> minutes for the completion of the PSF deployment.</p>
+</div>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/lab9-psfinprogress.png"><img alt="../_images/lab9-psfinprogress.png" src="../_images/lab9-psfinprogress.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">PSF deployment in progress</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="rtb-verification">
+<h3>3.2 RTB verification<a class="headerlink" href="#rtb-verification" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Click on the <strong>PSF</strong> gateway, select the <strong>VPC/VNet Route Tables</strong> and then inspect the <strong><em>aviatrix-Aviatrix-Filter-Gateway</em></strong> Route Table</p></li>
+</ul>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/lab9-psfclick.png"><img alt="../_images/lab9-psfclick.png" src="../_images/lab9-psfclick.png" style="height: 150px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">PSF deployed</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id7">
+<img alt="../_images/lab9-routetablepsf.png" src="../_images/lab9-routetablepsf.png" />
+<figcaption>
+<p><span class="caption-text">PSF rtb</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The subnet with the PSF gateway is a <strong>Public</strong> subnet with a 0/0 route pointing to the IGW.</p>
+<p><strong>No workload instances should be deployed in this subnet</strong>.</p>
+</div>
+<ul class="simple">
+<li><p>Validate the routing table we selected during the PSF Gateway deployment: <strong><em>aws-us-east-1-spoke1-Public-1-us-east-1a-rtb</em></strong>. The default route should point to the PSF Gateway; we’re verifying this RTB because the test instance’s subnet points to it.</p></li>
+</ul>
+<figure class="align-center" id="id8">
+<img alt="../_images/lab9-routetablepsf2.png" src="../_images/lab9-routetablepsf2.png" />
+<figcaption>
+<p><span class="caption-text">aws-us-east1-spoke1-rtb-public-a</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="generate-traffic-towards-a-malicious-ip">
+<h2>4. Generate traffic towards a Malicious IP<a class="headerlink" href="#generate-traffic-towards-a-malicious-ip" title="Link to this heading">#</a></h2>
+<p>Now that there is a <strong>PSF</strong> Gateway on defending the Public Subnet, let’s generate some traffic towards an IP with <strong>Bad Reputation</strong>.</p>
+<section id="connectivity-testing-using-the-gatus-app">
+<h3>4.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#connectivity-testing-using-the-gatus-app" title="Link to this heading">#</a></h3>
+<p>Navigate to your personal POD Portal, identify the Gatus widget and then click on <strong><em>aws-us-east1-spoke1-test1</em></strong>. Scroll through the tests to find the one named ‘psf’.</p>
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/lab9-gatus010.png"><img alt="../_images/lab9-gatus010.png" src="../_images/lab9-gatus010.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Gatus</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/lab9-gatus011.png"><img alt="../_images/lab9-gatus011.png" src="../_images/lab9-gatus011.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Malicious IP</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The EC2 instance is actively communicating with a <strong>malicious IP</strong> address.</p>
+</section>
+<section id="ssh-to-aws-us-east1-spoke1-test1-bonus">
+<h3>4.2 SSH to aws-us-east1-spoke1-test1 <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#ssh-to-aws-us-east1-spoke1-test1-bonus" title="Link to this heading">#</a></h3>
+<p>Retrieve the Public IP address of <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance:</p>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Workloads &gt; Virtual Machines</strong>, search for <code class="docutils literal notranslate"><span class="pre">aws-us-east-1-spoke1-test1</span></code> and then copy the <strong>Public</strong> IPv4 address!</p></li>
+</ul>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/lab9-newsg010.png"><img alt="../_images/lab9-newsg010.png" src="../_images/lab9-newsg010.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Public IP address</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id12">
+<img alt="../_images/lab9-newsg011.png" src="../_images/lab9-newsg011.png" />
+<figcaption>
+<p><span class="caption-text">SSH session</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Issue this command (make sure to enter <strong>HTTPS</strong>):</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://&lt;malicious-IP&gt;
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;malicious-IP&gt;</span></code>: <strong>178.17.174.164</strong></p>
+<figure class="align-center" id="id13">
+<img alt="../_images/lab9-instancetest.png" src="../_images/lab9-instancetest.png" />
+<figcaption>
+<p><span class="caption-text">Curl towards the malicious IP</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="create-a-new-smartgroup">
+<h2>5. Create a new SmartGroup<a class="headerlink" href="#create-a-new-smartgroup" title="Link to this heading">#</a></h2>
+<p>The traffic to the malicious IP is permitted. Immediately enforce the <code class="docutils literal notranslate"><span class="pre">Threats</span> <span class="pre">Detection</span> <span class="pre">mechanism</span></code>.</p>
+<p>Let’s create another SmartGroup that can identify the <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance that resides in the <strong>US-EAST-1</strong> region.</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/lab9-routetablepsf234.png" src="../_images/lab9-routetablepsf234.png" />
+<figcaption>
+<p><span class="caption-text">aws-us-east-1-spoke1-Public-1-us-east-1a</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Navigate to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
+<figure class="align-center" id="id15">
+<img alt="../_images/lab9-smart001.png" src="../_images/lab9-smart001.png" />
+<figcaption>
+<p><span class="caption-text">New SmartGroup</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
+<li><p><strong>Virtual Machines - Matches all conditions (AND)</strong>: <span style='color:#479608'>Name</span></p></li>
+<li><p><strong>CSP Tag Value</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
+</ul>
+<figure class="align-center" id="id16">
+<img alt="../_images/lab9-smart00331.png" src="../_images/lab9-smart00331.png" />
+<figcaption>
+<p><span class="caption-text">Name</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id17">
+<img alt="../_images/lab9-smart002.png" src="../_images/lab9-smart002.png" />
+<figcaption>
+<p><span class="caption-text">aws-us-east-1-spoke1-test1 SmartGroup</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/lab9-smart003.png"><img alt="../_images/lab9-smart003.png" src="../_images/lab9-smart003.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">SmartGroups List</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="create-two-new-dcf-rules">
+<h2>6. Create two new DCF rules<a class="headerlink" href="#create-two-new-dcf-rules" title="Link to this heading">#</a></h2>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<figure class="align-center" id="id19">
+<img alt="../_images/lab9-newrule108.2.png" src="../_images/lab9-newrule108.2.png" />
+<figcaption>
+<p><span class="caption-text">New Rule</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Enter the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Deny-Rule-from-aws-us-east-1-spoke1-test1</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>Deafult ThreatGroup</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
+<li><p><strong>Enforcement</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id20">
+<img alt="../_images/lab911-new8.2.png" src="../_images/lab911-new8.2.png" />
+<figcaption>
+<p><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Before proceeding, create an additional DCF rule to block traffic originating from <strong>any Malicious IP addresses</strong> targeting the <strong>aws-us-east-1-spoke1-test1</strong> instance.</p>
+<p>Create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button:</p>
+<figure class="align-center" id="id21">
+<img alt="docs/images/lab911-new338.2.png" src="docs/images/lab911-new338.2.png" />
+<figcaption>
+<p><span class="caption-text">New Rule</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Enter the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Deny-Rule-from-malicious-ips</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>Deafult ThreatGroup</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
+<li><p><strong>Enforcement</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id22">
+<img alt="../_images/lab96-newrule448.2.png" src="../_images/lab96-newrule448.2.png" />
+<figcaption>
+<p><span class="caption-text">PSF-Deny-Rule-from-malicious-ips</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Do not forget now to <strong>Commit</strong> your new rules!</p>
+<figure class="align-center" id="id23">
+<a class="reference internal image-reference" href="../_images/lab96-newrule-commit8.2.png"><img alt="../_images/lab96-newrule-commit8.2.png" src="../_images/lab96-newrule-commit8.2.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Commit the new rules</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>These two rules will ensure <code class="docutils literal notranslate"><span class="pre">bi-directional</span> <span class="pre">communication</span></code>: traffic from <strong>aws-us-east-1-spoke1-test1</strong>1 to <strong>Malcious IPs</strong> (as identified by ProofPoint’s database) will be blocked, and likewise, traffic from <strong>Malicious IPs</strong> to <strong>aws-us-east-1-spoke1-test1</strong> will also be prevented.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">ProofPoint</span></code> sends its new malicious IP addresses DB to the CoPilot every <strong>30 minutes</strong>.</p>
+</div>
+</section>
+<section id="generate-again-traffic-towards-the-bad-guy">
+<h2>7. Generate again traffic towards the “Bad Guy”<a class="headerlink" href="#generate-again-traffic-towards-the-bad-guy" title="Link to this heading">#</a></h2>
+<section id="deletion-of-the-greenfield-rule-ztna">
+<h3>7.1 Deletion of the Greenfield-Rule = ZTNA<a class="headerlink" href="#deletion-of-the-greenfield-rule-ztna" title="Link to this heading">#</a></h3>
+<p>Let’s delete the <strong>Greenfield-Rule</strong> to restore <strong>ZTNA</strong> in the Data Path.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies (default tab)</strong>, click the <code class="docutils literal notranslate"><span class="pre">trash</span> <span class="pre">icon</span></code> on the right side of the <strong>Greenfield-Rule</strong> entry to delete it.</p>
+<p>Do not forget to click on <strong>Commit</strong>.</p>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="../_images/lab66-newruledelete8.2.png"><img alt="../_images/lab66-newruledelete8.2.png" src="../_images/lab66-newruledelete8.2.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Deletion of the Greenfield-Rule</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id25">
+<a class="reference internal image-reference" href="../_images/lab66-newruledeleted8.2.png"><img alt="../_images/lab66-newruledeleted8.2.png" src="../_images/lab66-newruledeleted8.2.png" style="height: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Commit</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id26">
+<a class="reference internal image-reference" href="../_images/lab66-newruledeleted008.2.png"><img alt="../_images/lab66-newruledeleted008.2.png" src="../_images/lab66-newruledeleted008.2.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">DCF Rules List</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="create-a-new-webgroup">
+<h3>7.2 Create a new WebGroup<a class="headerlink" href="#create-a-new-webgroup" title="Link to this heading">#</a></h3>
+<p>Let’s create another <strong>WebGroup</strong> that will exactly match three domains:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://www.nginx.com">www.nginx.com</a></p></li>
+<li><p><a class="reference external" href="http://www.ubuntu.com">www.ubuntu.com</a></p></li>
+<li><p><a class="reference external" href="http://www.aviatrix.com">www.aviatrix.com</a></p></li>
+</ol>
+<p>Navigate to <strong>CoPilot &gt; Groups &gt; WebGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">WebGroup&quot;</span></code> button.</p>
+<figure class="align-center" id="id27">
+<a class="reference internal image-reference" href="../_images/lab9-smart100.png"><img alt="../_images/lab9-smart100.png" src="../_images/lab9-smart100.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">New WebGroup</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Create the new <strong><em>WebGroup</em></strong> with the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>Allowed-Public-Domains</span></p></li>
+<li><p><strong>Type</strong>: <span style='color:#479608'>Domains</span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.nginx.com">www.nginx.com</a></span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.ubuntu.com">www.ubuntu.com</a></span></p></li>
+<li><p><strong>Domains/URLs</strong>: <span style='color:#479608'><a class="reference external" href="http://www.aviatrix.ai">www.aviatrix.ai</a></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save</strong>.</p>
+<figure class="align-center" id="id28">
+<img alt="../_images/lab6-webgroup200.png" src="../_images/lab6-webgroup200.png" />
+<figcaption>
+<p><span class="caption-text">WebGroup creation</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="create-the-psf-allow-rule">
+<h3>7.3 Create the “PSF-Allow-Rule”<a class="headerlink" href="#create-the-psf-allow-rule" title="Link to this heading">#</a></h3>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies (default tab)</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<figure class="align-center" id="id29">
+<img alt="../_images/lab9-newrule1008.2.png" src="../_images/lab9-newrule1008.2.png" />
+<figcaption>
+<p><span class="caption-text">New Rule</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Enter the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>PSF-Allow-Rule</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>Public Internet</span></p></li>
+<li><p><strong>WebGroups</strong>: <span style='color:#479608'>Allowed-Public-Domains</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
+<li><p><strong>Enforcement</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#479608'>ON</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id30">
+<img alt="../_images/lab911-new1008.2.png" src="../_images/lab911-new1008.2.png" />
+<figcaption>
+<p><span class="caption-text">Saving the new Rule</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on the <strong>Commit</strong> button!</p>
+<figure class="align-center" id="id31">
+<a class="reference internal image-reference" href="../_images/lab96-newrule2018.2.png"><img alt="../_images/lab96-newrule2018.2.png" src="../_images/lab96-newrule2018.2.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Commit</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="connectivity-tests">
+<h2>8. Connectivity Tests<a class="headerlink" href="#connectivity-tests" title="Link to this heading">#</a></h2>
+<p>Prior to launching the connectivity test, ensure the three PSF rules are <strong>enforced</strong> on the PSF gateway.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">PSF</span></code> Gateway is a <strong><em>standalone Gateway</em></strong>: it is neither a Spoke nor a Transit. Enforcement is enabled by default. Confirm that the feature is enabled.</p>
+</div>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Settings</strong>.  <code class="docutils literal notranslate"><span class="pre">&quot;Enforcement</span> <span class="pre">on</span> <span class="pre">PSF</span> <span class="pre">Gateweays&quot;</span></code> is currently enabled!</p></li>
+</ul>
+<figure class="align-center" id="id32">
+<a class="reference internal image-reference" href="../_images/lab96-newrule333.png"><img alt="../_images/lab96-newrule333.png" src="../_images/lab96-newrule333.png" style="height: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Enforcement</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="id1">
+<h3>8.1 Connectivity Testing Using the Gatus App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Navigate to your personal POD portal and click again on the click on <strong><em>aws-us-east-1-spoke1-test1</em></strong> instance.</p>
+<figure class="align-center" id="id33">
+<a class="reference internal image-reference" href="../_images/lab9-gatus010.png"><img alt="../_images/lab9-gatus010.png" src="../_images/lab9-gatus010.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Gatus</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The traffic to the Malicious IP will gradually fail.</p>
+<figure class="align-center" id="id34">
+<img alt="../_images/lab9-gatus678.png" src="../_images/lab9-gatus678.png" />
+<figcaption>
+<p><span class="caption-text">Malicious ip</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>However, you will progressively see also failures in traffic routed to <strong>US EAST-2</strong>.</p>
+<figure class="align-center" id="id35">
+<a class="reference internal image-reference" href="../_images/lab9-gatus622.png"><img alt="../_images/lab9-gatus622.png" src="../_images/lab9-gatus622.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">US EAST-2</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="connectivity-testing-using-the-ssh-client-bonus">
+<h3>8.2 Connectivity Testing Using the SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary><a class="headerlink" href="#connectivity-testing-using-the-ssh-client-bonus" title="Link to this heading">#</a></h3>
+<p>Let’s verify that traffic to the malicious IP address has been successfully blocked, including via the SSH client.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you accidentally close your SSH session and try to log in again to the <strong><em>aws-us-east-1-spoke1-test1</em></strong> public IP, the SSH connection will fail. With the PSF deployed and the Distributed Cloud Firewall Policy enforced, the PSF is an <code class="docutils literal notranslate"><span class="pre">Enforcement</span> <span class="pre">Security</span> <span class="pre">Point</span></code> like other Spoke Gateways. SSH from your laptop will be blocked unless you create a policy that allows SSH from your public IP.</p>
+<figure class="align-center" id="id36">
+<a class="reference internal image-reference" href="../_images/lab9-igw.png"><img alt="../_images/lab9-igw.png" src="../_images/lab9-igw.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Enforcement Security Point</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<p>If your SSH session on <strong><em>aws-us-east1-spoke1-test1</em></strong> is still up and responsive, go ahead with task <strong>8.2.2</strong>.</p>
+<figure class="align-center" id="id37">
+<a class="reference internal image-reference" href="../_images/lab9-igw456.png"><img alt="../_images/lab9-igw456.png" src="../_images/lab9-igw456.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">SSH still ok</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="ssh-to-aws-us-east1-spoke1-test1">
+<h4>8.2.1 SSH to aws-us-east1-spoke1-test1<a class="headerlink" href="#ssh-to-aws-us-east1-spoke1-test1" title="Link to this heading">#</a></h4>
+<p>Let’s use the fastest approach to SSH back into the <strong><em>aws-us-east1-spoke1-test1</em></strong> instance: the jumphost method.</p>
+<p>The jumphost serves as a single entry point: first connect to the <strong><em>aws-us-east1-spoke1-test2</em></strong> public IP (accessible through the CSP Internet Gateway), then SSH into <strong><em>aws-us-east1-spoke1-test1</em></strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <strong><em>aws-us-east1-spoke1-test2</em></strong> Public IP address is not protected by the <em>PSF gateway</em>, thus you can easily SSH to the aws-us-east1-spoke1-test2 instance first.</p>
+<p>Once you have SSH access to the <strong><em>aws-us-east1-spoke1-test2</em></strong> instance, SSH to the private IP of <strong><em>aws-us-east1-spoke1-test1</em></strong>.</p>
+</div>
+<figure class="align-center" id="id38">
+<a class="reference internal image-reference" href="../_images/lab9-igw32.png"><img alt="../_images/lab9-igw32.png" src="../_images/lab9-igw32.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">IGW and Spoke GW</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Is it possible to directly SSH into <strong><em>aws-us-east-1-spoke1-test1</em></strong> without first connecting to test2?</strong></p>
+</div>
+<details>
+  <summary>Click here to reveal the answer to the previous question: <span style='color:#33ECFF'>Hint!</span></summary>
+<p>If you want to SSH directly into the <strong>aws-us-east-1-spoke1-test1</strong> instance, you need to create an ad-hoc DCF rule that allows the public IP address of your laptop to access this instance.</p>
+<figure class="align-center" id="id39">
+<a class="reference internal image-reference" href="../_images/lab9-myip01.png"><img alt="../_images/lab9-myip01.png" src="../_images/lab9-myip01.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">From your laptop to aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Navigate to this URL <a class="reference external" href="https://whatismyipaddress.com/">https://whatismyipaddress.com/</a> and copy your personal Public IP address.</p></li>
+</ul>
+<figure class="align-center" id="id40">
+<a class="reference internal image-reference" href="../_images/lab9-myip02.png"><img alt="../_images/lab9-myip02.png" src="../_images/lab9-myip02.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><a class="reference external" href="http://whatismyipaddress.com">whatismyipaddress.com</a></span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p></li>
+</ul>
+<figure class="align-center" id="id41">
+<img alt="../_images/lab9-myip03.png" src="../_images/lab9-myip03.png" />
+<figcaption>
+<p><span class="caption-text">New SmartGroup</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>My-IP</span></p></li>
+<li><p>Then click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Resource</span> <span class="pre">Type&quot;</span></code> button and choose IPs / CIDRs.</p></li>
+</ul>
+<figure class="align-center" id="id42">
+<img alt="../_images/lab9-myip04.png" src="../_images/lab9-myip04.png" />
+<figcaption>
+<p><span class="caption-text">Resource Type: IP</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now paste the public IP address that you copied from the website <em><a class="reference external" href="http://whatismyipaddress.com">whatismyipaddress.com</a></em>. Before clicking <strong>Save</strong>, make sure to remove the Virtual Machines condition as shown below.</p></li>
+</ul>
+<figure class="align-center" id="id43">
+<img alt="../_images/lab9-myip05.png" src="../_images/lab9-myip05.png" />
+<figcaption>
+<p><span class="caption-text">Smart Group My-IP</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall</strong> and create a new rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button:</p></li>
+</ul>
+<figure class="align-center" id="id44">
+<img alt="../_images/lab9-myip06.png" src="../_images/lab9-myip06.png" />
+<figcaption>
+<p><span class="caption-text">New Rule</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Enter the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>inter-myip-east1-test1-ssh</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>My-IP</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
+<li><p><strong>Port</strong>: <span style='color:#479608'>22</span></p></li>
+<li><p><strong>Enforcement</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+<li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
+</ul>
+<p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
+<figure class="align-center" id="id45">
+<img alt="../_images/lab9-myip07.png" src="../_images/lab9-myip07.png" />
+<figcaption>
+<p><span class="caption-text">inter-myip-east1-test1-ssh</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on the <strong>Commit</strong> button!</p>
+<figure class="align-center" id="id46">
+<a class="reference internal image-reference" href="../_images/lab9-myip08.png"><img alt="../_images/lab9-myip08.png" src="../_images/lab9-myip08.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Commit</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Retrieve the public IP address of the <strong>aws-us-east-1-spoke1-test1</strong> instance by navigating to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>. Search for <em>aws-us-east-1-spoke1-test1</em>, click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">1</span> <span class="pre">more&quot;</span></code> to display the public IP address, and then copy it to your clipboard.</p></li>
+</ul>
+<figure class="align-center" id="id47">
+<a class="reference internal image-reference" href="../_images/lab9-myip09.png"><img alt="../_images/lab9-myip09.png" src="../_images/lab9-myip09.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Open your <strong>SSH client</strong> and execute the following command, pasting the previously copied Public IP address. Use the password provided on your personal POD portal.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>student@...
+</pre></div>
+</div>
+<figure class="align-center" id="id48">
+<img alt="../_images/lab9-myip10.png" src="../_images/lab9-myip10.png" />
+<figcaption>
+<p><span class="caption-text">SSH to aws-us-east-1-spoke1-test1</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</details>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you’d rather not try the hidden resolution, just go ahead with the steps below.</p>
+</div>
+<p>Navigate to <strong>CoPilot &gt; Cloud Resources &gt; Cloud Assets &gt; Virtual Machines</strong>, then search for <strong>aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary></strong>, retrieve its Public IP address and SSH in to the EC2 instance.</p>
+<figure class="align-center" id="id49">
+<a class="reference internal image-reference" href="../_images/lab9-igw04.png"><img alt="../_images/lab9-igw04.png" src="../_images/lab9-igw04.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">SSH in to aws-us-east-1-spoke1-test2</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>SSH from <strong><em>aws-us-east-1-spoke1-test2</em></strong> to <strong><em>aws-us-east-1-spoke1-test1</em></strong>, using this time the Private IP address of the test1 instance.</p></li>
+</ul>
+<figure class="align-center" id="id50">
+<a class="reference internal image-reference" href="../_images/lab9-igw05.png"><img alt="../_images/lab9-igw05.png" src="../_images/lab9-igw05.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">SSH in to test1 from test2</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="execution-of-the-curl-commands">
+<h4>8.2.2 Execution of the curl commands<a class="headerlink" href="#execution-of-the-curl-commands" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Execute now the following commands:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.nginx.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.ubuntu.com
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://www.aviatrix.ai
+</pre></div>
+</div>
+<figure class="align-center" id="id51">
+<img alt="../_images/lab96-newrule301.png" src="../_images/lab96-newrule301.png" />
+<figcaption>
+<p><span class="caption-text">Outcomes from the curl commands</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now issue again the curl command towards the <strong>malicious IP</strong> address that was earlier provided by the Trainer!</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://178.17.174.164
+</pre></div>
+</div>
+<figure class="align-center" id="id52">
+<img alt="../_images/lab96-newrule302.png" src="../_images/lab96-newrule302.png" />
+<figcaption>
+<p><span class="caption-text">Towards the Malicious IP</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You will notice that the traffic towards the <strong>IP with Bad Reputation</strong> was blocked at the very first <strong>SYN</strong> and <strong>SYN-ACK</strong> packets!</p>
+</section>
+</section>
+</section>
+<section id="final-considerations">
+<h2>9. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; ThreatIQ</strong>  section, then scroll down through the whole <strong>Overview</strong> section, click on the filter icon and filter out based on the Maliciuous IP (i.e., <code class="docutils literal notranslate"><span class="pre">178.17.174.164</span></code>): you can choose either <strong><em>Source</em></strong> or <strong><em>Destination</em></strong>!</p>
+<figure class="align-center" id="id53">
+<img alt="../_images/lab96-newrule308.png" src="../_images/lab96-newrule308.png" />
+<figcaption>
+<p><span class="caption-text">Filter</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id54">
+<img alt="../_images/lab96-newrule323.png" src="../_images/lab96-newrule323.png" />
+<figcaption>
+<p><span class="caption-text">Condition</span><a class="headerlink" href="#id54" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now click on the <strong>VIEW</strong> link on the right-hand side of the entry:</p>
+<figure class="align-center" id="id55">
+<img alt="../_images/lab96-newrule309.png" src="../_images/lab96-newrule309.png" />
+<figcaption>
+<p><span class="caption-text">View link</span><a class="headerlink" href="#id55" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Last but not least, explore the <code class="docutils literal notranslate"><span class="pre">Threat</span> <span class="pre">Summary</span></code> tab to find out how ProofPoint classified that IP address!</p>
+<figure class="align-center" id="id56">
+<img alt="../_images/lab96-newrule311.png" src="../_images/lab96-newrule311.png" />
+<figcaption>
+<p><span class="caption-text">Condition</span><a class="headerlink" href="#id56" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After completing this lab, the overall topology will be as follows:</p>
+<figure class="align-center" id="id57">
+<a class="reference internal image-reference" href="../_images/lab9-finaltopologyy.png"><img alt="../_images/lab9-finaltopologyy.png" src="../_images/lab9-finaltopologyy.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Final Topology for Lab 9</span><a class="headerlink" href="#id57" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threatgroup-overview">1. ThreatGroup Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">2. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psf">3. PSF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-the-psf">3.1 Deploy the PSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rtb-verification">3.2 RTB verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-traffic-towards-a-malicious-ip">4. Generate traffic towards a Malicious IP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-gatus-app">4.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-aws-us-east1-spoke1-test1-bonus">4.2 SSH to aws-us-east1-spoke1-test1 <span style="color:#33ECFF">(BONUS)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-smartgroup">5. Create a new SmartGroup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-new-dcf-rules">6. Create two new DCF rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-again-traffic-towards-the-bad-guy">7. Generate again traffic towards the “Bad Guy”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deletion-of-the-greenfield-rule-ztna">7.1 Deletion of the Greenfield-Rule = ZTNA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-webgroup">7.2 Create a new WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-psf-allow-rule">7.3 Create the “PSF-Allow-Rule”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-tests">8. Connectivity Tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1 Connectivity Testing Using the Gatus App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-testing-using-the-ssh-client-bonus">8.2 Connectivity Testing Using the SSH Client <span style="color:#33ECFF">(BONUS)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-to-aws-us-east1-spoke1-test1">8.2.1 SSH to aws-us-east1-spoke1-test1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-of-the-curl-commands">8.2.2 Execution of the curl commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-considerations">9. Final Considerations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aviatrix ACE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
