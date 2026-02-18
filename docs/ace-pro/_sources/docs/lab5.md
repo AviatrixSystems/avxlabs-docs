@@ -344,7 +344,7 @@ From the results, you need to identify the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 AZ
@@ -479,6 +479,7 @@ Do not forget to click on **Commit**.
 
 ```{figure} images/lab6-newrule100110.png
 ---
+height: 250px
 align: center
 ---
 Commit
@@ -648,6 +649,7 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, clic
 ---
 align: center
 ---
+height: 250px
 Pencil icon
 ```
 

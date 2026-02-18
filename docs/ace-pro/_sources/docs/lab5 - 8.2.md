@@ -479,6 +479,7 @@ Do not forget to click on **Commit**.
 
 ```{figure} images/lab6-newrule1001108.2.png
 ---
+height: 250px
 align: center
 ---
 Commit
@@ -494,7 +495,7 @@ Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-u
 
 ```{figure} images/lab6-gatus500.png
 ---
-height: 400px
+height: 250px
 align: center
 ---
 aws-us-east-2-spoke1-test2
@@ -646,6 +647,7 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, clic
 
 ```{figure} images/lab6-webgroup23468.2.png
 ---
+height: 250px
 align: center
 ---
 Pencil icon
