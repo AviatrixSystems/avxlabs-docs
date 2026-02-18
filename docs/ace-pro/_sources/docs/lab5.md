@@ -236,7 +236,7 @@ Action:
 - Enable the **Distributed Cloud Firewall**.
 
 ```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Rules** and click on `"Begin using Distributed Cloud Firewall"` followed by `"Begin"`.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on `"Begin using Distributed Cloud Firewall"` followed by `"Begin"`.
 ```
 
 ```{figure} images/lab6-activate.png

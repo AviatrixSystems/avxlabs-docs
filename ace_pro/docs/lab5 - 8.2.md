@@ -239,7 +239,7 @@ Action:
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on `"Begin using Distributed Cloud Firewall"` followed by `"Begin"`.
 ```
 
-```{figure} images/lab6-activate.png
+```{figure} images/lab6-activate8.2.png
 ---
 align: center
 ---
@@ -257,7 +257,7 @@ After enabling the Distributed Cloud Firewall feature, a **Default Action Rule**
 
 - `Default Action Rule` = ALLOW EVERYTHING
 
-```{figure} images/lab6-greenfield56.png
+```{figure} images/lab6-greenfield568.2.png
 ---
 height: 250px
 align: center
@@ -267,7 +267,7 @@ Default Action Rule automatically injected by the Controller
 
 Now, click **Ruleset** and select the `V1 Policy List`.
 
-```{figure} images/lab6-greenfield5666.png
+```{figure} images/lab6-greenfield56668.2.png
 ---
 align: center
 ---
@@ -276,7 +276,7 @@ V1 Policy List
 
 - Create a new rule clicking on the **"+ Rule"** button.
 
-```{figure} images/lab6-greenfield56661.png
+```{figure} images/lab6-greenfield566618.2.png
 ---
 align: center
 ---
@@ -289,12 +289,12 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**ON**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
 
-```{figure} images/lab6-greenfield566612.png
+```{figure} images/lab6-greenfield5666128.2.png
 ---
 align: center
 ---
@@ -315,7 +315,7 @@ Greenfield-Rule
 
 Click on **Commit**.
 
-```{figure} images/lab6-greenfield5666123.png
+```{figure} images/lab6-greenfield56661238.2.png
 ---
 align: center
 ---
