@@ -35,7 +35,7 @@ Here you will immediately notice the presence of an existing S2C connection.
 
 This is an established connection between an **Aviatrix Edge** device deployed in the remote data center in New York and a LAN router. This S2C connection was pre-deployed at the launch of the POD!
 
-```{figure} images/lab8-edge1.png
+```{figure} images/lab8-edge18.2.png
 ---
 height: 150px
 align: center
@@ -67,7 +67,7 @@ Click on the `"+ External Connection"` button and let's create a new connection 
 
 Select the `"External Device"` option from the drop-down window!
 
-```{figure} images/lab8-s2c.png
+```{figure} images/lab8-s2c8.2.png
 ---
 align: center
 ---
