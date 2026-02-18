@@ -344,7 +344,7 @@ From the results, you need to identify the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 AZ
