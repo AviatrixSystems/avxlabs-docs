@@ -249,11 +249,11 @@ align: center
 Saving the new Rule
 ```
 
-Before proceeding, create an additional DCF rule to block traffic originating from **any Malicious IP addresses** targeting the **aws-us-east-1-spoke1-test1** instance.
+Before proceeding with the commit, create an additional DCF rule to block traffic originating from **any Malicious IP addresses** targeting the **aws-us-east-1-spoke1-test1** instance.
 
 Create a new rule clicking on the `"+ Rule"` button:
 
-```{figure} images/lab911-new338.2.png
+```{figure} images/lab911-new3338.2.png
 ---
 align: center
 ---
@@ -385,7 +385,7 @@ Enter the following parameters:
 - **WebGroups**: <span style='color:#479608'>Allowed-Public-Domains</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
-- **Logging**: <span style='color:#479608'>ON</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**.
