@@ -589,7 +589,7 @@ align: center
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 - **Name**: <span style='color:#479608'>inter-bu2db-internet</span>
-- **Source Smartgroups**: <span style='color:#479608'>BU1-DB</span>
+- **Source Smartgroups**: <span style='color:#479608'>BU2-DB</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Public internet</span>
 - **WebGroups**: <span style='color:#479608'>bu2-allowed-domains</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
