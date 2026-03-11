@@ -50,7 +50,7 @@ All types of traffic are blocked
 ```{tip}
 Retrieve the private IP address of the **BU2 Mobile App** from the **Cloud Assets** inventory, first!
 
-Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the relevant EC2 instance.
+Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines** and search for `"mobile"`, then retrieve the private IP of the relevant EC2 instance.
 ```
 
 ```{figure} images/lab23-cp000.png
