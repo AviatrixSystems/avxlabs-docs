@@ -132,6 +132,10 @@ Collapsed View
 
 ## 3. WHERE TO FIND THE IP ADDRESSES
 
+```{important}
+<ins>This section is for informational purposes only;</ins> no configuration or command execution is required. It is designed to help you identify where to locate the necessary IP addresses.
+```
+
 The CoPilot is your **_single pane of glass_**, offering a complete database of IP addresses for all instances in the hybrid-cloud environment it governs.
 
 The IP addresses can be easily obtained using **two** different methods, according to your preference.
@@ -281,6 +285,10 @@ Timer
 
 ## 5. ENTERPRISE-GRADE TOOLS ON THE AVIATRIX GATEWAYS
 
+```{important}
+<ins>This section is for demonstration purposes only.</ins> You do not need to execute any commands or perform any configuration at this stage.
+```
+
 All Aviatrix gateways include built-in `enterprise-grade tools`. If you prefer, you can skip the Gateways Dashboard and connect directly to the instances via SSH/Guacamole (see the next section). The Spoke Gateway serves as the VPC’s default gateway, so you can run ping, traceroute, or packet captures right from the Aviatrix Gateway.
 
 - Navigate to **Copilot > Diagnostics > Diagnostic Tools**. From here, select the Spoke gateway that reside in the Application VPC, where you’ll also find the instances and the VMs. The Spoke gateways act as the default gateway, enabling you to run **ping**, **traceroute**, **packet capture**, and more.
@@ -386,6 +394,10 @@ Guacamole Menu
 ```
 
 ## 7. VALIDATION REQUEST
+
+```{note}
+In this section, you will begin exploring the live configuration on your **CoPilot**. Your goal is to validate that `Macro Segmentation` is correctly in place. Once confirmed, be prepared to generate traffic using one of the tools mentioned previously.
+```
 
 Having explored IP address retrieval and the available traffic-generation tools, you are now ready to begin the lab with its first task.
 
