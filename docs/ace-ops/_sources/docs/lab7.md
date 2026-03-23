@@ -1,4 +1,4 @@
-# Lab 7 - Aviatrix Cloud Firewall
+# Lab 3 - Aviatrix Cloud Firewall
 
 In this lab you will activate the `Aviatrix Cloud Firewall`, a cloud-native security solution that provides distributed firewalling, traffic control, and network segmentation. Unlike centralized traditional firewalls, it simplifies security management across multi-cloud environments, automates policy enforcement, and can operate in either learning or enforcement modes, offering flexibility for securing both egress and east–west traffic.
 
