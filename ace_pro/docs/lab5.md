@@ -20,7 +20,7 @@ align: center
 Lab 6 Initial Topology
 ```
 
-The VPC **aws-us-east-2-spoke1** has a private subnet in its environment, whereby the Egress Control can be activated in this specific VPC.
+.The VPC **aws-us-east-2-spoke1** has a private subnet in its environment, whereby the Egress Control can be activated in this specific VPC.
 
 At the moment, this private subnet is leveraging the **AWS NAT Gateway** to reach the Internet Public Zone.
 
