@@ -12,7 +12,7 @@ In this lab, we will identify the _target VPC_. Of course, the selected VPC must
 
 Let’s pinpoint the right candidate VPC where it would be possible to enable **Egress Control**.
 
-```{figure} images/lab6-initialtopology-temp.png
+```{figure} images/lab6-initialtopology.png
 ---
 height: 400px
 align: center
