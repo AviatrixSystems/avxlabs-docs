@@ -686,7 +686,6 @@ Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-u
 
 ```{figure} images/lab6-gatus500.png
 ---
-height: 250px
 align: center
 ---
 aws-us-east-2-spoke1-test2
@@ -757,7 +756,6 @@ Enter the word **"denied"** in the `Search` field to identify the domains that w
 
 ```{figure} images/lab6-monitor989.png
 ---
-height: 400px
 align: center
 ---
 Action Denied

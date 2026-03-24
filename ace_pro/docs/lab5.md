@@ -344,7 +344,6 @@ From the results, you need to identify the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
-height: 200px
 align: center
 ---
 AZ
@@ -757,7 +756,6 @@ Enter the word **"denied"** in the `Search` field to identify the domains that w
 
 ```{figure} images/lab6-monitor989.png
 ---
-height: 400px
 align: center
 ---
 Action Denied
