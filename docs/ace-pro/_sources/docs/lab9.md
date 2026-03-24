@@ -1,4 +1,4 @@
-# Lab 9 - THREAT PREVENTION
+# Lab 2 - THREAT PREVENTION
 
 This lab will demonstrate how the `Default ThreatGroup` is capable to prevent traffic from being sent to, or from, a set of **threat IPs**.
 

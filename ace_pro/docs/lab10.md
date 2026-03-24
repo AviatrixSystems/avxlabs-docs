@@ -1,4 +1,4 @@
-# Lab 10 - COSTIQ
+# Lab 3 - COSTIQ
 
 This lab will demonstrate how `CostIQ` works.
 

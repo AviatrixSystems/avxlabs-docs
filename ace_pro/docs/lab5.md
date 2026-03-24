@@ -1,4 +1,4 @@
-# Lab 5 - AVIATRIX CLOUD FIREWALL
+# Lab 1 - AVIATRIX CLOUD FIREWALL
 
 ## 1. Objective
 
