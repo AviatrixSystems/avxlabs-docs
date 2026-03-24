@@ -12,7 +12,7 @@ In this lab, we will identify the _target VPC_. Of course, the selected VPC must
 
 Let’s pinpoint the right candidate VPC where it would be possible to enable **Egress Control**.
 
-```{figure} images/lab6-initialtopology.png
+```{figure} images/lab6-initialtopology-temp.png
 ---
 height: 400px
 align: center
@@ -344,7 +344,7 @@ From the results, you need to identify the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 AZ
@@ -495,7 +495,6 @@ Navigate to your POD Portal, locate the `Gatus widget`, and select both **_aws-u
 
 ```{figure} images/lab6-gatus500.png
 ---
-height: 400px
 align: center
 ---
 aws-us-east-2-spoke1-test2
