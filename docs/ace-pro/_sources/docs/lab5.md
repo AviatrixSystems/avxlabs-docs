@@ -846,7 +846,7 @@ Deletion of the AWS NAT GW
 
 After completing this lab, the overall topology will appear as follows:
 
-```{figure} images/lab6-finaltopo.png
+```{figure} images/lab6-finaltopo-temp.png
 ---
 height: 400px
 align: center
