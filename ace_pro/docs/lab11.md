@@ -629,7 +629,7 @@ SSH fails
 
 Create another rule clicking on the `"+ Rule"` button.
 
-```{figure} images/lab10-newrule2.png
+```{figure} images/lab10-newrule2-temp.png
 ---
 align: center
 ---
@@ -660,7 +660,7 @@ Create rule
 
 Click on `"Commit"` to enforce the new rule into the **Data Plane**.
 
-```{figure} images/lab10-commitsshbu1.png
+```{figure} images/lab10-commitsshbu1-temp.png
 ---
 align: center
 ---
@@ -712,7 +712,7 @@ The log above clearly indicates that the `"intra-ssh-bu1"` rule is successfully 
 
 Following the creation of this intra-rule, the topology with the permitted protocols will appear as follows:
 
-```{figure} images/lab10-topologynew.png
+```{figure} images/lab10-topologynew-temp.png
 ---
 height: 400px
 align: center
