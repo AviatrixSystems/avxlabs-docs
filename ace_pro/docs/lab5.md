@@ -259,7 +259,7 @@ After enabling the Distributed Cloud Firewall feature, a **Default Action Rule**
 
 ```{figure} images/lab6-greenfield56.png
 ---
-height: 250px
+height: 200px
 align: center
 ---
 Default Action Rule automatically injected by the Controller
@@ -344,6 +344,7 @@ From the results, you need to identify the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
+height: 300px
 align: center
 ---
 AZ
@@ -645,9 +646,10 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, clic
 
 ```{figure} images/lab6-webgroup2346.png
 ---
+height: 250px
 align: center
 ---
-height: 250px
+
 Pencil icon
 ```
 
@@ -756,6 +758,7 @@ Enter the word **"denied"** in the `Search` field to identify the domains that w
 
 ```{figure} images/lab6-monitor989.png
 ---
+height: 300px
 align: center
 ---
 Action Denied
