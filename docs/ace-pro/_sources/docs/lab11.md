@@ -517,7 +517,7 @@ Since **SG Orchestration** is enabled in the _aws-us-east-2-spoke1_ VPC, also ap
 
 - Navigate to **Copilot > Security > Distributed Cloud Firewall**, then edit the _`intra-icmp-bu1`_ rule by clicking the pencil icon.
 
-```{figure} images/lab10-sgonew01.png
+```{figure} images/lab10-sgonew01-temp.png
 ---
 align: center
 ---
@@ -535,7 +535,7 @@ SG Orchestration toggle
 
 Prior to committing the change, please edit the second rule (_`intra-icmp-bu2`_) once more by selecting the pencil icon.
 
-```{figure} images/lab10-sgonew03.png
+```{figure} images/lab10-sgonew03-temp.png
 ---
 align: center
 ---
@@ -551,7 +551,7 @@ align: center
 SG Orchestration toggle
 ```
 
-```{figure} images/lab10-sgonew05.png
+```{figure} images/lab10-sgonew05-temp.png
 ---
 align: center
 ---
