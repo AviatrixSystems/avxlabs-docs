@@ -791,7 +791,7 @@ Create a new rule that allows **ICMP** <span style='color:green'>FROM</span></su
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on the `"+ Rule"` button.
 
-```{figure} images/lab10-newrule4.png
+```{figure} images/lab10-newrule4-temp.png
 ---
 align: center
 ---
@@ -821,7 +821,7 @@ Create Rule
 
 Enforce this new rule into the Data Plane clicking on the `"Commit"` button.
 
-```{figure} images/lab10-newrule4commit.png
+```{figure} images/lab10-newrule4commit-temp.png
 ---
 align: center
 ---
@@ -896,7 +896,7 @@ Logs
 
 After establishing this inter-rule, the topology with all permitted protocols will be represented as follows:
 
-```{figure} images/lab10-lastdrawing2.png
+```{figure} images/lab10-lastdrawing2-temp.png
 ---
 height: 400px
 align: center
@@ -925,7 +925,7 @@ Let's now include the AWS region **US-EAST-1**.
 
 This time, you need to permit ICMP traffic exclusively between the Smart Group **bu2** and the EC2 instance **_aws-us-east-1-spoke1-test2_**.
 
-```{figure} images/lab10-newtopology3.png
+```{figure} images/lab10-newtopology3-temp.png
 ---
 height: 400px
 align: center
