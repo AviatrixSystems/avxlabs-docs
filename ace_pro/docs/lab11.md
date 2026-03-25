@@ -1024,7 +1024,7 @@ align: center
 Border Gateway Protocol (BGP)
 ```
 
-Repeat the previous action for the last Transit Gateway still without a BGP ASN configured properly:
+Repeat the previous action for the other Transit Gateways:
 
 - **azure-west-us-transit**: <span style='color:#479608'>ASN **64515**</span>
 
@@ -1035,8 +1035,22 @@ align: center
 azure-west-us-transit
 ```
 
-```{note}
-Both the **aws-us-east-2-transit** and **gcp-us-central1-transit** have already been configured with their ASNs during Lab 8!
+- **aws-us-east-2-transit**: <span style='color:#479608'>ASN **64513**</span>
+
+```{figure} images/lab8-edge13-temp2.png
+---
+align: center
+---
+azure-west-us-transit
+```
+
+- **gcp-us-central1-transit**: <span style='color:#479608'>ASN **64514**</span>
+
+```{figure} images/lab8-edge13-temp.png
+---
+align: center
+---
+aws-us-east-2-transit
 ```
 
 Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
