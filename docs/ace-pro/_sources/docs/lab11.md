@@ -15,7 +15,7 @@ In this lab, you will have the opportunity to create additional logical containe
 2) `inter-rule` = Rule applied among Smart Groups
 
 ```{note}
-At this point in the lab, there is a unique routing domain (i.e. a **_Flat Routing Domain_**), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.
+At this stage of the lab, East-West traffic is completely restricted. Currently, only the egress rule is in place, governing and controlling all traffic sourced from the private subnet in AWS.
 ```
 
 All test instances have been deployed with the standard cloud service provider **(CSP) tags**.
@@ -38,7 +38,7 @@ In this lab, you will implement the following requirements across all three CSPs
 
 - Create an `inter-rule` allowing ICMP traffic <ins>from</ins> bu2 <ins>to</ins> bu1 only.
 
-```{figure} images/lab10-initialnew00.png
+```{figure} images/lab10-initialnew00-temp.png
 ---
 height: 400px
 align: center
@@ -59,7 +59,7 @@ Let’s begin `micro-segmentation` by creating the Smart Groups.
 
 Navigate to **CoPilot > Groups > SmartGroups** and click on `"+ SmartGroup"`.
 
-```{figure} images/lab10-smart2.png
+```{figure} images/lab10-smart2-temp.png
 ---
 align: center
 ---
@@ -96,7 +96,7 @@ Resources that match the condition
 
 Create another Smart Group clicking on the `"+ SmartGroup"` button.
 
-```{figure} images/lab10-smart5.png
+```{figure} images/lab10-smart5-temp.png
 ---
 align: center
 ---
@@ -130,11 +130,11 @@ align: center
 Resources that match the condition
 ```
 
-At this stage, you have created logical groups that do not affect the existing flat routing domain, thanks to the `Connection Policy`  applied in **Lab 3**. Now, it's time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
+At this stage, you have created logical groups that do not affect the existing flat routing domain. Now, it's time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
 
 Below is the current list of your DCF Rules within the **Distributed Cloud Firewall** section of your CoPilot:
 
-```{figure} images/lab10-newone2.png
+```{figure} images/lab10-newone2-temp.png
 ---
 align: center
 ---
@@ -143,14 +143,14 @@ Complete DCF Rules List
 
 ### 3.3 Removal of the Connection Policy
 
-The **_gcp-us-central1-spoke1_** VPC must stay isolated, as its Spoke gateway acts as the _landing Spoke_ for the `Site-to-Cloud` connection with the partner router.
+In this lab, the **_gcp-us-central1-spoke1_** VPC must remain isolated. To ensure this, remove the Connection Policy.
 
-```{figure} images/lab10-landingnew.png
+```{figure} images/lab10-landingnew-temp.png
 ---
 height: 400px
 align: center
 ---
-Landing Spoke GW
+GCP VPC
 ```
 
 - Disable the `Connection Policy`:
@@ -175,7 +175,7 @@ Removal of the Connection Policy
 
 This is what the topology will look like after this task:
 
-```{figure} images/lab10-landing03new.png
+```{figure} images/lab10-landing03new-temp.png
 ---
 height: 400px
 align: center

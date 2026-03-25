@@ -436,7 +436,7 @@ document.write(`
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>At this point in the lab, there is a unique routing domain (i.e. a <strong><em>Flat Routing Domain</em></strong>), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.</p>
+<p>At this stage of the lab, East-West traffic is completely restricted. Currently, only the egress rule is in place, governing and controlling all traffic sourced from the private subnet in AWS.</p>
 </div>
 <p>All test instances have been deployed with the standard cloud service provider <strong>(CSP) tags</strong>.</p>
 <div class="admonition important">
@@ -453,7 +453,7 @@ document.write(`
 <li><p>Create an <code class="docutils literal notranslate"><span class="pre">inter-rule</span></code> allowing ICMP traffic <ins>from</ins> bu2 <ins>to</ins> bu1 only.</p></li>
 </ul>
 <figure class="align-center" id="id4">
-<a class="reference internal image-reference" href="../_images/lab10-initialnew00.png"><img alt="../_images/lab10-initialnew00.png" src="../_images/lab10-initialnew00.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab10-initialnew00-temp.png"><img alt="../_images/lab10-initialnew00-temp.png" src="../_images/lab10-initialnew00-temp.png" style="height: 400px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 70 </span><span class="caption-text">Initial Topology Lab 11</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
@@ -472,7 +472,7 @@ document.write(`
 <h3>3.1 Smart Group “bu1”<a class="headerlink" href="#smart-group-bu1" title="Link to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Groups &gt; SmartGroups</strong> and click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code>.</p>
 <figure class="align-center" id="id5">
-<img alt="../_images/lab10-smart2.png" src="../_images/lab10-smart2.png" />
+<img alt="../_images/lab10-smart2-temp.png" src="../_images/lab10-smart2-temp.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 71 </span><span class="caption-text">SmartGroup</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
@@ -505,7 +505,7 @@ document.write(`
 <h3>3.2 Smart Group “bu2”<a class="headerlink" href="#smart-group-bu2" title="Link to this heading">#</a></h3>
 <p>Create another Smart Group clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
 <figure class="align-center" id="id8">
-<img alt="../_images/lab10-smart5.png" src="../_images/lab10-smart5.png" />
+<img alt="../_images/lab10-smart5-temp.png" src="../_images/lab10-smart5-temp.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 74 </span><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
@@ -534,10 +534,10 @@ document.write(`
 <p><span class="caption-number">Fig. 76 </span><span class="caption-text">Resources that match the condition</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>At this stage, you have created logical groups that do not affect the existing flat routing domain, thanks to the <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Policy</span></code>  applied in <strong>Lab 3</strong>. Now, it’s time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.</p>
+<p>At this stage, you have created logical groups that do not affect the existing flat routing domain. Now, it’s time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.</p>
 <p>Below is the current list of your DCF Rules within the <strong>Distributed Cloud Firewall</strong> section of your CoPilot:</p>
 <figure class="align-center" id="id11">
-<img alt="../_images/lab10-newone2.png" src="../_images/lab10-newone2.png" />
+<img alt="../_images/lab10-newone2-temp.png" src="../_images/lab10-newone2-temp.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 77 </span><span class="caption-text">Complete DCF Rules List</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
@@ -545,12 +545,12 @@ document.write(`
 </section>
 <section id="removal-of-the-connection-policy">
 <h3>3.3 Removal of the Connection Policy<a class="headerlink" href="#removal-of-the-connection-policy" title="Link to this heading">#</a></h3>
-<p>The <strong><em>gcp-us-central1-spoke1</em></strong> VPC must stay isolated, as its Spoke gateway acts as the <em>landing Spoke</em> for the <code class="docutils literal notranslate"><span class="pre">Site-to-Cloud</span></code> connection with the partner router.</p>
+<p>In this lab, the <strong><em>gcp-us-central1-spoke1</em></strong> VPC must remain isolated. To ensure this, remove the Connection Policy.</p>
 <figure class="align-center" id="id12">
-<a class="reference internal image-reference" href="../_images/lab10-landingnew.png"><img alt="../_images/lab10-landingnew.png" src="../_images/lab10-landingnew.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab10-landingnew-temp.png"><img alt="../_images/lab10-landingnew-temp.png" src="../_images/lab10-landingnew-temp.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Landing Spoke GW</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">GCP VPC</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -573,7 +573,7 @@ document.write(`
 </figure>
 <p>This is what the topology will look like after this task:</p>
 <figure class="align-center" id="id15">
-<a class="reference internal image-reference" href="../_images/lab10-landing03new.png"><img alt="../_images/lab10-landing03new.png" src="../_images/lab10-landing03new.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab10-landing03new-temp.png"><img alt="../_images/lab10-landing03new-temp.png" src="../_images/lab10-landing03new-temp.png" style="height: 400px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 81 </span><span class="caption-text">The New Topology</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
