@@ -1261,7 +1261,7 @@ inter-icmp-bu2-east1 Logs
 
 After creating both the previous inter-rule and the additional Smart Groups, the topology with all permitted protocols will appear as follows:
 
-```{figure} images/lab10-newjoe.png
+```{figure} images/lab10-newjoe-temp.png
 ---
 height: 400px
 align: center
@@ -1271,14 +1271,13 @@ Final Topology
 
 ## 15. Spoke to Spoke Attachment
 
-Since Distributed Cloud Firewall is enabled, the owner of **_azure-west-us-spoke2-test1_** wants to directly communicate with **_azure-west-us-spoke1-test1_**, bypassing the NGFW for traffic from the VNet.
-sent to the NGFW, first.
+Configure the **spoke-to-spoke** connectivity by creating attachment between the two spoke gateways in Azure.
 
-```{figure} images/lab10-spoke2spoke01.png
+```{figure} images/lab10-spoke2spoke01-temp.png
 ---
 align: center
 ---
-No More NGFW
+Spoke to Spoke
 ```
 
 ### 15.1 Creating a Spoke to Spoke Attachment
@@ -1351,7 +1350,7 @@ The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now pref
 The `Aviatrix Cloud Native Security Fabric` is very flexible and does not lock you in with solely a _Hub and Spoke_ Topology!
 ```
 
-```{figure} images/lab10-spoke2spoke07.png
+```{figure} images/lab10-spoke2spoke07-temp.png
 ---
 align: center
 ---
@@ -1362,7 +1361,7 @@ Spoke to Spoke
 
 Now that `MTT` is enabled on the **_aws-us-east-2-transit_** Gateway, <ins>every other Transit Gateway must have a single peering with the **MTT Gateway**</ins>; therefore the peering between the **_gcp-us-central1-transit_** Gateway and the **_azure-west-us-transit_** Gateway can be removed.
 
-```{figure} images/lab10-spoke2spoke0788.png
+```{figure} images/lab10-spoke2spoke0788-TEMP.png
 ---
 align: center
 ---
@@ -1397,7 +1396,7 @@ Deletion of a peering
 
 After completing this lab, the overall topology will appear as follows:
 
-```{figure} images/lab10-lastdrawing.png
+```{figure} images/lab10-lastdrawing-temp.png
 ---
 height: 400px
 align: center
