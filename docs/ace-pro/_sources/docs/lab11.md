@@ -1037,7 +1037,7 @@ azure-west-us-transit
 
 - **aws-us-east-2-transit**: <span style='color:#479608'>ASN **64513**</span>
 
-```{figure} images/lab8-edge13-temp2.png
+```{figure} images/lab8-edge13-temp20.png
 ---
 align: center
 ---
@@ -1046,14 +1046,14 @@ azure-west-us-transit
 
 - **gcp-us-central1-transit**: <span style='color:#479608'>ASN **64514**</span>
 
-```{figure} images/lab8-edge13-temp.png
+```{figure} images/lab8-edge13-temp3.png
 ---
 align: center
 ---
-aws-us-east-2-transit
+gcp-us-central1-transit
 ```
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
+- Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
 
 ```{figure} images/lab10-mtt3.png
 ---
@@ -1086,7 +1086,7 @@ azure-west-us-spoke2
 
 This time if you click on the `"Gateway Routes"` tab, you will be able to see the destination route, **10.0.12.0/23**, in **aws-us-east1-spoke1** VPC.
 
-```{figure} images/lab10-mtt6.png
+```{figure} images/lab10-mtt6-temp.png
 ---
 height: 300px
 align: center
@@ -1095,7 +1095,7 @@ align: center
 ```
 
 ```{hint}
-Click on `"+ 228 more"`
+Click on `"+ 2 more"`
 ```
 
 ## 13. The last DCF rule
@@ -1142,7 +1142,7 @@ Let’s create an additional Smart Group for the test instance **_aws-us-east-1-
 
 Navigate to **Copilot > Groups > SmartGroups** and click on  `"+ SmartGroup"` button.
 
-```{figure} images/lab10-mttnew.png
+```{figure} images/lab10-mttnew-temp.png
 ---
 align: center
 ---
@@ -1171,7 +1171,7 @@ Make sure to click **Save** once you're done.
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create another rule clicking on the `"+ Rule"` button.
 
-```{figure} images/lab10-mtt8.png
+```{figure} images/lab10-mtt8-temp.png
 ---
 align: center
 ---
@@ -1204,7 +1204,7 @@ The Last Rule...
 
 Now you can go ahead with the last **commit**!
 
-```{figure} images/lab10-lastcommit.png
+```{figure} images/lab10-lastcommit-temp.png
 ---
 align: center
 ---
