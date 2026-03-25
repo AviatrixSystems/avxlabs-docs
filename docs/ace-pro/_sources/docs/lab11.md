@@ -219,7 +219,7 @@ Open a terminal window and SSH into the public IP of the instance **aws-us-east-
 Refer to your POD for the private IPs.
 ```
 
-```{figure} images/lab10-newone1.png
+```{figure} images/lab10-newone1-temp.png
 ---
 height: 400px
 align: center
@@ -294,7 +294,7 @@ Zero Trust architecture is "Never trust, always verify", a critical component to
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
-```{figure} images/lab10-newrule.png
+```{figure} images/lab10-newrule-temp.png
 ---
 align: center
 ---
@@ -321,7 +321,7 @@ Create Rule
 
 Click on **Commit**.
 
-```{figure} images/lab10-rulecommitted00.png
+```{figure} images/lab10-rulecommitted00-temp.png
 ---
 align: center
 ---
@@ -332,7 +332,7 @@ Commit
 
 Create another rule clicking on the `"+ Rule"` button.
 
-```{figure} images/lab10-rule3.png
+```{figure} images/lab10-rule3-temp.png
 ---
 align: center
 ---
@@ -361,7 +361,7 @@ intra-icmp-bu2
 
 Next, proceed by clicking the **Commit** button.
 
-```{figure} images/lab10-rulecommitted01.png
+```{figure} images/lab10-rulecommitted01-temp.png
 ---
 align: center
 ---
@@ -372,7 +372,7 @@ Rule committed
 
 Following the creation of the previous Smart Groups and Rules, the topology with the permitted protocols will appear as follows:
 
-```{figure} images/lab10-topology2.png
+```{figure} images/lab10-topology2-temp.png
 ---
 height: 400px
 align: center
