@@ -1024,20 +1024,15 @@ align: center
 Border Gateway Protocol (BGP)
 ```
 
-Repeat the previous action for the other Transit Gateways:
+Repeat the previous action for the Transit Gateways in Azure and in GCP.
+
+```{important}
+The Transit Gateway **_aws-us-east-2-transit_** was already configured with `BGP ASN 64513` at the time of the POD launch (_pre-provisioned_).
+```
 
 - **azure-west-us-transit**: <span style='color:#479608'>ASN **64515**</span>
 
 ```{figure} images/lab10-newlab.png
----
-align: center
----
-azure-west-us-transit
-```
-
-- **aws-us-east-2-transit**: <span style='color:#479608'>ASN **64513**</span>
-
-```{figure} images/lab8-edge13-temp20.png
 ---
 align: center
 ---

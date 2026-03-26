@@ -99,7 +99,7 @@ SSH to aws-us-east-2-spoke1-test1
 
 - Then from the **_aws-us-east-2-spoke1-test1_** instance SSH to the **_aws-us-east-2-spoke1-test2_** instance.
 
-```{figure} images/lab6-ssh.png
+```{figure} images/lab6-ssh-temp.png
 ---
 align: center
 ---
@@ -330,7 +330,7 @@ At this stage, the **SmartGroup** feature enables the categorization of the `tes
 
 First and foremost, you have to identify the **private subnet** where the **_aws-us-east-2-spoke1-test2_** instance resides.
 
-```{figure} images/lab6-greenfieldneww.png
+```{figure} images/lab6-greenfieldneww-temp.png
 ---
 height: 400px
 align: center
@@ -772,7 +772,7 @@ With the successful deployment of the `Aviatrix Cloud Firewall` within the Cloud
 
 Login to **AWS console**</a>. Refer to your pod info for login information (<ins>Please always refer to your personal POD Portal</ins>).
 
-```{figure} images/lab5-deleteaws.png
+```{figure} images/lab5-deleteaws-temp.png
 ---
 align: center
 ---
