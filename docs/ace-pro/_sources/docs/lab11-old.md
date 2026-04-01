@@ -1,4 +1,4 @@
-# Lab 11 - DISTRIBUTED CLOUD FIREWALL
+# Lab 2 - DISTRIBUTED CLOUD FIREWALL
 
 ## 1. Objective
 
@@ -15,7 +15,7 @@ In this lab, you will have the opportunity to create additional logical containe
 2) `inter-rule` = Rule applied among Smart Groups
 
 ```{note}
-At this point in the lab, there is a unique routing domain (i.e. a **_Flat Routing Domain_**), due to the connection policy applied in Lab 3, between the <span style='color:lightgreen'>Green</span> domain and the <span style='color:lightblue'>Blue</span> domain.
+At this stage of the lab, East-West traffic is completely restricted. Currently, only the egress rule is in place, governing and controlling all traffic sourced from the private subnet in AWS.
 ```
 
 All test instances have been deployed with the standard cloud service provider **(CSP) tags**.
@@ -38,7 +38,7 @@ In this lab, you will implement the following requirements across all three CSPs
 
 - Create an `inter-rule` allowing ICMP traffic <ins>from</ins> bu2 <ins>to</ins> bu1 only.
 
-```{figure} images/lab10-initialnew00.png
+```{figure} images/lab10-initialnew00-temp.png
 ---
 height: 400px
 align: center
@@ -59,7 +59,7 @@ Let’s begin `micro-segmentation` by creating the Smart Groups.
 
 Navigate to **CoPilot > Groups > SmartGroups** and click on `"+ SmartGroup"`.
 
-```{figure} images/lab10-smart2.png
+```{figure} images/lab10-smart2-temp.png
 ---
 align: center
 ---
@@ -96,7 +96,7 @@ Resources that match the condition
 
 Create another Smart Group clicking on the `"+ SmartGroup"` button.
 
-```{figure} images/lab10-smart5.png
+```{figure} images/lab10-smart5-temp.png
 ---
 align: center
 ---
@@ -130,11 +130,11 @@ align: center
 Resources that match the condition
 ```
 
-At this stage, you have created logical groups that do not affect the existing flat routing domain, thanks to the `Connection Policy`  applied in **Lab 3**. Now, it's time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
+At this stage, you have created logical groups that do not affect the existing flat routing domain. Now, it's time to carefully define Distributed Cloud Firewall (DCF) rules to manage East-West traffic.
 
 Below is the current list of your DCF Rules within the **Distributed Cloud Firewall** section of your CoPilot:
 
-```{figure} images/lab10-newone2.png
+```{figure} images/lab10-newone2-temp.png
 ---
 align: center
 ---
@@ -143,14 +143,14 @@ Complete DCF Rules List
 
 ### 3.3 Removal of the Connection Policy
 
-The **_gcp-us-central1-spoke1_** VPC must stay isolated, as its Spoke gateway acts as the _landing Spoke_ for the `Site-to-Cloud` connection with the partner router.
+In this lab, the **_gcp-us-central1-spoke1_** VPC must remain isolated. To ensure this, remove the Connection Policy.
 
-```{figure} images/lab10-landingnew.png
+```{figure} images/lab10-landingnew-temp.png
 ---
 height: 400px
 align: center
 ---
-Landing Spoke GW
+GCP VPC
 ```
 
 - Disable the `Connection Policy`:
@@ -175,7 +175,7 @@ Removal of the Connection Policy
 
 This is what the topology will look like after this task:
 
-```{figure} images/lab10-landing03new.png
+```{figure} images/lab10-landing03new-temp.png
 ---
 height: 400px
 align: center
@@ -219,7 +219,7 @@ Open a terminal window and SSH into the public IP of the instance **aws-us-east-
 Refer to your POD for the private IPs.
 ```
 
-```{figure} images/lab10-newone1.png
+```{figure} images/lab10-newone1-temp.png
 ---
 height: 400px
 align: center
@@ -294,7 +294,7 @@ Zero Trust architecture is "Never trust, always verify", a critical component to
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create a new rule clicking on the `"+ Rule"` button.
 
-```{figure} images/lab10-newrule.png
+```{figure} images/lab10-newrule-temp.png
 ---
 align: center
 ---
@@ -321,7 +321,7 @@ Create Rule
 
 Click on **Commit**.
 
-```{figure} images/lab10-rulecommitted00.png
+```{figure} images/lab10-rulecommitted00-temp.png
 ---
 align: center
 ---
@@ -332,7 +332,7 @@ Commit
 
 Create another rule clicking on the `"+ Rule"` button.
 
-```{figure} images/lab10-rule3.png
+```{figure} images/lab10-rule3-temp.png
 ---
 align: center
 ---
@@ -361,7 +361,7 @@ intra-icmp-bu2
 
 Next, proceed by clicking the **Commit** button.
 
-```{figure} images/lab10-rulecommitted01.png
+```{figure} images/lab10-rulecommitted01-temp.png
 ---
 align: center
 ---
@@ -372,7 +372,7 @@ Rule committed
 
 Following the creation of the previous Smart Groups and Rules, the topology with the permitted protocols will appear as follows:
 
-```{figure} images/lab10-topology2.png
+```{figure} images/lab10-topology2-temp.png
 ---
 height: 400px
 align: center
@@ -517,7 +517,7 @@ Since **SG Orchestration** is enabled in the _aws-us-east-2-spoke1_ VPC, also ap
 
 - Navigate to **Copilot > Security > Distributed Cloud Firewall**, then edit the _`intra-icmp-bu1`_ rule by clicking the pencil icon.
 
-```{figure} images/lab10-sgonew01.png
+```{figure} images/lab10-sgonew01-temp.png
 ---
 align: center
 ---
@@ -535,7 +535,7 @@ SG Orchestration toggle
 
 Prior to committing the change, please edit the second rule (_`intra-icmp-bu2`_) once more by selecting the pencil icon.
 
-```{figure} images/lab10-sgonew03.png
+```{figure} images/lab10-sgonew03-temp.png
 ---
 align: center
 ---
@@ -551,7 +551,7 @@ align: center
 SG Orchestration toggle
 ```
 
-```{figure} images/lab10-sgonew05.png
+```{figure} images/lab10-sgonew05-temp.png
 ---
 align: center
 ---
@@ -629,7 +629,7 @@ SSH fails
 
 Create another rule clicking on the `"+ Rule"` button.
 
-```{figure} images/lab10-newrule2.png
+```{figure} images/lab10-newrule2-temp.png
 ---
 align: center
 ---
@@ -660,7 +660,7 @@ Create rule
 
 Click on `"Commit"` to enforce the new rule into the **Data Plane**.
 
-```{figure} images/lab10-commitsshbu1.png
+```{figure} images/lab10-commitsshbu1-temp.png
 ---
 align: center
 ---
@@ -712,7 +712,7 @@ The log above clearly indicates that the `"intra-ssh-bu1"` rule is successfully 
 
 Following the creation of this intra-rule, the topology with the permitted protocols will appear as follows:
 
-```{figure} images/lab10-topologynew.png
+```{figure} images/lab10-topologynew-temp.png
 ---
 height: 400px
 align: center
@@ -791,7 +791,7 @@ Create a new rule that allows **ICMP** <span style='color:green'>FROM</span></su
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and click on the `"+ Rule"` button.
 
-```{figure} images/lab10-newrule4.png
+```{figure} images/lab10-newrule4-temp.png
 ---
 align: center
 ---
@@ -821,7 +821,7 @@ Create Rule
 
 Enforce this new rule into the Data Plane clicking on the `"Commit"` button.
 
-```{figure} images/lab10-newrule4commit.png
+```{figure} images/lab10-newrule4commit-temp.png
 ---
 align: center
 ---
@@ -896,7 +896,7 @@ Logs
 
 After establishing this inter-rule, the topology with all permitted protocols will be represented as follows:
 
-```{figure} images/lab10-lastdrawing2.png
+```{figure} images/lab10-lastdrawing2-temp.png
 ---
 height: 400px
 align: center
@@ -925,7 +925,7 @@ Let's now include the AWS region **US-EAST-1**.
 
 This time, you need to permit ICMP traffic exclusively between the Smart Group **bu2** and the EC2 instance **_aws-us-east-1-spoke1-test2_**.
 
-```{figure} images/lab10-newtopology3.png
+```{figure} images/lab10-newtopology3-temp.png
 ---
 height: 400px
 align: center
@@ -1024,7 +1024,11 @@ align: center
 Border Gateway Protocol (BGP)
 ```
 
-Repeat the previous action for the last Transit Gateway still without a BGP ASN configured properly:
+Repeat the previous action for the Transit Gateways in Azure and in GCP.
+
+```{important}
+The Transit Gateway **_aws-us-east-2-transit_** was already configured with `BGP ASN 64513` at the time of the POD launch (_pre-provisioned_).
+```
 
 - **azure-west-us-transit**: <span style='color:#479608'>ASN **64515**</span>
 
@@ -1035,11 +1039,16 @@ align: center
 azure-west-us-transit
 ```
 
-```{note}
-Both the **aws-us-east-2-transit** and **gcp-us-central1-transit** have already been configured with their ASNs during Lab 8!
+- **gcp-us-central1-transit**: <span style='color:#479608'>ASN **64514**</span>
+
+```{figure} images/lab8-edge13-temp3.png
+---
+align: center
+---
+gcp-us-central1-transit
 ```
 
-Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
+- Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways** and click on the Transit Gateway **_aws-us-east-2-transit_**.
 
 ```{figure} images/lab10-mtt3.png
 ---
@@ -1072,7 +1081,7 @@ azure-west-us-spoke2
 
 This time if you click on the `"Gateway Routes"` tab, you will be able to see the destination route, **10.0.12.0/23**, in **aws-us-east1-spoke1** VPC.
 
-```{figure} images/lab10-mtt6.png
+```{figure} images/lab10-mtt6-temp.png
 ---
 height: 300px
 align: center
@@ -1081,7 +1090,7 @@ align: center
 ```
 
 ```{hint}
-Click on `"+ 228 more"`
+Click on `"+ 2 more"`
 ```
 
 ## 13. The last DCF rule
@@ -1128,7 +1137,7 @@ Let’s create an additional Smart Group for the test instance **_aws-us-east-1-
 
 Navigate to **Copilot > Groups > SmartGroups** and click on  `"+ SmartGroup"` button.
 
-```{figure} images/lab10-mttnew.png
+```{figure} images/lab10-mttnew-temp.png
 ---
 align: center
 ---
@@ -1157,7 +1166,7 @@ Make sure to click **Save** once you're done.
 
 Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create another rule clicking on the `"+ Rule"` button.
 
-```{figure} images/lab10-mtt8.png
+```{figure} images/lab10-mtt8-temp.png
 ---
 align: center
 ---
@@ -1190,7 +1199,7 @@ The Last Rule...
 
 Now you can go ahead with the last **commit**!
 
-```{figure} images/lab10-lastcommit.png
+```{figure} images/lab10-lastcommit-temp.png
 ---
 align: center
 ---
@@ -1247,7 +1256,7 @@ inter-icmp-bu2-east1 Logs
 
 After creating both the previous inter-rule and the additional Smart Groups, the topology with all permitted protocols will appear as follows:
 
-```{figure} images/lab10-newjoe.png
+```{figure} images/lab10-newjoe-temp.png
 ---
 height: 400px
 align: center
@@ -1257,14 +1266,13 @@ Final Topology
 
 ## 15. Spoke to Spoke Attachment
 
-Since Distributed Cloud Firewall is enabled, the owner of **_azure-west-us-spoke2-test1_** wants to directly communicate with **_azure-west-us-spoke1-test1_**, bypassing the NGFW for traffic from the VNet.
-sent to the NGFW, first.
+Configure the **spoke-to-spoke** connectivity by creating attachment between the two spoke gateways in Azure.
 
-```{figure} images/lab10-spoke2spoke01.png
+```{figure} images/lab10-spoke2spoke01-temp.png
 ---
 align: center
 ---
-No More NGFW
+Spoke to Spoke
 ```
 
 ### 15.1 Creating a Spoke to Spoke Attachment
@@ -1337,7 +1345,7 @@ The traffic generated from the **_azure-west-us-spoke2-test1_** VM will now pref
 The `Aviatrix Cloud Native Security Fabric` is very flexible and does not lock you in with solely a _Hub and Spoke_ Topology!
 ```
 
-```{figure} images/lab10-spoke2spoke07.png
+```{figure} images/lab10-spoke2spoke07-temp.png
 ---
 align: center
 ---
@@ -1348,7 +1356,7 @@ Spoke to Spoke
 
 Now that `MTT` is enabled on the **_aws-us-east-2-transit_** Gateway, <ins>every other Transit Gateway must have a single peering with the **MTT Gateway**</ins>; therefore the peering between the **_gcp-us-central1-transit_** Gateway and the **_azure-west-us-transit_** Gateway can be removed.
 
-```{figure} images/lab10-spoke2spoke0788.png
+```{figure} images/lab10-spoke2spoke0788-TEMP.png
 ---
 align: center
 ---
@@ -1383,7 +1391,7 @@ Deletion of a peering
 
 After completing this lab, the overall topology will appear as follows:
 
-```{figure} images/lab10-lastdrawing.png
+```{figure} images/lab10-lastdrawing-temp.png
 ---
 height: 400px
 align: center
