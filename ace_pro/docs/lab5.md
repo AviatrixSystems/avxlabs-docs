@@ -1,4 +1,4 @@
-# Lab 1 - AVIATRIX CLOUD FIREWALL
+# Lab 5 - AVIATRIX CLOUD FIREWALL
 
 ## 1. Objective
 
@@ -265,7 +265,7 @@ align: center
 Default Action Rule automatically injected by the Controller
 ```
 
-Now, click **Ruleset** and select the `V1 Policy List`.
+Now, click on the **Ruleset** dropdown and select `V1 Policy List`.
 
 ```{figure} images/lab6-greenfield5666.png
 ---
@@ -289,7 +289,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**ON**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -416,7 +416,7 @@ Enter the following parameters:
 - **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>**All-Web**</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**ON**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
