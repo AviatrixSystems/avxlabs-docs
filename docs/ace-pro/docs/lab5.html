@@ -811,7 +811,7 @@ document.write(`
 <li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span></p></li>
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'>ON</span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
 <li><p><strong>Place Rule</strong>: <span style='color:#479608'>Below</span></p>
 <ul>
@@ -976,10 +976,10 @@ document.write(`
 <h3>8.2 Edit the Egress-Rule<a class="headerlink" href="#edit-the-egress-rule" title="Link to this heading">#</a></h3>
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong>, click on the <strong>pencil</strong> button on the right-hand side of the <code class="docutils literal notranslate"><span class="pre">Egress-Rule</span></code>.</p>
 <figure class="align-center" id="id51">
-<img alt="../_images/lab6-webgroup2346.png" src="../_images/lab6-webgroup2346.png" />
+<a class="reference internal image-reference" href="../_images/lab6-webgroup2346.png"><img alt="../_images/lab6-webgroup2346.png" src="../_images/lab6-webgroup2346.png" style="height: 250px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 270 </span><span class="caption-text">height: 250px
-Pencil icon</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Pencil icon</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1084,6 +1084,19 @@ Pencil icon</span><a class="headerlink" href="#id51" title="Link to this image">
 <p><span class="caption-number">Fig. 279 </span><span class="caption-text">Action Denied</span><a class="headerlink" href="#id60" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>For more granular log data, navigate to <strong>Security &gt; Distributed Cloud Firewall &gt; Monitor</strong> and filter for ‘<em>Rule is Egress-Rule</em>’. This provides deeper visibility into the metadata captured by the Aviatrix Spoke Gateway, offering key insights into the behavior of triggered rules.</p>
+<figure class="align-center" id="id61">
+<img alt="../_images/lab6-monitor98911.png" src="../_images/lab6-monitor98911.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Monitor</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id62">
+<img alt="../_images/lab6-monitor98912.png" src="../_images/lab6-monitor98912.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Logs</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="removal-of-the-aws-nat-gateway">
 <h2>10. Removal of the AWS NAT Gateway<a class="headerlink" href="#removal-of-the-aws-nat-gateway" title="Link to this heading">#</a></h2>
@@ -1091,77 +1104,77 @@ Pencil icon</span><a class="headerlink" href="#id51" title="Link to this image">
 <section id="aws-console">
 <h3>10.1 AWS Console<a class="headerlink" href="#aws-console" title="Link to this heading">#</a></h3>
 <p>Login to <strong>AWS console</strong></a>. Refer to your pod info for login information (<ins>Please always refer to your personal POD Portal</ins>).</p>
-<figure class="align-center" id="id61">
+<figure class="align-center" id="id63">
 <img alt="../_images/lab5-deleteaws.png" src="../_images/lab5-deleteaws.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 280 </span><span class="caption-text">AWS NAT GW</span><a class="headerlink" href="#id61" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">AWS NAT GW</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id62">
+<figure class="align-center" id="id64">
 <img alt="../_images/lab5-newone.png" src="../_images/lab5-newone.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 281 </span><span class="caption-text">AWS URL and credentials</span><a class="headerlink" href="#id62" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id63">
-<img alt="../_images/lab5-awsconsole.png" src="../_images/lab5-awsconsole.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 282 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id63" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Change the region to <strong>Ohio</strong> and invoke <strong>VPC</strong> service.</p>
-<figure class="align-center" id="id64">
-<a class="reference internal image-reference" href="../_images/lab5-region22.png"><img alt="../_images/lab5-region22.png" src="../_images/lab5-region22.png" style="height: 300px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 283 </span><span class="caption-text">Change the Region</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">AWS URL and credentials</span><a class="headerlink" href="#id64" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id65">
+<img alt="../_images/lab5-awsconsole.png" src="../_images/lab5-awsconsole.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">AWS console</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Change the region to <strong>Ohio</strong> and invoke <strong>VPC</strong> service.</p>
+<figure class="align-center" id="id66">
+<a class="reference internal image-reference" href="../_images/lab5-region22.png"><img alt="../_images/lab5-region22.png" src="../_images/lab5-region22.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">Change the Region</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id67">
 <a class="reference internal image-reference" href="../_images/lab5-region01.png"><img alt="../_images/lab5-region01.png" src="../_images/lab5-region01.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 284 </span><span class="caption-text">Invoke the VPC service</span><a class="headerlink" href="#id65" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 286 </span><span class="caption-text">Invoke the VPC service</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now click on the <code class="docutils literal notranslate"><span class="pre">NAT</span> <span class="pre">Gateways</span></code> section in the Navigation Panel on the right-hand side.</p>
-<figure class="align-center" id="id66">
+<figure class="align-center" id="id68">
 <a class="reference internal image-reference" href="../_images/lab5-region012.png"><img alt="../_images/lab5-region012.png" src="../_images/lab5-region012.png" style="height: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 285 </span><span class="caption-text">NAT gateways section</span><a class="headerlink" href="#id66" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 287 </span><span class="caption-text">NAT gateways section</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Select the <strong><em>aws-region-2-spoke1-nat</em></strong> NAT Gateway, then click on thwe <code class="docutils literal notranslate"><span class="pre">&quot;Actions&quot;</span></code> button on the right-hand side and choose the option <code class="docutils literal notranslate"><span class="pre">&quot;Delete</span> <span class="pre">NAT</span> <span class="pre">gateway&quot;</span></code>. Afterwards, type <code class="docutils literal notranslate"><span class="pre">&quot;delete&quot;</span></code> to confirm the deletion of the AWS NAT Gateway and click on <strong>Delete</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id67">
+<figure class="align-center" id="id69">
 <a class="reference internal image-reference" href="../_images/lab5-region99.png"><img alt="../_images/lab5-region99.png" src="../_images/lab5-region99.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 286 </span><span class="caption-text">Selection of the AWS NAT GW</span><a class="headerlink" href="#id67" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 288 </span><span class="caption-text">Selection of the AWS NAT GW</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id68">
+<figure class="align-center" id="id70">
 <a class="reference internal image-reference" href="../_images/lab5-region9991.png"><img alt="../_images/lab5-region9991.png" src="../_images/lab5-region9991.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 287 </span><span class="caption-text">Actions</span><a class="headerlink" href="#id68" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 289 </span><span class="caption-text">Actions</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id69">
+<figure class="align-center" id="id71">
 <a class="reference internal image-reference" href="../_images/lab5-region999.png"><img alt="../_images/lab5-region999.png" src="../_images/lab5-region999.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 288 </span><span class="caption-text">Deletion of the AWS NAT GW</span><a class="headerlink" href="#id69" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 290 </span><span class="caption-text">Deletion of the AWS NAT GW</span><a class="headerlink" href="#id71" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>After completing this lab, the overall topology will appear as follows:</p>
-<figure class="align-center" id="id70">
+<figure class="align-center" id="id72">
 <a class="reference internal image-reference" href="../_images/lab6-finaltopo.png"><img alt="../_images/lab6-finaltopo.png" src="../_images/lab6-finaltopo.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 289 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id70" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 291 </span><span class="caption-text">Final Topology for Lab 5</span><a class="headerlink" href="#id72" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
