@@ -461,7 +461,7 @@ Insert the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>ON</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
 - **Place Rule**: <span style='color:#479608'>Below</span>
   - **Existing Rule**: <span style='color:#479608'>Egress-Rule</span>
@@ -647,8 +647,8 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, clic
 ```{figure} images/lab6-webgroup2346.png
 ---
 align: center
----
 height: 250px
+---
 Pencil icon
 ```
 
@@ -759,6 +759,22 @@ Enter the word **"denied"** in the `Search` field to identify the domains that w
 align: center
 ---
 Action Denied
+```
+
+For more granular log data, navigate to **Security > Distributed Cloud Firewall > Monitor** and filter for '_Rule is Egress-Rule_'. This provides deeper visibility into the metadata captured by the Aviatrix Spoke Gateway, offering key insights into the behavior of triggered rules.
+
+```{figure} images/lab6-monitor98911.png
+---
+align: center
+---
+Monitor
+```
+
+```{figure} images/lab6-monitor98912.png
+---
+align: center
+---
+Logs
 ```
 
 ## 10. Removal of the AWS NAT Gateway
