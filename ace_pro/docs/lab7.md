@@ -140,7 +140,7 @@ S2C template
 ```
 
 ```{caution}
-Once Save is clicked, the configuration template will be grayed out. Please allow time for the **_Aviatrix Controller_** to finalize the deployment. This step provisions the initial side of the connection on the GCP Spoke Gateway. <ins>The connection may appear down initially, since the opposite side of the connection—the on-prem-partner-1 router (e.g., StrongSwan router)—also requires configuration</ins>.
+Once Save is clicked, the configuration template will be grayed out. Please allow time for the **_Aviatrix Controller_** to finalize the deployment. This step provisions the initial side of the connection on the GCP Spoke Gateway. <ins>The connection may appear down initially, since the opposite side of the connection—the on-prem-partner-1 router (e.g., StrongSwan router)—also requires configuration</ins>...
 ```
 
 ```{figure} images/lab8-newdown01.png
