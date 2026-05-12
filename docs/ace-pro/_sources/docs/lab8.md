@@ -97,7 +97,7 @@ align: center
 BGP ASN
 ```
 
-Now it's time to establish the attachment! 
+Now it's time to establish the attachment!
 
 Navigate to **CoPilot > Cloud Fabric > Hybrid Cloud > Edge Gateways** and click on the `"Manage Gateway Attachments"` button, on the right-hand side of the screen.
 
