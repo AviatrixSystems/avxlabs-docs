@@ -237,7 +237,7 @@ Enter the following parameters:
 - **Destination Groups**: <span style='color:#479608'>Deafult ThreatGroup</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
-- **Logging**: <span style='color:#479608'>ON</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -267,7 +267,7 @@ Enter the following parameters:
 - **Destination Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
-- **Logging**: <span style='color:#479608'>ON</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
 
 Do not forget to click on **Save In Drafts**. 
