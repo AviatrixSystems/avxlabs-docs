@@ -307,7 +307,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>bu1</span>
 - **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>On</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**.
