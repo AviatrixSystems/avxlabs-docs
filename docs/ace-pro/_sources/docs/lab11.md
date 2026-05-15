@@ -643,7 +643,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>On</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 - **SG Orchestration**: <span style='color:#479608'>**ON**</span>
 - **Place Rule**: <span style='color:#479608'>Below</span>
@@ -804,7 +804,7 @@ Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 - **Source Smartgroups**: <span style='color:#479608'>bu2</span>
 - **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>On</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 - **SG Orchestration**: <span style='color:#479608'>**ON**</span>
 - **Place Rule**: <span style='color:#479608'>Below</span>
