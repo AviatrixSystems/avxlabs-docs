@@ -515,13 +515,13 @@ Manage SG Orchestration
 
 Since **SG Orchestration** is enabled in the _aws-us-east-2-spoke1_ VPC, also apply and enforce the related functionality in the traffic policy for that VPC.
 
-- Navigate to **Copilot > Security > Distributed Cloud Firewall**, then edit the _`intra-icmp-bu1`_ rule by clicking the pencil icon.
+- Navigate to **Copilot > Security > Distributed Cloud Firewall > Policies**, then edit the _`intra-icmp-bu1`_ rule by clicking the pencil icon.
 
 ```{figure} images/lab10-sgonew01.png
 ---
 align: center
 ---
-Editing intra-icmp-bu1
+Edit the intra-icmp-bu1 rule
 ```
 
 Activate the `"SG Orchestration"` toggle and click **"Save Drafts"**.
@@ -539,7 +539,7 @@ Prior to committing the change, please edit the second rule (_`intra-icmp-bu2`_)
 ---
 align: center
 ---
-Editing intra-icmp-bu2
+Edit the intra-icmp-bu2 rule
 ```
 
 Turn on the `"SG Orchestration"` toggle, click **"Save In Drafts"**, and then click the **"Commit"** button to proceed.
