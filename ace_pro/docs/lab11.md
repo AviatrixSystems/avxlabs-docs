@@ -1170,7 +1170,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Source Smartgroups**: <span style='color:#479608'>bu2</span>
 - **Destination Smartgroups**: <span style='color:#479608'>east1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>On</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Then click on **Save In Drafts**.
