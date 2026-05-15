@@ -235,7 +235,7 @@ Notification Panel
 
 The `Vendor Integration` allows inserting the Summary Routes into the the Firewall's Routing Table.
 
-Navigate to **CoPilot > Security > FireNet > FireNet Gateways**, click on the `"three-dot"` symbol on the right-hand side of the **_azure-west-us-transit_** row, and then click on `Vendor Integration`.
+Navigate to **CoPilot > Security > FireNet > FireNet**, click on the `"three-dot"` symbol on the right-hand side of the **_azure-west-us-transit_** row, and then click on `Manage Vendor Integration`.
 
 ```{figure} images/lab7-vendor.png
 ---
@@ -314,7 +314,7 @@ Vendor Integration outcome
 
 Now it is time to select the VPC/VNet that will be involved in the _FireNet inspection_.
 
-Navigate to **CoPilot > Security > FireNet > FireNet Gateways**, click on the **_azure-west-us-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
+Navigate to **CoPilot > Security > FireNet > FireNet**, click on the **_azure-west-us-transit_** Transit FireNet GW and then choose the `"Policy"` tab.
 
 ```{figure} images/lab7-inspection2.png
 ---
