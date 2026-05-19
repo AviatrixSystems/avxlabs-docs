@@ -192,8 +192,9 @@ New SmartGroup
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
-- **Virtual Machines - Matches all conditions (AND)**: <span style='color:#479608'>Name</span>
+- **Matches all conditions (AND):<span style='color:#479608'> Name</span>**
 - **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
+```{figure} images/lab10-mtt9.png
 
 ```{figure} images/lab9-smart00331.png
 ---

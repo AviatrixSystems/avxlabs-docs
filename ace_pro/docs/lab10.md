@@ -90,7 +90,7 @@ align: center
 Show BGP Learned Routes
 ```
 
-You will discover that all local subnets advertised by the data center fall within the CIDR range of **10.40.1.0/24**.
+You will discover that all local subnets advertised by the data center fall within the CIDR range of **10.40.0.0/16**.
 
 ```{figure} images/lab9-cidr.png
 ---
@@ -136,8 +136,8 @@ SmartGroup
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>WorkstationEdge</span>
-- **Virtual Machines**:
-  - **Matches all conditions (AND)/Name**: <span style='color:#479608'>onprem-pod##-test-vm</span>
+- **Matches all conditions (AND):<span style='color:#479608'> Name</span>**
+- **CSP Tag Value**: <span style='color:#479608'>onprem-pod##-test-vm</span>
 
 ```{tip}
 Select the first option, **"Name"**, from the drop-down menu!
@@ -192,7 +192,8 @@ SmartGroup
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
-- **Matches all conditions (AND)/Name**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
+- **Matches all conditions (AND):<span style='color:#479608'> Name</span>**
+- **CSP Tag Value**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
 
 ```{figure} images/lab10-newsg0133.png
 ---

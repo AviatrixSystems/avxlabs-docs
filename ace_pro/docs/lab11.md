@@ -69,7 +69,8 @@ SmartGroup
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>bu1</span>
-- **Matches all conditions (AND)/environment**: <span style='color:#479608'>bu1</span>
+- **Matches all conditions (AND):<span style='color:#479608'> environment</span>**
+- **CSP Tag Value**: <span style='color:#479608'>bu1</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
@@ -106,7 +107,8 @@ New Smart Group
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>bu2</span>
-- **Matches all conditions (AND)/environment**: <span style='color:#479608'>bu2</span>
+- **Matches all conditions (AND):<span style='color:#479608'> environment</span>**
+- **CSP Tag Value**: <span style='color:#479608'>bu2</span>
 
 Before clicking on **SAVE**, discover what instances match the condition, turning on the knob `"Preview"`.
 
@@ -1138,9 +1140,10 @@ New Smart Group
 Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 
 - **Name**: <span style='color:#479608'>east1</span>
-- **Virtual Machines/Name**: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span>
-
+- **Matches all conditions (AND):<span style='color:#479608'> Name</span>**
+- **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span>
 ```{figure} images/lab10-mtt9.png
+
 ---
 align: center
 ---
