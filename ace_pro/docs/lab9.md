@@ -672,7 +672,7 @@ Outcomes from the curl commands
 Now issue again the curl command towards the **malicious IP** address that was earlier provided by the Trainer!
 
 ```bash
-curl https://178.17.174.164
+curl -I https://178.17.174.164
 ```
 
 ```{figure} images/lab96-newrule302.png
