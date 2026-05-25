@@ -651,15 +651,15 @@ SSH in to test1 from test2
 - Execute now the following commands:
 
 ```bash
-curl https://www.nginx.com
+curl -I https://www.nginx.com
 ```
 
 ```bash
-curl https://www.ubuntu.com
+curl -I https://www.ubuntu.com
 ```
 
 ```bash
-curl https://www.aviatrix.ai
+curl -I https://www.aviatrix.ai
 ```
 
 ```{figure} images/lab96-newrule301.png
