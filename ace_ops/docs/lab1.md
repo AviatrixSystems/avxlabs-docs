@@ -277,7 +277,7 @@ BU1-Frontend Gatus
 Reduce the polling timer from 5 minutes to **10 seconds** to expedite the visibility of the results.
 ```{figure} images/lab2-gatus05.png
 ---
-height: 5500px
+height: 550px
 align: center
 ---
 Timer

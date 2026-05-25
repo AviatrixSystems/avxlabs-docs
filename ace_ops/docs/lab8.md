@@ -1,4 +1,4 @@
-# Lab 4 - Distributed Cloud Firewall
+# Lab 8 - Distributed Cloud Firewall
 
 ## 1. SCENARIO
 
