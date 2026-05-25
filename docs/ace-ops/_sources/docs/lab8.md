@@ -469,7 +469,7 @@ This is how the overall topology would look after implementing the latest inter-
 
 ```{figure} images/lab712-segmentation092.png
 ---
-height: 400px
+height: 600px
 align: center
 ---
 inter-rule
@@ -523,7 +523,7 @@ Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **
 
 ```{figure} images/lab8-gatus005.png
 ---
-height: 400px
+height: 450px
 align: center
 ---
 BU1 DB
@@ -564,7 +564,7 @@ This is how the overall topology would look after implementing the latest inter-
 
 ```{figure} images/lab712-segmentation093.png
 ---
-height: 400px
+height: 600px
 align: center
 ---
 inter-rule
@@ -578,7 +578,7 @@ The final policy is an inter-rule designed to permit **BU1 Frontend** to ping **
 
 ```{figure} images/lab8-greenfield16.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 New Rule
@@ -650,7 +650,7 @@ This is how the overall topology would look after implementing the latest inter-
 
 ```{figure} images/lab712-segmentation094.png
 ---
-height: 400px
+height: 600px
 align: center
 ---
 inter-rule
