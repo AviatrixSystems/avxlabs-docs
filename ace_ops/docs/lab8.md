@@ -572,7 +572,7 @@ inter-rule
 
 #### 2.2.17 Inter-rule between BU1 Frontend and BU1 DB
 
-The final policy is an inter-rule designed to permit **BU1 Frontend** to ping **BU2 DB**.
+The final policy is an inter-rule designed to permit **BU1 Frontend** to ping **BU1 DB**.
 
 - Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, and click on the **"+ Rule"** button.
 
@@ -613,7 +613,7 @@ Commit
 
 #### 2.2.18 Verify connectivity Using Gatus
 
-Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 Mobile App**, specifically for `TCP` traffic.
+Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU1 DB**, specifically for `TCP` traffic.
 
 ```{figure} images/lab8-gatus006.png
 ---
