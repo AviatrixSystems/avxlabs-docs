@@ -70,14 +70,14 @@ To control and enforce egress traffic, you must enable the `Distributed Cloud Fi
 - Enable the **Distributed Cloud Firewall** feature.
 
 ```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall**, click `Begin Using Distributed Cloud Firewall`, and then click `Begin` on the next screen.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall**, click `Enable Distributed Cloud Firewall`, and then click `Begin` on the next screen.
 ```
 
 ```{figure} images/lab7-enabledcf01.png
 ---
 align: center
 ---
-Begin Using Distributed Cloud Firewall
+Enable Distributed Cloud Firewall
 ```
 
 ```{figure} images/lab7-enabledcf0222.png
