@@ -26,7 +26,7 @@ BU1-DB Gatus
 
 ```{figure} images/lab7-newgatus02.png
 ---
-height: 400px
+height: 350px
 align: center
 ---
 BU2-DB Gatus
@@ -392,6 +392,10 @@ Commit
 
 ```{caution}
 Once again, the last two policies enable secure SSH access from the BU1 Frontend to the Azure database VMs hosted in private subnets. Because these VMs have no public IP addresses, direct SSH access from your laptop is not possible.
+```
+
+```{tip}
+If you are not using a corporate laptop, you may access the DB virtual machines using your preferred SSH client. First, SSH into the Frontend instance, which serves as your bastion host. Once logged into either DB virtual machine, attempt to generate traffic toward both the allowed and prohibited domains. Please note that the two policies permitting TCP/22 traffic between the Frontend and BU1-DB, as well as the Frontend and BU2-DB, are indeed enforced within the Cloud Native Security Fabric.
 ```
 
 ### 2.4 ZTNA
