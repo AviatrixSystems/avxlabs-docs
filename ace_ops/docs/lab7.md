@@ -70,14 +70,14 @@ To control and enforce egress traffic, you must enable the `Distributed Cloud Fi
 - Enable the **Distributed Cloud Firewall** feature.
 
 ```{tip}
-Navigate to **CoPilot > Security > Distributed Cloud Firewall**, click `Enable Distributed Cloud Firewall`, and then click `Begin` on the next screen.
+Navigate to **CoPilot > Security > Distributed Cloud Firewall**, click `Begin Ising Distributed Cloud Firewall`, and then click `Begin` on the next screen.
 ```
 
 ```{figure} images/lab7-enabledcf01.png
 ---
 align: center
 ---
-Enable Distributed Cloud Firewall
+Begin Using Distributed Cloud Firewall
 ```
 
 ```{figure} images/lab7-enabledcf0222.png
@@ -627,7 +627,7 @@ align: center
 BU1-DB Gatus
 ```
 
-**BU2-DB** will be able to access the following sites: _www.google.com_, _www.aws.amazon.com_, and _www.terraform.com_. The domains _www.botnet.com_ and _www.malware.net_ will be blocked.
+**BU2-DB** will be able to access the following sites: _www.google.com_ and _www.aws.amazon.com. The domain _www.malware.net_ will be blocked.
 
 ```{figure} images/lab7-newgatus02new022.png
 ---
