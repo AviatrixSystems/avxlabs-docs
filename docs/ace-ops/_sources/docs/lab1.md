@@ -186,7 +186,7 @@ EC2 Instance
 ```
 
 ```{important}
-Important: choose the correct instance. The Aviatrix gateway uses the standard router icon (four arrows). Always select the User Instance, because the gateway itself cannot be accessed via SSH.
+Ensure you select the correct instance. The Aviatrix gateway is represented by the standard router icon (four arrows). Always select the "User Instance" when launching tests, as the gateway itself does not allow for SSH access.
 ```
 
 ### 3.2 Cloud Workloads
