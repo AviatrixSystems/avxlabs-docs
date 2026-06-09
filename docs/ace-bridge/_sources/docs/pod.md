@@ -11,7 +11,7 @@ Click on the image below to access your personal POD portal.
 |   Wierciak |    Team4    |        7EYH       |
 |  Sarzynski |    Team5    |        7EYH       |
 |  Paciepnik |    Team6    |        7EYH       |
-|   Wierciak |    Team7    |        7EYH       |
+
 
 
 <a href="https://bridge-portal.ace.aviatrixlab.com/" target="_blank">
