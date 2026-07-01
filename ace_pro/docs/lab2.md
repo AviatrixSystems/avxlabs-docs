@@ -132,7 +132,7 @@ You can access the instances deployed inside public subents using their **Public
 
 #### 3.2.1 Cloud Workloads (to retrieve IP addresses)
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines** and filer based on the keyword `"aws-us-east-2-spoke1-test1"`.
+- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines** and filer based on the keyword `aws-us-east-2-spoke1-test1`.
 - Copy its **public** ip address and use it with your SSH client.
 
 ```{figure} images/lab2-sshclient10.png
