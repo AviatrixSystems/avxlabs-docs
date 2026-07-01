@@ -4,7 +4,7 @@
 
 In this lab, you will deploy **four** virtual networks (VPCs/VNets) across the three cloud service providers: Azure, AWS, and Google Cloud Platform (GCP).
 
-The purpose of creating these VPCs/VNets is to familiarise yourself with the user interface (UI).
+The purpose of creating these VPCs/VNets is to familiarise yourself with the **Aviatrix CoPilot** user interface.
 
 Refer to your POD assignment for CoPilot login information, as depicted below. Click on the `URL` button of the CoPilot (i.e "Open Copilot") and log in using the credentials assigned to your POD.
 
@@ -31,7 +31,7 @@ Let's begin our first task: creating a **VNet**.
 
 Navigate to **CoPilot > Cloud Resources > Cloud Networks > VPC/VNets & Subnets**.
 
-Verify if the CIDR range `192.168.12.0/24` overlaps with any currently used **CIDR ranges**, as illustrated below.
+First, verify whether specific CIDR blocks are already in use. Click the `Check CIDR Overlap` link and determine if the `192.168.12.0/24` range overlaps with any existing CIDR ranges, as shown in the illustration below.
 
 ```{figure} images/lab1-vnet1.png
 ---
@@ -41,7 +41,23 @@ align: center
 Searching for a subnet conflict
 ```
 
+```{figure} images/lab1-vnet881.png
+---
+height: 400px
+align: center
+---
+Verification
+```
+
 - Great! Now that you have confirmed that the CIDR range 192.168.12.0/24 does not conflict with any existing CIDR ranges, please proceed to create an **Application/Spoke** Virtual Network (VNet) using the CoPilot.
+
+```{figure} images/lab1-vnet882.png
+---
+height: 400px
+align: center
+---
+No conflicts with existing VPC/VNet CIDRs
+```
 
 Click on the button `“+ VPC/VNET”`.
 
@@ -150,13 +166,13 @@ Thank you for your patience!
 ```
 
 ## 3. GCP VPC
-Next, we will complete this lab by creating a VPC in GCP.
+It's now time to create a VPC in GCP.
 
 ### 3.1 Create GCP VPC
 
 Navigate to **CoPilot > Cloud Resources > Cloud Networks > VPC/VNets & Subnets**.
 
-Before proceeding with the deployment of the VPC in GCP, please verify once more whether the CIDR range `172.16.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
+Before deploying the GCP VPC, please verify that the CIDR range `172.16.22.0/24` does not overlap with any existing networks. Use the `Check CIDR Overlap` tool to confirm, as illustrated below.
 
 ```{figure} images/lab1-newpic8.png
 ---
@@ -197,7 +213,7 @@ align: center
 VPC template
 ```
 
-Wait a few minutes, then verify that the VPC creation is complete in the VPC list once you see the confirmation pop-up message. If the VPC does not appear immediately, click the Refresh icon or reload the webpage to update the list.  
+Wait a few minutes, then verify that the VPC creation is complete in the VPC list once you see the confirmation pop-up message. If the VPC does not appear immediately, click the **Refresh icon** or reload the webpage to update the list.  
 
 You can filter the list by the VPC name: `gcp-us-west2-spoke1`.
 
@@ -218,7 +234,7 @@ The VPC in Google Cloud Platform (GCP) may require a brief delay before it appea
 ```
 
 ## 4. AWS VPC
-It's now time to create a VPC in AWS.
+Next, we will complete this lab by creating a VPC in AWS.
 
 ### 4.1  Create AWS VPC
 
@@ -234,7 +250,7 @@ align: center
 Searching for a subnet conflict
 ```
 
-This time, let's create an **Application/Spoke** VPC. Click the `“+ VPC/VNET”` button to get started.
+Let's create an Application/Spoke VPC. Click the `“+ VPC/VNET”` button to get started.
 
 ```{figure} images/lab1-vpc1.png
 ---
