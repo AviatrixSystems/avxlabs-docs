@@ -88,7 +88,7 @@ align: center
 aws-us-east-2-transit
 ```
 
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section and insert the AS number **64513** on the empty field related to the `“Local AS Number”`, then click on **Save**.
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section and insert the AS number **64513** on the empty field related to the `“Local ASN”`, then click on **Save**.
 
 ```{figure} images/lab8-edge13.png
 ---
@@ -421,7 +421,7 @@ align: center
 gcp-us-central1-transit
 ```
 
-Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section and insert the AS number **64514** on the empty field related to the `“Local AS Number”`, then click on **Save**.
+Select the `"Settings"` tab and then expand the `"Border Gateway Protocol (BGP)"` section and insert the AS number **64514** on the empty field related to the `“Local ASN”`, then click on **Save**.
 
 ```{figure} images/lab8-edgedouble6.png
 ---
