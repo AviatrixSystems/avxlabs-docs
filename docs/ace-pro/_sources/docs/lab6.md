@@ -11,7 +11,7 @@ Aviatrix Firewall Network (aka *`FireNet`*) is a turnkey solution to deploy and 
 In addition, Firewall Network allows you to scale firewall deployment to multi AZ and multi instances/VMs in maximum throughput active/active state without the SNAT requirement.
 
 ```{important}
-`FireNet` is a service chaining feature that simplifies the deployment of third-party NGFWs. However, this is considered a legacy approach, as traditional firewalls are typically <ins>bolted onto the cloud network</ins>.
+`FireNet` is a _service chaining_ feature that simplifies the deployment of third-party NGFWs. However, this is considered a legacy approach, as traditional firewalls are typically <ins>bolted onto the cloud network</ins>.
 ```
 
 ## 3. Topology
@@ -152,7 +152,7 @@ Marketplace contact under loading
 ```
 
 - **Firewall Image Version**: <span style='color:#479608'>9.1.0</span>
-- **Firewall instance Size**: <span style='color:#479608'>Standard_D3_v2</span>
+- **Firewall instance Size**: <span style='color:#479608'>Standard_D48s_v4</span>
 - **Management Interface Subnet**: <span style='color:#479608'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-**1** [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
 
 ```{caution}
