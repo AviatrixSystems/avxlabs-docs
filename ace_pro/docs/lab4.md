@@ -931,6 +931,8 @@ FlightPath config
 
 This will provide a `FlightPath` report showing how **_aws-us-east-1-spoke1-test1_** is connected with **_aws-us-east-2-spoke1-test1_**, displaying the path along with end-to-end latency.
 
+Feel free to explore the `Routing` tab, where you can see the native constructs validated by the Aviatrix Controller, as well as the `Metrics` tab to review system and network performance for the involved gateways.
+
 ```{note}
 After restarting the Spoke Gateway, you may notice some links still displayed in <span style='color:red'>**red**</span>. Please be patient and relaunch the report to see the same outcome as shown below.
 ```
