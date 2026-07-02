@@ -259,7 +259,7 @@ After enabling the Distributed Cloud Firewall feature, a **Default Action Rule**
 
 ```{figure} images/lab6-greenfield56.png
 ---
-height: 3000px
+height: 300px
 align: center
 ---
 Default Action Rule automatically injected by the Controller
@@ -317,7 +317,7 @@ Click on **Commit**.
 
 ```{figure} images/lab6-greenfield5666123.png
 ---
-height: 3000px
+height: 300px
 align: center
 ---
 Commit
@@ -345,7 +345,7 @@ From the results, you need to identify the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
-height: 250px
+height: 150px
 align: center
 ---
 AZ
@@ -648,7 +648,7 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, clic
 ```{figure} images/lab6-webgroup2346.png
 ---
 align: center
-height: 350px
+height: 200px
 ---
 Pencil icon = editing
 ```
@@ -666,7 +666,7 @@ Editing the Egress-Rule
 
 ```{figure} images/lab6-webgroup2345.png
 ---
-height: 350px
+height: 200px
 align: center
 ---
 Commit the changes
