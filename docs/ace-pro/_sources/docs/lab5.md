@@ -259,7 +259,7 @@ After enabling the Distributed Cloud Firewall feature, a **Default Action Rule**
 
 ```{figure} images/lab6-greenfield56.png
 ---
-height: 250px
+height: 3000px
 align: center
 ---
 Default Action Rule automatically injected by the Controller
@@ -317,6 +317,7 @@ Click on **Commit**.
 
 ```{figure} images/lab6-greenfield5666123.png
 ---
+height: 3000px
 align: center
 ---
 Commit
@@ -344,7 +345,7 @@ From the results, you need to identify the `Availability Zone`.
 
 ```{figure} images/lab6-greenfieldneww2.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 AZ
@@ -356,7 +357,7 @@ Identify the spoke VPC, reveal its subnets, find the `private subnet`, and copy 
 
 ```{figure} images/lab6-greenfieldneww31.png
 ---
-height: 300px
+height: 200px
 align: center
 ---
 Private Subnet
@@ -479,7 +480,7 @@ Do not forget to click on **Commit**.
 
 ```{figure} images/lab6-newrule100110.png
 ---
-height: 250px
+height: 300px
 align: center
 ---
 Commit
@@ -583,7 +584,7 @@ Navigate to **CoPilot > Security > Egress > Analyze**, and you will see the visi
 
 ```{figure} images/lab6-newrul12.png
 ---
-height: 500px
+height: 450px
 align: center
 ---
 Analyze
@@ -595,7 +596,7 @@ Furthermore, navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)**
 
 ```{figure} images/lab6-monitor.png
 ---
-height: 400px
+height: 500px
 align: center
 ---
 Monitor
@@ -624,8 +625,8 @@ Create a **_WebGroup_** with the following parameters:
 
 - **Name**: <span style='color:#479608'>two-domains</span>
 - **Type**: <span style='color:#479608'>Domains</span>
-- **Domains/URLs**: <span style='color:#479608'>aviatrix.ai</span>
-- **Domains/URLs**: <span style='color:#479608'>www.wikipedia.org</span>
+- **Domains**: <span style='color:#479608'>aviatrix.ai</span>
+- **Domains**: <span style='color:#479608'>www.wikipedia.org</span>
 
 Do not forget to click on **Save**.
 
@@ -647,9 +648,9 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies**, clic
 ```{figure} images/lab6-webgroup2346.png
 ---
 align: center
-height: 250px
+height: 350px
 ---
-Pencil icon
+Pencil icon = editing
 ```
 
 - Now remove the WebGroup `"All-Web"` and then select the WebGroup `"two-domains"`.
@@ -665,7 +666,7 @@ Editing the Egress-Rule
 
 ```{figure} images/lab6-webgroup2345.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 Commit the changes
@@ -756,6 +757,7 @@ Enter the word **"denied"** in the `Search` field to identify the domains that w
 
 ```{figure} images/lab6-monitor989.png
 ---
+height: 350px
 align: center
 ---
 Action Denied
@@ -772,6 +774,7 @@ Monitor
 
 ```{figure} images/lab6-monitor98912.png
 ---
+height: 500px
 align: center
 ---
 Logs
