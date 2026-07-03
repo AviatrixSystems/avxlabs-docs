@@ -259,7 +259,7 @@ After enabling the Distributed Cloud Firewall feature, a **Default Action Rule**
 
 ```{figure} images/lab6-greenfield56.png
 ---
-height: 300px
+height: 190px
 align: center
 ---
 Default Action Rule automatically injected by the Controller
@@ -317,7 +317,7 @@ Click on **Commit**.
 
 ```{figure} images/lab6-greenfield5666123.png
 ---
-height: 300px
+height: 190px
 align: center
 ---
 Commit
@@ -666,7 +666,7 @@ Editing the Egress-Rule
 
 ```{figure} images/lab6-webgroup2345.png
 ---
-height: 200px
+height: 280px
 align: center
 ---
 Commit the changes
