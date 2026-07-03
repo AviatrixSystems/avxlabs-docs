@@ -354,9 +354,9 @@ Create the new **_WebGroup_** with the following parameters:
 
 - **Name**: <span style='color:#479608'>Allowed-Public-Domains</span>
 - **Type**: <span style='color:#479608'>Domains</span>
-- **Domains/URLs**: <span style='color:#479608'>www.nginx.com</span>
-- **Domains/URLs**: <span style='color:#479608'>www.ubuntu.com</span>
-- **Domains/URLs**: <span style='color:#479608'>www.aviatrix.ai</span>
+- **Domains**: <span style='color:#479608'>www.nginx.com</span>
+- **Domains**: <span style='color:#479608'>www.ubuntu.com</span>
+- **Domains**: <span style='color:#479608'>www.aviatrix.ai</span>
 
 Do not forget to click on **Save**.
 
@@ -598,7 +598,7 @@ align: center
 Commit
 ```
 
-- Retrieve the public IP address of the **aws-us-east-1-spoke1-test1** instance by navigating to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Search for _aws-us-east-1-spoke1-test1_, click on `"+ 1 more"` to display the public IP address, and then copy it to your clipboard.
+- Retrieve the public IP address of the **aws-us-east-1-spoke1-test1** instance by navigating to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines**. Search for _aws-us-east-1-spoke1-test1_, identify its public IP address, and then copy it to your clipboard.
 
 ```{figure} images/lab9-myip09.png
 ---
@@ -626,7 +626,7 @@ SSH to aws-us-east-1-spoke1-test1
  If you’d rather not try the hidden resolution, just go ahead with the steps below.
 ```
 
-Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**, then search for **aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary>**, retrieve its Public IP address and SSH in to the EC2 instance.
+Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines**, then search for **aws-us-east-1-spoke1-test<span style='color:#33ECFF'>2</span></summary>**, retrieve its Public IP address and SSH in to the EC2 instance.
 
 ```{figure} images/lab9-igw04.png
 ---
