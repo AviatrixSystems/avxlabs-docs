@@ -31,7 +31,7 @@ Let's begin our first task: creating a **VNet**.
 
 Navigate to **CoPilot > Cloud Resources > Cloud Networks > VPC/VNets & Subnets**.
 
-First, verify whether specific CIDR blocks are already in use. Click the `Check CIDR Overlap` link and determine if the `192.168.12.0/24` range overlaps with any existing CIDR ranges, as shown in the illustration below.
+First, verify whether specific CIDR blocks are already in use. Click the `Check CIDR Overlap` tool and determine if the `192.168.12.0/24` block overlaps with any existing CIDR ranges, as shown in the illustration below.
 
 ```{figure} images/lab1-vnet1.png
 ---
@@ -172,7 +172,7 @@ It's now time to create a VPC in GCP.
 
 Navigate to **CoPilot > Cloud Resources > Cloud Networks > VPC/VNets & Subnets**.
 
-Before deploying the GCP VPC, please verify that the CIDR range `172.16.22.0/24` does not overlap with any existing networks. Use the `Check CIDR Overlap` tool to confirm, as illustrated below.
+Before deploying the GCP VPC, please verify that the `172.16.22.0/24` CIDR block does not overlap with any existing networks. Use the `Check CIDR Overlap` tool to confirm, as illustrated below.
 
 ```{figure} images/lab1-newpic8.png
 ---
@@ -240,7 +240,7 @@ Next, we will complete this lab by creating a VPC in AWS.
 
 Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
-Please verify once more whether the CIDR range `10.0.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
+Please verify once more whether the CIDR block `10.0.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
 
 ```{figure} images/lab1-newpic5.png
 ---
@@ -289,7 +289,7 @@ Hourglass icon
 
 Verify the creation of your VPC (i.e., `aws-us-west-2-spoke1`) by checking the VPC list. If the VPC does not appear immediately, click the **Refresh** icon or reload the webpage to update the list.
 
-Please allow a few minutes (approximately **2-3** minutes) for the changes to reflect in the "VPC/VNets & Subnets" section.
+Please allow a few minutes (approximately **2-3** minutes) for the changes to reflect in the `VPC/VNets & Subnets` section.
 
 ```{figure} images/lab1-vpc4.png
 ---
