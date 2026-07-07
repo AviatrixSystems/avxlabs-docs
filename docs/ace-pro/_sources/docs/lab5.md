@@ -763,7 +763,11 @@ align: center
 Action Denied
 ```
 
-For more granular log data, navigate to **Security > Distributed Cloud Firewall > Monitor** and filter for '_Rule is Egress-Rule_'. This provides deeper visibility into the metadata captured by the Aviatrix Spoke Gateway, offering key insights into the behavior of triggered rules.
+For more granular log data, navigate to **Security > Distributed Cloud Firewall > Monitor** and filter for "Rule is `Egress-Rule`". This provides deeper visibility into the metadata captured by the Aviatrix Spoke Gateway, offering key insights into the behavior of triggered rules.
+
+```{tip}
+Ensure you activate the `Auto Refresh` toggle to view real-time traffic updates.
+```
 
 ```{figure} images/lab6-monitor98911.png
 ---
