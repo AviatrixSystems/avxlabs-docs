@@ -516,7 +516,7 @@ Manage SG Orchestration
 ```
 
 ```{important}
-Since SG Orchestration is now enabled for the _**aws-us-east-2-spoke1*__ VPC, you must also activate the feature within at least one policy in that same VPC. <ins>Please note that enabling the feature at the VPC level is not sufficient on its own</ins>; integration requires activation at both the VPC and the policy level.
+Since SG Orchestration is now enabled for the _**aws-us-east-2-spoke1**_ VPC, you must also activate the feature within at least one policy in that same VPC. <ins>Please note that enabling the feature at the VPC level is not sufficient on its own</ins>; integration requires activation at both the VPC and the policy level.
 ```
 
 - Navigate to **Copilot > Security > Distributed Cloud Firewall > Policies**, then edit the _`intra-icmp-bu1`_ rule by clicking the pencil icon.
