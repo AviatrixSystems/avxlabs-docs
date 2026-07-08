@@ -41,6 +41,14 @@ align: center
 Unnamed Window
 ```
 
+```{figure} images/lab11-edge3334.png
+---
+height: 400px
+align: center
+---
+Close the window
+```
+
 ```{figure} images/lab11-edge3.png
 ---
 height: 400px
