@@ -31,6 +31,16 @@ Edge Workstation credentials
 
 * Open **Visual Studio Code** located on the desktop, then click on the `Explorer` button.
 
+```{caution}
+If this window appears, please ignore the message and click **Cancel**.
+```{figure} images/lab11-edge333.png
+---
+height: 400px
+align: center
+---
+Unnamed Window
+```
+
 ```{figure} images/lab11-edge3.png
 ---
 height: 400px
