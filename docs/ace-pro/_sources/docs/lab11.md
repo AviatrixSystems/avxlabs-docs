@@ -191,7 +191,7 @@ Please be advised that the **_gcp-us-central1-spoke1-test1_** VM is now isolated
 
 ### 3.4 Connectivity Verification (ICMP) Using Gatus App
 
-Navigate to your POD Portal, locate the `Gatus widget`, and select **_aws-us-east-2-spoke1-test1_**.
+Navigate to your POD Portal, locate the `Gatus section`, and select **_aws-us-east-2-spoke1-test1_**.
 
 Insert the credentials available on your POD Portal and then click on **"Sign in"**.
 
@@ -211,7 +211,7 @@ align: center
 aws-us-east-2-spoke1-test1
 ```
 
-The **East-West** traffic is disrupted. The instance **_aws-us-east-2-spoke1-test1_** can only reach **test2** due to intra-VPC traffic, which bypasses the Aviatrix Spoke Gateway (i.e. the **Enforcement Security Point**).
+The **East-West** traffic is disrupted. The instance **_aws-us-east-2-spoke1-test1_** can only reach **test2** due to _intra-VPC_ traffic, which bypasses the Aviatrix Spoke Gateway (i.e. the **Enforcement Security Point**).
 
 ### 3.4 Connectivity Verification (ICMP) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
@@ -261,7 +261,7 @@ align: center
 aws-us-east-2-spoke1-test1
 ```
 
-The SSH test is only successful against **_aws-us-east-2-spoke1-test2_** due to intra-VPC traffic.
+The SSH test is only successful against **_aws-us-east-2-spoke1-test2_** due to _intra-VPC_ traffic.
 
 ### 3.6  Connectivity Verification (SSH) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
