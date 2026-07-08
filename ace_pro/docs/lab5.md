@@ -784,6 +784,12 @@ align: center
 Logs
 ```
 
+```{caution}
+`SNI (Server Name Indication)` is an extension of the TLS (_Transport Layer Security_) protocol that allows a client to specify the hostname it is attempting to connect to at the very start of the handshake process.
+
+In a typical HTTPS connection, the server must present its SSL/TLS certificate before the encrypted connection is fully established. However, to know which certificate to present, the server needs to know which **domain name** the client is requesting.
+```
+
 ## 10. Removal of the AWS NAT Gateway
 
 With the successful deployment of the `Aviatrix Cloud Firewall` within the Cloud Native Security Fabric (CNSF), you can now eliminate the need for the AWS NAT Gateway.
