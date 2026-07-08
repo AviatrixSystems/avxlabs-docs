@@ -1016,7 +1016,7 @@ align: center
 aws-us-east-1-transit
 ```
 
-Navigate to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"“Local AS Number”`, then click on **Save**.
+Navigate to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"“Local ASN”`, then click on **Save**.
 
 ```{figure} images/lab10-mtt2.png
 ---
@@ -1118,10 +1118,10 @@ Ping
 
 ## 14. Final Considerations
 
-Although there is now a valid route to the destination, thanks to the **MTT** feature, the pings are still failing.
+Despite the successful establishment of the route via the **MTT** feature, the destination remains unreachable via ping.
 
 ```{warning}
-The reason is that the EC2 instance **aws-us-east-1-spoke1-test2** has not been allocated to any Smart Groups yet.
+This is because the EC2 instance **aws-us-east-1-spoke1-test2** has not yet been assigned to any Smart Groups.
 ```
 
 ### 14.1 Smart Group “east1”
@@ -1142,6 +1142,7 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 - **Name**: <span style='color:#479608'>east1</span>
 - **Matches all conditions (AND):<span style='color:#479608'> Name</span>**
 - **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span>
+  
 ```{figure} images/lab10-mtt9.png
 
 ---
