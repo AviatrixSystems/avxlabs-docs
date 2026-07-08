@@ -885,7 +885,10 @@ document.write(`
 <p><span class="caption-number">Fig. 575 </span><span class="caption-text">Manage SG Orchestration</span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Since <strong>SG Orchestration</strong> is now enabled within the aws-us-east-2-spoke1 VPC, you must select a policy residing in the same VPC to ensure this functionality is enforced in conjunction with the existing rules</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Since SG Orchestration is now enabled for the <em><strong>aws-us-east-2-spoke1</strong></em> VPC, you must also select at least one policy within that same VPC. <ins>Please note that enabling the feature at the VPC level is not sufficient on its own</ins>; you must associate a policy to ensure the orchestration integrates properly with the policy’s defined behavior!</p>
+</div>
 <ul class="simple">
 <li><p>Navigate to <strong>Copilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong>, then edit the <em><code class="docutils literal notranslate"><span class="pre">intra-icmp-bu1</span></code></em> rule by clicking the pencil icon.</p></li>
 </ul>
