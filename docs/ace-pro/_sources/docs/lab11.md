@@ -1144,7 +1144,6 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 - **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test2</span>
   
 ```{figure} images/lab10-mtt9.png
-
 ---
 align: center
 ---
