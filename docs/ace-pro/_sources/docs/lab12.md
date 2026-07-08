@@ -79,7 +79,7 @@ terraform-lab folder
 ---
 align: center
 ---
-Click "Open"
+Click "Select"
 ```
 
 ```{figure} images/lab11-newedge.png
