@@ -301,7 +301,7 @@ align: center
 Diagnostic Tools
 ```
 
-Diagnostic Tools can also be launched directly from the Topology. Please select an Aviatrix Gateway (<ins>identified by the gateway icon with four arrows</ins>). After selecting the gateway, click the **wrench icon** on the right-hand side to initiate the Diagnostic Tools.
+Diagnostic Tools can also be launched directly from the **Topology**. Please select an Aviatrix Gateway (<ins>identified by the gateway icon with four arrows</ins>). After selecting the gateway, click the **wrench icon** on the right-hand side to initiate the **Diagnostic Tools**.
 
 ```{figure} images/lab1-diagnosticstools90.png
 ---
@@ -331,7 +331,7 @@ For corporate laptops, port 22 is typically blocked; therefore, <ins>please skip
 
 ### 6.1 Personal SSH client
 
-- Open your <span style='color:orange'>**SSH**</span> client and connect to the public IPs of the instances you need. You’ll find the credentials in the POD Portal.
+- Open your <span style='color:orange'>**SSH**</span> client and connect to the _public IPs_ of the instances you need. You’ll find the credentials in the POD Portal.
 
 ```{figure} images/lab1-publicip.png
 ---
