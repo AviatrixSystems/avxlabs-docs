@@ -238,7 +238,7 @@ Next, we will complete this lab by creating a VPC in AWS.
 
 ### 4.1  Create AWS VPC
 
-Navigate to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
+Navigate again to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
 
 Please verify once more whether the CIDR block `10.0.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
 
