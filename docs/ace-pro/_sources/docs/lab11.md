@@ -1392,5 +1392,5 @@ After completing this lab, the overall topology will appear as follows:
 height: 400px
 align: center
 ---
-Full-feature Aviatrix CNSF solution
+Fully realized Aviatrix CNSF solution with all functionalities activated
 ```
