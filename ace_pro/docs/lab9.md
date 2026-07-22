@@ -338,7 +338,7 @@ Let's create another **WebGroup** that will exactly match three domains:
 
 1) www.nginx.com
 2) www.ubuntu.com
-3) www.aviatrix.com
+3) www.aviatrix.ai
 
 Navigate to **CoPilot > Groups > WebGroups** and then click on the `"+ WebGroup"` button.
 
