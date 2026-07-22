@@ -835,5 +835,5 @@ Upon completing this lab, here is the overall topology you can expect to see:
 height: 400px
 align: center
 ---
-Final Topology for Lab 8
+Final Topology for Lab 8.
 ```
