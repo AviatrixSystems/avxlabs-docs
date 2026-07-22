@@ -145,7 +145,7 @@ Complete DCF Rules List
 
 ### 3.3 Removal of the Connection Policy
 
-The **_gcp-us-central1-spoke1_** VPC must stay isolated, as its Spoke gateway acts as the _landing Spoke_ for the `Site-to-Cloud` connection with the partner router.
+The **_gcp-us-central1-spoke1_** VPC must stay isolated, as its Spoke gateway acts as the _Landing Spoke_ for the `Site-to-Cloud` connection with the partner router.
 
 ```{figure} images/lab10-landingnew.png
 ---
@@ -1088,7 +1088,7 @@ align: center
 Click on `"+ 228 more"`
 ```
 
-## 13. The last DCF rule
+## 13. The DCF rule for East-1
 
 ### 13.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabling MTT
 
@@ -1262,8 +1262,7 @@ Final Topology
 
 ## 15. Spoke to Spoke Attachment
 
-Since Distributed Cloud Firewall is enabled, the owner of **_azure-west-us-spoke2-test1_** wants to directly communicate with **_azure-west-us-spoke1-test1_**, bypassing the NGFW for traffic from the VNet.
-sent to the NGFW, first.
+Since Distributed Cloud Firewall is enabled, the owner of **_azure-west-us-spoke2-test1_** wants to communicate directly with **_azure-west-us-spoke1-test1_**. <ins>Because security enforcement now takes place on the Spokes</ins>, traffic can bypass the Transit gateway and no longer needs to go through the NGFW connected to it.
 
 ```{figure} images/lab10-spoke2spoke01.png
 ---

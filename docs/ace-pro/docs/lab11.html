@@ -400,7 +400,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-the-mtt">12. Verification of the MTT</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-last-dcf-rule">13. The last DCF rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dcf-rule-for-east-1">13. The DCF rule for East-1</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icmp-verification-traffic-between-azure-and-aws-using-gatus-app-after-enabling-mtt">13.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabling MTT</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icmp-verification-between-azure-and-aws-using-ssh-client-after-enabling-mtt-bonus">13.2 ICMP Verification between Azure and AWS Using SSH Client after enabling MTT<span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
@@ -559,7 +559,7 @@ document.write(`
 </section>
 <section id="removal-of-the-connection-policy">
 <h3>3.3 Removal of the Connection Policy<a class="headerlink" href="#removal-of-the-connection-policy" title="Link to this heading">#</a></h3>
-<p>The <strong><em>gcp-us-central1-spoke1</em></strong> VPC must stay isolated, as its Spoke gateway acts as the <em>landing Spoke</em> for the <code class="docutils literal notranslate"><span class="pre">Site-to-Cloud</span></code> connection with the partner router.</p>
+<p>The <strong><em>gcp-us-central1-spoke1</em></strong> VPC must stay isolated, as its Spoke gateway acts as the <em>Landing Spoke</em> for the <code class="docutils literal notranslate"><span class="pre">Site-to-Cloud</span></code> connection with the partner router.</p>
 <figure class="align-center" id="id12">
 <a class="reference internal image-reference" href="../_images/lab10-landingnew.png"><img alt="../_images/lab10-landingnew.png" src="../_images/lab10-landingnew.png" style="height: 400px;" />
 </a>
@@ -1386,8 +1386,8 @@ document.write(`
 <p>Click on <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">228</span> <span class="pre">more&quot;</span></code></p>
 </div>
 </section>
-<section id="the-last-dcf-rule">
-<h2>13. The last DCF rule<a class="headerlink" href="#the-last-dcf-rule" title="Link to this heading">#</a></h2>
+<section id="the-dcf-rule-for-east-1">
+<h2>13. The DCF rule for East-1<a class="headerlink" href="#the-dcf-rule-for-east-1" title="Link to this heading">#</a></h2>
 <section id="icmp-verification-traffic-between-azure-and-aws-using-gatus-app-after-enabling-mtt">
 <h3>13.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabling MTT<a class="headerlink" href="#icmp-verification-traffic-between-azure-and-aws-using-gatus-app-after-enabling-mtt" title="Link to this heading">#</a></h3>
 <p>Open the Gatus App on <strong><em>azure-west-us-spoke2-test1</em></strong> and verify the ICMP Traffic.</p>
@@ -1544,8 +1544,7 @@ document.write(`
 </section>
 <section id="spoke-to-spoke-attachment">
 <h2>15. Spoke to Spoke Attachment<a class="headerlink" href="#spoke-to-spoke-attachment" title="Link to this heading">#</a></h2>
-<p>Since Distributed Cloud Firewall is enabled, the owner of <strong><em>azure-west-us-spoke2-test1</em></strong> wants to directly communicate with <strong><em>azure-west-us-spoke1-test1</em></strong>, bypassing the NGFW for traffic from the VNet.
-sent to the NGFW, first.</p>
+<p>Since Distributed Cloud Firewall is enabled, the owner of <strong><em>azure-west-us-spoke2-test1</em></strong> wants to communicate directly with <strong><em>azure-west-us-spoke1-test1</em></strong>. <ins>Because security enforcement now takes place on the Spokes</ins>, traffic can bypass the Transit gateway and no longer needs to go through the NGFW connected to it.</p>
 <figure class="align-center" id="id99">
 <img alt="../_images/lab10-spoke2spoke01.png" src="../_images/lab10-spoke2spoke01.png" />
 <figcaption>
@@ -1774,7 +1773,7 @@ sent to the NGFW, first.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-the-mtt">12. Verification of the MTT</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-last-dcf-rule">13. The last DCF rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dcf-rule-for-east-1">13. The DCF rule for East-1</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icmp-verification-traffic-between-azure-and-aws-using-gatus-app-after-enabling-mtt">13.1 ICMP Verification  traffic between Azure and AWS Using Gatus App after enabling MTT</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icmp-verification-between-azure-and-aws-using-ssh-client-after-enabling-mtt-bonus">13.2 ICMP Verification between Azure and AWS Using SSH Client after enabling MTT<span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
