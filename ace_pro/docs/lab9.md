@@ -643,7 +643,7 @@ SSH in to aws-us-east-1-spoke1-test2
 height: 400px
 align: center
 ---
-SSH in to test1 from test2
+SSH from test2 into test1
 ```
 
 #### 8.2.2 Execution of the curl commands
