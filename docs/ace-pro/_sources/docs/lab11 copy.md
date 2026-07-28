@@ -1385,6 +1385,10 @@ Deletion of a peering
 `With MTT election`: Only 3 peerings are needed. The MTT gateway acts as a central hub, so the three non-MTT gateways each create one peering with the MTT gateway, eliminating the need for interconnections among the non-MTT gateways.
 ```
 
+## 17. Mapped NAT & DCF
+
+Now that `MTT` is enabled on the **_aws-us-east-2-transit_** Gateway, <ins>every other Transit Gateway must have a single peering with the **MTT Gateway**</ins>; therefore the peering between the **_gcp-us-central1-transit_** Gateway and the **_azure-west-us-transit_** Gateway can be removed.
+
 After completing this lab, the overall topology will appear as follows:
 
 ```{figure} images/lab10-lastdrawing.png

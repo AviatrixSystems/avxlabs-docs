@@ -421,6 +421,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decommissioning-of-a-peering">16. Decommissioning of a peering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapped-nat-dcf">17. Mapped NAT &amp; DCF</a></li>
 </ul>
             </nav>
         </div>
@@ -1644,6 +1645,10 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">Full</span> <span class="pre">mesh</span> <span class="pre">calculation</span></code>: For N = 4 Transit Gateways, the required peerings are <code class="docutils literal notranslate"><span class="pre">N(N−1)/2</span></code> = 4×3/2 = 6.</p>
 <p><code class="docutils literal notranslate"><span class="pre">With</span> <span class="pre">MTT</span> <span class="pre">election</span></code>: Only 3 peerings are needed. The MTT gateway acts as a central hub, so the three non-MTT gateways each create one peering with the MTT gateway, eliminating the need for interconnections among the non-MTT gateways.</p>
 </div>
+</section>
+<section id="mapped-nat-dcf">
+<h2>17. Mapped NAT &amp; DCF<a class="headerlink" href="#mapped-nat-dcf" title="Link to this heading">#</a></h2>
+<p>Now that <code class="docutils literal notranslate"><span class="pre">MTT</span></code> is enabled on the <strong><em>aws-us-east-2-transit</em></strong> Gateway, <ins>every other Transit Gateway must have a single peering with the <strong>MTT Gateway</strong></ins>; therefore the peering between the <strong><em>gcp-us-central1-transit</em></strong> Gateway and the <strong><em>azure-west-us-transit</em></strong> Gateway can be removed.</p>
 <p>After completing this lab, the overall topology will appear as follows:</p>
 <figure class="align-center" id="id110">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing.png"><img alt="../_images/lab10-lastdrawing.png" src="../_images/lab10-lastdrawing.png" style="height: 400px;" />
@@ -1776,6 +1781,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decommissioning-of-a-peering">16. Decommissioning of a peering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapped-nat-dcf">17. Mapped NAT &amp; DCF</a></li>
 </ul>
   </nav></div>
 
