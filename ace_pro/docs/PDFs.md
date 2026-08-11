@@ -14,7 +14,7 @@ Click this link to {Download}`ACE Prof Mod04 - Network Segmentation <files/ACE P
 
 Click this link to {Download}`ACE Prof Mod05 - High-Performance Encryption <files/ACE Prof Mod05 - High-Performance Encryption.pdf>`
 
-Click this link to {Download}`ACE Prof Mod06 - ActiveMesh <files/ACE Prof Mod06 - ActiveMesh.pdf>`
+Click this link to {Download}`ACE Prof Mod06 - ActiveMesh, Failover & Control Plane <files/ACE Prof Mod06 - ActiveMesh, Failover & Control Plane.pdf>`
 
 Click this link to {Download}`ACE Prof Mod07 - Security <files/ACE Prof Mod07 - Security.pdf>`
 
@@ -27,3 +27,5 @@ Click this link to {Download}`ACE Prof Mod10 - Threat Preventation and CostIQ <f
 Click this link to {Download}`ACE Prof Mod11 - Distributed Cloud Firewall <files/ACE Prof Mod11 - Distributed Cloud Firewall.pdf>`
 
 Click this link to {Download}`ACE Prof Mod12 - Iac and Network Insights API <files/ACE Prof Mod12 - Iac and Network Insights API.pdf>`
+
+Click this link to {Download}`ACE Prof Mod13 - User VPN <files/ACE Prof Mod13 - User VPN.pdf>`
