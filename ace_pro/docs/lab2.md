@@ -478,7 +478,7 @@ Only one Spoke Gateway will be deployed in VPC **aws-us-east2-spoke1**.
 - **Account:** <span style='color:#479608'>aws-account</span>
 - **Region:** <span style='color:#479608'>us-east-2 (Ohio)</span>
 - **VPC ID:** <span style='color:#479608'>aws-us-east-2-spoke1 (Make sure you don't select aws-us-east-2-**transit** VPC)</span>
-- **Instance Size:** <span style='color:#479608'>t3.medium</span>
+- **Instance Size:** <span style='color:#479608'>c6in.large</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
 - **Attach to Subnet:** <span style='color:#479608'>10.0.1.96/27 - aws-us-east-2-spoke1-Public-1-us-east-2a</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>
@@ -507,7 +507,7 @@ Only one Spoke Gateway will be deployed in VNet **azure-west-us-spoke1**.
 - **Account:** <span style='color:#479608'>azure-account</span>
 - **Region:** <span style='color:#479608'>West US</span>
 - **VNet:** <span style='color:#479608'>azure-west-us-spoke1 (Make sure you don't select azure-west-us-**spoke2** VPC)</span>
-- **Instance Size:** <span style='color:#479608'>Standard_B2ms</span>
+- **Instance Size:** <span style='color:#479608'>Standard_D4s_v5</span>
 - **High Performance Encryption:** <span style='color:#479608'>**Off**</span>
 - **Attach to Subnet:** <span style='color:#479608'>192.168.1.0/28 - azure-west-us-spoke1-Public-gateway-subnet-1</span>
 - **Public IP:** <span style='color:#479608'>Allocate New Static Public IP</span>

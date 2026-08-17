@@ -389,20 +389,20 @@ document.write(`
 <section id="code">
 <h2>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
 <p>Let’s take a look at the code behind the apply. Looking at the root <code class="docutils literal notranslate"><span class="pre">main.tf</span></code> you can see that the <code class="docutils literal notranslate"><span class="pre">apply_custom_spoke_routing</span></code> variable is passed to the <code class="docutils literal notranslate"><span class="pre">mcna</span></code> module.</p>
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;mcna&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">"mcna"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">count</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">var.deploy_mcna</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
-<span class="w">  </span><span class="na">source</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;./mcna&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"./mcna"</span>
 <span class="w">  </span><span class="na">backbone</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nv">local.backbone</span>
 <span class="w">  </span><span class="na">apply_custom_spoke_routing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.apply_custom_spoke_routing</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Inside the local <code class="docutils literal notranslate"><span class="pre">mcna</span></code> module, you’ll see the aws spoke affected by the that variables boolean state:</p>
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;spoke_aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.6.3&quot;</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">"spoke_aws"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aviatrix-modules/mc-spoke/aviatrix"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.6.3"</span>
 <span class="w">  </span><span class="p">...</span>
-<span class="w">  </span><span class="na">included_advertised_spoke_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.apply_custom_spoke_routing</span><span class="w"> </span><span class="p">?</span><span class="s2">&quot;172.16.0.1/32, 10.1.2.0/24&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kt">null</span>
+<span class="w">  </span><span class="na">included_advertised_spoke_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.apply_custom_spoke_routing</span><span class="w"> </span><span class="p">?</span><span class="s2">"172.16.0.1/32, 10.1.2.0/24"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kt">null</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
