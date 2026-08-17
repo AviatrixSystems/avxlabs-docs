@@ -370,7 +370,7 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway&quot;</span><span class="w"> </span><span class="nv">&quot;azure_transit&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">"aviatrix_transit_gateway"</span><span class="w"> </span><span class="nv">"azure_transit"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">..</span>
 <span class="w">  </span><span class="na">enable_learned_cidrs_approval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="p">}</span>
@@ -418,17 +418,17 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_external_device_conn&quot;</span><span class="w"> </span><span class="nv">&quot;datacenter&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">"aviatrix_transit_external_device_conn"</span><span class="w"> </span><span class="nv">"datacenter"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">vpc_id</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_transit_gateway.azure_transit.vpc_id</span>
-<span class="w">  </span><span class="na">connection_name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;azure-to-on-prem&quot;</span>
+<span class="w">  </span><span class="na">connection_name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"azure-to-on-prem"</span>
 <span class="w">  </span><span class="na">gw_name</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_transit_gateway.azure_transit.gw_name</span>
-<span class="w">  </span><span class="na">connection_type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bgp&quot;</span>
+<span class="w">  </span><span class="na">connection_type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"bgp"</span>
 <span class="w">  </span><span class="na">bgp_local_as_num</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">65</span><span class="p">[</span><span class="err">pod</span><span class="c1">#] # _For Pods 1-9, double pad the pod# with an additional 0 (ie. 65004). For Pods 10-99 single pad (ie. 65010). For Pods &gt; 100, no padding is needed (ie. 65100)_</span>
 <span class="w">  </span><span class="na">bgp_remote_as_num</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="m">65000</span>
 <span class="w">  </span><span class="na">remote_gateway_ip</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="c1"># insert resolved (comma-separated) onprem and onprem-ha domains</span>
-<span class="w">  </span><span class="na">pre_shared_key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mapleleafs&quot;</span>
-<span class="w">  </span><span class="na">local_tunnel_cidr</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;169.254.100.2/30,169.254.101.2/30&quot;</span>
-<span class="w">  </span><span class="na">remote_tunnel_cidr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;169.254.100.1/30,169.254.101.1/30&quot;</span>
+<span class="w">  </span><span class="na">pre_shared_key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"mapleleafs"</span>
+<span class="w">  </span><span class="na">local_tunnel_cidr</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"169.254.100.2/30,169.254.101.2/30"</span>
+<span class="w">  </span><span class="na">remote_tunnel_cidr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"169.254.100.1/30,169.254.101.1/30"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -451,9 +451,9 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway&quot;</span><span class="w"> </span><span class="nv">&quot;azure_transit&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">"aviatrix_transit_gateway"</span><span class="w"> </span><span class="nv">"azure_transit"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">..</span>
-<span class="w">  </span><span class="na">approved_learned_cidrs</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;172.16.0.0/16&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">approved_learned_cidrs</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"172.16.0.0/16"</span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>

@@ -408,9 +408,9 @@ document.write(`
 <section id="code">
 <h2>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
 <p>Let’s take a look at the code behind the apply. Looking at the root <code class="docutils literal notranslate"><span class="pre">main.tf</span></code> you can see that the mcna module was executed because <code class="docutils literal notranslate"><span class="pre">deploy_mcna</span></code> was set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;mcna&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">"mcna"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">count</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">var.deploy_mcna</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
-<span class="w">  </span><span class="na">source</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;./mcna&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"./mcna"</span>
 <span class="w">  </span><span class="na">backbone</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nv">local.backbone</span>
 <span class="w">  </span><span class="na">apply_custom_spoke_routing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.apply_custom_spoke_routing</span>
 <span class="p">}</span>
@@ -420,26 +420,26 @@ document.write(`
 <div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="nb">locals</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nb">backbone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">transit_name</span><span class="w">                                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transit-aws&quot;</span>
-<span class="w">      </span><span class="na">transit_account</span><span class="w">                              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
-<span class="w">      </span><span class="na">transit_cloud</span><span class="w">                                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws&quot;</span>
-<span class="w">      </span><span class="na">transit_instance_size</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;c5n.xlarge&quot;</span>
-<span class="w">      </span><span class="na">transit_cidr</span><span class="w">                                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.1.0.0/23&quot;</span>
-<span class="w">      </span><span class="na">transit_region_name</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<span class="w">      </span><span class="na">transit_name</span><span class="w">                                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"transit-aws"</span>
+<span class="w">      </span><span class="na">transit_account</span><span class="w">                              </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-account"</span>
+<span class="w">      </span><span class="na">transit_cloud</span><span class="w">                                </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws"</span>
+<span class="w">      </span><span class="na">transit_instance_size</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">"c5n.xlarge"</span>
+<span class="w">      </span><span class="na">transit_cidr</span><span class="w">                                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"10.1.0.0/23"</span>
+<span class="w">      </span><span class="na">transit_region_name</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 <span class="w">      </span><span class="na">transit_asn</span><span class="w">                                  </span><span class="o">=</span><span class="w"> </span><span class="m">65101</span>
 <span class="w">      </span><span class="na">firenet</span><span class="w">                                      </span><span class="o">=</span><span class="w"> </span><span class="nv">var.enable_firenet</span>
-<span class="w">      </span><span class="na">firenet_firewall_image</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Palo Alto Networks VM-Series Next-Generation Firewall (BYOL)&quot;</span>
-<span class="w">      </span><span class="na">firenet_bootstrap_bucket_name_1</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.pod_number}.bootstrap.aviatrixlab.com&quot;</span>
-<span class="w">      </span><span class="na">firenet_iam_role_1</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aviatrix-bootstrap-VM-S3-role&quot;</span>
+<span class="w">      </span><span class="na">firenet_firewall_image</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">"Palo Alto Networks VM-Series Next-Generation Firewall (BYOL)"</span>
+<span class="w">      </span><span class="na">firenet_bootstrap_bucket_name_1</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.pod_number}.bootstrap.aviatrixlab.com"</span>
+<span class="w">      </span><span class="na">firenet_iam_role_1</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">"aviatrix-bootstrap-VM-S3-role"</span>
 <span class="w">      </span><span class="na">firenet_inspection_enabled</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">      </span><span class="na">firenet_keep_alive_via_lan_interface_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nb">azure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">transit_name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transit-azure&quot;</span>
-<span class="w">      </span><span class="na">transit_account</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;azure-account&quot;</span>
-<span class="w">      </span><span class="na">transit_cloud</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;azure&quot;</span>
-<span class="w">      </span><span class="na">transit_cidr</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.2.0.0/23&quot;</span>
-<span class="w">      </span><span class="na">transit_region_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;West US&quot;</span>
+<span class="w">      </span><span class="na">transit_name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"transit-azure"</span>
+<span class="w">      </span><span class="na">transit_account</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"azure-account"</span>
+<span class="w">      </span><span class="na">transit_cloud</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"azure"</span>
+<span class="w">      </span><span class="na">transit_cidr</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"10.2.0.0/23"</span>
+<span class="w">      </span><span class="na">transit_region_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"West US"</span>
 <span class="w">      </span><span class="na">transit_asn</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="m">65102</span>
 <span class="w">      </span><span class="na">transit_az_support</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 <span class="w">    </span><span class="p">},</span>

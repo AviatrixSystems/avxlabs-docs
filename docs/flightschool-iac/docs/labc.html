@@ -405,22 +405,22 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;aws_vpc&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">"aviatrix_vpc"</span><span class="w"> </span><span class="nv">"aws_vpc"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">cloud_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<span class="w">    </span><span class="na">account_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
-<span class="w">    </span><span class="na">region</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eu-central-1&quot;</span>
-<span class="w">    </span><span class="na">name</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-transit&quot;</span>
-<span class="w">    </span><span class="na">cidr</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.50.40.0/23&quot;</span>
+<span class="w">    </span><span class="na">account_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-account"</span>
+<span class="w">    </span><span class="na">region</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"eu-central-1"</span>
+<span class="w">    </span><span class="na">name</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-transit"</span>
+<span class="w">    </span><span class="na">cidr</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"10.50.40.0/23"</span>
 <span class="w">    </span><span class="na">aviatrix_firenet_vpc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway&quot;</span><span class="w"> </span><span class="nv">&quot;aws_transit_gateway&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">resource</span><span class="w"> </span><span class="nc">"aviatrix_transit_gateway"</span><span class="w"> </span><span class="nv">"aws_transit_gateway"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">cloud_type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<span class="w">    </span><span class="na">account_name</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
-<span class="w">    </span><span class="na">gw_name</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-transit&quot;</span>
+<span class="w">    </span><span class="na">account_name</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-account"</span>
+<span class="w">    </span><span class="na">gw_name</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-transit"</span>
 <span class="w">    </span><span class="na">vpc_id</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_vpc.aws_vpc.vpc_id</span>
-<span class="w">    </span><span class="na">vpc_reg</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eu-central-1&quot;</span>
-<span class="w">    </span><span class="na">gw_size</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
+<span class="w">    </span><span class="na">vpc_reg</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"eu-central-1"</span>
+<span class="w">    </span><span class="na">gw_size</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"t2.micro"</span>
 <span class="w">    </span><span class="na">subnet</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_vpc.aws_vpc.public_subnets[0].cidr</span>
 <span class="w">    </span><span class="na">connected_transit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
@@ -446,15 +446,15 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;aws_transit&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit/aviatrix&quot;</span>
-<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2.3.0&quot;</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kr">module</span><span class="w"> </span><span class="nv">"aws_transit"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aviatrix-modules/mc-transit/aviatrix"</span>
+<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2.3.0"</span>
 
-<span class="w">    </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-transit&quot;</span>
-<span class="w">    </span><span class="na">cloud</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws&quot;</span>
-<span class="w">    </span><span class="na">region</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eu-central-1&quot;</span>
-<span class="w">    </span><span class="na">cidr</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.50.40.0/23&quot;</span>
-<span class="w">    </span><span class="na">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
+<span class="w">    </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-transit"</span>
+<span class="w">    </span><span class="na">cloud</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws"</span>
+<span class="w">    </span><span class="na">region</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"eu-central-1"</span>
+<span class="w">    </span><span class="na">cidr</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"10.50.40.0/23"</span>
+<span class="w">    </span><span class="na">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-account"</span>
 <span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
@@ -501,15 +501,15 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;gcp_transit&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit/aviatrix&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2.3.0&quot;</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">"gcp_transit"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aviatrix-modules/mc-transit/aviatrix"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2.3.0"</span>
 
-<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-transit&quot;</span>
-<span class="w">  </span><span class="na">cloud</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp&quot;</span>
-<span class="w">  </span><span class="na">region</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;asia-southeast1&quot;</span>
-<span class="w">  </span><span class="na">cidr</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.50.60.0/23&quot;</span>
-<span class="w">  </span><span class="na">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-account&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"gcp-transit"</span>
+<span class="w">  </span><span class="na">cloud</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"gcp"</span>
+<span class="w">  </span><span class="na">region</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"asia-southeast1"</span>
+<span class="w">  </span><span class="na">cidr</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"10.50.60.0/23"</span>
+<span class="w">  </span><span class="na">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"gcp-account"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -531,17 +531,17 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway_peering&quot;</span><span class="w"> </span><span class="nv">&quot;aws_azure&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">"aviatrix_transit_gateway_peering"</span><span class="w"> </span><span class="nv">"aws_azure"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">transit_gateway_name1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.aws_transit.transit_gateway.gw_name</span>
 <span class="w">  </span><span class="na">transit_gateway_name2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_transit_gateway.azure_transit.gw_name</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway_peering&quot;</span><span class="w"> </span><span class="nv">&quot;gcp_azure&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aviatrix_transit_gateway_peering"</span><span class="w"> </span><span class="nv">"gcp_azure"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">transit_gateway_name1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.gcp_transit.transit_gateway.gw_name</span>
 <span class="w">  </span><span class="na">transit_gateway_name2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_transit_gateway.azure_transit.gw_name</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aviatrix_transit_gateway_peering&quot;</span><span class="w"> </span><span class="nv">&quot;aws_gcp&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aviatrix_transit_gateway_peering"</span><span class="w"> </span><span class="nv">"aws_gcp"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">transit_gateway_name1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.aws_transit.transit_gateway.gw_name</span>
 <span class="w">  </span><span class="na">transit_gateway_name2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.gcp_transit.transit_gateway.gw_name</span>
 <span class="p">}</span>
@@ -562,9 +562,9 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;transit_peering&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-transit-peering/aviatrix&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.8&quot;</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">"transit_peering"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aviatrix-modules/mc-transit-peering/aviatrix"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.0.8"</span>
 
 <span class="w">  </span><span class="na">transit_gateways</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="nv">module.aws_transit.transit_gateway.gw_name</span><span class="p">,</span>
@@ -591,20 +591,20 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;aws_dev&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-dev&quot;</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">data</span><span class="w"> </span><span class="nc">"aviatrix_vpc"</span><span class="w"> </span><span class="nv">"aws_dev"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-dev"</span>
 <span class="p">}</span>
 
-<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;aws_prod&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-prod&quot;</span>
+<span class="kr">data</span><span class="w"> </span><span class="nc">"aviatrix_vpc"</span><span class="w"> </span><span class="nv">"aws_prod"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-prod"</span>
 <span class="p">}</span>
 
-<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;azure_dev&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;azure-dev&quot;</span>
+<span class="kr">data</span><span class="w"> </span><span class="nc">"aviatrix_vpc"</span><span class="w"> </span><span class="nv">"azure_dev"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"azure-dev"</span>
 <span class="p">}</span>
 
-<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aviatrix_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;gcp_dev&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-dev&quot;</span>
+<span class="kr">data</span><span class="w"> </span><span class="nc">"aviatrix_vpc"</span><span class="w"> </span><span class="nv">"gcp_dev"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"gcp-dev"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -747,14 +747,14 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;aws_dev&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.4.1&quot;</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">"aws_dev"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aviatrix-modules/mc-spoke/aviatrix"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.4.1"</span>
 
-<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AWS&quot;</span>
-<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-dev&quot;</span>
+<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"AWS"</span>
+<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-dev"</span>
 <span class="w">  </span><span class="na">region</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.aws_dev.region</span>
-<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
+<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-account"</span>
 <span class="w">  </span><span class="na">ha_gw</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 <span class="w">  </span><span class="na">transit_gw</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">module.aws_transit.transit_gateway.gw_name</span>
 <span class="w">  </span><span class="na">use_existing_vpc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
@@ -762,14 +762,14 @@ document.write(`
 <span class="w">  </span><span class="na">gw_subnet</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.aws_dev.public_subnets[0].cidr</span>
 <span class="p">}</span>
 
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;aws_prod&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.4.1&quot;</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"aws_prod"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aviatrix-modules/mc-spoke/aviatrix"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.4.1"</span>
 
-<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AWS&quot;</span>
-<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-prod&quot;</span>
+<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"AWS"</span>
+<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-prod"</span>
 <span class="w">  </span><span class="na">region</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.aws_prod.region</span>
-<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
+<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-account"</span>
 <span class="w">  </span><span class="na">ha_gw</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 <span class="w">  </span><span class="na">transit_gw</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">module.aws_transit.transit_gateway.gw_name</span>
 <span class="w">  </span><span class="na">use_existing_vpc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
@@ -777,14 +777,14 @@ document.write(`
 <span class="w">  </span><span class="na">gw_subnet</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.aws_prod.public_subnets[0].cidr</span>
 <span class="p">}</span>
 
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;azure_dev&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.4.1&quot;</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"azure_dev"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aviatrix-modules/mc-spoke/aviatrix"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.4.1"</span>
 
-<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Azure&quot;</span>
-<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;azure-dev&quot;</span>
+<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"Azure"</span>
+<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">"azure-dev"</span>
 <span class="w">  </span><span class="na">region</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.azure_dev.region</span>
-<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;azure-account&quot;</span>
+<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"azure-account"</span>
 <span class="w">  </span><span class="na">ha_gw</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 <span class="w">  </span><span class="na">transit_gw</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aviatrix_transit_gateway.azure_transit.gw_name</span>
 <span class="w">  </span><span class="na">use_existing_vpc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
@@ -792,14 +792,14 @@ document.write(`
 <span class="w">  </span><span class="na">gw_subnet</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.azure_dev.public_subnets[0].cidr</span>
 <span class="p">}</span>
 
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;gcp_dev&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aviatrix-modules/mc-spoke/aviatrix&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.4.1&quot;</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"gcp_dev"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aviatrix-modules/mc-spoke/aviatrix"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.4.1"</span>
 
-<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GCP&quot;</span>
-<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-dev&quot;</span>
+<span class="w">  </span><span class="na">cloud</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"GCP"</span>
+<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">"gcp-dev"</span>
 <span class="w">  </span><span class="na">region</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_vpc.gcp_dev.region</span>
-<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcp-account&quot;</span>
+<span class="w">  </span><span class="na">account</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"gcp-account"</span>
 <span class="w">  </span><span class="na">ha_gw</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 <span class="w">  </span><span class="na">transit_gw</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">module.gcp_transit.transit_gateway.gw_name</span>
 <span class="w">  </span><span class="na">use_existing_vpc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>

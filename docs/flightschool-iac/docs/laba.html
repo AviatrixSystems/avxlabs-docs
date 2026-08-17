@@ -442,8 +442,8 @@ Create a file called <a class="reference external" href="http://versions.tf">ver
 <div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">aviatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AviatrixSystems/aviatrix&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt;2.24.0&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"AviatrixSystems/aviatrix"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~&gt;2.24.0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -474,31 +474,31 @@ Create a file called <a class="reference external" href="http://versions.tf">ver
 </table>
 </div>
 <p>Now we will use these credentials to set up our Terraform provider configuration. There are a couple of different ways to achieve this as you can see on our <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs#authentication">documentation page</a>. In a CI/CD pipeline deployment, I would typically advise using the <a class="reference external" href="https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs#environment-variables">environmental variables</a> as that way you don’t have to store secrets in your code. But today we’ll use a <a class="reference external" href="https://www.terraform.io/language/values/variables#variable-definitions-tfvars-files">tfvars file</a>. Create the file <code class="docutils literal notranslate"><span class="pre">terraform.tfvars</span></code> in your project folder and add the credentials you just created:</p>
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="na">controller_ip</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;pod-hostname, e.g. ctrl.pod50.aviatrixlab.com&gt;&quot;</span>
-<span class="na">controller_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;username&gt;&quot;</span>
-<span class="na">controller_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;password&gt;&quot;</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="na">controller_ip</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;pod-hostname, e.g. ctrl.pod50.aviatrixlab.com&gt;"</span>
+<span class="na">controller_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;username&gt;"</span>
+<span class="na">controller_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;password&gt;"</span>
 </pre></div>
 </div>
 <p>Make sure to never add this file to your git repo when you are using this method and storing code in a repo (e.g. through <code class="docutils literal notranslate"><span class="pre">gitignore</span></code>).</p>
 <p>In order for the provider to use these credentials, we need to define the provider configuration and link to these credentials through variables. Create a file <code class="docutils literal notranslate"><span class="pre">variables.tf</span></code> and add the variable definitions in like this:</p>
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;controller_ip&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">variable</span><span class="w"> </span><span class="nv">"controller_ip"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;The IP or hostname of the Aviatrix controller we want to interact with&quot;</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The IP or hostname of the Aviatrix controller we want to interact with"</span>
 <span class="p">}</span>
 
-<span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;controller_username&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">variable</span><span class="w"> </span><span class="nv">"controller_username"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;The Username for the Aviatrix controller we want to interact with&quot;</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Username for the Aviatrix controller we want to interact with"</span>
 <span class="p">}</span>
 
-<span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;controller_password&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">variable</span><span class="w"> </span><span class="nv">"controller_password"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;The password for the Aviatrix controller we want to interact with&quot;</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The password for the Aviatrix controller we want to interact with"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Now let’s configure the Aviatrix terraform provider in a new file called <code class="docutils literal notranslate"><span class="pre">providers.tf</span></code> by referring to the variables we just declared:</p>
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aviatrix&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">provider</span><span class="w"> </span><span class="nv">"aviatrix"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">controller_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.controller_ip</span>
 <span class="w">  </span><span class="na">username</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">var.controller_username</span>
 <span class="w">  </span><span class="na">password</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">var.controller_password</span>
@@ -506,11 +506,11 @@ Create a file called <a class="reference external" href="http://versions.tf">ver
 </pre></div>
 </div>
 <p>To test our provider configuration, lets test if we can query information from the controller using a <a class="reference external" href="https://www.terraform.io/language/data-sources">data source</a>. Let’s create a new file which will hold our actual code later. Name it <code class="docutils literal notranslate"><span class="pre">main.tf</span></code> and add the aviatrix_account data source to query information about one of the access accounts we noted down in lab A.1 and output it to console using an output.</p>
-<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aviatrix_account&quot;</span><span class="w"> </span><span class="nv">&quot;aws_account&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">account_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-account&quot;</span>
+<div class="highlight-terraform notranslate"><div class="highlight"><pre><span></span><span class="kr">data</span><span class="w"> </span><span class="nc">"aviatrix_account"</span><span class="w"> </span><span class="nv">"aws_account"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">account_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-account"</span>
 <span class="p">}</span>
 
-<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;aws_account&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">"aws_account"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aviatrix_account.aws_account</span>
 <span class="p">}</span>
 </pre></div>
