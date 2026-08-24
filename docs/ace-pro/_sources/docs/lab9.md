@@ -704,6 +704,17 @@ align: center
 Logs
 ```
 
+```{caution}
+Please note that filtering by the rule `PSF-Deny-Rule-from-malicious-ips` (which blocks traffic generated from the malicious IPs) while also filtering by the specific malicious IP address used in this lab might yield 0 results.
+
+This depends entirely on whether that malicious IP happened to be actively sending traffic to the workload in your pod at the exact moment you applied the filter.
+```{figure} images/lab96-newrule3245.png
+---
+align: center
+---
+Zero outcomes
+```
+
 After completing this lab, the overall topology will be as follows:
 
 ```{figure} images/lab9-finaltopologyy.png
