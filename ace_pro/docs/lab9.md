@@ -706,9 +706,9 @@ Logs
 ```
 
 ```{caution}
-Please note that filtering by the rule `PSF-Deny-Rule-from-malicious-ips` (which blocks traffic generated from the malicious IPs) while also filtering by the specific malicious IP address used in this lab might yield 0 results.
+Please note that filtering by the rule `PSF-Deny-Rule-from-malicious-ips` (which blocks traffic generated from the malicious IPs) while also filtering by the specific malicious IP address used in this lab might yield **zero results**.
 
-This depends entirely on whether that malicious IP happened to be actively sending traffic to the workload in your pod at the exact moment you applied the filter.
+This depends entirely on whether that IP was actively sending traffic to your pod's workload at the moment you applied the filter.
 ```{figure} images/lab96-newrule3245.png
 ---
 height: 400px
