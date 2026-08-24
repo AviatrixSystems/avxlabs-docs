@@ -405,7 +405,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icmp-verification-between-azure-and-aws-using-ssh-client-after-enabling-mtt-bonus">13.2 ICMP Verification between Azure and AWS Using SSH Client after enabling MTT<span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-considerations">14. Final Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-from-bu2-to-aws-us-east-1-region">14. Inter-rule from BU2 to AWS US-EAST-1 region</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-east1">14.1 Smart Group “east1”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">14.2 Create an inter-rule that allows ICMP from bu2 towards east1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-bu2-and-east1">14.3 Verify connectivity between bu2 and east1</a><ul class="nav section-nav flex-column">
@@ -416,11 +416,12 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spoke-to-spoke-attachment">15. Spoke to Spoke Attachment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spoke-to-spoke-attachment">15.1 Creating a Spoke to Spoke Attachment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-from-aws-us-east-1-spoke1-to-bu1">16. Inter-rule from aws-us-east-1-spoke1 to BU1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spoke-to-spoke-attachment">16. Spoke to Spoke Attachment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spoke-to-spoke-attachment">16.1 Creating a Spoke to Spoke Attachment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decommissioning-of-a-peering">16. Decommissioning of a peering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decommissioning-of-a-peering">17. Decommissioning of a peering</a></li>
 </ul>
             </nav>
         </div>
@@ -706,8 +707,8 @@ document.write(`
 <p>Enter the following parameters:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>intra-icmp-bu1</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>bu1</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>bu1</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>bu1</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>bu1</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>ICMP</span></p></li>
 <li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
@@ -739,8 +740,8 @@ document.write(`
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>intra-icmp-bu2</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>bu2</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>bu2</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>bu2</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>bu2</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>ICMP</span></p></li>
 <li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
@@ -1002,8 +1003,8 @@ document.write(`
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>intra-ssh-bu1</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>bu1</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>bu1</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>bu1</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>bu1</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
 <li><p><strong>Port</strong>: <span style='color:#479608'>22</span></p></li>
 <li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
@@ -1148,8 +1149,8 @@ document.write(`
 <p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">New</span> <span class="pre">Rule&quot;</span></code>:</p>
 <ul class="simple">
 <li><p><strong>Name</strong>: <span style='color:#479608'>inter-icmp-bu2-bu1</span></p></li>
-<li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>bu2</span></p></li>
-<li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>bu1</span></p></li>
+<li><p><strong>Source Groups</strong>: <span style='color:#479608'>bu2</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>bu1</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>ICMP</span></p></li>
 <li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
@@ -1420,8 +1421,8 @@ document.write(`
 </figure>
 </section>
 </section>
-<section id="final-considerations">
-<h2>14. Final Considerations<a class="headerlink" href="#final-considerations" title="Link to this heading">#</a></h2>
+<section id="inter-rule-from-bu2-to-aws-us-east-1-region">
+<h2>14. Inter-rule from BU2 to AWS US-EAST-1 region<a class="headerlink" href="#inter-rule-from-bu2-to-aws-us-east-1-region" title="Link to this heading">#</a></h2>
 <p>Despite the successful establishment of the route via the <strong>MTT</strong> feature, the destination remains unreachable via ping.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1536,7 +1537,7 @@ document.write(`
 <p><span class="caption-text">inter-icmp-bu2-east1 Logs</span><a class="headerlink" href="#id97" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>After creating both the previous inter-rule and the additional Smart Groups, the topology with all permitted protocols will appear as follows:</p>
+<p>Following the creation of the previous inter-rule and the additional Smart Groups, the topology permitting all allowed protocols appears as follows:</p>
 <figure class="align-center" id="id98">
 <a class="reference internal image-reference" href="../_images/lab10-newjoe.png"><img alt="../_images/lab10-newjoe.png" src="../_images/lab10-newjoe.png" style="height: 400px;" />
 </a>
@@ -1547,44 +1548,112 @@ document.write(`
 </section>
 </section>
 </section>
-<section id="spoke-to-spoke-attachment">
-<h2>15. Spoke to Spoke Attachment<a class="headerlink" href="#spoke-to-spoke-attachment" title="Link to this heading">#</a></h2>
-<p>Since Distributed Cloud Firewall is enabled, the owner of <strong><em>azure-west-us-spoke2-test1</em></strong> wants to communicate directly with <strong><em>azure-west-us-spoke1-test1</em></strong>. <ins>Because security enforcement now takes place on the Spokes</ins>, traffic can bypass the Transit gateway and no longer needs to go through the NGFW connected to it.</p>
+<section id="inter-rule-from-aws-us-east-1-spoke1-to-bu1">
+<h2>16. Inter-rule from aws-us-east-1-spoke1 to BU1<a class="headerlink" href="#inter-rule-from-aws-us-east-1-spoke1-to-bu1" title="Link to this heading">#</a></h2>
+<p>Let’s now develop another policy that, this time, permits the <code class="docutils literal notranslate"><span class="pre">aws-us-east-1-spoke1-test-1</span></code> instance to communicate via the ICMP protocol with all members of the <strong>BU2</strong> Smart Group.</p>
+<ul class="simple">
+<li><p>Let’s create an additional Smart Group for the test instance <strong><em>aws-us-east-1-spoke1-test2</em></strong> in the US-EAST-1 region of AWS.</p></li>
+</ul>
+<p>Navigate to <strong>Copilot &gt; Groups &gt; SmartGroups</strong> and click on  <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">SmartGroup&quot;</span></code> button.</p>
 <figure class="align-center" id="id99">
+<img alt="../_images/lab10-mttnew890.png" src="../_images/lab10-mttnew890.png" />
+<figcaption>
+<p><span class="caption-text">New Smart Group</span><a class="headerlink" href="#id99" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">SmartGroup&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>east1-test-1</span></p></li>
+<li><p><strong>Matches all conditions (AND):<span style='color:#479608'> Name</span></strong></p></li>
+<li><p><strong>CSP Tag Value</strong>: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span></p></li>
+</ul>
+<figure class="align-center" id="id100">
+<img alt="../_images/lab10-mtt9890.png" src="../_images/lab10-mtt9890.png" />
+<figcaption>
+<p><span class="caption-text">Resource Selection</span><a class="headerlink" href="#id100" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>CoPilot indicates that there is only one instance that matches the condition:</p>
+<ul class="simple">
+<li><p>aws-us-east-1-spoke1-test1 in AWS</p></li>
+</ul>
+<p>Make sure to click <strong>Save</strong> once you’re done.</p>
+<p>Since we have already created the BU1 Smart Group, we can easily create the inter-rule.</p>
+<p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies (default tab)</strong> and create another rule clicking on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
+<figure class="align-center" id="id101">
+<img alt="../_images/lab10-mtt88900.png" src="../_images/lab10-mtt88900.png" />
+<figcaption>
+<p><span class="caption-text">New Rule</span><a class="headerlink" href="#id101" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensure these parameters are entered in the pop-up window <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">Rule&quot;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: <span style='color:#479608'>inter-icmp-east1-test-1-bu1</span></p></li>
+<li><p><strong>Source Groupss</strong>: <span style='color:#479608'>east1-test-1</span></p></li>
+<li><p><strong>Destination Groups</strong>: <span style='color:#479608'>bu1</span></p></li>
+<li><p><strong>Protocol</strong>: <span style='color:#479608'>ICMP</span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
+<li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
+<li><p><strong>SG Orchestration</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
+</ul>
+<p>Then click on <strong>Save In Drafts</strong>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please note the direction of this new inter-rule:</p>
+<p><strong>FROM</strong> bu2 <strong>TO</strong> east1</p>
+</div>
+<figure class="align-center" id="id102">
+<img alt="../_images/lab10-lastrule.png" src="../_images/lab10-lastrule.png" />
+<figcaption>
+<p><span class="caption-text">The Last Rule…</span><a class="headerlink" href="#id102" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now you can go ahead with the last <strong>commit</strong>!</p>
+<figure class="align-center" id="id103">
+<img alt="../_images/lab10-lastcommit.png" src="../_images/lab10-lastcommit.png" />
+<figcaption>
+<p><span class="caption-text">Commit</span><a class="headerlink" href="#id103" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="spoke-to-spoke-attachment">
+<h2>16. Spoke to Spoke Attachment<a class="headerlink" href="#spoke-to-spoke-attachment" title="Link to this heading">#</a></h2>
+<p>Since Distributed Cloud Firewall is enabled, the owner of <strong><em>azure-west-us-spoke2-test1</em></strong> wants to communicate directly with <strong><em>azure-west-us-spoke1-test1</em></strong>. <ins>Because security enforcement now takes place on the Spokes</ins>, traffic can bypass the Transit gateway and no longer needs to go through the NGFW connected to it.</p>
+<figure class="align-center" id="id104">
 <img alt="../_images/lab10-spoke2spoke01.png" src="../_images/lab10-spoke2spoke01.png" />
 <figcaption>
-<p><span class="caption-text">No More NGFW</span><a class="headerlink" href="#id99" title="Link to this image">#</a></p>
+<p><span class="caption-text">No More NGFW</span><a class="headerlink" href="#id104" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="creating-a-spoke-to-spoke-attachment">
-<h3>15.1 Creating a Spoke to Spoke Attachment<a class="headerlink" href="#creating-a-spoke-to-spoke-attachment" title="Link to this heading">#</a></h3>
+<h3>16.1 Creating a Spoke to Spoke Attachment<a class="headerlink" href="#creating-a-spoke-to-spoke-attachment" title="Link to this heading">#</a></h3>
 <p>Navigate to <strong>Copilot &gt; Cloud Fabric &gt; Gateways &gt; Spoke Gateways</strong>, locate the <strong><em>azure-west-us-spoke2</em></strong> gateway and click on the <strong><code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">Gateway</span> <span class="pre">Attachments</span></code></strong> icon on the right-hand side.</p>
-<figure class="align-center" id="id100">
+<figure class="align-center" id="id105">
 <a class="reference internal image-reference" href="../_images/lab10-spoke2spoke02.png"><img alt="../_images/lab10-spoke2spoke02.png" src="../_images/lab10-spoke2spoke02.png" style="height: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Manage Gateway Attachments</span><a class="headerlink" href="#id100" title="Link to this image">#</a></p>
+<p><span class="caption-text">Manage Gateway Attachments</span><a class="headerlink" href="#id105" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <strong>Spoke Gateway</strong> tab, click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Attachment&quot;</span></code> button and then choose the <strong>azure-west-us-spoke1</strong> GW from the drop-down window.</p>
-<figure class="align-center" id="id101">
+<figure class="align-center" id="id106">
 <img alt="../_images/lab10-spoke2spoke03.png" src="../_images/lab10-spoke2spoke03.png" />
 <figcaption>
-<p><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id101" title="Link to this image">#</a></p>
+<p><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id106" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id102">
+<figure class="align-center" id="id107">
 <img alt="../_images/lab10-newspokeatt.png" src="../_images/lab10-newspokeatt.png" />
 <figcaption>
-<p><span class="caption-text">Save</span><a class="headerlink" href="#id102" title="Link to this image">#</a></p>
+<p><span class="caption-text">Save</span><a class="headerlink" href="#id107" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Do not forget to click on <strong>Save</strong>.</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Topology</strong> and check the new attachment between the two Spoke Gateways in Azure.</p>
-<figure class="align-center" id="id103">
+<figure class="align-center" id="id108">
 <img alt="../_images/lab10-spoke2spoke04.png" src="../_images/lab10-spoke2spoke04.png" />
 <figcaption>
-<p><span class="caption-text">Spoke to Spoke Attachment</span><a class="headerlink" href="#id103" title="Link to this image">#</a></p>
+<p><span class="caption-text">Spoke to Spoke Attachment</span><a class="headerlink" href="#id108" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1593,18 +1662,18 @@ document.write(`
 </div>
 <p>Let’s check the <strong>Routing Table</strong> of the <strong><em>Spoke2</em></strong> in Azure.</p>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways</strong>, select the <strong>azure-west-us-spoke2</strong>, then select the <strong>Gateways Routes</strong> tab and search for the subnet <strong><code class="docutils literal notranslate"><span class="pre">192.168.1.0</span></code></strong> on the right-hand side.</p>
-<figure class="align-center" id="id104">
+<figure class="align-center" id="id109">
 <img alt="../_images/lab10-spoke2spoke05.png" src="../_images/lab10-spoke2spoke05.png" />
 <figcaption>
-<p><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id104" title="Link to this image">#</a></p>
+<p><span class="caption-text">azure-west-us-spoke2</span><a class="headerlink" href="#id109" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You will notice that the destination is now reachable with a <strong>lower</strong> metric (50)!</p>
-<figure class="align-center" id="id105">
+<figure class="align-center" id="id110">
 <a class="reference internal image-reference" href="../_images/lab10-spoke2spoke06.png"><img alt="../_images/lab10-spoke2spoke06.png" src="../_images/lab10-spoke2spoke06.png" style="height: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Metric 50</span><a class="headerlink" href="#id105" title="Link to this image">#</a></p>
+<p><span class="caption-text">Metric 50</span><a class="headerlink" href="#id110" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The traffic generated from the <strong><em>azure-west-us-spoke2-test1</em></strong> VM will now prefer going through the Spoke-to-Spoke Attachment for communication with the Spoke1 VNet.</p>
@@ -1612,36 +1681,36 @@ document.write(`
 <p class="admonition-title">Important</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Native</span> <span class="pre">Security</span> <span class="pre">Fabric</span></code> is very flexible and does not lock you in with solely a <em>Hub and Spoke</em> Topology!</p>
 </div>
-<figure class="align-center" id="id106">
+<figure class="align-center" id="id111">
 <img alt="../_images/lab10-spoke2spoke07.png" src="../_images/lab10-spoke2spoke07.png" />
 <figcaption>
-<p><span class="caption-text">Spoke to Spoke</span><a class="headerlink" href="#id106" title="Link to this image">#</a></p>
+<p><span class="caption-text">Spoke to Spoke</span><a class="headerlink" href="#id111" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="decommissioning-of-a-peering">
-<h2>16. Decommissioning of a peering<a class="headerlink" href="#decommissioning-of-a-peering" title="Link to this heading">#</a></h2>
+<h2>17. Decommissioning of a peering<a class="headerlink" href="#decommissioning-of-a-peering" title="Link to this heading">#</a></h2>
 <p>Now that <code class="docutils literal notranslate"><span class="pre">MTT</span></code> is enabled on the <strong><em>aws-us-east-2-transit</em></strong> Gateway, <ins>every other Transit Gateway must have a single peering with the <strong>MTT Gateway</strong></ins>; therefore the peering between the <strong><em>gcp-us-central1-transit</em></strong> Gateway and the <strong><em>azure-west-us-transit</em></strong> Gateway can be removed.</p>
-<figure class="align-center" id="id107">
+<figure class="align-center" id="id112">
 <img alt="../_images/lab10-spoke2spoke0788.png" src="../_images/lab10-spoke2spoke0788.png" />
 <figcaption>
-<p><span class="caption-text">Deletion of a peering</span><a class="headerlink" href="#id107" title="Link to this image">#</a></p>
+<p><span class="caption-text">Deletion of a peering</span><a class="headerlink" href="#id112" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Navigate to <strong>CoPilot &gt; Cloud Fabric &gt; Gateways &gt; Transit Gateways</strong>; edit the <strong><em>gcp-us-central1-transit</em></strong> gateway.</p>
-<figure class="align-center" id="id108">
+<figure class="align-center" id="id113">
 <a class="reference internal image-reference" href="../_images/lab10-spoke2spoke0789.png"><img alt="../_images/lab10-spoke2spoke0789.png" src="../_images/lab10-spoke2spoke0789.png" style="height: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Edit the GCP Transit Gateway</span><a class="headerlink" href="#id108" title="Link to this image">#</a></p>
+<p><span class="caption-text">Edit the GCP Transit Gateway</span><a class="headerlink" href="#id113" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the <code class="docutils literal notranslate"><span class="pre">&quot;Attach</span> <span class="pre">To</span> <span class="pre">Transit</span> <span class="pre">Gateways&quot;</span></code> field, remove the peering with the <strong><em>azure-west-us-transit</em></strong> Gateway, and then click Save.</p>
-<figure class="align-center" id="id109">
+<figure class="align-center" id="id114">
 <img alt="../_images/lab10-spoke2spoke0790.png" src="../_images/lab10-spoke2spoke0790.png" />
 <figcaption>
-<p><span class="caption-text">Deletion of a peering</span><a class="headerlink" href="#id109" title="Link to this image">#</a></p>
+<p><span class="caption-text">Deletion of a peering</span><a class="headerlink" href="#id114" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition caution">
@@ -1650,11 +1719,11 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">With</span> <span class="pre">MTT</span> <span class="pre">election</span></code>: Only 3 peerings are needed. The MTT gateway acts as a central hub, so the three non-MTT gateways each create one peering with the MTT gateway, eliminating the need for interconnections among the non-MTT gateways.</p>
 </div>
 <p>After completing this lab, the overall topology will appear as follows:</p>
-<figure class="align-center" id="id110">
+<figure class="align-center" id="id115">
 <a class="reference internal image-reference" href="../_images/lab10-lastdrawing.png"><img alt="../_images/lab10-lastdrawing.png" src="../_images/lab10-lastdrawing.png" style="height: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Fully realized Aviatrix CNSF solution with all functionalities activated</span><a class="headerlink" href="#id110" title="Link to this image">#</a></p>
+<p><span class="caption-text">Fully realized Aviatrix CNSF solution with all functionalities activated</span><a class="headerlink" href="#id115" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1765,7 +1834,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icmp-verification-between-azure-and-aws-using-ssh-client-after-enabling-mtt-bonus">13.2 ICMP Verification between Azure and AWS Using SSH Client after enabling MTT<span style="color:#33ECFF">(BONUS)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-considerations">14. Final Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-from-bu2-to-aws-us-east-1-region">14. Inter-rule from BU2 to AWS US-EAST-1 region</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-group-east1">14.1 Smart Group “east1”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-inter-rule-that-allows-icmp-from-bu2-towards-east1">14.2 Create an inter-rule that allows ICMP from bu2 towards east1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-connectivity-between-bu2-and-east1">14.3 Verify connectivity between bu2 and east1</a><ul class="nav section-nav flex-column">
@@ -1776,11 +1845,12 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spoke-to-spoke-attachment">15. Spoke to Spoke Attachment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spoke-to-spoke-attachment">15.1 Creating a Spoke to Spoke Attachment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rule-from-aws-us-east-1-spoke1-to-bu1">16. Inter-rule from aws-us-east-1-spoke1 to BU1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spoke-to-spoke-attachment">16. Spoke to Spoke Attachment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spoke-to-spoke-attachment">16.1 Creating a Spoke to Spoke Attachment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decommissioning-of-a-peering">16. Decommissioning of a peering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decommissioning-of-a-peering">17. Decommissioning of a peering</a></li>
 </ul>
   </nav></div>
 

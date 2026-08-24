@@ -286,8 +286,8 @@ New Rule
 Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>Greenfield-Rule</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Source Groups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Groups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
@@ -413,8 +413,8 @@ New Rule
 Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>Egress-Rule</span>
-- **Source Smartgroups**: <span style='color:#479608'>us-east-2-private-subnet</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Public Internet</span>
+- **Source Groups**: <span style='color:#479608'>us-east-2-private-subnet</span>
+- **Destination Groups**: <span style='color:#479608'>Public Internet</span>
 - **WebGroups**: <span style='color:#479608'>**All-Web**</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Log**: <span style='color:#479608'>**At Start & End**</span>
@@ -459,8 +459,8 @@ New Rule
 Insert the following parameters:
 
 - **Name**: <span style='color:#479608'>ExplicitDenyAll</span>
-- **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
-- **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Source Groups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
+- **Destination Groups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>

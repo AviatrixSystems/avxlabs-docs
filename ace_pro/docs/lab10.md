@@ -219,8 +219,8 @@ New Rule
 Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>inter-icmp-edge-us-east2-test1</span>
-- **Source Smartgroups**: <span style='color:#479608'>WorkstationEdge</span>
-- **Destination Smartgroups**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
+- **Source Groups**: <span style='color:#479608'>WorkstationEdge</span>
+- **Destination Groups**: <span style='color:#479608'>aws-us-east-2-spoke1-test1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
@@ -314,7 +314,7 @@ AWS
 ```{warning}
 The **CostIQ graphs** may take a moment to render. Please wait a moment and return later to view the percentages.
 
-Additionally, please note that the **GCP** Cost Center data may take a few extra minutes to populate.
+Additionally, please note that **GCP Cost Center** data may take a few extra minutes to populate compared to the AWS and Azure Cost Centers.
 ```
 
 Upon completing this lab, the overall topology will be represented as follows:
