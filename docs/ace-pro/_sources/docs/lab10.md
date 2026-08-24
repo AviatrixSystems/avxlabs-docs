@@ -313,6 +313,8 @@ AWS
 
 ```{warning}
 The **CostIQ graphs** may take a moment to render. Please wait a moment and return later to view the percentages.
+
+Additionally, please note that the **GCP** Cost Center data may take a few extra minutes to populate.
 ```
 
 Upon completing this lab, the overall topology will be represented as follows:
