@@ -441,6 +441,10 @@ document.write(`
 <section id="distributed-cloud-firewall-overview">
 <h2>2. Distributed Cloud Firewall Overview<a class="headerlink" href="#distributed-cloud-firewall-overview" title="Link to this heading">#</a></h2>
 <p>The <strong>Distributed Cloud Firewall</strong> is a powerful feature of the <code class="docutils literal notranslate"><span class="pre">Aviatrix</span> <span class="pre">Cloud</span> <span class="pre">Firewall</span></code>, designed to enhance security across your <strong>CNSF</strong>. It offers a comprehensive suite of capabilities, including Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata Intrusion Detection and Prevention Systems (IDS/IPS), Advanced Network Address Translation (NAT) capabilities, and Micro-Segmentation.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>By uniting Distributed Cloud Firewall Policies and Smart Groups, Aviatrix unlocks the ultimate power of <strong><span style='color:red'>Micro-Segmentation</span></strong>.</p>
+</div>
 <p>In this lab, you will have the opportunity to create additional logical containers known as <code class="docutils literal notranslate"><span class="pre">Smart</span> <span class="pre">Groups</span></code>. These Smart Groups are designed to categorize instances within a VPC/VNet/VCN that share similar characteristics. Once you have organized your instances into these groups, you will then enforce security policies among them through <strong>Distributed Cloud Firewalling Rules</strong>. This approach not only streamlines management but also enhances security by allowing for targeted rule enforcement based on the specific behaviors and attributes of the grouped instances.</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">intra-rule</span></code> = Rule applied within a Smart Group</p></li>
@@ -1328,7 +1332,7 @@ document.write(`
 <p><span class="caption-text">aws-us-east-1-transit</span><a class="headerlink" href="#id80" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Navigate to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;“Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section and insert the AS number <strong>64512</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">&quot;“Local</span> <span class="pre">ASN”</span></code>, then click on <strong>Save</strong>.</p>
+<p>Navigate to <code class="docutils literal notranslate"><span class="pre">&quot;Settings&quot;</span></code> tab and expand the <code class="docutils literal notranslate"><span class="pre">&quot;Border</span> <span class="pre">Gateway</span> <span class="pre">Protocol</span> <span class="pre">(BGP)”</span></code> section and insert the AS number <strong>64512</strong> on the empty field related to the <code class="docutils literal notranslate"><span class="pre">&quot;Local</span> <span class="pre">ASN”</span></code>, then click on <strong>Save</strong>.</p>
 <figure class="align-center" id="id81">
 <a class="reference internal image-reference" href="../_images/lab10-mtt2.png"><img alt="../_images/lab10-mtt2.png" src="../_images/lab10-mtt2.png" style="height: 400px;" />
 </a>
@@ -1468,6 +1472,7 @@ document.write(`
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>ICMP</span></p></li>
 <li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
+<li><p><strong>SG Orchestration</strong>: <span style='color:#479608'><strong>On</strong></span></p></li>
 </ul>
 <p>Then click on <strong>Save In Drafts</strong>.</p>
 <div class="admonition caution">
