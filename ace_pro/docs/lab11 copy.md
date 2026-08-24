@@ -1265,7 +1265,7 @@ align: center
 Final Topology
 ```
 
-## 16. Inter-rule from aws-us-east-1-spoke1 to BU1
+## 15. Inter-rule from aws-us-east-1-spoke1 to BU1
 
 Let's now develop another policy that, this time, permits the `aws-us-east-1-spoke1-test-1` instance to communicate via the ICMP protocol with all members of the **BU2** Smart Group.
 
@@ -1322,20 +1322,14 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 Then click on **Save In Drafts**.
 
-```{caution}
-Please note the direction of this new inter-rule: 
-
-**FROM** bu2 **TO** east1
-```
-
-```{figure} images/lab10-lastrule.png
+```{figure} images/lab10-lastrule8999.png
 ---
 align: center
 ---
-The Last Rule...
+inter-icmp-east1-test-1-bu1
 ```
 
-Now you can go ahead with the last **commit**!
+Now you can go ahead with the **commit**!
 
 ```{figure} images/lab10-lastcommit.png
 ---
@@ -1343,6 +1337,66 @@ align: center
 ---
 Commit
 ```
+
+### 15.1 Connectivity Verification (SSH) Using Gatus App
+
+From the Gatus App open on **_aws-us-east-1-spoke1-test1_**, verify the ICMP section.
+
+```{figure} images/lab10-gatus02000.png
+---
+height: 400px
+align: center
+---
+aws-us-east-1-spoke1-test1
+```
+
+The ICMP traffic tests will gradually turn green toward both **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke2-test1_**.
+
+```{important}
+The ICMP traffic toward `aws-us-east-1-spoke1-test2` succeeds only because of intra-VPC behavior... we will need to enforce _L4 access control_ through **Security Group Orchestration (SGO)**!
+```
+
+## 15.2  Logs Verification
+
+Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter by the *inter-icmp-east1-test-1-bu1* rule.
+
+```{figure} images/lab10-reallylast890121.png
+---
+align: center
+---
+Filter
+```
+
+```{figure} images/lab10-reallylast0002808.png
+---
+align: center
+---
+inter-icmp-east1-test-1-bu1
+```
+
+Also, verify from the **_aws-us-east-1-spoke1-test1_** instance that you can send ICMP traffic to the private IP addresses of both **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke2-test1_**.
+
+```{note}
+Refer to your POD for the private IPs.
+```
+
+```{figure} images/lab10-sshtoaws891.png
+---
+align: center
+---
+SSH to test2 in AWS US-East-2--> OK
+```
+
+```{figure} images/lab10-sshnew2.png
+---
+align: center
+---
+SSH fails towards the other instances
+```
+
+The previous results clearly confirm that connectivity is disrupted, allowing only `intra-vpc traffic`
+
+### 3.6  Connectivity Verification (SSH) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 ## 16. Spoke to Spoke Attachment
 
