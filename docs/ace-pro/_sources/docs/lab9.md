@@ -699,6 +699,7 @@ Filter
 
 ```{figure} images/lab96-newrule323.png
 ---
+height: 400px
 align: center
 ---
 Logs
@@ -710,6 +711,7 @@ Please note that filtering by the rule `PSF-Deny-Rule-from-malicious-ips` (which
 This depends entirely on whether that malicious IP happened to be actively sending traffic to the workload in your pod at the exact moment you applied the filter.
 ```{figure} images/lab96-newrule3245.png
 ---
+height: 400px
 align: center
 ---
 Zero outcomes
