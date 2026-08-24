@@ -1,13 +1,13 @@
 # Lab 9 - THREAT PREVENTION
 
-This lab will demonstrate how the `Default ThreatGroup` is capable to prevent traffic from being sent to, or from, a set of **threat IPs**.
+This lab will demonstrate how the `Default Threat Group` is capable to prevent traffic from being sent to, or from, a set of **threat IPs**.
 
 ## 1. ThreatGroup Overview
 
-The **Default ThreatGroup** can be used in DCF rules to ensure that traffic meeting the ThreatGroup criteria is blocked.
+The **Default Threat Group** can be used in DCF rules to ensure that traffic meeting the **_Threat Group_** criteria is blocked.
 
 ```{important}
-The Default ThreatGroup is regularly updated with data from the **`Proofpoint Global Threat Database`**.
+The Default Threat Group is regularly updated with data from the **`Proofpoint Global Threat Database`**.
 ```
 
 ## 2. Topology
