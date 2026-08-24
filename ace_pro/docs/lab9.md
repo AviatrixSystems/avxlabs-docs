@@ -686,7 +686,9 @@ You will notice that the traffic towards the **IP with Bad Reputation** was bloc
 
 ## 9. Final Considerations
 
-Navigate to **CoPilot > Security > ThreatIQ**  section, then scroll down through the whole **Overview** section, click on the filter icon and filter out based on the Maliciuous IP (i.e., `178.17.174.164`): you can choose either **_Source_** or **_Destination_**!
+Navigate to the **CoPilot > Security > Distributed Cloud Firewall > Monitor** section and filter by the rule `PSF-Deny-Rule-from-aws-us-east-1-spoke1-test1`.
+
+Please note that this rule is configured to deny traffic from the internal public workload toward any IPs included in the Default Threat Group. In this case, traffic to `178.17.174.164` has been successfully blocked.
 
 ```{figure} images/lab96-newrule308.png
 ---
@@ -699,25 +701,7 @@ Filter
 ---
 align: center
 ---
-Condition
-```
-
-Now click on the **VIEW** link on the right-hand side of the entry:
-
-```{figure} images/lab96-newrule309.png
----
-align: center
----
-View link
-```
-
-Last but not least, explore the `Threat Summary` tab to find out how ProofPoint classified that IP address!
-
-```{figure} images/lab96-newrule311.png
----
-align: center
----
-Condition
+Logs
 ```
 
 After completing this lab, the overall topology will be as follows:
