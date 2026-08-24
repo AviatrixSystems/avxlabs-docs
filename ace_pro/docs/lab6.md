@@ -152,7 +152,7 @@ Marketplace contact under loading
 ```
 
 - **Firewall Image Version**: <span style='color:#479608'>9.1.0</span>
-- **Firewall instance Size**: <span style='color:#479608'>Standard_D48s_v4</span>
+- **Firewall instance Size**: <span style='color:#479608'>Standard_D48s_v5</span>
 - **Management Interface Subnet**: <span style='color:#479608'>azure-west-us-transit-Public-gateway-and-firewall-mgmt-**1** [**Note**: Make sure you do not select the subnets that begin with *az-1, az-2, or az-3*]</span>
 
 ```{caution}
