@@ -1195,10 +1195,10 @@ Please note the direction of this new inter-rule:
 ---
 align: center
 ---
-The Last Rule...
+inter-icmp-bu2-east1
 ```
 
-Now you can go ahead with the last **commit**!
+Now you can go ahead with the **commit**!
 
 ```{figure} images/lab10-lastcommit.png
 ---
@@ -1262,7 +1262,7 @@ Following the creation of the previous inter-rule and the additional Smart Group
 height: 400px
 align: center
 ---
-Final Topology
+New Topology
 ```
 
 ## 15. Inter-rule from aws-us-east-1-spoke1 to BU1
@@ -1374,29 +1374,17 @@ align: center
 inter-icmp-east1-test-1-bu1
 ```
 
-Also, verify from the **_aws-us-east-1-spoke1-test1_** instance that you can send ICMP traffic to the private IP addresses of both **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke2-test1_**.
+Inspection of the logs confirms that ICMP echo requests originating from **_aws-us-east-1-spoke1-test1_** are successfully delivered to **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke2-test1_**.
 
-```{note}
-Refer to your POD for the private IPs.
-```
+Once the previous inter-rule and additional Smart Group are configured, the resulting topology appears as follows:
 
-```{figure} images/lab10-sshtoaws891.png
+```{figure} images/lab10-newjoe8901.png
 ---
+height: 400px
 align: center
 ---
-SSH to test2 in AWS US-East-2--> OK
+New Topology
 ```
-
-```{figure} images/lab10-sshnew2.png
----
-align: center
----
-SSH fails towards the other instances
-```
-
-The previous results clearly confirm that connectivity is disrupted, allowing only `intra-vpc traffic`
-
-### 3.6  Connectivity Verification (SSH) Using SSH Client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 ## 16. Spoke to Spoke Attachment
 
