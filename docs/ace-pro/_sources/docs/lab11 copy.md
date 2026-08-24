@@ -8,6 +8,10 @@ This lab will demonstrate how the `Distributed Cloud Firewall` works.
 
 The **Distributed Cloud Firewall** is a powerful feature of the `Aviatrix Cloud Firewall`, designed to enhance security across your **CNSF**. It offers a comprehensive suite of capabilities, including Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata Intrusion Detection and Prevention Systems (IDS/IPS), Advanced Network Address Translation (NAT) capabilities, and Micro-Segmentation.
 
+```{tip}
+By uniting Distributed Cloud Firewall Policies and Smart Groups, Aviatrix unlocks the ultimate power of **<span style='color:red'>Micro-Segmentation</span>**.
+```
+
 In this lab, you will have the opportunity to create additional logical containers known as `Smart Groups`. These Smart Groups are designed to categorize instances within a VPC/VNet/VCN that share similar characteristics. Once you have organized your instances into these groups, you will then enforce security policies among them through **Distributed Cloud Firewalling Rules**. This approach not only streamlines management but also enhances security by allowing for targeted rule enforcement based on the specific behaviors and attributes of the grouped instances.
 
 1) `intra-rule` = Rule applied within a Smart Group
@@ -1018,7 +1022,7 @@ align: center
 aws-us-east-1-transit
 ```
 
-Navigate to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"“Local ASN”`, then click on **Save**.
+Navigate to `"Settings"` tab and expand the `"Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"Local ASN”`, then click on **Save**.
 
 ```{figure} images/lab10-mtt2.png
 ---
@@ -1177,6 +1181,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
+- **SG Orchestration**: <span style='color:#479608'>**On**</span>
 
 Then click on **Save In Drafts**.
 
