@@ -570,17 +570,17 @@ align: center
 Delay in deploying Spoke in GCP
 ```
 
-```{caution}
-You can monitor the progress of the gateway deployment at any time by expanding the **Task icon** in the top right corner of CoPilot. 
-
-<ins>Please keep in mind that the gateway creation process may take several minutes to complete, so your patience is appreciated!</ins>
-```
-
 ```{figure} images/lab2-inprogress2.png
 ---
 align: center
 ---
 Deployment in progress
+```
+
+```{tip}
+You can monitor the progress of the gateway deployment at any time by expanding the **Task icon** in the top right corner of CoPilot. 
+
+<ins>Please keep in mind that the gateway creation process may take several minutes to complete, so your patience is appreciated!</ins>
 ```
 
 Once all gateways have been created, verify their presence by navigating to **CoPilot > Cloud Fabric > Gateways > Overview (default tab)** to ensure there are a total of **nine** GW clusters.
