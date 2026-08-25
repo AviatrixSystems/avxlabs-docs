@@ -561,6 +561,15 @@ align: center
 Spoke GW in GCP
 ```
 
+```{warning}
+Please be patient, as deploying the Spoke gateway in GCP takes slightly longer than in other CSPs.
+```{figure} images/lab2-spokeingcp781.png
+---
+align: center
+---
+Delay in deploying Spoke in GCP
+```
+
 ```{caution}
 You can monitor the progress of the gateway deployment at any time by expanding the **Task icon** in the top right corner of CoPilot. 
 
