@@ -570,6 +570,8 @@ align: center
 Delay in deploying Spoke in GCP
 ```
 
+From this point, please wait until all gateway deployment confirmations appear.
+
 ```{figure} images/lab2-inprogress2.png
 ---
 align: center
