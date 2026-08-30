@@ -8,10 +8,6 @@ This lab will demonstrate how the `Distributed Cloud Firewall` works.
 
 The **Distributed Cloud Firewall** is a powerful feature of the `Aviatrix Cloud Firewall`, designed to enhance security across your **CNSF**. It offers a comprehensive suite of capabilities, including Distributed Firewalling, Threat Prevention, TLS Decryption, URL Filtering, Suricata Intrusion Detection and Prevention Systems (IDS/IPS), Advanced Network Address Translation (NAT) capabilities, and Micro-Segmentation.
 
-```{tip}
-By uniting Distributed Cloud Firewall Policies and Smart Groups, Aviatrix unlocks the ultimate power of **<span style='color:red'>Micro-Segmentation</span>**.
-```
-
 In this lab, you will have the opportunity to create additional logical containers known as `Smart Groups`. These Smart Groups are designed to categorize instances within a VPC/VNet/VCN that share similar characteristics. Once you have organized your instances into these groups, you will then enforce security policies among them through **Distributed Cloud Firewalling Rules**. This approach not only streamlines management but also enhances security by allowing for targeted rule enforcement based on the specific behaviors and attributes of the grouped instances.
 
 1) `intra-rule` = Rule applied within a Smart Group
@@ -310,8 +306,8 @@ New Rule
 Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>intra-icmp-bu1</span>
-- **Source Groups**: <span style='color:#479608'>bu1</span>
-- **Destination Groups**: <span style='color:#479608'>bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
@@ -348,8 +344,8 @@ New rule
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 - **Name**: <span style='color:#479608'>intra-icmp-bu2</span>
-- **Source Groups**: <span style='color:#479608'>bu2</span>
-- **Destination Groups**: <span style='color:#479608'>bu2</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu2</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Logging**: <span style='color:#479608'>On</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
@@ -647,8 +643,8 @@ New rule
 Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 
 - **Name**: <span style='color:#479608'>intra-ssh-bu1</span>
-- **Source Groups**: <span style='color:#479608'>bu1</span>
-- **Destination Groups**: <span style='color:#479608'>bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu1</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>22</span>
 - **Log**: <span style='color:#479608'>At Start & End</span>
@@ -809,8 +805,8 @@ New Rule
 Ensure these parameters are entered in the pop-up window `"Create New Rule"`:
 
 - **Name**: <span style='color:#479608'>inter-icmp-bu2-bu1</span>
-- **Source Groups**: <span style='color:#479608'>bu2</span>
-- **Destination Groups**: <span style='color:#479608'>bu1</span>
+- **Source Smartgroups**: <span style='color:#479608'>bu2</span>
+- **Destination Smartgroups**: <span style='color:#479608'>bu1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
@@ -1022,7 +1018,7 @@ align: center
 aws-us-east-1-transit
 ```
 
-Navigate to `"Settings"` tab and expand the `"Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"Local ASN”`, then click on **Save**.
+Navigate to `"Settings"` tab and expand the `"“Border Gateway Protocol (BGP)”` section and insert the AS number **64512** on the empty field related to the `"“Local ASN”`, then click on **Save**.
 
 ```{figure} images/lab10-mtt2.png
 ---
@@ -1122,7 +1118,7 @@ align: center
 Ping
 ```
 
-## 14. Inter-rule from BU2 to AWS US-EAST-1 region
+## 14. Final Considerations
 
 Despite the successful establishment of the route via the **MTT** feature, the destination remains unreachable via ping.
 
@@ -1181,7 +1177,6 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Protocol**: <span style='color:#479608'>ICMP</span>
 - **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
-- **SG Orchestration**: <span style='color:#479608'>**On**</span>
 
 Then click on **Save In Drafts**.
 
@@ -1195,10 +1190,10 @@ Please note the direction of this new inter-rule:
 ---
 align: center
 ---
-inter-icmp-bu2-east1
+The Last Rule...
 ```
 
-Now you can go ahead with the **commit**!
+Now you can go ahead with the last **commit**!
 
 ```{figure} images/lab10-lastcommit.png
 ---
@@ -1255,138 +1250,17 @@ align: center
 inter-icmp-bu2-east1 Logs
 ```
 
-Following the creation of the previous inter-rule and the additional Smart Groups, the topology permitting all allowed protocols appears as follows:
+After creating both the previous inter-rule and the additional Smart Groups, the topology with all permitted protocols will appear as follows:
 
 ```{figure} images/lab10-newjoe.png
 ---
 height: 400px
 align: center
 ---
-New Topology
+Final Topology
 ```
 
-## 15. Inter-rule from aws-us-east-1-spoke1 to BU1
-
-Let's now develop another policy that, this time, permits the `aws-us-east-1-spoke1-test-1` instance to communicate via the ICMP protocol with all members of the **BU2** Smart Group.
-
-- Let’s create an additional Smart Group for the test instance **_aws-us-east-1-spoke1-test2_** in the US-EAST-1 region of AWS.
-
-Navigate to **Copilot > Groups > SmartGroups** and click on  `"+ SmartGroup"` button.
-
-```{figure} images/lab10-mttnew890.png
----
-align: center
----
-New Smart Group
-```
-
-Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
-
-- **Name**: <span style='color:#479608'>east1-test-1</span>
-- **Matches all conditions (AND):<span style='color:#479608'> Name</span>**
-- **CSP Tag Value**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
-  
-```{figure} images/lab10-mtt9890.png
----
-align: center
----
-Resource Selection
-```
-
-CoPilot indicates that there is only one instance that matches the condition:
-
-- aws-us-east-1-spoke1-test1 in AWS
-
-Make sure to click **Save** once you're done.
-
-Since we have already created the BU1 Smart Group, we can easily create the inter-rule.
-
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies (default tab)** and create another rule clicking on the `"+ Rule"` button.
-
-```{figure} images/lab10-mtt88900.png
----
-align: center
----
-New Rule
-```
-
-Ensure these parameters are entered in the pop-up window `"Create Rule"`:
-
-- **Name**: <span style='color:#479608'>inter-icmp-east1-test-1-bu1</span>
-- **Source Groupss**: <span style='color:#479608'>east1-test-1</span>
-- **Destination Groups**: <span style='color:#479608'>bu1</span>
-- **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Log**: <span style='color:#479608'>At Start & End</span>
-- **Action**: <span style='color:#479608'>**Permit**</span>
-- **SG Orchestration**: <span style='color:#479608'>**On**</span>
-
-Then click on **Save In Drafts**.
-
-```{figure} images/lab10-lastrule8999.png
----
-align: center
----
-inter-icmp-east1-test-1-bu1
-```
-
-Now you can go ahead with the **commit**!
-
-```{figure} images/lab10-lastcommit.png
----
-align: center
----
-Commit
-```
-
-### 15.1 Connectivity Verification (SSH) Using Gatus App
-
-From the Gatus App open on **_aws-us-east-1-spoke1-test1_**, verify the ICMP section.
-
-```{figure} images/lab10-gatus02000.png
----
-height: 400px
-align: center
----
-aws-us-east-1-spoke1-test1
-```
-
-The ICMP traffic tests will gradually turn green toward both **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke2-test1_**.
-
-```{important}
-The ICMP traffic toward `aws-us-east-1-spoke1-test2` succeeds only because of intra-VPC behavior... we will need to enforce _L4 access control_ through **Security Group Orchestration (SGO)**!
-```
-
-## 15.2  Logs Verification
-
-Navigate to **CoPilot > Security > Distributed Cloud Firewall > Monitor** and filter by the *inter-icmp-east1-test-1-bu1* rule.
-
-```{figure} images/lab10-reallylast890121.png
----
-align: center
----
-Filter
-```
-
-```{figure} images/lab10-reallylast0002808.png
----
-align: center
----
-inter-icmp-east1-test-1-bu1
-```
-
-Inspection of the logs confirms that ICMP echo requests originating from **_aws-us-east-1-spoke1-test1_** are successfully delivered to **_aws-us-east-2-spoke1-test1_** and **_azure-west-us-spoke2-test1_**.
-
-Once the previous inter-rule and additional Smart Group are configured, the resulting topology appears as follows:
-
-```{figure} images/lab10-newjoe8901.png
----
-height: 400px
-align: center
----
-New Topology
-```
-
-## 16. Spoke to Spoke Attachment
+## 15. Spoke to Spoke Attachment
 
 Since Distributed Cloud Firewall is enabled, the owner of **_azure-west-us-spoke2-test1_** wants to communicate directly with **_azure-west-us-spoke1-test1_**. <ins>Because security enforcement now takes place on the Spokes</ins>, traffic can bypass the Transit gateway and no longer needs to go through the NGFW connected to it.
 
@@ -1397,7 +1271,7 @@ align: center
 No More NGFW
 ```
 
-### 16.1 Creating a Spoke to Spoke Attachment
+### 15.1 Creating a Spoke to Spoke Attachment
 
 Navigate to **Copilot > Cloud Fabric > Gateways > Spoke Gateways**, locate the **_azure-west-us-spoke2_** gateway and click on the **`Manage Gateway Attachments`** icon on the right-hand side.
 
@@ -1474,7 +1348,7 @@ align: center
 Spoke to Spoke
 ```
 
-## 17. Decommissioning of a peering
+## 16. Decommissioning of a peering
 
 Now that `MTT` is enabled on the **_aws-us-east-2-transit_** Gateway, <ins>every other Transit Gateway must have a single peering with the **MTT Gateway**</ins>; therefore the peering between the **_gcp-us-central1-transit_** Gateway and the **_azure-west-us-transit_** Gateway can be removed.
 
