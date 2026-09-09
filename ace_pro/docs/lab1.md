@@ -158,7 +158,7 @@ Confirmation
 ```
 
 ```{note}
-It will take an additional **5 minutes** for the VNet and all five subnets (two public, two private, and one dedicated gateway public subnet) to become visible.
+It will take an additional **5 minutes** for the VNet and all subnets to become visible.
 
 Thank you for your patience!
 
@@ -238,7 +238,7 @@ Next, we will complete this lab by creating a VPC in AWS.
 
 ### 4.1  Create AWS VPC
 
-Navigate again to **CoPilot > Cloud Resources > Cloud Assets > VPC/VNets & Subnets**.
+Navigate again to **CoPilot > Cloud Resources > Cloud Networks > VPC/VNets & Subnets**.
 
 Please verify once more whether the CIDR block `10.0.22.0/24` overlaps with any existing CIDR ranges, as illustrated below.
 
