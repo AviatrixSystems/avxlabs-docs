@@ -209,7 +209,7 @@ Always refer to your personal CoPilot for the IP addresses.
 <ins>These images are only examples!</ins>
 ```
 
-## 4 TRAFFIC-GENERATING INSTANCES
+## 4 PROBE INSTANCES
 
 The instances deployed within the multi-cloud environment automatically generate traffic using an application named `Gatus`.
 
@@ -441,7 +441,7 @@ align: center
 TCP
 ```
 
-### 7.2 Verify connectivity between clients **within** the same network domain Using the Diagnostic Tools
+### 7.2 Verify connectivity between clients **within** the same Network Domain Using the Diagnostic Tools
 
 You can generate the **ping directly** from the Spoke1 Gateway deployed in the same VPC as the BU1 Frontend istance. First, retrieve the private IP addresses of **BU1 Analytics** and **BU1 DB** from the `Cloud Workloads` section.
 
@@ -533,7 +533,7 @@ Diagnostics tools can also be launched from Topology.
 
 BU1 Analytics and BU1 BD are reachable because they share the same network domain as BU1 Frontend.
 
-### 7.3 Verify connectivity between clients **within** the same network domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 7.3 Verify connectivity between clients **within** the same Network Domain Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - SSH into the **BU1 Frontend**  instance in AWS.
 
@@ -624,7 +624,7 @@ CURL
 Repeat the verification for **BU1-DB**.
 ```
 
-### 7.4 Ensure workloads remain isolated across network domains Using Gatus
+### 7.4 Ensure workloads remain isolated across Network Domains Using Gatus
 
 Navigate to the Pod Portal and open the Gatus dashboard for BU1 Frontend.
 
@@ -662,7 +662,7 @@ align: center
 TCP
 ```
 
-### 7.5 Ensure workloads remain isolated across network domains Using the Diagnostic Tools
+### 7.5 Ensure workloads remain isolated across Network Domains Using the Diagnostic Tools
 
 We should ensure that, from the BU1 Frontend perspective, connectivity to the BU2 Mobile App and the BU2 DB is blocked.
 
@@ -674,7 +674,7 @@ align: center
 Default Gateway and the Destinations
 ```
 
-- Navigate to **CoPilot > Cloud Resources > Cloud Assets > Virtual Machines**. Search for `mobile-app` and obtain its private IP address. Next, search for `bu2-db` and obtain its private IP address.
+- Navigate to **CoPilot > Cloud Resources > Cloud Workloads > Virtual Machines**. Search for `mobile-app` and obtain its private IP address. Next, search for `bu2-db` and obtain its private IP address.
 
 ```{tip}
 Feel free to open and maintain multiple tabs to keep the information you need readily available.
@@ -714,7 +714,7 @@ align: center
 ping to BU2-DB
 ```
 
-### 7.6 Ensure workloads remain isolated across network domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 7.6 Ensure workloads remain isolated across Network Domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 - From **BU1 Frontend** try to ping the <ins>private IP address</ins> of the **BU2 Mobile App**.
 - From **BU1 Frontend** try to SSH **BU2 Mobile App** (use again its Private IP address!).
