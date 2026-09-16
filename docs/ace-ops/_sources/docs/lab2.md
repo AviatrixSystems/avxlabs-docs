@@ -52,7 +52,7 @@ align: center
 Logical View
 ```
 
-### 2.1 Verify the connectivity between BU1 and BU2 domains Using Gatus
+### 2.1 Verify the connectivity between BU1 and BU2 Network Domains Using Gatus
 
 Navigate to the Pod Portal and open the Gatus dashboard for BU1 Frontend.
 
@@ -90,7 +90,7 @@ align: center
 TCP
 ```
 
-### 2.2 Verify the connectivity between BU1 and BU2 domains Using the Diagnostic Tools
+### 2.2 Verify the connectivity between BU1 and BU2 Network Domains Using the Diagnostic Tools
 
 Start your verification tests also with the Diagnostic Tools.
 
@@ -124,7 +124,7 @@ align: center
 Connectivity
 ```
 
-### 2.3 Verify the connectivity between BU1 and BU2 domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
+### 2.3 Verify the connectivity between BU1 and BU2 Network Domains Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
 If you want to run the ping directly from the instance, complete this task using the SSH client.
 
@@ -171,7 +171,7 @@ If you filter by either of the two Network Domains, you will now see routes from
 ## 3. TROUBLESHOOT REQUEST
 
 ```{caution}
-<ins>Before proceeding, let the trainer know you’ve reached Task 3 by sending a Zoom direct message. Once informed, the trainer will execute a a python script to inject a configuration failure inside your personal POD</ins>!
+<ins>Before proceeding, let the trainer know you’ve reached **Task 3** by sending a Zoom direct message. Once informed, the trainer will execute a a python script to inject a configuration failure inside your personal POD</ins>!
 ```
 
 The Apache HTTP Server running on the BU2 Mobile App has become unresponsive. The service is not accepting connections. Immediate troubleshooting is required to diagnose the cause of the failure.

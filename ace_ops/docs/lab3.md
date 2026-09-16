@@ -33,7 +33,7 @@ Let’s dive into troubleshooting to figure out exactly where things are going w
 
 ### 2.1 Verify connectivity Using Gatus
 
-Access the **BU1 Frontend** Dashboard. You’ll notice East–West traffic is entirely blocked, impacting communication with the BU2 Mobile App and all other instances.
+Access the **BU1 Frontend** Dashboard. You’ll notice **East–West** traffic is entirely blocked, impacting communication with the BU2 Mobile App and all other instances.
 
 ```{figure} images/lab3-4.28.diagnosticstools11901.png
 ---
@@ -130,7 +130,7 @@ The traceroute results show a surprising outcome: **1** hop. Only the Spoke gate
 
 ### 2.4 Verify the Routing
 
-- Check whether the relevant Spoke Gateways have the required routes installed on their respective routing tables or not.
+- Check whether the relevant **Spoke** Gateways have the required routes installed on their respective routing tables or not.
 
 ```{tip}
 Navigate to **CoPilot > Cloud Fabric > Gateways > Spoke Gateways >** select for example the gateway **ace-aws-eu-west-1-spoke1**  **> Gateway Routes** and search for the subnet **10.1.212.0/24**, where BU2 Mobile App resides.
@@ -150,7 +150,7 @@ From the above outcome, Spoke1 in AWS has the destination route in its RTB. You 
 Confirm that the **_ace-aws-eu-west-1-spoke2_** gateway includes a route to **10.1.211.0/24** in its routing table.
 ```
 
-### 2.5 FireNet
+### 2.5 FireNet Section
 
 - Let's check the **FireNet** section!
 
@@ -209,7 +209,7 @@ Exclude the CIDR
 
 #### 2.5.2 FireNet - Verification using Gatus
 
-Open the Gatus Dashboard for **BU1 Frontend**. You’ll notice almost immediately that ICMP traffic and TCP traffic to ports 80 and 22 for the BU2 Mobile App have been restored, thanks to the workaround.
+Open the Gatus Dashboard for **BU1 Frontend**. You’ll notice almost immediately that ICMP traffic and TCP traffic to ports **80** and **22** for the BU2 Mobile App have been restored, thanks to the workaround.
 
 ```{figure} images/lab3-4.28.diagnosticstools1190156.png
 ---
@@ -266,7 +266,9 @@ The firewall is indeed excluded.
 
 Having identified the root cause and applied the workaround, we should remove the workaround and investigate the firewall-side configuration.
 
-- <ins>Remove</ins> the _workaround_ and perform a thorough review of the Firewall configuration.
+```{important}
+Before proceeding, please <ins>remove</ins> the _workaround_ and perform a thorough review of the Firewall configuration.
+```
 
 ```{tip}
 Navigate to **CoPilot > Security > FireNet**, click on the **_ace-aws-eu-west-1-transit1_** GW, then click on **Settings** and remove the CIDR `10.1.212.0/24`. 
@@ -299,7 +301,7 @@ eth-fn0 interface
 - Navigate to **CoPilot > Diagnostics > Diagnostic Tools**, select the **_ace-aws-eu-west-1-spoke1_** gateway, and generate a ping to the **BU2 Mobile App** private IP address.
 
 ```{tip}
-To capture packets on the Transit Gateway, duplicate the tab and start a packet capture on the **eth-fn0** interface <ins>before generating the ICMP traffic</ins>.
+To capture packets on the Transit Gateway, **duplicate the tab** and start a packet capture on the **eth-fn0** interface <ins>before generating the ICMP traffic</ins>.
 ```
 
 ```{figure} images/lab23-cp111.png
