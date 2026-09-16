@@ -235,7 +235,7 @@ Outcome of the Packet capture
 ```
 
 ```{important}
-The health check shows the echo request and echo reply exchanged between the Transit Gateway and the NGFW, but only the BU1 Frontend’s echo request is reaching the NGFW. The NGFW is not forwarding the traffic back, and the echo request is dropped there.
+The health check confirms that echo requests and replies are successfully exchanged between the Transit Gateway and the NGFW. However, only the echo request from the BU1 Frontend reaches the NGFW; the return traffic is not being forwarded, and the packet is dropped at the firewall.
 ```
 
 ```{caution}
