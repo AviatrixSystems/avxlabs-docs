@@ -496,7 +496,7 @@ Enter the following parameters:
 - **Destination Smartgroups**: <span style='color:#479608'>BU2-DB</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -519,14 +519,14 @@ Commit
 
 #### 2.2.14 Verify connectivity Using Gatus
 
-Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 Mobile App**, specifically for `TCP` traffic.
+Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 DB**, specifically for `TCP` traffic.
 
 ```{figure} images/lab8-gatus005.png
 ---
 height: 450px
 align: center
 ---
-BU1 DB
+BU2 DB
 ```
 
 #### 2.2.15 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
@@ -590,7 +590,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
 - **Destination Smartgroups**: <span style='color:#479608'>BU1-DB</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
