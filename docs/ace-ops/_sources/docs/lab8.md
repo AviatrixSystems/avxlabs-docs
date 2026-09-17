@@ -2,7 +2,7 @@
 
 ## 1. SCENARIO
 
-In the previous lab, you initiated micro-segmentation by defining a SmartGroup and applying the `Aviatrix Cloud Firewall` rules. Right now, _East–West_ traffic is largely blocked, except for the policy that allows **BU1 Frontend** to SSH to both **BU1 DB** and **BU2 DB**.
+In the previous lab, you initiated micro-segmentation by defining SmartGroups and applying the `Aviatrix Cloud Firewall` rules. Right now, _East–West_ traffic is largely blocked, except for the policy that allows **BU1 Frontend** to SSH to both **BU1 DB** and **BU2 DB**.
 
 ```{figure} images/lab7-segmentation.png
 ---
@@ -13,10 +13,10 @@ Initial Topology
 ```
 
 ```{important}
-From a routing perspective, there is a flat rouing domain, enabled by the `Connection Policy` applied in Lab 2.
+From a routing perspective, there is a flat routing domain, enabled by the `Connection Policy` applied in Lab 2.
 ```
 
-This is the current list of Distributed Cloud Firewall policies.
+This is the current list of **Distributed Cloud Firewall** Policies.
 
 ```{figure} images/lab8-initialrule.png
 ---
@@ -216,7 +216,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>EU-WEST-1</span>
 - **Destination Smartgroups**: <span style='color:#479608'>EU-WEST-1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>**At Start & end**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -323,7 +323,7 @@ Enter the following parameters:
 - **Destination Smartgroups**: <span style='color:#479608'>BU2-MOBILEAPP</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>80</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -409,7 +409,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>BU1-ANALYTICS</span>
 - **Destination Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
