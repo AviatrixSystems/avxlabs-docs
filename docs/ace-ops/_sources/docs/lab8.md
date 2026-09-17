@@ -32,15 +32,15 @@ These are the **requirements** for this lab:
 
 2) Create a <span style='color:red'>**Smart Group**</span> that identifies the BU2 Mobile App.
 
-3) Create an <span style='color:lightgreen'>**intra-rule**</span> that allows BU1 Frontend and BU2 Mobile App to ping each other
+3) Create an <span style='color:lightgreen'>**intra-groups-rule**</span> that allows BU1 Frontend and BU2 Mobile App to ping each other
 
-4) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Frontend to talk with BU2 Mobile App on TCP/80
+4) Create an <span style='color:orange'>**inter-groups-rule**</span> that allows BU1 Frontend to talk with BU2 Mobile App on TCP/80
 
-5) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Analytics to ping BU1 Frontend
+5) Create an <span style='color:orange'>**inter-groups-rule**</span> that allows BU1 Analytics to ping BU1 Frontend
 
-6) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 DB to communicate with BU2 DB on TCP/22
+6) Create an <span style='color:orange'>**inter-groups-rule**</span> that allows BU1 DB to communicate with BU2 DB on TCP/22
 
-7) Create an <span style='color:orange'>**inter-rule**</span> that allows BU1 Frontend to ping with BU2 DB.
+7) Create an <span style='color:orange'>**inter-groups-rule**</span> that allows BU1 Frontend to ping with BU2 DB.
 
 ## 2. CHANGE REQUEST
 
