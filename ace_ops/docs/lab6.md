@@ -74,11 +74,13 @@ Existing CIDRs
 ```
 
 ```{note}
-Please wait approximately **one or two minutes** for BGP to send the Update. Then, click the <span style='color:orange'>**refresh button**</span> to see the default route being advertised from the Data Center.
+Please wait approximately  **two minutes** for BGP to send the update. Then, click the <span style='color:orange'>**refresh button**</span> to see the default route being advertised from the Data Center.
 
-This route will remain in a <ins>**pending state**</ins> and will not be advertised within the CNSF until it receives final approval from the *Aviatrix Administrator*.
+This route will remain in a <ins>**pending state**</ins> and will not be advertised within the CNSF until it receives final approval from the Aviatrix Administrator.
 
-**Important**: Do not approve the route yourself. If you accidentally approve it, you can click "Remove" to revert it back to the Pending status.
+Important: Do not approve the route yourself. If you accidentally approve it, click Remove to revert it to the pending status.
+
+Initially, you will see this CIDR: **169.254.74.128/30** (the point-to-point subnet used for the IPsec tunnel between the Transit and the OnPrem Data Center router).
 ```
 
 ```{figure} images/lab6-pending.png
