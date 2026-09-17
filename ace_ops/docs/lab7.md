@@ -123,7 +123,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -320,9 +320,7 @@ align: center
 Analyze
 ```
 
-Block the following domains and allow all others:
-
-- www.ransomware.org
+Block the following domain and allow all others:
 
 - www.malware.com
 
@@ -367,7 +365,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Destination Smartgroups**: <span style='color:#479608'>BU2-DB</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **PORT**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>On</span>
+- **Logging**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
   
 Do not forget to click on **Save In Drafts**.
@@ -415,7 +413,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**On**</span>
+- **Logging**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
 - **Place Rule**: <span style='color:#479608'>Below</span>
   - **Existing Rule**: <span style='color:#479608'>inter-ssh-bu1frontend-bu1db</span>
@@ -555,7 +553,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:.
 - **WebGroups**: <span style='color:#479608'>bu1-allowed-domains</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 
-- **Logging**: <span style='color:#479608'>On</span>
+- **Logging**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**, and then **Commit** your rule once again!
@@ -592,7 +590,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **WebGroups**: <span style='color:#479608'>bu2-allowed-domains</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 
-- **Logging**: <span style='color:#479608'>On</span>
+- **Logging**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**, and then **Commit**.
@@ -619,7 +617,7 @@ If you are not using a corporate laptop, you may access the DB virtual machines 
 
 Review the Gatus dashboards for both **BU1 DB** and **BU2 DB**.
 
-**BU1-DB** will be able to reach _www.digitalocean.com_, _www.microsoft.com_, and _www.terraform.com_. The domain _www.ransomware.org_ will be blocked.
+**BU1-DB** will be able to reach _www.digitalocean.com_, _www.microsoft.com_, and _www.terraform.com_. The domain _www.ransomware.org_ will be blocked. With this virtual machine, access is restricted exclusively to the pre-approved domains. Any attempt to reach another domain will be blocked.
 
 ```{figure} images/lab7-newgatus02new012.png
 ---
@@ -629,7 +627,7 @@ align: center
 BU1-DB Gatus
 ```
 
-**BU2-DB** will be able to access the following sites: _www.google.com_ and _www.aws.amazon.com. The domain _www.malware.net_ will be blocked.
+**BU2-DB** will be able to access the following sites: _www.google.com_ and _www.aws.amazon.com_. The domain _www.malware.net_ will be blocked.
 
 ```{figure} images/lab7-newgatus02new022.png
 ---
