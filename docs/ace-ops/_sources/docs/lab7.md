@@ -320,7 +320,9 @@ align: center
 Analyze
 ```
 
-In the next tasks, you will whitelist the permitted domains. Anything else—in this case, blocking _`www.malware.net`_ while allowing all others—will be denied and dropped, triggering the `ExplicitDenyAll` rule."
+In the next tasks, you will whitelist the permitted domains. 
+
+Anything else—in this case, blocking _`www.malware.net`_ while allowing all others—will be denied and dropped, triggering the `ExplicitDenyAll` rule.
 
 ### 2.3 DCF Rules
 
