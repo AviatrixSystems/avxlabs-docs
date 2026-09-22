@@ -247,7 +247,7 @@ Navigate to **CoPilot > Diagnostics > AppIQ > FlightPath**
 
 ```{figure} images/old-lab2-curl4.png
 ---
-height: 250px
+height: 400px
 align: center
 ---
 FlightPath configuration
@@ -301,6 +301,7 @@ Change the region to `Ireland (eu-west-1)` in the top-right corner and invoke th
 
 ```{figure} images/lab2-euwest.png
 ---
+height: 350px
 align: center
 ---
 Regions selection 
