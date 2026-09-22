@@ -403,7 +403,7 @@ Having explored IP address retrieval and the available traffic-generation tools,
 
 The initial request is to verify the separation between the two network domains. Note that the verification consists of checking the CoPilot configuration and, of course, testing with the test instances and the traffic they generate to each other. This section shows how to use Gatus, the enterprise-grade tools (<ins>the recommended method</ins>), the SSH client, and the Jumpbox.
 
-### 7.1 Verify connectivity between clients **within** the same network domain Using Gatus
+### 7.1 Verify connectivity between clients **within** the same Network Domain Using Gatus
 
 Navigate to the Pod Portal and open the Gatus dashboard for BU1 Frontend.
 
@@ -461,7 +461,7 @@ Use multiple tabs on your browser!
 
 ```{figure} images/lab1-diagnosticstools990.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 bu1-analytics
@@ -469,7 +469,7 @@ bu1-analytics
 
 ```{figure} images/lab1-diagnosticstools991.png
 ---
-height: 250px
+height: 350px
 align: center
 ---
 bu1-db
@@ -487,7 +487,7 @@ bu1-analytics is reachable
 
 ```{figure} images/lab1-diagnosticstools993.png
 ---
-height: 200px
+height: 250px
 align: center
 ---
 bu1-db is reachable
@@ -571,7 +571,7 @@ Open your **SSH client** and enter the SSH command to log in to the **BU1 Fronte
 
 ```{figure} images/lab1-assets22.png
 ---
-height: 250px
+height: 150px
 align: center
 ---
 SSH
@@ -700,7 +700,7 @@ BU2-DB
 
 ```{figure} images/lab1-mobileapp001.png
 ---
-height: 250px
+height: 300px
 align: center
 ---
 ping to BU2-MobileApp
