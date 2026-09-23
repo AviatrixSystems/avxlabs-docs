@@ -639,7 +639,7 @@ BU2-DB Gatus
 
 ### 2.9 FQDN Monitor (Legacy)
 
-- Now check the logs within the **Egress** section!
+- Now check the logs within the **Egress** section!!
 
 ```{tip}
 Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the **ace-azure-east-us-spoke1** VNet, then filter by `"denied"`.
