@@ -356,7 +356,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dcf-rules">2.3 DCF Rules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ztna">2.4 ZTNA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-from-bu1-frontend-to-database-vms-bonus">2.5 Access from BU1 Frontend to Database VMs <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webgroup">2.6 WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webgroups">2.6 WebGroups</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-dcf-rules">2.7 New DCF Rules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-gatus">2.8 Verification Using Gatus</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fqdn-monitor-legacy">2.9 FQDN Monitor (Legacy)</a></li>
@@ -487,7 +487,7 @@ Now, click <strong>Ruleset</strong> and select the <code class="docutils literal
 <li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span></p></li>
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'><strong>At Start &amp; End</strong></span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'><strong>At Start &amp; End</strong></span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'>Permit</span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
@@ -675,7 +675,7 @@ Now, click <strong>Ruleset</strong> and select the <code class="docutils literal
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>BU1-DB</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
 <li><p><strong>PORT</strong>: <span style='color:#479608'>22</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'>On</span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
@@ -699,7 +699,7 @@ Now, click <strong>Ruleset</strong> and select the <code class="docutils literal
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>BU2-DB</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>TCP</span></p></li>
 <li><p><strong>PORT</strong>: <span style='color:#479608'>22</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>.</p>
@@ -743,7 +743,7 @@ Now, click <strong>Ruleset</strong> and select the <code class="docutils literal
 <li><p><strong>Source Smartgroups</strong>: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span></p></li>
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'><strong>At Start &amp; End</strong></span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'><strong>At Start &amp; End</strong></span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Deny</strong></span></p></li>
 <li><p><strong>Place Rule</strong>: <span style='color:#479608'>Below</span></p>
 <ul>
@@ -792,10 +792,10 @@ Now, click <strong>Ruleset</strong> and select the <code class="docutils literal
 <p>Repeat the same check: try to SSH from <strong>BU1 Frontend</strong> to <strong>BU2 DB</strong>, then verify that the corresponding logs appear in the Monitor section of the <strong>Distributed Cloud Firewall</strong>.</p>
 </div>
 </section>
-<section id="webgroup">
-<h3>2.6 WebGroup<a class="headerlink" href="#webgroup" title="Link to this heading">#</a></h3>
+<section id="webgroups">
+<h3>2.6 WebGroups<a class="headerlink" href="#webgroups" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Create two <strong>WebGroup</strong> that match the <em>allowed domains</em> identified previously.</p></li>
+<li><p>Create two <strong>WebGroups</strong> that match the <em>allowed domains</em> identified previously.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -864,7 +864,7 @@ Now, click <strong>Ruleset</strong> and select the <code class="docutils literal
 <p>Navigate to <strong>CoPilot &gt; Security &gt; Distributed Cloud Firewall &gt; Policies</strong> and click on the <code class="docutils literal notranslate"><span class="pre">&quot;+</span> <span class="pre">Rule&quot;</span></code> button.</p>
 </div>
 <figure class="align-center" id="id42">
-<a class="reference internal image-reference" href="../_images/lab7-webgroup001.png"><img alt="../_images/lab7-webgroup001.png" src="../_images/lab7-webgroup001.png" style="height: 400px;" />
+<a class="reference internal image-reference" href="../_images/lab7-webgroup001.png"><img alt="../_images/lab7-webgroup001.png" src="../_images/lab7-webgroup001.png" style="height: 200px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 276 </span><span class="caption-text">+Rule</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
@@ -877,7 +877,7 @@ Now, click <strong>Ruleset</strong> and select the <code class="docutils literal
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Public internet</span></p></li>
 <li><p><strong>WebGroups</strong>: <span style='color:#479608'>bu1-allowed-domains</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong> your rule once again!</p>
@@ -910,7 +910,7 @@ Now, click <strong>Ruleset</strong> and select the <code class="docutils literal
 <li><p><strong>Destination Smartgroups</strong>: <span style='color:#479608'>Public internet</span></p></li>
 <li><p><strong>WebGroups</strong>: <span style='color:#479608'>bu2-allowed-domains</span></p></li>
 <li><p><strong>Protocol</strong>: <span style='color:#479608'>Any</span></p></li>
-<li><p><strong>Logging</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
+<li><p><strong>Log</strong>: <span style='color:#479608'>At Start &amp; End</span></p></li>
 <li><p><strong>Action</strong>: <span style='color:#479608'><strong>Permit</strong></span></p></li>
 </ul>
 <p>Do not forget to click on <strong>Save In Drafts</strong>, and then <strong>Commit</strong>.</p>
@@ -954,7 +954,7 @@ Now, click <strong>Ruleset</strong> and select the <code class="docutils literal
 <section id="fqdn-monitor-legacy">
 <h3>2.9 FQDN Monitor (Legacy)<a class="headerlink" href="#fqdn-monitor-legacy" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Now check the logs within the <strong>Egress</strong> section!</p></li>
+<li><p>Now check the logs within the <strong>Egress</strong> section!!</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1076,7 +1076,7 @@ Now, click <strong>Ruleset</strong> and select the <code class="docutils literal
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dcf-rules">2.3 DCF Rules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ztna">2.4 ZTNA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-from-bu1-frontend-to-database-vms-bonus">2.5 Access from BU1 Frontend to Database VMs <span style="color:#33ECFF">(BONUS)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webgroup">2.6 WebGroup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webgroups">2.6 WebGroups</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-dcf-rules">2.7 New DCF Rules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-using-gatus">2.8 Verification Using Gatus</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fqdn-monitor-legacy">2.9 FQDN Monitor (Legacy)</a></li>

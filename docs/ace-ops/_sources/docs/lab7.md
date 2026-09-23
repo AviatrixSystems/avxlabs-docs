@@ -123,7 +123,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere(0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**At Start & End**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -337,7 +337,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Destination Smartgroups**: <span style='color:#479608'>BU1-DB</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **PORT**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>On</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
   
 Do not forget to click on **Save In Drafts**.
@@ -365,7 +365,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Destination Smartgroups**: <span style='color:#479608'>BU2-DB</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **PORT**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>At Start & End</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
   
 Do not forget to click on **Save In Drafts**.
@@ -413,7 +413,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **Source Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
 - **Destination Smartgroups**: <span style='color:#479608'>Anywhere (0.0.0.0/0)</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
-- **Logging**: <span style='color:#479608'>**At Start & End**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>**Deny**</span>
 - **Place Rule**: <span style='color:#479608'>Below</span>
   - **Existing Rule**: <span style='color:#479608'>inter-ssh-bu1frontend-bu1db</span>
@@ -464,9 +464,9 @@ inter-ssh-bu1frontend-bu1db
 Repeat the same check: try to SSH from **BU1 Frontend** to **BU2 DB**, then verify that the corresponding logs appear in the Monitor section of the **Distributed Cloud Firewall**.
 ```
 
-### 2.6 WebGroup
+### 2.6 WebGroups
 
-- Create two **WebGroup** that match the _allowed domains_ identified previously.
+- Create two **WebGroups** that match the _allowed domains_ identified previously.
 
 ```{tip}
 Navigate to **CoPilot > Groups > WebGroups** and then click on `"+ WebGroup"`.
@@ -539,7 +539,7 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall > Policies** and c
 
 ```{figure} images/lab7-webgroup001.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 +Rule
@@ -553,7 +553,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:.
 - **WebGroups**: <span style='color:#479608'>bu1-allowed-domains</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 
-- **Logging**: <span style='color:#479608'>At Start & End</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**, and then **Commit** your rule once again!
@@ -590,7 +590,7 @@ Ensure these parameters are entered in the pop-up window `"Create Rule"`:
 - **WebGroups**: <span style='color:#479608'>bu2-allowed-domains</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 
-- **Logging**: <span style='color:#479608'>At Start & End</span>
+- **Log**: <span style='color:#479608'>At Start & End</span>
 - **Action**: <span style='color:#479608'>**Permit**</span>
 
 Do not forget to click on **Save In Drafts**, and then **Commit**.
@@ -639,7 +639,7 @@ BU2-DB Gatus
 
 ### 2.9 FQDN Monitor (Legacy)
 
-- Now check the logs within the **Egress** section!
+- Now check the logs within the **Egress** section!!
 
 ```{tip}
 Navigate to **CoPilot > Security > Egress > FQDN Monitor (Legacy)** and select the **ace-azure-east-us-spoke1** VNet, then filter by `"denied"`.
