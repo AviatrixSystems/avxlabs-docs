@@ -224,7 +224,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>EU-WEST-1</span>
 - **Destination Smartgroups**: <span style='color:#479608'>EU-WEST-1</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>**At Start & end**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -273,7 +273,7 @@ BU2 Mobile App
 
 ```{figure} images/lab712-intraruleinaction00.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 intra-rule in action
@@ -283,7 +283,7 @@ intra-rule in action
 
 ```{figure} images/lab712-intraruleinaction01.png
 ---
-height: 400px
+height: 200px
 align: center
 ---
 intra-rule in action
@@ -331,7 +331,7 @@ Enter the following parameters:
 - **Destination Smartgroups**: <span style='color:#479608'>BU2-MOBILEAPP</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>80</span>
-- **Logging**: <span style='color:#479608'>**At Start & End**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -417,7 +417,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>BU1-ANALYTICS</span>
 - **Destination Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>**At Start & End**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -504,7 +504,7 @@ Enter the following parameters:
 - **Destination Smartgroups**: <span style='color:#479608'>BU2-DB</span>
 - **Protocol**: <span style='color:#479608'>TCP</span>
 - **Port**: <span style='color:#479608'>22</span>
-- **Logging**: <span style='color:#479608'>**At Start & End**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -598,7 +598,7 @@ Enter the following parameters:
 - **Source Smartgroups**: <span style='color:#479608'>BU1-FRONTEND</span>
 - **Destination Smartgroups**: <span style='color:#479608'>BU1-DB</span>
 - **Protocol**: <span style='color:#479608'>ICMP</span>
-- **Logging**: <span style='color:#479608'>**At Start & End**</span>
+- **Log**: <span style='color:#479608'>**At Start & End**</span>
 - **Action**: <span style='color:#479608'>Permit</span>
 
 Do not forget to click on **Save In Drafts**.
@@ -687,4 +687,4 @@ align: center
 Remove the inspection Policy
 ```
 
-Congratulations, you have completed all labs and created a nice set of DCF rules across your Hybrid-cloud infrastructure!
+Congratulations, you have completed all labs and created a nice set of DCF rules across your hybrid-cloud infrastructure! The next lab, however, will be a bit of a challenge because there won't be a walkthrough.
