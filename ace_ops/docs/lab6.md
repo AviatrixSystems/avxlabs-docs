@@ -51,6 +51,10 @@ Communicate your POD number
 
 - Navigate to **CoPilot > Cloud Fabric > Gateways > Transit Gateways >** select the *ace-aws-eu-west-1-transit1* GW and then the **Route Approval** tab.
 
+```{caution}
+Can't see the `Route Approval` tab? Refreshing the page will make it appear.
+```
+
 You’ll immediately notice three CIDRs already approved:
 
 - 10.0.0.0/24  
