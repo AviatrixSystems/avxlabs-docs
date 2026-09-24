@@ -239,7 +239,25 @@ S2C is finally UP
 
 #### 3.2 Verifiy connectivity Using SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
 
-- If you need additional control, SSH to the **OnPrem partner** router (i.e., a Cisco router).
+For additional control, you can SSH directly into the OnPrem partner router (a Cisco router).
+
+To connect:
+
+- Open your **SSH client**.
+
+- Enter the username **admin**, followed by **@**, and paste the URL of the OnPrem partner router.
+
+- Accept the security **fingerprint** when prompted.
+
+- Enter or paste the password **Aviatrix123#**, as depicted in the screenshot.
+
+```{figure} images/lab6-sshclient.png
+---
+height: 250px
+align: center
+---
+SSH Client
+```
 
 ```{tip}
 Access your personal POD Portal, locate the `"SSH widget for Cisco CSR"`, and use the provided credentials to connect to the CSR router as an On-Prem Partner.
