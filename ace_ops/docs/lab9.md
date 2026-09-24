@@ -12,10 +12,9 @@ Unlike previous modules, this challenge provides `no walkthrough guide`. You are
 
 Good luck!
 
-
 ```{figure} images/lab9-final01.png
 ---
-height: 300px
+height: 650px
 align: center
 ---
 inter-rule
