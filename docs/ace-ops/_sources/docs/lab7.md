@@ -8,7 +8,7 @@ The database VNet owner requires that prohibited egress traffic be dropped. Plea
 
 ```{figure} images/lab7-topology.png
 ---
-height: 400px
+height: 650px
 align: center
 ---
 Lab 7 Scenario Topology
@@ -75,6 +75,7 @@ Navigate to **CoPilot > Security > Distributed Cloud Firewall**, click `Begin Us
 
 ```{figure} images/lab7-enabledcf01.png
 ---
+height: 450px
 align: center
 ---
 Begin Using Distributed Cloud Firewall

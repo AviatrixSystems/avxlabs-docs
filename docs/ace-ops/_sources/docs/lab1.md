@@ -6,7 +6,7 @@ The `Aviatrix Cloud Native Security Fabric (CNSF)` was deployed within the hybri
 
 ```{figure} images/lab1-segmentation90.png
 ---
-height: 400px
+height: 650px
 align: center
 ---
 Initial Topology
@@ -16,7 +16,7 @@ The administrator divided the environment into two distinct _network domains_, *
 
 ```{figure} images/lab1-segmentation.png
 ---
-height: 400px
+height: 650px
 align: center
 ---
 Topology after the Network Segmentation

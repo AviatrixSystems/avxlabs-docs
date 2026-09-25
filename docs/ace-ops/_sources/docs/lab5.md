@@ -6,7 +6,7 @@
 
 ```{figure} images/lab5-topology.png
 ---
-height: 400px
+height: 650px
 align: center
 ---
 Lab 5 Topology

@@ -8,7 +8,7 @@ Unfortunately, the Network team has received another complaint from the **BU1 Fr
 
 ```{figure} images/lab4-topology.png
 ---
-height: 400px
+height: 650px
 align: center
 ---
 Lab 4 Topology
