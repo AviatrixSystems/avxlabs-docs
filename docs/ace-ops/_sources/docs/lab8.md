@@ -6,7 +6,7 @@ In the previous lab, you initiated micro-segmentation by defining SmartGroups an
 
 ```{figure} images/lab7-segmentation.png
 ---
-height: 650px
+height: 500px
 align: center
 ---
 Initial Topology

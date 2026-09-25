@@ -8,7 +8,7 @@ The database VNet owner requires that prohibited egress traffic be dropped. Plea
 
 ```{figure} images/lab7-topology.png
 ---
-height: 650px
+height: 500px
 align: center
 ---
 Lab 7 Scenario Topology

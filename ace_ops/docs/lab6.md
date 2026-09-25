@@ -8,7 +8,7 @@ You have been engaged for activating the <span style='color:orange'>**“Route A
 
 ```{figure} images/lab6-topology.png
 ---
-height: 650px
+height: 500px
 align: center
 ---
 Lab 6 Scenario#1: Topology

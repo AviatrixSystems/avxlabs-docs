@@ -22,7 +22,7 @@ Inspection Policies on the FireNet Transit GW
 
 ```{figure} images/lab3-topology.png
 ---
-height: 650px
+height: 500px
 align: center
 ---
 Lab 3 Topology
