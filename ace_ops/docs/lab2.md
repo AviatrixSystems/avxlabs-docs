@@ -6,7 +6,7 @@ ACE Inc. has decided that BU1 and BU2 must communicate. You are engaged to apply
 
 ```{figure} images/lab2-topology.png
 ---
-height: 400px
+height: 650px
 align: center
 ---
 Network Domains with the Connection Policy
