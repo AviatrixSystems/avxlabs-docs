@@ -6,7 +6,7 @@ The `Aviatrix Cloud Native Security Fabric (CNSF)` was deployed within the hybri
 
 ```{figure} images/lab1-segmentation90.png
 ---
-height: 650px
+height: 500px
 align: center
 ---
 Initial Topology
