@@ -16,7 +16,7 @@ The administrator divided the environment into two distinct _network domains_, *
 
 ```{figure} images/lab1-segmentation.png
 ---
-height: 650px
+height: 500px
 align: center
 ---
 Topology after the Network Segmentation
