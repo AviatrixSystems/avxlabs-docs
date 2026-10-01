@@ -228,7 +228,7 @@ Enter the following parameters:
 
 - **Name**: <span style='color:#479608'>PSF-Deny-Rule-from-aws-us-east-1-spoke1-test1</span>
 - **Source Groups**: <span style='color:#479608'>aws-us-east-1-spoke1-test1</span>
-- **Destination Groups**: <span style='color:#479608'>Deafult ThreatGroup</span>
+- **Destination Groups**: <span style='color:#479608'>Default ThreatGroup</span>
 - **Protocol**: <span style='color:#479608'>Any</span>
 - **Enforcement**: <span style='color:#479608'>**On**</span>
 - **Log**: <span style='color:#479608'>At Start & End</span>
