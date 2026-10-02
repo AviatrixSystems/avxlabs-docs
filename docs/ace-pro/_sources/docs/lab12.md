@@ -29,24 +29,21 @@ align: center
 Edge Workstation credentials
 ```
 
-* Open **Visual Studio Code** located on the desktop, then click on the `Explorer` button.
+* Open `Visual Studio Code` from the desktop.
+
+* Click the `Explorer` icon in the sidebar, then click `Open Folder`.
+
+* Select the `terraform-lab` folder and click `Open`.
+
+  * _When prompted to trust the authors of the files in this folder, select **Yes, I trust the authors**_
 
 ```{caution}
-If this window appears, please ignore the message and click **Cancel**.
-```{figure} images/lab11-edge333.png
+If you see an `"Invalid desktop entry file"` error message after clicking on Visual Studio Code, please close the error window. Then, click the `Start` button in the bottom-left corner, go to the `Programming` section, and select `Visual Studio Code` from there.
+```{figure} images/lab11-error32.png
 ---
-height: 400px
 align: center
 ---
-Unnamed Window
-```
-
-```{figure} images/lab11-edge3334.png
----
-height: 400px
-align: center
----
-Close the window
+Edge Workstation credentials
 ```
 
 ```{figure} images/lab11-edge3.png
@@ -56,9 +53,6 @@ align: center
 ---
 VS Studio
 ```
-
-* Click on the **Open Folder** button, select the folder `terraform-lab` and click **Open**
-  * _When prompted to trust the authors of the files in this folder, select **Yes, I trust the authors**_
 
 ```{figure} images/lab11-edge32.png
 ---
