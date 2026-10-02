@@ -1195,7 +1195,7 @@ The Last Rule...
 
 Now you can go ahead with the last **commit**!
 
-```{figure} images/lab10-lastcommit.png
+```{figure} images/lab10-lastcommit00.png
 ---
 align: center
 ---
