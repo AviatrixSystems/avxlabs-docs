@@ -72,7 +72,7 @@ aws-us-east-2-spoke1-test2
 ```
 
 The private workload is generating traffic to **four** domains:
-1) aviatrix.ai
+1) www.anthropic.com
 2) www.espn.com
 3) www.football.com
 4) www.wikipedia.org
@@ -125,7 +125,7 @@ Retrieve the private IP
 Now, launch the following curl commands:
 
 ```bash
-curl -I https://aviatrix.ai
+curl -I https://www.anthropic.com
 ```
 ```bash
 curl -I https://www.espn.com
@@ -530,7 +530,7 @@ ICMP is ok only with aws-us-east-2-spoke1-test1
 - From your SSH client connected to the **_aws-us-east-2-spoke1-test2_** instance, please re-run the following curl commands:
 
 ```bash
-curl -I https://aviatrix.ai
+curl -I https://www.anthropic.com
 ```
 ```bash
 curl -I https://www.espn.com
@@ -625,7 +625,7 @@ Create a **_WebGroup_** with the following parameters:
 
 - **Name**: <span style='color:#479608'>two-domains</span>
 - **Type**: <span style='color:#479608'>Domains</span>
-- **Domains**: <span style='color:#479608'>aviatrix.ai</span>
+- **Domains**: <span style='color:#479608'>www.anthropic.com</span>
 - **Domains**: <span style='color:#479608'>www.wikipedia.org</span>
 
 Do not forget to click on **Save**.
@@ -707,7 +707,7 @@ aws-us-east-2-spoke1-test2
 - Re-launch the following curl commands from the SSH session opened with the **_aws-us-east-2-spoke1-test1_** instance:
 
 ```bash
-curl -I https://aviatrix.ai
+curl -I https://www.anthropic.com
 ```
 ```bash
 curl -I https://www.espn.com
