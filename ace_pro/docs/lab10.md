@@ -139,8 +139,12 @@ Ensure these parameters are entered in the pop-up window `"Create SmartGroup"`:
 - **Matches all conditions (AND):<span style='color:#479608'> Name</span>**
 - **CSP Tag Value**: <span style='color:#479608'>onprem-pod##-test-vm</span>
 
+```{caution}
+Please do not copy and paste the string `onprem-pod##-test-vm`. This is only an example; the correct string containing your pod number will appear in the drop-down menu.
+```
+
 ```{tip}
-Select the first option, **"Name"**, from the drop-down menu!
+Be sure to select the first option, **"Name"**, from the drop-down menu. Do not select the other "Name" key listed further down.
 ```{figure} images/lab10-newsg85411.png
 ---
 height: 400px
