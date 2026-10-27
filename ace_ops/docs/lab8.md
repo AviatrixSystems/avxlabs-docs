@@ -440,7 +440,7 @@ Commit
 
 #### 2.2.10 Verify connectivity Using Gatus
 
-Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 Mobile App**, specifically for `TCP` traffic.
+Open the Gatus dashboard for **BU1 Analytics** and inspect the connectivity to **BU2 Mobile App**, specifically for `TCP` traffic.
 
 ```{figure} images/lab8-gatus004.png
 ---
@@ -527,7 +527,7 @@ Commit
 
 #### 2.2.14 Verify connectivity Using Gatus
 
-Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 DB**, specifically for `TCP` traffic.
+Open the Gatus dashboard for **BU1 DB** and inspect the connectivity to **BU2 DB**, specifically for `TCP` traffic.
 
 ```{figure} images/lab8-gatus005.png
 ---
