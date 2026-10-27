@@ -1,6 +1,6 @@
 # Lab 8 - Distributed Cloud Firewall
 
-## 1. SCENARIO
+## 1. SCENARIO 
 
 In the previous lab, you initiated micro-segmentation by defining SmartGroups and applying the `Aviatrix Cloud Firewall` rules. Right now, _East–West_ traffic is largely blocked, except for the policy that allows **BU1 Frontend** to SSH to both **BU1 DB** and **BU2 DB**.
 
@@ -440,7 +440,7 @@ Commit
 
 #### 2.2.10 Verify connectivity Using Gatus
 
-Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 Mobile App**, specifically for `TCP` traffic.
+Open the Gatus dashboard for **BU1 Analytics** and inspect the connectivity to **BU2 Mobile App**, specifically for `TCP` traffic.
 
 ```{figure} images/lab8-gatus004.png
 ---
@@ -527,14 +527,14 @@ Commit
 
 #### 2.2.14 Verify connectivity Using Gatus
 
-Open the Gatus dashboard for **BU1 Frontend** and inspect the connectivity to **BU2 DB**, specifically for `TCP` traffic.
+Open the Gatus dashboard for **BU1 DB** and inspect the connectivity to **BU2 DB**, specifically for `TCP` traffic.
 
 ```{figure} images/lab8-gatus005.png
 ---
 height: 450px
 align: center
 ---
-BU2 DB
+BU1 DB
 ```
 
 #### 2.2.15 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
