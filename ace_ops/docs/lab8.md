@@ -1,6 +1,6 @@
 # Lab 8 - Distributed Cloud Firewall
 
-## 1. SCENARIO
+## 1. SCENARIO 
 
 In the previous lab, you initiated micro-segmentation by defining SmartGroups and applying the `Aviatrix Cloud Firewall` rules. Right now, _East–West_ traffic is largely blocked, except for the policy that allows **BU1 Frontend** to SSH to both **BU1 DB** and **BU2 DB**.
 
