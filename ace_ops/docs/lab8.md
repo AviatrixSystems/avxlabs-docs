@@ -534,7 +534,7 @@ Open the Gatus dashboard for **BU1 DB** and inspect the connectivity to **BU2 DB
 height: 450px
 align: center
 ---
-BU2 DB
+BU1 DB
 ```
 
 #### 2.2.15 Verify connectivity Using the SSH client <span style='color:#33ECFF'>(BONUS)</span></summary>
